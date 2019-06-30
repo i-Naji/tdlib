@@ -1,0 +1,1284 @@
+import 'dart:convert' show json;
+
+part 'object.dart';
+part 'function.dart';
+part 'convertor.dart';
+part 'objects/authentication_code_type.dart';
+part 'objects/authorization_state.dart';
+part 'objects/input_file.dart';
+part 'objects/mask_point.dart';
+part 'objects/link_state.dart';
+part 'objects/user_type.dart';
+part 'objects/chat_member_status.dart';
+part 'objects/chat_members_filter.dart';
+part 'objects/supergroup_members_filter.dart';
+part 'objects/secret_chat_state.dart';
+part 'objects/message_forward_origin.dart';
+part 'objects/message_sending_state.dart';
+part 'objects/notification_settings_scope.dart';
+part 'objects/chat_type.dart';
+part 'objects/keyboard_button_type.dart';
+part 'objects/inline_keyboard_button_type.dart';
+part 'objects/reply_markup.dart';
+part 'objects/rich_text.dart';
+part 'objects/page_block_horizontal_alignment.dart';
+part 'objects/page_block_vertical_alignment.dart';
+part 'objects/page_block.dart';
+part 'objects/input_credentials.dart';
+part 'objects/passport_element_type.dart';
+part 'objects/passport_element.dart';
+part 'objects/input_passport_element.dart';
+part 'objects/passport_element_error_source.dart';
+part 'objects/input_passport_element_error_source.dart';
+part 'objects/message_content.dart';
+part 'objects/text_entity_type.dart';
+part 'objects/input_message_content.dart';
+part 'objects/search_messages_filter.dart';
+part 'objects/chat_action.dart';
+part 'objects/user_status.dart';
+part 'objects/call_discard_reason.dart';
+part 'objects/call_state.dart';
+part 'objects/input_inline_query_result.dart';
+part 'objects/inline_query_result.dart';
+part 'objects/callback_query_payload.dart';
+part 'objects/chat_event_action.dart';
+part 'objects/language_pack_string_value.dart';
+part 'objects/device_token.dart';
+part 'objects/check_chat_username_result.dart';
+part 'objects/push_message_content.dart';
+part 'objects/notification_type.dart';
+part 'objects/notification_group_type.dart';
+part 'objects/option_value.dart';
+part 'objects/json_value.dart';
+part 'objects/user_privacy_setting_rule.dart';
+part 'objects/user_privacy_setting.dart';
+part 'objects/chat_report_reason.dart';
+part 'objects/file_type.dart';
+part 'objects/network_type.dart';
+part 'objects/network_statistics_entry.dart';
+part 'objects/connection_state.dart';
+part 'objects/top_chat_category.dart';
+part 'objects/t_me_url_type.dart';
+part 'objects/text_parse_mode.dart';
+part 'objects/proxy_type.dart';
+part 'objects/update.dart';
+part 'objects/log_stream.dart';
+part 'objects/error.dart';
+part 'objects/ok.dart';
+part 'objects/tdlib_parameters.dart';
+part 'objects/authentication_code_info.dart';
+part 'objects/email_address_authentication_code_info.dart';
+part 'objects/text_entity.dart';
+part 'objects/text_entities.dart';
+part 'objects/formatted_text.dart';
+part 'objects/terms_of_service.dart';
+part 'objects/password_state.dart';
+part 'objects/recovery_email_address.dart';
+part 'objects/temporary_password_state.dart';
+part 'objects/local_file.dart';
+part 'objects/remote_file.dart';
+part 'objects/file.dart';
+part 'objects/photo_size.dart';
+part 'objects/mask_position.dart';
+part 'objects/poll_option.dart';
+part 'objects/animation.dart';
+part 'objects/audio.dart';
+part 'objects/document.dart';
+part 'objects/photo.dart';
+part 'objects/sticker.dart';
+part 'objects/video.dart';
+part 'objects/video_note.dart';
+part 'objects/voice_note.dart';
+part 'objects/contact.dart';
+part 'objects/location.dart';
+part 'objects/venue.dart';
+part 'objects/game.dart';
+part 'objects/poll.dart';
+part 'objects/profile_photo.dart';
+part 'objects/chat_photo.dart';
+part 'objects/bot_command.dart';
+part 'objects/bot_info.dart';
+part 'objects/user.dart';
+part 'objects/user_full_info.dart';
+part 'objects/user_profile_photo.dart';
+part 'objects/user_profile_photos.dart';
+part 'objects/users.dart';
+part 'objects/chat_member.dart';
+part 'objects/chat_members.dart';
+part 'objects/basic_group.dart';
+part 'objects/basic_group_full_info.dart';
+part 'objects/supergroup.dart';
+part 'objects/supergroup_full_info.dart';
+part 'objects/secret_chat.dart';
+part 'objects/message_forward_info.dart';
+part 'objects/message.dart';
+part 'objects/messages.dart';
+part 'objects/found_messages.dart';
+part 'objects/chat_notification_settings.dart';
+part 'objects/scope_notification_settings.dart';
+part 'objects/draft_message.dart';
+part 'objects/chat.dart';
+part 'objects/chats.dart';
+part 'objects/chat_invite_link.dart';
+part 'objects/chat_invite_link_info.dart';
+part 'objects/keyboard_button.dart';
+part 'objects/inline_keyboard_button.dart';
+part 'objects/page_block_caption.dart';
+part 'objects/page_block_list_item.dart';
+part 'objects/page_block_table_cell.dart';
+part 'objects/page_block_related_article.dart';
+part 'objects/web_page_instant_view.dart';
+part 'objects/web_page.dart';
+part 'objects/address.dart';
+part 'objects/labeled_price_part.dart';
+part 'objects/invoice.dart';
+part 'objects/order_info.dart';
+part 'objects/shipping_option.dart';
+part 'objects/saved_credentials.dart';
+part 'objects/payments_provider_stripe.dart';
+part 'objects/payment_form.dart';
+part 'objects/validated_order_info.dart';
+part 'objects/payment_result.dart';
+part 'objects/payment_receipt.dart';
+part 'objects/dated_file.dart';
+part 'objects/date.dart';
+part 'objects/personal_details.dart';
+part 'objects/identity_document.dart';
+part 'objects/input_identity_document.dart';
+part 'objects/personal_document.dart';
+part 'objects/input_personal_document.dart';
+part 'objects/passport_elements.dart';
+part 'objects/passport_element_error.dart';
+part 'objects/passport_suitable_element.dart';
+part 'objects/passport_required_element.dart';
+part 'objects/passport_authorization_form.dart';
+part 'objects/passport_elements_with_errors.dart';
+part 'objects/encrypted_credentials.dart';
+part 'objects/encrypted_passport_element.dart';
+part 'objects/input_passport_element_error.dart';
+part 'objects/input_thumbnail.dart';
+part 'objects/stickers.dart';
+part 'objects/sticker_emojis.dart';
+part 'objects/sticker_set.dart';
+part 'objects/sticker_set_info.dart';
+part 'objects/sticker_sets.dart';
+part 'objects/call_protocol.dart';
+part 'objects/call_connection.dart';
+part 'objects/call_id.dart';
+part 'objects/call.dart';
+part 'objects/animations.dart';
+part 'objects/imported_contacts.dart';
+part 'objects/http_url.dart';
+part 'objects/inline_query_results.dart';
+part 'objects/callback_query_answer.dart';
+part 'objects/custom_request_result.dart';
+part 'objects/game_high_score.dart';
+part 'objects/game_high_scores.dart';
+part 'objects/chat_event.dart';
+part 'objects/chat_events.dart';
+part 'objects/chat_event_log_filters.dart';
+part 'objects/language_pack_string.dart';
+part 'objects/language_pack_strings.dart';
+part 'objects/language_pack_info.dart';
+part 'objects/localization_target_info.dart';
+part 'objects/push_receiver_id.dart';
+part 'objects/wallpaper.dart';
+part 'objects/wallpapers.dart';
+part 'objects/hashtags.dart';
+part 'objects/notification.dart';
+part 'objects/notification_group.dart';
+part 'objects/json_object_member.dart';
+part 'objects/user_privacy_setting_rules.dart';
+part 'objects/account_ttl.dart';
+part 'objects/session.dart';
+part 'objects/sessions.dart';
+part 'objects/connected_website.dart';
+part 'objects/connected_websites.dart';
+part 'objects/chat_report_spam_state.dart';
+part 'objects/public_message_link.dart';
+part 'objects/file_part.dart';
+part 'objects/storage_statistics_by_file_type.dart';
+part 'objects/storage_statistics_by_chat.dart';
+part 'objects/storage_statistics.dart';
+part 'objects/storage_statistics_fast.dart';
+part 'objects/database_statistics.dart';
+part 'objects/network_statistics.dart';
+part 'objects/t_me_url.dart';
+part 'objects/t_me_urls.dart';
+part 'objects/count.dart';
+part 'objects/text.dart';
+part 'objects/seconds.dart';
+part 'objects/deep_link_info.dart';
+part 'objects/proxy.dart';
+part 'objects/proxies.dart';
+part 'objects/input_sticker.dart';
+part 'objects/updates.dart';
+part 'objects/log_verbosity_level.dart';
+part 'objects/log_tags.dart';
+part 'objects/test_int.dart';
+part 'objects/test_string.dart';
+part 'objects/test_bytes.dart';
+part 'objects/test_vector_int.dart';
+part 'objects/test_vector_int_object.dart';
+part 'objects/test_vector_string.dart';
+part 'objects/test_vector_string_object.dart';
+part 'functions/get_authorization_state.dart';
+part 'functions/set_tdlib_parameters.dart';
+part 'functions/check_database_encryption_key.dart';
+part 'functions/set_authentication_phone_number.dart';
+part 'functions/resend_authentication_code.dart';
+part 'functions/check_authentication_code.dart';
+part 'functions/check_authentication_password.dart';
+part 'functions/request_authentication_password_recovery.dart';
+part 'functions/recover_authentication_password.dart';
+part 'functions/check_authentication_bot_token.dart';
+part 'functions/log_out.dart';
+part 'functions/close.dart';
+part 'functions/destroy.dart';
+part 'functions/get_current_state.dart';
+part 'functions/set_database_encryption_key.dart';
+part 'functions/get_password_state.dart';
+part 'functions/set_password.dart';
+part 'functions/get_recovery_email_address.dart';
+part 'functions/set_recovery_email_address.dart';
+part 'functions/check_recovery_email_address_code.dart';
+part 'functions/resend_recovery_email_address_code.dart';
+part 'functions/request_password_recovery.dart';
+part 'functions/recover_password.dart';
+part 'functions/create_temporary_password.dart';
+part 'functions/get_temporary_password_state.dart';
+part 'functions/get_me.dart';
+part 'functions/get_user.dart';
+part 'functions/get_user_full_info.dart';
+part 'functions/get_basic_group.dart';
+part 'functions/get_basic_group_full_info.dart';
+part 'functions/get_supergroup.dart';
+part 'functions/get_supergroup_full_info.dart';
+part 'functions/get_secret_chat.dart';
+part 'functions/get_chat.dart';
+part 'functions/get_message.dart';
+part 'functions/get_message_locally.dart';
+part 'functions/get_replied_message.dart';
+part 'functions/get_chat_pinned_message.dart';
+part 'functions/get_messages.dart';
+part 'functions/get_file.dart';
+part 'functions/get_remote_file.dart';
+part 'functions/get_chats.dart';
+part 'functions/search_public_chat.dart';
+part 'functions/search_public_chats.dart';
+part 'functions/search_chats.dart';
+part 'functions/search_chats_on_server.dart';
+part 'functions/get_top_chats.dart';
+part 'functions/remove_top_chat.dart';
+part 'functions/add_recently_found_chat.dart';
+part 'functions/remove_recently_found_chat.dart';
+part 'functions/clear_recently_found_chats.dart';
+part 'functions/check_chat_username.dart';
+part 'functions/get_created_public_chats.dart';
+part 'functions/get_groups_in_common.dart';
+part 'functions/get_chat_history.dart';
+part 'functions/delete_chat_history.dart';
+part 'functions/search_chat_messages.dart';
+part 'functions/search_messages.dart';
+part 'functions/search_secret_messages.dart';
+part 'functions/search_call_messages.dart';
+part 'functions/search_chat_recent_location_messages.dart';
+part 'functions/get_active_live_location_messages.dart';
+part 'functions/get_chat_message_by_date.dart';
+part 'functions/get_chat_message_count.dart';
+part 'functions/remove_notification.dart';
+part 'functions/remove_notification_group.dart';
+part 'functions/get_public_message_link.dart';
+part 'functions/get_message_link.dart';
+part 'functions/send_message.dart';
+part 'functions/send_message_album.dart';
+part 'functions/send_bot_start_message.dart';
+part 'functions/send_inline_query_result_message.dart';
+part 'functions/forward_messages.dart';
+part 'functions/send_chat_set_ttl_message.dart';
+part 'functions/send_chat_screenshot_taken_notification.dart';
+part 'functions/add_local_message.dart';
+part 'functions/delete_messages.dart';
+part 'functions/delete_chat_messages_from_user.dart';
+part 'functions/edit_message_text.dart';
+part 'functions/edit_message_live_location.dart';
+part 'functions/edit_message_media.dart';
+part 'functions/edit_message_caption.dart';
+part 'functions/edit_message_reply_markup.dart';
+part 'functions/edit_inline_message_text.dart';
+part 'functions/edit_inline_message_live_location.dart';
+part 'functions/edit_inline_message_media.dart';
+part 'functions/edit_inline_message_caption.dart';
+part 'functions/edit_inline_message_reply_markup.dart';
+part 'functions/get_text_entities.dart';
+part 'functions/parse_text_entities.dart';
+part 'functions/get_file_mime_type.dart';
+part 'functions/get_file_extension.dart';
+part 'functions/clean_file_name.dart';
+part 'functions/get_language_pack_string.dart';
+part 'functions/get_json_value.dart';
+part 'functions/get_json_string.dart';
+part 'functions/set_poll_answer.dart';
+part 'functions/stop_poll.dart';
+part 'functions/get_inline_query_results.dart';
+part 'functions/answer_inline_query.dart';
+part 'functions/get_callback_query_answer.dart';
+part 'functions/answer_callback_query.dart';
+part 'functions/answer_shipping_query.dart';
+part 'functions/answer_pre_checkout_query.dart';
+part 'functions/set_game_score.dart';
+part 'functions/set_inline_game_score.dart';
+part 'functions/get_game_high_scores.dart';
+part 'functions/get_inline_game_high_scores.dart';
+part 'functions/delete_chat_reply_markup.dart';
+part 'functions/send_chat_action.dart';
+part 'functions/open_chat.dart';
+part 'functions/close_chat.dart';
+part 'functions/view_messages.dart';
+part 'functions/open_message_content.dart';
+part 'functions/read_all_chat_mentions.dart';
+part 'functions/create_private_chat.dart';
+part 'functions/create_basic_group_chat.dart';
+part 'functions/create_supergroup_chat.dart';
+part 'functions/create_secret_chat.dart';
+part 'functions/create_new_basic_group_chat.dart';
+part 'functions/create_new_supergroup_chat.dart';
+part 'functions/create_new_secret_chat.dart';
+part 'functions/upgrade_basic_group_chat_to_supergroup_chat.dart';
+part 'functions/set_chat_title.dart';
+part 'functions/set_chat_photo.dart';
+part 'functions/set_chat_draft_message.dart';
+part 'functions/set_chat_notification_settings.dart';
+part 'functions/toggle_chat_is_pinned.dart';
+part 'functions/toggle_chat_is_marked_as_unread.dart';
+part 'functions/toggle_chat_default_disable_notification.dart';
+part 'functions/set_chat_client_data.dart';
+part 'functions/pin_chat_message.dart';
+part 'functions/unpin_chat_message.dart';
+part 'functions/join_chat.dart';
+part 'functions/leave_chat.dart';
+part 'functions/add_chat_member.dart';
+part 'functions/add_chat_members.dart';
+part 'functions/set_chat_member_status.dart';
+part 'functions/get_chat_member.dart';
+part 'functions/search_chat_members.dart';
+part 'functions/get_chat_administrators.dart';
+part 'functions/clear_all_draft_messages.dart';
+part 'functions/get_chat_notification_settings_exceptions.dart';
+part 'functions/get_scope_notification_settings.dart';
+part 'functions/set_scope_notification_settings.dart';
+part 'functions/reset_all_notification_settings.dart';
+part 'functions/set_pinned_chats.dart';
+part 'functions/download_file.dart';
+part 'functions/get_file_downloaded_prefix_size.dart';
+part 'functions/cancel_download_file.dart';
+part 'functions/upload_file.dart';
+part 'functions/cancel_upload_file.dart';
+part 'functions/write_generated_file_part.dart';
+part 'functions/set_file_generation_progress.dart';
+part 'functions/finish_file_generation.dart';
+part 'functions/read_file_part.dart';
+part 'functions/delete_file.dart';
+part 'functions/generate_chat_invite_link.dart';
+part 'functions/check_chat_invite_link.dart';
+part 'functions/join_chat_by_invite_link.dart';
+part 'functions/create_call.dart';
+part 'functions/accept_call.dart';
+part 'functions/discard_call.dart';
+part 'functions/send_call_rating.dart';
+part 'functions/send_call_debug_information.dart';
+part 'functions/block_user.dart';
+part 'functions/unblock_user.dart';
+part 'functions/get_blocked_users.dart';
+part 'functions/import_contacts.dart';
+part 'functions/get_contacts.dart';
+part 'functions/search_contacts.dart';
+part 'functions/remove_contacts.dart';
+part 'functions/get_imported_contact_count.dart';
+part 'functions/change_imported_contacts.dart';
+part 'functions/clear_imported_contacts.dart';
+part 'functions/get_user_profile_photos.dart';
+part 'functions/get_stickers.dart';
+part 'functions/search_stickers.dart';
+part 'functions/get_installed_sticker_sets.dart';
+part 'functions/get_archived_sticker_sets.dart';
+part 'functions/get_trending_sticker_sets.dart';
+part 'functions/get_attached_sticker_sets.dart';
+part 'functions/get_sticker_set.dart';
+part 'functions/search_sticker_set.dart';
+part 'functions/search_installed_sticker_sets.dart';
+part 'functions/search_sticker_sets.dart';
+part 'functions/change_sticker_set.dart';
+part 'functions/view_trending_sticker_sets.dart';
+part 'functions/reorder_installed_sticker_sets.dart';
+part 'functions/get_recent_stickers.dart';
+part 'functions/add_recent_sticker.dart';
+part 'functions/remove_recent_sticker.dart';
+part 'functions/clear_recent_stickers.dart';
+part 'functions/get_favorite_stickers.dart';
+part 'functions/add_favorite_sticker.dart';
+part 'functions/remove_favorite_sticker.dart';
+part 'functions/get_sticker_emojis.dart';
+part 'functions/get_saved_animations.dart';
+part 'functions/add_saved_animation.dart';
+part 'functions/remove_saved_animation.dart';
+part 'functions/get_recent_inline_bots.dart';
+part 'functions/search_hashtags.dart';
+part 'functions/remove_recent_hashtag.dart';
+part 'functions/get_web_page_preview.dart';
+part 'functions/get_web_page_instant_view.dart';
+part 'functions/set_profile_photo.dart';
+part 'functions/delete_profile_photo.dart';
+part 'functions/set_name.dart';
+part 'functions/set_bio.dart';
+part 'functions/set_username.dart';
+part 'functions/change_phone_number.dart';
+part 'functions/resend_change_phone_number_code.dart';
+part 'functions/check_change_phone_number_code.dart';
+part 'functions/get_active_sessions.dart';
+part 'functions/terminate_session.dart';
+part 'functions/terminate_all_other_sessions.dart';
+part 'functions/get_connected_websites.dart';
+part 'functions/disconnect_website.dart';
+part 'functions/disconnect_all_websites.dart';
+part 'functions/toggle_basic_group_administrators.dart';
+part 'functions/set_supergroup_username.dart';
+part 'functions/set_supergroup_sticker_set.dart';
+part 'functions/toggle_supergroup_invites.dart';
+part 'functions/toggle_supergroup_sign_messages.dart';
+part 'functions/toggle_supergroup_is_all_history_available.dart';
+part 'functions/set_supergroup_description.dart';
+part 'functions/report_supergroup_spam.dart';
+part 'functions/get_supergroup_members.dart';
+part 'functions/delete_supergroup.dart';
+part 'functions/close_secret_chat.dart';
+part 'functions/get_chat_event_log.dart';
+part 'functions/get_payment_form.dart';
+part 'functions/validate_order_info.dart';
+part 'functions/send_payment_form.dart';
+part 'functions/get_payment_receipt.dart';
+part 'functions/get_saved_order_info.dart';
+part 'functions/delete_saved_order_info.dart';
+part 'functions/delete_saved_credentials.dart';
+part 'functions/get_support_user.dart';
+part 'functions/get_wallpapers.dart';
+part 'functions/get_localization_target_info.dart';
+part 'functions/get_language_pack_info.dart';
+part 'functions/get_language_pack_strings.dart';
+part 'functions/synchronize_language_pack.dart';
+part 'functions/add_custom_server_language_pack.dart';
+part 'functions/set_custom_language_pack.dart';
+part 'functions/edit_custom_language_pack_info.dart';
+part 'functions/set_custom_language_pack_string.dart';
+part 'functions/delete_language_pack.dart';
+part 'functions/register_device.dart';
+part 'functions/process_push_notification.dart';
+part 'functions/get_push_receiver_id.dart';
+part 'functions/get_recently_visited_t_me_urls.dart';
+part 'functions/set_user_privacy_setting_rules.dart';
+part 'functions/get_user_privacy_setting_rules.dart';
+part 'functions/get_option.dart';
+part 'functions/set_option.dart';
+part 'functions/set_account_ttl.dart';
+part 'functions/get_account_ttl.dart';
+part 'functions/delete_account.dart';
+part 'functions/get_chat_report_spam_state.dart';
+part 'functions/change_chat_report_spam_state.dart';
+part 'functions/report_chat.dart';
+part 'functions/get_chat_statistics_url.dart';
+part 'functions/get_storage_statistics.dart';
+part 'functions/get_storage_statistics_fast.dart';
+part 'functions/get_database_statistics.dart';
+part 'functions/optimize_storage.dart';
+part 'functions/set_network_type.dart';
+part 'functions/get_network_statistics.dart';
+part 'functions/add_network_statistics.dart';
+part 'functions/reset_network_statistics.dart';
+part 'functions/get_passport_element.dart';
+part 'functions/get_all_passport_elements.dart';
+part 'functions/set_passport_element.dart';
+part 'functions/delete_passport_element.dart';
+part 'functions/set_passport_element_errors.dart';
+part 'functions/get_preferred_country_language.dart';
+part 'functions/send_phone_number_verification_code.dart';
+part 'functions/resend_phone_number_verification_code.dart';
+part 'functions/check_phone_number_verification_code.dart';
+part 'functions/send_email_address_verification_code.dart';
+part 'functions/resend_email_address_verification_code.dart';
+part 'functions/check_email_address_verification_code.dart';
+part 'functions/get_passport_authorization_form.dart';
+part 'functions/get_passport_authorization_form_available_elements.dart';
+part 'functions/send_passport_authorization_form.dart';
+part 'functions/send_phone_number_confirmation_code.dart';
+part 'functions/resend_phone_number_confirmation_code.dart';
+part 'functions/check_phone_number_confirmation_code.dart';
+part 'functions/set_bot_updates_status.dart';
+part 'functions/upload_sticker_file.dart';
+part 'functions/create_new_sticker_set.dart';
+part 'functions/add_sticker_to_set.dart';
+part 'functions/set_sticker_position_in_set.dart';
+part 'functions/remove_sticker_from_set.dart';
+part 'functions/get_map_thumbnail_file.dart';
+part 'functions/accept_terms_of_service.dart';
+part 'functions/send_custom_request.dart';
+part 'functions/answer_custom_query.dart';
+part 'functions/set_alarm.dart';
+part 'functions/get_country_code.dart';
+part 'functions/get_invite_text.dart';
+part 'functions/get_deep_link_info.dart';
+part 'functions/get_application_config.dart';
+part 'functions/save_application_log_event.dart';
+part 'functions/add_proxy.dart';
+part 'functions/edit_proxy.dart';
+part 'functions/enable_proxy.dart';
+part 'functions/disable_proxy.dart';
+part 'functions/remove_proxy.dart';
+part 'functions/get_proxies.dart';
+part 'functions/get_proxy_link.dart';
+part 'functions/ping_proxy.dart';
+part 'functions/set_log_stream.dart';
+part 'functions/get_log_stream.dart';
+part 'functions/set_log_verbosity_level.dart';
+part 'functions/get_log_verbosity_level.dart';
+part 'functions/get_log_tags.dart';
+part 'functions/set_log_tag_verbosity_level.dart';
+part 'functions/get_log_tag_verbosity_level.dart';
+part 'functions/add_log_message.dart';
+part 'functions/test_call_empty.dart';
+part 'functions/test_call_string.dart';
+part 'functions/test_call_bytes.dart';
+part 'functions/test_call_vector_int.dart';
+part 'functions/test_call_vector_int_object.dart';
+part 'functions/test_call_vector_string.dart';
+part 'functions/test_call_vector_string_object.dart';
+part 'functions/test_square_int.dart';
+part 'functions/test_network.dart';
+part 'functions/test_get_difference.dart';
+part 'functions/test_use_update.dart';
+part 'functions/test_use_error.dart';
+
+Map<String, dynamic> allObjects = {
+  'error': Error,
+  'ok': Ok,
+  'tdlibParameters': TdlibParameters,
+  'authenticationCodeTypeTelegramMessage':
+      AuthenticationCodeTypeTelegramMessage,
+  'authenticationCodeTypeSms': AuthenticationCodeTypeSms,
+  'authenticationCodeTypeCall': AuthenticationCodeTypeCall,
+  'authenticationCodeTypeFlashCall': AuthenticationCodeTypeFlashCall,
+  'authenticationCodeInfo': AuthenticationCodeInfo,
+  'emailAddressAuthenticationCodeInfo': EmailAddressAuthenticationCodeInfo,
+  'textEntity': TextEntity,
+  'textEntities': TextEntities,
+  'formattedText': FormattedText,
+  'termsOfService': TermsOfService,
+  'authorizationStateWaitTdlibParameters':
+      AuthorizationStateWaitTdlibParameters,
+  'authorizationStateWaitEncryptionKey': AuthorizationStateWaitEncryptionKey,
+  'authorizationStateWaitPhoneNumber': AuthorizationStateWaitPhoneNumber,
+  'authorizationStateWaitCode': AuthorizationStateWaitCode,
+  'authorizationStateWaitPassword': AuthorizationStateWaitPassword,
+  'authorizationStateReady': AuthorizationStateReady,
+  'authorizationStateLoggingOut': AuthorizationStateLoggingOut,
+  'authorizationStateClosing': AuthorizationStateClosing,
+  'authorizationStateClosed': AuthorizationStateClosed,
+  'passwordState': PasswordState,
+  'recoveryEmailAddress': RecoveryEmailAddress,
+  'temporaryPasswordState': TemporaryPasswordState,
+  'localFile': LocalFile,
+  'remoteFile': RemoteFile,
+  'file': File,
+  'inputFileId': InputFileId,
+  'inputFileRemote': InputFileRemote,
+  'inputFileLocal': InputFileLocal,
+  'inputFileGenerated': InputFileGenerated,
+  'photoSize': PhotoSize,
+  'maskPointForehead': MaskPointForehead,
+  'maskPointEyes': MaskPointEyes,
+  'maskPointMouth': MaskPointMouth,
+  'maskPointChin': MaskPointChin,
+  'maskPosition': MaskPosition,
+  'pollOption': PollOption,
+  'animation': Animation,
+  'audio': Audio,
+  'document': Document,
+  'photo': Photo,
+  'sticker': Sticker,
+  'video': Video,
+  'videoNote': VideoNote,
+  'voiceNote': VoiceNote,
+  'contact': Contact,
+  'location': Location,
+  'venue': Venue,
+  'game': Game,
+  'poll': Poll,
+  'profilePhoto': ProfilePhoto,
+  'chatPhoto': ChatPhoto,
+  'linkStateNone': LinkStateNone,
+  'linkStateKnowsPhoneNumber': LinkStateKnowsPhoneNumber,
+  'linkStateIsContact': LinkStateIsContact,
+  'userTypeRegular': UserTypeRegular,
+  'userTypeDeleted': UserTypeDeleted,
+  'userTypeBot': UserTypeBot,
+  'userTypeUnknown': UserTypeUnknown,
+  'botCommand': BotCommand,
+  'botInfo': BotInfo,
+  'user': User,
+  'userFullInfo': UserFullInfo,
+  'userProfilePhoto': UserProfilePhoto,
+  'userProfilePhotos': UserProfilePhotos,
+  'users': Users,
+  'chatMemberStatusCreator': ChatMemberStatusCreator,
+  'chatMemberStatusAdministrator': ChatMemberStatusAdministrator,
+  'chatMemberStatusMember': ChatMemberStatusMember,
+  'chatMemberStatusRestricted': ChatMemberStatusRestricted,
+  'chatMemberStatusLeft': ChatMemberStatusLeft,
+  'chatMemberStatusBanned': ChatMemberStatusBanned,
+  'chatMember': ChatMember,
+  'chatMembers': ChatMembers,
+  'chatMembersFilterAdministrators': ChatMembersFilterAdministrators,
+  'chatMembersFilterMembers': ChatMembersFilterMembers,
+  'chatMembersFilterRestricted': ChatMembersFilterRestricted,
+  'chatMembersFilterBanned': ChatMembersFilterBanned,
+  'chatMembersFilterBots': ChatMembersFilterBots,
+  'supergroupMembersFilterRecent': SupergroupMembersFilterRecent,
+  'supergroupMembersFilterAdministrators':
+      SupergroupMembersFilterAdministrators,
+  'supergroupMembersFilterSearch': SupergroupMembersFilterSearch,
+  'supergroupMembersFilterRestricted': SupergroupMembersFilterRestricted,
+  'supergroupMembersFilterBanned': SupergroupMembersFilterBanned,
+  'supergroupMembersFilterBots': SupergroupMembersFilterBots,
+  'basicGroup': BasicGroup,
+  'basicGroupFullInfo': BasicGroupFullInfo,
+  'supergroup': Supergroup,
+  'supergroupFullInfo': SupergroupFullInfo,
+  'secretChatStatePending': SecretChatStatePending,
+  'secretChatStateReady': SecretChatStateReady,
+  'secretChatStateClosed': SecretChatStateClosed,
+  'secretChat': SecretChat,
+  'messageForwardOriginUser': MessageForwardOriginUser,
+  'messageForwardOriginHiddenUser': MessageForwardOriginHiddenUser,
+  'messageForwardOriginChannel': MessageForwardOriginChannel,
+  'messageForwardInfo': MessageForwardInfo,
+  'messageSendingStatePending': MessageSendingStatePending,
+  'messageSendingStateFailed': MessageSendingStateFailed,
+  'message': Message,
+  'messages': Messages,
+  'foundMessages': FoundMessages,
+  'notificationSettingsScopePrivateChats':
+      NotificationSettingsScopePrivateChats,
+  'notificationSettingsScopeGroupChats': NotificationSettingsScopeGroupChats,
+  'notificationSettingsScopeChannelChats':
+      NotificationSettingsScopeChannelChats,
+  'chatNotificationSettings': ChatNotificationSettings,
+  'scopeNotificationSettings': ScopeNotificationSettings,
+  'draftMessage': DraftMessage,
+  'chatTypePrivate': ChatTypePrivate,
+  'chatTypeBasicGroup': ChatTypeBasicGroup,
+  'chatTypeSupergroup': ChatTypeSupergroup,
+  'chatTypeSecret': ChatTypeSecret,
+  'chat': Chat,
+  'chats': Chats,
+  'chatInviteLink': ChatInviteLink,
+  'chatInviteLinkInfo': ChatInviteLinkInfo,
+  'keyboardButtonTypeText': KeyboardButtonTypeText,
+  'keyboardButtonTypeRequestPhoneNumber': KeyboardButtonTypeRequestPhoneNumber,
+  'keyboardButtonTypeRequestLocation': KeyboardButtonTypeRequestLocation,
+  'keyboardButton': KeyboardButton,
+  'inlineKeyboardButtonTypeUrl': InlineKeyboardButtonTypeUrl,
+  'inlineKeyboardButtonTypeCallback': InlineKeyboardButtonTypeCallback,
+  'inlineKeyboardButtonTypeCallbackGame': InlineKeyboardButtonTypeCallbackGame,
+  'inlineKeyboardButtonTypeSwitchInline': InlineKeyboardButtonTypeSwitchInline,
+  'inlineKeyboardButtonTypeBuy': InlineKeyboardButtonTypeBuy,
+  'inlineKeyboardButton': InlineKeyboardButton,
+  'replyMarkupRemoveKeyboard': ReplyMarkupRemoveKeyboard,
+  'replyMarkupForceReply': ReplyMarkupForceReply,
+  'replyMarkupShowKeyboard': ReplyMarkupShowKeyboard,
+  'replyMarkupInlineKeyboard': ReplyMarkupInlineKeyboard,
+  'richTextPlain': RichTextPlain,
+  'richTextBold': RichTextBold,
+  'richTextItalic': RichTextItalic,
+  'richTextUnderline': RichTextUnderline,
+  'richTextStrikethrough': RichTextStrikethrough,
+  'richTextFixed': RichTextFixed,
+  'richTextUrl': RichTextUrl,
+  'richTextEmailAddress': RichTextEmailAddress,
+  'richTextSubscript': RichTextSubscript,
+  'richTextSuperscript': RichTextSuperscript,
+  'richTextMarked': RichTextMarked,
+  'richTextPhoneNumber': RichTextPhoneNumber,
+  'richTextIcon': RichTextIcon,
+  'richTextAnchor': RichTextAnchor,
+  'richTexts': RichTexts,
+  'pageBlockCaption': PageBlockCaption,
+  'pageBlockListItem': PageBlockListItem,
+  'pageBlockHorizontalAlignmentLeft': PageBlockHorizontalAlignmentLeft,
+  'pageBlockHorizontalAlignmentCenter': PageBlockHorizontalAlignmentCenter,
+  'pageBlockHorizontalAlignmentRight': PageBlockHorizontalAlignmentRight,
+  'pageBlockVerticalAlignmentTop': PageBlockVerticalAlignmentTop,
+  'pageBlockVerticalAlignmentMiddle': PageBlockVerticalAlignmentMiddle,
+  'pageBlockVerticalAlignmentBottom': PageBlockVerticalAlignmentBottom,
+  'pageBlockTableCell': PageBlockTableCell,
+  'pageBlockRelatedArticle': PageBlockRelatedArticle,
+  'pageBlockTitle': PageBlockTitle,
+  'pageBlockSubtitle': PageBlockSubtitle,
+  'pageBlockAuthorDate': PageBlockAuthorDate,
+  'pageBlockHeader': PageBlockHeader,
+  'pageBlockSubheader': PageBlockSubheader,
+  'pageBlockKicker': PageBlockKicker,
+  'pageBlockParagraph': PageBlockParagraph,
+  'pageBlockPreformatted': PageBlockPreformatted,
+  'pageBlockFooter': PageBlockFooter,
+  'pageBlockDivider': PageBlockDivider,
+  'pageBlockAnchor': PageBlockAnchor,
+  'pageBlockList': PageBlockList,
+  'pageBlockBlockQuote': PageBlockBlockQuote,
+  'pageBlockPullQuote': PageBlockPullQuote,
+  'pageBlockAnimation': PageBlockAnimation,
+  'pageBlockAudio': PageBlockAudio,
+  'pageBlockPhoto': PageBlockPhoto,
+  'pageBlockVideo': PageBlockVideo,
+  'pageBlockCover': PageBlockCover,
+  'pageBlockEmbedded': PageBlockEmbedded,
+  'pageBlockEmbeddedPost': PageBlockEmbeddedPost,
+  'pageBlockCollage': PageBlockCollage,
+  'pageBlockSlideshow': PageBlockSlideshow,
+  'pageBlockChatLink': PageBlockChatLink,
+  'pageBlockTable': PageBlockTable,
+  'pageBlockDetails': PageBlockDetails,
+  'pageBlockRelatedArticles': PageBlockRelatedArticles,
+  'pageBlockMap': PageBlockMap,
+  'webPageInstantView': WebPageInstantView,
+  'webPage': WebPage,
+  'address': Address,
+  'labeledPricePart': LabeledPricePart,
+  'invoice': Invoice,
+  'orderInfo': OrderInfo,
+  'shippingOption': ShippingOption,
+  'savedCredentials': SavedCredentials,
+  'inputCredentialsSaved': InputCredentialsSaved,
+  'inputCredentialsNew': InputCredentialsNew,
+  'inputCredentialsAndroidPay': InputCredentialsAndroidPay,
+  'inputCredentialsApplePay': InputCredentialsApplePay,
+  'paymentsProviderStripe': PaymentsProviderStripe,
+  'paymentForm': PaymentForm,
+  'validatedOrderInfo': ValidatedOrderInfo,
+  'paymentResult': PaymentResult,
+  'paymentReceipt': PaymentReceipt,
+  'datedFile': DatedFile,
+  'passportElementTypePersonalDetails': PassportElementTypePersonalDetails,
+  'passportElementTypePassport': PassportElementTypePassport,
+  'passportElementTypeDriverLicense': PassportElementTypeDriverLicense,
+  'passportElementTypeIdentityCard': PassportElementTypeIdentityCard,
+  'passportElementTypeInternalPassport': PassportElementTypeInternalPassport,
+  'passportElementTypeAddress': PassportElementTypeAddress,
+  'passportElementTypeUtilityBill': PassportElementTypeUtilityBill,
+  'passportElementTypeBankStatement': PassportElementTypeBankStatement,
+  'passportElementTypeRentalAgreement': PassportElementTypeRentalAgreement,
+  'passportElementTypePassportRegistration':
+      PassportElementTypePassportRegistration,
+  'passportElementTypeTemporaryRegistration':
+      PassportElementTypeTemporaryRegistration,
+  'passportElementTypePhoneNumber': PassportElementTypePhoneNumber,
+  'passportElementTypeEmailAddress': PassportElementTypeEmailAddress,
+  'date': Date,
+  'personalDetails': PersonalDetails,
+  'identityDocument': IdentityDocument,
+  'inputIdentityDocument': InputIdentityDocument,
+  'personalDocument': PersonalDocument,
+  'inputPersonalDocument': InputPersonalDocument,
+  'passportElementPersonalDetails': PassportElementPersonalDetails,
+  'passportElementPassport': PassportElementPassport,
+  'passportElementDriverLicense': PassportElementDriverLicense,
+  'passportElementIdentityCard': PassportElementIdentityCard,
+  'passportElementInternalPassport': PassportElementInternalPassport,
+  'passportElementAddress': PassportElementAddress,
+  'passportElementUtilityBill': PassportElementUtilityBill,
+  'passportElementBankStatement': PassportElementBankStatement,
+  'passportElementRentalAgreement': PassportElementRentalAgreement,
+  'passportElementPassportRegistration': PassportElementPassportRegistration,
+  'passportElementTemporaryRegistration': PassportElementTemporaryRegistration,
+  'passportElementPhoneNumber': PassportElementPhoneNumber,
+  'passportElementEmailAddress': PassportElementEmailAddress,
+  'inputPassportElementPersonalDetails': InputPassportElementPersonalDetails,
+  'inputPassportElementPassport': InputPassportElementPassport,
+  'inputPassportElementDriverLicense': InputPassportElementDriverLicense,
+  'inputPassportElementIdentityCard': InputPassportElementIdentityCard,
+  'inputPassportElementInternalPassport': InputPassportElementInternalPassport,
+  'inputPassportElementAddress': InputPassportElementAddress,
+  'inputPassportElementUtilityBill': InputPassportElementUtilityBill,
+  'inputPassportElementBankStatement': InputPassportElementBankStatement,
+  'inputPassportElementRentalAgreement': InputPassportElementRentalAgreement,
+  'inputPassportElementPassportRegistration':
+      InputPassportElementPassportRegistration,
+  'inputPassportElementTemporaryRegistration':
+      InputPassportElementTemporaryRegistration,
+  'inputPassportElementPhoneNumber': InputPassportElementPhoneNumber,
+  'inputPassportElementEmailAddress': InputPassportElementEmailAddress,
+  'passportElements': PassportElements,
+  'passportElementErrorSourceUnspecified':
+      PassportElementErrorSourceUnspecified,
+  'passportElementErrorSourceDataField': PassportElementErrorSourceDataField,
+  'passportElementErrorSourceFrontSide': PassportElementErrorSourceFrontSide,
+  'passportElementErrorSourceReverseSide':
+      PassportElementErrorSourceReverseSide,
+  'passportElementErrorSourceSelfie': PassportElementErrorSourceSelfie,
+  'passportElementErrorSourceTranslationFile':
+      PassportElementErrorSourceTranslationFile,
+  'passportElementErrorSourceTranslationFiles':
+      PassportElementErrorSourceTranslationFiles,
+  'passportElementErrorSourceFile': PassportElementErrorSourceFile,
+  'passportElementErrorSourceFiles': PassportElementErrorSourceFiles,
+  'passportElementError': PassportElementError,
+  'passportSuitableElement': PassportSuitableElement,
+  'passportRequiredElement': PassportRequiredElement,
+  'passportAuthorizationForm': PassportAuthorizationForm,
+  'passportElementsWithErrors': PassportElementsWithErrors,
+  'encryptedCredentials': EncryptedCredentials,
+  'encryptedPassportElement': EncryptedPassportElement,
+  'inputPassportElementErrorSourceUnspecified':
+      InputPassportElementErrorSourceUnspecified,
+  'inputPassportElementErrorSourceDataField':
+      InputPassportElementErrorSourceDataField,
+  'inputPassportElementErrorSourceFrontSide':
+      InputPassportElementErrorSourceFrontSide,
+  'inputPassportElementErrorSourceReverseSide':
+      InputPassportElementErrorSourceReverseSide,
+  'inputPassportElementErrorSourceSelfie':
+      InputPassportElementErrorSourceSelfie,
+  'inputPassportElementErrorSourceTranslationFile':
+      InputPassportElementErrorSourceTranslationFile,
+  'inputPassportElementErrorSourceTranslationFiles':
+      InputPassportElementErrorSourceTranslationFiles,
+  'inputPassportElementErrorSourceFile': InputPassportElementErrorSourceFile,
+  'inputPassportElementErrorSourceFiles': InputPassportElementErrorSourceFiles,
+  'inputPassportElementError': InputPassportElementError,
+  'messageText': MessageText,
+  'messageAnimation': MessageAnimation,
+  'messageAudio': MessageAudio,
+  'messageDocument': MessageDocument,
+  'messagePhoto': MessagePhoto,
+  'messageExpiredPhoto': MessageExpiredPhoto,
+  'messageSticker': MessageSticker,
+  'messageVideo': MessageVideo,
+  'messageExpiredVideo': MessageExpiredVideo,
+  'messageVideoNote': MessageVideoNote,
+  'messageVoiceNote': MessageVoiceNote,
+  'messageLocation': MessageLocation,
+  'messageVenue': MessageVenue,
+  'messageContact': MessageContact,
+  'messageGame': MessageGame,
+  'messagePoll': MessagePoll,
+  'messageInvoice': MessageInvoice,
+  'messageCall': MessageCall,
+  'messageBasicGroupChatCreate': MessageBasicGroupChatCreate,
+  'messageSupergroupChatCreate': MessageSupergroupChatCreate,
+  'messageChatChangeTitle': MessageChatChangeTitle,
+  'messageChatChangePhoto': MessageChatChangePhoto,
+  'messageChatDeletePhoto': MessageChatDeletePhoto,
+  'messageChatAddMembers': MessageChatAddMembers,
+  'messageChatJoinByLink': MessageChatJoinByLink,
+  'messageChatDeleteMember': MessageChatDeleteMember,
+  'messageChatUpgradeTo': MessageChatUpgradeTo,
+  'messageChatUpgradeFrom': MessageChatUpgradeFrom,
+  'messagePinMessage': MessagePinMessage,
+  'messageScreenshotTaken': MessageScreenshotTaken,
+  'messageChatSetTtl': MessageChatSetTtl,
+  'messageCustomServiceAction': MessageCustomServiceAction,
+  'messageGameScore': MessageGameScore,
+  'messagePaymentSuccessful': MessagePaymentSuccessful,
+  'messagePaymentSuccessfulBot': MessagePaymentSuccessfulBot,
+  'messageContactRegistered': MessageContactRegistered,
+  'messageWebsiteConnected': MessageWebsiteConnected,
+  'messagePassportDataSent': MessagePassportDataSent,
+  'messagePassportDataReceived': MessagePassportDataReceived,
+  'messageUnsupported': MessageUnsupported,
+  'textEntityTypeMention': TextEntityTypeMention,
+  'textEntityTypeHashtag': TextEntityTypeHashtag,
+  'textEntityTypeCashtag': TextEntityTypeCashtag,
+  'textEntityTypeBotCommand': TextEntityTypeBotCommand,
+  'textEntityTypeUrl': TextEntityTypeUrl,
+  'textEntityTypeEmailAddress': TextEntityTypeEmailAddress,
+  'textEntityTypeBold': TextEntityTypeBold,
+  'textEntityTypeItalic': TextEntityTypeItalic,
+  'textEntityTypeCode': TextEntityTypeCode,
+  'textEntityTypePre': TextEntityTypePre,
+  'textEntityTypePreCode': TextEntityTypePreCode,
+  'textEntityTypeTextUrl': TextEntityTypeTextUrl,
+  'textEntityTypeMentionName': TextEntityTypeMentionName,
+  'textEntityTypePhoneNumber': TextEntityTypePhoneNumber,
+  'inputThumbnail': InputThumbnail,
+  'inputMessageText': InputMessageText,
+  'inputMessageAnimation': InputMessageAnimation,
+  'inputMessageAudio': InputMessageAudio,
+  'inputMessageDocument': InputMessageDocument,
+  'inputMessagePhoto': InputMessagePhoto,
+  'inputMessageSticker': InputMessageSticker,
+  'inputMessageVideo': InputMessageVideo,
+  'inputMessageVideoNote': InputMessageVideoNote,
+  'inputMessageVoiceNote': InputMessageVoiceNote,
+  'inputMessageLocation': InputMessageLocation,
+  'inputMessageVenue': InputMessageVenue,
+  'inputMessageContact': InputMessageContact,
+  'inputMessageGame': InputMessageGame,
+  'inputMessageInvoice': InputMessageInvoice,
+  'inputMessagePoll': InputMessagePoll,
+  'inputMessageForwarded': InputMessageForwarded,
+  'searchMessagesFilterEmpty': SearchMessagesFilterEmpty,
+  'searchMessagesFilterAnimation': SearchMessagesFilterAnimation,
+  'searchMessagesFilterAudio': SearchMessagesFilterAudio,
+  'searchMessagesFilterDocument': SearchMessagesFilterDocument,
+  'searchMessagesFilterPhoto': SearchMessagesFilterPhoto,
+  'searchMessagesFilterVideo': SearchMessagesFilterVideo,
+  'searchMessagesFilterVoiceNote': SearchMessagesFilterVoiceNote,
+  'searchMessagesFilterPhotoAndVideo': SearchMessagesFilterPhotoAndVideo,
+  'searchMessagesFilterUrl': SearchMessagesFilterUrl,
+  'searchMessagesFilterChatPhoto': SearchMessagesFilterChatPhoto,
+  'searchMessagesFilterCall': SearchMessagesFilterCall,
+  'searchMessagesFilterMissedCall': SearchMessagesFilterMissedCall,
+  'searchMessagesFilterVideoNote': SearchMessagesFilterVideoNote,
+  'searchMessagesFilterVoiceAndVideoNote':
+      SearchMessagesFilterVoiceAndVideoNote,
+  'searchMessagesFilterMention': SearchMessagesFilterMention,
+  'searchMessagesFilterUnreadMention': SearchMessagesFilterUnreadMention,
+  'chatActionTyping': ChatActionTyping,
+  'chatActionRecordingVideo': ChatActionRecordingVideo,
+  'chatActionUploadingVideo': ChatActionUploadingVideo,
+  'chatActionRecordingVoiceNote': ChatActionRecordingVoiceNote,
+  'chatActionUploadingVoiceNote': ChatActionUploadingVoiceNote,
+  'chatActionUploadingPhoto': ChatActionUploadingPhoto,
+  'chatActionUploadingDocument': ChatActionUploadingDocument,
+  'chatActionChoosingLocation': ChatActionChoosingLocation,
+  'chatActionChoosingContact': ChatActionChoosingContact,
+  'chatActionStartPlayingGame': ChatActionStartPlayingGame,
+  'chatActionRecordingVideoNote': ChatActionRecordingVideoNote,
+  'chatActionUploadingVideoNote': ChatActionUploadingVideoNote,
+  'chatActionCancel': ChatActionCancel,
+  'userStatusEmpty': UserStatusEmpty,
+  'userStatusOnline': UserStatusOnline,
+  'userStatusOffline': UserStatusOffline,
+  'userStatusRecently': UserStatusRecently,
+  'userStatusLastWeek': UserStatusLastWeek,
+  'userStatusLastMonth': UserStatusLastMonth,
+  'stickers': Stickers,
+  'stickerEmojis': StickerEmojis,
+  'stickerSet': StickerSet,
+  'stickerSetInfo': StickerSetInfo,
+  'stickerSets': StickerSets,
+  'callDiscardReasonEmpty': CallDiscardReasonEmpty,
+  'callDiscardReasonMissed': CallDiscardReasonMissed,
+  'callDiscardReasonDeclined': CallDiscardReasonDeclined,
+  'callDiscardReasonDisconnected': CallDiscardReasonDisconnected,
+  'callDiscardReasonHungUp': CallDiscardReasonHungUp,
+  'callProtocol': CallProtocol,
+  'callConnection': CallConnection,
+  'callId': CallId,
+  'callStatePending': CallStatePending,
+  'callStateExchangingKeys': CallStateExchangingKeys,
+  'callStateReady': CallStateReady,
+  'callStateHangingUp': CallStateHangingUp,
+  'callStateDiscarded': CallStateDiscarded,
+  'callStateError': CallStateError,
+  'call': Call,
+  'animations': Animations,
+  'importedContacts': ImportedContacts,
+  'httpUrl': HttpUrl,
+  'inputInlineQueryResultAnimatedGif': InputInlineQueryResultAnimatedGif,
+  'inputInlineQueryResultAnimatedMpeg4': InputInlineQueryResultAnimatedMpeg4,
+  'inputInlineQueryResultArticle': InputInlineQueryResultArticle,
+  'inputInlineQueryResultAudio': InputInlineQueryResultAudio,
+  'inputInlineQueryResultContact': InputInlineQueryResultContact,
+  'inputInlineQueryResultDocument': InputInlineQueryResultDocument,
+  'inputInlineQueryResultGame': InputInlineQueryResultGame,
+  'inputInlineQueryResultLocation': InputInlineQueryResultLocation,
+  'inputInlineQueryResultPhoto': InputInlineQueryResultPhoto,
+  'inputInlineQueryResultSticker': InputInlineQueryResultSticker,
+  'inputInlineQueryResultVenue': InputInlineQueryResultVenue,
+  'inputInlineQueryResultVideo': InputInlineQueryResultVideo,
+  'inputInlineQueryResultVoiceNote': InputInlineQueryResultVoiceNote,
+  'inlineQueryResultArticle': InlineQueryResultArticle,
+  'inlineQueryResultContact': InlineQueryResultContact,
+  'inlineQueryResultLocation': InlineQueryResultLocation,
+  'inlineQueryResultVenue': InlineQueryResultVenue,
+  'inlineQueryResultGame': InlineQueryResultGame,
+  'inlineQueryResultAnimation': InlineQueryResultAnimation,
+  'inlineQueryResultAudio': InlineQueryResultAudio,
+  'inlineQueryResultDocument': InlineQueryResultDocument,
+  'inlineQueryResultPhoto': InlineQueryResultPhoto,
+  'inlineQueryResultSticker': InlineQueryResultSticker,
+  'inlineQueryResultVideo': InlineQueryResultVideo,
+  'inlineQueryResultVoiceNote': InlineQueryResultVoiceNote,
+  'inlineQueryResults': InlineQueryResults,
+  'callbackQueryPayloadData': CallbackQueryPayloadData,
+  'callbackQueryPayloadGame': CallbackQueryPayloadGame,
+  'callbackQueryAnswer': CallbackQueryAnswer,
+  'customRequestResult': CustomRequestResult,
+  'gameHighScore': GameHighScore,
+  'gameHighScores': GameHighScores,
+  'chatEventMessageEdited': ChatEventMessageEdited,
+  'chatEventMessageDeleted': ChatEventMessageDeleted,
+  'chatEventMessagePinned': ChatEventMessagePinned,
+  'chatEventMessageUnpinned': ChatEventMessageUnpinned,
+  'chatEventMemberJoined': ChatEventMemberJoined,
+  'chatEventMemberLeft': ChatEventMemberLeft,
+  'chatEventMemberInvited': ChatEventMemberInvited,
+  'chatEventMemberPromoted': ChatEventMemberPromoted,
+  'chatEventMemberRestricted': ChatEventMemberRestricted,
+  'chatEventTitleChanged': ChatEventTitleChanged,
+  'chatEventDescriptionChanged': ChatEventDescriptionChanged,
+  'chatEventUsernameChanged': ChatEventUsernameChanged,
+  'chatEventPhotoChanged': ChatEventPhotoChanged,
+  'chatEventInvitesToggled': ChatEventInvitesToggled,
+  'chatEventSignMessagesToggled': ChatEventSignMessagesToggled,
+  'chatEventStickerSetChanged': ChatEventStickerSetChanged,
+  'chatEventIsAllHistoryAvailableToggled':
+      ChatEventIsAllHistoryAvailableToggled,
+  'chatEvent': ChatEvent,
+  'chatEvents': ChatEvents,
+  'chatEventLogFilters': ChatEventLogFilters,
+  'languagePackStringValueOrdinary': LanguagePackStringValueOrdinary,
+  'languagePackStringValuePluralized': LanguagePackStringValuePluralized,
+  'languagePackStringValueDeleted': LanguagePackStringValueDeleted,
+  'languagePackString': LanguagePackString,
+  'languagePackStrings': LanguagePackStrings,
+  'languagePackInfo': LanguagePackInfo,
+  'localizationTargetInfo': LocalizationTargetInfo,
+  'deviceTokenFirebaseCloudMessaging': DeviceTokenFirebaseCloudMessaging,
+  'deviceTokenApplePush': DeviceTokenApplePush,
+  'deviceTokenApplePushVoIP': DeviceTokenApplePushVoIP,
+  'deviceTokenWindowsPush': DeviceTokenWindowsPush,
+  'deviceTokenMicrosoftPush': DeviceTokenMicrosoftPush,
+  'deviceTokenMicrosoftPushVoIP': DeviceTokenMicrosoftPushVoIP,
+  'deviceTokenWebPush': DeviceTokenWebPush,
+  'deviceTokenSimplePush': DeviceTokenSimplePush,
+  'deviceTokenUbuntuPush': DeviceTokenUbuntuPush,
+  'deviceTokenBlackBerryPush': DeviceTokenBlackBerryPush,
+  'deviceTokenTizenPush': DeviceTokenTizenPush,
+  'pushReceiverId': PushReceiverId,
+  'wallpaper': Wallpaper,
+  'wallpapers': Wallpapers,
+  'hashtags': Hashtags,
+  'checkChatUsernameResultOk': CheckChatUsernameResultOk,
+  'checkChatUsernameResultUsernameInvalid':
+      CheckChatUsernameResultUsernameInvalid,
+  'checkChatUsernameResultUsernameOccupied':
+      CheckChatUsernameResultUsernameOccupied,
+  'checkChatUsernameResultPublicChatsTooMuch':
+      CheckChatUsernameResultPublicChatsTooMuch,
+  'checkChatUsernameResultPublicGroupsUnavailable':
+      CheckChatUsernameResultPublicGroupsUnavailable,
+  'pushMessageContentHidden': PushMessageContentHidden,
+  'pushMessageContentAnimation': PushMessageContentAnimation,
+  'pushMessageContentAudio': PushMessageContentAudio,
+  'pushMessageContentContact': PushMessageContentContact,
+  'pushMessageContentContactRegistered': PushMessageContentContactRegistered,
+  'pushMessageContentDocument': PushMessageContentDocument,
+  'pushMessageContentGame': PushMessageContentGame,
+  'pushMessageContentGameScore': PushMessageContentGameScore,
+  'pushMessageContentInvoice': PushMessageContentInvoice,
+  'pushMessageContentLocation': PushMessageContentLocation,
+  'pushMessageContentPhoto': PushMessageContentPhoto,
+  'pushMessageContentPoll': PushMessageContentPoll,
+  'pushMessageContentScreenshotTaken': PushMessageContentScreenshotTaken,
+  'pushMessageContentSticker': PushMessageContentSticker,
+  'pushMessageContentText': PushMessageContentText,
+  'pushMessageContentVideo': PushMessageContentVideo,
+  'pushMessageContentVideoNote': PushMessageContentVideoNote,
+  'pushMessageContentVoiceNote': PushMessageContentVoiceNote,
+  'pushMessageContentBasicGroupChatCreate':
+      PushMessageContentBasicGroupChatCreate,
+  'pushMessageContentChatAddMembers': PushMessageContentChatAddMembers,
+  'pushMessageContentChatChangePhoto': PushMessageContentChatChangePhoto,
+  'pushMessageContentChatChangeTitle': PushMessageContentChatChangeTitle,
+  'pushMessageContentChatDeleteMember': PushMessageContentChatDeleteMember,
+  'pushMessageContentChatJoinByLink': PushMessageContentChatJoinByLink,
+  'pushMessageContentMessageForwards': PushMessageContentMessageForwards,
+  'pushMessageContentMediaAlbum': PushMessageContentMediaAlbum,
+  'notificationTypeNewMessage': NotificationTypeNewMessage,
+  'notificationTypeNewSecretChat': NotificationTypeNewSecretChat,
+  'notificationTypeNewCall': NotificationTypeNewCall,
+  'notificationTypeNewPushMessage': NotificationTypeNewPushMessage,
+  'notificationGroupTypeMessages': NotificationGroupTypeMessages,
+  'notificationGroupTypeMentions': NotificationGroupTypeMentions,
+  'notificationGroupTypeSecretChat': NotificationGroupTypeSecretChat,
+  'notificationGroupTypeCalls': NotificationGroupTypeCalls,
+  'notification': Notification,
+  'notificationGroup': NotificationGroup,
+  'optionValueBoolean': OptionValueBoolean,
+  'optionValueEmpty': OptionValueEmpty,
+  'optionValueInteger': OptionValueInteger,
+  'optionValueString': OptionValueString,
+  'jsonObjectMember': JsonObjectMember,
+  'jsonValueNull': JsonValueNull,
+  'jsonValueBoolean': JsonValueBoolean,
+  'jsonValueNumber': JsonValueNumber,
+  'jsonValueString': JsonValueString,
+  'jsonValueArray': JsonValueArray,
+  'jsonValueObject': JsonValueObject,
+  'userPrivacySettingRuleAllowAll': UserPrivacySettingRuleAllowAll,
+  'userPrivacySettingRuleAllowContacts': UserPrivacySettingRuleAllowContacts,
+  'userPrivacySettingRuleAllowUsers': UserPrivacySettingRuleAllowUsers,
+  'userPrivacySettingRuleRestrictAll': UserPrivacySettingRuleRestrictAll,
+  'userPrivacySettingRuleRestrictContacts':
+      UserPrivacySettingRuleRestrictContacts,
+  'userPrivacySettingRuleRestrictUsers': UserPrivacySettingRuleRestrictUsers,
+  'userPrivacySettingRules': UserPrivacySettingRules,
+  'userPrivacySettingShowStatus': UserPrivacySettingShowStatus,
+  'userPrivacySettingAllowChatInvites': UserPrivacySettingAllowChatInvites,
+  'userPrivacySettingAllowCalls': UserPrivacySettingAllowCalls,
+  'userPrivacySettingAllowPeerToPeerCalls':
+      UserPrivacySettingAllowPeerToPeerCalls,
+  'accountTtl': AccountTtl,
+  'session': Session,
+  'sessions': Sessions,
+  'connectedWebsite': ConnectedWebsite,
+  'connectedWebsites': ConnectedWebsites,
+  'chatReportSpamState': ChatReportSpamState,
+  'chatReportReasonSpam': ChatReportReasonSpam,
+  'chatReportReasonViolence': ChatReportReasonViolence,
+  'chatReportReasonPornography': ChatReportReasonPornography,
+  'chatReportReasonChildAbuse': ChatReportReasonChildAbuse,
+  'chatReportReasonCopyright': ChatReportReasonCopyright,
+  'chatReportReasonCustom': ChatReportReasonCustom,
+  'publicMessageLink': PublicMessageLink,
+  'filePart': FilePart,
+  'fileTypeNone': FileTypeNone,
+  'fileTypeAnimation': FileTypeAnimation,
+  'fileTypeAudio': FileTypeAudio,
+  'fileTypeDocument': FileTypeDocument,
+  'fileTypePhoto': FileTypePhoto,
+  'fileTypeProfilePhoto': FileTypeProfilePhoto,
+  'fileTypeSecret': FileTypeSecret,
+  'fileTypeSecretThumbnail': FileTypeSecretThumbnail,
+  'fileTypeSecure': FileTypeSecure,
+  'fileTypeSticker': FileTypeSticker,
+  'fileTypeThumbnail': FileTypeThumbnail,
+  'fileTypeUnknown': FileTypeUnknown,
+  'fileTypeVideo': FileTypeVideo,
+  'fileTypeVideoNote': FileTypeVideoNote,
+  'fileTypeVoiceNote': FileTypeVoiceNote,
+  'fileTypeWallpaper': FileTypeWallpaper,
+  'storageStatisticsByFileType': StorageStatisticsByFileType,
+  'storageStatisticsByChat': StorageStatisticsByChat,
+  'storageStatistics': StorageStatistics,
+  'storageStatisticsFast': StorageStatisticsFast,
+  'databaseStatistics': DatabaseStatistics,
+  'networkTypeNone': NetworkTypeNone,
+  'networkTypeMobile': NetworkTypeMobile,
+  'networkTypeMobileRoaming': NetworkTypeMobileRoaming,
+  'networkTypeWiFi': NetworkTypeWiFi,
+  'networkTypeOther': NetworkTypeOther,
+  'networkStatisticsEntryFile': NetworkStatisticsEntryFile,
+  'networkStatisticsEntryCall': NetworkStatisticsEntryCall,
+  'networkStatistics': NetworkStatistics,
+  'connectionStateWaitingForNetwork': ConnectionStateWaitingForNetwork,
+  'connectionStateConnectingToProxy': ConnectionStateConnectingToProxy,
+  'connectionStateConnecting': ConnectionStateConnecting,
+  'connectionStateUpdating': ConnectionStateUpdating,
+  'connectionStateReady': ConnectionStateReady,
+  'topChatCategoryUsers': TopChatCategoryUsers,
+  'topChatCategoryBots': TopChatCategoryBots,
+  'topChatCategoryGroups': TopChatCategoryGroups,
+  'topChatCategoryChannels': TopChatCategoryChannels,
+  'topChatCategoryInlineBots': TopChatCategoryInlineBots,
+  'topChatCategoryCalls': TopChatCategoryCalls,
+  'tMeUrlTypeUser': TMeUrlTypeUser,
+  'tMeUrlTypeSupergroup': TMeUrlTypeSupergroup,
+  'tMeUrlTypeChatInvite': TMeUrlTypeChatInvite,
+  'tMeUrlTypeStickerSet': TMeUrlTypeStickerSet,
+  'tMeUrl': TMeUrl,
+  'tMeUrls': TMeUrls,
+  'count': Count,
+  'text': Text,
+  'seconds': Seconds,
+  'deepLinkInfo': DeepLinkInfo,
+  'textParseModeMarkdown': TextParseModeMarkdown,
+  'textParseModeHTML': TextParseModeHTML,
+  'proxyTypeSocks5': ProxyTypeSocks5,
+  'proxyTypeHttp': ProxyTypeHttp,
+  'proxyTypeMtproto': ProxyTypeMtproto,
+  'proxy': Proxy,
+  'proxies': Proxies,
+  'inputSticker': InputSticker,
+  'updateAuthorizationState': UpdateAuthorizationState,
+  'updateNewMessage': UpdateNewMessage,
+  'updateMessageSendAcknowledged': UpdateMessageSendAcknowledged,
+  'updateMessageSendSucceeded': UpdateMessageSendSucceeded,
+  'updateMessageSendFailed': UpdateMessageSendFailed,
+  'updateMessageContent': UpdateMessageContent,
+  'updateMessageEdited': UpdateMessageEdited,
+  'updateMessageViews': UpdateMessageViews,
+  'updateMessageContentOpened': UpdateMessageContentOpened,
+  'updateMessageMentionRead': UpdateMessageMentionRead,
+  'updateNewChat': UpdateNewChat,
+  'updateChatTitle': UpdateChatTitle,
+  'updateChatPhoto': UpdateChatPhoto,
+  'updateChatLastMessage': UpdateChatLastMessage,
+  'updateChatOrder': UpdateChatOrder,
+  'updateChatIsPinned': UpdateChatIsPinned,
+  'updateChatIsMarkedAsUnread': UpdateChatIsMarkedAsUnread,
+  'updateChatIsSponsored': UpdateChatIsSponsored,
+  'updateChatDefaultDisableNotification': UpdateChatDefaultDisableNotification,
+  'updateChatReadInbox': UpdateChatReadInbox,
+  'updateChatReadOutbox': UpdateChatReadOutbox,
+  'updateChatUnreadMentionCount': UpdateChatUnreadMentionCount,
+  'updateChatNotificationSettings': UpdateChatNotificationSettings,
+  'updateScopeNotificationSettings': UpdateScopeNotificationSettings,
+  'updateChatPinnedMessage': UpdateChatPinnedMessage,
+  'updateChatReplyMarkup': UpdateChatReplyMarkup,
+  'updateChatDraftMessage': UpdateChatDraftMessage,
+  'updateChatOnlineMemberCount': UpdateChatOnlineMemberCount,
+  'updateNotification': UpdateNotification,
+  'updateNotificationGroup': UpdateNotificationGroup,
+  'updateActiveNotifications': UpdateActiveNotifications,
+  'updateHavePendingNotifications': UpdateHavePendingNotifications,
+  'updateDeleteMessages': UpdateDeleteMessages,
+  'updateUserChatAction': UpdateUserChatAction,
+  'updateUserStatus': UpdateUserStatus,
+  'updateUser': UpdateUser,
+  'updateBasicGroup': UpdateBasicGroup,
+  'updateSupergroup': UpdateSupergroup,
+  'updateSecretChat': UpdateSecretChat,
+  'updateUserFullInfo': UpdateUserFullInfo,
+  'updateBasicGroupFullInfo': UpdateBasicGroupFullInfo,
+  'updateSupergroupFullInfo': UpdateSupergroupFullInfo,
+  'updateServiceNotification': UpdateServiceNotification,
+  'updateFile': UpdateFile,
+  'updateFileGenerationStart': UpdateFileGenerationStart,
+  'updateFileGenerationStop': UpdateFileGenerationStop,
+  'updateCall': UpdateCall,
+  'updateUserPrivacySettingRules': UpdateUserPrivacySettingRules,
+  'updateUnreadMessageCount': UpdateUnreadMessageCount,
+  'updateUnreadChatCount': UpdateUnreadChatCount,
+  'updateOption': UpdateOption,
+  'updateInstalledStickerSets': UpdateInstalledStickerSets,
+  'updateTrendingStickerSets': UpdateTrendingStickerSets,
+  'updateRecentStickers': UpdateRecentStickers,
+  'updateFavoriteStickers': UpdateFavoriteStickers,
+  'updateSavedAnimations': UpdateSavedAnimations,
+  'updateLanguagePackStrings': UpdateLanguagePackStrings,
+  'updateConnectionState': UpdateConnectionState,
+  'updateTermsOfService': UpdateTermsOfService,
+  'updateNewInlineQuery': UpdateNewInlineQuery,
+  'updateNewChosenInlineResult': UpdateNewChosenInlineResult,
+  'updateNewCallbackQuery': UpdateNewCallbackQuery,
+  'updateNewInlineCallbackQuery': UpdateNewInlineCallbackQuery,
+  'updateNewShippingQuery': UpdateNewShippingQuery,
+  'updateNewPreCheckoutQuery': UpdateNewPreCheckoutQuery,
+  'updateNewCustomEvent': UpdateNewCustomEvent,
+  'updateNewCustomQuery': UpdateNewCustomQuery,
+  'updatePoll': UpdatePoll,
+  'updates': Updates,
+  'logStreamDefault': LogStreamDefault,
+  'logStreamFile': LogStreamFile,
+  'logStreamEmpty': LogStreamEmpty,
+  'logVerbosityLevel': LogVerbosityLevel,
+  'logTags': LogTags,
+  'testInt': TestInt,
+  'testString': TestString,
+  'testBytes': TestBytes,
+  'testVectorInt': TestVectorInt,
+  'testVectorIntObject': TestVectorIntObject,
+  'testVectorString': TestVectorString,
+  'testVectorStringObject': TestVectorStringObject,
+};
