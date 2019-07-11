@@ -35,11 +35,9 @@ Java_org_naji_td_tdlib_NativeClient_send(JNIEnv *env, jobject instance, jlong cl
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_org_naji_td_tdlib_NativeClient_execute(JNIEnv *env, jobject instance,
-                                                      jlong client_id, jstring query) {
+Java_org_naji_td_tdlib_NativeClient_execute(JNIEnv *env, jobject instance, jstring query) {
     const char *json = env->GetStringUTFChars(query, 0);
-    void *client = reinterpret_cast<void *>(static_cast<std::uintptr_t>(client_id));
-    const char *result = td_json_client_execute(client, json);
+    const char *result = td_json_client_execute(nullptr, json);
     env->ReleaseStringUTFChars(query, json);
     return env->NewStringUTF(result);
 }
