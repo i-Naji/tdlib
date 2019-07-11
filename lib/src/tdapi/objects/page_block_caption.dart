@@ -18,13 +18,13 @@ class PageBlockCaption implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'credit': this.credit.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "credit": this.credit.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockCaption';
+  static const String CONSTRUCTOR = "pageBlockCaption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

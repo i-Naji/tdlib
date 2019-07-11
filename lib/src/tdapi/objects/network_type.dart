@@ -5,23 +5,23 @@ class NetworkType implements TLObject {
   NetworkType();
 
   /// a NetworkType return type can be :
-  /// * NetworkTypeWiFi
-  /// * NetworkTypeOther
+  /// * NetworkTypeNone
   /// * NetworkTypeMobile
   /// * NetworkTypeMobileRoaming
-  /// * NetworkTypeNone
+  /// * NetworkTypeWiFi
+  /// * NetworkTypeOther
   factory NetworkType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case NetworkTypeWiFi.CONSTRUCTOR:
-        return NetworkTypeWiFi.fromJson(json);
-      case NetworkTypeOther.CONSTRUCTOR:
-        return NetworkTypeOther.fromJson(json);
+      case NetworkTypeNone.CONSTRUCTOR:
+        return NetworkTypeNone.fromJson(json);
       case NetworkTypeMobile.CONSTRUCTOR:
         return NetworkTypeMobile.fromJson(json);
       case NetworkTypeMobileRoaming.CONSTRUCTOR:
         return NetworkTypeMobileRoaming.fromJson(json);
-      case NetworkTypeNone.CONSTRUCTOR:
-        return NetworkTypeNone.fromJson(json);
+      case NetworkTypeWiFi.CONSTRUCTOR:
+        return NetworkTypeWiFi.fromJson(json);
+      case NetworkTypeOther.CONSTRUCTOR:
+        return NetworkTypeOther.fromJson(json);
       default:
         return null;
     }
@@ -32,7 +32,7 @@ class NetworkType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'networkType';
+  static const String CONSTRUCTOR = "networkType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -48,10 +48,10 @@ class NetworkTypeNone implements NetworkType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'networkTypeNone';
+  static const String CONSTRUCTOR = "networkTypeNone";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -67,10 +67,10 @@ class NetworkTypeMobile implements NetworkType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'networkTypeMobile';
+  static const String CONSTRUCTOR = "networkTypeMobile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -86,10 +86,10 @@ class NetworkTypeMobileRoaming implements NetworkType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'networkTypeMobileRoaming';
+  static const String CONSTRUCTOR = "networkTypeMobileRoaming";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class NetworkTypeWiFi implements NetworkType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'networkTypeWiFi';
+  static const String CONSTRUCTOR = "networkTypeWiFi";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -124,10 +124,10 @@ class NetworkTypeOther implements NetworkType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'networkTypeOther';
+  static const String CONSTRUCTOR = "networkTypeOther";
 
   @override
   String getConstructor() => CONSTRUCTOR;

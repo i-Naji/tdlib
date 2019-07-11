@@ -17,12 +17,12 @@ class RecoveryEmailAddress implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'recovery_email_address': this.recoveryEmailAddress
+      "@type": CONSTRUCTOR,
+      "recovery_email_address": this.recoveryEmailAddress
     };
   }
 
-  static const String CONSTRUCTOR = 'recoveryEmailAddress';
+  static const String CONSTRUCTOR = "recoveryEmailAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;

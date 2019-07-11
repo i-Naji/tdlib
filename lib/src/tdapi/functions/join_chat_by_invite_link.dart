@@ -14,13 +14,13 @@ class JoinChatByInviteLink extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invite_link': this.inviteLink,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "invite_link": this.inviteLink,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'joinChatByInviteLink';
+  static const String CONSTRUCTOR = "joinChatByInviteLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

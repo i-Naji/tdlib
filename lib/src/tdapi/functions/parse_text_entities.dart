@@ -16,14 +16,14 @@ class ParseTextEntities extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'parse_mode': this.parseMode.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "parse_mode": this.parseMode.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'parseTextEntities';
+  static const String CONSTRUCTOR = "parseTextEntities";
 
   @override
   String getConstructor() => CONSTRUCTOR;

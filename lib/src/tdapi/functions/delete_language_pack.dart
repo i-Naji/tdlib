@@ -14,13 +14,13 @@ class DeleteLanguagePack extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_pack_id': this.languagePackId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "language_pack_id": this.languagePackId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'deleteLanguagePack';
+  static const String CONSTRUCTOR = "deleteLanguagePack";
 
   @override
   String getConstructor() => CONSTRUCTOR;

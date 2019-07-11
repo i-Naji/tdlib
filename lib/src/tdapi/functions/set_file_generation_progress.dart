@@ -19,15 +19,15 @@ class SetFileGenerationProgress extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'generation_id': this.generationId,
-      'expected_size': this.expectedSize,
-      'local_prefix_size': this.localPrefixSize,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "generation_id": this.generationId,
+      "expected_size": this.expectedSize,
+      "local_prefix_size": this.localPrefixSize,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setFileGenerationProgress';
+  static const String CONSTRUCTOR = "setFileGenerationProgress";
 
   @override
   String getConstructor() => CONSTRUCTOR;

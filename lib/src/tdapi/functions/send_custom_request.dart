@@ -16,14 +16,14 @@ class SendCustomRequest extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'method': this.method,
-      'parameters': this.parameters,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "method": this.method,
+      "parameters": this.parameters,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendCustomRequest';
+  static const String CONSTRUCTOR = "sendCustomRequest";
 
   @override
   String getConstructor() => CONSTRUCTOR;

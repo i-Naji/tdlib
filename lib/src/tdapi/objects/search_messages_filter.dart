@@ -5,56 +5,56 @@ class SearchMessagesFilter implements TLObject {
   SearchMessagesFilter();
 
   /// a SearchMessagesFilter return type can be :
-  /// * SearchMessagesFilterChatPhoto
-  /// * SearchMessagesFilterUrl
-  /// * SearchMessagesFilterMissedCall
-  /// * SearchMessagesFilterVoiceAndVideoNote
+  /// * SearchMessagesFilterEmpty
   /// * SearchMessagesFilterAnimation
   /// * SearchMessagesFilterAudio
-  /// * SearchMessagesFilterVoiceNote
   /// * SearchMessagesFilterDocument
-  /// * SearchMessagesFilterPhotoAndVideo
-  /// * SearchMessagesFilterCall
-  /// * SearchMessagesFilterUnreadMention
-  /// * SearchMessagesFilterMention
-  /// * SearchMessagesFilterVideoNote
-  /// * SearchMessagesFilterVideo
-  /// * SearchMessagesFilterEmpty
   /// * SearchMessagesFilterPhoto
+  /// * SearchMessagesFilterVideo
+  /// * SearchMessagesFilterVoiceNote
+  /// * SearchMessagesFilterPhotoAndVideo
+  /// * SearchMessagesFilterUrl
+  /// * SearchMessagesFilterChatPhoto
+  /// * SearchMessagesFilterCall
+  /// * SearchMessagesFilterMissedCall
+  /// * SearchMessagesFilterVideoNote
+  /// * SearchMessagesFilterVoiceAndVideoNote
+  /// * SearchMessagesFilterMention
+  /// * SearchMessagesFilterUnreadMention
   factory SearchMessagesFilter.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
-        return SearchMessagesFilterChatPhoto.fromJson(json);
-      case SearchMessagesFilterUrl.CONSTRUCTOR:
-        return SearchMessagesFilterUrl.fromJson(json);
-      case SearchMessagesFilterMissedCall.CONSTRUCTOR:
-        return SearchMessagesFilterMissedCall.fromJson(json);
-      case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:
-        return SearchMessagesFilterVoiceAndVideoNote.fromJson(json);
+      case SearchMessagesFilterEmpty.CONSTRUCTOR:
+        return SearchMessagesFilterEmpty.fromJson(json);
       case SearchMessagesFilterAnimation.CONSTRUCTOR:
         return SearchMessagesFilterAnimation.fromJson(json);
       case SearchMessagesFilterAudio.CONSTRUCTOR:
         return SearchMessagesFilterAudio.fromJson(json);
-      case SearchMessagesFilterVoiceNote.CONSTRUCTOR:
-        return SearchMessagesFilterVoiceNote.fromJson(json);
       case SearchMessagesFilterDocument.CONSTRUCTOR:
         return SearchMessagesFilterDocument.fromJson(json);
-      case SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR:
-        return SearchMessagesFilterPhotoAndVideo.fromJson(json);
-      case SearchMessagesFilterCall.CONSTRUCTOR:
-        return SearchMessagesFilterCall.fromJson(json);
-      case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
-        return SearchMessagesFilterUnreadMention.fromJson(json);
-      case SearchMessagesFilterMention.CONSTRUCTOR:
-        return SearchMessagesFilterMention.fromJson(json);
-      case SearchMessagesFilterVideoNote.CONSTRUCTOR:
-        return SearchMessagesFilterVideoNote.fromJson(json);
-      case SearchMessagesFilterVideo.CONSTRUCTOR:
-        return SearchMessagesFilterVideo.fromJson(json);
-      case SearchMessagesFilterEmpty.CONSTRUCTOR:
-        return SearchMessagesFilterEmpty.fromJson(json);
       case SearchMessagesFilterPhoto.CONSTRUCTOR:
         return SearchMessagesFilterPhoto.fromJson(json);
+      case SearchMessagesFilterVideo.CONSTRUCTOR:
+        return SearchMessagesFilterVideo.fromJson(json);
+      case SearchMessagesFilterVoiceNote.CONSTRUCTOR:
+        return SearchMessagesFilterVoiceNote.fromJson(json);
+      case SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR:
+        return SearchMessagesFilterPhotoAndVideo.fromJson(json);
+      case SearchMessagesFilterUrl.CONSTRUCTOR:
+        return SearchMessagesFilterUrl.fromJson(json);
+      case SearchMessagesFilterChatPhoto.CONSTRUCTOR:
+        return SearchMessagesFilterChatPhoto.fromJson(json);
+      case SearchMessagesFilterCall.CONSTRUCTOR:
+        return SearchMessagesFilterCall.fromJson(json);
+      case SearchMessagesFilterMissedCall.CONSTRUCTOR:
+        return SearchMessagesFilterMissedCall.fromJson(json);
+      case SearchMessagesFilterVideoNote.CONSTRUCTOR:
+        return SearchMessagesFilterVideoNote.fromJson(json);
+      case SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR:
+        return SearchMessagesFilterVoiceAndVideoNote.fromJson(json);
+      case SearchMessagesFilterMention.CONSTRUCTOR:
+        return SearchMessagesFilterMention.fromJson(json);
+      case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
+        return SearchMessagesFilterUnreadMention.fromJson(json);
       default:
         return null;
     }
@@ -65,7 +65,7 @@ class SearchMessagesFilter implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilter';
+  static const String CONSTRUCTOR = "searchMessagesFilter";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -81,10 +81,10 @@ class SearchMessagesFilterEmpty implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterEmpty';
+  static const String CONSTRUCTOR = "searchMessagesFilterEmpty";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -100,10 +100,10 @@ class SearchMessagesFilterAnimation implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterAnimation';
+  static const String CONSTRUCTOR = "searchMessagesFilterAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -119,10 +119,10 @@ class SearchMessagesFilterAudio implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterAudio';
+  static const String CONSTRUCTOR = "searchMessagesFilterAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -138,10 +138,10 @@ class SearchMessagesFilterDocument implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterDocument';
+  static const String CONSTRUCTOR = "searchMessagesFilterDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -157,10 +157,10 @@ class SearchMessagesFilterPhoto implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterPhoto';
+  static const String CONSTRUCTOR = "searchMessagesFilterPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -176,10 +176,10 @@ class SearchMessagesFilterVideo implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterVideo';
+  static const String CONSTRUCTOR = "searchMessagesFilterVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -195,10 +195,10 @@ class SearchMessagesFilterVoiceNote implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterVoiceNote';
+  static const String CONSTRUCTOR = "searchMessagesFilterVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -214,10 +214,10 @@ class SearchMessagesFilterPhotoAndVideo implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterPhotoAndVideo';
+  static const String CONSTRUCTOR = "searchMessagesFilterPhotoAndVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -233,10 +233,10 @@ class SearchMessagesFilterUrl implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterUrl';
+  static const String CONSTRUCTOR = "searchMessagesFilterUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -252,10 +252,10 @@ class SearchMessagesFilterChatPhoto implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterChatPhoto';
+  static const String CONSTRUCTOR = "searchMessagesFilterChatPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -271,10 +271,10 @@ class SearchMessagesFilterCall implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterCall';
+  static const String CONSTRUCTOR = "searchMessagesFilterCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -290,10 +290,10 @@ class SearchMessagesFilterMissedCall implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterMissedCall';
+  static const String CONSTRUCTOR = "searchMessagesFilterMissedCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -309,10 +309,10 @@ class SearchMessagesFilterVideoNote implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterVideoNote';
+  static const String CONSTRUCTOR = "searchMessagesFilterVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -328,10 +328,10 @@ class SearchMessagesFilterVoiceAndVideoNote implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterVoiceAndVideoNote';
+  static const String CONSTRUCTOR = "searchMessagesFilterVoiceAndVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -347,10 +347,10 @@ class SearchMessagesFilterMention implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterMention';
+  static const String CONSTRUCTOR = "searchMessagesFilterMention";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -366,10 +366,10 @@ class SearchMessagesFilterUnreadMention implements SearchMessagesFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'searchMessagesFilterUnreadMention';
+  static const String CONSTRUCTOR = "searchMessagesFilterUnreadMention";
 
   @override
   String getConstructor() => CONSTRUCTOR;

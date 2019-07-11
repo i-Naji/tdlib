@@ -24,9 +24,9 @@ class Poll implements TLObject {
   Poll.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.question = json['question'];
-    this.options = (json['options'] ?? [])
+    this.options = List<PollOption>.from((json['options'] ?? [])
         .map((listValue) => PollOption.fromJson(listValue))
-        .toList();
+        .toList());
     this.totalVoterCount = json['total_voter_count'];
     this.isClosed = json['is_closed'];
   }
@@ -34,16 +34,16 @@ class Poll implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'question': this.question,
-      'options': this.options.map((listItem) => listItem.toJson()).toList(),
-      'total_voter_count': this.totalVoterCount,
-      'is_closed': this.isClosed
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "question": this.question,
+      "options": this.options.map((listItem) => listItem.toJson()).toList(),
+      "total_voter_count": this.totalVoterCount,
+      "is_closed": this.isClosed
     };
   }
 
-  static const String CONSTRUCTOR = 'poll';
+  static const String CONSTRUCTOR = "poll";
 
   @override
   String getConstructor() => CONSTRUCTOR;

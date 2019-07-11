@@ -19,13 +19,13 @@ class DraftMessage implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'reply_to_message_id': this.replyToMessageId,
-      'input_message_text': this.inputMessageText.toJson()
+      "@type": CONSTRUCTOR,
+      "reply_to_message_id": this.replyToMessageId,
+      "input_message_text": this.inputMessageText.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'draftMessage';
+  static const String CONSTRUCTOR = "draftMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -17,10 +17,10 @@ class SavedCredentials implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id, 'title': this.title};
+    return {"@type": CONSTRUCTOR, "id": this.id, "title": this.title};
   }
 
-  static const String CONSTRUCTOR = 'savedCredentials';
+  static const String CONSTRUCTOR = "savedCredentials";
 
   @override
   String getConstructor() => CONSTRUCTOR;

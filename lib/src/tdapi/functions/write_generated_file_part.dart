@@ -18,15 +18,15 @@ class WriteGeneratedFilePart extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'generation_id': this.generationId,
-      'offset': this.offset,
-      'data': this.data,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "generation_id": this.generationId,
+      "offset": this.offset,
+      "data": this.data,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'writeGeneratedFilePart';
+  static const String CONSTRUCTOR = "writeGeneratedFilePart";
 
   @override
   String getConstructor() => CONSTRUCTOR;

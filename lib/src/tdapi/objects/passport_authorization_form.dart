@@ -16,9 +16,10 @@ class PassportAuthorizationForm implements TLObject {
   /// Parse from a json
   PassportAuthorizationForm.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
-    this.requiredElements = (json['required_elements'] ?? [])
-        .map((listValue) => PassportRequiredElement.fromJson(listValue))
-        .toList();
+    this.requiredElements = List<PassportRequiredElement>.from(
+        (json['required_elements'] ?? [])
+            .map((listValue) => PassportRequiredElement.fromJson(listValue))
+            .toList());
     this.privacyPolicyUrl = json['privacy_policy_url'];
     this.extra = json['@extra'];
   }
@@ -26,15 +27,15 @@ class PassportAuthorizationForm implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'required_elements':
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "required_elements":
           this.requiredElements.map((listItem) => listItem.toJson()).toList(),
-      'privacy_policy_url': this.privacyPolicyUrl
+      "privacy_policy_url": this.privacyPolicyUrl
     };
   }
 
-  static const String CONSTRUCTOR = 'passportAuthorizationForm';
+  static const String CONSTRUCTOR = "passportAuthorizationForm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

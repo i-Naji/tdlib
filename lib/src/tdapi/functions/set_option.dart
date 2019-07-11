@@ -16,14 +16,14 @@ class SetOption extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'name': this.name,
-      'value': this.value.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "name": this.name,
+      "value": this.value.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setOption';
+  static const String CONSTRUCTOR = "setOption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

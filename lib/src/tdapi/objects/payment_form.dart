@@ -45,18 +45,18 @@ class PaymentForm implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invoice': this.invoice.toJson(),
-      'url': this.url,
-      'payments_provider': this.paymentsProvider.toJson(),
-      'saved_order_info': this.savedOrderInfo.toJson(),
-      'saved_credentials': this.savedCredentials.toJson(),
-      'can_save_credentials': this.canSaveCredentials,
-      'need_password': this.needPassword
+      "@type": CONSTRUCTOR,
+      "invoice": this.invoice.toJson(),
+      "url": this.url,
+      "payments_provider": this.paymentsProvider.toJson(),
+      "saved_order_info": this.savedOrderInfo.toJson(),
+      "saved_credentials": this.savedCredentials.toJson(),
+      "can_save_credentials": this.canSaveCredentials,
+      "need_password": this.needPassword
     };
   }
 
-  static const String CONSTRUCTOR = 'paymentForm';
+  static const String CONSTRUCTOR = "paymentForm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

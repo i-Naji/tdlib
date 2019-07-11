@@ -20,13 +20,13 @@ class EmailAddressAuthenticationCodeInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'email_address_pattern': this.emailAddressPattern,
-      'length': this.length
+      "@type": CONSTRUCTOR,
+      "email_address_pattern": this.emailAddressPattern,
+      "length": this.length
     };
   }
 
-  static const String CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';
+  static const String CONSTRUCTOR = "emailAddressAuthenticationCodeInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

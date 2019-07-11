@@ -14,13 +14,13 @@ class ProcessPushNotification extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'payload': this.payload,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "payload": this.payload,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'processPushNotification';
+  static const String CONSTRUCTOR = "processPushNotification";
 
   @override
   String getConstructor() => CONSTRUCTOR;

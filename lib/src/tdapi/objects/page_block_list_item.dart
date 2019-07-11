@@ -20,14 +20,14 @@ class PageBlockListItem implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'label': this.label,
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "label": this.label,
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockListItem';
+  static const String CONSTRUCTOR = "pageBlockListItem";
 
   @override
   String getConstructor() => CONSTRUCTOR;

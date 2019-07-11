@@ -16,14 +16,14 @@ class RemoveNotificationGroup extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'notification_group_id': this.notificationGroupId,
-      'max_notification_id': this.maxNotificationId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "notification_group_id": this.notificationGroupId,
+      "max_notification_id": this.maxNotificationId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeNotificationGroup';
+  static const String CONSTRUCTOR = "removeNotificationGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;

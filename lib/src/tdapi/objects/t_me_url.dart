@@ -17,10 +17,10 @@ class TMeUrl implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'url': this.url, 'type': this.type.toJson()};
+    return {"@type": CONSTRUCTOR, "url": this.url, "type": this.type.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrl';
+  static const String CONSTRUCTOR = "tMeUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

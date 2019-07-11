@@ -27,16 +27,16 @@ class CallConnection implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'ip': this.ip,
-      'ipv6': this.ipv6,
-      'port': this.port,
-      'peer_tag': this.peerTag
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "ip": this.ip,
+      "ipv6": this.ipv6,
+      "port": this.port,
+      "peer_tag": this.peerTag
     };
   }
 
-  static const String CONSTRUCTOR = 'callConnection';
+  static const String CONSTRUCTOR = "callConnection";
 
   @override
   String getConstructor() => CONSTRUCTOR;

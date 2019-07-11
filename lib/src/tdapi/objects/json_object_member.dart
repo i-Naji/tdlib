@@ -18,13 +18,13 @@ class JsonObjectMember implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'key': this.key,
-      'value': this.value.toJson()
+      "@type": CONSTRUCTOR,
+      "key": this.key,
+      "value": this.value.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'jsonObjectMember';
+  static const String CONSTRUCTOR = "jsonObjectMember";
 
   @override
   String getConstructor() => CONSTRUCTOR;

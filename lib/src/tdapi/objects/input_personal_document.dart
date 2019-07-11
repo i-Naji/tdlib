@@ -22,14 +22,14 @@ class InputPersonalDocument implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'files': this.files.map((listItem) => listItem.toJson()).toList(),
-      'translation':
+      "@type": CONSTRUCTOR,
+      "files": this.files.map((listItem) => listItem.toJson()).toList(),
+      "translation":
           this.translation.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputPersonalDocument';
+  static const String CONSTRUCTOR = "inputPersonalDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;

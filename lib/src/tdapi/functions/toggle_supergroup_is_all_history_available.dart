@@ -17,14 +17,14 @@ class ToggleSupergroupIsAllHistoryAvailable extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'is_all_history_available': this.isAllHistoryAvailable,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "is_all_history_available": this.isAllHistoryAvailable,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleSupergroupIsAllHistoryAvailable';
+  static const String CONSTRUCTOR = "toggleSupergroupIsAllHistoryAvailable";
 
   @override
   String getConstructor() => CONSTRUCTOR;

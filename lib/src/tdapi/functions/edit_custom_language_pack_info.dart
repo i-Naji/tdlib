@@ -14,13 +14,13 @@ class EditCustomLanguagePackInfo extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'info': this.info.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "info": this.info.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editCustomLanguagePackInfo';
+  static const String CONSTRUCTOR = "editCustomLanguagePackInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

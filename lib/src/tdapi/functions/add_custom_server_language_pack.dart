@@ -14,13 +14,13 @@ class AddCustomServerLanguagePack extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_pack_id': this.languagePackId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "language_pack_id": this.languagePackId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addCustomServerLanguagePack';
+  static const String CONSTRUCTOR = "addCustomServerLanguagePack";
 
   @override
   String getConstructor() => CONSTRUCTOR;

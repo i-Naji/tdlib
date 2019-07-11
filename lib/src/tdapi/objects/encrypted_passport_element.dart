@@ -42,12 +42,12 @@ class EncryptedPassportElement implements TLObject {
     this.reverseSide =
         DatedFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
     this.selfie = DatedFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = (json['translation'] ?? [])
+    this.translation = List<DatedFile>.from((json['translation'] ?? [])
         .map((listValue) => DatedFile.fromJson(listValue))
-        .toList();
-    this.files = (json['files'] ?? [])
+        .toList());
+    this.files = List<DatedFile>.from((json['files'] ?? [])
         .map((listValue) => DatedFile.fromJson(listValue))
-        .toList();
+        .toList());
     this.value = json['value'];
     this.hash = json['hash'];
   }
@@ -55,21 +55,21 @@ class EncryptedPassportElement implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type.toJson(),
-      'data': this.data,
-      'front_side': this.frontSide.toJson(),
-      'reverse_side': this.reverseSide.toJson(),
-      'selfie': this.selfie.toJson(),
-      'translation':
+      "@type": CONSTRUCTOR,
+      "type": this.type.toJson(),
+      "data": this.data,
+      "front_side": this.frontSide.toJson(),
+      "reverse_side": this.reverseSide.toJson(),
+      "selfie": this.selfie.toJson(),
+      "translation":
           this.translation.map((listItem) => listItem.toJson()).toList(),
-      'files': this.files.map((listItem) => listItem.toJson()).toList(),
-      'value': this.value,
-      'hash': this.hash
+      "files": this.files.map((listItem) => listItem.toJson()).toList(),
+      "value": this.value,
+      "hash": this.hash
     };
   }
 
-  static const String CONSTRUCTOR = 'encryptedPassportElement';
+  static const String CONSTRUCTOR = "encryptedPassportElement";
 
   @override
   String getConstructor() => CONSTRUCTOR;

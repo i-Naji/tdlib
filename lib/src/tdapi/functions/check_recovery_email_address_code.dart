@@ -13,10 +13,10 @@ class CheckRecoveryEmailAddressCode extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'code': this.code, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "code": this.code, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'checkRecoveryEmailAddressCode';
+  static const String CONSTRUCTOR = "checkRecoveryEmailAddressCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

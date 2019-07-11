@@ -77,26 +77,26 @@ class User implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'first_name': this.firstName,
-      'last_name': this.lastName,
-      'username': this.username,
-      'phone_number': this.phoneNumber,
-      'status': this.status.toJson(),
-      'profile_photo': this.profilePhoto.toJson(),
-      'outgoing_link': this.outgoingLink.toJson(),
-      'incoming_link': this.incomingLink.toJson(),
-      'is_verified': this.isVerified,
-      'is_support': this.isSupport,
-      'restriction_reason': this.restrictionReason,
-      'have_access': this.haveAccess,
-      'type': this.type.toJson(),
-      'language_code': this.languageCode
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "first_name": this.firstName,
+      "last_name": this.lastName,
+      "username": this.username,
+      "phone_number": this.phoneNumber,
+      "status": this.status.toJson(),
+      "profile_photo": this.profilePhoto.toJson(),
+      "outgoing_link": this.outgoingLink.toJson(),
+      "incoming_link": this.incomingLink.toJson(),
+      "is_verified": this.isVerified,
+      "is_support": this.isSupport,
+      "restriction_reason": this.restrictionReason,
+      "have_access": this.haveAccess,
+      "type": this.type.toJson(),
+      "language_code": this.languageCode
     };
   }
 
-  static const String CONSTRUCTOR = 'user';
+  static const String CONSTRUCTOR = "user";
 
   @override
   String getConstructor() => CONSTRUCTOR;

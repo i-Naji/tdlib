@@ -14,13 +14,13 @@ class GetRecentStickers extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_attached': this.isAttached,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "is_attached": this.isAttached,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getRecentStickers';
+  static const String CONSTRUCTOR = "getRecentStickers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

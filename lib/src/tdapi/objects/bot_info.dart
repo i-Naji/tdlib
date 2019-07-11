@@ -12,21 +12,21 @@ class BotInfo implements TLObject {
   /// Parse from a json
   BotInfo.fromJson(Map<String, dynamic> json) {
     this.description = json['description'];
-    this.commands = (json['commands'] ?? [])
+    this.commands = List<BotCommand>.from((json['commands'] ?? [])
         .map((listValue) => BotCommand.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'description': this.description,
-      'commands': this.commands.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "description": this.description,
+      "commands": this.commands.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'botInfo';
+  static const String CONSTRUCTOR = "botInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

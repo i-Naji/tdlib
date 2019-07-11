@@ -16,10 +16,10 @@ class Count implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'count': this.count};
+    return {"@type": CONSTRUCTOR, "count": this.count};
   }
 
-  static const String CONSTRUCTOR = 'count';
+  static const String CONSTRUCTOR = "count";
 
   @override
   String getConstructor() => CONSTRUCTOR;

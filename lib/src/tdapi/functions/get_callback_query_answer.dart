@@ -18,15 +18,15 @@ class GetCallbackQueryAnswer extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'payload': this.payload.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "payload": this.payload.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getCallbackQueryAnswer';
+  static const String CONSTRUCTOR = "getCallbackQueryAnswer";
 
   @override
   String getConstructor() => CONSTRUCTOR;

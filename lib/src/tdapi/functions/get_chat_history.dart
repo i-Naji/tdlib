@@ -27,17 +27,17 @@ class GetChatHistory extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'from_message_id': this.fromMessageId,
-      'offset': this.offset,
-      'limit': this.limit,
-      'only_local': this.onlyLocal,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "from_message_id": this.fromMessageId,
+      "offset": this.offset,
+      "limit": this.limit,
+      "only_local": this.onlyLocal,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatHistory';
+  static const String CONSTRUCTOR = "getChatHistory";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SearchStickers extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'emoji': this.emoji,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "emoji": this.emoji,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchStickers';
+  static const String CONSTRUCTOR = "searchStickers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

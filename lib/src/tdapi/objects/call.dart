@@ -24,15 +24,15 @@ class Call implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'user_id': this.userId,
-      'is_outgoing': this.isOutgoing,
-      'state': this.state.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "user_id": this.userId,
+      "is_outgoing": this.isOutgoing,
+      "state": this.state.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'call';
+  static const String CONSTRUCTOR = "call";
 
   @override
   String getConstructor() => CONSTRUCTOR;

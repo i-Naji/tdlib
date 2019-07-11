@@ -11,25 +11,25 @@ class PersonalDocument implements TLObject {
 
   /// Parse from a json
   PersonalDocument.fromJson(Map<String, dynamic> json) {
-    this.files = (json['files'] ?? [])
+    this.files = List<DatedFile>.from((json['files'] ?? [])
         .map((listValue) => DatedFile.fromJson(listValue))
-        .toList();
-    this.translation = (json['translation'] ?? [])
+        .toList());
+    this.translation = List<DatedFile>.from((json['translation'] ?? [])
         .map((listValue) => DatedFile.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'files': this.files.map((listItem) => listItem.toJson()).toList(),
-      'translation':
+      "@type": CONSTRUCTOR,
+      "files": this.files.map((listItem) => listItem.toJson()).toList(),
+      "translation":
           this.translation.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'personalDocument';
+  static const String CONSTRUCTOR = "personalDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;

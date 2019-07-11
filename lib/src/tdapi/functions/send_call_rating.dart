@@ -18,15 +18,15 @@ class SendCallRating extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'call_id': this.callId,
-      'rating': this.rating,
-      'comment': this.comment,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+      "rating": this.rating,
+      "comment": this.comment,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendCallRating';
+  static const String CONSTRUCTOR = "sendCallRating";
 
   @override
   String getConstructor() => CONSTRUCTOR;

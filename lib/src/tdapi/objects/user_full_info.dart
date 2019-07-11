@@ -42,18 +42,18 @@ class UserFullInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_blocked': this.isBlocked,
-      'can_be_called': this.canBeCalled,
-      'has_private_calls': this.hasPrivateCalls,
-      'bio': this.bio,
-      'share_text': this.shareText,
-      'group_in_common_count': this.groupInCommonCount,
-      'bot_info': this.botInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "is_blocked": this.isBlocked,
+      "can_be_called": this.canBeCalled,
+      "has_private_calls": this.hasPrivateCalls,
+      "bio": this.bio,
+      "share_text": this.shareText,
+      "group_in_common_count": this.groupInCommonCount,
+      "bot_info": this.botInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'userFullInfo';
+  static const String CONSTRUCTOR = "userFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,15 +5,15 @@ class ProxyType implements TLObject {
   ProxyType();
 
   /// a ProxyType return type can be :
-  /// * ProxyTypeHttp
   /// * ProxyTypeSocks5
+  /// * ProxyTypeHttp
   /// * ProxyTypeMtproto
   factory ProxyType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ProxyTypeHttp.CONSTRUCTOR:
-        return ProxyTypeHttp.fromJson(json);
       case ProxyTypeSocks5.CONSTRUCTOR:
         return ProxyTypeSocks5.fromJson(json);
+      case ProxyTypeHttp.CONSTRUCTOR:
+        return ProxyTypeHttp.fromJson(json);
       case ProxyTypeMtproto.CONSTRUCTOR:
         return ProxyTypeMtproto.fromJson(json);
       default:
@@ -26,7 +26,7 @@ class ProxyType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'proxyType';
+  static const String CONSTRUCTOR = "proxyType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -50,13 +50,13 @@ class ProxyTypeSocks5 implements ProxyType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'username': this.username,
-      'password': this.password
+      "@type": CONSTRUCTOR,
+      "username": this.username,
+      "password": this.password
     };
   }
 
-  static const String CONSTRUCTOR = 'proxyTypeSocks5';
+  static const String CONSTRUCTOR = "proxyTypeSocks5";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -83,14 +83,14 @@ class ProxyTypeHttp implements ProxyType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'username': this.username,
-      'password': this.password,
-      'http_only': this.httpOnly
+      "@type": CONSTRUCTOR,
+      "username": this.username,
+      "password": this.password,
+      "http_only": this.httpOnly
     };
   }
 
-  static const String CONSTRUCTOR = 'proxyTypeHttp';
+  static const String CONSTRUCTOR = "proxyTypeHttp";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -110,10 +110,10 @@ class ProxyTypeMtproto implements ProxyType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'secret': this.secret};
+    return {"@type": CONSTRUCTOR, "secret": this.secret};
   }
 
-  static const String CONSTRUCTOR = 'proxyTypeMtproto';
+  static const String CONSTRUCTOR = "proxyTypeMtproto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

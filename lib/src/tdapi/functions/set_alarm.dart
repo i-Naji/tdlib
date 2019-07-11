@@ -14,13 +14,13 @@ class SetAlarm extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'seconds': this.seconds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "seconds": this.seconds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setAlarm';
+  static const String CONSTRUCTOR = "setAlarm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

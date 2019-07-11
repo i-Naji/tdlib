@@ -5,212 +5,212 @@ class Update implements TLObject {
   Update();
 
   /// a Update return type can be :
-  /// * UpdateInstalledStickerSets
-  /// * UpdateFileGenerationStart
+  /// * UpdateAuthorizationState
+  /// * UpdateNewMessage
+  /// * UpdateMessageSendAcknowledged
+  /// * UpdateMessageSendSucceeded
+  /// * UpdateMessageSendFailed
+  /// * UpdateMessageContent
+  /// * UpdateMessageEdited
+  /// * UpdateMessageViews
+  /// * UpdateMessageContentOpened
+  /// * UpdateMessageMentionRead
+  /// * UpdateNewChat
   /// * UpdateChatTitle
   /// * UpdateChatPhoto
-  /// * UpdateActiveNotifications
-  /// * UpdateUnreadMessageCount
-  /// * UpdateNewMessage
-  /// * UpdateRecentStickers
-  /// * UpdateTermsOfService
-  /// * UpdateFavoriteStickers
-  /// * UpdateNewCallbackQuery
-  /// * UpdateChatDefaultDisableNotification
-  /// * UpdateNewPreCheckoutQuery
-  /// * UpdateSecretChat
-  /// * UpdateMessageSendFailed
-  /// * UpdateAuthorizationState
-  /// * UpdateNewInlineCallbackQuery
-  /// * UpdateChatNotificationSettings
-  /// * UpdateFileGenerationStop
-  /// * UpdateUserPrivacySettingRules
-  /// * UpdateOption
-  /// * UpdateNewChosenInlineResult
-  /// * UpdateNewShippingQuery
-  /// * UpdatePoll
-  /// * UpdateChatIsMarkedAsUnread
-  /// * UpdateUser
-  /// * UpdateServiceNotification
-  /// * UpdateCall
-  /// * UpdateBasicGroupFullInfo
-  /// * UpdateMessageContentOpened
-  /// * UpdateUserStatus
-  /// * UpdateChatReadOutbox
-  /// * UpdateConnectionState
-  /// * UpdateSavedAnimations
-  /// * UpdateScopeNotificationSettings
-  /// * UpdateChatOnlineMemberCount
-  /// * UpdateNewCustomEvent
-  /// * UpdateChatPinnedMessage
-  /// * UpdateNewCustomQuery
-  /// * UpdateUserFullInfo
-  /// * UpdateChatIsSponsored
-  /// * UpdateChatReadInbox
-  /// * UpdateMessageSendAcknowledged
+  /// * UpdateChatLastMessage
+  /// * UpdateChatOrder
   /// * UpdateChatIsPinned
+  /// * UpdateChatIsMarkedAsUnread
+  /// * UpdateChatIsSponsored
+  /// * UpdateChatDefaultDisableNotification
+  /// * UpdateChatReadInbox
+  /// * UpdateChatReadOutbox
+  /// * UpdateChatUnreadMentionCount
+  /// * UpdateChatNotificationSettings
+  /// * UpdateScopeNotificationSettings
+  /// * UpdateChatPinnedMessage
+  /// * UpdateChatReplyMarkup
+  /// * UpdateChatDraftMessage
+  /// * UpdateChatOnlineMemberCount
+  /// * UpdateNotification
+  /// * UpdateNotificationGroup
+  /// * UpdateActiveNotifications
+  /// * UpdateHavePendingNotifications
   /// * UpdateDeleteMessages
   /// * UpdateUserChatAction
-  /// * UpdateMessageMentionRead
-  /// * UpdateNotification
-  /// * UpdateLanguagePackStrings
-  /// * UpdateChatReplyMarkup
-  /// * UpdateChatOrder
+  /// * UpdateUserStatus
+  /// * UpdateUser
   /// * UpdateBasicGroup
-  /// * UpdateMessageViews
-  /// * UpdateChatUnreadMentionCount
-  /// * UpdateMessageEdited
-  /// * UpdateMessageSendSucceeded
-  /// * UpdateFile
-  /// * UpdateMessageContent
-  /// * UpdateUnreadChatCount
-  /// * UpdateSupergroupFullInfo
-  /// * UpdateTrendingStickerSets
-  /// * UpdateNewInlineQuery
-  /// * UpdateHavePendingNotifications
   /// * UpdateSupergroup
-  /// * UpdateChatLastMessage
-  /// * UpdateNotificationGroup
-  /// * UpdateNewChat
-  /// * UpdateChatDraftMessage
+  /// * UpdateSecretChat
+  /// * UpdateUserFullInfo
+  /// * UpdateBasicGroupFullInfo
+  /// * UpdateSupergroupFullInfo
+  /// * UpdateServiceNotification
+  /// * UpdateFile
+  /// * UpdateFileGenerationStart
+  /// * UpdateFileGenerationStop
+  /// * UpdateCall
+  /// * UpdateUserPrivacySettingRules
+  /// * UpdateUnreadMessageCount
+  /// * UpdateUnreadChatCount
+  /// * UpdateOption
+  /// * UpdateInstalledStickerSets
+  /// * UpdateTrendingStickerSets
+  /// * UpdateRecentStickers
+  /// * UpdateFavoriteStickers
+  /// * UpdateSavedAnimations
+  /// * UpdateLanguagePackStrings
+  /// * UpdateConnectionState
+  /// * UpdateTermsOfService
+  /// * UpdateNewInlineQuery
+  /// * UpdateNewChosenInlineResult
+  /// * UpdateNewCallbackQuery
+  /// * UpdateNewInlineCallbackQuery
+  /// * UpdateNewShippingQuery
+  /// * UpdateNewPreCheckoutQuery
+  /// * UpdateNewCustomEvent
+  /// * UpdateNewCustomQuery
+  /// * UpdatePoll
   factory Update.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case UpdateInstalledStickerSets.CONSTRUCTOR:
-        return UpdateInstalledStickerSets.fromJson(json);
-      case UpdateFileGenerationStart.CONSTRUCTOR:
-        return UpdateFileGenerationStart.fromJson(json);
+      case UpdateAuthorizationState.CONSTRUCTOR:
+        return UpdateAuthorizationState.fromJson(json);
+      case UpdateNewMessage.CONSTRUCTOR:
+        return UpdateNewMessage.fromJson(json);
+      case UpdateMessageSendAcknowledged.CONSTRUCTOR:
+        return UpdateMessageSendAcknowledged.fromJson(json);
+      case UpdateMessageSendSucceeded.CONSTRUCTOR:
+        return UpdateMessageSendSucceeded.fromJson(json);
+      case UpdateMessageSendFailed.CONSTRUCTOR:
+        return UpdateMessageSendFailed.fromJson(json);
+      case UpdateMessageContent.CONSTRUCTOR:
+        return UpdateMessageContent.fromJson(json);
+      case UpdateMessageEdited.CONSTRUCTOR:
+        return UpdateMessageEdited.fromJson(json);
+      case UpdateMessageViews.CONSTRUCTOR:
+        return UpdateMessageViews.fromJson(json);
+      case UpdateMessageContentOpened.CONSTRUCTOR:
+        return UpdateMessageContentOpened.fromJson(json);
+      case UpdateMessageMentionRead.CONSTRUCTOR:
+        return UpdateMessageMentionRead.fromJson(json);
+      case UpdateNewChat.CONSTRUCTOR:
+        return UpdateNewChat.fromJson(json);
       case UpdateChatTitle.CONSTRUCTOR:
         return UpdateChatTitle.fromJson(json);
       case UpdateChatPhoto.CONSTRUCTOR:
         return UpdateChatPhoto.fromJson(json);
-      case UpdateActiveNotifications.CONSTRUCTOR:
-        return UpdateActiveNotifications.fromJson(json);
-      case UpdateUnreadMessageCount.CONSTRUCTOR:
-        return UpdateUnreadMessageCount.fromJson(json);
-      case UpdateNewMessage.CONSTRUCTOR:
-        return UpdateNewMessage.fromJson(json);
-      case UpdateRecentStickers.CONSTRUCTOR:
-        return UpdateRecentStickers.fromJson(json);
-      case UpdateTermsOfService.CONSTRUCTOR:
-        return UpdateTermsOfService.fromJson(json);
-      case UpdateFavoriteStickers.CONSTRUCTOR:
-        return UpdateFavoriteStickers.fromJson(json);
-      case UpdateNewCallbackQuery.CONSTRUCTOR:
-        return UpdateNewCallbackQuery.fromJson(json);
-      case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
-        return UpdateChatDefaultDisableNotification.fromJson(json);
-      case UpdateNewPreCheckoutQuery.CONSTRUCTOR:
-        return UpdateNewPreCheckoutQuery.fromJson(json);
-      case UpdateSecretChat.CONSTRUCTOR:
-        return UpdateSecretChat.fromJson(json);
-      case UpdateMessageSendFailed.CONSTRUCTOR:
-        return UpdateMessageSendFailed.fromJson(json);
-      case UpdateAuthorizationState.CONSTRUCTOR:
-        return UpdateAuthorizationState.fromJson(json);
-      case UpdateNewInlineCallbackQuery.CONSTRUCTOR:
-        return UpdateNewInlineCallbackQuery.fromJson(json);
-      case UpdateChatNotificationSettings.CONSTRUCTOR:
-        return UpdateChatNotificationSettings.fromJson(json);
-      case UpdateFileGenerationStop.CONSTRUCTOR:
-        return UpdateFileGenerationStop.fromJson(json);
-      case UpdateUserPrivacySettingRules.CONSTRUCTOR:
-        return UpdateUserPrivacySettingRules.fromJson(json);
-      case UpdateOption.CONSTRUCTOR:
-        return UpdateOption.fromJson(json);
-      case UpdateNewChosenInlineResult.CONSTRUCTOR:
-        return UpdateNewChosenInlineResult.fromJson(json);
-      case UpdateNewShippingQuery.CONSTRUCTOR:
-        return UpdateNewShippingQuery.fromJson(json);
-      case UpdatePoll.CONSTRUCTOR:
-        return UpdatePoll.fromJson(json);
-      case UpdateChatIsMarkedAsUnread.CONSTRUCTOR:
-        return UpdateChatIsMarkedAsUnread.fromJson(json);
-      case UpdateUser.CONSTRUCTOR:
-        return UpdateUser.fromJson(json);
-      case UpdateServiceNotification.CONSTRUCTOR:
-        return UpdateServiceNotification.fromJson(json);
-      case UpdateCall.CONSTRUCTOR:
-        return UpdateCall.fromJson(json);
-      case UpdateBasicGroupFullInfo.CONSTRUCTOR:
-        return UpdateBasicGroupFullInfo.fromJson(json);
-      case UpdateMessageContentOpened.CONSTRUCTOR:
-        return UpdateMessageContentOpened.fromJson(json);
-      case UpdateUserStatus.CONSTRUCTOR:
-        return UpdateUserStatus.fromJson(json);
-      case UpdateChatReadOutbox.CONSTRUCTOR:
-        return UpdateChatReadOutbox.fromJson(json);
-      case UpdateConnectionState.CONSTRUCTOR:
-        return UpdateConnectionState.fromJson(json);
-      case UpdateSavedAnimations.CONSTRUCTOR:
-        return UpdateSavedAnimations.fromJson(json);
-      case UpdateScopeNotificationSettings.CONSTRUCTOR:
-        return UpdateScopeNotificationSettings.fromJson(json);
-      case UpdateChatOnlineMemberCount.CONSTRUCTOR:
-        return UpdateChatOnlineMemberCount.fromJson(json);
-      case UpdateNewCustomEvent.CONSTRUCTOR:
-        return UpdateNewCustomEvent.fromJson(json);
-      case UpdateChatPinnedMessage.CONSTRUCTOR:
-        return UpdateChatPinnedMessage.fromJson(json);
-      case UpdateNewCustomQuery.CONSTRUCTOR:
-        return UpdateNewCustomQuery.fromJson(json);
-      case UpdateUserFullInfo.CONSTRUCTOR:
-        return UpdateUserFullInfo.fromJson(json);
-      case UpdateChatIsSponsored.CONSTRUCTOR:
-        return UpdateChatIsSponsored.fromJson(json);
-      case UpdateChatReadInbox.CONSTRUCTOR:
-        return UpdateChatReadInbox.fromJson(json);
-      case UpdateMessageSendAcknowledged.CONSTRUCTOR:
-        return UpdateMessageSendAcknowledged.fromJson(json);
+      case UpdateChatLastMessage.CONSTRUCTOR:
+        return UpdateChatLastMessage.fromJson(json);
+      case UpdateChatOrder.CONSTRUCTOR:
+        return UpdateChatOrder.fromJson(json);
       case UpdateChatIsPinned.CONSTRUCTOR:
         return UpdateChatIsPinned.fromJson(json);
+      case UpdateChatIsMarkedAsUnread.CONSTRUCTOR:
+        return UpdateChatIsMarkedAsUnread.fromJson(json);
+      case UpdateChatIsSponsored.CONSTRUCTOR:
+        return UpdateChatIsSponsored.fromJson(json);
+      case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
+        return UpdateChatDefaultDisableNotification.fromJson(json);
+      case UpdateChatReadInbox.CONSTRUCTOR:
+        return UpdateChatReadInbox.fromJson(json);
+      case UpdateChatReadOutbox.CONSTRUCTOR:
+        return UpdateChatReadOutbox.fromJson(json);
+      case UpdateChatUnreadMentionCount.CONSTRUCTOR:
+        return UpdateChatUnreadMentionCount.fromJson(json);
+      case UpdateChatNotificationSettings.CONSTRUCTOR:
+        return UpdateChatNotificationSettings.fromJson(json);
+      case UpdateScopeNotificationSettings.CONSTRUCTOR:
+        return UpdateScopeNotificationSettings.fromJson(json);
+      case UpdateChatPinnedMessage.CONSTRUCTOR:
+        return UpdateChatPinnedMessage.fromJson(json);
+      case UpdateChatReplyMarkup.CONSTRUCTOR:
+        return UpdateChatReplyMarkup.fromJson(json);
+      case UpdateChatDraftMessage.CONSTRUCTOR:
+        return UpdateChatDraftMessage.fromJson(json);
+      case UpdateChatOnlineMemberCount.CONSTRUCTOR:
+        return UpdateChatOnlineMemberCount.fromJson(json);
+      case UpdateNotification.CONSTRUCTOR:
+        return UpdateNotification.fromJson(json);
+      case UpdateNotificationGroup.CONSTRUCTOR:
+        return UpdateNotificationGroup.fromJson(json);
+      case UpdateActiveNotifications.CONSTRUCTOR:
+        return UpdateActiveNotifications.fromJson(json);
+      case UpdateHavePendingNotifications.CONSTRUCTOR:
+        return UpdateHavePendingNotifications.fromJson(json);
       case UpdateDeleteMessages.CONSTRUCTOR:
         return UpdateDeleteMessages.fromJson(json);
       case UpdateUserChatAction.CONSTRUCTOR:
         return UpdateUserChatAction.fromJson(json);
-      case UpdateMessageMentionRead.CONSTRUCTOR:
-        return UpdateMessageMentionRead.fromJson(json);
-      case UpdateNotification.CONSTRUCTOR:
-        return UpdateNotification.fromJson(json);
-      case UpdateLanguagePackStrings.CONSTRUCTOR:
-        return UpdateLanguagePackStrings.fromJson(json);
-      case UpdateChatReplyMarkup.CONSTRUCTOR:
-        return UpdateChatReplyMarkup.fromJson(json);
-      case UpdateChatOrder.CONSTRUCTOR:
-        return UpdateChatOrder.fromJson(json);
+      case UpdateUserStatus.CONSTRUCTOR:
+        return UpdateUserStatus.fromJson(json);
+      case UpdateUser.CONSTRUCTOR:
+        return UpdateUser.fromJson(json);
       case UpdateBasicGroup.CONSTRUCTOR:
         return UpdateBasicGroup.fromJson(json);
-      case UpdateMessageViews.CONSTRUCTOR:
-        return UpdateMessageViews.fromJson(json);
-      case UpdateChatUnreadMentionCount.CONSTRUCTOR:
-        return UpdateChatUnreadMentionCount.fromJson(json);
-      case UpdateMessageEdited.CONSTRUCTOR:
-        return UpdateMessageEdited.fromJson(json);
-      case UpdateMessageSendSucceeded.CONSTRUCTOR:
-        return UpdateMessageSendSucceeded.fromJson(json);
-      case UpdateFile.CONSTRUCTOR:
-        return UpdateFile.fromJson(json);
-      case UpdateMessageContent.CONSTRUCTOR:
-        return UpdateMessageContent.fromJson(json);
-      case UpdateUnreadChatCount.CONSTRUCTOR:
-        return UpdateUnreadChatCount.fromJson(json);
-      case UpdateSupergroupFullInfo.CONSTRUCTOR:
-        return UpdateSupergroupFullInfo.fromJson(json);
-      case UpdateTrendingStickerSets.CONSTRUCTOR:
-        return UpdateTrendingStickerSets.fromJson(json);
-      case UpdateNewInlineQuery.CONSTRUCTOR:
-        return UpdateNewInlineQuery.fromJson(json);
-      case UpdateHavePendingNotifications.CONSTRUCTOR:
-        return UpdateHavePendingNotifications.fromJson(json);
       case UpdateSupergroup.CONSTRUCTOR:
         return UpdateSupergroup.fromJson(json);
-      case UpdateChatLastMessage.CONSTRUCTOR:
-        return UpdateChatLastMessage.fromJson(json);
-      case UpdateNotificationGroup.CONSTRUCTOR:
-        return UpdateNotificationGroup.fromJson(json);
-      case UpdateNewChat.CONSTRUCTOR:
-        return UpdateNewChat.fromJson(json);
-      case UpdateChatDraftMessage.CONSTRUCTOR:
-        return UpdateChatDraftMessage.fromJson(json);
+      case UpdateSecretChat.CONSTRUCTOR:
+        return UpdateSecretChat.fromJson(json);
+      case UpdateUserFullInfo.CONSTRUCTOR:
+        return UpdateUserFullInfo.fromJson(json);
+      case UpdateBasicGroupFullInfo.CONSTRUCTOR:
+        return UpdateBasicGroupFullInfo.fromJson(json);
+      case UpdateSupergroupFullInfo.CONSTRUCTOR:
+        return UpdateSupergroupFullInfo.fromJson(json);
+      case UpdateServiceNotification.CONSTRUCTOR:
+        return UpdateServiceNotification.fromJson(json);
+      case UpdateFile.CONSTRUCTOR:
+        return UpdateFile.fromJson(json);
+      case UpdateFileGenerationStart.CONSTRUCTOR:
+        return UpdateFileGenerationStart.fromJson(json);
+      case UpdateFileGenerationStop.CONSTRUCTOR:
+        return UpdateFileGenerationStop.fromJson(json);
+      case UpdateCall.CONSTRUCTOR:
+        return UpdateCall.fromJson(json);
+      case UpdateUserPrivacySettingRules.CONSTRUCTOR:
+        return UpdateUserPrivacySettingRules.fromJson(json);
+      case UpdateUnreadMessageCount.CONSTRUCTOR:
+        return UpdateUnreadMessageCount.fromJson(json);
+      case UpdateUnreadChatCount.CONSTRUCTOR:
+        return UpdateUnreadChatCount.fromJson(json);
+      case UpdateOption.CONSTRUCTOR:
+        return UpdateOption.fromJson(json);
+      case UpdateInstalledStickerSets.CONSTRUCTOR:
+        return UpdateInstalledStickerSets.fromJson(json);
+      case UpdateTrendingStickerSets.CONSTRUCTOR:
+        return UpdateTrendingStickerSets.fromJson(json);
+      case UpdateRecentStickers.CONSTRUCTOR:
+        return UpdateRecentStickers.fromJson(json);
+      case UpdateFavoriteStickers.CONSTRUCTOR:
+        return UpdateFavoriteStickers.fromJson(json);
+      case UpdateSavedAnimations.CONSTRUCTOR:
+        return UpdateSavedAnimations.fromJson(json);
+      case UpdateLanguagePackStrings.CONSTRUCTOR:
+        return UpdateLanguagePackStrings.fromJson(json);
+      case UpdateConnectionState.CONSTRUCTOR:
+        return UpdateConnectionState.fromJson(json);
+      case UpdateTermsOfService.CONSTRUCTOR:
+        return UpdateTermsOfService.fromJson(json);
+      case UpdateNewInlineQuery.CONSTRUCTOR:
+        return UpdateNewInlineQuery.fromJson(json);
+      case UpdateNewChosenInlineResult.CONSTRUCTOR:
+        return UpdateNewChosenInlineResult.fromJson(json);
+      case UpdateNewCallbackQuery.CONSTRUCTOR:
+        return UpdateNewCallbackQuery.fromJson(json);
+      case UpdateNewInlineCallbackQuery.CONSTRUCTOR:
+        return UpdateNewInlineCallbackQuery.fromJson(json);
+      case UpdateNewShippingQuery.CONSTRUCTOR:
+        return UpdateNewShippingQuery.fromJson(json);
+      case UpdateNewPreCheckoutQuery.CONSTRUCTOR:
+        return UpdateNewPreCheckoutQuery.fromJson(json);
+      case UpdateNewCustomEvent.CONSTRUCTOR:
+        return UpdateNewCustomEvent.fromJson(json);
+      case UpdateNewCustomQuery.CONSTRUCTOR:
+        return UpdateNewCustomQuery.fromJson(json);
+      case UpdatePoll.CONSTRUCTOR:
+        return UpdatePoll.fromJson(json);
       default:
         return null;
     }
@@ -221,7 +221,7 @@ class Update implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'update';
+  static const String CONSTRUCTOR = "update";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -245,12 +245,12 @@ class UpdateAuthorizationState implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'authorization_state': this.authorizationState.toJson()
+      "@type": CONSTRUCTOR,
+      "authorization_state": this.authorizationState.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateAuthorizationState';
+  static const String CONSTRUCTOR = "updateAuthorizationState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -272,10 +272,10 @@ class UpdateNewMessage implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'message': this.message.toJson()};
+    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateNewMessage';
+  static const String CONSTRUCTOR = "updateNewMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -301,13 +301,13 @@ class UpdateMessageSendAcknowledged implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageSendAcknowledged';
+  static const String CONSTRUCTOR = "updateMessageSendAcknowledged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -333,13 +333,13 @@ class UpdateMessageSendSucceeded implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'message': this.message.toJson(),
-      'old_message_id': this.oldMessageId
+      "@type": CONSTRUCTOR,
+      "message": this.message.toJson(),
+      "old_message_id": this.oldMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageSendSucceeded';
+  static const String CONSTRUCTOR = "updateMessageSendSucceeded";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -372,15 +372,15 @@ class UpdateMessageSendFailed implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'message': this.message.toJson(),
-      'old_message_id': this.oldMessageId,
-      'error_code': this.errorCode,
-      'error_message': this.errorMessage
+      "@type": CONSTRUCTOR,
+      "message": this.message.toJson(),
+      "old_message_id": this.oldMessageId,
+      "error_code": this.errorCode,
+      "error_message": this.errorMessage
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageSendFailed';
+  static const String CONSTRUCTOR = "updateMessageSendFailed";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -410,14 +410,14 @@ class UpdateMessageContent implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'new_content': this.newContent.toJson()
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "new_content": this.newContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageContent';
+  static const String CONSTRUCTOR = "updateMessageContent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -451,15 +451,15 @@ class UpdateMessageEdited implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'edit_date': this.editDate,
-      'reply_markup': this.replyMarkup.toJson()
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "edit_date": this.editDate,
+      "reply_markup": this.replyMarkup.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageEdited';
+  static const String CONSTRUCTOR = "updateMessageEdited";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -488,14 +488,14 @@ class UpdateMessageViews implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'views': this.views
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "views": this.views
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageViews';
+  static const String CONSTRUCTOR = "updateMessageViews";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -521,13 +521,13 @@ class UpdateMessageContentOpened implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageContentOpened';
+  static const String CONSTRUCTOR = "updateMessageContentOpened";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -557,14 +557,14 @@ class UpdateMessageMentionRead implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'unread_mention_count': this.unreadMentionCount
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "unread_mention_count": this.unreadMentionCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateMessageMentionRead';
+  static const String CONSTRUCTOR = "updateMessageMentionRead";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -586,10 +586,10 @@ class UpdateNewChat implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat': this.chat.toJson()};
+    return {"@type": CONSTRUCTOR, "chat": this.chat.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateNewChat';
+  static const String CONSTRUCTOR = "updateNewChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -614,10 +614,10 @@ class UpdateChatTitle implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_id': this.chatId, 'title': this.title};
+    return {"@type": CONSTRUCTOR, "chat_id": this.chatId, "title": this.title};
   }
 
-  static const String CONSTRUCTOR = 'updateChatTitle';
+  static const String CONSTRUCTOR = "updateChatTitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -643,13 +643,13 @@ class UpdateChatPhoto implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'photo': this.photo.toJson()
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "photo": this.photo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatPhoto';
+  static const String CONSTRUCTOR = "updateChatPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -679,14 +679,14 @@ class UpdateChatLastMessage implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'last_message': this.lastMessage.toJson(),
-      'order': this.order
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "last_message": this.lastMessage.toJson(),
+      "order": this.order
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatLastMessage';
+  static const String CONSTRUCTOR = "updateChatLastMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -711,10 +711,10 @@ class UpdateChatOrder implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_id': this.chatId, 'order': this.order};
+    return {"@type": CONSTRUCTOR, "chat_id": this.chatId, "order": this.order};
   }
 
-  static const String CONSTRUCTOR = 'updateChatOrder';
+  static const String CONSTRUCTOR = "updateChatOrder";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -743,14 +743,14 @@ class UpdateChatIsPinned implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_pinned': this.isPinned,
-      'order': this.order
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_pinned": this.isPinned,
+      "order": this.order
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatIsPinned';
+  static const String CONSTRUCTOR = "updateChatIsPinned";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -776,13 +776,13 @@ class UpdateChatIsMarkedAsUnread implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_marked_as_unread': this.isMarkedAsUnread
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_marked_as_unread": this.isMarkedAsUnread
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatIsMarkedAsUnread';
+  static const String CONSTRUCTOR = "updateChatIsMarkedAsUnread";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -811,14 +811,14 @@ class UpdateChatIsSponsored implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_sponsored': this.isSponsored,
-      'order': this.order
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_sponsored": this.isSponsored,
+      "order": this.order
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatIsSponsored';
+  static const String CONSTRUCTOR = "updateChatIsSponsored";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -845,13 +845,13 @@ class UpdateChatDefaultDisableNotification implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'default_disable_notification': this.defaultDisableNotification
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "default_disable_notification": this.defaultDisableNotification
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatDefaultDisableNotification';
+  static const String CONSTRUCTOR = "updateChatDefaultDisableNotification";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -881,14 +881,14 @@ class UpdateChatReadInbox implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'last_read_inbox_message_id': this.lastReadInboxMessageId,
-      'unread_count': this.unreadCount
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "last_read_inbox_message_id": this.lastReadInboxMessageId,
+      "unread_count": this.unreadCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatReadInbox';
+  static const String CONSTRUCTOR = "updateChatReadInbox";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -914,13 +914,13 @@ class UpdateChatReadOutbox implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'last_read_outbox_message_id': this.lastReadOutboxMessageId
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "last_read_outbox_message_id": this.lastReadOutboxMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatReadOutbox';
+  static const String CONSTRUCTOR = "updateChatReadOutbox";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -946,13 +946,13 @@ class UpdateChatUnreadMentionCount implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'unread_mention_count': this.unreadMentionCount
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "unread_mention_count": this.unreadMentionCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatUnreadMentionCount';
+  static const String CONSTRUCTOR = "updateChatUnreadMentionCount";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -979,13 +979,13 @@ class UpdateChatNotificationSettings implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'notification_settings': this.notificationSettings.toJson()
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "notification_settings": this.notificationSettings.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatNotificationSettings';
+  static const String CONSTRUCTOR = "updateChatNotificationSettings";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1013,13 +1013,13 @@ class UpdateScopeNotificationSettings implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'scope': this.scope.toJson(),
-      'notification_settings': this.notificationSettings.toJson()
+      "@type": CONSTRUCTOR,
+      "scope": this.scope.toJson(),
+      "notification_settings": this.notificationSettings.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateScopeNotificationSettings';
+  static const String CONSTRUCTOR = "updateScopeNotificationSettings";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1045,13 +1045,13 @@ class UpdateChatPinnedMessage implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'pinned_message_id': this.pinnedMessageId
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "pinned_message_id": this.pinnedMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatPinnedMessage';
+  static const String CONSTRUCTOR = "updateChatPinnedMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1077,13 +1077,13 @@ class UpdateChatReplyMarkup implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'reply_markup_message_id': this.replyMarkupMessageId
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "reply_markup_message_id": this.replyMarkupMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatReplyMarkup';
+  static const String CONSTRUCTOR = "updateChatReplyMarkup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1113,14 +1113,14 @@ class UpdateChatDraftMessage implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'draft_message': this.draftMessage.toJson(),
-      'order': this.order
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "draft_message": this.draftMessage.toJson(),
+      "order": this.order
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatDraftMessage';
+  static const String CONSTRUCTOR = "updateChatDraftMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1146,13 +1146,13 @@ class UpdateChatOnlineMemberCount implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'online_member_count': this.onlineMemberCount
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "online_member_count": this.onlineMemberCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateChatOnlineMemberCount';
+  static const String CONSTRUCTOR = "updateChatOnlineMemberCount";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1179,13 +1179,13 @@ class UpdateNotification implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'notification_group_id': this.notificationGroupId,
-      'notification': this.notification.toJson()
+      "@type": CONSTRUCTOR,
+      "notification_group_id": this.notificationGroupId,
+      "notification": this.notification.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNotification';
+  static const String CONSTRUCTOR = "updateNotification";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1230,30 +1230,32 @@ class UpdateNotificationGroup implements Update {
     this.notificationSettingsChatId = json['notification_settings_chat_id'];
     this.isSilent = json['is_silent'];
     this.totalCount = json['total_count'];
-    this.addedNotifications = (json['added_notifications'] ?? [])
-        .map((listValue) => Notification.fromJson(listValue))
-        .toList();
-    this.removedNotificationIds = json['removed_notification_ids'] ?? [];
+    this.addedNotifications = List<Notification>.from(
+        (json['added_notifications'] ?? [])
+            .map((listValue) => Notification.fromJson(listValue))
+            .toList());
+    this.removedNotificationIds =
+        List<int>.from(json['removed_notification_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'notification_group_id': this.notificationGroupId,
-      'type': this.type.toJson(),
-      'chat_id': this.chatId,
-      'notification_settings_chat_id': this.notificationSettingsChatId,
-      'is_silent': this.isSilent,
-      'total_count': this.totalCount,
-      'added_notifications':
+      "@type": CONSTRUCTOR,
+      "notification_group_id": this.notificationGroupId,
+      "type": this.type.toJson(),
+      "chat_id": this.chatId,
+      "notification_settings_chat_id": this.notificationSettingsChatId,
+      "is_silent": this.isSilent,
+      "total_count": this.totalCount,
+      "added_notifications":
           this.addedNotifications.map((listItem) => listItem.toJson()).toList(),
-      'removed_notification_ids': this.removedNotificationIds
+      "removed_notification_ids": this.removedNotificationIds
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNotificationGroup';
+  static const String CONSTRUCTOR = "updateNotificationGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1269,21 +1271,21 @@ class UpdateActiveNotifications implements Update {
 
   /// Parse from a json
   UpdateActiveNotifications.fromJson(Map<String, dynamic> json) {
-    this.groups = (json['groups'] ?? [])
+    this.groups = List<NotificationGroup>.from((json['groups'] ?? [])
         .map((listValue) => NotificationGroup.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'groups': this.groups.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "groups": this.groups.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateActiveNotifications';
+  static const String CONSTRUCTOR = "updateActiveNotifications";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1310,13 +1312,13 @@ class UpdateHavePendingNotifications implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'have_delayed_notifications': this.haveDelayedNotifications,
-      'have_unreceived_notifications': this.haveUnreceivedNotifications
+      "@type": CONSTRUCTOR,
+      "have_delayed_notifications": this.haveDelayedNotifications,
+      "have_unreceived_notifications": this.haveUnreceivedNotifications
     };
   }
 
-  static const String CONSTRUCTOR = 'updateHavePendingNotifications';
+  static const String CONSTRUCTOR = "updateHavePendingNotifications";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1340,7 +1342,7 @@ class UpdateDeleteMessages implements Update {
   /// Parse from a json
   UpdateDeleteMessages.fromJson(Map<String, dynamic> json) {
     this.chatId = json['chat_id'];
-    this.messageIds = json['message_ids'] ?? [];
+    this.messageIds = List<int>.from(json['message_ids'] ?? []);
     this.isPermanent = json['is_permanent'];
     this.fromCache = json['from_cache'];
     this.extra = json['@extra'];
@@ -1349,15 +1351,15 @@ class UpdateDeleteMessages implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_ids': this.messageIds,
-      'is_permanent': this.isPermanent,
-      'from_cache': this.fromCache
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_ids": this.messageIds,
+      "is_permanent": this.isPermanent,
+      "from_cache": this.fromCache
     };
   }
 
-  static const String CONSTRUCTOR = 'updateDeleteMessages';
+  static const String CONSTRUCTOR = "updateDeleteMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1386,14 +1388,14 @@ class UpdateUserChatAction implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'user_id': this.userId,
-      'action': this.action.toJson()
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "user_id": this.userId,
+      "action": this.action.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUserChatAction';
+  static const String CONSTRUCTOR = "updateUserChatAction";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1419,13 +1421,13 @@ class UpdateUserStatus implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'status': this.status.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "status": this.status.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUserStatus';
+  static const String CONSTRUCTOR = "updateUserStatus";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1447,10 +1449,10 @@ class UpdateUser implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user': this.user.toJson()};
+    return {"@type": CONSTRUCTOR, "user": this.user.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateUser';
+  static const String CONSTRUCTOR = "updateUser";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1473,10 +1475,10 @@ class UpdateBasicGroup implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'basic_group': this.basicGroup.toJson()};
+    return {"@type": CONSTRUCTOR, "basic_group": this.basicGroup.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateBasicGroup';
+  static const String CONSTRUCTOR = "updateBasicGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1499,10 +1501,10 @@ class UpdateSupergroup implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'supergroup': this.supergroup.toJson()};
+    return {"@type": CONSTRUCTOR, "supergroup": this.supergroup.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateSupergroup';
+  static const String CONSTRUCTOR = "updateSupergroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1525,10 +1527,10 @@ class UpdateSecretChat implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'secret_chat': this.secretChat.toJson()};
+    return {"@type": CONSTRUCTOR, "secret_chat": this.secretChat.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateSecretChat';
+  static const String CONSTRUCTOR = "updateSecretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1555,13 +1557,13 @@ class UpdateUserFullInfo implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'user_full_info': this.userFullInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "user_full_info": this.userFullInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUserFullInfo';
+  static const String CONSTRUCTOR = "updateUserFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1588,13 +1590,13 @@ class UpdateBasicGroupFullInfo implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'basic_group_id': this.basicGroupId,
-      'basic_group_full_info': this.basicGroupFullInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "basic_group_id": this.basicGroupId,
+      "basic_group_full_info": this.basicGroupFullInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateBasicGroupFullInfo';
+  static const String CONSTRUCTOR = "updateBasicGroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1621,13 +1623,13 @@ class UpdateSupergroupFullInfo implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'supergroup_full_info': this.supergroupFullInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "supergroup_full_info": this.supergroupFullInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateSupergroupFullInfo';
+  static const String CONSTRUCTOR = "updateSupergroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1654,13 +1656,13 @@ class UpdateServiceNotification implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type,
-      'content': this.content.toJson()
+      "@type": CONSTRUCTOR,
+      "type": this.type,
+      "content": this.content.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateServiceNotification';
+  static const String CONSTRUCTOR = "updateServiceNotification";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1682,10 +1684,10 @@ class UpdateFile implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file': this.file.toJson()};
+    return {"@type": CONSTRUCTOR, "file": this.file.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateFile';
+  static const String CONSTRUCTOR = "updateFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1721,15 +1723,15 @@ class UpdateFileGenerationStart implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'generation_id': this.generationId,
-      'original_path': this.originalPath,
-      'destination_path': this.destinationPath,
-      'conversion': this.conversion
+      "@type": CONSTRUCTOR,
+      "generation_id": this.generationId,
+      "original_path": this.originalPath,
+      "destination_path": this.destinationPath,
+      "conversion": this.conversion
     };
   }
 
-  static const String CONSTRUCTOR = 'updateFileGenerationStart';
+  static const String CONSTRUCTOR = "updateFileGenerationStart";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1751,10 +1753,10 @@ class UpdateFileGenerationStop implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'generation_id': this.generationId};
+    return {"@type": CONSTRUCTOR, "generation_id": this.generationId};
   }
 
-  static const String CONSTRUCTOR = 'updateFileGenerationStop';
+  static const String CONSTRUCTOR = "updateFileGenerationStop";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1776,10 +1778,10 @@ class UpdateCall implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'call': this.call.toJson()};
+    return {"@type": CONSTRUCTOR, "call": this.call.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateCall';
+  static const String CONSTRUCTOR = "updateCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1807,13 +1809,13 @@ class UpdateUserPrivacySettingRules implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'setting': this.setting.toJson(),
-      'rules': this.rules.toJson()
+      "@type": CONSTRUCTOR,
+      "setting": this.setting.toJson(),
+      "rules": this.rules.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUserPrivacySettingRules';
+  static const String CONSTRUCTOR = "updateUserPrivacySettingRules";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1839,13 +1841,13 @@ class UpdateUnreadMessageCount implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'unread_count': this.unreadCount,
-      'unread_unmuted_count': this.unreadUnmutedCount
+      "@type": CONSTRUCTOR,
+      "unread_count": this.unreadCount,
+      "unread_unmuted_count": this.unreadUnmutedCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUnreadMessageCount';
+  static const String CONSTRUCTOR = "updateUnreadMessageCount";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1881,15 +1883,15 @@ class UpdateUnreadChatCount implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'unread_count': this.unreadCount,
-      'unread_unmuted_count': this.unreadUnmutedCount,
-      'marked_as_unread_count': this.markedAsUnreadCount,
-      'marked_as_unread_unmuted_count': this.markedAsUnreadUnmutedCount
+      "@type": CONSTRUCTOR,
+      "unread_count": this.unreadCount,
+      "unread_unmuted_count": this.unreadUnmutedCount,
+      "marked_as_unread_count": this.markedAsUnreadCount,
+      "marked_as_unread_unmuted_count": this.markedAsUnreadUnmutedCount
     };
   }
 
-  static const String CONSTRUCTOR = 'updateUnreadChatCount';
+  static const String CONSTRUCTOR = "updateUnreadChatCount";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1915,13 +1917,13 @@ class UpdateOption implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'name': this.name,
-      'value': this.value.toJson()
+      "@type": CONSTRUCTOR,
+      "name": this.name,
+      "value": this.value.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateOption';
+  static const String CONSTRUCTOR = "updateOption";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1940,20 +1942,20 @@ class UpdateInstalledStickerSets implements Update {
   /// Parse from a json
   UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) {
     this.isMasks = json['is_masks'];
-    this.stickerSetIds = json['sticker_set_ids'] ?? [];
+    this.stickerSetIds = List<int>.from(json['sticker_set_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_masks': this.isMasks,
-      'sticker_set_ids': this.stickerSetIds
+      "@type": CONSTRUCTOR,
+      "is_masks": this.isMasks,
+      "sticker_set_ids": this.stickerSetIds
     };
   }
 
-  static const String CONSTRUCTOR = 'updateInstalledStickerSets';
+  static const String CONSTRUCTOR = "updateInstalledStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1976,10 +1978,10 @@ class UpdateTrendingStickerSets implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'sticker_sets': this.stickerSets.toJson()};
+    return {"@type": CONSTRUCTOR, "sticker_sets": this.stickerSets.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateTrendingStickerSets';
+  static const String CONSTRUCTOR = "updateTrendingStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1998,20 +2000,20 @@ class UpdateRecentStickers implements Update {
   /// Parse from a json
   UpdateRecentStickers.fromJson(Map<String, dynamic> json) {
     this.isAttached = json['is_attached'];
-    this.stickerIds = json['sticker_ids'] ?? [];
+    this.stickerIds = List<int>.from(json['sticker_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_attached': this.isAttached,
-      'sticker_ids': this.stickerIds
+      "@type": CONSTRUCTOR,
+      "is_attached": this.isAttached,
+      "sticker_ids": this.stickerIds
     };
   }
 
-  static const String CONSTRUCTOR = 'updateRecentStickers';
+  static const String CONSTRUCTOR = "updateRecentStickers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2027,16 +2029,16 @@ class UpdateFavoriteStickers implements Update {
 
   /// Parse from a json
   UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) {
-    this.stickerIds = json['sticker_ids'] ?? [];
+    this.stickerIds = List<int>.from(json['sticker_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'sticker_ids': this.stickerIds};
+    return {"@type": CONSTRUCTOR, "sticker_ids": this.stickerIds};
   }
 
-  static const String CONSTRUCTOR = 'updateFavoriteStickers';
+  static const String CONSTRUCTOR = "updateFavoriteStickers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2052,16 +2054,16 @@ class UpdateSavedAnimations implements Update {
 
   /// Parse from a json
   UpdateSavedAnimations.fromJson(Map<String, dynamic> json) {
-    this.animationIds = json['animation_ids'] ?? [];
+    this.animationIds = List<int>.from(json['animation_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'animation_ids': this.animationIds};
+    return {"@type": CONSTRUCTOR, "animation_ids": this.animationIds};
   }
 
-  static const String CONSTRUCTOR = 'updateSavedAnimations';
+  static const String CONSTRUCTOR = "updateSavedAnimations";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2084,23 +2086,23 @@ class UpdateLanguagePackStrings implements Update {
   UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) {
     this.localizationTarget = json['localization_target'];
     this.languagePackId = json['language_pack_id'];
-    this.strings = (json['strings'] ?? [])
+    this.strings = List<LanguagePackString>.from((json['strings'] ?? [])
         .map((listValue) => LanguagePackString.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'localization_target': this.localizationTarget,
-      'language_pack_id': this.languagePackId,
-      'strings': this.strings.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "localization_target": this.localizationTarget,
+      "language_pack_id": this.languagePackId,
+      "strings": this.strings.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateLanguagePackStrings';
+  static const String CONSTRUCTOR = "updateLanguagePackStrings";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2122,10 +2124,10 @@ class UpdateConnectionState implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'state': this.state.toJson()};
+    return {"@type": CONSTRUCTOR, "state": this.state.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updateConnectionState';
+  static const String CONSTRUCTOR = "updateConnectionState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2152,13 +2154,13 @@ class UpdateTermsOfService implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'terms_of_service_id': this.termsOfServiceId,
-      'terms_of_service': this.termsOfService.toJson()
+      "@type": CONSTRUCTOR,
+      "terms_of_service_id": this.termsOfServiceId,
+      "terms_of_service": this.termsOfService.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateTermsOfService';
+  static const String CONSTRUCTOR = "updateTermsOfService";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2195,16 +2197,16 @@ class UpdateNewInlineQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'user_location': this.userLocation.toJson(),
-      'query': this.query,
-      'offset': this.offset
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "user_location": this.userLocation.toJson(),
+      "query": this.query,
+      "offset": this.offset
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewInlineQuery';
+  static const String CONSTRUCTOR = "updateNewInlineQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2245,16 +2247,16 @@ class UpdateNewChosenInlineResult implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sender_user_id': this.senderUserId,
-      'user_location': this.userLocation.toJson(),
-      'query': this.query,
-      'result_id': this.resultId,
-      'inline_message_id': this.inlineMessageId
+      "@type": CONSTRUCTOR,
+      "sender_user_id": this.senderUserId,
+      "user_location": this.userLocation.toJson(),
+      "query": this.query,
+      "result_id": this.resultId,
+      "inline_message_id": this.inlineMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewChosenInlineResult';
+  static const String CONSTRUCTOR = "updateNewChosenInlineResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2299,17 +2301,17 @@ class UpdateNewCallbackQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'chat_instance': this.chatInstance,
-      'payload': this.payload.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "chat_instance": this.chatInstance,
+      "payload": this.payload.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewCallbackQuery';
+  static const String CONSTRUCTOR = "updateNewCallbackQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2350,16 +2352,16 @@ class UpdateNewInlineCallbackQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'inline_message_id': this.inlineMessageId,
-      'chat_instance': this.chatInstance,
-      'payload': this.payload.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "inline_message_id": this.inlineMessageId,
+      "chat_instance": this.chatInstance,
+      "payload": this.payload.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewInlineCallbackQuery';
+  static const String CONSTRUCTOR = "updateNewInlineCallbackQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2393,15 +2395,15 @@ class UpdateNewShippingQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'invoice_payload': this.invoicePayload,
-      'shipping_address': this.shippingAddress.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "invoice_payload": this.invoicePayload,
+      "shipping_address": this.shippingAddress.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewShippingQuery';
+  static const String CONSTRUCTOR = "updateNewShippingQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2450,18 +2452,18 @@ class UpdateNewPreCheckoutQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'currency': this.currency,
-      'total_amount': this.totalAmount,
-      'invoice_payload': this.invoicePayload,
-      'shipping_option_id': this.shippingOptionId,
-      'order_info': this.orderInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "currency": this.currency,
+      "total_amount": this.totalAmount,
+      "invoice_payload": this.invoicePayload,
+      "shipping_option_id": this.shippingOptionId,
+      "order_info": this.orderInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewPreCheckoutQuery';
+  static const String CONSTRUCTOR = "updateNewPreCheckoutQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2483,10 +2485,10 @@ class UpdateNewCustomEvent implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'event': this.event};
+    return {"@type": CONSTRUCTOR, "event": this.event};
   }
 
-  static const String CONSTRUCTOR = 'updateNewCustomEvent';
+  static const String CONSTRUCTOR = "updateNewCustomEvent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2515,14 +2517,14 @@ class UpdateNewCustomQuery implements Update {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'data': this.data,
-      'timeout': this.timeout
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "data": this.data,
+      "timeout": this.timeout
     };
   }
 
-  static const String CONSTRUCTOR = 'updateNewCustomQuery';
+  static const String CONSTRUCTOR = "updateNewCustomQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2544,10 +2546,10 @@ class UpdatePoll implements Update {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'poll': this.poll.toJson()};
+    return {"@type": CONSTRUCTOR, "poll": this.poll.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'updatePoll';
+  static const String CONSTRUCTOR = "updatePoll";
 
   @override
   String getConstructor() => CONSTRUCTOR;

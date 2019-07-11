@@ -21,16 +21,16 @@ class EditMessageCaption extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'reply_markup': this.replyMarkup.toJson(),
-      'caption': this.caption.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "reply_markup": this.replyMarkup.toJson(),
+      "caption": this.caption.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editMessageCaption';
+  static const String CONSTRUCTOR = "editMessageCaption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

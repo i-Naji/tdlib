@@ -13,10 +13,10 @@ class RemoveRecentlyFoundChat extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_id': this.chatId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "chat_id": this.chatId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'removeRecentlyFoundChat';
+  static const String CONSTRUCTOR = "removeRecentlyFoundChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,20 +5,20 @@ class ReplyMarkup implements TLObject {
   ReplyMarkup();
 
   /// a ReplyMarkup return type can be :
-  /// * ReplyMarkupForceReply
-  /// * ReplyMarkupInlineKeyboard
-  /// * ReplyMarkupShowKeyboard
   /// * ReplyMarkupRemoveKeyboard
+  /// * ReplyMarkupForceReply
+  /// * ReplyMarkupShowKeyboard
+  /// * ReplyMarkupInlineKeyboard
   factory ReplyMarkup.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ReplyMarkupForceReply.CONSTRUCTOR:
-        return ReplyMarkupForceReply.fromJson(json);
-      case ReplyMarkupInlineKeyboard.CONSTRUCTOR:
-        return ReplyMarkupInlineKeyboard.fromJson(json);
-      case ReplyMarkupShowKeyboard.CONSTRUCTOR:
-        return ReplyMarkupShowKeyboard.fromJson(json);
       case ReplyMarkupRemoveKeyboard.CONSTRUCTOR:
         return ReplyMarkupRemoveKeyboard.fromJson(json);
+      case ReplyMarkupForceReply.CONSTRUCTOR:
+        return ReplyMarkupForceReply.fromJson(json);
+      case ReplyMarkupShowKeyboard.CONSTRUCTOR:
+        return ReplyMarkupShowKeyboard.fromJson(json);
+      case ReplyMarkupInlineKeyboard.CONSTRUCTOR:
+        return ReplyMarkupInlineKeyboard.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class ReplyMarkup implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'replyMarkup';
+  static const String CONSTRUCTOR = "replyMarkup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class ReplyMarkupRemoveKeyboard implements ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'is_personal': this.isPersonal};
+    return {"@type": CONSTRUCTOR, "is_personal": this.isPersonal};
   }
 
-  static const String CONSTRUCTOR = 'replyMarkupRemoveKeyboard';
+  static const String CONSTRUCTOR = "replyMarkupRemoveKeyboard";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class ReplyMarkupForceReply implements ReplyMarkup {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'is_personal': this.isPersonal};
+    return {"@type": CONSTRUCTOR, "is_personal": this.isPersonal};
   }
 
-  static const String CONSTRUCTOR = 'replyMarkupForceReply';
+  static const String CONSTRUCTOR = "replyMarkupForceReply";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -97,10 +97,11 @@ class ReplyMarkupShowKeyboard implements ReplyMarkup {
 
   /// Parse from a json
   ReplyMarkupShowKeyboard.fromJson(Map<String, dynamic> json) {
-    this.rows = (json['rows'] ?? [[]])
-        .map((l) =>
-            l.map((listValue) => KeyboardButton.fromJson(listValue)).toList())
-        .toList();
+    this.rows = List<List<KeyboardButton>>.from((json['rows'] ??
+            List<List<KeyboardButton>>())
+        .map((l) => List<KeyboardButton>.from(
+            l.map((listValue) => KeyboardButton.fromJson(listValue)).toList()))
+        .toList());
     this.resizeKeyboard = json['resize_keyboard'];
     this.oneTime = json['one_time'];
     this.isPersonal = json['is_personal'];
@@ -109,18 +110,18 @@ class ReplyMarkupShowKeyboard implements ReplyMarkup {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'rows': this
+      "@type": CONSTRUCTOR,
+      "rows": this
           .rows
           .map((l) => l.map((listItem) => listItem.toJson()).toList())
           .toList(),
-      'resize_keyboard': this.resizeKeyboard,
-      'one_time': this.oneTime,
-      'is_personal': this.isPersonal
+      "resize_keyboard": this.resizeKeyboard,
+      "one_time": this.oneTime,
+      "is_personal": this.isPersonal
     };
   }
 
-  static const String CONSTRUCTOR = 'replyMarkupShowKeyboard';
+  static const String CONSTRUCTOR = "replyMarkupShowKeyboard";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -135,25 +136,26 @@ class ReplyMarkupInlineKeyboard implements ReplyMarkup {
 
   /// Parse from a json
   ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json) {
-    this.rows = (json['rows'] ?? [[]])
-        .map((l) => l
-            .map((listValue) => InlineKeyboardButton.fromJson(listValue))
-            .toList())
-        .toList();
+    this.rows = List<List<InlineKeyboardButton>>.from(
+        (json['rows'] ?? List<List<InlineKeyboardButton>>())
+            .map((l) => List<InlineKeyboardButton>.from(l
+                .map((listValue) => InlineKeyboardButton.fromJson(listValue))
+                .toList()))
+            .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'rows': this
+      "@type": CONSTRUCTOR,
+      "rows": this
           .rows
           .map((l) => l.map((listItem) => listItem.toJson()).toList())
           .toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'replyMarkupInlineKeyboard';
+  static const String CONSTRUCTOR = "replyMarkupInlineKeyboard";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -20,13 +20,13 @@ class PaymentResult implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'success': this.success,
-      'verification_url': this.verificationUrl
+      "@type": CONSTRUCTOR,
+      "success": this.success,
+      "verification_url": this.verificationUrl
     };
   }
 
-  static const String CONSTRUCTOR = 'paymentResult';
+  static const String CONSTRUCTOR = "paymentResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;

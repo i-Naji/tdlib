@@ -36,17 +36,17 @@ class Address implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'country_code': this.countryCode,
-      'state': this.state,
-      'city': this.city,
-      'street_line1': this.streetLine1,
-      'street_line2': this.streetLine2,
-      'postal_code': this.postalCode
+      "@type": CONSTRUCTOR,
+      "country_code": this.countryCode,
+      "state": this.state,
+      "city": this.city,
+      "street_line1": this.streetLine1,
+      "street_line2": this.streetLine2,
+      "postal_code": this.postalCode
     };
   }
 
-  static const String CONSTRUCTOR = 'address';
+  static const String CONSTRUCTOR = "address";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -19,10 +19,10 @@ class Error implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'code': this.code, 'message': this.message};
+    return {"@type": CONSTRUCTOR, "code": this.code, "message": this.message};
   }
 
-  static const String CONSTRUCTOR = 'error';
+  static const String CONSTRUCTOR = "error";
 
   @override
   String getConstructor() => CONSTRUCTOR;

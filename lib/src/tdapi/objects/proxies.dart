@@ -10,21 +10,21 @@ class Proxies implements TLObject {
 
   /// Parse from a json
   Proxies.fromJson(Map<String, dynamic> json) {
-    this.proxies = (json['proxies'] ?? [])
+    this.proxies = List<Proxy>.from((json['proxies'] ?? [])
         .map((listValue) => Proxy.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'proxies': this.proxies.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "proxies": this.proxies.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'proxies';
+  static const String CONSTRUCTOR = "proxies";
 
   @override
   String getConstructor() => CONSTRUCTOR;

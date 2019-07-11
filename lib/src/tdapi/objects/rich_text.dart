@@ -5,53 +5,53 @@ class RichText implements TLObject {
   RichText();
 
   /// a RichText return type can be :
-  /// * RichTextUrl
-  /// * RichTexts
-  /// * RichTextSubscript
-  /// * RichTextPhoneNumber
-  /// * RichTextBold
-  /// * RichTextFixed
-  /// * RichTextIcon
-  /// * RichTextUnderline
-  /// * RichTextEmailAddress
-  /// * RichTextAnchor
-  /// * RichTextMarked
   /// * RichTextPlain
-  /// * RichTextStrikethrough
-  /// * RichTextSuperscript
+  /// * RichTextBold
   /// * RichTextItalic
+  /// * RichTextUnderline
+  /// * RichTextStrikethrough
+  /// * RichTextFixed
+  /// * RichTextUrl
+  /// * RichTextEmailAddress
+  /// * RichTextSubscript
+  /// * RichTextSuperscript
+  /// * RichTextMarked
+  /// * RichTextPhoneNumber
+  /// * RichTextIcon
+  /// * RichTextAnchor
+  /// * RichTexts
   factory RichText.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case RichTextUrl.CONSTRUCTOR:
-        return RichTextUrl.fromJson(json);
-      case RichTexts.CONSTRUCTOR:
-        return RichTexts.fromJson(json);
-      case RichTextSubscript.CONSTRUCTOR:
-        return RichTextSubscript.fromJson(json);
-      case RichTextPhoneNumber.CONSTRUCTOR:
-        return RichTextPhoneNumber.fromJson(json);
-      case RichTextBold.CONSTRUCTOR:
-        return RichTextBold.fromJson(json);
-      case RichTextFixed.CONSTRUCTOR:
-        return RichTextFixed.fromJson(json);
-      case RichTextIcon.CONSTRUCTOR:
-        return RichTextIcon.fromJson(json);
-      case RichTextUnderline.CONSTRUCTOR:
-        return RichTextUnderline.fromJson(json);
-      case RichTextEmailAddress.CONSTRUCTOR:
-        return RichTextEmailAddress.fromJson(json);
-      case RichTextAnchor.CONSTRUCTOR:
-        return RichTextAnchor.fromJson(json);
-      case RichTextMarked.CONSTRUCTOR:
-        return RichTextMarked.fromJson(json);
       case RichTextPlain.CONSTRUCTOR:
         return RichTextPlain.fromJson(json);
-      case RichTextStrikethrough.CONSTRUCTOR:
-        return RichTextStrikethrough.fromJson(json);
-      case RichTextSuperscript.CONSTRUCTOR:
-        return RichTextSuperscript.fromJson(json);
+      case RichTextBold.CONSTRUCTOR:
+        return RichTextBold.fromJson(json);
       case RichTextItalic.CONSTRUCTOR:
         return RichTextItalic.fromJson(json);
+      case RichTextUnderline.CONSTRUCTOR:
+        return RichTextUnderline.fromJson(json);
+      case RichTextStrikethrough.CONSTRUCTOR:
+        return RichTextStrikethrough.fromJson(json);
+      case RichTextFixed.CONSTRUCTOR:
+        return RichTextFixed.fromJson(json);
+      case RichTextUrl.CONSTRUCTOR:
+        return RichTextUrl.fromJson(json);
+      case RichTextEmailAddress.CONSTRUCTOR:
+        return RichTextEmailAddress.fromJson(json);
+      case RichTextSubscript.CONSTRUCTOR:
+        return RichTextSubscript.fromJson(json);
+      case RichTextSuperscript.CONSTRUCTOR:
+        return RichTextSuperscript.fromJson(json);
+      case RichTextMarked.CONSTRUCTOR:
+        return RichTextMarked.fromJson(json);
+      case RichTextPhoneNumber.CONSTRUCTOR:
+        return RichTextPhoneNumber.fromJson(json);
+      case RichTextIcon.CONSTRUCTOR:
+        return RichTextIcon.fromJson(json);
+      case RichTextAnchor.CONSTRUCTOR:
+        return RichTextAnchor.fromJson(json);
+      case RichTexts.CONSTRUCTOR:
+        return RichTexts.fromJson(json);
       default:
         return null;
     }
@@ -62,7 +62,7 @@ class RichText implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'richText';
+  static const String CONSTRUCTOR = "richText";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -82,10 +82,10 @@ class RichTextPlain implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text};
+    return {"@type": CONSTRUCTOR, "text": this.text};
   }
 
-  static const String CONSTRUCTOR = 'richTextPlain';
+  static const String CONSTRUCTOR = "richTextPlain";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class RichTextBold implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextBold';
+  static const String CONSTRUCTOR = "richTextBold";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -128,10 +128,10 @@ class RichTextItalic implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextItalic';
+  static const String CONSTRUCTOR = "richTextItalic";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -151,10 +151,10 @@ class RichTextUnderline implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextUnderline';
+  static const String CONSTRUCTOR = "richTextUnderline";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -174,10 +174,10 @@ class RichTextStrikethrough implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextStrikethrough';
+  static const String CONSTRUCTOR = "richTextStrikethrough";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -197,10 +197,10 @@ class RichTextFixed implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextFixed';
+  static const String CONSTRUCTOR = "richTextFixed";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -223,10 +223,10 @@ class RichTextUrl implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson(), 'url': this.url};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson(), "url": this.url};
   }
 
-  static const String CONSTRUCTOR = 'richTextUrl';
+  static const String CONSTRUCTOR = "richTextUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -250,13 +250,13 @@ class RichTextEmailAddress implements RichText {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'email_address': this.emailAddress
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "email_address": this.emailAddress
     };
   }
 
-  static const String CONSTRUCTOR = 'richTextEmailAddress';
+  static const String CONSTRUCTOR = "richTextEmailAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -276,10 +276,10 @@ class RichTextSubscript implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextSubscript';
+  static const String CONSTRUCTOR = "richTextSubscript";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -299,10 +299,10 @@ class RichTextSuperscript implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextSuperscript';
+  static const String CONSTRUCTOR = "richTextSuperscript";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -322,10 +322,10 @@ class RichTextMarked implements RichText {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'richTextMarked';
+  static const String CONSTRUCTOR = "richTextMarked";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -349,13 +349,13 @@ class RichTextPhoneNumber implements RichText {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'phone_number': this.phoneNumber
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "phone_number": this.phoneNumber
     };
   }
 
-  static const String CONSTRUCTOR = 'richTextPhoneNumber';
+  static const String CONSTRUCTOR = "richTextPhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -382,14 +382,14 @@ class RichTextIcon implements RichText {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'document': this.document.toJson(),
-      'width': this.width,
-      'height': this.height
+      "@type": CONSTRUCTOR,
+      "document": this.document.toJson(),
+      "width": this.width,
+      "height": this.height
     };
   }
 
-  static const String CONSTRUCTOR = 'richTextIcon';
+  static const String CONSTRUCTOR = "richTextIcon";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -413,13 +413,13 @@ class RichTextAnchor implements RichText {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'name': this.name
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "name": this.name
     };
   }
 
-  static const String CONSTRUCTOR = 'richTextAnchor';
+  static const String CONSTRUCTOR = "richTextAnchor";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -442,12 +442,12 @@ class RichTexts implements RichText {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'texts': this.texts.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "texts": this.texts.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'richTexts';
+  static const String CONSTRUCTOR = "richTexts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

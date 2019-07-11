@@ -6,49 +6,49 @@ class TextEntityType implements TLObject {
 
   /// a TextEntityType return type can be :
   /// * TextEntityTypeMention
+  /// * TextEntityTypeHashtag
+  /// * TextEntityTypeCashtag
+  /// * TextEntityTypeBotCommand
+  /// * TextEntityTypeUrl
+  /// * TextEntityTypeEmailAddress
+  /// * TextEntityTypeBold
   /// * TextEntityTypeItalic
   /// * TextEntityTypeCode
-  /// * TextEntityTypeEmailAddress
-  /// * TextEntityTypeMentionName
-  /// * TextEntityTypeCashtag
-  /// * TextEntityTypeBold
-  /// * TextEntityTypePreCode
-  /// * TextEntityTypeBotCommand
-  /// * TextEntityTypeTextUrl
   /// * TextEntityTypePre
-  /// * TextEntityTypeUrl
+  /// * TextEntityTypePreCode
+  /// * TextEntityTypeTextUrl
+  /// * TextEntityTypeMentionName
   /// * TextEntityTypePhoneNumber
-  /// * TextEntityTypeHashtag
   factory TextEntityType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case TextEntityTypeMention.CONSTRUCTOR:
         return TextEntityTypeMention.fromJson(json);
+      case TextEntityTypeHashtag.CONSTRUCTOR:
+        return TextEntityTypeHashtag.fromJson(json);
+      case TextEntityTypeCashtag.CONSTRUCTOR:
+        return TextEntityTypeCashtag.fromJson(json);
+      case TextEntityTypeBotCommand.CONSTRUCTOR:
+        return TextEntityTypeBotCommand.fromJson(json);
+      case TextEntityTypeUrl.CONSTRUCTOR:
+        return TextEntityTypeUrl.fromJson(json);
+      case TextEntityTypeEmailAddress.CONSTRUCTOR:
+        return TextEntityTypeEmailAddress.fromJson(json);
+      case TextEntityTypeBold.CONSTRUCTOR:
+        return TextEntityTypeBold.fromJson(json);
       case TextEntityTypeItalic.CONSTRUCTOR:
         return TextEntityTypeItalic.fromJson(json);
       case TextEntityTypeCode.CONSTRUCTOR:
         return TextEntityTypeCode.fromJson(json);
-      case TextEntityTypeEmailAddress.CONSTRUCTOR:
-        return TextEntityTypeEmailAddress.fromJson(json);
-      case TextEntityTypeMentionName.CONSTRUCTOR:
-        return TextEntityTypeMentionName.fromJson(json);
-      case TextEntityTypeCashtag.CONSTRUCTOR:
-        return TextEntityTypeCashtag.fromJson(json);
-      case TextEntityTypeBold.CONSTRUCTOR:
-        return TextEntityTypeBold.fromJson(json);
-      case TextEntityTypePreCode.CONSTRUCTOR:
-        return TextEntityTypePreCode.fromJson(json);
-      case TextEntityTypeBotCommand.CONSTRUCTOR:
-        return TextEntityTypeBotCommand.fromJson(json);
-      case TextEntityTypeTextUrl.CONSTRUCTOR:
-        return TextEntityTypeTextUrl.fromJson(json);
       case TextEntityTypePre.CONSTRUCTOR:
         return TextEntityTypePre.fromJson(json);
-      case TextEntityTypeUrl.CONSTRUCTOR:
-        return TextEntityTypeUrl.fromJson(json);
+      case TextEntityTypePreCode.CONSTRUCTOR:
+        return TextEntityTypePreCode.fromJson(json);
+      case TextEntityTypeTextUrl.CONSTRUCTOR:
+        return TextEntityTypeTextUrl.fromJson(json);
+      case TextEntityTypeMentionName.CONSTRUCTOR:
+        return TextEntityTypeMentionName.fromJson(json);
       case TextEntityTypePhoneNumber.CONSTRUCTOR:
         return TextEntityTypePhoneNumber.fromJson(json);
-      case TextEntityTypeHashtag.CONSTRUCTOR:
-        return TextEntityTypeHashtag.fromJson(json);
       default:
         return null;
     }
@@ -59,7 +59,7 @@ class TextEntityType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'textEntityType';
+  static const String CONSTRUCTOR = "textEntityType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -75,10 +75,10 @@ class TextEntityTypeMention implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeMention';
+  static const String CONSTRUCTOR = "textEntityTypeMention";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -94,10 +94,10 @@ class TextEntityTypeHashtag implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeHashtag';
+  static const String CONSTRUCTOR = "textEntityTypeHashtag";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -113,10 +113,10 @@ class TextEntityTypeCashtag implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeCashtag';
+  static const String CONSTRUCTOR = "textEntityTypeCashtag";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -132,10 +132,10 @@ class TextEntityTypeBotCommand implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeBotCommand';
+  static const String CONSTRUCTOR = "textEntityTypeBotCommand";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -151,10 +151,10 @@ class TextEntityTypeUrl implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeUrl';
+  static const String CONSTRUCTOR = "textEntityTypeUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -170,10 +170,10 @@ class TextEntityTypeEmailAddress implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeEmailAddress';
+  static const String CONSTRUCTOR = "textEntityTypeEmailAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -189,10 +189,10 @@ class TextEntityTypeBold implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeBold';
+  static const String CONSTRUCTOR = "textEntityTypeBold";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -208,10 +208,10 @@ class TextEntityTypeItalic implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeItalic';
+  static const String CONSTRUCTOR = "textEntityTypeItalic";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -227,10 +227,10 @@ class TextEntityTypeCode implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeCode';
+  static const String CONSTRUCTOR = "textEntityTypeCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -246,10 +246,10 @@ class TextEntityTypePre implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypePre';
+  static const String CONSTRUCTOR = "textEntityTypePre";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -269,10 +269,10 @@ class TextEntityTypePreCode implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'language': this.language};
+    return {"@type": CONSTRUCTOR, "language": this.language};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypePreCode';
+  static const String CONSTRUCTOR = "textEntityTypePreCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -292,10 +292,10 @@ class TextEntityTypeTextUrl implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'url': this.url};
+    return {"@type": CONSTRUCTOR, "url": this.url};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeTextUrl';
+  static const String CONSTRUCTOR = "textEntityTypeTextUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -315,10 +315,10 @@ class TextEntityTypeMentionName implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypeMentionName';
+  static const String CONSTRUCTOR = "textEntityTypeMentionName";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -334,10 +334,10 @@ class TextEntityTypePhoneNumber implements TextEntityType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textEntityTypePhoneNumber';
+  static const String CONSTRUCTOR = "textEntityTypePhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;

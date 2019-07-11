@@ -18,13 +18,13 @@ class BotCommand implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'command': this.command,
-      'description': this.description
+      "@type": CONSTRUCTOR,
+      "command": this.command,
+      "description": this.description
     };
   }
 
-  static const String CONSTRUCTOR = 'botCommand';
+  static const String CONSTRUCTOR = "botCommand";
 
   @override
   String getConstructor() => CONSTRUCTOR;

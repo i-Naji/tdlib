@@ -52,21 +52,21 @@ class ChatEventLogFilters implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'message_edits': this.messageEdits,
-      'message_deletions': this.messageDeletions,
-      'message_pins': this.messagePins,
-      'member_joins': this.memberJoins,
-      'member_leaves': this.memberLeaves,
-      'member_invites': this.memberInvites,
-      'member_promotions': this.memberPromotions,
-      'member_restrictions': this.memberRestrictions,
-      'info_changes': this.infoChanges,
-      'setting_changes': this.settingChanges
+      "@type": CONSTRUCTOR,
+      "message_edits": this.messageEdits,
+      "message_deletions": this.messageDeletions,
+      "message_pins": this.messagePins,
+      "member_joins": this.memberJoins,
+      "member_leaves": this.memberLeaves,
+      "member_invites": this.memberInvites,
+      "member_promotions": this.memberPromotions,
+      "member_restrictions": this.memberRestrictions,
+      "info_changes": this.infoChanges,
+      "setting_changes": this.settingChanges
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventLogFilters';
+  static const String CONSTRUCTOR = "chatEventLogFilters";
 
   @override
   String getConstructor() => CONSTRUCTOR;

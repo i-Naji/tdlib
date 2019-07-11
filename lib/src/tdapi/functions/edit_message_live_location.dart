@@ -21,16 +21,16 @@ class EditMessageLiveLocation extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'reply_markup': this.replyMarkup.toJson(),
-      'location': this.location.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "reply_markup": this.replyMarkup.toJson(),
+      "location": this.location.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editMessageLiveLocation';
+  static const String CONSTRUCTOR = "editMessageLiveLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -10,21 +10,21 @@ class LanguagePackStrings implements TLObject {
 
   /// Parse from a json
   LanguagePackStrings.fromJson(Map<String, dynamic> json) {
-    this.strings = (json['strings'] ?? [])
+    this.strings = List<LanguagePackString>.from((json['strings'] ?? [])
         .map((listValue) => LanguagePackString.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'strings': this.strings.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "strings": this.strings.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'languagePackStrings';
+  static const String CONSTRUCTOR = "languagePackStrings";
 
   @override
   String getConstructor() => CONSTRUCTOR;

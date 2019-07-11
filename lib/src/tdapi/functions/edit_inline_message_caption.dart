@@ -19,15 +19,15 @@ class EditInlineMessageCaption extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'inline_message_id': this.inlineMessageId,
-      'reply_markup': this.replyMarkup.toJson(),
-      'caption': this.caption.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "inline_message_id": this.inlineMessageId,
+      "reply_markup": this.replyMarkup.toJson(),
+      "caption": this.caption.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editInlineMessageCaption';
+  static const String CONSTRUCTOR = "editInlineMessageCaption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

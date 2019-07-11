@@ -23,17 +23,17 @@ class DownloadFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_id': this.fileId,
-      'priority': this.priority,
-      'offset': this.offset,
-      'limit': this.limit,
-      'synchronous': this.synchronous,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "file_id": this.fileId,
+      "priority": this.priority,
+      "offset": this.offset,
+      "limit": this.limit,
+      "synchronous": this.synchronous,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'downloadFile';
+  static const String CONSTRUCTOR = "downloadFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

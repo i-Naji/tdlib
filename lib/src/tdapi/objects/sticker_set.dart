@@ -46,33 +46,33 @@ class StickerSet implements TLObject {
     this.isOfficial = json['is_official'];
     this.isMasks = json['is_masks'];
     this.isViewed = json['is_viewed'];
-    this.stickers = (json['stickers'] ?? [])
+    this.stickers = List<Sticker>.from((json['stickers'] ?? [])
         .map((listValue) => Sticker.fromJson(listValue))
-        .toList();
-    this.emojis = (json['emojis'] ?? [])
+        .toList());
+    this.emojis = List<StickerEmojis>.from((json['emojis'] ?? [])
         .map((listValue) => StickerEmojis.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'name': this.name,
-      'is_installed': this.isInstalled,
-      'is_archived': this.isArchived,
-      'is_official': this.isOfficial,
-      'is_masks': this.isMasks,
-      'is_viewed': this.isViewed,
-      'stickers': this.stickers.map((listItem) => listItem.toJson()).toList(),
-      'emojis': this.emojis.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "name": this.name,
+      "is_installed": this.isInstalled,
+      "is_archived": this.isArchived,
+      "is_official": this.isOfficial,
+      "is_masks": this.isMasks,
+      "is_viewed": this.isViewed,
+      "stickers": this.stickers.map((listItem) => listItem.toJson()).toList(),
+      "emojis": this.emojis.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'stickerSet';
+  static const String CONSTRUCTOR = "stickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

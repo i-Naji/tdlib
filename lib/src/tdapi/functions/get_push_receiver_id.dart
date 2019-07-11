@@ -14,13 +14,13 @@ class GetPushReceiverId extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'payload': this.payload,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "payload": this.payload,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getPushReceiverId';
+  static const String CONSTRUCTOR = "getPushReceiverId";
 
   @override
   String getConstructor() => CONSTRUCTOR;

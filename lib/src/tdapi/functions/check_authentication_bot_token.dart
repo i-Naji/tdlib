@@ -13,10 +13,10 @@ class CheckAuthenticationBotToken extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'token': this.token, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "token": this.token, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'checkAuthenticationBotToken';
+  static const String CONSTRUCTOR = "checkAuthenticationBotToken";
 
   @override
   String getConstructor() => CONSTRUCTOR;

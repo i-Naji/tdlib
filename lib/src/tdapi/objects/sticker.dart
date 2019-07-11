@@ -46,19 +46,19 @@ class Sticker implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'set_id': this.setId,
-      'width': this.width,
-      'height': this.height,
-      'emoji': this.emoji,
-      'is_mask': this.isMask,
-      'mask_position': this.maskPosition.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'sticker': this.sticker.toJson()
+      "@type": CONSTRUCTOR,
+      "set_id": this.setId,
+      "width": this.width,
+      "height": this.height,
+      "emoji": this.emoji,
+      "is_mask": this.isMask,
+      "mask_position": this.maskPosition.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "sticker": this.sticker.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'sticker';
+  static const String CONSTRUCTOR = "sticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SetChatDraftMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'draft_message': this.draftMessage.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "draft_message": this.draftMessage.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setChatDraftMessage';
+  static const String CONSTRUCTOR = "setChatDraftMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

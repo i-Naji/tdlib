@@ -12,10 +12,10 @@ class GetStorageStatisticsFast extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getStorageStatisticsFast';
+  static const String CONSTRUCTOR = "getStorageStatisticsFast";
 
   @override
   String getConstructor() => CONSTRUCTOR;

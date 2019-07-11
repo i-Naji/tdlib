@@ -23,17 +23,17 @@ class CreateNewStickerSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'title': this.title,
-      'name': this.name,
-      'is_masks': this.isMasks,
-      'stickers': this.stickers.map((listItem) => listItem.toJson()).toList(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "title": this.title,
+      "name": this.name,
+      "is_masks": this.isMasks,
+      "stickers": this.stickers.map((listItem) => listItem.toJson()).toList(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'createNewStickerSet';
+  static const String CONSTRUCTOR = "createNewStickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

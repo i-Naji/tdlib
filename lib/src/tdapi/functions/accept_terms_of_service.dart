@@ -14,13 +14,13 @@ class AcceptTermsOfService extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'terms_of_service_id': this.termsOfServiceId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "terms_of_service_id": this.termsOfServiceId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'acceptTermsOfService';
+  static const String CONSTRUCTOR = "acceptTermsOfService";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -72,26 +72,26 @@ class Session implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'is_current': this.isCurrent,
-      'is_password_pending': this.isPasswordPending,
-      'api_id': this.apiId,
-      'application_name': this.applicationName,
-      'application_version': this.applicationVersion,
-      'is_official_application': this.isOfficialApplication,
-      'device_model': this.deviceModel,
-      'platform': this.platform,
-      'system_version': this.systemVersion,
-      'log_in_date': this.logInDate,
-      'last_active_date': this.lastActiveDate,
-      'ip': this.ip,
-      'country': this.country,
-      'region': this.region
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "is_current": this.isCurrent,
+      "is_password_pending": this.isPasswordPending,
+      "api_id": this.apiId,
+      "application_name": this.applicationName,
+      "application_version": this.applicationVersion,
+      "is_official_application": this.isOfficialApplication,
+      "device_model": this.deviceModel,
+      "platform": this.platform,
+      "system_version": this.systemVersion,
+      "log_in_date": this.logInDate,
+      "last_active_date": this.lastActiveDate,
+      "ip": this.ip,
+      "country": this.country,
+      "region": this.region
     };
   }
 
-  static const String CONSTRUCTOR = 'session';
+  static const String CONSTRUCTOR = "session";
 
   @override
   String getConstructor() => CONSTRUCTOR;

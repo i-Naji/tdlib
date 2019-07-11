@@ -16,15 +16,15 @@ class ChangeStickerSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'set_id': this.setId,
-      'is_installed': this.isInstalled,
-      'is_archived': this.isArchived,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "set_id": this.setId,
+      "is_installed": this.isInstalled,
+      "is_archived": this.isArchived,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'changeStickerSet';
+  static const String CONSTRUCTOR = "changeStickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

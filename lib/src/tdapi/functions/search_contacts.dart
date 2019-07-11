@@ -16,14 +16,14 @@ class SearchContacts extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'query': this.query,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "query": this.query,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchContacts';
+  static const String CONSTRUCTOR = "searchContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

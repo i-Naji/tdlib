@@ -5,86 +5,86 @@ class PushMessageContent implements TLObject {
   PushMessageContent();
 
   /// a PushMessageContent return type can be :
-  /// * PushMessageContentSticker
-  /// * PushMessageContentContact
-  /// * PushMessageContentInvoice
-  /// * PushMessageContentVideo
-  /// * PushMessageContentText
-  /// * PushMessageContentMessageForwards
-  /// * PushMessageContentDocument
-  /// * PushMessageContentVideoNote
-  /// * PushMessageContentContactRegistered
-  /// * PushMessageContentMediaAlbum
-  /// * PushMessageContentPoll
-  /// * PushMessageContentChatChangeTitle
-  /// * PushMessageContentChatChangePhoto
-  /// * PushMessageContentGame
-  /// * PushMessageContentBasicGroupChatCreate
-  /// * PushMessageContentChatDeleteMember
-  /// * PushMessageContentAnimation
-  /// * PushMessageContentVoiceNote
-  /// * PushMessageContentScreenshotTaken
-  /// * PushMessageContentLocation
-  /// * PushMessageContentChatAddMembers
-  /// * PushMessageContentChatJoinByLink
-  /// * PushMessageContentGameScore
   /// * PushMessageContentHidden
+  /// * PushMessageContentAnimation
   /// * PushMessageContentAudio
+  /// * PushMessageContentContact
+  /// * PushMessageContentContactRegistered
+  /// * PushMessageContentDocument
+  /// * PushMessageContentGame
+  /// * PushMessageContentGameScore
+  /// * PushMessageContentInvoice
+  /// * PushMessageContentLocation
   /// * PushMessageContentPhoto
+  /// * PushMessageContentPoll
+  /// * PushMessageContentScreenshotTaken
+  /// * PushMessageContentSticker
+  /// * PushMessageContentText
+  /// * PushMessageContentVideo
+  /// * PushMessageContentVideoNote
+  /// * PushMessageContentVoiceNote
+  /// * PushMessageContentBasicGroupChatCreate
+  /// * PushMessageContentChatAddMembers
+  /// * PushMessageContentChatChangePhoto
+  /// * PushMessageContentChatChangeTitle
+  /// * PushMessageContentChatDeleteMember
+  /// * PushMessageContentChatJoinByLink
+  /// * PushMessageContentMessageForwards
+  /// * PushMessageContentMediaAlbum
   factory PushMessageContent.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case PushMessageContentSticker.CONSTRUCTOR:
-        return PushMessageContentSticker.fromJson(json);
-      case PushMessageContentContact.CONSTRUCTOR:
-        return PushMessageContentContact.fromJson(json);
-      case PushMessageContentInvoice.CONSTRUCTOR:
-        return PushMessageContentInvoice.fromJson(json);
-      case PushMessageContentVideo.CONSTRUCTOR:
-        return PushMessageContentVideo.fromJson(json);
-      case PushMessageContentText.CONSTRUCTOR:
-        return PushMessageContentText.fromJson(json);
-      case PushMessageContentMessageForwards.CONSTRUCTOR:
-        return PushMessageContentMessageForwards.fromJson(json);
-      case PushMessageContentDocument.CONSTRUCTOR:
-        return PushMessageContentDocument.fromJson(json);
-      case PushMessageContentVideoNote.CONSTRUCTOR:
-        return PushMessageContentVideoNote.fromJson(json);
-      case PushMessageContentContactRegistered.CONSTRUCTOR:
-        return PushMessageContentContactRegistered.fromJson(json);
-      case PushMessageContentMediaAlbum.CONSTRUCTOR:
-        return PushMessageContentMediaAlbum.fromJson(json);
-      case PushMessageContentPoll.CONSTRUCTOR:
-        return PushMessageContentPoll.fromJson(json);
-      case PushMessageContentChatChangeTitle.CONSTRUCTOR:
-        return PushMessageContentChatChangeTitle.fromJson(json);
-      case PushMessageContentChatChangePhoto.CONSTRUCTOR:
-        return PushMessageContentChatChangePhoto.fromJson(json);
-      case PushMessageContentGame.CONSTRUCTOR:
-        return PushMessageContentGame.fromJson(json);
-      case PushMessageContentBasicGroupChatCreate.CONSTRUCTOR:
-        return PushMessageContentBasicGroupChatCreate.fromJson(json);
-      case PushMessageContentChatDeleteMember.CONSTRUCTOR:
-        return PushMessageContentChatDeleteMember.fromJson(json);
-      case PushMessageContentAnimation.CONSTRUCTOR:
-        return PushMessageContentAnimation.fromJson(json);
-      case PushMessageContentVoiceNote.CONSTRUCTOR:
-        return PushMessageContentVoiceNote.fromJson(json);
-      case PushMessageContentScreenshotTaken.CONSTRUCTOR:
-        return PushMessageContentScreenshotTaken.fromJson(json);
-      case PushMessageContentLocation.CONSTRUCTOR:
-        return PushMessageContentLocation.fromJson(json);
-      case PushMessageContentChatAddMembers.CONSTRUCTOR:
-        return PushMessageContentChatAddMembers.fromJson(json);
-      case PushMessageContentChatJoinByLink.CONSTRUCTOR:
-        return PushMessageContentChatJoinByLink.fromJson(json);
-      case PushMessageContentGameScore.CONSTRUCTOR:
-        return PushMessageContentGameScore.fromJson(json);
       case PushMessageContentHidden.CONSTRUCTOR:
         return PushMessageContentHidden.fromJson(json);
+      case PushMessageContentAnimation.CONSTRUCTOR:
+        return PushMessageContentAnimation.fromJson(json);
       case PushMessageContentAudio.CONSTRUCTOR:
         return PushMessageContentAudio.fromJson(json);
+      case PushMessageContentContact.CONSTRUCTOR:
+        return PushMessageContentContact.fromJson(json);
+      case PushMessageContentContactRegistered.CONSTRUCTOR:
+        return PushMessageContentContactRegistered.fromJson(json);
+      case PushMessageContentDocument.CONSTRUCTOR:
+        return PushMessageContentDocument.fromJson(json);
+      case PushMessageContentGame.CONSTRUCTOR:
+        return PushMessageContentGame.fromJson(json);
+      case PushMessageContentGameScore.CONSTRUCTOR:
+        return PushMessageContentGameScore.fromJson(json);
+      case PushMessageContentInvoice.CONSTRUCTOR:
+        return PushMessageContentInvoice.fromJson(json);
+      case PushMessageContentLocation.CONSTRUCTOR:
+        return PushMessageContentLocation.fromJson(json);
       case PushMessageContentPhoto.CONSTRUCTOR:
         return PushMessageContentPhoto.fromJson(json);
+      case PushMessageContentPoll.CONSTRUCTOR:
+        return PushMessageContentPoll.fromJson(json);
+      case PushMessageContentScreenshotTaken.CONSTRUCTOR:
+        return PushMessageContentScreenshotTaken.fromJson(json);
+      case PushMessageContentSticker.CONSTRUCTOR:
+        return PushMessageContentSticker.fromJson(json);
+      case PushMessageContentText.CONSTRUCTOR:
+        return PushMessageContentText.fromJson(json);
+      case PushMessageContentVideo.CONSTRUCTOR:
+        return PushMessageContentVideo.fromJson(json);
+      case PushMessageContentVideoNote.CONSTRUCTOR:
+        return PushMessageContentVideoNote.fromJson(json);
+      case PushMessageContentVoiceNote.CONSTRUCTOR:
+        return PushMessageContentVoiceNote.fromJson(json);
+      case PushMessageContentBasicGroupChatCreate.CONSTRUCTOR:
+        return PushMessageContentBasicGroupChatCreate.fromJson(json);
+      case PushMessageContentChatAddMembers.CONSTRUCTOR:
+        return PushMessageContentChatAddMembers.fromJson(json);
+      case PushMessageContentChatChangePhoto.CONSTRUCTOR:
+        return PushMessageContentChatChangePhoto.fromJson(json);
+      case PushMessageContentChatChangeTitle.CONSTRUCTOR:
+        return PushMessageContentChatChangeTitle.fromJson(json);
+      case PushMessageContentChatDeleteMember.CONSTRUCTOR:
+        return PushMessageContentChatDeleteMember.fromJson(json);
+      case PushMessageContentChatJoinByLink.CONSTRUCTOR:
+        return PushMessageContentChatJoinByLink.fromJson(json);
+      case PushMessageContentMessageForwards.CONSTRUCTOR:
+        return PushMessageContentMessageForwards.fromJson(json);
+      case PushMessageContentMediaAlbum.CONSTRUCTOR:
+        return PushMessageContentMediaAlbum.fromJson(json);
       default:
         return null;
     }
@@ -95,7 +95,7 @@ class PushMessageContent implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContent';
+  static const String CONSTRUCTOR = "pushMessageContent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -115,10 +115,10 @@ class PushMessageContentHidden implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'is_pinned': this.isPinned};
+    return {"@type": CONSTRUCTOR, "is_pinned": this.isPinned};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentHidden';
+  static const String CONSTRUCTOR = "pushMessageContentHidden";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -146,14 +146,14 @@ class PushMessageContentAnimation implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animation': this.animation.toJson(),
-      'caption': this.caption,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "animation": this.animation.toJson(),
+      "caption": this.caption,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentAnimation';
+  static const String CONSTRUCTOR = "pushMessageContentAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -177,13 +177,13 @@ class PushMessageContentAudio implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'audio': this.audio.toJson(),
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "audio": this.audio.toJson(),
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentAudio';
+  static const String CONSTRUCTOR = "pushMessageContentAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -207,13 +207,13 @@ class PushMessageContentContact implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'name': this.name,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "name": this.name,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentContact';
+  static const String CONSTRUCTOR = "pushMessageContentContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -229,10 +229,10 @@ class PushMessageContentContactRegistered implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentContactRegistered';
+  static const String CONSTRUCTOR = "pushMessageContentContactRegistered";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -256,13 +256,13 @@ class PushMessageContentDocument implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'document': this.document.toJson(),
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "document": this.document.toJson(),
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentDocument';
+  static const String CONSTRUCTOR = "pushMessageContentDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -286,13 +286,13 @@ class PushMessageContentGame implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentGame';
+  static const String CONSTRUCTOR = "pushMessageContentGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -319,14 +319,14 @@ class PushMessageContentGameScore implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'score': this.score,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "score": this.score,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentGameScore';
+  static const String CONSTRUCTOR = "pushMessageContentGameScore";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -350,13 +350,13 @@ class PushMessageContentInvoice implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'price': this.price,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "price": this.price,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentInvoice';
+  static const String CONSTRUCTOR = "pushMessageContentInvoice";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -380,13 +380,13 @@ class PushMessageContentLocation implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_live': this.isLive,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "is_live": this.isLive,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentLocation';
+  static const String CONSTRUCTOR = "pushMessageContentLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -417,15 +417,15 @@ class PushMessageContentPhoto implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'photo': this.photo.toJson(),
-      'caption': this.caption,
-      'is_secret': this.isSecret,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
+      "caption": this.caption,
+      "is_secret": this.isSecret,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentPhoto';
+  static const String CONSTRUCTOR = "pushMessageContentPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -449,13 +449,13 @@ class PushMessageContentPoll implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'question': this.question,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "question": this.question,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentPoll';
+  static const String CONSTRUCTOR = "pushMessageContentPoll";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -471,10 +471,10 @@ class PushMessageContentScreenshotTaken implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentScreenshotTaken';
+  static const String CONSTRUCTOR = "pushMessageContentScreenshotTaken";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -501,14 +501,14 @@ class PushMessageContentSticker implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker': this.sticker.toJson(),
-      'emoji': this.emoji,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "sticker": this.sticker.toJson(),
+      "emoji": this.emoji,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentSticker';
+  static const String CONSTRUCTOR = "pushMessageContentSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -532,13 +532,13 @@ class PushMessageContentText implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentText';
+  static const String CONSTRUCTOR = "pushMessageContentText";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -569,15 +569,15 @@ class PushMessageContentVideo implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video': this.video.toJson(),
-      'caption': this.caption,
-      'is_secret': this.isSecret,
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "video": this.video.toJson(),
+      "caption": this.caption,
+      "is_secret": this.isSecret,
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentVideo';
+  static const String CONSTRUCTOR = "pushMessageContentVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -602,13 +602,13 @@ class PushMessageContentVideoNote implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video_note': this.videoNote.toJson(),
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "video_note": this.videoNote.toJson(),
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentVideoNote';
+  static const String CONSTRUCTOR = "pushMessageContentVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -633,13 +633,13 @@ class PushMessageContentVoiceNote implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'voice_note': this.voiceNote.toJson(),
-      'is_pinned': this.isPinned
+      "@type": CONSTRUCTOR,
+      "voice_note": this.voiceNote.toJson(),
+      "is_pinned": this.isPinned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentVoiceNote';
+  static const String CONSTRUCTOR = "pushMessageContentVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -655,10 +655,10 @@ class PushMessageContentBasicGroupChatCreate implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentBasicGroupChatCreate';
+  static const String CONSTRUCTOR = "pushMessageContentBasicGroupChatCreate";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -686,14 +686,14 @@ class PushMessageContentChatAddMembers implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'member_name': this.memberName,
-      'is_current_user': this.isCurrentUser,
-      'is_returned': this.isReturned
+      "@type": CONSTRUCTOR,
+      "member_name": this.memberName,
+      "is_current_user": this.isCurrentUser,
+      "is_returned": this.isReturned
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatAddMembers';
+  static const String CONSTRUCTOR = "pushMessageContentChatAddMembers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -709,10 +709,10 @@ class PushMessageContentChatChangePhoto implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatChangePhoto';
+  static const String CONSTRUCTOR = "pushMessageContentChatChangePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -732,10 +732,10 @@ class PushMessageContentChatChangeTitle implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'title': this.title};
+    return {"@type": CONSTRUCTOR, "title": this.title};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatChangeTitle';
+  static const String CONSTRUCTOR = "pushMessageContentChatChangeTitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -763,14 +763,14 @@ class PushMessageContentChatDeleteMember implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'member_name': this.memberName,
-      'is_current_user': this.isCurrentUser,
-      'is_left': this.isLeft
+      "@type": CONSTRUCTOR,
+      "member_name": this.memberName,
+      "is_current_user": this.isCurrentUser,
+      "is_left": this.isLeft
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatDeleteMember';
+  static const String CONSTRUCTOR = "pushMessageContentChatDeleteMember";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -786,10 +786,10 @@ class PushMessageContentChatJoinByLink implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentChatJoinByLink';
+  static const String CONSTRUCTOR = "pushMessageContentChatJoinByLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -809,10 +809,10 @@ class PushMessageContentMessageForwards implements PushMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'total_count': this.totalCount};
+    return {"@type": CONSTRUCTOR, "total_count": this.totalCount};
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentMessageForwards';
+  static const String CONSTRUCTOR = "pushMessageContentMessageForwards";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -840,14 +840,14 @@ class PushMessageContentMediaAlbum implements PushMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'total_count': this.totalCount,
-      'has_photos': this.hasPhotos,
-      'has_videos': this.hasVideos
+      "@type": CONSTRUCTOR,
+      "total_count": this.totalCount,
+      "has_photos": this.hasPhotos,
+      "has_videos": this.hasVideos
     };
   }
 
-  static const String CONSTRUCTOR = 'pushMessageContentMediaAlbum';
+  static const String CONSTRUCTOR = "pushMessageContentMediaAlbum";
 
   @override
   String getConstructor() => CONSTRUCTOR;

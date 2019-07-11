@@ -23,14 +23,14 @@ class InputSticker implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'png_sticker': this.pngSticker.toJson(),
-      'emojis': this.emojis,
-      'mask_position': this.maskPosition.toJson()
+      "@type": CONSTRUCTOR,
+      "png_sticker": this.pngSticker.toJson(),
+      "emojis": this.emojis,
+      "mask_position": this.maskPosition.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputSticker';
+  static const String CONSTRUCTOR = "inputSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;

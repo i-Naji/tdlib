@@ -55,21 +55,21 @@ class Supergroup implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'username': this.username,
-      'date': this.date,
-      'status': this.status.toJson(),
-      'member_count': this.memberCount,
-      'anyone_can_invite': this.anyoneCanInvite,
-      'sign_messages': this.signMessages,
-      'is_channel': this.isChannel,
-      'is_verified': this.isVerified,
-      'restriction_reason': this.restrictionReason
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "username": this.username,
+      "date": this.date,
+      "status": this.status.toJson(),
+      "member_count": this.memberCount,
+      "anyone_can_invite": this.anyoneCanInvite,
+      "sign_messages": this.signMessages,
+      "is_channel": this.isChannel,
+      "is_verified": this.isVerified,
+      "restriction_reason": this.restrictionReason
     };
   }
 
-  static const String CONSTRUCTOR = 'supergroup';
+  static const String CONSTRUCTOR = "supergroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;

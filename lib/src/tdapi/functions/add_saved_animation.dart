@@ -14,13 +14,13 @@ class AddSavedAnimation extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animation': this.animation.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "animation": this.animation.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addSavedAnimation';
+  static const String CONSTRUCTOR = "addSavedAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;

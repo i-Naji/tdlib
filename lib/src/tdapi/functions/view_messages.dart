@@ -18,15 +18,15 @@ class ViewMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_ids': this.messageIds,
-      'force_read': this.forceRead,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_ids": this.messageIds,
+      "force_read": this.forceRead,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'viewMessages';
+  static const String CONSTRUCTOR = "viewMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

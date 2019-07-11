@@ -105,33 +105,33 @@ class Chat implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'type': this.type.toJson(),
-      'title': this.title,
-      'photo': this.photo.toJson(),
-      'last_message': this.lastMessage.toJson(),
-      'order': this.order,
-      'is_pinned': this.isPinned,
-      'is_marked_as_unread': this.isMarkedAsUnread,
-      'is_sponsored': this.isSponsored,
-      'can_be_deleted_only_for_self': this.canBeDeletedOnlyForSelf,
-      'can_be_deleted_for_all_users': this.canBeDeletedForAllUsers,
-      'can_be_reported': this.canBeReported,
-      'default_disable_notification': this.defaultDisableNotification,
-      'unread_count': this.unreadCount,
-      'last_read_inbox_message_id': this.lastReadInboxMessageId,
-      'last_read_outbox_message_id': this.lastReadOutboxMessageId,
-      'unread_mention_count': this.unreadMentionCount,
-      'notification_settings': this.notificationSettings.toJson(),
-      'pinned_message_id': this.pinnedMessageId,
-      'reply_markup_message_id': this.replyMarkupMessageId,
-      'draft_message': this.draftMessage.toJson(),
-      'client_data': this.clientData
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "type": this.type.toJson(),
+      "title": this.title,
+      "photo": this.photo.toJson(),
+      "last_message": this.lastMessage.toJson(),
+      "order": this.order,
+      "is_pinned": this.isPinned,
+      "is_marked_as_unread": this.isMarkedAsUnread,
+      "is_sponsored": this.isSponsored,
+      "can_be_deleted_only_for_self": this.canBeDeletedOnlyForSelf,
+      "can_be_deleted_for_all_users": this.canBeDeletedForAllUsers,
+      "can_be_reported": this.canBeReported,
+      "default_disable_notification": this.defaultDisableNotification,
+      "unread_count": this.unreadCount,
+      "last_read_inbox_message_id": this.lastReadInboxMessageId,
+      "last_read_outbox_message_id": this.lastReadOutboxMessageId,
+      "unread_mention_count": this.unreadMentionCount,
+      "notification_settings": this.notificationSettings.toJson(),
+      "pinned_message_id": this.pinnedMessageId,
+      "reply_markup_message_id": this.replyMarkupMessageId,
+      "draft_message": this.draftMessage.toJson(),
+      "client_data": this.clientData
     };
   }
 
-  static const String CONSTRUCTOR = 'chat';
+  static const String CONSTRUCTOR = "chat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

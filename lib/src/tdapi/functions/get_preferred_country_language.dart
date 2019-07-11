@@ -14,13 +14,13 @@ class GetPreferredCountryLanguage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'country_code': this.countryCode,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "country_code": this.countryCode,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getPreferredCountryLanguage';
+  static const String CONSTRUCTOR = "getPreferredCountryLanguage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

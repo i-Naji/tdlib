@@ -5,45 +5,45 @@ class InputInlineQueryResult implements TLObject {
   InputInlineQueryResult();
 
   /// a InputInlineQueryResult return type can be :
-  /// * InputInlineQueryResultVenue
-  /// * InputInlineQueryResultLocation
-  /// * InputInlineQueryResultContact
+  /// * InputInlineQueryResultAnimatedGif
+  /// * InputInlineQueryResultAnimatedMpeg4
   /// * InputInlineQueryResultArticle
+  /// * InputInlineQueryResultAudio
+  /// * InputInlineQueryResultContact
   /// * InputInlineQueryResultDocument
   /// * InputInlineQueryResultGame
-  /// * InputInlineQueryResultSticker
-  /// * InputInlineQueryResultAnimatedGif
-  /// * InputInlineQueryResultAudio
-  /// * InputInlineQueryResultAnimatedMpeg4
-  /// * InputInlineQueryResultVideo
+  /// * InputInlineQueryResultLocation
   /// * InputInlineQueryResultPhoto
+  /// * InputInlineQueryResultSticker
+  /// * InputInlineQueryResultVenue
+  /// * InputInlineQueryResultVideo
   /// * InputInlineQueryResultVoiceNote
   factory InputInlineQueryResult.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InputInlineQueryResultVenue.CONSTRUCTOR:
-        return InputInlineQueryResultVenue.fromJson(json);
-      case InputInlineQueryResultLocation.CONSTRUCTOR:
-        return InputInlineQueryResultLocation.fromJson(json);
-      case InputInlineQueryResultContact.CONSTRUCTOR:
-        return InputInlineQueryResultContact.fromJson(json);
+      case InputInlineQueryResultAnimatedGif.CONSTRUCTOR:
+        return InputInlineQueryResultAnimatedGif.fromJson(json);
+      case InputInlineQueryResultAnimatedMpeg4.CONSTRUCTOR:
+        return InputInlineQueryResultAnimatedMpeg4.fromJson(json);
       case InputInlineQueryResultArticle.CONSTRUCTOR:
         return InputInlineQueryResultArticle.fromJson(json);
+      case InputInlineQueryResultAudio.CONSTRUCTOR:
+        return InputInlineQueryResultAudio.fromJson(json);
+      case InputInlineQueryResultContact.CONSTRUCTOR:
+        return InputInlineQueryResultContact.fromJson(json);
       case InputInlineQueryResultDocument.CONSTRUCTOR:
         return InputInlineQueryResultDocument.fromJson(json);
       case InputInlineQueryResultGame.CONSTRUCTOR:
         return InputInlineQueryResultGame.fromJson(json);
-      case InputInlineQueryResultSticker.CONSTRUCTOR:
-        return InputInlineQueryResultSticker.fromJson(json);
-      case InputInlineQueryResultAnimatedGif.CONSTRUCTOR:
-        return InputInlineQueryResultAnimatedGif.fromJson(json);
-      case InputInlineQueryResultAudio.CONSTRUCTOR:
-        return InputInlineQueryResultAudio.fromJson(json);
-      case InputInlineQueryResultAnimatedMpeg4.CONSTRUCTOR:
-        return InputInlineQueryResultAnimatedMpeg4.fromJson(json);
-      case InputInlineQueryResultVideo.CONSTRUCTOR:
-        return InputInlineQueryResultVideo.fromJson(json);
+      case InputInlineQueryResultLocation.CONSTRUCTOR:
+        return InputInlineQueryResultLocation.fromJson(json);
       case InputInlineQueryResultPhoto.CONSTRUCTOR:
         return InputInlineQueryResultPhoto.fromJson(json);
+      case InputInlineQueryResultSticker.CONSTRUCTOR:
+        return InputInlineQueryResultSticker.fromJson(json);
+      case InputInlineQueryResultVenue.CONSTRUCTOR:
+        return InputInlineQueryResultVenue.fromJson(json);
+      case InputInlineQueryResultVideo.CONSTRUCTOR:
+        return InputInlineQueryResultVideo.fromJson(json);
       case InputInlineQueryResultVoiceNote.CONSTRUCTOR:
         return InputInlineQueryResultVoiceNote.fromJson(json);
       default:
@@ -56,7 +56,7 @@ class InputInlineQueryResult implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResult';
+  static const String CONSTRUCTOR = "inputInlineQueryResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -112,20 +112,20 @@ class InputInlineQueryResultAnimatedGif implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'thumbnail_url': this.thumbnailUrl,
-      'gif_url': this.gifUrl,
-      'gif_duration': this.gifDuration,
-      'gif_width': this.gifWidth,
-      'gif_height': this.gifHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "thumbnail_url": this.thumbnailUrl,
+      "gif_url": this.gifUrl,
+      "gif_duration": this.gifDuration,
+      "gif_width": this.gifWidth,
+      "gif_height": this.gifHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultAnimatedGif';
+  static const String CONSTRUCTOR = "inputInlineQueryResultAnimatedGif";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -178,20 +178,20 @@ class InputInlineQueryResultAnimatedMpeg4 implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'thumbnail_url': this.thumbnailUrl,
-      'mpeg4_url': this.mpeg4Url,
-      'mpeg4_duration': this.mpeg4Duration,
-      'mpeg4_width': this.mpeg4Width,
-      'mpeg4_height': this.mpeg4Height,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "thumbnail_url": this.thumbnailUrl,
+      "mpeg4_url": this.mpeg4Url,
+      "mpeg4_duration": this.mpeg4Duration,
+      "mpeg4_width": this.mpeg4Width,
+      "mpeg4_height": this.mpeg4Height,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultAnimatedMpeg4';
+  static const String CONSTRUCTOR = "inputInlineQueryResultAnimatedMpeg4";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -251,21 +251,21 @@ class InputInlineQueryResultArticle implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'url': this.url,
-      'hide_url': this.hideUrl,
-      'title': this.title,
-      'description': this.description,
-      'thumbnail_url': this.thumbnailUrl,
-      'thumbnail_width': this.thumbnailWidth,
-      'thumbnail_height': this.thumbnailHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "url": this.url,
+      "hide_url": this.hideUrl,
+      "title": this.title,
+      "description": this.description,
+      "thumbnail_url": this.thumbnailUrl,
+      "thumbnail_width": this.thumbnailWidth,
+      "thumbnail_height": this.thumbnailHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultArticle';
+  static const String CONSTRUCTOR = "inputInlineQueryResultArticle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -313,18 +313,18 @@ class InputInlineQueryResultAudio implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'performer': this.performer,
-      'audio_url': this.audioUrl,
-      'audio_duration': this.audioDuration,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "performer": this.performer,
+      "audio_url": this.audioUrl,
+      "audio_duration": this.audioDuration,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultAudio';
+  static const String CONSTRUCTOR = "inputInlineQueryResultAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -372,18 +372,18 @@ class InputInlineQueryResultContact implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'contact': this.contact.toJson(),
-      'thumbnail_url': this.thumbnailUrl,
-      'thumbnail_width': this.thumbnailWidth,
-      'thumbnail_height': this.thumbnailHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "contact": this.contact.toJson(),
+      "thumbnail_url": this.thumbnailUrl,
+      "thumbnail_width": this.thumbnailWidth,
+      "thumbnail_height": this.thumbnailHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultContact';
+  static const String CONSTRUCTOR = "inputInlineQueryResultContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -443,21 +443,21 @@ class InputInlineQueryResultDocument implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'description': this.description,
-      'document_url': this.documentUrl,
-      'mime_type': this.mimeType,
-      'thumbnail_url': this.thumbnailUrl,
-      'thumbnail_width': this.thumbnailWidth,
-      'thumbnail_height': this.thumbnailHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "description": this.description,
+      "document_url": this.documentUrl,
+      "mime_type": this.mimeType,
+      "thumbnail_url": this.thumbnailUrl,
+      "thumbnail_width": this.thumbnailWidth,
+      "thumbnail_height": this.thumbnailHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultDocument';
+  static const String CONSTRUCTOR = "inputInlineQueryResultDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -485,14 +485,14 @@ class InputInlineQueryResultGame implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'game_short_name': this.gameShortName,
-      'reply_markup': this.replyMarkup.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "game_short_name": this.gameShortName,
+      "reply_markup": this.replyMarkup.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultGame';
+  static const String CONSTRUCTOR = "inputInlineQueryResultGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -548,20 +548,20 @@ class InputInlineQueryResultLocation implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'location': this.location.toJson(),
-      'live_period': this.livePeriod,
-      'title': this.title,
-      'thumbnail_url': this.thumbnailUrl,
-      'thumbnail_width': this.thumbnailWidth,
-      'thumbnail_height': this.thumbnailHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "location": this.location.toJson(),
+      "live_period": this.livePeriod,
+      "title": this.title,
+      "thumbnail_url": this.thumbnailUrl,
+      "thumbnail_width": this.thumbnailWidth,
+      "thumbnail_height": this.thumbnailHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultLocation';
+  static const String CONSTRUCTOR = "inputInlineQueryResultLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -617,20 +617,20 @@ class InputInlineQueryResultPhoto implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'description': this.description,
-      'thumbnail_url': this.thumbnailUrl,
-      'photo_url': this.photoUrl,
-      'photo_width': this.photoWidth,
-      'photo_height': this.photoHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "description": this.description,
+      "thumbnail_url": this.thumbnailUrl,
+      "photo_url": this.photoUrl,
+      "photo_width": this.photoWidth,
+      "photo_height": this.photoHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultPhoto';
+  static const String CONSTRUCTOR = "inputInlineQueryResultPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -678,18 +678,18 @@ class InputInlineQueryResultSticker implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'thumbnail_url': this.thumbnailUrl,
-      'sticker_url': this.stickerUrl,
-      'sticker_width': this.stickerWidth,
-      'sticker_height': this.stickerHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "thumbnail_url": this.thumbnailUrl,
+      "sticker_url": this.stickerUrl,
+      "sticker_width": this.stickerWidth,
+      "sticker_height": this.stickerHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultSticker';
+  static const String CONSTRUCTOR = "inputInlineQueryResultSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -737,18 +737,18 @@ class InputInlineQueryResultVenue implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'venue': this.venue.toJson(),
-      'thumbnail_url': this.thumbnailUrl,
-      'thumbnail_width': this.thumbnailWidth,
-      'thumbnail_height': this.thumbnailHeight,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "venue": this.venue.toJson(),
+      "thumbnail_url": this.thumbnailUrl,
+      "thumbnail_width": this.thumbnailWidth,
+      "thumbnail_height": this.thumbnailHeight,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultVenue';
+  static const String CONSTRUCTOR = "inputInlineQueryResultVenue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -812,22 +812,22 @@ class InputInlineQueryResultVideo implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'description': this.description,
-      'thumbnail_url': this.thumbnailUrl,
-      'video_url': this.videoUrl,
-      'mime_type': this.mimeType,
-      'video_width': this.videoWidth,
-      'video_height': this.videoHeight,
-      'video_duration': this.videoDuration,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "description": this.description,
+      "thumbnail_url": this.thumbnailUrl,
+      "video_url": this.videoUrl,
+      "mime_type": this.mimeType,
+      "video_width": this.videoWidth,
+      "video_height": this.videoHeight,
+      "video_duration": this.videoDuration,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultVideo';
+  static const String CONSTRUCTOR = "inputInlineQueryResultVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -871,17 +871,17 @@ class InputInlineQueryResultVoiceNote implements InputInlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'voice_note_url': this.voiceNoteUrl,
-      'voice_note_duration': this.voiceNoteDuration,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "voice_note_url": this.voiceNoteUrl,
+      "voice_note_duration": this.voiceNoteDuration,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputInlineQueryResultVoiceNote';
+  static const String CONSTRUCTOR = "inputInlineQueryResultVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;

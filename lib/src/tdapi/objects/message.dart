@@ -110,34 +110,34 @@ class Message implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sender_user_id': this.senderUserId,
-      'chat_id': this.chatId,
-      'sending_state': this.sendingState.toJson(),
-      'is_outgoing': this.isOutgoing,
-      'can_be_edited': this.canBeEdited,
-      'can_be_forwarded': this.canBeForwarded,
-      'can_be_deleted_only_for_self': this.canBeDeletedOnlyForSelf,
-      'can_be_deleted_for_all_users': this.canBeDeletedForAllUsers,
-      'is_channel_post': this.isChannelPost,
-      'contains_unread_mention': this.containsUnreadMention,
-      'date': this.date,
-      'edit_date': this.editDate,
-      'forward_info': this.forwardInfo.toJson(),
-      'reply_to_message_id': this.replyToMessageId,
-      'ttl': this.ttl,
-      'ttl_expires_in': this.ttlExpiresIn,
-      'via_bot_user_id': this.viaBotUserId,
-      'author_signature': this.authorSignature,
-      'views': this.views,
-      'media_album_id': this.mediaAlbumId,
-      'content': this.content.toJson(),
-      'reply_markup': this.replyMarkup.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sender_user_id": this.senderUserId,
+      "chat_id": this.chatId,
+      "sending_state": this.sendingState.toJson(),
+      "is_outgoing": this.isOutgoing,
+      "can_be_edited": this.canBeEdited,
+      "can_be_forwarded": this.canBeForwarded,
+      "can_be_deleted_only_for_self": this.canBeDeletedOnlyForSelf,
+      "can_be_deleted_for_all_users": this.canBeDeletedForAllUsers,
+      "is_channel_post": this.isChannelPost,
+      "contains_unread_mention": this.containsUnreadMention,
+      "date": this.date,
+      "edit_date": this.editDate,
+      "forward_info": this.forwardInfo.toJson(),
+      "reply_to_message_id": this.replyToMessageId,
+      "ttl": this.ttl,
+      "ttl_expires_in": this.ttlExpiresIn,
+      "via_bot_user_id": this.viaBotUserId,
+      "author_signature": this.authorSignature,
+      "views": this.views,
+      "media_album_id": this.mediaAlbumId,
+      "content": this.content.toJson(),
+      "reply_markup": this.replyMarkup.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'message';
+  static const String CONSTRUCTOR = "message";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -14,13 +14,13 @@ class GetAllPassportElements extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'password': this.password,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "password": this.password,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getAllPassportElements';
+  static const String CONSTRUCTOR = "getAllPassportElements";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,17 +5,17 @@ class NotificationSettingsScope implements TLObject {
   NotificationSettingsScope();
 
   /// a NotificationSettingsScope return type can be :
+  /// * NotificationSettingsScopePrivateChats
   /// * NotificationSettingsScopeGroupChats
   /// * NotificationSettingsScopeChannelChats
-  /// * NotificationSettingsScopePrivateChats
   factory NotificationSettingsScope.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case NotificationSettingsScopePrivateChats.CONSTRUCTOR:
+        return NotificationSettingsScopePrivateChats.fromJson(json);
       case NotificationSettingsScopeGroupChats.CONSTRUCTOR:
         return NotificationSettingsScopeGroupChats.fromJson(json);
       case NotificationSettingsScopeChannelChats.CONSTRUCTOR:
         return NotificationSettingsScopeChannelChats.fromJson(json);
-      case NotificationSettingsScopePrivateChats.CONSTRUCTOR:
-        return NotificationSettingsScopePrivateChats.fromJson(json);
       default:
         return null;
     }
@@ -26,7 +26,7 @@ class NotificationSettingsScope implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'notificationSettingsScope';
+  static const String CONSTRUCTOR = "notificationSettingsScope";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -43,10 +43,10 @@ class NotificationSettingsScopePrivateChats
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationSettingsScopePrivateChats';
+  static const String CONSTRUCTOR = "notificationSettingsScopePrivateChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -62,10 +62,10 @@ class NotificationSettingsScopeGroupChats implements NotificationSettingsScope {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationSettingsScopeGroupChats';
+  static const String CONSTRUCTOR = "notificationSettingsScopeGroupChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -82,10 +82,10 @@ class NotificationSettingsScopeChannelChats
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationSettingsScopeChannelChats';
+  static const String CONSTRUCTOR = "notificationSettingsScopeChannelChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;

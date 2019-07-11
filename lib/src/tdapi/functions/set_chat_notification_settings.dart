@@ -16,14 +16,14 @@ class SetChatNotificationSettings extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'notification_settings': this.notificationSettings.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "notification_settings": this.notificationSettings.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setChatNotificationSettings';
+  static const String CONSTRUCTOR = "setChatNotificationSettings";
 
   @override
   String getConstructor() => CONSTRUCTOR;

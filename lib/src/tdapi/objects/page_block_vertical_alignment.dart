@@ -26,7 +26,7 @@ class PageBlockVerticalAlignment implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignment';
+  static const String CONSTRUCTOR = "pageBlockVerticalAlignment";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -42,10 +42,10 @@ class PageBlockVerticalAlignmentTop implements PageBlockVerticalAlignment {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignmentTop';
+  static const String CONSTRUCTOR = "pageBlockVerticalAlignmentTop";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -61,10 +61,10 @@ class PageBlockVerticalAlignmentMiddle implements PageBlockVerticalAlignment {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignmentMiddle';
+  static const String CONSTRUCTOR = "pageBlockVerticalAlignmentMiddle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -80,10 +80,10 @@ class PageBlockVerticalAlignmentBottom implements PageBlockVerticalAlignment {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockVerticalAlignmentBottom';
+  static const String CONSTRUCTOR = "pageBlockVerticalAlignmentBottom";
 
   @override
   String getConstructor() => CONSTRUCTOR;

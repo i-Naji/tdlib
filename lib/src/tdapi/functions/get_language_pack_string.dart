@@ -24,16 +24,16 @@ class GetLanguagePackString extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_pack_database_path': this.languagePackDatabasePath,
-      'localization_target': this.localizationTarget,
-      'language_pack_id': this.languagePackId,
-      'key': this.key,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "language_pack_database_path": this.languagePackDatabasePath,
+      "localization_target": this.localizationTarget,
+      "language_pack_id": this.languagePackId,
+      "key": this.key,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getLanguagePackString';
+  static const String CONSTRUCTOR = "getLanguagePackString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

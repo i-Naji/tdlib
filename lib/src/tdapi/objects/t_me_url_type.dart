@@ -5,20 +5,20 @@ class TMeUrlType implements TLObject {
   TMeUrlType();
 
   /// a TMeUrlType return type can be :
-  /// * TMeUrlTypeChatInvite
-  /// * TMeUrlTypeStickerSet
   /// * TMeUrlTypeUser
   /// * TMeUrlTypeSupergroup
+  /// * TMeUrlTypeChatInvite
+  /// * TMeUrlTypeStickerSet
   factory TMeUrlType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case TMeUrlTypeChatInvite.CONSTRUCTOR:
-        return TMeUrlTypeChatInvite.fromJson(json);
-      case TMeUrlTypeStickerSet.CONSTRUCTOR:
-        return TMeUrlTypeStickerSet.fromJson(json);
       case TMeUrlTypeUser.CONSTRUCTOR:
         return TMeUrlTypeUser.fromJson(json);
       case TMeUrlTypeSupergroup.CONSTRUCTOR:
         return TMeUrlTypeSupergroup.fromJson(json);
+      case TMeUrlTypeChatInvite.CONSTRUCTOR:
+        return TMeUrlTypeChatInvite.fromJson(json);
+      case TMeUrlTypeStickerSet.CONSTRUCTOR:
+        return TMeUrlTypeStickerSet.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class TMeUrlType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrlType';
+  static const String CONSTRUCTOR = "tMeUrlType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class TMeUrlTypeUser implements TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeUser';
+  static const String CONSTRUCTOR = "tMeUrlTypeUser";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class TMeUrlTypeSupergroup implements TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'supergroup_id': this.supergroupId};
+    return {"@type": CONSTRUCTOR, "supergroup_id": this.supergroupId};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeSupergroup';
+  static const String CONSTRUCTOR = "tMeUrlTypeSupergroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -96,10 +96,10 @@ class TMeUrlTypeChatInvite implements TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'info': this.info.toJson()};
+    return {"@type": CONSTRUCTOR, "info": this.info.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeChatInvite';
+  static const String CONSTRUCTOR = "tMeUrlTypeChatInvite";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -119,10 +119,10 @@ class TMeUrlTypeStickerSet implements TMeUrlType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'sticker_set_id': this.stickerSetId};
+    return {"@type": CONSTRUCTOR, "sticker_set_id": this.stickerSetId};
   }
 
-  static const String CONSTRUCTOR = 'tMeUrlTypeStickerSet';
+  static const String CONSTRUCTOR = "tMeUrlTypeStickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

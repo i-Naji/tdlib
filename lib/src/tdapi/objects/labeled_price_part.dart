@@ -17,10 +17,10 @@ class LabeledPricePart implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'label': this.label, 'amount': this.amount};
+    return {"@type": CONSTRUCTOR, "label": this.label, "amount": this.amount};
   }
 
-  static const String CONSTRUCTOR = 'labeledPricePart';
+  static const String CONSTRUCTOR = "labeledPricePart";
 
   @override
   String getConstructor() => CONSTRUCTOR;

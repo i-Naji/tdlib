@@ -19,24 +19,25 @@ class StorageStatisticsByChat implements TLObject {
     this.chatId = json['chat_id'];
     this.size = json['size'];
     this.count = json['count'];
-    this.byFileType = (json['by_file_type'] ?? [])
-        .map((listValue) => StorageStatisticsByFileType.fromJson(listValue))
-        .toList();
+    this.byFileType = List<StorageStatisticsByFileType>.from(
+        (json['by_file_type'] ?? [])
+            .map((listValue) => StorageStatisticsByFileType.fromJson(listValue))
+            .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'size': this.size,
-      'count': this.count,
-      'by_file_type':
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "size": this.size,
+      "count": this.count,
+      "by_file_type":
           this.byFileType.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'storageStatisticsByChat';
+  static const String CONSTRUCTOR = "storageStatisticsByChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

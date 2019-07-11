@@ -23,25 +23,25 @@ class NotificationGroup implements TLObject {
         NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
     this.chatId = json['chat_id'];
     this.totalCount = json['total_count'];
-    this.notifications = (json['notifications'] ?? [])
+    this.notifications = List<Notification>.from((json['notifications'] ?? [])
         .map((listValue) => Notification.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'type': this.type.toJson(),
-      'chat_id': this.chatId,
-      'total_count': this.totalCount,
-      'notifications':
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "type": this.type.toJson(),
+      "chat_id": this.chatId,
+      "total_count": this.totalCount,
+      "notifications":
           this.notifications.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'notificationGroup';
+  static const String CONSTRUCTOR = "notificationGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;

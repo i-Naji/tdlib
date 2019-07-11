@@ -14,13 +14,13 @@ class GetRecentlyVisitedTMeUrls extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'referrer': this.referrer,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "referrer": this.referrer,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getRecentlyVisitedTMeUrls';
+  static const String CONSTRUCTOR = "getRecentlyVisitedTMeUrls";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -22,17 +22,17 @@ class EditProxy extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'proxy_id': this.proxyId,
-      'server': this.server,
-      'port': this.port,
-      'enable': this.enable,
-      'type': this.type.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "proxy_id": this.proxyId,
+      "server": this.server,
+      "port": this.port,
+      "enable": this.enable,
+      "type": this.type.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editProxy';
+  static const String CONSTRUCTOR = "editProxy";
 
   @override
   String getConstructor() => CONSTRUCTOR;

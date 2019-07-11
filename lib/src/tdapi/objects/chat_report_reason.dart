@@ -6,23 +6,23 @@ class ChatReportReason implements TLObject {
 
   /// a ChatReportReason return type can be :
   /// * ChatReportReasonSpam
-  /// * ChatReportReasonCopyright
-  /// * ChatReportReasonChildAbuse
   /// * ChatReportReasonViolence
   /// * ChatReportReasonPornography
+  /// * ChatReportReasonChildAbuse
+  /// * ChatReportReasonCopyright
   /// * ChatReportReasonCustom
   factory ChatReportReason.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case ChatReportReasonSpam.CONSTRUCTOR:
         return ChatReportReasonSpam.fromJson(json);
-      case ChatReportReasonCopyright.CONSTRUCTOR:
-        return ChatReportReasonCopyright.fromJson(json);
-      case ChatReportReasonChildAbuse.CONSTRUCTOR:
-        return ChatReportReasonChildAbuse.fromJson(json);
       case ChatReportReasonViolence.CONSTRUCTOR:
         return ChatReportReasonViolence.fromJson(json);
       case ChatReportReasonPornography.CONSTRUCTOR:
         return ChatReportReasonPornography.fromJson(json);
+      case ChatReportReasonChildAbuse.CONSTRUCTOR:
+        return ChatReportReasonChildAbuse.fromJson(json);
+      case ChatReportReasonCopyright.CONSTRUCTOR:
+        return ChatReportReasonCopyright.fromJson(json);
       case ChatReportReasonCustom.CONSTRUCTOR:
         return ChatReportReasonCustom.fromJson(json);
       default:
@@ -35,7 +35,7 @@ class ChatReportReason implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReason';
+  static const String CONSTRUCTOR = "chatReportReason";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class ChatReportReasonSpam implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonSpam';
+  static const String CONSTRUCTOR = "chatReportReasonSpam";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -70,10 +70,10 @@ class ChatReportReasonViolence implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonViolence';
+  static const String CONSTRUCTOR = "chatReportReasonViolence";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -89,10 +89,10 @@ class ChatReportReasonPornography implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonPornography';
+  static const String CONSTRUCTOR = "chatReportReasonPornography";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -108,10 +108,10 @@ class ChatReportReasonChildAbuse implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonChildAbuse';
+  static const String CONSTRUCTOR = "chatReportReasonChildAbuse";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -127,10 +127,10 @@ class ChatReportReasonCopyright implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonCopyright';
+  static const String CONSTRUCTOR = "chatReportReasonCopyright";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -150,10 +150,10 @@ class ChatReportReasonCustom implements ChatReportReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text};
+    return {"@type": CONSTRUCTOR, "text": this.text};
   }
 
-  static const String CONSTRUCTOR = 'chatReportReasonCustom';
+  static const String CONSTRUCTOR = "chatReportReasonCustom";
 
   @override
   String getConstructor() => CONSTRUCTOR;

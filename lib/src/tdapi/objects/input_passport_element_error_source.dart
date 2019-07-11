@@ -5,35 +5,35 @@ class InputPassportElementErrorSource implements TLObject {
   InputPassportElementErrorSource();
 
   /// a InputPassportElementErrorSource return type can be :
-  /// * InputPassportElementErrorSourceTranslationFiles
-  /// * InputPassportElementErrorSourceTranslationFile
-  /// * InputPassportElementErrorSourceFiles
   /// * InputPassportElementErrorSourceUnspecified
+  /// * InputPassportElementErrorSourceDataField
   /// * InputPassportElementErrorSourceFrontSide
   /// * InputPassportElementErrorSourceReverseSide
   /// * InputPassportElementErrorSourceSelfie
+  /// * InputPassportElementErrorSourceTranslationFile
+  /// * InputPassportElementErrorSourceTranslationFiles
   /// * InputPassportElementErrorSourceFile
-  /// * InputPassportElementErrorSourceDataField
+  /// * InputPassportElementErrorSourceFiles
   factory InputPassportElementErrorSource.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
-        return InputPassportElementErrorSourceTranslationFiles.fromJson(json);
-      case InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR:
-        return InputPassportElementErrorSourceTranslationFile.fromJson(json);
-      case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
-        return InputPassportElementErrorSourceFiles.fromJson(json);
       case InputPassportElementErrorSourceUnspecified.CONSTRUCTOR:
         return InputPassportElementErrorSourceUnspecified.fromJson(json);
+      case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
+        return InputPassportElementErrorSourceDataField.fromJson(json);
       case InputPassportElementErrorSourceFrontSide.CONSTRUCTOR:
         return InputPassportElementErrorSourceFrontSide.fromJson(json);
       case InputPassportElementErrorSourceReverseSide.CONSTRUCTOR:
         return InputPassportElementErrorSourceReverseSide.fromJson(json);
       case InputPassportElementErrorSourceSelfie.CONSTRUCTOR:
         return InputPassportElementErrorSourceSelfie.fromJson(json);
+      case InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        return InputPassportElementErrorSourceTranslationFile.fromJson(json);
+      case InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
+        return InputPassportElementErrorSourceTranslationFiles.fromJson(json);
       case InputPassportElementErrorSourceFile.CONSTRUCTOR:
         return InputPassportElementErrorSourceFile.fromJson(json);
-      case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
-        return InputPassportElementErrorSourceDataField.fromJson(json);
+      case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
+        return InputPassportElementErrorSourceFiles.fromJson(json);
       default:
         return null;
     }
@@ -44,7 +44,7 @@ class InputPassportElementErrorSource implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSource';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSource";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -66,11 +66,11 @@ class InputPassportElementErrorSourceUnspecified
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'element_hash': this.elementHash};
+    return {"@type": CONSTRUCTOR, "element_hash": this.elementHash};
   }
 
   static const String CONSTRUCTOR =
-      'inputPassportElementErrorSourceUnspecified';
+      "inputPassportElementErrorSourceUnspecified";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -95,13 +95,13 @@ class InputPassportElementErrorSourceDataField
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'field_name': this.fieldName,
-      'data_hash': this.dataHash
+      "@type": CONSTRUCTOR,
+      "field_name": this.fieldName,
+      "data_hash": this.dataHash
     };
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceDataField';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSourceDataField";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -122,10 +122,10 @@ class InputPassportElementErrorSourceFrontSide
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hash': this.fileHash};
+    return {"@type": CONSTRUCTOR, "file_hash": this.fileHash};
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceFrontSide';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSourceFrontSide";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -147,11 +147,11 @@ class InputPassportElementErrorSourceReverseSide
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hash': this.fileHash};
+    return {"@type": CONSTRUCTOR, "file_hash": this.fileHash};
   }
 
   static const String CONSTRUCTOR =
-      'inputPassportElementErrorSourceReverseSide';
+      "inputPassportElementErrorSourceReverseSide";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -172,10 +172,10 @@ class InputPassportElementErrorSourceSelfie
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hash': this.fileHash};
+    return {"@type": CONSTRUCTOR, "file_hash": this.fileHash};
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceSelfie';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSourceSelfie";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -197,11 +197,11 @@ class InputPassportElementErrorSourceTranslationFile
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hash': this.fileHash};
+    return {"@type": CONSTRUCTOR, "file_hash": this.fileHash};
   }
 
   static const String CONSTRUCTOR =
-      'inputPassportElementErrorSourceTranslationFile';
+      "inputPassportElementErrorSourceTranslationFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -218,16 +218,16 @@ class InputPassportElementErrorSourceTranslationFiles
   /// Parse from a json
   InputPassportElementErrorSourceTranslationFiles.fromJson(
       Map<String, dynamic> json) {
-    this.fileHashes = json['file_hashes'] ?? [];
+    this.fileHashes = List<String>.from(json['file_hashes'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hashes': this.fileHashes};
+    return {"@type": CONSTRUCTOR, "file_hashes": this.fileHashes};
   }
 
   static const String CONSTRUCTOR =
-      'inputPassportElementErrorSourceTranslationFiles';
+      "inputPassportElementErrorSourceTranslationFiles";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -248,10 +248,10 @@ class InputPassportElementErrorSourceFile
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hash': this.fileHash};
+    return {"@type": CONSTRUCTOR, "file_hash": this.fileHash};
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceFile';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSourceFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -267,15 +267,15 @@ class InputPassportElementErrorSourceFiles
 
   /// Parse from a json
   InputPassportElementErrorSourceFiles.fromJson(Map<String, dynamic> json) {
-    this.fileHashes = json['file_hashes'] ?? [];
+    this.fileHashes = List<String>.from(json['file_hashes'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_hashes': this.fileHashes};
+    return {"@type": CONSTRUCTOR, "file_hashes": this.fileHashes};
   }
 
-  static const String CONSTRUCTOR = 'inputPassportElementErrorSourceFiles';
+  static const String CONSTRUCTOR = "inputPassportElementErrorSourceFiles";
 
   @override
   String getConstructor() => CONSTRUCTOR;

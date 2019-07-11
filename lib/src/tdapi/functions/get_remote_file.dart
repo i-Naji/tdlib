@@ -16,14 +16,14 @@ class GetRemoteFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'remote_file_id': this.remoteFileId,
-      'file_type': this.fileType.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "remote_file_id": this.remoteFileId,
+      "file_type": this.fileType.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getRemoteFile';
+  static const String CONSTRUCTOR = "getRemoteFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

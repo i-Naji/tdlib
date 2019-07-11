@@ -16,14 +16,14 @@ class GetBlockedUsers extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'offset': this.offset,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "offset": this.offset,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getBlockedUsers';
+  static const String CONSTRUCTOR = "getBlockedUsers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

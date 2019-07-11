@@ -27,20 +27,20 @@ class SendMessageAlbum extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'reply_to_message_id': this.replyToMessageId,
-      'disable_notification': this.disableNotification,
-      'from_background': this.fromBackground,
-      'input_message_contents': this
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "reply_to_message_id": this.replyToMessageId,
+      "disable_notification": this.disableNotification,
+      "from_background": this.fromBackground,
+      "input_message_contents": this
           .inputMessageContents
           .map((listItem) => listItem.toJson())
           .toList(),
-      '@extra': this.extra
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendMessageAlbum';
+  static const String CONSTRUCTOR = "sendMessageAlbum";
 
   @override
   String getConstructor() => CONSTRUCTOR;

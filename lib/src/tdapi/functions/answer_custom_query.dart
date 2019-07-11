@@ -16,14 +16,14 @@ class AnswerCustomQuery extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'custom_query_id': this.customQueryId,
-      'data': this.data,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "custom_query_id": this.customQueryId,
+      "data": this.data,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'answerCustomQuery';
+  static const String CONSTRUCTOR = "answerCustomQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;

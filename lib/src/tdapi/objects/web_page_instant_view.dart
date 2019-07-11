@@ -32,17 +32,17 @@ class WebPageInstantView implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
-      'version': this.version,
-      'url': this.url,
-      'is_rtl': this.isRtl,
-      'is_full': this.isFull
+      "version": this.version,
+      "url": this.url,
+      "is_rtl": this.isRtl,
+      "is_full": this.isFull
     };
   }
 
-  static const String CONSTRUCTOR = 'webPageInstantView';
+  static const String CONSTRUCTOR = "webPageInstantView";
 
   @override
   String getConstructor() => CONSTRUCTOR;

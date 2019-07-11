@@ -36,17 +36,17 @@ class PasswordState implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'has_password': this.hasPassword,
-      'password_hint': this.passwordHint,
-      'has_recovery_email_address': this.hasRecoveryEmailAddress,
-      'has_passport_data': this.hasPassportData,
-      'recovery_email_address_code_info':
+      "@type": CONSTRUCTOR,
+      "has_password": this.hasPassword,
+      "password_hint": this.passwordHint,
+      "has_recovery_email_address": this.hasRecoveryEmailAddress,
+      "has_passport_data": this.hasPassportData,
+      "recovery_email_address_code_info":
           this.recoveryEmailAddressCodeInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'passwordState';
+  static const String CONSTRUCTOR = "passwordState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -14,13 +14,13 @@ class SetLogVerbosityLevel extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'new_verbosity_level': this.newVerbosityLevel,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "new_verbosity_level": this.newVerbosityLevel,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setLogVerbosityLevel';
+  static const String CONSTRUCTOR = "setLogVerbosityLevel";
 
   @override
   String getConstructor() => CONSTRUCTOR;

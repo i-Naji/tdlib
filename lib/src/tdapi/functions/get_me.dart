@@ -12,10 +12,10 @@ class GetMe extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getMe';
+  static const String CONSTRUCTOR = "getMe";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -6,19 +6,19 @@ class InputFile implements TLObject {
 
   /// a InputFile return type can be :
   /// * InputFileId
-  /// * InputFileGenerated
-  /// * InputFileLocal
   /// * InputFileRemote
+  /// * InputFileLocal
+  /// * InputFileGenerated
   factory InputFile.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case InputFileId.CONSTRUCTOR:
         return InputFileId.fromJson(json);
-      case InputFileGenerated.CONSTRUCTOR:
-        return InputFileGenerated.fromJson(json);
-      case InputFileLocal.CONSTRUCTOR:
-        return InputFileLocal.fromJson(json);
       case InputFileRemote.CONSTRUCTOR:
         return InputFileRemote.fromJson(json);
+      case InputFileLocal.CONSTRUCTOR:
+        return InputFileLocal.fromJson(json);
+      case InputFileGenerated.CONSTRUCTOR:
+        return InputFileGenerated.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class InputFile implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inputFile';
+  static const String CONSTRUCTOR = "inputFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class InputFileId implements InputFile {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id};
+    return {"@type": CONSTRUCTOR, "id": this.id};
   }
 
-  static const String CONSTRUCTOR = 'inputFileId';
+  static const String CONSTRUCTOR = "inputFileId";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class InputFileRemote implements InputFile {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id};
+    return {"@type": CONSTRUCTOR, "id": this.id};
   }
 
-  static const String CONSTRUCTOR = 'inputFileRemote';
+  static const String CONSTRUCTOR = "inputFileRemote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -95,10 +95,10 @@ class InputFileLocal implements InputFile {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'path': this.path};
+    return {"@type": CONSTRUCTOR, "path": this.path};
   }
 
-  static const String CONSTRUCTOR = 'inputFileLocal';
+  static const String CONSTRUCTOR = "inputFileLocal";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -125,14 +125,14 @@ class InputFileGenerated implements InputFile {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'original_path': this.originalPath,
-      'conversion': this.conversion,
-      'expected_size': this.expectedSize
+      "@type": CONSTRUCTOR,
+      "original_path": this.originalPath,
+      "conversion": this.conversion,
+      "expected_size": this.expectedSize
     };
   }
 
-  static const String CONSTRUCTOR = 'inputFileGenerated';
+  static const String CONSTRUCTOR = "inputFileGenerated";
 
   @override
   String getConstructor() => CONSTRUCTOR;

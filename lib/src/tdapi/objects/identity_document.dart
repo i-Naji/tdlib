@@ -32,26 +32,26 @@ class IdentityDocument implements TLObject {
     this.reverseSide =
         DatedFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
     this.selfie = DatedFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = (json['translation'] ?? [])
+    this.translation = List<DatedFile>.from((json['translation'] ?? [])
         .map((listValue) => DatedFile.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'number': this.number,
-      'expiry_date': this.expiryDate.toJson(),
-      'front_side': this.frontSide.toJson(),
-      'reverse_side': this.reverseSide.toJson(),
-      'selfie': this.selfie.toJson(),
-      'translation':
+      "@type": CONSTRUCTOR,
+      "number": this.number,
+      "expiry_date": this.expiryDate.toJson(),
+      "front_side": this.frontSide.toJson(),
+      "reverse_side": this.reverseSide.toJson(),
+      "selfie": this.selfie.toJson(),
+      "translation":
           this.translation.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'identityDocument';
+  static const String CONSTRUCTOR = "identityDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -21,16 +21,16 @@ class ValidateOrderInfo extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'order_info': this.orderInfo.toJson(),
-      'allow_save': this.allowSave,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "order_info": this.orderInfo.toJson(),
+      "allow_save": this.allowSave,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'validateOrderInfo';
+  static const String CONSTRUCTOR = "validateOrderInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

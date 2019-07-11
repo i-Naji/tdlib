@@ -14,13 +14,13 @@ class TerminateSession extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'session_id': this.sessionId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "session_id": this.sessionId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'terminateSession';
+  static const String CONSTRUCTOR = "terminateSession";
 
   @override
   String getConstructor() => CONSTRUCTOR;

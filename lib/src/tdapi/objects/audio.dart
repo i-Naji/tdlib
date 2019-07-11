@@ -41,18 +41,18 @@ class Audio implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'duration': this.duration,
-      'title': this.title,
-      'performer': this.performer,
-      'file_name': this.fileName,
-      'mime_type': this.mimeType,
-      'album_cover_thumbnail': this.albumCoverThumbnail.toJson(),
-      'audio': this.audio.toJson()
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+      "title": this.title,
+      "performer": this.performer,
+      "file_name": this.fileName,
+      "mime_type": this.mimeType,
+      "album_cover_thumbnail": this.albumCoverThumbnail.toJson(),
+      "audio": this.audio.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'audio';
+  static const String CONSTRUCTOR = "audio";
 
   @override
   String getConstructor() => CONSTRUCTOR;

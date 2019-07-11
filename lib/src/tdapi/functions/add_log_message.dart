@@ -16,14 +16,14 @@ class AddLogMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'verbosity_level': this.verbosityLevel,
-      'text': this.text,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "verbosity_level": this.verbosityLevel,
+      "text": this.text,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addLogMessage';
+  static const String CONSTRUCTOR = "addLogMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

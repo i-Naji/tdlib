@@ -16,14 +16,14 @@ class ToggleSupergroupSignMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'sign_messages': this.signMessages,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "sign_messages": this.signMessages,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleSupergroupSignMessages';
+  static const String CONSTRUCTOR = "toggleSupergroupSignMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

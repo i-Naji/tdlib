@@ -5,35 +5,35 @@ class AuthorizationState implements TLObject {
   AuthorizationState();
 
   /// a AuthorizationState return type can be :
-  /// * AuthorizationStateWaitCode
   /// * AuthorizationStateWaitTdlibParameters
-  /// * AuthorizationStateClosing
   /// * AuthorizationStateWaitEncryptionKey
-  /// * AuthorizationStateClosed
   /// * AuthorizationStateWaitPhoneNumber
-  /// * AuthorizationStateLoggingOut
-  /// * AuthorizationStateReady
+  /// * AuthorizationStateWaitCode
   /// * AuthorizationStateWaitPassword
+  /// * AuthorizationStateReady
+  /// * AuthorizationStateLoggingOut
+  /// * AuthorizationStateClosing
+  /// * AuthorizationStateClosed
   factory AuthorizationState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case AuthorizationStateWaitCode.CONSTRUCTOR:
-        return AuthorizationStateWaitCode.fromJson(json);
       case AuthorizationStateWaitTdlibParameters.CONSTRUCTOR:
         return AuthorizationStateWaitTdlibParameters.fromJson(json);
-      case AuthorizationStateClosing.CONSTRUCTOR:
-        return AuthorizationStateClosing.fromJson(json);
       case AuthorizationStateWaitEncryptionKey.CONSTRUCTOR:
         return AuthorizationStateWaitEncryptionKey.fromJson(json);
-      case AuthorizationStateClosed.CONSTRUCTOR:
-        return AuthorizationStateClosed.fromJson(json);
       case AuthorizationStateWaitPhoneNumber.CONSTRUCTOR:
         return AuthorizationStateWaitPhoneNumber.fromJson(json);
-      case AuthorizationStateLoggingOut.CONSTRUCTOR:
-        return AuthorizationStateLoggingOut.fromJson(json);
-      case AuthorizationStateReady.CONSTRUCTOR:
-        return AuthorizationStateReady.fromJson(json);
+      case AuthorizationStateWaitCode.CONSTRUCTOR:
+        return AuthorizationStateWaitCode.fromJson(json);
       case AuthorizationStateWaitPassword.CONSTRUCTOR:
         return AuthorizationStateWaitPassword.fromJson(json);
+      case AuthorizationStateReady.CONSTRUCTOR:
+        return AuthorizationStateReady.fromJson(json);
+      case AuthorizationStateLoggingOut.CONSTRUCTOR:
+        return AuthorizationStateLoggingOut.fromJson(json);
+      case AuthorizationStateClosing.CONSTRUCTOR:
+        return AuthorizationStateClosing.fromJson(json);
+      case AuthorizationStateClosed.CONSTRUCTOR:
+        return AuthorizationStateClosed.fromJson(json);
       default:
         return null;
     }
@@ -44,7 +44,7 @@ class AuthorizationState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'authorizationState';
+  static const String CONSTRUCTOR = "authorizationState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -64,10 +64,10 @@ class AuthorizationStateWaitTdlibParameters implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitTdlibParameters';
+  static const String CONSTRUCTOR = "authorizationStateWaitTdlibParameters";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -89,10 +89,10 @@ class AuthorizationStateWaitEncryptionKey implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'is_encrypted': this.isEncrypted};
+    return {"@type": CONSTRUCTOR, "is_encrypted": this.isEncrypted};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitEncryptionKey';
+  static const String CONSTRUCTOR = "authorizationStateWaitEncryptionKey";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -112,10 +112,10 @@ class AuthorizationStateWaitPhoneNumber implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitPhoneNumber';
+  static const String CONSTRUCTOR = "authorizationStateWaitPhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -147,14 +147,14 @@ class AuthorizationStateWaitCode implements AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_registered': this.isRegistered,
-      'terms_of_service': this.termsOfService.toJson(),
-      'code_info': this.codeInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "is_registered": this.isRegistered,
+      "terms_of_service": this.termsOfService.toJson(),
+      "code_info": this.codeInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitCode';
+  static const String CONSTRUCTOR = "authorizationStateWaitCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -186,14 +186,14 @@ class AuthorizationStateWaitPassword implements AuthorizationState {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'password_hint': this.passwordHint,
-      'has_recovery_email_address': this.hasRecoveryEmailAddress,
-      'recovery_email_address_pattern': this.recoveryEmailAddressPattern
+      "@type": CONSTRUCTOR,
+      "password_hint": this.passwordHint,
+      "has_recovery_email_address": this.hasRecoveryEmailAddress,
+      "recovery_email_address_pattern": this.recoveryEmailAddressPattern
     };
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateWaitPassword';
+  static const String CONSTRUCTOR = "authorizationStateWaitPassword";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -213,10 +213,10 @@ class AuthorizationStateReady implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateReady';
+  static const String CONSTRUCTOR = "authorizationStateReady";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -236,10 +236,10 @@ class AuthorizationStateLoggingOut implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateLoggingOut';
+  static const String CONSTRUCTOR = "authorizationStateLoggingOut";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -259,10 +259,10 @@ class AuthorizationStateClosing implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateClosing';
+  static const String CONSTRUCTOR = "authorizationStateClosing";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -282,10 +282,10 @@ class AuthorizationStateClosed implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'authorizationStateClosed';
+  static const String CONSTRUCTOR = "authorizationStateClosed";
 
   @override
   String getConstructor() => CONSTRUCTOR;

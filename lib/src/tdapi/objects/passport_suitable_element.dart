@@ -29,15 +29,15 @@ class PassportSuitableElement implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type.toJson(),
-      'is_selfie_required': this.isSelfieRequired,
-      'is_translation_required': this.isTranslationRequired,
-      'is_native_name_required': this.isNativeNameRequired
+      "@type": CONSTRUCTOR,
+      "type": this.type.toJson(),
+      "is_selfie_required": this.isSelfieRequired,
+      "is_translation_required": this.isTranslationRequired,
+      "is_native_name_required": this.isNativeNameRequired
     };
   }
 
-  static const String CONSTRUCTOR = 'passportSuitableElement';
+  static const String CONSTRUCTOR = "passportSuitableElement";
 
   @override
   String getConstructor() => CONSTRUCTOR;

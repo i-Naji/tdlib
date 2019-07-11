@@ -13,10 +13,10 @@ class CreateNewSecretChat extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'createNewSecretChat';
+  static const String CONSTRUCTOR = "createNewSecretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

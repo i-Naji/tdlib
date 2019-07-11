@@ -33,16 +33,16 @@ class ChatMember implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'inviter_user_id': this.inviterUserId,
-      'joined_chat_date': this.joinedChatDate,
-      'status': this.status.toJson(),
-      'bot_info': this.botInfo.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "inviter_user_id": this.inviterUserId,
+      "joined_chat_date": this.joinedChatDate,
+      "status": this.status.toJson(),
+      "bot_info": this.botInfo.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatMember';
+  static const String CONSTRUCTOR = "chatMember";
 
   @override
   String getConstructor() => CONSTRUCTOR;

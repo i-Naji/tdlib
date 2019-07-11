@@ -39,17 +39,17 @@ class BasicGroup implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'member_count': this.memberCount,
-      'status': this.status.toJson(),
-      'everyone_is_administrator': this.everyoneIsAdministrator,
-      'is_active': this.isActive,
-      'upgraded_to_supergroup_id': this.upgradedToSupergroupId
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "member_count": this.memberCount,
+      "status": this.status.toJson(),
+      "everyone_is_administrator": this.everyoneIsAdministrator,
+      "is_active": this.isActive,
+      "upgraded_to_supergroup_id": this.upgradedToSupergroupId
     };
   }
 
-  static const String CONSTRUCTOR = 'basicGroup';
+  static const String CONSTRUCTOR = "basicGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;

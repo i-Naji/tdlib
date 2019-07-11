@@ -32,16 +32,16 @@ class PollOption implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'voter_count': this.voterCount,
-      'vote_percentage': this.votePercentage,
-      'is_chosen': this.isChosen,
-      'is_being_chosen': this.isBeingChosen
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "voter_count": this.voterCount,
+      "vote_percentage": this.votePercentage,
+      "is_chosen": this.isChosen,
+      "is_being_chosen": this.isBeingChosen
     };
   }
 
-  static const String CONSTRUCTOR = 'pollOption';
+  static const String CONSTRUCTOR = "pollOption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

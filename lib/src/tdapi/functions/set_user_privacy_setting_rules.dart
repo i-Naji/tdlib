@@ -16,14 +16,14 @@ class SetUserPrivacySettingRules extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'setting': this.setting.toJson(),
-      'rules': this.rules.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "setting": this.setting.toJson(),
+      "rules": this.rules.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setUserPrivacySettingRules';
+  static const String CONSTRUCTOR = "setUserPrivacySettingRules";
 
   @override
   String getConstructor() => CONSTRUCTOR;

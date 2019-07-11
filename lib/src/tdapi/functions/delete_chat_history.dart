@@ -18,15 +18,15 @@ class DeleteChatHistory extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'remove_from_chat_list': this.removeFromChatList,
-      'revoke': this.revoke,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "remove_from_chat_list": this.removeFromChatList,
+      "revoke": this.revoke,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'deleteChatHistory';
+  static const String CONSTRUCTOR = "deleteChatHistory";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -12,9 +12,9 @@ class FoundMessages implements TLObject {
 
   /// Parse from a json
   FoundMessages.fromJson(Map<String, dynamic> json) {
-    this.messages = (json['messages'] ?? [])
+    this.messages = List<Message>.from((json['messages'] ?? [])
         .map((listValue) => Message.fromJson(listValue))
-        .toList();
+        .toList());
     this.nextFromSearchId = json['next_from_search_id'];
     this.extra = json['@extra'];
   }
@@ -22,13 +22,13 @@ class FoundMessages implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'messages': this.messages.map((listItem) => listItem.toJson()).toList(),
-      'next_from_search_id': this.nextFromSearchId
+      "@type": CONSTRUCTOR,
+      "messages": this.messages.map((listItem) => listItem.toJson()).toList(),
+      "next_from_search_id": this.nextFromSearchId
     };
   }
 
-  static const String CONSTRUCTOR = 'foundMessages';
+  static const String CONSTRUCTOR = "foundMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

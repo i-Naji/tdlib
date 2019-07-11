@@ -40,18 +40,18 @@ class InputIdentityDocument implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'number': this.number,
-      'expiry_date': this.expiryDate.toJson(),
-      'front_side': this.frontSide.toJson(),
-      'reverse_side': this.reverseSide.toJson(),
-      'selfie': this.selfie.toJson(),
-      'translation':
+      "@type": CONSTRUCTOR,
+      "number": this.number,
+      "expiry_date": this.expiryDate.toJson(),
+      "front_side": this.frontSide.toJson(),
+      "reverse_side": this.reverseSide.toJson(),
+      "selfie": this.selfie.toJson(),
+      "translation":
           this.translation.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputIdentityDocument';
+  static const String CONSTRUCTOR = "inputIdentityDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;

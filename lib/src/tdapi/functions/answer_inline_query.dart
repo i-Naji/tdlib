@@ -33,19 +33,19 @@ class AnswerInlineQuery extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'inline_query_id': this.inlineQueryId,
-      'is_personal': this.isPersonal,
-      'results': this.results.map((listItem) => listItem.toJson()).toList(),
-      'cache_time': this.cacheTime,
-      'next_offset': this.nextOffset,
-      'switch_pm_text': this.switchPmText,
-      'switch_pm_parameter': this.switchPmParameter,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "inline_query_id": this.inlineQueryId,
+      "is_personal": this.isPersonal,
+      "results": this.results.map((listItem) => listItem.toJson()).toList(),
+      "cache_time": this.cacheTime,
+      "next_offset": this.nextOffset,
+      "switch_pm_text": this.switchPmText,
+      "switch_pm_parameter": this.switchPmParameter,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'answerInlineQuery';
+  static const String CONSTRUCTOR = "answerInlineQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;

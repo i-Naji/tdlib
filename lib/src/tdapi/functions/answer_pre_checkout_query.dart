@@ -16,14 +16,14 @@ class AnswerPreCheckoutQuery extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'pre_checkout_query_id': this.preCheckoutQueryId,
-      'error_message': this.errorMessage,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "pre_checkout_query_id": this.preCheckoutQueryId,
+      "error_message": this.errorMessage,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'answerPreCheckoutQuery';
+  static const String CONSTRUCTOR = "answerPreCheckoutQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,26 +5,26 @@ class CallState implements TLObject {
   CallState();
 
   /// a CallState return type can be :
-  /// * CallStateReady
-  /// * CallStateExchangingKeys
-  /// * CallStateError
-  /// * CallStateDiscarded
   /// * CallStatePending
+  /// * CallStateExchangingKeys
+  /// * CallStateReady
   /// * CallStateHangingUp
+  /// * CallStateDiscarded
+  /// * CallStateError
   factory CallState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case CallStateReady.CONSTRUCTOR:
-        return CallStateReady.fromJson(json);
-      case CallStateExchangingKeys.CONSTRUCTOR:
-        return CallStateExchangingKeys.fromJson(json);
-      case CallStateError.CONSTRUCTOR:
-        return CallStateError.fromJson(json);
-      case CallStateDiscarded.CONSTRUCTOR:
-        return CallStateDiscarded.fromJson(json);
       case CallStatePending.CONSTRUCTOR:
         return CallStatePending.fromJson(json);
+      case CallStateExchangingKeys.CONSTRUCTOR:
+        return CallStateExchangingKeys.fromJson(json);
+      case CallStateReady.CONSTRUCTOR:
+        return CallStateReady.fromJson(json);
       case CallStateHangingUp.CONSTRUCTOR:
         return CallStateHangingUp.fromJson(json);
+      case CallStateDiscarded.CONSTRUCTOR:
+        return CallStateDiscarded.fromJson(json);
+      case CallStateError.CONSTRUCTOR:
+        return CallStateError.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class CallState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'callState';
+  static const String CONSTRUCTOR = "callState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -59,13 +59,13 @@ class CallStatePending implements CallState {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_created': this.isCreated,
-      'is_received': this.isReceived
+      "@type": CONSTRUCTOR,
+      "is_created": this.isCreated,
+      "is_received": this.isReceived
     };
   }
 
-  static const String CONSTRUCTOR = 'callStatePending';
+  static const String CONSTRUCTOR = "callStatePending";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -81,10 +81,10 @@ class CallStateExchangingKeys implements CallState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callStateExchangingKeys';
+  static const String CONSTRUCTOR = "callStateExchangingKeys";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -117,30 +117,30 @@ class CallStateReady implements CallState {
   CallStateReady.fromJson(Map<String, dynamic> json) {
     this.protocol =
         CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{});
-    this.connections = (json['connections'] ?? [])
+    this.connections = List<CallConnection>.from((json['connections'] ?? [])
         .map((listValue) => CallConnection.fromJson(listValue))
-        .toList();
+        .toList());
     this.config = json['config'];
     this.encryptionKey = json['encryption_key'];
-    this.emojis = json['emojis'] ?? [];
+    this.emojis = List<String>.from(json['emojis'] ?? []);
     this.allowP2p = json['allow_p2p'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'protocol': this.protocol.toJson(),
-      'connections':
+      "@type": CONSTRUCTOR,
+      "protocol": this.protocol.toJson(),
+      "connections":
           this.connections.map((listItem) => listItem.toJson()).toList(),
-      'config': this.config,
-      'encryption_key': this.encryptionKey,
-      'emojis': this.emojis,
-      'allow_p2p': this.allowP2p
+      "config": this.config,
+      "encryption_key": this.encryptionKey,
+      "emojis": this.emojis,
+      "allow_p2p": this.allowP2p
     };
   }
 
-  static const String CONSTRUCTOR = 'callStateReady';
+  static const String CONSTRUCTOR = "callStateReady";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -156,10 +156,10 @@ class CallStateHangingUp implements CallState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callStateHangingUp';
+  static const String CONSTRUCTOR = "callStateHangingUp";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -187,14 +187,14 @@ class CallStateDiscarded implements CallState {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'reason': this.reason.toJson(),
-      'need_rating': this.needRating,
-      'need_debug_information': this.needDebugInformation
+      "@type": CONSTRUCTOR,
+      "reason": this.reason.toJson(),
+      "need_rating": this.needRating,
+      "need_debug_information": this.needDebugInformation
     };
   }
 
-  static const String CONSTRUCTOR = 'callStateDiscarded';
+  static const String CONSTRUCTOR = "callStateDiscarded";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -214,10 +214,10 @@ class CallStateError implements CallState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'error': this.error.toJson()};
+    return {"@type": CONSTRUCTOR, "error": this.error.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'callStateError';
+  static const String CONSTRUCTOR = "callStateError";
 
   @override
   String getConstructor() => CONSTRUCTOR;

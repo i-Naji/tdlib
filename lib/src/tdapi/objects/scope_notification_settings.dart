@@ -35,17 +35,17 @@ class ScopeNotificationSettings implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'mute_for': this.muteFor,
-      'sound': this.sound,
-      'show_preview': this.showPreview,
-      'disable_pinned_message_notifications':
+      "@type": CONSTRUCTOR,
+      "mute_for": this.muteFor,
+      "sound": this.sound,
+      "show_preview": this.showPreview,
+      "disable_pinned_message_notifications":
           this.disablePinnedMessageNotifications,
-      'disable_mention_notifications': this.disableMentionNotifications
+      "disable_mention_notifications": this.disableMentionNotifications
     };
   }
 
-  static const String CONSTRUCTOR = 'scopeNotificationSettings';
+  static const String CONSTRUCTOR = "scopeNotificationSettings";
 
   @override
   String getConstructor() => CONSTRUCTOR;

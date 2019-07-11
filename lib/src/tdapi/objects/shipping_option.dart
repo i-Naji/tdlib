@@ -15,23 +15,23 @@ class ShippingOption implements TLObject {
   ShippingOption.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.title = json['title'];
-    this.priceParts = (json['price_parts'] ?? [])
+    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? [])
         .map((listValue) => LabeledPricePart.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'price_parts':
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "price_parts":
           this.priceParts.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'shippingOption';
+  static const String CONSTRUCTOR = "shippingOption";
 
   @override
   String getConstructor() => CONSTRUCTOR;

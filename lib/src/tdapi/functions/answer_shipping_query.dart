@@ -19,16 +19,16 @@ class AnswerShippingQuery extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'shipping_query_id': this.shippingQueryId,
-      'shipping_options':
+      "@type": CONSTRUCTOR,
+      "shipping_query_id": this.shippingQueryId,
+      "shipping_options":
           this.shippingOptions.map((listItem) => listItem.toJson()).toList(),
-      'error_message': this.errorMessage,
-      '@extra': this.extra
+      "error_message": this.errorMessage,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'answerShippingQuery';
+  static const String CONSTRUCTOR = "answerShippingQuery";
 
   @override
   String getConstructor() => CONSTRUCTOR;

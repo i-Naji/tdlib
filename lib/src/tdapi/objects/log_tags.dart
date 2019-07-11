@@ -10,16 +10,16 @@ class LogTags implements TLObject {
 
   /// Parse from a json
   LogTags.fromJson(Map<String, dynamic> json) {
-    this.tags = json['tags'] ?? [];
+    this.tags = List<String>.from(json['tags'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'tags': this.tags};
+    return {"@type": CONSTRUCTOR, "tags": this.tags};
   }
 
-  static const String CONSTRUCTOR = 'logTags';
+  static const String CONSTRUCTOR = "logTags";
 
   @override
   String getConstructor() => CONSTRUCTOR;

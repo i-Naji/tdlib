@@ -5,38 +5,38 @@ class InlineQueryResult implements TLObject {
   InlineQueryResult();
 
   /// a InlineQueryResult return type can be :
-  /// * InlineQueryResultDocument
-  /// * InlineQueryResultAnimation
-  /// * InlineQueryResultLocation
-  /// * InlineQueryResultGame
-  /// * InlineQueryResultVenue
-  /// * InlineQueryResultAudio
-  /// * InlineQueryResultPhoto
   /// * InlineQueryResultArticle
   /// * InlineQueryResultContact
+  /// * InlineQueryResultLocation
+  /// * InlineQueryResultVenue
+  /// * InlineQueryResultGame
+  /// * InlineQueryResultAnimation
+  /// * InlineQueryResultAudio
+  /// * InlineQueryResultDocument
+  /// * InlineQueryResultPhoto
   /// * InlineQueryResultSticker
   /// * InlineQueryResultVideo
   /// * InlineQueryResultVoiceNote
   factory InlineQueryResult.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InlineQueryResultDocument.CONSTRUCTOR:
-        return InlineQueryResultDocument.fromJson(json);
-      case InlineQueryResultAnimation.CONSTRUCTOR:
-        return InlineQueryResultAnimation.fromJson(json);
-      case InlineQueryResultLocation.CONSTRUCTOR:
-        return InlineQueryResultLocation.fromJson(json);
-      case InlineQueryResultGame.CONSTRUCTOR:
-        return InlineQueryResultGame.fromJson(json);
-      case InlineQueryResultVenue.CONSTRUCTOR:
-        return InlineQueryResultVenue.fromJson(json);
-      case InlineQueryResultAudio.CONSTRUCTOR:
-        return InlineQueryResultAudio.fromJson(json);
-      case InlineQueryResultPhoto.CONSTRUCTOR:
-        return InlineQueryResultPhoto.fromJson(json);
       case InlineQueryResultArticle.CONSTRUCTOR:
         return InlineQueryResultArticle.fromJson(json);
       case InlineQueryResultContact.CONSTRUCTOR:
         return InlineQueryResultContact.fromJson(json);
+      case InlineQueryResultLocation.CONSTRUCTOR:
+        return InlineQueryResultLocation.fromJson(json);
+      case InlineQueryResultVenue.CONSTRUCTOR:
+        return InlineQueryResultVenue.fromJson(json);
+      case InlineQueryResultGame.CONSTRUCTOR:
+        return InlineQueryResultGame.fromJson(json);
+      case InlineQueryResultAnimation.CONSTRUCTOR:
+        return InlineQueryResultAnimation.fromJson(json);
+      case InlineQueryResultAudio.CONSTRUCTOR:
+        return InlineQueryResultAudio.fromJson(json);
+      case InlineQueryResultDocument.CONSTRUCTOR:
+        return InlineQueryResultDocument.fromJson(json);
+      case InlineQueryResultPhoto.CONSTRUCTOR:
+        return InlineQueryResultPhoto.fromJson(json);
       case InlineQueryResultSticker.CONSTRUCTOR:
         return InlineQueryResultSticker.fromJson(json);
       case InlineQueryResultVideo.CONSTRUCTOR:
@@ -53,7 +53,7 @@ class InlineQueryResult implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResult';
+  static const String CONSTRUCTOR = "inlineQueryResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -96,17 +96,17 @@ class InlineQueryResultArticle implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'url': this.url,
-      'hide_url': this.hideUrl,
-      'title': this.title,
-      'description': this.description,
-      'thumbnail': this.thumbnail.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "url": this.url,
+      "hide_url": this.hideUrl,
+      "title": this.title,
+      "description": this.description,
+      "thumbnail": this.thumbnail.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultArticle';
+  static const String CONSTRUCTOR = "inlineQueryResultArticle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -134,14 +134,14 @@ class InlineQueryResultContact implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'contact': this.contact.toJson(),
-      'thumbnail': this.thumbnail.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "contact": this.contact.toJson(),
+      "thumbnail": this.thumbnail.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultContact';
+  static const String CONSTRUCTOR = "inlineQueryResultContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -173,15 +173,15 @@ class InlineQueryResultLocation implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'location': this.location.toJson(),
-      'title': this.title,
-      'thumbnail': this.thumbnail.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "location": this.location.toJson(),
+      "title": this.title,
+      "thumbnail": this.thumbnail.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultLocation';
+  static const String CONSTRUCTOR = "inlineQueryResultLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -209,14 +209,14 @@ class InlineQueryResultVenue implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'venue': this.venue.toJson(),
-      'thumbnail': this.thumbnail.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "venue": this.venue.toJson(),
+      "thumbnail": this.thumbnail.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultVenue';
+  static const String CONSTRUCTOR = "inlineQueryResultVenue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -239,10 +239,10 @@ class InlineQueryResultGame implements InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id, 'game': this.game.toJson()};
+    return {"@type": CONSTRUCTOR, "id": this.id, "game": this.game.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultGame';
+  static const String CONSTRUCTOR = "inlineQueryResultGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -270,14 +270,14 @@ class InlineQueryResultAnimation implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'animation': this.animation.toJson(),
-      'title': this.title
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "animation": this.animation.toJson(),
+      "title": this.title
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultAnimation';
+  static const String CONSTRUCTOR = "inlineQueryResultAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -300,10 +300,10 @@ class InlineQueryResultAudio implements InlineQueryResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id, 'audio': this.audio.toJson()};
+    return {"@type": CONSTRUCTOR, "id": this.id, "audio": this.audio.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultAudio';
+  static const String CONSTRUCTOR = "inlineQueryResultAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -334,15 +334,15 @@ class InlineQueryResultDocument implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'document': this.document.toJson(),
-      'title': this.title,
-      'description': this.description
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "document": this.document.toJson(),
+      "title": this.title,
+      "description": this.description
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultDocument';
+  static const String CONSTRUCTOR = "inlineQueryResultDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -372,15 +372,15 @@ class InlineQueryResultPhoto implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'photo': this.photo.toJson(),
-      'title': this.title,
-      'description': this.description
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "photo": this.photo.toJson(),
+      "title": this.title,
+      "description": this.description
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultPhoto';
+  static const String CONSTRUCTOR = "inlineQueryResultPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -404,13 +404,13 @@ class InlineQueryResultSticker implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'sticker': this.sticker.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "sticker": this.sticker.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultSticker';
+  static const String CONSTRUCTOR = "inlineQueryResultSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -440,15 +440,15 @@ class InlineQueryResultVideo implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'video': this.video.toJson(),
-      'title': this.title,
-      'description': this.description
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "video": this.video.toJson(),
+      "title": this.title,
+      "description": this.description
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultVideo';
+  static const String CONSTRUCTOR = "inlineQueryResultVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -476,14 +476,14 @@ class InlineQueryResultVoiceNote implements InlineQueryResult {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'voice_note': this.voiceNote.toJson(),
-      'title': this.title
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "voice_note": this.voiceNote.toJson(),
+      "title": this.title
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResultVoiceNote';
+  static const String CONSTRUCTOR = "inlineQueryResultVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;

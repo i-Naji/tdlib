@@ -12,10 +12,10 @@ class GetConnectedWebsites extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getConnectedWebsites';
+  static const String CONSTRUCTOR = "getConnectedWebsites";
 
   @override
   String getConstructor() => CONSTRUCTOR;

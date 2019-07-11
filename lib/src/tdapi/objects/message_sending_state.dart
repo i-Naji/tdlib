@@ -5,14 +5,14 @@ class MessageSendingState implements TLObject {
   MessageSendingState();
 
   /// a MessageSendingState return type can be :
-  /// * MessageSendingStateFailed
   /// * MessageSendingStatePending
+  /// * MessageSendingStateFailed
   factory MessageSendingState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case MessageSendingStateFailed.CONSTRUCTOR:
-        return MessageSendingStateFailed.fromJson(json);
       case MessageSendingStatePending.CONSTRUCTOR:
         return MessageSendingStatePending.fromJson(json);
+      case MessageSendingStateFailed.CONSTRUCTOR:
+        return MessageSendingStateFailed.fromJson(json);
       default:
         return null;
     }
@@ -23,7 +23,7 @@ class MessageSendingState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'messageSendingState';
+  static const String CONSTRUCTOR = "messageSendingState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -39,10 +39,10 @@ class MessageSendingStatePending implements MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageSendingStatePending';
+  static const String CONSTRUCTOR = "messageSendingStatePending";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -58,10 +58,10 @@ class MessageSendingStateFailed implements MessageSendingState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageSendingStateFailed';
+  static const String CONSTRUCTOR = "messageSendingStateFailed";
 
   @override
   String getConstructor() => CONSTRUCTOR;

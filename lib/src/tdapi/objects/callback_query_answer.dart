@@ -23,14 +23,14 @@ class CallbackQueryAnswer implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'show_alert': this.showAlert,
-      'url': this.url
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "show_alert": this.showAlert,
+      "url": this.url
     };
   }
 
-  static const String CONSTRUCTOR = 'callbackQueryAnswer';
+  static const String CONSTRUCTOR = "callbackQueryAnswer";
 
   @override
   String getConstructor() => CONSTRUCTOR;

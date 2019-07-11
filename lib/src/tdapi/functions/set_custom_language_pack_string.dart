@@ -16,14 +16,14 @@ class SetCustomLanguagePackString extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_pack_id': this.languagePackId,
-      'new_string': this.newString.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "language_pack_id": this.languagePackId,
+      "new_string": this.newString.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setCustomLanguagePackString';
+  static const String CONSTRUCTOR = "setCustomLanguagePackString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,23 +5,23 @@ class ChatMembersFilter implements TLObject {
   ChatMembersFilter();
 
   /// a ChatMembersFilter return type can be :
-  /// * ChatMembersFilterBanned
-  /// * ChatMembersFilterRestricted
   /// * ChatMembersFilterAdministrators
-  /// * ChatMembersFilterBots
   /// * ChatMembersFilterMembers
+  /// * ChatMembersFilterRestricted
+  /// * ChatMembersFilterBanned
+  /// * ChatMembersFilterBots
   factory ChatMembersFilter.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ChatMembersFilterBanned.CONSTRUCTOR:
-        return ChatMembersFilterBanned.fromJson(json);
-      case ChatMembersFilterRestricted.CONSTRUCTOR:
-        return ChatMembersFilterRestricted.fromJson(json);
       case ChatMembersFilterAdministrators.CONSTRUCTOR:
         return ChatMembersFilterAdministrators.fromJson(json);
-      case ChatMembersFilterBots.CONSTRUCTOR:
-        return ChatMembersFilterBots.fromJson(json);
       case ChatMembersFilterMembers.CONSTRUCTOR:
         return ChatMembersFilterMembers.fromJson(json);
+      case ChatMembersFilterRestricted.CONSTRUCTOR:
+        return ChatMembersFilterRestricted.fromJson(json);
+      case ChatMembersFilterBanned.CONSTRUCTOR:
+        return ChatMembersFilterBanned.fromJson(json);
+      case ChatMembersFilterBots.CONSTRUCTOR:
+        return ChatMembersFilterBots.fromJson(json);
       default:
         return null;
     }
@@ -32,7 +32,7 @@ class ChatMembersFilter implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilter';
+  static const String CONSTRUCTOR = "chatMembersFilter";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -48,10 +48,10 @@ class ChatMembersFilterAdministrators implements ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilterAdministrators';
+  static const String CONSTRUCTOR = "chatMembersFilterAdministrators";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -67,10 +67,10 @@ class ChatMembersFilterMembers implements ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilterMembers';
+  static const String CONSTRUCTOR = "chatMembersFilterMembers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -86,10 +86,10 @@ class ChatMembersFilterRestricted implements ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilterRestricted';
+  static const String CONSTRUCTOR = "chatMembersFilterRestricted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class ChatMembersFilterBanned implements ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilterBanned';
+  static const String CONSTRUCTOR = "chatMembersFilterBanned";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -124,10 +124,10 @@ class ChatMembersFilterBots implements ChatMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMembersFilterBots';
+  static const String CONSTRUCTOR = "chatMembersFilterBots";
 
   @override
   String getConstructor() => CONSTRUCTOR;

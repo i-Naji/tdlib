@@ -24,15 +24,15 @@ class MaskPosition implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'point': this.point.toJson(),
-      'x_shift': this.xShift,
-      'y_shift': this.yShift,
-      'scale': this.scale
+      "@type": CONSTRUCTOR,
+      "point": this.point.toJson(),
+      "x_shift": this.xShift,
+      "y_shift": this.yShift,
+      "scale": this.scale
     };
   }
 
-  static const String CONSTRUCTOR = 'maskPosition';
+  static const String CONSTRUCTOR = "maskPosition";
 
   @override
   String getConstructor() => CONSTRUCTOR;

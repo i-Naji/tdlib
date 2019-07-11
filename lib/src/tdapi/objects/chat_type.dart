@@ -5,20 +5,20 @@ class ChatType implements TLObject {
   ChatType();
 
   /// a ChatType return type can be :
-  /// * ChatTypeSecret
+  /// * ChatTypePrivate
   /// * ChatTypeBasicGroup
   /// * ChatTypeSupergroup
-  /// * ChatTypePrivate
+  /// * ChatTypeSecret
   factory ChatType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ChatTypeSecret.CONSTRUCTOR:
-        return ChatTypeSecret.fromJson(json);
+      case ChatTypePrivate.CONSTRUCTOR:
+        return ChatTypePrivate.fromJson(json);
       case ChatTypeBasicGroup.CONSTRUCTOR:
         return ChatTypeBasicGroup.fromJson(json);
       case ChatTypeSupergroup.CONSTRUCTOR:
         return ChatTypeSupergroup.fromJson(json);
-      case ChatTypePrivate.CONSTRUCTOR:
-        return ChatTypePrivate.fromJson(json);
+      case ChatTypeSecret.CONSTRUCTOR:
+        return ChatTypeSecret.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class ChatType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatType';
+  static const String CONSTRUCTOR = "chatType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class ChatTypePrivate implements ChatType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId};
   }
 
-  static const String CONSTRUCTOR = 'chatTypePrivate';
+  static const String CONSTRUCTOR = "chatTypePrivate";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class ChatTypeBasicGroup implements ChatType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'basic_group_id': this.basicGroupId};
+    return {"@type": CONSTRUCTOR, "basic_group_id": this.basicGroupId};
   }
 
-  static const String CONSTRUCTOR = 'chatTypeBasicGroup';
+  static const String CONSTRUCTOR = "chatTypeBasicGroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -99,13 +99,13 @@ class ChatTypeSupergroup implements ChatType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'is_channel': this.isChannel
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "is_channel": this.isChannel
     };
   }
 
-  static const String CONSTRUCTOR = 'chatTypeSupergroup';
+  static const String CONSTRUCTOR = "chatTypeSupergroup";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -129,13 +129,13 @@ class ChatTypeSecret implements ChatType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'secret_chat_id': this.secretChatId,
-      'user_id': this.userId
+      "@type": CONSTRUCTOR,
+      "secret_chat_id": this.secretChatId,
+      "user_id": this.userId
     };
   }
 
-  static const String CONSTRUCTOR = 'chatTypeSecret';
+  static const String CONSTRUCTOR = "chatTypeSecret";
 
   @override
   String getConstructor() => CONSTRUCTOR;

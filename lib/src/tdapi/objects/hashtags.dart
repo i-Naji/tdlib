@@ -10,16 +10,16 @@ class Hashtags implements TLObject {
 
   /// Parse from a json
   Hashtags.fromJson(Map<String, dynamic> json) {
-    this.hashtags = json['hashtags'] ?? [];
+    this.hashtags = List<String>.from(json['hashtags'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'hashtags': this.hashtags};
+    return {"@type": CONSTRUCTOR, "hashtags": this.hashtags};
   }
 
-  static const String CONSTRUCTOR = 'hashtags';
+  static const String CONSTRUCTOR = "hashtags";
 
   @override
   String getConstructor() => CONSTRUCTOR;

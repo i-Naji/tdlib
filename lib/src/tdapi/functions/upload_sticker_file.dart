@@ -16,14 +16,14 @@ class UploadStickerFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'png_sticker': this.pngSticker.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "png_sticker": this.pngSticker.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'uploadStickerFile';
+  static const String CONSTRUCTOR = "uploadStickerFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

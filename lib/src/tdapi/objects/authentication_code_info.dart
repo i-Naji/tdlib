@@ -29,15 +29,15 @@ class AuthenticationCodeInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'phone_number': this.phoneNumber,
-      'type': this.type.toJson(),
-      'next_type': this.nextType.toJson(),
-      'timeout': this.timeout
+      "@type": CONSTRUCTOR,
+      "phone_number": this.phoneNumber,
+      "type": this.type.toJson(),
+      "next_type": this.nextType.toJson(),
+      "timeout": this.timeout
     };
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeInfo';
+  static const String CONSTRUCTOR = "authenticationCodeInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

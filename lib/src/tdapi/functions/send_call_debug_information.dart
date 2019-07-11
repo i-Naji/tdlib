@@ -16,14 +16,14 @@ class SendCallDebugInformation extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'call_id': this.callId,
-      'debug_information': this.debugInformation,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+      "debug_information": this.debugInformation,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendCallDebugInformation';
+  static const String CONSTRUCTOR = "sendCallDebugInformation";
 
   @override
   String getConstructor() => CONSTRUCTOR;

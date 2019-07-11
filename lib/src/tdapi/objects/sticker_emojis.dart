@@ -10,16 +10,16 @@ class StickerEmojis implements TLObject {
 
   /// Parse from a json
   StickerEmojis.fromJson(Map<String, dynamic> json) {
-    this.emojis = json['emojis'] ?? [];
+    this.emojis = List<String>.from(json['emojis'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'emojis': this.emojis};
+    return {"@type": CONSTRUCTOR, "emojis": this.emojis};
   }
 
-  static const String CONSTRUCTOR = 'stickerEmojis';
+  static const String CONSTRUCTOR = "stickerEmojis";
 
   @override
   String getConstructor() => CONSTRUCTOR;

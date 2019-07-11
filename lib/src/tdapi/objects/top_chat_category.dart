@@ -5,24 +5,24 @@ class TopChatCategory implements TLObject {
   TopChatCategory();
 
   /// a TopChatCategory return type can be :
-  /// * TopChatCategoryInlineBots
   /// * TopChatCategoryUsers
-  /// * TopChatCategoryChannels
-  /// * TopChatCategoryGroups
   /// * TopChatCategoryBots
+  /// * TopChatCategoryGroups
+  /// * TopChatCategoryChannels
+  /// * TopChatCategoryInlineBots
   /// * TopChatCategoryCalls
   factory TopChatCategory.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case TopChatCategoryInlineBots.CONSTRUCTOR:
-        return TopChatCategoryInlineBots.fromJson(json);
       case TopChatCategoryUsers.CONSTRUCTOR:
         return TopChatCategoryUsers.fromJson(json);
-      case TopChatCategoryChannels.CONSTRUCTOR:
-        return TopChatCategoryChannels.fromJson(json);
-      case TopChatCategoryGroups.CONSTRUCTOR:
-        return TopChatCategoryGroups.fromJson(json);
       case TopChatCategoryBots.CONSTRUCTOR:
         return TopChatCategoryBots.fromJson(json);
+      case TopChatCategoryGroups.CONSTRUCTOR:
+        return TopChatCategoryGroups.fromJson(json);
+      case TopChatCategoryChannels.CONSTRUCTOR:
+        return TopChatCategoryChannels.fromJson(json);
+      case TopChatCategoryInlineBots.CONSTRUCTOR:
+        return TopChatCategoryInlineBots.fromJson(json);
       case TopChatCategoryCalls.CONSTRUCTOR:
         return TopChatCategoryCalls.fromJson(json);
       default:
@@ -35,7 +35,7 @@ class TopChatCategory implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategory';
+  static const String CONSTRUCTOR = "topChatCategory";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class TopChatCategoryUsers implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryUsers';
+  static const String CONSTRUCTOR = "topChatCategoryUsers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -70,10 +70,10 @@ class TopChatCategoryBots implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryBots';
+  static const String CONSTRUCTOR = "topChatCategoryBots";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -89,10 +89,10 @@ class TopChatCategoryGroups implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryGroups';
+  static const String CONSTRUCTOR = "topChatCategoryGroups";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -108,10 +108,10 @@ class TopChatCategoryChannels implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryChannels';
+  static const String CONSTRUCTOR = "topChatCategoryChannels";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -127,10 +127,10 @@ class TopChatCategoryInlineBots implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryInlineBots';
+  static const String CONSTRUCTOR = "topChatCategoryInlineBots";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -146,10 +146,10 @@ class TopChatCategoryCalls implements TopChatCategory {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'topChatCategoryCalls';
+  static const String CONSTRUCTOR = "topChatCategoryCalls";
 
   @override
   String getConstructor() => CONSTRUCTOR;

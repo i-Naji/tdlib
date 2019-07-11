@@ -18,15 +18,15 @@ class GetPublicMessageLink extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'for_album': this.forAlbum,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "for_album": this.forAlbum,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getPublicMessageLink';
+  static const String CONSTRUCTOR = "getPublicMessageLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

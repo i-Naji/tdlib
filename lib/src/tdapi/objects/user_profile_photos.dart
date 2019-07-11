@@ -13,22 +13,22 @@ class UserProfilePhotos implements TLObject {
   /// Parse from a json
   UserProfilePhotos.fromJson(Map<String, dynamic> json) {
     this.totalCount = json['total_count'];
-    this.photos = (json['photos'] ?? [])
+    this.photos = List<UserProfilePhoto>.from((json['photos'] ?? [])
         .map((listValue) => UserProfilePhoto.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'total_count': this.totalCount,
-      'photos': this.photos.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "total_count": this.totalCount,
+      "photos": this.photos.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'userProfilePhotos';
+  static const String CONSTRUCTOR = "userProfilePhotos";
 
   @override
   String getConstructor() => CONSTRUCTOR;

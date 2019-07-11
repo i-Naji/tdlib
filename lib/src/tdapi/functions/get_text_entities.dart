@@ -13,10 +13,10 @@ class GetTextEntities extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "text": this.text, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getTextEntities';
+  static const String CONSTRUCTOR = "getTextEntities";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -10,21 +10,21 @@ class TMeUrls implements TLObject {
 
   /// Parse from a json
   TMeUrls.fromJson(Map<String, dynamic> json) {
-    this.urls = (json['urls'] ?? [])
+    this.urls = List<TMeUrl>.from((json['urls'] ?? [])
         .map((listValue) => TMeUrl.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'urls': this.urls.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "urls": this.urls.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'tMeUrls';
+  static const String CONSTRUCTOR = "tMeUrls";
 
   @override
   String getConstructor() => CONSTRUCTOR;

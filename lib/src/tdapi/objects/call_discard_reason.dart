@@ -5,23 +5,23 @@ class CallDiscardReason implements TLObject {
   CallDiscardReason();
 
   /// a CallDiscardReason return type can be :
-  /// * CallDiscardReasonHungUp
   /// * CallDiscardReasonEmpty
   /// * CallDiscardReasonMissed
-  /// * CallDiscardReasonDisconnected
   /// * CallDiscardReasonDeclined
+  /// * CallDiscardReasonDisconnected
+  /// * CallDiscardReasonHungUp
   factory CallDiscardReason.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case CallDiscardReasonHungUp.CONSTRUCTOR:
-        return CallDiscardReasonHungUp.fromJson(json);
       case CallDiscardReasonEmpty.CONSTRUCTOR:
         return CallDiscardReasonEmpty.fromJson(json);
       case CallDiscardReasonMissed.CONSTRUCTOR:
         return CallDiscardReasonMissed.fromJson(json);
-      case CallDiscardReasonDisconnected.CONSTRUCTOR:
-        return CallDiscardReasonDisconnected.fromJson(json);
       case CallDiscardReasonDeclined.CONSTRUCTOR:
         return CallDiscardReasonDeclined.fromJson(json);
+      case CallDiscardReasonDisconnected.CONSTRUCTOR:
+        return CallDiscardReasonDisconnected.fromJson(json);
+      case CallDiscardReasonHungUp.CONSTRUCTOR:
+        return CallDiscardReasonHungUp.fromJson(json);
       default:
         return null;
     }
@@ -32,7 +32,7 @@ class CallDiscardReason implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReason';
+  static const String CONSTRUCTOR = "callDiscardReason";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -48,10 +48,10 @@ class CallDiscardReasonEmpty implements CallDiscardReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReasonEmpty';
+  static const String CONSTRUCTOR = "callDiscardReasonEmpty";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -67,10 +67,10 @@ class CallDiscardReasonMissed implements CallDiscardReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReasonMissed';
+  static const String CONSTRUCTOR = "callDiscardReasonMissed";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -86,10 +86,10 @@ class CallDiscardReasonDeclined implements CallDiscardReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReasonDeclined';
+  static const String CONSTRUCTOR = "callDiscardReasonDeclined";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class CallDiscardReasonDisconnected implements CallDiscardReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReasonDisconnected';
+  static const String CONSTRUCTOR = "callDiscardReasonDisconnected";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -124,10 +124,10 @@ class CallDiscardReasonHungUp implements CallDiscardReason {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'callDiscardReasonHungUp';
+  static const String CONSTRUCTOR = "callDiscardReasonHungUp";
 
   @override
   String getConstructor() => CONSTRUCTOR;

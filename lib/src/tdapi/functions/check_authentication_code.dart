@@ -18,15 +18,15 @@ class CheckAuthenticationCode extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'code': this.code,
-      'first_name': this.firstName,
-      'last_name': this.lastName,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "code": this.code,
+      "first_name": this.firstName,
+      "last_name": this.lastName,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'checkAuthenticationCode';
+  static const String CONSTRUCTOR = "checkAuthenticationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

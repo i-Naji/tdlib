@@ -27,17 +27,17 @@ class AddLocalMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'sender_user_id': this.senderUserId,
-      'reply_to_message_id': this.replyToMessageId,
-      'disable_notification': this.disableNotification,
-      'input_message_content': this.inputMessageContent.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "sender_user_id": this.senderUserId,
+      "reply_to_message_id": this.replyToMessageId,
+      "disable_notification": this.disableNotification,
+      "input_message_content": this.inputMessageContent.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addLocalMessage';
+  static const String CONSTRUCTOR = "addLocalMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

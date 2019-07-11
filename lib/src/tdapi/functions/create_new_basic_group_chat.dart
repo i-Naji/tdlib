@@ -16,14 +16,14 @@ class CreateNewBasicGroupChat extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_ids': this.userIds,
-      'title': this.title,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_ids": this.userIds,
+      "title": this.title,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'createNewBasicGroupChat';
+  static const String CONSTRUCTOR = "createNewBasicGroupChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

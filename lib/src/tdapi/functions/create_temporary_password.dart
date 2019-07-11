@@ -16,14 +16,14 @@ class CreateTemporaryPassword extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'password': this.password,
-      'valid_for': this.validFor,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "password": this.password,
+      "valid_for": this.validFor,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'createTemporaryPassword';
+  static const String CONSTRUCTOR = "createTemporaryPassword";
 
   @override
   String getConstructor() => CONSTRUCTOR;

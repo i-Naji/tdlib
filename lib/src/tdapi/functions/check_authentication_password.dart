@@ -14,13 +14,13 @@ class CheckAuthenticationPassword extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'password': this.password,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "password": this.password,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'checkAuthenticationPassword';
+  static const String CONSTRUCTOR = "checkAuthenticationPassword";
 
   @override
   String getConstructor() => CONSTRUCTOR;

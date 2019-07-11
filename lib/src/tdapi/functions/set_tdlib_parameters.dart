@@ -14,13 +14,13 @@ class SetTdlibParameters extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'parameters': this.parameters.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "parameters": this.parameters.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setTdlibParameters';
+  static const String CONSTRUCTOR = "setTdlibParameters";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -14,13 +14,13 @@ class GetStorageStatistics extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_limit': this.chatLimit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_limit": this.chatLimit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getStorageStatistics';
+  static const String CONSTRUCTOR = "getStorageStatistics";
 
   @override
   String getConstructor() => CONSTRUCTOR;

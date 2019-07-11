@@ -14,13 +14,13 @@ class GetProxyLink extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'proxy_id': this.proxyId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "proxy_id": this.proxyId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getProxyLink';
+  static const String CONSTRUCTOR = "getProxyLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

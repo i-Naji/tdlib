@@ -18,15 +18,15 @@ class ReadFilePart extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_id': this.fileId,
-      'offset': this.offset,
-      'count': this.count,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "file_id": this.fileId,
+      "offset": this.offset,
+      "count": this.count,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'readFilePart';
+  static const String CONSTRUCTOR = "readFilePart";
 
   @override
   String getConstructor() => CONSTRUCTOR;

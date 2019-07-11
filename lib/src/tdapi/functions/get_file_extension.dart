@@ -14,13 +14,13 @@ class GetFileExtension extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'mime_type': this.mimeType,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "mime_type": this.mimeType,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getFileExtension';
+  static const String CONSTRUCTOR = "getFileExtension";
 
   @override
   String getConstructor() => CONSTRUCTOR;

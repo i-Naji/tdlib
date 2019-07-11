@@ -13,23 +13,24 @@ class ValidatedOrderInfo implements TLObject {
   /// Parse from a json
   ValidatedOrderInfo.fromJson(Map<String, dynamic> json) {
     this.orderInfoId = json['order_info_id'];
-    this.shippingOptions = (json['shipping_options'] ?? [])
-        .map((listValue) => ShippingOption.fromJson(listValue))
-        .toList();
+    this.shippingOptions = List<ShippingOption>.from(
+        (json['shipping_options'] ?? [])
+            .map((listValue) => ShippingOption.fromJson(listValue))
+            .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'order_info_id': this.orderInfoId,
-      'shipping_options':
+      "@type": CONSTRUCTOR,
+      "order_info_id": this.orderInfoId,
+      "shipping_options":
           this.shippingOptions.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'validatedOrderInfo';
+  static const String CONSTRUCTOR = "validatedOrderInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

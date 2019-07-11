@@ -10,16 +10,16 @@ class Chats implements TLObject {
 
   /// Parse from a json
   Chats.fromJson(Map<String, dynamic> json) {
-    this.chatIds = json['chat_ids'] ?? [];
+    this.chatIds = List<int>.from(json['chat_ids'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_ids': this.chatIds};
+    return {"@type": CONSTRUCTOR, "chat_ids": this.chatIds};
   }
 
-  static const String CONSTRUCTOR = 'chats';
+  static const String CONSTRUCTOR = "chats";
 
   @override
   String getConstructor() => CONSTRUCTOR;

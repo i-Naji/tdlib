@@ -21,14 +21,14 @@ class GameHighScore implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'position': this.position,
-      'user_id': this.userId,
-      'score': this.score
+      "@type": CONSTRUCTOR,
+      "position": this.position,
+      "user_id": this.userId,
+      "score": this.score
     };
   }
 
-  static const String CONSTRUCTOR = 'gameHighScore';
+  static const String CONSTRUCTOR = "gameHighScore";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -12,10 +12,10 @@ class GetSavedAnimations extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getSavedAnimations';
+  static const String CONSTRUCTOR = "getSavedAnimations";
 
   @override
   String getConstructor() => CONSTRUCTOR;

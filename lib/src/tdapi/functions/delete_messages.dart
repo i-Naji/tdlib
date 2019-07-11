@@ -18,15 +18,15 @@ class DeleteMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_ids': this.messageIds,
-      'revoke': this.revoke,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_ids": this.messageIds,
+      "revoke": this.revoke,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'deleteMessages';
+  static const String CONSTRUCTOR = "deleteMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

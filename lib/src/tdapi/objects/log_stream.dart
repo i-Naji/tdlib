@@ -6,16 +6,16 @@ class LogStream implements TLObject {
 
   /// a LogStream return type can be :
   /// * LogStreamDefault
-  /// * LogStreamEmpty
   /// * LogStreamFile
+  /// * LogStreamEmpty
   factory LogStream.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case LogStreamDefault.CONSTRUCTOR:
         return LogStreamDefault.fromJson(json);
-      case LogStreamEmpty.CONSTRUCTOR:
-        return LogStreamEmpty.fromJson(json);
       case LogStreamFile.CONSTRUCTOR:
         return LogStreamFile.fromJson(json);
+      case LogStreamEmpty.CONSTRUCTOR:
+        return LogStreamEmpty.fromJson(json);
       default:
         return null;
     }
@@ -26,7 +26,7 @@ class LogStream implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'logStream';
+  static const String CONSTRUCTOR = "logStream";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -46,10 +46,10 @@ class LogStreamDefault implements LogStream {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'logStreamDefault';
+  static const String CONSTRUCTOR = "logStreamDefault";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -75,13 +75,13 @@ class LogStreamFile implements LogStream {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'path': this.path,
-      'max_file_size': this.maxFileSize
+      "@type": CONSTRUCTOR,
+      "path": this.path,
+      "max_file_size": this.maxFileSize
     };
   }
 
-  static const String CONSTRUCTOR = 'logStreamFile';
+  static const String CONSTRUCTOR = "logStreamFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -101,10 +101,10 @@ class LogStreamEmpty implements LogStream {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'logStreamEmpty';
+  static const String CONSTRUCTOR = "logStreamEmpty";
 
   @override
   String getConstructor() => CONSTRUCTOR;

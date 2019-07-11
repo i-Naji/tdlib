@@ -14,13 +14,13 @@ class RemoveProxy extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'proxy_id': this.proxyId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "proxy_id": this.proxyId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeProxy';
+  static const String CONSTRUCTOR = "removeProxy";
 
   @override
   String getConstructor() => CONSTRUCTOR;

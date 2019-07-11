@@ -14,13 +14,13 @@ class EnableProxy extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'proxy_id': this.proxyId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "proxy_id": this.proxyId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'enableProxy';
+  static const String CONSTRUCTOR = "enableProxy";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SetSupergroupUsername extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'username': this.username,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "username": this.username,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setSupergroupUsername';
+  static const String CONSTRUCTOR = "setSupergroupUsername";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -13,10 +13,10 @@ class GetStickerSet extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'set_id': this.setId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "set_id": this.setId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getStickerSet';
+  static const String CONSTRUCTOR = "getStickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

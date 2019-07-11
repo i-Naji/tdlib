@@ -52,21 +52,21 @@ class PersonalDetails implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'first_name': this.firstName,
-      'middle_name': this.middleName,
-      'last_name': this.lastName,
-      'native_first_name': this.nativeFirstName,
-      'native_middle_name': this.nativeMiddleName,
-      'native_last_name': this.nativeLastName,
-      'birthdate': this.birthdate.toJson(),
-      'gender': this.gender,
-      'country_code': this.countryCode,
-      'residence_country_code': this.residenceCountryCode
+      "@type": CONSTRUCTOR,
+      "first_name": this.firstName,
+      "middle_name": this.middleName,
+      "last_name": this.lastName,
+      "native_first_name": this.nativeFirstName,
+      "native_middle_name": this.nativeMiddleName,
+      "native_last_name": this.nativeLastName,
+      "birthdate": this.birthdate.toJson(),
+      "gender": this.gender,
+      "country_code": this.countryCode,
+      "residence_country_code": this.residenceCountryCode
     };
   }
 
-  static const String CONSTRUCTOR = 'personalDetails';
+  static const String CONSTRUCTOR = "personalDetails";
 
   @override
   String getConstructor() => CONSTRUCTOR;

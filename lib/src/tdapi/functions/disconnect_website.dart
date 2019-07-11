@@ -14,13 +14,13 @@ class DisconnectWebsite extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'website_id': this.websiteId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "website_id": this.websiteId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'disconnectWebsite';
+  static const String CONSTRUCTOR = "disconnectWebsite";
 
   @override
   String getConstructor() => CONSTRUCTOR;

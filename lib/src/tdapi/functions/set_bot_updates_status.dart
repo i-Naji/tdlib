@@ -16,14 +16,14 @@ class SetBotUpdatesStatus extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'pending_update_count': this.pendingUpdateCount,
-      'error_message': this.errorMessage,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "pending_update_count": this.pendingUpdateCount,
+      "error_message": this.errorMessage,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setBotUpdatesStatus';
+  static const String CONSTRUCTOR = "setBotUpdatesStatus";
 
   @override
   String getConstructor() => CONSTRUCTOR;

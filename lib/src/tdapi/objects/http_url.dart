@@ -16,10 +16,10 @@ class HttpUrl implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'url': this.url};
+    return {"@type": CONSTRUCTOR, "url": this.url};
   }
 
-  static const String CONSTRUCTOR = 'httpUrl';
+  static const String CONSTRUCTOR = "httpUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

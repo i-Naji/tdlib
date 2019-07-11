@@ -16,14 +16,14 @@ class SendPassportAuthorizationForm extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'autorization_form_id': this.autorizationFormId,
-      'types': this.types.map((listItem) => listItem.toJson()).toList(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "autorization_form_id": this.autorizationFormId,
+      "types": this.types.map((listItem) => listItem.toJson()).toList(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendPassportAuthorizationForm';
+  static const String CONSTRUCTOR = "sendPassportAuthorizationForm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

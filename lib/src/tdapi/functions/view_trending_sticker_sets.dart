@@ -14,13 +14,13 @@ class ViewTrendingStickerSets extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker_set_ids': this.stickerSetIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "sticker_set_ids": this.stickerSetIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'viewTrendingStickerSets';
+  static const String CONSTRUCTOR = "viewTrendingStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;

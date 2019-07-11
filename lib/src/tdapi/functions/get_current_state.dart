@@ -12,10 +12,10 @@ class GetCurrentState extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getCurrentState';
+  static const String CONSTRUCTOR = "getCurrentState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

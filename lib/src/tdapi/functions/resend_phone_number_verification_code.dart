@@ -12,10 +12,10 @@ class ResendPhoneNumberVerificationCode extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'resendPhoneNumberVerificationCode';
+  static const String CONSTRUCTOR = "resendPhoneNumberVerificationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

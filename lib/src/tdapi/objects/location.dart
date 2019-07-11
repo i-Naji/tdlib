@@ -18,13 +18,13 @@ class Location implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'latitude': this.latitude,
-      'longitude': this.longitude
+      "@type": CONSTRUCTOR,
+      "latitude": this.latitude,
+      "longitude": this.longitude
     };
   }
 
-  static const String CONSTRUCTOR = 'location';
+  static const String CONSTRUCTOR = "location";
 
   @override
   String getConstructor() => CONSTRUCTOR;

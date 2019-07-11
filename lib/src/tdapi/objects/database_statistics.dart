@@ -16,10 +16,10 @@ class DatabaseStatistics implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'statistics': this.statistics};
+    return {"@type": CONSTRUCTOR, "statistics": this.statistics};
   }
 
-  static const String CONSTRUCTOR = 'databaseStatistics';
+  static const String CONSTRUCTOR = "databaseStatistics";
 
   @override
   String getConstructor() => CONSTRUCTOR;

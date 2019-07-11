@@ -10,22 +10,22 @@ class Animations implements TLObject {
 
   /// Parse from a json
   Animations.fromJson(Map<String, dynamic> json) {
-    this.animations = (json['animations'] ?? [])
+    this.animations = List<Animation>.from((json['animations'] ?? [])
         .map((listValue) => Animation.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animations':
+      "@type": CONSTRUCTOR,
+      "animations":
           this.animations.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'animations';
+  static const String CONSTRUCTOR = "animations";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,10 +16,10 @@ class LogVerbosityLevel implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'verbosity_level': this.verbosityLevel};
+    return {"@type": CONSTRUCTOR, "verbosity_level": this.verbosityLevel};
   }
 
-  static const String CONSTRUCTOR = 'logVerbosityLevel';
+  static const String CONSTRUCTOR = "logVerbosityLevel";
 
   @override
   String getConstructor() => CONSTRUCTOR;

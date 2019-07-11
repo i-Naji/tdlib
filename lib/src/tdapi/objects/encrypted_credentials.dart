@@ -21,14 +21,14 @@ class EncryptedCredentials implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'data': this.data,
-      'hash': this.hash,
-      'secret': this.secret
+      "@type": CONSTRUCTOR,
+      "data": this.data,
+      "hash": this.hash,
+      "secret": this.secret
     };
   }
 
-  static const String CONSTRUCTOR = 'encryptedCredentials';
+  static const String CONSTRUCTOR = "encryptedCredentials";
 
   @override
   String getConstructor() => CONSTRUCTOR;

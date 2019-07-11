@@ -14,13 +14,13 @@ class AddNetworkStatistics extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'entry': this.entry.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "entry": this.entry.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addNetworkStatistics';
+  static const String CONSTRUCTOR = "addNetworkStatistics";
 
   @override
   String getConstructor() => CONSTRUCTOR;

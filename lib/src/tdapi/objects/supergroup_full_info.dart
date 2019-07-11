@@ -70,25 +70,25 @@ class SupergroupFullInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'description': this.description,
-      'member_count': this.memberCount,
-      'administrator_count': this.administratorCount,
-      'restricted_count': this.restrictedCount,
-      'banned_count': this.bannedCount,
-      'can_get_members': this.canGetMembers,
-      'can_set_username': this.canSetUsername,
-      'can_set_sticker_set': this.canSetStickerSet,
-      'can_view_statistics': this.canViewStatistics,
-      'is_all_history_available': this.isAllHistoryAvailable,
-      'sticker_set_id': this.stickerSetId,
-      'invite_link': this.inviteLink,
-      'upgraded_from_basic_group_id': this.upgradedFromBasicGroupId,
-      'upgraded_from_max_message_id': this.upgradedFromMaxMessageId
+      "@type": CONSTRUCTOR,
+      "description": this.description,
+      "member_count": this.memberCount,
+      "administrator_count": this.administratorCount,
+      "restricted_count": this.restrictedCount,
+      "banned_count": this.bannedCount,
+      "can_get_members": this.canGetMembers,
+      "can_set_username": this.canSetUsername,
+      "can_set_sticker_set": this.canSetStickerSet,
+      "can_view_statistics": this.canViewStatistics,
+      "is_all_history_available": this.isAllHistoryAvailable,
+      "sticker_set_id": this.stickerSetId,
+      "invite_link": this.inviteLink,
+      "upgraded_from_basic_group_id": this.upgradedFromBasicGroupId,
+      "upgraded_from_max_message_id": this.upgradedFromMaxMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'supergroupFullInfo';
+  static const String CONSTRUCTOR = "supergroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

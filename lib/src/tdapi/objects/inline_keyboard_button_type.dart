@@ -5,23 +5,23 @@ class InlineKeyboardButtonType implements TLObject {
   InlineKeyboardButtonType();
 
   /// a InlineKeyboardButtonType return type can be :
-  /// * InlineKeyboardButtonTypeBuy
   /// * InlineKeyboardButtonTypeUrl
-  /// * InlineKeyboardButtonTypeCallbackGame
   /// * InlineKeyboardButtonTypeCallback
+  /// * InlineKeyboardButtonTypeCallbackGame
   /// * InlineKeyboardButtonTypeSwitchInline
+  /// * InlineKeyboardButtonTypeBuy
   factory InlineKeyboardButtonType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
-        return InlineKeyboardButtonTypeBuy.fromJson(json);
       case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
         return InlineKeyboardButtonTypeUrl.fromJson(json);
-      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
-        return InlineKeyboardButtonTypeCallbackGame.fromJson(json);
       case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
         return InlineKeyboardButtonTypeCallback.fromJson(json);
+      case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
+        return InlineKeyboardButtonTypeCallbackGame.fromJson(json);
       case InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR:
         return InlineKeyboardButtonTypeSwitchInline.fromJson(json);
+      case InlineKeyboardButtonTypeBuy.CONSTRUCTOR:
+        return InlineKeyboardButtonTypeBuy.fromJson(json);
       default:
         return null;
     }
@@ -32,7 +32,7 @@ class InlineKeyboardButtonType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonType';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -52,10 +52,10 @@ class InlineKeyboardButtonTypeUrl implements InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'url': this.url};
+    return {"@type": CONSTRUCTOR, "url": this.url};
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeUrl';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -75,10 +75,10 @@ class InlineKeyboardButtonTypeCallback implements InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'data': this.data};
+    return {"@type": CONSTRUCTOR, "data": this.data};
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCallback';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeCallback";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -94,10 +94,10 @@ class InlineKeyboardButtonTypeCallbackGame implements InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCallbackGame';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeCallbackGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -121,13 +121,13 @@ class InlineKeyboardButtonTypeSwitchInline implements InlineKeyboardButtonType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'query': this.query,
-      'in_current_chat': this.inCurrentChat
+      "@type": CONSTRUCTOR,
+      "query": this.query,
+      "in_current_chat": this.inCurrentChat
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeSwitchInline';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeSwitchInline";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -143,10 +143,10 @@ class InlineKeyboardButtonTypeBuy implements InlineKeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeBuy';
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeBuy";
 
   @override
   String getConstructor() => CONSTRUCTOR;

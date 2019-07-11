@@ -10,22 +10,22 @@ class Wallpapers implements TLObject {
 
   /// Parse from a json
   Wallpapers.fromJson(Map<String, dynamic> json) {
-    this.wallpapers = (json['wallpapers'] ?? [])
+    this.wallpapers = List<Wallpaper>.from((json['wallpapers'] ?? [])
         .map((listValue) => Wallpaper.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'wallpapers':
+      "@type": CONSTRUCTOR,
+      "wallpapers":
           this.wallpapers.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'wallpapers';
+  static const String CONSTRUCTOR = "wallpapers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

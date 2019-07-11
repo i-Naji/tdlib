@@ -16,14 +16,14 @@ class ToggleChatIsMarkedAsUnread extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_marked_as_unread': this.isMarkedAsUnread,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_marked_as_unread": this.isMarkedAsUnread,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleChatIsMarkedAsUnread';
+  static const String CONSTRUCTOR = "toggleChatIsMarkedAsUnread";
 
   @override
   String getConstructor() => CONSTRUCTOR;

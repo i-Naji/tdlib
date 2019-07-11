@@ -21,14 +21,14 @@ class Notification implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'date': this.date,
-      'type': this.type.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "date": this.date,
+      "type": this.type.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'notification';
+  static const String CONSTRUCTOR = "notification";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -21,14 +21,14 @@ class ProfilePhoto implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'small': this.small.toJson(),
-      'big': this.big.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "small": this.small.toJson(),
+      "big": this.big.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'profilePhoto';
+  static const String CONSTRUCTOR = "profilePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,20 +5,20 @@ class NotificationType implements TLObject {
   NotificationType();
 
   /// a NotificationType return type can be :
-  /// * NotificationTypeNewSecretChat
-  /// * NotificationTypeNewPushMessage
   /// * NotificationTypeNewMessage
+  /// * NotificationTypeNewSecretChat
   /// * NotificationTypeNewCall
+  /// * NotificationTypeNewPushMessage
   factory NotificationType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case NotificationTypeNewSecretChat.CONSTRUCTOR:
-        return NotificationTypeNewSecretChat.fromJson(json);
-      case NotificationTypeNewPushMessage.CONSTRUCTOR:
-        return NotificationTypeNewPushMessage.fromJson(json);
       case NotificationTypeNewMessage.CONSTRUCTOR:
         return NotificationTypeNewMessage.fromJson(json);
+      case NotificationTypeNewSecretChat.CONSTRUCTOR:
+        return NotificationTypeNewSecretChat.fromJson(json);
       case NotificationTypeNewCall.CONSTRUCTOR:
         return NotificationTypeNewCall.fromJson(json);
+      case NotificationTypeNewPushMessage.CONSTRUCTOR:
+        return NotificationTypeNewPushMessage.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class NotificationType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'notificationType';
+  static const String CONSTRUCTOR = "notificationType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class NotificationTypeNewMessage implements NotificationType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'message': this.message.toJson()};
+    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'notificationTypeNewMessage';
+  static const String CONSTRUCTOR = "notificationTypeNewMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -68,10 +68,10 @@ class NotificationTypeNewSecretChat implements NotificationType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationTypeNewSecretChat';
+  static const String CONSTRUCTOR = "notificationTypeNewSecretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -91,10 +91,10 @@ class NotificationTypeNewCall implements NotificationType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'call_id': this.callId};
+    return {"@type": CONSTRUCTOR, "call_id": this.callId};
   }
 
-  static const String CONSTRUCTOR = 'notificationTypeNewCall';
+  static const String CONSTRUCTOR = "notificationTypeNewCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -123,14 +123,14 @@ class NotificationTypeNewPushMessage implements NotificationType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'message_id': this.messageId,
-      'sender_user_id': this.senderUserId,
-      'content': this.content.toJson()
+      "@type": CONSTRUCTOR,
+      "message_id": this.messageId,
+      "sender_user_id": this.senderUserId,
+      "content": this.content.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'notificationTypeNewPushMessage';
+  static const String CONSTRUCTOR = "notificationTypeNewPushMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SearchChatRecentLocationMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchChatRecentLocationMessages';
+  static const String CONSTRUCTOR = "searchChatRecentLocationMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

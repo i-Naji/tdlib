@@ -22,14 +22,14 @@ class InputThumbnail implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'thumbnail': this.thumbnail.toJson(),
-      'width': this.width,
-      'height': this.height
+      "@type": CONSTRUCTOR,
+      "thumbnail": this.thumbnail.toJson(),
+      "width": this.width,
+      "height": this.height
     };
   }
 
-  static const String CONSTRUCTOR = 'inputThumbnail';
+  static const String CONSTRUCTOR = "inputThumbnail";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -14,13 +14,13 @@ class GetRecoveryEmailAddress extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'password': this.password,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "password": this.password,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getRecoveryEmailAddress';
+  static const String CONSTRUCTOR = "getRecoveryEmailAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;

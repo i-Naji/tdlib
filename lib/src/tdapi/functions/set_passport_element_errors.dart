@@ -16,14 +16,14 @@ class SetPassportElementErrors extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'errors': this.errors.map((listItem) => listItem.toJson()).toList(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "errors": this.errors.map((listItem) => listItem.toJson()).toList(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setPassportElementErrors';
+  static const String CONSTRUCTOR = "setPassportElementErrors";
 
   @override
   String getConstructor() => CONSTRUCTOR;

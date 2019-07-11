@@ -38,17 +38,17 @@ class Proxy implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'server': this.server,
-      'port': this.port,
-      'last_used_date': this.lastUsedDate,
-      'is_enabled': this.isEnabled,
-      'type': this.type.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "server": this.server,
+      "port": this.port,
+      "last_used_date": this.lastUsedDate,
+      "is_enabled": this.isEnabled,
+      "type": this.type.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'proxy';
+  static const String CONSTRUCTOR = "proxy";
 
   @override
   String getConstructor() => CONSTRUCTOR;

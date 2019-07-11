@@ -14,13 +14,13 @@ class RecoverAuthenticationPassword extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'recovery_code': this.recoveryCode,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "recovery_code": this.recoveryCode,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'recoverAuthenticationPassword';
+  static const String CONSTRUCTOR = "recoverAuthenticationPassword";
 
   @override
   String getConstructor() => CONSTRUCTOR;

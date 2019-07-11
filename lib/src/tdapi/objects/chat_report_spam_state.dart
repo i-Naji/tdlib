@@ -16,10 +16,10 @@ class ChatReportSpamState implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'can_report_spam': this.canReportSpam};
+    return {"@type": CONSTRUCTOR, "can_report_spam": this.canReportSpam};
   }
 
-  static const String CONSTRUCTOR = 'chatReportSpamState';
+  static const String CONSTRUCTOR = "chatReportSpamState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

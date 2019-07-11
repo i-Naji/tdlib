@@ -19,10 +19,10 @@ class PublicMessageLink implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'link': this.link, 'html': this.html};
+    return {"@type": CONSTRUCTOR, "link": this.link, "html": this.html};
   }
 
-  static const String CONSTRUCTOR = 'publicMessageLink';
+  static const String CONSTRUCTOR = "publicMessageLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

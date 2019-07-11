@@ -14,13 +14,13 @@ class CheckChatInviteLink extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invite_link': this.inviteLink,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "invite_link": this.inviteLink,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'checkChatInviteLink';
+  static const String CONSTRUCTOR = "checkChatInviteLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

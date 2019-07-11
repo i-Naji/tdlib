@@ -5,21 +5,21 @@ class CheckChatUsernameResult implements TLObject {
   CheckChatUsernameResult();
 
   /// a CheckChatUsernameResult return type can be :
-  /// * CheckChatUsernameResultPublicChatsTooMuch
   /// * CheckChatUsernameResultOk
   /// * CheckChatUsernameResultUsernameInvalid
   /// * CheckChatUsernameResultUsernameOccupied
+  /// * CheckChatUsernameResultPublicChatsTooMuch
   /// * CheckChatUsernameResultPublicGroupsUnavailable
   factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
-        return CheckChatUsernameResultPublicChatsTooMuch.fromJson(json);
       case CheckChatUsernameResultOk.CONSTRUCTOR:
         return CheckChatUsernameResultOk.fromJson(json);
       case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
         return CheckChatUsernameResultUsernameInvalid.fromJson(json);
       case CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR:
         return CheckChatUsernameResultUsernameOccupied.fromJson(json);
+      case CheckChatUsernameResultPublicChatsTooMuch.CONSTRUCTOR:
+        return CheckChatUsernameResultPublicChatsTooMuch.fromJson(json);
       case CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR:
         return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json);
       default:
@@ -32,7 +32,7 @@ class CheckChatUsernameResult implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResult';
+  static const String CONSTRUCTOR = "checkChatUsernameResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -52,10 +52,10 @@ class CheckChatUsernameResultOk implements CheckChatUsernameResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResultOk';
+  static const String CONSTRUCTOR = "checkChatUsernameResultOk";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -76,10 +76,10 @@ class CheckChatUsernameResultUsernameInvalid
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResultUsernameInvalid';
+  static const String CONSTRUCTOR = "checkChatUsernameResultUsernameInvalid";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -100,10 +100,10 @@ class CheckChatUsernameResultUsernameOccupied
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResultUsernameOccupied';
+  static const String CONSTRUCTOR = "checkChatUsernameResultUsernameOccupied";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -125,10 +125,10 @@ class CheckChatUsernameResultPublicChatsTooMuch
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsernameResultPublicChatsTooMuch';
+  static const String CONSTRUCTOR = "checkChatUsernameResultPublicChatsTooMuch";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -150,11 +150,11 @@ class CheckChatUsernameResultPublicGroupsUnavailable
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
   static const String CONSTRUCTOR =
-      'checkChatUsernameResultPublicGroupsUnavailable';
+      "checkChatUsernameResultPublicGroupsUnavailable";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class FinishFileGeneration extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'generation_id': this.generationId,
-      'error': this.error.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "generation_id": this.generationId,
+      "error": this.error.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'finishFileGeneration';
+  static const String CONSTRUCTOR = "finishFileGeneration";
 
   @override
   String getConstructor() => CONSTRUCTOR;

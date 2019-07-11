@@ -24,15 +24,15 @@ class CallProtocol implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'udp_p2p': this.udpP2p,
-      'udp_reflector': this.udpReflector,
-      'min_layer': this.minLayer,
-      'max_layer': this.maxLayer
+      "@type": CONSTRUCTOR,
+      "udp_p2p": this.udpP2p,
+      "udp_reflector": this.udpReflector,
+      "min_layer": this.minLayer,
+      "max_layer": this.maxLayer
     };
   }
 
-  static const String CONSTRUCTOR = 'callProtocol';
+  static const String CONSTRUCTOR = "callProtocol";
 
   @override
   String getConstructor() => CONSTRUCTOR;

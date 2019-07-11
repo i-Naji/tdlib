@@ -5,56 +5,56 @@ class FileType implements TLObject {
   FileType();
 
   /// a FileType return type can be :
+  /// * FileTypeNone
+  /// * FileTypeAnimation
+  /// * FileTypeAudio
+  /// * FileTypeDocument
+  /// * FileTypePhoto
+  /// * FileTypeProfilePhoto
   /// * FileTypeSecret
+  /// * FileTypeSecretThumbnail
+  /// * FileTypeSecure
+  /// * FileTypeSticker
+  /// * FileTypeThumbnail
   /// * FileTypeUnknown
+  /// * FileTypeVideo
+  /// * FileTypeVideoNote
   /// * FileTypeVoiceNote
   /// * FileTypeWallpaper
-  /// * FileTypeSecure
-  /// * FileTypeSecretThumbnail
-  /// * FileTypeAnimation
-  /// * FileTypeThumbnail
-  /// * FileTypeNone
-  /// * FileTypeSticker
-  /// * FileTypeAudio
-  /// * FileTypeProfilePhoto
-  /// * FileTypeVideoNote
-  /// * FileTypeDocument
-  /// * FileTypeVideo
-  /// * FileTypePhoto
   factory FileType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case FileTypeNone.CONSTRUCTOR:
+        return FileTypeNone.fromJson(json);
+      case FileTypeAnimation.CONSTRUCTOR:
+        return FileTypeAnimation.fromJson(json);
+      case FileTypeAudio.CONSTRUCTOR:
+        return FileTypeAudio.fromJson(json);
+      case FileTypeDocument.CONSTRUCTOR:
+        return FileTypeDocument.fromJson(json);
+      case FileTypePhoto.CONSTRUCTOR:
+        return FileTypePhoto.fromJson(json);
+      case FileTypeProfilePhoto.CONSTRUCTOR:
+        return FileTypeProfilePhoto.fromJson(json);
       case FileTypeSecret.CONSTRUCTOR:
         return FileTypeSecret.fromJson(json);
+      case FileTypeSecretThumbnail.CONSTRUCTOR:
+        return FileTypeSecretThumbnail.fromJson(json);
+      case FileTypeSecure.CONSTRUCTOR:
+        return FileTypeSecure.fromJson(json);
+      case FileTypeSticker.CONSTRUCTOR:
+        return FileTypeSticker.fromJson(json);
+      case FileTypeThumbnail.CONSTRUCTOR:
+        return FileTypeThumbnail.fromJson(json);
       case FileTypeUnknown.CONSTRUCTOR:
         return FileTypeUnknown.fromJson(json);
+      case FileTypeVideo.CONSTRUCTOR:
+        return FileTypeVideo.fromJson(json);
+      case FileTypeVideoNote.CONSTRUCTOR:
+        return FileTypeVideoNote.fromJson(json);
       case FileTypeVoiceNote.CONSTRUCTOR:
         return FileTypeVoiceNote.fromJson(json);
       case FileTypeWallpaper.CONSTRUCTOR:
         return FileTypeWallpaper.fromJson(json);
-      case FileTypeSecure.CONSTRUCTOR:
-        return FileTypeSecure.fromJson(json);
-      case FileTypeSecretThumbnail.CONSTRUCTOR:
-        return FileTypeSecretThumbnail.fromJson(json);
-      case FileTypeAnimation.CONSTRUCTOR:
-        return FileTypeAnimation.fromJson(json);
-      case FileTypeThumbnail.CONSTRUCTOR:
-        return FileTypeThumbnail.fromJson(json);
-      case FileTypeNone.CONSTRUCTOR:
-        return FileTypeNone.fromJson(json);
-      case FileTypeSticker.CONSTRUCTOR:
-        return FileTypeSticker.fromJson(json);
-      case FileTypeAudio.CONSTRUCTOR:
-        return FileTypeAudio.fromJson(json);
-      case FileTypeProfilePhoto.CONSTRUCTOR:
-        return FileTypeProfilePhoto.fromJson(json);
-      case FileTypeVideoNote.CONSTRUCTOR:
-        return FileTypeVideoNote.fromJson(json);
-      case FileTypeDocument.CONSTRUCTOR:
-        return FileTypeDocument.fromJson(json);
-      case FileTypeVideo.CONSTRUCTOR:
-        return FileTypeVideo.fromJson(json);
-      case FileTypePhoto.CONSTRUCTOR:
-        return FileTypePhoto.fromJson(json);
       default:
         return null;
     }
@@ -65,7 +65,7 @@ class FileType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'fileType';
+  static const String CONSTRUCTOR = "fileType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -81,10 +81,10 @@ class FileTypeNone implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeNone';
+  static const String CONSTRUCTOR = "fileTypeNone";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -100,10 +100,10 @@ class FileTypeAnimation implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeAnimation';
+  static const String CONSTRUCTOR = "fileTypeAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -119,10 +119,10 @@ class FileTypeAudio implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeAudio';
+  static const String CONSTRUCTOR = "fileTypeAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -138,10 +138,10 @@ class FileTypeDocument implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeDocument';
+  static const String CONSTRUCTOR = "fileTypeDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -157,10 +157,10 @@ class FileTypePhoto implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypePhoto';
+  static const String CONSTRUCTOR = "fileTypePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -176,10 +176,10 @@ class FileTypeProfilePhoto implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeProfilePhoto';
+  static const String CONSTRUCTOR = "fileTypeProfilePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -195,10 +195,10 @@ class FileTypeSecret implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeSecret';
+  static const String CONSTRUCTOR = "fileTypeSecret";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -214,10 +214,10 @@ class FileTypeSecretThumbnail implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeSecretThumbnail';
+  static const String CONSTRUCTOR = "fileTypeSecretThumbnail";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -233,10 +233,10 @@ class FileTypeSecure implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeSecure';
+  static const String CONSTRUCTOR = "fileTypeSecure";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -252,10 +252,10 @@ class FileTypeSticker implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeSticker';
+  static const String CONSTRUCTOR = "fileTypeSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -271,10 +271,10 @@ class FileTypeThumbnail implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeThumbnail';
+  static const String CONSTRUCTOR = "fileTypeThumbnail";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -290,10 +290,10 @@ class FileTypeUnknown implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeUnknown';
+  static const String CONSTRUCTOR = "fileTypeUnknown";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -309,10 +309,10 @@ class FileTypeVideo implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeVideo';
+  static const String CONSTRUCTOR = "fileTypeVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -328,10 +328,10 @@ class FileTypeVideoNote implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeVideoNote';
+  static const String CONSTRUCTOR = "fileTypeVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -347,10 +347,10 @@ class FileTypeVoiceNote implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeVoiceNote';
+  static const String CONSTRUCTOR = "fileTypeVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -366,10 +366,10 @@ class FileTypeWallpaper implements FileType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'fileTypeWallpaper';
+  static const String CONSTRUCTOR = "fileTypeWallpaper";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,15 +18,15 @@ class GetArchivedStickerSets extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_masks': this.isMasks,
-      'offset_sticker_set_id': this.offsetStickerSetId,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "is_masks": this.isMasks,
+      "offset_sticker_set_id": this.offsetStickerSetId,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getArchivedStickerSets';
+  static const String CONSTRUCTOR = "getArchivedStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;

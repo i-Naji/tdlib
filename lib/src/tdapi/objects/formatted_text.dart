@@ -13,22 +13,22 @@ class FormattedText implements TLObject {
   /// Parse from a json
   FormattedText.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
-    this.entities = (json['entities'] ?? [])
+    this.entities = List<TextEntity>.from((json['entities'] ?? [])
         .map((listValue) => TextEntity.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'entities': this.entities.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "entities": this.entities.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'formattedText';
+  static const String CONSTRUCTOR = "formattedText";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -30,18 +30,18 @@ class SetGameScore extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'edit_message': this.editMessage,
-      'user_id': this.userId,
-      'score': this.score,
-      'force': this.force,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "edit_message": this.editMessage,
+      "user_id": this.userId,
+      "score": this.score,
+      "force": this.force,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setGameScore';
+  static const String CONSTRUCTOR = "setGameScore";
 
   @override
   String getConstructor() => CONSTRUCTOR;

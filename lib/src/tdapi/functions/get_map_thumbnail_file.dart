@@ -30,18 +30,18 @@ class GetMapThumbnailFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'location': this.location.toJson(),
-      'zoom': this.zoom,
-      'width': this.width,
-      'height': this.height,
-      'scale': this.scale,
-      'chat_id': this.chatId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "location": this.location.toJson(),
+      "zoom": this.zoom,
+      "width": this.width,
+      "height": this.height,
+      "scale": this.scale,
+      "chat_id": this.chatId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getMapThumbnailFile';
+  static const String CONSTRUCTOR = "getMapThumbnailFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -46,29 +46,29 @@ class StickerSetInfo implements TLObject {
     this.isMasks = json['is_masks'];
     this.isViewed = json['is_viewed'];
     this.size = json['size'];
-    this.covers = (json['covers'] ?? [])
+    this.covers = List<Sticker>.from((json['covers'] ?? [])
         .map((listValue) => Sticker.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'title': this.title,
-      'name': this.name,
-      'is_installed': this.isInstalled,
-      'is_archived': this.isArchived,
-      'is_official': this.isOfficial,
-      'is_masks': this.isMasks,
-      'is_viewed': this.isViewed,
-      'size': this.size,
-      'covers': this.covers.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "title": this.title,
+      "name": this.name,
+      "is_installed": this.isInstalled,
+      "is_archived": this.isArchived,
+      "is_official": this.isOfficial,
+      "is_masks": this.isMasks,
+      "is_viewed": this.isViewed,
+      "size": this.size,
+      "covers": this.covers.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'stickerSetInfo';
+  static const String CONSTRUCTOR = "stickerSetInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

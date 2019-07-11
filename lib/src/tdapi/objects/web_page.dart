@@ -101,32 +101,32 @@ class WebPage implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'url': this.url,
-      'display_url': this.displayUrl,
-      'type': this.type,
-      'site_name': this.siteName,
-      'title': this.title,
-      'description': this.description,
-      'photo': this.photo.toJson(),
-      'embed_url': this.embedUrl,
-      'embed_type': this.embedType,
-      'embed_width': this.embedWidth,
-      'embed_height': this.embedHeight,
-      'duration': this.duration,
-      'author': this.author,
-      'animation': this.animation.toJson(),
-      'audio': this.audio.toJson(),
-      'document': this.document.toJson(),
-      'sticker': this.sticker.toJson(),
-      'video': this.video.toJson(),
-      'video_note': this.videoNote.toJson(),
-      'voice_note': this.voiceNote.toJson(),
-      'instant_view_version': this.instantViewVersion
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "display_url": this.displayUrl,
+      "type": this.type,
+      "site_name": this.siteName,
+      "title": this.title,
+      "description": this.description,
+      "photo": this.photo.toJson(),
+      "embed_url": this.embedUrl,
+      "embed_type": this.embedType,
+      "embed_width": this.embedWidth,
+      "embed_height": this.embedHeight,
+      "duration": this.duration,
+      "author": this.author,
+      "animation": this.animation.toJson(),
+      "audio": this.audio.toJson(),
+      "document": this.document.toJson(),
+      "sticker": this.sticker.toJson(),
+      "video": this.video.toJson(),
+      "video_note": this.videoNote.toJson(),
+      "voice_note": this.voiceNote.toJson(),
+      "instant_view_version": this.instantViewVersion
     };
   }
 
-  static const String CONSTRUCTOR = 'webPage';
+  static const String CONSTRUCTOR = "webPage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

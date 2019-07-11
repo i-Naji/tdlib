@@ -16,10 +16,10 @@ class TestBytes implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'testBytes';
+  static const String CONSTRUCTOR = "testBytes";
 
   @override
   String getConstructor() => CONSTRUCTOR;

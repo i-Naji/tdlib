@@ -42,18 +42,18 @@ class SecretChat implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'user_id': this.userId,
-      'state': this.state.toJson(),
-      'is_outbound': this.isOutbound,
-      'ttl': this.ttl,
-      'key_hash': this.keyHash,
-      'layer': this.layer
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "user_id": this.userId,
+      "state": this.state.toJson(),
+      "is_outbound": this.isOutbound,
+      "ttl": this.ttl,
+      "key_hash": this.keyHash,
+      "layer": this.layer
     };
   }
 
-  static const String CONSTRUCTOR = 'secretChat';
+  static const String CONSTRUCTOR = "secretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

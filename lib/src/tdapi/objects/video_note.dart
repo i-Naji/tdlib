@@ -25,15 +25,15 @@ class VideoNote implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'duration': this.duration,
-      'length': this.length,
-      'thumbnail': this.thumbnail.toJson(),
-      'video': this.video.toJson()
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+      "length": this.length,
+      "thumbnail": this.thumbnail.toJson(),
+      "video": this.video.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'videoNote';
+  static const String CONSTRUCTOR = "videoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;

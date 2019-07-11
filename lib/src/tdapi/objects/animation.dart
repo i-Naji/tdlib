@@ -41,18 +41,18 @@ class Animation implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'duration': this.duration,
-      'width': this.width,
-      'height': this.height,
-      'file_name': this.fileName,
-      'mime_type': this.mimeType,
-      'thumbnail': this.thumbnail.toJson(),
-      'animation': this.animation.toJson()
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+      "width": this.width,
+      "height": this.height,
+      "file_name": this.fileName,
+      "mime_type": this.mimeType,
+      "thumbnail": this.thumbnail.toJson(),
+      "animation": this.animation.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'animation';
+  static const String CONSTRUCTOR = "animation";
 
   @override
   String getConstructor() => CONSTRUCTOR;

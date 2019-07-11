@@ -13,10 +13,10 @@ class LeaveChat extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_id': this.chatId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "chat_id": this.chatId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'leaveChat';
+  static const String CONSTRUCTOR = "leaveChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

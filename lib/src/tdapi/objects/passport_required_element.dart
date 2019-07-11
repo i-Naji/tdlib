@@ -9,21 +9,22 @@ class PassportRequiredElement implements TLObject {
 
   /// Parse from a json
   PassportRequiredElement.fromJson(Map<String, dynamic> json) {
-    this.suitableElements = (json['suitable_elements'] ?? [])
-        .map((listValue) => PassportSuitableElement.fromJson(listValue))
-        .toList();
+    this.suitableElements = List<PassportSuitableElement>.from(
+        (json['suitable_elements'] ?? [])
+            .map((listValue) => PassportSuitableElement.fromJson(listValue))
+            .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'suitable_elements':
+      "@type": CONSTRUCTOR,
+      "suitable_elements":
           this.suitableElements.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'passportRequiredElement';
+  static const String CONSTRUCTOR = "passportRequiredElement";
 
   @override
   String getConstructor() => CONSTRUCTOR;

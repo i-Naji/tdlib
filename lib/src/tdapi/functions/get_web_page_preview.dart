@@ -14,13 +14,13 @@ class GetWebPagePreview extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getWebPagePreview';
+  static const String CONSTRUCTOR = "getWebPagePreview";
 
   @override
   String getConstructor() => CONSTRUCTOR;

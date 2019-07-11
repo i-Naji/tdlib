@@ -16,14 +16,14 @@ class CancelDownloadFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_id': this.fileId,
-      'only_if_pending': this.onlyIfPending,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "file_id": this.fileId,
+      "only_if_pending": this.onlyIfPending,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'cancelDownloadFile';
+  static const String CONSTRUCTOR = "cancelDownloadFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

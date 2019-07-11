@@ -23,7 +23,7 @@ class NetworkStatisticsEntry implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntry';
+  static const String CONSTRUCTOR = "networkStatisticsEntry";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -55,15 +55,15 @@ class NetworkStatisticsEntryFile implements NetworkStatisticsEntry {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_type': this.fileType.toJson(),
-      'network_type': this.networkType.toJson(),
-      'sent_bytes': this.sentBytes,
-      'received_bytes': this.receivedBytes
+      "@type": CONSTRUCTOR,
+      "file_type": this.fileType.toJson(),
+      "network_type": this.networkType.toJson(),
+      "sent_bytes": this.sentBytes,
+      "received_bytes": this.receivedBytes
     };
   }
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntryFile';
+  static const String CONSTRUCTOR = "networkStatisticsEntryFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -95,15 +95,15 @@ class NetworkStatisticsEntryCall implements NetworkStatisticsEntry {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'network_type': this.networkType.toJson(),
-      'sent_bytes': this.sentBytes,
-      'received_bytes': this.receivedBytes,
-      'duration': this.duration
+      "@type": CONSTRUCTOR,
+      "network_type": this.networkType.toJson(),
+      "sent_bytes": this.sentBytes,
+      "received_bytes": this.receivedBytes,
+      "duration": this.duration
     };
   }
 
-  static const String CONSTRUCTOR = 'networkStatisticsEntryCall';
+  static const String CONSTRUCTOR = "networkStatisticsEntryCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;

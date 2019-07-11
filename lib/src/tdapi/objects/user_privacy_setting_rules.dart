@@ -19,12 +19,12 @@ class UserPrivacySettingRules implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'rules': this.rules.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "rules": this.rules.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRules';
+  static const String CONSTRUCTOR = "userPrivacySettingRules";
 
   @override
   String getConstructor() => CONSTRUCTOR;

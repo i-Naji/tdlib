@@ -36,17 +36,17 @@ class Venue implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'location': this.location.toJson(),
-      'title': this.title,
-      'address': this.address,
-      'provider': this.provider,
-      'id': this.id,
-      'type': this.type
+      "@type": CONSTRUCTOR,
+      "location": this.location.toJson(),
+      "title": this.title,
+      "address": this.address,
+      "provider": this.provider,
+      "id": this.id,
+      "type": this.type
     };
   }
 
-  static const String CONSTRUCTOR = 'venue';
+  static const String CONSTRUCTOR = "venue";
 
   @override
   String getConstructor() => CONSTRUCTOR;

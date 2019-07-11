@@ -16,10 +16,10 @@ class AccountTtl implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'days': this.days};
+    return {"@type": CONSTRUCTOR, "days": this.days};
   }
 
-  static const String CONSTRUCTOR = 'accountTtl';
+  static const String CONSTRUCTOR = "accountTtl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

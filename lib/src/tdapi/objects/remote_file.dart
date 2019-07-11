@@ -28,15 +28,15 @@ class RemoteFile implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'is_uploading_active': this.isUploadingActive,
-      'is_uploading_completed': this.isUploadingCompleted,
-      'uploaded_size': this.uploadedSize
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "is_uploading_active": this.isUploadingActive,
+      "is_uploading_completed": this.isUploadingCompleted,
+      "uploaded_size": this.uploadedSize
     };
   }
 
-  static const String CONSTRUCTOR = 'remoteFile';
+  static const String CONSTRUCTOR = "remoteFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

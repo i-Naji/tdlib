@@ -23,14 +23,14 @@ class PassportElementError implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type.toJson(),
-      'message': this.message,
-      'source': this.source.toJson()
+      "@type": CONSTRUCTOR,
+      "type": this.type.toJson(),
+      "message": this.message,
+      "source": this.source.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'passportElementError';
+  static const String CONSTRUCTOR = "passportElementError";
 
   @override
   String getConstructor() => CONSTRUCTOR;

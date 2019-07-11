@@ -18,15 +18,15 @@ class ReportChat extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'reason': this.reason.toJson(),
-      'message_ids': this.messageIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "reason": this.reason.toJson(),
+      "message_ids": this.messageIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'reportChat';
+  static const String CONSTRUCTOR = "reportChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

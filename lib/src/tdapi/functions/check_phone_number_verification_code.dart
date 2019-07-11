@@ -13,10 +13,10 @@ class CheckPhoneNumberVerificationCode extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'code': this.code, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "code": this.code, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'checkPhoneNumberVerificationCode';
+  static const String CONSTRUCTOR = "checkPhoneNumberVerificationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

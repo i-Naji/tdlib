@@ -16,14 +16,14 @@ class GetFileDownloadedPrefixSize extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_id': this.fileId,
-      'offset': this.offset,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "file_id": this.fileId,
+      "offset": this.offset,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getFileDownloadedPrefixSize';
+  static const String CONSTRUCTOR = "getFileDownloadedPrefixSize";
 
   @override
   String getConstructor() => CONSTRUCTOR;

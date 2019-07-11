@@ -16,10 +16,10 @@ class CallId implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id};
+    return {"@type": CONSTRUCTOR, "id": this.id};
   }
 
-  static const String CONSTRUCTOR = 'callId';
+  static const String CONSTRUCTOR = "callId";
 
   @override
   String getConstructor() => CONSTRUCTOR;

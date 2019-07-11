@@ -15,22 +15,22 @@ class PassportElementsWithErrors implements TLObject {
     this.elements = (json['elements'] ?? [])
         .map((listValue) => PassportElement.fromJson(listValue))
         .toList();
-    this.errors = (json['errors'] ?? [])
+    this.errors = List<PassportElementError>.from((json['errors'] ?? [])
         .map((listValue) => PassportElementError.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'elements': this.elements.map((listItem) => listItem.toJson()).toList(),
-      'errors': this.errors.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "elements": this.elements.map((listItem) => listItem.toJson()).toList(),
+      "errors": this.errors.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'passportElementsWithErrors';
+  static const String CONSTRUCTOR = "passportElementsWithErrors";
 
   @override
   String getConstructor() => CONSTRUCTOR;

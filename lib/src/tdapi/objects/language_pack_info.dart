@@ -66,24 +66,24 @@ class LanguagePackInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'base_language_pack_id': this.baseLanguagePackId,
-      'name': this.name,
-      'native_name': this.nativeName,
-      'plural_code': this.pluralCode,
-      'is_official': this.isOfficial,
-      'is_rtl': this.isRtl,
-      'is_beta': this.isBeta,
-      'is_installed': this.isInstalled,
-      'total_string_count': this.totalStringCount,
-      'translated_string_count': this.translatedStringCount,
-      'local_string_count': this.localStringCount,
-      'translation_url': this.translationUrl
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "base_language_pack_id": this.baseLanguagePackId,
+      "name": this.name,
+      "native_name": this.nativeName,
+      "plural_code": this.pluralCode,
+      "is_official": this.isOfficial,
+      "is_rtl": this.isRtl,
+      "is_beta": this.isBeta,
+      "is_installed": this.isInstalled,
+      "total_string_count": this.totalStringCount,
+      "translated_string_count": this.translatedStringCount,
+      "local_string_count": this.localStringCount,
+      "translation_url": this.translationUrl
     };
   }
 
-  static const String CONSTRUCTOR = 'languagePackInfo';
+  static const String CONSTRUCTOR = "languagePackInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

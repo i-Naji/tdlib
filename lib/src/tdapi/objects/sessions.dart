@@ -10,21 +10,21 @@ class Sessions implements TLObject {
 
   /// Parse from a json
   Sessions.fromJson(Map<String, dynamic> json) {
-    this.sessions = (json['sessions'] ?? [])
+    this.sessions = List<Session>.from((json['sessions'] ?? [])
         .map((listValue) => Session.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sessions': this.sessions.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "sessions": this.sessions.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'sessions';
+  static const String CONSTRUCTOR = "sessions";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -10,21 +10,21 @@ class ConnectedWebsites implements TLObject {
 
   /// Parse from a json
   ConnectedWebsites.fromJson(Map<String, dynamic> json) {
-    this.websites = (json['websites'] ?? [])
+    this.websites = List<ConnectedWebsite>.from((json['websites'] ?? [])
         .map((listValue) => ConnectedWebsite.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'websites': this.websites.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "websites": this.websites.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'connectedWebsites';
+  static const String CONSTRUCTOR = "connectedWebsites";
 
   @override
   String getConstructor() => CONSTRUCTOR;

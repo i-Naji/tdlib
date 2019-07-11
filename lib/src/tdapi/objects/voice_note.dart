@@ -24,15 +24,15 @@ class VoiceNote implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'duration': this.duration,
-      'waveform': this.waveform,
-      'mime_type': this.mimeType,
-      'voice': this.voice.toJson()
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+      "waveform": this.waveform,
+      "mime_type": this.mimeType,
+      "voice": this.voice.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'voiceNote';
+  static const String CONSTRUCTOR = "voiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;

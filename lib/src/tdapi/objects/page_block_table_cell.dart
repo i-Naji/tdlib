@@ -38,17 +38,17 @@ class PageBlockTableCell implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'is_header': this.isHeader,
-      'colspan': this.colspan,
-      'rowspan': this.rowspan,
-      'align': this.align.toJson(),
-      'valign': this.valign.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "is_header": this.isHeader,
+      "colspan": this.colspan,
+      "rowspan": this.rowspan,
+      "align": this.align.toJson(),
+      "valign": this.valign.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockTableCell';
+  static const String CONSTRUCTOR = "pageBlockTableCell";
 
   @override
   String getConstructor() => CONSTRUCTOR;

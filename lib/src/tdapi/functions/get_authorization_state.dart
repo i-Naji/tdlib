@@ -12,10 +12,10 @@ class GetAuthorizationState extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getAuthorizationState';
+  static const String CONSTRUCTOR = "getAuthorizationState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

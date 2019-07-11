@@ -44,19 +44,19 @@ class LocalFile implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'path': this.path,
-      'can_be_downloaded': this.canBeDownloaded,
-      'can_be_deleted': this.canBeDeleted,
-      'is_downloading_active': this.isDownloadingActive,
-      'is_downloading_completed': this.isDownloadingCompleted,
-      'download_offset': this.downloadOffset,
-      'downloaded_prefix_size': this.downloadedPrefixSize,
-      'downloaded_size': this.downloadedSize
+      "@type": CONSTRUCTOR,
+      "path": this.path,
+      "can_be_downloaded": this.canBeDownloaded,
+      "can_be_deleted": this.canBeDeleted,
+      "is_downloading_active": this.isDownloadingActive,
+      "is_downloading_completed": this.isDownloadingCompleted,
+      "download_offset": this.downloadOffset,
+      "downloaded_prefix_size": this.downloadedPrefixSize,
+      "downloaded_size": this.downloadedSize
     };
   }
 
-  static const String CONSTRUCTOR = 'localFile';
+  static const String CONSTRUCTOR = "localFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

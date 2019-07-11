@@ -21,14 +21,14 @@ class TextEntity implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'offset': this.offset,
-      'length': this.length,
-      'type': this.type.toJson()
+      "@type": CONSTRUCTOR,
+      "offset": this.offset,
+      "length": this.length,
+      "type": this.type.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'textEntity';
+  static const String CONSTRUCTOR = "textEntity";
 
   @override
   String getConstructor() => CONSTRUCTOR;

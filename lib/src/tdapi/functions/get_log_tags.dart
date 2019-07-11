@@ -12,10 +12,10 @@ class GetLogTags extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getLogTags';
+  static const String CONSTRUCTOR = "getLogTags";
 
   @override
   String getConstructor() => CONSTRUCTOR;

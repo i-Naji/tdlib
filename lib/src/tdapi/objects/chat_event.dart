@@ -25,15 +25,15 @@ class ChatEvent implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'date': this.date,
-      'user_id': this.userId,
-      'action': this.action.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "date": this.date,
+      "user_id": this.userId,
+      "action": this.action.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEvent';
+  static const String CONSTRUCTOR = "chatEvent";
 
   @override
   String getConstructor() => CONSTRUCTOR;

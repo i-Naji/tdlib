@@ -5,20 +5,20 @@ class InputCredentials implements TLObject {
   InputCredentials();
 
   /// a InputCredentials return type can be :
-  /// * InputCredentialsAndroidPay
-  /// * InputCredentialsNew
-  /// * InputCredentialsApplePay
   /// * InputCredentialsSaved
+  /// * InputCredentialsNew
+  /// * InputCredentialsAndroidPay
+  /// * InputCredentialsApplePay
   factory InputCredentials.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InputCredentialsAndroidPay.CONSTRUCTOR:
-        return InputCredentialsAndroidPay.fromJson(json);
-      case InputCredentialsNew.CONSTRUCTOR:
-        return InputCredentialsNew.fromJson(json);
-      case InputCredentialsApplePay.CONSTRUCTOR:
-        return InputCredentialsApplePay.fromJson(json);
       case InputCredentialsSaved.CONSTRUCTOR:
         return InputCredentialsSaved.fromJson(json);
+      case InputCredentialsNew.CONSTRUCTOR:
+        return InputCredentialsNew.fromJson(json);
+      case InputCredentialsAndroidPay.CONSTRUCTOR:
+        return InputCredentialsAndroidPay.fromJson(json);
+      case InputCredentialsApplePay.CONSTRUCTOR:
+        return InputCredentialsApplePay.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class InputCredentials implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inputCredentials';
+  static const String CONSTRUCTOR = "inputCredentials";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -50,12 +50,12 @@ class InputCredentialsSaved implements InputCredentials {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'saved_credentials_id': this.savedCredentialsId
+      "@type": CONSTRUCTOR,
+      "saved_credentials_id": this.savedCredentialsId
     };
   }
 
-  static const String CONSTRUCTOR = 'inputCredentialsSaved';
+  static const String CONSTRUCTOR = "inputCredentialsSaved";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -79,13 +79,13 @@ class InputCredentialsNew implements InputCredentials {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'data': this.data,
-      'allow_save': this.allowSave
+      "@type": CONSTRUCTOR,
+      "data": this.data,
+      "allow_save": this.allowSave
     };
   }
 
-  static const String CONSTRUCTOR = 'inputCredentialsNew';
+  static const String CONSTRUCTOR = "inputCredentialsNew";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class InputCredentialsAndroidPay implements InputCredentials {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'data': this.data};
+    return {"@type": CONSTRUCTOR, "data": this.data};
   }
 
-  static const String CONSTRUCTOR = 'inputCredentialsAndroidPay';
+  static const String CONSTRUCTOR = "inputCredentialsAndroidPay";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -128,10 +128,10 @@ class InputCredentialsApplePay implements InputCredentials {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'data': this.data};
+    return {"@type": CONSTRUCTOR, "data": this.data};
   }
 
-  static const String CONSTRUCTOR = 'inputCredentialsApplePay';
+  static const String CONSTRUCTOR = "inputCredentialsApplePay";
 
   @override
   String getConstructor() => CONSTRUCTOR;

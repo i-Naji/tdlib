@@ -20,13 +20,13 @@ class TemporaryPasswordState implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'has_password': this.hasPassword,
-      'valid_for': this.validFor
+      "@type": CONSTRUCTOR,
+      "has_password": this.hasPassword,
+      "valid_for": this.validFor
     };
   }
 
-  static const String CONSTRUCTOR = 'temporaryPasswordState';
+  static const String CONSTRUCTOR = "temporaryPasswordState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

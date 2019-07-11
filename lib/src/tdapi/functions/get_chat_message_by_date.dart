@@ -16,14 +16,14 @@ class GetChatMessageByDate extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'date': this.date,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "date": this.date,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatMessageByDate';
+  static const String CONSTRUCTOR = "getChatMessageByDate";
 
   @override
   String getConstructor() => CONSTRUCTOR;

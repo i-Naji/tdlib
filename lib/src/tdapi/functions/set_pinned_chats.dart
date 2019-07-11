@@ -14,13 +14,13 @@ class SetPinnedChats extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_ids': this.chatIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_ids": this.chatIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setPinnedChats';
+  static const String CONSTRUCTOR = "setPinnedChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,26 +5,26 @@ class ChatMemberStatus implements TLObject {
   ChatMemberStatus();
 
   /// a ChatMemberStatus return type can be :
-  /// * ChatMemberStatusRestricted
-  /// * ChatMemberStatusBanned
   /// * ChatMemberStatusCreator
-  /// * ChatMemberStatusMember
-  /// * ChatMemberStatusLeft
   /// * ChatMemberStatusAdministrator
+  /// * ChatMemberStatusMember
+  /// * ChatMemberStatusRestricted
+  /// * ChatMemberStatusLeft
+  /// * ChatMemberStatusBanned
   factory ChatMemberStatus.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ChatMemberStatusRestricted.CONSTRUCTOR:
-        return ChatMemberStatusRestricted.fromJson(json);
-      case ChatMemberStatusBanned.CONSTRUCTOR:
-        return ChatMemberStatusBanned.fromJson(json);
       case ChatMemberStatusCreator.CONSTRUCTOR:
         return ChatMemberStatusCreator.fromJson(json);
-      case ChatMemberStatusMember.CONSTRUCTOR:
-        return ChatMemberStatusMember.fromJson(json);
-      case ChatMemberStatusLeft.CONSTRUCTOR:
-        return ChatMemberStatusLeft.fromJson(json);
       case ChatMemberStatusAdministrator.CONSTRUCTOR:
         return ChatMemberStatusAdministrator.fromJson(json);
+      case ChatMemberStatusMember.CONSTRUCTOR:
+        return ChatMemberStatusMember.fromJson(json);
+      case ChatMemberStatusRestricted.CONSTRUCTOR:
+        return ChatMemberStatusRestricted.fromJson(json);
+      case ChatMemberStatusLeft.CONSTRUCTOR:
+        return ChatMemberStatusLeft.fromJson(json);
+      case ChatMemberStatusBanned.CONSTRUCTOR:
+        return ChatMemberStatusBanned.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class ChatMemberStatus implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatus';
+  static const String CONSTRUCTOR = "chatMemberStatus";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -55,10 +55,10 @@ class ChatMemberStatusCreator implements ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'is_member': this.isMember};
+    return {"@type": CONSTRUCTOR, "is_member": this.isMember};
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusCreator';
+  static const String CONSTRUCTOR = "chatMemberStatusCreator";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -112,20 +112,20 @@ class ChatMemberStatusAdministrator implements ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'can_be_edited': this.canBeEdited,
-      'can_change_info': this.canChangeInfo,
-      'can_post_messages': this.canPostMessages,
-      'can_edit_messages': this.canEditMessages,
-      'can_delete_messages': this.canDeleteMessages,
-      'can_invite_users': this.canInviteUsers,
-      'can_restrict_members': this.canRestrictMembers,
-      'can_pin_messages': this.canPinMessages,
-      'can_promote_members': this.canPromoteMembers
+      "@type": CONSTRUCTOR,
+      "can_be_edited": this.canBeEdited,
+      "can_change_info": this.canChangeInfo,
+      "can_post_messages": this.canPostMessages,
+      "can_edit_messages": this.canEditMessages,
+      "can_delete_messages": this.canDeleteMessages,
+      "can_invite_users": this.canInviteUsers,
+      "can_restrict_members": this.canRestrictMembers,
+      "can_pin_messages": this.canPinMessages,
+      "can_promote_members": this.canPromoteMembers
     };
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusAdministrator';
+  static const String CONSTRUCTOR = "chatMemberStatusAdministrator";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -141,10 +141,10 @@ class ChatMemberStatusMember implements ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusMember';
+  static const String CONSTRUCTOR = "chatMemberStatusMember";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -186,17 +186,17 @@ class ChatMemberStatusRestricted implements ChatMemberStatus {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_member': this.isMember,
-      'restricted_until_date': this.restrictedUntilDate,
-      'can_send_messages': this.canSendMessages,
-      'can_send_media_messages': this.canSendMediaMessages,
-      'can_send_other_messages': this.canSendOtherMessages,
-      'can_add_web_page_previews': this.canAddWebPagePreviews
+      "@type": CONSTRUCTOR,
+      "is_member": this.isMember,
+      "restricted_until_date": this.restrictedUntilDate,
+      "can_send_messages": this.canSendMessages,
+      "can_send_media_messages": this.canSendMediaMessages,
+      "can_send_other_messages": this.canSendOtherMessages,
+      "can_add_web_page_previews": this.canAddWebPagePreviews
     };
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusRestricted';
+  static const String CONSTRUCTOR = "chatMemberStatusRestricted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -212,10 +212,10 @@ class ChatMemberStatusLeft implements ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusLeft';
+  static const String CONSTRUCTOR = "chatMemberStatusLeft";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -235,10 +235,10 @@ class ChatMemberStatusBanned implements ChatMemberStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'banned_until_date': this.bannedUntilDate};
+    return {"@type": CONSTRUCTOR, "banned_until_date": this.bannedUntilDate};
   }
 
-  static const String CONSTRUCTOR = 'chatMemberStatusBanned';
+  static const String CONSTRUCTOR = "chatMemberStatusBanned";
 
   @override
   String getConstructor() => CONSTRUCTOR;

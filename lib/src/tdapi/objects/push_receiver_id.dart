@@ -16,10 +16,10 @@ class PushReceiverId implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'id': this.id};
+    return {"@type": CONSTRUCTOR, "id": this.id};
   }
 
-  static const String CONSTRUCTOR = 'pushReceiverId';
+  static const String CONSTRUCTOR = "pushReceiverId";
 
   @override
   String getConstructor() => CONSTRUCTOR;

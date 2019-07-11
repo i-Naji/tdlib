@@ -16,14 +16,14 @@ class OpenMessageContent extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'openMessageContent';
+  static const String CONSTRUCTOR = "openMessageContent";
 
   @override
   String getConstructor() => CONSTRUCTOR;

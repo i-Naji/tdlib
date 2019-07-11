@@ -72,26 +72,26 @@ class TdlibParameters implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'use_test_dc': this.useTestDc,
-      'database_directory': this.databaseDirectory,
-      'files_directory': this.filesDirectory,
-      'use_file_database': this.useFileDatabase,
-      'use_chat_info_database': this.useChatInfoDatabase,
-      'use_message_database': this.useMessageDatabase,
-      'use_secret_chats': this.useSecretChats,
-      'api_id': this.apiId,
-      'api_hash': this.apiHash,
-      'system_language_code': this.systemLanguageCode,
-      'device_model': this.deviceModel,
-      'system_version': this.systemVersion,
-      'application_version': this.applicationVersion,
-      'enable_storage_optimizer': this.enableStorageOptimizer,
-      'ignore_file_names': this.ignoreFileNames
+      "@type": CONSTRUCTOR,
+      "use_test_dc": this.useTestDc,
+      "database_directory": this.databaseDirectory,
+      "files_directory": this.filesDirectory,
+      "use_file_database": this.useFileDatabase,
+      "use_chat_info_database": this.useChatInfoDatabase,
+      "use_message_database": this.useMessageDatabase,
+      "use_secret_chats": this.useSecretChats,
+      "api_id": this.apiId,
+      "api_hash": this.apiHash,
+      "system_language_code": this.systemLanguageCode,
+      "device_model": this.deviceModel,
+      "system_version": this.systemVersion,
+      "application_version": this.applicationVersion,
+      "enable_storage_optimizer": this.enableStorageOptimizer,
+      "ignore_file_names": this.ignoreFileNames
     };
   }
 
-  static const String CONSTRUCTOR = 'tdlibParameters';
+  static const String CONSTRUCTOR = "tdlibParameters";
 
   @override
   String getConstructor() => CONSTRUCTOR;

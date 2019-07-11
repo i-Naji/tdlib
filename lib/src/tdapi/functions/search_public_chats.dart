@@ -13,10 +13,10 @@ class SearchPublicChats extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'query': this.query, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "query": this.query, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'searchPublicChats';
+  static const String CONSTRUCTOR = "searchPublicChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;

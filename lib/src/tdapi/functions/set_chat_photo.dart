@@ -16,14 +16,14 @@ class SetChatPhoto extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'photo': this.photo.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "photo": this.photo.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setChatPhoto';
+  static const String CONSTRUCTOR = "setChatPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

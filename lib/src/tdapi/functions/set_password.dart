@@ -27,17 +27,17 @@ class SetPassword extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_password': this.oldPassword,
-      'new_password': this.newPassword,
-      'new_hint': this.newHint,
-      'set_recovery_email_address': this.setRecoveryEmailAddress,
-      'new_recovery_email_address': this.newRecoveryEmailAddress,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "old_password": this.oldPassword,
+      "new_password": this.newPassword,
+      "new_hint": this.newHint,
+      "set_recovery_email_address": this.setRecoveryEmailAddress,
+      "new_recovery_email_address": this.newRecoveryEmailAddress,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setPassword';
+  static const String CONSTRUCTOR = "setPassword";
 
   @override
   String getConstructor() => CONSTRUCTOR;

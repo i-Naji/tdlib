@@ -27,17 +27,17 @@ class SearchMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'query': this.query,
-      'offset_date': this.offsetDate,
-      'offset_chat_id': this.offsetChatId,
-      'offset_message_id': this.offsetMessageId,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "query": this.query,
+      "offset_date": this.offsetDate,
+      "offset_chat_id": this.offsetChatId,
+      "offset_message_id": this.offsetMessageId,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchMessages';
+  static const String CONSTRUCTOR = "searchMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -41,18 +41,18 @@ class Game implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'short_name': this.shortName,
-      'title': this.title,
-      'text': this.text.toJson(),
-      'description': this.description,
-      'photo': this.photo.toJson(),
-      'animation': this.animation.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "short_name": this.shortName,
+      "title": this.title,
+      "text": this.text.toJson(),
+      "description": this.description,
+      "photo": this.photo.toJson(),
+      "animation": this.animation.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'game';
+  static const String CONSTRUCTOR = "game";
 
   @override
   String getConstructor() => CONSTRUCTOR;

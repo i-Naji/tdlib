@@ -12,10 +12,10 @@ class TestGetDifference extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'testGetDifference';
+  static const String CONSTRUCTOR = "testGetDifference";
 
   @override
   String getConstructor() => CONSTRUCTOR;

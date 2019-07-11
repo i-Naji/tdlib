@@ -13,10 +13,10 @@ class TestCallBytes extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'x': this.x, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "x": this.x, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'testCallBytes';
+  static const String CONSTRUCTOR = "testCallBytes";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,10 +16,10 @@ class Text implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text};
+    return {"@type": CONSTRUCTOR, "text": this.text};
   }
 
-  static const String CONSTRUCTOR = 'text';
+  static const String CONSTRUCTOR = "text";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,41 +5,41 @@ class DeviceToken implements TLObject {
   DeviceToken();
 
   /// a DeviceToken return type can be :
+  /// * DeviceTokenFirebaseCloudMessaging
+  /// * DeviceTokenApplePush
+  /// * DeviceTokenApplePushVoIP
+  /// * DeviceTokenWindowsPush
   /// * DeviceTokenMicrosoftPush
   /// * DeviceTokenMicrosoftPushVoIP
   /// * DeviceTokenWebPush
-  /// * DeviceTokenUbuntuPush
-  /// * DeviceTokenApplePush
-  /// * DeviceTokenApplePushVoIP
-  /// * DeviceTokenTizenPush
-  /// * DeviceTokenBlackBerryPush
-  /// * DeviceTokenWindowsPush
   /// * DeviceTokenSimplePush
-  /// * DeviceTokenFirebaseCloudMessaging
+  /// * DeviceTokenUbuntuPush
+  /// * DeviceTokenBlackBerryPush
+  /// * DeviceTokenTizenPush
   factory DeviceToken.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
+        return DeviceTokenFirebaseCloudMessaging.fromJson(json);
+      case DeviceTokenApplePush.CONSTRUCTOR:
+        return DeviceTokenApplePush.fromJson(json);
+      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
+        return DeviceTokenApplePushVoIP.fromJson(json);
+      case DeviceTokenWindowsPush.CONSTRUCTOR:
+        return DeviceTokenWindowsPush.fromJson(json);
       case DeviceTokenMicrosoftPush.CONSTRUCTOR:
         return DeviceTokenMicrosoftPush.fromJson(json);
       case DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR:
         return DeviceTokenMicrosoftPushVoIP.fromJson(json);
       case DeviceTokenWebPush.CONSTRUCTOR:
         return DeviceTokenWebPush.fromJson(json);
-      case DeviceTokenUbuntuPush.CONSTRUCTOR:
-        return DeviceTokenUbuntuPush.fromJson(json);
-      case DeviceTokenApplePush.CONSTRUCTOR:
-        return DeviceTokenApplePush.fromJson(json);
-      case DeviceTokenApplePushVoIP.CONSTRUCTOR:
-        return DeviceTokenApplePushVoIP.fromJson(json);
-      case DeviceTokenTizenPush.CONSTRUCTOR:
-        return DeviceTokenTizenPush.fromJson(json);
-      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
-        return DeviceTokenBlackBerryPush.fromJson(json);
-      case DeviceTokenWindowsPush.CONSTRUCTOR:
-        return DeviceTokenWindowsPush.fromJson(json);
       case DeviceTokenSimplePush.CONSTRUCTOR:
         return DeviceTokenSimplePush.fromJson(json);
-      case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
-        return DeviceTokenFirebaseCloudMessaging.fromJson(json);
+      case DeviceTokenUbuntuPush.CONSTRUCTOR:
+        return DeviceTokenUbuntuPush.fromJson(json);
+      case DeviceTokenBlackBerryPush.CONSTRUCTOR:
+        return DeviceTokenBlackBerryPush.fromJson(json);
+      case DeviceTokenTizenPush.CONSTRUCTOR:
+        return DeviceTokenTizenPush.fromJson(json);
       default:
         return null;
     }
@@ -50,7 +50,7 @@ class DeviceToken implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'deviceToken';
+  static const String CONSTRUCTOR = "deviceToken";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -73,10 +73,10 @@ class DeviceTokenFirebaseCloudMessaging implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'token': this.token, 'encrypt': this.encrypt};
+    return {"@type": CONSTRUCTOR, "token": this.token, "encrypt": this.encrypt};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenFirebaseCloudMessaging';
+  static const String CONSTRUCTOR = "deviceTokenFirebaseCloudMessaging";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -100,13 +100,13 @@ class DeviceTokenApplePush implements DeviceToken {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'device_token': this.deviceToken,
-      'is_app_sandbox': this.isAppSandbox
+      "@type": CONSTRUCTOR,
+      "device_token": this.deviceToken,
+      "is_app_sandbox": this.isAppSandbox
     };
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenApplePush';
+  static const String CONSTRUCTOR = "deviceTokenApplePush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -133,14 +133,14 @@ class DeviceTokenApplePushVoIP implements DeviceToken {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'device_token': this.deviceToken,
-      'is_app_sandbox': this.isAppSandbox,
-      'encrypt': this.encrypt
+      "@type": CONSTRUCTOR,
+      "device_token": this.deviceToken,
+      "is_app_sandbox": this.isAppSandbox,
+      "encrypt": this.encrypt
     };
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenApplePushVoIP';
+  static const String CONSTRUCTOR = "deviceTokenApplePushVoIP";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -160,10 +160,10 @@ class DeviceTokenWindowsPush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'access_token': this.accessToken};
+    return {"@type": CONSTRUCTOR, "access_token": this.accessToken};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenWindowsPush';
+  static const String CONSTRUCTOR = "deviceTokenWindowsPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -183,10 +183,10 @@ class DeviceTokenMicrosoftPush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'channel_uri': this.channelUri};
+    return {"@type": CONSTRUCTOR, "channel_uri": this.channelUri};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenMicrosoftPush';
+  static const String CONSTRUCTOR = "deviceTokenMicrosoftPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -206,10 +206,10 @@ class DeviceTokenMicrosoftPushVoIP implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'channel_uri': this.channelUri};
+    return {"@type": CONSTRUCTOR, "channel_uri": this.channelUri};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
+  static const String CONSTRUCTOR = "deviceTokenMicrosoftPushVoIP";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -236,14 +236,14 @@ class DeviceTokenWebPush implements DeviceToken {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'endpoint': this.endpoint,
-      'p256dh_base64url': this.p256dhBase64url,
-      'auth_base64url': this.authBase64url
+      "@type": CONSTRUCTOR,
+      "endpoint": this.endpoint,
+      "p256dh_base64url": this.p256dhBase64url,
+      "auth_base64url": this.authBase64url
     };
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenWebPush';
+  static const String CONSTRUCTOR = "deviceTokenWebPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -263,10 +263,10 @@ class DeviceTokenSimplePush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'endpoint': this.endpoint};
+    return {"@type": CONSTRUCTOR, "endpoint": this.endpoint};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenSimplePush';
+  static const String CONSTRUCTOR = "deviceTokenSimplePush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -286,10 +286,10 @@ class DeviceTokenUbuntuPush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'token': this.token};
+    return {"@type": CONSTRUCTOR, "token": this.token};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenUbuntuPush';
+  static const String CONSTRUCTOR = "deviceTokenUbuntuPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -309,10 +309,10 @@ class DeviceTokenBlackBerryPush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'token': this.token};
+    return {"@type": CONSTRUCTOR, "token": this.token};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenBlackBerryPush';
+  static const String CONSTRUCTOR = "deviceTokenBlackBerryPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -332,10 +332,10 @@ class DeviceTokenTizenPush implements DeviceToken {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'reg_id': this.regId};
+    return {"@type": CONSTRUCTOR, "reg_id": this.regId};
   }
 
-  static const String CONSTRUCTOR = 'deviceTokenTizenPush';
+  static const String CONSTRUCTOR = "deviceTokenTizenPush";
 
   @override
   String getConstructor() => CONSTRUCTOR;

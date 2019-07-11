@@ -18,15 +18,15 @@ class GetGroupsInCommon extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'offset_chat_id': this.offsetChatId,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "offset_chat_id": this.offsetChatId,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getGroupsInCommon';
+  static const String CONSTRUCTOR = "getGroupsInCommon";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,15 +18,15 @@ class EditMessageReplyMarkup extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'reply_markup': this.replyMarkup.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "reply_markup": this.replyMarkup.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editMessageReplyMarkup';
+  static const String CONSTRUCTOR = "editMessageReplyMarkup";
 
   @override
   String getConstructor() => CONSTRUCTOR;

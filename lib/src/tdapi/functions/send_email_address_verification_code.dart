@@ -14,13 +14,13 @@ class SendEmailAddressVerificationCode extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'email_address': this.emailAddress,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "email_address": this.emailAddress,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendEmailAddressVerificationCode';
+  static const String CONSTRUCTOR = "sendEmailAddressVerificationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

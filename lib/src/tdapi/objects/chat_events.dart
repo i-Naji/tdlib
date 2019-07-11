@@ -10,21 +10,21 @@ class ChatEvents implements TLObject {
 
   /// Parse from a json
   ChatEvents.fromJson(Map<String, dynamic> json) {
-    this.events = (json['events'] ?? [])
+    this.events = List<ChatEvent>.from((json['events'] ?? [])
         .map((listValue) => ChatEvent.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'events': this.events.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "events": this.events.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEvents';
+  static const String CONSTRUCTOR = "chatEvents";
 
   @override
   String getConstructor() => CONSTRUCTOR;

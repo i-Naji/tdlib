@@ -6,25 +6,25 @@ class SupergroupMembersFilter implements TLObject {
 
   /// a SupergroupMembersFilter return type can be :
   /// * SupergroupMembersFilterRecent
-  /// * SupergroupMembersFilterBanned
-  /// * SupergroupMembersFilterRestricted
   /// * SupergroupMembersFilterAdministrators
-  /// * SupergroupMembersFilterBots
   /// * SupergroupMembersFilterSearch
+  /// * SupergroupMembersFilterRestricted
+  /// * SupergroupMembersFilterBanned
+  /// * SupergroupMembersFilterBots
   factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case SupergroupMembersFilterRecent.CONSTRUCTOR:
         return SupergroupMembersFilterRecent.fromJson(json);
-      case SupergroupMembersFilterBanned.CONSTRUCTOR:
-        return SupergroupMembersFilterBanned.fromJson(json);
-      case SupergroupMembersFilterRestricted.CONSTRUCTOR:
-        return SupergroupMembersFilterRestricted.fromJson(json);
       case SupergroupMembersFilterAdministrators.CONSTRUCTOR:
         return SupergroupMembersFilterAdministrators.fromJson(json);
-      case SupergroupMembersFilterBots.CONSTRUCTOR:
-        return SupergroupMembersFilterBots.fromJson(json);
       case SupergroupMembersFilterSearch.CONSTRUCTOR:
         return SupergroupMembersFilterSearch.fromJson(json);
+      case SupergroupMembersFilterRestricted.CONSTRUCTOR:
+        return SupergroupMembersFilterRestricted.fromJson(json);
+      case SupergroupMembersFilterBanned.CONSTRUCTOR:
+        return SupergroupMembersFilterBanned.fromJson(json);
+      case SupergroupMembersFilterBots.CONSTRUCTOR:
+        return SupergroupMembersFilterBots.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class SupergroupMembersFilter implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilter';
+  static const String CONSTRUCTOR = "supergroupMembersFilter";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class SupergroupMembersFilterRecent implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterRecent';
+  static const String CONSTRUCTOR = "supergroupMembersFilterRecent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -70,10 +70,10 @@ class SupergroupMembersFilterAdministrators implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterAdministrators';
+  static const String CONSTRUCTOR = "supergroupMembersFilterAdministrators";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -93,10 +93,10 @@ class SupergroupMembersFilterSearch implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'query': this.query};
+    return {"@type": CONSTRUCTOR, "query": this.query};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterSearch';
+  static const String CONSTRUCTOR = "supergroupMembersFilterSearch";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -116,10 +116,10 @@ class SupergroupMembersFilterRestricted implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'query': this.query};
+    return {"@type": CONSTRUCTOR, "query": this.query};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterRestricted';
+  static const String CONSTRUCTOR = "supergroupMembersFilterRestricted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -139,10 +139,10 @@ class SupergroupMembersFilterBanned implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'query': this.query};
+    return {"@type": CONSTRUCTOR, "query": this.query};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterBanned';
+  static const String CONSTRUCTOR = "supergroupMembersFilterBanned";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -158,10 +158,10 @@ class SupergroupMembersFilterBots implements SupergroupMembersFilter {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'supergroupMembersFilterBots';
+  static const String CONSTRUCTOR = "supergroupMembersFilterBots";
 
   @override
   String getConstructor() => CONSTRUCTOR;

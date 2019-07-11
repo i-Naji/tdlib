@@ -5,17 +5,17 @@ class LinkState implements TLObject {
   LinkState();
 
   /// a LinkState return type can be :
-  /// * LinkStateIsContact
-  /// * LinkStateKnowsPhoneNumber
   /// * LinkStateNone
+  /// * LinkStateKnowsPhoneNumber
+  /// * LinkStateIsContact
   factory LinkState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case LinkStateIsContact.CONSTRUCTOR:
-        return LinkStateIsContact.fromJson(json);
-      case LinkStateKnowsPhoneNumber.CONSTRUCTOR:
-        return LinkStateKnowsPhoneNumber.fromJson(json);
       case LinkStateNone.CONSTRUCTOR:
         return LinkStateNone.fromJson(json);
+      case LinkStateKnowsPhoneNumber.CONSTRUCTOR:
+        return LinkStateKnowsPhoneNumber.fromJson(json);
+      case LinkStateIsContact.CONSTRUCTOR:
+        return LinkStateIsContact.fromJson(json);
       default:
         return null;
     }
@@ -26,7 +26,7 @@ class LinkState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'linkState';
+  static const String CONSTRUCTOR = "linkState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -42,10 +42,10 @@ class LinkStateNone implements LinkState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'linkStateNone';
+  static const String CONSTRUCTOR = "linkStateNone";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -61,10 +61,10 @@ class LinkStateKnowsPhoneNumber implements LinkState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'linkStateKnowsPhoneNumber';
+  static const String CONSTRUCTOR = "linkStateKnowsPhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -80,10 +80,10 @@ class LinkStateIsContact implements LinkState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'linkStateIsContact';
+  static const String CONSTRUCTOR = "linkStateIsContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;

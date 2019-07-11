@@ -5,26 +5,26 @@ class UserStatus implements TLObject {
   UserStatus();
 
   /// a UserStatus return type can be :
-  /// * UserStatusLastMonth
-  /// * UserStatusOnline
-  /// * UserStatusLastWeek
-  /// * UserStatusOffline
   /// * UserStatusEmpty
+  /// * UserStatusOnline
+  /// * UserStatusOffline
   /// * UserStatusRecently
+  /// * UserStatusLastWeek
+  /// * UserStatusLastMonth
   factory UserStatus.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case UserStatusLastMonth.CONSTRUCTOR:
-        return UserStatusLastMonth.fromJson(json);
-      case UserStatusOnline.CONSTRUCTOR:
-        return UserStatusOnline.fromJson(json);
-      case UserStatusLastWeek.CONSTRUCTOR:
-        return UserStatusLastWeek.fromJson(json);
-      case UserStatusOffline.CONSTRUCTOR:
-        return UserStatusOffline.fromJson(json);
       case UserStatusEmpty.CONSTRUCTOR:
         return UserStatusEmpty.fromJson(json);
+      case UserStatusOnline.CONSTRUCTOR:
+        return UserStatusOnline.fromJson(json);
+      case UserStatusOffline.CONSTRUCTOR:
+        return UserStatusOffline.fromJson(json);
       case UserStatusRecently.CONSTRUCTOR:
         return UserStatusRecently.fromJson(json);
+      case UserStatusLastWeek.CONSTRUCTOR:
+        return UserStatusLastWeek.fromJson(json);
+      case UserStatusLastMonth.CONSTRUCTOR:
+        return UserStatusLastMonth.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class UserStatus implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'userStatus';
+  static const String CONSTRUCTOR = "userStatus";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class UserStatusEmpty implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userStatusEmpty';
+  static const String CONSTRUCTOR = "userStatusEmpty";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -74,10 +74,10 @@ class UserStatusOnline implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'expires': this.expires};
+    return {"@type": CONSTRUCTOR, "expires": this.expires};
   }
 
-  static const String CONSTRUCTOR = 'userStatusOnline';
+  static const String CONSTRUCTOR = "userStatusOnline";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -97,10 +97,10 @@ class UserStatusOffline implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'was_online': this.wasOnline};
+    return {"@type": CONSTRUCTOR, "was_online": this.wasOnline};
   }
 
-  static const String CONSTRUCTOR = 'userStatusOffline';
+  static const String CONSTRUCTOR = "userStatusOffline";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -116,10 +116,10 @@ class UserStatusRecently implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userStatusRecently';
+  static const String CONSTRUCTOR = "userStatusRecently";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -135,10 +135,10 @@ class UserStatusLastWeek implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userStatusLastWeek';
+  static const String CONSTRUCTOR = "userStatusLastWeek";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -154,10 +154,10 @@ class UserStatusLastMonth implements UserStatus {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userStatusLastMonth';
+  static const String CONSTRUCTOR = "userStatusLastMonth";
 
   @override
   String getConstructor() => CONSTRUCTOR;

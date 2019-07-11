@@ -5,14 +5,14 @@ class CallbackQueryPayload implements TLObject {
   CallbackQueryPayload();
 
   /// a CallbackQueryPayload return type can be :
-  /// * CallbackQueryPayloadGame
   /// * CallbackQueryPayloadData
+  /// * CallbackQueryPayloadGame
   factory CallbackQueryPayload.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case CallbackQueryPayloadGame.CONSTRUCTOR:
-        return CallbackQueryPayloadGame.fromJson(json);
       case CallbackQueryPayloadData.CONSTRUCTOR:
         return CallbackQueryPayloadData.fromJson(json);
+      case CallbackQueryPayloadGame.CONSTRUCTOR:
+        return CallbackQueryPayloadGame.fromJson(json);
       default:
         return null;
     }
@@ -23,7 +23,7 @@ class CallbackQueryPayload implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'callbackQueryPayload';
+  static const String CONSTRUCTOR = "callbackQueryPayload";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -43,10 +43,10 @@ class CallbackQueryPayloadData implements CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'data': this.data};
+    return {"@type": CONSTRUCTOR, "data": this.data};
   }
 
-  static const String CONSTRUCTOR = 'callbackQueryPayloadData';
+  static const String CONSTRUCTOR = "callbackQueryPayloadData";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -66,10 +66,10 @@ class CallbackQueryPayloadGame implements CallbackQueryPayload {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'game_short_name': this.gameShortName};
+    return {"@type": CONSTRUCTOR, "game_short_name": this.gameShortName};
   }
 
-  static const String CONSTRUCTOR = 'callbackQueryPayloadGame';
+  static const String CONSTRUCTOR = "callbackQueryPayloadGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -10,21 +10,21 @@ class GameHighScores implements TLObject {
 
   /// Parse from a json
   GameHighScores.fromJson(Map<String, dynamic> json) {
-    this.scores = (json['scores'] ?? [])
+    this.scores = List<GameHighScore>.from((json['scores'] ?? [])
         .map((listValue) => GameHighScore.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'scores': this.scores.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "scores": this.scores.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'gameHighScores';
+  static const String CONSTRUCTOR = "gameHighScores";
 
   @override
   String getConstructor() => CONSTRUCTOR;

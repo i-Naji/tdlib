@@ -5,15 +5,15 @@ class SecretChatState implements TLObject {
   SecretChatState();
 
   /// a SecretChatState return type can be :
-  /// * SecretChatStateReady
   /// * SecretChatStatePending
+  /// * SecretChatStateReady
   /// * SecretChatStateClosed
   factory SecretChatState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case SecretChatStateReady.CONSTRUCTOR:
-        return SecretChatStateReady.fromJson(json);
       case SecretChatStatePending.CONSTRUCTOR:
         return SecretChatStatePending.fromJson(json);
+      case SecretChatStateReady.CONSTRUCTOR:
+        return SecretChatStateReady.fromJson(json);
       case SecretChatStateClosed.CONSTRUCTOR:
         return SecretChatStateClosed.fromJson(json);
       default:
@@ -26,7 +26,7 @@ class SecretChatState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'secretChatState';
+  static const String CONSTRUCTOR = "secretChatState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -42,10 +42,10 @@ class SecretChatStatePending implements SecretChatState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'secretChatStatePending';
+  static const String CONSTRUCTOR = "secretChatStatePending";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -61,10 +61,10 @@ class SecretChatStateReady implements SecretChatState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'secretChatStateReady';
+  static const String CONSTRUCTOR = "secretChatStateReady";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -80,10 +80,10 @@ class SecretChatStateClosed implements SecretChatState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'secretChatStateClosed';
+  static const String CONSTRUCTOR = "secretChatStateClosed";
 
   @override
   String getConstructor() => CONSTRUCTOR;

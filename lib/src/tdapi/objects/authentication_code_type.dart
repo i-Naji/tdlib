@@ -5,20 +5,20 @@ class AuthenticationCodeType implements TLObject {
   AuthenticationCodeType();
 
   /// a AuthenticationCodeType return type can be :
-  /// * AuthenticationCodeTypeSms
-  /// * AuthenticationCodeTypeFlashCall
   /// * AuthenticationCodeTypeTelegramMessage
+  /// * AuthenticationCodeTypeSms
   /// * AuthenticationCodeTypeCall
+  /// * AuthenticationCodeTypeFlashCall
   factory AuthenticationCodeType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case AuthenticationCodeTypeSms.CONSTRUCTOR:
-        return AuthenticationCodeTypeSms.fromJson(json);
-      case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
-        return AuthenticationCodeTypeFlashCall.fromJson(json);
       case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
+      case AuthenticationCodeTypeSms.CONSTRUCTOR:
+        return AuthenticationCodeTypeSms.fromJson(json);
       case AuthenticationCodeTypeCall.CONSTRUCTOR:
         return AuthenticationCodeTypeCall.fromJson(json);
+      case AuthenticationCodeTypeFlashCall.CONSTRUCTOR:
+        return AuthenticationCodeTypeFlashCall.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class AuthenticationCodeType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeType';
+  static const String CONSTRUCTOR = "authenticationCodeType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -49,10 +49,10 @@ class AuthenticationCodeTypeTelegramMessage implements AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'length': this.length};
+    return {"@type": CONSTRUCTOR, "length": this.length};
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeTypeTelegramMessage';
+  static const String CONSTRUCTOR = "authenticationCodeTypeTelegramMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class AuthenticationCodeTypeSms implements AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'length': this.length};
+    return {"@type": CONSTRUCTOR, "length": this.length};
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeTypeSms';
+  static const String CONSTRUCTOR = "authenticationCodeTypeSms";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -95,10 +95,10 @@ class AuthenticationCodeTypeCall implements AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'length': this.length};
+    return {"@type": CONSTRUCTOR, "length": this.length};
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeTypeCall';
+  static const String CONSTRUCTOR = "authenticationCodeTypeCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -118,10 +118,10 @@ class AuthenticationCodeTypeFlashCall implements AuthenticationCodeType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'pattern': this.pattern};
+    return {"@type": CONSTRUCTOR, "pattern": this.pattern};
   }
 
-  static const String CONSTRUCTOR = 'authenticationCodeTypeFlashCall';
+  static const String CONSTRUCTOR = "authenticationCodeTypeFlashCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;

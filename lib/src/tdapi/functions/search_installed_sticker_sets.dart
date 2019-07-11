@@ -18,15 +18,15 @@ class SearchInstalledStickerSets extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_masks': this.isMasks,
-      'query': this.query,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "is_masks": this.isMasks,
+      "query": this.query,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchInstalledStickerSets';
+  static const String CONSTRUCTOR = "searchInstalledStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;

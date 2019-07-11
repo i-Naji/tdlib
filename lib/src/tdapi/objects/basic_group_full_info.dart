@@ -15,9 +15,9 @@ class BasicGroupFullInfo implements TLObject {
   /// Parse from a json
   BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
     this.creatorUserId = json['creator_user_id'];
-    this.members = (json['members'] ?? [])
+    this.members = List<ChatMember>.from((json['members'] ?? [])
         .map((listValue) => ChatMember.fromJson(listValue))
-        .toList();
+        .toList());
     this.inviteLink = json['invite_link'];
     this.extra = json['@extra'];
   }
@@ -25,14 +25,14 @@ class BasicGroupFullInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'creator_user_id': this.creatorUserId,
-      'members': this.members.map((listItem) => listItem.toJson()).toList(),
-      'invite_link': this.inviteLink
+      "@type": CONSTRUCTOR,
+      "creator_user_id": this.creatorUserId,
+      "members": this.members.map((listItem) => listItem.toJson()).toList(),
+      "invite_link": this.inviteLink
     };
   }
 
-  static const String CONSTRUCTOR = 'basicGroupFullInfo';
+  static const String CONSTRUCTOR = "basicGroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

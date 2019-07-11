@@ -5,17 +5,17 @@ class LanguagePackStringValue implements TLObject {
   LanguagePackStringValue();
 
   /// a LanguagePackStringValue return type can be :
-  /// * LanguagePackStringValueDeleted
-  /// * LanguagePackStringValuePluralized
   /// * LanguagePackStringValueOrdinary
+  /// * LanguagePackStringValuePluralized
+  /// * LanguagePackStringValueDeleted
   factory LanguagePackStringValue.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case LanguagePackStringValueDeleted.CONSTRUCTOR:
-        return LanguagePackStringValueDeleted.fromJson(json);
-      case LanguagePackStringValuePluralized.CONSTRUCTOR:
-        return LanguagePackStringValuePluralized.fromJson(json);
       case LanguagePackStringValueOrdinary.CONSTRUCTOR:
         return LanguagePackStringValueOrdinary.fromJson(json);
+      case LanguagePackStringValuePluralized.CONSTRUCTOR:
+        return LanguagePackStringValuePluralized.fromJson(json);
+      case LanguagePackStringValueDeleted.CONSTRUCTOR:
+        return LanguagePackStringValueDeleted.fromJson(json);
       default:
         return null;
     }
@@ -26,7 +26,7 @@ class LanguagePackStringValue implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'languagePackStringValue';
+  static const String CONSTRUCTOR = "languagePackStringValue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -48,10 +48,10 @@ class LanguagePackStringValueOrdinary implements LanguagePackStringValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'languagePackStringValueOrdinary';
+  static const String CONSTRUCTOR = "languagePackStringValueOrdinary";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -95,17 +95,17 @@ class LanguagePackStringValuePluralized implements LanguagePackStringValue {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'zero_value': this.zeroValue,
-      'one_value': this.oneValue,
-      'two_value': this.twoValue,
-      'few_value': this.fewValue,
-      'many_value': this.manyValue,
-      'other_value': this.otherValue
+      "@type": CONSTRUCTOR,
+      "zero_value": this.zeroValue,
+      "one_value": this.oneValue,
+      "two_value": this.twoValue,
+      "few_value": this.fewValue,
+      "many_value": this.manyValue,
+      "other_value": this.otherValue
     };
   }
 
-  static const String CONSTRUCTOR = 'languagePackStringValuePluralized';
+  static const String CONSTRUCTOR = "languagePackStringValuePluralized";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -125,10 +125,10 @@ class LanguagePackStringValueDeleted implements LanguagePackStringValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'languagePackStringValueDeleted';
+  static const String CONSTRUCTOR = "languagePackStringValueDeleted";
 
   @override
   String getConstructor() => CONSTRUCTOR;

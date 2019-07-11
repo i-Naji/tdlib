@@ -16,23 +16,23 @@ class StorageStatistics implements TLObject {
   StorageStatistics.fromJson(Map<String, dynamic> json) {
     this.size = json['size'];
     this.count = json['count'];
-    this.byChat = (json['by_chat'] ?? [])
+    this.byChat = List<StorageStatisticsByChat>.from((json['by_chat'] ?? [])
         .map((listValue) => StorageStatisticsByChat.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'size': this.size,
-      'count': this.count,
-      'by_chat': this.byChat.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "size": this.size,
+      "count": this.count,
+      "by_chat": this.byChat.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'storageStatistics';
+  static const String CONSTRUCTOR = "storageStatistics";
 
   @override
   String getConstructor() => CONSTRUCTOR;

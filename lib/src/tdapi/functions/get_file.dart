@@ -13,10 +13,10 @@ class GetFile extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_id': this.fileId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "file_id": this.fileId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getFile';
+  static const String CONSTRUCTOR = "getFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

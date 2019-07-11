@@ -6,25 +6,25 @@ class UserPrivacySettingRule implements TLObject {
 
   /// a UserPrivacySettingRule return type can be :
   /// * UserPrivacySettingRuleAllowAll
-  /// * UserPrivacySettingRuleRestrictUsers
-  /// * UserPrivacySettingRuleRestrictContacts
-  /// * UserPrivacySettingRuleRestrictAll
-  /// * UserPrivacySettingRuleAllowUsers
   /// * UserPrivacySettingRuleAllowContacts
+  /// * UserPrivacySettingRuleAllowUsers
+  /// * UserPrivacySettingRuleRestrictAll
+  /// * UserPrivacySettingRuleRestrictContacts
+  /// * UserPrivacySettingRuleRestrictUsers
   factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
       case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
-      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
-        return UserPrivacySettingRuleRestrictUsers.fromJson(json);
-      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
-        return UserPrivacySettingRuleRestrictContacts.fromJson(json);
-      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
-        return UserPrivacySettingRuleRestrictAll.fromJson(json);
-      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
-        return UserPrivacySettingRuleAllowUsers.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
         return UserPrivacySettingRuleAllowContacts.fromJson(json);
+      case UserPrivacySettingRuleAllowUsers.CONSTRUCTOR:
+        return UserPrivacySettingRuleAllowUsers.fromJson(json);
+      case UserPrivacySettingRuleRestrictAll.CONSTRUCTOR:
+        return UserPrivacySettingRuleRestrictAll.fromJson(json);
+      case UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR:
+        return UserPrivacySettingRuleRestrictContacts.fromJson(json);
+      case UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR:
+        return UserPrivacySettingRuleRestrictUsers.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class UserPrivacySettingRule implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRule';
+  static const String CONSTRUCTOR = "userPrivacySettingRule";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class UserPrivacySettingRuleAllowAll implements UserPrivacySettingRule {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowAll';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleAllowAll";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -70,10 +70,10 @@ class UserPrivacySettingRuleAllowContacts implements UserPrivacySettingRule {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleAllowContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -88,15 +88,15 @@ class UserPrivacySettingRuleAllowUsers implements UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json) {
-    this.userIds = json['user_ids'] ?? [];
+    this.userIds = List<int>.from(json['user_ids'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_ids': this.userIds};
+    return {"@type": CONSTRUCTOR, "user_ids": this.userIds};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowUsers';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleAllowUsers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -112,10 +112,10 @@ class UserPrivacySettingRuleRestrictAll implements UserPrivacySettingRule {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictAll';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleRestrictAll";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -131,10 +131,10 @@ class UserPrivacySettingRuleRestrictContacts implements UserPrivacySettingRule {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleRestrictContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -149,15 +149,15 @@ class UserPrivacySettingRuleRestrictUsers implements UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json) {
-    this.userIds = json['user_ids'] ?? [];
+    this.userIds = List<int>.from(json['user_ids'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_ids': this.userIds};
+    return {"@type": CONSTRUCTOR, "user_ids": this.userIds};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictUsers';
+  static const String CONSTRUCTOR = "userPrivacySettingRuleRestrictUsers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

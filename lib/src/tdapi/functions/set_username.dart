@@ -14,13 +14,13 @@ class SetUsername extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'username': this.username,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "username": this.username,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setUsername';
+  static const String CONSTRUCTOR = "setUsername";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,20 +5,20 @@ class NotificationGroupType implements TLObject {
   NotificationGroupType();
 
   /// a NotificationGroupType return type can be :
-  /// * NotificationGroupTypeCalls
   /// * NotificationGroupTypeMessages
   /// * NotificationGroupTypeMentions
   /// * NotificationGroupTypeSecretChat
+  /// * NotificationGroupTypeCalls
   factory NotificationGroupType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case NotificationGroupTypeCalls.CONSTRUCTOR:
-        return NotificationGroupTypeCalls.fromJson(json);
       case NotificationGroupTypeMessages.CONSTRUCTOR:
         return NotificationGroupTypeMessages.fromJson(json);
       case NotificationGroupTypeMentions.CONSTRUCTOR:
         return NotificationGroupTypeMentions.fromJson(json);
       case NotificationGroupTypeSecretChat.CONSTRUCTOR:
         return NotificationGroupTypeSecretChat.fromJson(json);
+      case NotificationGroupTypeCalls.CONSTRUCTOR:
+        return NotificationGroupTypeCalls.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class NotificationGroupType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'notificationGroupType';
+  static const String CONSTRUCTOR = "notificationGroupType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -45,10 +45,10 @@ class NotificationGroupTypeMessages implements NotificationGroupType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationGroupTypeMessages';
+  static const String CONSTRUCTOR = "notificationGroupTypeMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -64,10 +64,10 @@ class NotificationGroupTypeMentions implements NotificationGroupType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationGroupTypeMentions';
+  static const String CONSTRUCTOR = "notificationGroupTypeMentions";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -83,10 +83,10 @@ class NotificationGroupTypeSecretChat implements NotificationGroupType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationGroupTypeSecretChat';
+  static const String CONSTRUCTOR = "notificationGroupTypeSecretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -102,10 +102,10 @@ class NotificationGroupTypeCalls implements NotificationGroupType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'notificationGroupTypeCalls';
+  static const String CONSTRUCTOR = "notificationGroupTypeCalls";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,13 +18,13 @@ class DatedFile implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file': this.file.toJson(),
-      'date': this.date
+      "@type": CONSTRUCTOR,
+      "file": this.file.toJson(),
+      "date": this.date
     };
   }
 
-  static const String CONSTRUCTOR = 'datedFile';
+  static const String CONSTRUCTOR = "datedFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

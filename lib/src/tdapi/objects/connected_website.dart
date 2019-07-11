@@ -48,20 +48,20 @@ class ConnectedWebsite implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'domain_name': this.domainName,
-      'bot_user_id': this.botUserId,
-      'browser': this.browser,
-      'platform': this.platform,
-      'log_in_date': this.logInDate,
-      'last_active_date': this.lastActiveDate,
-      'ip': this.ip,
-      'location': this.location
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "domain_name": this.domainName,
+      "bot_user_id": this.botUserId,
+      "browser": this.browser,
+      "platform": this.platform,
+      "log_in_date": this.logInDate,
+      "last_active_date": this.lastActiveDate,
+      "ip": this.ip,
+      "location": this.location
     };
   }
 
-  static const String CONSTRUCTOR = 'connectedWebsite';
+  static const String CONSTRUCTOR = "connectedWebsite";
 
   @override
   String getConstructor() => CONSTRUCTOR;

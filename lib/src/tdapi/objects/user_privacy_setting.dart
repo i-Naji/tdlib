@@ -5,20 +5,20 @@ class UserPrivacySetting implements TLObject {
   UserPrivacySetting();
 
   /// a UserPrivacySetting return type can be :
-  /// * UserPrivacySettingAllowChatInvites
-  /// * UserPrivacySettingAllowPeerToPeerCalls
-  /// * UserPrivacySettingAllowCalls
   /// * UserPrivacySettingShowStatus
+  /// * UserPrivacySettingAllowChatInvites
+  /// * UserPrivacySettingAllowCalls
+  /// * UserPrivacySettingAllowPeerToPeerCalls
   factory UserPrivacySetting.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
-        return UserPrivacySettingAllowChatInvites.fromJson(json);
-      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
-        return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
-      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
-        return UserPrivacySettingAllowCalls.fromJson(json);
       case UserPrivacySettingShowStatus.CONSTRUCTOR:
         return UserPrivacySettingShowStatus.fromJson(json);
+      case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
+        return UserPrivacySettingAllowChatInvites.fromJson(json);
+      case UserPrivacySettingAllowCalls.CONSTRUCTOR:
+        return UserPrivacySettingAllowCalls.fromJson(json);
+      case UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR:
+        return UserPrivacySettingAllowPeerToPeerCalls.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class UserPrivacySetting implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySetting';
+  static const String CONSTRUCTOR = "userPrivacySetting";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -45,10 +45,10 @@ class UserPrivacySettingShowStatus implements UserPrivacySetting {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingShowStatus';
+  static const String CONSTRUCTOR = "userPrivacySettingShowStatus";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -64,10 +64,10 @@ class UserPrivacySettingAllowChatInvites implements UserPrivacySetting {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingAllowChatInvites';
+  static const String CONSTRUCTOR = "userPrivacySettingAllowChatInvites";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -83,10 +83,10 @@ class UserPrivacySettingAllowCalls implements UserPrivacySetting {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingAllowCalls';
+  static const String CONSTRUCTOR = "userPrivacySettingAllowCalls";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -102,10 +102,10 @@ class UserPrivacySettingAllowPeerToPeerCalls implements UserPrivacySetting {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userPrivacySettingAllowPeerToPeerCalls';
+  static const String CONSTRUCTOR = "userPrivacySettingAllowPeerToPeerCalls";
 
   @override
   String getConstructor() => CONSTRUCTOR;

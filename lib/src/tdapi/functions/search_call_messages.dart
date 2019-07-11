@@ -18,15 +18,15 @@ class SearchCallMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'from_message_id': this.fromMessageId,
-      'limit': this.limit,
-      'only_missed': this.onlyMissed,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "from_message_id": this.fromMessageId,
+      "limit": this.limit,
+      "only_missed": this.onlyMissed,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchCallMessages';
+  static const String CONSTRUCTOR = "searchCallMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

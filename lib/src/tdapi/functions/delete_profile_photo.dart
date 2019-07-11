@@ -14,13 +14,13 @@ class DeleteProfilePhoto extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'profile_photo_id': this.profilePhotoId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "profile_photo_id": this.profilePhotoId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'deleteProfilePhoto';
+  static const String CONSTRUCTOR = "deleteProfilePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

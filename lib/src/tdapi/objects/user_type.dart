@@ -5,18 +5,18 @@ class UserType implements TLObject {
   UserType();
 
   /// a UserType return type can be :
-  /// * UserTypeBot
-  /// * UserTypeDeleted
   /// * UserTypeRegular
+  /// * UserTypeDeleted
+  /// * UserTypeBot
   /// * UserTypeUnknown
   factory UserType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case UserTypeBot.CONSTRUCTOR:
-        return UserTypeBot.fromJson(json);
-      case UserTypeDeleted.CONSTRUCTOR:
-        return UserTypeDeleted.fromJson(json);
       case UserTypeRegular.CONSTRUCTOR:
         return UserTypeRegular.fromJson(json);
+      case UserTypeDeleted.CONSTRUCTOR:
+        return UserTypeDeleted.fromJson(json);
+      case UserTypeBot.CONSTRUCTOR:
+        return UserTypeBot.fromJson(json);
       case UserTypeUnknown.CONSTRUCTOR:
         return UserTypeUnknown.fromJson(json);
       default:
@@ -29,7 +29,7 @@ class UserType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'userType';
+  static const String CONSTRUCTOR = "userType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -45,10 +45,10 @@ class UserTypeRegular implements UserType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userTypeRegular';
+  static const String CONSTRUCTOR = "userTypeRegular";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -64,10 +64,10 @@ class UserTypeDeleted implements UserType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userTypeDeleted';
+  static const String CONSTRUCTOR = "userTypeDeleted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -104,16 +104,16 @@ class UserTypeBot implements UserType {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'can_join_groups': this.canJoinGroups,
-      'can_read_all_group_messages': this.canReadAllGroupMessages,
-      'is_inline': this.isInline,
-      'inline_query_placeholder': this.inlineQueryPlaceholder,
-      'need_location': this.needLocation
+      "@type": CONSTRUCTOR,
+      "can_join_groups": this.canJoinGroups,
+      "can_read_all_group_messages": this.canReadAllGroupMessages,
+      "is_inline": this.isInline,
+      "inline_query_placeholder": this.inlineQueryPlaceholder,
+      "need_location": this.needLocation
     };
   }
 
-  static const String CONSTRUCTOR = 'userTypeBot';
+  static const String CONSTRUCTOR = "userTypeBot";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -129,10 +129,10 @@ class UserTypeUnknown implements UserType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'userTypeUnknown';
+  static const String CONSTRUCTOR = "userTypeUnknown";
 
   @override
   String getConstructor() => CONSTRUCTOR;

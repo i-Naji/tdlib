@@ -16,10 +16,10 @@ class Seconds implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'seconds': this.seconds};
+    return {"@type": CONSTRUCTOR, "seconds": this.seconds};
   }
 
-  static const String CONSTRUCTOR = 'seconds';
+  static const String CONSTRUCTOR = "seconds";
 
   @override
   String getConstructor() => CONSTRUCTOR;

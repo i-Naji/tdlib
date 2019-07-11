@@ -19,12 +19,12 @@ class Updates implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'updates': this.updates.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "updates": this.updates.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'updates';
+  static const String CONSTRUCTOR = "updates";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class RemoveRecentSticker extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_attached': this.isAttached,
-      'sticker': this.sticker.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "is_attached": this.isAttached,
+      "sticker": this.sticker.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeRecentSticker';
+  static const String CONSTRUCTOR = "removeRecentSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;

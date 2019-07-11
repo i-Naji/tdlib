@@ -32,16 +32,16 @@ class Contact implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'phone_number': this.phoneNumber,
-      'first_name': this.firstName,
-      'last_name': this.lastName,
-      'vcard': this.vcard,
-      'user_id': this.userId
+      "@type": CONSTRUCTOR,
+      "phone_number": this.phoneNumber,
+      "first_name": this.firstName,
+      "last_name": this.lastName,
+      "vcard": this.vcard,
+      "user_id": this.userId
     };
   }
 
-  static const String CONSTRUCTOR = 'contact';
+  static const String CONSTRUCTOR = "contact";
 
   @override
   String getConstructor() => CONSTRUCTOR;

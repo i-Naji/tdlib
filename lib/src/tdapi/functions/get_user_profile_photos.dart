@@ -16,15 +16,15 @@ class GetUserProfilePhotos extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'offset': this.offset,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "offset": this.offset,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getUserProfilePhotos';
+  static const String CONSTRUCTOR = "getUserProfilePhotos";
 
   @override
   String getConstructor() => CONSTRUCTOR;

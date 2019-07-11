@@ -18,15 +18,15 @@ class AddStickerToSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'name': this.name,
-      'sticker': this.sticker.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "name": this.name,
+      "sticker": this.sticker.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addStickerToSet';
+  static const String CONSTRUCTOR = "addStickerToSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

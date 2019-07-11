@@ -16,14 +16,14 @@ class SetScopeNotificationSettings extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'scope': this.scope.toJson(),
-      'notification_settings': this.notificationSettings.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "scope": this.scope.toJson(),
+      "notification_settings": this.notificationSettings.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setScopeNotificationSettings';
+  static const String CONSTRUCTOR = "setScopeNotificationSettings";
 
   @override
   String getConstructor() => CONSTRUCTOR;

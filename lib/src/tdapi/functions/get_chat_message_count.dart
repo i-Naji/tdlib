@@ -18,15 +18,15 @@ class GetChatMessageCount extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'filter': this.filter.toJson(),
-      'return_local': this.returnLocal,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "filter": this.filter.toJson(),
+      "return_local": this.returnLocal,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatMessageCount';
+  static const String CONSTRUCTOR = "getChatMessageCount";
 
   @override
   String getConstructor() => CONSTRUCTOR;

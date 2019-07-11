@@ -16,14 +16,14 @@ class GetWebPageInstantView extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'url': this.url,
-      'force_full': this.forceFull,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "force_full": this.forceFull,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getWebPageInstantView';
+  static const String CONSTRUCTOR = "getWebPageInstantView";
 
   @override
   String getConstructor() => CONSTRUCTOR;

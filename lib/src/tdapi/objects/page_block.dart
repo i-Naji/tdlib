@@ -5,92 +5,92 @@ class PageBlock implements TLObject {
   PageBlock();
 
   /// a PageBlock return type can be :
-  /// * PageBlockKicker
-  /// * PageBlockRelatedArticles
-  /// * PageBlockChatLink
-  /// * PageBlockAuthorDate
-  /// * PageBlockCollage
-  /// * PageBlockEmbedded
-  /// * PageBlockParagraph
-  /// * PageBlockDivider
-  /// * PageBlockPhoto
-  /// * PageBlockDetails
-  /// * PageBlockList
-  /// * PageBlockCover
-  /// * PageBlockSubtitle
-  /// * PageBlockPreformatted
-  /// * PageBlockSubheader
-  /// * PageBlockAudio
-  /// * PageBlockTable
-  /// * PageBlockAnchor
-  /// * PageBlockHeader
-  /// * PageBlockVideo
-  /// * PageBlockSlideshow
-  /// * PageBlockEmbeddedPost
-  /// * PageBlockMap
   /// * PageBlockTitle
-  /// * PageBlockPullQuote
+  /// * PageBlockSubtitle
+  /// * PageBlockAuthorDate
+  /// * PageBlockHeader
+  /// * PageBlockSubheader
+  /// * PageBlockKicker
+  /// * PageBlockParagraph
+  /// * PageBlockPreformatted
   /// * PageBlockFooter
-  /// * PageBlockAnimation
+  /// * PageBlockDivider
+  /// * PageBlockAnchor
+  /// * PageBlockList
   /// * PageBlockBlockQuote
+  /// * PageBlockPullQuote
+  /// * PageBlockAnimation
+  /// * PageBlockAudio
+  /// * PageBlockPhoto
+  /// * PageBlockVideo
+  /// * PageBlockCover
+  /// * PageBlockEmbedded
+  /// * PageBlockEmbeddedPost
+  /// * PageBlockCollage
+  /// * PageBlockSlideshow
+  /// * PageBlockChatLink
+  /// * PageBlockTable
+  /// * PageBlockDetails
+  /// * PageBlockRelatedArticles
+  /// * PageBlockMap
   factory PageBlock.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case PageBlockKicker.CONSTRUCTOR:
-        return PageBlockKicker.fromJson(json);
-      case PageBlockRelatedArticles.CONSTRUCTOR:
-        return PageBlockRelatedArticles.fromJson(json);
-      case PageBlockChatLink.CONSTRUCTOR:
-        return PageBlockChatLink.fromJson(json);
-      case PageBlockAuthorDate.CONSTRUCTOR:
-        return PageBlockAuthorDate.fromJson(json);
-      case PageBlockCollage.CONSTRUCTOR:
-        return PageBlockCollage.fromJson(json);
-      case PageBlockEmbedded.CONSTRUCTOR:
-        return PageBlockEmbedded.fromJson(json);
-      case PageBlockParagraph.CONSTRUCTOR:
-        return PageBlockParagraph.fromJson(json);
-      case PageBlockDivider.CONSTRUCTOR:
-        return PageBlockDivider.fromJson(json);
-      case PageBlockPhoto.CONSTRUCTOR:
-        return PageBlockPhoto.fromJson(json);
-      case PageBlockDetails.CONSTRUCTOR:
-        return PageBlockDetails.fromJson(json);
-      case PageBlockList.CONSTRUCTOR:
-        return PageBlockList.fromJson(json);
-      case PageBlockCover.CONSTRUCTOR:
-        return PageBlockCover.fromJson(json);
-      case PageBlockSubtitle.CONSTRUCTOR:
-        return PageBlockSubtitle.fromJson(json);
-      case PageBlockPreformatted.CONSTRUCTOR:
-        return PageBlockPreformatted.fromJson(json);
-      case PageBlockSubheader.CONSTRUCTOR:
-        return PageBlockSubheader.fromJson(json);
-      case PageBlockAudio.CONSTRUCTOR:
-        return PageBlockAudio.fromJson(json);
-      case PageBlockTable.CONSTRUCTOR:
-        return PageBlockTable.fromJson(json);
-      case PageBlockAnchor.CONSTRUCTOR:
-        return PageBlockAnchor.fromJson(json);
-      case PageBlockHeader.CONSTRUCTOR:
-        return PageBlockHeader.fromJson(json);
-      case PageBlockVideo.CONSTRUCTOR:
-        return PageBlockVideo.fromJson(json);
-      case PageBlockSlideshow.CONSTRUCTOR:
-        return PageBlockSlideshow.fromJson(json);
-      case PageBlockEmbeddedPost.CONSTRUCTOR:
-        return PageBlockEmbeddedPost.fromJson(json);
-      case PageBlockMap.CONSTRUCTOR:
-        return PageBlockMap.fromJson(json);
       case PageBlockTitle.CONSTRUCTOR:
         return PageBlockTitle.fromJson(json);
-      case PageBlockPullQuote.CONSTRUCTOR:
-        return PageBlockPullQuote.fromJson(json);
+      case PageBlockSubtitle.CONSTRUCTOR:
+        return PageBlockSubtitle.fromJson(json);
+      case PageBlockAuthorDate.CONSTRUCTOR:
+        return PageBlockAuthorDate.fromJson(json);
+      case PageBlockHeader.CONSTRUCTOR:
+        return PageBlockHeader.fromJson(json);
+      case PageBlockSubheader.CONSTRUCTOR:
+        return PageBlockSubheader.fromJson(json);
+      case PageBlockKicker.CONSTRUCTOR:
+        return PageBlockKicker.fromJson(json);
+      case PageBlockParagraph.CONSTRUCTOR:
+        return PageBlockParagraph.fromJson(json);
+      case PageBlockPreformatted.CONSTRUCTOR:
+        return PageBlockPreformatted.fromJson(json);
       case PageBlockFooter.CONSTRUCTOR:
         return PageBlockFooter.fromJson(json);
-      case PageBlockAnimation.CONSTRUCTOR:
-        return PageBlockAnimation.fromJson(json);
+      case PageBlockDivider.CONSTRUCTOR:
+        return PageBlockDivider.fromJson(json);
+      case PageBlockAnchor.CONSTRUCTOR:
+        return PageBlockAnchor.fromJson(json);
+      case PageBlockList.CONSTRUCTOR:
+        return PageBlockList.fromJson(json);
       case PageBlockBlockQuote.CONSTRUCTOR:
         return PageBlockBlockQuote.fromJson(json);
+      case PageBlockPullQuote.CONSTRUCTOR:
+        return PageBlockPullQuote.fromJson(json);
+      case PageBlockAnimation.CONSTRUCTOR:
+        return PageBlockAnimation.fromJson(json);
+      case PageBlockAudio.CONSTRUCTOR:
+        return PageBlockAudio.fromJson(json);
+      case PageBlockPhoto.CONSTRUCTOR:
+        return PageBlockPhoto.fromJson(json);
+      case PageBlockVideo.CONSTRUCTOR:
+        return PageBlockVideo.fromJson(json);
+      case PageBlockCover.CONSTRUCTOR:
+        return PageBlockCover.fromJson(json);
+      case PageBlockEmbedded.CONSTRUCTOR:
+        return PageBlockEmbedded.fromJson(json);
+      case PageBlockEmbeddedPost.CONSTRUCTOR:
+        return PageBlockEmbeddedPost.fromJson(json);
+      case PageBlockCollage.CONSTRUCTOR:
+        return PageBlockCollage.fromJson(json);
+      case PageBlockSlideshow.CONSTRUCTOR:
+        return PageBlockSlideshow.fromJson(json);
+      case PageBlockChatLink.CONSTRUCTOR:
+        return PageBlockChatLink.fromJson(json);
+      case PageBlockTable.CONSTRUCTOR:
+        return PageBlockTable.fromJson(json);
+      case PageBlockDetails.CONSTRUCTOR:
+        return PageBlockDetails.fromJson(json);
+      case PageBlockRelatedArticles.CONSTRUCTOR:
+        return PageBlockRelatedArticles.fromJson(json);
+      case PageBlockMap.CONSTRUCTOR:
+        return PageBlockMap.fromJson(json);
       default:
         return null;
     }
@@ -101,7 +101,7 @@ class PageBlock implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'pageBlock';
+  static const String CONSTRUCTOR = "pageBlock";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -121,10 +121,10 @@ class PageBlockTitle implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'title': this.title.toJson()};
+    return {"@type": CONSTRUCTOR, "title": this.title.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockTitle';
+  static const String CONSTRUCTOR = "pageBlockTitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -144,10 +144,10 @@ class PageBlockSubtitle implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'subtitle': this.subtitle.toJson()};
+    return {"@type": CONSTRUCTOR, "subtitle": this.subtitle.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockSubtitle';
+  static const String CONSTRUCTOR = "pageBlockSubtitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -171,13 +171,13 @@ class PageBlockAuthorDate implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'author': this.author.toJson(),
-      'publish_date': this.publishDate
+      "@type": CONSTRUCTOR,
+      "author": this.author.toJson(),
+      "publish_date": this.publishDate
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockAuthorDate';
+  static const String CONSTRUCTOR = "pageBlockAuthorDate";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -197,10 +197,10 @@ class PageBlockHeader implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'header': this.header.toJson()};
+    return {"@type": CONSTRUCTOR, "header": this.header.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockHeader';
+  static const String CONSTRUCTOR = "pageBlockHeader";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -221,10 +221,10 @@ class PageBlockSubheader implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'subheader': this.subheader.toJson()};
+    return {"@type": CONSTRUCTOR, "subheader": this.subheader.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockSubheader';
+  static const String CONSTRUCTOR = "pageBlockSubheader";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -244,10 +244,10 @@ class PageBlockKicker implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'kicker': this.kicker.toJson()};
+    return {"@type": CONSTRUCTOR, "kicker": this.kicker.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockKicker';
+  static const String CONSTRUCTOR = "pageBlockKicker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -267,10 +267,10 @@ class PageBlockParagraph implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text.toJson()};
+    return {"@type": CONSTRUCTOR, "text": this.text.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockParagraph';
+  static const String CONSTRUCTOR = "pageBlockParagraph";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -294,13 +294,13 @@ class PageBlockPreformatted implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'language': this.language
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "language": this.language
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockPreformatted';
+  static const String CONSTRUCTOR = "pageBlockPreformatted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -320,10 +320,10 @@ class PageBlockFooter implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'footer': this.footer.toJson()};
+    return {"@type": CONSTRUCTOR, "footer": this.footer.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockFooter';
+  static const String CONSTRUCTOR = "pageBlockFooter";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -339,10 +339,10 @@ class PageBlockDivider implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockDivider';
+  static const String CONSTRUCTOR = "pageBlockDivider";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -362,10 +362,10 @@ class PageBlockAnchor implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'name': this.name};
+    return {"@type": CONSTRUCTOR, "name": this.name};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockAnchor';
+  static const String CONSTRUCTOR = "pageBlockAnchor";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -380,20 +380,20 @@ class PageBlockList implements PageBlock {
 
   /// Parse from a json
   PageBlockList.fromJson(Map<String, dynamic> json) {
-    this.items = (json['items'] ?? [])
+    this.items = List<PageBlockListItem>.from((json['items'] ?? [])
         .map((listValue) => PageBlockListItem.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'items': this.items.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "items": this.items.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockList';
+  static const String CONSTRUCTOR = "pageBlockList";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -417,13 +417,13 @@ class PageBlockBlockQuote implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'credit': this.credit.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "credit": this.credit.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockBlockQuote';
+  static const String CONSTRUCTOR = "pageBlockBlockQuote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -447,13 +447,13 @@ class PageBlockPullQuote implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'credit': this.credit.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "credit": this.credit.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockPullQuote';
+  static const String CONSTRUCTOR = "pageBlockPullQuote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -482,14 +482,14 @@ class PageBlockAnimation implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animation': this.animation.toJson(),
-      'caption': this.caption.toJson(),
-      'need_autoplay': this.needAutoplay
+      "@type": CONSTRUCTOR,
+      "animation": this.animation.toJson(),
+      "caption": this.caption.toJson(),
+      "need_autoplay": this.needAutoplay
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockAnimation';
+  static const String CONSTRUCTOR = "pageBlockAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -514,13 +514,13 @@ class PageBlockAudio implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'audio': this.audio.toJson(),
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "audio": this.audio.toJson(),
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockAudio';
+  static const String CONSTRUCTOR = "pageBlockAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -548,14 +548,14 @@ class PageBlockPhoto implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'photo': this.photo.toJson(),
-      'caption': this.caption.toJson(),
-      'url': this.url
+      "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
+      "caption": this.caption.toJson(),
+      "url": this.url
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockPhoto';
+  static const String CONSTRUCTOR = "pageBlockPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -586,15 +586,15 @@ class PageBlockVideo implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video': this.video.toJson(),
-      'caption': this.caption.toJson(),
-      'need_autoplay': this.needAutoplay,
-      'is_looped': this.isLooped
+      "@type": CONSTRUCTOR,
+      "video": this.video.toJson(),
+      "caption": this.caption.toJson(),
+      "need_autoplay": this.needAutoplay,
+      "is_looped": this.isLooped
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockVideo';
+  static const String CONSTRUCTOR = "pageBlockVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -614,10 +614,10 @@ class PageBlockCover implements PageBlock {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'cover': this.cover.toJson()};
+    return {"@type": CONSTRUCTOR, "cover": this.cover.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockCover';
+  static const String CONSTRUCTOR = "pageBlockCover";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -669,19 +669,19 @@ class PageBlockEmbedded implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'url': this.url,
-      'html': this.html,
-      'poster_photo': this.posterPhoto.toJson(),
-      'width': this.width,
-      'height': this.height,
-      'caption': this.caption.toJson(),
-      'is_full_width': this.isFullWidth,
-      'allow_scrolling': this.allowScrolling
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "html": this.html,
+      "poster_photo": this.posterPhoto.toJson(),
+      "width": this.width,
+      "height": this.height,
+      "caption": this.caption.toJson(),
+      "is_full_width": this.isFullWidth,
+      "allow_scrolling": this.allowScrolling
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockEmbedded';
+  static const String CONSTRUCTOR = "pageBlockEmbedded";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -727,18 +727,18 @@ class PageBlockEmbeddedPost implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'url': this.url,
-      'author': this.author,
-      'author_photo': this.authorPhoto.toJson(),
-      'date': this.date,
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "author": this.author,
+      "author_photo": this.authorPhoto.toJson(),
+      "date": this.date,
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
-      'caption': this.caption.toJson()
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockEmbeddedPost';
+  static const String CONSTRUCTOR = "pageBlockEmbeddedPost";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -765,14 +765,14 @@ class PageBlockCollage implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
-      'caption': this.caption.toJson()
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockCollage';
+  static const String CONSTRUCTOR = "pageBlockCollage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -799,14 +799,14 @@ class PageBlockSlideshow implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
-      'caption': this.caption.toJson()
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockSlideshow';
+  static const String CONSTRUCTOR = "pageBlockSlideshow";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -833,14 +833,14 @@ class PageBlockChatLink implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'photo': this.photo.toJson(),
-      'username': this.username
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "photo": this.photo.toJson(),
+      "username": this.username
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockChatLink';
+  static const String CONSTRUCTOR = "pageBlockChatLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -862,11 +862,12 @@ class PageBlockTable implements PageBlock {
   /// Parse from a json
   PageBlockTable.fromJson(Map<String, dynamic> json) {
     this.caption = RichText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.cells = (json['cells'] ?? [[]])
-        .map((l) => l
-            .map((listValue) => PageBlockTableCell.fromJson(listValue))
-            .toList())
-        .toList();
+    this.cells = List<List<PageBlockTableCell>>.from(
+        (json['cells'] ?? List<List<PageBlockTableCell>>())
+            .map((l) => List<PageBlockTableCell>.from(l
+                .map((listValue) => PageBlockTableCell.fromJson(listValue))
+                .toList()))
+            .toList());
     this.isBordered = json['is_bordered'];
     this.isStriped = json['is_striped'];
   }
@@ -874,18 +875,18 @@ class PageBlockTable implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'caption': this.caption.toJson(),
-      'cells': this
+      "@type": CONSTRUCTOR,
+      "caption": this.caption.toJson(),
+      "cells": this
           .cells
           .map((l) => l.map((listItem) => listItem.toJson()).toList())
           .toList(),
-      'is_bordered': this.isBordered,
-      'is_striped': this.isStriped
+      "is_bordered": this.isBordered,
+      "is_striped": this.isStriped
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockTable';
+  static const String CONSTRUCTOR = "pageBlockTable";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -914,15 +915,15 @@ class PageBlockDetails implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'header': this.header.toJson(),
-      'page_blocks':
+      "@type": CONSTRUCTOR,
+      "header": this.header.toJson(),
+      "page_blocks":
           this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
-      'is_open': this.isOpen
+      "is_open": this.isOpen
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockDetails';
+  static const String CONSTRUCTOR = "pageBlockDetails";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -940,21 +941,21 @@ class PageBlockRelatedArticles implements PageBlock {
   /// Parse from a json
   PageBlockRelatedArticles.fromJson(Map<String, dynamic> json) {
     this.header = RichText.fromJson(json['header'] ?? <String, dynamic>{});
-    this.articles = (json['articles'] ?? [])
+    this.articles = List<PageBlockRelatedArticle>.from((json['articles'] ?? [])
         .map((listValue) => PageBlockRelatedArticle.fromJson(listValue))
-        .toList();
+        .toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'header': this.header.toJson(),
-      'articles': this.articles.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "header": this.header.toJson(),
+      "articles": this.articles.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockRelatedArticles';
+  static const String CONSTRUCTOR = "pageBlockRelatedArticles";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -989,16 +990,16 @@ class PageBlockMap implements PageBlock {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'location': this.location.toJson(),
-      'zoom': this.zoom,
-      'width': this.width,
-      'height': this.height,
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "location": this.location.toJson(),
+      "zoom": this.zoom,
+      "width": this.width,
+      "height": this.height,
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockMap';
+  static const String CONSTRUCTOR = "pageBlockMap";
 
   @override
   String getConstructor() => CONSTRUCTOR;

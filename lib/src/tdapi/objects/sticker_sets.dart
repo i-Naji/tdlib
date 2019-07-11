@@ -13,22 +13,22 @@ class StickerSets implements TLObject {
   /// Parse from a json
   StickerSets.fromJson(Map<String, dynamic> json) {
     this.totalCount = json['total_count'];
-    this.sets = (json['sets'] ?? [])
+    this.sets = List<StickerSetInfo>.from((json['sets'] ?? [])
         .map((listValue) => StickerSetInfo.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'total_count': this.totalCount,
-      'sets': this.sets.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "total_count": this.totalCount,
+      "sets": this.sets.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'stickerSets';
+  static const String CONSTRUCTOR = "stickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;

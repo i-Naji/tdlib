@@ -14,13 +14,13 @@ class GetLocalizationTargetInfo extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'only_local': this.onlyLocal,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "only_local": this.onlyLocal,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getLocalizationTargetInfo';
+  static const String CONSTRUCTOR = "getLocalizationTargetInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

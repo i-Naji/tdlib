@@ -34,16 +34,16 @@ class StorageStatisticsFast implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'files_size': this.filesSize,
-      'file_count': this.fileCount,
-      'database_size': this.databaseSize,
-      'language_pack_database_size': this.languagePackDatabaseSize,
-      'log_size': this.logSize
+      "@type": CONSTRUCTOR,
+      "files_size": this.filesSize,
+      "file_count": this.fileCount,
+      "database_size": this.databaseSize,
+      "language_pack_database_size": this.languagePackDatabaseSize,
+      "log_size": this.logSize
     };
   }
 
-  static const String CONSTRUCTOR = 'storageStatisticsFast';
+  static const String CONSTRUCTOR = "storageStatisticsFast";
 
   @override
   String getConstructor() => CONSTRUCTOR;

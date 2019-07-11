@@ -13,10 +13,10 @@ class DeleteFile extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_id': this.fileId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "file_id": this.fileId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'deleteFile';
+  static const String CONSTRUCTOR = "deleteFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

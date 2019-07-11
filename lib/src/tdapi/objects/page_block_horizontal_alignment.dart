@@ -5,15 +5,15 @@ class PageBlockHorizontalAlignment implements TLObject {
   PageBlockHorizontalAlignment();
 
   /// a PageBlockHorizontalAlignment return type can be :
-  /// * PageBlockHorizontalAlignmentCenter
   /// * PageBlockHorizontalAlignmentLeft
+  /// * PageBlockHorizontalAlignmentCenter
   /// * PageBlockHorizontalAlignmentRight
   factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case PageBlockHorizontalAlignmentCenter.CONSTRUCTOR:
-        return PageBlockHorizontalAlignmentCenter.fromJson(json);
       case PageBlockHorizontalAlignmentLeft.CONSTRUCTOR:
         return PageBlockHorizontalAlignmentLeft.fromJson(json);
+      case PageBlockHorizontalAlignmentCenter.CONSTRUCTOR:
+        return PageBlockHorizontalAlignmentCenter.fromJson(json);
       case PageBlockHorizontalAlignmentRight.CONSTRUCTOR:
         return PageBlockHorizontalAlignmentRight.fromJson(json);
       default:
@@ -26,7 +26,7 @@ class PageBlockHorizontalAlignment implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockHorizontalAlignment';
+  static const String CONSTRUCTOR = "pageBlockHorizontalAlignment";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -42,10 +42,10 @@ class PageBlockHorizontalAlignmentLeft implements PageBlockHorizontalAlignment {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockHorizontalAlignmentLeft';
+  static const String CONSTRUCTOR = "pageBlockHorizontalAlignmentLeft";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -62,10 +62,10 @@ class PageBlockHorizontalAlignmentCenter
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockHorizontalAlignmentCenter';
+  static const String CONSTRUCTOR = "pageBlockHorizontalAlignmentCenter";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -82,10 +82,10 @@ class PageBlockHorizontalAlignmentRight
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'pageBlockHorizontalAlignmentRight';
+  static const String CONSTRUCTOR = "pageBlockHorizontalAlignmentRight";
 
   @override
   String getConstructor() => CONSTRUCTOR;

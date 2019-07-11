@@ -13,10 +13,10 @@ class GetUser extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getUser';
+  static const String CONSTRUCTOR = "getUser";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -36,16 +36,16 @@ class InlineQueryResults implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'inline_query_id': this.inlineQueryId,
-      'next_offset': this.nextOffset,
-      'results': this.results.map((listItem) => listItem.toJson()).toList(),
-      'switch_pm_text': this.switchPmText,
-      'switch_pm_parameter': this.switchPmParameter
+      "@type": CONSTRUCTOR,
+      "inline_query_id": this.inlineQueryId,
+      "next_offset": this.nextOffset,
+      "results": this.results.map((listItem) => listItem.toJson()).toList(),
+      "switch_pm_text": this.switchPmText,
+      "switch_pm_parameter": this.switchPmParameter
     };
   }
 
-  static const String CONSTRUCTOR = 'inlineQueryResults';
+  static const String CONSTRUCTOR = "inlineQueryResults";
 
   @override
   String getConstructor() => CONSTRUCTOR;

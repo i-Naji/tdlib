@@ -13,10 +13,10 @@ class OpenChat extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'chat_id': this.chatId, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "chat_id": this.chatId, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'openChat';
+  static const String CONSTRUCTOR = "openChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

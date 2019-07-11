@@ -34,7 +34,7 @@ class ChatInviteLinkInfo implements TLObject {
     this.title = json['title'];
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.memberCount = json['member_count'];
-    this.memberUserIds = json['member_user_ids'] ?? [];
+    this.memberUserIds = List<int>.from(json['member_user_ids'] ?? []);
     this.isPublic = json['is_public'];
     this.extra = json['@extra'];
   }
@@ -42,18 +42,18 @@ class ChatInviteLinkInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'type': this.type.toJson(),
-      'title': this.title,
-      'photo': this.photo.toJson(),
-      'member_count': this.memberCount,
-      'member_user_ids': this.memberUserIds,
-      'is_public': this.isPublic
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "type": this.type.toJson(),
+      "title": this.title,
+      "photo": this.photo.toJson(),
+      "member_count": this.memberCount,
+      "member_user_ids": this.memberUserIds,
+      "is_public": this.isPublic
     };
   }
 
-  static const String CONSTRUCTOR = 'chatInviteLinkInfo';
+  static const String CONSTRUCTOR = "chatInviteLinkInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

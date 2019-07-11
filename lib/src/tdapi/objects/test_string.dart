@@ -16,10 +16,10 @@ class TestString implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'testString';
+  static const String CONSTRUCTOR = "testString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class CheckChatUsername extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'username': this.username,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "username": this.username,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'checkChatUsername';
+  static const String CONSTRUCTOR = "checkChatUsername";
 
   @override
   String getConstructor() => CONSTRUCTOR;

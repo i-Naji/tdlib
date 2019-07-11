@@ -36,17 +36,17 @@ class PageBlockRelatedArticle implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'url': this.url,
-      'title': this.title,
-      'description': this.description,
-      'photo': this.photo.toJson(),
-      'author': this.author,
-      'publish_date': this.publishDate
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "title": this.title,
+      "description": this.description,
+      "photo": this.photo.toJson(),
+      "author": this.author,
+      "publish_date": this.publishDate
     };
   }
 
-  static const String CONSTRUCTOR = 'pageBlockRelatedArticle';
+  static const String CONSTRUCTOR = "pageBlockRelatedArticle";
 
   @override
   String getConstructor() => CONSTRUCTOR;

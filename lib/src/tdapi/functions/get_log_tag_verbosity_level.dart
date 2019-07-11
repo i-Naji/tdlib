@@ -13,10 +13,10 @@ class GetLogTagVerbosityLevel extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'tag': this.tag, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "tag": this.tag, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getLogTagVerbosityLevel';
+  static const String CONSTRUCTOR = "getLogTagVerbosityLevel";
 
   @override
   String getConstructor() => CONSTRUCTOR;

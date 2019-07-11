@@ -5,47 +5,47 @@ class ChatAction implements TLObject {
   ChatAction();
 
   /// a ChatAction return type can be :
-  /// * ChatActionUploadingDocument
   /// * ChatActionTyping
+  /// * ChatActionRecordingVideo
+  /// * ChatActionUploadingVideo
+  /// * ChatActionRecordingVoiceNote
+  /// * ChatActionUploadingVoiceNote
+  /// * ChatActionUploadingPhoto
+  /// * ChatActionUploadingDocument
   /// * ChatActionChoosingLocation
+  /// * ChatActionChoosingContact
   /// * ChatActionStartPlayingGame
+  /// * ChatActionRecordingVideoNote
   /// * ChatActionUploadingVideoNote
   /// * ChatActionCancel
-  /// * ChatActionUploadingVideo
-  /// * ChatActionUploadingPhoto
-  /// * ChatActionRecordingVoiceNote
-  /// * ChatActionChoosingContact
-  /// * ChatActionRecordingVideoNote
-  /// * ChatActionRecordingVideo
-  /// * ChatActionUploadingVoiceNote
   factory ChatAction.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ChatActionUploadingDocument.CONSTRUCTOR:
-        return ChatActionUploadingDocument.fromJson(json);
       case ChatActionTyping.CONSTRUCTOR:
         return ChatActionTyping.fromJson(json);
+      case ChatActionRecordingVideo.CONSTRUCTOR:
+        return ChatActionRecordingVideo.fromJson(json);
+      case ChatActionUploadingVideo.CONSTRUCTOR:
+        return ChatActionUploadingVideo.fromJson(json);
+      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
+        return ChatActionRecordingVoiceNote.fromJson(json);
+      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
+        return ChatActionUploadingVoiceNote.fromJson(json);
+      case ChatActionUploadingPhoto.CONSTRUCTOR:
+        return ChatActionUploadingPhoto.fromJson(json);
+      case ChatActionUploadingDocument.CONSTRUCTOR:
+        return ChatActionUploadingDocument.fromJson(json);
       case ChatActionChoosingLocation.CONSTRUCTOR:
         return ChatActionChoosingLocation.fromJson(json);
+      case ChatActionChoosingContact.CONSTRUCTOR:
+        return ChatActionChoosingContact.fromJson(json);
       case ChatActionStartPlayingGame.CONSTRUCTOR:
         return ChatActionStartPlayingGame.fromJson(json);
+      case ChatActionRecordingVideoNote.CONSTRUCTOR:
+        return ChatActionRecordingVideoNote.fromJson(json);
       case ChatActionUploadingVideoNote.CONSTRUCTOR:
         return ChatActionUploadingVideoNote.fromJson(json);
       case ChatActionCancel.CONSTRUCTOR:
         return ChatActionCancel.fromJson(json);
-      case ChatActionUploadingVideo.CONSTRUCTOR:
-        return ChatActionUploadingVideo.fromJson(json);
-      case ChatActionUploadingPhoto.CONSTRUCTOR:
-        return ChatActionUploadingPhoto.fromJson(json);
-      case ChatActionRecordingVoiceNote.CONSTRUCTOR:
-        return ChatActionRecordingVoiceNote.fromJson(json);
-      case ChatActionChoosingContact.CONSTRUCTOR:
-        return ChatActionChoosingContact.fromJson(json);
-      case ChatActionRecordingVideoNote.CONSTRUCTOR:
-        return ChatActionRecordingVideoNote.fromJson(json);
-      case ChatActionRecordingVideo.CONSTRUCTOR:
-        return ChatActionRecordingVideo.fromJson(json);
-      case ChatActionUploadingVoiceNote.CONSTRUCTOR:
-        return ChatActionUploadingVoiceNote.fromJson(json);
       default:
         return null;
     }
@@ -56,7 +56,7 @@ class ChatAction implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatAction';
+  static const String CONSTRUCTOR = "chatAction";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class ChatActionTyping implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionTyping';
+  static const String CONSTRUCTOR = "chatActionTyping";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -91,10 +91,10 @@ class ChatActionRecordingVideo implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionRecordingVideo';
+  static const String CONSTRUCTOR = "chatActionRecordingVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -114,10 +114,10 @@ class ChatActionUploadingVideo implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'progress': this.progress};
+    return {"@type": CONSTRUCTOR, "progress": this.progress};
   }
 
-  static const String CONSTRUCTOR = 'chatActionUploadingVideo';
+  static const String CONSTRUCTOR = "chatActionUploadingVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -133,10 +133,10 @@ class ChatActionRecordingVoiceNote implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionRecordingVoiceNote';
+  static const String CONSTRUCTOR = "chatActionRecordingVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -156,10 +156,10 @@ class ChatActionUploadingVoiceNote implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'progress': this.progress};
+    return {"@type": CONSTRUCTOR, "progress": this.progress};
   }
 
-  static const String CONSTRUCTOR = 'chatActionUploadingVoiceNote';
+  static const String CONSTRUCTOR = "chatActionUploadingVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -179,10 +179,10 @@ class ChatActionUploadingPhoto implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'progress': this.progress};
+    return {"@type": CONSTRUCTOR, "progress": this.progress};
   }
 
-  static const String CONSTRUCTOR = 'chatActionUploadingPhoto';
+  static const String CONSTRUCTOR = "chatActionUploadingPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -202,10 +202,10 @@ class ChatActionUploadingDocument implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'progress': this.progress};
+    return {"@type": CONSTRUCTOR, "progress": this.progress};
   }
 
-  static const String CONSTRUCTOR = 'chatActionUploadingDocument';
+  static const String CONSTRUCTOR = "chatActionUploadingDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -221,10 +221,10 @@ class ChatActionChoosingLocation implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionChoosingLocation';
+  static const String CONSTRUCTOR = "chatActionChoosingLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -240,10 +240,10 @@ class ChatActionChoosingContact implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionChoosingContact';
+  static const String CONSTRUCTOR = "chatActionChoosingContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -259,10 +259,10 @@ class ChatActionStartPlayingGame implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionStartPlayingGame';
+  static const String CONSTRUCTOR = "chatActionStartPlayingGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -278,10 +278,10 @@ class ChatActionRecordingVideoNote implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionRecordingVideoNote';
+  static const String CONSTRUCTOR = "chatActionRecordingVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -301,10 +301,10 @@ class ChatActionUploadingVideoNote implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'progress': this.progress};
+    return {"@type": CONSTRUCTOR, "progress": this.progress};
   }
 
-  static const String CONSTRUCTOR = 'chatActionUploadingVideoNote';
+  static const String CONSTRUCTOR = "chatActionUploadingVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -320,10 +320,10 @@ class ChatActionCancel implements ChatAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatActionCancel';
+  static const String CONSTRUCTOR = "chatActionCancel";
 
   @override
   String getConstructor() => CONSTRUCTOR;

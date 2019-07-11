@@ -16,14 +16,14 @@ class RegisterDevice extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'device_token': this.deviceToken.toJson(),
-      'other_user_ids': this.otherUserIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "device_token": this.deviceToken.toJson(),
+      "other_user_ids": this.otherUserIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'registerDevice';
+  static const String CONSTRUCTOR = "registerDevice";
 
   @override
   String getConstructor() => CONSTRUCTOR;

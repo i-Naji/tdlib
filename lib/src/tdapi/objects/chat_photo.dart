@@ -18,13 +18,13 @@ class ChatPhoto implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'small': this.small.toJson(),
-      'big': this.big.toJson()
+      "@type": CONSTRUCTOR,
+      "small": this.small.toJson(),
+      "big": this.big.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatPhoto';
+  static const String CONSTRUCTOR = "chatPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,10 +16,10 @@ class ChatInviteLink implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'invite_link': this.inviteLink};
+    return {"@type": CONSTRUCTOR, "invite_link": this.inviteLink};
   }
 
-  static const String CONSTRUCTOR = 'chatInviteLink';
+  static const String CONSTRUCTOR = "chatInviteLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -36,21 +36,21 @@ class OptimizeStorage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'size': this.size,
-      'ttl': this.ttl,
-      'count': this.count,
-      'immunity_delay': this.immunityDelay,
-      'file_types':
+      "@type": CONSTRUCTOR,
+      "size": this.size,
+      "ttl": this.ttl,
+      "count": this.count,
+      "immunity_delay": this.immunityDelay,
+      "file_types":
           this.fileTypes.map((listItem) => listItem.toJson()).toList(),
-      'chat_ids': this.chatIds,
-      'exclude_chat_ids': this.excludeChatIds,
-      'chat_limit': this.chatLimit,
-      '@extra': this.extra
+      "chat_ids": this.chatIds,
+      "exclude_chat_ids": this.excludeChatIds,
+      "chat_limit": this.chatLimit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'optimizeStorage';
+  static const String CONSTRUCTOR = "optimizeStorage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

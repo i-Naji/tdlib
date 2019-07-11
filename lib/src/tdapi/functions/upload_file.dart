@@ -18,15 +18,15 @@ class UploadFile extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file': this.file.toJson(),
-      'file_type': this.fileType.toJson(),
-      'priority': this.priority,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "file": this.file.toJson(),
+      "file_type": this.fileType.toJson(),
+      "priority": this.priority,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'uploadFile';
+  static const String CONSTRUCTOR = "uploadFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;

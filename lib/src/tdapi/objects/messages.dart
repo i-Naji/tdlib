@@ -13,22 +13,22 @@ class Messages implements TLObject {
   /// Parse from a json
   Messages.fromJson(Map<String, dynamic> json) {
     this.totalCount = json['total_count'];
-    this.messages = (json['messages'] ?? [])
+    this.messages = List<Message>.from((json['messages'] ?? [])
         .map((listValue) => Message.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'total_count': this.totalCount,
-      'messages': this.messages.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "total_count": this.totalCount,
+      "messages": this.messages.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'messages';
+  static const String CONSTRUCTOR = "messages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

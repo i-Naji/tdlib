@@ -19,13 +19,13 @@ class LanguagePackString implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'key': this.key,
-      'value': this.value.toJson()
+      "@type": CONSTRUCTOR,
+      "key": this.key,
+      "value": this.value.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'languagePackString';
+  static const String CONSTRUCTOR = "languagePackString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

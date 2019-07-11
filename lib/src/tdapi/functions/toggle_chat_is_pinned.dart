@@ -16,14 +16,14 @@ class ToggleChatIsPinned extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_pinned': this.isPinned,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_pinned": this.isPinned,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleChatIsPinned';
+  static const String CONSTRUCTOR = "toggleChatIsPinned";
 
   @override
   String getConstructor() => CONSTRUCTOR;

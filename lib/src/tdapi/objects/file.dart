@@ -29,16 +29,16 @@ class File implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'id': this.id,
-      'size': this.size,
-      'expected_size': this.expectedSize,
-      'local': this.local.toJson(),
-      'remote': this.remote.toJson()
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "size": this.size,
+      "expected_size": this.expectedSize,
+      "local": this.local.toJson(),
+      "remote": this.remote.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'file';
+  static const String CONSTRUCTOR = "file";
 
   @override
   String getConstructor() => CONSTRUCTOR;

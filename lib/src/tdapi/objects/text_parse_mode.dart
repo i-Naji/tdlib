@@ -5,14 +5,14 @@ class TextParseMode implements TLObject {
   TextParseMode();
 
   /// a TextParseMode return type can be :
-  /// * TextParseModeHTML
   /// * TextParseModeMarkdown
+  /// * TextParseModeHTML
   factory TextParseMode.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case TextParseModeHTML.CONSTRUCTOR:
-        return TextParseModeHTML.fromJson(json);
       case TextParseModeMarkdown.CONSTRUCTOR:
         return TextParseModeMarkdown.fromJson(json);
+      case TextParseModeHTML.CONSTRUCTOR:
+        return TextParseModeHTML.fromJson(json);
       default:
         return null;
     }
@@ -23,7 +23,7 @@ class TextParseMode implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'textParseMode';
+  static const String CONSTRUCTOR = "textParseMode";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -39,10 +39,10 @@ class TextParseModeMarkdown implements TextParseMode {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textParseModeMarkdown';
+  static const String CONSTRUCTOR = "textParseModeMarkdown";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -58,10 +58,10 @@ class TextParseModeHTML implements TextParseMode {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'textParseModeHTML';
+  static const String CONSTRUCTOR = "textParseModeHTML";
 
   @override
   String getConstructor() => CONSTRUCTOR;

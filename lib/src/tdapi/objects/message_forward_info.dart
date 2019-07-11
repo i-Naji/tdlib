@@ -26,15 +26,15 @@ class MessageForwardInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'origin': this.origin.toJson(),
-      'date': this.date,
-      'from_chat_id': this.fromChatId,
-      'from_message_id': this.fromMessageId
+      "@type": CONSTRUCTOR,
+      "origin": this.origin.toJson(),
+      "date": this.date,
+      "from_chat_id": this.fromChatId,
+      "from_message_id": this.fromMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'messageForwardInfo';
+  static const String CONSTRUCTOR = "messageForwardInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

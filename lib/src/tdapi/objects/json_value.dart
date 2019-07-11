@@ -5,14 +5,18 @@ class JsonValue implements TLObject {
   JsonValue();
 
   /// a JsonValue return type can be :
+  /// * JsonValueNull
+  /// * JsonValueBoolean
   /// * JsonValueNumber
   /// * JsonValueString
   /// * JsonValueArray
   /// * JsonValueObject
-  /// * JsonValueBoolean
-  /// * JsonValueNull
   factory JsonValue.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case JsonValueNull.CONSTRUCTOR:
+        return JsonValueNull.fromJson(json);
+      case JsonValueBoolean.CONSTRUCTOR:
+        return JsonValueBoolean.fromJson(json);
       case JsonValueNumber.CONSTRUCTOR:
         return JsonValueNumber.fromJson(json);
       case JsonValueString.CONSTRUCTOR:
@@ -21,10 +25,6 @@ class JsonValue implements TLObject {
         return JsonValueArray.fromJson(json);
       case JsonValueObject.CONSTRUCTOR:
         return JsonValueObject.fromJson(json);
-      case JsonValueBoolean.CONSTRUCTOR:
-        return JsonValueBoolean.fromJson(json);
-      case JsonValueNull.CONSTRUCTOR:
-        return JsonValueNull.fromJson(json);
       default:
         return null;
     }
@@ -35,7 +35,7 @@ class JsonValue implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'jsonValue';
+  static const String CONSTRUCTOR = "jsonValue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -55,10 +55,10 @@ class JsonValueNull implements JsonValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'jsonValueNull';
+  static const String CONSTRUCTOR = "jsonValueNull";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -80,10 +80,10 @@ class JsonValueBoolean implements JsonValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'jsonValueBoolean';
+  static const String CONSTRUCTOR = "jsonValueBoolean";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class JsonValueNumber implements JsonValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'jsonValueNumber';
+  static const String CONSTRUCTOR = "jsonValueNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -130,10 +130,10 @@ class JsonValueString implements JsonValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'jsonValueString';
+  static const String CONSTRUCTOR = "jsonValueString";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -158,12 +158,12 @@ class JsonValueArray implements JsonValue {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'values': this.values.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "values": this.values.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'jsonValueArray';
+  static const String CONSTRUCTOR = "jsonValueArray";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -179,21 +179,21 @@ class JsonValueObject implements JsonValue {
 
   /// Parse from a json
   JsonValueObject.fromJson(Map<String, dynamic> json) {
-    this.members = (json['members'] ?? [])
+    this.members = List<JsonObjectMember>.from((json['members'] ?? [])
         .map((listValue) => JsonObjectMember.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'members': this.members.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "members": this.members.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'jsonValueObject';
+  static const String CONSTRUCTOR = "jsonValueObject";
 
   @override
   String getConstructor() => CONSTRUCTOR;

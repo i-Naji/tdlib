@@ -18,15 +18,15 @@ class SendBotStartMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'bot_user_id': this.botUserId,
-      'chat_id': this.chatId,
-      'parameter': this.parameter,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "bot_user_id": this.botUserId,
+      "chat_id": this.chatId,
+      "parameter": this.parameter,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendBotStartMessage';
+  static const String CONSTRUCTOR = "sendBotStartMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

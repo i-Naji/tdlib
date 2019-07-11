@@ -5,47 +5,47 @@ class PassportElementType implements TLObject {
   PassportElementType();
 
   /// a PassportElementType return type can be :
-  /// * PassportElementTypePassportRegistration
-  /// * PassportElementTypeEmailAddress
-  /// * PassportElementTypeInternalPassport
   /// * PassportElementTypePersonalDetails
-  /// * PassportElementTypeRentalAgreement
+  /// * PassportElementTypePassport
   /// * PassportElementTypeDriverLicense
   /// * PassportElementTypeIdentityCard
+  /// * PassportElementTypeInternalPassport
+  /// * PassportElementTypeAddress
+  /// * PassportElementTypeUtilityBill
+  /// * PassportElementTypeBankStatement
+  /// * PassportElementTypeRentalAgreement
+  /// * PassportElementTypePassportRegistration
   /// * PassportElementTypeTemporaryRegistration
   /// * PassportElementTypePhoneNumber
-  /// * PassportElementTypeAddress
-  /// * PassportElementTypeBankStatement
-  /// * PassportElementTypeUtilityBill
-  /// * PassportElementTypePassport
+  /// * PassportElementTypeEmailAddress
   factory PassportElementType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case PassportElementTypePassportRegistration.CONSTRUCTOR:
-        return PassportElementTypePassportRegistration.fromJson(json);
-      case PassportElementTypeEmailAddress.CONSTRUCTOR:
-        return PassportElementTypeEmailAddress.fromJson(json);
-      case PassportElementTypeInternalPassport.CONSTRUCTOR:
-        return PassportElementTypeInternalPassport.fromJson(json);
       case PassportElementTypePersonalDetails.CONSTRUCTOR:
         return PassportElementTypePersonalDetails.fromJson(json);
-      case PassportElementTypeRentalAgreement.CONSTRUCTOR:
-        return PassportElementTypeRentalAgreement.fromJson(json);
+      case PassportElementTypePassport.CONSTRUCTOR:
+        return PassportElementTypePassport.fromJson(json);
       case PassportElementTypeDriverLicense.CONSTRUCTOR:
         return PassportElementTypeDriverLicense.fromJson(json);
       case PassportElementTypeIdentityCard.CONSTRUCTOR:
         return PassportElementTypeIdentityCard.fromJson(json);
+      case PassportElementTypeInternalPassport.CONSTRUCTOR:
+        return PassportElementTypeInternalPassport.fromJson(json);
+      case PassportElementTypeAddress.CONSTRUCTOR:
+        return PassportElementTypeAddress.fromJson(json);
+      case PassportElementTypeUtilityBill.CONSTRUCTOR:
+        return PassportElementTypeUtilityBill.fromJson(json);
+      case PassportElementTypeBankStatement.CONSTRUCTOR:
+        return PassportElementTypeBankStatement.fromJson(json);
+      case PassportElementTypeRentalAgreement.CONSTRUCTOR:
+        return PassportElementTypeRentalAgreement.fromJson(json);
+      case PassportElementTypePassportRegistration.CONSTRUCTOR:
+        return PassportElementTypePassportRegistration.fromJson(json);
       case PassportElementTypeTemporaryRegistration.CONSTRUCTOR:
         return PassportElementTypeTemporaryRegistration.fromJson(json);
       case PassportElementTypePhoneNumber.CONSTRUCTOR:
         return PassportElementTypePhoneNumber.fromJson(json);
-      case PassportElementTypeAddress.CONSTRUCTOR:
-        return PassportElementTypeAddress.fromJson(json);
-      case PassportElementTypeBankStatement.CONSTRUCTOR:
-        return PassportElementTypeBankStatement.fromJson(json);
-      case PassportElementTypeUtilityBill.CONSTRUCTOR:
-        return PassportElementTypeUtilityBill.fromJson(json);
-      case PassportElementTypePassport.CONSTRUCTOR:
-        return PassportElementTypePassport.fromJson(json);
+      case PassportElementTypeEmailAddress.CONSTRUCTOR:
+        return PassportElementTypeEmailAddress.fromJson(json);
       default:
         return null;
     }
@@ -56,7 +56,7 @@ class PassportElementType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'passportElementType';
+  static const String CONSTRUCTOR = "passportElementType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -72,10 +72,10 @@ class PassportElementTypePersonalDetails implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypePersonalDetails';
+  static const String CONSTRUCTOR = "passportElementTypePersonalDetails";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -91,10 +91,10 @@ class PassportElementTypePassport implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypePassport';
+  static const String CONSTRUCTOR = "passportElementTypePassport";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -110,10 +110,10 @@ class PassportElementTypeDriverLicense implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeDriverLicense';
+  static const String CONSTRUCTOR = "passportElementTypeDriverLicense";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -129,10 +129,10 @@ class PassportElementTypeIdentityCard implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeIdentityCard';
+  static const String CONSTRUCTOR = "passportElementTypeIdentityCard";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -148,10 +148,10 @@ class PassportElementTypeInternalPassport implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeInternalPassport';
+  static const String CONSTRUCTOR = "passportElementTypeInternalPassport";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -167,10 +167,10 @@ class PassportElementTypeAddress implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeAddress';
+  static const String CONSTRUCTOR = "passportElementTypeAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -186,10 +186,10 @@ class PassportElementTypeUtilityBill implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeUtilityBill';
+  static const String CONSTRUCTOR = "passportElementTypeUtilityBill";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -205,10 +205,10 @@ class PassportElementTypeBankStatement implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeBankStatement';
+  static const String CONSTRUCTOR = "passportElementTypeBankStatement";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -224,10 +224,10 @@ class PassportElementTypeRentalAgreement implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeRentalAgreement';
+  static const String CONSTRUCTOR = "passportElementTypeRentalAgreement";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -243,10 +243,10 @@ class PassportElementTypePassportRegistration implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypePassportRegistration';
+  static const String CONSTRUCTOR = "passportElementTypePassportRegistration";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -262,10 +262,10 @@ class PassportElementTypeTemporaryRegistration implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeTemporaryRegistration';
+  static const String CONSTRUCTOR = "passportElementTypeTemporaryRegistration";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -281,10 +281,10 @@ class PassportElementTypePhoneNumber implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypePhoneNumber';
+  static const String CONSTRUCTOR = "passportElementTypePhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -300,10 +300,10 @@ class PassportElementTypeEmailAddress implements PassportElementType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementTypeEmailAddress';
+  static const String CONSTRUCTOR = "passportElementTypeEmailAddress";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -19,13 +19,13 @@ class KeyboardButton implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text,
-      'type': this.type.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+      "type": this.type.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'keyboardButton';
+  static const String CONSTRUCTOR = "keyboardButton";
 
   @override
   String getConstructor() => CONSTRUCTOR;

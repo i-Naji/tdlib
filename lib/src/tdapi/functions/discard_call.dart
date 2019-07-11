@@ -21,16 +21,16 @@ class DiscardCall extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'call_id': this.callId,
-      'is_disconnected': this.isDisconnected,
-      'duration': this.duration,
-      'connection_id': this.connectionId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+      "is_disconnected": this.isDisconnected,
+      "duration": this.duration,
+      "connection_id": this.connectionId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'discardCall';
+  static const String CONSTRUCTOR = "discardCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -28,15 +28,15 @@ class PaymentsProviderStripe implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'publishable_key': this.publishableKey,
-      'need_country': this.needCountry,
-      'need_postal_code': this.needPostalCode,
-      'need_cardholder_name': this.needCardholderName
+      "@type": CONSTRUCTOR,
+      "publishable_key": this.publishableKey,
+      "need_country": this.needCountry,
+      "need_postal_code": this.needPostalCode,
+      "need_cardholder_name": this.needCardholderName
     };
   }
 
-  static const String CONSTRUCTOR = 'paymentsProviderStripe';
+  static const String CONSTRUCTOR = "paymentsProviderStripe";
 
   @override
   String getConstructor() => CONSTRUCTOR;

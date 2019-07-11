@@ -5,128 +5,128 @@ class MessageContent implements TLObject {
   MessageContent();
 
   /// a MessageContent return type can be :
-  /// * MessagePinMessage
-  /// * MessageCustomServiceAction
+  /// * MessageText
+  /// * MessageAnimation
+  /// * MessageAudio
+  /// * MessageDocument
+  /// * MessagePhoto
+  /// * MessageExpiredPhoto
+  /// * MessageSticker
   /// * MessageVideo
+  /// * MessageExpiredVideo
+  /// * MessageVideoNote
+  /// * MessageVoiceNote
+  /// * MessageLocation
   /// * MessageVenue
+  /// * MessageContact
+  /// * MessageGame
+  /// * MessagePoll
+  /// * MessageInvoice
+  /// * MessageCall
+  /// * MessageBasicGroupChatCreate
+  /// * MessageSupergroupChatCreate
+  /// * MessageChatChangeTitle
   /// * MessageChatChangePhoto
   /// * MessageChatDeletePhoto
-  /// * MessagePoll
-  /// * MessageSticker
-  /// * MessageText
-  /// * MessagePassportDataSent
-  /// * MessageChatDeleteMember
-  /// * MessageCall
-  /// * MessagePassportDataReceived
-  /// * MessageGameScore
-  /// * MessageScreenshotTaken
-  /// * MessageBasicGroupChatCreate
-  /// * MessagePhoto
-  /// * MessageGame
-  /// * MessageDocument
-  /// * MessageUnsupported
-  /// * MessageContactRegistered
-  /// * MessagePaymentSuccessful
-  /// * MessageChatSetTtl
-  /// * MessageAnimation
-  /// * MessageChatUpgradeTo
-  /// * MessageChatChangeTitle
-  /// * MessageChatUpgradeFrom
-  /// * MessageChatJoinByLink
   /// * MessageChatAddMembers
-  /// * MessageVoiceNote
-  /// * MessageExpiredPhoto
-  /// * MessageVideoNote
-  /// * MessageAudio
-  /// * MessageSupergroupChatCreate
-  /// * MessageExpiredVideo
-  /// * MessageContact
+  /// * MessageChatJoinByLink
+  /// * MessageChatDeleteMember
+  /// * MessageChatUpgradeTo
+  /// * MessageChatUpgradeFrom
+  /// * MessagePinMessage
+  /// * MessageScreenshotTaken
+  /// * MessageChatSetTtl
+  /// * MessageCustomServiceAction
+  /// * MessageGameScore
+  /// * MessagePaymentSuccessful
   /// * MessagePaymentSuccessfulBot
+  /// * MessageContactRegistered
   /// * MessageWebsiteConnected
-  /// * MessageLocation
-  /// * MessageInvoice
+  /// * MessagePassportDataSent
+  /// * MessagePassportDataReceived
+  /// * MessageUnsupported
   factory MessageContent.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case MessagePinMessage.CONSTRUCTOR:
-        return MessagePinMessage.fromJson(json);
-      case MessageCustomServiceAction.CONSTRUCTOR:
-        return MessageCustomServiceAction.fromJson(json);
+      case MessageText.CONSTRUCTOR:
+        return MessageText.fromJson(json);
+      case MessageAnimation.CONSTRUCTOR:
+        return MessageAnimation.fromJson(json);
+      case MessageAudio.CONSTRUCTOR:
+        return MessageAudio.fromJson(json);
+      case MessageDocument.CONSTRUCTOR:
+        return MessageDocument.fromJson(json);
+      case MessagePhoto.CONSTRUCTOR:
+        return MessagePhoto.fromJson(json);
+      case MessageExpiredPhoto.CONSTRUCTOR:
+        return MessageExpiredPhoto.fromJson(json);
+      case MessageSticker.CONSTRUCTOR:
+        return MessageSticker.fromJson(json);
       case MessageVideo.CONSTRUCTOR:
         return MessageVideo.fromJson(json);
+      case MessageExpiredVideo.CONSTRUCTOR:
+        return MessageExpiredVideo.fromJson(json);
+      case MessageVideoNote.CONSTRUCTOR:
+        return MessageVideoNote.fromJson(json);
+      case MessageVoiceNote.CONSTRUCTOR:
+        return MessageVoiceNote.fromJson(json);
+      case MessageLocation.CONSTRUCTOR:
+        return MessageLocation.fromJson(json);
       case MessageVenue.CONSTRUCTOR:
         return MessageVenue.fromJson(json);
+      case MessageContact.CONSTRUCTOR:
+        return MessageContact.fromJson(json);
+      case MessageGame.CONSTRUCTOR:
+        return MessageGame.fromJson(json);
+      case MessagePoll.CONSTRUCTOR:
+        return MessagePoll.fromJson(json);
+      case MessageInvoice.CONSTRUCTOR:
+        return MessageInvoice.fromJson(json);
+      case MessageCall.CONSTRUCTOR:
+        return MessageCall.fromJson(json);
+      case MessageBasicGroupChatCreate.CONSTRUCTOR:
+        return MessageBasicGroupChatCreate.fromJson(json);
+      case MessageSupergroupChatCreate.CONSTRUCTOR:
+        return MessageSupergroupChatCreate.fromJson(json);
+      case MessageChatChangeTitle.CONSTRUCTOR:
+        return MessageChatChangeTitle.fromJson(json);
       case MessageChatChangePhoto.CONSTRUCTOR:
         return MessageChatChangePhoto.fromJson(json);
       case MessageChatDeletePhoto.CONSTRUCTOR:
         return MessageChatDeletePhoto.fromJson(json);
-      case MessagePoll.CONSTRUCTOR:
-        return MessagePoll.fromJson(json);
-      case MessageSticker.CONSTRUCTOR:
-        return MessageSticker.fromJson(json);
-      case MessageText.CONSTRUCTOR:
-        return MessageText.fromJson(json);
-      case MessagePassportDataSent.CONSTRUCTOR:
-        return MessagePassportDataSent.fromJson(json);
-      case MessageChatDeleteMember.CONSTRUCTOR:
-        return MessageChatDeleteMember.fromJson(json);
-      case MessageCall.CONSTRUCTOR:
-        return MessageCall.fromJson(json);
-      case MessagePassportDataReceived.CONSTRUCTOR:
-        return MessagePassportDataReceived.fromJson(json);
-      case MessageGameScore.CONSTRUCTOR:
-        return MessageGameScore.fromJson(json);
-      case MessageScreenshotTaken.CONSTRUCTOR:
-        return MessageScreenshotTaken.fromJson(json);
-      case MessageBasicGroupChatCreate.CONSTRUCTOR:
-        return MessageBasicGroupChatCreate.fromJson(json);
-      case MessagePhoto.CONSTRUCTOR:
-        return MessagePhoto.fromJson(json);
-      case MessageGame.CONSTRUCTOR:
-        return MessageGame.fromJson(json);
-      case MessageDocument.CONSTRUCTOR:
-        return MessageDocument.fromJson(json);
-      case MessageUnsupported.CONSTRUCTOR:
-        return MessageUnsupported.fromJson(json);
-      case MessageContactRegistered.CONSTRUCTOR:
-        return MessageContactRegistered.fromJson(json);
-      case MessagePaymentSuccessful.CONSTRUCTOR:
-        return MessagePaymentSuccessful.fromJson(json);
-      case MessageChatSetTtl.CONSTRUCTOR:
-        return MessageChatSetTtl.fromJson(json);
-      case MessageAnimation.CONSTRUCTOR:
-        return MessageAnimation.fromJson(json);
-      case MessageChatUpgradeTo.CONSTRUCTOR:
-        return MessageChatUpgradeTo.fromJson(json);
-      case MessageChatChangeTitle.CONSTRUCTOR:
-        return MessageChatChangeTitle.fromJson(json);
-      case MessageChatUpgradeFrom.CONSTRUCTOR:
-        return MessageChatUpgradeFrom.fromJson(json);
-      case MessageChatJoinByLink.CONSTRUCTOR:
-        return MessageChatJoinByLink.fromJson(json);
       case MessageChatAddMembers.CONSTRUCTOR:
         return MessageChatAddMembers.fromJson(json);
-      case MessageVoiceNote.CONSTRUCTOR:
-        return MessageVoiceNote.fromJson(json);
-      case MessageExpiredPhoto.CONSTRUCTOR:
-        return MessageExpiredPhoto.fromJson(json);
-      case MessageVideoNote.CONSTRUCTOR:
-        return MessageVideoNote.fromJson(json);
-      case MessageAudio.CONSTRUCTOR:
-        return MessageAudio.fromJson(json);
-      case MessageSupergroupChatCreate.CONSTRUCTOR:
-        return MessageSupergroupChatCreate.fromJson(json);
-      case MessageExpiredVideo.CONSTRUCTOR:
-        return MessageExpiredVideo.fromJson(json);
-      case MessageContact.CONSTRUCTOR:
-        return MessageContact.fromJson(json);
+      case MessageChatJoinByLink.CONSTRUCTOR:
+        return MessageChatJoinByLink.fromJson(json);
+      case MessageChatDeleteMember.CONSTRUCTOR:
+        return MessageChatDeleteMember.fromJson(json);
+      case MessageChatUpgradeTo.CONSTRUCTOR:
+        return MessageChatUpgradeTo.fromJson(json);
+      case MessageChatUpgradeFrom.CONSTRUCTOR:
+        return MessageChatUpgradeFrom.fromJson(json);
+      case MessagePinMessage.CONSTRUCTOR:
+        return MessagePinMessage.fromJson(json);
+      case MessageScreenshotTaken.CONSTRUCTOR:
+        return MessageScreenshotTaken.fromJson(json);
+      case MessageChatSetTtl.CONSTRUCTOR:
+        return MessageChatSetTtl.fromJson(json);
+      case MessageCustomServiceAction.CONSTRUCTOR:
+        return MessageCustomServiceAction.fromJson(json);
+      case MessageGameScore.CONSTRUCTOR:
+        return MessageGameScore.fromJson(json);
+      case MessagePaymentSuccessful.CONSTRUCTOR:
+        return MessagePaymentSuccessful.fromJson(json);
       case MessagePaymentSuccessfulBot.CONSTRUCTOR:
         return MessagePaymentSuccessfulBot.fromJson(json);
+      case MessageContactRegistered.CONSTRUCTOR:
+        return MessageContactRegistered.fromJson(json);
       case MessageWebsiteConnected.CONSTRUCTOR:
         return MessageWebsiteConnected.fromJson(json);
-      case MessageLocation.CONSTRUCTOR:
-        return MessageLocation.fromJson(json);
-      case MessageInvoice.CONSTRUCTOR:
-        return MessageInvoice.fromJson(json);
+      case MessagePassportDataSent.CONSTRUCTOR:
+        return MessagePassportDataSent.fromJson(json);
+      case MessagePassportDataReceived.CONSTRUCTOR:
+        return MessagePassportDataReceived.fromJson(json);
+      case MessageUnsupported.CONSTRUCTOR:
+        return MessageUnsupported.fromJson(json);
       default:
         return null;
     }
@@ -137,7 +137,7 @@ class MessageContent implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'messageContent';
+  static const String CONSTRUCTOR = "messageContent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -161,13 +161,13 @@ class MessageText implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'web_page': this.webPage.toJson()
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "web_page": this.webPage.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'messageText';
+  static const String CONSTRUCTOR = "messageText";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -196,14 +196,14 @@ class MessageAnimation implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animation': this.animation.toJson(),
-      'caption': this.caption.toJson(),
-      'is_secret': this.isSecret
+      "@type": CONSTRUCTOR,
+      "animation": this.animation.toJson(),
+      "caption": this.caption.toJson(),
+      "is_secret": this.isSecret
     };
   }
 
-  static const String CONSTRUCTOR = 'messageAnimation';
+  static const String CONSTRUCTOR = "messageAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -228,13 +228,13 @@ class MessageAudio implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'audio': this.audio.toJson(),
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "audio": this.audio.toJson(),
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'messageAudio';
+  static const String CONSTRUCTOR = "messageAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -259,13 +259,13 @@ class MessageDocument implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'document': this.document.toJson(),
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "document": this.document.toJson(),
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'messageDocument';
+  static const String CONSTRUCTOR = "messageDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -293,14 +293,14 @@ class MessagePhoto implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'photo': this.photo.toJson(),
-      'caption': this.caption.toJson(),
-      'is_secret': this.isSecret
+      "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
+      "caption": this.caption.toJson(),
+      "is_secret": this.isSecret
     };
   }
 
-  static const String CONSTRUCTOR = 'messagePhoto';
+  static const String CONSTRUCTOR = "messagePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -316,10 +316,10 @@ class MessageExpiredPhoto implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageExpiredPhoto';
+  static const String CONSTRUCTOR = "messageExpiredPhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -339,10 +339,10 @@ class MessageSticker implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'sticker': this.sticker.toJson()};
+    return {"@type": CONSTRUCTOR, "sticker": this.sticker.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messageSticker';
+  static const String CONSTRUCTOR = "messageSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -370,14 +370,14 @@ class MessageVideo implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video': this.video.toJson(),
-      'caption': this.caption.toJson(),
-      'is_secret': this.isSecret
+      "@type": CONSTRUCTOR,
+      "video": this.video.toJson(),
+      "caption": this.caption.toJson(),
+      "is_secret": this.isSecret
     };
   }
 
-  static const String CONSTRUCTOR = 'messageVideo';
+  static const String CONSTRUCTOR = "messageVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -393,10 +393,10 @@ class MessageExpiredVideo implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageExpiredVideo';
+  static const String CONSTRUCTOR = "messageExpiredVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -424,14 +424,14 @@ class MessageVideoNote implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video_note': this.videoNote.toJson(),
-      'is_viewed': this.isViewed,
-      'is_secret': this.isSecret
+      "@type": CONSTRUCTOR,
+      "video_note": this.videoNote.toJson(),
+      "is_viewed": this.isViewed,
+      "is_secret": this.isSecret
     };
   }
 
-  static const String CONSTRUCTOR = 'messageVideoNote';
+  static const String CONSTRUCTOR = "messageVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -460,14 +460,14 @@ class MessageVoiceNote implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'voice_note': this.voiceNote.toJson(),
-      'caption': this.caption.toJson(),
-      'is_listened': this.isListened
+      "@type": CONSTRUCTOR,
+      "voice_note": this.voiceNote.toJson(),
+      "caption": this.caption.toJson(),
+      "is_listened": this.isListened
     };
   }
 
-  static const String CONSTRUCTOR = 'messageVoiceNote';
+  static const String CONSTRUCTOR = "messageVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -494,14 +494,14 @@ class MessageLocation implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'location': this.location.toJson(),
-      'live_period': this.livePeriod,
-      'expires_in': this.expiresIn
+      "@type": CONSTRUCTOR,
+      "location": this.location.toJson(),
+      "live_period": this.livePeriod,
+      "expires_in": this.expiresIn
     };
   }
 
-  static const String CONSTRUCTOR = 'messageLocation';
+  static const String CONSTRUCTOR = "messageLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -521,10 +521,10 @@ class MessageVenue implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'venue': this.venue.toJson()};
+    return {"@type": CONSTRUCTOR, "venue": this.venue.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messageVenue';
+  static const String CONSTRUCTOR = "messageVenue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -544,10 +544,10 @@ class MessageContact implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'contact': this.contact.toJson()};
+    return {"@type": CONSTRUCTOR, "contact": this.contact.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messageContact';
+  static const String CONSTRUCTOR = "messageContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -567,10 +567,10 @@ class MessageGame implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'game': this.game.toJson()};
+    return {"@type": CONSTRUCTOR, "game": this.game.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messageGame';
+  static const String CONSTRUCTOR = "messageGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -590,10 +590,10 @@ class MessagePoll implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'poll': this.poll.toJson()};
+    return {"@type": CONSTRUCTOR, "poll": this.poll.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messagePoll';
+  static const String CONSTRUCTOR = "messagePoll";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -646,20 +646,20 @@ class MessageInvoice implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'description': this.description,
-      'photo': this.photo.toJson(),
-      'currency': this.currency,
-      'total_amount': this.totalAmount,
-      'start_parameter': this.startParameter,
-      'is_test': this.isTest,
-      'need_shipping_address': this.needShippingAddress,
-      'receipt_message_id': this.receiptMessageId
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "description": this.description,
+      "photo": this.photo.toJson(),
+      "currency": this.currency,
+      "total_amount": this.totalAmount,
+      "start_parameter": this.startParameter,
+      "is_test": this.isTest,
+      "need_shipping_address": this.needShippingAddress,
+      "receipt_message_id": this.receiptMessageId
     };
   }
 
-  static const String CONSTRUCTOR = 'messageInvoice';
+  static const String CONSTRUCTOR = "messageInvoice";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -684,13 +684,13 @@ class MessageCall implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'discard_reason': this.discardReason.toJson(),
-      'duration': this.duration
+      "@type": CONSTRUCTOR,
+      "discard_reason": this.discardReason.toJson(),
+      "duration": this.duration
     };
   }
 
-  static const String CONSTRUCTOR = 'messageCall';
+  static const String CONSTRUCTOR = "messageCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -708,19 +708,19 @@ class MessageBasicGroupChatCreate implements MessageContent {
   /// Parse from a json
   MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
-    this.memberUserIds = json['member_user_ids'] ?? [];
+    this.memberUserIds = List<int>.from(json['member_user_ids'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'member_user_ids': this.memberUserIds
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "member_user_ids": this.memberUserIds
     };
   }
 
-  static const String CONSTRUCTOR = 'messageBasicGroupChatCreate';
+  static const String CONSTRUCTOR = "messageBasicGroupChatCreate";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -740,10 +740,10 @@ class MessageSupergroupChatCreate implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'title': this.title};
+    return {"@type": CONSTRUCTOR, "title": this.title};
   }
 
-  static const String CONSTRUCTOR = 'messageSupergroupChatCreate';
+  static const String CONSTRUCTOR = "messageSupergroupChatCreate";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -763,10 +763,10 @@ class MessageChatChangeTitle implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'title': this.title};
+    return {"@type": CONSTRUCTOR, "title": this.title};
   }
 
-  static const String CONSTRUCTOR = 'messageChatChangeTitle';
+  static const String CONSTRUCTOR = "messageChatChangeTitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -786,10 +786,10 @@ class MessageChatChangePhoto implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'photo': this.photo.toJson()};
+    return {"@type": CONSTRUCTOR, "photo": this.photo.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'messageChatChangePhoto';
+  static const String CONSTRUCTOR = "messageChatChangePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -805,10 +805,10 @@ class MessageChatDeletePhoto implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageChatDeletePhoto';
+  static const String CONSTRUCTOR = "messageChatDeletePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -823,15 +823,15 @@ class MessageChatAddMembers implements MessageContent {
 
   /// Parse from a json
   MessageChatAddMembers.fromJson(Map<String, dynamic> json) {
-    this.memberUserIds = json['member_user_ids'] ?? [];
+    this.memberUserIds = List<int>.from(json['member_user_ids'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'member_user_ids': this.memberUserIds};
+    return {"@type": CONSTRUCTOR, "member_user_ids": this.memberUserIds};
   }
 
-  static const String CONSTRUCTOR = 'messageChatAddMembers';
+  static const String CONSTRUCTOR = "messageChatAddMembers";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -847,10 +847,10 @@ class MessageChatJoinByLink implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageChatJoinByLink';
+  static const String CONSTRUCTOR = "messageChatJoinByLink";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -870,10 +870,10 @@ class MessageChatDeleteMember implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'user_id': this.userId};
+    return {"@type": CONSTRUCTOR, "user_id": this.userId};
   }
 
-  static const String CONSTRUCTOR = 'messageChatDeleteMember';
+  static const String CONSTRUCTOR = "messageChatDeleteMember";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -893,10 +893,10 @@ class MessageChatUpgradeTo implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'supergroup_id': this.supergroupId};
+    return {"@type": CONSTRUCTOR, "supergroup_id": this.supergroupId};
   }
 
-  static const String CONSTRUCTOR = 'messageChatUpgradeTo';
+  static const String CONSTRUCTOR = "messageChatUpgradeTo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -920,13 +920,13 @@ class MessageChatUpgradeFrom implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'title': this.title,
-      'basic_group_id': this.basicGroupId
+      "@type": CONSTRUCTOR,
+      "title": this.title,
+      "basic_group_id": this.basicGroupId
     };
   }
 
-  static const String CONSTRUCTOR = 'messageChatUpgradeFrom';
+  static const String CONSTRUCTOR = "messageChatUpgradeFrom";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -946,10 +946,10 @@ class MessagePinMessage implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'message_id': this.messageId};
+    return {"@type": CONSTRUCTOR, "message_id": this.messageId};
   }
 
-  static const String CONSTRUCTOR = 'messagePinMessage';
+  static const String CONSTRUCTOR = "messagePinMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -965,10 +965,10 @@ class MessageScreenshotTaken implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageScreenshotTaken';
+  static const String CONSTRUCTOR = "messageScreenshotTaken";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -988,10 +988,10 @@ class MessageChatSetTtl implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'ttl': this.ttl};
+    return {"@type": CONSTRUCTOR, "ttl": this.ttl};
   }
 
-  static const String CONSTRUCTOR = 'messageChatSetTtl';
+  static const String CONSTRUCTOR = "messageChatSetTtl";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1011,10 +1011,10 @@ class MessageCustomServiceAction implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'text': this.text};
+    return {"@type": CONSTRUCTOR, "text": this.text};
   }
 
-  static const String CONSTRUCTOR = 'messageCustomServiceAction';
+  static const String CONSTRUCTOR = "messageCustomServiceAction";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1041,14 +1041,14 @@ class MessageGameScore implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'game_message_id': this.gameMessageId,
-      'game_id': this.gameId,
-      'score': this.score
+      "@type": CONSTRUCTOR,
+      "game_message_id": this.gameMessageId,
+      "game_id": this.gameId,
+      "score": this.score
     };
   }
 
-  static const String CONSTRUCTOR = 'messageGameScore';
+  static const String CONSTRUCTOR = "messageGameScore";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1076,14 +1076,14 @@ class MessagePaymentSuccessful implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invoice_message_id': this.invoiceMessageId,
-      'currency': this.currency,
-      'total_amount': this.totalAmount
+      "@type": CONSTRUCTOR,
+      "invoice_message_id": this.invoiceMessageId,
+      "currency": this.currency,
+      "total_amount": this.totalAmount
     };
   }
 
-  static const String CONSTRUCTOR = 'messagePaymentSuccessful';
+  static const String CONSTRUCTOR = "messagePaymentSuccessful";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1134,19 +1134,19 @@ class MessagePaymentSuccessfulBot implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invoice_message_id': this.invoiceMessageId,
-      'currency': this.currency,
-      'total_amount': this.totalAmount,
-      'invoice_payload': this.invoicePayload,
-      'shipping_option_id': this.shippingOptionId,
-      'order_info': this.orderInfo.toJson(),
-      'telegram_payment_charge_id': this.telegramPaymentChargeId,
-      'provider_payment_charge_id': this.providerPaymentChargeId
+      "@type": CONSTRUCTOR,
+      "invoice_message_id": this.invoiceMessageId,
+      "currency": this.currency,
+      "total_amount": this.totalAmount,
+      "invoice_payload": this.invoicePayload,
+      "shipping_option_id": this.shippingOptionId,
+      "order_info": this.orderInfo.toJson(),
+      "telegram_payment_charge_id": this.telegramPaymentChargeId,
+      "provider_payment_charge_id": this.providerPaymentChargeId
     };
   }
 
-  static const String CONSTRUCTOR = 'messagePaymentSuccessfulBot';
+  static const String CONSTRUCTOR = "messagePaymentSuccessfulBot";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1162,10 +1162,10 @@ class MessageContactRegistered implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageContactRegistered';
+  static const String CONSTRUCTOR = "messageContactRegistered";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1185,10 +1185,10 @@ class MessageWebsiteConnected implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'domain_name': this.domainName};
+    return {"@type": CONSTRUCTOR, "domain_name": this.domainName};
   }
 
-  static const String CONSTRUCTOR = 'messageWebsiteConnected';
+  static const String CONSTRUCTOR = "messageWebsiteConnected";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1211,12 +1211,12 @@ class MessagePassportDataSent implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'types': this.types.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "types": this.types.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'messagePassportDataSent';
+  static const String CONSTRUCTOR = "messagePassportDataSent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1233,9 +1233,9 @@ class MessagePassportDataReceived implements MessageContent {
 
   /// Parse from a json
   MessagePassportDataReceived.fromJson(Map<String, dynamic> json) {
-    this.elements = (json['elements'] ?? [])
+    this.elements = List<EncryptedPassportElement>.from((json['elements'] ?? [])
         .map((listValue) => EncryptedPassportElement.fromJson(listValue))
-        .toList();
+        .toList());
     this.credentials = EncryptedCredentials.fromJson(
         json['credentials'] ?? <String, dynamic>{});
   }
@@ -1243,13 +1243,13 @@ class MessagePassportDataReceived implements MessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'elements': this.elements.map((listItem) => listItem.toJson()).toList(),
-      'credentials': this.credentials.toJson()
+      "@type": CONSTRUCTOR,
+      "elements": this.elements.map((listItem) => listItem.toJson()).toList(),
+      "credentials": this.credentials.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'messagePassportDataReceived';
+  static const String CONSTRUCTOR = "messagePassportDataReceived";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1265,10 +1265,10 @@ class MessageUnsupported implements MessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'messageUnsupported';
+  static const String CONSTRUCTOR = "messageUnsupported";
 
   @override
   String getConstructor() => CONSTRUCTOR;

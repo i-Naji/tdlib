@@ -10,16 +10,16 @@ class TestVectorInt implements TLObject {
 
   /// Parse from a json
   TestVectorInt.fromJson(Map<String, dynamic> json) {
-    this.value = json['value'] ?? [];
+    this.value = List<int>.from(json['value'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'testVectorInt';
+  static const String CONSTRUCTOR = "testVectorInt";
 
   @override
   String getConstructor() => CONSTRUCTOR;

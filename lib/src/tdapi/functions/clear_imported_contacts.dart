@@ -12,10 +12,10 @@ class ClearImportedContacts extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'clearImportedContacts';
+  static const String CONSTRUCTOR = "clearImportedContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

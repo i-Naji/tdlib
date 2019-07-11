@@ -5,20 +5,20 @@ class MaskPoint implements TLObject {
   MaskPoint();
 
   /// a MaskPoint return type can be :
-  /// * MaskPointEyes
-  /// * MaskPointChin
   /// * MaskPointForehead
+  /// * MaskPointEyes
   /// * MaskPointMouth
+  /// * MaskPointChin
   factory MaskPoint.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case MaskPointEyes.CONSTRUCTOR:
-        return MaskPointEyes.fromJson(json);
-      case MaskPointChin.CONSTRUCTOR:
-        return MaskPointChin.fromJson(json);
       case MaskPointForehead.CONSTRUCTOR:
         return MaskPointForehead.fromJson(json);
+      case MaskPointEyes.CONSTRUCTOR:
+        return MaskPointEyes.fromJson(json);
       case MaskPointMouth.CONSTRUCTOR:
         return MaskPointMouth.fromJson(json);
+      case MaskPointChin.CONSTRUCTOR:
+        return MaskPointChin.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class MaskPoint implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'maskPoint';
+  static const String CONSTRUCTOR = "maskPoint";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -45,10 +45,10 @@ class MaskPointForehead implements MaskPoint {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'maskPointForehead';
+  static const String CONSTRUCTOR = "maskPointForehead";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -64,10 +64,10 @@ class MaskPointEyes implements MaskPoint {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'maskPointEyes';
+  static const String CONSTRUCTOR = "maskPointEyes";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -83,10 +83,10 @@ class MaskPointMouth implements MaskPoint {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'maskPointMouth';
+  static const String CONSTRUCTOR = "maskPointMouth";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -102,10 +102,10 @@ class MaskPointChin implements MaskPoint {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'maskPointChin';
+  static const String CONSTRUCTOR = "maskPointChin";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -25,15 +25,15 @@ class Document implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_name': this.fileName,
-      'mime_type': this.mimeType,
-      'thumbnail': this.thumbnail.toJson(),
-      'document': this.document.toJson()
+      "@type": CONSTRUCTOR,
+      "file_name": this.fileName,
+      "mime_type": this.mimeType,
+      "thumbnail": this.thumbnail.toJson(),
+      "document": this.document.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'document';
+  static const String CONSTRUCTOR = "document";
 
   @override
   String getConstructor() => CONSTRUCTOR;

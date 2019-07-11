@@ -16,14 +16,14 @@ class GetChatNotificationSettingsExceptions extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'scope': this.scope.toJson(),
-      'compare_sound': this.compareSound,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "scope": this.scope.toJson(),
+      "compare_sound": this.compareSound,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatNotificationSettingsExceptions';
+  static const String CONSTRUCTOR = "getChatNotificationSettingsExceptions";
 
   @override
   String getConstructor() => CONSTRUCTOR;

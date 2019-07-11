@@ -19,15 +19,15 @@ class SendPhoneNumberVerificationCode extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'phone_number': this.phoneNumber,
-      'allow_flash_call': this.allowFlashCall,
-      'is_current_phone_number': this.isCurrentPhoneNumber,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "phone_number": this.phoneNumber,
+      "allow_flash_call": this.allowFlashCall,
+      "is_current_phone_number": this.isCurrentPhoneNumber,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendPhoneNumberVerificationCode';
+  static const String CONSTRUCTOR = "sendPhoneNumberVerificationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

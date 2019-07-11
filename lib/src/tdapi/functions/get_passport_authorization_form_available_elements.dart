@@ -18,15 +18,15 @@ class GetPassportAuthorizationFormAvailableElements extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'autorization_form_id': this.autorizationFormId,
-      'password': this.password,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "autorization_form_id": this.autorizationFormId,
+      "password": this.password,
+      "@extra": this.extra
     };
   }
 
   static const String CONSTRUCTOR =
-      'getPassportAuthorizationFormAvailableElements';
+      "getPassportAuthorizationFormAvailableElements";
 
   @override
   String getConstructor() => CONSTRUCTOR;

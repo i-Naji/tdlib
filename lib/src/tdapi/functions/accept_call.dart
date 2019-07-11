@@ -16,14 +16,14 @@ class AcceptCall extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'call_id': this.callId,
-      'protocol': this.protocol.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+      "protocol": this.protocol.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'acceptCall';
+  static const String CONSTRUCTOR = "acceptCall";
 
   @override
   String getConstructor() => CONSTRUCTOR;

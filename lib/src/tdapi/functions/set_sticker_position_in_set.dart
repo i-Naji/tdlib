@@ -16,14 +16,14 @@ class SetStickerPositionInSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker': this.sticker.toJson(),
-      'position': this.position,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "sticker": this.sticker.toJson(),
+      "position": this.position,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setStickerPositionInSet';
+  static const String CONSTRUCTOR = "setStickerPositionInSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

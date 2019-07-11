@@ -17,14 +17,14 @@ class ToggleBasicGroupAdministrators extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'basic_group_id': this.basicGroupId,
-      'everyone_is_administrator': this.everyoneIsAdministrator,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "basic_group_id": this.basicGroupId,
+      "everyone_is_administrator": this.everyoneIsAdministrator,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleBasicGroupAdministrators';
+  static const String CONSTRUCTOR = "toggleBasicGroupAdministrators";
 
   @override
   String getConstructor() => CONSTRUCTOR;

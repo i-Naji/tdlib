@@ -14,13 +14,13 @@ class GetSecretChat extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'secret_chat_id': this.secretChatId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "secret_chat_id": this.secretChatId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getSecretChat';
+  static const String CONSTRUCTOR = "getSecretChat";
 
   @override
   String getConstructor() => CONSTRUCTOR;

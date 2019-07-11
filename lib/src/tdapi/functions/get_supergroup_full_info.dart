@@ -14,13 +14,13 @@ class GetSupergroupFullInfo extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getSupergroupFullInfo';
+  static const String CONSTRUCTOR = "getSupergroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

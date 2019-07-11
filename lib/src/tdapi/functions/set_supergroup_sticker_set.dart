@@ -16,14 +16,14 @@ class SetSupergroupStickerSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'sticker_set_id': this.stickerSetId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "sticker_set_id": this.stickerSetId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setSupergroupStickerSet';
+  static const String CONSTRUCTOR = "setSupergroupStickerSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

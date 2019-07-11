@@ -17,14 +17,14 @@ class ToggleChatDefaultDisableNotification extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'default_disable_notification': this.defaultDisableNotification,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "default_disable_notification": this.defaultDisableNotification,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'toggleChatDefaultDisableNotification';
+  static const String CONSTRUCTOR = "toggleChatDefaultDisableNotification";
 
   @override
   String getConstructor() => CONSTRUCTOR;

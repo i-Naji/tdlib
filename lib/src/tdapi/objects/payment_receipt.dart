@@ -40,17 +40,17 @@ class PaymentReceipt implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'date': this.date,
-      'payments_provider_user_id': this.paymentsProviderUserId,
-      'invoice': this.invoice.toJson(),
-      'order_info': this.orderInfo.toJson(),
-      'shipping_option': this.shippingOption.toJson(),
-      'credentials_title': this.credentialsTitle
+      "@type": CONSTRUCTOR,
+      "date": this.date,
+      "payments_provider_user_id": this.paymentsProviderUserId,
+      "invoice": this.invoice.toJson(),
+      "order_info": this.orderInfo.toJson(),
+      "shipping_option": this.shippingOption.toJson(),
+      "credentials_title": this.credentialsTitle
     };
   }
 
-  static const String CONSTRUCTOR = 'paymentReceipt';
+  static const String CONSTRUCTOR = "paymentReceipt";
 
   @override
   String getConstructor() => CONSTRUCTOR;

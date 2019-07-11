@@ -14,13 +14,13 @@ class SynchronizeLanguagePack extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_pack_id': this.languagePackId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "language_pack_id": this.languagePackId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'synchronizeLanguagePack';
+  static const String CONSTRUCTOR = "synchronizeLanguagePack";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -13,10 +13,10 @@ class DeleteAccount extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'reason': this.reason, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "reason": this.reason, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'deleteAccount';
+  static const String CONSTRUCTOR = "deleteAccount";
 
   @override
   String getConstructor() => CONSTRUCTOR;

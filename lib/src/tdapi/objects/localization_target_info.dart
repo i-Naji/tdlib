@@ -10,22 +10,23 @@ class LocalizationTargetInfo implements TLObject {
 
   /// Parse from a json
   LocalizationTargetInfo.fromJson(Map<String, dynamic> json) {
-    this.languagePacks = (json['language_packs'] ?? [])
-        .map((listValue) => LanguagePackInfo.fromJson(listValue))
-        .toList();
+    this.languagePacks = List<LanguagePackInfo>.from(
+        (json['language_packs'] ?? [])
+            .map((listValue) => LanguagePackInfo.fromJson(listValue))
+            .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'language_packs':
+      "@type": CONSTRUCTOR,
+      "language_packs":
           this.languagePacks.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'localizationTargetInfo';
+  static const String CONSTRUCTOR = "localizationTargetInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

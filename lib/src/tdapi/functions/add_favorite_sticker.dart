@@ -14,13 +14,13 @@ class AddFavoriteSticker extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker': this.sticker.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "sticker": this.sticker.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'addFavoriteSticker';
+  static const String CONSTRUCTOR = "addFavoriteSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;

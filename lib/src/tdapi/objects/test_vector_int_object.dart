@@ -10,21 +10,21 @@ class TestVectorIntObject implements TLObject {
 
   /// Parse from a json
   TestVectorIntObject.fromJson(Map<String, dynamic> json) {
-    this.value = (json['value'] ?? [])
+    this.value = List<TestInt>.from((json['value'] ?? [])
         .map((listValue) => TestInt.fromJson(listValue))
-        .toList();
+        .toList());
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'value': this.value.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "value": this.value.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'testVectorIntObject';
+  static const String CONSTRUCTOR = "testVectorIntObject";
 
   @override
   String getConstructor() => CONSTRUCTOR;

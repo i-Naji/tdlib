@@ -13,10 +13,10 @@ class GetDeepLinkInfo extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'link': this.link, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "link": this.link, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getDeepLinkInfo';
+  static const String CONSTRUCTOR = "getDeepLinkInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

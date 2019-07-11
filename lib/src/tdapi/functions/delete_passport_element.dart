@@ -14,13 +14,13 @@ class DeletePassportElement extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "type": this.type.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'deletePassportElement';
+  static const String CONSTRUCTOR = "deletePassportElement";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -33,19 +33,19 @@ class SendInlineQueryResultMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'reply_to_message_id': this.replyToMessageId,
-      'disable_notification': this.disableNotification,
-      'from_background': this.fromBackground,
-      'query_id': this.queryId,
-      'result_id': this.resultId,
-      'hide_via_bot': this.hideViaBot,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "reply_to_message_id": this.replyToMessageId,
+      "disable_notification": this.disableNotification,
+      "from_background": this.fromBackground,
+      "query_id": this.queryId,
+      "result_id": this.resultId,
+      "hide_via_bot": this.hideViaBot,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendInlineQueryResultMessage';
+  static const String CONSTRUCTOR = "sendInlineQueryResultMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

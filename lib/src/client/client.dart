@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:tdlib/src/tdapi/tdapi.dart' as TdApi;
+import 'dart:convert';
 
 class Client {
   static const _platform = const MethodChannel('channel/to/tdlib');
@@ -24,10 +25,8 @@ class Client {
 
   /// Sends request to the TDLib client. May be called from any thread.
   Future<void> clientSend(int clientId, TdApi.TLFunction event) async =>
-      await _platform.invokeMethod('clientSend', <String, dynamic>{
-        'client': clientId,
-        'query': event.toJson().toString()
-      });
+      await _platform.invokeMethod('clientSend',
+          <String, dynamic>{'client': clientId, 'query': json.encode(event)});
 
   /// Receives incoming updates and request responses from the TDLib client.
   /// May be called from any thread, but shouldn't be called simultaneously from two different threads.
@@ -40,8 +39,8 @@ class Client {
   /// Only a few requests can be executed synchronously.
   /// Returned pointer will be deallocated by TDLib during next call to clientReceive or clientExecute in the same thread, so it can't be used after that.
   Future<TdApi.TLObject> clientExecute(TdApi.TLFunction event) async =>
-      TdApi.convertToObject(await _platform.invokeMethod('clientExecute',
-          <String, dynamic>{'query': event.toJson().toString()}));
+      TdApi.convertToObject(await _platform.invokeMethod(
+          'clientExecute', <String, dynamic>{'query': json.encode(event)}));
 
   /// Sets the verbosity [level] of the internal logging of TDLib.
   /// By default the TDLib uses a log verbosity [level] of 5.

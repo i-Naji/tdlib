@@ -12,21 +12,21 @@ class ImportedContacts implements TLObject {
 
   /// Parse from a json
   ImportedContacts.fromJson(Map<String, dynamic> json) {
-    this.userIds = json['user_ids'] ?? [];
-    this.importerCount = json['importer_count'] ?? [];
+    this.userIds = List<int>.from(json['user_ids'] ?? []);
+    this.importerCount = List<int>.from(json['importer_count'] ?? []);
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_ids': this.userIds,
-      'importer_count': this.importerCount
+      "@type": CONSTRUCTOR,
+      "user_ids": this.userIds,
+      "importer_count": this.importerCount
     };
   }
 
-  static const String CONSTRUCTOR = 'importedContacts';
+  static const String CONSTRUCTOR = "importedContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

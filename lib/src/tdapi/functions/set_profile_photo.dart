@@ -14,13 +14,13 @@ class SetProfilePhoto extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'photo': this.photo.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setProfilePhoto';
+  static const String CONSTRUCTOR = "setProfilePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;

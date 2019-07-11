@@ -12,10 +12,10 @@ class DeleteSavedOrderInfo extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'deleteSavedOrderInfo';
+  static const String CONSTRUCTOR = "deleteSavedOrderInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

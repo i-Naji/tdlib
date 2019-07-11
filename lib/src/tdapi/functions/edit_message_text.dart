@@ -24,16 +24,16 @@ class EditMessageText extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'editMessageText';
+  static const String CONSTRUCTOR = "editMessageText";
 
   @override
   String getConstructor() => CONSTRUCTOR;

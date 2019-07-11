@@ -14,13 +14,13 @@ class RemoveStickerFromSet extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker': this.sticker.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "sticker": this.sticker.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeStickerFromSet';
+  static const String CONSTRUCTOR = "removeStickerFromSet";
 
   @override
   String getConstructor() => CONSTRUCTOR;

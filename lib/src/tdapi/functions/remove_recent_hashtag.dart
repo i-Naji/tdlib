@@ -14,13 +14,13 @@ class RemoveRecentHashtag extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'hashtag': this.hashtag,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "hashtag": this.hashtag,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeRecentHashtag';
+  static const String CONSTRUCTOR = "removeRecentHashtag";
 
   @override
   String getConstructor() => CONSTRUCTOR;

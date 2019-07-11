@@ -14,13 +14,13 @@ class SetAccountTtl extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'ttl': this.ttl.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "ttl": this.ttl.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setAccountTtl';
+  static const String CONSTRUCTOR = "setAccountTtl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

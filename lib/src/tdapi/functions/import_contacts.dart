@@ -14,13 +14,13 @@ class ImportContacts extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'contacts': this.contacts.map((listItem) => listItem.toJson()).toList(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "contacts": this.contacts.map((listItem) => listItem.toJson()).toList(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'importContacts';
+  static const String CONSTRUCTOR = "importContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

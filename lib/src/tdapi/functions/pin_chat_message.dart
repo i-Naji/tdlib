@@ -18,15 +18,15 @@ class PinChatMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'disable_notification': this.disableNotification,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "disable_notification": this.disableNotification,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'pinChatMessage';
+  static const String CONSTRUCTOR = "pinChatMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

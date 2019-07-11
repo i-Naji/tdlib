@@ -21,16 +21,16 @@ class GetPassportAuthorizationForm extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'bot_user_id': this.botUserId,
-      'scope': this.scope,
-      'public_key': this.publicKey,
-      'nonce': this.nonce,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "bot_user_id": this.botUserId,
+      "scope": this.scope,
+      "public_key": this.publicKey,
+      "nonce": this.nonce,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getPassportAuthorizationForm';
+  static const String CONSTRUCTOR = "getPassportAuthorizationForm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

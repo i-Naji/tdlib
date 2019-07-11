@@ -27,17 +27,17 @@ class SendPaymentForm extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'message_id': this.messageId,
-      'order_info_id': this.orderInfoId,
-      'shipping_option_id': this.shippingOptionId,
-      'credentials': this.credentials.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "message_id": this.messageId,
+      "order_info_id": this.orderInfoId,
+      "shipping_option_id": this.shippingOptionId,
+      "credentials": this.credentials.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendPaymentForm';
+  static const String CONSTRUCTOR = "sendPaymentForm";
 
   @override
   String getConstructor() => CONSTRUCTOR;

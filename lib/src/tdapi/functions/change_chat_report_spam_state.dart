@@ -16,14 +16,14 @@ class ChangeChatReportSpamState extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'is_spam_chat': this.isSpamChat,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "is_spam_chat": this.isSpamChat,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'changeChatReportSpamState';
+  static const String CONSTRUCTOR = "changeChatReportSpamState";
 
   @override
   String getConstructor() => CONSTRUCTOR;

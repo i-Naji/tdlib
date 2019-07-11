@@ -21,14 +21,14 @@ class Date implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'day': this.day,
-      'month': this.month,
-      'year': this.year
+      "@type": CONSTRUCTOR,
+      "day": this.day,
+      "month": this.month,
+      "year": this.year
     };
   }
 
-  static const String CONSTRUCTOR = 'date';
+  static const String CONSTRUCTOR = "date";
 
   @override
   String getConstructor() => CONSTRUCTOR;

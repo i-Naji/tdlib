@@ -5,20 +5,20 @@ class OptionValue implements TLObject {
   OptionValue();
 
   /// a OptionValue return type can be :
-  /// * OptionValueString
-  /// * OptionValueInteger
-  /// * OptionValueEmpty
   /// * OptionValueBoolean
+  /// * OptionValueEmpty
+  /// * OptionValueInteger
+  /// * OptionValueString
   factory OptionValue.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case OptionValueString.CONSTRUCTOR:
-        return OptionValueString.fromJson(json);
-      case OptionValueInteger.CONSTRUCTOR:
-        return OptionValueInteger.fromJson(json);
-      case OptionValueEmpty.CONSTRUCTOR:
-        return OptionValueEmpty.fromJson(json);
       case OptionValueBoolean.CONSTRUCTOR:
         return OptionValueBoolean.fromJson(json);
+      case OptionValueEmpty.CONSTRUCTOR:
+        return OptionValueEmpty.fromJson(json);
+      case OptionValueInteger.CONSTRUCTOR:
+        return OptionValueInteger.fromJson(json);
+      case OptionValueString.CONSTRUCTOR:
+        return OptionValueString.fromJson(json);
       default:
         return null;
     }
@@ -29,7 +29,7 @@ class OptionValue implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'optionValue';
+  static const String CONSTRUCTOR = "optionValue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -51,10 +51,10 @@ class OptionValueBoolean implements OptionValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'optionValueBoolean';
+  static const String CONSTRUCTOR = "optionValueBoolean";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -74,10 +74,10 @@ class OptionValueEmpty implements OptionValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'optionValueEmpty';
+  static const String CONSTRUCTOR = "optionValueEmpty";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -99,10 +99,10 @@ class OptionValueInteger implements OptionValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'optionValueInteger';
+  static const String CONSTRUCTOR = "optionValueInteger";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -124,10 +124,10 @@ class OptionValueString implements OptionValue {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'value': this.value};
+    return {"@type": CONSTRUCTOR, "value": this.value};
   }
 
-  static const String CONSTRUCTOR = 'optionValueString';
+  static const String CONSTRUCTOR = "optionValueString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

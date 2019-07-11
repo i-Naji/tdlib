@@ -28,15 +28,15 @@ class OrderInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'name': this.name,
-      'phone_number': this.phoneNumber,
-      'email_address': this.emailAddress,
-      'shipping_address': this.shippingAddress.toJson()
+      "@type": CONSTRUCTOR,
+      "name": this.name,
+      "phone_number": this.phoneNumber,
+      "email_address": this.emailAddress,
+      "shipping_address": this.shippingAddress.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'orderInfo';
+  static const String CONSTRUCTOR = "orderInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

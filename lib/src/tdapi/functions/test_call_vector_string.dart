@@ -13,10 +13,10 @@ class TestCallVectorString extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'x': this.x, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "x": this.x, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'testCallVectorString';
+  static const String CONSTRUCTOR = "testCallVectorString";
 
   @override
   String getConstructor() => CONSTRUCTOR;

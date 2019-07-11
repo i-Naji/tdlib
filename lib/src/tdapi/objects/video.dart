@@ -49,20 +49,20 @@ class Video implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'duration': this.duration,
-      'width': this.width,
-      'height': this.height,
-      'file_name': this.fileName,
-      'mime_type': this.mimeType,
-      'has_stickers': this.hasStickers,
-      'supports_streaming': this.supportsStreaming,
-      'thumbnail': this.thumbnail.toJson(),
-      'video': this.video.toJson()
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+      "width": this.width,
+      "height": this.height,
+      "file_name": this.fileName,
+      "mime_type": this.mimeType,
+      "has_stickers": this.hasStickers,
+      "supports_streaming": this.supportsStreaming,
+      "thumbnail": this.thumbnail.toJson(),
+      "video": this.video.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'video';
+  static const String CONSTRUCTOR = "video";
 
   @override
   String getConstructor() => CONSTRUCTOR;

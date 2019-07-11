@@ -27,17 +27,17 @@ class GetInlineQueryResults extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'bot_user_id': this.botUserId,
-      'chat_id': this.chatId,
-      'user_location': this.userLocation.toJson(),
-      'query': this.query,
-      'offset': this.offset,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "bot_user_id": this.botUserId,
+      "chat_id": this.chatId,
+      "user_location": this.userLocation.toJson(),
+      "query": this.query,
+      "offset": this.offset,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getInlineQueryResults';
+  static const String CONSTRUCTOR = "getInlineQueryResults";
 
   @override
   String getConstructor() => CONSTRUCTOR;

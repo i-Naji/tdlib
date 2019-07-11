@@ -21,14 +21,14 @@ class TermsOfService implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'min_user_age': this.minUserAge,
-      'show_popup': this.showPopup
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "min_user_age": this.minUserAge,
+      "show_popup": this.showPopup
     };
   }
 
-  static const String CONSTRUCTOR = 'termsOfService';
+  static const String CONSTRUCTOR = "termsOfService";
 
   @override
   String getConstructor() => CONSTRUCTOR;

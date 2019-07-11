@@ -5,35 +5,35 @@ class PassportElementErrorSource implements TLObject {
   PassportElementErrorSource();
 
   /// a PassportElementErrorSource return type can be :
+  /// * PassportElementErrorSourceUnspecified
+  /// * PassportElementErrorSourceDataField
+  /// * PassportElementErrorSourceFrontSide
+  /// * PassportElementErrorSourceReverseSide
+  /// * PassportElementErrorSourceSelfie
+  /// * PassportElementErrorSourceTranslationFile
   /// * PassportElementErrorSourceTranslationFiles
   /// * PassportElementErrorSourceFile
-  /// * PassportElementErrorSourceTranslationFile
-  /// * PassportElementErrorSourceSelfie
-  /// * PassportElementErrorSourceFrontSide
-  /// * PassportElementErrorSourceDataField
   /// * PassportElementErrorSourceFiles
-  /// * PassportElementErrorSourceUnspecified
-  /// * PassportElementErrorSourceReverseSide
   factory PassportElementErrorSource.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case PassportElementErrorSourceUnspecified.CONSTRUCTOR:
+        return PassportElementErrorSourceUnspecified.fromJson(json);
+      case PassportElementErrorSourceDataField.CONSTRUCTOR:
+        return PassportElementErrorSourceDataField.fromJson(json);
+      case PassportElementErrorSourceFrontSide.CONSTRUCTOR:
+        return PassportElementErrorSourceFrontSide.fromJson(json);
+      case PassportElementErrorSourceReverseSide.CONSTRUCTOR:
+        return PassportElementErrorSourceReverseSide.fromJson(json);
+      case PassportElementErrorSourceSelfie.CONSTRUCTOR:
+        return PassportElementErrorSourceSelfie.fromJson(json);
+      case PassportElementErrorSourceTranslationFile.CONSTRUCTOR:
+        return PassportElementErrorSourceTranslationFile.fromJson(json);
       case PassportElementErrorSourceTranslationFiles.CONSTRUCTOR:
         return PassportElementErrorSourceTranslationFiles.fromJson(json);
       case PassportElementErrorSourceFile.CONSTRUCTOR:
         return PassportElementErrorSourceFile.fromJson(json);
-      case PassportElementErrorSourceTranslationFile.CONSTRUCTOR:
-        return PassportElementErrorSourceTranslationFile.fromJson(json);
-      case PassportElementErrorSourceSelfie.CONSTRUCTOR:
-        return PassportElementErrorSourceSelfie.fromJson(json);
-      case PassportElementErrorSourceFrontSide.CONSTRUCTOR:
-        return PassportElementErrorSourceFrontSide.fromJson(json);
-      case PassportElementErrorSourceDataField.CONSTRUCTOR:
-        return PassportElementErrorSourceDataField.fromJson(json);
       case PassportElementErrorSourceFiles.CONSTRUCTOR:
         return PassportElementErrorSourceFiles.fromJson(json);
-      case PassportElementErrorSourceUnspecified.CONSTRUCTOR:
-        return PassportElementErrorSourceUnspecified.fromJson(json);
-      case PassportElementErrorSourceReverseSide.CONSTRUCTOR:
-        return PassportElementErrorSourceReverseSide.fromJson(json);
       default:
         return null;
     }
@@ -44,7 +44,7 @@ class PassportElementErrorSource implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSource';
+  static const String CONSTRUCTOR = "passportElementErrorSource";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -61,10 +61,10 @@ class PassportElementErrorSourceUnspecified
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceUnspecified';
+  static const String CONSTRUCTOR = "passportElementErrorSourceUnspecified";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -85,10 +85,10 @@ class PassportElementErrorSourceDataField
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'field_name': this.fieldName};
+    return {"@type": CONSTRUCTOR, "field_name": this.fieldName};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceDataField';
+  static const String CONSTRUCTOR = "passportElementErrorSourceDataField";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class PassportElementErrorSourceFrontSide
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceFrontSide';
+  static const String CONSTRUCTOR = "passportElementErrorSourceFrontSide";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -125,10 +125,10 @@ class PassportElementErrorSourceReverseSide
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceReverseSide';
+  static const String CONSTRUCTOR = "passportElementErrorSourceReverseSide";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -144,10 +144,10 @@ class PassportElementErrorSourceSelfie implements PassportElementErrorSource {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceSelfie';
+  static const String CONSTRUCTOR = "passportElementErrorSourceSelfie";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -169,10 +169,10 @@ class PassportElementErrorSourceTranslationFile
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_index': this.fileIndex};
+    return {"@type": CONSTRUCTOR, "file_index": this.fileIndex};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceTranslationFile';
+  static const String CONSTRUCTOR = "passportElementErrorSourceTranslationFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -190,11 +190,11 @@ class PassportElementErrorSourceTranslationFiles
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
   static const String CONSTRUCTOR =
-      'passportElementErrorSourceTranslationFiles';
+      "passportElementErrorSourceTranslationFiles";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -214,10 +214,10 @@ class PassportElementErrorSourceFile implements PassportElementErrorSource {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'file_index': this.fileIndex};
+    return {"@type": CONSTRUCTOR, "file_index": this.fileIndex};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceFile';
+  static const String CONSTRUCTOR = "passportElementErrorSourceFile";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -233,10 +233,10 @@ class PassportElementErrorSourceFiles implements PassportElementErrorSource {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'passportElementErrorSourceFiles';
+  static const String CONSTRUCTOR = "passportElementErrorSourceFiles";
 
   @override
   String getConstructor() => CONSTRUCTOR;

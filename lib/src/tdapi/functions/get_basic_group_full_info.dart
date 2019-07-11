@@ -14,13 +14,13 @@ class GetBasicGroupFullInfo extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'basic_group_id': this.basicGroupId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "basic_group_id": this.basicGroupId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getBasicGroupFullInfo';
+  static const String CONSTRUCTOR = "getBasicGroupFullInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -22,13 +22,13 @@ class NetworkStatistics implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'since_date': this.sinceDate,
-      'entries': this.entries.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "since_date": this.sinceDate,
+      "entries": this.entries.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'networkStatistics';
+  static const String CONSTRUCTOR = "networkStatistics";
 
   @override
   String getConstructor() => CONSTRUCTOR;

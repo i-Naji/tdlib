@@ -14,13 +14,13 @@ class RemoveContacts extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_ids': this.userIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "user_ids": this.userIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'removeContacts';
+  static const String CONSTRUCTOR = "removeContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

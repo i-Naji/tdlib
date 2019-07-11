@@ -16,14 +16,14 @@ class GetInlineGameHighScores extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'inline_message_id': this.inlineMessageId,
-      'user_id': this.userId,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "inline_message_id": this.inlineMessageId,
+      "user_id": this.userId,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getInlineGameHighScores';
+  static const String CONSTRUCTOR = "getInlineGameHighScores";
 
   @override
   String getConstructor() => CONSTRUCTOR;

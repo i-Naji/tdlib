@@ -19,13 +19,13 @@ class DeepLinkInfo implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'need_update_application': this.needUpdateApplication
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "need_update_application": this.needUpdateApplication
     };
   }
 
-  static const String CONSTRUCTOR = 'deepLinkInfo';
+  static const String CONSTRUCTOR = "deepLinkInfo";
 
   @override
   String getConstructor() => CONSTRUCTOR;

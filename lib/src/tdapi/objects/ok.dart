@@ -14,10 +14,10 @@ class Ok implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'ok';
+  static const String CONSTRUCTOR = "ok";
 
   @override
   String getConstructor() => CONSTRUCTOR;

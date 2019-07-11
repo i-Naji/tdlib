@@ -13,10 +13,10 @@ class SetBio extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'bio': this.bio, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "bio": this.bio, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'setBio';
+  static const String CONSTRUCTOR = "setBio";
 
   @override
   String getConstructor() => CONSTRUCTOR;

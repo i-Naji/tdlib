@@ -19,12 +19,12 @@ class PassportElements implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'elements': this.elements.map((listItem) => listItem.toJson()).toList()
+      "@type": CONSTRUCTOR,
+      "elements": this.elements.map((listItem) => listItem.toJson()).toList()
     };
   }
 
-  static const String CONSTRUCTOR = 'passportElements';
+  static const String CONSTRUCTOR = "passportElements";
 
   @override
   String getConstructor() => CONSTRUCTOR;

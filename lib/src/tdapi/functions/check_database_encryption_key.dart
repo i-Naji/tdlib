@@ -14,13 +14,13 @@ class CheckDatabaseEncryptionKey extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'encryption_key': this.encryptionKey,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "encryption_key": this.encryptionKey,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'checkDatabaseEncryptionKey';
+  static const String CONSTRUCTOR = "checkDatabaseEncryptionKey";
 
   @override
   String getConstructor() => CONSTRUCTOR;

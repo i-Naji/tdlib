@@ -14,13 +14,13 @@ class ClearAllDraftMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'exclude_secret_chats': this.excludeSecretChats,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "exclude_secret_chats": this.excludeSecretChats,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'clearAllDraftMessages';
+  static const String CONSTRUCTOR = "clearAllDraftMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

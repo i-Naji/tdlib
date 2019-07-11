@@ -12,10 +12,10 @@ class GetCreatedPublicChats extends TLFunction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, '@extra': this.extra};
+    return {"@type": CONSTRUCTOR, "@extra": this.extra};
   }
 
-  static const String CONSTRUCTOR = 'getCreatedPublicChats';
+  static const String CONSTRUCTOR = "getCreatedPublicChats";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -30,18 +30,18 @@ class SendMessage extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'reply_to_message_id': this.replyToMessageId,
-      'disable_notification': this.disableNotification,
-      'from_background': this.fromBackground,
-      'reply_markup': this.replyMarkup.toJson(),
-      'input_message_content': this.inputMessageContent.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "reply_to_message_id": this.replyToMessageId,
+      "disable_notification": this.disableNotification,
+      "from_background": this.fromBackground,
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendMessage';
+  static const String CONSTRUCTOR = "sendMessage";
 
   @override
   String getConstructor() => CONSTRUCTOR;

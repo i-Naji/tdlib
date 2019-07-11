@@ -18,15 +18,15 @@ class ReportSupergroupSpam extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'user_id': this.userId,
-      'message_ids': this.messageIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "user_id": this.userId,
+      "message_ids": this.messageIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'reportSupergroupSpam';
+  static const String CONSTRUCTOR = "reportSupergroupSpam";
 
   @override
   String getConstructor() => CONSTRUCTOR;

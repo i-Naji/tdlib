@@ -5,17 +5,17 @@ class KeyboardButtonType implements TLObject {
   KeyboardButtonType();
 
   /// a KeyboardButtonType return type can be :
+  /// * KeyboardButtonTypeText
   /// * KeyboardButtonTypeRequestPhoneNumber
   /// * KeyboardButtonTypeRequestLocation
-  /// * KeyboardButtonTypeText
   factory KeyboardButtonType.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case KeyboardButtonTypeText.CONSTRUCTOR:
+        return KeyboardButtonTypeText.fromJson(json);
       case KeyboardButtonTypeRequestPhoneNumber.CONSTRUCTOR:
         return KeyboardButtonTypeRequestPhoneNumber.fromJson(json);
       case KeyboardButtonTypeRequestLocation.CONSTRUCTOR:
         return KeyboardButtonTypeRequestLocation.fromJson(json);
-      case KeyboardButtonTypeText.CONSTRUCTOR:
-        return KeyboardButtonTypeText.fromJson(json);
       default:
         return null;
     }
@@ -26,7 +26,7 @@ class KeyboardButtonType implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'keyboardButtonType';
+  static const String CONSTRUCTOR = "keyboardButtonType";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -42,10 +42,10 @@ class KeyboardButtonTypeText implements KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'keyboardButtonTypeText';
+  static const String CONSTRUCTOR = "keyboardButtonTypeText";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -61,10 +61,10 @@ class KeyboardButtonTypeRequestPhoneNumber implements KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestPhoneNumber';
+  static const String CONSTRUCTOR = "keyboardButtonTypeRequestPhoneNumber";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -80,10 +80,10 @@ class KeyboardButtonTypeRequestLocation implements KeyboardButtonType {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestLocation';
+  static const String CONSTRUCTOR = "keyboardButtonTypeRequestLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SearchHashtags extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'prefix': this.prefix,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "prefix": this.prefix,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'searchHashtags';
+  static const String CONSTRUCTOR = "searchHashtags";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -20,16 +20,16 @@ class GetSupergroupMembers extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'supergroup_id': this.supergroupId,
-      'filter': this.filter.toJson(),
-      'offset': this.offset,
-      'limit': this.limit,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "supergroup_id": this.supergroupId,
+      "filter": this.filter.toJson(),
+      "offset": this.offset,
+      "limit": this.limit,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getSupergroupMembers';
+  static const String CONSTRUCTOR = "getSupergroupMembers";
 
   @override
   String getConstructor() => CONSTRUCTOR;

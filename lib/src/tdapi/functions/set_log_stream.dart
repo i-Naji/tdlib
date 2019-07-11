@@ -14,13 +14,13 @@ class SetLogStream extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'log_stream': this.logStream.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "log_stream": this.logStream.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setLogStream';
+  static const String CONSTRUCTOR = "setLogStream";
 
   @override
   String getConstructor() => CONSTRUCTOR;

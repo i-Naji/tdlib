@@ -38,9 +38,9 @@ class Invoice implements TLObject {
   /// Parse from a json
   Invoice.fromJson(Map<String, dynamic> json) {
     this.currency = json['currency'];
-    this.priceParts = (json['price_parts'] ?? [])
+    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? [])
         .map((listValue) => LabeledPricePart.fromJson(listValue))
-        .toList();
+        .toList());
     this.isTest = json['is_test'];
     this.needName = json['need_name'];
     this.needPhoneNumber = json['need_phone_number'];
@@ -54,22 +54,22 @@ class Invoice implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'currency': this.currency,
-      'price_parts':
+      "@type": CONSTRUCTOR,
+      "currency": this.currency,
+      "price_parts":
           this.priceParts.map((listItem) => listItem.toJson()).toList(),
-      'is_test': this.isTest,
-      'need_name': this.needName,
-      'need_phone_number': this.needPhoneNumber,
-      'need_email_address': this.needEmailAddress,
-      'need_shipping_address': this.needShippingAddress,
-      'send_phone_number_to_provider': this.sendPhoneNumberToProvider,
-      'send_email_address_to_provider': this.sendEmailAddressToProvider,
-      'is_flexible': this.isFlexible
+      "is_test": this.isTest,
+      "need_name": this.needName,
+      "need_phone_number": this.needPhoneNumber,
+      "need_email_address": this.needEmailAddress,
+      "need_shipping_address": this.needShippingAddress,
+      "send_phone_number_to_provider": this.sendPhoneNumberToProvider,
+      "send_email_address_to_provider": this.sendEmailAddressToProvider,
+      "is_flexible": this.isFlexible
     };
   }
 
-  static const String CONSTRUCTOR = 'invoice';
+  static const String CONSTRUCTOR = "invoice";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,15 +18,15 @@ class GetChatStatisticsUrl extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'parameters': this.parameters,
-      'is_dark': this.isDark,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "parameters": this.parameters,
+      "is_dark": this.isDark,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatStatisticsUrl';
+  static const String CONSTRUCTOR = "getChatStatisticsUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,15 +18,15 @@ class SaveApplicationLogEvent extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type,
-      'chat_id': this.chatId,
-      'data': this.data.toJson(),
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "type": this.type,
+      "chat_id": this.chatId,
+      "data": this.data.toJson(),
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'saveApplicationLogEvent';
+  static const String CONSTRUCTOR = "saveApplicationLogEvent";
 
   @override
   String getConstructor() => CONSTRUCTOR;

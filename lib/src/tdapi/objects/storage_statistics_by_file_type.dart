@@ -21,14 +21,14 @@ class StorageStatisticsByFileType implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'file_type': this.fileType.toJson(),
-      'size': this.size,
-      'count': this.count
+      "@type": CONSTRUCTOR,
+      "file_type": this.fileType.toJson(),
+      "size": this.size,
+      "count": this.count
     };
   }
 
-  static const String CONSTRUCTOR = 'storageStatisticsByFileType';
+  static const String CONSTRUCTOR = "storageStatisticsByFileType";
 
   @override
   String getConstructor() => CONSTRUCTOR;

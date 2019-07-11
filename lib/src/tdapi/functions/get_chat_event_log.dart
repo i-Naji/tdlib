@@ -30,18 +30,18 @@ class GetChatEventLog extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'query': this.query,
-      'from_event_id': this.fromEventId,
-      'limit': this.limit,
-      'filters': this.filters.toJson(),
-      'user_ids': this.userIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "query": this.query,
+      "from_event_id": this.fromEventId,
+      "limit": this.limit,
+      "filters": this.filters.toJson(),
+      "user_ids": this.userIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'getChatEventLog';
+  static const String CONSTRUCTOR = "getChatEventLog";
 
   @override
   String getConstructor() => CONSTRUCTOR;

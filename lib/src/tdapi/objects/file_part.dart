@@ -16,10 +16,10 @@ class FilePart implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'data': this.data};
+    return {"@type": CONSTRUCTOR, "data": this.data};
   }
 
-  static const String CONSTRUCTOR = 'filePart';
+  static const String CONSTRUCTOR = "filePart";
 
   @override
   String getConstructor() => CONSTRUCTOR;

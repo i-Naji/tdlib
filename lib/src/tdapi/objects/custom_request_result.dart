@@ -16,10 +16,10 @@ class CustomRequestResult implements TLObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'result': this.result};
+    return {"@type": CONSTRUCTOR, "result": this.result};
   }
 
-  static const String CONSTRUCTOR = 'customRequestResult';
+  static const String CONSTRUCTOR = "customRequestResult";
 
   @override
   String getConstructor() => CONSTRUCTOR;

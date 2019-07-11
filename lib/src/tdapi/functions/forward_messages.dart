@@ -30,18 +30,18 @@ class ForwardMessages extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'from_chat_id': this.fromChatId,
-      'message_ids': this.messageIds,
-      'disable_notification': this.disableNotification,
-      'from_background': this.fromBackground,
-      'as_album': this.asAlbum,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "from_chat_id": this.fromChatId,
+      "message_ids": this.messageIds,
+      "disable_notification": this.disableNotification,
+      "from_background": this.fromBackground,
+      "as_album": this.asAlbum,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'forwardMessages';
+  static const String CONSTRUCTOR = "forwardMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

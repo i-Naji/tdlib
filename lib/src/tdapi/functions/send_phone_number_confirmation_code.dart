@@ -23,16 +23,16 @@ class SendPhoneNumberConfirmationCode extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'hash': this.hash,
-      'phone_number': this.phoneNumber,
-      'allow_flash_call': this.allowFlashCall,
-      'is_current_phone_number': this.isCurrentPhoneNumber,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "hash": this.hash,
+      "phone_number": this.phoneNumber,
+      "allow_flash_call": this.allowFlashCall,
+      "is_current_phone_number": this.isCurrentPhoneNumber,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
+  static const String CONSTRUCTOR = "sendPhoneNumberConfirmationCode";
 
   @override
   String getConstructor() => CONSTRUCTOR;

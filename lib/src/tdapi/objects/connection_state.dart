@@ -5,23 +5,23 @@ class ConnectionState implements TLObject {
   ConnectionState();
 
   /// a ConnectionState return type can be :
+  /// * ConnectionStateWaitingForNetwork
+  /// * ConnectionStateConnectingToProxy
   /// * ConnectionStateConnecting
   /// * ConnectionStateUpdating
-  /// * ConnectionStateWaitingForNetwork
   /// * ConnectionStateReady
-  /// * ConnectionStateConnectingToProxy
   factory ConnectionState.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
+        return ConnectionStateWaitingForNetwork.fromJson(json);
+      case ConnectionStateConnectingToProxy.CONSTRUCTOR:
+        return ConnectionStateConnectingToProxy.fromJson(json);
       case ConnectionStateConnecting.CONSTRUCTOR:
         return ConnectionStateConnecting.fromJson(json);
       case ConnectionStateUpdating.CONSTRUCTOR:
         return ConnectionStateUpdating.fromJson(json);
-      case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
-        return ConnectionStateWaitingForNetwork.fromJson(json);
       case ConnectionStateReady.CONSTRUCTOR:
         return ConnectionStateReady.fromJson(json);
-      case ConnectionStateConnectingToProxy.CONSTRUCTOR:
-        return ConnectionStateConnectingToProxy.fromJson(json);
       default:
         return null;
     }
@@ -32,7 +32,7 @@ class ConnectionState implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'connectionState';
+  static const String CONSTRUCTOR = "connectionState";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -48,10 +48,10 @@ class ConnectionStateWaitingForNetwork implements ConnectionState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'connectionStateWaitingForNetwork';
+  static const String CONSTRUCTOR = "connectionStateWaitingForNetwork";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -67,10 +67,10 @@ class ConnectionStateConnectingToProxy implements ConnectionState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'connectionStateConnectingToProxy';
+  static const String CONSTRUCTOR = "connectionStateConnectingToProxy";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -86,10 +86,10 @@ class ConnectionStateConnecting implements ConnectionState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'connectionStateConnecting';
+  static const String CONSTRUCTOR = "connectionStateConnecting";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -105,10 +105,10 @@ class ConnectionStateUpdating implements ConnectionState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'connectionStateUpdating';
+  static const String CONSTRUCTOR = "connectionStateUpdating";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -124,10 +124,10 @@ class ConnectionStateReady implements ConnectionState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'connectionStateReady';
+  static const String CONSTRUCTOR = "connectionStateReady";
 
   @override
   String getConstructor() => CONSTRUCTOR;

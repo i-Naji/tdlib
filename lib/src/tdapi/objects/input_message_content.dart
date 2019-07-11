@@ -5,56 +5,56 @@ class InputMessageContent implements TLObject {
   InputMessageContent();
 
   /// a InputMessageContent return type can be :
-  /// * InputMessageDocument
-  /// * InputMessageVoiceNote
-  /// * InputMessagePoll
-  /// * InputMessageGame
-  /// * InputMessageInvoice
-  /// * InputMessageContact
-  /// * InputMessageVenue
-  /// * InputMessageSticker
-  /// * InputMessageForwarded
   /// * InputMessageText
-  /// * InputMessageVideoNote
   /// * InputMessageAnimation
   /// * InputMessageAudio
-  /// * InputMessageLocation
+  /// * InputMessageDocument
   /// * InputMessagePhoto
+  /// * InputMessageSticker
   /// * InputMessageVideo
+  /// * InputMessageVideoNote
+  /// * InputMessageVoiceNote
+  /// * InputMessageLocation
+  /// * InputMessageVenue
+  /// * InputMessageContact
+  /// * InputMessageGame
+  /// * InputMessageInvoice
+  /// * InputMessagePoll
+  /// * InputMessageForwarded
   factory InputMessageContent.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case InputMessageDocument.CONSTRUCTOR:
-        return InputMessageDocument.fromJson(json);
-      case InputMessageVoiceNote.CONSTRUCTOR:
-        return InputMessageVoiceNote.fromJson(json);
-      case InputMessagePoll.CONSTRUCTOR:
-        return InputMessagePoll.fromJson(json);
-      case InputMessageGame.CONSTRUCTOR:
-        return InputMessageGame.fromJson(json);
-      case InputMessageInvoice.CONSTRUCTOR:
-        return InputMessageInvoice.fromJson(json);
-      case InputMessageContact.CONSTRUCTOR:
-        return InputMessageContact.fromJson(json);
-      case InputMessageVenue.CONSTRUCTOR:
-        return InputMessageVenue.fromJson(json);
-      case InputMessageSticker.CONSTRUCTOR:
-        return InputMessageSticker.fromJson(json);
-      case InputMessageForwarded.CONSTRUCTOR:
-        return InputMessageForwarded.fromJson(json);
       case InputMessageText.CONSTRUCTOR:
         return InputMessageText.fromJson(json);
-      case InputMessageVideoNote.CONSTRUCTOR:
-        return InputMessageVideoNote.fromJson(json);
       case InputMessageAnimation.CONSTRUCTOR:
         return InputMessageAnimation.fromJson(json);
       case InputMessageAudio.CONSTRUCTOR:
         return InputMessageAudio.fromJson(json);
-      case InputMessageLocation.CONSTRUCTOR:
-        return InputMessageLocation.fromJson(json);
+      case InputMessageDocument.CONSTRUCTOR:
+        return InputMessageDocument.fromJson(json);
       case InputMessagePhoto.CONSTRUCTOR:
         return InputMessagePhoto.fromJson(json);
+      case InputMessageSticker.CONSTRUCTOR:
+        return InputMessageSticker.fromJson(json);
       case InputMessageVideo.CONSTRUCTOR:
         return InputMessageVideo.fromJson(json);
+      case InputMessageVideoNote.CONSTRUCTOR:
+        return InputMessageVideoNote.fromJson(json);
+      case InputMessageVoiceNote.CONSTRUCTOR:
+        return InputMessageVoiceNote.fromJson(json);
+      case InputMessageLocation.CONSTRUCTOR:
+        return InputMessageLocation.fromJson(json);
+      case InputMessageVenue.CONSTRUCTOR:
+        return InputMessageVenue.fromJson(json);
+      case InputMessageContact.CONSTRUCTOR:
+        return InputMessageContact.fromJson(json);
+      case InputMessageGame.CONSTRUCTOR:
+        return InputMessageGame.fromJson(json);
+      case InputMessageInvoice.CONSTRUCTOR:
+        return InputMessageInvoice.fromJson(json);
+      case InputMessagePoll.CONSTRUCTOR:
+        return InputMessagePoll.fromJson(json);
+      case InputMessageForwarded.CONSTRUCTOR:
+        return InputMessageForwarded.fromJson(json);
       default:
         return null;
     }
@@ -65,7 +65,7 @@ class InputMessageContent implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'inputMessageContent';
+  static const String CONSTRUCTOR = "inputMessageContent";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -92,14 +92,14 @@ class InputMessageText implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'text': this.text.toJson(),
-      'disable_web_page_preview': this.disableWebPagePreview,
-      'clear_draft': this.clearDraft
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "disable_web_page_preview": this.disableWebPagePreview,
+      "clear_draft": this.clearDraft
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageText';
+  static const String CONSTRUCTOR = "inputMessageText";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -144,17 +144,17 @@ class InputMessageAnimation implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'animation': this.animation.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'duration': this.duration,
-      'width': this.width,
-      'height': this.height,
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "animation": this.animation.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "duration": this.duration,
+      "width": this.width,
+      "height": this.height,
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageAnimation';
+  static const String CONSTRUCTOR = "inputMessageAnimation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -198,17 +198,17 @@ class InputMessageAudio implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'audio': this.audio.toJson(),
-      'album_cover_thumbnail': this.albumCoverThumbnail.toJson(),
-      'duration': this.duration,
-      'title': this.title,
-      'performer': this.performer,
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "audio": this.audio.toJson(),
+      "album_cover_thumbnail": this.albumCoverThumbnail.toJson(),
+      "duration": this.duration,
+      "title": this.title,
+      "performer": this.performer,
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageAudio';
+  static const String CONSTRUCTOR = "inputMessageAudio";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -237,14 +237,14 @@ class InputMessageDocument implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'document': this.document.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "document": this.document.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageDocument';
+  static const String CONSTRUCTOR = "inputMessageDocument";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -281,7 +281,8 @@ class InputMessagePhoto implements InputMessageContent {
     this.photo = InputFile.fromJson(json['photo'] ?? <String, dynamic>{});
     this.thumbnail =
         InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = json['added_sticker_file_ids'] ?? [];
+    this.addedStickerFileIds =
+        List<int>.from(json['added_sticker_file_ids'] ?? []);
     this.width = json['width'];
     this.height = json['height'];
     this.caption =
@@ -292,18 +293,18 @@ class InputMessagePhoto implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'photo': this.photo.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'added_sticker_file_ids': this.addedStickerFileIds,
-      'width': this.width,
-      'height': this.height,
-      'caption': this.caption.toJson(),
-      'ttl': this.ttl
+      "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "added_sticker_file_ids": this.addedStickerFileIds,
+      "width": this.width,
+      "height": this.height,
+      "caption": this.caption.toJson(),
+      "ttl": this.ttl
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessagePhoto';
+  static const String CONSTRUCTOR = "inputMessagePhoto";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -334,15 +335,15 @@ class InputMessageSticker implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'sticker': this.sticker.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'width': this.width,
-      'height': this.height
+      "@type": CONSTRUCTOR,
+      "sticker": this.sticker.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "width": this.width,
+      "height": this.height
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageSticker';
+  static const String CONSTRUCTOR = "inputMessageSticker";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -385,7 +386,8 @@ class InputMessageVideo implements InputMessageContent {
     this.video = InputFile.fromJson(json['video'] ?? <String, dynamic>{});
     this.thumbnail =
         InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = json['added_sticker_file_ids'] ?? [];
+    this.addedStickerFileIds =
+        List<int>.from(json['added_sticker_file_ids'] ?? []);
     this.duration = json['duration'];
     this.width = json['width'];
     this.height = json['height'];
@@ -398,20 +400,20 @@ class InputMessageVideo implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video': this.video.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'added_sticker_file_ids': this.addedStickerFileIds,
-      'duration': this.duration,
-      'width': this.width,
-      'height': this.height,
-      'supports_streaming': this.supportsStreaming,
-      'caption': this.caption.toJson(),
-      'ttl': this.ttl
+      "@type": CONSTRUCTOR,
+      "video": this.video.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "added_sticker_file_ids": this.addedStickerFileIds,
+      "duration": this.duration,
+      "width": this.width,
+      "height": this.height,
+      "supports_streaming": this.supportsStreaming,
+      "caption": this.caption.toJson(),
+      "ttl": this.ttl
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageVideo';
+  static const String CONSTRUCTOR = "inputMessageVideo";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -444,15 +446,15 @@ class InputMessageVideoNote implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'video_note': this.videoNote.toJson(),
-      'thumbnail': this.thumbnail.toJson(),
-      'duration': this.duration,
-      'length': this.length
+      "@type": CONSTRUCTOR,
+      "video_note": this.videoNote.toJson(),
+      "thumbnail": this.thumbnail.toJson(),
+      "duration": this.duration,
+      "length": this.length
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageVideoNote';
+  static const String CONSTRUCTOR = "inputMessageVideoNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -485,15 +487,15 @@ class InputMessageVoiceNote implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'voice_note': this.voiceNote.toJson(),
-      'duration': this.duration,
-      'waveform': this.waveform,
-      'caption': this.caption.toJson()
+      "@type": CONSTRUCTOR,
+      "voice_note": this.voiceNote.toJson(),
+      "duration": this.duration,
+      "waveform": this.waveform,
+      "caption": this.caption.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageVoiceNote';
+  static const String CONSTRUCTOR = "inputMessageVoiceNote";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -517,13 +519,13 @@ class InputMessageLocation implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'location': this.location.toJson(),
-      'live_period': this.livePeriod
+      "@type": CONSTRUCTOR,
+      "location": this.location.toJson(),
+      "live_period": this.livePeriod
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageLocation';
+  static const String CONSTRUCTOR = "inputMessageLocation";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -543,10 +545,10 @@ class InputMessageVenue implements InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'venue': this.venue.toJson()};
+    return {"@type": CONSTRUCTOR, "venue": this.venue.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'inputMessageVenue';
+  static const String CONSTRUCTOR = "inputMessageVenue";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -566,10 +568,10 @@ class InputMessageContact implements InputMessageContent {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'contact': this.contact.toJson()};
+    return {"@type": CONSTRUCTOR, "contact": this.contact.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'inputMessageContact';
+  static const String CONSTRUCTOR = "inputMessageContact";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -593,13 +595,13 @@ class InputMessageGame implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'bot_user_id': this.botUserId,
-      'game_short_name': this.gameShortName
+      "@type": CONSTRUCTOR,
+      "bot_user_id": this.botUserId,
+      "game_short_name": this.gameShortName
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageGame';
+  static const String CONSTRUCTOR = "inputMessageGame";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -661,22 +663,22 @@ class InputMessageInvoice implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'invoice': this.invoice.toJson(),
-      'title': this.title,
-      'description': this.description,
-      'photo_url': this.photoUrl,
-      'photo_size': this.photoSize,
-      'photo_width': this.photoWidth,
-      'photo_height': this.photoHeight,
-      'payload': this.payload,
-      'provider_token': this.providerToken,
-      'provider_data': this.providerData,
-      'start_parameter': this.startParameter
+      "@type": CONSTRUCTOR,
+      "invoice": this.invoice.toJson(),
+      "title": this.title,
+      "description": this.description,
+      "photo_url": this.photoUrl,
+      "photo_size": this.photoSize,
+      "photo_width": this.photoWidth,
+      "photo_height": this.photoHeight,
+      "payload": this.payload,
+      "provider_token": this.providerToken,
+      "provider_data": this.providerData,
+      "start_parameter": this.startParameter
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageInvoice';
+  static const String CONSTRUCTOR = "inputMessageInvoice";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -694,19 +696,19 @@ class InputMessagePoll implements InputMessageContent {
   /// Parse from a json
   InputMessagePoll.fromJson(Map<String, dynamic> json) {
     this.question = json['question'];
-    this.options = json['options'] ?? [];
+    this.options = List<String>.from(json['options'] ?? []);
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'question': this.question,
-      'options': this.options
+      "@type": CONSTRUCTOR,
+      "question": this.question,
+      "options": this.options
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessagePoll';
+  static const String CONSTRUCTOR = "inputMessagePoll";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -733,14 +735,14 @@ class InputMessageForwarded implements InputMessageContent {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'from_chat_id': this.fromChatId,
-      'message_id': this.messageId,
-      'in_game_share': this.inGameShare
+      "@type": CONSTRUCTOR,
+      "from_chat_id": this.fromChatId,
+      "message_id": this.messageId,
+      "in_game_share": this.inGameShare
     };
   }
 
-  static const String CONSTRUCTOR = 'inputMessageForwarded';
+  static const String CONSTRUCTOR = "inputMessageForwarded";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -16,14 +16,14 @@ class SetChatTitle extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'chat_id': this.chatId,
-      'title': this.title,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "title": this.title,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setChatTitle';
+  static const String CONSTRUCTOR = "setChatTitle";
 
   @override
   String getConstructor() => CONSTRUCTOR;

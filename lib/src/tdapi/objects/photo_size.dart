@@ -24,15 +24,15 @@ class PhotoSize implements TLObject {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'type': this.type,
-      'photo': this.photo.toJson(),
-      'width': this.width,
-      'height': this.height
+      "@type": CONSTRUCTOR,
+      "type": this.type,
+      "photo": this.photo.toJson(),
+      "width": this.width,
+      "height": this.height
     };
   }
 
-  static const String CONSTRUCTOR = 'photoSize';
+  static const String CONSTRUCTOR = "photoSize";
 
   @override
   String getConstructor() => CONSTRUCTOR;

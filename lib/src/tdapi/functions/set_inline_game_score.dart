@@ -27,17 +27,17 @@ class SetInlineGameScore extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'inline_message_id': this.inlineMessageId,
-      'edit_message': this.editMessage,
-      'user_id': this.userId,
-      'score': this.score,
-      'force': this.force,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "inline_message_id": this.inlineMessageId,
+      "edit_message": this.editMessage,
+      "user_id": this.userId,
+      "score": this.score,
+      "force": this.force,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'setInlineGameScore';
+  static const String CONSTRUCTOR = "setInlineGameScore";
 
   @override
   String getConstructor() => CONSTRUCTOR;

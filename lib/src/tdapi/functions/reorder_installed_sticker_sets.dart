@@ -16,14 +16,14 @@ class ReorderInstalledStickerSets extends TLFunction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_masks': this.isMasks,
-      'sticker_set_ids': this.stickerSetIds,
-      '@extra': this.extra
+      "@type": CONSTRUCTOR,
+      "is_masks": this.isMasks,
+      "sticker_set_ids": this.stickerSetIds,
+      "@extra": this.extra
     };
   }
 
-  static const String CONSTRUCTOR = 'reorderInstalledStickerSets';
+  static const String CONSTRUCTOR = "reorderInstalledStickerSets";
 
   @override
   String getConstructor() => CONSTRUCTOR;

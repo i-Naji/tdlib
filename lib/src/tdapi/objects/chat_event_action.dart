@@ -5,59 +5,59 @@ class ChatEventAction implements TLObject {
   ChatEventAction();
 
   /// a ChatEventAction return type can be :
-  /// * ChatEventMessageDeleted
-  /// * ChatEventIsAllHistoryAvailableToggled
-  /// * ChatEventMessagePinned
   /// * ChatEventMessageEdited
-  /// * ChatEventDescriptionChanged
+  /// * ChatEventMessageDeleted
+  /// * ChatEventMessagePinned
   /// * ChatEventMessageUnpinned
-  /// * ChatEventPhotoChanged
-  /// * ChatEventStickerSetChanged
-  /// * ChatEventMemberLeft
   /// * ChatEventMemberJoined
-  /// * ChatEventMemberRestricted
+  /// * ChatEventMemberLeft
+  /// * ChatEventMemberInvited
   /// * ChatEventMemberPromoted
+  /// * ChatEventMemberRestricted
+  /// * ChatEventTitleChanged
+  /// * ChatEventDescriptionChanged
+  /// * ChatEventUsernameChanged
+  /// * ChatEventPhotoChanged
   /// * ChatEventInvitesToggled
   /// * ChatEventSignMessagesToggled
-  /// * ChatEventTitleChanged
-  /// * ChatEventMemberInvited
-  /// * ChatEventUsernameChanged
+  /// * ChatEventStickerSetChanged
+  /// * ChatEventIsAllHistoryAvailableToggled
   factory ChatEventAction.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
-      case ChatEventMessageDeleted.CONSTRUCTOR:
-        return ChatEventMessageDeleted.fromJson(json);
-      case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
-        return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
-      case ChatEventMessagePinned.CONSTRUCTOR:
-        return ChatEventMessagePinned.fromJson(json);
       case ChatEventMessageEdited.CONSTRUCTOR:
         return ChatEventMessageEdited.fromJson(json);
-      case ChatEventDescriptionChanged.CONSTRUCTOR:
-        return ChatEventDescriptionChanged.fromJson(json);
+      case ChatEventMessageDeleted.CONSTRUCTOR:
+        return ChatEventMessageDeleted.fromJson(json);
+      case ChatEventMessagePinned.CONSTRUCTOR:
+        return ChatEventMessagePinned.fromJson(json);
       case ChatEventMessageUnpinned.CONSTRUCTOR:
         return ChatEventMessageUnpinned.fromJson(json);
-      case ChatEventPhotoChanged.CONSTRUCTOR:
-        return ChatEventPhotoChanged.fromJson(json);
-      case ChatEventStickerSetChanged.CONSTRUCTOR:
-        return ChatEventStickerSetChanged.fromJson(json);
-      case ChatEventMemberLeft.CONSTRUCTOR:
-        return ChatEventMemberLeft.fromJson(json);
       case ChatEventMemberJoined.CONSTRUCTOR:
         return ChatEventMemberJoined.fromJson(json);
-      case ChatEventMemberRestricted.CONSTRUCTOR:
-        return ChatEventMemberRestricted.fromJson(json);
+      case ChatEventMemberLeft.CONSTRUCTOR:
+        return ChatEventMemberLeft.fromJson(json);
+      case ChatEventMemberInvited.CONSTRUCTOR:
+        return ChatEventMemberInvited.fromJson(json);
       case ChatEventMemberPromoted.CONSTRUCTOR:
         return ChatEventMemberPromoted.fromJson(json);
+      case ChatEventMemberRestricted.CONSTRUCTOR:
+        return ChatEventMemberRestricted.fromJson(json);
+      case ChatEventTitleChanged.CONSTRUCTOR:
+        return ChatEventTitleChanged.fromJson(json);
+      case ChatEventDescriptionChanged.CONSTRUCTOR:
+        return ChatEventDescriptionChanged.fromJson(json);
+      case ChatEventUsernameChanged.CONSTRUCTOR:
+        return ChatEventUsernameChanged.fromJson(json);
+      case ChatEventPhotoChanged.CONSTRUCTOR:
+        return ChatEventPhotoChanged.fromJson(json);
       case ChatEventInvitesToggled.CONSTRUCTOR:
         return ChatEventInvitesToggled.fromJson(json);
       case ChatEventSignMessagesToggled.CONSTRUCTOR:
         return ChatEventSignMessagesToggled.fromJson(json);
-      case ChatEventTitleChanged.CONSTRUCTOR:
-        return ChatEventTitleChanged.fromJson(json);
-      case ChatEventMemberInvited.CONSTRUCTOR:
-        return ChatEventMemberInvited.fromJson(json);
-      case ChatEventUsernameChanged.CONSTRUCTOR:
-        return ChatEventUsernameChanged.fromJson(json);
+      case ChatEventStickerSetChanged.CONSTRUCTOR:
+        return ChatEventStickerSetChanged.fromJson(json);
+      case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
+        return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
       default:
         return null;
     }
@@ -68,7 +68,7 @@ class ChatEventAction implements TLObject {
     return {};
   }
 
-  static const String CONSTRUCTOR = 'chatEventAction';
+  static const String CONSTRUCTOR = "chatEventAction";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -94,13 +94,13 @@ class ChatEventMessageEdited implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_message': this.oldMessage.toJson(),
-      'new_message': this.newMessage.toJson()
+      "@type": CONSTRUCTOR,
+      "old_message": this.oldMessage.toJson(),
+      "new_message": this.newMessage.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventMessageEdited';
+  static const String CONSTRUCTOR = "chatEventMessageEdited";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -120,10 +120,10 @@ class ChatEventMessageDeleted implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'message': this.message.toJson()};
+    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'chatEventMessageDeleted';
+  static const String CONSTRUCTOR = "chatEventMessageDeleted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -143,10 +143,10 @@ class ChatEventMessagePinned implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'message': this.message.toJson()};
+    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
   }
 
-  static const String CONSTRUCTOR = 'chatEventMessagePinned';
+  static const String CONSTRUCTOR = "chatEventMessagePinned";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -162,10 +162,10 @@ class ChatEventMessageUnpinned implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatEventMessageUnpinned';
+  static const String CONSTRUCTOR = "chatEventMessageUnpinned";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -181,10 +181,10 @@ class ChatEventMemberJoined implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatEventMemberJoined';
+  static const String CONSTRUCTOR = "chatEventMemberJoined";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -200,10 +200,10 @@ class ChatEventMemberLeft implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR};
+    return {"@type": CONSTRUCTOR};
   }
 
-  static const String CONSTRUCTOR = 'chatEventMemberLeft';
+  static const String CONSTRUCTOR = "chatEventMemberLeft";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -228,13 +228,13 @@ class ChatEventMemberInvited implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'status': this.status.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "status": this.status.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventMemberInvited';
+  static const String CONSTRUCTOR = "chatEventMemberInvited";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -261,14 +261,14 @@ class ChatEventMemberPromoted implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'old_status': this.oldStatus.toJson(),
-      'new_status': this.newStatus.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "old_status": this.oldStatus.toJson(),
+      "new_status": this.newStatus.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventMemberPromoted';
+  static const String CONSTRUCTOR = "chatEventMemberPromoted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -295,14 +295,14 @@ class ChatEventMemberRestricted implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'user_id': this.userId,
-      'old_status': this.oldStatus.toJson(),
-      'new_status': this.newStatus.toJson()
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "old_status": this.oldStatus.toJson(),
+      "new_status": this.newStatus.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventMemberRestricted';
+  static const String CONSTRUCTOR = "chatEventMemberRestricted";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -326,13 +326,13 @@ class ChatEventTitleChanged implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_title': this.oldTitle,
-      'new_title': this.newTitle
+      "@type": CONSTRUCTOR,
+      "old_title": this.oldTitle,
+      "new_title": this.newTitle
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventTitleChanged';
+  static const String CONSTRUCTOR = "chatEventTitleChanged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -356,13 +356,13 @@ class ChatEventDescriptionChanged implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_description': this.oldDescription,
-      'new_description': this.newDescription
+      "@type": CONSTRUCTOR,
+      "old_description": this.oldDescription,
+      "new_description": this.newDescription
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventDescriptionChanged';
+  static const String CONSTRUCTOR = "chatEventDescriptionChanged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -386,13 +386,13 @@ class ChatEventUsernameChanged implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_username': this.oldUsername,
-      'new_username': this.newUsername
+      "@type": CONSTRUCTOR,
+      "old_username": this.oldUsername,
+      "new_username": this.newUsername
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventUsernameChanged';
+  static const String CONSTRUCTOR = "chatEventUsernameChanged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -418,13 +418,13 @@ class ChatEventPhotoChanged implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_photo': this.oldPhoto.toJson(),
-      'new_photo': this.newPhoto.toJson()
+      "@type": CONSTRUCTOR,
+      "old_photo": this.oldPhoto.toJson(),
+      "new_photo": this.newPhoto.toJson()
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventPhotoChanged';
+  static const String CONSTRUCTOR = "chatEventPhotoChanged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -444,10 +444,10 @@ class ChatEventInvitesToggled implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'anyone_can_invite': this.anyoneCanInvite};
+    return {"@type": CONSTRUCTOR, "anyone_can_invite": this.anyoneCanInvite};
   }
 
-  static const String CONSTRUCTOR = 'chatEventInvitesToggled';
+  static const String CONSTRUCTOR = "chatEventInvitesToggled";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -467,10 +467,10 @@ class ChatEventSignMessagesToggled implements ChatEventAction {
 
   @override
   Map<String, dynamic> toJson() {
-    return {'@type': CONSTRUCTOR, 'sign_messages': this.signMessages};
+    return {"@type": CONSTRUCTOR, "sign_messages": this.signMessages};
   }
 
-  static const String CONSTRUCTOR = 'chatEventSignMessagesToggled';
+  static const String CONSTRUCTOR = "chatEventSignMessagesToggled";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -494,13 +494,13 @@ class ChatEventStickerSetChanged implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'old_sticker_set_id': this.oldStickerSetId,
-      'new_sticker_set_id': this.newStickerSetId
+      "@type": CONSTRUCTOR,
+      "old_sticker_set_id": this.oldStickerSetId,
+      "new_sticker_set_id": this.newStickerSetId
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventStickerSetChanged';
+  static const String CONSTRUCTOR = "chatEventStickerSetChanged";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -521,12 +521,12 @@ class ChatEventIsAllHistoryAvailableToggled implements ChatEventAction {
   @override
   Map<String, dynamic> toJson() {
     return {
-      '@type': CONSTRUCTOR,
-      'is_all_history_available': this.isAllHistoryAvailable
+      "@type": CONSTRUCTOR,
+      "is_all_history_available": this.isAllHistoryAvailable
     };
   }
 
-  static const String CONSTRUCTOR = 'chatEventIsAllHistoryAvailableToggled';
+  static const String CONSTRUCTOR = "chatEventIsAllHistoryAvailableToggled";
 
   @override
   String getConstructor() => CONSTRUCTOR;
