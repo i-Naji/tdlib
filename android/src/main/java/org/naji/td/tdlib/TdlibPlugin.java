@@ -20,11 +20,7 @@ public class TdlibPlugin implements MethodCallHandler {
     switch (call.method) {
       case "clientReceive": {
         String res = NativeClient.receive((long) call.argument("client"), (double) call.argument("timeout"));
-        if (res != null) {
-          result.success(res);
-        } else {
-          result.error("No Event", "This is not an error", null);
-        }
+        result.success(res);
         break;
       }
       case "clientSend": {
