@@ -3,7 +3,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:tdlib/client.dart';
+import 'package:tdlib/td_client.dart';
 
 void main() => runApp(MyApp());
 
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   /*
   Here we go!
    */
-  Client client = Client();
+  TdClient client = TdClient();
   int clientId = 0;
 
   void _clientCreator() async {

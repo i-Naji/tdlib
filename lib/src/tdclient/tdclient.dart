@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:tdlib/src/tdapi/tdapi.dart' show TdObject, TdFunction, convertToObject;
 import 'dart:convert' show json;
 
-class Client {
+class TdClient {
   static const _platform = const MethodChannel('channel/to/tdlib');
 
   /// Creates a new instance of TDLib.
