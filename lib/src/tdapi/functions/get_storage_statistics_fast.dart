@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetStorageStatisticsFast extends TLFunction {
+class GetStorageStatisticsFast extends TdFunction {
   dynamic extra;
 
   /// Quickly returns approximate storage usage statistics. Can be called before authorization.

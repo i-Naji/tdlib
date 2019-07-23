@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Hashtags implements TLObject {
+class Hashtags implements TdObject {
   List<String> hashtags;
   dynamic extra;
 

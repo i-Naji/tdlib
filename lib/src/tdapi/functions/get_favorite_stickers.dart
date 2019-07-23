@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetFavoriteStickers extends TLFunction {
+class GetFavoriteStickers extends TdFunction {
   dynamic extra;
 
   /// Returns favorite stickers.

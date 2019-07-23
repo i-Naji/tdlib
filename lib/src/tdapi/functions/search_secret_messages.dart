@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchSecretMessages extends TLFunction {
+class SearchSecretMessages extends TdFunction {
   int chatId;
   String query;
   int fromSearchId;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetFileMimeType extends TLFunction {
+class GetFileMimeType extends TdFunction {
   String fileName;
   dynamic extra;
 

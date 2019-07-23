@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetTdlibParameters extends TLFunction {
+class SetTdlibParameters extends TdFunction {
   TdlibParameters parameters;
   dynamic extra;
 

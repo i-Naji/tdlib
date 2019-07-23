@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatReportSpamState extends TLFunction {
+class GetChatReportSpamState extends TdFunction {
   int chatId;
   dynamic extra;
 

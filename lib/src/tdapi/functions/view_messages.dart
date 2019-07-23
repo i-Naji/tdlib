@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ViewMessages extends TLFunction {
+class ViewMessages extends TdFunction {
   int chatId;
   List<int> messageIds;
   bool forceRead;

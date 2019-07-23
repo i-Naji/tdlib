@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:tdlib/src/tdapi/tdapi.dart' as TdApi;
-import 'dart:convert';
+import 'package:tdlib/src/tdapi/tdapi.dart' show TdObject, TdFunction, convertToObject;
+import 'dart:convert' show json;
 
 class Client {
   static const _platform = const MethodChannel('channel/to/tdlib');
@@ -24,22 +24,22 @@ class Client {
       .invokeMethod('clientDestroy', <String, dynamic>{'client': clientId});
 
   /// Sends request to the TDLib client. May be called from any thread.
-  Future<void> clientSend(int clientId, TdApi.TLFunction event) async =>
+  Future<void> clientSend(int clientId, TdFunction event) async =>
       await _platform.invokeMethod('clientSend',
           <String, dynamic>{'client': clientId, 'query': json.encode(event)});
 
   /// Receives incoming updates and request responses from the TDLib client.
   /// May be called from any thread, but shouldn't be called simultaneously from two different threads.
   /// Returned pointer will be deallocated by TDLib during next call to clientExecute or clientSend in the same thread, so it can't be used after that.
-  Future<TdApi.TLObject> clientReceive(int clientId, double timeout) async =>
-      TdApi.convertToObject(await _platform.invokeMethod('clientReceive',
+  Future<TdObject> clientReceive(int clientId, double timeout) async =>
+      convertToObject(await _platform.invokeMethod('clientReceive',
           <String, dynamic>{'client': clientId, 'timeout': timeout}));
 
   /// Synchronously executes TDLib request. May be called from any thread.
   /// Only a few requests can be executed synchronously.
   /// Returned pointer will be deallocated by TDLib during next call to clientReceive or clientExecute in the same thread, so it can't be used after that.
-  Future<TdApi.TLObject> clientExecute(TdApi.TLFunction event) async =>
-      TdApi.convertToObject(await _platform.invokeMethod(
+  Future<TdObject> clientExecute(TdFunction event) async =>
+      convertToObject(await _platform.invokeMethod(
           'clientExecute', <String, dynamic>{'query': json.encode(event)}));
 
   /// Sets the verbosity [level] of the internal logging of TDLib.

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NetworkType implements TLObject {
+class NetworkType implements TdObject {
   /// Represents the type of a network
   NetworkType();
 

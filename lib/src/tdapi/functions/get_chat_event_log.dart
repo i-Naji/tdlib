@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatEventLog extends TLFunction {
+class GetChatEventLog extends TdFunction {
   int chatId;
   String query;
   int fromEventId;

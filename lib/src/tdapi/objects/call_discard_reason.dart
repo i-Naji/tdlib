@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallDiscardReason implements TLObject {
+class CallDiscardReason implements TdObject {
   /// Describes the reason why a call was discarded
   CallDiscardReason();
 

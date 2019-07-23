@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StickerEmojis implements TLObject {
+class StickerEmojis implements TdObject {
   List<String> emojis;
   dynamic extra;
 

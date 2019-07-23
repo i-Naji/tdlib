@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetAccountTtl extends TLFunction {
+class SetAccountTtl extends TdFunction {
   AccountTtl ttl;
   dynamic extra;
 

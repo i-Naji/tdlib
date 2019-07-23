@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetProxyLink extends TLFunction {
+class GetProxyLink extends TdFunction {
   int proxyId;
   dynamic extra;
 

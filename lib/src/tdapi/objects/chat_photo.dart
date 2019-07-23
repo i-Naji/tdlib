@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatPhoto implements TLObject {
+class ChatPhoto implements TdObject {
   File small;
   File big;
 

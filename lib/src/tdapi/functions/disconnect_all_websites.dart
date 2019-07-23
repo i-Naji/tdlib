@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DisconnectAllWebsites extends TLFunction {
+class DisconnectAllWebsites extends TdFunction {
   dynamic extra;
 
   /// Disconnects all websites from the current user's Telegram account.

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetFile extends TLFunction {
+class GetFile extends TdFunction {
   int fileId;
   dynamic extra;
 

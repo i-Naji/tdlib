@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CleanFileName extends TLFunction {
+class CleanFileName extends TdFunction {
   String fileName;
   dynamic extra;
 

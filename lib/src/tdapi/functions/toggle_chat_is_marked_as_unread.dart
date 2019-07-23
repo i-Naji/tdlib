@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleChatIsMarkedAsUnread extends TLFunction {
+class ToggleChatIsMarkedAsUnread extends TdFunction {
   int chatId;
   bool isMarkedAsUnread;
   dynamic extra;

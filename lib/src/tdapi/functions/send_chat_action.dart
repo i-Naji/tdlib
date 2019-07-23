@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendChatAction extends TLFunction {
+class SendChatAction extends TdFunction {
   int chatId;
   var action;
   dynamic extra;

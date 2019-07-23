@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetRecentStickers extends TLFunction {
+class GetRecentStickers extends TdFunction {
   bool isAttached;
   dynamic extra;
 

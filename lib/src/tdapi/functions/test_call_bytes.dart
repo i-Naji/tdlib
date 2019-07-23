@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestCallBytes extends TLFunction {
+class TestCallBytes extends TdFunction {
   String x;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetChatTitle extends TLFunction {
+class SetChatTitle extends TdFunction {
   int chatId;
   String title;
   dynamic extra;

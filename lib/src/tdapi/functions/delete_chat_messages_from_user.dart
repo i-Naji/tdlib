@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteChatMessagesFromUser extends TLFunction {
+class DeleteChatMessagesFromUser extends TdFunction {
   int chatId;
   int userId;
   dynamic extra;

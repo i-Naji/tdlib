@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditMessageCaption extends TLFunction {
+class EditMessageCaption extends TdFunction {
   int chatId;
   int messageId;
   var replyMarkup;

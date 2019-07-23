@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class BasicGroup implements TLObject {
+class BasicGroup implements TdObject {
   int id;
   int memberCount;
   var status;

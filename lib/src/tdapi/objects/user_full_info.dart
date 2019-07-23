@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserFullInfo implements TLObject {
+class UserFullInfo implements TdObject {
   bool isBlocked;
   bool canBeCalled;
   bool hasPrivateCalls;

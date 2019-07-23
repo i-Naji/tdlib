@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetChatPhoto extends TLFunction {
+class SetChatPhoto extends TdFunction {
   int chatId;
   var photo;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ValidatedOrderInfo implements TLObject {
+class ValidatedOrderInfo implements TdObject {
   String orderInfoId;
   List<ShippingOption> shippingOptions;
   dynamic extra;

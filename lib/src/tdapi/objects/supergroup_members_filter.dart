@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SupergroupMembersFilter implements TLObject {
+class SupergroupMembersFilter implements TdObject {
   /// Specifies the kind of chat members to return in getSupergroupMembers
   SupergroupMembersFilter();
 

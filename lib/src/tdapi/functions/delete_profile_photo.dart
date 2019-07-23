@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteProfilePhoto extends TLFunction {
+class DeleteProfilePhoto extends TdFunction {
   int profilePhotoId;
   dynamic extra;
 

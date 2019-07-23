@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class OrderInfo implements TLObject {
+class OrderInfo implements TdObject {
   String name;
   String phoneNumber;
   String emailAddress;

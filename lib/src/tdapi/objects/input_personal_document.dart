@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputPersonalDocument implements TLObject {
+class InputPersonalDocument implements TdObject {
   List files;
   List translation;
 

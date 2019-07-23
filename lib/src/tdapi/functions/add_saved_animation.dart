@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddSavedAnimation extends TLFunction {
+class AddSavedAnimation extends TdFunction {
   var animation;
   dynamic extra;
 

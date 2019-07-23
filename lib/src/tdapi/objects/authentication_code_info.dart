@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AuthenticationCodeInfo implements TLObject {
+class AuthenticationCodeInfo implements TdObject {
   String phoneNumber;
   var type;
   var nextType;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallbackQueryPayload implements TLObject {
+class CallbackQueryPayload implements TdObject {
   /// Represents a payload of a callback query
   CallbackQueryPayload();
 

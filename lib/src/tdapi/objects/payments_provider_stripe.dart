@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PaymentsProviderStripe implements TLObject {
+class PaymentsProviderStripe implements TdObject {
   String publishableKey;
   bool needCountry;
   bool needPostalCode;

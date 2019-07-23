@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckAuthenticationBotToken extends TLFunction {
+class CheckAuthenticationBotToken extends TdFunction {
   String token;
   dynamic extra;
 

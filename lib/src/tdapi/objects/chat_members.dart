@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatMembers implements TLObject {
+class ChatMembers implements TdObject {
   int totalCount;
   List<ChatMember> members;
   dynamic extra;

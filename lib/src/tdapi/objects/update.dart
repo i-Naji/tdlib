@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Update implements TLObject {
+class Update implements TdObject {
   /// Contains notifications about data changes
   Update();
 

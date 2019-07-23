@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateSupergroupChat extends TLFunction {
+class CreateSupergroupChat extends TdFunction {
   int supergroupId;
   bool force;
   dynamic extra;

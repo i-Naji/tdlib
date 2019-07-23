@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPushReceiverId extends TLFunction {
+class GetPushReceiverId extends TdFunction {
   String payload;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class OptionValue implements TLObject {
+class OptionValue implements TdObject {
   /// Represents the value of an option
   OptionValue();
 

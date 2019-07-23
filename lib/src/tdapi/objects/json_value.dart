@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class JsonValue implements TLObject {
+class JsonValue implements TdObject {
   /// Represents a JSON value
   JsonValue();
 

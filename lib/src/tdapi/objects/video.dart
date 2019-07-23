@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Video implements TLObject {
+class Video implements TdObject {
   int duration;
   int width;
   int height;

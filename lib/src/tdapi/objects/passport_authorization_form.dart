@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportAuthorizationForm implements TLObject {
+class PassportAuthorizationForm implements TdObject {
   int id;
   List<PassportRequiredElement> requiredElements;
   String privacyPolicyUrl;

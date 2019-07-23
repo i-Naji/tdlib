@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetLogVerbosityLevel extends TLFunction {
+class GetLogVerbosityLevel extends TdFunction {
   dynamic extra;
 
   /// Returns current verbosity level of the internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously.

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputFile implements TLObject {
+class InputFile implements TdObject {
   /// Points to a file
   InputFile();
 

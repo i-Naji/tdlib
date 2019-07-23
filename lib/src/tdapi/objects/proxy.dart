@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Proxy implements TLObject {
+class Proxy implements TdObject {
   int id;
   String server;
   int port;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteMessages extends TLFunction {
+class DeleteMessages extends TdFunction {
   int chatId;
   List<int> messageIds;
   bool revoke;

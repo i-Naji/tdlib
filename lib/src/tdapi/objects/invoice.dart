@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Invoice implements TLObject {
+class Invoice implements TdObject {
   String currency;
   List<LabeledPricePart> priceParts;
   bool isTest;

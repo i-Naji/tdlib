@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeepLinkInfo implements TLObject {
+class DeepLinkInfo implements TdObject {
   FormattedText text;
   bool needUpdateApplication;
   dynamic extra;

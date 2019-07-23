@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatNotificationSettingsExceptions extends TLFunction {
+class GetChatNotificationSettingsExceptions extends TdFunction {
   var scope;
   bool compareSound;
   dynamic extra;

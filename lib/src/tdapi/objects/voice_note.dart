@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class VoiceNote implements TLObject {
+class VoiceNote implements TdObject {
   int duration;
   String waveform;
   String mimeType;

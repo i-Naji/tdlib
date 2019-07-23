@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallProtocol implements TLObject {
+class CallProtocol implements TdObject {
   bool udpP2p;
   bool udpReflector;
   int minLayer;

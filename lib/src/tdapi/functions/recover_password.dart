@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RecoverPassword extends TLFunction {
+class RecoverPassword extends TdFunction {
   String recoveryCode;
   dynamic extra;
 

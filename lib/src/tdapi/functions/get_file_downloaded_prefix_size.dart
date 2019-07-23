@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetFileDownloadedPrefixSize extends TLFunction {
+class GetFileDownloadedPrefixSize extends TdFunction {
   int fileId;
   int offset;
   dynamic extra;

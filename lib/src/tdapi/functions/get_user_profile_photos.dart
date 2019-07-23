@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetUserProfilePhotos extends TLFunction {
+class GetUserProfilePhotos extends TdFunction {
   int userId;
   int offset;
   int limit;

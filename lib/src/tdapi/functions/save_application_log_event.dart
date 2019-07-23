@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SaveApplicationLogEvent extends TLFunction {
+class SaveApplicationLogEvent extends TdFunction {
   String type;
   int chatId;
   var data;

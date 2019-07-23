@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteSupergroup extends TLFunction {
+class DeleteSupergroup extends TdFunction {
   int supergroupId;
   dynamic extra;
 

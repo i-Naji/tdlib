@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPreferredCountryLanguage extends TLFunction {
+class GetPreferredCountryLanguage extends TdFunction {
   String countryCode;
   dynamic extra;
 

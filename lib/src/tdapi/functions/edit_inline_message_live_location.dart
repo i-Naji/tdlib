@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageLiveLocation extends TLFunction {
+class EditInlineMessageLiveLocation extends TdFunction {
   String inlineMessageId;
   var replyMarkup;
   Location location;

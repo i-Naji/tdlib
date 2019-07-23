@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatType implements TLObject {
+class ChatType implements TdObject {
   /// Describes the type of a chat
   ChatType();
 

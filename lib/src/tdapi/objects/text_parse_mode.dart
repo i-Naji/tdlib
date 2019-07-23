@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TextParseMode implements TLObject {
+class TextParseMode implements TdObject {
   /// Describes the way the text should be parsed for TextEntities
   TextParseMode();
 

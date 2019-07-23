@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Close extends TLFunction {
+class Close extends TdFunction {
   dynamic extra;
 
   /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent.

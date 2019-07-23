@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchHashtags extends TLFunction {
+class SearchHashtags extends TdFunction {
   String prefix;
   int limit;
   dynamic extra;

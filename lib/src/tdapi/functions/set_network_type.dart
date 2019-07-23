@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetNetworkType extends TLFunction {
+class SetNetworkType extends TdFunction {
   var type;
   dynamic extra;
 

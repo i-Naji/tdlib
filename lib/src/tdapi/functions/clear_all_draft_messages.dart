@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ClearAllDraftMessages extends TLFunction {
+class ClearAllDraftMessages extends TdFunction {
   bool excludeSecretChats;
   dynamic extra;
 

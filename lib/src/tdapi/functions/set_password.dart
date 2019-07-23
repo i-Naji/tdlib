@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetPassword extends TLFunction {
+class SetPassword extends TdFunction {
   String oldPassword;
   String newPassword;
   String newHint;

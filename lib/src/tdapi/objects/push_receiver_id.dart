@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PushReceiverId implements TLObject {
+class PushReceiverId implements TdObject {
   int id;
   dynamic extra;
 

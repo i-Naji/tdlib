@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockListItem implements TLObject {
+class PageBlockListItem implements TdObject {
   String label;
   List pageBlocks;
 

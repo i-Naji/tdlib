@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SecretChat implements TLObject {
+class SecretChat implements TdObject {
   int id;
   int userId;
   var state;

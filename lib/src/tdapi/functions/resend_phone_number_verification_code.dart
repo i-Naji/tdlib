@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ResendPhoneNumberVerificationCode extends TLFunction {
+class ResendPhoneNumberVerificationCode extends TdFunction {
   dynamic extra;
 
   /// Re-sends the code to verify a phone number to be added to a user's Telegram Passport.

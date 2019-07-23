@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatInviteLinkInfo implements TLObject {
+class ChatInviteLinkInfo implements TdObject {
   int chatId;
   var type;
   String title;

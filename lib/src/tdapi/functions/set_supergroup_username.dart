@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetSupergroupUsername extends TLFunction {
+class SetSupergroupUsername extends TdFunction {
   int supergroupId;
   String username;
   dynamic extra;

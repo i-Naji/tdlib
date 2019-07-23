@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InlineQueryResults implements TLObject {
+class InlineQueryResults implements TdObject {
   int inlineQueryId;
   String nextOffset;
   List results;

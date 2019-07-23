@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetDatabaseStatistics extends TLFunction {
+class GetDatabaseStatistics extends TdFunction {
   dynamic extra;
 
   /// Returns database statistics.

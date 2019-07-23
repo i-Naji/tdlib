@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckChatInviteLink extends TLFunction {
+class CheckChatInviteLink extends TdFunction {
   String inviteLink;
   dynamic extra;
 

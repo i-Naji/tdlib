@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputMessageContent implements TLObject {
+class InputMessageContent implements TdObject {
   /// The content of a message to send
   InputMessageContent();
 

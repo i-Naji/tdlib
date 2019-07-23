@@ -557,7 +557,7 @@ part 'functions/test_get_difference.dart';
 part 'functions/test_use_update.dart';
 part 'functions/test_use_error.dart';
 
-Map<String, TLObject Function(Map<String, dynamic>)> allObjects = {
+Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'error': (d) => Error.fromJson(d),
   'ok': (d) => Ok.fromJson(d),
   'tdlibParameters': (d) => TdlibParameters.fromJson(d),

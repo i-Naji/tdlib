@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveTopChat extends TLFunction {
+class RemoveTopChat extends TdFunction {
   var category;
   int chatId;
   dynamic extra;

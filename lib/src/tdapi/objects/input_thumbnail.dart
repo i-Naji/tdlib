@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputThumbnail implements TLObject {
+class InputThumbnail implements TdObject {
   var thumbnail;
   int width;
   int height;

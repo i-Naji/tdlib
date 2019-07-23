@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SupergroupFullInfo implements TLObject {
+class SupergroupFullInfo implements TdObject {
   String description;
   int memberCount;
   int administratorCount;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetAlarm extends TLFunction {
+class SetAlarm extends TdFunction {
   double seconds;
   dynamic extra;
 

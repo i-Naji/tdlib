@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddChatMembers extends TLFunction {
+class AddChatMembers extends TdFunction {
   int chatId;
   List<int> userIds;
   dynamic extra;

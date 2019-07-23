@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SynchronizeLanguagePack extends TLFunction {
+class SynchronizeLanguagePack extends TdFunction {
   String languagePackId;
   dynamic extra;
 

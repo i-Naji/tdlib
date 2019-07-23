@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MessageContent implements TLObject {
+class MessageContent implements TdObject {
   /// Contains the content of a message
   MessageContent();
 

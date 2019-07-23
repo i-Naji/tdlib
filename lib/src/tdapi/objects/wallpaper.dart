@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Wallpaper implements TLObject {
+class Wallpaper implements TdObject {
   int id;
   List<PhotoSize> sizes;
   int color;

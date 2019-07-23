@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageReplyMarkup extends TLFunction {
+class EditInlineMessageReplyMarkup extends TdFunction {
   String inlineMessageId;
   var replyMarkup;
   dynamic extra;

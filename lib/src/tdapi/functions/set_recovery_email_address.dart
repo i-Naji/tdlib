@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetRecoveryEmailAddress extends TLFunction {
+class SetRecoveryEmailAddress extends TdFunction {
   String password;
   String newRecoveryEmailAddress;
   dynamic extra;

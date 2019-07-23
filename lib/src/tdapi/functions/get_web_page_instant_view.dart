@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetWebPageInstantView extends TLFunction {
+class GetWebPageInstantView extends TdFunction {
   String url;
   bool forceFull;
   dynamic extra;

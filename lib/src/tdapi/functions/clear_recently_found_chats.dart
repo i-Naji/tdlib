@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ClearRecentlyFoundChats extends TLFunction {
+class ClearRecentlyFoundChats extends TdFunction {
   dynamic extra;
 
   /// Clears the list of recently found chats.

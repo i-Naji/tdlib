@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ConnectionState implements TLObject {
+class ConnectionState implements TdObject {
   /// Describes the current state of the connection to Telegram servers
   ConnectionState();
 

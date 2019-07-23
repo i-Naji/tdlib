@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendCallRating extends TLFunction {
+class SendCallRating extends TdFunction {
   int callId;
   int rating;
   String comment;

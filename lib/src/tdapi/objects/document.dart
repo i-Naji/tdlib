@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Document implements TLObject {
+class Document implements TdObject {
   String fileName;
   String mimeType;
   PhotoSize thumbnail;

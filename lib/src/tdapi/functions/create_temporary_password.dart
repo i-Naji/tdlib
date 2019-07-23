@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateTemporaryPassword extends TLFunction {
+class CreateTemporaryPassword extends TdFunction {
   String password;
   int validFor;
   dynamic extra;

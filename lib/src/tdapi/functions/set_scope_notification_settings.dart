@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetScopeNotificationSettings extends TLFunction {
+class SetScopeNotificationSettings extends TdFunction {
   var scope;
   ScopeNotificationSettings notificationSettings;
   dynamic extra;

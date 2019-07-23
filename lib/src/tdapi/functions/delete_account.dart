@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteAccount extends TLFunction {
+class DeleteAccount extends TdFunction {
   String reason;
   dynamic extra;
 

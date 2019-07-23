@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetChatMemberStatus extends TLFunction {
+class SetChatMemberStatus extends TdFunction {
   int chatId;
   int userId;
   var status;

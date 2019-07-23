@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Count implements TLObject {
+class Count implements TdObject {
   int count;
   dynamic extra;
 

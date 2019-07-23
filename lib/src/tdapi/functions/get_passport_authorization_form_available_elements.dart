@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPassportAuthorizationFormAvailableElements extends TLFunction {
+class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   int autorizationFormId;
   String password;
   dynamic extra;

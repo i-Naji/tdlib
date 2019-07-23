@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChats extends TLFunction {
+class GetChats extends TdFunction {
   int offsetOrder;
   int offsetChatId;
   int limit;

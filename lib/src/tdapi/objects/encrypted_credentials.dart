@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EncryptedCredentials implements TLObject {
+class EncryptedCredentials implements TdObject {
   String data;
   String hash;
   String secret;

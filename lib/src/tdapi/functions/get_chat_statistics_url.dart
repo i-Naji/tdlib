@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatStatisticsUrl extends TLFunction {
+class GetChatStatisticsUrl extends TdFunction {
   int chatId;
   String parameters;
   bool isDark;

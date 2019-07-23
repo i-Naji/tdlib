@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetInlineGameHighScores extends TLFunction {
+class GetInlineGameHighScores extends TdFunction {
   String inlineMessageId;
   int userId;
   dynamic extra;

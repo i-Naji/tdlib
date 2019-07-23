@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetUsername extends TLFunction {
+class SetUsername extends TdFunction {
   String username;
   dynamic extra;
 

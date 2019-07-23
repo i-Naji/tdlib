@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Game implements TLObject {
+class Game implements TdObject {
   int id;
   String shortName;
   String title;

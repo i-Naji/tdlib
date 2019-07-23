@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StorageStatisticsByChat implements TLObject {
+class StorageStatisticsByChat implements TdObject {
   int chatId;
   int size;
   int count;

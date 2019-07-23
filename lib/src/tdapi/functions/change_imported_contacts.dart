@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChangeImportedContacts extends TLFunction {
+class ChangeImportedContacts extends TdFunction {
   List<Contact> contacts;
   dynamic extra;
 

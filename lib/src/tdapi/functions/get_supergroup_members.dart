@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetSupergroupMembers extends TLFunction {
+class GetSupergroupMembers extends TdFunction {
   int supergroupId;
   var filter;
   int offset;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserPrivacySetting implements TLObject {
+class UserPrivacySetting implements TdObject {
   /// Describes available user privacy settings
   UserPrivacySetting();
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetLogVerbosityLevel extends TLFunction {
+class SetLogVerbosityLevel extends TdFunction {
   int newVerbosityLevel;
   dynamic extra;
 

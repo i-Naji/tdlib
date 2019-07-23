@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TdlibParameters implements TLObject {
+class TdlibParameters implements TdObject {
   bool useTestDc;
   String databaseDirectory;
   String filesDirectory;

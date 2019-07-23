@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckAuthenticationPassword extends TLFunction {
+class CheckAuthenticationPassword extends TdFunction {
   String password;
   dynamic extra;
 

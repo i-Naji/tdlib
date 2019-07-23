@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ReportChat extends TLFunction {
+class ReportChat extends TdFunction {
   int chatId;
   var reason;
   List<int> messageIds;

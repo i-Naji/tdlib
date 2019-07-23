@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class User implements TLObject {
+class User implements TdObject {
   int id;
   String firstName;
   String lastName;

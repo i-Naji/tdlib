@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupIsAllHistoryAvailable extends TLFunction {
+class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   int supergroupId;
   bool isAllHistoryAvailable;
   dynamic extra;

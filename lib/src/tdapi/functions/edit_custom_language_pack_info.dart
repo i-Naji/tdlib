@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditCustomLanguagePackInfo extends TLFunction {
+class EditCustomLanguagePackInfo extends TdFunction {
   LanguagePackInfo info;
   dynamic extra;
 

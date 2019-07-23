@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LanguagePackStringValue implements TLObject {
+class LanguagePackStringValue implements TdObject {
   /// Represents the value of a string in a language pack
   LanguagePackStringValue();
 

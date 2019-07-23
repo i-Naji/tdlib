@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LanguagePackInfo implements TLObject {
+class LanguagePackInfo implements TdObject {
   String id;
   String baseLanguagePackId;
   String name;

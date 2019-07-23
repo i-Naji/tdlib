@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LanguagePackStrings implements TLObject {
+class LanguagePackStrings implements TdObject {
   List<LanguagePackString> strings;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CustomRequestResult implements TLObject {
+class CustomRequestResult implements TdObject {
   String result;
   dynamic extra;
 

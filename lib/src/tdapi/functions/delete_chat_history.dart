@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteChatHistory extends TLFunction {
+class DeleteChatHistory extends TdFunction {
   int chatId;
   bool removeFromChatList;
   bool revoke;

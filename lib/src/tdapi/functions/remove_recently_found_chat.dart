@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveRecentlyFoundChat extends TLFunction {
+class RemoveRecentlyFoundChat extends TdFunction {
   int chatId;
   dynamic extra;
 

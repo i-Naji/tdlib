@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetUserPrivacySettingRules extends TLFunction {
+class GetUserPrivacySettingRules extends TdFunction {
   var setting;
   dynamic extra;
 

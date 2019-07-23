@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LanguagePackString implements TLObject {
+class LanguagePackString implements TdObject {
   String key;
   var value;
 

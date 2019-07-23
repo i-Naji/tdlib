@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DatabaseStatistics implements TLObject {
+class DatabaseStatistics implements TdObject {
   String statistics;
   dynamic extra;
 

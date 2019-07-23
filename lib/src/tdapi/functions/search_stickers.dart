@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchStickers extends TLFunction {
+class SearchStickers extends TdFunction {
   String emoji;
   int limit;
   dynamic extra;

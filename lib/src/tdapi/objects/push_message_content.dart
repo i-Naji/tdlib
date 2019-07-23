@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PushMessageContent implements TLObject {
+class PushMessageContent implements TdObject {
   /// Contains content of a push message notification
   PushMessageContent();
 

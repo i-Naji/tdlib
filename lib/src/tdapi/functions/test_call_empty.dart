@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestCallEmpty extends TLFunction {
+class TestCallEmpty extends TdFunction {
   dynamic extra;
 
   /// Does nothing; for testing only. This is an offline method. Can be called before authorization.

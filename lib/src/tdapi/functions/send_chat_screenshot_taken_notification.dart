@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendChatScreenshotTakenNotification extends TLFunction {
+class SendChatScreenshotTakenNotification extends TdFunction {
   int chatId;
   dynamic extra;
 

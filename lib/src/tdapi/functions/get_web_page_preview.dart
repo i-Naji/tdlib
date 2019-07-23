@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetWebPagePreview extends TLFunction {
+class GetWebPagePreview extends TdFunction {
   FormattedText text;
   dynamic extra;
 

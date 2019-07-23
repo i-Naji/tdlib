@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetLogStream extends TLFunction {
+class SetLogStream extends TdFunction {
   var logStream;
   dynamic extra;
 

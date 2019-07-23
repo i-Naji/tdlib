@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetSupergroupStickerSet extends TLFunction {
+class SetSupergroupStickerSet extends TdFunction {
   int supergroupId;
   int stickerSetId;
   dynamic extra;

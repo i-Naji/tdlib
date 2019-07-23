@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PingProxy extends TLFunction {
+class PingProxy extends TdFunction {
   int proxyId;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetStickerSet extends TLFunction {
+class GetStickerSet extends TdFunction {
   int setId;
   dynamic extra;
 

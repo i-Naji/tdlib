@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchChatMembers extends TLFunction {
+class SearchChatMembers extends TdFunction {
   int chatId;
   String query;
   int limit;

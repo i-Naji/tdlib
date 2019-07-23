@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Session implements TLObject {
+class Session implements TdObject {
   int id;
   bool isCurrent;
   bool isPasswordPending;

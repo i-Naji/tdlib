@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TermsOfService implements TLObject {
+class TermsOfService implements TdObject {
   FormattedText text;
   int minUserAge;
   bool showPopup;

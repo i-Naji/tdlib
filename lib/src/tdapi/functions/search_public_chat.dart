@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchPublicChat extends TLFunction {
+class SearchPublicChat extends TdFunction {
   String username;
   dynamic extra;
 

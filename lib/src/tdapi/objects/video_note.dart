@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class VideoNote implements TLObject {
+class VideoNote implements TdObject {
   int duration;
   int length;
   PhotoSize thumbnail;

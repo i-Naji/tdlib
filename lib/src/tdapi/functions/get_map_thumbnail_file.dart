@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetMapThumbnailFile extends TLFunction {
+class GetMapThumbnailFile extends TdFunction {
   Location location;
   int zoom;
   int width;

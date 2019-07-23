@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetDeepLinkInfo extends TLFunction {
+class GetDeepLinkInfo extends TdFunction {
   String link;
   dynamic extra;
 

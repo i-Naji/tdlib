@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class FileType implements TLObject {
+class FileType implements TdObject {
   /// Represents the type of a file
   FileType();
 

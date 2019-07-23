@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckAuthenticationCode extends TLFunction {
+class CheckAuthenticationCode extends TdFunction {
   String code;
   String firstName;
   String lastName;

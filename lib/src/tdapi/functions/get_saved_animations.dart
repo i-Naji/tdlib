@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetSavedAnimations extends TLFunction {
+class GetSavedAnimations extends TdFunction {
   dynamic extra;
 
   /// Returns saved animations.

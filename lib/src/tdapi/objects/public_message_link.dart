@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PublicMessageLink implements TLObject {
+class PublicMessageLink implements TdObject {
   String link;
   String html;
   dynamic extra;

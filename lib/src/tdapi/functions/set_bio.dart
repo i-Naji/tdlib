@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetBio extends TLFunction {
+class SetBio extends TdFunction {
   String bio;
   dynamic extra;
 

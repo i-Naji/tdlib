@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendCallDebugInformation extends TLFunction {
+class SendCallDebugInformation extends TdFunction {
   int callId;
   String debugInformation;
   dynamic extra;

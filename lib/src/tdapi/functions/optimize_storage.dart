@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class OptimizeStorage extends TLFunction {
+class OptimizeStorage extends TdFunction {
   int size;
   int ttl;
   int count;

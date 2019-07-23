@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserType implements TLObject {
+class UserType implements TdObject {
   /// Represents the type of the user. The following types are possible: regular users, deleted users and bots
   UserType();
 

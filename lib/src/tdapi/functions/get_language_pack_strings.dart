@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetLanguagePackStrings extends TLFunction {
+class GetLanguagePackStrings extends TdFunction {
   String languagePackId;
   List<String> keys;
   dynamic extra;

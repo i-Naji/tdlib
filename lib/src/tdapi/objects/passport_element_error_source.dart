@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportElementErrorSource implements TLObject {
+class PassportElementErrorSource implements TdObject {
   /// Contains the description of an error in a Telegram Passport element
   PassportElementErrorSource();
 

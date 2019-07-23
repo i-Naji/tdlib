@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetInstalledStickerSets extends TLFunction {
+class GetInstalledStickerSets extends TdFunction {
   bool isMasks;
   dynamic extra;
 

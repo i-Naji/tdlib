@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetCurrentState extends TLFunction {
+class GetCurrentState extends TdFunction {
   dynamic extra;
 
   /// Returns all updates needed to restore current TDLib state, i.e. all actual UpdateAuthorizationState.

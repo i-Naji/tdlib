@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RegisterDevice extends TLFunction {
+class RegisterDevice extends TdFunction {
   var deviceToken;
   List<int> otherUserIds;
   dynamic extra;

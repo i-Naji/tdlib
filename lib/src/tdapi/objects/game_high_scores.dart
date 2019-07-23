@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GameHighScores implements TLObject {
+class GameHighScores implements TdObject {
   List<GameHighScore> scores;
   dynamic extra;
 

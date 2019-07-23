@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ReadFilePart extends TLFunction {
+class ReadFilePart extends TdFunction {
   int fileId;
   int offset;
   int count;

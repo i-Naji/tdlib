@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AuthorizationState implements TLObject {
+class AuthorizationState implements TdObject {
   /// Represents the current authorization state of the client
   AuthorizationState();
 

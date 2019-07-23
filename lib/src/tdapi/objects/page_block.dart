@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlock implements TLObject {
+class PageBlock implements TdObject {
   /// Describes a block of an instant view web page
   PageBlock();
 

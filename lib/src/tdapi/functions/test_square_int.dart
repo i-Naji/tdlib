@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestSquareInt extends TLFunction {
+class TestSquareInt extends TdFunction {
   int x;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ForwardMessages extends TLFunction {
+class ForwardMessages extends TdFunction {
   int chatId;
   int fromChatId;
   List<int> messageIds;

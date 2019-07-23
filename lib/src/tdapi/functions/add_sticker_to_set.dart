@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddStickerToSet extends TLFunction {
+class AddStickerToSet extends TdFunction {
   int userId;
   String name;
   InputSticker sticker;

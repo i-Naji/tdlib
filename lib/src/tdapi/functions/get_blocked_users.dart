@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetBlockedUsers extends TLFunction {
+class GetBlockedUsers extends TdFunction {
   int offset;
   int limit;
   dynamic extra;

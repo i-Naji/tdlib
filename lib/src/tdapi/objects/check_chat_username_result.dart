@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckChatUsernameResult implements TLObject {
+class CheckChatUsernameResult implements TdObject {
   /// Represents result of checking whether a username can be set for a chat
   CheckChatUsernameResult();
 

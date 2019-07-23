@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Animations implements TLObject {
+class Animations implements TdObject {
   List<Animation> animations;
   dynamic extra;
 

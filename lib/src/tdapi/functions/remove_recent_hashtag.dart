@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveRecentHashtag extends TLFunction {
+class RemoveRecentHashtag extends TdFunction {
   String hashtag;
   dynamic extra;
 

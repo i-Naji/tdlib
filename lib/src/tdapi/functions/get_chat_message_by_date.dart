@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatMessageByDate extends TLFunction {
+class GetChatMessageByDate extends TdFunction {
   int chatId;
   int date;
   dynamic extra;

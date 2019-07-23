@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportSuitableElement implements TLObject {
+class PassportSuitableElement implements TdObject {
   var type;
   bool isSelfieRequired;
   bool isTranslationRequired;

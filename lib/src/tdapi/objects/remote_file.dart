@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoteFile implements TLObject {
+class RemoteFile implements TdObject {
   String id;
   bool isUploadingActive;
   bool isUploadingCompleted;

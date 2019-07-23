@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StopPoll extends TLFunction {
+class StopPoll extends TdFunction {
   int chatId;
   int messageId;
   var replyMarkup;

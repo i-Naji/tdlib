@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageCaption extends TLFunction {
+class EditInlineMessageCaption extends TdFunction {
   String inlineMessageId;
   var replyMarkup;
   FormattedText caption;

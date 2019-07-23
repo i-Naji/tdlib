@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallState implements TLObject {
+class CallState implements TdObject {
   /// Describes the current call state
   CallState();
 

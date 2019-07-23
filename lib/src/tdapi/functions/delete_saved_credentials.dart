@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteSavedCredentials extends TLFunction {
+class DeleteSavedCredentials extends TdFunction {
   dynamic extra;
 
   /// Deletes saved credentials for all payment provider bots.

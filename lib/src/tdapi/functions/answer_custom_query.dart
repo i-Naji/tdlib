@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AnswerCustomQuery extends TLFunction {
+class AnswerCustomQuery extends TdFunction {
   int customQueryId;
   String data;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatInviteLink implements TLObject {
+class ChatInviteLink implements TdObject {
   String inviteLink;
   dynamic extra;
 

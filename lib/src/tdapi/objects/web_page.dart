@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class WebPage implements TLObject {
+class WebPage implements TdObject {
   String url;
   String displayUrl;
   String type;

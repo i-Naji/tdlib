@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPasswordState extends TLFunction {
+class GetPasswordState extends TdFunction {
   dynamic extra;
 
   /// Returns the current state of 2-step verification.

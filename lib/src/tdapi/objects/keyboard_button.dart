@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class KeyboardButton implements TLObject {
+class KeyboardButton implements TdObject {
   String text;
   var type;
 

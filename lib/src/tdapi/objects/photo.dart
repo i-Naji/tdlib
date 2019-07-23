@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Photo implements TLObject {
+class Photo implements TdObject {
   bool hasStickers;
   List<PhotoSize> sizes;
 

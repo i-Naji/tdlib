@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Stickers implements TLObject {
+class Stickers implements TdObject {
   List<Sticker> stickers;
   dynamic extra;
 

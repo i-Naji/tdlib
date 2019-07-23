@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CancelUploadFile extends TLFunction {
+class CancelUploadFile extends TdFunction {
   int fileId;
   dynamic extra;
 

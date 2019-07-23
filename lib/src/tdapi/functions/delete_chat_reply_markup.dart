@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteChatReplyMarkup extends TLFunction {
+class DeleteChatReplyMarkup extends TdFunction {
   int chatId;
   int messageId;
   dynamic extra;

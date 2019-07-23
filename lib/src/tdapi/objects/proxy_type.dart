@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ProxyType implements TLObject {
+class ProxyType implements TdObject {
   /// Describes the type of the proxy server
   ProxyType();
 

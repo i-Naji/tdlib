@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendPassportAuthorizationForm extends TLFunction {
+class SendPassportAuthorizationForm extends TdFunction {
   int autorizationFormId;
   List types;
   dynamic extra;

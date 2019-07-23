@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Wallpapers implements TLObject {
+class Wallpapers implements TdObject {
   List<Wallpaper> wallpapers;
   dynamic extra;
 

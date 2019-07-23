@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Chats implements TLObject {
+class Chats implements TdObject {
   List<int> chatIds;
   dynamic extra;
 

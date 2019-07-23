@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ResendPhoneNumberConfirmationCode extends TLFunction {
+class ResendPhoneNumberConfirmationCode extends TdFunction {
   dynamic extra;
 
   /// Resends phone number confirmation code.

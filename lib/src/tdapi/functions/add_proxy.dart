@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddProxy extends TLFunction {
+class AddProxy extends TdFunction {
   String server;
   int port;
   bool enable;

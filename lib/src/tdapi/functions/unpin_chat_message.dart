@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UnpinChatMessage extends TLFunction {
+class UnpinChatMessage extends TdFunction {
   int chatId;
   dynamic extra;
 

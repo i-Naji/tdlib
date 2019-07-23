@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPaymentReceipt extends TLFunction {
+class GetPaymentReceipt extends TdFunction {
   int chatId;
   int messageId;
   dynamic extra;

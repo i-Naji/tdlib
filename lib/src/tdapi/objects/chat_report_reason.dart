@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatReportReason implements TLObject {
+class ChatReportReason implements TdObject {
   /// Describes the reason why a chat is reported
   ChatReportReason();
 

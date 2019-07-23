@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LogTags implements TLObject {
+class LogTags implements TdObject {
   List<String> tags;
   dynamic extra;
 

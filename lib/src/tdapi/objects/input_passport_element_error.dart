@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputPassportElementError implements TLObject {
+class InputPassportElementError implements TdObject {
   var type;
   String message;
   var source;

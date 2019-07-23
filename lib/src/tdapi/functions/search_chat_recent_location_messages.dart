@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchChatRecentLocationMessages extends TLFunction {
+class SearchChatRecentLocationMessages extends TdFunction {
   int chatId;
   int limit;
   dynamic extra;

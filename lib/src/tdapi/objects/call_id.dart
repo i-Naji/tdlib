@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallId implements TLObject {
+class CallId implements TdObject {
   int id;
   dynamic extra;
 

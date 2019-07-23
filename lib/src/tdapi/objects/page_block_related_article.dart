@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockRelatedArticle implements TLObject {
+class PageBlockRelatedArticle implements TdObject {
   String url;
   String title;
   String description;

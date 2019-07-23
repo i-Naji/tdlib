@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchCallMessages extends TLFunction {
+class SearchCallMessages extends TdFunction {
   int fromMessageId;
   int limit;
   bool onlyMissed;

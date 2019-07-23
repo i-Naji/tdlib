@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ParseTextEntities extends TLFunction {
+class ParseTextEntities extends TdFunction {
   String text;
   var parseMode;
   dynamic extra;

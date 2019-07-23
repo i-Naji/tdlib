@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditMessageLiveLocation extends TLFunction {
+class EditMessageLiveLocation extends TdFunction {
   int chatId;
   int messageId;
   var replyMarkup;

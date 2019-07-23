@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetActiveSessions extends TLFunction {
+class GetActiveSessions extends TdFunction {
   dynamic extra;
 
   /// Returns all active sessions of the current user.

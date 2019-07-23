@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NetworkStatistics implements TLObject {
+class NetworkStatistics implements TdObject {
   int sinceDate;
   List entries;
   dynamic extra;

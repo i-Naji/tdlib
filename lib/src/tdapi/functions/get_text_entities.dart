@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetTextEntities extends TLFunction {
+class GetTextEntities extends TdFunction {
   String text;
   dynamic extra;
 

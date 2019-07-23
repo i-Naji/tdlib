@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatMemberStatus implements TLObject {
+class ChatMemberStatus implements TdObject {
   /// Provides information about the status of a member in a chat
   ChatMemberStatus();
 

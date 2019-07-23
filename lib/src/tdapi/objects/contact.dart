@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Contact implements TLObject {
+class Contact implements TdObject {
   String phoneNumber;
   String firstName;
   String lastName;

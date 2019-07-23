@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ReplyMarkup implements TLObject {
+class ReplyMarkup implements TdObject {
   /// Contains a description of a custom keyboard and actions that can be done with it to quickly reply to bots
   ReplyMarkup();
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetCallbackQueryAnswer extends TLFunction {
+class GetCallbackQueryAnswer extends TdFunction {
   int chatId;
   int messageId;
   var payload;

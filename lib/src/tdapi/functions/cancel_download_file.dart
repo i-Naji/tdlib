@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CancelDownloadFile extends TLFunction {
+class CancelDownloadFile extends TdFunction {
   int fileId;
   bool onlyIfPending;
   dynamic extra;

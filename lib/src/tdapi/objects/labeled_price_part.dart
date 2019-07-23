@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LabeledPricePart implements TLObject {
+class LabeledPricePart implements TdObject {
   String label;
   int amount;
 

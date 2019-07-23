@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Proxies implements TLObject {
+class Proxies implements TdObject {
   List<Proxy> proxies;
   dynamic extra;
 

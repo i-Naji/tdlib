@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatHistory extends TLFunction {
+class GetChatHistory extends TdFunction {
   int chatId;
   int fromMessageId;
   int offset;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveNotificationGroup extends TLFunction {
+class RemoveNotificationGroup extends TdFunction {
   int notificationGroupId;
   int maxNotificationId;
   dynamic extra;

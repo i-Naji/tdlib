@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetTopChats extends TLFunction {
+class GetTopChats extends TdFunction {
   var category;
   int limit;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPassportElement extends TLFunction {
+class GetPassportElement extends TdFunction {
   var type;
   String password;
   dynamic extra;

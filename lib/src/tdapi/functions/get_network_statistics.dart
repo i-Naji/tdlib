@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetNetworkStatistics extends TLFunction {
+class GetNetworkStatistics extends TdFunction {
   bool onlyCurrent;
   dynamic extra;
 

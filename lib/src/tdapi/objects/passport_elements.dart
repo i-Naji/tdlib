@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportElements implements TLObject {
+class PassportElements implements TdObject {
   List elements;
   dynamic extra;
 

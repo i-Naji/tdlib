@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetLanguagePackString extends TLFunction {
+class GetLanguagePackString extends TdFunction {
   String languagePackDatabasePath;
   String localizationTarget;
   String languagePackId;

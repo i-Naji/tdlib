@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InlineKeyboardButtonType implements TLObject {
+class InlineKeyboardButtonType implements TdObject {
   /// Describes the type of an inline keyboard button
   InlineKeyboardButtonType();
 

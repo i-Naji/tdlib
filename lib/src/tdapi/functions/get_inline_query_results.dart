@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetInlineQueryResults extends TLFunction {
+class GetInlineQueryResults extends TdFunction {
   int botUserId;
   int chatId;
   Location userLocation;

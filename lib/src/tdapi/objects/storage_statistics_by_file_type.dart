@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StorageStatisticsByFileType implements TLObject {
+class StorageStatisticsByFileType implements TdObject {
   var fileType;
   int size;
   int count;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPaymentForm extends TLFunction {
+class GetPaymentForm extends TdFunction {
   int chatId;
   int messageId;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Venue implements TLObject {
+class Venue implements TdObject {
   Location location;
   String title;
   String address;

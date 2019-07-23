@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetConnectedWebsites extends TLFunction {
+class GetConnectedWebsites extends TdFunction {
   dynamic extra;
 
   /// Returns all website where the current user used Telegram to log in.

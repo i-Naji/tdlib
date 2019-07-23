@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetAuthenticationPhoneNumber extends TLFunction {
+class SetAuthenticationPhoneNumber extends TdFunction {
   String phoneNumber;
   bool allowFlashCall;
   bool isCurrentPhoneNumber;

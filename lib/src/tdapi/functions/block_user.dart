@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class BlockUser extends TLFunction {
+class BlockUser extends TdFunction {
   int userId;
   dynamic extra;
 

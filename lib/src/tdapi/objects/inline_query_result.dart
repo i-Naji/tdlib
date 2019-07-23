@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InlineQueryResult implements TLObject {
+class InlineQueryResult implements TdObject {
   /// Represents a single result of an inline query
   InlineQueryResult();
 

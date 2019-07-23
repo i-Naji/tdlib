@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetJsonString extends TLFunction {
+class GetJsonString extends TdFunction {
   var jsonValue;
   dynamic extra;
 

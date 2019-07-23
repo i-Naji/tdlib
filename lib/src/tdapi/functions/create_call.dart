@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateCall extends TLFunction {
+class CreateCall extends TdFunction {
   int userId;
   CallProtocol protocol;
   dynamic extra;

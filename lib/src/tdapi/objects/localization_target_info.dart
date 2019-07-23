@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LocalizationTargetInfo implements TLObject {
+class LocalizationTargetInfo implements TdObject {
   List<LanguagePackInfo> languagePacks;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LocalFile implements TLObject {
+class LocalFile implements TdObject {
   String path;
   bool canBeDownloaded;
   bool canBeDeleted;

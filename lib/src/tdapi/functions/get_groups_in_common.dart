@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetGroupsInCommon extends TLFunction {
+class GetGroupsInCommon extends TdFunction {
   int userId;
   int offsetChatId;
   int limit;

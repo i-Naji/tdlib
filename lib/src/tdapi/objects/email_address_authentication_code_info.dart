@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EmailAddressAuthenticationCodeInfo implements TLObject {
+class EmailAddressAuthenticationCodeInfo implements TdObject {
   String emailAddressPattern;
   int length;
   dynamic extra;

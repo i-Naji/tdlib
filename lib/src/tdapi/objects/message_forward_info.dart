@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MessageForwardInfo implements TLObject {
+class MessageForwardInfo implements TdObject {
   var origin;
   int date;
   int fromChatId;

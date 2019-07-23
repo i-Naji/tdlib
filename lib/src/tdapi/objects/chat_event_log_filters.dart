@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatEventLogFilters implements TLObject {
+class ChatEventLogFilters implements TdObject {
   bool messageEdits;
   bool messageDeletions;
   bool messagePins;

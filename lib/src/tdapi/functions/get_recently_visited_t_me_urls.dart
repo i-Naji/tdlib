@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetRecentlyVisitedTMeUrls extends TLFunction {
+class GetRecentlyVisitedTMeUrls extends TdFunction {
   String referrer;
   dynamic extra;
 

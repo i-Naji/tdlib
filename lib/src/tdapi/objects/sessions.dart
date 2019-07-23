@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Sessions implements TLObject {
+class Sessions implements TdObject {
   List<Session> sessions;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleChatDefaultDisableNotification extends TLFunction {
+class ToggleChatDefaultDisableNotification extends TdFunction {
   int chatId;
   bool defaultDisableNotification;
   dynamic extra;

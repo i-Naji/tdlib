@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MessageForwardOrigin implements TLObject {
+class MessageForwardOrigin implements TdObject {
   /// Contains information about the origin of a forwarded message
   MessageForwardOrigin();
 

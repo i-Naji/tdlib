@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddCustomServerLanguagePack extends TLFunction {
+class AddCustomServerLanguagePack extends TdFunction {
   String languagePackId;
   dynamic extra;
 

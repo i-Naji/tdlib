@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreatePrivateChat extends TLFunction {
+class CreatePrivateChat extends TdFunction {
   int userId;
   bool force;
   dynamic extra;

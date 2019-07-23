@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetBotUpdatesStatus extends TLFunction {
+class SetBotUpdatesStatus extends TdFunction {
   int pendingUpdateCount;
   String errorMessage;
   dynamic extra;

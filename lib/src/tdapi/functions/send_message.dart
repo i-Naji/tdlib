@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendMessage extends TLFunction {
+class SendMessage extends TdFunction {
   int chatId;
   int replyToMessageId;
   bool disableNotification;

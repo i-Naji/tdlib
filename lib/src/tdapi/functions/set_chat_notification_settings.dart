@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetChatNotificationSettings extends TLFunction {
+class SetChatNotificationSettings extends TdFunction {
   int chatId;
   ChatNotificationSettings notificationSettings;
   dynamic extra;

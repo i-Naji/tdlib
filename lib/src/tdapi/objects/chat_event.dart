@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatEvent implements TLObject {
+class ChatEvent implements TdObject {
   int id;
   int date;
   int userId;

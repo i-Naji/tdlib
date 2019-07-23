@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ClearImportedContacts extends TLFunction {
+class ClearImportedContacts extends TdFunction {
   dynamic extra;
 
   /// Clears all imported contacts, contact list remains unchanged.

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestCallString extends TLFunction {
+class TestCallString extends TdFunction {
   String x;
   dynamic extra;
 

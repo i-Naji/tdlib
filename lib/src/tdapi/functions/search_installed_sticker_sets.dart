@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchInstalledStickerSets extends TLFunction {
+class SearchInstalledStickerSets extends TdFunction {
   bool isMasks;
   String query;
   int limit;

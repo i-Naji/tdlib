@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetContacts extends TLFunction {
+class GetContacts extends TdFunction {
   dynamic extra;
 
   /// Returns all user contacts.

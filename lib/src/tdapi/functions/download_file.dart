@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DownloadFile extends TLFunction {
+class DownloadFile extends TdFunction {
   int fileId;
   int priority;
   int offset;

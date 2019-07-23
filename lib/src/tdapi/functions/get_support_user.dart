@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetSupportUser extends TLFunction {
+class GetSupportUser extends TdFunction {
   dynamic extra;
 
   /// Returns a user that can be contacted to get support.

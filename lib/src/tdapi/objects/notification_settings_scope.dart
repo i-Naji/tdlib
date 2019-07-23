@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NotificationSettingsScope implements TLObject {
+class NotificationSettingsScope implements TdObject {
   /// Describes the types of chats to which notification settings are applied
   NotificationSettingsScope();
 

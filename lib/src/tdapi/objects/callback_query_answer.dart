@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallbackQueryAnswer implements TLObject {
+class CallbackQueryAnswer implements TdObject {
   String text;
   bool showAlert;
   String url;

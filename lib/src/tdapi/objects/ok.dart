@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Ok implements TLObject {
+class Ok implements TdObject {
   dynamic extra;
 
   /// An object of this type is returned on a successful function call for certain functions.

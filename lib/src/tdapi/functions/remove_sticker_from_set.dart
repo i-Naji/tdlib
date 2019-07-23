@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveStickerFromSet extends TLFunction {
+class RemoveStickerFromSet extends TdFunction {
   var sticker;
   dynamic extra;
 

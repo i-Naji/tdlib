@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateSecretChat extends TLFunction {
+class CreateSecretChat extends TdFunction {
   int secretChatId;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditInlineMessageMedia extends TLFunction {
+class EditInlineMessageMedia extends TdFunction {
   String inlineMessageId;
   var replyMarkup;
   var inputMessageContent;

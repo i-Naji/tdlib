@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Location implements TLObject {
+class Location implements TdObject {
   double latitude;
   double longitude;
 

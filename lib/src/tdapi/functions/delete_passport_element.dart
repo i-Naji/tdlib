@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeletePassportElement extends TLFunction {
+class DeletePassportElement extends TdFunction {
   var type;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatReportSpamState implements TLObject {
+class ChatReportSpamState implements TdObject {
   bool canReportSpam;
   dynamic extra;
 

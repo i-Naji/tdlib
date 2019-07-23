@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserPrivacySettingRules implements TLObject {
+class UserPrivacySettingRules implements TdObject {
   List rules;
   dynamic extra;
 

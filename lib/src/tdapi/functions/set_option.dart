@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetOption extends TLFunction {
+class SetOption extends TdFunction {
   String name;
   var value;
   dynamic extra;

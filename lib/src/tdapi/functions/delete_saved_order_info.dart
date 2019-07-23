@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteSavedOrderInfo extends TLFunction {
+class DeleteSavedOrderInfo extends TdFunction {
   dynamic extra;
 
   /// Deletes saved order info.

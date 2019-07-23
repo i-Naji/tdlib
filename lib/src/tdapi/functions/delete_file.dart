@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteFile extends TLFunction {
+class DeleteFile extends TdFunction {
   int fileId;
   dynamic extra;
 

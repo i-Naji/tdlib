@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DisconnectWebsite extends TLFunction {
+class DisconnectWebsite extends TdFunction {
   int websiteId;
   dynamic extra;
 

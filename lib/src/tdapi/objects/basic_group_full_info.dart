@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class BasicGroupFullInfo implements TLObject {
+class BasicGroupFullInfo implements TdObject {
   int creatorUserId;
   List<ChatMember> members;
   String inviteLink;

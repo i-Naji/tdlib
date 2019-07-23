@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UploadStickerFile extends TLFunction {
+class UploadStickerFile extends TdFunction {
   int userId;
   var pngSticker;
   dynamic extra;

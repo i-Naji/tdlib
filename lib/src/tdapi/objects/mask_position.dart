@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MaskPosition implements TLObject {
+class MaskPosition implements TdObject {
   var point;
   double xShift;
   double yShift;

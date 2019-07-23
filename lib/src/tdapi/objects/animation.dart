@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Animation implements TLObject {
+class Animation implements TdObject {
   int duration;
   int width;
   int height;

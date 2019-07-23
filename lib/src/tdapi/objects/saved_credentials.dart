@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SavedCredentials implements TLObject {
+class SavedCredentials implements TdObject {
   String id;
   String title;
 

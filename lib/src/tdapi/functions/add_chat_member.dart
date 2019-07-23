@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddChatMember extends TLFunction {
+class AddChatMember extends TdFunction {
   int chatId;
   int userId;
   int forwardLimit;

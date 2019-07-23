@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetStickerEmojis extends TLFunction {
+class GetStickerEmojis extends TdFunction {
   var sticker;
   dynamic extra;
 

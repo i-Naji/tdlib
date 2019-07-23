@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckEmailAddressVerificationCode extends TLFunction {
+class CheckEmailAddressVerificationCode extends TdFunction {
   String code;
   dynamic extra;
 

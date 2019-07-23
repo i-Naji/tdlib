@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DraftMessage implements TLObject {
+class DraftMessage implements TdObject {
   int replyToMessageId;
   var inputMessageText;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestString implements TLObject {
+class TestString implements TdObject {
   String value;
   dynamic extra;
 

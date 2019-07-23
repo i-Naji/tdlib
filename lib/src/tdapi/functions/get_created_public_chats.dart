@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetCreatedPublicChats extends TLFunction {
+class GetCreatedPublicChats extends TdFunction {
   dynamic extra;
 
   /// Returns a list of public chats created by the user.

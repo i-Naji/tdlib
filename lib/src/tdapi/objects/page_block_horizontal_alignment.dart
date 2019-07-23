@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockHorizontalAlignment implements TLObject {
+class PageBlockHorizontalAlignment implements TdObject {
   /// Describes a horizontal alignment of a table cell content
   PageBlockHorizontalAlignment();
 

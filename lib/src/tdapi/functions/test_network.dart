@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestNetwork extends TLFunction {
+class TestNetwork extends TdFunction {
   dynamic extra;
 
   /// Sends a simple network request to the Telegram servers; for testing only. Can be called before authorization.

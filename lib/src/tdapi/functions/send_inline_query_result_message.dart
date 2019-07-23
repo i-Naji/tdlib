@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendInlineQueryResultMessage extends TLFunction {
+class SendInlineQueryResultMessage extends TdFunction {
   int chatId;
   int replyToMessageId;
   bool disableNotification;

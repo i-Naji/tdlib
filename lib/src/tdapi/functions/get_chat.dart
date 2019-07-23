@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChat extends TLFunction {
+class GetChat extends TdFunction {
   int chatId;
   dynamic extra;
 

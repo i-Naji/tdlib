@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateNewBasicGroupChat extends TLFunction {
+class CreateNewBasicGroupChat extends TdFunction {
   List<int> userIds;
   String title;
   dynamic extra;

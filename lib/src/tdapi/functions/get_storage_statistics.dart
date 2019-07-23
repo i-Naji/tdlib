@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetStorageStatistics extends TLFunction {
+class GetStorageStatistics extends TdFunction {
   int chatLimit;
   dynamic extra;
 

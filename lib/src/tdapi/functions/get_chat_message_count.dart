@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetChatMessageCount extends TLFunction {
+class GetChatMessageCount extends TdFunction {
   int chatId;
   var filter;
   bool returnLocal;

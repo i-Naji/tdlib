@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupSignMessages extends TLFunction {
+class ToggleSupergroupSignMessages extends TdFunction {
   int supergroupId;
   bool signMessages;
   dynamic extra;

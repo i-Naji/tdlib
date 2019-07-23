@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AcceptTermsOfService extends TLFunction {
+class AcceptTermsOfService extends TdFunction {
   String termsOfServiceId;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class WebPageInstantView implements TLObject {
+class WebPageInstantView implements TdObject {
   List pageBlocks;
   int version;
   String url;

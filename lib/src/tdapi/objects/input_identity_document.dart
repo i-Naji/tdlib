@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputIdentityDocument implements TLObject {
+class InputIdentityDocument implements TdObject {
   String number;
   Date expiryDate;
   var frontSide;

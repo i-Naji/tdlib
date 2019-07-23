@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputCredentials implements TLObject {
+class InputCredentials implements TdObject {
   /// Contains information about the payment method chosen by the user
   InputCredentials();
 

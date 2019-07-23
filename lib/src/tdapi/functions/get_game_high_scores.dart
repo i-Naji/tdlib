@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetGameHighScores extends TLFunction {
+class GetGameHighScores extends TdFunction {
   int chatId;
   int messageId;
   int userId;

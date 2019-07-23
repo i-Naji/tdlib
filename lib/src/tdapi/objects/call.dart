@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Call implements TLObject {
+class Call implements TdObject {
   int id;
   int userId;
   bool isOutgoing;

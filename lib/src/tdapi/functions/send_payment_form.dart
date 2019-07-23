@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendPaymentForm extends TLFunction {
+class SendPaymentForm extends TdFunction {
   int chatId;
   int messageId;
   String orderInfoId;

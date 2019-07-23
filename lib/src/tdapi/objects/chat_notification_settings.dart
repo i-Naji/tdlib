@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatNotificationSettings implements TLObject {
+class ChatNotificationSettings implements TdObject {
   bool useDefaultMuteFor;
   int muteFor;
   bool useDefaultSound;

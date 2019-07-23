@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportRequiredElement implements TLObject {
+class PassportRequiredElement implements TdObject {
   List<PassportSuitableElement> suitableElements;
 
   /// Contains a description of the required Telegram Passport element that was requested by a service.

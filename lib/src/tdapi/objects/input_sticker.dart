@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class InputSticker implements TLObject {
+class InputSticker implements TdObject {
   var pngSticker;
   String emojis;
   MaskPosition maskPosition;

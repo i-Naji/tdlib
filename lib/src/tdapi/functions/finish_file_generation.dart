@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class FinishFileGeneration extends TLFunction {
+class FinishFileGeneration extends TdFunction {
   int generationId;
   Error error;
   dynamic extra;

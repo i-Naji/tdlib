@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GameHighScore implements TLObject {
+class GameHighScore implements TdObject {
   int position;
   int userId;
   int score;

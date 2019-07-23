@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleChatIsPinned extends TLFunction {
+class ToggleChatIsPinned extends TdFunction {
   int chatId;
   bool isPinned;
   dynamic extra;

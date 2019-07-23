@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetLogTags extends TLFunction {
+class GetLogTags extends TdFunction {
   dynamic extra;
 
   /// Returns list of available TDLib internal log tags, for example,.

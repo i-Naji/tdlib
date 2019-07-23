@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SecretChatState implements TLObject {
+class SecretChatState implements TdObject {
   /// Describes the current secret chat state
   SecretChatState();
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Address implements TLObject {
+class Address implements TdObject {
   String countryCode;
   String state;
   String city;

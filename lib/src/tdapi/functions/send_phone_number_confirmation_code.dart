@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendPhoneNumberConfirmationCode extends TLFunction {
+class SendPhoneNumberConfirmationCode extends TdFunction {
   String hash;
   String phoneNumber;
   bool allowFlashCall;

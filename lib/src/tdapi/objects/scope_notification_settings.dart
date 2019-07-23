@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ScopeNotificationSettings implements TLObject {
+class ScopeNotificationSettings implements TdObject {
   int muteFor;
   String sound;
   bool showPreview;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditMessageMedia extends TLFunction {
+class EditMessageMedia extends TdFunction {
   int chatId;
   int messageId;
   var replyMarkup;

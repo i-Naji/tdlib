@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetPassportElementErrors extends TLFunction {
+class SetPassportElementErrors extends TdFunction {
   int userId;
   List<InputPassportElementError> errors;
   dynamic extra;

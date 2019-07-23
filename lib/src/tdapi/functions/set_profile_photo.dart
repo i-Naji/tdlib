@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetProfilePhoto extends TLFunction {
+class SetProfilePhoto extends TdFunction {
   var photo;
   dynamic extra;
 

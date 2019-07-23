@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NotificationType implements TLObject {
+class NotificationType implements TdObject {
   /// Contains detailed information about a notification
   NotificationType();
 

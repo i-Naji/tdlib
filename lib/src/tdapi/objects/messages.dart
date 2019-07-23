@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Messages implements TLObject {
+class Messages implements TdObject {
   int totalCount;
   List<Message> messages;
   dynamic extra;

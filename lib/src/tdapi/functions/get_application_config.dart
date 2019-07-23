@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetApplicationConfig extends TLFunction {
+class GetApplicationConfig extends TdFunction {
   dynamic extra;
 
   /// Returns application config, provided by the server. Can be called before authorization.

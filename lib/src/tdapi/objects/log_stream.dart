@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LogStream implements TLObject {
+class LogStream implements TdObject {
   /// Describes a stream to which TDLib internal log is written
   LogStream();
 

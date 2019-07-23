@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UpgradeBasicGroupChatToSupergroupChat extends TLFunction {
+class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   int chatId;
   dynamic extra;
 

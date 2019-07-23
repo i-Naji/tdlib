@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Updates implements TLObject {
+class Updates implements TdObject {
   List updates;
   dynamic extra;
 

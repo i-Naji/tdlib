@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetStickerPositionInSet extends TLFunction {
+class SetStickerPositionInSet extends TdFunction {
   var sticker;
   int position;
   dynamic extra;

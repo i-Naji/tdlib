@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TopChatCategory implements TLObject {
+class TopChatCategory implements TdObject {
   /// Represents the categories of chats for which a list of frequently used chats can be retrieved
   TopChatCategory();
 

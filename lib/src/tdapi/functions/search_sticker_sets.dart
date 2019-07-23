@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchStickerSets extends TLFunction {
+class SearchStickerSets extends TdFunction {
   String query;
   dynamic extra;
 

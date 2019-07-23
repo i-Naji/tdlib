@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveProxy extends TLFunction {
+class RemoveProxy extends TdFunction {
   int proxyId;
   dynamic extra;
 

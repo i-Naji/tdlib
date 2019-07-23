@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockTableCell implements TLObject {
+class PageBlockTableCell implements TdObject {
   var text;
   bool isHeader;
   int colspan;

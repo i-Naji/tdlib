@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StickerSet implements TLObject {
+class StickerSet implements TdObject {
   int id;
   String title;
   String name;

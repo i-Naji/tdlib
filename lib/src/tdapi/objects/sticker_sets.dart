@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StickerSets implements TLObject {
+class StickerSets implements TdObject {
   int totalCount;
   List<StickerSetInfo> sets;
   dynamic extra;

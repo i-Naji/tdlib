@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EditProxy extends TLFunction {
+class EditProxy extends TdFunction {
   int proxyId;
   String server;
   int port;

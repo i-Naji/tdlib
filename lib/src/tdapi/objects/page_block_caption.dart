@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockCaption implements TLObject {
+class PageBlockCaption implements TdObject {
   var text;
   var credit;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class File implements TLObject {
+class File implements TdObject {
   int id;
   int size;
   int expectedSize;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PhotoSize implements TLObject {
+class PhotoSize implements TdObject {
   String type;
   File photo;
   int width;

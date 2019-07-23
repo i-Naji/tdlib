@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UploadFile extends TLFunction {
+class UploadFile extends TdFunction {
   var file;
   var fileType;
   int priority;

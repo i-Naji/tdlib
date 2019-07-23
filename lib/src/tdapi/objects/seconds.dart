@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Seconds implements TLObject {
+class Seconds implements TdObject {
   double seconds;
   dynamic extra;
 

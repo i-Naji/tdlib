@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TMeUrlType implements TLObject {
+class TMeUrlType implements TdObject {
   /// Describes the type of a URL linking to an internal Telegram entity
   TMeUrlType();
 

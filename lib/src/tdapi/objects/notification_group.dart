@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NotificationGroup implements TLObject {
+class NotificationGroup implements TdObject {
   int id;
   var type;
   int chatId;

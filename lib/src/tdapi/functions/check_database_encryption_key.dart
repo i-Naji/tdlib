@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CheckDatabaseEncryptionKey extends TLFunction {
+class CheckDatabaseEncryptionKey extends TdFunction {
   String encryptionKey;
   dynamic extra;
 

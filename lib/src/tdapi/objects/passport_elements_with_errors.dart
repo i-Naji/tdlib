@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportElementsWithErrors implements TLObject {
+class PassportElementsWithErrors implements TdObject {
   List elements;
   List<PassportElementError> errors;
   dynamic extra;

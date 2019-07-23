@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PinChatMessage extends TLFunction {
+class PinChatMessage extends TdFunction {
   int chatId;
   int messageId;
   bool disableNotification;

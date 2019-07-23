@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ShippingOption implements TLObject {
+class ShippingOption implements TdObject {
   String id;
   String title;
   List<LabeledPricePart> priceParts;

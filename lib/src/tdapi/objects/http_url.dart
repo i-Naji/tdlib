@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class HttpUrl implements TLObject {
+class HttpUrl implements TdObject {
   String url;
   dynamic extra;
 

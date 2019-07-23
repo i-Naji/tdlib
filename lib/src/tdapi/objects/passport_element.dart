@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PassportElement implements TLObject {
+class PassportElement implements TdObject {
   /// Contains information about a Telegram Passport element
   PassportElement();
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetAttachedStickerSets extends TLFunction {
+class GetAttachedStickerSets extends TdFunction {
   int fileId;
   dynamic extra;
 

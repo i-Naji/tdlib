@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ResetNetworkStatistics extends TLFunction {
+class ResetNetworkStatistics extends TdFunction {
   dynamic extra;
 
   /// Resets all network data usage statistics to zero. Can be called before authorization.

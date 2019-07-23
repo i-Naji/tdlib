@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DeleteLanguagePack extends TLFunction {
+class DeleteLanguagePack extends TdFunction {
   String languagePackId;
   dynamic extra;
 

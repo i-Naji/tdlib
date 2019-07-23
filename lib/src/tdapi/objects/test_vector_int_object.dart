@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestVectorIntObject implements TLObject {
+class TestVectorIntObject implements TdObject {
   List<TestInt> value;
   dynamic extra;
 

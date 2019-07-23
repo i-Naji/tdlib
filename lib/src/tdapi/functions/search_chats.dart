@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchChats extends TLFunction {
+class SearchChats extends TdFunction {
   String query;
   int limit;
   dynamic extra;

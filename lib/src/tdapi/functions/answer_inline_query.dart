@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AnswerInlineQuery extends TLFunction {
+class AnswerInlineQuery extends TdFunction {
   int inlineQueryId;
   bool isPersonal;
   List results;

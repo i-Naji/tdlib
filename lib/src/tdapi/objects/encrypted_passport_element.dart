@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class EncryptedPassportElement implements TLObject {
+class EncryptedPassportElement implements TdObject {
   var type;
   String data;
   DatedFile frontSide;

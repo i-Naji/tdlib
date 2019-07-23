@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetRemoteFile extends TLFunction {
+class GetRemoteFile extends TdFunction {
   String remoteFileId;
   var fileType;
   dynamic extra;

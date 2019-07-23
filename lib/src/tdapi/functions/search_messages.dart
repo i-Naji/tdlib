@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchMessages extends TLFunction {
+class SearchMessages extends TdFunction {
   String query;
   int offsetDate;
   int offsetChatId;

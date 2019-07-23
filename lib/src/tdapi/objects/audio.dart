@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Audio implements TLObject {
+class Audio implements TdObject {
   int duration;
   String title;
   String performer;

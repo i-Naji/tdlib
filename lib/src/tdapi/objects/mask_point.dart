@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MaskPoint implements TLObject {
+class MaskPoint implements TdObject {
   /// Part of the face, relative to which a mask should be placed
   MaskPoint();
 

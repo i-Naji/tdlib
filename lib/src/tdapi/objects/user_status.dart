@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserStatus implements TLObject {
+class UserStatus implements TdObject {
   /// Describes the last time the user was online
   UserStatus();
 

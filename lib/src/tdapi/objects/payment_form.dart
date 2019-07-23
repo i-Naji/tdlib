@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PaymentForm implements TLObject {
+class PaymentForm implements TdObject {
   Invoice invoice;
   String url;
   PaymentsProviderStripe paymentsProvider;

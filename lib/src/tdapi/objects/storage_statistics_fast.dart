@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class StorageStatisticsFast implements TLObject {
+class StorageStatisticsFast implements TdObject {
   int filesSize;
   int fileCount;
   int databaseSize;

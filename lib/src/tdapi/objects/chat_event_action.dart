@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatEventAction implements TLObject {
+class ChatEventAction implements TdObject {
   /// Represents a chat event
   ChatEventAction();
 

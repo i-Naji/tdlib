@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PasswordState implements TLObject {
+class PasswordState implements TdObject {
   bool hasPassword;
   String passwordHint;
   bool hasRecoveryEmailAddress;

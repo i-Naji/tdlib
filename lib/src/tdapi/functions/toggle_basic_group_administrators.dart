@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleBasicGroupAdministrators extends TLFunction {
+class ToggleBasicGroupAdministrators extends TdFunction {
   int basicGroupId;
   bool everyoneIsAdministrator;
   dynamic extra;

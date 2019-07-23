@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Users implements TLObject {
+class Users implements TdObject {
   int totalCount;
   List<int> userIds;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetBasicGroup extends TLFunction {
+class GetBasicGroup extends TdFunction {
   int basicGroupId;
   dynamic extra;
 

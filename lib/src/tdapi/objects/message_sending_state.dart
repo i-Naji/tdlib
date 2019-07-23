@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class MessageSendingState implements TLObject {
+class MessageSendingState implements TdObject {
   /// Contains information about the sending state of the message
   MessageSendingState();
 

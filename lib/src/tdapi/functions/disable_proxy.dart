@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DisableProxy extends TLFunction {
+class DisableProxy extends TdFunction {
   dynamic extra;
 
   /// Disables the currently enabled proxy. Can be called before authorization.

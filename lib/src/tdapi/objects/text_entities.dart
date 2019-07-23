@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TextEntities implements TLObject {
+class TextEntities implements TdObject {
   List<TextEntity> entities;
   dynamic extra;
 

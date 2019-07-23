@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TerminateAllOtherSessions extends TLFunction {
+class TerminateAllOtherSessions extends TdFunction {
   dynamic extra;
 
   /// Terminates all other sessions of the current user.

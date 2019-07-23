@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetSavedOrderInfo extends TLFunction {
+class GetSavedOrderInfo extends TdFunction {
   dynamic extra;
 
   /// Returns saved order info, if any.

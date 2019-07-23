@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Supergroup implements TLObject {
+class Supergroup implements TdObject {
   int id;
   String username;
   int date;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TemporaryPasswordState implements TLObject {
+class TemporaryPasswordState implements TdObject {
   bool hasPassword;
   int validFor;
   dynamic extra;

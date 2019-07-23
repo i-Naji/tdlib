@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ChatMembersFilter implements TLObject {
+class ChatMembersFilter implements TdObject {
   /// Specifies the kind of chat members to return in searchChatMembers
   ChatMembersFilter();
 

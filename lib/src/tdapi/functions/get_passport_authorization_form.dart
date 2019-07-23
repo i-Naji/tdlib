@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPassportAuthorizationForm extends TLFunction {
+class GetPassportAuthorizationForm extends TdFunction {
   int botUserId;
   String scope;
   String publicKey;

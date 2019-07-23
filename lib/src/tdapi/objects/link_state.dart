@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LinkState implements TLObject {
+class LinkState implements TdObject {
   /// Represents the relationship between user A and user B. For incoming_link, user A is the current user; for outgoing_link, user B is the current user
   LinkState();
 

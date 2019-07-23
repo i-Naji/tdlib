@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddNetworkStatistics extends TLFunction {
+class AddNetworkStatistics extends TdFunction {
   var entry;
   dynamic extra;
 

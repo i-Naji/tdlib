@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendCustomRequest extends TLFunction {
+class SendCustomRequest extends TdFunction {
   String method;
   String parameters;
   dynamic extra;

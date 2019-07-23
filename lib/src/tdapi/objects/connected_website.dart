@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ConnectedWebsite implements TLObject {
+class ConnectedWebsite implements TdObject {
   int id;
   String domainName;
   int botUserId;

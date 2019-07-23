@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NetworkStatisticsEntry implements TLObject {
+class NetworkStatisticsEntry implements TdObject {
   /// Contains statistics about network usage
   NetworkStatisticsEntry();
 

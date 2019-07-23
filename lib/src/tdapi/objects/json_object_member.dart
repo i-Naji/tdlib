@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class JsonObjectMember implements TLObject {
+class JsonObjectMember implements TdObject {
   String key;
   var value;
 

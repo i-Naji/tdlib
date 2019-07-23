@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TerminateSession extends TLFunction {
+class TerminateSession extends TdFunction {
   int sessionId;
   dynamic extra;
 

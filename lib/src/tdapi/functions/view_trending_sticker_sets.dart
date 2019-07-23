@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ViewTrendingStickerSets extends TLFunction {
+class ViewTrendingStickerSets extends TdFunction {
   List<int> stickerSetIds;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ReportSupergroupSpam extends TLFunction {
+class ReportSupergroupSpam extends TdFunction {
   int supergroupId;
   int userId;
   List<int> messageIds;

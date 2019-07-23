@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SearchMessagesFilter implements TLObject {
+class SearchMessagesFilter implements TdObject {
   /// Represents a filter for message search results
   SearchMessagesFilter();
 

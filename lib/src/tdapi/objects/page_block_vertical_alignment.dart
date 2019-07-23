@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockVerticalAlignment implements TLObject {
+class PageBlockVerticalAlignment implements TdObject {
   /// Describes a Vertical alignment of a table cell content
   PageBlockVerticalAlignment();
 

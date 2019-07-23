@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetGameScore extends TLFunction {
+class SetGameScore extends TdFunction {
   int chatId;
   int messageId;
   bool editMessage;

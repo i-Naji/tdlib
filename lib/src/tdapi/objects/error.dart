@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Error implements TLObject {
+class Error implements TdObject {
   int code;
   String message;
   dynamic extra;

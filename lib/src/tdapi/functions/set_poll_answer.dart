@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetPollAnswer extends TLFunction {
+class SetPollAnswer extends TdFunction {
   int chatId;
   int messageId;
   List<int> optionIds;

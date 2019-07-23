@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RichText implements TLObject {
+class RichText implements TdObject {
   /// Describes a text object inside an instant-view web page
   RichText();
 

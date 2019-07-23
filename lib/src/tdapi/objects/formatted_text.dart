@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class FormattedText implements TLObject {
+class FormattedText implements TdObject {
   String text;
   List<TextEntity> entities;
   dynamic extra;

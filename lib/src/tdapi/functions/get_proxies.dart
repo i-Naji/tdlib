@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetProxies extends TLFunction {
+class GetProxies extends TdFunction {
   dynamic extra;
 
   /// Returns list of proxies that are currently set up. Can be called before authorization.

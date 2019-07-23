@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RecoveryEmailAddress implements TLObject {
+class RecoveryEmailAddress implements TdObject {
   String recoveryEmailAddress;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ToggleSupergroupInvites extends TLFunction {
+class ToggleSupergroupInvites extends TdFunction {
   int supergroupId;
   bool anyoneCanInvite;
   dynamic extra;

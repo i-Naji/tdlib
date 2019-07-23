@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveContacts extends TLFunction {
+class RemoveContacts extends TdFunction {
   List<int> userIds;
   dynamic extra;
 

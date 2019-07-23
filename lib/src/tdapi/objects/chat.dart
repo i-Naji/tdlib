@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Chat implements TLObject {
+class Chat implements TdObject {
   int id;
   var type;
   String title;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetPinnedChats extends TLFunction {
+class SetPinnedChats extends TdFunction {
   List<int> chatIds;
   dynamic extra;
 

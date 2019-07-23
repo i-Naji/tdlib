@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class UserProfilePhotos implements TLObject {
+class UserProfilePhotos implements TdObject {
   int totalCount;
   List<UserProfilePhoto> photos;
   dynamic extra;

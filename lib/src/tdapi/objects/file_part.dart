@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class FilePart implements TLObject {
+class FilePart implements TdObject {
   String data;
   dynamic extra;
 

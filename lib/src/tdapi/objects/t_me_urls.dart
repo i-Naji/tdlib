@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TMeUrls implements TLObject {
+class TMeUrls implements TdObject {
   List<TMeUrl> urls;
   dynamic extra;
 

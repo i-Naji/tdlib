@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetTrendingStickerSets extends TLFunction {
+class GetTrendingStickerSets extends TdFunction {
   dynamic extra;
 
   /// Returns a list of trending sticker sets.

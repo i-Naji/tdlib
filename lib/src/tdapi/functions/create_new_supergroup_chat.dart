@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CreateNewSupergroupChat extends TLFunction {
+class CreateNewSupergroupChat extends TdFunction {
   String title;
   bool isChannel;
   String description;

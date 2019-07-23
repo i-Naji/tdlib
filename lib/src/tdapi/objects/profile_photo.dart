@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ProfilePhoto implements TLObject {
+class ProfilePhoto implements TdObject {
   int id;
   File small;
   File big;

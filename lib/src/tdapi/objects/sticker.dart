@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Sticker implements TLObject {
+class Sticker implements TdObject {
   int setId;
   int width;
   int height;

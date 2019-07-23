@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ProcessPushNotification extends TLFunction {
+class ProcessPushNotification extends TdFunction {
   String payload;
   dynamic extra;
 

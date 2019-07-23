@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class DatedFile implements TLObject {
+class DatedFile implements TdObject {
   File file;
   int date;
 

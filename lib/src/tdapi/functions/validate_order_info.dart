@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ValidateOrderInfo extends TLFunction {
+class ValidateOrderInfo extends TdFunction {
   int chatId;
   int messageId;
   OrderInfo orderInfo;

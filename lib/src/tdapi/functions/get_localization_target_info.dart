@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetLocalizationTargetInfo extends TLFunction {
+class GetLocalizationTargetInfo extends TdFunction {
   bool onlyLocal;
   dynamic extra;
 

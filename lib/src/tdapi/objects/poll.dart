@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Poll implements TLObject {
+class Poll implements TdObject {
   int id;
   String question;
   List<PollOption> options;

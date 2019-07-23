@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PaymentReceipt implements TLObject {
+class PaymentReceipt implements TdObject {
   int date;
   int paymentsProviderUserId;
   Invoice invoice;

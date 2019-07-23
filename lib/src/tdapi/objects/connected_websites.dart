@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ConnectedWebsites implements TLObject {
+class ConnectedWebsites implements TdObject {
   List<ConnectedWebsite> websites;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TextEntity implements TLObject {
+class TextEntity implements TdObject {
   int offset;
   int length;
   var type;

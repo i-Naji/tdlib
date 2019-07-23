@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class CallConnection implements TLObject {
+class CallConnection implements TdObject {
   int id;
   String ip;
   String ipv6;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetPublicMessageLink extends TLFunction {
+class GetPublicMessageLink extends TdFunction {
   int chatId;
   int messageId;
   bool forAlbum;

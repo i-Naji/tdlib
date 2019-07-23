@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class BotInfo implements TLObject {
+class BotInfo implements TdObject {
   String description;
   List<BotCommand> commands;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LogVerbosityLevel implements TLObject {
+class LogVerbosityLevel implements TdObject {
   int verbosityLevel;
   dynamic extra;
 

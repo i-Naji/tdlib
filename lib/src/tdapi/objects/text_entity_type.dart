@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TextEntityType implements TLObject {
+class TextEntityType implements TdObject {
   /// Represents a part of the text which must be formatted differently
   TextEntityType();
 

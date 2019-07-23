@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class FoundMessages implements TLObject {
+class FoundMessages implements TdObject {
   List<Message> messages;
   int nextFromSearchId;
   dynamic extra;

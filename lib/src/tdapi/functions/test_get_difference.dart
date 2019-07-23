@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestGetDifference extends TLFunction {
+class TestGetDifference extends TdFunction {
   dynamic extra;
 
   /// Forces an updates.getDifference call to the Telegram servers; for testing only.

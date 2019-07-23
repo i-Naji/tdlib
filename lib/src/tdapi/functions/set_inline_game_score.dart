@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SetInlineGameScore extends TLFunction {
+class SetInlineGameScore extends TdFunction {
   String inlineMessageId;
   bool editMessage;
   int userId;

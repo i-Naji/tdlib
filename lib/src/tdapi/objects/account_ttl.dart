@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AccountTtl implements TLObject {
+class AccountTtl implements TdObject {
   int days;
   dynamic extra;
 

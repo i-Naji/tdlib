@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TestCallVectorInt extends TLFunction {
+class TestCallVectorInt extends TdFunction {
   List<int> x;
   dynamic extra;
 

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ImportedContacts implements TLObject {
+class ImportedContacts implements TdObject {
   List<int> userIds;
   List<int> importerCount;
   dynamic extra;

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class TMeUrl implements TLObject {
+class TMeUrl implements TdObject {
   String url;
   var type;
 

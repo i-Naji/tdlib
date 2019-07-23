@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PersonalDocument implements TLObject {
+class PersonalDocument implements TdObject {
   List<DatedFile> files;
   List<DatedFile> translation;
 

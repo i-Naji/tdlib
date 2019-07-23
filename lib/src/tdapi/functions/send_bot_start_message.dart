@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class SendBotStartMessage extends TLFunction {
+class SendBotStartMessage extends TdFunction {
   int botUserId;
   int chatId;
   String parameter;

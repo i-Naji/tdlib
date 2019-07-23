@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class GetWallpapers extends TLFunction {
+class GetWallpapers extends TdFunction {
   dynamic extra;
 
   /// Returns background wallpapers.

@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddLogMessage extends TLFunction {
+class AddLogMessage extends TdFunction {
   int verbosityLevel;
   String text;
   dynamic extra;

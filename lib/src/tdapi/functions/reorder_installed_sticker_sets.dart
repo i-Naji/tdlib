@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ReorderInstalledStickerSets extends TLFunction {
+class ReorderInstalledStickerSets extends TdFunction {
   bool isMasks;
   List<int> stickerSetIds;
   dynamic extra;

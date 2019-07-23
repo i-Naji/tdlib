@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AuthenticationCodeType implements TLObject {
+class AuthenticationCodeType implements TdObject {
   /// Provides information about the method by which an authentication code is delivered to the user
   AuthenticationCodeType();
 

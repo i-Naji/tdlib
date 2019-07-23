@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class NotificationGroupType implements TLObject {
+class NotificationGroupType implements TdObject {
   /// Describes type of notifications in the group
   NotificationGroupType();
 

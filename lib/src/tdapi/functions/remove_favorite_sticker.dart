@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class RemoveFavoriteSticker extends TLFunction {
+class RemoveFavoriteSticker extends TdFunction {
   var sticker;
   dynamic extra;
 

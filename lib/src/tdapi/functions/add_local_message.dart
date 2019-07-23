@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class AddLocalMessage extends TLFunction {
+class AddLocalMessage extends TdFunction {
   int chatId;
   int senderUserId;
   int replyToMessageId;

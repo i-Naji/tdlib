@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PaymentResult implements TLObject {
+class PaymentResult implements TdObject {
   bool success;
   String verificationUrl;
   dynamic extra;
