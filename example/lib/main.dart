@@ -34,7 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
   /*
   Here we go!
    */
-  TdClient client = TdClient();
   int clientId = 0;
 
   void _clientCreator() async {
@@ -42,13 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
      Here we renew!
    */
     int oldClientId = clientId;
-    int newClientId = await client.createClient();
+    int newClientId = await TdClient.createClient();
     setState(() {
       clientId = newClientId;
     });
     // closing after renewing! just to get NEW client identifier.
     if (oldClientId != 0) {
-      await client.destroyClient(oldClientId);
+      await TdClient.destroyClient(oldClientId);
     }
   }
 
