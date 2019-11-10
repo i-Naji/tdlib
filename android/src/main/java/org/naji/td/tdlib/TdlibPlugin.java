@@ -1,5 +1,6 @@
 package org.naji.td.tdlib;
 
+import org.drinkless.tdlib.JsonClient;
 import android.util.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -19,30 +20,30 @@ public class TdlibPlugin implements MethodCallHandler {
   public void onMethodCall(MethodCall call, Result result) {
     switch (call.method) {
       case "clientReceive": {
-        String res = NativeClient.receive((long) call.argument("client"), (double) call.argument("timeout"));
+        String res = JsonClient.receive((long) call.argument("client"), (double) call.argument("timeout"));
         result.success(res);
         break;
       }
       case "clientSend": {
-        NativeClient.send((long) call.argument("client"), (String) call.argument("query"));
+        JsonClient.send((long) call.argument("client"), (String) call.argument("query"));
         result.success(null);
         break;
       }
       case "clientExecute": {
-        String res = NativeClient.execute((String) call.argument("query"));
+        String res = JsonClient.execute((long) call.argument("client"), (String) call.argument("query"));
         result.success(res);
         break;
       }
       case "clientCreate":
-        result.success((long) NativeClient.create());
+        result.success((long) JsonClient.create());
         break;
       case "clientDestroy": {
-        NativeClient.destroy((long) call.argument("client"));
+        JsonClient.destroy((long) call.argument("client"));
         result.success(null);
         break;
       }
       case "logLevel":
-        NativeClient.setLogVerbosity((int) call.argument("level"));
+        JsonClient.setLogVerbosityLevel((int) call.argument("level"));
         result.success(null);
         break;
       default:
@@ -52,10 +53,10 @@ public class TdlibPlugin implements MethodCallHandler {
   }
   static {
     try {
-      System.loadLibrary("tdjsonjava");
+      System.loadLibrary("tdjson");
       Log.i("TDLib", "TDJson loaded");
     } catch (UnsatisfiedLinkError e) {
-      Log.w("TDLib", "Can't find TDJson", e);
+      Log.w("TDLib", "Can't load TDJson", e);
     }
   }
 }
