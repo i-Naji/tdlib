@@ -1,3 +1,8 @@
+## 1.0.2
+* Update tdlib api to v1.5.1
+* TdClient static methods
+* Rollback _client identifier_ for `clientExecute` method
+
 ## 1.0.1
 * Ignore `NULL` result in TDLib send method (prefer handling by user)
 * Rename file names : tdapi.dart => td_api.dart, client.dart => td_client.dart 
