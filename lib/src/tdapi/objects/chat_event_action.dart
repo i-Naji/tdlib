@@ -7,6 +7,7 @@ class ChatEventAction implements TdObject {
   /// a ChatEventAction return type can be :
   /// * ChatEventMessageEdited
   /// * ChatEventMessageDeleted
+  /// * ChatEventPollStopped
   /// * ChatEventMessagePinned
   /// * ChatEventMessageUnpinned
   /// * ChatEventMemberJoined
@@ -15,6 +16,7 @@ class ChatEventAction implements TdObject {
   /// * ChatEventMemberPromoted
   /// * ChatEventMemberRestricted
   /// * ChatEventTitleChanged
+  /// * ChatEventPermissionsChanged
   /// * ChatEventDescriptionChanged
   /// * ChatEventUsernameChanged
   /// * ChatEventPhotoChanged
@@ -28,6 +30,8 @@ class ChatEventAction implements TdObject {
         return ChatEventMessageEdited.fromJson(json);
       case ChatEventMessageDeleted.CONSTRUCTOR:
         return ChatEventMessageDeleted.fromJson(json);
+      case ChatEventPollStopped.CONSTRUCTOR:
+        return ChatEventPollStopped.fromJson(json);
       case ChatEventMessagePinned.CONSTRUCTOR:
         return ChatEventMessagePinned.fromJson(json);
       case ChatEventMessageUnpinned.CONSTRUCTOR:
@@ -44,6 +48,8 @@ class ChatEventAction implements TdObject {
         return ChatEventMemberRestricted.fromJson(json);
       case ChatEventTitleChanged.CONSTRUCTOR:
         return ChatEventTitleChanged.fromJson(json);
+      case ChatEventPermissionsChanged.CONSTRUCTOR:
+        return ChatEventPermissionsChanged.fromJson(json);
       case ChatEventDescriptionChanged.CONSTRUCTOR:
         return ChatEventDescriptionChanged.fromJson(json);
       case ChatEventUsernameChanged.CONSTRUCTOR:
@@ -124,6 +130,29 @@ class ChatEventMessageDeleted implements ChatEventAction {
   }
 
   static const String CONSTRUCTOR = "chatEventMessageDeleted";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatEventPollStopped implements ChatEventAction {
+  Message message;
+
+  /// A poll in a message was stopped.
+  ///[message] The message with the poll
+  ChatEventPollStopped({this.message});
+
+  /// Parse from a json
+  ChatEventPollStopped.fromJson(Map<String, dynamic> json) {
+    this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
+  }
+
+  static const String CONSTRUCTOR = "chatEventPollStopped";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -338,6 +367,38 @@ class ChatEventTitleChanged implements ChatEventAction {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class ChatEventPermissionsChanged implements ChatEventAction {
+  ChatPermissions oldPermissions;
+  ChatPermissions newPermissions;
+
+  /// The chat permissions was changed.
+  ///[oldPermissions] Previous chat permissions .
+  /// [newPermissions] New chat permissions
+  ChatEventPermissionsChanged({this.oldPermissions, this.newPermissions});
+
+  /// Parse from a json
+  ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json) {
+    this.oldPermissions = ChatPermissions.fromJson(
+        json['old_permissions'] ?? <String, dynamic>{});
+    this.newPermissions = ChatPermissions.fromJson(
+        json['new_permissions'] ?? <String, dynamic>{});
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "old_permissions": this.oldPermissions.toJson(),
+      "new_permissions": this.newPermissions.toJson()
+    };
+  }
+
+  static const String CONSTRUCTOR = "chatEventPermissionsChanged";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class ChatEventDescriptionChanged implements ChatEventAction {
   String oldDescription;
   String newDescription;
@@ -399,8 +460,8 @@ class ChatEventUsernameChanged implements ChatEventAction {
 }
 
 class ChatEventPhotoChanged implements ChatEventAction {
-  ChatPhoto oldPhoto;
-  ChatPhoto newPhoto;
+  Photo oldPhoto;
+  Photo newPhoto;
 
   /// The chat photo was changed.
   ///[oldPhoto] Previous chat photo value; may be null .
@@ -409,10 +470,8 @@ class ChatEventPhotoChanged implements ChatEventAction {
 
   /// Parse from a json
   ChatEventPhotoChanged.fromJson(Map<String, dynamic> json) {
-    this.oldPhoto =
-        ChatPhoto.fromJson(json['old_photo'] ?? <String, dynamic>{});
-    this.newPhoto =
-        ChatPhoto.fromJson(json['new_photo'] ?? <String, dynamic>{});
+    this.oldPhoto = Photo.fromJson(json['old_photo'] ?? <String, dynamic>{});
+    this.newPhoto = Photo.fromJson(json['new_photo'] ?? <String, dynamic>{});
   }
 
   @override
@@ -431,20 +490,20 @@ class ChatEventPhotoChanged implements ChatEventAction {
 }
 
 class ChatEventInvitesToggled implements ChatEventAction {
-  bool anyoneCanInvite;
+  bool canInviteUsers;
 
-  /// The anyone_can_invite setting of a supergroup chat was toggled.
-  ///[anyoneCanInvite] New value of anyone_can_invite
-  ChatEventInvitesToggled({this.anyoneCanInvite});
+  /// The can_invite_users permission of a supergroup chat was toggled.
+  ///[canInviteUsers] New value of can_invite_users permission
+  ChatEventInvitesToggled({this.canInviteUsers});
 
   /// Parse from a json
   ChatEventInvitesToggled.fromJson(Map<String, dynamic> json) {
-    this.anyoneCanInvite = json['anyone_can_invite'];
+    this.canInviteUsers = json['can_invite_users'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "anyone_can_invite": this.anyoneCanInvite};
+    return {"@type": CONSTRUCTOR, "can_invite_users": this.canInviteUsers};
   }
 
   static const String CONSTRUCTOR = "chatEventInvitesToggled";

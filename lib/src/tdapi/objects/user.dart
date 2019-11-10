@@ -13,6 +13,7 @@ class User implements TdObject {
   bool isVerified;
   bool isSupport;
   String restrictionReason;
+  bool isScam;
   bool haveAccess;
   var type;
   String languageCode;
@@ -31,6 +32,7 @@ class User implements TdObject {
   /// [isVerified] True, if the user is verified .
   /// [isSupport] True, if the user is Telegram support account.
   /// [restrictionReason] If non-empty, it contains the reason why access to this user must be restricted. The format of the string is ".
+  /// [isScam] True, if many users reported this user as a scam.
   /// [haveAccess] If false, the user is inaccessible, and the only information known about the user is inside this class. It can't be passed to any method except GetUser .
   /// [type] Type of the user .
   /// [languageCode] IETF language tag of the user's language; only available to bots
@@ -47,6 +49,7 @@ class User implements TdObject {
       this.isVerified,
       this.isSupport,
       this.restrictionReason,
+      this.isScam,
       this.haveAccess,
       this.type,
       this.languageCode});
@@ -68,6 +71,7 @@ class User implements TdObject {
     this.isVerified = json['is_verified'];
     this.isSupport = json['is_support'];
     this.restrictionReason = json['restriction_reason'];
+    this.isScam = json['is_scam'];
     this.haveAccess = json['have_access'];
     this.type = UserType.fromJson(json['type'] ?? <String, dynamic>{});
     this.languageCode = json['language_code'];
@@ -90,6 +94,7 @@ class User implements TdObject {
       "is_verified": this.isVerified,
       "is_support": this.isSupport,
       "restriction_reason": this.restrictionReason,
+      "is_scam": this.isScam,
       "have_access": this.haveAccess,
       "type": this.type.toJson(),
       "language_code": this.languageCode

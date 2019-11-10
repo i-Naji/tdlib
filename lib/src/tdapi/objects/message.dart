@@ -28,7 +28,7 @@ class Message implements TdObject {
 
   /// Describes a message.
   ///[id] Message identifier, unique for the chat to which the message belongs.
-  /// [senderUserId] Identifier of the user who sent the message; 0 if unknown. It is unknown for channel posts.
+  /// [senderUserId] Identifier of the user who sent the message; 0 if unknown. Currently, it is unknown for channel posts and for channel posts automatically forwarded to discussion group.
   /// [chatId] Chat identifier.
   /// [sendingState] Information about the sending state of the message; may be null.
   /// [isOutgoing] True, if the message is outgoing.

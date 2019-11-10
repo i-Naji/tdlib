@@ -8,6 +8,7 @@ class Video implements TdObject {
   String mimeType;
   bool hasStickers;
   bool supportsStreaming;
+  Minithumbnail minithumbnail;
   PhotoSize thumbnail;
   File video;
 
@@ -17,8 +18,9 @@ class Video implements TdObject {
   /// [height] Video height; as defined by the sender.
   /// [fileName] Original name of the file; as defined by the sender .
   /// [mimeType] MIME type of the file; as defined by the sender .
-  /// [hasStickers] True, if stickers were added to the photo.
+  /// [hasStickers] True, if stickers were added to the video.
   /// [supportsStreaming] True, if the video should be tried to be streamed .
+  /// [minithumbnail] Video minithumbnail; may be null .
   /// [thumbnail] Video thumbnail; as defined by the sender; may be null .
   /// [video] File containing the video
   Video(
@@ -29,6 +31,7 @@ class Video implements TdObject {
       this.mimeType,
       this.hasStickers,
       this.supportsStreaming,
+      this.minithumbnail,
       this.thumbnail,
       this.video});
 
@@ -41,6 +44,8 @@ class Video implements TdObject {
     this.mimeType = json['mime_type'];
     this.hasStickers = json['has_stickers'];
     this.supportsStreaming = json['supports_streaming'];
+    this.minithumbnail =
+        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
     this.thumbnail =
         PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.video = File.fromJson(json['video'] ?? <String, dynamic>{});
@@ -57,6 +62,7 @@ class Video implements TdObject {
       "mime_type": this.mimeType,
       "has_stickers": this.hasStickers,
       "supports_streaming": this.supportsStreaming,
+      "minithumbnail": this.minithumbnail.toJson(),
       "thumbnail": this.thumbnail.toJson(),
       "video": this.video.toJson()
     };

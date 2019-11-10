@@ -23,6 +23,7 @@ class PageBlock implements TdObject {
   /// * PageBlockAudio
   /// * PageBlockPhoto
   /// * PageBlockVideo
+  /// * PageBlockVoiceNote
   /// * PageBlockCover
   /// * PageBlockEmbedded
   /// * PageBlockEmbeddedPost
@@ -71,6 +72,8 @@ class PageBlock implements TdObject {
         return PageBlockPhoto.fromJson(json);
       case PageBlockVideo.CONSTRUCTOR:
         return PageBlockVideo.fromJson(json);
+      case PageBlockVoiceNote.CONSTRUCTOR:
+        return PageBlockVoiceNote.fromJson(json);
       case PageBlockCover.CONSTRUCTOR:
         return PageBlockCover.fromJson(json);
       case PageBlockEmbedded.CONSTRUCTOR:
@@ -600,6 +603,38 @@ class PageBlockVideo implements PageBlock {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class PageBlockVoiceNote implements PageBlock {
+  VoiceNote voiceNote;
+  PageBlockCaption caption;
+
+  /// A voice note.
+  ///[voiceNote] Voice note; may be null .
+  /// [caption] Voice note caption
+  PageBlockVoiceNote({this.voiceNote, this.caption});
+
+  /// Parse from a json
+  PageBlockVoiceNote.fromJson(Map<String, dynamic> json) {
+    this.voiceNote =
+        VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
+    this.caption =
+        PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{});
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "voice_note": this.voiceNote.toJson(),
+      "caption": this.caption.toJson()
+    };
+  }
+
+  static const String CONSTRUCTOR = "pageBlockVoiceNote";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class PageBlockCover implements PageBlock {
   var cover;
 
@@ -637,8 +672,8 @@ class PageBlockEmbedded implements PageBlock {
   ///[url] Web page URL, if available .
   /// [html] HTML-markup of the embedded page .
   /// [posterPhoto] Poster photo, if available; may be null .
-  /// [width] Block width, 0 if unknown .
-  /// [height] Block height, 0 if unknown .
+  /// [width] Block width; 0 if unknown .
+  /// [height] Block height; 0 if unknown .
   /// [caption] Block caption .
   /// [isFullWidth] True, if the block should be full width .
   /// [allowScrolling] True, if scrolling should be allowed
@@ -698,7 +733,7 @@ class PageBlockEmbeddedPost implements PageBlock {
   /// An embedded post.
   ///[url] Web page URL .
   /// [author] Post author .
-  /// [authorPhoto] Post author photo .
+  /// [authorPhoto] Post author photo; may be null .
   /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown .
   /// [pageBlocks] Post content .
   /// [caption] Post caption

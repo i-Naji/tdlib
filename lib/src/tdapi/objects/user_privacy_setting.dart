@@ -6,6 +6,8 @@ class UserPrivacySetting implements TdObject {
 
   /// a UserPrivacySetting return type can be :
   /// * UserPrivacySettingShowStatus
+  /// * UserPrivacySettingShowProfilePhoto
+  /// * UserPrivacySettingShowLinkInForwardedMessages
   /// * UserPrivacySettingAllowChatInvites
   /// * UserPrivacySettingAllowCalls
   /// * UserPrivacySettingAllowPeerToPeerCalls
@@ -13,6 +15,10 @@ class UserPrivacySetting implements TdObject {
     switch (json['@type']) {
       case UserPrivacySettingShowStatus.CONSTRUCTOR:
         return UserPrivacySettingShowStatus.fromJson(json);
+      case UserPrivacySettingShowProfilePhoto.CONSTRUCTOR:
+        return UserPrivacySettingShowProfilePhoto.fromJson(json);
+      case UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR:
+        return UserPrivacySettingShowLinkInForwardedMessages.fromJson(json);
       case UserPrivacySettingAllowChatInvites.CONSTRUCTOR:
         return UserPrivacySettingAllowChatInvites.fromJson(json);
       case UserPrivacySettingAllowCalls.CONSTRUCTOR:
@@ -49,6 +55,47 @@ class UserPrivacySettingShowStatus implements UserPrivacySetting {
   }
 
   static const String CONSTRUCTOR = "userPrivacySettingShowStatus";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class UserPrivacySettingShowProfilePhoto implements UserPrivacySetting {
+  /// A privacy setting for managing whether the user's profile photo is visible.
+  ///
+  UserPrivacySettingShowProfilePhoto();
+
+  /// Parse from a json
+  UserPrivacySettingShowProfilePhoto.fromJson(Map<String, dynamic> json);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {"@type": CONSTRUCTOR};
+  }
+
+  static const String CONSTRUCTOR = "userPrivacySettingShowProfilePhoto";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class UserPrivacySettingShowLinkInForwardedMessages
+    implements UserPrivacySetting {
+  /// A privacy setting for managing whether a link to the user's account is included in forwarded messages.
+  ///
+  UserPrivacySettingShowLinkInForwardedMessages();
+
+  /// Parse from a json
+  UserPrivacySettingShowLinkInForwardedMessages.fromJson(
+      Map<String, dynamic> json);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {"@type": CONSTRUCTOR};
+  }
+
+  static const String CONSTRUCTOR =
+      "userPrivacySettingShowLinkInForwardedMessages";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -9,6 +9,7 @@ class AuthorizationState implements TdObject {
   /// * AuthorizationStateWaitEncryptionKey
   /// * AuthorizationStateWaitPhoneNumber
   /// * AuthorizationStateWaitCode
+  /// * AuthorizationStateWaitRegistration
   /// * AuthorizationStateWaitPassword
   /// * AuthorizationStateReady
   /// * AuthorizationStateLoggingOut
@@ -24,6 +25,8 @@ class AuthorizationState implements TdObject {
         return AuthorizationStateWaitPhoneNumber.fromJson(json);
       case AuthorizationStateWaitCode.CONSTRUCTOR:
         return AuthorizationStateWaitCode.fromJson(json);
+      case AuthorizationStateWaitRegistration.CONSTRUCTOR:
+        return AuthorizationStateWaitRegistration.fromJson(json);
       case AuthorizationStateWaitPassword.CONSTRUCTOR:
         return AuthorizationStateWaitPassword.fromJson(json);
       case AuthorizationStateReady.CONSTRUCTOR:
@@ -122,23 +125,15 @@ class AuthorizationStateWaitPhoneNumber implements AuthorizationState {
 }
 
 class AuthorizationStateWaitCode implements AuthorizationState {
-  bool isRegistered;
-  TermsOfService termsOfService;
   AuthenticationCodeInfo codeInfo;
   dynamic extra;
 
-  /// TDLib needs the user's authentication code to finalize authorization.
-  ///[isRegistered] True, if the user is already registered .
-  /// [termsOfService] Telegram terms of service, which should be accepted before user can continue registration; may be null .
-  /// [codeInfo] Information about the authorization code that was sent
-  AuthorizationStateWaitCode(
-      {this.isRegistered, this.termsOfService, this.codeInfo});
+  /// TDLib needs the user's authentication code to authorize.
+  ///[codeInfo] Information about the authorization code that was sent
+  AuthorizationStateWaitCode({this.codeInfo});
 
   /// Parse from a json
   AuthorizationStateWaitCode.fromJson(Map<String, dynamic> json) {
-    this.isRegistered = json['is_registered'];
-    this.termsOfService = TermsOfService.fromJson(
-        json['terms_of_service'] ?? <String, dynamic>{});
     this.codeInfo = AuthenticationCodeInfo.fromJson(
         json['code_info'] ?? <String, dynamic>{});
     this.extra = json['@extra'];
@@ -146,15 +141,39 @@ class AuthorizationStateWaitCode implements AuthorizationState {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      "@type": CONSTRUCTOR,
-      "is_registered": this.isRegistered,
-      "terms_of_service": this.termsOfService.toJson(),
-      "code_info": this.codeInfo.toJson()
-    };
+    return {"@type": CONSTRUCTOR, "code_info": this.codeInfo.toJson()};
   }
 
   static const String CONSTRUCTOR = "authorizationStateWaitCode";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class AuthorizationStateWaitRegistration implements AuthorizationState {
+  TermsOfService termsOfService;
+  dynamic extra;
+
+  /// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration.
+  ///[termsOfService] Telegram terms of service
+  AuthorizationStateWaitRegistration({this.termsOfService});
+
+  /// Parse from a json
+  AuthorizationStateWaitRegistration.fromJson(Map<String, dynamic> json) {
+    this.termsOfService = TermsOfService.fromJson(
+        json['terms_of_service'] ?? <String, dynamic>{});
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "terms_of_service": this.termsOfService.toJson()
+    };
+  }
+
+  static const String CONSTRUCTOR = "authorizationStateWaitRegistration";
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -168,7 +187,7 @@ class AuthorizationStateWaitPassword implements AuthorizationState {
 
   /// The user has been authorized, but needs to enter a password to start using the application.
   ///[passwordHint] Hint for the password; may be empty .
-  /// [hasRecoveryEmailAddress] True if a recovery email address has been set up.
+  /// [hasRecoveryEmailAddress] True, if a recovery email address has been set up.
   /// [recoveryEmailAddressPattern] Pattern of the email address to which the recovery email was sent; empty until a recovery email has been sent
   AuthorizationStateWaitPassword(
       {this.passwordHint,

@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class GetCreatedPublicChats extends TdFunction {
   dynamic extra;
 
-  /// Returns a list of public chats created by the user.
+  /// Returns a list of public chats with username created by the user.
   ///
   GetCreatedPublicChats();
 

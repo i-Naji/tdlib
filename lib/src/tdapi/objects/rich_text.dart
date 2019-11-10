@@ -209,21 +209,29 @@ class RichTextFixed implements RichText {
 class RichTextUrl implements RichText {
   var text;
   String url;
+  bool isCached;
 
   /// A rich text URL link.
   ///[text] Text .
-  /// [url] URL
-  RichTextUrl({this.text, this.url});
+  /// [url] URL .
+  /// [isCached] True, if the URL has cached instant view server-side
+  RichTextUrl({this.text, this.url, this.isCached});
 
   /// Parse from a json
   RichTextUrl.fromJson(Map<String, dynamic> json) {
     this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
     this.url = json['url'];
+    this.isCached = json['is_cached'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "text": this.text.toJson(), "url": this.url};
+    return {
+      "@type": CONSTRUCTOR,
+      "text": this.text.toJson(),
+      "url": this.url,
+      "is_cached": this.isCached
+    };
   }
 
   static const String CONSTRUCTOR = "richTextUrl";
@@ -368,8 +376,8 @@ class RichTextIcon implements RichText {
 
   /// A small image inside the text.
   ///[document] The image represented as a document. The image can be in GIF, JPEG or PNG format.
-  /// [width] Width of a bounding box in which the image should be shown, 0 if unknown.
-  /// [height] Height of a bounding box in which the image should be shown, 0 if unknown
+  /// [width] Width of a bounding box in which the image should be shown; 0 if unknown.
+  /// [height] Height of a bounding box in which the image should be shown; 0 if unknown
   RichTextIcon({this.document, this.width, this.height});
 
   /// Parse from a json

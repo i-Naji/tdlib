@@ -7,7 +7,7 @@ class TermsOfService implements TdObject {
 
   /// Contains Telegram terms of service.
   ///[text] Text of the terms of service .
-  /// [minUserAge] Mininum age of a user to be able to accept the terms; 0 if any .
+  /// [minUserAge] Minimum age of a user to be able to accept the terms; 0 if any .
   /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
   TermsOfService({this.text, this.minUserAge, this.showPopup});
 

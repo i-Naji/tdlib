@@ -4,7 +4,7 @@ class UnpinChatMessage extends TdFunction {
   int chatId;
   dynamic extra;
 
-  /// Removes the pinned message from a chat; requires appropriate administrator rights in the group or channel.
+  /// Removes the pinned message from a chat; requires can_pin_messages rights in the group or channel.
   ///[chatId] Identifier of the chat
   UnpinChatMessage({this.chatId});
 

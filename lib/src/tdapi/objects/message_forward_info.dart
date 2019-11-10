@@ -9,8 +9,8 @@ class MessageForwardInfo implements TdObject {
   /// Contains information about a forwarded message.
   ///[origin] Origin of a forwarded message.
   /// [date] Point in time (Unix timestamp) when the message was originally sent.
-  /// [fromChatId] For messages forwarded to the chat with the current user (saved messages), the identifier of the chat from which the message was forwarded last time; 0 if unknown.
-  /// [fromMessageId] For messages forwarded to the chat with the current user (saved messages), the identifier of the original message from which the new message was forwarded last time; 0 if unknown
+  /// [fromChatId] For messages forwarded to the chat with the current user (saved messages) or to the channel discussion supergroup, the identifier of the chat from which the message was forwarded last time; 0 if unknown.
+  /// [fromMessageId] For messages forwarded to the chat with the current user (saved messages) or to the channel discussion supergroup, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
   MessageForwardInfo(
       {this.origin, this.date, this.fromChatId, this.fromMessageId});
 

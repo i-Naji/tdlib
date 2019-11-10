@@ -2,16 +2,13 @@ part of '../tdapi.dart';
 
 class SetAuthenticationPhoneNumber extends TdFunction {
   String phoneNumber;
-  bool allowFlashCall;
-  bool isCurrentPhoneNumber;
+  PhoneNumberAuthenticationSettings settings;
   dynamic extra;
 
-  /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber.
+  /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitCode or authorizationStateWaitPassword.
   ///[phoneNumber] The phone number of the user, in international format .
-  /// [allowFlashCall] Pass true if the authentication code may be sent via flash call to the specified phone number .
-  /// [isCurrentPhoneNumber] Pass true if the phone number is used on the current device. Ignored if allow_flash_call is false
-  SetAuthenticationPhoneNumber(
-      {this.phoneNumber, this.allowFlashCall, this.isCurrentPhoneNumber});
+  /// [settings] Settings for the authentication of the user's phone number
+  SetAuthenticationPhoneNumber({this.phoneNumber, this.settings});
 
   /// Parse from a json
   SetAuthenticationPhoneNumber.fromJson(Map<String, dynamic> json);
@@ -21,8 +18,7 @@ class SetAuthenticationPhoneNumber extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "phone_number": this.phoneNumber,
-      "allow_flash_call": this.allowFlashCall,
-      "is_current_phone_number": this.isCurrentPhoneNumber,
+      "settings": this.settings.toJson(),
       "@extra": this.extra
     };
   }

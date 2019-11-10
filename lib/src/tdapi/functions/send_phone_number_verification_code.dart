@@ -2,16 +2,13 @@ part of '../tdapi.dart';
 
 class SendPhoneNumberVerificationCode extends TdFunction {
   String phoneNumber;
-  bool allowFlashCall;
-  bool isCurrentPhoneNumber;
+  PhoneNumberAuthenticationSettings settings;
   dynamic extra;
 
   /// Sends a code to verify a phone number to be added to a user's Telegram Passport.
   ///[phoneNumber] The phone number of the user, in international format .
-  /// [allowFlashCall] Pass true if the authentication code may be sent via flash call to the specified phone number .
-  /// [isCurrentPhoneNumber] Pass true if the phone number is used on the current device. Ignored if allow_flash_call is false
-  SendPhoneNumberVerificationCode(
-      {this.phoneNumber, this.allowFlashCall, this.isCurrentPhoneNumber});
+  /// [settings] Settings for the authentication of the user's phone number
+  SendPhoneNumberVerificationCode({this.phoneNumber, this.settings});
 
   /// Parse from a json
   SendPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json);
@@ -21,8 +18,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "phone_number": this.phoneNumber,
-      "allow_flash_call": this.allowFlashCall,
-      "is_current_phone_number": this.isCurrentPhoneNumber,
+      "settings": this.settings.toJson(),
       "@extra": this.extra
     };
   }

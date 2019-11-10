@@ -4,7 +4,7 @@ class GenerateChatInviteLink extends TdFunction {
   int chatId;
   dynamic extra;
 
-  /// Generates a new invite link for a chat; the previously generated link is revoked. Available for basic groups, supergroups, and channels. In basic groups this can be called only by the group's creator; in supergroups and channels this requires appropriate administrator rights.
+  /// Generates a new invite link for a chat; the previously generated link is revoked. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right.
   ///[chatId] Chat identifier
   GenerateChatInviteLink({this.chatId});
 

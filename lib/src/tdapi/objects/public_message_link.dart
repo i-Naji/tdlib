@@ -5,7 +5,7 @@ class PublicMessageLink implements TdObject {
   String html;
   dynamic extra;
 
-  /// Contains a public HTTPS link to a message in a public supergroup or channel.
+  /// Contains a public HTTPS link to a message in a public supergroup or channel with a username.
   ///[link] Message link .
   /// [html] HTML-code for embedding the message
   PublicMessageLink({this.link, this.html});

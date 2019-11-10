@@ -38,12 +38,15 @@ part 'objects/chat_action.dart';
 part 'objects/user_status.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_state.dart';
+part 'objects/call_problem.dart';
 part 'objects/input_inline_query_result.dart';
 part 'objects/inline_query_result.dart';
 part 'objects/callback_query_payload.dart';
 part 'objects/chat_event_action.dart';
 part 'objects/language_pack_string_value.dart';
 part 'objects/device_token.dart';
+part 'objects/background_type.dart';
+part 'objects/input_background.dart';
 part 'objects/check_chat_username_result.dart';
 part 'objects/push_message_content.dart';
 part 'objects/notification_type.dart';
@@ -79,6 +82,7 @@ part 'objects/local_file.dart';
 part 'objects/remote_file.dart';
 part 'objects/file.dart';
 part 'objects/photo_size.dart';
+part 'objects/minithumbnail.dart';
 part 'objects/mask_position.dart';
 part 'objects/poll_option.dart';
 part 'objects/animation.dart';
@@ -103,6 +107,7 @@ part 'objects/user_full_info.dart';
 part 'objects/user_profile_photo.dart';
 part 'objects/user_profile_photos.dart';
 part 'objects/users.dart';
+part 'objects/chat_permissions.dart';
 part 'objects/chat_member.dart';
 part 'objects/chat_members.dart';
 part 'objects/basic_group.dart';
@@ -158,7 +163,7 @@ part 'objects/encrypted_passport_element.dart';
 part 'objects/input_passport_element_error.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/stickers.dart';
-part 'objects/sticker_emojis.dart';
+part 'objects/emojis.dart';
 part 'objects/sticker_set.dart';
 part 'objects/sticker_set_info.dart';
 part 'objects/sticker_sets.dart';
@@ -166,6 +171,7 @@ part 'objects/call_protocol.dart';
 part 'objects/call_connection.dart';
 part 'objects/call_id.dart';
 part 'objects/call.dart';
+part 'objects/phone_number_authentication_settings.dart';
 part 'objects/animations.dart';
 part 'objects/imported_contacts.dart';
 part 'objects/http_url.dart';
@@ -174,6 +180,8 @@ part 'objects/callback_query_answer.dart';
 part 'objects/custom_request_result.dart';
 part 'objects/game_high_score.dart';
 part 'objects/game_high_scores.dart';
+part 'objects/ton_lite_server_response.dart';
+part 'objects/ton_wallet_password_salt.dart';
 part 'objects/chat_event.dart';
 part 'objects/chat_events.dart';
 part 'objects/chat_event_log_filters.dart';
@@ -182,8 +190,8 @@ part 'objects/language_pack_strings.dart';
 part 'objects/language_pack_info.dart';
 part 'objects/localization_target_info.dart';
 part 'objects/push_receiver_id.dart';
-part 'objects/wallpaper.dart';
-part 'objects/wallpapers.dart';
+part 'objects/background.dart';
+part 'objects/backgrounds.dart';
 part 'objects/hashtags.dart';
 part 'objects/notification.dart';
 part 'objects/notification_group.dart';
@@ -196,6 +204,7 @@ part 'objects/connected_website.dart';
 part 'objects/connected_websites.dart';
 part 'objects/chat_report_spam_state.dart';
 part 'objects/public_message_link.dart';
+part 'objects/message_link_info.dart';
 part 'objects/file_part.dart';
 part 'objects/storage_statistics_by_file_type.dart';
 part 'objects/storage_statistics_by_chat.dart';
@@ -203,6 +212,8 @@ part 'objects/storage_statistics.dart';
 part 'objects/storage_statistics_fast.dart';
 part 'objects/database_statistics.dart';
 part 'objects/network_statistics.dart';
+part 'objects/auto_download_settings.dart';
+part 'objects/auto_download_settings_presets.dart';
 part 'objects/t_me_url.dart';
 part 'objects/t_me_urls.dart';
 part 'objects/count.dart';
@@ -228,6 +239,7 @@ part 'functions/check_database_encryption_key.dart';
 part 'functions/set_authentication_phone_number.dart';
 part 'functions/resend_authentication_code.dart';
 part 'functions/check_authentication_code.dart';
+part 'functions/register_user.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/request_authentication_password_recovery.dart';
 part 'functions/recover_authentication_password.dart';
@@ -290,11 +302,13 @@ part 'functions/remove_notification.dart';
 part 'functions/remove_notification_group.dart';
 part 'functions/get_public_message_link.dart';
 part 'functions/get_message_link.dart';
+part 'functions/get_message_link_info.dart';
 part 'functions/send_message.dart';
 part 'functions/send_message_album.dart';
 part 'functions/send_bot_start_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/forward_messages.dart';
+part 'functions/resend_messages.dart';
 part 'functions/send_chat_set_ttl_message.dart';
 part 'functions/send_chat_screenshot_taken_notification.dart';
 part 'functions/add_local_message.dart';
@@ -347,12 +361,14 @@ part 'functions/create_new_secret_chat.dart';
 part 'functions/upgrade_basic_group_chat_to_supergroup_chat.dart';
 part 'functions/set_chat_title.dart';
 part 'functions/set_chat_photo.dart';
+part 'functions/set_chat_permissions.dart';
 part 'functions/set_chat_draft_message.dart';
 part 'functions/set_chat_notification_settings.dart';
 part 'functions/toggle_chat_is_pinned.dart';
 part 'functions/toggle_chat_is_marked_as_unread.dart';
 part 'functions/toggle_chat_default_disable_notification.dart';
 part 'functions/set_chat_client_data.dart';
+part 'functions/set_chat_description.dart';
 part 'functions/pin_chat_message.dart';
 part 'functions/unpin_chat_message.dart';
 part 'functions/join_chat.dart';
@@ -419,6 +435,8 @@ part 'functions/get_favorite_stickers.dart';
 part 'functions/add_favorite_sticker.dart';
 part 'functions/remove_favorite_sticker.dart';
 part 'functions/get_sticker_emojis.dart';
+part 'functions/search_emojis.dart';
+part 'functions/get_emoji_suggestions_url.dart';
 part 'functions/get_saved_animations.dart';
 part 'functions/add_saved_animation.dart';
 part 'functions/remove_saved_animation.dart';
@@ -441,13 +459,10 @@ part 'functions/terminate_all_other_sessions.dart';
 part 'functions/get_connected_websites.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/disconnect_all_websites.dart';
-part 'functions/toggle_basic_group_administrators.dart';
 part 'functions/set_supergroup_username.dart';
 part 'functions/set_supergroup_sticker_set.dart';
-part 'functions/toggle_supergroup_invites.dart';
 part 'functions/toggle_supergroup_sign_messages.dart';
 part 'functions/toggle_supergroup_is_all_history_available.dart';
-part 'functions/set_supergroup_description.dart';
 part 'functions/report_supergroup_spam.dart';
 part 'functions/get_supergroup_members.dart';
 part 'functions/delete_supergroup.dart';
@@ -461,7 +476,12 @@ part 'functions/get_saved_order_info.dart';
 part 'functions/delete_saved_order_info.dart';
 part 'functions/delete_saved_credentials.dart';
 part 'functions/get_support_user.dart';
-part 'functions/get_wallpapers.dart';
+part 'functions/get_backgrounds.dart';
+part 'functions/get_background_url.dart';
+part 'functions/search_background.dart';
+part 'functions/set_background.dart';
+part 'functions/remove_background.dart';
+part 'functions/reset_backgrounds.dart';
 part 'functions/get_localization_target_info.dart';
 part 'functions/get_language_pack_info.dart';
 part 'functions/get_language_pack_strings.dart';
@@ -494,6 +514,8 @@ part 'functions/set_network_type.dart';
 part 'functions/get_network_statistics.dart';
 part 'functions/add_network_statistics.dart';
 part 'functions/reset_network_statistics.dart';
+part 'functions/get_auto_download_settings_presets.dart';
+part 'functions/set_auto_download_settings.dart';
 part 'functions/get_passport_element.dart';
 part 'functions/get_all_passport_elements.dart';
 part 'functions/set_passport_element.dart';
@@ -522,6 +544,8 @@ part 'functions/get_map_thumbnail_file.dart';
 part 'functions/accept_terms_of_service.dart';
 part 'functions/send_custom_request.dart';
 part 'functions/answer_custom_query.dart';
+part 'functions/send_ton_lite_server_request.dart';
+part 'functions/get_ton_wallet_password_salt.dart';
 part 'functions/set_alarm.dart';
 part 'functions/get_country_code.dart';
 part 'functions/get_invite_text.dart';
@@ -553,9 +577,10 @@ part 'functions/test_call_vector_string.dart';
 part 'functions/test_call_vector_string_object.dart';
 part 'functions/test_square_int.dart';
 part 'functions/test_network.dart';
+part 'functions/test_proxy.dart';
 part 'functions/test_get_difference.dart';
 part 'functions/test_use_update.dart';
-part 'functions/test_use_error.dart';
+part 'functions/test_return_error.dart';
 
 Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'error': (d) => Error.fromJson(d),
@@ -581,6 +606,8 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'authorizationStateWaitPhoneNumber': (d) =>
       AuthorizationStateWaitPhoneNumber.fromJson(d),
   'authorizationStateWaitCode': (d) => AuthorizationStateWaitCode.fromJson(d),
+  'authorizationStateWaitRegistration': (d) =>
+      AuthorizationStateWaitRegistration.fromJson(d),
   'authorizationStateWaitPassword': (d) =>
       AuthorizationStateWaitPassword.fromJson(d),
   'authorizationStateReady': (d) => AuthorizationStateReady.fromJson(d),
@@ -599,6 +626,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'inputFileLocal': (d) => InputFileLocal.fromJson(d),
   'inputFileGenerated': (d) => InputFileGenerated.fromJson(d),
   'photoSize': (d) => PhotoSize.fromJson(d),
+  'minithumbnail': (d) => Minithumbnail.fromJson(d),
   'maskPointForehead': (d) => MaskPointForehead.fromJson(d),
   'maskPointEyes': (d) => MaskPointEyes.fromJson(d),
   'maskPointMouth': (d) => MaskPointMouth.fromJson(d),
@@ -634,6 +662,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'userProfilePhoto': (d) => UserProfilePhoto.fromJson(d),
   'userProfilePhotos': (d) => UserProfilePhotos.fromJson(d),
   'users': (d) => Users.fromJson(d),
+  'chatPermissions': (d) => ChatPermissions.fromJson(d),
   'chatMemberStatusCreator': (d) => ChatMemberStatusCreator.fromJson(d),
   'chatMemberStatusAdministrator': (d) =>
       ChatMemberStatusAdministrator.fromJson(d),
@@ -643,6 +672,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatMemberStatusBanned': (d) => ChatMemberStatusBanned.fromJson(d),
   'chatMember': (d) => ChatMember.fromJson(d),
   'chatMembers': (d) => ChatMembers.fromJson(d),
+  'chatMembersFilterContacts': (d) => ChatMembersFilterContacts.fromJson(d),
   'chatMembersFilterAdministrators': (d) =>
       ChatMembersFilterAdministrators.fromJson(d),
   'chatMembersFilterMembers': (d) => ChatMembersFilterMembers.fromJson(d),
@@ -651,6 +681,8 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatMembersFilterBots': (d) => ChatMembersFilterBots.fromJson(d),
   'supergroupMembersFilterRecent': (d) =>
       SupergroupMembersFilterRecent.fromJson(d),
+  'supergroupMembersFilterContacts': (d) =>
+      SupergroupMembersFilterContacts.fromJson(d),
   'supergroupMembersFilterAdministrators': (d) =>
       SupergroupMembersFilterAdministrators.fromJson(d),
   'supergroupMembersFilterSearch': (d) =>
@@ -702,6 +734,8 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
       KeyboardButtonTypeRequestLocation.fromJson(d),
   'keyboardButton': (d) => KeyboardButton.fromJson(d),
   'inlineKeyboardButtonTypeUrl': (d) => InlineKeyboardButtonTypeUrl.fromJson(d),
+  'inlineKeyboardButtonTypeLoginUrl': (d) =>
+      InlineKeyboardButtonTypeLoginUrl.fromJson(d),
   'inlineKeyboardButtonTypeCallback': (d) =>
       InlineKeyboardButtonTypeCallback.fromJson(d),
   'inlineKeyboardButtonTypeCallbackGame': (d) =>
@@ -763,6 +797,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'pageBlockAudio': (d) => PageBlockAudio.fromJson(d),
   'pageBlockPhoto': (d) => PageBlockPhoto.fromJson(d),
   'pageBlockVideo': (d) => PageBlockVideo.fromJson(d),
+  'pageBlockVoiceNote': (d) => PageBlockVoiceNote.fromJson(d),
   'pageBlockCover': (d) => PageBlockCover.fromJson(d),
   'pageBlockEmbedded': (d) => PageBlockEmbedded.fromJson(d),
   'pageBlockEmbeddedPost': (d) => PageBlockEmbeddedPost.fromJson(d),
@@ -1031,7 +1066,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'userStatusLastWeek': (d) => UserStatusLastWeek.fromJson(d),
   'userStatusLastMonth': (d) => UserStatusLastMonth.fromJson(d),
   'stickers': (d) => Stickers.fromJson(d),
-  'stickerEmojis': (d) => StickerEmojis.fromJson(d),
+  'emojis': (d) => Emojis.fromJson(d),
   'stickerSet': (d) => StickerSet.fromJson(d),
   'stickerSetInfo': (d) => StickerSetInfo.fromJson(d),
   'stickerSets': (d) => StickerSets.fromJson(d),
@@ -1050,7 +1085,16 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'callStateHangingUp': (d) => CallStateHangingUp.fromJson(d),
   'callStateDiscarded': (d) => CallStateDiscarded.fromJson(d),
   'callStateError': (d) => CallStateError.fromJson(d),
+  'callProblemEcho': (d) => CallProblemEcho.fromJson(d),
+  'callProblemNoise': (d) => CallProblemNoise.fromJson(d),
+  'callProblemInterruptions': (d) => CallProblemInterruptions.fromJson(d),
+  'callProblemDistortedSpeech': (d) => CallProblemDistortedSpeech.fromJson(d),
+  'callProblemSilentLocal': (d) => CallProblemSilentLocal.fromJson(d),
+  'callProblemSilentRemote': (d) => CallProblemSilentRemote.fromJson(d),
+  'callProblemDropped': (d) => CallProblemDropped.fromJson(d),
   'call': (d) => Call.fromJson(d),
+  'phoneNumberAuthenticationSettings': (d) =>
+      PhoneNumberAuthenticationSettings.fromJson(d),
   'animations': (d) => Animations.fromJson(d),
   'importedContacts': (d) => ImportedContacts.fromJson(d),
   'httpUrl': (d) => HttpUrl.fromJson(d),
@@ -1094,8 +1138,11 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'customRequestResult': (d) => CustomRequestResult.fromJson(d),
   'gameHighScore': (d) => GameHighScore.fromJson(d),
   'gameHighScores': (d) => GameHighScores.fromJson(d),
+  'tonLiteServerResponse': (d) => TonLiteServerResponse.fromJson(d),
+  'tonWalletPasswordSalt': (d) => TonWalletPasswordSalt.fromJson(d),
   'chatEventMessageEdited': (d) => ChatEventMessageEdited.fromJson(d),
   'chatEventMessageDeleted': (d) => ChatEventMessageDeleted.fromJson(d),
+  'chatEventPollStopped': (d) => ChatEventPollStopped.fromJson(d),
   'chatEventMessagePinned': (d) => ChatEventMessagePinned.fromJson(d),
   'chatEventMessageUnpinned': (d) => ChatEventMessageUnpinned.fromJson(d),
   'chatEventMemberJoined': (d) => ChatEventMemberJoined.fromJson(d),
@@ -1104,6 +1151,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatEventMemberPromoted': (d) => ChatEventMemberPromoted.fromJson(d),
   'chatEventMemberRestricted': (d) => ChatEventMemberRestricted.fromJson(d),
   'chatEventTitleChanged': (d) => ChatEventTitleChanged.fromJson(d),
+  'chatEventPermissionsChanged': (d) => ChatEventPermissionsChanged.fromJson(d),
   'chatEventDescriptionChanged': (d) => ChatEventDescriptionChanged.fromJson(d),
   'chatEventUsernameChanged': (d) => ChatEventUsernameChanged.fromJson(d),
   'chatEventPhotoChanged': (d) => ChatEventPhotoChanged.fromJson(d),
@@ -1140,8 +1188,13 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'deviceTokenBlackBerryPush': (d) => DeviceTokenBlackBerryPush.fromJson(d),
   'deviceTokenTizenPush': (d) => DeviceTokenTizenPush.fromJson(d),
   'pushReceiverId': (d) => PushReceiverId.fromJson(d),
-  'wallpaper': (d) => Wallpaper.fromJson(d),
-  'wallpapers': (d) => Wallpapers.fromJson(d),
+  'backgroundTypeWallpaper': (d) => BackgroundTypeWallpaper.fromJson(d),
+  'backgroundTypePattern': (d) => BackgroundTypePattern.fromJson(d),
+  'backgroundTypeSolid': (d) => BackgroundTypeSolid.fromJson(d),
+  'background': (d) => Background.fromJson(d),
+  'backgrounds': (d) => Backgrounds.fromJson(d),
+  'inputBackgroundLocal': (d) => InputBackgroundLocal.fromJson(d),
+  'inputBackgroundRemote': (d) => InputBackgroundRemote.fromJson(d),
   'hashtags': (d) => Hashtags.fromJson(d),
   'checkChatUsernameResultOk': (d) => CheckChatUsernameResultOk.fromJson(d),
   'checkChatUsernameResultUsernameInvalid': (d) =>
@@ -1229,6 +1282,10 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'userPrivacySettingRules': (d) => UserPrivacySettingRules.fromJson(d),
   'userPrivacySettingShowStatus': (d) =>
       UserPrivacySettingShowStatus.fromJson(d),
+  'userPrivacySettingShowProfilePhoto': (d) =>
+      UserPrivacySettingShowProfilePhoto.fromJson(d),
+  'userPrivacySettingShowLinkInForwardedMessages': (d) =>
+      UserPrivacySettingShowLinkInForwardedMessages.fromJson(d),
   'userPrivacySettingAllowChatInvites': (d) =>
       UserPrivacySettingAllowChatInvites.fromJson(d),
   'userPrivacySettingAllowCalls': (d) =>
@@ -1248,6 +1305,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatReportReasonCopyright': (d) => ChatReportReasonCopyright.fromJson(d),
   'chatReportReasonCustom': (d) => ChatReportReasonCustom.fromJson(d),
   'publicMessageLink': (d) => PublicMessageLink.fromJson(d),
+  'messageLinkInfo': (d) => MessageLinkInfo.fromJson(d),
   'filePart': (d) => FilePart.fromJson(d),
   'fileTypeNone': (d) => FileTypeNone.fromJson(d),
   'fileTypeAnimation': (d) => FileTypeAnimation.fromJson(d),
@@ -1278,6 +1336,8 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'networkStatisticsEntryFile': (d) => NetworkStatisticsEntryFile.fromJson(d),
   'networkStatisticsEntryCall': (d) => NetworkStatisticsEntryCall.fromJson(d),
   'networkStatistics': (d) => NetworkStatistics.fromJson(d),
+  'autoDownloadSettings': (d) => AutoDownloadSettings.fromJson(d),
+  'autoDownloadSettingsPresets': (d) => AutoDownloadSettingsPresets.fromJson(d),
   'connectionStateWaitingForNetwork': (d) =>
       ConnectionStateWaitingForNetwork.fromJson(d),
   'connectionStateConnectingToProxy': (d) =>
@@ -1323,6 +1383,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'updateNewChat': (d) => UpdateNewChat.fromJson(d),
   'updateChatTitle': (d) => UpdateChatTitle.fromJson(d),
   'updateChatPhoto': (d) => UpdateChatPhoto.fromJson(d),
+  'updateChatPermissions': (d) => UpdateChatPermissions.fromJson(d),
   'updateChatLastMessage': (d) => UpdateChatLastMessage.fromJson(d),
   'updateChatOrder': (d) => UpdateChatOrder.fromJson(d),
   'updateChatIsPinned': (d) => UpdateChatIsPinned.fromJson(d),
@@ -1372,6 +1433,7 @@ Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'updateRecentStickers': (d) => UpdateRecentStickers.fromJson(d),
   'updateFavoriteStickers': (d) => UpdateFavoriteStickers.fromJson(d),
   'updateSavedAnimations': (d) => UpdateSavedAnimations.fromJson(d),
+  'updateSelectedBackground': (d) => UpdateSelectedBackground.fromJson(d),
   'updateLanguagePackStrings': (d) => UpdateLanguagePackStrings.fromJson(d),
   'updateConnectionState': (d) => UpdateConnectionState.fromJson(d),
   'updateTermsOfService': (d) => UpdateTermsOfService.fromJson(d),

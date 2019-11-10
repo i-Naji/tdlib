@@ -6,7 +6,7 @@ class PinChatMessage extends TdFunction {
   bool disableNotification;
   dynamic extra;
 
-  /// Pins a message in a chat; requires appropriate administrator rights in the group or channel.
+  /// Pins a message in a chat; requires can_pin_messages rights.
   ///[chatId] Identifier of the chat .
   /// [messageId] Identifier of the new pinned message .
   /// [disableNotification] True, if there should be no notification about the pinned message

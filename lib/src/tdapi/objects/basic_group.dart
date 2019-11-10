@@ -4,7 +4,6 @@ class BasicGroup implements TdObject {
   int id;
   int memberCount;
   var status;
-  bool everyoneIsAdministrator;
   bool isActive;
   int upgradedToSupergroupId;
   dynamic extra;
@@ -13,14 +12,12 @@ class BasicGroup implements TdObject {
   ///[id] Group identifier.
   /// [memberCount] Number of members in the group.
   /// [status] Status of the current user in the group.
-  /// [everyoneIsAdministrator] True, if all members have been granted administrator rights in the group.
   /// [isActive] True, if the group is active.
   /// [upgradedToSupergroupId] Identifier of the supergroup to which this group was upgraded; 0 if none
   BasicGroup(
       {this.id,
       this.memberCount,
       this.status,
-      this.everyoneIsAdministrator,
       this.isActive,
       this.upgradedToSupergroupId});
 
@@ -30,7 +27,6 @@ class BasicGroup implements TdObject {
     this.memberCount = json['member_count'];
     this.status =
         ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
-    this.everyoneIsAdministrator = json['everyone_is_administrator'];
     this.isActive = json['is_active'];
     this.upgradedToSupergroupId = json['upgraded_to_supergroup_id'];
     this.extra = json['@extra'];
@@ -43,7 +39,6 @@ class BasicGroup implements TdObject {
       "id": this.id,
       "member_count": this.memberCount,
       "status": this.status.toJson(),
-      "everyone_is_administrator": this.everyoneIsAdministrator,
       "is_active": this.isActive,
       "upgraded_to_supergroup_id": this.upgradedToSupergroupId
     };

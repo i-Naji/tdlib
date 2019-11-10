@@ -5,6 +5,7 @@ class Sticker implements TdObject {
   int width;
   int height;
   String emoji;
+  bool isAnimated;
   bool isMask;
   MaskPosition maskPosition;
   PhotoSize thumbnail;
@@ -15,6 +16,7 @@ class Sticker implements TdObject {
   /// [width] Sticker width; as defined by the sender .
   /// [height] Sticker height; as defined by the sender.
   /// [emoji] Emoji corresponding to the sticker .
+  /// [isAnimated] True, if the sticker is an animated sticker in TGS format .
   /// [isMask] True, if the sticker is a mask .
   /// [maskPosition] Position where the mask should be placed; may be null .
   /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null .
@@ -24,6 +26,7 @@ class Sticker implements TdObject {
       this.width,
       this.height,
       this.emoji,
+      this.isAnimated,
       this.isMask,
       this.maskPosition,
       this.thumbnail,
@@ -35,6 +38,7 @@ class Sticker implements TdObject {
     this.width = json['width'];
     this.height = json['height'];
     this.emoji = json['emoji'];
+    this.isAnimated = json['is_animated'];
     this.isMask = json['is_mask'];
     this.maskPosition =
         MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{});
@@ -51,6 +55,7 @@ class Sticker implements TdObject {
       "width": this.width,
       "height": this.height,
       "emoji": this.emoji,
+      "is_animated": this.isAnimated,
       "is_mask": this.isMask,
       "mask_position": this.maskPosition.toJson(),
       "thumbnail": this.thumbnail.toJson(),

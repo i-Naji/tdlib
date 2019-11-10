@@ -84,7 +84,7 @@ class ChatMemberStatusAdministrator implements ChatMemberStatus {
   /// [canInviteUsers] True, if the administrator can invite new users to the chat.
   /// [canRestrictMembers] True, if the administrator can restrict, ban, or unban chat members.
   /// [canPinMessages] True, if the administrator can pin messages; applicable to groups only.
-  /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of his own privileges or demote administrators that were directly or indirectly promoted by him
+  /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by him
   ChatMemberStatusAdministrator(
       {this.canBeEdited,
       this.canChangeInfo,
@@ -153,34 +153,21 @@ class ChatMemberStatusMember implements ChatMemberStatus {
 class ChatMemberStatusRestricted implements ChatMemberStatus {
   bool isMember;
   int restrictedUntilDate;
-  bool canSendMessages;
-  bool canSendMediaMessages;
-  bool canSendOtherMessages;
-  bool canAddWebPagePreviews;
+  ChatPermissions permissions;
 
   /// The user is under certain restrictions in the chat. Not supported in basic groups and channels.
   ///[isMember] True, if the user is a member of the chat.
   /// [restrictedUntilDate] Point in time (Unix timestamp) when restrictions will be lifted from the user; 0 if never. If the user is restricted for more than 366 days or for less than 30 seconds from the current time, the user is considered to be restricted forever.
-  /// [canSendMessages] True, if the user can send text messages, contacts, locations, and venues.
-  /// [canSendMediaMessages] True, if the user can send audio files, documents, photos, videos, video notes, and voice notes. Implies can_send_messages permissions.
-  /// [canSendOtherMessages] True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_media_messages permissions.
-  /// [canAddWebPagePreviews] True, if the user may add a web page preview to his messages. Implies can_send_messages permissions
+  /// [permissions] User permissions in the chat
   ChatMemberStatusRestricted(
-      {this.isMember,
-      this.restrictedUntilDate,
-      this.canSendMessages,
-      this.canSendMediaMessages,
-      this.canSendOtherMessages,
-      this.canAddWebPagePreviews});
+      {this.isMember, this.restrictedUntilDate, this.permissions});
 
   /// Parse from a json
   ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json) {
     this.isMember = json['is_member'];
     this.restrictedUntilDate = json['restricted_until_date'];
-    this.canSendMessages = json['can_send_messages'];
-    this.canSendMediaMessages = json['can_send_media_messages'];
-    this.canSendOtherMessages = json['can_send_other_messages'];
-    this.canAddWebPagePreviews = json['can_add_web_page_previews'];
+    this.permissions =
+        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
   }
 
   @override
@@ -189,10 +176,7 @@ class ChatMemberStatusRestricted implements ChatMemberStatus {
       "@type": CONSTRUCTOR,
       "is_member": this.isMember,
       "restricted_until_date": this.restrictedUntilDate,
-      "can_send_messages": this.canSendMessages,
-      "can_send_media_messages": this.canSendMediaMessages,
-      "can_send_other_messages": this.canSendOtherMessages,
-      "can_add_web_page_previews": this.canAddWebPagePreviews
+      "permissions": this.permissions.toJson()
     };
   }
 

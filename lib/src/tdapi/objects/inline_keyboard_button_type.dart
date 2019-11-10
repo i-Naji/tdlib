@@ -6,6 +6,7 @@ class InlineKeyboardButtonType implements TdObject {
 
   /// a InlineKeyboardButtonType return type can be :
   /// * InlineKeyboardButtonTypeUrl
+  /// * InlineKeyboardButtonTypeLoginUrl
   /// * InlineKeyboardButtonTypeCallback
   /// * InlineKeyboardButtonTypeCallbackGame
   /// * InlineKeyboardButtonTypeSwitchInline
@@ -14,6 +15,8 @@ class InlineKeyboardButtonType implements TdObject {
     switch (json['@type']) {
       case InlineKeyboardButtonTypeUrl.CONSTRUCTOR:
         return InlineKeyboardButtonTypeUrl.fromJson(json);
+      case InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR:
+        return InlineKeyboardButtonTypeLoginUrl.fromJson(json);
       case InlineKeyboardButtonTypeCallback.CONSTRUCTOR:
         return InlineKeyboardButtonTypeCallback.fromJson(json);
       case InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR:
@@ -56,6 +59,40 @@ class InlineKeyboardButtonTypeUrl implements InlineKeyboardButtonType {
   }
 
   static const String CONSTRUCTOR = "inlineKeyboardButtonTypeUrl";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class InlineKeyboardButtonTypeLoginUrl implements InlineKeyboardButtonType {
+  String url;
+  int id;
+  String forwardText;
+
+  /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that.
+  ///[url] HTTP URL to open .
+  /// [id] Unique button identifier .
+  /// [forwardText] If non-empty, new text of the button in forwarded messages
+  InlineKeyboardButtonTypeLoginUrl({this.url, this.id, this.forwardText});
+
+  /// Parse from a json
+  InlineKeyboardButtonTypeLoginUrl.fromJson(Map<String, dynamic> json) {
+    this.url = json['url'];
+    this.id = json['id'];
+    this.forwardText = json['forward_text'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "url": this.url,
+      "id": this.id,
+      "forward_text": this.forwardText
+    };
+  }
+
+  static const String CONSTRUCTOR = "inlineKeyboardButtonTypeLoginUrl";
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -18,6 +18,7 @@ class Update implements TdObject {
   /// * UpdateNewChat
   /// * UpdateChatTitle
   /// * UpdateChatPhoto
+  /// * UpdateChatPermissions
   /// * UpdateChatLastMessage
   /// * UpdateChatOrder
   /// * UpdateChatIsPinned
@@ -61,6 +62,7 @@ class Update implements TdObject {
   /// * UpdateRecentStickers
   /// * UpdateFavoriteStickers
   /// * UpdateSavedAnimations
+  /// * UpdateSelectedBackground
   /// * UpdateLanguagePackStrings
   /// * UpdateConnectionState
   /// * UpdateTermsOfService
@@ -101,6 +103,8 @@ class Update implements TdObject {
         return UpdateChatTitle.fromJson(json);
       case UpdateChatPhoto.CONSTRUCTOR:
         return UpdateChatPhoto.fromJson(json);
+      case UpdateChatPermissions.CONSTRUCTOR:
+        return UpdateChatPermissions.fromJson(json);
       case UpdateChatLastMessage.CONSTRUCTOR:
         return UpdateChatLastMessage.fromJson(json);
       case UpdateChatOrder.CONSTRUCTOR:
@@ -187,6 +191,8 @@ class Update implements TdObject {
         return UpdateFavoriteStickers.fromJson(json);
       case UpdateSavedAnimations.CONSTRUCTOR:
         return UpdateSavedAnimations.fromJson(json);
+      case UpdateSelectedBackground.CONSTRUCTOR:
+        return UpdateSelectedBackground.fromJson(json);
       case UpdateLanguagePackStrings.CONSTRUCTOR:
         return UpdateLanguagePackStrings.fromJson(json);
       case UpdateConnectionState.CONSTRUCTOR:
@@ -353,7 +359,7 @@ class UpdateMessageSendFailed implements Update {
   dynamic extra;
 
   /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update.
-  ///[message] Contains information about the message that failed to send .
+  ///[message] Contains information about the message which failed to send .
   /// [oldMessageId] The previous temporary message identifier .
   /// [errorCode] An error code .
   /// [errorMessage] Error message
@@ -655,13 +661,46 @@ class UpdateChatPhoto implements Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class UpdateChatPermissions implements Update {
+  int chatId;
+  ChatPermissions permissions;
+  dynamic extra;
+
+  /// Chat permissions was changed.
+  ///[chatId] Chat identifier .
+  /// [permissions] The new chat permissions
+  UpdateChatPermissions({this.chatId, this.permissions});
+
+  /// Parse from a json
+  UpdateChatPermissions.fromJson(Map<String, dynamic> json) {
+    this.chatId = json['chat_id'];
+    this.permissions =
+        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "permissions": this.permissions.toJson()
+    };
+  }
+
+  static const String CONSTRUCTOR = "updateChatPermissions";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class UpdateChatLastMessage implements Update {
   int chatId;
   Message lastMessage;
   int order;
   dynamic extra;
 
-  /// The last message of a chat was changed. If last_message is null then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.
+  /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.
   ///[chatId] Chat identifier .
   /// [lastMessage] The new last message in the chat; may be null .
   /// [order] New value of the chat order
@@ -2064,6 +2103,39 @@ class UpdateSavedAnimations implements Update {
   }
 
   static const String CONSTRUCTOR = "updateSavedAnimations";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class UpdateSelectedBackground implements Update {
+  bool forDarkTheme;
+  Background background;
+  dynamic extra;
+
+  /// The selected background has changed.
+  ///[forDarkTheme] True, if background for dark theme has changed .
+  /// [background] The new selected background; may be null
+  UpdateSelectedBackground({this.forDarkTheme, this.background});
+
+  /// Parse from a json
+  UpdateSelectedBackground.fromJson(Map<String, dynamic> json) {
+    this.forDarkTheme = json['for_dark_theme'];
+    this.background =
+        Background.fromJson(json['background'] ?? <String, dynamic>{});
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "for_dark_theme": this.forDarkTheme,
+      "background": this.background.toJson()
+    };
+  }
+
+  static const String CONSTRUCTOR = "updateSelectedBackground";
 
   @override
   String getConstructor() => CONSTRUCTOR;

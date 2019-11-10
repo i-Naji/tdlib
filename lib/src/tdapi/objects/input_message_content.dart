@@ -718,18 +718,29 @@ class InputMessageForwarded implements InputMessageContent {
   int fromChatId;
   int messageId;
   bool inGameShare;
+  bool sendCopy;
+  bool removeCaption;
 
   /// A forwarded message.
   ///[fromChatId] Identifier for the chat this forwarded message came from .
-  /// [messageId] Identifier of the message to forward .
-  /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages
-  InputMessageForwarded({this.fromChatId, this.messageId, this.inGameShare});
+  /// [messageId] Identifier of the message to forward.
+  /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages.
+  /// [sendCopy] True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat.
+  /// [removeCaption] True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
+  InputMessageForwarded(
+      {this.fromChatId,
+      this.messageId,
+      this.inGameShare,
+      this.sendCopy,
+      this.removeCaption});
 
   /// Parse from a json
   InputMessageForwarded.fromJson(Map<String, dynamic> json) {
     this.fromChatId = json['from_chat_id'];
     this.messageId = json['message_id'];
     this.inGameShare = json['in_game_share'];
+    this.sendCopy = json['send_copy'];
+    this.removeCaption = json['remove_caption'];
   }
 
   @override
@@ -738,7 +749,9 @@ class InputMessageForwarded implements InputMessageContent {
       "@type": CONSTRUCTOR,
       "from_chat_id": this.fromChatId,
       "message_id": this.messageId,
-      "in_game_share": this.inGameShare
+      "in_game_share": this.inGameShare,
+      "send_copy": this.sendCopy,
+      "remove_caption": this.removeCaption
     };
   }
 

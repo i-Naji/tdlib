@@ -9,7 +9,7 @@ class SendBotStartMessage extends TdFunction {
   /// Invites a bot to a chat (if it is not yet a member) and sends it the.
   ///[botUserId] Identifier of the bot .
   /// [chatId] Identifier of the target chat .
-  /// [parameter] A hidden parameter sent to the bot for deep linking purposes (https://api.telegram.org/bots#deep-linking)
+  /// [parameter] A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking)
   SendBotStartMessage({this.botUserId, this.chatId, this.parameter});
 
   /// Parse from a json

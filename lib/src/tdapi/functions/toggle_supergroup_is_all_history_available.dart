@@ -5,7 +5,7 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   bool isAllHistoryAvailable;
   dynamic extra;
 
-  /// Toggles whether the message history of a supergroup is available to new members; requires appropriate administrator rights in the supergroup..
+  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info rights.
   ///[supergroupId] The identifier of the supergroup .
   /// [isAllHistoryAvailable] The new value of is_all_history_available
   ToggleSupergroupIsAllHistoryAvailable(

@@ -17,7 +17,7 @@ class ChatInviteLinkInfo implements TdObject {
   /// [photo] Chat photo; may be null.
   /// [memberCount] Number of members.
   /// [memberUserIds] User identifiers of some chat members that may be known to the current user.
-  /// [isPublic] True, if the chat is a public supergroup or channel with a username
+  /// [isPublic] True, if the chat is a public supergroup or a channel with a username
   ChatInviteLinkInfo(
       {this.chatId,
       this.type,

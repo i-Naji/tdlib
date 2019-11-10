@@ -4,7 +4,7 @@ class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   int chatId;
   dynamic extra;
 
-  /// Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom. Deactivates the original basic group.
+  /// Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges. Deactivates the original basic group.
   ///[chatId] Identifier of the chat to upgrade
   UpgradeBasicGroupChatToSupergroupChat({this.chatId});
 

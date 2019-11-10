@@ -129,7 +129,7 @@ class PushMessageContentAnimation implements PushMessageContent {
   String caption;
   bool isPinned;
 
-  /// An animation message (GIF-style).
+  /// An animation message (GIF-style)..
   ///[animation] Message content; may be null .
   /// [caption] Animation caption .
   /// [isPinned] True, if the message is a pinned message with the specified content

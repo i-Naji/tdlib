@@ -58,7 +58,7 @@ class MessageForwardOriginUser implements MessageForwardOrigin {
 class MessageForwardOriginHiddenUser implements MessageForwardOrigin {
   String senderName;
 
-  /// The message was originally written by a user, which is hidden by his privacy settings.
+  /// The message was originally written by a user, which is hidden by their privacy settings.
   ///[senderName] Name of the sender
   MessageForwardOriginHiddenUser({this.senderName});
 

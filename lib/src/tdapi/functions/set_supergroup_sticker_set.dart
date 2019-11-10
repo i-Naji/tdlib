@@ -5,7 +5,7 @@ class SetSupergroupStickerSet extends TdFunction {
   int stickerSetId;
   dynamic extra;
 
-  /// Changes the sticker set of a supergroup; requires appropriate rights in the supergroup.
+  /// Changes the sticker set of a supergroup; requires can_change_info rights.
   ///[supergroupId] Identifier of the supergroup .
   /// [stickerSetId] New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set
   SetSupergroupStickerSet({this.supergroupId, this.stickerSetId});

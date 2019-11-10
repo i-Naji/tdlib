@@ -6,7 +6,7 @@ class GetChatStatisticsUrl extends TdFunction {
   bool isDark;
   dynamic extra;
 
-  /// Returns URL with the chat statistics. Currently this method can be used only for channels.
+  /// Returns an HTTP URL with the chat statistics. Currently this method can be used only for channels.
   ///[chatId] Chat identifier .
   /// [parameters] Parameters from "tg://statsrefresh?params=******" link .
   /// [isDark] Pass true if a URL with the dark theme must be returned

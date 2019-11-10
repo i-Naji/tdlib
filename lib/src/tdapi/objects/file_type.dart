@@ -357,7 +357,7 @@ class FileTypeVoiceNote implements FileType {
 }
 
 class FileTypeWallpaper implements FileType {
-  /// The file is a wallpaper.
+  /// The file is a wallpaper or a background pattern.
   ///
   FileTypeWallpaper();
 

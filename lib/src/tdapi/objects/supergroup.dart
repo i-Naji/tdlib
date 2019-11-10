@@ -6,11 +6,11 @@ class Supergroup implements TdObject {
   int date;
   var status;
   int memberCount;
-  bool anyoneCanInvite;
   bool signMessages;
   bool isChannel;
   bool isVerified;
   String restrictionReason;
+  bool isScam;
   dynamic extra;
 
   /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup.
@@ -19,22 +19,22 @@ class Supergroup implements TdObject {
   /// [date] Point in time (Unix timestamp) when the current user joined, or the point in time when the supergroup or channel was created, in case the user is not a member.
   /// [status] Status of the current user in the supergroup or channel.
   /// [memberCount] Member count; 0 if unknown. Currently it is guaranteed to be known only if the supergroup or channel was found through SearchPublicChats.
-  /// [anyoneCanInvite] True, if any member of the supergroup can invite other members. This field has no meaning for channels.
   /// [signMessages] True, if messages sent to the channel should contain information about the sender. This field is only applicable to channels.
   /// [isChannel] True, if the supergroup is a channel.
   /// [isVerified] True, if the supergroup or channel is verified.
-  /// [restrictionReason] If non-empty, contains the reason why access to this supergroup or channel must be restricted. Format of the string is "
+  /// [restrictionReason] If non-empty, contains the reason why access to this supergroup or channel must be restricted. Format of the string is ".
+  /// [isScam] True, if many users reported this supergroup as a scam
   Supergroup(
       {this.id,
       this.username,
       this.date,
       this.status,
       this.memberCount,
-      this.anyoneCanInvite,
       this.signMessages,
       this.isChannel,
       this.isVerified,
-      this.restrictionReason});
+      this.restrictionReason,
+      this.isScam});
 
   /// Parse from a json
   Supergroup.fromJson(Map<String, dynamic> json) {
@@ -44,11 +44,11 @@ class Supergroup implements TdObject {
     this.status =
         ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
     this.memberCount = json['member_count'];
-    this.anyoneCanInvite = json['anyone_can_invite'];
     this.signMessages = json['sign_messages'];
     this.isChannel = json['is_channel'];
     this.isVerified = json['is_verified'];
     this.restrictionReason = json['restriction_reason'];
+    this.isScam = json['is_scam'];
     this.extra = json['@extra'];
   }
 
@@ -61,11 +61,11 @@ class Supergroup implements TdObject {
       "date": this.date,
       "status": this.status.toJson(),
       "member_count": this.memberCount,
-      "anyone_can_invite": this.anyoneCanInvite,
       "sign_messages": this.signMessages,
       "is_channel": this.isChannel,
       "is_verified": this.isVerified,
-      "restriction_reason": this.restrictionReason
+      "restriction_reason": this.restrictionReason,
+      "is_scam": this.isScam
     };
   }
 

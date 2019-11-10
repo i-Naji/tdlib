@@ -5,8 +5,8 @@ class ChatPhoto implements TdObject {
   File big;
 
   /// Describes the photo of a chat.
-  ///[small] A small (160x160) chat photo .
-  /// [big] A big (640x640) chat photo
+  ///[small] A small (160x160) chat photo. The file can be downloaded only before the photo is changed .
+  /// [big] A big (640x640) chat photo. The file can be downloaded only before the photo is changed
   ChatPhoto({this.small, this.big});
 
   /// Parse from a json

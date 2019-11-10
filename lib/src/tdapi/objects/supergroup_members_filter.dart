@@ -6,6 +6,7 @@ class SupergroupMembersFilter implements TdObject {
 
   /// a SupergroupMembersFilter return type can be :
   /// * SupergroupMembersFilterRecent
+  /// * SupergroupMembersFilterContacts
   /// * SupergroupMembersFilterAdministrators
   /// * SupergroupMembersFilterSearch
   /// * SupergroupMembersFilterRestricted
@@ -15,6 +16,8 @@ class SupergroupMembersFilter implements TdObject {
     switch (json['@type']) {
       case SupergroupMembersFilterRecent.CONSTRUCTOR:
         return SupergroupMembersFilterRecent.fromJson(json);
+      case SupergroupMembersFilterContacts.CONSTRUCTOR:
+        return SupergroupMembersFilterContacts.fromJson(json);
       case SupergroupMembersFilterAdministrators.CONSTRUCTOR:
         return SupergroupMembersFilterAdministrators.fromJson(json);
       case SupergroupMembersFilterSearch.CONSTRUCTOR:
@@ -55,6 +58,29 @@ class SupergroupMembersFilterRecent implements SupergroupMembersFilter {
   }
 
   static const String CONSTRUCTOR = "supergroupMembersFilterRecent";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class SupergroupMembersFilterContacts implements SupergroupMembersFilter {
+  String query;
+
+  /// Returns contacts of the user, which are members of the supergroup or channel.
+  ///[query] Query to search for
+  SupergroupMembersFilterContacts({this.query});
+
+  /// Parse from a json
+  SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json) {
+    this.query = json['query'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {"@type": CONSTRUCTOR, "query": this.query};
+  }
+
+  static const String CONSTRUCTOR = "supergroupMembersFilterContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

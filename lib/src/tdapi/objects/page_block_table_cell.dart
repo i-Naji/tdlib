@@ -9,7 +9,7 @@ class PageBlockTableCell implements TdObject {
   var valign;
 
   /// Represents a cell of a table.
-  ///[text] Cell text .
+  ///[text] Cell text; may be null. If the text is null, then the cell should be invisible .
   /// [isHeader] True, if it is a header cell.
   /// [colspan] The number of columns the cell should span .
   /// [rowspan] The number of rows the cell should span.

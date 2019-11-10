@@ -645,10 +645,10 @@ class InputInlineQueryResultSticker implements InputInlineQueryResult {
   var replyMarkup;
   var inputMessageContent;
 
-  /// Represents a link to a WEBP sticker.
+  /// Represents a link to a WEBP or a TGS sticker.
   ///[id] Unique identifier of the query result .
   /// [thumbnailUrl] URL of the sticker thumbnail, if it exists.
-  /// [stickerUrl] The URL of the WEBP sticker (sticker file size must not exceed 5MB) .
+  /// [stickerUrl] The URL of the WEBP or a TGS sticker (sticker file size must not exceed 5MB) .
   /// [stickerWidth] Width of the sticker .
   /// [stickerHeight] Height of the sticker.
   /// [replyMarkup] The message reply markup. Must be of type replyMarkupInlineKeyboard or null.

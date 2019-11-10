@@ -5,7 +5,7 @@ class ToggleSupergroupSignMessages extends TdFunction {
   bool signMessages;
   dynamic extra;
 
-  /// Toggles sender signatures messages sent in a channel; requires appropriate administrator rights in the channel..
+  /// Toggles sender signatures messages sent in a channel; requires can_change_info rights.
   ///[supergroupId] Identifier of the channel .
   /// [signMessages] New value of sign_messages
   ToggleSupergroupSignMessages({this.supergroupId, this.signMessages});

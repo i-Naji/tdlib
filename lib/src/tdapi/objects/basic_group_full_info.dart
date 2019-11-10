@@ -1,19 +1,23 @@
 part of '../tdapi.dart';
 
 class BasicGroupFullInfo implements TdObject {
+  String description;
   int creatorUserId;
   List<ChatMember> members;
   String inviteLink;
   dynamic extra;
 
   /// Contains full information about a basic group.
-  ///[creatorUserId] User identifier of the creator of the group; 0 if unknown .
+  ///[paramDescription] Group description .
+  /// [creatorUserId] User identifier of the creator of the group; 0 if unknown .
   /// [members] Group members .
   /// [inviteLink] Invite link for this group; available only for the group creator and only after it has been generated at least once
-  BasicGroupFullInfo({this.creatorUserId, this.members, this.inviteLink});
+  BasicGroupFullInfo(
+      {this.description, this.creatorUserId, this.members, this.inviteLink});
 
   /// Parse from a json
   BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
+    this.description = json['description'];
     this.creatorUserId = json['creator_user_id'];
     this.members = List<ChatMember>.from((json['members'] ?? [])
         .map((listValue) => ChatMember.fromJson(listValue))
@@ -26,6 +30,7 @@ class BasicGroupFullInfo implements TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
+      "description": this.description,
       "creator_user_id": this.creatorUserId,
       "members": this.members.map((listItem) => listItem.toJson()).toList(),
       "invite_link": this.inviteLink

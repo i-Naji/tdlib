@@ -61,7 +61,7 @@ class InputFileId implements InputFile {
 class InputFileRemote implements InputFile {
   String id;
 
-  /// A file defined by its remote ID.
+  /// A file defined by its remote ID. The remote ID is guaranteed to work only if it was received after TDLib launch and the corresponding file is still accessible to the user.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If a file database is disabled, then the corresponding object with the file must be preloaded by the client.
   ///[id] Remote file identifier
   InputFileRemote({this.id});
 

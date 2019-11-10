@@ -5,6 +5,7 @@ class Chat implements TdObject {
   var type;
   String title;
   ChatPhoto photo;
+  ChatPermissions permissions;
   Message lastMessage;
   int order;
   bool isPinned;
@@ -30,6 +31,7 @@ class Chat implements TdObject {
   /// [type] Type of the chat.
   /// [title] Chat title.
   /// [photo] Chat photo; may be null.
+  /// [permissions] Actions that non-administrator chat members are allowed to take in the chat.
   /// [lastMessage] Last message in the chat; may be null.
   /// [order] Descending parameter by which chats are sorted in the main chat list. If the order number of two chats is the same, they must be sorted in descending order by ID. If 0, the position of the chat in the list is undetermined.
   /// [isPinned] True, if the chat is pinned.
@@ -53,6 +55,7 @@ class Chat implements TdObject {
       this.type,
       this.title,
       this.photo,
+      this.permissions,
       this.lastMessage,
       this.order,
       this.isPinned,
@@ -78,6 +81,8 @@ class Chat implements TdObject {
     this.type = ChatType.fromJson(json['type'] ?? <String, dynamic>{});
     this.title = json['title'];
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
+    this.permissions =
+        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
     this.lastMessage =
         Message.fromJson(json['last_message'] ?? <String, dynamic>{});
     this.order = json['order'];
@@ -110,6 +115,7 @@ class Chat implements TdObject {
       "type": this.type.toJson(),
       "title": this.title,
       "photo": this.photo.toJson(),
+      "permissions": this.permissions.toJson(),
       "last_message": this.lastMessage.toJson(),
       "order": this.order,
       "is_pinned": this.isPinned,

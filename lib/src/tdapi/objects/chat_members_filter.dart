@@ -5,6 +5,7 @@ class ChatMembersFilter implements TdObject {
   ChatMembersFilter();
 
   /// a ChatMembersFilter return type can be :
+  /// * ChatMembersFilterContacts
   /// * ChatMembersFilterAdministrators
   /// * ChatMembersFilterMembers
   /// * ChatMembersFilterRestricted
@@ -12,6 +13,8 @@ class ChatMembersFilter implements TdObject {
   /// * ChatMembersFilterBots
   factory ChatMembersFilter.fromJson(Map<String, dynamic> json) {
     switch (json['@type']) {
+      case ChatMembersFilterContacts.CONSTRUCTOR:
+        return ChatMembersFilterContacts.fromJson(json);
       case ChatMembersFilterAdministrators.CONSTRUCTOR:
         return ChatMembersFilterAdministrators.fromJson(json);
       case ChatMembersFilterMembers.CONSTRUCTOR:
@@ -33,6 +36,25 @@ class ChatMembersFilter implements TdObject {
   }
 
   static const String CONSTRUCTOR = "chatMembersFilter";
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatMembersFilterContacts implements ChatMembersFilter {
+  /// Returns contacts of the user.
+  ///
+  ChatMembersFilterContacts();
+
+  /// Parse from a json
+  ChatMembersFilterContacts.fromJson(Map<String, dynamic> json);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {"@type": CONSTRUCTOR};
+  }
+
+  static const String CONSTRUCTOR = "chatMembersFilterContacts";
 
   @override
   String getConstructor() => CONSTRUCTOR;

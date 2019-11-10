@@ -49,16 +49,36 @@ class MessageSendingStatePending implements MessageSendingState {
 }
 
 class MessageSendingStateFailed implements MessageSendingState {
+  int errorCode;
+  String errorMessage;
+  bool canRetry;
+  double retryAfter;
+
   /// The message failed to be sent.
-  ///
-  MessageSendingStateFailed();
+  ///[errorCode] An error code; 0 if unknown .
+  /// [errorMessage] Error message.
+  /// [canRetry] True, if the message can be re-sent .
+  /// [retryAfter] Time left before the message can be re-sent, in seconds. No update is sent when this field changes
+  MessageSendingStateFailed(
+      {this.errorCode, this.errorMessage, this.canRetry, this.retryAfter});
 
   /// Parse from a json
-  MessageSendingStateFailed.fromJson(Map<String, dynamic> json);
+  MessageSendingStateFailed.fromJson(Map<String, dynamic> json) {
+    this.errorCode = json['error_code'];
+    this.errorMessage = json['error_message'];
+    this.canRetry = json['can_retry'];
+    this.retryAfter = json['retry_after'];
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+      "error_code": this.errorCode,
+      "error_message": this.errorMessage,
+      "can_retry": this.canRetry,
+      "retry_after": this.retryAfter
+    };
   }
 
   static const String CONSTRUCTOR = "messageSendingStateFailed";

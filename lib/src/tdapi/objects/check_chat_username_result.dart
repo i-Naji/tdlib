@@ -113,7 +113,7 @@ class CheckChatUsernameResultPublicChatsTooMuch
     implements CheckChatUsernameResult {
   dynamic extra;
 
-  /// The user has too much public chats, one of them should be made private first.
+  /// The user has too much chats with username, one of them should be made private first.
   ///
   CheckChatUsernameResultPublicChatsTooMuch();
 
