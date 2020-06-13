@@ -1,3 +1,8 @@
+## 1.0.4
+* Update tdlib api to v1.6.6
+* Remove ``setLogVerbosityLevel`` method.
+* Add [Generator Script](\generator) that generates _tdapi_
+
 ## 1.0.2
 * Update tdlib api to v1.5.1
 * TdClient static methods
