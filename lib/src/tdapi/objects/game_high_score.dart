@@ -1,18 +1,20 @@
 part of '../tdapi.dart';
 
-class GameHighScore implements TdObject {
+class GameHighScore extends TdObject {
   int position;
   int userId;
   int score;
 
-  /// Contains one row of the game high score table.
-  ///[position] Position in the high score table .
-  /// [userId] User identifier .
+  /// Contains one row of the game high score table. 
+  /// [position] Position in the high score table . 
+  /// [userId] User identifier . 
   /// [score] User score
-  GameHighScore({this.position, this.userId, this.score});
+  GameHighScore({this.position,
+    this.userId,
+    this.score});
 
   /// Parse from a json
-  GameHighScore.fromJson(Map<String, dynamic> json) {
+  GameHighScore.fromJson(Map<String, dynamic> json)  {
     this.position = json['position'];
     this.userId = json['user_id'];
     this.score = json['score'];
@@ -24,12 +26,9 @@ class GameHighScore implements TdObject {
       "@type": CONSTRUCTOR,
       "position": this.position,
       "user_id": this.userId,
-      "score": this.score
+      "score": this.score,
     };
   }
 
-  static const String CONSTRUCTOR = "gameHighScore";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'gameHighScore';
 }

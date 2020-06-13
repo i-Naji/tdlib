@@ -1,26 +1,26 @@
 part of '../tdapi.dart';
 
-class TestString implements TdObject {
+class TestString extends TdObject {
   String value;
   dynamic extra;
 
-  /// A simple object containing a string; for testing only.
-  ///[value] String
+  /// A simple object containing a string; for testing only. 
+  /// [value] String
   TestString({this.value});
 
   /// Parse from a json
-  TestString.fromJson(Map<String, dynamic> json) {
+  TestString.fromJson(Map<String, dynamic> json)  {
     this.value = json['value'];
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "value": this.value};
+    return {
+      "@type": CONSTRUCTOR,
+      "value": this.value,
+    };
   }
 
-  static const String CONSTRUCTOR = "testString";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'testString';
 }

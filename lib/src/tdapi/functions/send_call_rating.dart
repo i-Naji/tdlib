@@ -4,18 +4,21 @@ class SendCallRating extends TdFunction {
   int callId;
   int rating;
   String comment;
-  List problems;
+  List<List<CallProblem>> problems;
   dynamic extra;
 
-  /// Sends a call rating.
-  ///[callId] Call identifier .
-  /// [rating] Call rating; 1-5 .
-  /// [comment] An optional user comment if the rating is less than 5 .
+  /// Sends a call rating. 
+  /// [callId] Call identifier . 
+  /// [rating] Call rating; 1-5 . 
+  /// [comment] An optional user comment if the rating is less than 5 . 
   /// [problems] List of the exact types of problems with the call, specified by the user
-  SendCallRating({this.callId, this.rating, this.comment, this.problems});
+  SendCallRating({this.callId,
+    this.rating,
+    this.comment,
+    this.problems});
 
   /// Parse from a json
-  SendCallRating.fromJson(Map<String, dynamic> json);
+  SendCallRating.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,13 +27,10 @@ class SendCallRating extends TdFunction {
       "call_id": this.callId,
       "rating": this.rating,
       "comment": this.comment,
-      "problems": this.problems.map((listItem) => listItem.toJson()).toList(),
-      "@extra": this.extra
+      "problems": this.problems.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "sendCallRating";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'sendCallRating';
 }

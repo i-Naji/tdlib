@@ -42,10 +42,6 @@ public class TdlibPlugin implements MethodCallHandler {
         result.success(null);
         break;
       }
-      case "logLevel":
-        JsonClient.setLogVerbosityLevel((int) call.argument("level"));
-        result.success(null);
-        break;
       default:
         result.notImplemented();
         break;

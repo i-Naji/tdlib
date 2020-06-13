@@ -1,20 +1,19 @@
 part of '../tdapi.dart';
 
-class BotInfo implements TdObject {
+class BotInfo extends TdObject {
   String description;
-  List<BotCommand> commands;
+  List<List<BotCommand>> commands;
 
-  /// Provides information about a bot and its supported commands.
-  ///[paramDescription] Long description shown on the user info page .
+  /// Provides information about a bot and its supported commands. 
+  /// [description] Long description shown on the user info page . 
   /// [commands] A list of commands supported by the bot
-  BotInfo({this.description, this.commands});
+  BotInfo({this.description,
+    this.commands});
 
   /// Parse from a json
-  BotInfo.fromJson(Map<String, dynamic> json) {
+  BotInfo.fromJson(Map<String, dynamic> json)  {
     this.description = json['description'];
-    this.commands = List<BotCommand>.from((json['commands'] ?? [])
-        .map((listValue) => BotCommand.fromJson(listValue))
-        .toList());
+    this.commands = List<List<BotCommand>>.from((json['commands'] ?? []).map((item) => List<BotCommand>.from((item ?? []).map((innerItem) => BotCommand.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
   }
 
   @override
@@ -22,12 +21,9 @@ class BotInfo implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "description": this.description,
-      "commands": this.commands.map((listItem) => listItem.toJson()).toList()
+      "commands": this.commands.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "botInfo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'botInfo';
 }

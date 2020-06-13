@@ -5,13 +5,14 @@ class GetPaymentReceipt extends TdFunction {
   int messageId;
   dynamic extra;
 
-  /// Returns information about a successful payment.
-  ///[chatId] Chat identifier of the PaymentSuccessful message .
+  /// Returns information about a successful payment. 
+  /// [chatId] Chat identifier of the PaymentSuccessful message . 
   /// [messageId] Message identifier
-  GetPaymentReceipt({this.chatId, this.messageId});
+  GetPaymentReceipt({this.chatId,
+    this.messageId});
 
   /// Parse from a json
-  GetPaymentReceipt.fromJson(Map<String, dynamic> json);
+  GetPaymentReceipt.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class GetPaymentReceipt extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getPaymentReceipt";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getPaymentReceipt';
 }

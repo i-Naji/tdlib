@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class SearchMessagesFilter implements TdObject {
+class SearchMessagesFilter extends TdObject {
+  
+
   /// Represents a filter for message search results
   SearchMessagesFilter();
 
@@ -21,8 +23,9 @@ class SearchMessagesFilter implements TdObject {
   /// * SearchMessagesFilterVoiceAndVideoNote
   /// * SearchMessagesFilterMention
   /// * SearchMessagesFilterUnreadMention
-  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  /// * SearchMessagesFilterFailedToSend
+  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case SearchMessagesFilterEmpty.CONSTRUCTOR:
         return SearchMessagesFilterEmpty.fromJson(json);
       case SearchMessagesFilterAnimation.CONSTRUCTOR:
@@ -55,6 +58,8 @@ class SearchMessagesFilter implements TdObject {
         return SearchMessagesFilterMention.fromJson(json);
       case SearchMessagesFilterUnreadMention.CONSTRUCTOR:
         return SearchMessagesFilterUnreadMention.fromJson(json);
+      case SearchMessagesFilterFailedToSend.CONSTRUCTOR:
+        return SearchMessagesFilterFailedToSend.fromJson(json);
       default:
         return null;
     }
@@ -62,315 +67,333 @@ class SearchMessagesFilter implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilter";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilter';
 }
 
-class SearchMessagesFilterEmpty implements SearchMessagesFilter {
-  /// Returns all found messages, no filter is applied.
-  ///
+class SearchMessagesFilterEmpty extends SearchMessagesFilter {
+  
+
+  /// Returns all found messages, no filter is applied
   SearchMessagesFilterEmpty();
 
   /// Parse from a json
-  SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterEmpty";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterEmpty';
 }
 
-class SearchMessagesFilterAnimation implements SearchMessagesFilter {
-  /// Returns only animation messages.
-  ///
+class SearchMessagesFilterAnimation extends SearchMessagesFilter {
+  
+
+  /// Returns only animation messages
   SearchMessagesFilterAnimation();
 
   /// Parse from a json
-  SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterAnimation";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterAnimation';
 }
 
-class SearchMessagesFilterAudio implements SearchMessagesFilter {
-  /// Returns only audio messages.
-  ///
+class SearchMessagesFilterAudio extends SearchMessagesFilter {
+  
+
+  /// Returns only audio messages
   SearchMessagesFilterAudio();
 
   /// Parse from a json
-  SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterAudio";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterAudio';
 }
 
-class SearchMessagesFilterDocument implements SearchMessagesFilter {
-  /// Returns only document messages.
-  ///
+class SearchMessagesFilterDocument extends SearchMessagesFilter {
+  
+
+  /// Returns only document messages
   SearchMessagesFilterDocument();
 
   /// Parse from a json
-  SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterDocument";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterDocument';
 }
 
-class SearchMessagesFilterPhoto implements SearchMessagesFilter {
-  /// Returns only photo messages.
-  ///
+class SearchMessagesFilterPhoto extends SearchMessagesFilter {
+  
+
+  /// Returns only photo messages
   SearchMessagesFilterPhoto();
 
   /// Parse from a json
-  SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterPhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterPhoto';
 }
 
-class SearchMessagesFilterVideo implements SearchMessagesFilter {
-  /// Returns only video messages.
-  ///
+class SearchMessagesFilterVideo extends SearchMessagesFilter {
+  
+
+  /// Returns only video messages
   SearchMessagesFilterVideo();
 
   /// Parse from a json
-  SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterVideo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterVideo';
 }
 
-class SearchMessagesFilterVoiceNote implements SearchMessagesFilter {
-  /// Returns only voice note messages.
-  ///
+class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
+  
+
+  /// Returns only voice note messages
   SearchMessagesFilterVoiceNote();
 
   /// Parse from a json
-  SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterVoiceNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterVoiceNote';
 }
 
-class SearchMessagesFilterPhotoAndVideo implements SearchMessagesFilter {
-  /// Returns only photo and video messages.
-  ///
+class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
+  
+
+  /// Returns only photo and video messages
   SearchMessagesFilterPhotoAndVideo();
 
   /// Parse from a json
-  SearchMessagesFilterPhotoAndVideo.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterPhotoAndVideo.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterPhotoAndVideo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterPhotoAndVideo';
 }
 
-class SearchMessagesFilterUrl implements SearchMessagesFilter {
-  /// Returns only messages containing URLs.
-  ///
+class SearchMessagesFilterUrl extends SearchMessagesFilter {
+  
+
+  /// Returns only messages containing URLs
   SearchMessagesFilterUrl();
 
   /// Parse from a json
-  SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterUrl";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterUrl';
 }
 
-class SearchMessagesFilterChatPhoto implements SearchMessagesFilter {
-  /// Returns only messages containing chat photos.
-  ///
+class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
+  
+
+  /// Returns only messages containing chat photos
   SearchMessagesFilterChatPhoto();
 
   /// Parse from a json
-  SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterChatPhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterChatPhoto';
 }
 
-class SearchMessagesFilterCall implements SearchMessagesFilter {
-  /// Returns only call messages.
-  ///
+class SearchMessagesFilterCall extends SearchMessagesFilter {
+  
+
+  /// Returns only call messages
   SearchMessagesFilterCall();
 
   /// Parse from a json
-  SearchMessagesFilterCall.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterCall.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterCall';
 }
 
-class SearchMessagesFilterMissedCall implements SearchMessagesFilter {
-  /// Returns only incoming call messages with missed.
-  ///
+class SearchMessagesFilterMissedCall extends SearchMessagesFilter {
+  
+
+  /// Returns only incoming call messages with missed/declined discard reasons
   SearchMessagesFilterMissedCall();
 
   /// Parse from a json
-  SearchMessagesFilterMissedCall.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterMissedCall.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterMissedCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterMissedCall';
 }
 
-class SearchMessagesFilterVideoNote implements SearchMessagesFilter {
-  /// Returns only video note messages.
-  ///
+class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
+  
+
+  /// Returns only video note messages
   SearchMessagesFilterVideoNote();
 
   /// Parse from a json
-  SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterVideoNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterVideoNote';
 }
 
-class SearchMessagesFilterVoiceAndVideoNote implements SearchMessagesFilter {
-  /// Returns only voice and video note messages.
-  ///
+class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
+  
+
+  /// Returns only voice and video note messages
   SearchMessagesFilterVoiceAndVideoNote();
 
   /// Parse from a json
-  SearchMessagesFilterVoiceAndVideoNote.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterVoiceAndVideoNote.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterVoiceAndVideoNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterVoiceAndVideoNote';
 }
 
-class SearchMessagesFilterMention implements SearchMessagesFilter {
-  /// Returns only messages with mentions of the current user, or messages that are replies to their messages.
-  ///
+class SearchMessagesFilterMention extends SearchMessagesFilter {
+  
+
+  /// Returns only messages with mentions of the current user, or messages that are replies to their messages
   SearchMessagesFilterMention();
 
   /// Parse from a json
-  SearchMessagesFilterMention.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterMention.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterMention";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchMessagesFilterMention';
 }
 
-class SearchMessagesFilterUnreadMention implements SearchMessagesFilter {
-  /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user.
-  ///
+class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
+  
+
+  /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
   SearchMessagesFilterUnreadMention();
 
   /// Parse from a json
-  SearchMessagesFilterUnreadMention.fromJson(Map<String, dynamic> json);
+  SearchMessagesFilterUnreadMention.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "searchMessagesFilterUnreadMention";
+  static const CONSTRUCTOR = 'searchMessagesFilterUnreadMention';
+}
+
+class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
+  
+
+  /// Returns only failed to send messages. This filter can be used only if the message database is used
+  SearchMessagesFilterFailedToSend();
+
+  /// Parse from a json
+  SearchMessagesFilterFailedToSend.fromJson(Map<String, dynamic> json) ;
 
   @override
-  String getConstructor() => CONSTRUCTOR;
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+    };
+  }
+
+  static const CONSTRUCTOR = 'searchMessagesFilterFailedToSend';
 }

@@ -1,15 +1,15 @@
 part of '../tdapi.dart';
 
-class RecoveryEmailAddress implements TdObject {
+class RecoveryEmailAddress extends TdObject {
   String recoveryEmailAddress;
   dynamic extra;
 
-  /// Contains information about the current recovery email address.
-  ///[recoveryEmailAddress] Recovery email address
+  /// Contains information about the current recovery email address. 
+  /// [recoveryEmailAddress] Recovery email address
   RecoveryEmailAddress({this.recoveryEmailAddress});
 
   /// Parse from a json
-  RecoveryEmailAddress.fromJson(Map<String, dynamic> json) {
+  RecoveryEmailAddress.fromJson(Map<String, dynamic> json)  {
     this.recoveryEmailAddress = json['recovery_email_address'];
     this.extra = json['@extra'];
   }
@@ -18,12 +18,9 @@ class RecoveryEmailAddress implements TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "recovery_email_address": this.recoveryEmailAddress
+      "recovery_email_address": this.recoveryEmailAddress,
     };
   }
 
-  static const String CONSTRUCTOR = "recoveryEmailAddress";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'recoveryEmailAddress';
 }

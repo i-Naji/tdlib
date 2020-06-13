@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class File implements TdObject {
+class File extends TdObject {
   int id;
   int size;
   int expectedSize;
@@ -8,16 +8,20 @@ class File implements TdObject {
   RemoteFile remote;
   dynamic extra;
 
-  /// Represents a file.
-  ///[id] Unique file identifier.
-  /// [size] File size; 0 if unknown.
-  /// [expectedSize] Expected file size in case the exact file size is unknown, but an approximate size is known. Can be used to show download.
-  /// [local] Information about the local copy of the file.
+  /// Represents a file. 
+  /// [id] Unique file identifier. 
+  /// [size] File size; 0 if unknown. 
+  /// [expectedSize] Expected file size in case the exact file size is unknown, but an approximate size is known. Can be used to show download/upload progress. 
+  /// [local] Information about the local copy of the file. 
   /// [remote] Information about the remote copy of the file
-  File({this.id, this.size, this.expectedSize, this.local, this.remote});
+  File({this.id,
+    this.size,
+    this.expectedSize,
+    this.local,
+    this.remote});
 
   /// Parse from a json
-  File.fromJson(Map<String, dynamic> json) {
+  File.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.size = json['size'];
     this.expectedSize = json['expected_size'];
@@ -34,12 +38,9 @@ class File implements TdObject {
       "size": this.size,
       "expected_size": this.expectedSize,
       "local": this.local.toJson(),
-      "remote": this.remote.toJson()
+      "remote": this.remote.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "file";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'file';
 }

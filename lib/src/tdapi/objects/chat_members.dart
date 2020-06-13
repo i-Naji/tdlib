@@ -1,21 +1,20 @@
 part of '../tdapi.dart';
 
-class ChatMembers implements TdObject {
+class ChatMembers extends TdObject {
   int totalCount;
-  List<ChatMember> members;
+  List<List<ChatMember>> members;
   dynamic extra;
 
-  /// Contains a list of chat members.
-  ///[totalCount] Approximate total count of chat members found .
+  /// Contains a list of chat members. 
+  /// [totalCount] Approximate total count of chat members found . 
   /// [members] A list of chat members
-  ChatMembers({this.totalCount, this.members});
+  ChatMembers({this.totalCount,
+    this.members});
 
   /// Parse from a json
-  ChatMembers.fromJson(Map<String, dynamic> json) {
+  ChatMembers.fromJson(Map<String, dynamic> json)  {
     this.totalCount = json['total_count'];
-    this.members = List<ChatMember>.from((json['members'] ?? [])
-        .map((listValue) => ChatMember.fromJson(listValue))
-        .toList());
+    this.members = List<List<ChatMember>>.from((json['members'] ?? []).map((item) => List<ChatMember>.from((item ?? []).map((innerItem) => ChatMember.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -24,12 +23,9 @@ class ChatMembers implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": this.totalCount,
-      "members": this.members.map((listItem) => listItem.toJson()).toList()
+      "members": this.members.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "chatMembers";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatMembers';
 }

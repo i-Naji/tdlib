@@ -2,19 +2,20 @@ part of '../tdapi.dart';
 
 class EditInlineMessageText extends TdFunction {
   String inlineMessageId;
-  var replyMarkup;
-  var inputMessageContent;
+  ReplyMarkup replyMarkup;
+  InputMessageContent inputMessageContent;
   dynamic extra;
 
-  /// Edits the text of an inline text or game message sent via a bot; for bots only.
-  ///[inlineMessageId] Inline message identifier .
-  /// [replyMarkup] The new message reply markup .
+  /// Edits the text of an inline text or game message sent via a bot; for bots only. 
+  /// [inlineMessageId] Inline message identifier . 
+  /// [replyMarkup] The new message reply markup . 
   /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
-  EditInlineMessageText(
-      {this.inlineMessageId, this.replyMarkup, this.inputMessageContent});
+  EditInlineMessageText({this.inlineMessageId,
+    this.replyMarkup,
+    this.inputMessageContent});
 
   /// Parse from a json
-  EditInlineMessageText.fromJson(Map<String, dynamic> json);
+  EditInlineMessageText.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -23,12 +24,9 @@ class EditInlineMessageText extends TdFunction {
       "inline_message_id": this.inlineMessageId,
       "reply_markup": this.replyMarkup.toJson(),
       "input_message_content": this.inputMessageContent.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "editInlineMessageText";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'editInlineMessageText';
 }

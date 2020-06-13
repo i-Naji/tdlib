@@ -4,20 +4,21 @@ class GetStickerSet extends TdFunction {
   int setId;
   dynamic extra;
 
-  /// Returns information about a sticker set by its identifier.
-  ///[setId] Identifier of the sticker set
+  /// Returns information about a sticker set by its identifier. 
+  /// [setId] Identifier of the sticker set
   GetStickerSet({this.setId});
 
   /// Parse from a json
-  GetStickerSet.fromJson(Map<String, dynamic> json);
+  GetStickerSet.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "set_id": this.setId, "@extra": this.extra};
+    return {
+      "@type": CONSTRUCTOR,
+      "set_id": this.setId,
+      "@extra": this.extra,
+    };
   }
 
-  static const String CONSTRUCTOR = "getStickerSet";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getStickerSet';
 }

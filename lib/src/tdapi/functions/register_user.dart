@@ -5,13 +5,14 @@ class RegisterUser extends TdFunction {
   String lastName;
   dynamic extra;
 
-  /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration.
-  ///[firstName] The first name of the user; 1-64 characters .
+  /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration. 
+  /// [firstName] The first name of the user; 1-64 characters. 
   /// [lastName] The last name of the user; 0-64 characters
-  RegisterUser({this.firstName, this.lastName});
+  RegisterUser({this.firstName,
+    this.lastName});
 
   /// Parse from a json
-  RegisterUser.fromJson(Map<String, dynamic> json);
+  RegisterUser.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class RegisterUser extends TdFunction {
       "@type": CONSTRUCTOR,
       "first_name": this.firstName,
       "last_name": this.lastName,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "registerUser";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'registerUser';
 }

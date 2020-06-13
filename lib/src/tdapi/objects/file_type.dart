@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class FileType implements TdObject {
+class FileType extends TdObject {
+  
+
   /// Represents the type of a file
   FileType();
 
@@ -21,8 +23,8 @@ class FileType implements TdObject {
   /// * FileTypeVideoNote
   /// * FileTypeVoiceNote
   /// * FileTypeWallpaper
-  factory FileType.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory FileType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case FileTypeNone.CONSTRUCTOR:
         return FileTypeNone.fromJson(json);
       case FileTypeAnimation.CONSTRUCTOR:
@@ -62,315 +64,314 @@ class FileType implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "fileType";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileType';
 }
 
-class FileTypeNone implements FileType {
-  /// The data is not a file.
-  ///
+class FileTypeNone extends FileType {
+  
+
+  /// The data is not a file
   FileTypeNone();
 
   /// Parse from a json
-  FileTypeNone.fromJson(Map<String, dynamic> json);
+  FileTypeNone.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeNone";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeNone';
 }
 
-class FileTypeAnimation implements FileType {
-  /// The file is an animation.
-  ///
+class FileTypeAnimation extends FileType {
+  
+
+  /// The file is an animation
   FileTypeAnimation();
 
   /// Parse from a json
-  FileTypeAnimation.fromJson(Map<String, dynamic> json);
+  FileTypeAnimation.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeAnimation";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeAnimation';
 }
 
-class FileTypeAudio implements FileType {
-  /// The file is an audio file.
-  ///
+class FileTypeAudio extends FileType {
+  
+
+  /// The file is an audio file
   FileTypeAudio();
 
   /// Parse from a json
-  FileTypeAudio.fromJson(Map<String, dynamic> json);
+  FileTypeAudio.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeAudio";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeAudio';
 }
 
-class FileTypeDocument implements FileType {
-  /// The file is a document.
-  ///
+class FileTypeDocument extends FileType {
+  
+
+  /// The file is a document
   FileTypeDocument();
 
   /// Parse from a json
-  FileTypeDocument.fromJson(Map<String, dynamic> json);
+  FileTypeDocument.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeDocument";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeDocument';
 }
 
-class FileTypePhoto implements FileType {
-  /// The file is a photo.
-  ///
+class FileTypePhoto extends FileType {
+  
+
+  /// The file is a photo
   FileTypePhoto();
 
   /// Parse from a json
-  FileTypePhoto.fromJson(Map<String, dynamic> json);
+  FileTypePhoto.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypePhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypePhoto';
 }
 
-class FileTypeProfilePhoto implements FileType {
-  /// The file is a profile photo.
-  ///
+class FileTypeProfilePhoto extends FileType {
+  
+
+  /// The file is a profile photo
   FileTypeProfilePhoto();
 
   /// Parse from a json
-  FileTypeProfilePhoto.fromJson(Map<String, dynamic> json);
+  FileTypeProfilePhoto.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeProfilePhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeProfilePhoto';
 }
 
-class FileTypeSecret implements FileType {
-  /// The file was sent to a secret chat (the file type is not known to the server).
-  ///
+class FileTypeSecret extends FileType {
+  
+
+  /// The file was sent to a secret chat (the file type is not known to the server)
   FileTypeSecret();
 
   /// Parse from a json
-  FileTypeSecret.fromJson(Map<String, dynamic> json);
+  FileTypeSecret.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeSecret";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeSecret';
 }
 
-class FileTypeSecretThumbnail implements FileType {
-  /// The file is a thumbnail of a file from a secret chat.
-  ///
+class FileTypeSecretThumbnail extends FileType {
+  
+
+  /// The file is a thumbnail of a file from a secret chat
   FileTypeSecretThumbnail();
 
   /// Parse from a json
-  FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json);
+  FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeSecretThumbnail";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeSecretThumbnail';
 }
 
-class FileTypeSecure implements FileType {
-  /// The file is a file from Secure storage used for storing Telegram Passport files.
-  ///
+class FileTypeSecure extends FileType {
+  
+
+  /// The file is a file from Secure storage used for storing Telegram Passport files
   FileTypeSecure();
 
   /// Parse from a json
-  FileTypeSecure.fromJson(Map<String, dynamic> json);
+  FileTypeSecure.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeSecure";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeSecure';
 }
 
-class FileTypeSticker implements FileType {
-  /// The file is a sticker.
-  ///
+class FileTypeSticker extends FileType {
+  
+
+  /// The file is a sticker
   FileTypeSticker();
 
   /// Parse from a json
-  FileTypeSticker.fromJson(Map<String, dynamic> json);
+  FileTypeSticker.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeSticker";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeSticker';
 }
 
-class FileTypeThumbnail implements FileType {
-  /// The file is a thumbnail of another file.
-  ///
+class FileTypeThumbnail extends FileType {
+  
+
+  /// The file is a thumbnail of another file
   FileTypeThumbnail();
 
   /// Parse from a json
-  FileTypeThumbnail.fromJson(Map<String, dynamic> json);
+  FileTypeThumbnail.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeThumbnail";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeThumbnail';
 }
 
-class FileTypeUnknown implements FileType {
-  /// The file type is not yet known.
-  ///
+class FileTypeUnknown extends FileType {
+  
+
+  /// The file type is not yet known
   FileTypeUnknown();
 
   /// Parse from a json
-  FileTypeUnknown.fromJson(Map<String, dynamic> json);
+  FileTypeUnknown.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeUnknown";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeUnknown';
 }
 
-class FileTypeVideo implements FileType {
-  /// The file is a video.
-  ///
+class FileTypeVideo extends FileType {
+  
+
+  /// The file is a video
   FileTypeVideo();
 
   /// Parse from a json
-  FileTypeVideo.fromJson(Map<String, dynamic> json);
+  FileTypeVideo.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeVideo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeVideo';
 }
 
-class FileTypeVideoNote implements FileType {
-  /// The file is a video note.
-  ///
+class FileTypeVideoNote extends FileType {
+  
+
+  /// The file is a video note
   FileTypeVideoNote();
 
   /// Parse from a json
-  FileTypeVideoNote.fromJson(Map<String, dynamic> json);
+  FileTypeVideoNote.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeVideoNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeVideoNote';
 }
 
-class FileTypeVoiceNote implements FileType {
-  /// The file is a voice note.
-  ///
+class FileTypeVoiceNote extends FileType {
+  
+
+  /// The file is a voice note
   FileTypeVoiceNote();
 
   /// Parse from a json
-  FileTypeVoiceNote.fromJson(Map<String, dynamic> json);
+  FileTypeVoiceNote.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeVoiceNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeVoiceNote';
 }
 
-class FileTypeWallpaper implements FileType {
-  /// The file is a wallpaper or a background pattern.
-  ///
+class FileTypeWallpaper extends FileType {
+  
+
+  /// The file is a wallpaper or a background pattern
   FileTypeWallpaper();
 
   /// Parse from a json
-  FileTypeWallpaper.fromJson(Map<String, dynamic> json);
+  FileTypeWallpaper.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "fileTypeWallpaper";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'fileTypeWallpaper';
 }

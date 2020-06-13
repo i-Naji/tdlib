@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class InlineQueryResult implements TdObject {
+class InlineQueryResult extends TdObject {
+  
+
   /// Represents a single result of an inline query
   InlineQueryResult();
 
@@ -17,8 +19,8 @@ class InlineQueryResult implements TdObject {
   /// * InlineQueryResultSticker
   /// * InlineQueryResultVideo
   /// * InlineQueryResultVoiceNote
-  factory InlineQueryResult.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory InlineQueryResult.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InlineQueryResultArticle.CONSTRUCTOR:
         return InlineQueryResultArticle.fromJson(json);
       case InlineQueryResultContact.CONSTRUCTOR:
@@ -50,47 +52,44 @@ class InlineQueryResult implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResult";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResult';
 }
 
-class InlineQueryResultArticle implements InlineQueryResult {
+class InlineQueryResultArticle extends InlineQueryResult {
   String id;
   String url;
   bool hideUrl;
   String title;
   String description;
-  PhotoSize thumbnail;
+  Thumbnail thumbnail;
 
-  /// Represents a link to an article or web page.
-  ///[id] Unique identifier of the query result .
-  /// [url] URL of the result, if it exists .
-  /// [hideUrl] True, if the URL must be not shown .
-  /// [title] Title of the result.
-  /// [paramDescription] A short description of the result .
-  /// [thumbnail] Result thumbnail; may be null
-  InlineQueryResultArticle(
-      {this.id,
-      this.url,
-      this.hideUrl,
-      this.title,
-      this.description,
-      this.thumbnail});
+  /// Represents a link to an article or web page. 
+  /// [id] Unique identifier of the query result . 
+  /// [url] URL of the result, if it exists . 
+  /// [hideUrl] True, if the URL must be not shown . 
+  /// [title] Title of the result. 
+  /// [description] A short description of the result. 
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  InlineQueryResultArticle({this.id,
+    this.url,
+    this.hideUrl,
+    this.title,
+    this.description,
+    this.thumbnail});
 
   /// Parse from a json
-  InlineQueryResultArticle.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultArticle.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.url = json['url'];
     this.hideUrl = json['hide_url'];
     this.title = json['title'];
     this.description = json['description'];
-    this.thumbnail =
-        PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
   }
 
   @override
@@ -102,33 +101,31 @@ class InlineQueryResultArticle implements InlineQueryResult {
       "hide_url": this.hideUrl,
       "title": this.title,
       "description": this.description,
-      "thumbnail": this.thumbnail.toJson()
+      "thumbnail": this.thumbnail.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultArticle";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultArticle';
 }
 
-class InlineQueryResultContact implements InlineQueryResult {
+class InlineQueryResultContact extends InlineQueryResult {
   String id;
   Contact contact;
-  PhotoSize thumbnail;
+  Thumbnail thumbnail;
 
-  /// Represents a user contact.
-  ///[id] Unique identifier of the query result .
-  /// [contact] A user contact .
-  /// [thumbnail] Result thumbnail; may be null
-  InlineQueryResultContact({this.id, this.contact, this.thumbnail});
+  /// Represents a user contact. 
+  /// [id] Unique identifier of the query result . 
+  /// [contact] A user contact . 
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  InlineQueryResultContact({this.id,
+    this.contact,
+    this.thumbnail});
 
   /// Parse from a json
-  InlineQueryResultContact.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultContact.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.contact = Contact.fromJson(json['contact'] ?? <String, dynamic>{});
-    this.thumbnail =
-        PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
   }
 
   @override
@@ -137,37 +134,35 @@ class InlineQueryResultContact implements InlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "contact": this.contact.toJson(),
-      "thumbnail": this.thumbnail.toJson()
+      "thumbnail": this.thumbnail.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultContact";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultContact';
 }
 
-class InlineQueryResultLocation implements InlineQueryResult {
+class InlineQueryResultLocation extends InlineQueryResult {
   String id;
   Location location;
   String title;
-  PhotoSize thumbnail;
+  Thumbnail thumbnail;
 
-  /// Represents a point on the map.
-  ///[id] Unique identifier of the query result .
-  /// [location] Location result .
-  /// [title] Title of the result .
-  /// [thumbnail] Result thumbnail; may be null
-  InlineQueryResultLocation(
-      {this.id, this.location, this.title, this.thumbnail});
+  /// Represents a point on the map. 
+  /// [id] Unique identifier of the query result . 
+  /// [location] Location result . 
+  /// [title] Title of the result . 
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  InlineQueryResultLocation({this.id,
+    this.location,
+    this.title,
+    this.thumbnail});
 
   /// Parse from a json
-  InlineQueryResultLocation.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultLocation.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.location = Location.fromJson(json['location'] ?? <String, dynamic>{});
     this.title = json['title'];
-    this.thumbnail =
-        PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
   }
 
   @override
@@ -177,33 +172,31 @@ class InlineQueryResultLocation implements InlineQueryResult {
       "id": this.id,
       "location": this.location.toJson(),
       "title": this.title,
-      "thumbnail": this.thumbnail.toJson()
+      "thumbnail": this.thumbnail.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultLocation";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultLocation';
 }
 
-class InlineQueryResultVenue implements InlineQueryResult {
+class InlineQueryResultVenue extends InlineQueryResult {
   String id;
   Venue venue;
-  PhotoSize thumbnail;
+  Thumbnail thumbnail;
 
-  /// Represents information about a venue.
-  ///[id] Unique identifier of the query result .
-  /// [venue] Venue result .
-  /// [thumbnail] Result thumbnail; may be null
-  InlineQueryResultVenue({this.id, this.venue, this.thumbnail});
+  /// Represents information about a venue. 
+  /// [id] Unique identifier of the query result . 
+  /// [venue] Venue result . 
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  InlineQueryResultVenue({this.id,
+    this.venue,
+    this.thumbnail});
 
   /// Parse from a json
-  InlineQueryResultVenue.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultVenue.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.venue = Venue.fromJson(json['venue'] ?? <String, dynamic>{});
-    this.thumbnail =
-        PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
   }
 
   @override
@@ -212,58 +205,58 @@ class InlineQueryResultVenue implements InlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "venue": this.venue.toJson(),
-      "thumbnail": this.thumbnail.toJson()
+      "thumbnail": this.thumbnail.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultVenue";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultVenue';
 }
 
-class InlineQueryResultGame implements InlineQueryResult {
+class InlineQueryResultGame extends InlineQueryResult {
   String id;
   Game game;
 
-  /// Represents information about a game.
-  ///[id] Unique identifier of the query result .
+  /// Represents information about a game. 
+  /// [id] Unique identifier of the query result . 
   /// [game] Game result
-  InlineQueryResultGame({this.id, this.game});
+  InlineQueryResultGame({this.id,
+    this.game});
 
   /// Parse from a json
-  InlineQueryResultGame.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultGame.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.game = Game.fromJson(json['game'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "id": this.id, "game": this.game.toJson()};
+    return {
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "game": this.game.toJson(),
+    };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultGame";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultGame';
 }
 
-class InlineQueryResultAnimation implements InlineQueryResult {
+class InlineQueryResultAnimation extends InlineQueryResult {
   String id;
   Animation animation;
   String title;
 
-  /// Represents an animation file.
-  ///[id] Unique identifier of the query result .
-  /// [animation] Animation file .
+  /// Represents an animation file. 
+  /// [id] Unique identifier of the query result . 
+  /// [animation] Animation file . 
   /// [title] Animation title
-  InlineQueryResultAnimation({this.id, this.animation, this.title});
+  InlineQueryResultAnimation({this.id,
+    this.animation,
+    this.title});
 
   /// Parse from a json
-  InlineQueryResultAnimation.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultAnimation.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
-    this.animation =
-        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
+    this.animation = Animation.fromJson(json['animation'] ?? <String, dynamic>{});
     this.title = json['title'];
   }
 
@@ -273,58 +266,59 @@ class InlineQueryResultAnimation implements InlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "animation": this.animation.toJson(),
-      "title": this.title
+      "title": this.title,
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultAnimation";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultAnimation';
 }
 
-class InlineQueryResultAudio implements InlineQueryResult {
+class InlineQueryResultAudio extends InlineQueryResult {
   String id;
   Audio audio;
 
-  /// Represents an audio file.
-  ///[id] Unique identifier of the query result .
+  /// Represents an audio file. 
+  /// [id] Unique identifier of the query result . 
   /// [audio] Audio file
-  InlineQueryResultAudio({this.id, this.audio});
+  InlineQueryResultAudio({this.id,
+    this.audio});
 
   /// Parse from a json
-  InlineQueryResultAudio.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultAudio.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.audio = Audio.fromJson(json['audio'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "id": this.id, "audio": this.audio.toJson()};
+    return {
+      "@type": CONSTRUCTOR,
+      "id": this.id,
+      "audio": this.audio.toJson(),
+    };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultAudio";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultAudio';
 }
 
-class InlineQueryResultDocument implements InlineQueryResult {
+class InlineQueryResultDocument extends InlineQueryResult {
   String id;
   Document document;
   String title;
   String description;
 
-  /// Represents a document.
-  ///[id] Unique identifier of the query result .
-  /// [document] Document .
-  /// [title] Document title .
-  /// [paramDescription] Document description
-  InlineQueryResultDocument(
-      {this.id, this.document, this.title, this.description});
+  /// Represents a document. 
+  /// [id] Unique identifier of the query result . 
+  /// [document] Document . 
+  /// [title] Document title . 
+  /// [description] Document description
+  InlineQueryResultDocument({this.id,
+    this.document,
+    this.title,
+    this.description});
 
   /// Parse from a json
-  InlineQueryResultDocument.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultDocument.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.document = Document.fromJson(json['document'] ?? <String, dynamic>{});
     this.title = json['title'];
@@ -338,31 +332,31 @@ class InlineQueryResultDocument implements InlineQueryResult {
       "id": this.id,
       "document": this.document.toJson(),
       "title": this.title,
-      "description": this.description
+      "description": this.description,
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultDocument";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultDocument';
 }
 
-class InlineQueryResultPhoto implements InlineQueryResult {
+class InlineQueryResultPhoto extends InlineQueryResult {
   String id;
   Photo photo;
   String title;
   String description;
 
-  /// Represents a photo.
-  ///[id] Unique identifier of the query result .
-  /// [photo] Photo .
-  /// [title] Title of the result, if known .
-  /// [paramDescription] A short description of the result, if known
-  InlineQueryResultPhoto({this.id, this.photo, this.title, this.description});
+  /// Represents a photo. 
+  /// [id] Unique identifier of the query result . 
+  /// [photo] Photo . 
+  /// [title] Title of the result, if known . 
+  /// [description] A short description of the result, if known
+  InlineQueryResultPhoto({this.id,
+    this.photo,
+    this.title,
+    this.description});
 
   /// Parse from a json
-  InlineQueryResultPhoto.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultPhoto.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.title = json['title'];
@@ -376,27 +370,25 @@ class InlineQueryResultPhoto implements InlineQueryResult {
       "id": this.id,
       "photo": this.photo.toJson(),
       "title": this.title,
-      "description": this.description
+      "description": this.description,
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultPhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultPhoto';
 }
 
-class InlineQueryResultSticker implements InlineQueryResult {
+class InlineQueryResultSticker extends InlineQueryResult {
   String id;
   Sticker sticker;
 
-  /// Represents a sticker.
-  ///[id] Unique identifier of the query result .
+  /// Represents a sticker. 
+  /// [id] Unique identifier of the query result . 
   /// [sticker] Sticker
-  InlineQueryResultSticker({this.id, this.sticker});
+  InlineQueryResultSticker({this.id,
+    this.sticker});
 
   /// Parse from a json
-  InlineQueryResultSticker.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultSticker.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.sticker = Sticker.fromJson(json['sticker'] ?? <String, dynamic>{});
   }
@@ -406,31 +398,31 @@ class InlineQueryResultSticker implements InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "sticker": this.sticker.toJson()
+      "sticker": this.sticker.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultSticker";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultSticker';
 }
 
-class InlineQueryResultVideo implements InlineQueryResult {
+class InlineQueryResultVideo extends InlineQueryResult {
   String id;
   Video video;
   String title;
   String description;
 
-  /// Represents a video.
-  ///[id] Unique identifier of the query result .
-  /// [video] Video .
-  /// [title] Title of the video .
-  /// [paramDescription] Description of the video
-  InlineQueryResultVideo({this.id, this.video, this.title, this.description});
+  /// Represents a video. 
+  /// [id] Unique identifier of the query result . 
+  /// [video] Video . 
+  /// [title] Title of the video . 
+  /// [description] Description of the video
+  InlineQueryResultVideo({this.id,
+    this.video,
+    this.title,
+    this.description});
 
   /// Parse from a json
-  InlineQueryResultVideo.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultVideo.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.video = Video.fromJson(json['video'] ?? <String, dynamic>{});
     this.title = json['title'];
@@ -444,32 +436,30 @@ class InlineQueryResultVideo implements InlineQueryResult {
       "id": this.id,
       "video": this.video.toJson(),
       "title": this.title,
-      "description": this.description
+      "description": this.description,
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultVideo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultVideo';
 }
 
-class InlineQueryResultVoiceNote implements InlineQueryResult {
+class InlineQueryResultVoiceNote extends InlineQueryResult {
   String id;
   VoiceNote voiceNote;
   String title;
 
-  /// Represents a voice note.
-  ///[id] Unique identifier of the query result .
-  /// [voiceNote] Voice note .
+  /// Represents a voice note. 
+  /// [id] Unique identifier of the query result . 
+  /// [voiceNote] Voice note . 
   /// [title] Title of the voice note
-  InlineQueryResultVoiceNote({this.id, this.voiceNote, this.title});
+  InlineQueryResultVoiceNote({this.id,
+    this.voiceNote,
+    this.title});
 
   /// Parse from a json
-  InlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) {
+  InlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
-    this.voiceNote =
-        VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
+    this.voiceNote = VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
     this.title = json['title'];
   }
 
@@ -479,12 +469,9 @@ class InlineQueryResultVoiceNote implements InlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "voice_note": this.voiceNote.toJson(),
-      "title": this.title
+      "title": this.title,
     };
   }
 
-  static const String CONSTRUCTOR = "inlineQueryResultVoiceNote";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inlineQueryResultVoiceNote';
 }

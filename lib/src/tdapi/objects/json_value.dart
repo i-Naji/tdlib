@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class JsonValue implements TdObject {
+class JsonValue extends TdObject {
+  
+
   /// Represents a JSON value
   JsonValue();
 
@@ -11,8 +13,8 @@ class JsonValue implements TdObject {
   /// * JsonValueString
   /// * JsonValueArray
   /// * JsonValueObject
-  factory JsonValue.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory JsonValue.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case JsonValueNull.CONSTRUCTOR:
         return JsonValueNull.fromJson(json);
       case JsonValueBoolean.CONSTRUCTOR:
@@ -32,126 +34,121 @@ class JsonValue implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "jsonValue";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValue';
 }
 
-class JsonValueNull implements JsonValue {
+class JsonValueNull extends JsonValue {
   dynamic extra;
 
-  /// Represents a null JSON value.
-  ///
+  /// Represents a null JSON value
   JsonValueNull();
 
   /// Parse from a json
-  JsonValueNull.fromJson(Map<String, dynamic> json) {
+  JsonValueNull.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "jsonValueNull";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueNull';
 }
 
-class JsonValueBoolean implements JsonValue {
+class JsonValueBoolean extends JsonValue {
   bool value;
   dynamic extra;
 
-  /// Represents a boolean JSON value.
-  ///[value] The value
+  /// Represents a boolean JSON value. 
+  /// [value] The value
   JsonValueBoolean({this.value});
 
   /// Parse from a json
-  JsonValueBoolean.fromJson(Map<String, dynamic> json) {
+  JsonValueBoolean.fromJson(Map<String, dynamic> json)  {
     this.value = json['value'];
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "value": this.value};
+    return {
+      "@type": CONSTRUCTOR,
+      "value": this.value,
+    };
   }
 
-  static const String CONSTRUCTOR = "jsonValueBoolean";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueBoolean';
 }
 
-class JsonValueNumber implements JsonValue {
+class JsonValueNumber extends JsonValue {
   double value;
   dynamic extra;
 
-  /// Represents a numeric JSON value.
-  ///[value] The value
+  /// Represents a numeric JSON value. 
+  /// [value] The value
   JsonValueNumber({this.value});
 
   /// Parse from a json
-  JsonValueNumber.fromJson(Map<String, dynamic> json) {
+  JsonValueNumber.fromJson(Map<String, dynamic> json)  {
     this.value = json['value'];
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "value": this.value};
+    return {
+      "@type": CONSTRUCTOR,
+      "value": this.value,
+    };
   }
 
-  static const String CONSTRUCTOR = "jsonValueNumber";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueNumber';
 }
 
-class JsonValueString implements JsonValue {
+class JsonValueString extends JsonValue {
   String value;
   dynamic extra;
 
-  /// Represents a string JSON value.
-  ///[value] The value
+  /// Represents a string JSON value. 
+  /// [value] The value
   JsonValueString({this.value});
 
   /// Parse from a json
-  JsonValueString.fromJson(Map<String, dynamic> json) {
+  JsonValueString.fromJson(Map<String, dynamic> json)  {
     this.value = json['value'];
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "value": this.value};
+    return {
+      "@type": CONSTRUCTOR,
+      "value": this.value,
+    };
   }
 
-  static const String CONSTRUCTOR = "jsonValueString";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueString';
 }
 
-class JsonValueArray implements JsonValue {
-  List values;
+class JsonValueArray extends JsonValue {
+  List<List<JsonValue>> values;
   dynamic extra;
 
-  /// Represents a JSON array.
-  ///[values] The list of array elements
+  /// Represents a JSON array. 
+  /// [values] The list of array elements
   JsonValueArray({this.values});
 
   /// Parse from a json
-  JsonValueArray.fromJson(Map<String, dynamic> json) {
-    this.values = (json['values'] ?? [])
-        .map((listValue) => JsonValue.fromJson(listValue))
-        .toList();
+  JsonValueArray.fromJson(Map<String, dynamic> json)  {
+    this.values = List<List<JsonValue>>.from((json['values'] ?? []).map((item) => List<JsonValue>.from((item ?? []).map((innerItem) => JsonValue.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -159,29 +156,24 @@ class JsonValueArray implements JsonValue {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "values": this.values.map((listItem) => listItem.toJson()).toList()
+      "values": this.values.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "jsonValueArray";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueArray';
 }
 
-class JsonValueObject implements JsonValue {
-  List<JsonObjectMember> members;
+class JsonValueObject extends JsonValue {
+  List<List<JsonObjectMember>> members;
   dynamic extra;
 
-  /// Represents a JSON object.
-  ///[members] The list of object members
+  /// Represents a JSON object. 
+  /// [members] The list of object members
   JsonValueObject({this.members});
 
   /// Parse from a json
-  JsonValueObject.fromJson(Map<String, dynamic> json) {
-    this.members = List<JsonObjectMember>.from((json['members'] ?? [])
-        .map((listValue) => JsonObjectMember.fromJson(listValue))
-        .toList());
+  JsonValueObject.fromJson(Map<String, dynamic> json)  {
+    this.members = List<List<JsonObjectMember>>.from((json['members'] ?? []).map((item) => List<JsonObjectMember>.from((item ?? []).map((innerItem) => JsonObjectMember.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -189,12 +181,9 @@ class JsonValueObject implements JsonValue {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "members": this.members.map((listItem) => listItem.toJson()).toList()
+      "members": this.members.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "jsonValueObject";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'jsonValueObject';
 }

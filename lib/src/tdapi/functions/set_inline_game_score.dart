@@ -8,21 +8,20 @@ class SetInlineGameScore extends TdFunction {
   bool force;
   dynamic extra;
 
-  /// Updates the game score of the specified user in a game; for bots only.
-  ///[inlineMessageId] Inline message identifier .
-  /// [editMessage] True, if the message should be edited .
-  /// [userId] User identifier .
-  /// [score] The new score.
+  /// Updates the game score of the specified user in a game; for bots only. 
+  /// [inlineMessageId] Inline message identifier . 
+  /// [editMessage] True, if the message should be edited . 
+  /// [userId] User identifier . 
+  /// [score] The new score. 
   /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
-  SetInlineGameScore(
-      {this.inlineMessageId,
-      this.editMessage,
-      this.userId,
-      this.score,
-      this.force});
+  SetInlineGameScore({this.inlineMessageId,
+    this.editMessage,
+    this.userId,
+    this.score,
+    this.force});
 
   /// Parse from a json
-  SetInlineGameScore.fromJson(Map<String, dynamic> json);
+  SetInlineGameScore.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -33,12 +32,9 @@ class SetInlineGameScore extends TdFunction {
       "user_id": this.userId,
       "score": this.score,
       "force": this.force,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "setInlineGameScore";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'setInlineGameScore';
 }

@@ -5,13 +5,14 @@ class AcceptCall extends TdFunction {
   CallProtocol protocol;
   dynamic extra;
 
-  /// Accepts an incoming call.
-  ///[callId] Call identifier .
+  /// Accepts an incoming call. 
+  /// [callId] Call identifier . 
   /// [protocol] Description of the call protocols supported by the client
-  AcceptCall({this.callId, this.protocol});
+  AcceptCall({this.callId,
+    this.protocol});
 
   /// Parse from a json
-  AcceptCall.fromJson(Map<String, dynamic> json);
+  AcceptCall.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class AcceptCall extends TdFunction {
       "@type": CONSTRUCTOR,
       "call_id": this.callId,
       "protocol": this.protocol.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "acceptCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'acceptCall';
 }

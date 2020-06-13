@@ -3,20 +3,19 @@ part of '../tdapi.dart';
 class TerminateAllOtherSessions extends TdFunction {
   dynamic extra;
 
-  /// Terminates all other sessions of the current user.
-  ///
+  /// Terminates all other sessions of the current user
   TerminateAllOtherSessions();
 
   /// Parse from a json
-  TerminateAllOtherSessions.fromJson(Map<String, dynamic> json);
+  TerminateAllOtherSessions.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "@extra": this.extra};
+    return {
+      "@type": CONSTRUCTOR,
+      "@extra": this.extra,
+    };
   }
 
-  static const String CONSTRUCTOR = "terminateAllOtherSessions";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'terminateAllOtherSessions';
 }

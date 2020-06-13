@@ -1,17 +1,18 @@
 part of '../tdapi.dart';
 
 class GetPassportElement extends TdFunction {
-  var type;
+  PassportElementType type;
   String password;
   dynamic extra;
 
-  /// Returns one of the available Telegram Passport elements.
-  ///[type] Telegram Passport element type .
+  /// Returns one of the available Telegram Passport elements. 
+  /// [type] Telegram Passport element type . 
   /// [password] Password of the current user
-  GetPassportElement({this.type, this.password});
+  GetPassportElement({this.type,
+    this.password});
 
   /// Parse from a json
-  GetPassportElement.fromJson(Map<String, dynamic> json);
+  GetPassportElement.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class GetPassportElement extends TdFunction {
       "@type": CONSTRUCTOR,
       "type": this.type.toJson(),
       "password": this.password,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getPassportElement";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getPassportElement';
 }

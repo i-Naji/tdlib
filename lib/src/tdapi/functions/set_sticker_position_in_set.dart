@@ -1,17 +1,18 @@
 part of '../tdapi.dart';
 
 class SetStickerPositionInSet extends TdFunction {
-  var sticker;
+  InputFile sticker;
   int position;
   dynamic extra;
 
-  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot.
-  ///[sticker] Sticker .
+  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot. 
+  /// [sticker] Sticker. 
   /// [position] New position of the sticker in the set, zero-based
-  SetStickerPositionInSet({this.sticker, this.position});
+  SetStickerPositionInSet({this.sticker,
+    this.position});
 
   /// Parse from a json
-  SetStickerPositionInSet.fromJson(Map<String, dynamic> json);
+  SetStickerPositionInSet.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SetStickerPositionInSet extends TdFunction {
       "@type": CONSTRUCTOR,
       "sticker": this.sticker.toJson(),
       "position": this.position,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "setStickerPositionInSet";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'setStickerPositionInSet';
 }

@@ -1,24 +1,23 @@
 part of '../tdapi.dart';
 
-class PaymentsProviderStripe implements TdObject {
+class PaymentsProviderStripe extends TdObject {
   String publishableKey;
   bool needCountry;
   bool needPostalCode;
   bool needCardholderName;
 
-  /// Stripe payment provider.
-  ///[publishableKey] Stripe API publishable key .
-  /// [needCountry] True, if the user country must be provided .
-  /// [needPostalCode] True, if the user ZIP/postal code must be provided .
+  /// Stripe payment provider. 
+  /// [publishableKey] Stripe API publishable key . 
+  /// [needCountry] True, if the user country must be provided . 
+  /// [needPostalCode] True, if the user ZIP/postal code must be provided . 
   /// [needCardholderName] True, if the cardholder name must be provided
-  PaymentsProviderStripe(
-      {this.publishableKey,
-      this.needCountry,
-      this.needPostalCode,
-      this.needCardholderName});
+  PaymentsProviderStripe({this.publishableKey,
+    this.needCountry,
+    this.needPostalCode,
+    this.needCardholderName});
 
   /// Parse from a json
-  PaymentsProviderStripe.fromJson(Map<String, dynamic> json) {
+  PaymentsProviderStripe.fromJson(Map<String, dynamic> json)  {
     this.publishableKey = json['publishable_key'];
     this.needCountry = json['need_country'];
     this.needPostalCode = json['need_postal_code'];
@@ -32,12 +31,9 @@ class PaymentsProviderStripe implements TdObject {
       "publishable_key": this.publishableKey,
       "need_country": this.needCountry,
       "need_postal_code": this.needPostalCode,
-      "need_cardholder_name": this.needCardholderName
+      "need_cardholder_name": this.needCardholderName,
     };
   }
 
-  static const String CONSTRUCTOR = "paymentsProviderStripe";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'paymentsProviderStripe';
 }

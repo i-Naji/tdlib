@@ -1,7 +1,8 @@
 part of 'tdapi.dart';
 
+// todo: considering setExtra method or like that...
 abstract class TdFunction {
-  String constructor;
+  static const CONSTRUCTOR = 'function';
   Map<String, dynamic> toJson();
-  String getConstructor();
+  static String getConstructor() => CONSTRUCTOR;
 }

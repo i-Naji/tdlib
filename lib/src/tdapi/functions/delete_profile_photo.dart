@@ -4,24 +4,21 @@ class DeleteProfilePhoto extends TdFunction {
   int profilePhotoId;
   dynamic extra;
 
-  /// Deletes a profile photo. If something changes, updateUser will be sent.
-  ///[profilePhotoId] Identifier of the profile photo to delete
+  /// Deletes a profile photo. If something changes, updateUser will be sent. 
+  /// [profilePhotoId] Identifier of the profile photo to delete
   DeleteProfilePhoto({this.profilePhotoId});
 
   /// Parse from a json
-  DeleteProfilePhoto.fromJson(Map<String, dynamic> json);
+  DeleteProfilePhoto.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
       "profile_photo_id": this.profilePhotoId,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "deleteProfilePhoto";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'deleteProfilePhoto';
 }

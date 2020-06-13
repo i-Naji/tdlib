@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class ConnectedWebsite implements TdObject {
+class ConnectedWebsite extends TdObject {
   int id;
   String domainName;
   int botUserId;
@@ -11,29 +11,28 @@ class ConnectedWebsite implements TdObject {
   String ip;
   String location;
 
-  /// Contains information about one website the current user is logged in with Telegram.
-  ///[id] Website identifier.
-  /// [domainName] The domain name of the website.
-  /// [botUserId] User identifier of a bot linked with the website.
-  /// [browser] The version of a browser used to log in.
-  /// [platform] Operating system the browser is running on.
-  /// [logInDate] Point in time (Unix timestamp) when the user was logged in.
-  /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used.
-  /// [ip] IP address from which the user was logged in, in human-readable format.
+  /// Contains information about one website the current user is logged in with Telegram. 
+  /// [id] Website identifier. 
+  /// [domainName] The domain name of the website. 
+  /// [botUserId] User identifier of a bot linked with the website. 
+  /// [browser] The version of a browser used to log in. 
+  /// [platform] Operating system the browser is running on. 
+  /// [logInDate] Point in time (Unix timestamp) when the user was logged in. 
+  /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used. 
+  /// [ip] IP address from which the user was logged in, in human-readable format. 
   /// [location] Human-readable description of a country and a region, from which the user was logged in, based on the IP address
-  ConnectedWebsite(
-      {this.id,
-      this.domainName,
-      this.botUserId,
-      this.browser,
-      this.platform,
-      this.logInDate,
-      this.lastActiveDate,
-      this.ip,
-      this.location});
+  ConnectedWebsite({this.id,
+    this.domainName,
+    this.botUserId,
+    this.browser,
+    this.platform,
+    this.logInDate,
+    this.lastActiveDate,
+    this.ip,
+    this.location});
 
   /// Parse from a json
-  ConnectedWebsite.fromJson(Map<String, dynamic> json) {
+  ConnectedWebsite.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.domainName = json['domain_name'];
     this.botUserId = json['bot_user_id'];
@@ -57,12 +56,9 @@ class ConnectedWebsite implements TdObject {
       "log_in_date": this.logInDate,
       "last_active_date": this.lastActiveDate,
       "ip": this.ip,
-      "location": this.location
+      "location": this.location,
     };
   }
 
-  static const String CONSTRUCTOR = "connectedWebsite";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectedWebsite';
 }

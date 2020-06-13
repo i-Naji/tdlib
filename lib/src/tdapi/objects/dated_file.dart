@@ -1,16 +1,17 @@
 part of '../tdapi.dart';
 
-class DatedFile implements TdObject {
+class DatedFile extends TdObject {
   File file;
   int date;
 
-  /// File with the date it was uploaded.
-  ///[file] The file .
+  /// File with the date it was uploaded. 
+  /// [file] The file . 
   /// [date] Point in time (Unix timestamp) when the file was uploaded
-  DatedFile({this.file, this.date});
+  DatedFile({this.file,
+    this.date});
 
   /// Parse from a json
-  DatedFile.fromJson(Map<String, dynamic> json) {
+  DatedFile.fromJson(Map<String, dynamic> json)  {
     this.file = File.fromJson(json['file'] ?? <String, dynamic>{});
     this.date = json['date'];
   }
@@ -20,12 +21,9 @@ class DatedFile implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "file": this.file.toJson(),
-      "date": this.date
+      "date": this.date,
     };
   }
 
-  static const String CONSTRUCTOR = "datedFile";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'datedFile';
 }

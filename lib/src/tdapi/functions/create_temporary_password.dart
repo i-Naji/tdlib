@@ -5,13 +5,14 @@ class CreateTemporaryPassword extends TdFunction {
   int validFor;
   dynamic extra;
 
-  /// Creates a new temporary password for processing payments.
-  ///[password] Persistent user password .
+  /// Creates a new temporary password for processing payments. 
+  /// [password] Persistent user password . 
   /// [validFor] Time during which the temporary password will be valid, in seconds; should be between 60 and 86400
-  CreateTemporaryPassword({this.password, this.validFor});
+  CreateTemporaryPassword({this.password,
+    this.validFor});
 
   /// Parse from a json
-  CreateTemporaryPassword.fromJson(Map<String, dynamic> json);
+  CreateTemporaryPassword.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class CreateTemporaryPassword extends TdFunction {
       "@type": CONSTRUCTOR,
       "password": this.password,
       "valid_for": this.validFor,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "createTemporaryPassword";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'createTemporaryPassword';
 }

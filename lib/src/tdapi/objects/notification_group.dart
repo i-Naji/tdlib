@@ -1,31 +1,31 @@
 part of '../tdapi.dart';
 
-class NotificationGroup implements TdObject {
+class NotificationGroup extends TdObject {
   int id;
-  var type;
+  NotificationGroupType type;
   int chatId;
   int totalCount;
-  List<Notification> notifications;
+  List<List<Notification>> notifications;
 
-  /// Describes a group of notifications.
-  ///[id] Unique persistent auto-incremented from 1 identifier of the notification group .
-  /// [type] Type of the group.
-  /// [chatId] Identifier of a chat to which all notifications in the group belong.
-  /// [totalCount] Total number of active notifications in the group .
+  /// Describes a group of notifications. 
+  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group . 
+  /// [type] Type of the group. 
+  /// [chatId] Identifier of a chat to which all notifications in the group belong. 
+  /// [totalCount] Total number of active notifications in the group. 
   /// [notifications] The list of active notifications
-  NotificationGroup(
-      {this.id, this.type, this.chatId, this.totalCount, this.notifications});
+  NotificationGroup({this.id,
+    this.type,
+    this.chatId,
+    this.totalCount,
+    this.notifications});
 
   /// Parse from a json
-  NotificationGroup.fromJson(Map<String, dynamic> json) {
+  NotificationGroup.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
-    this.type =
-        NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
+    this.type = NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
     this.chatId = json['chat_id'];
     this.totalCount = json['total_count'];
-    this.notifications = List<Notification>.from((json['notifications'] ?? [])
-        .map((listValue) => Notification.fromJson(listValue))
-        .toList());
+    this.notifications = List<List<Notification>>.from((json['notifications'] ?? []).map((item) => List<Notification>.from((item ?? []).map((innerItem) => Notification.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
   }
 
   @override
@@ -36,13 +36,9 @@ class NotificationGroup implements TdObject {
       "type": this.type.toJson(),
       "chat_id": this.chatId,
       "total_count": this.totalCount,
-      "notifications":
-          this.notifications.map((listItem) => listItem.toJson()).toList()
+      "notifications": this.notifications.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "notificationGroup";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroup';
 }

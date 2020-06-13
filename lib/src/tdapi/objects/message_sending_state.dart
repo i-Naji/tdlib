@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
-class MessageSendingState implements TdObject {
+class MessageSendingState extends TdObject {
+  
+
   /// Contains information about the sending state of the message
   MessageSendingState();
 
   /// a MessageSendingState return type can be :
   /// * MessageSendingStatePending
   /// * MessageSendingStateFailed
-  factory MessageSendingState.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory MessageSendingState.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case MessageSendingStatePending.CONSTRUCTOR:
         return MessageSendingStatePending.fromJson(json);
       case MessageSendingStateFailed.CONSTRUCTOR:
@@ -20,50 +22,51 @@ class MessageSendingState implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "messageSendingState";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'messageSendingState';
 }
 
-class MessageSendingStatePending implements MessageSendingState {
-  /// The message is being sent now, but has not yet been delivered to the server.
-  ///
+class MessageSendingStatePending extends MessageSendingState {
+  
+
+  /// The message is being sent now, but has not yet been delivered to the server
   MessageSendingStatePending();
 
   /// Parse from a json
-  MessageSendingStatePending.fromJson(Map<String, dynamic> json);
+  MessageSendingStatePending.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "messageSendingStatePending";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'messageSendingStatePending';
 }
 
-class MessageSendingStateFailed implements MessageSendingState {
+class MessageSendingStateFailed extends MessageSendingState {
   int errorCode;
   String errorMessage;
   bool canRetry;
   double retryAfter;
 
-  /// The message failed to be sent.
-  ///[errorCode] An error code; 0 if unknown .
-  /// [errorMessage] Error message.
-  /// [canRetry] True, if the message can be re-sent .
+  /// The message failed to be sent. 
+  /// [errorCode] An error code; 0 if unknown . 
+  /// [errorMessage] Error message. 
+  /// [canRetry] True, if the message can be re-sent. 
   /// [retryAfter] Time left before the message can be re-sent, in seconds. No update is sent when this field changes
-  MessageSendingStateFailed(
-      {this.errorCode, this.errorMessage, this.canRetry, this.retryAfter});
+  MessageSendingStateFailed({this.errorCode,
+    this.errorMessage,
+    this.canRetry,
+    this.retryAfter});
 
   /// Parse from a json
-  MessageSendingStateFailed.fromJson(Map<String, dynamic> json) {
+  MessageSendingStateFailed.fromJson(Map<String, dynamic> json)  {
     this.errorCode = json['error_code'];
     this.errorMessage = json['error_message'];
     this.canRetry = json['can_retry'];
@@ -77,12 +80,9 @@ class MessageSendingStateFailed implements MessageSendingState {
       "error_code": this.errorCode,
       "error_message": this.errorMessage,
       "can_retry": this.canRetry,
-      "retry_after": this.retryAfter
+      "retry_after": this.retryAfter,
     };
   }
 
-  static const String CONSTRUCTOR = "messageSendingStateFailed";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'messageSendingStateFailed';
 }

@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class CallState implements TdObject {
+class CallState extends TdObject {
+  
+
   /// Describes the current call state
   CallState();
 
@@ -11,8 +13,8 @@ class CallState implements TdObject {
   /// * CallStateHangingUp
   /// * CallStateDiscarded
   /// * CallStateError
-  factory CallState.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory CallState.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case CallStatePending.CONSTRUCTOR:
         return CallStatePending.fromJson(json);
       case CallStateExchangingKeys.CONSTRUCTOR:
@@ -32,26 +34,26 @@ class CallState implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "callState";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callState';
 }
 
-class CallStatePending implements CallState {
+class CallStatePending extends CallState {
   bool isCreated;
   bool isReceived;
 
-  /// The call is pending, waiting to be accepted by a user.
-  ///[isCreated] True, if the call has already been created by the server .
+  /// The call is pending, waiting to be accepted by a user. 
+  /// [isCreated] True, if the call has already been created by the server . 
   /// [isReceived] True, if the call has already been received by the other party
-  CallStatePending({this.isCreated, this.isReceived});
+  CallStatePending({this.isCreated,
+    this.isReceived});
 
   /// Parse from a json
-  CallStatePending.fromJson(Map<String, dynamic> json) {
+  CallStatePending.fromJson(Map<String, dynamic> json)  {
     this.isCreated = json['is_created'];
     this.isReceived = json['is_received'];
   }
@@ -61,68 +63,61 @@ class CallStatePending implements CallState {
     return {
       "@type": CONSTRUCTOR,
       "is_created": this.isCreated,
-      "is_received": this.isReceived
+      "is_received": this.isReceived,
     };
   }
 
-  static const String CONSTRUCTOR = "callStatePending";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStatePending';
 }
 
-class CallStateExchangingKeys implements CallState {
-  /// The call has been answered and encryption keys are being exchanged.
-  ///
+class CallStateExchangingKeys extends CallState {
+  
+
+  /// The call has been answered and encryption keys are being exchanged
   CallStateExchangingKeys();
 
   /// Parse from a json
-  CallStateExchangingKeys.fromJson(Map<String, dynamic> json);
+  CallStateExchangingKeys.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callStateExchangingKeys";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStateExchangingKeys';
 }
 
-class CallStateReady implements CallState {
+class CallStateReady extends CallState {
   CallProtocol protocol;
-  List<CallConnection> connections;
+  List<List<CallConnection>> connections;
   String config;
   String encryptionKey;
-  List<String> emojis;
+  List<List<String>> emojis;
   bool allowP2p;
 
-  /// The call is ready to use.
-  ///[protocol] Call protocols supported by the peer .
-  /// [connections] Available UDP reflectors .
-  /// [config] A JSON-encoded call config .
-  /// [encryptionKey] Call encryption key .
-  /// [emojis] Encryption key emojis fingerprint .
+  /// The call is ready to use. 
+  /// [protocol] Call protocols supported by the peer . 
+  /// [connections] Available UDP reflectors . 
+  /// [config] A JSON-encoded call config . 
+  /// [encryptionKey] Call encryption key . 
+  /// [emojis] Encryption key emojis fingerprint . 
   /// [allowP2p] True, if peer-to-peer connection is allowed by users privacy settings
-  CallStateReady(
-      {this.protocol,
-      this.connections,
-      this.config,
-      this.encryptionKey,
-      this.emojis,
-      this.allowP2p});
+  CallStateReady({this.protocol,
+    this.connections,
+    this.config,
+    this.encryptionKey,
+    this.emojis,
+    this.allowP2p});
 
   /// Parse from a json
-  CallStateReady.fromJson(Map<String, dynamic> json) {
-    this.protocol =
-        CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{});
-    this.connections = List<CallConnection>.from((json['connections'] ?? [])
-        .map((listValue) => CallConnection.fromJson(listValue))
-        .toList());
+  CallStateReady.fromJson(Map<String, dynamic> json)  {
+    this.protocol = CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{});
+    this.connections = List<List<CallConnection>>.from((json['connections'] ?? []).map((item) => List<CallConnection>.from((item ?? []).map((innerItem) => CallConnection.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.config = json['config'];
     this.encryptionKey = json['encryption_key'];
-    this.emojis = List<String>.from(json['emojis'] ?? []);
+    this.emojis = List<List<String>>.from((json['emojis'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
     this.allowP2p = json['allow_p2p'];
   }
 
@@ -131,55 +126,52 @@ class CallStateReady implements CallState {
     return {
       "@type": CONSTRUCTOR,
       "protocol": this.protocol.toJson(),
-      "connections":
-          this.connections.map((listItem) => listItem.toJson()).toList(),
+      "connections": this.connections.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "config": this.config,
       "encryption_key": this.encryptionKey,
-      "emojis": this.emojis,
-      "allow_p2p": this.allowP2p
+      "emojis": this.emojis.map((i) => i.map((ii) => ii).toList()).toList(),
+      "allow_p2p": this.allowP2p,
     };
   }
 
-  static const String CONSTRUCTOR = "callStateReady";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStateReady';
 }
 
-class CallStateHangingUp implements CallState {
-  /// The call is hanging up after discardCall has been called.
-  ///
+class CallStateHangingUp extends CallState {
+  
+
+  /// The call is hanging up after discardCall has been called
   CallStateHangingUp();
 
   /// Parse from a json
-  CallStateHangingUp.fromJson(Map<String, dynamic> json);
+  CallStateHangingUp.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callStateHangingUp";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStateHangingUp';
 }
 
-class CallStateDiscarded implements CallState {
-  var reason;
+class CallStateDiscarded extends CallState {
+  CallDiscardReason reason;
   bool needRating;
   bool needDebugInformation;
 
-  /// The call has ended successfully.
-  ///[reason] The reason, why the call has ended .
-  /// [needRating] True, if the call rating should be sent to the server .
+  /// The call has ended successfully. 
+  /// [reason] The reason, why the call has ended . 
+  /// [needRating] True, if the call rating should be sent to the server . 
   /// [needDebugInformation] True, if the call debug information should be sent to the server
-  CallStateDiscarded({this.reason, this.needRating, this.needDebugInformation});
+  CallStateDiscarded({this.reason,
+    this.needRating,
+    this.needDebugInformation});
 
   /// Parse from a json
-  CallStateDiscarded.fromJson(Map<String, dynamic> json) {
-    this.reason =
-        CallDiscardReason.fromJson(json['reason'] ?? <String, dynamic>{});
+  CallStateDiscarded.fromJson(Map<String, dynamic> json)  {
+    this.reason = CallDiscardReason.fromJson(json['reason'] ?? <String, dynamic>{});
     this.needRating = json['need_rating'];
     this.needDebugInformation = json['need_debug_information'];
   }
@@ -190,35 +182,32 @@ class CallStateDiscarded implements CallState {
       "@type": CONSTRUCTOR,
       "reason": this.reason.toJson(),
       "need_rating": this.needRating,
-      "need_debug_information": this.needDebugInformation
+      "need_debug_information": this.needDebugInformation,
     };
   }
 
-  static const String CONSTRUCTOR = "callStateDiscarded";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStateDiscarded';
 }
 
-class CallStateError implements CallState {
-  Error error;
+class CallStateError extends CallState {
+  TdError error;
 
-  /// The call has ended with an error.
-  ///[error] Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
+  /// The call has ended with an error. 
+  /// [error] Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
   CallStateError({this.error});
 
   /// Parse from a json
-  CallStateError.fromJson(Map<String, dynamic> json) {
-    this.error = Error.fromJson(json['error'] ?? <String, dynamic>{});
+  CallStateError.fromJson(Map<String, dynamic> json)  {
+    this.error = TdError.fromJson(json['error'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "error": this.error.toJson()};
+    return {
+      "@type": CONSTRUCTOR,
+      "error": this.error.toJson(),
+    };
   }
 
-  static const String CONSTRUCTOR = "callStateError";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callStateError';
 }

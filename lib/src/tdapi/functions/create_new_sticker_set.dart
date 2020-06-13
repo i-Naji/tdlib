@@ -5,20 +5,23 @@ class CreateNewStickerSet extends TdFunction {
   String title;
   String name;
   bool isMasks;
-  List<InputSticker> stickers;
+  List<List<InputSticker>> stickers;
   dynamic extra;
 
-  /// Creates a new sticker set; for bots only. Returns the newly created sticker set.
-  ///[userId] Sticker set owner .
-  /// [title] Sticker set title; 1-64 characters .
-  /// [name] Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive); 1-64 characters.
-  /// [isMasks] True, if stickers are masks .
-  /// [stickers] List of stickers to be added to the set
-  CreateNewStickerSet(
-      {this.userId, this.title, this.name, this.isMasks, this.stickers});
+  /// Creates a new sticker set; for bots only. Returns the newly created sticker set. 
+  /// [userId] Sticker set owner. 
+  /// [title] Sticker set title; 1-64 characters. 
+  /// [name] Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_. 
+  /// [isMasks] True, if stickers are masks. Animated stickers can't be masks. 
+  /// [stickers] List of stickers to be added to the set; must be non-empty. All stickers must be of the same type
+  CreateNewStickerSet({this.userId,
+    this.title,
+    this.name,
+    this.isMasks,
+    this.stickers});
 
   /// Parse from a json
-  CreateNewStickerSet.fromJson(Map<String, dynamic> json);
+  CreateNewStickerSet.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -28,13 +31,10 @@ class CreateNewStickerSet extends TdFunction {
       "title": this.title,
       "name": this.name,
       "is_masks": this.isMasks,
-      "stickers": this.stickers.map((listItem) => listItem.toJson()).toList(),
-      "@extra": this.extra
+      "stickers": this.stickers.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "createNewStickerSet";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'createNewStickerSet';
 }

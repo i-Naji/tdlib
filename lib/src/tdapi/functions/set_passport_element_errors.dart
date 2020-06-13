@@ -2,29 +2,27 @@ part of '../tdapi.dart';
 
 class SetPassportElementErrors extends TdFunction {
   int userId;
-  List<InputPassportElementError> errors;
+  List<List<InputPassportElementError>> errors;
   dynamic extra;
 
-  /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed.
-  ///[userId] User identifier .
+  /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed. 
+  /// [userId] User identifier . 
   /// [errors] The errors
-  SetPassportElementErrors({this.userId, this.errors});
+  SetPassportElementErrors({this.userId,
+    this.errors});
 
   /// Parse from a json
-  SetPassportElementErrors.fromJson(Map<String, dynamic> json);
+  SetPassportElementErrors.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "errors": this.errors.map((listItem) => listItem.toJson()).toList(),
-      "@extra": this.extra
+      "errors": this.errors.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "setPassportElementErrors";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'setPassportElementErrors';
 }

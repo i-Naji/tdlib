@@ -1,31 +1,30 @@
 part of '../tdapi.dart';
 
-class Proxy implements TdObject {
+class Proxy extends TdObject {
   int id;
   String server;
   int port;
   int lastUsedDate;
   bool isEnabled;
-  var type;
+  ProxyType type;
   dynamic extra;
 
-  /// Contains information about a proxy server.
-  ///[id] Unique identifier of the proxy .
-  /// [server] Proxy server IP address .
-  /// [port] Proxy server port .
-  /// [lastUsedDate] Point in time (Unix timestamp) when the proxy was last used; 0 if never .
-  /// [isEnabled] True, if the proxy is enabled now .
+  /// Contains information about a proxy server. 
+  /// [id] Unique identifier of the proxy . 
+  /// [server] Proxy server IP address . 
+  /// [port] Proxy server port . 
+  /// [lastUsedDate] Point in time (Unix timestamp) when the proxy was last used; 0 if never . 
+  /// [isEnabled] True, if the proxy is enabled now . 
   /// [type] Type of the proxy
-  Proxy(
-      {this.id,
-      this.server,
-      this.port,
-      this.lastUsedDate,
-      this.isEnabled,
-      this.type});
+  Proxy({this.id,
+    this.server,
+    this.port,
+    this.lastUsedDate,
+    this.isEnabled,
+    this.type});
 
   /// Parse from a json
-  Proxy.fromJson(Map<String, dynamic> json) {
+  Proxy.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.server = json['server'];
     this.port = json['port'];
@@ -44,12 +43,9 @@ class Proxy implements TdObject {
       "port": this.port,
       "last_used_date": this.lastUsedDate,
       "is_enabled": this.isEnabled,
-      "type": this.type.toJson()
+      "type": this.type.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "proxy";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'proxy';
 }

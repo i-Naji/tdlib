@@ -5,19 +5,23 @@ class EditProxy extends TdFunction {
   String server;
   int port;
   bool enable;
-  var type;
+  ProxyType type;
   dynamic extra;
 
-  /// Edits an existing proxy server for network requests. Can be called before authorization.
-  ///[proxyId] Proxy identifier .
-  /// [server] Proxy server IP address .
-  /// [port] Proxy server port .
-  /// [enable] True, if the proxy should be enabled .
+  /// Edits an existing proxy server for network requests. Can be called before authorization. 
+  /// [proxyId] Proxy identifier . 
+  /// [server] Proxy server IP address . 
+  /// [port] Proxy server port . 
+  /// [enable] True, if the proxy should be enabled . 
   /// [type] Proxy type
-  EditProxy({this.proxyId, this.server, this.port, this.enable, this.type});
+  EditProxy({this.proxyId,
+    this.server,
+    this.port,
+    this.enable,
+    this.type});
 
   /// Parse from a json
-  EditProxy.fromJson(Map<String, dynamic> json);
+  EditProxy.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -28,12 +32,9 @@ class EditProxy extends TdFunction {
       "port": this.port,
       "enable": this.enable,
       "type": this.type.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "editProxy";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'editProxy';
 }

@@ -8,21 +8,20 @@ class AnswerCallbackQuery extends TdFunction {
   int cacheTime;
   dynamic extra;
 
-  /// Sets the result of a callback query; for bots only.
-  ///[callbackQueryId] Identifier of the callback query .
-  /// [text] Text of the answer .
-  /// [showAlert] If true, an alert should be shown to the user instead of a toast notification .
-  /// [url] URL to be opened .
+  /// Sets the result of a callback query; for bots only. 
+  /// [callbackQueryId] Identifier of the callback query . 
+  /// [text] Text of the answer . 
+  /// [showAlert] If true, an alert should be shown to the user instead of a toast notification . 
+  /// [url] URL to be opened . 
   /// [cacheTime] Time during which the result of the query can be cached, in seconds
-  AnswerCallbackQuery(
-      {this.callbackQueryId,
-      this.text,
-      this.showAlert,
-      this.url,
-      this.cacheTime});
+  AnswerCallbackQuery({this.callbackQueryId,
+    this.text,
+    this.showAlert,
+    this.url,
+    this.cacheTime});
 
   /// Parse from a json
-  AnswerCallbackQuery.fromJson(Map<String, dynamic> json);
+  AnswerCallbackQuery.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -33,12 +32,9 @@ class AnswerCallbackQuery extends TdFunction {
       "show_alert": this.showAlert,
       "url": this.url,
       "cache_time": this.cacheTime,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "answerCallbackQuery";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'answerCallbackQuery';
 }

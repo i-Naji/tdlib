@@ -21,9 +21,4 @@ public final class JsonClient {
 
     public static native void destroy(long client);
 
-    public static native void setLogVerbosityLevel(int newLogVerbosity);
-
-    public static native boolean setLogFilePath(String filePath);
-
-    public static native void setLogMaxFileSize(long maxFileSize);
 }

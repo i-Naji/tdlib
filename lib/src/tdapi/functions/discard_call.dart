@@ -7,16 +7,18 @@ class DiscardCall extends TdFunction {
   int connectionId;
   dynamic extra;
 
-  /// Discards a call.
-  ///[callId] Call identifier .
-  /// [isDisconnected] True, if the user was disconnected .
-  /// [duration] The call duration, in seconds .
+  /// Discards a call. 
+  /// [callId] Call identifier . 
+  /// [isDisconnected] True, if the user was disconnected . 
+  /// [duration] The call duration, in seconds . 
   /// [connectionId] Identifier of the connection used during the call
-  DiscardCall(
-      {this.callId, this.isDisconnected, this.duration, this.connectionId});
+  DiscardCall({this.callId,
+    this.isDisconnected,
+    this.duration,
+    this.connectionId});
 
   /// Parse from a json
-  DiscardCall.fromJson(Map<String, dynamic> json);
+  DiscardCall.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -26,12 +28,9 @@ class DiscardCall extends TdFunction {
       "is_disconnected": this.isDisconnected,
       "duration": this.duration,
       "connection_id": this.connectionId,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "discardCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'discardCall';
 }

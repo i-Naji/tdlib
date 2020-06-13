@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class PageBlockRelatedArticle implements TdObject {
+class PageBlockRelatedArticle extends TdObject {
   String url;
   String title;
   String description;
@@ -8,23 +8,22 @@ class PageBlockRelatedArticle implements TdObject {
   String author;
   int publishDate;
 
-  /// Contains information about a related article.
-  ///[url] Related article URL .
-  /// [title] Article title; may be empty .
-  /// [paramDescription] Article description; may be empty.
-  /// [photo] Article photo; may be null .
-  /// [author] Article author; may be empty .
+  /// Contains information about a related article. 
+  /// [url] Related article URL . 
+  /// [title] Article title; may be empty . 
+  /// [description] Article description; may be empty. 
+  /// [photo] Article photo; may be null. 
+  /// [author] Article author; may be empty . 
   /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
-  PageBlockRelatedArticle(
-      {this.url,
-      this.title,
-      this.description,
-      this.photo,
-      this.author,
-      this.publishDate});
+  PageBlockRelatedArticle({this.url,
+    this.title,
+    this.description,
+    this.photo,
+    this.author,
+    this.publishDate});
 
   /// Parse from a json
-  PageBlockRelatedArticle.fromJson(Map<String, dynamic> json) {
+  PageBlockRelatedArticle.fromJson(Map<String, dynamic> json)  {
     this.url = json['url'];
     this.title = json['title'];
     this.description = json['description'];
@@ -42,12 +41,9 @@ class PageBlockRelatedArticle implements TdObject {
       "description": this.description,
       "photo": this.photo.toJson(),
       "author": this.author,
-      "publish_date": this.publishDate
+      "publish_date": this.publishDate,
     };
   }
 
-  static const String CONSTRUCTOR = "pageBlockRelatedArticle";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'pageBlockRelatedArticle';
 }

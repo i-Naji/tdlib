@@ -3,17 +3,19 @@ part of '../tdapi.dart';
 class GetCallbackQueryAnswer extends TdFunction {
   int chatId;
   int messageId;
-  var payload;
+  CallbackQueryPayload payload;
   dynamic extra;
 
-  /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires.
-  ///[chatId] Identifier of the chat with the message .
-  /// [messageId] Identifier of the message from which the query originated .
+  /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires. 
+  /// [chatId] Identifier of the chat with the message . 
+  /// [messageId] Identifier of the message from which the query originated . 
   /// [payload] Query payload
-  GetCallbackQueryAnswer({this.chatId, this.messageId, this.payload});
+  GetCallbackQueryAnswer({this.chatId,
+    this.messageId,
+    this.payload});
 
   /// Parse from a json
-  GetCallbackQueryAnswer.fromJson(Map<String, dynamic> json);
+  GetCallbackQueryAnswer.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -22,12 +24,9 @@ class GetCallbackQueryAnswer extends TdFunction {
       "chat_id": this.chatId,
       "message_id": this.messageId,
       "payload": this.payload.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getCallbackQueryAnswer";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getCallbackQueryAnswer';
 }

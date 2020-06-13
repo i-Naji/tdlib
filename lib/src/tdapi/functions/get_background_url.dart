@@ -2,16 +2,17 @@ part of '../tdapi.dart';
 
 class GetBackgroundUrl extends TdFunction {
   String name;
-  var type;
+  BackgroundType type;
   dynamic extra;
 
-  /// Constructs a persistent HTTP URL for a background.
-  ///[name] Background name .
+  /// Constructs a persistent HTTP URL for a background. 
+  /// [name] Background name . 
   /// [type] Background type
-  GetBackgroundUrl({this.name, this.type});
+  GetBackgroundUrl({this.name,
+    this.type});
 
   /// Parse from a json
-  GetBackgroundUrl.fromJson(Map<String, dynamic> json);
+  GetBackgroundUrl.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class GetBackgroundUrl extends TdFunction {
       "@type": CONSTRUCTOR,
       "name": this.name,
       "type": this.type.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getBackgroundUrl";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getBackgroundUrl';
 }

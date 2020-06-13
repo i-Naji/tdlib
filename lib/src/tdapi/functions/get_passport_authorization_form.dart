@@ -7,16 +7,18 @@ class GetPassportAuthorizationForm extends TdFunction {
   String nonce;
   dynamic extra;
 
-  /// Returns a Telegram Passport authorization form for sharing data with a service.
-  ///[botUserId] User identifier of the service's bot .
-  /// [scope] Telegram Passport element types requested by the service .
-  /// [publicKey] Service's public_key .
+  /// Returns a Telegram Passport authorization form for sharing data with a service. 
+  /// [botUserId] User identifier of the service's bot . 
+  /// [scope] Telegram Passport element types requested by the service . 
+  /// [publicKey] Service's public_key . 
   /// [nonce] Authorization form nonce provided by the service
-  GetPassportAuthorizationForm(
-      {this.botUserId, this.scope, this.publicKey, this.nonce});
+  GetPassportAuthorizationForm({this.botUserId,
+    this.scope,
+    this.publicKey,
+    this.nonce});
 
   /// Parse from a json
-  GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json);
+  GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -26,12 +28,9 @@ class GetPassportAuthorizationForm extends TdFunction {
       "scope": this.scope,
       "public_key": this.publicKey,
       "nonce": this.nonce,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getPassportAuthorizationForm";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getPassportAuthorizationForm';
 }

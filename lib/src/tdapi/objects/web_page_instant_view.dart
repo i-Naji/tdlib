@@ -1,29 +1,30 @@
 part of '../tdapi.dart';
 
-class WebPageInstantView implements TdObject {
-  List pageBlocks;
+class WebPageInstantView extends TdObject {
+  List<List<PageBlock>> pageBlocks;
+  int viewCount;
   int version;
-  String url;
   bool isRtl;
   bool isFull;
   dynamic extra;
 
-  /// Describes an instant view page for a web page.
-  ///[pageBlocks] Content of the web page.
-  /// [version] Version of the instant view, currently can be 1 or 2.
-  /// [url] Instant view URL; may be different from WebPage.url and must be used for the correct anchors handling.
-  /// [isRtl] True, if the instant view must be shown from right to left.
+  /// Describes an instant view page for a web page. 
+  /// [pageBlocks] Content of the web page. 
+  /// [viewCount] Number of the instant view views; 0 if unknown. 
+  /// [version] Version of the instant view, currently can be 1 or 2. 
+  /// [isRtl] True, if the instant view must be shown from right to left. 
   /// [isFull] True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
-  WebPageInstantView(
-      {this.pageBlocks, this.version, this.url, this.isRtl, this.isFull});
+  WebPageInstantView({this.pageBlocks,
+    this.viewCount,
+    this.version,
+    this.isRtl,
+    this.isFull});
 
   /// Parse from a json
-  WebPageInstantView.fromJson(Map<String, dynamic> json) {
-    this.pageBlocks = (json['page_blocks'] ?? [])
-        .map((listValue) => PageBlock.fromJson(listValue))
-        .toList();
+  WebPageInstantView.fromJson(Map<String, dynamic> json)  {
+    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.viewCount = json['view_count'];
     this.version = json['version'];
-    this.url = json['url'];
     this.isRtl = json['is_rtl'];
     this.isFull = json['is_full'];
     this.extra = json['@extra'];
@@ -33,17 +34,13 @@ class WebPageInstantView implements TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "page_blocks":
-          this.pageBlocks.map((listItem) => listItem.toJson()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "view_count": this.viewCount,
       "version": this.version,
-      "url": this.url,
       "is_rtl": this.isRtl,
-      "is_full": this.isFull
+      "is_full": this.isFull,
     };
   }
 
-  static const String CONSTRUCTOR = "webPageInstantView";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'webPageInstantView';
 }

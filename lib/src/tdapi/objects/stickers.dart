@@ -1,18 +1,16 @@
 part of '../tdapi.dart';
 
-class Stickers implements TdObject {
-  List<Sticker> stickers;
+class Stickers extends TdObject {
+  List<List<Sticker>> stickers;
   dynamic extra;
 
-  /// Represents a list of stickers.
-  ///[stickers] List of stickers
+  /// Represents a list of stickers. 
+  /// [stickers] List of stickers
   Stickers({this.stickers});
 
   /// Parse from a json
-  Stickers.fromJson(Map<String, dynamic> json) {
-    this.stickers = List<Sticker>.from((json['stickers'] ?? [])
-        .map((listValue) => Sticker.fromJson(listValue))
-        .toList());
+  Stickers.fromJson(Map<String, dynamic> json)  {
+    this.stickers = List<List<Sticker>>.from((json['stickers'] ?? []).map((item) => List<Sticker>.from((item ?? []).map((innerItem) => Sticker.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -20,12 +18,9 @@ class Stickers implements TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "stickers": this.stickers.map((listItem) => listItem.toJson()).toList()
+      "stickers": this.stickers.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "stickers";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'stickers';
 }

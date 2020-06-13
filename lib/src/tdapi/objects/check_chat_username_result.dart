@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class CheckChatUsernameResult implements TdObject {
+class CheckChatUsernameResult extends TdObject {
+  
+
   /// Represents result of checking whether a username can be set for a chat
   CheckChatUsernameResult();
 
@@ -10,8 +12,8 @@ class CheckChatUsernameResult implements TdObject {
   /// * CheckChatUsernameResultUsernameOccupied
   /// * CheckChatUsernameResultPublicChatsTooMuch
   /// * CheckChatUsernameResultPublicGroupsUnavailable
-  factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case CheckChatUsernameResultOk.CONSTRUCTOR:
         return CheckChatUsernameResultOk.fromJson(json);
       case CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR:
@@ -29,133 +31,115 @@ class CheckChatUsernameResult implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "checkChatUsernameResult";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResult';
 }
 
-class CheckChatUsernameResultOk implements CheckChatUsernameResult {
+class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   dynamic extra;
 
-  /// The username can be set.
-  ///
+  /// The username can be set
   CheckChatUsernameResultOk();
 
   /// Parse from a json
-  CheckChatUsernameResultOk.fromJson(Map<String, dynamic> json) {
+  CheckChatUsernameResultOk.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "checkChatUsernameResultOk";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResultOk';
 }
 
-class CheckChatUsernameResultUsernameInvalid
-    implements CheckChatUsernameResult {
+class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
   dynamic extra;
 
-  /// The username is invalid.
-  ///
+  /// The username is invalid
   CheckChatUsernameResultUsernameInvalid();
 
   /// Parse from a json
-  CheckChatUsernameResultUsernameInvalid.fromJson(Map<String, dynamic> json) {
+  CheckChatUsernameResultUsernameInvalid.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "checkChatUsernameResultUsernameInvalid";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResultUsernameInvalid';
 }
 
-class CheckChatUsernameResultUsernameOccupied
-    implements CheckChatUsernameResult {
+class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
   dynamic extra;
 
-  /// The username is occupied.
-  ///
+  /// The username is occupied
   CheckChatUsernameResultUsernameOccupied();
 
   /// Parse from a json
-  CheckChatUsernameResultUsernameOccupied.fromJson(Map<String, dynamic> json) {
+  CheckChatUsernameResultUsernameOccupied.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "checkChatUsernameResultUsernameOccupied";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResultUsernameOccupied';
 }
 
-class CheckChatUsernameResultPublicChatsTooMuch
-    implements CheckChatUsernameResult {
+class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult {
   dynamic extra;
 
-  /// The user has too much chats with username, one of them should be made private first.
-  ///
+  /// The user has too much chats with username, one of them should be made private first
   CheckChatUsernameResultPublicChatsTooMuch();
 
   /// Parse from a json
-  CheckChatUsernameResultPublicChatsTooMuch.fromJson(
-      Map<String, dynamic> json) {
+  CheckChatUsernameResultPublicChatsTooMuch.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "checkChatUsernameResultPublicChatsTooMuch";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResultPublicChatsTooMuch';
 }
 
-class CheckChatUsernameResultPublicGroupsUnavailable
-    implements CheckChatUsernameResult {
+class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameResult {
   dynamic extra;
 
-  /// The user can't be a member of a public supergroup.
-  ///
+  /// The user can't be a member of a public supergroup
   CheckChatUsernameResultPublicGroupsUnavailable();
 
   /// Parse from a json
-  CheckChatUsernameResultPublicGroupsUnavailable.fromJson(
-      Map<String, dynamic> json) {
+  CheckChatUsernameResultPublicGroupsUnavailable.fromJson(Map<String, dynamic> json)  {
     this.extra = json['@extra'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR =
-      "checkChatUsernameResultPublicGroupsUnavailable";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'checkChatUsernameResultPublicGroupsUnavailable';
 }

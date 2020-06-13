@@ -1,21 +1,20 @@
 part of '../tdapi.dart';
 
-class UserProfilePhotos implements TdObject {
+class UserProfilePhotos extends TdObject {
   int totalCount;
-  List<UserProfilePhoto> photos;
+  List<List<UserProfilePhoto>> photos;
   dynamic extra;
 
-  /// Contains part of the list of user photos.
-  ///[totalCount] Total number of user profile photos .
+  /// Contains part of the list of user photos. 
+  /// [totalCount] Total number of user profile photos . 
   /// [photos] A list of photos
-  UserProfilePhotos({this.totalCount, this.photos});
+  UserProfilePhotos({this.totalCount,
+    this.photos});
 
   /// Parse from a json
-  UserProfilePhotos.fromJson(Map<String, dynamic> json) {
+  UserProfilePhotos.fromJson(Map<String, dynamic> json)  {
     this.totalCount = json['total_count'];
-    this.photos = List<UserProfilePhoto>.from((json['photos'] ?? [])
-        .map((listValue) => UserProfilePhoto.fromJson(listValue))
-        .toList());
+    this.photos = List<List<UserProfilePhoto>>.from((json['photos'] ?? []).map((item) => List<UserProfilePhoto>.from((item ?? []).map((innerItem) => UserProfilePhoto.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -24,12 +23,9 @@ class UserProfilePhotos implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": this.totalCount,
-      "photos": this.photos.map((listItem) => listItem.toJson()).toList()
+      "photos": this.photos.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "userProfilePhotos";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'userProfilePhotos';
 }

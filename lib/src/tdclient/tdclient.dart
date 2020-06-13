@@ -52,8 +52,8 @@ class TdClient {
   /// value 4 corresponds to debug.
   /// value 5 corresponds to verbose debug.
   /// value greater than 5 and up to 1024 can be used to enable even more logging.
-  static Future<void> setLogVerbosityLevel(int level) async => await _platform
-      .invokeMethod('logLevel', <String, dynamic>{'level': level});
+  /// static Future<void> setLogVerbosityLevel(int level) async => await _platform
+  ///    .invokeMethod('logLevel', <String, dynamic>{'level': level});
 
   /// Sets the path to the file where the internal TDLib log will be written.
   /// By default TDLib writes logs to stderr or an OS specific log.

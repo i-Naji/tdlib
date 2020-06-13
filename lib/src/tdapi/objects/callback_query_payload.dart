@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
-class CallbackQueryPayload implements TdObject {
+class CallbackQueryPayload extends TdObject {
+  
+
   /// Represents a payload of a callback query
   CallbackQueryPayload();
 
   /// a CallbackQueryPayload return type can be :
   /// * CallbackQueryPayloadData
   /// * CallbackQueryPayloadGame
-  factory CallbackQueryPayload.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory CallbackQueryPayload.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case CallbackQueryPayloadData.CONSTRUCTOR:
         return CallbackQueryPayloadData.fromJson(json);
       case CallbackQueryPayloadGame.CONSTRUCTOR:
@@ -20,57 +22,56 @@ class CallbackQueryPayload implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "callbackQueryPayload";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callbackQueryPayload';
 }
 
-class CallbackQueryPayloadData implements CallbackQueryPayload {
+class CallbackQueryPayloadData extends CallbackQueryPayload {
   String data;
 
-  /// The payload from a general callback button.
-  ///[data] Data that was attached to the callback button
+  /// The payload from a general callback button. 
+  /// [data] Data that was attached to the callback button
   CallbackQueryPayloadData({this.data});
 
   /// Parse from a json
-  CallbackQueryPayloadData.fromJson(Map<String, dynamic> json) {
+  CallbackQueryPayloadData.fromJson(Map<String, dynamic> json)  {
     this.data = json['data'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "data": this.data};
+    return {
+      "@type": CONSTRUCTOR,
+      "data": this.data,
+    };
   }
 
-  static const String CONSTRUCTOR = "callbackQueryPayloadData";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callbackQueryPayloadData';
 }
 
-class CallbackQueryPayloadGame implements CallbackQueryPayload {
+class CallbackQueryPayloadGame extends CallbackQueryPayload {
   String gameShortName;
 
-  /// The payload from a game callback button.
-  ///[gameShortName] A short name of the game that was attached to the callback button
+  /// The payload from a game callback button. 
+  /// [gameShortName] A short name of the game that was attached to the callback button
   CallbackQueryPayloadGame({this.gameShortName});
 
   /// Parse from a json
-  CallbackQueryPayloadGame.fromJson(Map<String, dynamic> json) {
+  CallbackQueryPayloadGame.fromJson(Map<String, dynamic> json)  {
     this.gameShortName = json['game_short_name'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "game_short_name": this.gameShortName};
+    return {
+      "@type": CONSTRUCTOR,
+      "game_short_name": this.gameShortName,
+    };
   }
 
-  static const String CONSTRUCTOR = "callbackQueryPayloadGame";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callbackQueryPayloadGame';
 }

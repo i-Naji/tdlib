@@ -5,13 +5,14 @@ class ToggleSupergroupSignMessages extends TdFunction {
   bool signMessages;
   dynamic extra;
 
-  /// Toggles sender signatures messages sent in a channel; requires can_change_info rights.
-  ///[supergroupId] Identifier of the channel .
+  /// Toggles sender signatures messages sent in a channel; requires can_change_info rights. 
+  /// [supergroupId] Identifier of the channel . 
   /// [signMessages] New value of sign_messages
-  ToggleSupergroupSignMessages({this.supergroupId, this.signMessages});
+  ToggleSupergroupSignMessages({this.supergroupId,
+    this.signMessages});
 
   /// Parse from a json
-  ToggleSupergroupSignMessages.fromJson(Map<String, dynamic> json);
+  ToggleSupergroupSignMessages.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class ToggleSupergroupSignMessages extends TdFunction {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
       "sign_messages": this.signMessages,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "toggleSupergroupSignMessages";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'toggleSupergroupSignMessages';
 }

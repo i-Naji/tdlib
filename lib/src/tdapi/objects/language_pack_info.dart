@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class LanguagePackInfo implements TdObject {
+class LanguagePackInfo extends TdObject {
   String id;
   String baseLanguagePackId;
   String name;
@@ -16,37 +16,36 @@ class LanguagePackInfo implements TdObject {
   String translationUrl;
   dynamic extra;
 
-  /// Contains information about a language pack.
-  ///[id] Unique language pack identifier.
-  /// [baseLanguagePackId] Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it should be fetched from base language pack. Unsupported in custom language packs.
-  /// [name] Language name .
-  /// [nativeName] Name of the language in that language.
-  /// [pluralCode] A language code to be used to apply plural forms. See https.
-  /// [isOfficial] True, if the language pack is official .
-  /// [isRtl] True, if the language pack strings are RTL .
-  /// [isBeta] True, if the language pack is a beta language pack.
-  /// [isInstalled] True, if the language pack is installed by the current user.
-  /// [totalStringCount] Total number of non-deleted strings from the language pack .
-  /// [translatedStringCount] Total number of translated strings from the language pack.
-  /// [localStringCount] Total number of non-deleted strings from the language pack available locally .
+  /// Contains information about a language pack. 
+  /// [id] Unique language pack identifier. 
+  /// [baseLanguagePackId] Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it should be fetched from base language pack. Unsupported in custom language packs. 
+  /// [name] Language name. 
+  /// [nativeName] Name of the language in that language. 
+  /// [pluralCode] A language code to be used to apply plural forms. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info. 
+  /// [isOfficial] True, if the language pack is official. 
+  /// [isRtl] True, if the language pack strings are RTL . 
+  /// [isBeta] True, if the language pack is a beta language pack. 
+  /// [isInstalled] True, if the language pack is installed by the current user. 
+  /// [totalStringCount] Total number of non-deleted strings from the language pack. 
+  /// [translatedStringCount] Total number of translated strings from the language pack. 
+  /// [localStringCount] Total number of non-deleted strings from the language pack available locally. 
   /// [translationUrl] Link to language translation interface; empty for custom local language packs
-  LanguagePackInfo(
-      {this.id,
-      this.baseLanguagePackId,
-      this.name,
-      this.nativeName,
-      this.pluralCode,
-      this.isOfficial,
-      this.isRtl,
-      this.isBeta,
-      this.isInstalled,
-      this.totalStringCount,
-      this.translatedStringCount,
-      this.localStringCount,
-      this.translationUrl});
+  LanguagePackInfo({this.id,
+    this.baseLanguagePackId,
+    this.name,
+    this.nativeName,
+    this.pluralCode,
+    this.isOfficial,
+    this.isRtl,
+    this.isBeta,
+    this.isInstalled,
+    this.totalStringCount,
+    this.translatedStringCount,
+    this.localStringCount,
+    this.translationUrl});
 
   /// Parse from a json
-  LanguagePackInfo.fromJson(Map<String, dynamic> json) {
+  LanguagePackInfo.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.baseLanguagePackId = json['base_language_pack_id'];
     this.name = json['name'];
@@ -79,12 +78,9 @@ class LanguagePackInfo implements TdObject {
       "total_string_count": this.totalStringCount,
       "translated_string_count": this.translatedStringCount,
       "local_string_count": this.localStringCount,
-      "translation_url": this.translationUrl
+      "translation_url": this.translationUrl,
     };
   }
 
-  static const String CONSTRUCTOR = "languagePackInfo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'languagePackInfo';
 }

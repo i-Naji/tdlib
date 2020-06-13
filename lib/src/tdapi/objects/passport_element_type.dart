@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class PassportElementType implements TdObject {
+class PassportElementType extends TdObject {
+  
+
   /// Contains the type of a Telegram Passport element
   PassportElementType();
 
@@ -18,8 +20,8 @@ class PassportElementType implements TdObject {
   /// * PassportElementTypeTemporaryRegistration
   /// * PassportElementTypePhoneNumber
   /// * PassportElementTypeEmailAddress
-  factory PassportElementType.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory PassportElementType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case PassportElementTypePersonalDetails.CONSTRUCTOR:
         return PassportElementTypePersonalDetails.fromJson(json);
       case PassportElementTypePassport.CONSTRUCTOR:
@@ -53,258 +55,257 @@ class PassportElementType implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementType";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementType';
 }
 
-class PassportElementTypePersonalDetails implements PassportElementType {
-  /// A Telegram Passport element containing the user's personal details.
-  ///
+class PassportElementTypePersonalDetails extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's personal details
   PassportElementTypePersonalDetails();
 
   /// Parse from a json
-  PassportElementTypePersonalDetails.fromJson(Map<String, dynamic> json);
+  PassportElementTypePersonalDetails.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypePersonalDetails";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypePersonalDetails';
 }
 
-class PassportElementTypePassport implements PassportElementType {
-  /// A Telegram Passport element containing the user's passport.
-  ///
+class PassportElementTypePassport extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's passport
   PassportElementTypePassport();
 
   /// Parse from a json
-  PassportElementTypePassport.fromJson(Map<String, dynamic> json);
+  PassportElementTypePassport.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypePassport";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypePassport';
 }
 
-class PassportElementTypeDriverLicense implements PassportElementType {
-  /// A Telegram Passport element containing the user's driver license.
-  ///
+class PassportElementTypeDriverLicense extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's driver license
   PassportElementTypeDriverLicense();
 
   /// Parse from a json
-  PassportElementTypeDriverLicense.fromJson(Map<String, dynamic> json);
+  PassportElementTypeDriverLicense.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeDriverLicense";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeDriverLicense';
 }
 
-class PassportElementTypeIdentityCard implements PassportElementType {
-  /// A Telegram Passport element containing the user's identity card.
-  ///
+class PassportElementTypeIdentityCard extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's identity card
   PassportElementTypeIdentityCard();
 
   /// Parse from a json
-  PassportElementTypeIdentityCard.fromJson(Map<String, dynamic> json);
+  PassportElementTypeIdentityCard.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeIdentityCard";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeIdentityCard';
 }
 
-class PassportElementTypeInternalPassport implements PassportElementType {
-  /// A Telegram Passport element containing the user's internal passport.
-  ///
+class PassportElementTypeInternalPassport extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's internal passport
   PassportElementTypeInternalPassport();
 
   /// Parse from a json
-  PassportElementTypeInternalPassport.fromJson(Map<String, dynamic> json);
+  PassportElementTypeInternalPassport.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeInternalPassport";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeInternalPassport';
 }
 
-class PassportElementTypeAddress implements PassportElementType {
-  /// A Telegram Passport element containing the user's address.
-  ///
+class PassportElementTypeAddress extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's address
   PassportElementTypeAddress();
 
   /// Parse from a json
-  PassportElementTypeAddress.fromJson(Map<String, dynamic> json);
+  PassportElementTypeAddress.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeAddress";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeAddress';
 }
 
-class PassportElementTypeUtilityBill implements PassportElementType {
-  /// A Telegram Passport element containing the user's utility bill.
-  ///
+class PassportElementTypeUtilityBill extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's utility bill
   PassportElementTypeUtilityBill();
 
   /// Parse from a json
-  PassportElementTypeUtilityBill.fromJson(Map<String, dynamic> json);
+  PassportElementTypeUtilityBill.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeUtilityBill";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeUtilityBill';
 }
 
-class PassportElementTypeBankStatement implements PassportElementType {
-  /// A Telegram Passport element containing the user's bank statement.
-  ///
+class PassportElementTypeBankStatement extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's bank statement
   PassportElementTypeBankStatement();
 
   /// Parse from a json
-  PassportElementTypeBankStatement.fromJson(Map<String, dynamic> json);
+  PassportElementTypeBankStatement.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeBankStatement";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeBankStatement';
 }
 
-class PassportElementTypeRentalAgreement implements PassportElementType {
-  /// A Telegram Passport element containing the user's rental agreement.
-  ///
+class PassportElementTypeRentalAgreement extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's rental agreement
   PassportElementTypeRentalAgreement();
 
   /// Parse from a json
-  PassportElementTypeRentalAgreement.fromJson(Map<String, dynamic> json);
+  PassportElementTypeRentalAgreement.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeRentalAgreement";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeRentalAgreement';
 }
 
-class PassportElementTypePassportRegistration implements PassportElementType {
-  /// A Telegram Passport element containing the registration page of the user's passport.
-  ///
+class PassportElementTypePassportRegistration extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the registration page of the user's passport
   PassportElementTypePassportRegistration();
 
   /// Parse from a json
-  PassportElementTypePassportRegistration.fromJson(Map<String, dynamic> json);
+  PassportElementTypePassportRegistration.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypePassportRegistration";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypePassportRegistration';
 }
 
-class PassportElementTypeTemporaryRegistration implements PassportElementType {
-  /// A Telegram Passport element containing the user's temporary registration.
-  ///
+class PassportElementTypeTemporaryRegistration extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's temporary registration
   PassportElementTypeTemporaryRegistration();
 
   /// Parse from a json
-  PassportElementTypeTemporaryRegistration.fromJson(Map<String, dynamic> json);
+  PassportElementTypeTemporaryRegistration.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeTemporaryRegistration";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeTemporaryRegistration';
 }
 
-class PassportElementTypePhoneNumber implements PassportElementType {
-  /// A Telegram Passport element containing the user's phone number.
-  ///
+class PassportElementTypePhoneNumber extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's phone number
   PassportElementTypePhoneNumber();
 
   /// Parse from a json
-  PassportElementTypePhoneNumber.fromJson(Map<String, dynamic> json);
+  PassportElementTypePhoneNumber.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypePhoneNumber";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypePhoneNumber';
 }
 
-class PassportElementTypeEmailAddress implements PassportElementType {
-  /// A Telegram Passport element containing the user's email address.
-  ///
+class PassportElementTypeEmailAddress extends PassportElementType {
+  
+
+  /// A Telegram Passport element containing the user's email address
   PassportElementTypeEmailAddress();
 
   /// Parse from a json
-  PassportElementTypeEmailAddress.fromJson(Map<String, dynamic> json);
+  PassportElementTypeEmailAddress.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "passportElementTypeEmailAddress";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementTypeEmailAddress';
 }

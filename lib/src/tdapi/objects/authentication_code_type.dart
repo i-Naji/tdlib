@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class AuthenticationCodeType implements TdObject {
+class AuthenticationCodeType extends TdObject {
+  
+
   /// Provides information about the method by which an authentication code is delivered to the user
   AuthenticationCodeType();
 
@@ -9,8 +11,8 @@ class AuthenticationCodeType implements TdObject {
   /// * AuthenticationCodeTypeSms
   /// * AuthenticationCodeTypeCall
   /// * AuthenticationCodeTypeFlashCall
-  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR:
         return AuthenticationCodeTypeTelegramMessage.fromJson(json);
       case AuthenticationCodeTypeSms.CONSTRUCTOR:
@@ -26,103 +28,102 @@ class AuthenticationCodeType implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "authenticationCodeType";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'authenticationCodeType';
 }
 
-class AuthenticationCodeTypeTelegramMessage implements AuthenticationCodeType {
+class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   int length;
 
-  /// An authentication code is delivered via a private Telegram message, which can be viewed in another client.
-  ///[length] Length of the code
+  /// An authentication code is delivered via a private Telegram message, which can be viewed in another client. 
+  /// [length] Length of the code
   AuthenticationCodeTypeTelegramMessage({this.length});
 
   /// Parse from a json
-  AuthenticationCodeTypeTelegramMessage.fromJson(Map<String, dynamic> json) {
+  AuthenticationCodeTypeTelegramMessage.fromJson(Map<String, dynamic> json)  {
     this.length = json['length'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "length": this.length};
+    return {
+      "@type": CONSTRUCTOR,
+      "length": this.length,
+    };
   }
 
-  static const String CONSTRUCTOR = "authenticationCodeTypeTelegramMessage";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'authenticationCodeTypeTelegramMessage';
 }
 
-class AuthenticationCodeTypeSms implements AuthenticationCodeType {
+class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   int length;
 
-  /// An authentication code is delivered via an SMS message to the specified phone number.
-  ///[length] Length of the code
+  /// An authentication code is delivered via an SMS message to the specified phone number. 
+  /// [length] Length of the code
   AuthenticationCodeTypeSms({this.length});
 
   /// Parse from a json
-  AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) {
+  AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json)  {
     this.length = json['length'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "length": this.length};
+    return {
+      "@type": CONSTRUCTOR,
+      "length": this.length,
+    };
   }
 
-  static const String CONSTRUCTOR = "authenticationCodeTypeSms";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'authenticationCodeTypeSms';
 }
 
-class AuthenticationCodeTypeCall implements AuthenticationCodeType {
+class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   int length;
 
-  /// An authentication code is delivered via a phone call to the specified phone number.
-  ///[length] Length of the code
+  /// An authentication code is delivered via a phone call to the specified phone number. 
+  /// [length] Length of the code
   AuthenticationCodeTypeCall({this.length});
 
   /// Parse from a json
-  AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) {
+  AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json)  {
     this.length = json['length'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "length": this.length};
+    return {
+      "@type": CONSTRUCTOR,
+      "length": this.length,
+    };
   }
 
-  static const String CONSTRUCTOR = "authenticationCodeTypeCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'authenticationCodeTypeCall';
 }
 
-class AuthenticationCodeTypeFlashCall implements AuthenticationCodeType {
+class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   String pattern;
 
-  /// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code.
-  ///[pattern] Pattern of the phone number from which the call will be made
+  /// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code. 
+  /// [pattern] Pattern of the phone number from which the call will be made
   AuthenticationCodeTypeFlashCall({this.pattern});
 
   /// Parse from a json
-  AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) {
+  AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json)  {
     this.pattern = json['pattern'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "pattern": this.pattern};
+    return {
+      "@type": CONSTRUCTOR,
+      "pattern": this.pattern,
+    };
   }
 
-  static const String CONSTRUCTOR = "authenticationCodeTypeFlashCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'authenticationCodeTypeFlashCall';
 }

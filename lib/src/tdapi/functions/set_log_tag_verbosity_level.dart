@@ -5,13 +5,14 @@ class SetLogTagVerbosityLevel extends TdFunction {
   int newVerbosityLevel;
   dynamic extra;
 
-  /// Sets the verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously.
-  ///[tag] Logging tag to change verbosity level .
+  /// Sets the verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously. 
+  /// [tag] Logging tag to change verbosity level. 
   /// [newVerbosityLevel] New verbosity level; 1-1024
-  SetLogTagVerbosityLevel({this.tag, this.newVerbosityLevel});
+  SetLogTagVerbosityLevel({this.tag,
+    this.newVerbosityLevel});
 
   /// Parse from a json
-  SetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json);
+  SetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SetLogTagVerbosityLevel extends TdFunction {
       "@type": CONSTRUCTOR,
       "tag": this.tag,
       "new_verbosity_level": this.newVerbosityLevel,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "setLogTagVerbosityLevel";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'setLogTagVerbosityLevel';
 }

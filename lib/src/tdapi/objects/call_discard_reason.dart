@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class CallDiscardReason implements TdObject {
+class CallDiscardReason extends TdObject {
+  
+
   /// Describes the reason why a call was discarded
   CallDiscardReason();
 
@@ -10,8 +12,8 @@ class CallDiscardReason implements TdObject {
   /// * CallDiscardReasonDeclined
   /// * CallDiscardReasonDisconnected
   /// * CallDiscardReasonHungUp
-  factory CallDiscardReason.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory CallDiscardReason.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case CallDiscardReasonEmpty.CONSTRUCTOR:
         return CallDiscardReasonEmpty.fromJson(json);
       case CallDiscardReasonMissed.CONSTRUCTOR:
@@ -29,106 +31,105 @@ class CallDiscardReason implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReason";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReason';
 }
 
-class CallDiscardReasonEmpty implements CallDiscardReason {
-  /// The call wasn't discarded, or the reason is unknown.
-  ///
+class CallDiscardReasonEmpty extends CallDiscardReason {
+  
+
+  /// The call wasn't discarded, or the reason is unknown
   CallDiscardReasonEmpty();
 
   /// Parse from a json
-  CallDiscardReasonEmpty.fromJson(Map<String, dynamic> json);
+  CallDiscardReasonEmpty.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReasonEmpty";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReasonEmpty';
 }
 
-class CallDiscardReasonMissed implements CallDiscardReason {
-  /// The call was ended before the conversation started. It was cancelled by the caller or missed by the other party.
-  ///
+class CallDiscardReasonMissed extends CallDiscardReason {
+  
+
+  /// The call was ended before the conversation started. It was cancelled by the caller or missed by the other party
   CallDiscardReasonMissed();
 
   /// Parse from a json
-  CallDiscardReasonMissed.fromJson(Map<String, dynamic> json);
+  CallDiscardReasonMissed.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReasonMissed";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReasonMissed';
 }
 
-class CallDiscardReasonDeclined implements CallDiscardReason {
-  /// The call was ended before the conversation started. It was declined by the other party.
-  ///
+class CallDiscardReasonDeclined extends CallDiscardReason {
+  
+
+  /// The call was ended before the conversation started. It was declined by the other party
   CallDiscardReasonDeclined();
 
   /// Parse from a json
-  CallDiscardReasonDeclined.fromJson(Map<String, dynamic> json);
+  CallDiscardReasonDeclined.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReasonDeclined";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReasonDeclined';
 }
 
-class CallDiscardReasonDisconnected implements CallDiscardReason {
-  /// The call was ended during the conversation because the users were disconnected.
-  ///
+class CallDiscardReasonDisconnected extends CallDiscardReason {
+  
+
+  /// The call was ended during the conversation because the users were disconnected
   CallDiscardReasonDisconnected();
 
   /// Parse from a json
-  CallDiscardReasonDisconnected.fromJson(Map<String, dynamic> json);
+  CallDiscardReasonDisconnected.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReasonDisconnected";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReasonDisconnected';
 }
 
-class CallDiscardReasonHungUp implements CallDiscardReason {
-  /// The call was ended because one of the parties hung up.
-  ///
+class CallDiscardReasonHungUp extends CallDiscardReason {
+  
+
+  /// The call was ended because one of the parties hung up
   CallDiscardReasonHungUp();
 
   /// Parse from a json
-  CallDiscardReasonHungUp.fromJson(Map<String, dynamic> json);
+  CallDiscardReasonHungUp.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "callDiscardReasonHungUp";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'callDiscardReasonHungUp';
 }

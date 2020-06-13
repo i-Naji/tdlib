@@ -1,8 +1,8 @@
 part of '../tdapi.dart';
 
-class Invoice implements TdObject {
+class Invoice extends TdObject {
   String currency;
-  List<LabeledPricePart> priceParts;
+  List<List<LabeledPricePart>> priceParts;
   bool isTest;
   bool needName;
   bool needPhoneNumber;
@@ -12,35 +12,32 @@ class Invoice implements TdObject {
   bool sendEmailAddressToProvider;
   bool isFlexible;
 
-  /// Product invoice.
-  ///[currency] ISO 4217 currency code .
-  /// [priceParts] A list of objects used to calculate the total price of the product .
-  /// [isTest] True, if the payment is a test payment.
-  /// [needName] True, if the user's name is needed for payment .
-  /// [needPhoneNumber] True, if the user's phone number is needed for payment .
-  /// [needEmailAddress] True, if the user's email address is needed for payment.
-  /// [needShippingAddress] True, if the user's shipping address is needed for payment .
-  /// [sendPhoneNumberToProvider] True, if the user's phone number will be sent to the provider.
-  /// [sendEmailAddressToProvider] True, if the user's email address will be sent to the provider .
+  /// Product invoice. 
+  /// [currency] ISO 4217 currency code . 
+  /// [priceParts] A list of objects used to calculate the total price of the product . 
+  /// [isTest] True, if the payment is a test payment. 
+  /// [needName] True, if the user's name is needed for payment. 
+  /// [needPhoneNumber] True, if the user's phone number is needed for payment . 
+  /// [needEmailAddress] True, if the user's email address is needed for payment. 
+  /// [needShippingAddress] True, if the user's shipping address is needed for payment. 
+  /// [sendPhoneNumberToProvider] True, if the user's phone number will be sent to the provider. 
+  /// [sendEmailAddressToProvider] True, if the user's email address will be sent to the provider. 
   /// [isFlexible] True, if the total price depends on the shipping method
-  Invoice(
-      {this.currency,
-      this.priceParts,
-      this.isTest,
-      this.needName,
-      this.needPhoneNumber,
-      this.needEmailAddress,
-      this.needShippingAddress,
-      this.sendPhoneNumberToProvider,
-      this.sendEmailAddressToProvider,
-      this.isFlexible});
+  Invoice({this.currency,
+    this.priceParts,
+    this.isTest,
+    this.needName,
+    this.needPhoneNumber,
+    this.needEmailAddress,
+    this.needShippingAddress,
+    this.sendPhoneNumberToProvider,
+    this.sendEmailAddressToProvider,
+    this.isFlexible});
 
   /// Parse from a json
-  Invoice.fromJson(Map<String, dynamic> json) {
+  Invoice.fromJson(Map<String, dynamic> json)  {
     this.currency = json['currency'];
-    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? [])
-        .map((listValue) => LabeledPricePart.fromJson(listValue))
-        .toList());
+    this.priceParts = List<List<LabeledPricePart>>.from((json['price_parts'] ?? []).map((item) => List<LabeledPricePart>.from((item ?? []).map((innerItem) => LabeledPricePart.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.isTest = json['is_test'];
     this.needName = json['need_name'];
     this.needPhoneNumber = json['need_phone_number'];
@@ -56,8 +53,7 @@ class Invoice implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "currency": this.currency,
-      "price_parts":
-          this.priceParts.map((listItem) => listItem.toJson()).toList(),
+      "price_parts": this.priceParts.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_test": this.isTest,
       "need_name": this.needName,
       "need_phone_number": this.needPhoneNumber,
@@ -65,12 +61,9 @@ class Invoice implements TdObject {
       "need_shipping_address": this.needShippingAddress,
       "send_phone_number_to_provider": this.sendPhoneNumberToProvider,
       "send_email_address_to_provider": this.sendEmailAddressToProvider,
-      "is_flexible": this.isFlexible
+      "is_flexible": this.isFlexible,
     };
   }
 
-  static const String CONSTRUCTOR = "invoice";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'invoice';
 }

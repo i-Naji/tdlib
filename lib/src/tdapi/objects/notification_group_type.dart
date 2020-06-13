@@ -1,7 +1,9 @@
 part of '../tdapi.dart';
 
-class NotificationGroupType implements TdObject {
-  /// Describes type of notifications in the group
+class NotificationGroupType extends TdObject {
+  
+
+  /// Describes the type of notifications in a notification group
   NotificationGroupType();
 
   /// a NotificationGroupType return type can be :
@@ -9,8 +11,8 @@ class NotificationGroupType implements TdObject {
   /// * NotificationGroupTypeMentions
   /// * NotificationGroupTypeSecretChat
   /// * NotificationGroupTypeCalls
-  factory NotificationGroupType.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory NotificationGroupType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case NotificationGroupTypeMessages.CONSTRUCTOR:
         return NotificationGroupTypeMessages.fromJson(json);
       case NotificationGroupTypeMentions.CONSTRUCTOR:
@@ -26,87 +28,86 @@ class NotificationGroupType implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationGroupType";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroupType';
 }
 
-class NotificationGroupTypeMessages implements NotificationGroupType {
-  /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages.
-  ///
+class NotificationGroupTypeMessages extends NotificationGroupType {
+  
+
+  /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages
   NotificationGroupTypeMessages();
 
   /// Parse from a json
-  NotificationGroupTypeMessages.fromJson(Map<String, dynamic> json);
+  NotificationGroupTypeMessages.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationGroupTypeMessages";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroupTypeMessages';
 }
 
-class NotificationGroupTypeMentions implements NotificationGroupType {
-  /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with unread mentions of the current user, replies to their messages, or a pinned message.
-  ///
+class NotificationGroupTypeMentions extends NotificationGroupType {
+  
+
+  /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with unread mentions of the current user, replies to their messages, or a pinned message
   NotificationGroupTypeMentions();
 
   /// Parse from a json
-  NotificationGroupTypeMentions.fromJson(Map<String, dynamic> json);
+  NotificationGroupTypeMentions.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationGroupTypeMentions";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroupTypeMentions';
 }
 
-class NotificationGroupTypeSecretChat implements NotificationGroupType {
-  /// A group containing a notification of type notificationTypeNewSecretChat.
-  ///
+class NotificationGroupTypeSecretChat extends NotificationGroupType {
+  
+
+  /// A group containing a notification of type notificationTypeNewSecretChat
   NotificationGroupTypeSecretChat();
 
   /// Parse from a json
-  NotificationGroupTypeSecretChat.fromJson(Map<String, dynamic> json);
+  NotificationGroupTypeSecretChat.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationGroupTypeSecretChat";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroupTypeSecretChat';
 }
 
-class NotificationGroupTypeCalls implements NotificationGroupType {
-  /// A group containing notifications of type notificationTypeNewCall.
-  ///
+class NotificationGroupTypeCalls extends NotificationGroupType {
+  
+
+  /// A group containing notifications of type notificationTypeNewCall
   NotificationGroupTypeCalls();
 
   /// Parse from a json
-  NotificationGroupTypeCalls.fromJson(Map<String, dynamic> json);
+  NotificationGroupTypeCalls.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationGroupTypeCalls";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationGroupTypeCalls';
 }

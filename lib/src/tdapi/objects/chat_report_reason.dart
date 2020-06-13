@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class ChatReportReason implements TdObject {
+class ChatReportReason extends TdObject {
+  
+
   /// Describes the reason why a chat is reported
   ChatReportReason();
 
@@ -10,9 +12,10 @@ class ChatReportReason implements TdObject {
   /// * ChatReportReasonPornography
   /// * ChatReportReasonChildAbuse
   /// * ChatReportReasonCopyright
+  /// * ChatReportReasonUnrelatedLocation
   /// * ChatReportReasonCustom
-  factory ChatReportReason.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory ChatReportReason.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ChatReportReasonSpam.CONSTRUCTOR:
         return ChatReportReasonSpam.fromJson(json);
       case ChatReportReasonViolence.CONSTRUCTOR:
@@ -23,6 +26,8 @@ class ChatReportReason implements TdObject {
         return ChatReportReasonChildAbuse.fromJson(json);
       case ChatReportReasonCopyright.CONSTRUCTOR:
         return ChatReportReasonCopyright.fromJson(json);
+      case ChatReportReasonUnrelatedLocation.CONSTRUCTOR:
+        return ChatReportReasonUnrelatedLocation.fromJson(json);
       case ChatReportReasonCustom.CONSTRUCTOR:
         return ChatReportReasonCustom.fromJson(json);
       default:
@@ -32,129 +37,147 @@ class ChatReportReason implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReason";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReason';
 }
 
-class ChatReportReasonSpam implements ChatReportReason {
-  /// The chat contains spam messages.
-  ///
+class ChatReportReasonSpam extends ChatReportReason {
+  
+
+  /// The chat contains spam messages
   ChatReportReasonSpam();
 
   /// Parse from a json
-  ChatReportReasonSpam.fromJson(Map<String, dynamic> json);
+  ChatReportReasonSpam.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonSpam";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonSpam';
 }
 
-class ChatReportReasonViolence implements ChatReportReason {
-  /// The chat promotes violence.
-  ///
+class ChatReportReasonViolence extends ChatReportReason {
+  
+
+  /// The chat promotes violence
   ChatReportReasonViolence();
 
   /// Parse from a json
-  ChatReportReasonViolence.fromJson(Map<String, dynamic> json);
+  ChatReportReasonViolence.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonViolence";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonViolence';
 }
 
-class ChatReportReasonPornography implements ChatReportReason {
-  /// The chat contains pornographic messages.
-  ///
+class ChatReportReasonPornography extends ChatReportReason {
+  
+
+  /// The chat contains pornographic messages
   ChatReportReasonPornography();
 
   /// Parse from a json
-  ChatReportReasonPornography.fromJson(Map<String, dynamic> json);
+  ChatReportReasonPornography.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonPornography";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonPornography';
 }
 
-class ChatReportReasonChildAbuse implements ChatReportReason {
-  /// The chat has child abuse related content.
-  ///
+class ChatReportReasonChildAbuse extends ChatReportReason {
+  
+
+  /// The chat has child abuse related content
   ChatReportReasonChildAbuse();
 
   /// Parse from a json
-  ChatReportReasonChildAbuse.fromJson(Map<String, dynamic> json);
+  ChatReportReasonChildAbuse.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonChildAbuse";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonChildAbuse';
 }
 
-class ChatReportReasonCopyright implements ChatReportReason {
-  /// The chat contains copyrighted content.
-  ///
+class ChatReportReasonCopyright extends ChatReportReason {
+  
+
+  /// The chat contains copyrighted content
   ChatReportReasonCopyright();
 
   /// Parse from a json
-  ChatReportReasonCopyright.fromJson(Map<String, dynamic> json);
+  ChatReportReasonCopyright.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonCopyright";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonCopyright';
 }
 
-class ChatReportReasonCustom implements ChatReportReason {
+class ChatReportReasonUnrelatedLocation extends ChatReportReason {
+  
+
+  /// The location-based chat is unrelated to its stated location
+  ChatReportReasonUnrelatedLocation();
+
+  /// Parse from a json
+  ChatReportReasonUnrelatedLocation.fromJson(Map<String, dynamic> json) ;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+    };
+  }
+
+  static const CONSTRUCTOR = 'chatReportReasonUnrelatedLocation';
+}
+
+class ChatReportReasonCustom extends ChatReportReason {
   String text;
 
-  /// A custom reason provided by the user.
-  ///[text] Report text
+  /// A custom reason provided by the user. 
+  /// [text] Report text
   ChatReportReasonCustom({this.text});
 
   /// Parse from a json
-  ChatReportReasonCustom.fromJson(Map<String, dynamic> json) {
+  ChatReportReasonCustom.fromJson(Map<String, dynamic> json)  {
     this.text = json['text'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "text": this.text};
+    return {
+      "@type": CONSTRUCTOR,
+      "text": this.text,
+    };
   }
 
-  static const String CONSTRUCTOR = "chatReportReasonCustom";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'chatReportReasonCustom';
 }

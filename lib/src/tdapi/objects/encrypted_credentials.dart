@@ -1,18 +1,20 @@
 part of '../tdapi.dart';
 
-class EncryptedCredentials implements TdObject {
+class EncryptedCredentials extends TdObject {
   String data;
   String hash;
   String secret;
 
-  /// Contains encrypted Telegram Passport data credentials.
-  ///[data] The encrypted credentials .
-  /// [hash] The decrypted data hash .
+  /// Contains encrypted Telegram Passport data credentials. 
+  /// [data] The encrypted credentials . 
+  /// [hash] The decrypted data hash . 
   /// [secret] Secret for data decryption, encrypted with the service's public key
-  EncryptedCredentials({this.data, this.hash, this.secret});
+  EncryptedCredentials({this.data,
+    this.hash,
+    this.secret});
 
   /// Parse from a json
-  EncryptedCredentials.fromJson(Map<String, dynamic> json) {
+  EncryptedCredentials.fromJson(Map<String, dynamic> json)  {
     this.data = json['data'];
     this.hash = json['hash'];
     this.secret = json['secret'];
@@ -24,12 +26,9 @@ class EncryptedCredentials implements TdObject {
       "@type": CONSTRUCTOR,
       "data": this.data,
       "hash": this.hash,
-      "secret": this.secret
+      "secret": this.secret,
     };
   }
 
-  static const String CONSTRUCTOR = "encryptedCredentials";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'encryptedCredentials';
 }

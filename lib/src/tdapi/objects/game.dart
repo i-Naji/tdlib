@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Game implements TdObject {
+class Game extends TdObject {
   int id;
   String shortName;
   String title;
@@ -9,33 +9,31 @@ class Game implements TdObject {
   Photo photo;
   Animation animation;
 
-  /// Describes a game.
-  ///[id] Game ID .
-  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} .
-  /// [title] Game title .
-  /// [text] Game text, usually containing scoreboards for a game.
-  /// [paramDescription] Game description .
-  /// [photo] Game photo .
+  /// Describes a game. 
+  /// [id] Game game . 
+  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} . 
+  /// [title] Game title . 
+  /// [text] Game text, usually containing scoreboards for a game. 
+  /// [description] Game description. 
+  /// [photo] Game photo . 
   /// [animation] Game animation; may be null
-  Game(
-      {this.id,
-      this.shortName,
-      this.title,
-      this.text,
-      this.description,
-      this.photo,
-      this.animation});
+  Game({this.id,
+    this.shortName,
+    this.title,
+    this.text,
+    this.description,
+    this.photo,
+    this.animation});
 
   /// Parse from a json
-  Game.fromJson(Map<String, dynamic> json) {
+  Game.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.shortName = json['short_name'];
     this.title = json['title'];
     this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
     this.description = json['description'];
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.animation =
-        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
+    this.animation = Animation.fromJson(json['animation'] ?? <String, dynamic>{});
   }
 
   @override
@@ -48,12 +46,9 @@ class Game implements TdObject {
       "text": this.text.toJson(),
       "description": this.description,
       "photo": this.photo.toJson(),
-      "animation": this.animation.toJson()
+      "animation": this.animation.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "game";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'game';
 }

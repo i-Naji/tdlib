@@ -1,20 +1,19 @@
 part of '../tdapi.dart';
 
-class PageBlockListItem implements TdObject {
+class PageBlockListItem extends TdObject {
   String label;
-  List pageBlocks;
+  List<List<PageBlock>> pageBlocks;
 
-  /// Describes an item of a list page block.
-  ///[label] Item label .
+  /// Describes an item of a list page block. 
+  /// [label] Item label . 
   /// [pageBlocks] Item blocks
-  PageBlockListItem({this.label, this.pageBlocks});
+  PageBlockListItem({this.label,
+    this.pageBlocks});
 
   /// Parse from a json
-  PageBlockListItem.fromJson(Map<String, dynamic> json) {
+  PageBlockListItem.fromJson(Map<String, dynamic> json)  {
     this.label = json['label'];
-    this.pageBlocks = (json['page_blocks'] ?? [])
-        .map((listValue) => PageBlock.fromJson(listValue))
-        .toList();
+    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
   }
 
   @override
@@ -22,13 +21,9 @@ class PageBlockListItem implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "label": this.label,
-      "page_blocks":
-          this.pageBlocks.map((listItem) => listItem.toJson()).toList()
+      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "pageBlockListItem";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'pageBlockListItem';
 }

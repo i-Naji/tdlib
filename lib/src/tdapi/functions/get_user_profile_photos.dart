@@ -6,12 +6,16 @@ class GetUserProfilePhotos extends TdFunction {
   int limit;
   dynamic extra;
 
-  /// Returns the profile photos of a user. The result of this query may be outdated.
-  ///
-  GetUserProfilePhotos({this.userId, this.offset, this.limit});
+  /// Returns the profile photos of a user. The result of this query may be outdated: some photos might have been deleted already. 
+  /// [userId] User identifier . 
+  /// [offset] The number of photos to skip; must be non-negative . 
+  /// [limit] The maximum number of photos to be returned; up to 100
+  GetUserProfilePhotos({this.userId,
+    this.offset,
+    this.limit});
 
   /// Parse from a json
-  GetUserProfilePhotos.fromJson(Map<String, dynamic> json);
+  GetUserProfilePhotos.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,12 +24,9 @@ class GetUserProfilePhotos extends TdFunction {
       "user_id": this.userId,
       "offset": this.offset,
       "limit": this.limit,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getUserProfilePhotos";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getUserProfilePhotos';
 }

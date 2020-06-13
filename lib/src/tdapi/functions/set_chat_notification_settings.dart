@@ -5,13 +5,14 @@ class SetChatNotificationSettings extends TdFunction {
   ChatNotificationSettings notificationSettings;
   dynamic extra;
 
-  /// Changes the notification settings of a chat.
-  ///[chatId] Chat identifier .
-  /// [notificationSettings] New notification settings for the chat
-  SetChatNotificationSettings({this.chatId, this.notificationSettings});
+  /// Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed. 
+  /// [chatId] Chat identifier. 
+  /// [notificationSettings] New notification settings for the chat. If the chat is muted for more than 1 week, it is considered to be muted forever
+  SetChatNotificationSettings({this.chatId,
+    this.notificationSettings});
 
   /// Parse from a json
-  SetChatNotificationSettings.fromJson(Map<String, dynamic> json);
+  SetChatNotificationSettings.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SetChatNotificationSettings extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "notification_settings": this.notificationSettings.toJson(),
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "setChatNotificationSettings";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'setChatNotificationSettings';
 }

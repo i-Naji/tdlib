@@ -1,23 +1,20 @@
 part of '../tdapi.dart';
 
-class PassportElementsWithErrors implements TdObject {
-  List elements;
-  List<PassportElementError> errors;
+class PassportElementsWithErrors extends TdObject {
+  List<List<PassportElement>> elements;
+  List<List<PassportElementError>> errors;
   dynamic extra;
 
-  /// Contains information about a Telegram Passport elements and corresponding errors.
-  ///[elements] Telegram Passport elements .
+  /// Contains information about a Telegram Passport elements and corresponding errors. 
+  /// [elements] Telegram Passport elements . 
   /// [errors] Errors in the elements that are already available
-  PassportElementsWithErrors({this.elements, this.errors});
+  PassportElementsWithErrors({this.elements,
+    this.errors});
 
   /// Parse from a json
-  PassportElementsWithErrors.fromJson(Map<String, dynamic> json) {
-    this.elements = (json['elements'] ?? [])
-        .map((listValue) => PassportElement.fromJson(listValue))
-        .toList();
-    this.errors = List<PassportElementError>.from((json['errors'] ?? [])
-        .map((listValue) => PassportElementError.fromJson(listValue))
-        .toList());
+  PassportElementsWithErrors.fromJson(Map<String, dynamic> json)  {
+    this.elements = List<List<PassportElement>>.from((json['elements'] ?? []).map((item) => List<PassportElement>.from((item ?? []).map((innerItem) => PassportElement.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.errors = List<List<PassportElementError>>.from((json['errors'] ?? []).map((item) => List<PassportElementError>.from((item ?? []).map((innerItem) => PassportElementError.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -25,13 +22,10 @@ class PassportElementsWithErrors implements TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "elements": this.elements.map((listItem) => listItem.toJson()).toList(),
-      "errors": this.errors.map((listItem) => listItem.toJson()).toList()
+      "elements": this.elements.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "errors": this.errors.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "passportElementsWithErrors";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementsWithErrors';
 }

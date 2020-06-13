@@ -5,13 +5,14 @@ class SendCustomRequest extends TdFunction {
   String parameters;
   dynamic extra;
 
-  /// Sends a custom request; for bots only.
-  ///[method] The method name .
+  /// Sends a custom request; for bots only. 
+  /// [method] The method name . 
   /// [parameters] JSON-serialized method parameters
-  SendCustomRequest({this.method, this.parameters});
+  SendCustomRequest({this.method,
+    this.parameters});
 
   /// Parse from a json
-  SendCustomRequest.fromJson(Map<String, dynamic> json);
+  SendCustomRequest.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SendCustomRequest extends TdFunction {
       "@type": CONSTRUCTOR,
       "method": this.method,
       "parameters": this.parameters,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "sendCustomRequest";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'sendCustomRequest';
 }

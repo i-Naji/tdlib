@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class InputCredentials implements TdObject {
+class InputCredentials extends TdObject {
+  
+
   /// Contains information about the payment method chosen by the user
   InputCredentials();
 
@@ -9,8 +11,8 @@ class InputCredentials implements TdObject {
   /// * InputCredentialsNew
   /// * InputCredentialsAndroidPay
   /// * InputCredentialsApplePay
-  factory InputCredentials.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory InputCredentials.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InputCredentialsSaved.CONSTRUCTOR:
         return InputCredentialsSaved.fromJson(json);
       case InputCredentialsNew.CONSTRUCTOR:
@@ -26,24 +28,23 @@ class InputCredentials implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "inputCredentials";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inputCredentials';
 }
 
-class InputCredentialsSaved implements InputCredentials {
+class InputCredentialsSaved extends InputCredentials {
   String savedCredentialsId;
 
-  /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password.
-  ///[savedCredentialsId] Identifier of the saved credentials
+  /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password. 
+  /// [savedCredentialsId] Identifier of the saved credentials
   InputCredentialsSaved({this.savedCredentialsId});
 
   /// Parse from a json
-  InputCredentialsSaved.fromJson(Map<String, dynamic> json) {
+  InputCredentialsSaved.fromJson(Map<String, dynamic> json)  {
     this.savedCredentialsId = json['saved_credentials_id'];
   }
 
@@ -51,27 +52,25 @@ class InputCredentialsSaved implements InputCredentials {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "saved_credentials_id": this.savedCredentialsId
+      "saved_credentials_id": this.savedCredentialsId,
     };
   }
 
-  static const String CONSTRUCTOR = "inputCredentialsSaved";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inputCredentialsSaved';
 }
 
-class InputCredentialsNew implements InputCredentials {
+class InputCredentialsNew extends InputCredentials {
   String data;
   bool allowSave;
 
-  /// Applies if a user enters new credentials on a payment provider website.
-  ///[data] Contains JSON-encoded data with a credential identifier from the payment provider .
+  /// Applies if a user enters new credentials on a payment provider website. 
+  /// [data] Contains JSON-encoded data with a credential identifier from the payment provider . 
   /// [allowSave] True, if the credential identifier can be saved on the server side
-  InputCredentialsNew({this.data, this.allowSave});
+  InputCredentialsNew({this.data,
+    this.allowSave});
 
   /// Parse from a json
-  InputCredentialsNew.fromJson(Map<String, dynamic> json) {
+  InputCredentialsNew.fromJson(Map<String, dynamic> json)  {
     this.data = json['data'];
     this.allowSave = json['allow_save'];
   }
@@ -81,58 +80,55 @@ class InputCredentialsNew implements InputCredentials {
     return {
       "@type": CONSTRUCTOR,
       "data": this.data,
-      "allow_save": this.allowSave
+      "allow_save": this.allowSave,
     };
   }
 
-  static const String CONSTRUCTOR = "inputCredentialsNew";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inputCredentialsNew';
 }
 
-class InputCredentialsAndroidPay implements InputCredentials {
+class InputCredentialsAndroidPay extends InputCredentials {
   String data;
 
-  /// Applies if a user enters new credentials using Android Pay.
-  ///[data] JSON-encoded data with the credential identifier
+  /// Applies if a user enters new credentials using Android Pay. 
+  /// [data] JSON-encoded data with the credential identifier
   InputCredentialsAndroidPay({this.data});
 
   /// Parse from a json
-  InputCredentialsAndroidPay.fromJson(Map<String, dynamic> json) {
+  InputCredentialsAndroidPay.fromJson(Map<String, dynamic> json)  {
     this.data = json['data'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "data": this.data};
+    return {
+      "@type": CONSTRUCTOR,
+      "data": this.data,
+    };
   }
 
-  static const String CONSTRUCTOR = "inputCredentialsAndroidPay";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inputCredentialsAndroidPay';
 }
 
-class InputCredentialsApplePay implements InputCredentials {
+class InputCredentialsApplePay extends InputCredentials {
   String data;
 
-  /// Applies if a user enters new credentials using Apple Pay.
-  ///[data] JSON-encoded data with the credential identifier
+  /// Applies if a user enters new credentials using Apple Pay. 
+  /// [data] JSON-encoded data with the credential identifier
   InputCredentialsApplePay({this.data});
 
   /// Parse from a json
-  InputCredentialsApplePay.fromJson(Map<String, dynamic> json) {
+  InputCredentialsApplePay.fromJson(Map<String, dynamic> json)  {
     this.data = json['data'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "data": this.data};
+    return {
+      "@type": CONSTRUCTOR,
+      "data": this.data,
+    };
   }
 
-  static const String CONSTRUCTOR = "inputCredentialsApplePay";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'inputCredentialsApplePay';
 }

@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
-class PassportAuthorizationForm implements TdObject {
+class PassportAuthorizationForm extends TdObject {
   int id;
-  List<PassportRequiredElement> requiredElements;
+  List<List<PassportRequiredElement>> requiredElements;
   String privacyPolicyUrl;
   dynamic extra;
 
-  /// Contains information about a Telegram Passport authorization form that was requested.
-  ///[id] Unique identifier of the authorization form.
-  /// [requiredElements] Information about the Telegram Passport elements that need to be provided to complete the form.
+  /// Contains information about a Telegram Passport authorization form that was requested. 
+  /// [id] Unique identifier of the authorization form. 
+  /// [requiredElements] Information about the Telegram Passport elements that need to be provided to complete the form. 
   /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty
-  PassportAuthorizationForm(
-      {this.id, this.requiredElements, this.privacyPolicyUrl});
+  PassportAuthorizationForm({this.id,
+    this.requiredElements,
+    this.privacyPolicyUrl});
 
   /// Parse from a json
-  PassportAuthorizationForm.fromJson(Map<String, dynamic> json) {
+  PassportAuthorizationForm.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
-    this.requiredElements = List<PassportRequiredElement>.from(
-        (json['required_elements'] ?? [])
-            .map((listValue) => PassportRequiredElement.fromJson(listValue))
-            .toList());
+    this.requiredElements = List<List<PassportRequiredElement>>.from((json['required_elements'] ?? []).map((item) => List<PassportRequiredElement>.from((item ?? []).map((innerItem) => PassportRequiredElement.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.privacyPolicyUrl = json['privacy_policy_url'];
     this.extra = json['@extra'];
   }
@@ -29,14 +27,10 @@ class PassportAuthorizationForm implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "required_elements":
-          this.requiredElements.map((listItem) => listItem.toJson()).toList(),
-      "privacy_policy_url": this.privacyPolicyUrl
+      "required_elements": this.requiredElements.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "privacy_policy_url": this.privacyPolicyUrl,
     };
   }
 
-  static const String CONSTRUCTOR = "passportAuthorizationForm";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportAuthorizationForm';
 }

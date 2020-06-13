@@ -5,13 +5,14 @@ class AnswerCustomQuery extends TdFunction {
   String data;
   dynamic extra;
 
-  /// Answers a custom query; for bots only.
-  ///[customQueryId] Identifier of a custom query .
+  /// Answers a custom query; for bots only. 
+  /// [customQueryId] Identifier of a custom query . 
   /// [data] JSON-serialized answer to the query
-  AnswerCustomQuery({this.customQueryId, this.data});
+  AnswerCustomQuery({this.customQueryId,
+    this.data});
 
   /// Parse from a json
-  AnswerCustomQuery.fromJson(Map<String, dynamic> json);
+  AnswerCustomQuery.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class AnswerCustomQuery extends TdFunction {
       "@type": CONSTRUCTOR,
       "custom_query_id": this.customQueryId,
       "data": this.data,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "answerCustomQuery";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'answerCustomQuery';
 }

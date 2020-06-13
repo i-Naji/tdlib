@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class ConnectionState implements TdObject {
+class ConnectionState extends TdObject {
+  
+
   /// Describes the current state of the connection to Telegram servers
   ConnectionState();
 
@@ -10,8 +12,8 @@ class ConnectionState implements TdObject {
   /// * ConnectionStateConnecting
   /// * ConnectionStateUpdating
   /// * ConnectionStateReady
-  factory ConnectionState.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory ConnectionState.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
         return ConnectionStateWaitingForNetwork.fromJson(json);
       case ConnectionStateConnectingToProxy.CONSTRUCTOR:
@@ -29,106 +31,105 @@ class ConnectionState implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionState";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionState';
 }
 
-class ConnectionStateWaitingForNetwork implements ConnectionState {
-  /// Currently waiting for the network to become available. Use setNetworkType to change the available network type.
-  ///
+class ConnectionStateWaitingForNetwork extends ConnectionState {
+  
+
+  /// Currently waiting for the network to become available. Use setNetworkType to change the available network type
   ConnectionStateWaitingForNetwork();
 
   /// Parse from a json
-  ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json);
+  ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionStateWaitingForNetwork";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionStateWaitingForNetwork';
 }
 
-class ConnectionStateConnectingToProxy implements ConnectionState {
-  /// Currently establishing a connection with a proxy server.
-  ///
+class ConnectionStateConnectingToProxy extends ConnectionState {
+  
+
+  /// Currently establishing a connection with a proxy server
   ConnectionStateConnectingToProxy();
 
   /// Parse from a json
-  ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json);
+  ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionStateConnectingToProxy";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionStateConnectingToProxy';
 }
 
-class ConnectionStateConnecting implements ConnectionState {
-  /// Currently establishing a connection to the Telegram servers.
-  ///
+class ConnectionStateConnecting extends ConnectionState {
+  
+
+  /// Currently establishing a connection to the Telegram servers
   ConnectionStateConnecting();
 
   /// Parse from a json
-  ConnectionStateConnecting.fromJson(Map<String, dynamic> json);
+  ConnectionStateConnecting.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionStateConnecting";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionStateConnecting';
 }
 
-class ConnectionStateUpdating implements ConnectionState {
-  /// Downloading data received while the client was offline.
-  ///
+class ConnectionStateUpdating extends ConnectionState {
+  
+
+  /// Downloading data received while the client was offline
   ConnectionStateUpdating();
 
   /// Parse from a json
-  ConnectionStateUpdating.fromJson(Map<String, dynamic> json);
+  ConnectionStateUpdating.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionStateUpdating";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionStateUpdating';
 }
 
-class ConnectionStateReady implements ConnectionState {
-  /// There is a working connection to the Telegram servers.
-  ///
+class ConnectionStateReady extends ConnectionState {
+  
+
+  /// There is a working connection to the Telegram servers
   ConnectionStateReady();
 
   /// Parse from a json
-  ConnectionStateReady.fromJson(Map<String, dynamic> json);
+  ConnectionStateReady.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "connectionStateReady";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'connectionStateReady';
 }

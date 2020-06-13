@@ -1,19 +1,19 @@
 part of '../tdapi.dart';
 
-class KeyboardButton implements TdObject {
+class KeyboardButton extends TdObject {
   String text;
-  var type;
+  KeyboardButtonType type;
 
-  /// Represents a single button in a bot keyboard.
-  ///[text] Text of the button .
+  /// Represents a single button in a bot keyboard. 
+  /// [text] Text of the button . 
   /// [type] Type of the button
-  KeyboardButton({this.text, this.type});
+  KeyboardButton({this.text,
+    this.type});
 
   /// Parse from a json
-  KeyboardButton.fromJson(Map<String, dynamic> json) {
+  KeyboardButton.fromJson(Map<String, dynamic> json)  {
     this.text = json['text'];
-    this.type =
-        KeyboardButtonType.fromJson(json['type'] ?? <String, dynamic>{});
+    this.type = KeyboardButtonType.fromJson(json['type'] ?? <String, dynamic>{});
   }
 
   @override
@@ -21,12 +21,9 @@ class KeyboardButton implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "text": this.text,
-      "type": this.type.toJson()
+      "type": this.type.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "keyboardButton";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'keyboardButton';
 }

@@ -1,27 +1,27 @@
 part of '../tdapi.dart';
 
-class BasicGroupFullInfo implements TdObject {
+class BasicGroupFullInfo extends TdObject {
   String description;
   int creatorUserId;
-  List<ChatMember> members;
+  List<List<ChatMember>> members;
   String inviteLink;
   dynamic extra;
 
-  /// Contains full information about a basic group.
-  ///[paramDescription] Group description .
-  /// [creatorUserId] User identifier of the creator of the group; 0 if unknown .
-  /// [members] Group members .
-  /// [inviteLink] Invite link for this group; available only for the group creator and only after it has been generated at least once
-  BasicGroupFullInfo(
-      {this.description, this.creatorUserId, this.members, this.inviteLink});
+  /// Contains full information about a basic group. 
+  /// [description] Group description . 
+  /// [creatorUserId] User identifier of the creator of the group; 0 if unknown . 
+  /// [members] Group members . 
+  /// [inviteLink] Invite link for this group; available only after it has been generated at least once and only for the group creator
+  BasicGroupFullInfo({this.description,
+    this.creatorUserId,
+    this.members,
+    this.inviteLink});
 
   /// Parse from a json
-  BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
+  BasicGroupFullInfo.fromJson(Map<String, dynamic> json)  {
     this.description = json['description'];
     this.creatorUserId = json['creator_user_id'];
-    this.members = List<ChatMember>.from((json['members'] ?? [])
-        .map((listValue) => ChatMember.fromJson(listValue))
-        .toList());
+    this.members = List<List<ChatMember>>.from((json['members'] ?? []).map((item) => List<ChatMember>.from((item ?? []).map((innerItem) => ChatMember.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.inviteLink = json['invite_link'];
     this.extra = json['@extra'];
   }
@@ -32,13 +32,10 @@ class BasicGroupFullInfo implements TdObject {
       "@type": CONSTRUCTOR,
       "description": this.description,
       "creator_user_id": this.creatorUserId,
-      "members": this.members.map((listItem) => listItem.toJson()).toList(),
-      "invite_link": this.inviteLink
+      "members": this.members.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "invite_link": this.inviteLink,
     };
   }
 
-  static const String CONSTRUCTOR = "basicGroupFullInfo";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'basicGroupFullInfo';
 }

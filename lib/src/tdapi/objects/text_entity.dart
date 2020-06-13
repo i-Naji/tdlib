@@ -1,18 +1,20 @@
 part of '../tdapi.dart';
 
-class TextEntity implements TdObject {
+class TextEntity extends TdObject {
   int offset;
   int length;
-  var type;
+  TextEntityType type;
 
-  /// Represents a part of the text that needs to be formatted in some unusual way.
-  ///[offset] Offset of the entity in UTF-16 code points .
-  /// [length] Length of the entity, in UTF-16 code points .
+  /// Represents a part of the text that needs to be formatted in some unusual way. 
+  /// [offset] Offset of the entity in UTF-16 code units . 
+  /// [length] Length of the entity, in UTF-16 code units . 
   /// [type] Type of the entity
-  TextEntity({this.offset, this.length, this.type});
+  TextEntity({this.offset,
+    this.length,
+    this.type});
 
   /// Parse from a json
-  TextEntity.fromJson(Map<String, dynamic> json) {
+  TextEntity.fromJson(Map<String, dynamic> json)  {
     this.offset = json['offset'];
     this.length = json['length'];
     this.type = TextEntityType.fromJson(json['type'] ?? <String, dynamic>{});
@@ -24,12 +26,9 @@ class TextEntity implements TdObject {
       "@type": CONSTRUCTOR,
       "offset": this.offset,
       "length": this.length,
-      "type": this.type.toJson()
+      "type": this.type.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "textEntity";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'textEntity';
 }

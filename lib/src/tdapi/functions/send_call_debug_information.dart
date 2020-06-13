@@ -5,13 +5,14 @@ class SendCallDebugInformation extends TdFunction {
   String debugInformation;
   dynamic extra;
 
-  /// Sends debug information for a call.
-  ///[callId] Call identifier .
+  /// Sends debug information for a call. 
+  /// [callId] Call identifier . 
   /// [debugInformation] Debug information in application-specific format
-  SendCallDebugInformation({this.callId, this.debugInformation});
+  SendCallDebugInformation({this.callId,
+    this.debugInformation});
 
   /// Parse from a json
-  SendCallDebugInformation.fromJson(Map<String, dynamic> json);
+  SendCallDebugInformation.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SendCallDebugInformation extends TdFunction {
       "@type": CONSTRUCTOR,
       "call_id": this.callId,
       "debug_information": this.debugInformation,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "sendCallDebugInformation";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'sendCallDebugInformation';
 }

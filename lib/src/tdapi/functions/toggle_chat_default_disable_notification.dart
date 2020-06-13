@@ -5,14 +5,14 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
   bool defaultDisableNotification;
   dynamic extra;
 
-  /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat.
-  ///[chatId] Chat identifier .
+  /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat. 
+  /// [chatId] Chat identifier . 
   /// [defaultDisableNotification] New value of default_disable_notification
-  ToggleChatDefaultDisableNotification(
-      {this.chatId, this.defaultDisableNotification});
+  ToggleChatDefaultDisableNotification({this.chatId,
+    this.defaultDisableNotification});
 
   /// Parse from a json
-  ToggleChatDefaultDisableNotification.fromJson(Map<String, dynamic> json);
+  ToggleChatDefaultDisableNotification.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,12 +20,9 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "default_disable_notification": this.defaultDisableNotification,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "toggleChatDefaultDisableNotification";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'toggleChatDefaultDisableNotification';
 }

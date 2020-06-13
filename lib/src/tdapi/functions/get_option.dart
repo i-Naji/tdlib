@@ -4,20 +4,21 @@ class GetOption extends TdFunction {
   String name;
   dynamic extra;
 
-  /// Returns the value of an option by its name. (Check the list of available options on https.
-  ///[name] The name of the option
+  /// Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. 
+  /// [name] The name of the option
   GetOption({this.name});
 
   /// Parse from a json
-  GetOption.fromJson(Map<String, dynamic> json);
+  GetOption.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "name": this.name, "@extra": this.extra};
+    return {
+      "@type": CONSTRUCTOR,
+      "name": this.name,
+      "@extra": this.extra,
+    };
   }
 
-  static const String CONSTRUCTOR = "getOption";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getOption';
 }

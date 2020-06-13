@@ -5,13 +5,14 @@ class GetChatMember extends TdFunction {
   int userId;
   dynamic extra;
 
-  /// Returns information about a single member of a chat.
-  ///[chatId] Chat identifier .
+  /// Returns information about a single member of a chat. 
+  /// [chatId] Chat identifier . 
   /// [userId] User identifier
-  GetChatMember({this.chatId, this.userId});
+  GetChatMember({this.chatId,
+    this.userId});
 
   /// Parse from a json
-  GetChatMember.fromJson(Map<String, dynamic> json);
+  GetChatMember.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class GetChatMember extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "user_id": this.userId,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "getChatMember";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'getChatMember';
 }

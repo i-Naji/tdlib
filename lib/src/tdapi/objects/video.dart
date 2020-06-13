@@ -1,6 +1,6 @@
 part of '../tdapi.dart';
 
-class Video implements TdObject {
+class Video extends TdObject {
   int duration;
   int width;
   int height;
@@ -9,34 +9,33 @@ class Video implements TdObject {
   bool hasStickers;
   bool supportsStreaming;
   Minithumbnail minithumbnail;
-  PhotoSize thumbnail;
+  Thumbnail thumbnail;
   File video;
 
-  /// Describes a video file.
-  ///[duration] Duration of the video, in seconds; as defined by the sender .
-  /// [width] Video width; as defined by the sender .
-  /// [height] Video height; as defined by the sender.
-  /// [fileName] Original name of the file; as defined by the sender .
-  /// [mimeType] MIME type of the file; as defined by the sender .
-  /// [hasStickers] True, if stickers were added to the video.
-  /// [supportsStreaming] True, if the video should be tried to be streamed .
-  /// [minithumbnail] Video minithumbnail; may be null .
-  /// [thumbnail] Video thumbnail; as defined by the sender; may be null .
+  /// Describes a video file. 
+  /// [duration] Duration of the video, in seconds; as defined by the sender . 
+  /// [width] Video width; as defined by the sender . 
+  /// [height] Video height; as defined by the sender. 
+  /// [fileName] Original name of the file; as defined by the sender. 
+  /// [mimeType] MIME type of the file; as defined by the sender. 
+  /// [hasStickers] True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets. 
+  /// [supportsStreaming] True, if the video should be tried to be streamed. 
+  /// [minithumbnail] Video minithumbnail; may be null. 
+  /// [thumbnail] Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null. 
   /// [video] File containing the video
-  Video(
-      {this.duration,
-      this.width,
-      this.height,
-      this.fileName,
-      this.mimeType,
-      this.hasStickers,
-      this.supportsStreaming,
-      this.minithumbnail,
-      this.thumbnail,
-      this.video});
+  Video({this.duration,
+    this.width,
+    this.height,
+    this.fileName,
+    this.mimeType,
+    this.hasStickers,
+    this.supportsStreaming,
+    this.minithumbnail,
+    this.thumbnail,
+    this.video});
 
   /// Parse from a json
-  Video.fromJson(Map<String, dynamic> json) {
+  Video.fromJson(Map<String, dynamic> json)  {
     this.duration = json['duration'];
     this.width = json['width'];
     this.height = json['height'];
@@ -44,10 +43,8 @@ class Video implements TdObject {
     this.mimeType = json['mime_type'];
     this.hasStickers = json['has_stickers'];
     this.supportsStreaming = json['supports_streaming'];
-    this.minithumbnail =
-        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.thumbnail =
-        PhotoSize.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.minithumbnail = Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
+    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.video = File.fromJson(json['video'] ?? <String, dynamic>{});
   }
 
@@ -64,12 +61,9 @@ class Video implements TdObject {
       "supports_streaming": this.supportsStreaming,
       "minithumbnail": this.minithumbnail.toJson(),
       "thumbnail": this.thumbnail.toJson(),
-      "video": this.video.toJson()
+      "video": this.video.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "video";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'video';
 }

@@ -4,20 +4,21 @@ class TestCallBytes extends TdFunction {
   String x;
   dynamic extra;
 
-  /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization.
-  ///[x] Bytes to return
+  /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization. 
+  /// [x] Bytes to return
   TestCallBytes({this.x});
 
   /// Parse from a json
-  TestCallBytes.fromJson(Map<String, dynamic> json);
+  TestCallBytes.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "x": this.x, "@extra": this.extra};
+    return {
+      "@type": CONSTRUCTOR,
+      "x": this.x,
+      "@extra": this.extra,
+    };
   }
 
-  static const String CONSTRUCTOR = "testCallBytes";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'testCallBytes';
 }

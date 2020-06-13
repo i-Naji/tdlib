@@ -1,21 +1,20 @@
 part of '../tdapi.dart';
 
-class NetworkStatistics implements TdObject {
+class NetworkStatistics extends TdObject {
   int sinceDate;
-  List entries;
+  List<List<NetworkStatisticsEntry>> entries;
   dynamic extra;
 
-  /// A full list of available network statistic entries.
-  ///[sinceDate] Point in time (Unix timestamp) when the app began collecting statistics .
+  /// A full list of available network statistic entries. 
+  /// [sinceDate] Point in time (Unix timestamp) when the app began collecting statistics . 
   /// [entries] Network statistics entries
-  NetworkStatistics({this.sinceDate, this.entries});
+  NetworkStatistics({this.sinceDate,
+    this.entries});
 
   /// Parse from a json
-  NetworkStatistics.fromJson(Map<String, dynamic> json) {
+  NetworkStatistics.fromJson(Map<String, dynamic> json)  {
     this.sinceDate = json['since_date'];
-    this.entries = (json['entries'] ?? [])
-        .map((listValue) => NetworkStatisticsEntry.fromJson(listValue))
-        .toList();
+    this.entries = List<List<NetworkStatisticsEntry>>.from((json['entries'] ?? []).map((item) => List<NetworkStatisticsEntry>.from((item ?? []).map((innerItem) => NetworkStatisticsEntry.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.extra = json['@extra'];
   }
 
@@ -24,12 +23,9 @@ class NetworkStatistics implements TdObject {
     return {
       "@type": CONSTRUCTOR,
       "since_date": this.sinceDate,
-      "entries": this.entries.map((listItem) => listItem.toJson()).toList()
+      "entries": this.entries.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
-  static const String CONSTRUCTOR = "networkStatistics";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'networkStatistics';
 }

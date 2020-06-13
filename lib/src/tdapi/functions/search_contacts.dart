@@ -5,13 +5,14 @@ class SearchContacts extends TdFunction {
   int limit;
   dynamic extra;
 
-  /// Searches for the specified query in the first names, last names and usernames of the known user contacts.
-  ///[query] Query to search for; may be empty to return all contacts .
-  /// [limit] Maximum number of users to be returned
-  SearchContacts({this.query, this.limit});
+  /// Searches for the specified query in the first names, last names and usernames of the known user contacts. 
+  /// [query] Query to search for; may be empty to return all contacts . 
+  /// [limit] The maximum number of users to be returned
+  SearchContacts({this.query,
+    this.limit});
 
   /// Parse from a json
-  SearchContacts.fromJson(Map<String, dynamic> json);
+  SearchContacts.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
@@ -19,12 +20,9 @@ class SearchContacts extends TdFunction {
       "@type": CONSTRUCTOR,
       "query": this.query,
       "limit": this.limit,
-      "@extra": this.extra
+      "@extra": this.extra,
     };
   }
 
-  static const String CONSTRUCTOR = "searchContacts";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'searchContacts';
 }

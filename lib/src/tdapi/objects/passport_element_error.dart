@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
-class PassportElementError implements TdObject {
-  var type;
+class PassportElementError extends TdObject {
+  PassportElementType type;
   String message;
-  var source;
+  PassportElementErrorSource source;
 
-  /// Contains the description of an error in a Telegram Passport element.
-  ///[type] Type of the Telegram Passport element which has the error .
-  /// [message] Error message .
+  /// Contains the description of an error in a Telegram Passport element. 
+  /// [type] Type of the Telegram Passport element which has the error . 
+  /// [message] Error message . 
   /// [source] Error source
-  PassportElementError({this.type, this.message, this.source});
+  PassportElementError({this.type,
+    this.message,
+    this.source});
 
   /// Parse from a json
-  PassportElementError.fromJson(Map<String, dynamic> json) {
-    this.type =
-        PassportElementType.fromJson(json['type'] ?? <String, dynamic>{});
+  PassportElementError.fromJson(Map<String, dynamic> json)  {
+    this.type = PassportElementType.fromJson(json['type'] ?? <String, dynamic>{});
     this.message = json['message'];
-    this.source = PassportElementErrorSource.fromJson(
-        json['source'] ?? <String, dynamic>{});
+    this.source = PassportElementErrorSource.fromJson(json['source'] ?? <String, dynamic>{});
   }
 
   @override
@@ -26,12 +26,9 @@ class PassportElementError implements TdObject {
       "@type": CONSTRUCTOR,
       "type": this.type.toJson(),
       "message": this.message,
-      "source": this.source.toJson()
+      "source": this.source.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "passportElementError";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'passportElementError';
 }

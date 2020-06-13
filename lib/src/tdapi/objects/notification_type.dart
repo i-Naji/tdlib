@@ -1,6 +1,8 @@
 part of '../tdapi.dart';
 
-class NotificationType implements TdObject {
+class NotificationType extends TdObject {
+  
+
   /// Contains detailed information about a notification
   NotificationType();
 
@@ -9,8 +11,8 @@ class NotificationType implements TdObject {
   /// * NotificationTypeNewSecretChat
   /// * NotificationTypeNewCall
   /// * NotificationTypeNewPushMessage
-  factory NotificationType.fromJson(Map<String, dynamic> json) {
-    switch (json['@type']) {
+  factory NotificationType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case NotificationTypeNewMessage.CONSTRUCTOR:
         return NotificationTypeNewMessage.fromJson(json);
       case NotificationTypeNewSecretChat.CONSTRUCTOR:
@@ -26,98 +28,105 @@ class NotificationType implements TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {};
+    return {
+      
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationType";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationType';
 }
 
-class NotificationTypeNewMessage implements NotificationType {
+class NotificationTypeNewMessage extends NotificationType {
   Message message;
 
-  /// New message was received.
-  ///[message] The message
+  /// New message was received. 
+  /// [message] The message
   NotificationTypeNewMessage({this.message});
 
   /// Parse from a json
-  NotificationTypeNewMessage.fromJson(Map<String, dynamic> json) {
+  NotificationTypeNewMessage.fromJson(Map<String, dynamic> json)  {
     this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "message": this.message.toJson()};
+    return {
+      "@type": CONSTRUCTOR,
+      "message": this.message.toJson(),
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationTypeNewMessage";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationTypeNewMessage';
 }
 
-class NotificationTypeNewSecretChat implements NotificationType {
-  /// New secret chat was created.
-  ///
+class NotificationTypeNewSecretChat extends NotificationType {
+  
+
+  /// New secret chat was created
   NotificationTypeNewSecretChat();
 
   /// Parse from a json
-  NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json);
+  NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) ;
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR};
+    return {
+      "@type": CONSTRUCTOR,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationTypeNewSecretChat";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationTypeNewSecretChat';
 }
 
-class NotificationTypeNewCall implements NotificationType {
+class NotificationTypeNewCall extends NotificationType {
   int callId;
 
-  /// New call was received.
-  ///[callId] Call identifier
+  /// New call was received. 
+  /// [callId] Call identifier
   NotificationTypeNewCall({this.callId});
 
   /// Parse from a json
-  NotificationTypeNewCall.fromJson(Map<String, dynamic> json) {
+  NotificationTypeNewCall.fromJson(Map<String, dynamic> json)  {
     this.callId = json['call_id'];
   }
 
   @override
   Map<String, dynamic> toJson() {
-    return {"@type": CONSTRUCTOR, "call_id": this.callId};
+    return {
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+    };
   }
 
-  static const String CONSTRUCTOR = "notificationTypeNewCall";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationTypeNewCall';
 }
 
-class NotificationTypeNewPushMessage implements NotificationType {
+class NotificationTypeNewPushMessage extends NotificationType {
   int messageId;
   int senderUserId;
-  var content;
+  String senderName;
+  bool isOutgoing;
+  PushMessageContent content;
 
-  /// New message was received through a push notification.
-  ///[messageId] The message identifier. The message will not be available in the chat history, but the ID can be used in viewMessages and as reply_to_message_id.
-  /// [senderUserId] Sender of the message. Corresponding user may be inaccessible .
+  /// New message was received through a push notification. 
+  /// [messageId] The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages and as reply_to_message_id. 
+  /// [senderUserId] Sender of the message; 0 if unknown. Corresponding user may be inaccessible. 
+  /// [senderName] Name of the sender; can be different from the name of the sender user. 
+  /// [isOutgoing] True, if the message is outgoing. 
   /// [content] Push message content
-  NotificationTypeNewPushMessage(
-      {this.messageId, this.senderUserId, this.content});
+  NotificationTypeNewPushMessage({this.messageId,
+    this.senderUserId,
+    this.senderName,
+    this.isOutgoing,
+    this.content});
 
   /// Parse from a json
-  NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json) {
+  NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json)  {
     this.messageId = json['message_id'];
     this.senderUserId = json['sender_user_id'];
-    this.content =
-        PushMessageContent.fromJson(json['content'] ?? <String, dynamic>{});
+    this.senderName = json['sender_name'];
+    this.isOutgoing = json['is_outgoing'];
+    this.content = PushMessageContent.fromJson(json['content'] ?? <String, dynamic>{});
   }
 
   @override
@@ -126,12 +135,11 @@ class NotificationTypeNewPushMessage implements NotificationType {
       "@type": CONSTRUCTOR,
       "message_id": this.messageId,
       "sender_user_id": this.senderUserId,
-      "content": this.content.toJson()
+      "sender_name": this.senderName,
+      "is_outgoing": this.isOutgoing,
+      "content": this.content.toJson(),
     };
   }
 
-  static const String CONSTRUCTOR = "notificationTypeNewPushMessage";
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
+  static const CONSTRUCTOR = 'notificationTypeNewPushMessage';
 }
