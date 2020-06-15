@@ -1,3 +1,6 @@
+## 1.1.1
+* now getConstructor is not static
+
 ## 1.1.0
 * fix typo in generator
 * final step for example issue

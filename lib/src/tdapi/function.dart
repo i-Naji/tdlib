@@ -4,5 +4,5 @@ part of 'tdapi.dart';
 abstract class TdFunction {
   static const CONSTRUCTOR = 'function';
   Map<String, dynamic> toJson();
-  static String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => CONSTRUCTOR;
 }
