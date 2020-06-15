@@ -1,3 +1,7 @@
+## 1.1.0
+* fix typo in generator
+* final step for example issue
+
 ## 1.0.4
 * Update tdlib api to v1.6.6
 * Remove ``setLogVerbosityLevel`` method.
