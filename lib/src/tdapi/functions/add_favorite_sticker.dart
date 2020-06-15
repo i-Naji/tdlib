@@ -21,4 +21,7 @@ class AddFavoriteSticker extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addFavoriteSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -18,4 +18,7 @@ class TestCallEmpty extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testCallEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

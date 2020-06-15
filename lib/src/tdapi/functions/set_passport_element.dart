@@ -25,4 +25,7 @@ class SetPassportElement extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setPassportElement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

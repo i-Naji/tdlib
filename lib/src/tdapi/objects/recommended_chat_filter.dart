@@ -26,4 +26,7 @@ class RecommendedChatFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'recommendedChatFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

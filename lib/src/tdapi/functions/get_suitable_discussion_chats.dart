@@ -18,4 +18,7 @@ class GetSuitableDiscussionChats extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSuitableDiscussionChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

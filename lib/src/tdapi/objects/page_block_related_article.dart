@@ -46,4 +46,7 @@ class PageBlockRelatedArticle extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockRelatedArticle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

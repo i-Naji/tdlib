@@ -21,4 +21,7 @@ class EnableProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'enableProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

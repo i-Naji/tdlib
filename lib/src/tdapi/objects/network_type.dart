@@ -37,6 +37,9 @@ class NetworkType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'networkType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkTypeNone extends NetworkType {
@@ -56,6 +59,9 @@ class NetworkTypeNone extends NetworkType {
   }
 
   static const CONSTRUCTOR = 'networkTypeNone';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkTypeMobile extends NetworkType {
@@ -75,6 +81,9 @@ class NetworkTypeMobile extends NetworkType {
   }
 
   static const CONSTRUCTOR = 'networkTypeMobile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkTypeMobileRoaming extends NetworkType {
@@ -94,6 +103,9 @@ class NetworkTypeMobileRoaming extends NetworkType {
   }
 
   static const CONSTRUCTOR = 'networkTypeMobileRoaming';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkTypeWiFi extends NetworkType {
@@ -113,6 +125,9 @@ class NetworkTypeWiFi extends NetworkType {
   }
 
   static const CONSTRUCTOR = 'networkTypeWiFi';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkTypeOther extends NetworkType {
@@ -132,4 +147,7 @@ class NetworkTypeOther extends NetworkType {
   }
 
   static const CONSTRUCTOR = 'networkTypeOther';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -18,4 +18,7 @@ class ResendPhoneNumberConfirmationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendPhoneNumberConfirmationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

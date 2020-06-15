@@ -37,4 +37,7 @@ class SetPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setPassword';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -28,6 +28,9 @@ class MessageSchedulingState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageSchedulingState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
@@ -51,6 +54,9 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   }
 
   static const CONSTRUCTOR = 'messageSchedulingStateSendAtDate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
@@ -70,4 +76,7 @@ class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   }
 
   static const CONSTRUCTOR = 'messageSchedulingStateSendWhenOnline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -12,7 +12,7 @@ class StickerSetInfo extends TdObject {
   bool isMasks;
   bool isViewed;
   int size;
-  List<List<Sticker>> covers;
+  List<Sticker> covers;
 
   /// Represents short information about a sticker set. 
   /// [id] Identifier of the sticker set. 
@@ -53,7 +53,7 @@ class StickerSetInfo extends TdObject {
     this.isMasks = json['is_masks'];
     this.isViewed = json['is_viewed'];
     this.size = json['size'];
-    this.covers = List<List<Sticker>>.from((json['covers'] ?? []).map((item) => List<Sticker>.from((item ?? []).map((innerItem) => Sticker.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.covers = List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -71,9 +71,12 @@ class StickerSetInfo extends TdObject {
       "is_masks": this.isMasks,
       "is_viewed": this.isViewed,
       "size": this.size,
-      "covers": this.covers.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "covers": this.covers.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'stickerSetInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

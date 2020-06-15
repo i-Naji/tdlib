@@ -25,4 +25,7 @@ class SendCallDebugInformation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendCallDebugInformation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

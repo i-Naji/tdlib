@@ -25,4 +25,7 @@ class ToggleSupergroupSignMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'toggleSupergroupSignMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

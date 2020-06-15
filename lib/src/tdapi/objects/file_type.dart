@@ -70,6 +70,9 @@ class FileType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'fileType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeNone extends FileType {
@@ -89,6 +92,9 @@ class FileTypeNone extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeNone';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeAnimation extends FileType {
@@ -108,6 +114,9 @@ class FileTypeAnimation extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeAudio extends FileType {
@@ -127,6 +136,9 @@ class FileTypeAudio extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeDocument extends FileType {
@@ -146,6 +158,9 @@ class FileTypeDocument extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypePhoto extends FileType {
@@ -165,6 +180,9 @@ class FileTypePhoto extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeProfilePhoto extends FileType {
@@ -184,6 +202,9 @@ class FileTypeProfilePhoto extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeProfilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeSecret extends FileType {
@@ -203,6 +224,9 @@ class FileTypeSecret extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeSecret';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeSecretThumbnail extends FileType {
@@ -222,6 +246,9 @@ class FileTypeSecretThumbnail extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeSecretThumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeSecure extends FileType {
@@ -241,6 +268,9 @@ class FileTypeSecure extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeSecure';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeSticker extends FileType {
@@ -260,6 +290,9 @@ class FileTypeSticker extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeThumbnail extends FileType {
@@ -279,6 +312,9 @@ class FileTypeThumbnail extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeThumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeUnknown extends FileType {
@@ -298,6 +334,9 @@ class FileTypeUnknown extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeUnknown';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeVideo extends FileType {
@@ -317,6 +356,9 @@ class FileTypeVideo extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeVideoNote extends FileType {
@@ -336,6 +378,9 @@ class FileTypeVideoNote extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeVoiceNote extends FileType {
@@ -355,6 +400,9 @@ class FileTypeVoiceNote extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class FileTypeWallpaper extends FileType {
@@ -374,4 +422,7 @@ class FileTypeWallpaper extends FileType {
   }
 
   static const CONSTRUCTOR = 'fileTypeWallpaper';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

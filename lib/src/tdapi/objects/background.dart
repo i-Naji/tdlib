@@ -48,4 +48,7 @@ class Background extends TdObject {
   }
 
   static const CONSTRUCTOR = 'background';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

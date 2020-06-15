@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class BasicGroupFullInfo extends TdObject {
   String description;
   int creatorUserId;
-  List<List<ChatMember>> members;
+  List<ChatMember> members;
   String inviteLink;
   dynamic extra;
 
@@ -21,7 +21,7 @@ class BasicGroupFullInfo extends TdObject {
   BasicGroupFullInfo.fromJson(Map<String, dynamic> json)  {
     this.description = json['description'];
     this.creatorUserId = json['creator_user_id'];
-    this.members = List<List<ChatMember>>.from((json['members'] ?? []).map((item) => List<ChatMember>.from((item ?? []).map((innerItem) => ChatMember.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.members = List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item ?? <String, dynamic>{})).toList());
     this.inviteLink = json['invite_link'];
     this.extra = json['@extra'];
   }
@@ -32,10 +32,13 @@ class BasicGroupFullInfo extends TdObject {
       "@type": CONSTRUCTOR,
       "description": this.description,
       "creator_user_id": this.creatorUserId,
-      "members": this.members.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "members": this.members.map((i) => i.toJson()).toList(),
       "invite_link": this.inviteLink,
     };
   }
 
   static const CONSTRUCTOR = 'basicGroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -41,4 +41,7 @@ class SetGameScore extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setGameScore';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

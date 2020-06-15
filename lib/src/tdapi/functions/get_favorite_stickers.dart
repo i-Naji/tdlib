@@ -18,4 +18,7 @@ class GetFavoriteStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFavoriteStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

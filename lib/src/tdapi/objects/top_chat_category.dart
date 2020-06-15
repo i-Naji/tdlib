@@ -43,6 +43,9 @@ class TopChatCategory extends TdObject {
   }
 
   static const CONSTRUCTOR = 'topChatCategory';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryUsers extends TopChatCategory {
@@ -62,6 +65,9 @@ class TopChatCategoryUsers extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryUsers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryBots extends TopChatCategory {
@@ -81,6 +87,9 @@ class TopChatCategoryBots extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryBots';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryGroups extends TopChatCategory {
@@ -100,6 +109,9 @@ class TopChatCategoryGroups extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryGroups';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryChannels extends TopChatCategory {
@@ -119,6 +131,9 @@ class TopChatCategoryChannels extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryChannels';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryInlineBots extends TopChatCategory {
@@ -138,6 +153,9 @@ class TopChatCategoryInlineBots extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryInlineBots';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryCalls extends TopChatCategory {
@@ -157,6 +175,9 @@ class TopChatCategoryCalls extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryCalls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TopChatCategoryForwardChats extends TopChatCategory {
@@ -176,4 +197,7 @@ class TopChatCategoryForwardChats extends TopChatCategory {
   }
 
   static const CONSTRUCTOR = 'topChatCategoryForwardChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

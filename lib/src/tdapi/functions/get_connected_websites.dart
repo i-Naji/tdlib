@@ -18,4 +18,7 @@ class GetConnectedWebsites extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getConnectedWebsites';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

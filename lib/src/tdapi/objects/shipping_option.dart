@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class ShippingOption extends TdObject {
   String id;
   String title;
-  List<List<LabeledPricePart>> priceParts;
+  List<LabeledPricePart> priceParts;
 
   /// One shipping option. 
   /// [id] Shipping option identifier . 
@@ -17,7 +17,7 @@ class ShippingOption extends TdObject {
   ShippingOption.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.title = json['title'];
-    this.priceParts = List<List<LabeledPricePart>>.from((json['price_parts'] ?? []).map((item) => List<LabeledPricePart>.from((item ?? []).map((innerItem) => LabeledPricePart.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -26,9 +26,12 @@ class ShippingOption extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "title": this.title,
-      "price_parts": this.priceParts.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "price_parts": this.priceParts.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'shippingOption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

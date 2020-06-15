@@ -31,6 +31,9 @@ class LanguagePackStringValue extends TdObject {
   }
 
   static const CONSTRUCTOR = 'languagePackStringValue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
@@ -56,6 +59,9 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
   }
 
   static const CONSTRUCTOR = 'languagePackStringValueOrdinary';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LanguagePackStringValuePluralized extends LanguagePackStringValue {
@@ -106,6 +112,9 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
   }
 
   static const CONSTRUCTOR = 'languagePackStringValuePluralized';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LanguagePackStringValueDeleted extends LanguagePackStringValue {
@@ -127,4 +136,7 @@ class LanguagePackStringValueDeleted extends LanguagePackStringValue {
   }
 
   static const CONSTRUCTOR = 'languagePackStringValueDeleted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

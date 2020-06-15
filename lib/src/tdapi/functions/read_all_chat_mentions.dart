@@ -21,4 +21,7 @@ class ReadAllChatMentions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'readAllChatMentions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

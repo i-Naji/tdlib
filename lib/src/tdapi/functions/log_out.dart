@@ -18,4 +18,7 @@ class LogOut extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'logOut';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

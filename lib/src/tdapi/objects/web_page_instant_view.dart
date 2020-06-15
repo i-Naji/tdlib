@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class WebPageInstantView extends TdObject {
-  List<List<PageBlock>> pageBlocks;
+  List<PageBlock> pageBlocks;
   int viewCount;
   int version;
   bool isRtl;
@@ -22,7 +22,7 @@ class WebPageInstantView extends TdObject {
 
   /// Parse from a json
   WebPageInstantView.fromJson(Map<String, dynamic> json)  {
-    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
     this.viewCount = json['view_count'];
     this.version = json['version'];
     this.isRtl = json['is_rtl'];
@@ -34,7 +34,7 @@ class WebPageInstantView extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "view_count": this.viewCount,
       "version": this.version,
       "is_rtl": this.isRtl,
@@ -43,4 +43,7 @@ class WebPageInstantView extends TdObject {
   }
 
   static const CONSTRUCTOR = 'webPageInstantView';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

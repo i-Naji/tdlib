@@ -25,4 +25,7 @@ class SendCustomRequest extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendCustomRequest';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

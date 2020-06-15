@@ -18,4 +18,7 @@ class GetAccountTtl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getAccountTtl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,6 +31,9 @@ class SecretChatState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'secretChatState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SecretChatStatePending extends SecretChatState {
@@ -50,6 +53,9 @@ class SecretChatStatePending extends SecretChatState {
   }
 
   static const CONSTRUCTOR = 'secretChatStatePending';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SecretChatStateReady extends SecretChatState {
@@ -69,6 +75,9 @@ class SecretChatStateReady extends SecretChatState {
   }
 
   static const CONSTRUCTOR = 'secretChatStateReady';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SecretChatStateClosed extends SecretChatState {
@@ -88,4 +97,7 @@ class SecretChatStateClosed extends SecretChatState {
   }
 
   static const CONSTRUCTOR = 'secretChatStateClosed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

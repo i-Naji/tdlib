@@ -28,6 +28,9 @@ class InputSticker extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputStickerStatic extends InputSticker {
@@ -61,6 +64,9 @@ class InputStickerStatic extends InputSticker {
   }
 
   static const CONSTRUCTOR = 'inputStickerStatic';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputStickerAnimated extends InputSticker {
@@ -89,4 +95,7 @@ class InputStickerAnimated extends InputSticker {
   }
 
   static const CONSTRUCTOR = 'inputStickerAnimated';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

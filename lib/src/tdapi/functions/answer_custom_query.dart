@@ -25,4 +25,7 @@ class AnswerCustomQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerCustomQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

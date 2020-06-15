@@ -33,4 +33,7 @@ class ValidateOrderInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'validateOrderInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

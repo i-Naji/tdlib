@@ -18,4 +18,7 @@ class GetCountryCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getCountryCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

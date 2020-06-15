@@ -43,4 +43,7 @@ class StorageStatisticsFast extends TdObject {
   }
 
   static const CONSTRUCTOR = 'storageStatisticsFast';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

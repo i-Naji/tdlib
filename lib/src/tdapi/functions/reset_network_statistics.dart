@@ -18,4 +18,7 @@ class ResetNetworkStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resetNetworkStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

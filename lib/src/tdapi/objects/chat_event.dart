@@ -36,4 +36,7 @@ class ChatEvent extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatEvent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

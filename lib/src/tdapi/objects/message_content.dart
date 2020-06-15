@@ -145,6 +145,9 @@ class MessageContent extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageContent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageText extends MessageContent {
@@ -173,6 +176,9 @@ class MessageText extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageAnimation extends MessageContent {
@@ -206,6 +212,9 @@ class MessageAnimation extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageAudio extends MessageContent {
@@ -234,6 +243,9 @@ class MessageAudio extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageDocument extends MessageContent {
@@ -262,6 +274,9 @@ class MessageDocument extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePhoto extends MessageContent {
@@ -295,6 +310,9 @@ class MessagePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageExpiredPhoto extends MessageContent {
@@ -314,6 +332,9 @@ class MessageExpiredPhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageExpiredPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSticker extends MessageContent {
@@ -337,6 +358,9 @@ class MessageSticker extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVideo extends MessageContent {
@@ -370,6 +394,9 @@ class MessageVideo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageExpiredVideo extends MessageContent {
@@ -389,6 +416,9 @@ class MessageExpiredVideo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageExpiredVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVideoNote extends MessageContent {
@@ -422,6 +452,9 @@ class MessageVideoNote extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVoiceNote extends MessageContent {
@@ -455,6 +488,9 @@ class MessageVoiceNote extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageLocation extends MessageContent {
@@ -488,6 +524,9 @@ class MessageLocation extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVenue extends MessageContent {
@@ -511,6 +550,9 @@ class MessageVenue extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVenue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageContact extends MessageContent {
@@ -534,6 +576,9 @@ class MessageContact extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageDice extends MessageContent {
@@ -577,6 +622,9 @@ class MessageDice extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageDice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageGame extends MessageContent {
@@ -600,6 +648,9 @@ class MessageGame extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePoll extends MessageContent {
@@ -623,6 +674,9 @@ class MessagePoll extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageInvoice extends MessageContent {
@@ -686,6 +740,9 @@ class MessageInvoice extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageInvoice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageCall extends MessageContent {
@@ -714,11 +771,14 @@ class MessageCall extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageBasicGroupChatCreate extends MessageContent {
   String title;
-  List<List<int>> memberUserIds;
+  List<int> memberUserIds;
 
   /// A newly created basic group. 
   /// [title] Title of the basic group . 
@@ -729,7 +789,7 @@ class MessageBasicGroupChatCreate extends MessageContent {
   /// Parse from a json
   MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json)  {
     this.title = json['title'];
-    this.memberUserIds = List<List<int>>.from((json['member_user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -737,11 +797,14 @@ class MessageBasicGroupChatCreate extends MessageContent {
     return {
       "@type": CONSTRUCTOR,
       "title": this.title,
-      "member_user_ids": this.memberUserIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'messageBasicGroupChatCreate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSupergroupChatCreate extends MessageContent {
@@ -765,6 +828,9 @@ class MessageSupergroupChatCreate extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageSupergroupChatCreate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatChangeTitle extends MessageContent {
@@ -788,6 +854,9 @@ class MessageChatChangeTitle extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatChangeTitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatChangePhoto extends MessageContent {
@@ -811,6 +880,9 @@ class MessageChatChangePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatChangePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatDeletePhoto extends MessageContent {
@@ -830,10 +902,13 @@ class MessageChatDeletePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatDeletePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatAddMembers extends MessageContent {
-  List<List<int>> memberUserIds;
+  List<int> memberUserIds;
 
   /// New chat members were added. 
   /// [memberUserIds] User identifiers of the new members
@@ -841,18 +916,21 @@ class MessageChatAddMembers extends MessageContent {
 
   /// Parse from a json
   MessageChatAddMembers.fromJson(Map<String, dynamic> json)  {
-    this.memberUserIds = List<List<int>>.from((json['member_user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "member_user_ids": this.memberUserIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'messageChatAddMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatJoinByLink extends MessageContent {
@@ -872,6 +950,9 @@ class MessageChatJoinByLink extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatJoinByLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatDeleteMember extends MessageContent {
@@ -895,6 +976,9 @@ class MessageChatDeleteMember extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatDeleteMember';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatUpgradeTo extends MessageContent {
@@ -918,6 +1002,9 @@ class MessageChatUpgradeTo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatUpgradeTo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatUpgradeFrom extends MessageContent {
@@ -946,6 +1033,9 @@ class MessageChatUpgradeFrom extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatUpgradeFrom';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePinMessage extends MessageContent {
@@ -969,6 +1059,9 @@ class MessagePinMessage extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePinMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageScreenshotTaken extends MessageContent {
@@ -988,6 +1081,9 @@ class MessageScreenshotTaken extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageScreenshotTaken';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatSetTtl extends MessageContent {
@@ -1011,6 +1107,9 @@ class MessageChatSetTtl extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatSetTtl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageCustomServiceAction extends MessageContent {
@@ -1034,6 +1133,9 @@ class MessageCustomServiceAction extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageCustomServiceAction';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageGameScore extends MessageContent {
@@ -1067,6 +1169,9 @@ class MessageGameScore extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageGameScore';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePaymentSuccessful extends MessageContent {
@@ -1100,6 +1205,9 @@ class MessagePaymentSuccessful extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePaymentSuccessful';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePaymentSuccessfulBot extends MessageContent {
@@ -1158,6 +1266,9 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePaymentSuccessfulBot';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageContactRegistered extends MessageContent {
@@ -1177,6 +1288,9 @@ class MessageContactRegistered extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageContactRegistered';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageWebsiteConnected extends MessageContent {
@@ -1200,10 +1314,13 @@ class MessageWebsiteConnected extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageWebsiteConnected';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePassportDataSent extends MessageContent {
-  List<List<PassportElementType>> types;
+  List<PassportElementType> types;
 
   /// Telegram Passport data has been sent. 
   /// [types] List of Telegram Passport element types sent
@@ -1211,22 +1328,25 @@ class MessagePassportDataSent extends MessageContent {
 
   /// Parse from a json
   MessagePassportDataSent.fromJson(Map<String, dynamic> json)  {
-    this.types = List<List<PassportElementType>>.from((json['types'] ?? []).map((item) => List<PassportElementType>.from((item ?? []).map((innerItem) => PassportElementType.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.types = List<PassportElementType>.from((json['types'] ?? []).map((item) => PassportElementType.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "types": this.types.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "types": this.types.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'messagePassportDataSent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePassportDataReceived extends MessageContent {
-  List<List<EncryptedPassportElement>> elements;
+  List<EncryptedPassportElement> elements;
   EncryptedCredentials credentials;
 
   /// Telegram Passport data has been received; for bots only. 
@@ -1237,7 +1357,7 @@ class MessagePassportDataReceived extends MessageContent {
 
   /// Parse from a json
   MessagePassportDataReceived.fromJson(Map<String, dynamic> json)  {
-    this.elements = List<List<EncryptedPassportElement>>.from((json['elements'] ?? []).map((item) => List<EncryptedPassportElement>.from((item ?? []).map((innerItem) => EncryptedPassportElement.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.elements = List<EncryptedPassportElement>.from((json['elements'] ?? []).map((item) => EncryptedPassportElement.fromJson(item ?? <String, dynamic>{})).toList());
     this.credentials = EncryptedCredentials.fromJson(json['credentials'] ?? <String, dynamic>{});
   }
 
@@ -1245,12 +1365,15 @@ class MessagePassportDataReceived extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "elements": this.elements.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "elements": this.elements.map((i) => i.toJson()).toList(),
       "credentials": this.credentials.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'messagePassportDataReceived';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageUnsupported extends MessageContent {
@@ -1270,4 +1393,7 @@ class MessageUnsupported extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageUnsupported';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

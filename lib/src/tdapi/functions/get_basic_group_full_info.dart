@@ -21,4 +21,7 @@ class GetBasicGroupFullInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBasicGroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

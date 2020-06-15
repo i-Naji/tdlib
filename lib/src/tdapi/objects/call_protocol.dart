@@ -5,7 +5,7 @@ class CallProtocol extends TdObject {
   bool udpReflector;
   int minLayer;
   int maxLayer;
-  List<List<String>> libraryVersions;
+  List<String> libraryVersions;
 
   /// Specifies the supported call protocols. 
   /// [udpP2p] True, if UDP peer-to-peer connections are supported. 
@@ -25,7 +25,7 @@ class CallProtocol extends TdObject {
     this.udpReflector = json['udp_reflector'];
     this.minLayer = json['min_layer'];
     this.maxLayer = json['max_layer'];
-    this.libraryVersions = List<List<String>>.from((json['library_versions'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.libraryVersions = List<String>.from((json['library_versions'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -36,9 +36,12 @@ class CallProtocol extends TdObject {
       "udp_reflector": this.udpReflector,
       "min_layer": this.minLayer,
       "max_layer": this.maxLayer,
-      "library_versions": this.libraryVersions.map((i) => i.map((ii) => ii).toList()).toList(),
+      "library_versions": this.libraryVersions.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'callProtocol';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

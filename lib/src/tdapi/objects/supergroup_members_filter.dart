@@ -43,6 +43,9 @@ class SupergroupMembersFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
@@ -62,6 +65,9 @@ class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterRecent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
@@ -85,6 +91,9 @@ class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
@@ -104,6 +113,9 @@ class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterAdministrators';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
@@ -127,6 +139,9 @@ class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterSearch';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
@@ -150,6 +165,9 @@ class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterRestricted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
@@ -173,6 +191,9 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterBanned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SupergroupMembersFilterBots extends SupergroupMembersFilter {
@@ -192,4 +213,7 @@ class SupergroupMembersFilterBots extends SupergroupMembersFilter {
   }
 
   static const CONSTRUCTOR = 'supergroupMembersFilterBots';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

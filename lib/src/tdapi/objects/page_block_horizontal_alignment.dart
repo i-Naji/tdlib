@@ -31,6 +31,9 @@ class PageBlockHorizontalAlignment extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignment';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
@@ -50,6 +53,9 @@ class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentLeft';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
@@ -69,6 +75,9 @@ class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentCenter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
@@ -88,4 +97,7 @@ class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentRight';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

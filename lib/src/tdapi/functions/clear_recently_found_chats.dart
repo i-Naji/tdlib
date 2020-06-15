@@ -18,4 +18,7 @@ class ClearRecentlyFoundChats extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearRecentlyFoundChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

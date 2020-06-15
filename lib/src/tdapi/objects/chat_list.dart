@@ -31,6 +31,9 @@ class ChatList extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatList';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListMain extends ChatList {
@@ -50,6 +53,9 @@ class ChatListMain extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListMain';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListArchive extends ChatList {
@@ -69,6 +75,9 @@ class ChatListArchive extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListArchive';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListFilter extends ChatList {
@@ -92,4 +101,7 @@ class ChatListFilter extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

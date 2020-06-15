@@ -18,4 +18,7 @@ class GetInviteText extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInviteText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

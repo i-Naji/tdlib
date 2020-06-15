@@ -40,6 +40,9 @@ class ChatMembersFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterContacts extends ChatMembersFilter {
@@ -59,6 +62,9 @@ class ChatMembersFilterContacts extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterAdministrators extends ChatMembersFilter {
@@ -78,6 +84,9 @@ class ChatMembersFilterAdministrators extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterAdministrators';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterMembers extends ChatMembersFilter {
@@ -97,6 +106,9 @@ class ChatMembersFilterMembers extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterRestricted extends ChatMembersFilter {
@@ -116,6 +128,9 @@ class ChatMembersFilterRestricted extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterRestricted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterBanned extends ChatMembersFilter {
@@ -135,6 +150,9 @@ class ChatMembersFilterBanned extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterBanned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMembersFilterBots extends ChatMembersFilter {
@@ -154,4 +172,7 @@ class ChatMembersFilterBots extends ChatMembersFilter {
   }
 
   static const CONSTRUCTOR = 'chatMembersFilterBots';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

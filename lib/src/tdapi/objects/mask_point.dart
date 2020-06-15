@@ -34,6 +34,9 @@ class MaskPoint extends TdObject {
   }
 
   static const CONSTRUCTOR = 'maskPoint';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MaskPointForehead extends MaskPoint {
@@ -53,6 +56,9 @@ class MaskPointForehead extends MaskPoint {
   }
 
   static const CONSTRUCTOR = 'maskPointForehead';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MaskPointEyes extends MaskPoint {
@@ -72,6 +78,9 @@ class MaskPointEyes extends MaskPoint {
   }
 
   static const CONSTRUCTOR = 'maskPointEyes';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MaskPointMouth extends MaskPoint {
@@ -91,6 +100,9 @@ class MaskPointMouth extends MaskPoint {
   }
 
   static const CONSTRUCTOR = 'maskPointMouth';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MaskPointChin extends MaskPoint {
@@ -110,4 +122,7 @@ class MaskPointChin extends MaskPoint {
   }
 
   static const CONSTRUCTOR = 'maskPointChin';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

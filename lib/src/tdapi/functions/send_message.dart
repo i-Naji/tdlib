@@ -37,4 +37,7 @@ class SendMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

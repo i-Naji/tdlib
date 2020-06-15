@@ -46,4 +46,7 @@ class Venue extends TdObject {
   }
 
   static const CONSTRUCTOR = 'venue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

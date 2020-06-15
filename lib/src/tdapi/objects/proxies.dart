@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Proxies extends TdObject {
-  List<List<Proxy>> proxies;
+  List<Proxy> proxies;
   dynamic extra;
 
   /// Represents a list of proxy servers. 
@@ -10,7 +10,7 @@ class Proxies extends TdObject {
 
   /// Parse from a json
   Proxies.fromJson(Map<String, dynamic> json)  {
-    this.proxies = List<List<Proxy>>.from((json['proxies'] ?? []).map((item) => List<Proxy>.from((item ?? []).map((innerItem) => Proxy.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.proxies = List<Proxy>.from((json['proxies'] ?? []).map((item) => Proxy.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -18,9 +18,12 @@ class Proxies extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "proxies": this.proxies.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "proxies": this.proxies.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'proxies';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

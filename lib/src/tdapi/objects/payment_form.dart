@@ -53,4 +53,7 @@ class PaymentForm extends TdObject {
   }
 
   static const CONSTRUCTOR = 'paymentForm';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

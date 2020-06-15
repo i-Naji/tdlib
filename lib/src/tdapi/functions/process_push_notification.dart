@@ -21,4 +21,7 @@ class ProcessPushNotification extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'processPushNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

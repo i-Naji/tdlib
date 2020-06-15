@@ -25,4 +25,7 @@ class SetStickerPositionInSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setStickerPositionInSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -29,4 +29,7 @@ class EditInlineMessageLiveLocation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editInlineMessageLiveLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

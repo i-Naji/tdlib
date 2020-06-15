@@ -31,4 +31,7 @@ class TextEntity extends TdObject {
   }
 
   static const CONSTRUCTOR = 'textEntity';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

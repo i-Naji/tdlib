@@ -31,4 +31,7 @@ class Date extends TdObject {
   }
 
   static const CONSTRUCTOR = 'date';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

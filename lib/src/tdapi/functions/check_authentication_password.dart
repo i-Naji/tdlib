@@ -21,4 +21,7 @@ class CheckAuthenticationPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkAuthenticationPassword';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

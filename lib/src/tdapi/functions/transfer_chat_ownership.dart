@@ -29,4 +29,7 @@ class TransferChatOwnership extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'transferChatOwnership';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

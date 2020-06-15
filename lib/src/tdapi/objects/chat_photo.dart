@@ -26,4 +26,7 @@ class ChatPhoto extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

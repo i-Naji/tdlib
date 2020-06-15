@@ -21,4 +21,7 @@ class RecoverPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'recoverPassword';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -37,4 +37,7 @@ class AnswerCallbackQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerCallbackQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

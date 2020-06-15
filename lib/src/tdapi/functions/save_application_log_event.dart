@@ -29,4 +29,7 @@ class SaveApplicationLogEvent extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'saveApplicationLogEvent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

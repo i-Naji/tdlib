@@ -38,4 +38,7 @@ class OrderInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'orderInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

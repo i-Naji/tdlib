@@ -36,4 +36,7 @@ class PaymentsProviderStripe extends TdObject {
   }
 
   static const CONSTRUCTOR = 'paymentsProviderStripe';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

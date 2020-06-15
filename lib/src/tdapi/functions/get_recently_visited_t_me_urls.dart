@@ -21,4 +21,7 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecentlyVisitedTMeUrls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

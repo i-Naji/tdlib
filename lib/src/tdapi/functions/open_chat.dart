@@ -21,4 +21,7 @@ class OpenChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'openChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

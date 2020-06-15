@@ -26,4 +26,7 @@ class DatedFile extends TdObject {
   }
 
   static const CONSTRUCTOR = 'datedFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

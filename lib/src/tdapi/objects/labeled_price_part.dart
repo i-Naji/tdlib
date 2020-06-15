@@ -26,4 +26,7 @@ class LabeledPricePart extends TdObject {
   }
 
   static const CONSTRUCTOR = 'labeledPricePart';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

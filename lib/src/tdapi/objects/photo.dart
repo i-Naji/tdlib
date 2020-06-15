@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class Photo extends TdObject {
   bool hasStickers;
   Minithumbnail minithumbnail;
-  List<List<PhotoSize>> sizes;
+  List<PhotoSize> sizes;
 
   /// Describes a photo. 
   /// [hasStickers] True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets. 
@@ -17,7 +17,7 @@ class Photo extends TdObject {
   Photo.fromJson(Map<String, dynamic> json)  {
     this.hasStickers = json['has_stickers'];
     this.minithumbnail = Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.sizes = List<List<PhotoSize>>.from((json['sizes'] ?? []).map((item) => List<PhotoSize>.from((item ?? []).map((innerItem) => PhotoSize.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.sizes = List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -26,9 +26,12 @@ class Photo extends TdObject {
       "@type": CONSTRUCTOR,
       "has_stickers": this.hasStickers,
       "minithumbnail": this.minithumbnail.toJson(),
-      "sizes": this.sizes.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "sizes": this.sizes.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'photo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

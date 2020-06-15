@@ -123,4 +123,7 @@ class WebPage extends TdObject {
   }
 
   static const CONSTRUCTOR = 'webPage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

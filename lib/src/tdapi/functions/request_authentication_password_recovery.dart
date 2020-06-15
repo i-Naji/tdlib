@@ -18,4 +18,7 @@ class RequestAuthenticationPasswordRecovery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'requestAuthenticationPasswordRecovery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

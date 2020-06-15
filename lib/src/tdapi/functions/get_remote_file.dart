@@ -25,4 +25,7 @@ class GetRemoteFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRemoteFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

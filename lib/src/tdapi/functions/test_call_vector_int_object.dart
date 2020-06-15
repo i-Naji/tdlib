@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class TestCallVectorIntObject extends TdFunction {
-  List<List<TestInt>> x;
+  List<TestInt> x;
   dynamic extra;
 
   /// Returns the received vector of objects containing a number; for testing only. This is an offline method. Can be called before authorization. 
@@ -15,10 +15,13 @@ class TestCallVectorIntObject extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "x": this.x.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "x": this.x.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'testCallVectorIntObject';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

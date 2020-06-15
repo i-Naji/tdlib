@@ -21,4 +21,7 @@ class TestReturnError extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testReturnError';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

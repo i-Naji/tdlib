@@ -18,4 +18,7 @@ class GetRecommendedChatFilters extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecommendedChatFilters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

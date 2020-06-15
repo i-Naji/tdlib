@@ -26,4 +26,7 @@ class InlineKeyboardButton extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButton';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -23,4 +23,7 @@ class FilePart extends TdObject {
   }
 
   static const CONSTRUCTOR = 'filePart';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

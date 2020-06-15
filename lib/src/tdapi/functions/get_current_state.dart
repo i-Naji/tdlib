@@ -18,4 +18,7 @@ class GetCurrentState extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getCurrentState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

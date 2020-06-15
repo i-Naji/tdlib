@@ -18,4 +18,7 @@ class TestUseUpdate extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testUseUpdate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

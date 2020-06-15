@@ -25,4 +25,7 @@ class GetInlineGameHighScores extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInlineGameHighScores';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

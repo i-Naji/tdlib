@@ -21,4 +21,7 @@ class SetTdlibParameters extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setTdlibParameters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

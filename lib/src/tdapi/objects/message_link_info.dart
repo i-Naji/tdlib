@@ -38,4 +38,7 @@ class MessageLinkInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageLinkInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class GetMessageLocally extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getMessageLocally';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

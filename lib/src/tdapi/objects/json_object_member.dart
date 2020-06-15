@@ -26,4 +26,7 @@ class JsonObjectMember extends TdObject {
   }
 
   static const CONSTRUCTOR = 'jsonObjectMember';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

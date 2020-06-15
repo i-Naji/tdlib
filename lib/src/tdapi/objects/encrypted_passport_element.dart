@@ -6,8 +6,8 @@ class EncryptedPassportElement extends TdObject {
   DatedFile frontSide;
   DatedFile reverseSide;
   DatedFile selfie;
-  List<List<DatedFile>> translation;
-  List<List<DatedFile>> files;
+  List<DatedFile> translation;
+  List<DatedFile> files;
   String value;
   String hash;
 
@@ -38,8 +38,8 @@ class EncryptedPassportElement extends TdObject {
     this.frontSide = DatedFile.fromJson(json['front_side'] ?? <String, dynamic>{});
     this.reverseSide = DatedFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
     this.selfie = DatedFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = List<List<DatedFile>>.from((json['translation'] ?? []).map((item) => List<DatedFile>.from((item ?? []).map((innerItem) => DatedFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
-    this.files = List<List<DatedFile>>.from((json['files'] ?? []).map((item) => List<DatedFile>.from((item ?? []).map((innerItem) => DatedFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.translation = List<DatedFile>.from((json['translation'] ?? []).map((item) => DatedFile.fromJson(item ?? <String, dynamic>{})).toList());
+    this.files = List<DatedFile>.from((json['files'] ?? []).map((item) => DatedFile.fromJson(item ?? <String, dynamic>{})).toList());
     this.value = json['value'];
     this.hash = json['hash'];
   }
@@ -53,12 +53,15 @@ class EncryptedPassportElement extends TdObject {
       "front_side": this.frontSide.toJson(),
       "reverse_side": this.reverseSide.toJson(),
       "selfie": this.selfie.toJson(),
-      "translation": this.translation.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
-      "files": this.files.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "translation": this.translation.map((i) => i.toJson()).toList(),
+      "files": this.files.map((i) => i.toJson()).toList(),
       "value": this.value,
       "hash": this.hash,
     };
   }
 
   static const CONSTRUCTOR = 'encryptedPassportElement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

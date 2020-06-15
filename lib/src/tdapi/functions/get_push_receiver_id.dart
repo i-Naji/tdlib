@@ -21,4 +21,7 @@ class GetPushReceiverId extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPushReceiverId';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

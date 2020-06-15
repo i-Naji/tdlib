@@ -26,4 +26,7 @@ class SavedCredentials extends TdObject {
   }
 
   static const CONSTRUCTOR = 'savedCredentials';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class SetChatTitle extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatTitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

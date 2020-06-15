@@ -31,4 +31,7 @@ class EncryptedCredentials extends TdObject {
   }
 
   static const CONSTRUCTOR = 'encryptedCredentials';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

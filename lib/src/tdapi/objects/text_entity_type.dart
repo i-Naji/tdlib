@@ -73,6 +73,9 @@ class TextEntityType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'textEntityType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeMention extends TextEntityType {
@@ -92,6 +95,9 @@ class TextEntityTypeMention extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeMention';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeHashtag extends TextEntityType {
@@ -111,6 +117,9 @@ class TextEntityTypeHashtag extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeHashtag';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeCashtag extends TextEntityType {
@@ -130,6 +139,9 @@ class TextEntityTypeCashtag extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeCashtag';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeBotCommand extends TextEntityType {
@@ -149,6 +161,9 @@ class TextEntityTypeBotCommand extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeBotCommand';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeUrl extends TextEntityType {
@@ -168,6 +183,9 @@ class TextEntityTypeUrl extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeEmailAddress extends TextEntityType {
@@ -187,6 +205,9 @@ class TextEntityTypeEmailAddress extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypePhoneNumber extends TextEntityType {
@@ -206,6 +227,9 @@ class TextEntityTypePhoneNumber extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypePhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeBankCardNumber extends TextEntityType {
@@ -225,6 +249,9 @@ class TextEntityTypeBankCardNumber extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeBankCardNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeBold extends TextEntityType {
@@ -244,6 +271,9 @@ class TextEntityTypeBold extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeBold';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeItalic extends TextEntityType {
@@ -263,6 +293,9 @@ class TextEntityTypeItalic extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeItalic';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeUnderline extends TextEntityType {
@@ -282,6 +315,9 @@ class TextEntityTypeUnderline extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeUnderline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeStrikethrough extends TextEntityType {
@@ -301,6 +337,9 @@ class TextEntityTypeStrikethrough extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeStrikethrough';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeCode extends TextEntityType {
@@ -320,6 +359,9 @@ class TextEntityTypeCode extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypePre extends TextEntityType {
@@ -339,6 +381,9 @@ class TextEntityTypePre extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypePre';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypePreCode extends TextEntityType {
@@ -362,6 +407,9 @@ class TextEntityTypePreCode extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypePreCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeTextUrl extends TextEntityType {
@@ -385,6 +433,9 @@ class TextEntityTypeTextUrl extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeTextUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextEntityTypeMentionName extends TextEntityType {
@@ -408,4 +459,7 @@ class TextEntityTypeMentionName extends TextEntityType {
   }
 
   static const CONSTRUCTOR = 'textEntityTypeMentionName';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

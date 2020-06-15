@@ -31,6 +31,9 @@ class PageBlockVerticalAlignment extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockVerticalAlignment';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
@@ -50,6 +53,9 @@ class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockVerticalAlignmentTop';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
@@ -69,6 +75,9 @@ class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockVerticalAlignmentMiddle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
@@ -88,4 +97,7 @@ class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockVerticalAlignmentBottom';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -23,4 +23,7 @@ class ChatInviteLink extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatInviteLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

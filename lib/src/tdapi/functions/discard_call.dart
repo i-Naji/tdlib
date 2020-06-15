@@ -33,4 +33,7 @@ class DiscardCall extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'discardCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

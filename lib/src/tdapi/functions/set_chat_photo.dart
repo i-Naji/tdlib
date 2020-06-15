@@ -25,4 +25,7 @@ class SetChatPhoto extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

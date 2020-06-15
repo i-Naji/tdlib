@@ -25,4 +25,7 @@ class RemoveNotification extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

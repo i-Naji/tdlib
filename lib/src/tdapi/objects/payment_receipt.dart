@@ -48,4 +48,7 @@ class PaymentReceipt extends TdObject {
   }
 
   static const CONSTRUCTOR = 'paymentReceipt';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

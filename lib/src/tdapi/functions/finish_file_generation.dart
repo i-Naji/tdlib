@@ -25,4 +25,7 @@ class FinishFileGeneration extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'finishFileGeneration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

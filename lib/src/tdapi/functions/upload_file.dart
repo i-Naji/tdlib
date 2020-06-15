@@ -29,4 +29,7 @@ class UploadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'uploadFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

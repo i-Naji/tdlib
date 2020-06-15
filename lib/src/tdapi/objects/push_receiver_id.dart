@@ -23,4 +23,7 @@ class PushReceiverId extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pushReceiverId';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

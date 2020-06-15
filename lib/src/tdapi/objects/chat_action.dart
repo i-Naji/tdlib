@@ -61,6 +61,9 @@ class ChatAction extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatAction';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionTyping extends ChatAction {
@@ -80,6 +83,9 @@ class ChatActionTyping extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionTyping';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionRecordingVideo extends ChatAction {
@@ -99,6 +105,9 @@ class ChatActionRecordingVideo extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionRecordingVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionUploadingVideo extends ChatAction {
@@ -122,6 +131,9 @@ class ChatActionUploadingVideo extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionUploadingVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionRecordingVoiceNote extends ChatAction {
@@ -141,6 +153,9 @@ class ChatActionRecordingVoiceNote extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionRecordingVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionUploadingVoiceNote extends ChatAction {
@@ -164,6 +179,9 @@ class ChatActionUploadingVoiceNote extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionUploadingVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionUploadingPhoto extends ChatAction {
@@ -187,6 +205,9 @@ class ChatActionUploadingPhoto extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionUploadingPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionUploadingDocument extends ChatAction {
@@ -210,6 +231,9 @@ class ChatActionUploadingDocument extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionUploadingDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionChoosingLocation extends ChatAction {
@@ -229,6 +253,9 @@ class ChatActionChoosingLocation extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionChoosingLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionChoosingContact extends ChatAction {
@@ -248,6 +275,9 @@ class ChatActionChoosingContact extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionChoosingContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionStartPlayingGame extends ChatAction {
@@ -267,6 +297,9 @@ class ChatActionStartPlayingGame extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionStartPlayingGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionRecordingVideoNote extends ChatAction {
@@ -286,6 +319,9 @@ class ChatActionRecordingVideoNote extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionRecordingVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionUploadingVideoNote extends ChatAction {
@@ -309,6 +345,9 @@ class ChatActionUploadingVideoNote extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionUploadingVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionCancel extends ChatAction {
@@ -328,4 +367,7 @@ class ChatActionCancel extends ChatAction {
   }
 
   static const CONSTRUCTOR = 'chatActionCancel';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

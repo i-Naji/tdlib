@@ -18,4 +18,7 @@ class TerminateAllOtherSessions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'terminateAllOtherSessions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

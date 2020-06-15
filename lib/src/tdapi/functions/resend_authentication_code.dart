@@ -18,4 +18,7 @@ class ResendAuthenticationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendAuthenticationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

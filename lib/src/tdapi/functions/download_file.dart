@@ -37,4 +37,7 @@ class DownloadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'downloadFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

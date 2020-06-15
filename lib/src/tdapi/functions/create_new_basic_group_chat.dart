@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class CreateNewBasicGroupChat extends TdFunction {
-  List<List<int>> userIds;
+  List<int> userIds;
   String title;
   dynamic extra;
 
@@ -18,11 +18,14 @@ class CreateNewBasicGroupChat extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
       "title": this.title,
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'createNewBasicGroupChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

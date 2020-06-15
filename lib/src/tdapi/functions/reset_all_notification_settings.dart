@@ -18,4 +18,7 @@ class ResetAllNotificationSettings extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resetAllNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

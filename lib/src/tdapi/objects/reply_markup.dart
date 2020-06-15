@@ -34,6 +34,9 @@ class ReplyMarkup extends TdObject {
   }
 
   static const CONSTRUCTOR = 'replyMarkup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
@@ -57,6 +60,9 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   }
 
   static const CONSTRUCTOR = 'replyMarkupRemoveKeyboard';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ReplyMarkupForceReply extends ReplyMarkup {
@@ -80,10 +86,13 @@ class ReplyMarkupForceReply extends ReplyMarkup {
   }
 
   static const CONSTRUCTOR = 'replyMarkupForceReply';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ReplyMarkupShowKeyboard extends ReplyMarkup {
-  List<List<List<KeyboardButton>>> rows;
+  List<List<KeyboardButton>> rows;
   bool resizeKeyboard;
   bool oneTime;
   bool isPersonal;
@@ -100,7 +109,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   /// Parse from a json
   ReplyMarkupShowKeyboard.fromJson(Map<String, dynamic> json)  {
-    this.rows = List<List<List<KeyboardButton>>>.from((json['rows'] ?? []).map((item) => List<List<KeyboardButton>>.from((item ?? []).map((innerItem) => List<KeyboardButton>.from((innerItem ?? []).map((innerItem) => KeyboardButton.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList())).toList());
+    this.rows = List<List<KeyboardButton>>.from((json['rows'] ?? []).map((item) => List<KeyboardButton>.from((item ?? []).map((innerItem) => KeyboardButton.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.resizeKeyboard = json['resize_keyboard'];
     this.oneTime = json['one_time'];
     this.isPersonal = json['is_personal'];
@@ -110,7 +119,7 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "rows": this.rows.map((i) => i.map((ii) => ii.map((iii) => iii.toJson()).toList()).toList()).toList(),
+      "rows": this.rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "resize_keyboard": this.resizeKeyboard,
       "one_time": this.oneTime,
       "is_personal": this.isPersonal,
@@ -118,10 +127,13 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
   }
 
   static const CONSTRUCTOR = 'replyMarkupShowKeyboard';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ReplyMarkupInlineKeyboard extends ReplyMarkup {
-  List<List<List<InlineKeyboardButton>>> rows;
+  List<List<InlineKeyboardButton>> rows;
 
   /// Contains an inline keyboard layout. 
   /// [rows] A list of rows of inline keyboard buttons
@@ -129,16 +141,19 @@ class ReplyMarkupInlineKeyboard extends ReplyMarkup {
 
   /// Parse from a json
   ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json)  {
-    this.rows = List<List<List<InlineKeyboardButton>>>.from((json['rows'] ?? []).map((item) => List<List<InlineKeyboardButton>>.from((item ?? []).map((innerItem) => List<InlineKeyboardButton>.from((innerItem ?? []).map((innerItem) => InlineKeyboardButton.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList())).toList());
+    this.rows = List<List<InlineKeyboardButton>>.from((json['rows'] ?? []).map((item) => List<InlineKeyboardButton>.from((item ?? []).map((innerItem) => InlineKeyboardButton.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "rows": this.rows.map((i) => i.map((ii) => ii.map((iii) => iii.toJson()).toList()).toList()).toList(),
+      "rows": this.rows.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'replyMarkupInlineKeyboard';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

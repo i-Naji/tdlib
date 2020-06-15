@@ -29,4 +29,7 @@ class GetGroupsInCommon extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getGroupsInCommon';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

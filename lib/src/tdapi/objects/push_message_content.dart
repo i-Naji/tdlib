@@ -100,6 +100,9 @@ class PushMessageContent extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pushMessageContent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentHidden extends PushMessageContent {
@@ -123,6 +126,9 @@ class PushMessageContentHidden extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentHidden';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentAnimation extends PushMessageContent {
@@ -156,6 +162,9 @@ class PushMessageContentAnimation extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentAudio extends PushMessageContent {
@@ -184,6 +193,9 @@ class PushMessageContentAudio extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentContact extends PushMessageContent {
@@ -212,6 +224,9 @@ class PushMessageContentContact extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentContactRegistered extends PushMessageContent {
@@ -231,6 +246,9 @@ class PushMessageContentContactRegistered extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentContactRegistered';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentDocument extends PushMessageContent {
@@ -259,6 +277,9 @@ class PushMessageContentDocument extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentGame extends PushMessageContent {
@@ -287,6 +308,9 @@ class PushMessageContentGame extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentGameScore extends PushMessageContent {
@@ -320,6 +344,9 @@ class PushMessageContentGameScore extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentGameScore';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentInvoice extends PushMessageContent {
@@ -348,6 +375,9 @@ class PushMessageContentInvoice extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentInvoice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentLocation extends PushMessageContent {
@@ -376,6 +406,9 @@ class PushMessageContentLocation extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentPhoto extends PushMessageContent {
@@ -414,6 +447,9 @@ class PushMessageContentPhoto extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentPoll extends PushMessageContent {
@@ -447,6 +483,9 @@ class PushMessageContentPoll extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentPoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentScreenshotTaken extends PushMessageContent {
@@ -466,6 +505,9 @@ class PushMessageContentScreenshotTaken extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentScreenshotTaken';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentSticker extends PushMessageContent {
@@ -499,6 +541,9 @@ class PushMessageContentSticker extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentText extends PushMessageContent {
@@ -527,6 +572,9 @@ class PushMessageContentText extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentVideo extends PushMessageContent {
@@ -565,6 +613,9 @@ class PushMessageContentVideo extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentVideoNote extends PushMessageContent {
@@ -593,6 +644,9 @@ class PushMessageContentVideoNote extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentVoiceNote extends PushMessageContent {
@@ -621,6 +675,9 @@ class PushMessageContentVoiceNote extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
@@ -640,6 +697,9 @@ class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentBasicGroupChatCreate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentChatAddMembers extends PushMessageContent {
@@ -673,6 +733,9 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentChatAddMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentChatChangePhoto extends PushMessageContent {
@@ -692,6 +755,9 @@ class PushMessageContentChatChangePhoto extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentChatChangePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentChatChangeTitle extends PushMessageContent {
@@ -715,6 +781,9 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentChatChangeTitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentChatDeleteMember extends PushMessageContent {
@@ -748,6 +817,9 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentChatDeleteMember';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentChatJoinByLink extends PushMessageContent {
@@ -767,6 +839,9 @@ class PushMessageContentChatJoinByLink extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentChatJoinByLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentMessageForwards extends PushMessageContent {
@@ -790,6 +865,9 @@ class PushMessageContentMessageForwards extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentMessageForwards';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PushMessageContentMediaAlbum extends PushMessageContent {
@@ -823,4 +901,7 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
   }
 
   static const CONSTRUCTOR = 'pushMessageContentMediaAlbum';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

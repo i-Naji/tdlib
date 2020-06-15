@@ -18,4 +18,7 @@ class Destroy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'destroy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

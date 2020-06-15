@@ -18,4 +18,7 @@ class GetActiveLiveLocationMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getActiveLiveLocationMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

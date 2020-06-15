@@ -73,6 +73,9 @@ class InputMessageContent extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputMessageContent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageText extends InputMessageContent {
@@ -106,12 +109,15 @@ class InputMessageText extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageAnimation extends InputMessageContent {
   InputFile animation;
   InputThumbnail thumbnail;
-  List<List<int>> addedStickerFileIds;
+  List<int> addedStickerFileIds;
   int duration;
   int width;
   int height;
@@ -137,7 +143,7 @@ class InputMessageAnimation extends InputMessageContent {
   InputMessageAnimation.fromJson(Map<String, dynamic> json)  {
     this.animation = InputFile.fromJson(json['animation'] ?? <String, dynamic>{});
     this.thumbnail = InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<List<int>>.from((json['added_sticker_file_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.addedStickerFileIds = List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
     this.duration = json['duration'];
     this.width = json['width'];
     this.height = json['height'];
@@ -150,7 +156,7 @@ class InputMessageAnimation extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "animation": this.animation.toJson(),
       "thumbnail": this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "duration": this.duration,
       "width": this.width,
       "height": this.height,
@@ -159,6 +165,9 @@ class InputMessageAnimation extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageAudio extends InputMessageContent {
@@ -207,6 +216,9 @@ class InputMessageAudio extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageDocument extends InputMessageContent {
@@ -240,12 +252,15 @@ class InputMessageDocument extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessagePhoto extends InputMessageContent {
   InputFile photo;
   InputThumbnail thumbnail;
-  List<List<int>> addedStickerFileIds;
+  List<int> addedStickerFileIds;
   int width;
   int height;
   FormattedText caption;
@@ -271,7 +286,7 @@ class InputMessagePhoto extends InputMessageContent {
   InputMessagePhoto.fromJson(Map<String, dynamic> json)  {
     this.photo = InputFile.fromJson(json['photo'] ?? <String, dynamic>{});
     this.thumbnail = InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<List<int>>.from((json['added_sticker_file_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.addedStickerFileIds = List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
     this.width = json['width'];
     this.height = json['height'];
     this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
@@ -284,7 +299,7 @@ class InputMessagePhoto extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "photo": this.photo.toJson(),
       "thumbnail": this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "width": this.width,
       "height": this.height,
       "caption": this.caption.toJson(),
@@ -293,6 +308,9 @@ class InputMessagePhoto extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessagePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageSticker extends InputMessageContent {
@@ -331,12 +349,15 @@ class InputMessageSticker extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageVideo extends InputMessageContent {
   InputFile video;
   InputThumbnail thumbnail;
-  List<List<int>> addedStickerFileIds;
+  List<int> addedStickerFileIds;
   int duration;
   int width;
   int height;
@@ -368,7 +389,7 @@ class InputMessageVideo extends InputMessageContent {
   InputMessageVideo.fromJson(Map<String, dynamic> json)  {
     this.video = InputFile.fromJson(json['video'] ?? <String, dynamic>{});
     this.thumbnail = InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<List<int>>.from((json['added_sticker_file_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.addedStickerFileIds = List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
     this.duration = json['duration'];
     this.width = json['width'];
     this.height = json['height'];
@@ -383,7 +404,7 @@ class InputMessageVideo extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "video": this.video.toJson(),
       "thumbnail": this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "duration": this.duration,
       "width": this.width,
       "height": this.height,
@@ -394,6 +415,9 @@ class InputMessageVideo extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageVideoNote extends InputMessageContent {
@@ -432,6 +456,9 @@ class InputMessageVideoNote extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageVoiceNote extends InputMessageContent {
@@ -470,6 +497,9 @@ class InputMessageVoiceNote extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageLocation extends InputMessageContent {
@@ -498,6 +528,9 @@ class InputMessageLocation extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageVenue extends InputMessageContent {
@@ -521,6 +554,9 @@ class InputMessageVenue extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageVenue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageContact extends InputMessageContent {
@@ -544,6 +580,9 @@ class InputMessageContact extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageDice extends InputMessageContent {
@@ -572,6 +611,9 @@ class InputMessageDice extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageDice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageGame extends InputMessageContent {
@@ -600,6 +642,9 @@ class InputMessageGame extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageInvoice extends InputMessageContent {
@@ -673,11 +718,14 @@ class InputMessageInvoice extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageInvoice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessagePoll extends InputMessageContent {
   String question;
-  List<List<String>> options;
+  List<String> options;
   bool isAnonymous;
   PollType type;
   int openPeriod;
@@ -703,7 +751,7 @@ class InputMessagePoll extends InputMessageContent {
   /// Parse from a json
   InputMessagePoll.fromJson(Map<String, dynamic> json)  {
     this.question = json['question'];
-    this.options = List<List<String>>.from((json['options'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.options = List<String>.from((json['options'] ?? []).map((item) => item).toList());
     this.isAnonymous = json['is_anonymous'];
     this.type = PollType.fromJson(json['type'] ?? <String, dynamic>{});
     this.openPeriod = json['open_period'];
@@ -716,7 +764,7 @@ class InputMessagePoll extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "question": this.question,
-      "options": this.options.map((i) => i.map((ii) => ii).toList()).toList(),
+      "options": this.options.map((i) => i).toList(),
       "is_anonymous": this.isAnonymous,
       "type": this.type.toJson(),
       "open_period": this.openPeriod,
@@ -726,6 +774,9 @@ class InputMessagePoll extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessagePoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputMessageForwarded extends InputMessageContent {
@@ -769,4 +820,7 @@ class InputMessageForwarded extends InputMessageContent {
   }
 
   static const CONSTRUCTOR = 'inputMessageForwarded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

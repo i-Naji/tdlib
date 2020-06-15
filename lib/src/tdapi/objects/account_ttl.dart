@@ -23,4 +23,7 @@ class AccountTtl extends TdObject {
   }
 
   static const CONSTRUCTOR = 'accountTtl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

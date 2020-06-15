@@ -25,4 +25,7 @@ class SetSupergroupStickerSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setSupergroupStickerSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

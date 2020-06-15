@@ -18,4 +18,7 @@ class ResendEmailAddressVerificationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendEmailAddressVerificationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

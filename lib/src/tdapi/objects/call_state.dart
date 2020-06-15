@@ -40,6 +40,9 @@ class CallState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStatePending extends CallState {
@@ -68,6 +71,9 @@ class CallStatePending extends CallState {
   }
 
   static const CONSTRUCTOR = 'callStatePending';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStateExchangingKeys extends CallState {
@@ -87,14 +93,17 @@ class CallStateExchangingKeys extends CallState {
   }
 
   static const CONSTRUCTOR = 'callStateExchangingKeys';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStateReady extends CallState {
   CallProtocol protocol;
-  List<List<CallConnection>> connections;
+  List<CallConnection> connections;
   String config;
   String encryptionKey;
-  List<List<String>> emojis;
+  List<String> emojis;
   bool allowP2p;
 
   /// The call is ready to use. 
@@ -114,10 +123,10 @@ class CallStateReady extends CallState {
   /// Parse from a json
   CallStateReady.fromJson(Map<String, dynamic> json)  {
     this.protocol = CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{});
-    this.connections = List<List<CallConnection>>.from((json['connections'] ?? []).map((item) => List<CallConnection>.from((item ?? []).map((innerItem) => CallConnection.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.connections = List<CallConnection>.from((json['connections'] ?? []).map((item) => CallConnection.fromJson(item ?? <String, dynamic>{})).toList());
     this.config = json['config'];
     this.encryptionKey = json['encryption_key'];
-    this.emojis = List<List<String>>.from((json['emojis'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.emojis = List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
     this.allowP2p = json['allow_p2p'];
   }
 
@@ -126,15 +135,18 @@ class CallStateReady extends CallState {
     return {
       "@type": CONSTRUCTOR,
       "protocol": this.protocol.toJson(),
-      "connections": this.connections.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "connections": this.connections.map((i) => i.toJson()).toList(),
       "config": this.config,
       "encryption_key": this.encryptionKey,
-      "emojis": this.emojis.map((i) => i.map((ii) => ii).toList()).toList(),
+      "emojis": this.emojis.map((i) => i).toList(),
       "allow_p2p": this.allowP2p,
     };
   }
 
   static const CONSTRUCTOR = 'callStateReady';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStateHangingUp extends CallState {
@@ -154,6 +166,9 @@ class CallStateHangingUp extends CallState {
   }
 
   static const CONSTRUCTOR = 'callStateHangingUp';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStateDiscarded extends CallState {
@@ -187,6 +202,9 @@ class CallStateDiscarded extends CallState {
   }
 
   static const CONSTRUCTOR = 'callStateDiscarded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallStateError extends CallState {
@@ -210,4 +228,7 @@ class CallStateError extends CallState {
   }
 
   static const CONSTRUCTOR = 'callStateError';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

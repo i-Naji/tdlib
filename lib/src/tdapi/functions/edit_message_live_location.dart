@@ -33,4 +33,7 @@ class EditMessageLiveLocation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editMessageLiveLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

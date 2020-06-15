@@ -6,7 +6,7 @@ class IdentityDocument extends TdObject {
   DatedFile frontSide;
   DatedFile reverseSide;
   DatedFile selfie;
-  List<List<DatedFile>> translation;
+  List<DatedFile> translation;
 
   /// An identity document. 
   /// [number] Document number; 1-24 characters . 
@@ -29,7 +29,7 @@ class IdentityDocument extends TdObject {
     this.frontSide = DatedFile.fromJson(json['front_side'] ?? <String, dynamic>{});
     this.reverseSide = DatedFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
     this.selfie = DatedFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = List<List<DatedFile>>.from((json['translation'] ?? []).map((item) => List<DatedFile>.from((item ?? []).map((innerItem) => DatedFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.translation = List<DatedFile>.from((json['translation'] ?? []).map((item) => DatedFile.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -41,9 +41,12 @@ class IdentityDocument extends TdObject {
       "front_side": this.frontSide.toJson(),
       "reverse_side": this.reverseSide.toJson(),
       "selfie": this.selfie.toJson(),
-      "translation": this.translation.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "translation": this.translation.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'identityDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

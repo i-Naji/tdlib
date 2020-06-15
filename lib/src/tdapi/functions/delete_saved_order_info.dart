@@ -18,4 +18,7 @@ class DeleteSavedOrderInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteSavedOrderInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

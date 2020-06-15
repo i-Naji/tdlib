@@ -21,4 +21,7 @@ class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'upgradeBasicGroupChatToSupergroupChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

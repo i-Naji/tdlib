@@ -28,6 +28,9 @@ class PublicChatType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'publicChatType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PublicChatTypeHasUsername extends PublicChatType {
@@ -47,6 +50,9 @@ class PublicChatTypeHasUsername extends PublicChatType {
   }
 
   static const CONSTRUCTOR = 'publicChatTypeHasUsername';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PublicChatTypeIsLocationBased extends PublicChatType {
@@ -66,4 +72,7 @@ class PublicChatTypeIsLocationBased extends PublicChatType {
   }
 
   static const CONSTRUCTOR = 'publicChatTypeIsLocationBased';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

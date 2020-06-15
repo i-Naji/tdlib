@@ -21,4 +21,7 @@ class SetBio extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setBio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

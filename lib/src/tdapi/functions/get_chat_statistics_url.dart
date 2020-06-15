@@ -29,4 +29,7 @@ class GetChatStatisticsUrl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatStatisticsUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

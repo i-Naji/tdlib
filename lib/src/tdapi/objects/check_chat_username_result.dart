@@ -37,6 +37,9 @@ class CheckChatUsernameResult extends TdObject {
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CheckChatUsernameResultOk extends CheckChatUsernameResult {
@@ -58,6 +61,9 @@ class CheckChatUsernameResultOk extends CheckChatUsernameResult {
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResultOk';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
@@ -79,6 +85,9 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResultUsernameInvalid';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
@@ -100,6 +109,9 @@ class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResultUsernameOccupied';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult {
@@ -121,6 +133,9 @@ class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult 
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResultPublicChatsTooMuch';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameResult {
@@ -142,4 +157,7 @@ class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameRe
   }
 
   static const CONSTRUCTOR = 'checkChatUsernameResultPublicGroupsUnavailable';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

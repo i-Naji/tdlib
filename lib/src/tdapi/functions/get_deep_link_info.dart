@@ -21,4 +21,7 @@ class GetDeepLinkInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getDeepLinkInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

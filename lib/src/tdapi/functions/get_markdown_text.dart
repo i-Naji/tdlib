@@ -21,4 +21,7 @@ class GetMarkdownText extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getMarkdownText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

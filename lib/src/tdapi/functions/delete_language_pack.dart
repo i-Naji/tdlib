@@ -21,4 +21,7 @@ class DeleteLanguagePack extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteLanguagePack';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

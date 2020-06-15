@@ -31,4 +31,7 @@ class InputThumbnail extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputThumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

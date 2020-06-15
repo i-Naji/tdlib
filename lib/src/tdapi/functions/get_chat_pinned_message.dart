@@ -21,4 +21,7 @@ class GetChatPinnedMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatPinnedMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

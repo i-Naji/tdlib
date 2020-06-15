@@ -56,4 +56,7 @@ class ChatPermissions extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatPermissions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

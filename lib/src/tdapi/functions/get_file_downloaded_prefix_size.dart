@@ -25,4 +25,7 @@ class GetFileDownloadedPrefixSize extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFileDownloadedPrefixSize';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -29,4 +29,7 @@ class StopPoll extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'stopPoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -29,4 +29,7 @@ class AddStickerToSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addStickerToSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

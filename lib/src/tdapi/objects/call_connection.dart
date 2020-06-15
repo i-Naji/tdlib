@@ -41,4 +41,7 @@ class CallConnection extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callConnection';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

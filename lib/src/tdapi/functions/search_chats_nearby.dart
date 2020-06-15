@@ -21,4 +21,7 @@ class SearchChatsNearby extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchChatsNearby';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

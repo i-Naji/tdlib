@@ -113,4 +113,7 @@ class SupergroupFullInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'supergroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

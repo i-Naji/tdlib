@@ -21,4 +21,7 @@ class CheckAuthenticationBotToken extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkAuthenticationBotToken';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

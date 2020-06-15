@@ -21,4 +21,7 @@ class SetLogStream extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setLogStream';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

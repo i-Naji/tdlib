@@ -18,4 +18,7 @@ class GetDatabaseStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getDatabaseStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

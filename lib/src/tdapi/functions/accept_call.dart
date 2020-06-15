@@ -25,4 +25,7 @@ class AcceptCall extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'acceptCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

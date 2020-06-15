@@ -21,4 +21,7 @@ class JoinChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'joinChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

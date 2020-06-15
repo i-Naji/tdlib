@@ -36,4 +36,7 @@ class PassportSuitableElement extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passportSuitableElement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

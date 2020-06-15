@@ -29,4 +29,7 @@ class ReadFilePart extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'readFilePart';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

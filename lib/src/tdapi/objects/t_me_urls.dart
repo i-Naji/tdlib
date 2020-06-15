@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class TMeUrls extends TdObject {
-  List<List<TMeUrl>> urls;
+  List<TMeUrl> urls;
   dynamic extra;
 
   /// Contains a list of t.me URLs. 
@@ -10,7 +10,7 @@ class TMeUrls extends TdObject {
 
   /// Parse from a json
   TMeUrls.fromJson(Map<String, dynamic> json)  {
-    this.urls = List<List<TMeUrl>>.from((json['urls'] ?? []).map((item) => List<TMeUrl>.from((item ?? []).map((innerItem) => TMeUrl.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.urls = List<TMeUrl>.from((json['urls'] ?? []).map((item) => TMeUrl.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -18,9 +18,12 @@ class TMeUrls extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "urls": this.urls.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "urls": this.urls.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'tMeUrls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

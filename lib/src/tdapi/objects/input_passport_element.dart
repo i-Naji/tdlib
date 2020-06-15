@@ -61,6 +61,9 @@ class InputPassportElement extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputPassportElement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementPersonalDetails extends InputPassportElement {
@@ -84,6 +87,9 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementPersonalDetails';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementPassport extends InputPassportElement {
@@ -107,6 +113,9 @@ class InputPassportElementPassport extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementPassport';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementDriverLicense extends InputPassportElement {
@@ -130,6 +139,9 @@ class InputPassportElementDriverLicense extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementDriverLicense';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementIdentityCard extends InputPassportElement {
@@ -153,6 +165,9 @@ class InputPassportElementIdentityCard extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementIdentityCard';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementInternalPassport extends InputPassportElement {
@@ -176,6 +191,9 @@ class InputPassportElementInternalPassport extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementInternalPassport';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementAddress extends InputPassportElement {
@@ -199,6 +217,9 @@ class InputPassportElementAddress extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementUtilityBill extends InputPassportElement {
@@ -222,6 +243,9 @@ class InputPassportElementUtilityBill extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementUtilityBill';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementBankStatement extends InputPassportElement {
@@ -245,6 +269,9 @@ class InputPassportElementBankStatement extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementBankStatement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementRentalAgreement extends InputPassportElement {
@@ -268,6 +295,9 @@ class InputPassportElementRentalAgreement extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementRentalAgreement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementPassportRegistration extends InputPassportElement {
@@ -291,6 +321,9 @@ class InputPassportElementPassportRegistration extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementPassportRegistration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementTemporaryRegistration extends InputPassportElement {
@@ -314,6 +347,9 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementTemporaryRegistration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementPhoneNumber extends InputPassportElement {
@@ -337,6 +373,9 @@ class InputPassportElementPhoneNumber extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputPassportElementEmailAddress extends InputPassportElement {
@@ -360,4 +399,7 @@ class InputPassportElementEmailAddress extends InputPassportElement {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

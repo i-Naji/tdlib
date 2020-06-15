@@ -21,4 +21,7 @@ class SetDatabaseEncryptionKey extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setDatabaseEncryptionKey';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

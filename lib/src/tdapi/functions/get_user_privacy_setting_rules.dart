@@ -21,4 +21,7 @@ class GetUserPrivacySettingRules extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getUserPrivacySettingRules';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

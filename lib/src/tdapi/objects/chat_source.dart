@@ -28,6 +28,9 @@ class ChatSource extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatSource';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatSourceMtprotoProxy extends ChatSource {
@@ -47,6 +50,9 @@ class ChatSourceMtprotoProxy extends ChatSource {
   }
 
   static const CONSTRUCTOR = 'chatSourceMtprotoProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatSourcePublicServiceAnnouncement extends ChatSource {
@@ -75,4 +81,7 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
   }
 
   static const CONSTRUCTOR = 'chatSourcePublicServiceAnnouncement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

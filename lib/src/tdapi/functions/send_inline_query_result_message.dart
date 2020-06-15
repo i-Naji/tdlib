@@ -41,4 +41,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendInlineQueryResultMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

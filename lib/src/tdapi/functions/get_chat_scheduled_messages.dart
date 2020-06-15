@@ -21,4 +21,7 @@ class GetChatScheduledMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatScheduledMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

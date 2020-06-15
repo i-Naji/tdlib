@@ -18,4 +18,7 @@ class GetActiveSessions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getActiveSessions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

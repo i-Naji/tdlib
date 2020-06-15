@@ -28,4 +28,7 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'emailAddressAuthenticationCodeInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

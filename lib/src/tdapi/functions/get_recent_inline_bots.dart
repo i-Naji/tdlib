@@ -18,4 +18,7 @@ class GetRecentInlineBots extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecentInlineBots';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

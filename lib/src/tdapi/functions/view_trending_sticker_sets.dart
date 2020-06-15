@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ViewTrendingStickerSets extends TdFunction {
-  List<List<int>> stickerSetIds;
+  List<int> stickerSetIds;
   dynamic extra;
 
   /// Informs the server that some trending sticker sets have been viewed by the user. 
@@ -15,10 +15,13 @@ class ViewTrendingStickerSets extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_set_ids": this.stickerSetIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "sticker_set_ids": this.stickerSetIds.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'viewTrendingStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

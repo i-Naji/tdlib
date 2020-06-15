@@ -193,8 +193,6 @@ class DartTdDocumentationGenerator {
       FileMode writeMode = FileMode.write;
       String objectPart = mainPart;
       if (obj.isParent) {
-        print(obj.name);
-        print(obj.hasParent);
         hasFactory = true;
         fromJsonFields.add('switch(json["@type"]) {');
         obj.relevantObjects.forEach((String relevantObject) {
@@ -232,13 +230,14 @@ class DartTdDocumentationGenerator {
         }
       }
       if (!obj.hasParent) {
-        tdApiFile.writeAsStringSync('part \'$folderName/$snakeName.dart\';\n', mode:FileMode.append); // todo: Even Functions?
+        tdApiFile.writeAsStringSync('part \'$folderName/$snakeName.dart\';\n',
+            mode: FileMode.append); // todo: Even Functions?
       }
-      
+
       final objFile = File(finalDir);
       final stringObj = temple
-          //.replaceAll('PART', '') 
-          .replaceAll('PART', objectPart) 
+          //.replaceAll('PART', '')
+          .replaceAll('PART', objectPart)
           .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
           .replaceAll('PARENT', parent)
           .replaceAll('VARIABLES', variables.join('\n  '))
@@ -387,13 +386,13 @@ class TlObjectArg {
     this.write = getWrite(this.argName, this.type);
   }
 
-  static getType(type, [String prefix = 'TYPE']) {
+  static getType(type, {String prefix = 'TYPE'}) {
     String dartType;
     if (builtInTypes.contains(type)) {
       dartType = getBuiltInDartType(type);
     } else if (type.startsWith('vector')) {
       final subType = type.substring(7, type.length - 1);
-      dartType = getType(subType, prefix = 'List<TYPE>');
+      dartType = getType(subType, prefix : 'List<TYPE>');
     } else {
       type = upperFirstChar(type);
       //if (_objects.any((TlObject obj) => obj.isParent && obj.name == type))

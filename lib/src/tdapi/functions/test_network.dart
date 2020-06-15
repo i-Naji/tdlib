@@ -18,4 +18,7 @@ class TestNetwork extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testNetwork';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

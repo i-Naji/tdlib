@@ -43,4 +43,7 @@ class PasswordState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passwordState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

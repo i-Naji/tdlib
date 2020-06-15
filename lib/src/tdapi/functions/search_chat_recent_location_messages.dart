@@ -25,4 +25,7 @@ class SearchChatRecentLocationMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchChatRecentLocationMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class SetProfilePhoto extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setProfilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class SearchStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

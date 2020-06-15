@@ -38,4 +38,7 @@ class AuthenticationCodeInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

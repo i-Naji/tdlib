@@ -18,4 +18,7 @@ class DisableProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'disableProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

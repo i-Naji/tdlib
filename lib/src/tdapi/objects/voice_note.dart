@@ -36,4 +36,7 @@ class VoiceNote extends TdObject {
   }
 
   static const CONSTRUCTOR = 'voiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -37,4 +37,7 @@ class GetChatHistory extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatHistory';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

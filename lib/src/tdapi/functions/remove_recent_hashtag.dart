@@ -21,4 +21,7 @@ class RemoveRecentHashtag extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeRecentHashtag';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

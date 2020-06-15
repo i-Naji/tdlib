@@ -21,4 +21,7 @@ class CheckCreatedPublicChatsLimit extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkCreatedPublicChatsLimit';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

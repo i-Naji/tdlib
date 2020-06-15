@@ -23,4 +23,7 @@ class Seconds extends TdObject {
   }
 
   static const CONSTRUCTOR = 'seconds';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

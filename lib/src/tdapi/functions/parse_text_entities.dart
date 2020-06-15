@@ -25,4 +25,7 @@ class ParseTextEntities extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'parseTextEntities';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,6 +31,9 @@ class BackgroundType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'backgroundType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class BackgroundTypeWallpaper extends BackgroundType {
@@ -59,6 +62,9 @@ class BackgroundTypeWallpaper extends BackgroundType {
   }
 
   static const CONSTRUCTOR = 'backgroundTypeWallpaper';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class BackgroundTypePattern extends BackgroundType {
@@ -92,6 +98,9 @@ class BackgroundTypePattern extends BackgroundType {
   }
 
   static const CONSTRUCTOR = 'backgroundTypePattern';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class BackgroundTypeFill extends BackgroundType {
@@ -115,4 +124,7 @@ class BackgroundTypeFill extends BackgroundType {
   }
 
   static const CONSTRUCTOR = 'backgroundTypeFill';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

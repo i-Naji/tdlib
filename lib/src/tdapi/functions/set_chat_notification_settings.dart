@@ -25,4 +25,7 @@ class SetChatNotificationSettings extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

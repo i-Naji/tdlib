@@ -18,4 +18,7 @@ class Close extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'close';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

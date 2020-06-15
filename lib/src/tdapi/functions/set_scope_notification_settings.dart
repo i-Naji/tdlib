@@ -25,4 +25,7 @@ class SetScopeNotificationSettings extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setScopeNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

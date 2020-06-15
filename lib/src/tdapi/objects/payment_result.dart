@@ -28,4 +28,7 @@ class PaymentResult extends TdObject {
   }
 
   static const CONSTRUCTOR = 'paymentResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -41,4 +41,7 @@ class Document extends TdObject {
   }
 
   static const CONSTRUCTOR = 'document';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

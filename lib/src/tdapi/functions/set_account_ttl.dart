@@ -21,4 +21,7 @@ class SetAccountTtl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setAccountTtl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

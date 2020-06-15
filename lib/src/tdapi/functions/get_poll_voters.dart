@@ -37,4 +37,7 @@ class GetPollVoters extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPollVoters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

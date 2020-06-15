@@ -18,4 +18,7 @@ class GetInactiveSupergroupChats extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInactiveSupergroupChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

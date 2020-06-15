@@ -21,4 +21,7 @@ class LeaveChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'leaveChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

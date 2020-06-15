@@ -33,4 +33,7 @@ class GetSupergroupMembers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSupergroupMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

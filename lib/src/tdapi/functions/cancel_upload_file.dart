@@ -21,4 +21,7 @@ class CancelUploadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'cancelUploadFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class GetFileExtension extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFileExtension';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

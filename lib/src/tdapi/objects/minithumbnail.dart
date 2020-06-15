@@ -31,4 +31,7 @@ class Minithumbnail extends TdObject {
   }
 
   static const CONSTRUCTOR = 'minithumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

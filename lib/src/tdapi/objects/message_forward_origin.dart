@@ -31,6 +31,9 @@ class MessageForwardOrigin extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageForwardOrigin';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageForwardOriginUser extends MessageForwardOrigin {
@@ -54,6 +57,9 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
   }
 
   static const CONSTRUCTOR = 'messageForwardOriginUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
@@ -77,6 +83,9 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
   }
 
   static const CONSTRUCTOR = 'messageForwardOriginHiddenUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageForwardOriginChannel extends MessageForwardOrigin {
@@ -110,4 +119,7 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
   }
 
   static const CONSTRUCTOR = 'messageForwardOriginChannel';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

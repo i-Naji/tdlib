@@ -18,4 +18,7 @@ class GetAuthorizationState extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getAuthorizationState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,4 +31,7 @@ class DraftMessage extends TdObject {
   }
 
   static const CONSTRUCTOR = 'draftMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

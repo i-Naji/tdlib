@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class UserProfilePhoto extends TdObject {
   int id;
   int addedDate;
-  List<List<PhotoSize>> sizes;
+  List<PhotoSize> sizes;
 
   /// Contains full information about a user profile photo. 
   /// [id] Unique user profile photo identifier . 
@@ -17,7 +17,7 @@ class UserProfilePhoto extends TdObject {
   UserProfilePhoto.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.addedDate = json['added_date'];
-    this.sizes = List<List<PhotoSize>>.from((json['sizes'] ?? []).map((item) => List<PhotoSize>.from((item ?? []).map((innerItem) => PhotoSize.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.sizes = List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -26,9 +26,12 @@ class UserProfilePhoto extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "added_date": this.addedDate,
-      "sizes": this.sizes.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "sizes": this.sizes.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'userProfilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

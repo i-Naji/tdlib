@@ -18,4 +18,7 @@ class DeleteSavedCredentials extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteSavedCredentials';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

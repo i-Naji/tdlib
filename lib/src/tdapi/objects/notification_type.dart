@@ -34,6 +34,9 @@ class NotificationType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notificationType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewMessage extends NotificationType {
@@ -57,6 +60,9 @@ class NotificationTypeNewMessage extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewSecretChat extends NotificationType {
@@ -76,6 +82,9 @@ class NotificationTypeNewSecretChat extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewSecretChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewCall extends NotificationType {
@@ -99,6 +108,9 @@ class NotificationTypeNewCall extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewPushMessage extends NotificationType {
@@ -142,4 +154,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewPushMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

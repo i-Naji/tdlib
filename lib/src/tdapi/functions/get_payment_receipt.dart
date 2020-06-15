@@ -25,4 +25,7 @@ class GetPaymentReceipt extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPaymentReceipt';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

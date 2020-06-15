@@ -29,4 +29,7 @@ class SetBackground extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setBackground';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

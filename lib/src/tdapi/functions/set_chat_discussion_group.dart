@@ -25,4 +25,7 @@ class SetChatDiscussionGroup extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatDiscussionGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

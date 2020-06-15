@@ -33,4 +33,7 @@ class CreateNewSupergroupChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createNewSupergroupChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

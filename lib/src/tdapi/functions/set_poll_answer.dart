@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class SetPollAnswer extends TdFunction {
   int chatId;
   int messageId;
-  List<List<int>> optionIds;
+  List<int> optionIds;
   dynamic extra;
 
   /// Changes the user answer to a poll. A poll in quiz mode can be answered only once. 
@@ -23,10 +23,13 @@ class SetPollAnswer extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "option_ids": this.optionIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "option_ids": this.optionIds.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'setPollAnswer';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

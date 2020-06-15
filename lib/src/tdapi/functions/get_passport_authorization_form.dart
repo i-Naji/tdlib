@@ -33,4 +33,7 @@ class GetPassportAuthorizationForm extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPassportAuthorizationForm';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

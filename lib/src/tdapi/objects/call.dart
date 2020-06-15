@@ -36,4 +36,7 @@ class Call extends TdObject {
   }
 
   static const CONSTRUCTOR = 'call';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

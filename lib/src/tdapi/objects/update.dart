@@ -253,6 +253,9 @@ class Update extends TdObject {
   }
 
   static const CONSTRUCTOR = 'update';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateAuthorizationState extends Update {
@@ -278,6 +281,9 @@ class UpdateAuthorizationState extends Update {
   }
 
   static const CONSTRUCTOR = 'updateAuthorizationState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewMessage extends Update {
@@ -303,6 +309,9 @@ class UpdateNewMessage extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageSendAcknowledged extends Update {
@@ -333,6 +342,9 @@ class UpdateMessageSendAcknowledged extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageSendAcknowledged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageSendSucceeded extends Update {
@@ -363,6 +375,9 @@ class UpdateMessageSendSucceeded extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageSendSucceeded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageSendFailed extends Update {
@@ -403,6 +418,9 @@ class UpdateMessageSendFailed extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageSendFailed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageContent extends Update {
@@ -438,6 +456,9 @@ class UpdateMessageContent extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageContent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageEdited extends Update {
@@ -478,6 +499,9 @@ class UpdateMessageEdited extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageEdited';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageViews extends Update {
@@ -513,6 +537,9 @@ class UpdateMessageViews extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageViews';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageContentOpened extends Update {
@@ -543,6 +570,9 @@ class UpdateMessageContentOpened extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageContentOpened';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageMentionRead extends Update {
@@ -578,6 +608,9 @@ class UpdateMessageMentionRead extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageMentionRead';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateMessageLiveLocationViewed extends Update {
@@ -608,6 +641,9 @@ class UpdateMessageLiveLocationViewed extends Update {
   }
 
   static const CONSTRUCTOR = 'updateMessageLiveLocationViewed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewChat extends Update {
@@ -633,6 +669,9 @@ class UpdateNewChat extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatTitle extends Update {
@@ -663,6 +702,9 @@ class UpdateChatTitle extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatTitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatPhoto extends Update {
@@ -693,6 +735,9 @@ class UpdateChatPhoto extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatPermissions extends Update {
@@ -723,12 +768,15 @@ class UpdateChatPermissions extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatPermissions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatLastMessage extends Update {
   int chatId;
   Message lastMessage;
-  List<List<ChatPosition>> positions;
+  List<ChatPosition> positions;
   dynamic extra;
 
   /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case. 
@@ -743,7 +791,7 @@ class UpdateChatLastMessage extends Update {
   UpdateChatLastMessage.fromJson(Map<String, dynamic> json)  {
     this.chatId = json['chat_id'];
     this.lastMessage = Message.fromJson(json['last_message'] ?? <String, dynamic>{});
-    this.positions = List<List<ChatPosition>>.from((json['positions'] ?? []).map((item) => List<ChatPosition>.from((item ?? []).map((innerItem) => ChatPosition.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.positions = List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -753,11 +801,14 @@ class UpdateChatLastMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "last_message": this.lastMessage.toJson(),
-      "positions": this.positions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateChatLastMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatPosition extends Update {
@@ -788,6 +839,9 @@ class UpdateChatPosition extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatPosition';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatIsMarkedAsUnread extends Update {
@@ -818,6 +872,9 @@ class UpdateChatIsMarkedAsUnread extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatIsMarkedAsUnread';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatHasScheduledMessages extends Update {
@@ -848,6 +905,9 @@ class UpdateChatHasScheduledMessages extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatHasScheduledMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatDefaultDisableNotification extends Update {
@@ -878,6 +938,9 @@ class UpdateChatDefaultDisableNotification extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatDefaultDisableNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatReadInbox extends Update {
@@ -913,6 +976,9 @@ class UpdateChatReadInbox extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatReadInbox';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatReadOutbox extends Update {
@@ -943,6 +1009,9 @@ class UpdateChatReadOutbox extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatReadOutbox';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatUnreadMentionCount extends Update {
@@ -973,6 +1042,9 @@ class UpdateChatUnreadMentionCount extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatUnreadMentionCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatNotificationSettings extends Update {
@@ -1003,6 +1075,9 @@ class UpdateChatNotificationSettings extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateScopeNotificationSettings extends Update {
@@ -1033,6 +1108,9 @@ class UpdateScopeNotificationSettings extends Update {
   }
 
   static const CONSTRUCTOR = 'updateScopeNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatActionBar extends Update {
@@ -1063,6 +1141,9 @@ class UpdateChatActionBar extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatActionBar';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatPinnedMessage extends Update {
@@ -1093,6 +1174,9 @@ class UpdateChatPinnedMessage extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatPinnedMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatReplyMarkup extends Update {
@@ -1123,12 +1207,15 @@ class UpdateChatReplyMarkup extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatReplyMarkup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatDraftMessage extends Update {
   int chatId;
   DraftMessage draftMessage;
-  List<List<ChatPosition>> positions;
+  List<ChatPosition> positions;
   dynamic extra;
 
   /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update shouldn't be applied. 
@@ -1143,7 +1230,7 @@ class UpdateChatDraftMessage extends Update {
   UpdateChatDraftMessage.fromJson(Map<String, dynamic> json)  {
     this.chatId = json['chat_id'];
     this.draftMessage = DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{});
-    this.positions = List<List<ChatPosition>>.from((json['positions'] ?? []).map((item) => List<ChatPosition>.from((item ?? []).map((innerItem) => ChatPosition.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.positions = List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -1153,15 +1240,18 @@ class UpdateChatDraftMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "draft_message": this.draftMessage.toJson(),
-      "positions": this.positions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateChatDraftMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatFilters extends Update {
-  List<List<ChatFilterInfo>> chatFilters;
+  List<ChatFilterInfo> chatFilters;
   dynamic extra;
 
   /// The list of chat filters or a chat filter has changed. 
@@ -1170,7 +1260,7 @@ class UpdateChatFilters extends Update {
 
   /// Parse from a json
   UpdateChatFilters.fromJson(Map<String, dynamic> json)  {
-    this.chatFilters = List<List<ChatFilterInfo>>.from((json['chat_filters'] ?? []).map((item) => List<ChatFilterInfo>.from((item ?? []).map((innerItem) => ChatFilterInfo.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.chatFilters = List<ChatFilterInfo>.from((json['chat_filters'] ?? []).map((item) => ChatFilterInfo.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -1178,11 +1268,14 @@ class UpdateChatFilters extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_filters": this.chatFilters.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "chat_filters": this.chatFilters.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateChatFilters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateChatOnlineMemberCount extends Update {
@@ -1213,6 +1306,9 @@ class UpdateChatOnlineMemberCount extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatOnlineMemberCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNotification extends Update {
@@ -1243,6 +1339,9 @@ class UpdateNotification extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNotificationGroup extends Update {
@@ -1252,8 +1351,8 @@ class UpdateNotificationGroup extends Update {
   int notificationSettingsChatId;
   bool isSilent;
   int totalCount;
-  List<List<Notification>> addedNotifications;
-  List<List<int>> removedNotificationIds;
+  List<Notification> addedNotifications;
+  List<int> removedNotificationIds;
   dynamic extra;
 
   /// A list of active notifications in a notification group has changed. 
@@ -1282,8 +1381,8 @@ class UpdateNotificationGroup extends Update {
     this.notificationSettingsChatId = json['notification_settings_chat_id'];
     this.isSilent = json['is_silent'];
     this.totalCount = json['total_count'];
-    this.addedNotifications = List<List<Notification>>.from((json['added_notifications'] ?? []).map((item) => List<Notification>.from((item ?? []).map((innerItem) => Notification.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
-    this.removedNotificationIds = List<List<int>>.from((json['removed_notification_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.addedNotifications = List<Notification>.from((json['added_notifications'] ?? []).map((item) => Notification.fromJson(item ?? <String, dynamic>{})).toList());
+    this.removedNotificationIds = List<int>.from((json['removed_notification_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -1297,16 +1396,19 @@ class UpdateNotificationGroup extends Update {
       "notification_settings_chat_id": this.notificationSettingsChatId,
       "is_silent": this.isSilent,
       "total_count": this.totalCount,
-      "added_notifications": this.addedNotifications.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
-      "removed_notification_ids": this.removedNotificationIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "added_notifications": this.addedNotifications.map((i) => i.toJson()).toList(),
+      "removed_notification_ids": this.removedNotificationIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateNotificationGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateActiveNotifications extends Update {
-  List<List<NotificationGroup>> groups;
+  List<NotificationGroup> groups;
   dynamic extra;
 
   /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update. 
@@ -1315,7 +1417,7 @@ class UpdateActiveNotifications extends Update {
 
   /// Parse from a json
   UpdateActiveNotifications.fromJson(Map<String, dynamic> json)  {
-    this.groups = List<List<NotificationGroup>>.from((json['groups'] ?? []).map((item) => List<NotificationGroup>.from((item ?? []).map((innerItem) => NotificationGroup.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.groups = List<NotificationGroup>.from((json['groups'] ?? []).map((item) => NotificationGroup.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -1323,11 +1425,14 @@ class UpdateActiveNotifications extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "groups": this.groups.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "groups": this.groups.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateActiveNotifications';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateHavePendingNotifications extends Update {
@@ -1358,11 +1463,14 @@ class UpdateHavePendingNotifications extends Update {
   }
 
   static const CONSTRUCTOR = 'updateHavePendingNotifications';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateDeleteMessages extends Update {
   int chatId;
-  List<List<int>> messageIds;
+  List<int> messageIds;
   bool isPermanent;
   bool fromCache;
   dynamic extra;
@@ -1380,7 +1488,7 @@ class UpdateDeleteMessages extends Update {
   /// Parse from a json
   UpdateDeleteMessages.fromJson(Map<String, dynamic> json)  {
     this.chatId = json['chat_id'];
-    this.messageIds = List<List<int>>.from((json['message_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.messageIds = List<int>.from((json['message_ids'] ?? []).map((item) => item).toList());
     this.isPermanent = json['is_permanent'];
     this.fromCache = json['from_cache'];
     this.extra = json['@extra'];
@@ -1391,13 +1499,16 @@ class UpdateDeleteMessages extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "message_ids": this.messageIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "message_ids": this.messageIds.map((i) => i).toList(),
       "is_permanent": this.isPermanent,
       "from_cache": this.fromCache,
     };
   }
 
   static const CONSTRUCTOR = 'updateDeleteMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUserChatAction extends Update {
@@ -1433,6 +1544,9 @@ class UpdateUserChatAction extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUserChatAction';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUserStatus extends Update {
@@ -1463,6 +1577,9 @@ class UpdateUserStatus extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUserStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUser extends Update {
@@ -1488,6 +1605,9 @@ class UpdateUser extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateBasicGroup extends Update {
@@ -1513,6 +1633,9 @@ class UpdateBasicGroup extends Update {
   }
 
   static const CONSTRUCTOR = 'updateBasicGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateSupergroup extends Update {
@@ -1538,6 +1661,9 @@ class UpdateSupergroup extends Update {
   }
 
   static const CONSTRUCTOR = 'updateSupergroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateSecretChat extends Update {
@@ -1563,6 +1689,9 @@ class UpdateSecretChat extends Update {
   }
 
   static const CONSTRUCTOR = 'updateSecretChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUserFullInfo extends Update {
@@ -1593,6 +1722,9 @@ class UpdateUserFullInfo extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUserFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateBasicGroupFullInfo extends Update {
@@ -1623,6 +1755,9 @@ class UpdateBasicGroupFullInfo extends Update {
   }
 
   static const CONSTRUCTOR = 'updateBasicGroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateSupergroupFullInfo extends Update {
@@ -1653,6 +1788,9 @@ class UpdateSupergroupFullInfo extends Update {
   }
 
   static const CONSTRUCTOR = 'updateSupergroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateServiceNotification extends Update {
@@ -1683,6 +1821,9 @@ class UpdateServiceNotification extends Update {
   }
 
   static const CONSTRUCTOR = 'updateServiceNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateFile extends Update {
@@ -1708,6 +1849,9 @@ class UpdateFile extends Update {
   }
 
   static const CONSTRUCTOR = 'updateFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateFileGenerationStart extends Update {
@@ -1748,6 +1892,9 @@ class UpdateFileGenerationStart extends Update {
   }
 
   static const CONSTRUCTOR = 'updateFileGenerationStart';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateFileGenerationStop extends Update {
@@ -1773,6 +1920,9 @@ class UpdateFileGenerationStop extends Update {
   }
 
   static const CONSTRUCTOR = 'updateFileGenerationStop';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateCall extends Update {
@@ -1798,6 +1948,9 @@ class UpdateCall extends Update {
   }
 
   static const CONSTRUCTOR = 'updateCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUserPrivacySettingRules extends Update {
@@ -1828,6 +1981,9 @@ class UpdateUserPrivacySettingRules extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUserPrivacySettingRules';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUnreadMessageCount extends Update {
@@ -1863,6 +2019,9 @@ class UpdateUnreadMessageCount extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUnreadMessageCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUnreadChatCount extends Update {
@@ -1913,6 +2072,9 @@ class UpdateUnreadChatCount extends Update {
   }
 
   static const CONSTRUCTOR = 'updateUnreadChatCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateOption extends Update {
@@ -1943,6 +2105,9 @@ class UpdateOption extends Update {
   }
 
   static const CONSTRUCTOR = 'updateOption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateStickerSet extends Update {
@@ -1968,11 +2133,14 @@ class UpdateStickerSet extends Update {
   }
 
   static const CONSTRUCTOR = 'updateStickerSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateInstalledStickerSets extends Update {
   bool isMasks;
-  List<List<int>> stickerSetIds;
+  List<int> stickerSetIds;
   dynamic extra;
 
   /// The list of installed sticker sets was updated. 
@@ -1984,7 +2152,7 @@ class UpdateInstalledStickerSets extends Update {
   /// Parse from a json
   UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json)  {
     this.isMasks = json['is_masks'];
-    this.stickerSetIds = List<List<int>>.from((json['sticker_set_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.stickerSetIds = List<int>.from((json['sticker_set_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -1993,11 +2161,14 @@ class UpdateInstalledStickerSets extends Update {
     return {
       "@type": CONSTRUCTOR,
       "is_masks": this.isMasks,
-      "sticker_set_ids": this.stickerSetIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "sticker_set_ids": this.stickerSetIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateInstalledStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateTrendingStickerSets extends Update {
@@ -2023,11 +2194,14 @@ class UpdateTrendingStickerSets extends Update {
   }
 
   static const CONSTRUCTOR = 'updateTrendingStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateRecentStickers extends Update {
   bool isAttached;
-  List<List<int>> stickerIds;
+  List<int> stickerIds;
   dynamic extra;
 
   /// The list of recently used stickers was updated. 
@@ -2039,7 +2213,7 @@ class UpdateRecentStickers extends Update {
   /// Parse from a json
   UpdateRecentStickers.fromJson(Map<String, dynamic> json)  {
     this.isAttached = json['is_attached'];
-    this.stickerIds = List<List<int>>.from((json['sticker_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.stickerIds = List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2048,15 +2222,18 @@ class UpdateRecentStickers extends Update {
     return {
       "@type": CONSTRUCTOR,
       "is_attached": this.isAttached,
-      "sticker_ids": this.stickerIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "sticker_ids": this.stickerIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateRecentStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateFavoriteStickers extends Update {
-  List<List<int>> stickerIds;
+  List<int> stickerIds;
   dynamic extra;
 
   /// The list of favorite stickers was updated. 
@@ -2065,7 +2242,7 @@ class UpdateFavoriteStickers extends Update {
 
   /// Parse from a json
   UpdateFavoriteStickers.fromJson(Map<String, dynamic> json)  {
-    this.stickerIds = List<List<int>>.from((json['sticker_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.stickerIds = List<int>.from((json['sticker_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2073,15 +2250,18 @@ class UpdateFavoriteStickers extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_ids": this.stickerIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "sticker_ids": this.stickerIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateFavoriteStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateSavedAnimations extends Update {
-  List<List<int>> animationIds;
+  List<int> animationIds;
   dynamic extra;
 
   /// The list of saved animations was updated. 
@@ -2090,7 +2270,7 @@ class UpdateSavedAnimations extends Update {
 
   /// Parse from a json
   UpdateSavedAnimations.fromJson(Map<String, dynamic> json)  {
-    this.animationIds = List<List<int>>.from((json['animation_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.animationIds = List<int>.from((json['animation_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2098,11 +2278,14 @@ class UpdateSavedAnimations extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation_ids": this.animationIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "animation_ids": this.animationIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateSavedAnimations';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateSelectedBackground extends Update {
@@ -2133,12 +2316,15 @@ class UpdateSelectedBackground extends Update {
   }
 
   static const CONSTRUCTOR = 'updateSelectedBackground';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateLanguagePackStrings extends Update {
   String localizationTarget;
   String languagePackId;
-  List<List<LanguagePackString>> strings;
+  List<LanguagePackString> strings;
   dynamic extra;
 
   /// Some language pack strings have been updated. 
@@ -2153,7 +2339,7 @@ class UpdateLanguagePackStrings extends Update {
   UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json)  {
     this.localizationTarget = json['localization_target'];
     this.languagePackId = json['language_pack_id'];
-    this.strings = List<List<LanguagePackString>>.from((json['strings'] ?? []).map((item) => List<LanguagePackString>.from((item ?? []).map((innerItem) => LanguagePackString.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.strings = List<LanguagePackString>.from((json['strings'] ?? []).map((item) => LanguagePackString.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -2163,11 +2349,14 @@ class UpdateLanguagePackStrings extends Update {
       "@type": CONSTRUCTOR,
       "localization_target": this.localizationTarget,
       "language_pack_id": this.languagePackId,
-      "strings": this.strings.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "strings": this.strings.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateLanguagePackStrings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateConnectionState extends Update {
@@ -2193,6 +2382,9 @@ class UpdateConnectionState extends Update {
   }
 
   static const CONSTRUCTOR = 'updateConnectionState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateTermsOfService extends Update {
@@ -2223,10 +2415,13 @@ class UpdateTermsOfService extends Update {
   }
 
   static const CONSTRUCTOR = 'updateTermsOfService';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateUsersNearby extends Update {
-  List<List<ChatNearby>> usersNearby;
+  List<ChatNearby> usersNearby;
   dynamic extra;
 
   /// The list of users nearby has changed. The update is sent only 60 seconds after a successful searchChatsNearby request. 
@@ -2235,7 +2430,7 @@ class UpdateUsersNearby extends Update {
 
   /// Parse from a json
   UpdateUsersNearby.fromJson(Map<String, dynamic> json)  {
-    this.usersNearby = List<List<ChatNearby>>.from((json['users_nearby'] ?? []).map((item) => List<ChatNearby>.from((item ?? []).map((innerItem) => ChatNearby.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.usersNearby = List<ChatNearby>.from((json['users_nearby'] ?? []).map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -2243,15 +2438,18 @@ class UpdateUsersNearby extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "users_nearby": this.usersNearby.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "users_nearby": this.usersNearby.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateUsersNearby';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateDiceEmojis extends Update {
-  List<List<String>> emojis;
+  List<String> emojis;
   dynamic extra;
 
   /// The list of supported dice emojis has changed. 
@@ -2260,7 +2458,7 @@ class UpdateDiceEmojis extends Update {
 
   /// Parse from a json
   UpdateDiceEmojis.fromJson(Map<String, dynamic> json)  {
-    this.emojis = List<List<String>>.from((json['emojis'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.emojis = List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2268,16 +2466,19 @@ class UpdateDiceEmojis extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "emojis": this.emojis.map((i) => i.map((ii) => ii).toList()).toList(),
+      "emojis": this.emojis.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateDiceEmojis';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateAnimationSearchParameters extends Update {
   String provider;
-  List<List<String>> emojis;
+  List<String> emojis;
   dynamic extra;
 
   /// The parameters of animation search through GetOption("animation_search_bot_username") bot has changed. 
@@ -2289,7 +2490,7 @@ class UpdateAnimationSearchParameters extends Update {
   /// Parse from a json
   UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json)  {
     this.provider = json['provider'];
-    this.emojis = List<List<String>>.from((json['emojis'] ?? []).map((item) => List<String>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.emojis = List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2298,11 +2499,14 @@ class UpdateAnimationSearchParameters extends Update {
     return {
       "@type": CONSTRUCTOR,
       "provider": this.provider,
-      "emojis": this.emojis.map((i) => i.map((ii) => ii).toList()).toList(),
+      "emojis": this.emojis.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updateAnimationSearchParameters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewInlineQuery extends Update {
@@ -2348,6 +2552,9 @@ class UpdateNewInlineQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewInlineQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewChosenInlineResult extends Update {
@@ -2393,6 +2600,9 @@ class UpdateNewChosenInlineResult extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewChosenInlineResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewCallbackQuery extends Update {
@@ -2443,6 +2653,9 @@ class UpdateNewCallbackQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewCallbackQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewInlineCallbackQuery extends Update {
@@ -2488,6 +2701,9 @@ class UpdateNewInlineCallbackQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewInlineCallbackQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewShippingQuery extends Update {
@@ -2528,6 +2744,9 @@ class UpdateNewShippingQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewShippingQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewPreCheckoutQuery extends Update {
@@ -2583,6 +2802,9 @@ class UpdateNewPreCheckoutQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewPreCheckoutQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewCustomEvent extends Update {
@@ -2608,6 +2830,9 @@ class UpdateNewCustomEvent extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewCustomEvent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdateNewCustomQuery extends Update {
@@ -2643,6 +2868,9 @@ class UpdateNewCustomQuery extends Update {
   }
 
   static const CONSTRUCTOR = 'updateNewCustomQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdatePoll extends Update {
@@ -2668,12 +2896,15 @@ class UpdatePoll extends Update {
   }
 
   static const CONSTRUCTOR = 'updatePoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UpdatePollAnswer extends Update {
   int pollId;
   int userId;
-  List<List<int>> optionIds;
+  List<int> optionIds;
   dynamic extra;
 
   /// A user changed the answer to a poll; for bots only. 
@@ -2688,7 +2919,7 @@ class UpdatePollAnswer extends Update {
   UpdatePollAnswer.fromJson(Map<String, dynamic> json)  {
     this.pollId = json['poll_id'];
     this.userId = json['user_id'];
-    this.optionIds = List<List<int>>.from((json['option_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.optionIds = List<int>.from((json['option_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2698,9 +2929,12 @@ class UpdatePollAnswer extends Update {
       "@type": CONSTRUCTOR,
       "poll_id": this.pollId,
       "user_id": this.userId,
-      "option_ids": this.optionIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "option_ids": this.optionIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'updatePollAnswer';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

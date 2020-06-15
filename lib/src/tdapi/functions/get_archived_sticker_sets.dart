@@ -29,4 +29,7 @@ class GetArchivedStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getArchivedStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

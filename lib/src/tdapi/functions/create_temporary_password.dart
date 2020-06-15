@@ -25,4 +25,7 @@ class CreateTemporaryPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createTemporaryPassword';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

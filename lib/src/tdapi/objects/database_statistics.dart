@@ -23,4 +23,7 @@ class DatabaseStatistics extends TdObject {
   }
 
   static const CONSTRUCTOR = 'databaseStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

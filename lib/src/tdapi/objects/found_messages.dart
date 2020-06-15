@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class FoundMessages extends TdObject {
-  List<List<Message>> messages;
+  List<Message> messages;
   int nextFromSearchId;
   dynamic extra;
 
@@ -13,7 +13,7 @@ class FoundMessages extends TdObject {
 
   /// Parse from a json
   FoundMessages.fromJson(Map<String, dynamic> json)  {
-    this.messages = List<List<Message>>.from((json['messages'] ?? []).map((item) => List<Message>.from((item ?? []).map((innerItem) => Message.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.messages = List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item ?? <String, dynamic>{})).toList());
     this.nextFromSearchId = json['next_from_search_id'];
     this.extra = json['@extra'];
   }
@@ -22,10 +22,13 @@ class FoundMessages extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "messages": this.messages.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "messages": this.messages.map((i) => i.toJson()).toList(),
       "next_from_search_id": this.nextFromSearchId,
     };
   }
 
   static const CONSTRUCTOR = 'foundMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

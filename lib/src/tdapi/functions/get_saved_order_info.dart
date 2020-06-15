@@ -18,4 +18,7 @@ class GetSavedOrderInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSavedOrderInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

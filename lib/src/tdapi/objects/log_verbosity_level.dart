@@ -23,4 +23,7 @@ class LogVerbosityLevel extends TdObject {
   }
 
   static const CONSTRUCTOR = 'logVerbosityLevel';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

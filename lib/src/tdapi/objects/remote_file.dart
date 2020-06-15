@@ -41,4 +41,7 @@ class RemoteFile extends TdObject {
   }
 
   static const CONSTRUCTOR = 'remoteFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

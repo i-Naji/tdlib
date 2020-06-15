@@ -33,4 +33,7 @@ class AutoDownloadSettingsPresets extends TdObject {
   }
 
   static const CONSTRUCTOR = 'autoDownloadSettingsPresets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

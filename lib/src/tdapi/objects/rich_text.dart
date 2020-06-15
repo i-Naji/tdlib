@@ -73,6 +73,9 @@ class RichText extends TdObject {
   }
 
   static const CONSTRUCTOR = 'richText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextPlain extends RichText {
@@ -96,6 +99,9 @@ class RichTextPlain extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextPlain';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextBold extends RichText {
@@ -119,6 +125,9 @@ class RichTextBold extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextBold';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextItalic extends RichText {
@@ -142,6 +151,9 @@ class RichTextItalic extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextItalic';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextUnderline extends RichText {
@@ -165,6 +177,9 @@ class RichTextUnderline extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextUnderline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextStrikethrough extends RichText {
@@ -188,6 +203,9 @@ class RichTextStrikethrough extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextStrikethrough';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextFixed extends RichText {
@@ -211,6 +229,9 @@ class RichTextFixed extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextFixed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextUrl extends RichText {
@@ -244,6 +265,9 @@ class RichTextUrl extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextEmailAddress extends RichText {
@@ -272,6 +296,9 @@ class RichTextEmailAddress extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextSubscript extends RichText {
@@ -295,6 +322,9 @@ class RichTextSubscript extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextSubscript';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextSuperscript extends RichText {
@@ -318,6 +348,9 @@ class RichTextSuperscript extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextSuperscript';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextMarked extends RichText {
@@ -341,6 +374,9 @@ class RichTextMarked extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextMarked';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextPhoneNumber extends RichText {
@@ -369,6 +405,9 @@ class RichTextPhoneNumber extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextIcon extends RichText {
@@ -402,6 +441,9 @@ class RichTextIcon extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextIcon';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextReference extends RichText {
@@ -435,6 +477,9 @@ class RichTextReference extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextReference';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextAnchor extends RichText {
@@ -458,6 +503,9 @@ class RichTextAnchor extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextAnchor';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTextAnchorLink extends RichText {
@@ -491,10 +539,13 @@ class RichTextAnchorLink extends RichText {
   }
 
   static const CONSTRUCTOR = 'richTextAnchorLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class RichTexts extends RichText {
-  List<List<RichText>> texts;
+  List<RichText> texts;
 
   /// A concatenation of rich texts. 
   /// [texts] Texts
@@ -502,16 +553,19 @@ class RichTexts extends RichText {
 
   /// Parse from a json
   RichTexts.fromJson(Map<String, dynamic> json)  {
-    this.texts = List<List<RichText>>.from((json['texts'] ?? []).map((item) => List<RichText>.from((item ?? []).map((innerItem) => RichText.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.texts = List<RichText>.from((json['texts'] ?? []).map((item) => RichText.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "texts": this.texts.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "texts": this.texts.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'richTexts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

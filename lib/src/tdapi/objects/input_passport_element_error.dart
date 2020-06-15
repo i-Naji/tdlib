@@ -31,4 +31,7 @@ class InputPassportElementError extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputPassportElementError';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

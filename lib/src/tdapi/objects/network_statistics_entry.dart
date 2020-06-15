@@ -28,6 +28,9 @@ class NetworkStatisticsEntry extends TdObject {
   }
 
   static const CONSTRUCTOR = 'networkStatisticsEntry';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
@@ -66,6 +69,9 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   }
 
   static const CONSTRUCTOR = 'networkStatisticsEntryFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
@@ -104,4 +110,7 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   }
 
   static const CONSTRUCTOR = 'networkStatisticsEntryCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

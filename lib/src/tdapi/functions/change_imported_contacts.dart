@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ChangeImportedContacts extends TdFunction {
-  List<List<Contact>> contacts;
+  List<Contact> contacts;
   dynamic extra;
 
   /// Changes imported contacts using the list of current user contacts saved on the device. Imports newly added contacts and, if at least the file database is enabled, deletes recently deleted contacts.. Query result depends on the result of the previous query, so only one query is possible at the same time. 
@@ -15,10 +15,13 @@ class ChangeImportedContacts extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "contacts": this.contacts.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "contacts": this.contacts.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'changeImportedContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

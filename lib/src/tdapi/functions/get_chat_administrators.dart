@@ -21,4 +21,7 @@ class GetChatAdministrators extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatAdministrators';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

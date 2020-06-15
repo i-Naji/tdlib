@@ -15,7 +15,7 @@ class ChatStatistics extends TdObject {
   StatisticsGraph languageGraph;
   StatisticsGraph messageInteractionGraph;
   StatisticsGraph instantViewInteractionGraph;
-  List<List<ChatStatisticsMessageInteractionCounters>> recentMessageInteractions;
+  List<ChatStatisticsMessageInteractionCounters> recentMessageInteractions;
   dynamic extra;
 
   /// A detailed statistics about a chat. 
@@ -66,7 +66,7 @@ class ChatStatistics extends TdObject {
     this.languageGraph = StatisticsGraph.fromJson(json['language_graph'] ?? <String, dynamic>{});
     this.messageInteractionGraph = StatisticsGraph.fromJson(json['message_interaction_graph'] ?? <String, dynamic>{});
     this.instantViewInteractionGraph = StatisticsGraph.fromJson(json['instant_view_interaction_graph'] ?? <String, dynamic>{});
-    this.recentMessageInteractions = List<List<ChatStatisticsMessageInteractionCounters>>.from((json['recent_message_interactions'] ?? []).map((item) => List<ChatStatisticsMessageInteractionCounters>.from((item ?? []).map((innerItem) => ChatStatisticsMessageInteractionCounters.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.recentMessageInteractions = List<ChatStatisticsMessageInteractionCounters>.from((json['recent_message_interactions'] ?? []).map((item) => ChatStatisticsMessageInteractionCounters.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -88,9 +88,12 @@ class ChatStatistics extends TdObject {
       "language_graph": this.languageGraph.toJson(),
       "message_interaction_graph": this.messageInteractionGraph.toJson(),
       "instant_view_interaction_graph": this.instantViewInteractionGraph.toJson(),
-      "recent_message_interactions": this.recentMessageInteractions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "recent_message_interactions": this.recentMessageInteractions.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'chatStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

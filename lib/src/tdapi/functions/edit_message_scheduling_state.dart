@@ -29,4 +29,7 @@ class EditMessageSchedulingState extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editMessageSchedulingState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

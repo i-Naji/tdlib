@@ -25,4 +25,7 @@ class GetChatMessageByDate extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatMessageByDate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

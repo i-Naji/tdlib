@@ -49,6 +49,9 @@ class PassportElementErrorSource extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSource';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceUnspecified extends PassportElementErrorSource {
@@ -68,6 +71,9 @@ class PassportElementErrorSourceUnspecified extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceUnspecified';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceDataField extends PassportElementErrorSource {
@@ -91,6 +97,9 @@ class PassportElementErrorSourceDataField extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceDataField';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceFrontSide extends PassportElementErrorSource {
@@ -110,6 +119,9 @@ class PassportElementErrorSourceFrontSide extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceFrontSide';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceReverseSide extends PassportElementErrorSource {
@@ -129,6 +141,9 @@ class PassportElementErrorSourceReverseSide extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceReverseSide';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceSelfie extends PassportElementErrorSource {
@@ -148,6 +163,9 @@ class PassportElementErrorSourceSelfie extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceSelfie';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceTranslationFile extends PassportElementErrorSource {
@@ -171,6 +189,9 @@ class PassportElementErrorSourceTranslationFile extends PassportElementErrorSour
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceTranslationFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceTranslationFiles extends PassportElementErrorSource {
@@ -190,6 +211,9 @@ class PassportElementErrorSourceTranslationFiles extends PassportElementErrorSou
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceTranslationFiles';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceFile extends PassportElementErrorSource {
@@ -213,6 +237,9 @@ class PassportElementErrorSourceFile extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementErrorSourceFiles extends PassportElementErrorSource {
@@ -232,4 +259,7 @@ class PassportElementErrorSourceFiles extends PassportElementErrorSource {
   }
 
   static const CONSTRUCTOR = 'passportElementErrorSourceFiles';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

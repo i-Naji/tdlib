@@ -36,4 +36,7 @@ class PhotoSize extends TdObject {
   }
 
   static const CONSTRUCTOR = 'photoSize';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

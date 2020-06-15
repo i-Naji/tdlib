@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class TestVectorIntObject extends TdObject {
-  List<List<TestInt>> value;
+  List<TestInt> value;
   dynamic extra;
 
   /// A simple object containing a vector of objects that hold a number; for testing only. 
@@ -10,7 +10,7 @@ class TestVectorIntObject extends TdObject {
 
   /// Parse from a json
   TestVectorIntObject.fromJson(Map<String, dynamic> json)  {
-    this.value = List<List<TestInt>>.from((json['value'] ?? []).map((item) => List<TestInt>.from((item ?? []).map((innerItem) => TestInt.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.value = List<TestInt>.from((json['value'] ?? []).map((item) => TestInt.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -18,9 +18,12 @@ class TestVectorIntObject extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "value": this.value.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "value": this.value.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'testVectorIntObject';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -28,6 +28,9 @@ class MessageSendingState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageSendingState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSendingStatePending extends MessageSendingState {
@@ -47,6 +50,9 @@ class MessageSendingStatePending extends MessageSendingState {
   }
 
   static const CONSTRUCTOR = 'messageSendingStatePending';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSendingStateFailed extends MessageSendingState {
@@ -85,4 +91,7 @@ class MessageSendingStateFailed extends MessageSendingState {
   }
 
   static const CONSTRUCTOR = 'messageSendingStateFailed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

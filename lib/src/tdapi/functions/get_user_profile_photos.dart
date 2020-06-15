@@ -29,4 +29,7 @@ class GetUserProfilePhotos extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getUserProfilePhotos';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

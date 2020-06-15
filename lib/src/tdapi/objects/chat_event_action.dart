@@ -88,6 +88,9 @@ class ChatEventAction extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatEventAction';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageEdited extends ChatEventAction {
@@ -116,6 +119,9 @@ class ChatEventMessageEdited extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessageEdited';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageDeleted extends ChatEventAction {
@@ -139,6 +145,9 @@ class ChatEventMessageDeleted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessageDeleted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPollStopped extends ChatEventAction {
@@ -162,6 +171,9 @@ class ChatEventPollStopped extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventPollStopped';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessagePinned extends ChatEventAction {
@@ -185,6 +197,9 @@ class ChatEventMessagePinned extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessagePinned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageUnpinned extends ChatEventAction {
@@ -204,6 +219,9 @@ class ChatEventMessageUnpinned extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessageUnpinned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberJoined extends ChatEventAction {
@@ -223,6 +241,9 @@ class ChatEventMemberJoined extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberJoined';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberLeft extends ChatEventAction {
@@ -242,6 +263,9 @@ class ChatEventMemberLeft extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberLeft';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberInvited extends ChatEventAction {
@@ -270,6 +294,9 @@ class ChatEventMemberInvited extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberInvited';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberPromoted extends ChatEventAction {
@@ -303,6 +330,9 @@ class ChatEventMemberPromoted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberPromoted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberRestricted extends ChatEventAction {
@@ -336,6 +366,9 @@ class ChatEventMemberRestricted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberRestricted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventTitleChanged extends ChatEventAction {
@@ -364,6 +397,9 @@ class ChatEventTitleChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventTitleChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPermissionsChanged extends ChatEventAction {
@@ -392,6 +428,9 @@ class ChatEventPermissionsChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventPermissionsChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventDescriptionChanged extends ChatEventAction {
@@ -420,6 +459,9 @@ class ChatEventDescriptionChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventDescriptionChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventUsernameChanged extends ChatEventAction {
@@ -448,6 +490,9 @@ class ChatEventUsernameChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventUsernameChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPhotoChanged extends ChatEventAction {
@@ -476,6 +521,9 @@ class ChatEventPhotoChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventPhotoChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventInvitesToggled extends ChatEventAction {
@@ -499,6 +547,9 @@ class ChatEventInvitesToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventInvitesToggled';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventLinkedChatChanged extends ChatEventAction {
@@ -527,6 +578,9 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventLinkedChatChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventSlowModeDelayChanged extends ChatEventAction {
@@ -555,6 +609,9 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventSlowModeDelayChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventSignMessagesToggled extends ChatEventAction {
@@ -578,6 +635,9 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventSignMessagesToggled';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventStickerSetChanged extends ChatEventAction {
@@ -606,6 +666,9 @@ class ChatEventStickerSetChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventStickerSetChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventLocationChanged extends ChatEventAction {
@@ -634,6 +697,9 @@ class ChatEventLocationChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventLocationChanged';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
@@ -657,4 +723,7 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventIsAllHistoryAvailableToggled';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

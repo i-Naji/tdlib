@@ -21,4 +21,7 @@ class SearchPublicChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchPublicChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

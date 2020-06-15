@@ -21,4 +21,7 @@ class TestCallString extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testCallString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

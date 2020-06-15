@@ -41,4 +41,7 @@ class PollOption extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pollOption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

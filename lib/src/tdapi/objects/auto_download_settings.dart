@@ -56,4 +56,7 @@ class AutoDownloadSettings extends TdObject {
   }
 
   static const CONSTRUCTOR = 'autoDownloadSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

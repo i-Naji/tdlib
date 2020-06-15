@@ -21,4 +21,7 @@ class GetStorageStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getStorageStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

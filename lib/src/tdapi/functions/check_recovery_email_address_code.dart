@@ -21,4 +21,7 @@ class CheckRecoveryEmailAddressCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkRecoveryEmailAddressCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

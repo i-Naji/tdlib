@@ -18,4 +18,7 @@ class DisconnectAllWebsites extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'disconnectAllWebsites';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

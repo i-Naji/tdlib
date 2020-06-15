@@ -34,6 +34,9 @@ class NotificationGroupType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notificationGroupType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationGroupTypeMessages extends NotificationGroupType {
@@ -53,6 +56,9 @@ class NotificationGroupTypeMessages extends NotificationGroupType {
   }
 
   static const CONSTRUCTOR = 'notificationGroupTypeMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationGroupTypeMentions extends NotificationGroupType {
@@ -72,6 +78,9 @@ class NotificationGroupTypeMentions extends NotificationGroupType {
   }
 
   static const CONSTRUCTOR = 'notificationGroupTypeMentions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationGroupTypeSecretChat extends NotificationGroupType {
@@ -91,6 +100,9 @@ class NotificationGroupTypeSecretChat extends NotificationGroupType {
   }
 
   static const CONSTRUCTOR = 'notificationGroupTypeSecretChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationGroupTypeCalls extends NotificationGroupType {
@@ -110,4 +122,7 @@ class NotificationGroupTypeCalls extends NotificationGroupType {
   }
 
   static const CONSTRUCTOR = 'notificationGroupTypeCalls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

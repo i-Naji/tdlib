@@ -46,6 +46,9 @@ class UserPrivacySettingRule extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRule';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
@@ -65,6 +68,9 @@ class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowAll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
@@ -84,10 +90,13 @@ class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
-  List<List<int>> userIds;
+  List<int> userIds;
 
   /// A rule to allow certain specified users to do something. 
   /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
@@ -95,22 +104,25 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<List<int>>.from((json['user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowUsers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
-  List<List<int>> chatIds;
+  List<int> chatIds;
 
   /// A rule to allow all members of certain specified basic groups and supergroups to doing something. 
   /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
@@ -118,18 +130,21 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleAllowChatMembers.fromJson(Map<String, dynamic> json)  {
-    this.chatIds = List<List<int>>.from((json['chat_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.chatIds = List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_ids": this.chatIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "chat_ids": this.chatIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowChatMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
@@ -149,6 +164,9 @@ class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictAll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
@@ -168,10 +186,13 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
-  List<List<int>> userIds;
+  List<int> userIds;
 
   /// A rule to restrict all specified users from doing something. 
   /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
@@ -179,22 +200,25 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<List<int>>.from((json['user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictUsers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
-  List<List<int>> chatIds;
+  List<int> chatIds;
 
   /// A rule to restrict all members of specified basic groups and supergroups from doing something. 
   /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
@@ -202,16 +226,19 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictChatMembers.fromJson(Map<String, dynamic> json)  {
-    this.chatIds = List<List<int>>.from((json['chat_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.chatIds = List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_ids": this.chatIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "chat_ids": this.chatIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictChatMembers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

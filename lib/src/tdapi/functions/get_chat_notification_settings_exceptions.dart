@@ -25,4 +25,7 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatNotificationSettingsExceptions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class DeleteChatMessagesFromUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatMessagesFromUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

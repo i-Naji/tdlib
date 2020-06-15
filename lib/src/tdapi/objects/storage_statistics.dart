@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class StorageStatistics extends TdObject {
   int size;
   int count;
-  List<List<StorageStatisticsByChat>> byChat;
+  List<StorageStatisticsByChat> byChat;
   dynamic extra;
 
   /// Contains the exact storage usage statistics split by chats and file type. 
@@ -18,7 +18,7 @@ class StorageStatistics extends TdObject {
   StorageStatistics.fromJson(Map<String, dynamic> json)  {
     this.size = json['size'];
     this.count = json['count'];
-    this.byChat = List<List<StorageStatisticsByChat>>.from((json['by_chat'] ?? []).map((item) => List<StorageStatisticsByChat>.from((item ?? []).map((innerItem) => StorageStatisticsByChat.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.byChat = List<StorageStatisticsByChat>.from((json['by_chat'] ?? []).map((item) => StorageStatisticsByChat.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -28,9 +28,12 @@ class StorageStatistics extends TdObject {
       "@type": CONSTRUCTOR,
       "size": this.size,
       "count": this.count,
-      "by_chat": this.byChat.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "by_chat": this.byChat.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'storageStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

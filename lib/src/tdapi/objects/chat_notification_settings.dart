@@ -66,4 +66,7 @@ class ChatNotificationSettings extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

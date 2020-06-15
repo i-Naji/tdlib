@@ -56,4 +56,7 @@ class LocalFile extends TdObject {
   }
 
   static const CONSTRUCTOR = 'localFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

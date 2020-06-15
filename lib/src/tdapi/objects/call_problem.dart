@@ -43,6 +43,9 @@ class CallProblem extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callProblem';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemEcho extends CallProblem {
@@ -62,6 +65,9 @@ class CallProblemEcho extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemEcho';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemNoise extends CallProblem {
@@ -81,6 +87,9 @@ class CallProblemNoise extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemNoise';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemInterruptions extends CallProblem {
@@ -100,6 +109,9 @@ class CallProblemInterruptions extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemInterruptions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemDistortedSpeech extends CallProblem {
@@ -119,6 +131,9 @@ class CallProblemDistortedSpeech extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemDistortedSpeech';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemSilentLocal extends CallProblem {
@@ -138,6 +153,9 @@ class CallProblemSilentLocal extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemSilentLocal';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemSilentRemote extends CallProblem {
@@ -157,6 +175,9 @@ class CallProblemSilentRemote extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemSilentRemote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallProblemDropped extends CallProblem {
@@ -176,4 +197,7 @@ class CallProblemDropped extends CallProblem {
   }
 
   static const CONSTRUCTOR = 'callProblemDropped';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

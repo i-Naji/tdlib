@@ -61,4 +61,7 @@ class Animation extends TdObject {
   }
 
   static const CONSTRUCTOR = 'animation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

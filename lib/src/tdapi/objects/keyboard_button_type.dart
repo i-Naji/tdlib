@@ -34,6 +34,9 @@ class KeyboardButtonType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'keyboardButtonType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class KeyboardButtonTypeText extends KeyboardButtonType {
@@ -53,6 +56,9 @@ class KeyboardButtonTypeText extends KeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'keyboardButtonTypeText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
@@ -72,6 +78,9 @@ class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'keyboardButtonTypeRequestPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
@@ -91,6 +100,9 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'keyboardButtonTypeRequestLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
@@ -119,4 +131,7 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'keyboardButtonTypeRequestPoll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

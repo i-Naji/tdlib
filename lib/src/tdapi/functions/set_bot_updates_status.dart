@@ -25,4 +25,7 @@ class SetBotUpdatesStatus extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setBotUpdatesStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

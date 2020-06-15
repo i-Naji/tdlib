@@ -18,4 +18,7 @@ class GetProxies extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getProxies';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

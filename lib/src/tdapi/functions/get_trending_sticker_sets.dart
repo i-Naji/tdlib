@@ -25,4 +25,7 @@ class GetTrendingStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getTrendingStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

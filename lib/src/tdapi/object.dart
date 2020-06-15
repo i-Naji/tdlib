@@ -5,5 +5,5 @@ abstract class TdObject {
   TdObject();
   TdObject.fromJson(Map<String, dynamic> json);
   Map<String, dynamic> toJson();
-  static String getConstructor() => CONSTRUCTOR;
+  String getConstructor() => CONSTRUCTOR;
 }

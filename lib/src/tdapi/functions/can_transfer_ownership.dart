@@ -18,4 +18,7 @@ class CanTransferOwnership extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'canTransferOwnership';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

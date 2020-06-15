@@ -33,4 +33,7 @@ class EditMessageMedia extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editMessageMedia';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

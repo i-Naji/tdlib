@@ -21,4 +21,7 @@ class GetSupergroupFullInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSupergroupFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

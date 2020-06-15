@@ -26,4 +26,7 @@ class BankCardActionOpenUrl extends TdObject {
   }
 
   static const CONSTRUCTOR = 'bankCardActionOpenUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

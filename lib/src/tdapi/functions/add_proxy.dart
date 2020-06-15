@@ -33,4 +33,7 @@ class AddProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

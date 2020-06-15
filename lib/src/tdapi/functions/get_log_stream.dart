@@ -18,4 +18,7 @@ class GetLogStream extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLogStream';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

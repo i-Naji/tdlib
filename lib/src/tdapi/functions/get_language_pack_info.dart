@@ -21,4 +21,7 @@ class GetLanguagePackInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLanguagePackInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

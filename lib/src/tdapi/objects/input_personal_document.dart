@@ -1,8 +1,8 @@
 part of '../tdapi.dart';
 
 class InputPersonalDocument extends TdObject {
-  List<List<InputFile>> files;
-  List<List<InputFile>> translation;
+  List<InputFile> files;
+  List<InputFile> translation;
 
   /// A personal document to be saved to Telegram Passport. 
   /// [files] List of files containing the pages of the document . 
@@ -12,18 +12,21 @@ class InputPersonalDocument extends TdObject {
 
   /// Parse from a json
   InputPersonalDocument.fromJson(Map<String, dynamic> json)  {
-    this.files = List<List<InputFile>>.from((json['files'] ?? []).map((item) => List<InputFile>.from((item ?? []).map((innerItem) => InputFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
-    this.translation = List<List<InputFile>>.from((json['translation'] ?? []).map((item) => List<InputFile>.from((item ?? []).map((innerItem) => InputFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.files = List<InputFile>.from((json['files'] ?? []).map((item) => InputFile.fromJson(item ?? <String, dynamic>{})).toList());
+    this.translation = List<InputFile>.from((json['translation'] ?? []).map((item) => InputFile.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "files": this.files.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
-      "translation": this.translation.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "files": this.files.map((i) => i.toJson()).toList(),
+      "translation": this.translation.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'inputPersonalDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

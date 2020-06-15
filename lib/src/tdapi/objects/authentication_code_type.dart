@@ -34,6 +34,9 @@ class AuthenticationCodeType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
@@ -57,6 +60,9 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeTelegramMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
@@ -80,6 +86,9 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeSms';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthenticationCodeTypeCall extends AuthenticationCodeType {
@@ -103,6 +112,9 @@ class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
@@ -126,4 +138,7 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeTypeFlashCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

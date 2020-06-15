@@ -25,4 +25,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendPhoneNumberVerificationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

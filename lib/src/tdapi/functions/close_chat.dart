@@ -21,4 +21,7 @@ class CloseChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'closeChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

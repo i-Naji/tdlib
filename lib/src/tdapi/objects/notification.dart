@@ -36,4 +36,7 @@ class Notification extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

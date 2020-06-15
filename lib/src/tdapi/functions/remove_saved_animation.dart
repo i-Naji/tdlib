@@ -21,4 +21,7 @@ class RemoveSavedAnimation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeSavedAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

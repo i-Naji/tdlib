@@ -25,4 +25,7 @@ class RemoveRecentSticker extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeRecentSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

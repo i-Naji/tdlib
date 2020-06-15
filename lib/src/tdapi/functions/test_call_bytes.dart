@@ -21,4 +21,7 @@ class TestCallBytes extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testCallBytes';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

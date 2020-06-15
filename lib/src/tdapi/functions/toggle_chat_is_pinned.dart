@@ -29,4 +29,7 @@ class ToggleChatIsPinned extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'toggleChatIsPinned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

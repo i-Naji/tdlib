@@ -21,4 +21,7 @@ class GetWebPagePreview extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getWebPagePreview';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

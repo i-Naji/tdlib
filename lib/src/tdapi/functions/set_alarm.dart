@@ -21,4 +21,7 @@ class SetAlarm extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setAlarm';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

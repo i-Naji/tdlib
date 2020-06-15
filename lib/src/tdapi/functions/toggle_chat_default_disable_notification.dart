@@ -25,4 +25,7 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'toggleChatDefaultDisableNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

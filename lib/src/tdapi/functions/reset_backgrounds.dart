@@ -18,4 +18,7 @@ class ResetBackgrounds extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resetBackgrounds';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

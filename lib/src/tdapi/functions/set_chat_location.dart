@@ -25,4 +25,7 @@ class SetChatLocation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

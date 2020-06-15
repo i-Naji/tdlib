@@ -91,4 +91,7 @@ class TdlibParameters extends TdObject {
   }
 
   static const CONSTRUCTOR = 'tdlibParameters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

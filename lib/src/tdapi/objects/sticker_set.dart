@@ -11,8 +11,8 @@ class StickerSet extends TdObject {
   bool isAnimated;
   bool isMasks;
   bool isViewed;
-  List<List<Sticker>> stickers;
-  List<List<Emojis>> emojis;
+  List<Sticker> stickers;
+  List<Emojis> emojis;
   dynamic extra;
 
   /// Represents a sticker set. 
@@ -53,8 +53,8 @@ class StickerSet extends TdObject {
     this.isAnimated = json['is_animated'];
     this.isMasks = json['is_masks'];
     this.isViewed = json['is_viewed'];
-    this.stickers = List<List<Sticker>>.from((json['stickers'] ?? []).map((item) => List<Sticker>.from((item ?? []).map((innerItem) => Sticker.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
-    this.emojis = List<List<Emojis>>.from((json['emojis'] ?? []).map((item) => List<Emojis>.from((item ?? []).map((innerItem) => Emojis.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.stickers = List<Sticker>.from((json['stickers'] ?? []).map((item) => Sticker.fromJson(item ?? <String, dynamic>{})).toList());
+    this.emojis = List<Emojis>.from((json['emojis'] ?? []).map((item) => Emojis.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -72,10 +72,13 @@ class StickerSet extends TdObject {
       "is_animated": this.isAnimated,
       "is_masks": this.isMasks,
       "is_viewed": this.isViewed,
-      "stickers": this.stickers.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
-      "emojis": this.emojis.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "stickers": this.stickers.map((i) => i.toJson()).toList(),
+      "emojis": this.emojis.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'stickerSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

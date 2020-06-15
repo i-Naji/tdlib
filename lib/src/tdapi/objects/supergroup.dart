@@ -83,4 +83,7 @@ class Supergroup extends TdObject {
   }
 
   static const CONSTRUCTOR = 'supergroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

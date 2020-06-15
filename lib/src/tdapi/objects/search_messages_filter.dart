@@ -73,6 +73,9 @@ class SearchMessagesFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterEmpty extends SearchMessagesFilter {
@@ -92,6 +95,9 @@ class SearchMessagesFilterEmpty extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterAnimation extends SearchMessagesFilter {
@@ -111,6 +117,9 @@ class SearchMessagesFilterAnimation extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterAudio extends SearchMessagesFilter {
@@ -130,6 +139,9 @@ class SearchMessagesFilterAudio extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterDocument extends SearchMessagesFilter {
@@ -149,6 +161,9 @@ class SearchMessagesFilterDocument extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterPhoto extends SearchMessagesFilter {
@@ -168,6 +183,9 @@ class SearchMessagesFilterPhoto extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterVideo extends SearchMessagesFilter {
@@ -187,6 +205,9 @@ class SearchMessagesFilterVideo extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
@@ -206,6 +227,9 @@ class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
@@ -225,6 +249,9 @@ class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterPhotoAndVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterUrl extends SearchMessagesFilter {
@@ -244,6 +271,9 @@ class SearchMessagesFilterUrl extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
@@ -263,6 +293,9 @@ class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterChatPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterCall extends SearchMessagesFilter {
@@ -282,6 +315,9 @@ class SearchMessagesFilterCall extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterMissedCall extends SearchMessagesFilter {
@@ -301,6 +337,9 @@ class SearchMessagesFilterMissedCall extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterMissedCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
@@ -320,6 +359,9 @@ class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
@@ -339,6 +381,9 @@ class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterVoiceAndVideoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterMention extends SearchMessagesFilter {
@@ -358,6 +403,9 @@ class SearchMessagesFilterMention extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterMention';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
@@ -377,6 +425,9 @@ class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterUnreadMention';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
@@ -396,4 +447,7 @@ class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
   }
 
   static const CONSTRUCTOR = 'searchMessagesFilterFailedToSend';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

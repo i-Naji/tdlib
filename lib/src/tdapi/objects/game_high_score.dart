@@ -31,4 +31,7 @@ class GameHighScore extends TdObject {
   }
 
   static const CONSTRUCTOR = 'gameHighScore';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -51,4 +51,7 @@ class Game extends TdObject {
   }
 
   static const CONSTRUCTOR = 'game';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

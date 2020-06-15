@@ -58,4 +58,7 @@ class UserFullInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

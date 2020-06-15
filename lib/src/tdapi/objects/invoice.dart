@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class Invoice extends TdObject {
   String currency;
-  List<List<LabeledPricePart>> priceParts;
+  List<LabeledPricePart> priceParts;
   bool isTest;
   bool needName;
   bool needPhoneNumber;
@@ -37,7 +37,7 @@ class Invoice extends TdObject {
   /// Parse from a json
   Invoice.fromJson(Map<String, dynamic> json)  {
     this.currency = json['currency'];
-    this.priceParts = List<List<LabeledPricePart>>.from((json['price_parts'] ?? []).map((item) => List<LabeledPricePart>.from((item ?? []).map((innerItem) => LabeledPricePart.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item ?? <String, dynamic>{})).toList());
     this.isTest = json['is_test'];
     this.needName = json['need_name'];
     this.needPhoneNumber = json['need_phone_number'];
@@ -53,7 +53,7 @@ class Invoice extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "currency": this.currency,
-      "price_parts": this.priceParts.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "price_parts": this.priceParts.map((i) => i.toJson()).toList(),
       "is_test": this.isTest,
       "need_name": this.needName,
       "need_phone_number": this.needPhoneNumber,
@@ -66,4 +66,7 @@ class Invoice extends TdObject {
   }
 
   static const CONSTRUCTOR = 'invoice';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

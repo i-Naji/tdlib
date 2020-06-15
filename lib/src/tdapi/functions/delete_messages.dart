@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class DeleteMessages extends TdFunction {
   int chatId;
-  List<List<int>> messageIds;
+  List<int> messageIds;
   bool revoke;
   dynamic extra;
 
@@ -22,11 +22,14 @@ class DeleteMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "message_ids": this.messageIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "message_ids": this.messageIds.map((i) => i).toList(),
       "revoke": this.revoke,
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'deleteMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -66,4 +66,7 @@ class Video extends TdObject {
   }
 
   static const CONSTRUCTOR = 'video';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

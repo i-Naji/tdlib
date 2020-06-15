@@ -25,4 +25,7 @@ class SetChatSlowModeDelay extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatSlowModeDelay';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

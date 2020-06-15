@@ -23,4 +23,7 @@ class TestBytes extends TdObject {
   }
 
   static const CONSTRUCTOR = 'testBytes';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

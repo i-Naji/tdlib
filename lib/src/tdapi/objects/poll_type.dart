@@ -28,6 +28,9 @@ class PollType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pollType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PollTypeRegular extends PollType {
@@ -51,6 +54,9 @@ class PollTypeRegular extends PollType {
   }
 
   static const CONSTRUCTOR = 'pollTypeRegular';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PollTypeQuiz extends PollType {
@@ -79,4 +85,7 @@ class PollTypeQuiz extends PollType {
   }
 
   static const CONSTRUCTOR = 'pollTypeQuiz';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

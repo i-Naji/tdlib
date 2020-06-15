@@ -6,7 +6,7 @@ class InputIdentityDocument extends TdObject {
   InputFile frontSide;
   InputFile reverseSide;
   InputFile selfie;
-  List<List<InputFile>> translation;
+  List<InputFile> translation;
 
   /// An identity document to be saved to Telegram Passport. 
   /// [number] Document number; 1-24 characters . 
@@ -29,7 +29,7 @@ class InputIdentityDocument extends TdObject {
     this.frontSide = InputFile.fromJson(json['front_side'] ?? <String, dynamic>{});
     this.reverseSide = InputFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
     this.selfie = InputFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = List<List<InputFile>>.from((json['translation'] ?? []).map((item) => List<InputFile>.from((item ?? []).map((innerItem) => InputFile.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.translation = List<InputFile>.from((json['translation'] ?? []).map((item) => InputFile.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -41,9 +41,12 @@ class InputIdentityDocument extends TdObject {
       "front_side": this.frontSide.toJson(),
       "reverse_side": this.reverseSide.toJson(),
       "selfie": this.selfie.toJson(),
-      "translation": this.translation.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "translation": this.translation.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'inputIdentityDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

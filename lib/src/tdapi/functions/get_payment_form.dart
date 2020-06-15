@@ -25,4 +25,7 @@ class GetPaymentForm extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPaymentForm';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

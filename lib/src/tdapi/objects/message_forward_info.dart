@@ -41,4 +41,7 @@ class MessageForwardInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'messageForwardInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

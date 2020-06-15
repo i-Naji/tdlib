@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class AnswerInlineQuery extends TdFunction {
   int inlineQueryId;
   bool isPersonal;
-  List<List<InputInlineQueryResult>> results;
+  List<InputInlineQueryResult> results;
   int cacheTime;
   String nextOffset;
   String switchPmText;
@@ -35,7 +35,7 @@ class AnswerInlineQuery extends TdFunction {
       "@type": CONSTRUCTOR,
       "inline_query_id": this.inlineQueryId,
       "is_personal": this.isPersonal,
-      "results": this.results.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "results": this.results.map((i) => i.toJson()).toList(),
       "cache_time": this.cacheTime,
       "next_offset": this.nextOffset,
       "switch_pm_text": this.switchPmText,
@@ -45,4 +45,7 @@ class AnswerInlineQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerInlineQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

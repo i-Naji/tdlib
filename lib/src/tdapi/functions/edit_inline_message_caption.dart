@@ -29,4 +29,7 @@ class EditInlineMessageCaption extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editInlineMessageCaption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

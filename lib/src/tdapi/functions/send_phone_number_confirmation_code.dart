@@ -29,4 +29,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

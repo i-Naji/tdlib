@@ -31,4 +31,7 @@ class ChatStatisticsMessageInteractionCounters extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatStatisticsMessageInteractionCounters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

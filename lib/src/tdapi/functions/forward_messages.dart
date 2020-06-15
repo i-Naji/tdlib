@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class ForwardMessages extends TdFunction {
   int chatId;
   int fromChatId;
-  List<List<int>> messageIds;
+  List<int> messageIds;
   SendMessageOptions options;
   bool asAlbum;
   bool sendCopy;
@@ -35,7 +35,7 @@ class ForwardMessages extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "from_chat_id": this.fromChatId,
-      "message_ids": this.messageIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "message_ids": this.messageIds.map((i) => i).toList(),
       "options": this.options.toJson(),
       "as_album": this.asAlbum,
       "send_copy": this.sendCopy,
@@ -45,4 +45,7 @@ class ForwardMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'forwardMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

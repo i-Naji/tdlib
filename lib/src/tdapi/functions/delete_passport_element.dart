@@ -21,4 +21,7 @@ class DeletePassportElement extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deletePassportElement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

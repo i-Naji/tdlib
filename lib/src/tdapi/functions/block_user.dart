@@ -21,4 +21,7 @@ class BlockUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'blockUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

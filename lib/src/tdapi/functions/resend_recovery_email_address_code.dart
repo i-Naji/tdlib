@@ -18,4 +18,7 @@ class ResendRecoveryEmailAddressCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendRecoveryEmailAddressCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

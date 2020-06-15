@@ -21,4 +21,7 @@ class RemoveFavoriteSticker extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeFavoriteSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

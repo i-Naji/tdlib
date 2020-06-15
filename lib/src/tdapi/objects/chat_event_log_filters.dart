@@ -66,4 +66,7 @@ class ChatEventLogFilters extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatEventLogFilters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

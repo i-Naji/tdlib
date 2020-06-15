@@ -18,4 +18,7 @@ class TestGetDifference extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testGetDifference';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

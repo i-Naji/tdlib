@@ -40,6 +40,9 @@ class InlineKeyboardButtonType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
@@ -63,6 +66,9 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
@@ -96,6 +102,9 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeLoginUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
@@ -119,6 +128,9 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeCallback';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
@@ -138,6 +150,9 @@ class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeCallbackGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
@@ -166,6 +181,9 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeSwitchInline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
@@ -185,4 +203,7 @@ class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButtonTypeBuy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

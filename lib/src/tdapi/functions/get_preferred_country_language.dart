@@ -21,4 +21,7 @@ class GetPreferredCountryLanguage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPreferredCountryLanguage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

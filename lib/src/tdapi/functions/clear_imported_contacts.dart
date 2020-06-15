@@ -18,4 +18,7 @@ class ClearImportedContacts extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearImportedContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

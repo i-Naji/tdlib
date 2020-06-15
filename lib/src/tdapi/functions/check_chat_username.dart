@@ -25,4 +25,7 @@ class CheckChatUsername extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkChatUsername';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

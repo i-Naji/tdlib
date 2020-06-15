@@ -36,4 +36,7 @@ class Thumbnail extends TdObject {
   }
 
   static const CONSTRUCTOR = 'thumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class InlineQueryResults extends TdObject {
   int inlineQueryId;
   String nextOffset;
-  List<List<InlineQueryResult>> results;
+  List<InlineQueryResult> results;
   String switchPmText;
   String switchPmParameter;
   dynamic extra;
@@ -24,7 +24,7 @@ class InlineQueryResults extends TdObject {
   InlineQueryResults.fromJson(Map<String, dynamic> json)  {
     this.inlineQueryId = json['inline_query_id'];
     this.nextOffset = json['next_offset'];
-    this.results = List<List<InlineQueryResult>>.from((json['results'] ?? []).map((item) => List<InlineQueryResult>.from((item ?? []).map((innerItem) => InlineQueryResult.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.results = List<InlineQueryResult>.from((json['results'] ?? []).map((item) => InlineQueryResult.fromJson(item ?? <String, dynamic>{})).toList());
     this.switchPmText = json['switch_pm_text'];
     this.switchPmParameter = json['switch_pm_parameter'];
     this.extra = json['@extra'];
@@ -36,11 +36,14 @@ class InlineQueryResults extends TdObject {
       "@type": CONSTRUCTOR,
       "inline_query_id": this.inlineQueryId,
       "next_offset": this.nextOffset,
-      "results": this.results.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "results": this.results.map((i) => i.toJson()).toList(),
       "switch_pm_text": this.switchPmText,
       "switch_pm_parameter": this.switchPmParameter,
     };
   }
 
   static const CONSTRUCTOR = 'inlineQueryResults';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

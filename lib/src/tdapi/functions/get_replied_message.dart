@@ -25,4 +25,7 @@ class GetRepliedMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRepliedMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

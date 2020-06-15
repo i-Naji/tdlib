@@ -25,4 +25,7 @@ class SetChatClientData extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatClientData';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

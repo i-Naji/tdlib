@@ -26,4 +26,7 @@ class TMeUrl extends TdObject {
   }
 
   static const CONSTRUCTOR = 'tMeUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

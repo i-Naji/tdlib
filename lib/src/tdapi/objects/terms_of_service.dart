@@ -31,4 +31,7 @@ class TermsOfService extends TdObject {
   }
 
   static const CONSTRUCTOR = 'termsOfService';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,4 +31,7 @@ class SendMessageOptions extends TdObject {
   }
 
   static const CONSTRUCTOR = 'sendMessageOptions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

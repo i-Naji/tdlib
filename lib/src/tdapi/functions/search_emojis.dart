@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class SearchEmojis extends TdFunction {
   String text;
   bool exactMatch;
-  List<List<String>> inputLanguageCodes;
+  List<String> inputLanguageCodes;
   dynamic extra;
 
   /// Searches for emojis by keywords. Supported only if the file database is enabled. 
@@ -23,10 +23,13 @@ class SearchEmojis extends TdFunction {
       "@type": CONSTRUCTOR,
       "text": this.text,
       "exact_match": this.exactMatch,
-      "input_language_codes": this.inputLanguageCodes.map((i) => i.map((ii) => ii).toList()).toList(),
+      "input_language_codes": this.inputLanguageCodes.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'searchEmojis';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

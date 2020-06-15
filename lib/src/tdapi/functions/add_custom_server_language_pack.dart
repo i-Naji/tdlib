@@ -21,4 +21,7 @@ class AddCustomServerLanguagePack extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addCustomServerLanguagePack';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

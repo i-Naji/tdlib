@@ -34,6 +34,9 @@ class ChatType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatTypePrivate extends ChatType {
@@ -57,6 +60,9 @@ class ChatTypePrivate extends ChatType {
   }
 
   static const CONSTRUCTOR = 'chatTypePrivate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatTypeBasicGroup extends ChatType {
@@ -80,6 +86,9 @@ class ChatTypeBasicGroup extends ChatType {
   }
 
   static const CONSTRUCTOR = 'chatTypeBasicGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatTypeSupergroup extends ChatType {
@@ -108,6 +117,9 @@ class ChatTypeSupergroup extends ChatType {
   }
 
   static const CONSTRUCTOR = 'chatTypeSupergroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatTypeSecret extends ChatType {
@@ -136,4 +148,7 @@ class ChatTypeSecret extends ChatType {
   }
 
   static const CONSTRUCTOR = 'chatTypeSecret';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

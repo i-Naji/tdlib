@@ -18,4 +18,7 @@ class ResendPhoneNumberVerificationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendPhoneNumberVerificationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

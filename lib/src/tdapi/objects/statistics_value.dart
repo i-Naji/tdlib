@@ -31,4 +31,7 @@ class StatisticsValue extends TdObject {
   }
 
   static const CONSTRUCTOR = 'statisticsValue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

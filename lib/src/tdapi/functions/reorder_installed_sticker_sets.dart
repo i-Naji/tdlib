@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ReorderInstalledStickerSets extends TdFunction {
   bool isMasks;
-  List<List<int>> stickerSetIds;
+  List<int> stickerSetIds;
   dynamic extra;
 
   /// Changes the order of installed sticker sets. 
@@ -19,10 +19,13 @@ class ReorderInstalledStickerSets extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "is_masks": this.isMasks,
-      "sticker_set_ids": this.stickerSetIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "sticker_set_ids": this.stickerSetIds.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'reorderInstalledStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

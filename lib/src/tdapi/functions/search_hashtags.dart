@@ -25,4 +25,7 @@ class SearchHashtags extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchHashtags';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

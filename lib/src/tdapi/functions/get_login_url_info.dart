@@ -29,4 +29,7 @@ class GetLoginUrlInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLoginUrlInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

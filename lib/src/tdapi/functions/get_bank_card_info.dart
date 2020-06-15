@@ -21,4 +21,7 @@ class GetBankCardInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBankCardInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

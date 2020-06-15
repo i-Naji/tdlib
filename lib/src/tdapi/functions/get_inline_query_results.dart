@@ -37,4 +37,7 @@ class GetInlineQueryResults extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInlineQueryResults';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

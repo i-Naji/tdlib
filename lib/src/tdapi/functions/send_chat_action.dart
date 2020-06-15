@@ -25,4 +25,7 @@ class SendChatAction extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendChatAction';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

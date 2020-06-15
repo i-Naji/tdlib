@@ -4,7 +4,7 @@ class SendMessageAlbum extends TdFunction {
   int chatId;
   int replyToMessageId;
   SendMessageOptions options;
-  List<List<InputMessageContent>> inputMessageContents;
+  List<InputMessageContent> inputMessageContents;
   dynamic extra;
 
   /// Sends messages grouped together into an album. Currently only photo and video messages can be grouped into an album. Returns sent messages. 
@@ -27,10 +27,13 @@ class SendMessageAlbum extends TdFunction {
       "chat_id": this.chatId,
       "reply_to_message_id": this.replyToMessageId,
       "options": this.options.toJson(),
-      "input_message_contents": this.inputMessageContents.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "input_message_contents": this.inputMessageContents.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'sendMessageAlbum';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

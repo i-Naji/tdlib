@@ -28,4 +28,7 @@ class PublicMessageLink extends TdObject {
   }
 
   static const CONSTRUCTOR = 'publicMessageLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

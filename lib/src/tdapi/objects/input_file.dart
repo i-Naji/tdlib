@@ -34,6 +34,9 @@ class InputFile extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputFileId extends InputFile {
@@ -57,6 +60,9 @@ class InputFileId extends InputFile {
   }
 
   static const CONSTRUCTOR = 'inputFileId';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputFileRemote extends InputFile {
@@ -80,6 +86,9 @@ class InputFileRemote extends InputFile {
   }
 
   static const CONSTRUCTOR = 'inputFileRemote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputFileLocal extends InputFile {
@@ -103,6 +112,9 @@ class InputFileLocal extends InputFile {
   }
 
   static const CONSTRUCTOR = 'inputFileLocal';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputFileGenerated extends InputFile {
@@ -136,4 +148,7 @@ class InputFileGenerated extends InputFile {
   }
 
   static const CONSTRUCTOR = 'inputFileGenerated';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ViewMessages extends TdFunction {
   int chatId;
-  List<List<int>> messageIds;
+  List<int> messageIds;
   bool forceRead;
   dynamic extra;
 
@@ -22,11 +22,14 @@ class ViewMessages extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "message_ids": this.messageIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "message_ids": this.messageIds.map((i) => i).toList(),
       "force_read": this.forceRead,
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'viewMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

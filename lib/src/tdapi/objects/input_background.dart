@@ -28,6 +28,9 @@ class InputBackground extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputBackground';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputBackgroundLocal extends InputBackground {
@@ -51,6 +54,9 @@ class InputBackgroundLocal extends InputBackground {
   }
 
   static const CONSTRUCTOR = 'inputBackgroundLocal';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputBackgroundRemote extends InputBackground {
@@ -74,4 +80,7 @@ class InputBackgroundRemote extends InputBackground {
   }
 
   static const CONSTRUCTOR = 'inputBackgroundRemote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

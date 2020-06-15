@@ -41,4 +41,7 @@ class VideoNote extends TdObject {
   }
 
   static const CONSTRUCTOR = 'videoNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

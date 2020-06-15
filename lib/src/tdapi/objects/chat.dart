@@ -7,7 +7,7 @@ class Chat extends TdObject {
   ChatPhoto photo;
   ChatPermissions permissions;
   Message lastMessage;
-  List<List<ChatPosition>> positions;
+  List<ChatPosition> positions;
   bool isMarkedAsUnread;
   bool hasScheduledMessages;
   bool canBeDeletedOnlyForSelf;
@@ -82,7 +82,7 @@ class Chat extends TdObject {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.permissions = ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
     this.lastMessage = Message.fromJson(json['last_message'] ?? <String, dynamic>{});
-    this.positions = List<List<ChatPosition>>.from((json['positions'] ?? []).map((item) => List<ChatPosition>.from((item ?? []).map((innerItem) => ChatPosition.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.positions = List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{})).toList());
     this.isMarkedAsUnread = json['is_marked_as_unread'];
     this.hasScheduledMessages = json['has_scheduled_messages'];
     this.canBeDeletedOnlyForSelf = json['can_be_deleted_only_for_self'];
@@ -112,7 +112,7 @@ class Chat extends TdObject {
       "photo": this.photo.toJson(),
       "permissions": this.permissions.toJson(),
       "last_message": this.lastMessage.toJson(),
-      "positions": this.positions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "positions": this.positions.map((i) => i.toJson()).toList(),
       "is_marked_as_unread": this.isMarkedAsUnread,
       "has_scheduled_messages": this.hasScheduledMessages,
       "can_be_deleted_only_for_self": this.canBeDeletedOnlyForSelf,
@@ -133,4 +133,7 @@ class Chat extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class ParseMarkdown extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'parseMarkdown';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

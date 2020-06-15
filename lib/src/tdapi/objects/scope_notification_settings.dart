@@ -43,4 +43,7 @@ class ScopeNotificationSettings extends TdObject {
   }
 
   static const CONSTRUCTOR = 'scopeNotificationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

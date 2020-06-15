@@ -26,4 +26,7 @@ class ChatNearby extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatNearby';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

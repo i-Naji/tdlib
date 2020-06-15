@@ -29,4 +29,7 @@ class DeleteChatHistory extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatHistory';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

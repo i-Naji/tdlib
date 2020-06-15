@@ -37,4 +37,7 @@ class SendPaymentForm extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendPaymentForm';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

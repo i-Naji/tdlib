@@ -26,4 +26,7 @@ class Location extends TdObject {
   }
 
   static const CONSTRUCTOR = 'location';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ValidatedOrderInfo extends TdObject {
   String orderInfoId;
-  List<List<ShippingOption>> shippingOptions;
+  List<ShippingOption> shippingOptions;
   dynamic extra;
 
   /// Contains a temporary identifier of validated order information, which is stored for one hour. Also contains the available shipping options. 
@@ -14,7 +14,7 @@ class ValidatedOrderInfo extends TdObject {
   /// Parse from a json
   ValidatedOrderInfo.fromJson(Map<String, dynamic> json)  {
     this.orderInfoId = json['order_info_id'];
-    this.shippingOptions = List<List<ShippingOption>>.from((json['shipping_options'] ?? []).map((item) => List<ShippingOption>.from((item ?? []).map((innerItem) => ShippingOption.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.shippingOptions = List<ShippingOption>.from((json['shipping_options'] ?? []).map((item) => ShippingOption.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -23,9 +23,12 @@ class ValidatedOrderInfo extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "order_info_id": this.orderInfoId,
-      "shipping_options": this.shippingOptions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "shipping_options": this.shippingOptions.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'validatedOrderInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

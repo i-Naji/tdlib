@@ -40,6 +40,9 @@ class ChatMemberStatus extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusCreator extends ChatMemberStatus {
@@ -68,6 +71,9 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusCreator';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusAdministrator extends ChatMemberStatus {
@@ -136,6 +142,9 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusAdministrator';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusMember extends ChatMemberStatus {
@@ -155,6 +164,9 @@ class ChatMemberStatusMember extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusMember';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusRestricted extends ChatMemberStatus {
@@ -188,6 +200,9 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusRestricted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusLeft extends ChatMemberStatus {
@@ -207,6 +222,9 @@ class ChatMemberStatusLeft extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusLeft';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatMemberStatusBanned extends ChatMemberStatus {
@@ -230,4 +248,7 @@ class ChatMemberStatusBanned extends ChatMemberStatus {
   }
 
   static const CONSTRUCTOR = 'chatMemberStatusBanned';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

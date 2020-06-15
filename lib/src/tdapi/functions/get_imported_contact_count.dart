@@ -18,4 +18,7 @@ class GetImportedContactCount extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getImportedContactCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

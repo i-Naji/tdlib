@@ -25,4 +25,7 @@ class AnswerPreCheckoutQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerPreCheckoutQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

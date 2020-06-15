@@ -18,4 +18,7 @@ class GetApplicationConfig extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getApplicationConfig';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

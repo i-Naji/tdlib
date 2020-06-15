@@ -21,4 +21,7 @@ class AddSavedAnimation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addSavedAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

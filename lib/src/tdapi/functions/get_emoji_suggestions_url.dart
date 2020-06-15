@@ -21,4 +21,7 @@ class GetEmojiSuggestionsUrl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getEmojiSuggestionsUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

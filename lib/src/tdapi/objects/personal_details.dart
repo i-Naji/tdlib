@@ -66,4 +66,7 @@ class PersonalDetails extends TdObject {
   }
 
   static const CONSTRUCTOR = 'personalDetails';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

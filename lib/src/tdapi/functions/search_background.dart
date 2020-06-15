@@ -21,4 +21,7 @@ class SearchBackground extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchBackground';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

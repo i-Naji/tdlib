@@ -46,4 +46,7 @@ class Address extends TdObject {
   }
 
   static const CONSTRUCTOR = 'address';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

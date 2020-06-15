@@ -26,4 +26,7 @@ class LanguagePackString extends TdObject {
   }
 
   static const CONSTRUCTOR = 'languagePackString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

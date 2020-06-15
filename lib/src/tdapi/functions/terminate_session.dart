@@ -21,4 +21,7 @@ class TerminateSession extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'terminateSession';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

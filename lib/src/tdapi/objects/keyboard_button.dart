@@ -26,4 +26,7 @@ class KeyboardButton extends TdObject {
   }
 
   static const CONSTRUCTOR = 'keyboardButton';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class CreateNewSecretChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createNewSecretChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

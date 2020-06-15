@@ -23,4 +23,7 @@ class CallId extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callId';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

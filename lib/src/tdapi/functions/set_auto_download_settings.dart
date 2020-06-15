@@ -25,4 +25,7 @@ class SetAutoDownloadSettings extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setAutoDownloadSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

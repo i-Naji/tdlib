@@ -21,4 +21,7 @@ class ClearRecentStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearRecentStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

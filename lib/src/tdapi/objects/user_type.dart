@@ -34,6 +34,9 @@ class UserType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserTypeRegular extends UserType {
@@ -53,6 +56,9 @@ class UserTypeRegular extends UserType {
   }
 
   static const CONSTRUCTOR = 'userTypeRegular';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserTypeDeleted extends UserType {
@@ -72,6 +78,9 @@ class UserTypeDeleted extends UserType {
   }
 
   static const CONSTRUCTOR = 'userTypeDeleted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserTypeBot extends UserType {
@@ -115,6 +124,9 @@ class UserTypeBot extends UserType {
   }
 
   static const CONSTRUCTOR = 'userTypeBot';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserTypeUnknown extends UserType {
@@ -134,4 +146,7 @@ class UserTypeUnknown extends UserType {
   }
 
   static const CONSTRUCTOR = 'userTypeUnknown';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

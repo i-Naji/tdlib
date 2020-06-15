@@ -25,4 +25,7 @@ class OpenMessageContent extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'openMessageContent';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -21,4 +21,7 @@ class GetBackgrounds extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBackgrounds';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class Messages extends TdObject {
   int totalCount;
-  List<List<Message>> messages;
+  List<Message> messages;
   dynamic extra;
 
   /// Contains a list of messages. 
@@ -14,7 +14,7 @@ class Messages extends TdObject {
   /// Parse from a json
   Messages.fromJson(Map<String, dynamic> json)  {
     this.totalCount = json['total_count'];
-    this.messages = List<List<Message>>.from((json['messages'] ?? []).map((item) => List<Message>.from((item ?? []).map((innerItem) => Message.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.messages = List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -23,9 +23,12 @@ class Messages extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": this.totalCount,
-      "messages": this.messages.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "messages": this.messages.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'messages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

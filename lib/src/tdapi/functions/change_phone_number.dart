@@ -25,4 +25,7 @@ class ChangePhoneNumber extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'changePhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -29,4 +29,7 @@ class WriteGeneratedFilePart extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'writeGeneratedFilePart';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class RemoveTopChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeTopChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

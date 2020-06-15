@@ -53,4 +53,7 @@ class SecretChat extends TdObject {
   }
 
   static const CONSTRUCTOR = 'secretChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

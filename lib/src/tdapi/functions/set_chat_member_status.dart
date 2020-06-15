@@ -29,4 +29,7 @@ class SetChatMemberStatus extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatMemberStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

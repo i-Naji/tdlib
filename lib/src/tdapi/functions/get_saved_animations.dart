@@ -18,4 +18,7 @@ class GetSavedAnimations extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSavedAnimations';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

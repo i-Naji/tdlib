@@ -37,4 +37,7 @@ class EditProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

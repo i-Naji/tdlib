@@ -25,4 +25,7 @@ class AddChatToList extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addChatToList';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

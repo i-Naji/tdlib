@@ -25,4 +25,7 @@ class GetStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class SetRecoveryEmailAddress extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setRecoveryEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

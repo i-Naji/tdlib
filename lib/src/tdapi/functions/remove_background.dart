@@ -21,4 +21,7 @@ class RemoveBackground extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeBackground';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

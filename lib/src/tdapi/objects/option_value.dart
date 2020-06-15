@@ -34,6 +34,9 @@ class OptionValue extends TdObject {
   }
 
   static const CONSTRUCTOR = 'optionValue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class OptionValueBoolean extends OptionValue {
@@ -59,6 +62,9 @@ class OptionValueBoolean extends OptionValue {
   }
 
   static const CONSTRUCTOR = 'optionValueBoolean';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class OptionValueEmpty extends OptionValue {
@@ -80,6 +86,9 @@ class OptionValueEmpty extends OptionValue {
   }
 
   static const CONSTRUCTOR = 'optionValueEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class OptionValueInteger extends OptionValue {
@@ -105,6 +114,9 @@ class OptionValueInteger extends OptionValue {
   }
 
   static const CONSTRUCTOR = 'optionValueInteger';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class OptionValueString extends OptionValue {
@@ -130,4 +142,7 @@ class OptionValueString extends OptionValue {
   }
 
   static const CONSTRUCTOR = 'optionValueString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

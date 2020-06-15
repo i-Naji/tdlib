@@ -33,4 +33,7 @@ class ChatFilterInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatFilterInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

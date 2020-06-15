@@ -25,4 +25,7 @@ class CreateCall extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createCall';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

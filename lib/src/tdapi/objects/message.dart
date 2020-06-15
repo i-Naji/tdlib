@@ -143,4 +143,7 @@ class Message extends TdObject {
   }
 
   static const CONSTRUCTOR = 'message';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

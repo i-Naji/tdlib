@@ -21,4 +21,7 @@ class DeleteSupergroup extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteSupergroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

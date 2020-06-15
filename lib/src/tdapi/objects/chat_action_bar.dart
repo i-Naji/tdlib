@@ -37,6 +37,9 @@ class ChatActionBar extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatActionBar';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionBarReportSpam extends ChatActionBar {
@@ -56,6 +59,9 @@ class ChatActionBarReportSpam extends ChatActionBar {
   }
 
   static const CONSTRUCTOR = 'chatActionBarReportSpam';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
@@ -75,6 +81,9 @@ class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
   }
 
   static const CONSTRUCTOR = 'chatActionBarReportUnrelatedLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionBarReportAddBlock extends ChatActionBar {
@@ -94,6 +103,9 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   }
 
   static const CONSTRUCTOR = 'chatActionBarReportAddBlock';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionBarAddContact extends ChatActionBar {
@@ -113,6 +125,9 @@ class ChatActionBarAddContact extends ChatActionBar {
   }
 
   static const CONSTRUCTOR = 'chatActionBarAddContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatActionBarSharePhoneNumber extends ChatActionBar {
@@ -132,4 +147,7 @@ class ChatActionBarSharePhoneNumber extends ChatActionBar {
   }
 
   static const CONSTRUCTOR = 'chatActionBarSharePhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

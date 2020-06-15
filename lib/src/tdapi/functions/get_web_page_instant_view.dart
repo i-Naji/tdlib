@@ -25,4 +25,7 @@ class GetWebPageInstantView extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getWebPageInstantView';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

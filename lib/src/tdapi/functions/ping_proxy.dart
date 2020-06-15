@@ -21,4 +21,7 @@ class PingProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'pingProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

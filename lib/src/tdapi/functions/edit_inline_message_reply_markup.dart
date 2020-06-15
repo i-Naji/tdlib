@@ -25,4 +25,7 @@ class EditInlineMessageReplyMarkup extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editInlineMessageReplyMarkup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

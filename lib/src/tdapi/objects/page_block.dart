@@ -109,6 +109,9 @@ class PageBlock extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlock';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockTitle extends PageBlock {
@@ -132,6 +135,9 @@ class PageBlockTitle extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockTitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockSubtitle extends PageBlock {
@@ -155,6 +161,9 @@ class PageBlockSubtitle extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockSubtitle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockAuthorDate extends PageBlock {
@@ -183,6 +192,9 @@ class PageBlockAuthorDate extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockAuthorDate';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHeader extends PageBlock {
@@ -206,6 +218,9 @@ class PageBlockHeader extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockHeader';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockSubheader extends PageBlock {
@@ -229,6 +244,9 @@ class PageBlockSubheader extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockSubheader';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockKicker extends PageBlock {
@@ -252,6 +270,9 @@ class PageBlockKicker extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockKicker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockParagraph extends PageBlock {
@@ -275,6 +296,9 @@ class PageBlockParagraph extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockParagraph';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockPreformatted extends PageBlock {
@@ -303,6 +327,9 @@ class PageBlockPreformatted extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockPreformatted';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockFooter extends PageBlock {
@@ -326,6 +353,9 @@ class PageBlockFooter extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockFooter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockDivider extends PageBlock {
@@ -345,6 +375,9 @@ class PageBlockDivider extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockDivider';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockAnchor extends PageBlock {
@@ -368,10 +401,13 @@ class PageBlockAnchor extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockAnchor';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockList extends PageBlock {
-  List<List<PageBlockListItem>> items;
+  List<PageBlockListItem> items;
 
   /// A list of data blocks. 
   /// [items] The items of the list
@@ -379,18 +415,21 @@ class PageBlockList extends PageBlock {
 
   /// Parse from a json
   PageBlockList.fromJson(Map<String, dynamic> json)  {
-    this.items = List<List<PageBlockListItem>>.from((json['items'] ?? []).map((item) => List<PageBlockListItem>.from((item ?? []).map((innerItem) => PageBlockListItem.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.items = List<PageBlockListItem>.from((json['items'] ?? []).map((item) => PageBlockListItem.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "items": this.items.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "items": this.items.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockList';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockBlockQuote extends PageBlock {
@@ -419,6 +458,9 @@ class PageBlockBlockQuote extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockBlockQuote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockPullQuote extends PageBlock {
@@ -447,6 +489,9 @@ class PageBlockPullQuote extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockPullQuote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockAnimation extends PageBlock {
@@ -480,6 +525,9 @@ class PageBlockAnimation extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockAudio extends PageBlock {
@@ -508,6 +556,9 @@ class PageBlockAudio extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockPhoto extends PageBlock {
@@ -541,6 +592,9 @@ class PageBlockPhoto extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockVideo extends PageBlock {
@@ -579,6 +633,9 @@ class PageBlockVideo extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockVoiceNote extends PageBlock {
@@ -607,6 +664,9 @@ class PageBlockVoiceNote extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockCover extends PageBlock {
@@ -630,6 +690,9 @@ class PageBlockCover extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockCover';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockEmbedded extends PageBlock {
@@ -688,6 +751,9 @@ class PageBlockEmbedded extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockEmbedded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockEmbeddedPost extends PageBlock {
@@ -695,7 +761,7 @@ class PageBlockEmbeddedPost extends PageBlock {
   String author;
   Photo authorPhoto;
   int date;
-  List<List<PageBlock>> pageBlocks;
+  List<PageBlock> pageBlocks;
   PageBlockCaption caption;
 
   /// An embedded post. 
@@ -718,7 +784,7 @@ class PageBlockEmbeddedPost extends PageBlock {
     this.author = json['author'];
     this.authorPhoto = Photo.fromJson(json['author_photo'] ?? <String, dynamic>{});
     this.date = json['date'];
-    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
     this.caption = PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
@@ -730,16 +796,19 @@ class PageBlockEmbeddedPost extends PageBlock {
       "author": this.author,
       "author_photo": this.authorPhoto.toJson(),
       "date": this.date,
-      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "caption": this.caption.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockEmbeddedPost';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockCollage extends PageBlock {
-  List<List<PageBlock>> pageBlocks;
+  List<PageBlock> pageBlocks;
   PageBlockCaption caption;
 
   /// A collage. 
@@ -750,7 +819,7 @@ class PageBlockCollage extends PageBlock {
 
   /// Parse from a json
   PageBlockCollage.fromJson(Map<String, dynamic> json)  {
-    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
     this.caption = PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
@@ -758,16 +827,19 @@ class PageBlockCollage extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "caption": this.caption.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockCollage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockSlideshow extends PageBlock {
-  List<List<PageBlock>> pageBlocks;
+  List<PageBlock> pageBlocks;
   PageBlockCaption caption;
 
   /// A slideshow. 
@@ -778,7 +850,7 @@ class PageBlockSlideshow extends PageBlock {
 
   /// Parse from a json
   PageBlockSlideshow.fromJson(Map<String, dynamic> json)  {
-    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
     this.caption = PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
@@ -786,12 +858,15 @@ class PageBlockSlideshow extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "caption": this.caption.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockSlideshow';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockChatLink extends PageBlock {
@@ -825,11 +900,14 @@ class PageBlockChatLink extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockChatLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockTable extends PageBlock {
   RichText caption;
-  List<List<List<PageBlockTableCell>>> cells;
+  List<List<PageBlockTableCell>> cells;
   bool isBordered;
   bool isStriped;
 
@@ -846,7 +924,7 @@ class PageBlockTable extends PageBlock {
   /// Parse from a json
   PageBlockTable.fromJson(Map<String, dynamic> json)  {
     this.caption = RichText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.cells = List<List<List<PageBlockTableCell>>>.from((json['cells'] ?? []).map((item) => List<List<PageBlockTableCell>>.from((item ?? []).map((innerItem) => List<PageBlockTableCell>.from((innerItem ?? []).map((innerItem) => PageBlockTableCell.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList())).toList());
+    this.cells = List<List<PageBlockTableCell>>.from((json['cells'] ?? []).map((item) => List<PageBlockTableCell>.from((item ?? []).map((innerItem) => PageBlockTableCell.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
     this.isBordered = json['is_bordered'];
     this.isStriped = json['is_striped'];
   }
@@ -856,18 +934,21 @@ class PageBlockTable extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "caption": this.caption.toJson(),
-      "cells": this.cells.map((i) => i.map((ii) => ii.map((iii) => iii.toJson()).toList()).toList()).toList(),
+      "cells": this.cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_bordered": this.isBordered,
       "is_striped": this.isStriped,
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockTable';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockDetails extends PageBlock {
   RichText header;
-  List<List<PageBlock>> pageBlocks;
+  List<PageBlock> pageBlocks;
   bool isOpen;
 
   /// A collapsible block. 
@@ -881,7 +962,7 @@ class PageBlockDetails extends PageBlock {
   /// Parse from a json
   PageBlockDetails.fromJson(Map<String, dynamic> json)  {
     this.header = RichText.fromJson(json['header'] ?? <String, dynamic>{});
-    this.pageBlocks = List<List<PageBlock>>.from((json['page_blocks'] ?? []).map((item) => List<PageBlock>.from((item ?? []).map((innerItem) => PageBlock.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
     this.isOpen = json['is_open'];
   }
 
@@ -890,17 +971,20 @@ class PageBlockDetails extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "header": this.header.toJson(),
-      "page_blocks": this.pageBlocks.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "is_open": this.isOpen,
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockDetails';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockRelatedArticles extends PageBlock {
   RichText header;
-  List<List<PageBlockRelatedArticle>> articles;
+  List<PageBlockRelatedArticle> articles;
 
   /// Related articles. 
   /// [header] Block header . 
@@ -911,7 +995,7 @@ class PageBlockRelatedArticles extends PageBlock {
   /// Parse from a json
   PageBlockRelatedArticles.fromJson(Map<String, dynamic> json)  {
     this.header = RichText.fromJson(json['header'] ?? <String, dynamic>{});
-    this.articles = List<List<PageBlockRelatedArticle>>.from((json['articles'] ?? []).map((item) => List<PageBlockRelatedArticle>.from((item ?? []).map((innerItem) => PageBlockRelatedArticle.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.articles = List<PageBlockRelatedArticle>.from((json['articles'] ?? []).map((item) => PageBlockRelatedArticle.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -919,11 +1003,14 @@ class PageBlockRelatedArticles extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "header": this.header.toJson(),
-      "articles": this.articles.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "articles": this.articles.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'pageBlockRelatedArticles';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockMap extends PageBlock {
@@ -967,4 +1054,7 @@ class PageBlockMap extends PageBlock {
   }
 
   static const CONSTRUCTOR = 'pageBlockMap';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

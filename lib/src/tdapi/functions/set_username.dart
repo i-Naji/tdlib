@@ -21,4 +21,7 @@ class SetUsername extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setUsername';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

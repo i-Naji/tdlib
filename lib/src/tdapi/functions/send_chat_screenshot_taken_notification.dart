@@ -21,4 +21,7 @@ class SendChatScreenshotTakenNotification extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendChatScreenshotTakenNotification';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

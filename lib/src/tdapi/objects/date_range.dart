@@ -26,4 +26,7 @@ class DateRange extends TdObject {
   }
 
   static const CONSTRUCTOR = 'dateRange';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

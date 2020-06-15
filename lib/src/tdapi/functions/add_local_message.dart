@@ -37,4 +37,7 @@ class AddLocalMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addLocalMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

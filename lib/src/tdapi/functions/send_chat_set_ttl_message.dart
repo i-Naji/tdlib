@@ -25,4 +25,7 @@ class SendChatSetTtlMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendChatSetTtlMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

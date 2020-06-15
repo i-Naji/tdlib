@@ -25,4 +25,7 @@ class RegisterUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'registerUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

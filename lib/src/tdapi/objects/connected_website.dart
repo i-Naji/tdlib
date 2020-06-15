@@ -61,4 +61,7 @@ class ConnectedWebsite extends TdObject {
   }
 
   static const CONSTRUCTOR = 'connectedWebsite';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

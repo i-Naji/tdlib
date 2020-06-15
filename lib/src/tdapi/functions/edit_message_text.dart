@@ -33,4 +33,7 @@ class EditMessageText extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editMessageText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

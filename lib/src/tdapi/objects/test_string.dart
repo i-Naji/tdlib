@@ -23,4 +23,7 @@ class TestString extends TdObject {
   }
 
   static const CONSTRUCTOR = 'testString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

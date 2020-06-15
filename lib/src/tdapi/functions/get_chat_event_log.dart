@@ -6,7 +6,7 @@ class GetChatEventLog extends TdFunction {
   int fromEventId;
   int limit;
   ChatEventLogFilters filters;
-  List<List<int>> userIds;
+  List<int> userIds;
   dynamic extra;
 
   /// Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i. e., in order of decreasing event_id). 
@@ -35,10 +35,13 @@ class GetChatEventLog extends TdFunction {
       "from_event_id": this.fromEventId,
       "limit": this.limit,
       "filters": this.filters.toJson(),
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'getChatEventLog';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

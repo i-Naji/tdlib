@@ -4,7 +4,7 @@ class StorageStatisticsByChat extends TdObject {
   int chatId;
   int size;
   int count;
-  List<List<StorageStatisticsByFileType>> byFileType;
+  List<StorageStatisticsByFileType> byFileType;
 
   /// Contains the storage usage statistics for a specific chat. 
   /// [chatId] Chat identifier; 0 if none . 
@@ -21,7 +21,7 @@ class StorageStatisticsByChat extends TdObject {
     this.chatId = json['chat_id'];
     this.size = json['size'];
     this.count = json['count'];
-    this.byFileType = List<List<StorageStatisticsByFileType>>.from((json['by_file_type'] ?? []).map((item) => List<StorageStatisticsByFileType>.from((item ?? []).map((innerItem) => StorageStatisticsByFileType.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.byFileType = List<StorageStatisticsByFileType>.from((json['by_file_type'] ?? []).map((item) => StorageStatisticsByFileType.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -31,9 +31,12 @@ class StorageStatisticsByChat extends TdObject {
       "chat_id": this.chatId,
       "size": this.size,
       "count": this.count,
-      "by_file_type": this.byFileType.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "by_file_type": this.byFileType.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'storageStatisticsByChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

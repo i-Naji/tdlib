@@ -28,6 +28,9 @@ class CallbackQueryPayload extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callbackQueryPayload';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallbackQueryPayloadData extends CallbackQueryPayload {
@@ -51,6 +54,9 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
   }
 
   static const CONSTRUCTOR = 'callbackQueryPayloadData';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallbackQueryPayloadGame extends CallbackQueryPayload {
@@ -74,4 +80,7 @@ class CallbackQueryPayloadGame extends CallbackQueryPayload {
   }
 
   static const CONSTRUCTOR = 'callbackQueryPayloadGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

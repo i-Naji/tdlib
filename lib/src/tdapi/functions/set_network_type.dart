@@ -21,4 +21,7 @@ class SetNetworkType extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setNetworkType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

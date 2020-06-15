@@ -18,4 +18,7 @@ class GetLogTags extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLogTags';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

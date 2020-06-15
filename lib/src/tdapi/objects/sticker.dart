@@ -61,4 +61,7 @@ class Sticker extends TdObject {
   }
 
   static const CONSTRUCTOR = 'sticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

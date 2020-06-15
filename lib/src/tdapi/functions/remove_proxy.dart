@@ -21,4 +21,7 @@ class RemoveProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

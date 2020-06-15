@@ -61,6 +61,9 @@ class PassportElementType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passportElementType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypePersonalDetails extends PassportElementType {
@@ -80,6 +83,9 @@ class PassportElementTypePersonalDetails extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypePersonalDetails';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypePassport extends PassportElementType {
@@ -99,6 +105,9 @@ class PassportElementTypePassport extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypePassport';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeDriverLicense extends PassportElementType {
@@ -118,6 +127,9 @@ class PassportElementTypeDriverLicense extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeDriverLicense';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeIdentityCard extends PassportElementType {
@@ -137,6 +149,9 @@ class PassportElementTypeIdentityCard extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeIdentityCard';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeInternalPassport extends PassportElementType {
@@ -156,6 +171,9 @@ class PassportElementTypeInternalPassport extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeInternalPassport';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeAddress extends PassportElementType {
@@ -175,6 +193,9 @@ class PassportElementTypeAddress extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeUtilityBill extends PassportElementType {
@@ -194,6 +215,9 @@ class PassportElementTypeUtilityBill extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeUtilityBill';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeBankStatement extends PassportElementType {
@@ -213,6 +237,9 @@ class PassportElementTypeBankStatement extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeBankStatement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeRentalAgreement extends PassportElementType {
@@ -232,6 +259,9 @@ class PassportElementTypeRentalAgreement extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeRentalAgreement';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypePassportRegistration extends PassportElementType {
@@ -251,6 +281,9 @@ class PassportElementTypePassportRegistration extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypePassportRegistration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeTemporaryRegistration extends PassportElementType {
@@ -270,6 +303,9 @@ class PassportElementTypeTemporaryRegistration extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeTemporaryRegistration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypePhoneNumber extends PassportElementType {
@@ -289,6 +325,9 @@ class PassportElementTypePhoneNumber extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypePhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class PassportElementTypeEmailAddress extends PassportElementType {
@@ -308,4 +347,7 @@ class PassportElementTypeEmailAddress extends PassportElementType {
   }
 
   static const CONSTRUCTOR = 'passportElementTypeEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

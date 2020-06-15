@@ -21,4 +21,7 @@ class GetNetworkStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getNetworkStatistics';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

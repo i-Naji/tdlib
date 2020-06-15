@@ -34,6 +34,9 @@ class TMeUrlType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'tMeUrlType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TMeUrlTypeUser extends TMeUrlType {
@@ -57,6 +60,9 @@ class TMeUrlTypeUser extends TMeUrlType {
   }
 
   static const CONSTRUCTOR = 'tMeUrlTypeUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TMeUrlTypeSupergroup extends TMeUrlType {
@@ -80,6 +86,9 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
   }
 
   static const CONSTRUCTOR = 'tMeUrlTypeSupergroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TMeUrlTypeChatInvite extends TMeUrlType {
@@ -103,6 +112,9 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
   }
 
   static const CONSTRUCTOR = 'tMeUrlTypeChatInvite';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TMeUrlTypeStickerSet extends TMeUrlType {
@@ -126,4 +138,7 @@ class TMeUrlTypeStickerSet extends TMeUrlType {
   }
 
   static const CONSTRUCTOR = 'tMeUrlTypeStickerSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

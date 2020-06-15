@@ -29,4 +29,7 @@ class GetGameHighScores extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getGameHighScores';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

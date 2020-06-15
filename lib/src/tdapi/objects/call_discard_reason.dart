@@ -37,6 +37,9 @@ class CallDiscardReason extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callDiscardReason';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallDiscardReasonEmpty extends CallDiscardReason {
@@ -56,6 +59,9 @@ class CallDiscardReasonEmpty extends CallDiscardReason {
   }
 
   static const CONSTRUCTOR = 'callDiscardReasonEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallDiscardReasonMissed extends CallDiscardReason {
@@ -75,6 +81,9 @@ class CallDiscardReasonMissed extends CallDiscardReason {
   }
 
   static const CONSTRUCTOR = 'callDiscardReasonMissed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallDiscardReasonDeclined extends CallDiscardReason {
@@ -94,6 +103,9 @@ class CallDiscardReasonDeclined extends CallDiscardReason {
   }
 
   static const CONSTRUCTOR = 'callDiscardReasonDeclined';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallDiscardReasonDisconnected extends CallDiscardReason {
@@ -113,6 +125,9 @@ class CallDiscardReasonDisconnected extends CallDiscardReason {
   }
 
   static const CONSTRUCTOR = 'callDiscardReasonDisconnected';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CallDiscardReasonHungUp extends CallDiscardReason {
@@ -132,4 +147,7 @@ class CallDiscardReasonHungUp extends CallDiscardReason {
   }
 
   static const CONSTRUCTOR = 'callDiscardReasonHungUp';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

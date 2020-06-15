@@ -21,4 +21,7 @@ class CheckChangePhoneNumberCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkChangePhoneNumberCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

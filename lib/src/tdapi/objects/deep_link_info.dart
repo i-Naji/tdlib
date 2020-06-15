@@ -28,4 +28,7 @@ class DeepLinkInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'deepLinkInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

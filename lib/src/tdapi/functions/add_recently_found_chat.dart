@@ -21,4 +21,7 @@ class AddRecentlyFoundChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addRecentlyFoundChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

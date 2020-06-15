@@ -21,4 +21,7 @@ class TestSquareInt extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testSquareInt';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

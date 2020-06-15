@@ -36,4 +36,7 @@ class MaskPosition extends TdObject {
   }
 
   static const CONSTRUCTOR = 'maskPosition';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

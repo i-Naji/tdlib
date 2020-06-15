@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class Users extends TdObject {
   int totalCount;
-  List<List<int>> userIds;
+  List<int> userIds;
   dynamic extra;
 
   /// Represents a list of users. 
@@ -14,7 +14,7 @@ class Users extends TdObject {
   /// Parse from a json
   Users.fromJson(Map<String, dynamic> json)  {
     this.totalCount = json['total_count'];
-    this.userIds = List<List<int>>.from((json['user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -23,9 +23,12 @@ class Users extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": this.totalCount,
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'users';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

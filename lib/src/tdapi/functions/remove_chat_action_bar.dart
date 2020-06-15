@@ -21,4 +21,7 @@ class RemoveChatActionBar extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeChatActionBar';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

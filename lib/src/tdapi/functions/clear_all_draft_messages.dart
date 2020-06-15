@@ -21,4 +21,7 @@ class ClearAllDraftMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearAllDraftMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

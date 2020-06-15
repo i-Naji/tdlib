@@ -31,4 +31,7 @@ class PhoneNumberAuthenticationSettings extends TdObject {
   }
 
   static const CONSTRUCTOR = 'phoneNumberAuthenticationSettings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

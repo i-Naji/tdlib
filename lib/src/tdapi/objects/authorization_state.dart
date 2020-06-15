@@ -55,6 +55,9 @@ class AuthorizationState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'authorizationState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
@@ -76,6 +79,9 @@ class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitTdlibParameters';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
@@ -101,6 +107,9 @@ class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitEncryptionKey';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
@@ -122,6 +131,9 @@ class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitCode extends AuthorizationState {
@@ -147,6 +159,9 @@ class AuthorizationStateWaitCode extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
@@ -172,6 +187,9 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitOtherDeviceConfirmation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitRegistration extends AuthorizationState {
@@ -197,6 +215,9 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitRegistration';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateWaitPassword extends AuthorizationState {
@@ -232,6 +253,9 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateWaitPassword';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateReady extends AuthorizationState {
@@ -253,6 +277,9 @@ class AuthorizationStateReady extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateReady';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateLoggingOut extends AuthorizationState {
@@ -274,6 +301,9 @@ class AuthorizationStateLoggingOut extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateLoggingOut';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateClosing extends AuthorizationState {
@@ -295,6 +325,9 @@ class AuthorizationStateClosing extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateClosing';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class AuthorizationStateClosed extends AuthorizationState {
@@ -316,4 +349,7 @@ class AuthorizationStateClosed extends AuthorizationState {
   }
 
   static const CONSTRUCTOR = 'authorizationStateClosed';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

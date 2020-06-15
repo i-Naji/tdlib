@@ -28,4 +28,7 @@ class TdError extends TdObject {
   }
 
   static const CONSTRUCTOR = 'error';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

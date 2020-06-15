@@ -21,4 +21,7 @@ class GetTextEntities extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getTextEntities';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

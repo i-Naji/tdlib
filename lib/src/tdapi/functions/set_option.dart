@@ -25,4 +25,7 @@ class SetOption extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setOption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

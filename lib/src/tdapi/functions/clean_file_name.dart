@@ -21,4 +21,7 @@ class CleanFileName extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'cleanFileName';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

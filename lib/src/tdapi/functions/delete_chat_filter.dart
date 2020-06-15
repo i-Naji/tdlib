@@ -21,4 +21,7 @@ class DeleteChatFilter extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

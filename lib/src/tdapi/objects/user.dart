@@ -98,4 +98,7 @@ class User extends TdObject {
   }
 
   static const CONSTRUCTOR = 'user';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

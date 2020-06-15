@@ -25,4 +25,7 @@ class CreatePrivateChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createPrivateChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

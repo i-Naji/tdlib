@@ -21,4 +21,7 @@ class GetStickerEmojis extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getStickerEmojis';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -3,9 +3,9 @@ part of '../tdapi.dart';
 class Poll extends TdObject {
   int id;
   String question;
-  List<List<PollOption>> options;
+  List<PollOption> options;
   int totalVoterCount;
-  List<List<int>> recentVoterUserIds;
+  List<int> recentVoterUserIds;
   bool isAnonymous;
   PollType type;
   int openPeriod;
@@ -38,9 +38,9 @@ class Poll extends TdObject {
   Poll.fromJson(Map<String, dynamic> json)  {
     this.id = json['id'];
     this.question = json['question'];
-    this.options = List<List<PollOption>>.from((json['options'] ?? []).map((item) => List<PollOption>.from((item ?? []).map((innerItem) => PollOption.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.options = List<PollOption>.from((json['options'] ?? []).map((item) => PollOption.fromJson(item ?? <String, dynamic>{})).toList());
     this.totalVoterCount = json['total_voter_count'];
-    this.recentVoterUserIds = List<List<int>>.from((json['recent_voter_user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.recentVoterUserIds = List<int>.from((json['recent_voter_user_ids'] ?? []).map((item) => item).toList());
     this.isAnonymous = json['is_anonymous'];
     this.type = PollType.fromJson(json['type'] ?? <String, dynamic>{});
     this.openPeriod = json['open_period'];
@@ -54,9 +54,9 @@ class Poll extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "question": this.question,
-      "options": this.options.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "options": this.options.map((i) => i.toJson()).toList(),
       "total_voter_count": this.totalVoterCount,
-      "recent_voter_user_ids": this.recentVoterUserIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "recent_voter_user_ids": this.recentVoterUserIds.map((i) => i).toList(),
       "is_anonymous": this.isAnonymous,
       "type": this.type.toJson(),
       "open_period": this.openPeriod,
@@ -66,4 +66,7 @@ class Poll extends TdObject {
   }
 
   static const CONSTRUCTOR = 'poll';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

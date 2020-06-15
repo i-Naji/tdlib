@@ -21,4 +21,7 @@ class ConfirmQrCodeAuthentication extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'confirmQrCodeAuthentication';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

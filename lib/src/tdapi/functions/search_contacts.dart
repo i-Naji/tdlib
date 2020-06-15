@@ -25,4 +25,7 @@ class SearchContacts extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

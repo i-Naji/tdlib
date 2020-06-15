@@ -43,6 +43,9 @@ class ChatReportReason extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatReportReason';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonSpam extends ChatReportReason {
@@ -62,6 +65,9 @@ class ChatReportReasonSpam extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonSpam';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonViolence extends ChatReportReason {
@@ -81,6 +87,9 @@ class ChatReportReasonViolence extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonViolence';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonPornography extends ChatReportReason {
@@ -100,6 +109,9 @@ class ChatReportReasonPornography extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonPornography';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonChildAbuse extends ChatReportReason {
@@ -119,6 +131,9 @@ class ChatReportReasonChildAbuse extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonChildAbuse';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonCopyright extends ChatReportReason {
@@ -138,6 +153,9 @@ class ChatReportReasonCopyright extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonCopyright';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonUnrelatedLocation extends ChatReportReason {
@@ -157,6 +175,9 @@ class ChatReportReasonUnrelatedLocation extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonUnrelatedLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatReportReasonCustom extends ChatReportReason {
@@ -180,4 +201,7 @@ class ChatReportReasonCustom extends ChatReportReason {
   }
 
   static const CONSTRUCTOR = 'chatReportReasonCustom';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

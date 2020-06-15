@@ -21,4 +21,7 @@ class UnblockUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'unblockUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

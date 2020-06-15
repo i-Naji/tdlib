@@ -25,4 +25,7 @@ class DeleteChatReplyMarkup extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatReplyMarkup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

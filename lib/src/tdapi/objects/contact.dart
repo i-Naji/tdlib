@@ -41,4 +41,7 @@ class Contact extends TdObject {
   }
 
   static const CONSTRUCTOR = 'contact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -29,4 +29,7 @@ class PinChatMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'pinChatMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

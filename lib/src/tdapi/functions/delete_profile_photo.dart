@@ -21,4 +21,7 @@ class DeleteProfilePhoto extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteProfilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

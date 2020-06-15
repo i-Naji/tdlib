@@ -26,4 +26,7 @@ class PageBlockCaption extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockCaption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

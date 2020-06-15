@@ -25,4 +25,7 @@ class UploadStickerFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'uploadStickerFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

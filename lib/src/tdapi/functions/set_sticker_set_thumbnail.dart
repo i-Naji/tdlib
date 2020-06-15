@@ -29,4 +29,7 @@ class SetStickerSetThumbnail extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setStickerSetThumbnail';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

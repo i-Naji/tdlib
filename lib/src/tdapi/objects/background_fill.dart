@@ -28,6 +28,9 @@ class BackgroundFill extends TdObject {
   }
 
   static const CONSTRUCTOR = 'backgroundFill';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class BackgroundFillSolid extends BackgroundFill {
@@ -51,6 +54,9 @@ class BackgroundFillSolid extends BackgroundFill {
   }
 
   static const CONSTRUCTOR = 'backgroundFillSolid';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class BackgroundFillGradient extends BackgroundFill {
@@ -84,4 +90,7 @@ class BackgroundFillGradient extends BackgroundFill {
   }
 
   static const CONSTRUCTOR = 'backgroundFillGradient';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

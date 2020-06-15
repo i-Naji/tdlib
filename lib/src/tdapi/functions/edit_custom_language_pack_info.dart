@@ -21,4 +21,7 @@ class EditCustomLanguagePackInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editCustomLanguagePackInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

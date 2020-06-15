@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Backgrounds extends TdObject {
-  List<List<Background>> backgrounds;
+  List<Background> backgrounds;
   dynamic extra;
 
   /// Contains a list of backgrounds. 
@@ -10,7 +10,7 @@ class Backgrounds extends TdObject {
 
   /// Parse from a json
   Backgrounds.fromJson(Map<String, dynamic> json)  {
-    this.backgrounds = List<List<Background>>.from((json['backgrounds'] ?? []).map((item) => List<Background>.from((item ?? []).map((innerItem) => Background.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.backgrounds = List<Background>.from((json['backgrounds'] ?? []).map((item) => Background.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -18,9 +18,12 @@ class Backgrounds extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "backgrounds": this.backgrounds.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "backgrounds": this.backgrounds.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'backgrounds';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

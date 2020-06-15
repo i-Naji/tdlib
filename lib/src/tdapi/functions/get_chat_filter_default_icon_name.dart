@@ -21,4 +21,7 @@ class GetChatFilterDefaultIconName extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatFilterDefaultIconName';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

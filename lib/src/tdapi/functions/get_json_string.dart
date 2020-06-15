@@ -21,4 +21,7 @@ class GetJsonString extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getJsonString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

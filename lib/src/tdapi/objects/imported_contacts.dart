@@ -1,8 +1,8 @@
 part of '../tdapi.dart';
 
 class ImportedContacts extends TdObject {
-  List<List<int>> userIds;
-  List<List<int>> importerCount;
+  List<int> userIds;
+  List<int> importerCount;
   dynamic extra;
 
   /// Represents the result of an ImportContacts request. 
@@ -13,8 +13,8 @@ class ImportedContacts extends TdObject {
 
   /// Parse from a json
   ImportedContacts.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<List<int>>.from((json['user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
-    this.importerCount = List<List<int>>.from((json['importer_count'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
+    this.importerCount = List<int>.from((json['importer_count'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -22,10 +22,13 @@ class ImportedContacts extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": this.userIds.map((i) => i.map((ii) => ii).toList()).toList(),
-      "importer_count": this.importerCount.map((i) => i.map((ii) => ii).toList()).toList(),
+      "user_ids": this.userIds.map((i) => i).toList(),
+      "importer_count": this.importerCount.map((i) => i).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'importedContacts';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

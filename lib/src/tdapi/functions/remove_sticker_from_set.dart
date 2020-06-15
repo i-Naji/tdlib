@@ -21,4 +21,7 @@ class RemoveStickerFromSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeStickerFromSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

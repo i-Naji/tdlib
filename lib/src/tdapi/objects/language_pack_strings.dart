@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class LanguagePackStrings extends TdObject {
-  List<List<LanguagePackString>> strings;
+  List<LanguagePackString> strings;
   dynamic extra;
 
   /// Contains a list of language pack strings. 
@@ -10,7 +10,7 @@ class LanguagePackStrings extends TdObject {
 
   /// Parse from a json
   LanguagePackStrings.fromJson(Map<String, dynamic> json)  {
-    this.strings = List<List<LanguagePackString>>.from((json['strings'] ?? []).map((item) => List<LanguagePackString>.from((item ?? []).map((innerItem) => LanguagePackString.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.strings = List<LanguagePackString>.from((json['strings'] ?? []).map((item) => LanguagePackString.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -18,9 +18,12 @@ class LanguagePackStrings extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "strings": this.strings.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "strings": this.strings.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'languagePackStrings';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

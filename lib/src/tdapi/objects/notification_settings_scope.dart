@@ -31,6 +31,9 @@ class NotificationSettingsScope extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notificationSettingsScope';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationSettingsScopePrivateChats extends NotificationSettingsScope {
@@ -50,6 +53,9 @@ class NotificationSettingsScopePrivateChats extends NotificationSettingsScope {
   }
 
   static const CONSTRUCTOR = 'notificationSettingsScopePrivateChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationSettingsScopeGroupChats extends NotificationSettingsScope {
@@ -69,6 +75,9 @@ class NotificationSettingsScopeGroupChats extends NotificationSettingsScope {
   }
 
   static const CONSTRUCTOR = 'notificationSettingsScopeGroupChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationSettingsScopeChannelChats extends NotificationSettingsScope {
@@ -88,4 +97,7 @@ class NotificationSettingsScopeChannelChats extends NotificationSettingsScope {
   }
 
   static const CONSTRUCTOR = 'notificationSettingsScopeChannelChats';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

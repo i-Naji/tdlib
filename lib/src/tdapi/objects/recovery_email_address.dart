@@ -23,4 +23,7 @@ class RecoveryEmailAddress extends TdObject {
   }
 
   static const CONSTRUCTOR = 'recoveryEmailAddress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

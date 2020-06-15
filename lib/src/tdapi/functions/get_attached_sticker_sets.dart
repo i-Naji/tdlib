@@ -21,4 +21,7 @@ class GetAttachedStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getAttachedStickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

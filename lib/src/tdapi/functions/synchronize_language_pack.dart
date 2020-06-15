@@ -21,4 +21,7 @@ class SynchronizeLanguagePack extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'synchronizeLanguagePack';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class SetCustomLanguagePack extends TdFunction {
   LanguagePackInfo info;
-  List<List<LanguagePackString>> strings;
+  List<LanguagePackString> strings;
   dynamic extra;
 
   /// Adds or changes a custom local language pack to the current localization target. 
@@ -19,10 +19,13 @@ class SetCustomLanguagePack extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "info": this.info.toJson(),
-      "strings": this.strings.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "strings": this.strings.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'setCustomLanguagePack';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class AnswerShippingQuery extends TdFunction {
   int shippingQueryId;
-  List<List<ShippingOption>> shippingOptions;
+  List<ShippingOption> shippingOptions;
   String errorMessage;
   dynamic extra;
 
@@ -22,11 +22,14 @@ class AnswerShippingQuery extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "shipping_query_id": this.shippingQueryId,
-      "shipping_options": this.shippingOptions.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "shipping_options": this.shippingOptions.map((i) => i.toJson()).toList(),
       "error_message": this.errorMessage,
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'answerShippingQuery';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

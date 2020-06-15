@@ -21,4 +21,7 @@ class SetLocation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

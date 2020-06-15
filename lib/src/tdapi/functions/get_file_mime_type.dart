@@ -21,4 +21,7 @@ class GetFileMimeType extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFileMimeType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

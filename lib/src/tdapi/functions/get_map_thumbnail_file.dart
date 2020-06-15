@@ -41,4 +41,7 @@ class GetMapThumbnailFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getMapThumbnailFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

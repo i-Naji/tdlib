@@ -21,4 +21,7 @@ class GetOption extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getOption';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

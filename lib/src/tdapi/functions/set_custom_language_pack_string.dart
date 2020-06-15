@@ -25,4 +25,7 @@ class SetCustomLanguagePackString extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setCustomLanguagePackString';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

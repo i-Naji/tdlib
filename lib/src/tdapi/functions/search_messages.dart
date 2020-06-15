@@ -41,4 +41,7 @@ class SearchMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -48,4 +48,7 @@ class Proxy extends TdObject {
   }
 
   static const CONSTRUCTOR = 'proxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

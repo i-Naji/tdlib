@@ -21,4 +21,7 @@ class DeleteAccount extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteAccount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

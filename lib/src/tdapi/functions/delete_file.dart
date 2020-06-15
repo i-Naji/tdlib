@@ -21,4 +21,7 @@ class DeleteFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

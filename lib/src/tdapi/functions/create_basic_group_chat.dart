@@ -25,4 +25,7 @@ class CreateBasicGroupChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createBasicGroupChat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

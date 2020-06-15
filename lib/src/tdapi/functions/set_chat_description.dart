@@ -25,4 +25,7 @@ class SetChatDescription extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatDescription';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class SetChatDraftMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatDraftMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

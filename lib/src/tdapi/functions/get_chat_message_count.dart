@@ -29,4 +29,7 @@ class GetChatMessageCount extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatMessageCount';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

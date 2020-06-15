@@ -46,4 +46,7 @@ class PageBlockTableCell extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockTableCell';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,6 +31,9 @@ class LogStream extends TdObject {
   }
 
   static const CONSTRUCTOR = 'logStream';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LogStreamDefault extends LogStream {
@@ -52,6 +55,9 @@ class LogStreamDefault extends LogStream {
   }
 
   static const CONSTRUCTOR = 'logStreamDefault';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LogStreamFile extends LogStream {
@@ -82,6 +88,9 @@ class LogStreamFile extends LogStream {
   }
 
   static const CONSTRUCTOR = 'logStreamFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LogStreamEmpty extends LogStream {
@@ -103,4 +112,7 @@ class LogStreamEmpty extends LogStream {
   }
 
   static const CONSTRUCTOR = 'logStreamEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

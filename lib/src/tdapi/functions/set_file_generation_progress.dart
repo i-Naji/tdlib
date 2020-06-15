@@ -29,4 +29,7 @@ class SetFileGenerationProgress extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setFileGenerationProgress';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

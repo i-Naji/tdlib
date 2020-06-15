@@ -25,4 +25,7 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'toggleSupergroupIsAllHistoryAvailable';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

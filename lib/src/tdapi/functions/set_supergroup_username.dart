@@ -25,4 +25,7 @@ class SetSupergroupUsername extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setSupergroupUsername';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -23,4 +23,7 @@ class CustomRequestResult extends TdObject {
   }
 
   static const CONSTRUCTOR = 'customRequestResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

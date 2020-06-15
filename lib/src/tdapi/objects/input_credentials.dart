@@ -34,6 +34,9 @@ class InputCredentials extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputCredentials';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputCredentialsSaved extends InputCredentials {
@@ -57,6 +60,9 @@ class InputCredentialsSaved extends InputCredentials {
   }
 
   static const CONSTRUCTOR = 'inputCredentialsSaved';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputCredentialsNew extends InputCredentials {
@@ -85,6 +91,9 @@ class InputCredentialsNew extends InputCredentials {
   }
 
   static const CONSTRUCTOR = 'inputCredentialsNew';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputCredentialsAndroidPay extends InputCredentials {
@@ -108,6 +117,9 @@ class InputCredentialsAndroidPay extends InputCredentials {
   }
 
   static const CONSTRUCTOR = 'inputCredentialsAndroidPay';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputCredentialsApplePay extends InputCredentials {
@@ -131,4 +143,7 @@ class InputCredentialsApplePay extends InputCredentials {
   }
 
   static const CONSTRUCTOR = 'inputCredentialsApplePay';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

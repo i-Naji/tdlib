@@ -28,4 +28,7 @@ class TemporaryPasswordState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'temporaryPasswordState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

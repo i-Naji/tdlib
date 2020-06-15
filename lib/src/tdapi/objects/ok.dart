@@ -19,4 +19,7 @@ class Ok extends TdObject {
   }
 
   static const CONSTRUCTOR = 'ok';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

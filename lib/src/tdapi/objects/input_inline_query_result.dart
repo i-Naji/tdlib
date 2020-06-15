@@ -58,6 +58,9 @@ class InputInlineQueryResult extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultAnimation extends InputInlineQueryResult {
@@ -131,6 +134,9 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultAnimation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultArticle extends InputInlineQueryResult {
@@ -199,6 +205,9 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultArticle';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultAudio extends InputInlineQueryResult {
@@ -252,6 +261,9 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultAudio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultContact extends InputInlineQueryResult {
@@ -305,6 +317,9 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultDocument extends InputInlineQueryResult {
@@ -373,6 +388,9 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultDocument';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultGame extends InputInlineQueryResult {
@@ -406,6 +424,9 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultGame';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultLocation extends InputInlineQueryResult {
@@ -469,6 +490,9 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultLocation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultPhoto extends InputInlineQueryResult {
@@ -532,6 +556,9 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultPhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultSticker extends InputInlineQueryResult {
@@ -585,6 +612,9 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultSticker';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultVenue extends InputInlineQueryResult {
@@ -638,6 +668,9 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultVenue';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultVideo extends InputInlineQueryResult {
@@ -711,6 +744,9 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultVideo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
@@ -759,4 +795,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   }
 
   static const CONSTRUCTOR = 'inputInlineQueryResultVoiceNote';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

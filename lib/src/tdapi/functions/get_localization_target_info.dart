@@ -21,4 +21,7 @@ class GetLocalizationTargetInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLocalizationTargetInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -93,4 +93,7 @@ class Session extends TdObject {
   }
 
   static const CONSTRUCTOR = 'session';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

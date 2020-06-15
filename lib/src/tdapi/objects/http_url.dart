@@ -23,4 +23,7 @@ class HttpUrl extends TdObject {
   }
 
   static const CONSTRUCTOR = 'httpUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

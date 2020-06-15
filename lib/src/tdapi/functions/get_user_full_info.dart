@@ -21,4 +21,7 @@ class GetUserFullInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getUserFullInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

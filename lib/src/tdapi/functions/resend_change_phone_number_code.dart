@@ -18,4 +18,7 @@ class ResendChangePhoneNumberCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resendChangePhoneNumberCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -4,7 +4,7 @@ class SendCallRating extends TdFunction {
   int callId;
   int rating;
   String comment;
-  List<List<CallProblem>> problems;
+  List<CallProblem> problems;
   dynamic extra;
 
   /// Sends a call rating. 
@@ -27,10 +27,13 @@ class SendCallRating extends TdFunction {
       "call_id": this.callId,
       "rating": this.rating,
       "comment": this.comment,
-      "problems": this.problems.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "problems": this.problems.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'sendCallRating';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

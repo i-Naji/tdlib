@@ -25,4 +25,7 @@ class SearchStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchStickers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

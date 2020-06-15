@@ -37,6 +37,9 @@ class ConnectionState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'connectionState';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateWaitingForNetwork extends ConnectionState {
@@ -56,6 +59,9 @@ class ConnectionStateWaitingForNetwork extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateWaitingForNetwork';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateConnectingToProxy extends ConnectionState {
@@ -75,6 +81,9 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateConnectingToProxy';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateConnecting extends ConnectionState {
@@ -94,6 +103,9 @@ class ConnectionStateConnecting extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateConnecting';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateUpdating extends ConnectionState {
@@ -113,6 +125,9 @@ class ConnectionStateUpdating extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateUpdating';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateReady extends ConnectionState {
@@ -132,4 +147,7 @@ class ConnectionStateReady extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateReady';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

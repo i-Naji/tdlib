@@ -25,4 +25,7 @@ class SetChatPermissions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatPermissions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

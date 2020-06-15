@@ -46,6 +46,9 @@ class UserPrivacySetting extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userPrivacySetting';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingShowStatus extends UserPrivacySetting {
@@ -65,6 +68,9 @@ class UserPrivacySettingShowStatus extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingShowStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
@@ -84,6 +90,9 @@ class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingShowProfilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
@@ -103,6 +112,9 @@ class UserPrivacySettingShowLinkInForwardedMessages extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingShowLinkInForwardedMessages';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
@@ -122,6 +134,9 @@ class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingShowPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
@@ -141,6 +156,9 @@ class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingAllowChatInvites';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingAllowCalls extends UserPrivacySetting {
@@ -160,6 +178,9 @@ class UserPrivacySettingAllowCalls extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingAllowCalls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
@@ -179,6 +200,9 @@ class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingAllowPeerToPeerCalls';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
@@ -198,4 +222,7 @@ class UserPrivacySettingAllowFindingByPhoneNumber extends UserPrivacySetting {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingAllowFindingByPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

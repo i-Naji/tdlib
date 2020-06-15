@@ -18,4 +18,7 @@ class GetStorageStatisticsFast extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getStorageStatisticsFast';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

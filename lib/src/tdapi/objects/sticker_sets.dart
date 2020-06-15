@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class StickerSets extends TdObject {
   int totalCount;
-  List<List<StickerSetInfo>> sets;
+  List<StickerSetInfo> sets;
   dynamic extra;
 
   /// Represents a list of sticker sets. 
@@ -14,7 +14,7 @@ class StickerSets extends TdObject {
   /// Parse from a json
   StickerSets.fromJson(Map<String, dynamic> json)  {
     this.totalCount = json['total_count'];
-    this.sets = List<List<StickerSetInfo>>.from((json['sets'] ?? []).map((item) => List<StickerSetInfo>.from((item ?? []).map((innerItem) => StickerSetInfo.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.sets = List<StickerSetInfo>.from((json['sets'] ?? []).map((item) => StickerSetInfo.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -23,9 +23,12 @@ class StickerSets extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "total_count": this.totalCount,
-      "sets": this.sets.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "sets": this.sets.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'stickerSets';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -5,7 +5,7 @@ class NotificationGroup extends TdObject {
   NotificationGroupType type;
   int chatId;
   int totalCount;
-  List<List<Notification>> notifications;
+  List<Notification> notifications;
 
   /// Describes a group of notifications. 
   /// [id] Unique persistent auto-incremented from 1 identifier of the notification group . 
@@ -25,7 +25,7 @@ class NotificationGroup extends TdObject {
     this.type = NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
     this.chatId = json['chat_id'];
     this.totalCount = json['total_count'];
-    this.notifications = List<List<Notification>>.from((json['notifications'] ?? []).map((item) => List<Notification>.from((item ?? []).map((innerItem) => Notification.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.notifications = List<Notification>.from((json['notifications'] ?? []).map((item) => Notification.fromJson(item ?? <String, dynamic>{})).toList());
   }
 
   @override
@@ -36,9 +36,12 @@ class NotificationGroup extends TdObject {
       "type": this.type.toJson(),
       "chat_id": this.chatId,
       "total_count": this.totalCount,
-      "notifications": this.notifications.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "notifications": this.notifications.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'notificationGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

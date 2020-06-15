@@ -31,4 +31,7 @@ class ProfilePhoto extends TdObject {
   }
 
   static const CONSTRUCTOR = 'profilePhoto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

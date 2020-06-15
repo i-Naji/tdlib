@@ -25,4 +25,7 @@ class GetBlockedUsers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBlockedUsers';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

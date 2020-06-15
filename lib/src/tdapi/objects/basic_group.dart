@@ -43,4 +43,7 @@ class BasicGroup extends TdObject {
   }
 
   static const CONSTRUCTOR = 'basicGroup';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

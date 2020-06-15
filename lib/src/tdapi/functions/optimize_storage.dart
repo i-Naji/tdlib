@@ -5,9 +5,9 @@ class OptimizeStorage extends TdFunction {
   int ttl;
   int count;
   int immunityDelay;
-  List<List<FileType>> fileTypes;
-  List<List<int>> chatIds;
-  List<List<int>> excludeChatIds;
+  List<FileType> fileTypes;
+  List<int> chatIds;
+  List<int> excludeChatIds;
   bool returnDeletedFileStatistics;
   int chatLimit;
   dynamic extra;
@@ -43,9 +43,9 @@ class OptimizeStorage extends TdFunction {
       "ttl": this.ttl,
       "count": this.count,
       "immunity_delay": this.immunityDelay,
-      "file_types": this.fileTypes.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
-      "chat_ids": this.chatIds.map((i) => i.map((ii) => ii).toList()).toList(),
-      "exclude_chat_ids": this.excludeChatIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "file_types": this.fileTypes.map((i) => i.toJson()).toList(),
+      "chat_ids": this.chatIds.map((i) => i).toList(),
+      "exclude_chat_ids": this.excludeChatIds.map((i) => i).toList(),
       "return_deleted_file_statistics": this.returnDeletedFileStatistics,
       "chat_limit": this.chatLimit,
       "@extra": this.extra,
@@ -53,4 +53,7 @@ class OptimizeStorage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'optimizeStorage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -25,4 +25,7 @@ class CancelDownloadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'cancelDownloadFile';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,6 +31,9 @@ class StatisticsGraph extends TdObject {
   }
 
   static const CONSTRUCTOR = 'statisticsGraph';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphData extends StatisticsGraph {
@@ -61,6 +64,9 @@ class StatisticsGraphData extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphData';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphAsync extends StatisticsGraph {
@@ -86,6 +92,9 @@ class StatisticsGraphAsync extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphAsync';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphError extends StatisticsGraph {
@@ -111,4 +120,7 @@ class StatisticsGraphError extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphError';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

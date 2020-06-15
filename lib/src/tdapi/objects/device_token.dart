@@ -55,6 +55,9 @@ class DeviceToken extends TdObject {
   }
 
   static const CONSTRUCTOR = 'deviceToken';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
@@ -83,6 +86,9 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenFirebaseCloudMessaging';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenApplePush extends DeviceToken {
@@ -111,6 +117,9 @@ class DeviceTokenApplePush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenApplePush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenApplePushVoIP extends DeviceToken {
@@ -144,6 +153,9 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenApplePushVoIP';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenWindowsPush extends DeviceToken {
@@ -167,6 +179,9 @@ class DeviceTokenWindowsPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenWindowsPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenMicrosoftPush extends DeviceToken {
@@ -190,6 +205,9 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenMicrosoftPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
@@ -213,6 +231,9 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenWebPush extends DeviceToken {
@@ -246,6 +267,9 @@ class DeviceTokenWebPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenWebPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenSimplePush extends DeviceToken {
@@ -269,6 +293,9 @@ class DeviceTokenSimplePush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenSimplePush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenUbuntuPush extends DeviceToken {
@@ -292,6 +319,9 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenUbuntuPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenBlackBerryPush extends DeviceToken {
@@ -315,6 +345,9 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenBlackBerryPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenTizenPush extends DeviceToken {
@@ -338,4 +371,7 @@ class DeviceTokenTizenPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenTizenPush';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

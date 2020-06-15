@@ -34,6 +34,9 @@ class CanTransferOwnershipResult extends TdObject {
   }
 
   static const CONSTRUCTOR = 'canTransferOwnershipResult';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
@@ -55,6 +58,9 @@ class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
   }
 
   static const CONSTRUCTOR = 'canTransferOwnershipResultOk';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershipResult {
@@ -76,6 +82,9 @@ class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershipResul
   }
 
   static const CONSTRUCTOR = 'canTransferOwnershipResultPasswordNeeded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwnershipResult {
@@ -101,6 +110,9 @@ class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwnershipRes
   }
 
   static const CONSTRUCTOR = 'canTransferOwnershipResultPasswordTooFresh';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnershipResult {
@@ -126,4 +138,7 @@ class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnershipResu
   }
 
   static const CONSTRUCTOR = 'canTransferOwnershipResultSessionTooFresh';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

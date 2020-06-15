@@ -21,4 +21,7 @@ class JoinChatByInviteLink extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'joinChatByInviteLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

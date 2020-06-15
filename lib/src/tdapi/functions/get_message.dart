@@ -25,4 +25,7 @@ class GetMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

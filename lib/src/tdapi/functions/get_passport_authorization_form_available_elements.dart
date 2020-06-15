@@ -25,4 +25,7 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPassportAuthorizationFormAvailableElements';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

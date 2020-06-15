@@ -21,4 +21,7 @@ class SharePhoneNumber extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sharePhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

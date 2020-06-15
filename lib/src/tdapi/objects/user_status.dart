@@ -40,6 +40,9 @@ class UserStatus extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userStatus';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusEmpty extends UserStatus {
@@ -59,6 +62,9 @@ class UserStatusEmpty extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusEmpty';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusOnline extends UserStatus {
@@ -82,6 +88,9 @@ class UserStatusOnline extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusOnline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusOffline extends UserStatus {
@@ -105,6 +114,9 @@ class UserStatusOffline extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusOffline';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusRecently extends UserStatus {
@@ -124,6 +136,9 @@ class UserStatusRecently extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusRecently';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusLastWeek extends UserStatus {
@@ -143,6 +158,9 @@ class UserStatusLastWeek extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusLastWeek';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusLastMonth extends UserStatus {
@@ -162,4 +180,7 @@ class UserStatusLastMonth extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusLastMonth';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

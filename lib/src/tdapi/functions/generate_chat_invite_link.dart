@@ -21,4 +21,7 @@ class GenerateChatInviteLink extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'generateChatInviteLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

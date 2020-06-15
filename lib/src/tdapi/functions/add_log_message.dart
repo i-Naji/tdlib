@@ -25,4 +25,7 @@ class AddLogMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addLogMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

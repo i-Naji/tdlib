@@ -6,7 +6,7 @@ class ChatInviteLinkInfo extends TdObject {
   String title;
   ChatPhoto photo;
   int memberCount;
-  List<List<int>> memberUserIds;
+  List<int> memberUserIds;
   bool isPublic;
   dynamic extra;
 
@@ -33,7 +33,7 @@ class ChatInviteLinkInfo extends TdObject {
     this.title = json['title'];
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.memberCount = json['member_count'];
-    this.memberUserIds = List<List<int>>.from((json['member_user_ids'] ?? []).map((item) => List<int>.from((item ?? []).map((innerItem) => innerItem).toList())).toList());
+    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
     this.isPublic = json['is_public'];
     this.extra = json['@extra'];
   }
@@ -47,10 +47,13 @@ class ChatInviteLinkInfo extends TdObject {
       "title": this.title,
       "photo": this.photo.toJson(),
       "member_count": this.memberCount,
-      "member_user_ids": this.memberUserIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
       "is_public": this.isPublic,
     };
   }
 
   static const CONSTRUCTOR = 'chatInviteLinkInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

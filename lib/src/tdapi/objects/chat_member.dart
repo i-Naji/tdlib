@@ -43,4 +43,7 @@ class ChatMember extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatMember';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

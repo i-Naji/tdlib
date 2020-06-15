@@ -21,4 +21,7 @@ class UnpinChatMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'unpinChatMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

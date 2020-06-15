@@ -23,4 +23,7 @@ class Count extends TdObject {
   }
 
   static const CONSTRUCTOR = 'count';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

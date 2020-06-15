@@ -25,4 +25,7 @@ class ToggleChatIsMarkedAsUnread extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'toggleChatIsMarkedAsUnread';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

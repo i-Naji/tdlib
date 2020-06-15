@@ -28,6 +28,9 @@ class LoginUrlInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'loginUrlInfo';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LoginUrlInfoOpen extends LoginUrlInfo {
@@ -58,6 +61,9 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   }
 
   static const CONSTRUCTOR = 'loginUrlInfoOpen';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
@@ -98,4 +104,7 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   }
 
   static const CONSTRUCTOR = 'loginUrlInfoRequestConfirmation';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -31,4 +31,7 @@ class StorageStatisticsByFileType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'storageStatisticsByFileType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

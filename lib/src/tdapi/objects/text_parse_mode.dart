@@ -28,6 +28,9 @@ class TextParseMode extends TdObject {
   }
 
   static const CONSTRUCTOR = 'textParseMode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextParseModeMarkdown extends TextParseMode {
@@ -51,6 +54,9 @@ class TextParseModeMarkdown extends TextParseMode {
   }
 
   static const CONSTRUCTOR = 'textParseModeMarkdown';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class TextParseModeHTML extends TextParseMode {
@@ -70,4 +76,7 @@ class TextParseModeHTML extends TextParseMode {
   }
 
   static const CONSTRUCTOR = 'textParseModeHTML';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

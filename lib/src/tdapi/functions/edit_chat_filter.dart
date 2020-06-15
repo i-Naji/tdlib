@@ -25,4 +25,7 @@ class EditChatFilter extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'editChatFilter';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

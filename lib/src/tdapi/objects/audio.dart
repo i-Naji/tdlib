@@ -56,4 +56,7 @@ class Audio extends TdObject {
   }
 
   static const CONSTRUCTOR = 'audio';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

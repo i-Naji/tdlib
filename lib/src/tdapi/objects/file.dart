@@ -43,4 +43,7 @@ class File extends TdObject {
   }
 
   static const CONSTRUCTOR = 'file';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

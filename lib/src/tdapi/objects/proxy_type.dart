@@ -31,6 +31,9 @@ class ProxyType extends TdObject {
   }
 
   static const CONSTRUCTOR = 'proxyType';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ProxyTypeSocks5 extends ProxyType {
@@ -59,6 +62,9 @@ class ProxyTypeSocks5 extends ProxyType {
   }
 
   static const CONSTRUCTOR = 'proxyTypeSocks5';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ProxyTypeHttp extends ProxyType {
@@ -92,6 +98,9 @@ class ProxyTypeHttp extends ProxyType {
   }
 
   static const CONSTRUCTOR = 'proxyTypeHttp';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ProxyTypeMtproto extends ProxyType {
@@ -115,4 +124,7 @@ class ProxyTypeMtproto extends ProxyType {
   }
 
   static const CONSTRUCTOR = 'proxyTypeMtproto';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

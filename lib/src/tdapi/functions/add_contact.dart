@@ -25,4 +25,7 @@ class AddContact extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addContact';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

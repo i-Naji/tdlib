@@ -40,6 +40,9 @@ class ThumbnailFormat extends TdObject {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormat';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatJpeg extends ThumbnailFormat {
@@ -59,6 +62,9 @@ class ThumbnailFormatJpeg extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatJpeg';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatPng extends ThumbnailFormat {
@@ -78,6 +84,9 @@ class ThumbnailFormatPng extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatPng';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatWebp extends ThumbnailFormat {
@@ -97,6 +106,9 @@ class ThumbnailFormatWebp extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatWebp';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatGif extends ThumbnailFormat {
@@ -116,6 +128,9 @@ class ThumbnailFormatGif extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatGif';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatTgs extends ThumbnailFormat {
@@ -135,6 +150,9 @@ class ThumbnailFormatTgs extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatTgs';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
 
 class ThumbnailFormatMpeg4 extends ThumbnailFormat {
@@ -154,4 +172,7 @@ class ThumbnailFormatMpeg4 extends ThumbnailFormat {
   }
 
   static const CONSTRUCTOR = 'thumbnailFormatMpeg4';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

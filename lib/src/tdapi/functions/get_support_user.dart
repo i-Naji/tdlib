@@ -18,4 +18,7 @@ class GetSupportUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSupportUser';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

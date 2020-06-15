@@ -21,4 +21,7 @@ class AcceptTermsOfService extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'acceptTermsOfService';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

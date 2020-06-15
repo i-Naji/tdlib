@@ -25,4 +25,7 @@ class SetAuthenticationPhoneNumber extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setAuthenticationPhoneNumber';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

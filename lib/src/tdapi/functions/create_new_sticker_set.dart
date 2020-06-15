@@ -5,7 +5,7 @@ class CreateNewStickerSet extends TdFunction {
   String title;
   String name;
   bool isMasks;
-  List<List<InputSticker>> stickers;
+  List<InputSticker> stickers;
   dynamic extra;
 
   /// Creates a new sticker set; for bots only. Returns the newly created sticker set. 
@@ -31,10 +31,13 @@ class CreateNewStickerSet extends TdFunction {
       "title": this.title,
       "name": this.name,
       "is_masks": this.isMasks,
-      "stickers": this.stickers.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "stickers": this.stickers.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'createNewStickerSet';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

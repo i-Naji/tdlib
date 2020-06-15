@@ -26,4 +26,7 @@ class BotCommand extends TdObject {
   }
 
   static const CONSTRUCTOR = 'botCommand';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

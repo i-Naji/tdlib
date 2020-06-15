@@ -29,4 +29,7 @@ class SendBotStartMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendBotStartMessage';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

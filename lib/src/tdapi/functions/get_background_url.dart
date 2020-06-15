@@ -25,4 +25,7 @@ class GetBackgroundUrl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBackgroundUrl';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class FormattedText extends TdObject {
   String text;
-  List<List<TextEntity>> entities;
+  List<TextEntity> entities;
   dynamic extra;
 
   /// A text with some entities. 
@@ -14,7 +14,7 @@ class FormattedText extends TdObject {
   /// Parse from a json
   FormattedText.fromJson(Map<String, dynamic> json)  {
     this.text = json['text'];
-    this.entities = List<List<TextEntity>>.from((json['entities'] ?? []).map((item) => List<TextEntity>.from((item ?? []).map((innerItem) => TextEntity.fromJson(innerItem ?? <String, dynamic>{})).toList())).toList());
+    this.entities = List<TextEntity>.from((json['entities'] ?? []).map((item) => TextEntity.fromJson(item ?? <String, dynamic>{})).toList());
     this.extra = json['@extra'];
   }
 
@@ -23,9 +23,12 @@ class FormattedText extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "text": this.text,
-      "entities": this.entities.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
+      "entities": this.entities.map((i) => i.toJson()).toList(),
     };
   }
 
   static const CONSTRUCTOR = 'formattedText';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

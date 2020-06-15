@@ -21,4 +21,7 @@ class GetProxyLink extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getProxyLink';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

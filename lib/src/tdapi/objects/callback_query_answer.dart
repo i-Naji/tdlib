@@ -33,4 +33,7 @@ class CallbackQueryAnswer extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callbackQueryAnswer';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

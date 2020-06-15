@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class ReportSupergroupSpam extends TdFunction {
   int supergroupId;
   int userId;
-  List<List<int>> messageIds;
+  List<int> messageIds;
   dynamic extra;
 
   /// Reports some messages from a user in a supergroup as spam; requires administrator rights in the supergroup. 
@@ -23,10 +23,13 @@ class ReportSupergroupSpam extends TdFunction {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
       "user_id": this.userId,
-      "message_ids": this.messageIds.map((i) => i.map((ii) => ii).toList()).toList(),
+      "message_ids": this.messageIds.map((i) => i).toList(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'reportSupergroupSpam';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }

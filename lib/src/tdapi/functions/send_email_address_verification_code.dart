@@ -21,4 +21,7 @@ class SendEmailAddressVerificationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendEmailAddressVerificationCode';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
 }
