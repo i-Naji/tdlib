@@ -5,7 +5,7 @@
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
 package org.drinkless.tdlib;
-
+import android.util.Log;
 /**
  * Main class for interaction with the TDLib using JSON interface.
  */
@@ -21,4 +21,12 @@ public final class JsonClient {
 
     public static native void destroy(long client);
 
+	static {
+		 try {
+			 System.loadLibrary("tdjson");
+			 Log.i("TDLib", "TDJson loaded");
+		 } catch (UnsatisfiedLinkError e) {
+			 Log.w("TDLib", "Can't load TDJson", e);
+		 }
+	 }
 }
