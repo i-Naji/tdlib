@@ -47,12 +47,4 @@ public class TdlibPlugin implements MethodCallHandler {
         break;
     }
   }
-  static {
-    try {
-      System.loadLibrary("tdjson");
-      Log.i("TDLib", "TDJson loaded");
-    } catch (UnsatisfiedLinkError e) {
-      Log.w("TDLib", "Can't load TDJson", e);
-    }
-  }
 }
