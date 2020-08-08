@@ -33,9 +33,9 @@ class DartTdDocumentationGenerator {
   String mainPart = 'part of \'../tdapi.dart\';';
 
   /// Main generating function
-  generate() {
+  void generate() {
     // read td_api scheme
-    List<String> schemeData = readFile(schemePath);
+    var schemeData = readFile(schemePath);
 
     // skip built-in types
     schemeData = schemeData.sublist(skipLines);
@@ -53,10 +53,10 @@ class DartTdDocumentationGenerator {
   /// dispatching types and functions from data
   /// extract variables and descriptions and store.
   /// [lines] list of scheme lines
-  dispatchSchemeData(List<String> lines) {
-    String classDescription = '';
-    List<String> variablesDescriptions = [];
-    String section = 'types';
+  void dispatchSchemeData(List<String> lines) {
+    var classDescription = '';
+    var variablesDescriptions = <String>[];
+    var section = 'types';
     // reading data line by line and analyze them.
     for (final line in lines) {
       // check if we are in types section or functions section.
@@ -121,11 +121,11 @@ class DartTdDocumentationGenerator {
         final className = classData.group(1);
         final classArgs = classData.group(2);
         final classReturnType = classData.group(3);
-        final args = classArgs == null
+        final args = (classArgs == null)
             ? <String, String>{}
-            : Map<String, String>.fromIterable(classArgs.trim().split(' '),
-                key: (arg) => arg.split(':')[0],
-                value: (arg) => arg.split(':')[1]);
+            : Map<String, String>.fromIterable(classArgs.trim().split(' '), // ignore: prefer_for_elements_to_map_fromIterable
+                key: (var arg) => arg.split(':')[0],
+                value: (var arg) => arg.split(':')[1]);
 
         // store class data and reset class and variables descriptions.
         _objects.add(TlObject(
@@ -141,9 +141,9 @@ class DartTdDocumentationGenerator {
 
   /// find relevant classes like those classes have parent class
   /// and find result classes of function classes
-  fetchRelevant() {
+  void fetchRelevant() {
     _objects.where((TlObject obj) => obj.isParent).forEach((TlObject cls) {
-      final Iterable<TlObject> children = _objects.where((TlObject element) =>
+      final children = _objects.where((TlObject element) =>
           cls.name == element.returnType && element.hasParent);
       children.forEach((TlObject child) {
         child.relevantObjects.add(cls.name);
@@ -151,25 +151,26 @@ class DartTdDocumentationGenerator {
       });
     });
     _objects.where((TlObject obj) => obj.isFunction).forEach((TlObject func) {
-      final Iterable<TlObject> results =
+      final results =
           _objects.where((TlObject element) => func.returnType == element.name);
       results.forEach((TlObject result) {
-        if (result.isParent)
+        if (result.isParent) {
           func.relevantObjects.addAll(result.relevantObjects);
-        else
+        } else {
           func.relevantObjects.add(result.name);
+        }
       });
     });
   }
 
   /// check variables by arguments
-  validationVariables() {
+  void validationVariables() {
     _objects.forEach((obj) => obj.makeVariablesList());
   }
 
   /// final step
   /// write data to file
-  writeToFile() {
+  void writeToFile() {
     tdApiFile.writeAsStringSync(
         'import \'dart:convert\' show json;\n\npart \'object.dart\';\npart \'function.dart\';\npart \'convertor.dart\';\n\n');
     if (functionsDir.existsSync()) functionsDir.deleteSync(recursive: true);
@@ -178,20 +179,20 @@ class DartTdDocumentationGenerator {
     if (objectsDir.existsSync()) objectsDir.deleteSync(recursive: true);
     objectsDir.createSync(recursive: true);
 
-    for (TlObject obj in _objects) {
+    for (final obj in _objects) {
       final temple = File('generator/main_class.tmpl').readAsStringSync();
       final snakeName = snakeCase(obj.name);
       final folderName = sectionFolder(obj.type);
-      String finalDir = '$tdApiDir/$folderName/$snakeName.dart';
+      var finalDir = '$tdApiDir/$folderName/$snakeName.dart';
 
-      String parent = 'TdObject';
-      List<String> variables = [];
-      List<String> arguments = [];
-      bool hasFactory = false;
-      List<String> fromJsonFields = [];
-      final List<String> toJsonFields = [];
-      FileMode writeMode = FileMode.write;
-      String objectPart = mainPart;
+      var parent = 'TdObject';
+      final variables = <String>[];
+      final arguments = <String>[];
+      var hasFactory = false;
+      var fromJsonFields = <String>[];
+      final toJsonFields = <String>[];
+      var writeMode = FileMode.write;
+      var objectPart = mainPart;
       if (obj.isParent) {
         hasFactory = true;
         fromJsonFields.add('switch(json["@type"]) {');
@@ -355,15 +356,15 @@ class TlObject {
   // type == 'types' ok?
   bool get hasParent => !isFunction && name != returnType && !isParent;
 
-  makeVariablesList() {
-    variablesDescriptions.forEach((String variableData) {
-      final List<String> splitVariableData = variableData.split(' ');
-      final String variableName = splitVariableData[0] == 'param_description'
+  void makeVariablesList() {
+    variablesDescriptions.forEach((variableData) {
+      final splitVariableData = variableData.split(' ');
+      final variableName = splitVariableData[0] == 'param_description'
           ? 'description'
           : splitVariableData[0];
-      final String variableDescription = splitVariableData.sublist(1).join(' ');
-      final String variableType = argsData[variableName];
-      TlObjectArg obj =
+      final variableDescription = splitVariableData.sublist(1).join(' ');
+      final variableType = argsData[variableName];
+      final obj =
           TlObjectArg(variableName, variableDescription, tlType: variableType);
       variables.add(obj);
     });
@@ -386,13 +387,13 @@ class TlObjectArg {
     this.write = getWrite(this.argName, this.type);
   }
 
-  static getType(type, {String prefix = 'TYPE'}) {
+  static String getType(type, {String prefix = 'TYPE'}) {
     String dartType;
     if (builtInTypes.contains(type)) {
       dartType = getBuiltInDartType(type);
     } else if (type.startsWith('vector')) {
       final subType = type.substring(7, type.length - 1);
-      dartType = getType(subType, prefix : 'List<TYPE>');
+      dartType = getType(subType, prefix: 'List<TYPE>');
     } else {
       type = upperFirstChar(type);
       //if (_objects.any((TlObject obj) => obj.isParent && obj.name == type))
