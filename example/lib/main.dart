@@ -1,81 +1,39 @@
-/*
- * just a example! client creator :)
- */
-
 import 'package:flutter/material.dart';
-import 'package:tdlib/td_client.dart';
+import 'package:provider/provider.dart';
+import 'package:tdlib_example/utils/router.dart';
+import 'package:tdlib_example/utils/const.dart';
+import 'package:tdlib_example/services/telegram_service.dart';
+import 'package:tdlib_example/services/locator.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  //SystemChrome.setSystemUIOverlayStyle(SystemUiOverlay.);
+
+  WidgetsFlutterBinding.ensureInitialized();
+  Provider.debugCheckInvalidValueType = null;
+  setupLocator();
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<TelegramService>(
+          create: (_) => TelegramService(lastRouteName: initRoute),
+          lazy: false,
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  MyApp();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TDLib Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter TDLib Example'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  /*
-  Here we go!
-   */
-  int clientId = 0;
-
-  void _clientCreator() async {
-    /*
-     Here we renew!
-   */
-    int oldClientId = clientId;
-    int newClientId = await TdClient.createClient();
-    setState(() {
-      clientId = newClientId;
-    });
-    // closing after renewing! just to get NEW client identifier.
-    if (oldClientId != 0) {
-      await TdClient.destroyClient(oldClientId);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'TDLib Client ID\n$clientId',
-            ),
-            Text(
-              '',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _clientCreator,
-        tooltip: 'creator',
-        child: Icon(Icons.cached),
-      ),
+      navigatorKey: locator<NavigationService>().navigatorKey,
+      title: 'Flutter Demo',
+      theme: ThemeData.dark(),
+      onGenerateRoute: Router.generateRoute,
+      initialRoute: initRoute,
     );
   }
 }
