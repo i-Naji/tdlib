@@ -5,11 +5,13 @@ import 'package:tdlib/src/tdapi/tdapi.dart'
 import 'dart:convert' show json;
 
 class TdClient {
-  static const _platform = const MethodChannel('channel/to/tdlib');
+  static const _platform = MethodChannel('channel/to/tdlib');
+  static const EventChannel _eventChannel =
+      EventChannel('channel/to/tdlib/receive');
 
   /// Creates a new instance of TDLib.
-  /// Returns Pointer to the created instance of TDLib.
-  /// Pointer 0 mean No client instance.
+  /// Returns client id for the created instance of TDLib.
+  /// 0 mean No client instance.
   static Future<int> createClient() async {
     int result;
     try {
@@ -29,7 +31,15 @@ class TdClient {
       await _platform.invokeMethod('clientSend',
           <String, dynamic>{'client': clientId, 'query': json.encode(event)});
 
-  /// Receives incoming updates and request responses from the TDLib client.
+  /// Events from the incoming updates request responses from the TDLib client by [clientId] identifier.
+  /// Must be call once per client.
+  static Stream<TdObject> clientEvents(int clientId) {
+    return _eventChannel
+        .receiveBroadcastStream(clientId)
+        .map((event) => convertToObject(event));
+  }
+
+  /// Receives incoming updates and request responses from the TDLib client by [clientId] identifier and [timeout].
   /// May be called from any thread, but shouldn't be called simultaneously from two different threads.
   /// Returned pointer will be deallocated by TDLib during next call to clientExecute or clientSend in the same thread, so it can't be used after that.
   static Future<TdObject> clientReceive(int clientId, double timeout) async =>

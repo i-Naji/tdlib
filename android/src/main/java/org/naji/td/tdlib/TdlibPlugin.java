@@ -1,23 +1,92 @@
 package org.naji.td.tdlib;
 
+import android.os.Looper;
+import android.os.Handler;
+import android.content.Context;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.drinkless.tdlib.JsonClient;
-import android.util.Log;
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugin.common.EventChannel.EventSink;
+import io.flutter.plugin.common.EventChannel.StreamHandler;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
+// todo: no context
 /** TdlibPlugin */
-public class TdlibPlugin implements MethodCallHandler {
+public class TdlibPlugin implements MethodCallHandler, StreamHandler, FlutterPlugin {
+  private static final String TDLIB_CHANNEL_NAME = "channel/to/tdlib";
+  private static final String TDLIB_RECEIVE_CHANNEL_NAME = "channel/to/tdlib/receive";
+  private MethodChannel methodChannel;
+  private EventChannel eventChannel;
+
+  private final HashMap<Long, Client> clients = new HashMap<Long, Client>();
+
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "channel/to/tdlib");
-    channel.setMethodCallHandler(new TdlibPlugin());
+    final TdlibPlugin plugin = new TdlibPlugin();
+    plugin.setupEventChannels(registrar.context(), registrar.messenger());
+  }
+
+  // MethodChannel.Result wrapper that responds on the platform thread.
+  private static class MethodResultWrapper implements Result {
+    private final Result methodResult;
+    private final Handler handler;
+
+    MethodResultWrapper(Result result) {
+      methodResult = result;
+      handler = new Handler(Looper.getMainLooper());
+    }
+
+    @Override
+    public void success(final Object result) {
+      handler.post(
+        new Runnable() {
+          @Override
+          public void run() {
+            methodResult.success(result);
+          }
+        }
+      );
+    }
+
+    @Override
+    public void error(
+            final String errorCode, final String errorMessage, final Object errorDetails) {
+      handler.post(
+        new Runnable() {
+          @Override
+          public void run() {
+            methodResult.error(errorCode, errorMessage, errorDetails);
+          }
+        }
+      );
+    }
+
+    @Override
+    public void notImplemented() {
+      handler.post(
+        new Runnable() {
+          @Override
+          public void run() {
+            methodResult.notImplemented();
+          }
+        }
+      );
+    }
   }
 
   @Override
-  public void onMethodCall(MethodCall call, Result result) {
+  public void onMethodCall(MethodCall call, Result rawResult) {
+    Result result = new MethodResultWrapper(rawResult);
+
     switch (call.method) {
       case "clientReceive": {
         String res = JsonClient.receive((long) call.argument("client"), (double) call.argument("timeout"));
@@ -46,5 +115,98 @@ public class TdlibPlugin implements MethodCallHandler {
         result.notImplemented();
         break;
     }
+  }
+
+  private static class Client implements Runnable {
+
+    private volatile boolean stopFlag = false;
+    private final Handler handler;
+    private final EventSink events;
+    private final long clientId;
+
+    Client(long clientId, EventSink events){
+      this.clientId = clientId;
+      this.events = events;
+      handler = new Handler(Looper.getMainLooper());
+    }
+
+    @Override
+    public void run() {
+      while (!stopFlag) {
+        final String res = JsonClient.receive((long) clientId, (double) 30.0);
+        handler.post(
+          new Runnable() {
+            @Override
+            public void run() {
+              events.success(res);
+            }
+          }
+        );
+      }
+    }
+
+    @Override
+    protected void finalize() throws Throwable{
+      close();
+      super.finalize();
+    }
+
+    public void close() {
+      stopFlag = true;
+    }
+  }
+
+  @Override
+  public void onListen(Object arguments, EventSink events) {
+    long clientId = ((Number) arguments).longValue();
+    Client client = clients.get(clientId);
+    if (client == null) {
+      client = new Client(clientId, events);
+      clients.put(clientId, client);
+      new Thread(client, String.format("TDLib Client#%s", clientId)).start();
+    } else {
+      events.error("UNAVAILABLE", "This Client Already is being listened to ", null);
+    }
+
+  }
+
+  @Override
+  public void onCancel(Object arguments) {
+    long clientId = ((Number) arguments).longValue();
+    Client client = clients.remove(clientId);
+    if (client != null) {
+      client.close();
+    }
+  }
+  
+  @Override
+  public void onDetachedFromEngine(FlutterPluginBinding binding) {
+    teardownEventChannels();
+  }
+
+  @Override
+  public void onAttachedToEngine(FlutterPluginBinding binding) {
+    final Context context = binding.getApplicationContext();
+    setupEventChannels(context, binding.getBinaryMessenger());
+  }
+
+  private void setupEventChannels(Context context, BinaryMessenger messenger) {
+    methodChannel = new MethodChannel(messenger, TDLIB_CHANNEL_NAME);
+    eventChannel  = new EventChannel(messenger, TDLIB_RECEIVE_CHANNEL_NAME);
+
+    eventChannel.setStreamHandler(this);
+    methodChannel.setMethodCallHandler(this);
+
+  }
+
+  private void teardownEventChannels() {
+    methodChannel.setMethodCallHandler(null);
+    methodChannel = null;
+    eventChannel.setStreamHandler(null);
+    eventChannel = null;
+    for (Map.Entry<Long, Client> entry : clients.entrySet()) {
+      entry.getValue().close();
+    }
+    clients.clear();
   }
 }
