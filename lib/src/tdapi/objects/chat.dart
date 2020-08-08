@@ -4,7 +4,7 @@ class Chat extends TdObject {
   int id;
   ChatType type;
   String title;
-  ChatPhoto photo;
+  ChatPhotoInfo photo;
   ChatPermissions permissions;
   Message lastMessage;
   List<ChatPosition> positions;
@@ -49,7 +49,7 @@ class Chat extends TdObject {
   /// [pinnedMessageId] Identifier of the pinned message in the chat; 0 if none. 
   /// [replyMarkupMessageId] Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat. 
   /// [draftMessage] A draft of a message in the chat; may be null. 
-  /// [clientData] Contains client-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
+  /// [clientData] Contains application-specific data associated with the chat. (For example, the chat scroll position or local chat notification settings can be stored here.) Persistent if the message database is used
   Chat({this.id,
     this.type,
     this.title,
@@ -79,7 +79,7 @@ class Chat extends TdObject {
     this.id = json['id'];
     this.type = ChatType.fromJson(json['type'] ?? <String, dynamic>{});
     this.title = json['title'];
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
+    this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.permissions = ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
     this.lastMessage = Message.fromJson(json['last_message'] ?? <String, dynamic>{});
     this.positions = List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{})).toList());

@@ -35,7 +35,7 @@ class Message extends TdObject {
   /// [sendingState] Information about the sending state of the message; may be null. 
   /// [schedulingState] Information about the scheduling state of the message; may be null. 
   /// [isOutgoing] True, if the message is outgoing. 
-  /// [canBeEdited] True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the client. 
+  /// [canBeEdited] True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application. 
   /// [canBeForwarded] True, if the message can be forwarded. 
   /// [canBeDeletedOnlyForSelf] True, if the message can be deleted only for the current user while other users will continue to see it. 
   /// [canBeDeletedForAllUsers] True, if the message can be deleted for all users. 

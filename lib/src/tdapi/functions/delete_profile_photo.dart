@@ -4,7 +4,7 @@ class DeleteProfilePhoto extends TdFunction {
   int profilePhotoId;
   dynamic extra;
 
-  /// Deletes a profile photo. If something changes, updateUser will be sent. 
+  /// Deletes a profile photo. 
   /// [profilePhotoId] Identifier of the profile photo to delete
   DeleteProfilePhoto({this.profilePhotoId});
 

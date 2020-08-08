@@ -7,7 +7,7 @@ class AcceptCall extends TdFunction {
 
   /// Accepts an incoming call. 
   /// [callId] Call identifier . 
-  /// [protocol] Description of the call protocols supported by the client
+  /// [protocol] Description of the call protocols supported by the application
   AcceptCall({this.callId,
     this.protocol});
 

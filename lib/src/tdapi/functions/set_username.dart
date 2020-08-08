@@ -4,7 +4,7 @@ class SetUsername extends TdFunction {
   String username;
   dynamic extra;
 
-  /// Changes the username of the current user. If something changes, updateUser will be sent. 
+  /// Changes the username of the current user. 
   /// [username] The new value of the username. Use an empty string to remove the username
   SetUsername({this.username});
 

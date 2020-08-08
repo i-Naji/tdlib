@@ -5,7 +5,7 @@ class SetChatClientData extends TdFunction {
   String clientData;
   dynamic extra;
 
-  /// Changes client data associated with a chat. 
+  /// Changes application-specific data associated with a chat. 
   /// [chatId] Chat identifier . 
   /// [clientData] New value of client_data
   SetChatClientData({this.chatId,

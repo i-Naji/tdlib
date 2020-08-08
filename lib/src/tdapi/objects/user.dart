@@ -20,12 +20,12 @@ class User extends TdObject {
   dynamic extra;
 
   /// Represents a user. 
-  /// [id] User identifier . 
-  /// [firstName] First name of the user . 
-  /// [lastName] Last name of the user . 
+  /// [id] User identifier. 
+  /// [firstName] First name of the user. 
+  /// [lastName] Last name of the user. 
   /// [username] Username of the user. 
   /// [phoneNumber] Phone number of the user. 
-  /// [status] Current online status of the user . 
+  /// [status] Current online status of the user. 
   /// [profilePhoto] Profile photo of the user; may be null. 
   /// [isContact] The user is a contact of the current user. 
   /// [isMutualContact] The user is a contact of the current user and the current user is a contact of the user. 
@@ -34,7 +34,7 @@ class User extends TdObject {
   /// [restrictionReason] If non-empty, it contains a human-readable description of the reason why access to this user must be restricted. 
   /// [isScam] True, if many users reported this user as a scam. 
   /// [haveAccess] If false, the user is inaccessible, and the only information known about the user is inside this class. It can't be passed to any method except GetUser. 
-  /// [type] Type of the user . 
+  /// [type] Type of the user. 
   /// [languageCode] IETF language tag of the user's language; only available to bots
   User({this.id,
     this.firstName,

@@ -496,8 +496,8 @@ class ChatEventUsernameChanged extends ChatEventAction {
 }
 
 class ChatEventPhotoChanged extends ChatEventAction {
-  Photo oldPhoto;
-  Photo newPhoto;
+  ChatPhoto oldPhoto;
+  ChatPhoto newPhoto;
 
   /// The chat photo was changed. 
   /// [oldPhoto] Previous chat photo value; may be null . 
@@ -507,8 +507,8 @@ class ChatEventPhotoChanged extends ChatEventAction {
 
   /// Parse from a json
   ChatEventPhotoChanged.fromJson(Map<String, dynamic> json)  {
-    this.oldPhoto = Photo.fromJson(json['old_photo'] ?? <String, dynamic>{});
-    this.newPhoto = Photo.fromJson(json['new_photo'] ?? <String, dynamic>{});
+    this.oldPhoto = ChatPhoto.fromJson(json['old_photo'] ?? <String, dynamic>{});
+    this.newPhoto = ChatPhoto.fromJson(json['new_photo'] ?? <String, dynamic>{});
   }
 
   @override

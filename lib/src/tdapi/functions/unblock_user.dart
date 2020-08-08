@@ -4,7 +4,7 @@ class UnblockUser extends TdFunction {
   int userId;
   dynamic extra;
 
-  /// Removes a user from the blacklist. 
+  /// Unblocks a user. 
   /// [userId] User identifier
   UnblockUser({this.userId});
 

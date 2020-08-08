@@ -7,7 +7,7 @@ class CreateCall extends TdFunction {
 
   /// Creates a new call. 
   /// [userId] Identifier of the user to be called . 
-  /// [protocol] Description of the call protocols supported by the client
+  /// [protocol] Description of the call protocols supported by the application
   CreateCall({this.userId,
     this.protocol});
 

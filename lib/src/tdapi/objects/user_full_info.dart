@@ -1,6 +1,7 @@
 part of '../tdapi.dart';
 
 class UserFullInfo extends TdObject {
+  ChatPhoto photo;
   bool isBlocked;
   bool canBeCalled;
   bool hasPrivateCalls;
@@ -11,16 +12,18 @@ class UserFullInfo extends TdObject {
   BotInfo botInfo;
   dynamic extra;
 
-  /// Contains full information about a user (except the full list of profile photos). 
-  /// [isBlocked] True, if the user is blacklisted by the current user. 
+  /// Contains full information about a user. 
+  /// [photo] User profile photo; may be null. 
+  /// [isBlocked] True, if the user is blocked by the current user. 
   /// [canBeCalled] True, if the user can be called. 
   /// [hasPrivateCalls] True, if the user can't be called due to their privacy settings. 
   /// [needPhoneNumberPrivacyException] True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used. 
   /// [bio] A short user bio. 
-  /// [shareText] For bots, the text that is included with the link when users share the bot . 
-  /// [groupInCommonCount] Number of group chats where both the other user and the current user are a member; 0 for the current user . 
+  /// [shareText] For bots, the text that is included with the link when users share the bot. 
+  /// [groupInCommonCount] Number of group chats where both the other user and the current user are a member; 0 for the current user. 
   /// [botInfo] If the user is a bot, information about the bot; may be null
-  UserFullInfo({this.isBlocked,
+  UserFullInfo({this.photo,
+    this.isBlocked,
     this.canBeCalled,
     this.hasPrivateCalls,
     this.needPhoneNumberPrivacyException,
@@ -31,6 +34,7 @@ class UserFullInfo extends TdObject {
 
   /// Parse from a json
   UserFullInfo.fromJson(Map<String, dynamic> json)  {
+    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.isBlocked = json['is_blocked'];
     this.canBeCalled = json['can_be_called'];
     this.hasPrivateCalls = json['has_private_calls'];
@@ -46,6 +50,7 @@ class UserFullInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
       "is_blocked": this.isBlocked,
       "can_be_called": this.canBeCalled,
       "has_private_calls": this.hasPrivateCalls,

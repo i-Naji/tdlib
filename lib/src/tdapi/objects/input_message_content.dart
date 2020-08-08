@@ -224,20 +224,24 @@ class InputMessageAudio extends InputMessageContent {
 class InputMessageDocument extends InputMessageContent {
   InputFile document;
   InputThumbnail thumbnail;
+  bool forceFile;
   FormattedText caption;
 
   /// A document message (general file). 
   /// [document] Document to be sent . 
   /// [thumbnail] Document thumbnail, if available . 
+  /// [forceFile] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats . 
   /// [caption] Document caption; 0-GetOption("message_caption_length_max") characters
   InputMessageDocument({this.document,
     this.thumbnail,
+    this.forceFile,
     this.caption});
 
   /// Parse from a json
   InputMessageDocument.fromJson(Map<String, dynamic> json)  {
     this.document = InputFile.fromJson(json['document'] ?? <String, dynamic>{});
     this.thumbnail = InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.forceFile = json['force_file'];
     this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
@@ -247,6 +251,7 @@ class InputMessageDocument extends InputMessageContent {
       "@type": CONSTRUCTOR,
       "document": this.document.toJson(),
       "thumbnail": this.thumbnail.toJson(),
+      "force_file": this.forceFile,
       "caption": this.caption.toJson(),
     };
   }

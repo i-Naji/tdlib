@@ -111,7 +111,7 @@ class ConnectionStateConnecting extends ConnectionState {
 class ConnectionStateUpdating extends ConnectionState {
   
 
-  /// Downloading data received while the client was offline
+  /// Downloading data received while the application was offline
   ConnectionStateUpdating();
 
   /// Parse from a json

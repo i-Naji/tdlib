@@ -1,17 +1,21 @@
+## 1.2.0
+* Update tdlib api to **v1.6.7**
+* new `clientEvents` method for `TdClient`, Stream events from the incoming updates and request responses from the TDLib client.
+
 ## 1.1.1
-* now getConstructor is not static
+* Now getConstructor is not static
 
 ## 1.1.0
-* fix typo in generator
-* final step for example issue
+* Fix typo in generator
+* Final step for example issue
 
 ## 1.0.4
-* Update tdlib api to v1.6.6
-* Remove ``setLogVerbosityLevel`` method.
-* Add [Generator Script](\generator) that generates _tdapi_
+* Update tdlib api to **v1.6.6**
+* Remove `setLogVerbosityLevel` method.
+* Add [Generator Script](\generator) that generates **tdapi**
 
 ## 1.0.2
-* Update tdlib api to v1.5.1
+* Update tdlib api to **v1.5.1**
 * TdClient static methods
 * Rollback _client identifier_ for `clientExecute` method
 

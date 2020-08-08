@@ -74,6 +74,7 @@ class Update extends TdObject {
   /// * UpdateUsersNearby
   /// * UpdateDiceEmojis
   /// * UpdateAnimationSearchParameters
+  /// * UpdateSuggestedActions
   /// * UpdateNewInlineQuery
   /// * UpdateNewChosenInlineResult
   /// * UpdateNewCallbackQuery
@@ -220,6 +221,8 @@ class Update extends TdObject {
         return UpdateDiceEmojis.fromJson(json);
       case UpdateAnimationSearchParameters.CONSTRUCTOR:
         return UpdateAnimationSearchParameters.fromJson(json);
+      case UpdateSuggestedActions.CONSTRUCTOR:
+        return UpdateSuggestedActions.fromJson(json);
       case UpdateNewInlineQuery.CONSTRUCTOR:
         return UpdateNewInlineQuery.fromJson(json);
       case UpdateNewChosenInlineResult.CONSTRUCTOR:
@@ -618,7 +621,7 @@ class UpdateMessageLiveLocationViewed extends Update {
   int messageId;
   dynamic extra;
 
-  /// A message with a live location was viewed. When the update is received, the client is supposed to update the live location. 
+  /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location. 
   /// [chatId] Identifier of the chat with the live location message. 
   /// [messageId] Identifier of the message with live location
   UpdateMessageLiveLocationViewed({this.chatId,
@@ -650,7 +653,7 @@ class UpdateNewChat extends Update {
   Chat chat;
   dynamic extra;
 
-  /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the client. The chat field changes will be reported through separate updates. 
+  /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates. 
   /// [chat] The chat
   UpdateNewChat({this.chat});
 
@@ -709,7 +712,7 @@ class UpdateChatTitle extends Update {
 
 class UpdateChatPhoto extends Update {
   int chatId;
-  ChatPhoto photo;
+  ChatPhotoInfo photo;
   dynamic extra;
 
   /// A chat photo was changed. 
@@ -721,7 +724,7 @@ class UpdateChatPhoto extends Update {
   /// Parse from a json
   UpdateChatPhoto.fromJson(Map<String, dynamic> json)  {
     this.chatId = json['chat_id'];
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
+    this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.extra = json['@extra'];
   }
 
@@ -1586,7 +1589,7 @@ class UpdateUser extends Update {
   User user;
   dynamic extra;
 
-  /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the client. 
+  /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application. 
   /// [user] New data about the user
   UpdateUser({this.user});
 
@@ -1614,7 +1617,7 @@ class UpdateBasicGroup extends Update {
   BasicGroup basicGroup;
   dynamic extra;
 
-  /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the client. 
+  /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application. 
   /// [basicGroup] New data about the group
   UpdateBasicGroup({this.basicGroup});
 
@@ -1642,7 +1645,7 @@ class UpdateSupergroup extends Update {
   Supergroup supergroup;
   dynamic extra;
 
-  /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the client. 
+  /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application. 
   /// [supergroup] New data about the supergroup
   UpdateSupergroup({this.supergroup});
 
@@ -1670,7 +1673,7 @@ class UpdateSecretChat extends Update {
   SecretChat secretChat;
   dynamic extra;
 
-  /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the client. 
+  /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application. 
   /// [secretChat] New data about the secret chat
   UpdateSecretChat({this.secretChat});
 
@@ -1798,7 +1801,7 @@ class UpdateServiceNotification extends Update {
   MessageContent content;
   dynamic extra;
 
-  /// Service notification from the server. Upon receiving this the client must show a popup with the content of the notification. 
+  /// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification. 
   /// [type] Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" should be shown under notification; if user presses the second, all local data should be destroyed using Destroy method. 
   /// [content] Notification content
   UpdateServiceNotification({this.type,
@@ -1861,11 +1864,11 @@ class UpdateFileGenerationStart extends Update {
   String conversion;
   dynamic extra;
 
-  /// The file generation process needs to be started by the client. 
+  /// The file generation process needs to be started by the application. 
   /// [generationId] Unique identifier for the generation process. 
   /// [originalPath] The path to a file from which a new file is generated; may be empty. 
   /// [destinationPath] The path to a file that should be created and where the new file should be generated. 
-  /// [conversion] String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the client
+  /// [conversion] String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the application
   UpdateFileGenerationStart({this.generationId,
     this.originalPath,
     this.destinationPath,
@@ -2424,7 +2427,7 @@ class UpdateUsersNearby extends Update {
   List<ChatNearby> usersNearby;
   dynamic extra;
 
-  /// The list of users nearby has changed. The update is sent only 60 seconds after a successful searchChatsNearby request. 
+  /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request. 
   /// [usersNearby] The new list of users nearby
   UpdateUsersNearby({this.usersNearby});
 
@@ -2509,6 +2512,39 @@ class UpdateAnimationSearchParameters extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class UpdateSuggestedActions extends Update {
+  List<SuggestedAction> addedActions;
+  List<SuggestedAction> removedActions;
+  dynamic extra;
+
+  /// The list of suggested to the user actions has changed. 
+  /// [addedActions] Added suggested actions . 
+  /// [removedActions] Removed suggested actions
+  UpdateSuggestedActions({this.addedActions,
+    this.removedActions});
+
+  /// Parse from a json
+  UpdateSuggestedActions.fromJson(Map<String, dynamic> json)  {
+    this.addedActions = List<SuggestedAction>.from((json['added_actions'] ?? []).map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{})).toList());
+    this.removedActions = List<SuggestedAction>.from((json['removed_actions'] ?? []).map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{})).toList());
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "added_actions": this.addedActions.map((i) => i.toJson()).toList(),
+      "removed_actions": this.removedActions.map((i) => i.toJson()).toList(),
+    };
+  }
+
+  static const CONSTRUCTOR = 'updateSuggestedActions';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class UpdateNewInlineQuery extends Update {
   int id;
   int senderUserId;
@@ -2520,7 +2556,7 @@ class UpdateNewInlineQuery extends Update {
   /// A new incoming inline query; for bots only. 
   /// [id] Unique query identifier . 
   /// [senderUserId] Identifier of the user who sent the query . 
-  /// [userLocation] User location, provided by the client; may be null. 
+  /// [userLocation] User location; may be null. 
   /// [query] Text of the query. 
   /// [offset] Offset of the first entry to return
   UpdateNewInlineQuery({this.id,
@@ -2567,7 +2603,7 @@ class UpdateNewChosenInlineResult extends Update {
 
   /// The user has chosen a result of an inline query; for bots only. 
   /// [senderUserId] Identifier of the user who sent the query . 
-  /// [userLocation] User location, provided by the client; may be null. 
+  /// [userLocation] User location; may be null. 
   /// [query] Text of the query. 
   /// [resultId] Identifier of the chosen result . 
   /// [inlineMessageId] Identifier of the sent inline message, if known

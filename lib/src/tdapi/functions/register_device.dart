@@ -7,7 +7,7 @@ class RegisterDevice extends TdFunction {
 
   /// Registers the currently used device for receiving push notifications. Returns a globally unique identifier of the push notification subscription. 
   /// [deviceToken] Device token . 
-  /// [otherUserIds] List of user identifiers of other users currently using the client
+  /// [otherUserIds] List of user identifiers of other users currently using the application
   RegisterDevice({this.deviceToken,
     this.otherUserIds});
 

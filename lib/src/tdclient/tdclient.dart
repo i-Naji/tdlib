@@ -31,7 +31,7 @@ class TdClient {
       await _platform.invokeMethod('clientSend',
           <String, dynamic>{'client': clientId, 'query': json.encode(event)});
 
-  /// Events from the incoming updates request responses from the TDLib client by [clientId] identifier.
+  /// Events from the incoming updates and request responses from the TDLib client by [clientId] identifier.
   /// Must be call once per client.
   static Stream<TdObject> clientEvents(int clientId) {
     return _eventChannel

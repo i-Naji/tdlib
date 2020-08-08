@@ -1,11 +1,11 @@
 part of '../tdapi.dart';
 
 class SetProfilePhoto extends TdFunction {
-  InputFile photo;
+  InputChatPhoto photo;
   dynamic extra;
 
-  /// Uploads a new profile photo for the current user. If something changes, updateUser will be sent. 
-  /// [photo] Profile photo to set. inputFileId and inputFileRemote may still be unsupported
+  /// Changes a profile photo for the current user. 
+  /// [photo] Profile photo to set
   SetProfilePhoto({this.photo});
 
   /// Parse from a json

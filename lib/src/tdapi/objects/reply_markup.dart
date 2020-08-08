@@ -42,7 +42,7 @@ class ReplyMarkup extends TdObject {
 class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   bool isPersonal;
 
-  /// Instructs clients to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent. 
+  /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent. 
   /// [isPersonal] True, if the keyboard is removed only for the mentioned users or the target user of a reply
   ReplyMarkupRemoveKeyboard({this.isPersonal});
 
@@ -68,7 +68,7 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
 class ReplyMarkupForceReply extends ReplyMarkup {
   bool isPersonal;
 
-  /// Instructs clients to force a reply to this message. 
+  /// Instructs application to force a reply to this message. 
   /// [isPersonal] True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply
   ReplyMarkupForceReply({this.isPersonal});
 
@@ -99,8 +99,8 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
 
   /// Contains a custom keyboard layout to quickly reply to bots. 
   /// [rows] A list of rows of bot keyboard buttons. 
-  /// [resizeKeyboard] True, if the client needs to resize the keyboard vertically. 
-  /// [oneTime] True, if the client needs to hide the keyboard after use. 
+  /// [resizeKeyboard] True, if the application needs to resize the keyboard vertically. 
+  /// [oneTime] True, if the application needs to hide the keyboard after use. 
   /// [isPersonal] True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
   ReplyMarkupShowKeyboard({this.rows,
     this.resizeKeyboard,

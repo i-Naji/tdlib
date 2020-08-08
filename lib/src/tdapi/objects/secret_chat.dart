@@ -17,7 +17,7 @@ class SecretChat extends TdObject {
   /// [isOutbound] True, if the chat was created by the current user; otherwise false. 
   /// [ttl] Current message Time To Live setting (self-destruct timer) for the chat, in seconds. 
   /// [keyHash] Hash of the currently used key for comparison with the hash of the chat partner's key. This is a string of 36 little-endian bytes, which must be split into groups of 2 bits, each denoting a pixel of one of 4 colors FFFFFF, D5E6F3, 2D5775, and 2F99C9.. The pixels must be used to make a 12x12 square image filled from left to right, top to bottom. Alternatively, the first 32 bytes of the hash can be converted to the hexadecimal format and printed as 32 2-digit hex numbers. 
-  /// [layer] Secret chat layer; determines features supported by the other client. Video notes are supported if the layer
+  /// [layer] Secret chat layer; determines features supported by the chat partner's application. Video notes are supported if the layer
   SecretChat({this.id,
     this.userId,
     this.state,

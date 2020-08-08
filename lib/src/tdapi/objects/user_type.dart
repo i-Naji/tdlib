@@ -94,7 +94,7 @@ class UserTypeBot extends UserType {
   /// [canJoinGroups] True, if the bot can be invited to basic group and supergroup chats. 
   /// [canReadAllGroupMessages] True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages. 
   /// [isInline] True, if the bot supports inline queries. 
-  /// [inlineQueryPlaceholder] Placeholder for inline queries (displayed on the client input field) . 
+  /// [inlineQueryPlaceholder] Placeholder for inline queries (displayed on the application input field) . 
   /// [needLocation] True, if the location of the user should be sent with every inline query to this bot
   UserTypeBot({this.canJoinGroups,
     this.canReadAllGroupMessages,

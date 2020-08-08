@@ -42,7 +42,7 @@ class AuthenticationCodeType extends TdObject {
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   int length;
 
-  /// An authentication code is delivered via a private Telegram message, which can be viewed in another client. 
+  /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session. 
   /// [length] Length of the code
   AuthenticationCodeTypeTelegramMessage({this.length});
 

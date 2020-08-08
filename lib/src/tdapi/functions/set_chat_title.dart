@@ -5,7 +5,7 @@ class SetChatTitle extends TdFunction {
   String title;
   dynamic extra;
 
-  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. The title will not be changed until the request to the server has been completed. 
+  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. 
   /// [chatId] Chat identifier. 
   /// [title] New title of the chat; 1-128 characters
   SetChatTitle({this.chatId,

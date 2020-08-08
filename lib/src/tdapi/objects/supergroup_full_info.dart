@@ -1,6 +1,7 @@
 part of '../tdapi.dart';
 
 class SupergroupFullInfo extends TdObject {
+  ChatPhoto photo;
   String description;
   int memberCount;
   int administratorCount;
@@ -23,6 +24,7 @@ class SupergroupFullInfo extends TdObject {
   dynamic extra;
 
   /// Contains full information about a supergroup or channel. 
+  /// [photo] Chat photo; may be null. 
   /// [description] Supergroup or channel description. 
   /// [memberCount] Number of members in the supergroup or channel; 0 if unknown. 
   /// [administratorCount] Number of privileged users in the supergroup or channel; 0 if unknown. 
@@ -42,7 +44,8 @@ class SupergroupFullInfo extends TdObject {
   /// [inviteLink] Invite link for this chat. 
   /// [upgradedFromBasicGroupId] Identifier of the basic group from which supergroup was upgraded; 0 if none. 
   /// [upgradedFromMaxMessageId] Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none
-  SupergroupFullInfo({this.description,
+  SupergroupFullInfo({this.photo,
+    this.description,
     this.memberCount,
     this.administratorCount,
     this.restrictedCount,
@@ -64,6 +67,7 @@ class SupergroupFullInfo extends TdObject {
 
   /// Parse from a json
   SupergroupFullInfo.fromJson(Map<String, dynamic> json)  {
+    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.description = json['description'];
     this.memberCount = json['member_count'];
     this.administratorCount = json['administrator_count'];
@@ -90,6 +94,7 @@ class SupergroupFullInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
+      "photo": this.photo.toJson(),
       "description": this.description,
       "member_count": this.memberCount,
       "administrator_count": this.administratorCount,

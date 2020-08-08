@@ -29,7 +29,7 @@ class TdlibParameters extends TdObject {
   /// [apiHash] Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org. 
   /// [systemLanguageCode] IETF language tag of the user's operating system language; must be non-empty. 
   /// [deviceModel] Model of the device the application is being run on; must be non-empty. 
-  /// [systemVersion] Version of the operating system the application is being run on; must be non-empty. 
+  /// [systemVersion] Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib. 
   /// [applicationVersion] Application version; must be non-empty. 
   /// [enableStorageOptimizer] If set to true, old files will automatically be deleted. 
   /// [ignoreFileNames] If set to true, original file names will be ignored. Otherwise, downloaded files will be saved under names as close as possible to the original name

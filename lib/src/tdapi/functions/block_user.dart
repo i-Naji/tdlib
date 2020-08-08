@@ -4,7 +4,7 @@ class BlockUser extends TdFunction {
   int userId;
   dynamic extra;
 
-  /// Adds a user to the blacklist. 
+  /// Blocks a user. 
   /// [userId] User identifier
   BlockUser({this.userId});
 

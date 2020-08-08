@@ -871,7 +871,7 @@ class PageBlockSlideshow extends PageBlock {
 
 class PageBlockChatLink extends PageBlock {
   String title;
-  ChatPhoto photo;
+  ChatPhotoInfo photo;
   String username;
 
   /// A link to a chat. 
@@ -885,7 +885,7 @@ class PageBlockChatLink extends PageBlock {
   /// Parse from a json
   PageBlockChatLink.fromJson(Map<String, dynamic> json)  {
     this.title = json['title'];
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
+    this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.username = json['username'];
   }
 

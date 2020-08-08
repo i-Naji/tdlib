@@ -44,15 +44,17 @@ part 'objects/venue.dart';
 part 'objects/game.dart';
 part 'objects/poll.dart';
 part 'objects/profile_photo.dart';
-part 'objects/chat_photo.dart';
+part 'objects/chat_photo_info.dart';
 part 'objects/user_type.dart';
 part 'objects/bot_command.dart';
 part 'objects/bot_info.dart';
 part 'objects/chat_location.dart';
+part 'objects/animated_chat_photo.dart';
+part 'objects/chat_photo.dart';
+part 'objects/chat_photos.dart';
+part 'objects/input_chat_photo.dart';
 part 'objects/user.dart';
 part 'objects/user_full_info.dart';
-part 'objects/user_profile_photo.dart';
-part 'objects/user_profile_photos.dart';
 part 'objects/users.dart';
 part 'objects/chat_administrator.dart';
 part 'objects/chat_administrators.dart';
@@ -234,6 +236,7 @@ part 'objects/top_chat_category.dart';
 part 'objects/t_me_url_type.dart';
 part 'objects/t_me_url.dart';
 part 'objects/t_me_urls.dart';
+part 'objects/suggested_action.dart';
 part 'objects/count.dart';
 part 'objects/text.dart';
 part 'objects/seconds.dart';
@@ -246,7 +249,10 @@ part 'objects/input_sticker.dart';
 part 'objects/date_range.dart';
 part 'objects/statistics_value.dart';
 part 'objects/statistics_graph.dart';
-part 'objects/chat_statistics_message_interaction_counters.dart';
+part 'objects/chat_statistics_message_interaction_info.dart';
+part 'objects/chat_statistics_message_sender_info.dart';
+part 'objects/chat_statistics_administrator_actions_info.dart';
+part 'objects/chat_statistics_inviter_info.dart';
 part 'objects/chat_statistics.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
@@ -372,6 +378,7 @@ part 'functions/get_json_string.dart';
 part 'functions/set_poll_answer.dart';
 part 'functions/get_poll_voters.dart';
 part 'functions/stop_poll.dart';
+part 'functions/hide_suggested_action.dart';
 part 'functions/get_login_url_info.dart';
 part 'functions/get_login_url.dart';
 part 'functions/get_inline_query_results.dart';
@@ -714,7 +721,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'game': (d) => Game.fromJson(d),
     'poll': (d) => Poll.fromJson(d),
     'profilePhoto': (d) => ProfilePhoto.fromJson(d),
-    'chatPhoto': (d) => ChatPhoto.fromJson(d),
+    'chatPhotoInfo': (d) => ChatPhotoInfo.fromJson(d),
     'userType': (d) => UserType.fromJson(d),
     'userTypeRegular': (d) => UserTypeRegular.fromJson(d),
     'userTypeDeleted': (d) => UserTypeDeleted.fromJson(d),
@@ -723,10 +730,15 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'botCommand': (d) => BotCommand.fromJson(d),
     'botInfo': (d) => BotInfo.fromJson(d),
     'chatLocation': (d) => ChatLocation.fromJson(d),
+    'animatedChatPhoto': (d) => AnimatedChatPhoto.fromJson(d),
+    'chatPhoto': (d) => ChatPhoto.fromJson(d),
+    'chatPhotos': (d) => ChatPhotos.fromJson(d),
+    'inputChatPhoto': (d) => InputChatPhoto.fromJson(d),
+    'inputChatPhotoPrevious': (d) => InputChatPhotoPrevious.fromJson(d),
+    'inputChatPhotoStatic': (d) => InputChatPhotoStatic.fromJson(d),
+    'inputChatPhotoAnimation': (d) => InputChatPhotoAnimation.fromJson(d),
     'user': (d) => User.fromJson(d),
     'userFullInfo': (d) => UserFullInfo.fromJson(d),
-    'userProfilePhoto': (d) => UserProfilePhoto.fromJson(d),
-    'userProfilePhotos': (d) => UserProfilePhotos.fromJson(d),
     'users': (d) => Users.fromJson(d),
     'chatAdministrator': (d) => ChatAdministrator.fromJson(d),
     'chatAdministrators': (d) => ChatAdministrators.fromJson(d),
@@ -1398,6 +1410,9 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'tMeUrlTypeStickerSet': (d) => TMeUrlTypeStickerSet.fromJson(d),
     'tMeUrl': (d) => TMeUrl.fromJson(d),
     'tMeUrls': (d) => TMeUrls.fromJson(d),
+    'suggestedAction': (d) => SuggestedAction.fromJson(d),
+    'suggestedActionEnableArchiveAndMuteNewChats': (d) => SuggestedActionEnableArchiveAndMuteNewChats.fromJson(d),
+    'suggestedActionCheckPhoneNumber': (d) => SuggestedActionCheckPhoneNumber.fromJson(d),
     'count': (d) => Count.fromJson(d),
     'text': (d) => Text.fromJson(d),
     'seconds': (d) => Seconds.fromJson(d),
@@ -1420,8 +1435,13 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'statisticsGraphData': (d) => StatisticsGraphData.fromJson(d),
     'statisticsGraphAsync': (d) => StatisticsGraphAsync.fromJson(d),
     'statisticsGraphError': (d) => StatisticsGraphError.fromJson(d),
-    'chatStatisticsMessageInteractionCounters': (d) => ChatStatisticsMessageInteractionCounters.fromJson(d),
+    'chatStatisticsMessageInteractionInfo': (d) => ChatStatisticsMessageInteractionInfo.fromJson(d),
+    'chatStatisticsMessageSenderInfo': (d) => ChatStatisticsMessageSenderInfo.fromJson(d),
+    'chatStatisticsAdministratorActionsInfo': (d) => ChatStatisticsAdministratorActionsInfo.fromJson(d),
+    'chatStatisticsInviterInfo': (d) => ChatStatisticsInviterInfo.fromJson(d),
     'chatStatistics': (d) => ChatStatistics.fromJson(d),
+    'chatStatisticsSupergroup': (d) => ChatStatisticsSupergroup.fromJson(d),
+    'chatStatisticsChannel': (d) => ChatStatisticsChannel.fromJson(d),
     'update': (d) => Update.fromJson(d),
     'updateAuthorizationState': (d) => UpdateAuthorizationState.fromJson(d),
     'updateNewMessage': (d) => UpdateNewMessage.fromJson(d),
@@ -1490,6 +1510,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'updateUsersNearby': (d) => UpdateUsersNearby.fromJson(d),
     'updateDiceEmojis': (d) => UpdateDiceEmojis.fromJson(d),
     'updateAnimationSearchParameters': (d) => UpdateAnimationSearchParameters.fromJson(d),
+    'updateSuggestedActions': (d) => UpdateSuggestedActions.fromJson(d),
     'updateNewInlineQuery': (d) => UpdateNewInlineQuery.fromJson(d),
     'updateNewChosenInlineResult': (d) => UpdateNewChosenInlineResult.fromJson(d),
     'updateNewCallbackQuery': (d) => UpdateNewCallbackQuery.fromJson(d),

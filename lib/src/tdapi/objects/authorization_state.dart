@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class AuthorizationState extends TdObject {
   
 
-  /// Represents the current authorization state of the client
+  /// Represents the current authorization state of the TDLib client
   AuthorizationState();
 
   /// a AuthorizationState return type can be :

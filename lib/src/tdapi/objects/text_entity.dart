@@ -6,7 +6,7 @@ class TextEntity extends TdObject {
   TextEntityType type;
 
   /// Represents a part of the text that needs to be formatted in some unusual way. 
-  /// [offset] Offset of the entity in UTF-16 code units . 
+  /// [offset] Offset of the entity, in UTF-16 code units . 
   /// [length] Length of the entity, in UTF-16 code units . 
   /// [type] Type of the entity
   TextEntity({this.offset,

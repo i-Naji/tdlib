@@ -860,7 +860,7 @@ class MessageChatChangeTitle extends MessageContent {
 }
 
 class MessageChatChangePhoto extends MessageContent {
-  Photo photo;
+  ChatPhoto photo;
 
   /// An updated chat photo. 
   /// [photo] New chat photo
@@ -868,7 +868,7 @@ class MessageChatChangePhoto extends MessageContent {
 
   /// Parse from a json
   MessageChatChangePhoto.fromJson(Map<String, dynamic> json)  {
-    this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
+    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
   }
 
   @override
@@ -1379,7 +1379,7 @@ class MessagePassportDataReceived extends MessageContent {
 class MessageUnsupported extends MessageContent {
   
 
-  /// Message content that is not supported by the client
+  /// Message content that is not supported in the current TDLib version
   MessageUnsupported();
 
   /// Parse from a json

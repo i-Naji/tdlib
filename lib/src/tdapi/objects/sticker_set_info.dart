@@ -26,7 +26,7 @@ class StickerSetInfo extends TdObject {
   /// [isMasks] True, if the stickers in the set are masks . 
   /// [isViewed] True for already viewed trending sticker sets. 
   /// [size] Total number of stickers in the set. 
-  /// [covers] Contains up to the first 5 stickers from the set, depending on the context. If the client needs more stickers the full set should be requested
+  /// [covers] Contains up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full set should be requested
   StickerSetInfo({this.id,
     this.title,
     this.name,
