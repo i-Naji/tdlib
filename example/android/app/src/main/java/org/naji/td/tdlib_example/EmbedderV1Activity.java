@@ -2,12 +2,12 @@ package org.naji.td.tdlib_example;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import org.naji.td.tdlib.TdlibPlugin;
 
-public class MainActivity extends FlutterActivity {
+public class EmbedderV1Activity extends FlutterActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    GeneratedPluginRegistrant.registerWith(this);
+    TdlibPlugin.registerWith(registrarFor("org.naji.td.tdlib.TdlibPlugin"));
   }
 }
