@@ -40,7 +40,8 @@ class TelegramService extends ChangeNotifier {
 
     _client = await TdClient.createClient();
     // ignore: unused_local_variable
-    PermissionStatus storagePermission = await Permission.storage.request(); // todo : handel storage permission
+    PermissionStatus storagePermission =
+        await Permission.storage.request(); // todo : handel storage permission
     /*try {
       PermissionStatus storagePermission =
           await SimplePermissions.requestPermission(
@@ -50,7 +51,7 @@ class TelegramService extends ChangeNotifier {
     }
     */
     appDocDir = await getApplicationDocumentsDirectory();
-    appExtDir = await getExternalStorageDirectory();
+    appExtDir = await getTemporaryDirectory();
 
     //execute(SetLogStream(logStream: LogStreamEmpty()));
     await execute(SetLogVerbosityLevel(newVerbosityLevel: 1));
@@ -173,9 +174,9 @@ class TelegramService extends ChangeNotifier {
     await TdClient.destroyClient(_client);
   }
 
-
   /// Sends request to the TDLib client. May be called from any thread.
-  Future<TdObject> send(event, {Future<void> callback}) async { // ignore: missing_return
+  Future<TdObject> send(event, {Future<void> callback}) async {
+    // ignore: missing_return
     final rndId = _random();
     event.extra = rndId;
     if (callback != null) {
