@@ -1140,7 +1140,7 @@ class MessageCustomServiceAction extends MessageContent {
 
 class MessageGameScore extends MessageContent {
   int gameMessageId;
-  int gameId;
+  String gameId;
   int score;
 
   /// A new high score was achieved in a game. 

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Game extends TdObject {
-  int id;
+  String id;
   String shortName;
   String title;
   FormattedText text;

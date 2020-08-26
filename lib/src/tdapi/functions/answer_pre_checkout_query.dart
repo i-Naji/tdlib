@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class AnswerPreCheckoutQuery extends TdFunction {
-  int preCheckoutQueryId;
+  String preCheckoutQueryId;
   String errorMessage;
   dynamic extra;
 

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ViewTrendingStickerSets extends TdFunction {
-  List<int> stickerSetIds;
+  List<String> stickerSetIds;
   dynamic extra;
 
   /// Informs the server that some trending sticker sets have been viewed by the user. 

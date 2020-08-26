@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class DeleteProfilePhoto extends TdFunction {
-  int profilePhotoId;
+  String profilePhotoId;
   dynamic extra;
 
   /// Deletes a profile photo. 

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetArchivedStickerSets extends TdFunction {
   bool isMasks;
-  int offsetStickerSetId;
+  String offsetStickerSetId;
   int limit;
   dynamic extra;
 

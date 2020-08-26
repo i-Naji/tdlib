@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class GetChatEventLog extends TdFunction {
   int chatId;
   String query;
-  int fromEventId;
+  String fromEventId;
   int limit;
   ChatEventLogFilters filters;
   List<int> userIds;

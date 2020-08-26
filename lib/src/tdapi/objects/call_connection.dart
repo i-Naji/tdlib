@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class CallConnection extends TdObject {
-  int id;
+  String id;
   String ip;
   String ipv6;
   int port;

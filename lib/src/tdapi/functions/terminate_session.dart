@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class TerminateSession extends TdFunction {
-  int sessionId;
+  String sessionId;
   dynamic extra;
 
   /// Terminates a session of the current user. 

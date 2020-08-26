@@ -16,7 +16,7 @@ class SupergroupFullInfo extends TdObject {
   bool canSetLocation;
   bool canViewStatistics;
   bool isAllHistoryAvailable;
-  int stickerSetId;
+  String stickerSetId;
   ChatLocation location;
   String inviteLink;
   int upgradedFromBasicGroupId;

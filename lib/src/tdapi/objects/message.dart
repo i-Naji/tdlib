@@ -22,7 +22,7 @@ class Message extends TdObject {
   int viaBotUserId;
   String authorSignature;
   int views;
-  int mediaAlbumId;
+  String mediaAlbumId;
   String restrictionReason;
   MessageContent content;
   ReplyMarkup replyMarkup;

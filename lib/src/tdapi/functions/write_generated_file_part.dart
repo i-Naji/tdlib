@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class WriteGeneratedFilePart extends TdFunction {
-  int generationId;
+  String generationId;
   int offset;
   String data;
   dynamic extra;

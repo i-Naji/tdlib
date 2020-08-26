@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsite extends TdObject {
-  int id;
+  String id;
   String domainName;
   int botUserId;
   String browser;

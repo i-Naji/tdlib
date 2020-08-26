@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class GetStickerSet extends TdFunction {
-  int setId;
+  String setId;
   dynamic extra;
 
   /// Returns information about a sticker set by its identifier. 

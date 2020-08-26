@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ChatPosition extends TdObject {
   ChatList list;
-  int order;
+  String order;
   bool isPinned;
   ChatSource source;
 

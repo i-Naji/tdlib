@@ -641,8 +641,8 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
 }
 
 class ChatEventStickerSetChanged extends ChatEventAction {
-  int oldStickerSetId;
-  int newStickerSetId;
+  String oldStickerSetId;
+  String newStickerSetId;
 
   /// The supergroup sticker set was changed. 
   /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none . 

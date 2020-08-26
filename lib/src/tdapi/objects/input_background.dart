@@ -60,7 +60,7 @@ class InputBackgroundLocal extends InputBackground {
 }
 
 class InputBackgroundRemote extends InputBackground {
-  int backgroundId;
+  String backgroundId;
 
   /// A background from the server. 
   /// [backgroundId] The background identifier

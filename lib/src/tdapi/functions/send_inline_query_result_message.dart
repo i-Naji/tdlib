@@ -4,7 +4,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   int chatId;
   int replyToMessageId;
   SendMessageOptions options;
-  int queryId;
+  String queryId;
   String resultId;
   bool hideViaBot;
   dynamic extra;

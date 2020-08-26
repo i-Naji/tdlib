@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ProfilePhoto extends TdObject {
-  int id;
+  String id;
   File small;
   File big;
   bool hasAnimation;

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Sticker extends TdObject {
-  int setId;
+  String setId;
   int width;
   int height;
   String emoji;

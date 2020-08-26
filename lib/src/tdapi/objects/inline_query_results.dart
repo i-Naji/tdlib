@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class InlineQueryResults extends TdObject {
-  int inlineQueryId;
+  String inlineQueryId;
   String nextOffset;
   List<InlineQueryResult> results;
   String switchPmText;

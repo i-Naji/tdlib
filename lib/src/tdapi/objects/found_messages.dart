@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class FoundMessages extends TdObject {
   List<Message> messages;
-  int nextFromSearchId;
+  String nextFromSearchId;
   dynamic extra;
 
   /// Contains a list of messages found by a search. 

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class SetFileGenerationProgress extends TdFunction {
-  int generationId;
+  String generationId;
   int expectedSize;
   int localPrefixSize;
   dynamic extra;

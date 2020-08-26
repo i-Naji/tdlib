@@ -118,7 +118,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
 }
 
 class TMeUrlTypeStickerSet extends TMeUrlType {
-  int stickerSetId;
+  String stickerSetId;
 
   /// A URL linking to a sticker set. 
   /// [stickerSetId] Identifier of the sticker set

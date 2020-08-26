@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ReorderInstalledStickerSets extends TdFunction {
   bool isMasks;
-  List<int> stickerSetIds;
+  List<String> stickerSetIds;
   dynamic extra;
 
   /// Changes the order of installed sticker sets. 

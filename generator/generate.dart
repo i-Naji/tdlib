@@ -442,9 +442,10 @@ class TlObjectArg {
       case 'int':
       case 'int32':
       case 'int53':
-      case 'int64':
       case 'long':
         return 'int';
+      case 'int64':
+        return 'String';
       case 'double':
         return 'double';
       case 'string':

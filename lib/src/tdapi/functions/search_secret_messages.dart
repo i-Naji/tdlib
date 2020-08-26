@@ -3,7 +3,7 @@ part of '../tdapi.dart';
 class SearchSecretMessages extends TdFunction {
   int chatId;
   String query;
-  int fromSearchId;
+  String fromSearchId;
   int limit;
   SearchMessagesFilter filter;
   dynamic extra;

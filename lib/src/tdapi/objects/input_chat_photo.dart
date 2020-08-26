@@ -37,7 +37,7 @@ class InputChatPhoto extends TdObject {
 }
 
 class InputChatPhotoPrevious extends InputChatPhoto {
-  int chatPhotoId;
+  String chatPhotoId;
 
   /// A previously used profile photo of the current user. 
   /// [chatPhotoId] Identifier of the profile photo to reuse

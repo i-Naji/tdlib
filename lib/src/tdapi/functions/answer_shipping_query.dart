@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class AnswerShippingQuery extends TdFunction {
-  int shippingQueryId;
+  String shippingQueryId;
   List<ShippingOption> shippingOptions;
   String errorMessage;
   dynamic extra;

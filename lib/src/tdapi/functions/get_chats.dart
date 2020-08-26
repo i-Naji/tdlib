@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetChats extends TdFunction {
   ChatList chatList;
-  int offsetOrder;
+  String offsetOrder;
   int offsetChatId;
   int limit;
   dynamic extra;

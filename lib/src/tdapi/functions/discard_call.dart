@@ -4,7 +4,7 @@ class DiscardCall extends TdFunction {
   int callId;
   bool isDisconnected;
   int duration;
-  int connectionId;
+  String connectionId;
   dynamic extra;
 
   /// Discards a call. 

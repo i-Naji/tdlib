@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class SetSupergroupStickerSet extends TdFunction {
   int supergroupId;
-  int stickerSetId;
+  String stickerSetId;
   dynamic extra;
 
   /// Changes the sticker set of a supergroup; requires can_change_info rights. 

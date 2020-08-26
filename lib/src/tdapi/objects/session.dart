@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Session extends TdObject {
-  int id;
+  String id;
   bool isCurrent;
   bool isPasswordPending;
   int apiId;

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class StickerSetInfo extends TdObject {
-  int id;
+  String id;
   String title;
   String name;
   Thumbnail thumbnail;

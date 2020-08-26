@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Poll extends TdObject {
-  int id;
+  String id;
   String question;
   List<PollOption> options;
   int totalVoterCount;

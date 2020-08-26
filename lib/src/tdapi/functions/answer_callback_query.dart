@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class AnswerCallbackQuery extends TdFunction {
-  int callbackQueryId;
+  String callbackQueryId;
   String text;
   bool showAlert;
   String url;

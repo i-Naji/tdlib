@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ChangeStickerSet extends TdFunction {
-  int setId;
+  String setId;
   bool isInstalled;
   bool isArchived;
   dynamic extra;

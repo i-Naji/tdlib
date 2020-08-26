@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ChatEvent extends TdObject {
-  int id;
+  String id;
   int date;
   int userId;
   ChatEventAction action;

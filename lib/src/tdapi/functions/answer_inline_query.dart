@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class AnswerInlineQuery extends TdFunction {
-  int inlineQueryId;
+  String inlineQueryId;
   bool isPersonal;
   List<InputInlineQueryResult> results;
   int cacheTime;

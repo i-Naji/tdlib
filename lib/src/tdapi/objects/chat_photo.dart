@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class ChatPhoto extends TdObject {
-  int id;
+  String id;
   int addedDate;
   Minithumbnail minithumbnail;
   List<PhotoSize> sizes;

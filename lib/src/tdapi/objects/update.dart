@@ -1858,7 +1858,7 @@ class UpdateFile extends Update {
 }
 
 class UpdateFileGenerationStart extends Update {
-  int generationId;
+  String generationId;
   String originalPath;
   String destinationPath;
   String conversion;
@@ -1901,7 +1901,7 @@ class UpdateFileGenerationStart extends Update {
 }
 
 class UpdateFileGenerationStop extends Update {
-  int generationId;
+  String generationId;
   dynamic extra;
 
   /// File generation is no longer needed. 
@@ -2143,7 +2143,7 @@ class UpdateStickerSet extends Update {
 
 class UpdateInstalledStickerSets extends Update {
   bool isMasks;
-  List<int> stickerSetIds;
+  List<String> stickerSetIds;
   dynamic extra;
 
   /// The list of installed sticker sets was updated. 
@@ -2155,7 +2155,7 @@ class UpdateInstalledStickerSets extends Update {
   /// Parse from a json
   UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json)  {
     this.isMasks = json['is_masks'];
-    this.stickerSetIds = List<int>.from((json['sticker_set_ids'] ?? []).map((item) => item).toList());
+    this.stickerSetIds = List<String>.from((json['sticker_set_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -2546,7 +2546,7 @@ class UpdateSuggestedActions extends Update {
 }
 
 class UpdateNewInlineQuery extends Update {
-  int id;
+  String id;
   int senderUserId;
   Location userLocation;
   String query;
@@ -2642,11 +2642,11 @@ class UpdateNewChosenInlineResult extends Update {
 }
 
 class UpdateNewCallbackQuery extends Update {
-  int id;
+  String id;
   int senderUserId;
   int chatId;
   int messageId;
-  int chatInstance;
+  String chatInstance;
   CallbackQueryPayload payload;
   dynamic extra;
 
@@ -2695,10 +2695,10 @@ class UpdateNewCallbackQuery extends Update {
 }
 
 class UpdateNewInlineCallbackQuery extends Update {
-  int id;
+  String id;
   int senderUserId;
   String inlineMessageId;
-  int chatInstance;
+  String chatInstance;
   CallbackQueryPayload payload;
   dynamic extra;
 
@@ -2743,7 +2743,7 @@ class UpdateNewInlineCallbackQuery extends Update {
 }
 
 class UpdateNewShippingQuery extends Update {
-  int id;
+  String id;
   int senderUserId;
   String invoicePayload;
   Address shippingAddress;
@@ -2786,7 +2786,7 @@ class UpdateNewShippingQuery extends Update {
 }
 
 class UpdateNewPreCheckoutQuery extends Update {
-  int id;
+  String id;
   int senderUserId;
   String currency;
   int totalAmount;
@@ -2872,7 +2872,7 @@ class UpdateNewCustomEvent extends Update {
 }
 
 class UpdateNewCustomQuery extends Update {
-  int id;
+  String id;
   String data;
   int timeout;
   dynamic extra;
@@ -2938,7 +2938,7 @@ class UpdatePoll extends Update {
 }
 
 class UpdatePollAnswer extends Update {
-  int pollId;
+  String pollId;
   int userId;
   List<int> optionIds;
   dynamic extra;

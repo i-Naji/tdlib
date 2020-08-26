@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Background extends TdObject {
-  int id;
+  String id;
   bool isDefault;
   bool isDark;
   String name;
