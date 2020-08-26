@@ -18,7 +18,7 @@ class SetCustomLanguagePack extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "info": this.info.toJson(),
+      "info": this.info == null ? null : this.info.toJson(),
       "strings": this.strings.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };

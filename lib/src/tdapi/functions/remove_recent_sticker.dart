@@ -19,7 +19,7 @@ class RemoveRecentSticker extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "is_attached": this.isAttached,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "@extra": this.extra,
     };
   }

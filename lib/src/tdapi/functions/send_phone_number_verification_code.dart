@@ -19,7 +19,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "phone_number": this.phoneNumber,
-      "settings": this.settings.toJson(),
+      "settings": this.settings == null ? null : this.settings.toJson(),
       "@extra": this.extra,
     };
   }

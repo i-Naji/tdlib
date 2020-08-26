@@ -19,7 +19,7 @@ class GetBackgroundUrl extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "name": this.name,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "@extra": this.extra,
     };
   }

@@ -170,8 +170,8 @@ class MessageText extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
-      "web_page": this.webPage.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
+      "web_page": this.webPage == null ? null : this.webPage.toJson(),
     };
   }
 
@@ -205,8 +205,8 @@ class MessageAnimation extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
-      "caption": this.caption.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "is_secret": this.isSecret,
     };
   }
@@ -237,8 +237,8 @@ class MessageAudio extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio.toJson(),
-      "caption": this.caption.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -268,8 +268,8 @@ class MessageDocument extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document.toJson(),
-      "caption": this.caption.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -303,8 +303,8 @@ class MessagePhoto extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
-      "caption": this.caption.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "is_secret": this.isSecret,
     };
   }
@@ -353,7 +353,7 @@ class MessageSticker extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
     };
   }
 
@@ -387,8 +387,8 @@ class MessageVideo extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video.toJson(),
-      "caption": this.caption.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "is_secret": this.isSecret,
     };
   }
@@ -445,7 +445,7 @@ class MessageVideoNote extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video_note": this.videoNote.toJson(),
+      "video_note": this.videoNote == null ? null : this.videoNote.toJson(),
       "is_viewed": this.isViewed,
       "is_secret": this.isSecret,
     };
@@ -481,8 +481,8 @@ class MessageVoiceNote extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote.toJson(),
-      "caption": this.caption.toJson(),
+      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "is_listened": this.isListened,
     };
   }
@@ -517,7 +517,7 @@ class MessageLocation extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "live_period": this.livePeriod,
       "expires_in": this.expiresIn,
     };
@@ -545,7 +545,7 @@ class MessageVenue extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "venue": this.venue.toJson(),
+      "venue": this.venue == null ? null : this.venue.toJson(),
     };
   }
 
@@ -571,7 +571,7 @@ class MessageContact extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "contact": this.contact.toJson(),
+      "contact": this.contact == null ? null : this.contact.toJson(),
     };
   }
 
@@ -613,8 +613,8 @@ class MessageDice extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "initial_state_sticker": this.initialStateSticker.toJson(),
-      "final_state_sticker": this.finalStateSticker.toJson(),
+      "initial_state_sticker": this.initialStateSticker == null ? null : this.initialStateSticker.toJson(),
+      "final_state_sticker": this.finalStateSticker == null ? null : this.finalStateSticker.toJson(),
       "emoji": this.emoji,
       "value": this.value,
       "success_animation_frame_number": this.successAnimationFrameNumber,
@@ -643,7 +643,7 @@ class MessageGame extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "game": this.game.toJson(),
+      "game": this.game == null ? null : this.game.toJson(),
     };
   }
 
@@ -669,7 +669,7 @@ class MessagePoll extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "poll": this.poll.toJson(),
+      "poll": this.poll == null ? null : this.poll.toJson(),
     };
   }
 
@@ -729,7 +729,7 @@ class MessageInvoice extends MessageContent {
       "@type": CONSTRUCTOR,
       "title": this.title,
       "description": this.description,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "currency": this.currency,
       "total_amount": this.totalAmount,
       "start_parameter": this.startParameter,
@@ -765,7 +765,7 @@ class MessageCall extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "discard_reason": this.discardReason.toJson(),
+      "discard_reason": this.discardReason == null ? null : this.discardReason.toJson(),
       "duration": this.duration,
     };
   }
@@ -875,7 +875,7 @@ class MessageChatChangePhoto extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
     };
   }
 
@@ -1259,7 +1259,7 @@ class MessagePaymentSuccessfulBot extends MessageContent {
       "total_amount": this.totalAmount,
       "invoice_payload": this.invoicePayload,
       "shipping_option_id": this.shippingOptionId,
-      "order_info": this.orderInfo.toJson(),
+      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
       "telegram_payment_charge_id": this.telegramPaymentChargeId,
       "provider_payment_charge_id": this.providerPaymentChargeId,
     };
@@ -1366,7 +1366,7 @@ class MessagePassportDataReceived extends MessageContent {
     return {
       "@type": CONSTRUCTOR,
       "elements": this.elements.map((i) => i.toJson()).toList(),
-      "credentials": this.credentials.toJson(),
+      "credentials": this.credentials == null ? null : this.credentials.toJson(),
     };
   }
 

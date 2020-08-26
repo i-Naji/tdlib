@@ -40,9 +40,9 @@ class PaymentReceipt extends TdObject {
       "@type": CONSTRUCTOR,
       "date": this.date,
       "payments_provider_user_id": this.paymentsProviderUserId,
-      "invoice": this.invoice.toJson(),
-      "order_info": this.orderInfo.toJson(),
-      "shipping_option": this.shippingOption.toJson(),
+      "invoice": this.invoice == null ? null : this.invoice.toJson(),
+      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
+      "shipping_option": this.shippingOption == null ? null : this.shippingOption.toJson(),
       "credentials_title": this.credentialsTitle,
     };
   }

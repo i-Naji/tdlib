@@ -19,7 +19,7 @@ class CreateCall extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "protocol": this.protocol.toJson(),
+      "protocol": this.protocol == null ? null : this.protocol.toJson(),
       "@extra": this.extra,
     };
   }

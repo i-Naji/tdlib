@@ -130,7 +130,7 @@ class PageBlockTitle extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title.toJson(),
+      "title": this.title == null ? null : this.title.toJson(),
     };
   }
 
@@ -156,7 +156,7 @@ class PageBlockSubtitle extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "subtitle": this.subtitle.toJson(),
+      "subtitle": this.subtitle == null ? null : this.subtitle.toJson(),
     };
   }
 
@@ -186,7 +186,7 @@ class PageBlockAuthorDate extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "author": this.author.toJson(),
+      "author": this.author == null ? null : this.author.toJson(),
       "publish_date": this.publishDate,
     };
   }
@@ -213,7 +213,7 @@ class PageBlockHeader extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "header": this.header.toJson(),
+      "header": this.header == null ? null : this.header.toJson(),
     };
   }
 
@@ -239,7 +239,7 @@ class PageBlockSubheader extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "subheader": this.subheader.toJson(),
+      "subheader": this.subheader == null ? null : this.subheader.toJson(),
     };
   }
 
@@ -265,7 +265,7 @@ class PageBlockKicker extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "kicker": this.kicker.toJson(),
+      "kicker": this.kicker == null ? null : this.kicker.toJson(),
     };
   }
 
@@ -291,7 +291,7 @@ class PageBlockParagraph extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -321,7 +321,7 @@ class PageBlockPreformatted extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "language": this.language,
     };
   }
@@ -348,7 +348,7 @@ class PageBlockFooter extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "footer": this.footer.toJson(),
+      "footer": this.footer == null ? null : this.footer.toJson(),
     };
   }
 
@@ -452,8 +452,8 @@ class PageBlockBlockQuote extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
-      "credit": this.credit.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
+      "credit": this.credit == null ? null : this.credit.toJson(),
     };
   }
 
@@ -483,8 +483,8 @@ class PageBlockPullQuote extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
-      "credit": this.credit.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
+      "credit": this.credit == null ? null : this.credit.toJson(),
     };
   }
 
@@ -518,8 +518,8 @@ class PageBlockAnimation extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
-      "caption": this.caption.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "need_autoplay": this.needAutoplay,
     };
   }
@@ -550,8 +550,8 @@ class PageBlockAudio extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio.toJson(),
-      "caption": this.caption.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -585,8 +585,8 @@ class PageBlockPhoto extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
-      "caption": this.caption.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "url": this.url,
     };
   }
@@ -625,8 +625,8 @@ class PageBlockVideo extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video.toJson(),
-      "caption": this.caption.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "need_autoplay": this.needAutoplay,
       "is_looped": this.isLooped,
     };
@@ -658,8 +658,8 @@ class PageBlockVoiceNote extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote.toJson(),
-      "caption": this.caption.toJson(),
+      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -685,7 +685,7 @@ class PageBlockCover extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "cover": this.cover.toJson(),
+      "cover": this.cover == null ? null : this.cover.toJson(),
     };
   }
 
@@ -741,10 +741,10 @@ class PageBlockEmbedded extends PageBlock {
       "@type": CONSTRUCTOR,
       "url": this.url,
       "html": this.html,
-      "poster_photo": this.posterPhoto.toJson(),
+      "poster_photo": this.posterPhoto == null ? null : this.posterPhoto.toJson(),
       "width": this.width,
       "height": this.height,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "is_full_width": this.isFullWidth,
       "allow_scrolling": this.allowScrolling,
     };
@@ -794,10 +794,10 @@ class PageBlockEmbeddedPost extends PageBlock {
       "@type": CONSTRUCTOR,
       "url": this.url,
       "author": this.author,
-      "author_photo": this.authorPhoto.toJson(),
+      "author_photo": this.authorPhoto == null ? null : this.authorPhoto.toJson(),
       "date": this.date,
       "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -828,7 +828,7 @@ class PageBlockCollage extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -859,7 +859,7 @@ class PageBlockSlideshow extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -894,7 +894,7 @@ class PageBlockChatLink extends PageBlock {
     return {
       "@type": CONSTRUCTOR,
       "title": this.title,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "username": this.username,
     };
   }
@@ -933,7 +933,7 @@ class PageBlockTable extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "cells": this.cells.map((i) => i.map((ii) => ii.toJson()).toList()).toList(),
       "is_bordered": this.isBordered,
       "is_striped": this.isStriped,
@@ -970,7 +970,7 @@ class PageBlockDetails extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "header": this.header.toJson(),
+      "header": this.header == null ? null : this.header.toJson(),
       "page_blocks": this.pageBlocks.map((i) => i.toJson()).toList(),
       "is_open": this.isOpen,
     };
@@ -1002,7 +1002,7 @@ class PageBlockRelatedArticles extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "header": this.header.toJson(),
+      "header": this.header == null ? null : this.header.toJson(),
       "articles": this.articles.map((i) => i.toJson()).toList(),
     };
   }
@@ -1045,11 +1045,11 @@ class PageBlockMap extends PageBlock {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "zoom": this.zoom,
       "width": this.width,
       "height": this.height,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 

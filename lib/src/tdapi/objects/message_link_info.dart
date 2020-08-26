@@ -32,7 +32,7 @@ class MessageLinkInfo extends TdObject {
       "@type": CONSTRUCTOR,
       "is_public": this.isPublic,
       "chat_id": this.chatId,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
       "for_album": this.forAlbum,
     };
   }

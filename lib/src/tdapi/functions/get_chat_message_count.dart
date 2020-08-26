@@ -22,7 +22,7 @@ class GetChatMessageCount extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "return_local": this.returnLocal,
       "@extra": this.extra,
     };

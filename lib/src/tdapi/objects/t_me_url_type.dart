@@ -107,7 +107,7 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "info": this.info.toJson(),
+      "info": this.info == null ? null : this.info.toJson(),
     };
   }
 

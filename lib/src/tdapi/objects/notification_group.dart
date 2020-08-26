@@ -33,7 +33,7 @@ class NotificationGroup extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "chat_id": this.chatId,
       "total_count": this.totalCount,
       "notifications": this.notifications.map((i) => i.toJson()).toList(),

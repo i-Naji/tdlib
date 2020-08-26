@@ -27,7 +27,7 @@ class CreateNewSupergroupChat extends TdFunction {
       "title": this.title,
       "is_channel": this.isChannel,
       "description": this.description,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "@extra": this.extra,
     };
   }

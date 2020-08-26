@@ -15,7 +15,7 @@ class SetLocation extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "@extra": this.extra,
     };
   }

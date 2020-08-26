@@ -34,7 +34,7 @@ class BasicGroupFullInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "description": this.description,
       "creator_user_id": this.creatorUserId,
       "members": this.members.map((i) => i.toJson()).toList(),

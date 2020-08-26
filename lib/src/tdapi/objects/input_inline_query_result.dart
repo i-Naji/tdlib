@@ -128,8 +128,8 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
       "video_duration": this.videoDuration,
       "video_width": this.videoWidth,
       "video_height": this.videoHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -199,8 +199,8 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
       "thumbnail_url": this.thumbnailUrl,
       "thumbnail_width": this.thumbnailWidth,
       "thumbnail_height": this.thumbnailHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -255,8 +255,8 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
       "performer": this.performer,
       "audio_url": this.audioUrl,
       "audio_duration": this.audioDuration,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -307,12 +307,12 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "contact": this.contact.toJson(),
+      "contact": this.contact == null ? null : this.contact.toJson(),
       "thumbnail_url": this.thumbnailUrl,
       "thumbnail_width": this.thumbnailWidth,
       "thumbnail_height": this.thumbnailHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -382,8 +382,8 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
       "thumbnail_url": this.thumbnailUrl,
       "thumbnail_width": this.thumbnailWidth,
       "thumbnail_height": this.thumbnailHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -419,7 +419,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "game_short_name": this.gameShortName,
-      "reply_markup": this.replyMarkup.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
     };
   }
 
@@ -478,14 +478,14 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "live_period": this.livePeriod,
       "title": this.title,
       "thumbnail_url": this.thumbnailUrl,
       "thumbnail_width": this.thumbnailWidth,
       "thumbnail_height": this.thumbnailHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -550,8 +550,8 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
       "photo_url": this.photoUrl,
       "photo_width": this.photoWidth,
       "photo_height": this.photoHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -606,8 +606,8 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
       "sticker_url": this.stickerUrl,
       "sticker_width": this.stickerWidth,
       "sticker_height": this.stickerHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -658,12 +658,12 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "venue": this.venue.toJson(),
+      "venue": this.venue == null ? null : this.venue.toJson(),
       "thumbnail_url": this.thumbnailUrl,
       "thumbnail_width": this.thumbnailWidth,
       "thumbnail_height": this.thumbnailHeight,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -738,8 +738,8 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
       "video_width": this.videoWidth,
       "video_height": this.videoHeight,
       "video_duration": this.videoDuration,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 
@@ -789,8 +789,8 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
       "title": this.title,
       "voice_note_url": this.voiceNoteUrl,
       "voice_note_duration": this.voiceNoteDuration,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
     };
   }
 

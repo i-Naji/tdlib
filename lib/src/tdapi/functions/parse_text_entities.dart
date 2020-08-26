@@ -19,7 +19,7 @@ class ParseTextEntities extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "text": this.text,
-      "parse_mode": this.parseMode.toJson(),
+      "parse_mode": this.parseMode == null ? null : this.parseMode.toJson(),
       "@extra": this.extra,
     };
   }

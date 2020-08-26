@@ -24,7 +24,7 @@ class GetChats extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "offset_order": this.offsetOrder,
       "offset_chat_id": this.offsetChatId,
       "limit": this.limit,

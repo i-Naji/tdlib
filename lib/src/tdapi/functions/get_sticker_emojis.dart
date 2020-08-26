@@ -15,7 +15,7 @@ class GetStickerEmojis extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "@extra": this.extra,
     };
   }

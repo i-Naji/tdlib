@@ -25,7 +25,7 @@ class GetSupergroupMembers extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "offset": this.offset,
       "limit": this.limit,
       "@extra": this.extra,

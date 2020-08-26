@@ -30,7 +30,7 @@ class GetMapThumbnailFile extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "zoom": this.zoom,
       "width": this.width,
       "height": this.height,

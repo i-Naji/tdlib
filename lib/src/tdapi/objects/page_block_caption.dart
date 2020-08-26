@@ -20,8 +20,8 @@ class PageBlockCaption extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
-      "credit": this.credit.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
+      "credit": this.credit == null ? null : this.credit.toJson(),
     };
   }
 

@@ -19,7 +19,7 @@ class SetChatLocation extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "@extra": this.extra,
     };
   }

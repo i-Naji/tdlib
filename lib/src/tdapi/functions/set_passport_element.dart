@@ -18,7 +18,7 @@ class SetPassportElement extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "element": this.element.toJson(),
+      "element": this.element == null ? null : this.element.toJson(),
       "password": this.password,
       "@extra": this.extra,
     };

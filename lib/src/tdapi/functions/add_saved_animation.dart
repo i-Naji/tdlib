@@ -15,7 +15,7 @@ class AddSavedAnimation extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
       "@extra": this.extra,
     };
   }

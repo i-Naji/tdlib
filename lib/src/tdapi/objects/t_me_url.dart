@@ -21,7 +21,7 @@ class TMeUrl extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "url": this.url,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
     };
   }
 

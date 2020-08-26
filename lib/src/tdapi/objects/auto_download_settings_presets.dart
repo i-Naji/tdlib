@@ -26,9 +26,9 @@ class AutoDownloadSettingsPresets extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "low": this.low.toJson(),
-      "medium": this.medium.toJson(),
-      "high": this.high.toJson(),
+      "low": this.low == null ? null : this.low.toJson(),
+      "medium": this.medium == null ? null : this.medium.toJson(),
+      "high": this.high == null ? null : this.high.toJson(),
     };
   }
 

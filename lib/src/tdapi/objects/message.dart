@@ -117,8 +117,8 @@ class Message extends TdObject {
       "id": this.id,
       "sender_user_id": this.senderUserId,
       "chat_id": this.chatId,
-      "sending_state": this.sendingState.toJson(),
-      "scheduling_state": this.schedulingState.toJson(),
+      "sending_state": this.sendingState == null ? null : this.sendingState.toJson(),
+      "scheduling_state": this.schedulingState == null ? null : this.schedulingState.toJson(),
       "is_outgoing": this.isOutgoing,
       "can_be_edited": this.canBeEdited,
       "can_be_forwarded": this.canBeForwarded,
@@ -128,7 +128,7 @@ class Message extends TdObject {
       "contains_unread_mention": this.containsUnreadMention,
       "date": this.date,
       "edit_date": this.editDate,
-      "forward_info": this.forwardInfo.toJson(),
+      "forward_info": this.forwardInfo == null ? null : this.forwardInfo.toJson(),
       "reply_to_message_id": this.replyToMessageId,
       "ttl": this.ttl,
       "ttl_expires_in": this.ttlExpiresIn,
@@ -137,8 +137,8 @@ class Message extends TdObject {
       "views": this.views,
       "media_album_id": this.mediaAlbumId,
       "restriction_reason": this.restrictionReason,
-      "content": this.content.toJson(),
-      "reply_markup": this.replyMarkup.toJson(),
+      "content": this.content == null ? null : this.content.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
     };
   }
 

@@ -36,7 +36,7 @@ class BasicGroup extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "member_count": this.memberCount,
-      "status": this.status.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
       "is_active": this.isActive,
       "upgraded_to_supergroup_id": this.upgradedToSupergroupId,
     };

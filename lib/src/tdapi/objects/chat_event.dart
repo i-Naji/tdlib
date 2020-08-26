@@ -31,7 +31,7 @@ class ChatEvent extends TdObject {
       "id": this.id,
       "date": this.date,
       "user_id": this.userId,
-      "action": this.action.toJson(),
+      "action": this.action == null ? null : this.action.toJson(),
     };
   }
 

@@ -29,7 +29,7 @@ class TestProxy extends TdFunction {
       "@type": CONSTRUCTOR,
       "server": this.server,
       "port": this.port,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "dc_id": this.dcId,
       "timeout": this.timeout,
       "@extra": this.extra,

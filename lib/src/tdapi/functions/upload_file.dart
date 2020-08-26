@@ -21,8 +21,8 @@ class UploadFile extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file": this.file.toJson(),
-      "file_type": this.fileType.toJson(),
+      "file": this.file == null ? null : this.file.toJson(),
+      "file_type": this.fileType == null ? null : this.fileType.toJson(),
       "priority": this.priority,
       "@extra": this.extra,
     };

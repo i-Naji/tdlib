@@ -22,7 +22,7 @@ class ReportChat extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "reason": this.reason.toJson(),
+      "reason": this.reason == null ? null : this.reason.toJson(),
       "message_ids": this.messageIds.map((i) => i).toList(),
       "@extra": this.extra,
     };

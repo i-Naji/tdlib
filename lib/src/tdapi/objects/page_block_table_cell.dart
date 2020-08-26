@@ -36,12 +36,12 @@ class PageBlockTableCell extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "is_header": this.isHeader,
       "colspan": this.colspan,
       "rowspan": this.rowspan,
-      "align": this.align.toJson(),
-      "valign": this.valign.toJson(),
+      "align": this.align == null ? null : this.align.toJson(),
+      "valign": this.valign == null ? null : this.valign.toJson(),
     };
   }
 

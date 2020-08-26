@@ -19,7 +19,7 @@ class SetChatPhoto extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "@extra": this.extra,
     };
   }

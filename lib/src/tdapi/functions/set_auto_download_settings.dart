@@ -18,8 +18,8 @@ class SetAutoDownloadSettings extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "settings": this.settings.toJson(),
-      "type": this.type.toJson(),
+      "settings": this.settings == null ? null : this.settings.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "@extra": this.extra,
     };
   }

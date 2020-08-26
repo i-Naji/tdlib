@@ -23,7 +23,7 @@ class SetStickerSetThumbnail extends TdFunction {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
       "name": this.name,
-      "thumbnail": this.thumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "@extra": this.extra,
     };
   }

@@ -31,7 +31,7 @@ class SearchSecretMessages extends TdFunction {
       "query": this.query,
       "from_search_id": this.fromSearchId,
       "limit": this.limit,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "@extra": this.extra,
     };
   }

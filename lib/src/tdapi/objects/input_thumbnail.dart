@@ -24,7 +24,7 @@ class InputThumbnail extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "thumbnail": this.thumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "width": this.width,
       "height": this.height,
     };

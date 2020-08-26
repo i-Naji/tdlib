@@ -26,7 +26,7 @@ class ValidateOrderInfo extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "order_info": this.orderInfo.toJson(),
+      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
       "allow_save": this.allowSave,
       "@extra": this.extra,
     };

@@ -31,7 +31,7 @@ class Notification extends TdObject {
       "id": this.id,
       "date": this.date,
       "is_silent": this.isSilent,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
     };
   }
 

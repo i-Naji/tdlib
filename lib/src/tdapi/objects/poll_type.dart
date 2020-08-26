@@ -80,7 +80,7 @@ class PollTypeQuiz extends PollType {
     return {
       "@type": CONSTRUCTOR,
       "correct_option_id": this.correctOptionId,
-      "explanation": this.explanation.toJson(),
+      "explanation": this.explanation == null ? null : this.explanation.toJson(),
     };
   }
 

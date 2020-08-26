@@ -44,7 +44,7 @@ class SecretChat extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "user_id": this.userId,
-      "state": this.state.toJson(),
+      "state": this.state == null ? null : this.state.toJson(),
       "is_outbound": this.isOutbound,
       "ttl": this.ttl,
       "key_hash": this.keyHash,

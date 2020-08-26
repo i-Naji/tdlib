@@ -19,7 +19,7 @@ class SetChatNotificationSettings extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "notification_settings": this.notificationSettings.toJson(),
+      "notification_settings": this.notificationSettings == null ? null : this.notificationSettings.toJson(),
       "@extra": this.extra,
     };
   }

@@ -34,9 +34,9 @@ class ChatPhoto extends TdObject {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "added_date": this.addedDate,
-      "minithumbnail": this.minithumbnail.toJson(),
+      "minithumbnail": this.minithumbnail == null ? null : this.minithumbnail.toJson(),
       "sizes": this.sizes.map((i) => i.toJson()).toList(),
-      "animation": this.animation.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
     };
   }
 

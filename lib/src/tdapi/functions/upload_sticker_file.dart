@@ -19,7 +19,7 @@ class UploadStickerFile extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "png_sticker": this.pngSticker.toJson(),
+      "png_sticker": this.pngSticker == null ? null : this.pngSticker.toJson(),
       "@extra": this.extra,
     };
   }

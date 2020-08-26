@@ -154,7 +154,7 @@ class AuthorizationStateWaitCode extends AuthorizationState {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "code_info": this.codeInfo.toJson(),
+      "code_info": this.codeInfo == null ? null : this.codeInfo.toJson(),
     };
   }
 
@@ -210,7 +210,7 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "terms_of_service": this.termsOfService.toJson(),
+      "terms_of_service": this.termsOfService == null ? null : this.termsOfService.toJson(),
     };
   }
 

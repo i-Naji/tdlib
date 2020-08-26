@@ -20,7 +20,7 @@ class RecommendedChatFilter extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "description": this.description,
     };
   }

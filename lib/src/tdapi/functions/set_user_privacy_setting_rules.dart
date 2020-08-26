@@ -18,8 +18,8 @@ class SetUserPrivacySettingRules extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "setting": this.setting.toJson(),
-      "rules": this.rules.toJson(),
+      "setting": this.setting == null ? null : this.setting.toJson(),
+      "rules": this.rules == null ? null : this.rules.toJson(),
       "@extra": this.extra,
     };
   }

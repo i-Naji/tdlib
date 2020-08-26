@@ -21,8 +21,8 @@ class SetBackground extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "background": this.background.toJson(),
-      "type": this.type.toJson(),
+      "background": this.background == null ? null : this.background.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "for_dark_theme": this.forDarkTheme,
       "@extra": this.extra,
     };

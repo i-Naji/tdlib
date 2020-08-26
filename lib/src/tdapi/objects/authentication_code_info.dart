@@ -31,8 +31,8 @@ class AuthenticationCodeInfo extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "phone_number": this.phoneNumber,
-      "type": this.type.toJson(),
-      "next_type": this.nextType.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
+      "next_type": this.nextType == null ? null : this.nextType.toJson(),
       "timeout": this.timeout,
     };
   }

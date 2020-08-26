@@ -15,7 +15,7 @@ class CreateChatFilter extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "@extra": this.extra,
     };
   }

@@ -28,7 +28,7 @@ class MaskPosition extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "point": this.point.toJson(),
+      "point": this.point == null ? null : this.point.toJson(),
       "x_shift": this.xShift,
       "y_shift": this.yShift,
       "scale": this.scale,

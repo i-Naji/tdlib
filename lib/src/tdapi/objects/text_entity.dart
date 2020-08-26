@@ -26,7 +26,7 @@ class TextEntity extends TdObject {
       "@type": CONSTRUCTOR,
       "offset": this.offset,
       "length": this.length,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
     };
   }
 

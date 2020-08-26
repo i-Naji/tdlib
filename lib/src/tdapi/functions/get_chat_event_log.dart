@@ -34,7 +34,7 @@ class GetChatEventLog extends TdFunction {
       "query": this.query,
       "from_event_id": this.fromEventId,
       "limit": this.limit,
-      "filters": this.filters.toJson(),
+      "filters": this.filters == null ? null : this.filters.toJson(),
       "user_ids": this.userIds.map((i) => i).toList(),
       "@extra": this.extra,
     };

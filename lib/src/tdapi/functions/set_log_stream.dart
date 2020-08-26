@@ -15,7 +15,7 @@ class SetLogStream extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "log_stream": this.logStream.toJson(),
+      "log_stream": this.logStream == null ? null : this.logStream.toJson(),
       "@extra": this.extra,
     };
   }

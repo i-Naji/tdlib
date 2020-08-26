@@ -24,7 +24,7 @@ class StorageStatisticsByFileType extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file_type": this.fileType.toJson(),
+      "file_type": this.fileType == null ? null : this.fileType.toJson(),
       "size": this.size,
       "count": this.count,
     };

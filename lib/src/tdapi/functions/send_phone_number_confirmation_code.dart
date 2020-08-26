@@ -23,7 +23,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
       "@type": CONSTRUCTOR,
       "hash": this.hash,
       "phone_number": this.phoneNumber,
-      "settings": this.settings.toJson(),
+      "settings": this.settings == null ? null : this.settings.toJson(),
       "@extra": this.extra,
     };
   }

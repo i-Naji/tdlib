@@ -54,9 +54,9 @@ class Sticker extends TdObject {
       "emoji": this.emoji,
       "is_animated": this.isAnimated,
       "is_mask": this.isMask,
-      "mask_position": this.maskPosition.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
-      "sticker": this.sticker.toJson(),
+      "mask_position": this.maskPosition == null ? null : this.maskPosition.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
     };
   }
 

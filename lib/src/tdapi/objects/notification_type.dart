@@ -55,7 +55,7 @@ class NotificationTypeNewMessage extends NotificationType {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
@@ -149,7 +149,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
       "sender_user_id": this.senderUserId,
       "sender_name": this.senderName,
       "is_outgoing": this.isOutgoing,
-      "content": this.content.toJson(),
+      "content": this.content == null ? null : this.content.toJson(),
     };
   }
 

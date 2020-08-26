@@ -24,9 +24,9 @@ class PassportElementError extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "message": this.message,
-      "source": this.source.toJson(),
+      "source": this.source == null ? null : this.source.toJson(),
     };
   }
 

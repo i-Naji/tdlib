@@ -65,7 +65,7 @@ class StickerSet extends TdObject {
       "id": this.id,
       "title": this.title,
       "name": this.name,
-      "thumbnail": this.thumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "is_installed": this.isInstalled,
       "is_archived": this.isArchived,
       "is_official": this.isOfficial,

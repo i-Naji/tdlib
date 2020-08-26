@@ -195,7 +195,7 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
       "@type": CONSTRUCTOR,
       "is_member": this.isMember,
       "restricted_until_date": this.restrictedUntilDate,
-      "permissions": this.permissions.toJson(),
+      "permissions": this.permissions == null ? null : this.permissions.toJson(),
     };
   }
 

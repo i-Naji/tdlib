@@ -23,7 +23,7 @@ class EditMessageSchedulingState extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "scheduling_state": this.schedulingState.toJson(),
+      "scheduling_state": this.schedulingState == null ? null : this.schedulingState.toJson(),
       "@extra": this.extra,
     };
   }

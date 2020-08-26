@@ -22,8 +22,8 @@ class EditInlineMessageCaption extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": this.inlineMessageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "caption": this.caption.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "@extra": this.extra,
     };
   }

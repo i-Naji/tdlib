@@ -15,7 +15,7 @@ class TestReturnError extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "error": this.error.toJson(),
+      "error": this.error == null ? null : this.error.toJson(),
       "@extra": this.extra,
     };
   }

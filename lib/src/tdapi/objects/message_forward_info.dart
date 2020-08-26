@@ -32,7 +32,7 @@ class MessageForwardInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "origin": this.origin.toJson(),
+      "origin": this.origin == null ? null : this.origin.toJson(),
       "date": this.date,
       "public_service_announcement_type": this.publicServiceAnnouncementType,
       "from_chat_id": this.fromChatId,

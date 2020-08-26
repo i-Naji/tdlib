@@ -57,9 +57,9 @@ class InputStickerStatic extends InputSticker {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "emojis": this.emojis,
-      "mask_position": this.maskPosition.toJson(),
+      "mask_position": this.maskPosition == null ? null : this.maskPosition.toJson(),
     };
   }
 
@@ -89,7 +89,7 @@ class InputStickerAnimated extends InputSticker {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "emojis": this.emojis,
     };
   }

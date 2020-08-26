@@ -48,11 +48,11 @@ class EncryptedPassportElement extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "data": this.data,
-      "front_side": this.frontSide.toJson(),
-      "reverse_side": this.reverseSide.toJson(),
-      "selfie": this.selfie.toJson(),
+      "front_side": this.frontSide == null ? null : this.frontSide.toJson(),
+      "reverse_side": this.reverseSide == null ? null : this.reverseSide.toJson(),
+      "selfie": this.selfie == null ? null : this.selfie.toJson(),
       "translation": this.translation.map((i) => i.toJson()).toList(),
       "files": this.files.map((i) => i.toJson()).toList(),
       "value": this.value,

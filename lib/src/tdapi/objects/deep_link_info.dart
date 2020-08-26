@@ -22,7 +22,7 @@ class DeepLinkInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "need_update_application": this.needUpdateApplication,
     };
   }

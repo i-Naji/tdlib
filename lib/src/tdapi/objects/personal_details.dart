@@ -58,7 +58,7 @@ class PersonalDetails extends TdObject {
       "native_first_name": this.nativeFirstName,
       "native_middle_name": this.nativeMiddleName,
       "native_last_name": this.nativeLastName,
-      "birthdate": this.birthdate.toJson(),
+      "birthdate": this.birthdate == null ? null : this.birthdate.toJson(),
       "gender": this.gender,
       "country_code": this.countryCode,
       "residence_country_code": this.residenceCountryCode,

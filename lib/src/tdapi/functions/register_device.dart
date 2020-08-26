@@ -18,7 +18,7 @@ class RegisterDevice extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "device_token": this.deviceToken.toJson(),
+      "device_token": this.deviceToken == null ? null : this.deviceToken.toJson(),
       "other_user_ids": this.otherUserIds.map((i) => i).toList(),
       "@extra": this.extra,
     };

@@ -23,7 +23,7 @@ class SaveApplicationLogEvent extends TdFunction {
       "@type": CONSTRUCTOR,
       "type": this.type,
       "chat_id": this.chatId,
-      "data": this.data.toJson(),
+      "data": this.data == null ? null : this.data.toJson(),
       "@extra": this.extra,
     };
   }

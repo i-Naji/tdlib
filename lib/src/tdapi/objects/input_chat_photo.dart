@@ -78,7 +78,7 @@ class InputChatPhotoStatic extends InputChatPhoto {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
     };
   }
 
@@ -108,7 +108,7 @@ class InputChatPhotoAnimation extends InputChatPhoto {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
       "main_frame_timestamp": this.mainFrameTimestamp,
     };
   }

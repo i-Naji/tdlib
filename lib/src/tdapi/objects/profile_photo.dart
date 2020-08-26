@@ -29,8 +29,8 @@ class ProfilePhoto extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "small": this.small.toJson(),
-      "big": this.big.toJson(),
+      "small": this.small == null ? null : this.small.toJson(),
+      "big": this.big == null ? null : this.big.toJson(),
       "has_animation": this.hasAnimation,
     };
   }

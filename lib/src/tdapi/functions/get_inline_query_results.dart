@@ -29,7 +29,7 @@ class GetInlineQueryResults extends TdFunction {
       "@type": CONSTRUCTOR,
       "bot_user_id": this.botUserId,
       "chat_id": this.chatId,
-      "user_location": this.userLocation.toJson(),
+      "user_location": this.userLocation == null ? null : this.userLocation.toJson(),
       "query": this.query,
       "offset": this.offset,
       "@extra": this.extra,

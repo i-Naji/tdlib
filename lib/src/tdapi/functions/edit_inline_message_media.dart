@@ -22,8 +22,8 @@ class EditInlineMessageMedia extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": this.inlineMessageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }

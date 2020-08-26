@@ -113,8 +113,8 @@ class ChatEventMessageEdited extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_message": this.oldMessage.toJson(),
-      "new_message": this.newMessage.toJson(),
+      "old_message": this.oldMessage == null ? null : this.oldMessage.toJson(),
+      "new_message": this.newMessage == null ? null : this.newMessage.toJson(),
     };
   }
 
@@ -140,7 +140,7 @@ class ChatEventMessageDeleted extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
@@ -166,7 +166,7 @@ class ChatEventPollStopped extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
@@ -192,7 +192,7 @@ class ChatEventMessagePinned extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
@@ -289,7 +289,7 @@ class ChatEventMemberInvited extends ChatEventAction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "status": this.status.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
     };
   }
 
@@ -324,8 +324,8 @@ class ChatEventMemberPromoted extends ChatEventAction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "old_status": this.oldStatus.toJson(),
-      "new_status": this.newStatus.toJson(),
+      "old_status": this.oldStatus == null ? null : this.oldStatus.toJson(),
+      "new_status": this.newStatus == null ? null : this.newStatus.toJson(),
     };
   }
 
@@ -360,8 +360,8 @@ class ChatEventMemberRestricted extends ChatEventAction {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "old_status": this.oldStatus.toJson(),
-      "new_status": this.newStatus.toJson(),
+      "old_status": this.oldStatus == null ? null : this.oldStatus.toJson(),
+      "new_status": this.newStatus == null ? null : this.newStatus.toJson(),
     };
   }
 
@@ -422,8 +422,8 @@ class ChatEventPermissionsChanged extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_permissions": this.oldPermissions.toJson(),
-      "new_permissions": this.newPermissions.toJson(),
+      "old_permissions": this.oldPermissions == null ? null : this.oldPermissions.toJson(),
+      "new_permissions": this.newPermissions == null ? null : this.newPermissions.toJson(),
     };
   }
 
@@ -515,8 +515,8 @@ class ChatEventPhotoChanged extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_photo": this.oldPhoto.toJson(),
-      "new_photo": this.newPhoto.toJson(),
+      "old_photo": this.oldPhoto == null ? null : this.oldPhoto.toJson(),
+      "new_photo": this.newPhoto == null ? null : this.newPhoto.toJson(),
     };
   }
 
@@ -691,8 +691,8 @@ class ChatEventLocationChanged extends ChatEventAction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_location": this.oldLocation.toJson(),
-      "new_location": this.newLocation.toJson(),
+      "old_location": this.oldLocation == null ? null : this.oldLocation.toJson(),
+      "new_location": this.newLocation == null ? null : this.newLocation.toJson(),
     };
   }
 

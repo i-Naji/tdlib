@@ -37,8 +37,8 @@ class File extends TdObject {
       "id": this.id,
       "size": this.size,
       "expected_size": this.expectedSize,
-      "local": this.local.toJson(),
-      "remote": this.remote.toJson(),
+      "local": this.local == null ? null : this.local.toJson(),
+      "remote": this.remote == null ? null : this.remote.toJson(),
     };
   }
 

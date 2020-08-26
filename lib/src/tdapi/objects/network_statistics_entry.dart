@@ -61,8 +61,8 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file_type": this.fileType.toJson(),
-      "network_type": this.networkType.toJson(),
+      "file_type": this.fileType == null ? null : this.fileType.toJson(),
+      "network_type": this.networkType == null ? null : this.networkType.toJson(),
       "sent_bytes": this.sentBytes,
       "received_bytes": this.receivedBytes,
     };
@@ -102,7 +102,7 @@ class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "network_type": this.networkType.toJson(),
+      "network_type": this.networkType == null ? null : this.networkType.toJson(),
       "sent_bytes": this.sentBytes,
       "received_bytes": this.receivedBytes,
       "duration": this.duration,

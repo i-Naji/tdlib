@@ -23,7 +23,7 @@ class SetChatMemberStatus extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "user_id": this.userId,
-      "status": this.status.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
       "@extra": this.extra,
     };
   }

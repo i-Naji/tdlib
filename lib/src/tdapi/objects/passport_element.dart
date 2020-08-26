@@ -84,7 +84,7 @@ class PassportElementPersonalDetails extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "personal_details": this.personalDetails.toJson(),
+      "personal_details": this.personalDetails == null ? null : this.personalDetails.toJson(),
     };
   }
 
@@ -112,7 +112,7 @@ class PassportElementPassport extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "passport": this.passport.toJson(),
+      "passport": this.passport == null ? null : this.passport.toJson(),
     };
   }
 
@@ -140,7 +140,7 @@ class PassportElementDriverLicense extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "driver_license": this.driverLicense.toJson(),
+      "driver_license": this.driverLicense == null ? null : this.driverLicense.toJson(),
     };
   }
 
@@ -168,7 +168,7 @@ class PassportElementIdentityCard extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "identity_card": this.identityCard.toJson(),
+      "identity_card": this.identityCard == null ? null : this.identityCard.toJson(),
     };
   }
 
@@ -196,7 +196,7 @@ class PassportElementInternalPassport extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "internal_passport": this.internalPassport.toJson(),
+      "internal_passport": this.internalPassport == null ? null : this.internalPassport.toJson(),
     };
   }
 
@@ -224,7 +224,7 @@ class PassportElementAddress extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "address": this.address.toJson(),
+      "address": this.address == null ? null : this.address.toJson(),
     };
   }
 
@@ -252,7 +252,7 @@ class PassportElementUtilityBill extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "utility_bill": this.utilityBill.toJson(),
+      "utility_bill": this.utilityBill == null ? null : this.utilityBill.toJson(),
     };
   }
 
@@ -280,7 +280,7 @@ class PassportElementBankStatement extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "bank_statement": this.bankStatement.toJson(),
+      "bank_statement": this.bankStatement == null ? null : this.bankStatement.toJson(),
     };
   }
 
@@ -308,7 +308,7 @@ class PassportElementRentalAgreement extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "rental_agreement": this.rentalAgreement.toJson(),
+      "rental_agreement": this.rentalAgreement == null ? null : this.rentalAgreement.toJson(),
     };
   }
 
@@ -336,7 +336,7 @@ class PassportElementPassportRegistration extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "passport_registration": this.passportRegistration.toJson(),
+      "passport_registration": this.passportRegistration == null ? null : this.passportRegistration.toJson(),
     };
   }
 
@@ -364,7 +364,7 @@ class PassportElementTemporaryRegistration extends PassportElement {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "temporary_registration": this.temporaryRegistration.toJson(),
+      "temporary_registration": this.temporaryRegistration == null ? null : this.temporaryRegistration.toJson(),
     };
   }
 

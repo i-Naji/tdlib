@@ -19,7 +19,7 @@ class SetChatPermissions extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "permissions": this.permissions.toJson(),
+      "permissions": this.permissions == null ? null : this.permissions.toJson(),
       "@extra": this.extra,
     };
   }

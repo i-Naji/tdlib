@@ -279,7 +279,7 @@ class UpdateAuthorizationState extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "authorization_state": this.authorizationState.toJson(),
+      "authorization_state": this.authorizationState == null ? null : this.authorizationState.toJson(),
     };
   }
 
@@ -307,7 +307,7 @@ class UpdateNewMessage extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
@@ -372,7 +372,7 @@ class UpdateMessageSendSucceeded extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
       "old_message_id": this.oldMessageId,
     };
   }
@@ -413,7 +413,7 @@ class UpdateMessageSendFailed extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message.toJson(),
+      "message": this.message == null ? null : this.message.toJson(),
       "old_message_id": this.oldMessageId,
       "error_code": this.errorCode,
       "error_message": this.errorMessage,
@@ -454,7 +454,7 @@ class UpdateMessageContent extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "new_content": this.newContent.toJson(),
+      "new_content": this.newContent == null ? null : this.newContent.toJson(),
     };
   }
 
@@ -497,7 +497,7 @@ class UpdateMessageEdited extends Update {
       "chat_id": this.chatId,
       "message_id": this.messageId,
       "edit_date": this.editDate,
-      "reply_markup": this.replyMarkup.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
     };
   }
 
@@ -667,7 +667,7 @@ class UpdateNewChat extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat": this.chat.toJson(),
+      "chat": this.chat == null ? null : this.chat.toJson(),
     };
   }
 
@@ -733,7 +733,7 @@ class UpdateChatPhoto extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
     };
   }
 
@@ -766,7 +766,7 @@ class UpdateChatPermissions extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "permissions": this.permissions.toJson(),
+      "permissions": this.permissions == null ? null : this.permissions.toJson(),
     };
   }
 
@@ -803,7 +803,7 @@ class UpdateChatLastMessage extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "last_message": this.lastMessage.toJson(),
+      "last_message": this.lastMessage == null ? null : this.lastMessage.toJson(),
       "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
@@ -837,7 +837,7 @@ class UpdateChatPosition extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "position": this.position.toJson(),
+      "position": this.position == null ? null : this.position.toJson(),
     };
   }
 
@@ -1073,7 +1073,7 @@ class UpdateChatNotificationSettings extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "notification_settings": this.notificationSettings.toJson(),
+      "notification_settings": this.notificationSettings == null ? null : this.notificationSettings.toJson(),
     };
   }
 
@@ -1105,8 +1105,8 @@ class UpdateScopeNotificationSettings extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "scope": this.scope.toJson(),
-      "notification_settings": this.notificationSettings.toJson(),
+      "scope": this.scope == null ? null : this.scope.toJson(),
+      "notification_settings": this.notificationSettings == null ? null : this.notificationSettings.toJson(),
     };
   }
 
@@ -1139,7 +1139,7 @@ class UpdateChatActionBar extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "action_bar": this.actionBar.toJson(),
+      "action_bar": this.actionBar == null ? null : this.actionBar.toJson(),
     };
   }
 
@@ -1242,7 +1242,7 @@ class UpdateChatDraftMessage extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "draft_message": this.draftMessage.toJson(),
+      "draft_message": this.draftMessage == null ? null : this.draftMessage.toJson(),
       "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
@@ -1337,7 +1337,7 @@ class UpdateNotification extends Update {
     return {
       "@type": CONSTRUCTOR,
       "notification_group_id": this.notificationGroupId,
-      "notification": this.notification.toJson(),
+      "notification": this.notification == null ? null : this.notification.toJson(),
     };
   }
 
@@ -1394,7 +1394,7 @@ class UpdateNotificationGroup extends Update {
     return {
       "@type": CONSTRUCTOR,
       "notification_group_id": this.notificationGroupId,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "chat_id": this.chatId,
       "notification_settings_chat_id": this.notificationSettingsChatId,
       "is_silent": this.isSilent,
@@ -1542,7 +1542,7 @@ class UpdateUserChatAction extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "user_id": this.userId,
-      "action": this.action.toJson(),
+      "action": this.action == null ? null : this.action.toJson(),
     };
   }
 
@@ -1575,7 +1575,7 @@ class UpdateUserStatus extends Update {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "status": this.status.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
     };
   }
 
@@ -1603,7 +1603,7 @@ class UpdateUser extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user": this.user.toJson(),
+      "user": this.user == null ? null : this.user.toJson(),
     };
   }
 
@@ -1631,7 +1631,7 @@ class UpdateBasicGroup extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "basic_group": this.basicGroup.toJson(),
+      "basic_group": this.basicGroup == null ? null : this.basicGroup.toJson(),
     };
   }
 
@@ -1659,7 +1659,7 @@ class UpdateSupergroup extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "supergroup": this.supergroup.toJson(),
+      "supergroup": this.supergroup == null ? null : this.supergroup.toJson(),
     };
   }
 
@@ -1687,7 +1687,7 @@ class UpdateSecretChat extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "secret_chat": this.secretChat.toJson(),
+      "secret_chat": this.secretChat == null ? null : this.secretChat.toJson(),
     };
   }
 
@@ -1720,7 +1720,7 @@ class UpdateUserFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "user_full_info": this.userFullInfo.toJson(),
+      "user_full_info": this.userFullInfo == null ? null : this.userFullInfo.toJson(),
     };
   }
 
@@ -1753,7 +1753,7 @@ class UpdateBasicGroupFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "basic_group_id": this.basicGroupId,
-      "basic_group_full_info": this.basicGroupFullInfo.toJson(),
+      "basic_group_full_info": this.basicGroupFullInfo == null ? null : this.basicGroupFullInfo.toJson(),
     };
   }
 
@@ -1786,7 +1786,7 @@ class UpdateSupergroupFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
-      "supergroup_full_info": this.supergroupFullInfo.toJson(),
+      "supergroup_full_info": this.supergroupFullInfo == null ? null : this.supergroupFullInfo.toJson(),
     };
   }
 
@@ -1819,7 +1819,7 @@ class UpdateServiceNotification extends Update {
     return {
       "@type": CONSTRUCTOR,
       "type": this.type,
-      "content": this.content.toJson(),
+      "content": this.content == null ? null : this.content.toJson(),
     };
   }
 
@@ -1847,7 +1847,7 @@ class UpdateFile extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file": this.file.toJson(),
+      "file": this.file == null ? null : this.file.toJson(),
     };
   }
 
@@ -1946,7 +1946,7 @@ class UpdateCall extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "call": this.call.toJson(),
+      "call": this.call == null ? null : this.call.toJson(),
     };
   }
 
@@ -1978,8 +1978,8 @@ class UpdateUserPrivacySettingRules extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "setting": this.setting.toJson(),
-      "rules": this.rules.toJson(),
+      "setting": this.setting == null ? null : this.setting.toJson(),
+      "rules": this.rules == null ? null : this.rules.toJson(),
     };
   }
 
@@ -2015,7 +2015,7 @@ class UpdateUnreadMessageCount extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "unread_count": this.unreadCount,
       "unread_unmuted_count": this.unreadUnmutedCount,
     };
@@ -2065,7 +2065,7 @@ class UpdateUnreadChatCount extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "total_count": this.totalCount,
       "unread_count": this.unreadCount,
       "unread_unmuted_count": this.unreadUnmutedCount,
@@ -2103,7 +2103,7 @@ class UpdateOption extends Update {
     return {
       "@type": CONSTRUCTOR,
       "name": this.name,
-      "value": this.value.toJson(),
+      "value": this.value == null ? null : this.value.toJson(),
     };
   }
 
@@ -2131,7 +2131,7 @@ class UpdateStickerSet extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_set": this.stickerSet.toJson(),
+      "sticker_set": this.stickerSet == null ? null : this.stickerSet.toJson(),
     };
   }
 
@@ -2192,7 +2192,7 @@ class UpdateTrendingStickerSets extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_sets": this.stickerSets.toJson(),
+      "sticker_sets": this.stickerSets == null ? null : this.stickerSets.toJson(),
     };
   }
 
@@ -2314,7 +2314,7 @@ class UpdateSelectedBackground extends Update {
     return {
       "@type": CONSTRUCTOR,
       "for_dark_theme": this.forDarkTheme,
-      "background": this.background.toJson(),
+      "background": this.background == null ? null : this.background.toJson(),
     };
   }
 
@@ -2380,7 +2380,7 @@ class UpdateConnectionState extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "state": this.state.toJson(),
+      "state": this.state == null ? null : this.state.toJson(),
     };
   }
 
@@ -2413,7 +2413,7 @@ class UpdateTermsOfService extends Update {
     return {
       "@type": CONSTRUCTOR,
       "terms_of_service_id": this.termsOfServiceId,
-      "terms_of_service": this.termsOfService.toJson(),
+      "terms_of_service": this.termsOfService == null ? null : this.termsOfService.toJson(),
     };
   }
 
@@ -2581,7 +2581,7 @@ class UpdateNewInlineQuery extends Update {
       "@type": CONSTRUCTOR,
       "id": this.id,
       "sender_user_id": this.senderUserId,
-      "user_location": this.userLocation.toJson(),
+      "user_location": this.userLocation == null ? null : this.userLocation.toJson(),
       "query": this.query,
       "offset": this.offset,
     };
@@ -2628,7 +2628,7 @@ class UpdateNewChosenInlineResult extends Update {
     return {
       "@type": CONSTRUCTOR,
       "sender_user_id": this.senderUserId,
-      "user_location": this.userLocation.toJson(),
+      "user_location": this.userLocation == null ? null : this.userLocation.toJson(),
       "query": this.query,
       "result_id": this.resultId,
       "inline_message_id": this.inlineMessageId,
@@ -2684,7 +2684,7 @@ class UpdateNewCallbackQuery extends Update {
       "chat_id": this.chatId,
       "message_id": this.messageId,
       "chat_instance": this.chatInstance,
-      "payload": this.payload.toJson(),
+      "payload": this.payload == null ? null : this.payload.toJson(),
     };
   }
 
@@ -2732,7 +2732,7 @@ class UpdateNewInlineCallbackQuery extends Update {
       "sender_user_id": this.senderUserId,
       "inline_message_id": this.inlineMessageId,
       "chat_instance": this.chatInstance,
-      "payload": this.payload.toJson(),
+      "payload": this.payload == null ? null : this.payload.toJson(),
     };
   }
 
@@ -2775,7 +2775,7 @@ class UpdateNewShippingQuery extends Update {
       "id": this.id,
       "sender_user_id": this.senderUserId,
       "invoice_payload": this.invoicePayload,
-      "shipping_address": this.shippingAddress.toJson(),
+      "shipping_address": this.shippingAddress == null ? null : this.shippingAddress.toJson(),
     };
   }
 
@@ -2833,7 +2833,7 @@ class UpdateNewPreCheckoutQuery extends Update {
       "total_amount": this.totalAmount,
       "invoice_payload": this.invoicePayload,
       "shipping_option_id": this.shippingOptionId,
-      "order_info": this.orderInfo.toJson(),
+      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
     };
   }
 
@@ -2927,7 +2927,7 @@ class UpdatePoll extends Update {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "poll": this.poll.toJson(),
+      "poll": this.poll == null ? null : this.poll.toJson(),
     };
   }
 

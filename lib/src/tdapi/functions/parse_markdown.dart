@@ -15,7 +15,7 @@ class ParseMarkdown extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "@extra": this.extra,
     };
   }

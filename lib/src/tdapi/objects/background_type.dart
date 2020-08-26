@@ -91,7 +91,7 @@ class BackgroundTypePattern extends BackgroundType {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "fill": this.fill.toJson(),
+      "fill": this.fill == null ? null : this.fill.toJson(),
       "intensity": this.intensity,
       "is_moving": this.isMoving,
     };
@@ -119,7 +119,7 @@ class BackgroundTypeFill extends BackgroundType {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "fill": this.fill.toJson(),
+      "fill": this.fill == null ? null : this.fill.toJson(),
     };
   }
 

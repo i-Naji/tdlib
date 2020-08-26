@@ -26,8 +26,8 @@ class EditMessageMedia extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }

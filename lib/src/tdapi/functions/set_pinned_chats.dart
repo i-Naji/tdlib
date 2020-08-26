@@ -18,7 +18,7 @@ class SetPinnedChats extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "chat_ids": this.chatIds.map((i) => i).toList(),
       "@extra": this.extra,
     };

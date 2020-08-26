@@ -15,7 +15,7 @@ class EditCustomLanguagePackInfo extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "info": this.info.toJson(),
+      "info": this.info == null ? null : this.info.toJson(),
       "@extra": this.extra,
     };
   }

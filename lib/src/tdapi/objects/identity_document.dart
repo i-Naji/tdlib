@@ -37,10 +37,10 @@ class IdentityDocument extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "number": this.number,
-      "expiry_date": this.expiryDate.toJson(),
-      "front_side": this.frontSide.toJson(),
-      "reverse_side": this.reverseSide.toJson(),
-      "selfie": this.selfie.toJson(),
+      "expiry_date": this.expiryDate == null ? null : this.expiryDate.toJson(),
+      "front_side": this.frontSide == null ? null : this.frontSide.toJson(),
+      "reverse_side": this.reverseSide == null ? null : this.reverseSide.toJson(),
+      "selfie": this.selfie == null ? null : this.selfie.toJson(),
       "translation": this.translation.map((i) => i.toJson()).toList(),
     };
   }
