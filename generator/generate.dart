@@ -123,7 +123,9 @@ class DartTdDocumentationGenerator {
         final classReturnType = classData.group(3);
         final args = (classArgs == null)
             ? <String, String>{}
-            : Map<String, String>.fromIterable(classArgs.trim().split(' '), // ignore: prefer_for_elements_to_map_fromIterable
+            : Map<String, String>.fromIterable( // ignore: prefer_for_elements_to_map_fromIterable
+                classArgs.trim().split(
+                    ' '),
                 key: (var arg) => arg.split(':')[0],
                 value: (var arg) => arg.split(':')[1]);
 
@@ -383,7 +385,7 @@ class TlObjectArg {
     this.argName = argName ?? lowerFirstChar(camelCase(this.name));
     this.type = getType(tlType);
     if (this.type == 'Error') this.type = 'TdError';
-    this.read = getRead(this.name, this.type);
+    this.read = getRead(this.name, this.type, isInt64: tlType=='int64');
     this.write = getWrite(this.argName, this.type);
   }
 
@@ -406,16 +408,19 @@ class TlObjectArg {
   }
 
   static String getRead(String name, String type,
-      {String pattern = 'PLACE', String itemName = 'item'}) {
+      {String pattern = 'PLACE', String itemName = 'item', bool isInt64 = false}) {
     String readFromJson;
     if (dartTypes.contains(type)) {
-      readFromJson = pattern;
+      if (isInt64){
+        readFromJson = 'int.parse($pattern)'; // todo: change to BigInt or String!
+      }else {
+        readFromJson = pattern;
+      }
     } else if (type.startsWith('List')) {
       final subType = type.substring(5, type.length - 1);
       readFromJson =
           'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
     } else {
-      if (type == 'bool') print(name);
       readFromJson = 'TYPE.fromJson($pattern ?? <String, dynamic>{})';
     }
     return readFromJson
