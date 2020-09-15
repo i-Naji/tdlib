@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class DeepLinkInfo extends TdObject {
-  FormattedText text;
-  bool needUpdateApplication;
-  dynamic extra;
 
-  /// Contains information about a tg:// deep link. 
-  /// [text] Text to be shown to the user . 
-  /// [needUpdateApplication] True, if user should be asked to update the application
+  /// Contains information about a tg:// deep link
   DeepLinkInfo({this.text,
     this.needUpdateApplication});
+
+  /// [text] Text to be shown to the user 
+  FormattedText text;
+
+  /// [needUpdateApplication] True, if user should be asked to update the application
+  bool needUpdateApplication;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeepLinkInfo.fromJson(Map<String, dynamic> json)  {

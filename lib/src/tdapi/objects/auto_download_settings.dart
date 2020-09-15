@@ -1,24 +1,8 @@
 part of '../tdapi.dart';
 
 class AutoDownloadSettings extends TdObject {
-  bool isAutoDownloadEnabled;
-  int maxPhotoFileSize;
-  int maxVideoFileSize;
-  int maxOtherFileSize;
-  int videoUploadBitrate;
-  bool preloadLargeVideos;
-  bool preloadNextAudio;
-  bool useLessDataForCalls;
 
-  /// Contains auto-download settings. 
-  /// [isAutoDownloadEnabled] True, if the auto-download is enabled. 
-  /// [maxPhotoFileSize] The maximum size of a photo file to be auto-downloaded. 
-  /// [maxVideoFileSize] The maximum size of a video file to be auto-downloaded. 
-  /// [maxOtherFileSize] The maximum size of other file types to be auto-downloaded. 
-  /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos. 
-  /// [preloadLargeVideos] True, if the beginning of videos needs to be preloaded for instant playback. 
-  /// [preloadNextAudio] True, if the next audio track needs to be preloaded while the user is listening to an audio file. 
-  /// [useLessDataForCalls] True, if "use less data for calls" option needs to be enabled
+  /// Contains auto-download settings
   AutoDownloadSettings({this.isAutoDownloadEnabled,
     this.maxPhotoFileSize,
     this.maxVideoFileSize,
@@ -27,6 +11,30 @@ class AutoDownloadSettings extends TdObject {
     this.preloadLargeVideos,
     this.preloadNextAudio,
     this.useLessDataForCalls});
+
+  /// [isAutoDownloadEnabled] True, if the auto-download is enabled
+  bool isAutoDownloadEnabled;
+
+  /// [maxPhotoFileSize] The maximum size of a photo file to be auto-downloaded
+  int maxPhotoFileSize;
+
+  /// [maxVideoFileSize] The maximum size of a video file to be auto-downloaded
+  int maxVideoFileSize;
+
+  /// [maxOtherFileSize] The maximum size of other file types to be auto-downloaded
+  int maxOtherFileSize;
+
+  /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos
+  int videoUploadBitrate;
+
+  /// [preloadLargeVideos] True, if the beginning of videos needs to be preloaded for instant playback
+  bool preloadLargeVideos;
+
+  /// [preloadNextAudio] True, if the next audio track needs to be preloaded while the user is listening to an audio file
+  bool preloadNextAudio;
+
+  /// [useLessDataForCalls] True, if "use less data for calls" option needs to be enabled
+  bool useLessDataForCalls;
 
   /// Parse from a json
   AutoDownloadSettings.fromJson(Map<String, dynamic> json)  {

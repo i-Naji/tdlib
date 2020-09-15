@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetBasicGroupFullInfo extends TdFunction {
-  int basicGroupId;
-  dynamic extra;
 
-  /// Returns full information about a basic group by its identifier. 
-  /// [basicGroupId] Basic group identifier
+  /// Returns full information about a basic group by its identifier
   GetBasicGroupFullInfo({this.basicGroupId});
+
+  /// [basicGroupId] Basic group identifier
+  int basicGroupId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetBasicGroupFullInfo.fromJson(Map<String, dynamic> json) ;

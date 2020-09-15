@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetChat extends TdFunction {
-  int chatId;
-  dynamic extra;
 
-  /// Returns information about a chat by its identifier, this is an offline request if the current user is not a bot. 
-  /// [chatId] Chat identifier
+  /// Returns information about a chat by its identifier, this is an offline request if the current user is not a bot
   GetChat({this.chatId});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChat.fromJson(Map<String, dynamic> json) ;

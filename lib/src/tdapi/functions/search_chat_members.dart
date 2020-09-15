@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class SearchChatMembers extends TdFunction {
-  int chatId;
-  String query;
-  int limit;
-  ChatMembersFilter filter;
-  dynamic extra;
 
-  /// Searches for a specified query in the first name, last name and username of the members of a specified chat. Requires administrator rights in channels. 
-  /// [chatId] Chat identifier . 
-  /// [query] Query to search for . 
-  /// [limit] The maximum number of users to be returned . 
-  /// [filter] The type of users to return. By default, chatMembersFilterMembers
+  /// Searches for a specified query in the first name, last name and username of the members of a specified chat. Requires administrator rights in channels
   SearchChatMembers({this.chatId,
     this.query,
     this.limit,
     this.filter});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [query] Query to search for 
+  String query;
+
+  /// [limit] The maximum number of users to be returned 
+  int limit;
+
+  /// [filter] The type of users to return. By default, chatMembersFilterMembers
+  ChatMembersFilter filter;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SearchChatMembers.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class GetContacts extends TdFunction {
-  dynamic extra;
 
   /// Returns all user contacts
   GetContacts();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetContacts.fromJson(Map<String, dynamic> json) ;

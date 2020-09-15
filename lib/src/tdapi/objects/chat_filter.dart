@@ -1,35 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatFilter extends TdObject {
-  String title;
-  String iconName;
-  List<int> pinnedChatIds;
-  List<int> includedChatIds;
-  List<int> excludedChatIds;
-  bool excludeMuted;
-  bool excludeRead;
-  bool excludeArchived;
-  bool includeContacts;
-  bool includeNonContacts;
-  bool includeBots;
-  bool includeGroups;
-  bool includeChannels;
-  dynamic extra;
 
-  /// Represents a filter of user chats. 
-  /// [title] The title of the filter; 1-12 characters without line feeds. 
-  /// [iconName] The icon name for short filter representation. If non-empty, must be one of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work".. If empty, use getChatFilterDefaultIconName to get default icon name for the filter. 
-  /// [pinnedChatIds] The chat identifiers of pinned chats in the filtered chat list. 
-  /// [includedChatIds] The chat identifiers of always included chats in the filtered chat list. 
-  /// [excludedChatIds] The chat identifiers of always excluded chats in the filtered chat list. 
-  /// [excludeMuted] True, if the muted chats need to be excluded. 
-  /// [excludeRead] True, if read chats need to be excluded. 
-  /// [excludeArchived] True, if archived chats need to be excluded. 
-  /// [includeContacts] True, if contacts need to be included. 
-  /// [includeNonContacts] True, if non-contact users need to be included. 
-  /// [includeBots] True, if bots need to be included. 
-  /// [includeGroups] True, if basic groups and supergroups need to be included. 
-  /// [includeChannels] True, if channels need to be included
+  /// Represents a filter of user chats
   ChatFilter({this.title,
     this.iconName,
     this.pinnedChatIds,
@@ -43,6 +16,48 @@ class ChatFilter extends TdObject {
     this.includeBots,
     this.includeGroups,
     this.includeChannels});
+
+  /// [title] The title of the filter; 1-12 characters without line feeds
+  String title;
+
+  /// [iconName] The icon name for short filter representation. If non-empty, must be one of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work".. If empty, use getChatFilterDefaultIconName to get default icon name for the filter
+  String iconName;
+
+  /// [pinnedChatIds] The chat identifiers of pinned chats in the filtered chat list
+  List<int> pinnedChatIds;
+
+  /// [includedChatIds] The chat identifiers of always included chats in the filtered chat list
+  List<int> includedChatIds;
+
+  /// [excludedChatIds] The chat identifiers of always excluded chats in the filtered chat list
+  List<int> excludedChatIds;
+
+  /// [excludeMuted] True, if the muted chats need to be excluded
+  bool excludeMuted;
+
+  /// [excludeRead] True, if read chats need to be excluded
+  bool excludeRead;
+
+  /// [excludeArchived] True, if archived chats need to be excluded
+  bool excludeArchived;
+
+  /// [includeContacts] True, if contacts need to be included
+  bool includeContacts;
+
+  /// [includeNonContacts] True, if non-contact users need to be included
+  bool includeNonContacts;
+
+  /// [includeBots] True, if bots need to be included
+  bool includeBots;
+
+  /// [includeGroups] True, if basic groups and supergroups need to be included
+  bool includeGroups;
+
+  /// [includeChannels] True, if channels need to be included
+  bool includeChannels;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatFilter.fromJson(Map<String, dynamic> json)  {

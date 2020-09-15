@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetFileExtension extends TdFunction {
-  String mimeType;
-  dynamic extra;
 
-  /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [mimeType] The MIME type of the file
+  /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously
   GetFileExtension({this.mimeType});
+
+  /// [mimeType] The MIME type of the file
+  String mimeType;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetFileExtension.fromJson(Map<String, dynamic> json) ;

@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class GetUserProfilePhotos extends TdFunction {
-  int userId;
-  int offset;
-  int limit;
-  dynamic extra;
 
-  /// Returns the profile photos of a user. The result of this query may be outdated: some photos might have been deleted already. 
-  /// [userId] User identifier . 
-  /// [offset] The number of photos to skip; must be non-negative . 
-  /// [limit] The maximum number of photos to be returned; up to 100
+  /// Returns the profile photos of a user. The result of this query may be outdated: some photos might have been deleted already
   GetUserProfilePhotos({this.userId,
     this.offset,
     this.limit});
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [offset] The number of photos to skip; must be non-negative 
+  int offset;
+
+  /// [limit] The maximum number of photos to be returned; up to 100
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetUserProfilePhotos.fromJson(Map<String, dynamic> json) ;

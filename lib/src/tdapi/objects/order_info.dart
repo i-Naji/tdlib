@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class OrderInfo extends TdObject {
-  String name;
-  String phoneNumber;
-  String emailAddress;
-  Address shippingAddress;
-  dynamic extra;
 
-  /// Order information. 
-  /// [name] Name of the user . 
-  /// [phoneNumber] Phone number of the user . 
-  /// [emailAddress] Email address of the user . 
-  /// [shippingAddress] Shipping address for this order; may be null
+  /// Order information
   OrderInfo({this.name,
     this.phoneNumber,
     this.emailAddress,
     this.shippingAddress});
+
+  /// [name] Name of the user 
+  String name;
+
+  /// [phoneNumber] Phone number of the user 
+  String phoneNumber;
+
+  /// [emailAddress] Email address of the user 
+  String emailAddress;
+
+  /// [shippingAddress] Shipping address for this order; may be null
+  Address shippingAddress;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   OrderInfo.fromJson(Map<String, dynamic> json)  {

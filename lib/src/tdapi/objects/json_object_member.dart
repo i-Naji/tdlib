@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class JsonObjectMember extends TdObject {
-  String key;
-  JsonValue value;
 
-  /// Represents one member of a JSON object. 
-  /// [key] Member's key . 
-  /// [value] Member's value
+  /// Represents one member of a JSON object
   JsonObjectMember({this.key,
     this.value});
+
+  /// [key] Member's key 
+  String key;
+
+  /// [value] Member's value
+  JsonValue value;
 
   /// Parse from a json
   JsonObjectMember.fromJson(Map<String, dynamic> json)  {

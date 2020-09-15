@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class PassportElementError extends TdObject {
-  PassportElementType type;
-  String message;
-  PassportElementErrorSource source;
 
-  /// Contains the description of an error in a Telegram Passport element. 
-  /// [type] Type of the Telegram Passport element which has the error . 
-  /// [message] Error message . 
-  /// [source] Error source
+  /// Contains the description of an error in a Telegram Passport element
   PassportElementError({this.type,
     this.message,
     this.source});
+
+  /// [type] Type of the Telegram Passport element which has the error 
+  PassportElementType type;
+
+  /// [message] Error message 
+  String message;
+
+  /// [source] Error source
+  PassportElementErrorSource source;
 
   /// Parse from a json
   PassportElementError.fromJson(Map<String, dynamic> json)  {

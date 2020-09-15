@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class LanguagePackStringValue extends TdObject {
-  
 
   /// Represents the value of a string in a language pack
   LanguagePackStringValue();
+
+  
 
   /// a LanguagePackStringValue return type can be :
   /// * LanguagePackStringValueOrdinary
@@ -37,12 +38,15 @@ class LanguagePackStringValue extends TdObject {
 }
 
 class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
-  String value;
-  dynamic extra;
 
-  /// An ordinary language pack string. 
-  /// [value] String value
+  /// An ordinary language pack string
   LanguagePackStringValueOrdinary({this.value});
+
+  /// [value] String value
+  String value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LanguagePackStringValueOrdinary.fromJson(Map<String, dynamic> json)  {
@@ -65,27 +69,35 @@ class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
 }
 
 class LanguagePackStringValuePluralized extends LanguagePackStringValue {
-  String zeroValue;
-  String oneValue;
-  String twoValue;
-  String fewValue;
-  String manyValue;
-  String otherValue;
-  dynamic extra;
 
-  /// A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info. 
-  /// [zeroValue] Value for zero objects. 
-  /// [oneValue] Value for one object . 
-  /// [twoValue] Value for two objects. 
-  /// [fewValue] Value for few objects. 
-  /// [manyValue] Value for many objects . 
-  /// [otherValue] Default value
+  /// A language pack string which has different forms based on the number of some object it mentions. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info
   LanguagePackStringValuePluralized({this.zeroValue,
     this.oneValue,
     this.twoValue,
     this.fewValue,
     this.manyValue,
     this.otherValue});
+
+  /// [zeroValue] Value for zero objects
+  String zeroValue;
+
+  /// [oneValue] Value for one object 
+  String oneValue;
+
+  /// [twoValue] Value for two objects
+  String twoValue;
+
+  /// [fewValue] Value for few objects
+  String fewValue;
+
+  /// [manyValue] Value for many objects 
+  String manyValue;
+
+  /// [otherValue] Default value
+  String otherValue;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LanguagePackStringValuePluralized.fromJson(Map<String, dynamic> json)  {
@@ -118,10 +130,12 @@ class LanguagePackStringValuePluralized extends LanguagePackStringValue {
 }
 
 class LanguagePackStringValueDeleted extends LanguagePackStringValue {
-  dynamic extra;
 
   /// A deleted language pack string, the value should be taken from the built-in english language pack
   LanguagePackStringValueDeleted();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LanguagePackStringValueDeleted.fromJson(Map<String, dynamic> json)  {

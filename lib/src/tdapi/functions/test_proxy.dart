@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class TestProxy extends TdFunction {
-  String server;
-  int port;
-  ProxyType type;
-  int dcId;
-  double timeout;
-  dynamic extra;
 
-  /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization. 
-  /// [server] Proxy server IP address . 
-  /// [port] Proxy server port . 
-  /// [type] Proxy type. 
-  /// [dcId] Identifier of a datacenter, with which to test connection. 
-  /// [timeout] The maximum overall timeout for the request
+  /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
   TestProxy({this.server,
     this.port,
     this.type,
     this.dcId,
     this.timeout});
+
+  /// [server] Proxy server IP address 
+  String server;
+
+  /// [port] Proxy server port 
+  int port;
+
+  /// [type] Proxy type
+  ProxyType type;
+
+  /// [dcId] Identifier of a datacenter, with which to test connection
+  int dcId;
+
+  /// [timeout] The maximum overall timeout for the request
+  double timeout;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestProxy.fromJson(Map<String, dynamic> json) ;

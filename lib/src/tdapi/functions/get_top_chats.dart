@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetTopChats extends TdFunction {
-  TopChatCategory category;
-  int limit;
-  dynamic extra;
 
-  /// Returns a list of frequently used chats. Supported only if the chat info database is enabled. 
-  /// [category] Category of chats to be returned . 
-  /// [limit] The maximum number of chats to be returned; up to 30
+  /// Returns a list of frequently used chats. Supported only if the chat info database is enabled
   GetTopChats({this.category,
     this.limit});
+
+  /// [category] Category of chats to be returned 
+  TopChatCategory category;
+
+  /// [limit] The maximum number of chats to be returned; up to 30
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetTopChats.fromJson(Map<String, dynamic> json) ;

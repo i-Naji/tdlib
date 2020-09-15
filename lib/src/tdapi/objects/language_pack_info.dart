@@ -1,35 +1,8 @@
 part of '../tdapi.dart';
 
 class LanguagePackInfo extends TdObject {
-  String id;
-  String baseLanguagePackId;
-  String name;
-  String nativeName;
-  String pluralCode;
-  bool isOfficial;
-  bool isRtl;
-  bool isBeta;
-  bool isInstalled;
-  int totalStringCount;
-  int translatedStringCount;
-  int localStringCount;
-  String translationUrl;
-  dynamic extra;
 
-  /// Contains information about a language pack. 
-  /// [id] Unique language pack identifier. 
-  /// [baseLanguagePackId] Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it should be fetched from base language pack. Unsupported in custom language packs. 
-  /// [name] Language name. 
-  /// [nativeName] Name of the language in that language. 
-  /// [pluralCode] A language code to be used to apply plural forms. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info. 
-  /// [isOfficial] True, if the language pack is official. 
-  /// [isRtl] True, if the language pack strings are RTL . 
-  /// [isBeta] True, if the language pack is a beta language pack. 
-  /// [isInstalled] True, if the language pack is installed by the current user. 
-  /// [totalStringCount] Total number of non-deleted strings from the language pack. 
-  /// [translatedStringCount] Total number of translated strings from the language pack. 
-  /// [localStringCount] Total number of non-deleted strings from the language pack available locally. 
-  /// [translationUrl] Link to language translation interface; empty for custom local language packs
+  /// Contains information about a language pack
   LanguagePackInfo({this.id,
     this.baseLanguagePackId,
     this.name,
@@ -43,6 +16,48 @@ class LanguagePackInfo extends TdObject {
     this.translatedStringCount,
     this.localStringCount,
     this.translationUrl});
+
+  /// [id] Unique language pack identifier
+  String id;
+
+  /// [baseLanguagePackId] Identifier of a base language pack; may be empty. If a string is missed in the language pack, then it should be fetched from base language pack. Unsupported in custom language packs
+  String baseLanguagePackId;
+
+  /// [name] Language name
+  String name;
+
+  /// [nativeName] Name of the language in that language
+  String nativeName;
+
+  /// [pluralCode] A language code to be used to apply plural forms. See https://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html for more info
+  String pluralCode;
+
+  /// [isOfficial] True, if the language pack is official
+  bool isOfficial;
+
+  /// [isRtl] True, if the language pack strings are RTL 
+  bool isRtl;
+
+  /// [isBeta] True, if the language pack is a beta language pack
+  bool isBeta;
+
+  /// [isInstalled] True, if the language pack is installed by the current user
+  bool isInstalled;
+
+  /// [totalStringCount] Total number of non-deleted strings from the language pack
+  int totalStringCount;
+
+  /// [translatedStringCount] Total number of translated strings from the language pack
+  int translatedStringCount;
+
+  /// [localStringCount] Total number of non-deleted strings from the language pack available locally
+  int localStringCount;
+
+  /// [translationUrl] Link to language translation interface; empty for custom local language packs
+  String translationUrl;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LanguagePackInfo.fromJson(Map<String, dynamic> json)  {

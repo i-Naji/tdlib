@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestString extends TdObject {
-  String value;
-  dynamic extra;
 
-  /// A simple object containing a string; for testing only. 
-  /// [value] String
+  /// A simple object containing a string; for testing only
   TestString({this.value});
+
+  /// [value] String
+  String value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestString.fromJson(Map<String, dynamic> json)  {

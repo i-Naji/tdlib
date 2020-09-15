@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TMeUrls extends TdObject {
-  List<TMeUrl> urls;
-  dynamic extra;
 
-  /// Contains a list of t.me URLs. 
-  /// [urls] List of URLs
+  /// Contains a list of t.me URLs
   TMeUrls({this.urls});
+
+  /// [urls] List of URLs
+  List<TMeUrl> urls;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TMeUrls.fromJson(Map<String, dynamic> json)  {

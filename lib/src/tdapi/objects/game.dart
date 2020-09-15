@@ -1,22 +1,8 @@
 part of '../tdapi.dart';
 
 class Game extends TdObject {
-  int id;
-  String shortName;
-  String title;
-  FormattedText text;
-  String description;
-  Photo photo;
-  Animation animation;
 
-  /// Describes a game. 
-  /// [id] Game game . 
-  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} . 
-  /// [title] Game title . 
-  /// [text] Game text, usually containing scoreboards for a game. 
-  /// [description] Game description. 
-  /// [photo] Game photo . 
-  /// [animation] Game animation; may be null
+  /// Describes a game
   Game({this.id,
     this.shortName,
     this.title,
@@ -25,9 +11,30 @@ class Game extends TdObject {
     this.photo,
     this.animation});
 
+  /// [id] Game game 
+  int id;
+
+  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} 
+  String shortName;
+
+  /// [title] Game title 
+  String title;
+
+  /// [text] Game text, usually containing scoreboards for a game
+  FormattedText text;
+
+  /// [description] Game description
+  String description;
+
+  /// [photo] Game photo 
+  Photo photo;
+
+  /// [animation] Game animation; may be null
+  Animation animation;
+
   /// Parse from a json
   Game.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.shortName = json['short_name'];
     this.title = json['title'];
     this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});

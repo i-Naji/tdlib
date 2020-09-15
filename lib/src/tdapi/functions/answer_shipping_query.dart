@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class AnswerShippingQuery extends TdFunction {
-  int shippingQueryId;
-  List<ShippingOption> shippingOptions;
-  String errorMessage;
-  dynamic extra;
 
-  /// Sets the result of a shipping query; for bots only. 
-  /// [shippingQueryId] Identifier of the shipping query . 
-  /// [shippingOptions] Available shipping options . 
-  /// [errorMessage] An error message, empty on success
+  /// Sets the result of a shipping query; for bots only
   AnswerShippingQuery({this.shippingQueryId,
     this.shippingOptions,
     this.errorMessage});
+
+  /// [shippingQueryId] Identifier of the shipping query 
+  int shippingQueryId;
+
+  /// [shippingOptions] Available shipping options 
+  List<ShippingOption> shippingOptions;
+
+  /// [errorMessage] An error message, empty on success
+  String errorMessage;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AnswerShippingQuery.fromJson(Map<String, dynamic> json) ;

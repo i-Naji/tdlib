@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class SendPaymentForm extends TdFunction {
-  int chatId;
-  int messageId;
-  String orderInfoId;
-  String shippingOptionId;
-  InputCredentials credentials;
-  dynamic extra;
 
-  /// Sends a filled-out payment form to the bot for final verification. 
-  /// [chatId] Chat identifier of the Invoice message . 
-  /// [messageId] Message identifier . 
-  /// [orderInfoId] Identifier returned by ValidateOrderInfo, or an empty string . 
-  /// [shippingOptionId] Identifier of a chosen shipping option, if applicable. 
-  /// [credentials] The credentials chosen by user for payment
+  /// Sends a filled-out payment form to the bot for final verification
   SendPaymentForm({this.chatId,
     this.messageId,
     this.orderInfoId,
     this.shippingOptionId,
     this.credentials});
+
+  /// [chatId] Chat identifier of the Invoice message 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [orderInfoId] Identifier returned by ValidateOrderInfo, or an empty string 
+  String orderInfoId;
+
+  /// [shippingOptionId] Identifier of a chosen shipping option, if applicable
+  String shippingOptionId;
+
+  /// [credentials] The credentials chosen by user for payment
+  InputCredentials credentials;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SendPaymentForm.fromJson(Map<String, dynamic> json) ;

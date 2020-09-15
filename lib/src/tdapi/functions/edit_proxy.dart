@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class EditProxy extends TdFunction {
-  int proxyId;
-  String server;
-  int port;
-  bool enable;
-  ProxyType type;
-  dynamic extra;
 
-  /// Edits an existing proxy server for network requests. Can be called before authorization. 
-  /// [proxyId] Proxy identifier . 
-  /// [server] Proxy server IP address . 
-  /// [port] Proxy server port . 
-  /// [enable] True, if the proxy should be enabled . 
-  /// [type] Proxy type
+  /// Edits an existing proxy server for network requests. Can be called before authorization
   EditProxy({this.proxyId,
     this.server,
     this.port,
     this.enable,
     this.type});
+
+  /// [proxyId] Proxy identifier 
+  int proxyId;
+
+  /// [server] Proxy server IP address 
+  String server;
+
+  /// [port] Proxy server port 
+  int port;
+
+  /// [enable] True, if the proxy should be enabled 
+  bool enable;
+
+  /// [type] Proxy type
+  ProxyType type;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditProxy.fromJson(Map<String, dynamic> json) ;

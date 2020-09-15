@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class GetRecentInlineBots extends TdFunction {
-  dynamic extra;
 
   /// Returns up to 20 recently used inline bots in the order of their last usage
   GetRecentInlineBots();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetRecentInlineBots.fromJson(Map<String, dynamic> json) ;

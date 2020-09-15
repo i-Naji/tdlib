@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class PaymentResult extends TdObject {
-  bool success;
-  String verificationUrl;
-  dynamic extra;
 
-  /// Contains the result of a payment request. 
-  /// [success] True, if the payment request was successful; otherwise the verification_url will be not empty . 
-  /// [verificationUrl] URL for additional payment credentials verification
+  /// Contains the result of a payment request
   PaymentResult({this.success,
     this.verificationUrl});
+
+  /// [success] True, if the payment request was successful; otherwise the verification_url will be not empty 
+  bool success;
+
+  /// [verificationUrl] URL for additional payment credentials verification
+  String verificationUrl;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PaymentResult.fromJson(Map<String, dynamic> json)  {

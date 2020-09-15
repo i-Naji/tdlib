@@ -1,27 +1,8 @@
 part of '../tdapi.dart';
 
 class UserFullInfo extends TdObject {
-  ChatPhoto photo;
-  bool isBlocked;
-  bool canBeCalled;
-  bool hasPrivateCalls;
-  bool needPhoneNumberPrivacyException;
-  String bio;
-  String shareText;
-  int groupInCommonCount;
-  BotInfo botInfo;
-  dynamic extra;
 
-  /// Contains full information about a user. 
-  /// [photo] User profile photo; may be null. 
-  /// [isBlocked] True, if the user is blocked by the current user. 
-  /// [canBeCalled] True, if the user can be called. 
-  /// [hasPrivateCalls] True, if the user can't be called due to their privacy settings. 
-  /// [needPhoneNumberPrivacyException] True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used. 
-  /// [bio] A short user bio. 
-  /// [shareText] For bots, the text that is included with the link when users share the bot. 
-  /// [groupInCommonCount] Number of group chats where both the other user and the current user are a member; 0 for the current user. 
-  /// [botInfo] If the user is a bot, information about the bot; may be null
+  /// Contains full information about a user
   UserFullInfo({this.photo,
     this.isBlocked,
     this.canBeCalled,
@@ -31,6 +12,36 @@ class UserFullInfo extends TdObject {
     this.shareText,
     this.groupInCommonCount,
     this.botInfo});
+
+  /// [photo] User profile photo; may be null
+  ChatPhoto photo;
+
+  /// [isBlocked] True, if the user is blocked by the current user
+  bool isBlocked;
+
+  /// [canBeCalled] True, if the user can be called
+  bool canBeCalled;
+
+  /// [hasPrivateCalls] True, if the user can't be called due to their privacy settings
+  bool hasPrivateCalls;
+
+  /// [needPhoneNumberPrivacyException] True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
+  bool needPhoneNumberPrivacyException;
+
+  /// [bio] A short user bio
+  String bio;
+
+  /// [shareText] For bots, the text that is included with the link when users share the bot
+  String shareText;
+
+  /// [groupInCommonCount] Number of group chats where both the other user and the current user are a member; 0 for the current user
+  int groupInCommonCount;
+
+  /// [botInfo] If the user is a bot, information about the bot; may be null
+  BotInfo botInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UserFullInfo.fromJson(Map<String, dynamic> json)  {

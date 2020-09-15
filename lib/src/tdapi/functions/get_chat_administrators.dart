@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetChatAdministrators extends TdFunction {
-  int chatId;
-  dynamic extra;
 
-  /// Returns a list of administrators of the chat with their custom titles. 
-  /// [chatId] Chat identifier
+  /// Returns a list of administrators of the chat with their custom titles
   GetChatAdministrators({this.chatId});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatAdministrators.fromJson(Map<String, dynamic> json) ;

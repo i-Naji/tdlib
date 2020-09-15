@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TextEntities extends TdObject {
-  List<TextEntity> entities;
-  dynamic extra;
 
-  /// Contains a list of text entities. 
-  /// [entities] List of text entities
+  /// Contains a list of text entities
   TextEntities({this.entities});
+
+  /// [entities] List of text entities
+  List<TextEntity> entities;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TextEntities.fromJson(Map<String, dynamic> json)  {

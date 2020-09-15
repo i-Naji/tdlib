@@ -1,28 +1,8 @@
 part of '../tdapi.dart';
 
 class PersonalDetails extends TdObject {
-  String firstName;
-  String middleName;
-  String lastName;
-  String nativeFirstName;
-  String nativeMiddleName;
-  String nativeLastName;
-  Date birthdate;
-  String gender;
-  String countryCode;
-  String residenceCountryCode;
 
-  /// Contains the user's personal details. 
-  /// [firstName] First name of the user written in English; 1-255 characters. 
-  /// [middleName] Middle name of the user written in English; 0-255 characters . 
-  /// [lastName] Last name of the user written in English; 1-255 characters. 
-  /// [nativeFirstName] Native first name of the user; 1-255 characters. 
-  /// [nativeMiddleName] Native middle name of the user; 0-255 characters . 
-  /// [nativeLastName] Native last name of the user; 1-255 characters. 
-  /// [birthdate] Birthdate of the user. 
-  /// [gender] Gender of the user, "male" or "female" . 
-  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code of the user's country . 
-  /// [residenceCountryCode] A two-letter ISO 3166-1 alpha-2 country code of the user's residence country
+  /// Contains the user's personal details
   PersonalDetails({this.firstName,
     this.middleName,
     this.lastName,
@@ -33,6 +13,36 @@ class PersonalDetails extends TdObject {
     this.gender,
     this.countryCode,
     this.residenceCountryCode});
+
+  /// [firstName] First name of the user written in English; 1-255 characters
+  String firstName;
+
+  /// [middleName] Middle name of the user written in English; 0-255 characters 
+  String middleName;
+
+  /// [lastName] Last name of the user written in English; 1-255 characters
+  String lastName;
+
+  /// [nativeFirstName] Native first name of the user; 1-255 characters
+  String nativeFirstName;
+
+  /// [nativeMiddleName] Native middle name of the user; 0-255 characters 
+  String nativeMiddleName;
+
+  /// [nativeLastName] Native last name of the user; 1-255 characters
+  String nativeLastName;
+
+  /// [birthdate] Birthdate of the user
+  Date birthdate;
+
+  /// [gender] Gender of the user, "male" or "female" 
+  String gender;
+
+  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code of the user's country 
+  String countryCode;
+
+  /// [residenceCountryCode] A two-letter ISO 3166-1 alpha-2 country code of the user's residence country
+  String residenceCountryCode;
 
   /// Parse from a json
   PersonalDetails.fromJson(Map<String, dynamic> json)  {

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PageBlock extends TdObject {
-  
 
   /// Describes a block of an instant view web page
   PageBlock();
+
+  
 
   /// a PageBlock return type can be :
   /// * PageBlockTitle
@@ -115,11 +116,12 @@ class PageBlock extends TdObject {
 }
 
 class PageBlockTitle extends PageBlock {
-  RichText title;
 
-  /// The title of a page. 
-  /// [title] Title
+  /// The title of a page
   PageBlockTitle({this.title});
+
+  /// [title] Title
+  RichText title;
 
   /// Parse from a json
   PageBlockTitle.fromJson(Map<String, dynamic> json)  {
@@ -141,11 +143,12 @@ class PageBlockTitle extends PageBlock {
 }
 
 class PageBlockSubtitle extends PageBlock {
-  RichText subtitle;
 
-  /// The subtitle of a page. 
-  /// [subtitle] Subtitle
+  /// The subtitle of a page
   PageBlockSubtitle({this.subtitle});
+
+  /// [subtitle] Subtitle
+  RichText subtitle;
 
   /// Parse from a json
   PageBlockSubtitle.fromJson(Map<String, dynamic> json)  {
@@ -167,14 +170,16 @@ class PageBlockSubtitle extends PageBlock {
 }
 
 class PageBlockAuthorDate extends PageBlock {
-  RichText author;
-  int publishDate;
 
-  /// The author and publishing date of a page. 
-  /// [author] Author . 
-  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  /// The author and publishing date of a page
   PageBlockAuthorDate({this.author,
     this.publishDate});
+
+  /// [author] Author 
+  RichText author;
+
+  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  int publishDate;
 
   /// Parse from a json
   PageBlockAuthorDate.fromJson(Map<String, dynamic> json)  {
@@ -198,11 +203,12 @@ class PageBlockAuthorDate extends PageBlock {
 }
 
 class PageBlockHeader extends PageBlock {
-  RichText header;
 
-  /// A header. 
-  /// [header] Header
+  /// A header
   PageBlockHeader({this.header});
+
+  /// [header] Header
+  RichText header;
 
   /// Parse from a json
   PageBlockHeader.fromJson(Map<String, dynamic> json)  {
@@ -224,11 +230,12 @@ class PageBlockHeader extends PageBlock {
 }
 
 class PageBlockSubheader extends PageBlock {
-  RichText subheader;
 
-  /// A subheader. 
-  /// [subheader] Subheader
+  /// A subheader
   PageBlockSubheader({this.subheader});
+
+  /// [subheader] Subheader
+  RichText subheader;
 
   /// Parse from a json
   PageBlockSubheader.fromJson(Map<String, dynamic> json)  {
@@ -250,11 +257,12 @@ class PageBlockSubheader extends PageBlock {
 }
 
 class PageBlockKicker extends PageBlock {
-  RichText kicker;
 
-  /// A kicker. 
-  /// [kicker] Kicker
+  /// A kicker
   PageBlockKicker({this.kicker});
+
+  /// [kicker] Kicker
+  RichText kicker;
 
   /// Parse from a json
   PageBlockKicker.fromJson(Map<String, dynamic> json)  {
@@ -276,11 +284,12 @@ class PageBlockKicker extends PageBlock {
 }
 
 class PageBlockParagraph extends PageBlock {
-  RichText text;
 
-  /// A text paragraph. 
-  /// [text] Paragraph text
+  /// A text paragraph
   PageBlockParagraph({this.text});
+
+  /// [text] Paragraph text
+  RichText text;
 
   /// Parse from a json
   PageBlockParagraph.fromJson(Map<String, dynamic> json)  {
@@ -302,14 +311,16 @@ class PageBlockParagraph extends PageBlock {
 }
 
 class PageBlockPreformatted extends PageBlock {
-  RichText text;
-  String language;
 
-  /// A preformatted text paragraph. 
-  /// [text] Paragraph text . 
-  /// [language] Programming language for which the text should be formatted
+  /// A preformatted text paragraph
   PageBlockPreformatted({this.text,
     this.language});
+
+  /// [text] Paragraph text 
+  RichText text;
+
+  /// [language] Programming language for which the text should be formatted
+  String language;
 
   /// Parse from a json
   PageBlockPreformatted.fromJson(Map<String, dynamic> json)  {
@@ -333,11 +344,12 @@ class PageBlockPreformatted extends PageBlock {
 }
 
 class PageBlockFooter extends PageBlock {
-  RichText footer;
 
-  /// The footer of a page. 
-  /// [footer] Footer
+  /// The footer of a page
   PageBlockFooter({this.footer});
+
+  /// [footer] Footer
+  RichText footer;
 
   /// Parse from a json
   PageBlockFooter.fromJson(Map<String, dynamic> json)  {
@@ -359,10 +371,11 @@ class PageBlockFooter extends PageBlock {
 }
 
 class PageBlockDivider extends PageBlock {
-  
 
   /// An empty block separating a page
   PageBlockDivider();
+
+  
 
   /// Parse from a json
   PageBlockDivider.fromJson(Map<String, dynamic> json) ;
@@ -381,11 +394,12 @@ class PageBlockDivider extends PageBlock {
 }
 
 class PageBlockAnchor extends PageBlock {
-  String name;
 
-  /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor. 
-  /// [name] Name of the anchor
+  /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
   PageBlockAnchor({this.name});
+
+  /// [name] Name of the anchor
+  String name;
 
   /// Parse from a json
   PageBlockAnchor.fromJson(Map<String, dynamic> json)  {
@@ -407,11 +421,12 @@ class PageBlockAnchor extends PageBlock {
 }
 
 class PageBlockList extends PageBlock {
-  List<PageBlockListItem> items;
 
-  /// A list of data blocks. 
-  /// [items] The items of the list
+  /// A list of data blocks
   PageBlockList({this.items});
+
+  /// [items] The items of the list
+  List<PageBlockListItem> items;
 
   /// Parse from a json
   PageBlockList.fromJson(Map<String, dynamic> json)  {
@@ -433,14 +448,16 @@ class PageBlockList extends PageBlock {
 }
 
 class PageBlockBlockQuote extends PageBlock {
-  RichText text;
-  RichText credit;
 
-  /// A block quote. 
-  /// [text] Quote text . 
-  /// [credit] Quote credit
+  /// A block quote
   PageBlockBlockQuote({this.text,
     this.credit});
+
+  /// [text] Quote text 
+  RichText text;
+
+  /// [credit] Quote credit
+  RichText credit;
 
   /// Parse from a json
   PageBlockBlockQuote.fromJson(Map<String, dynamic> json)  {
@@ -464,14 +481,16 @@ class PageBlockBlockQuote extends PageBlock {
 }
 
 class PageBlockPullQuote extends PageBlock {
-  RichText text;
-  RichText credit;
 
-  /// A pull quote. 
-  /// [text] Quote text . 
-  /// [credit] Quote credit
+  /// A pull quote
   PageBlockPullQuote({this.text,
     this.credit});
+
+  /// [text] Quote text 
+  RichText text;
+
+  /// [credit] Quote credit
+  RichText credit;
 
   /// Parse from a json
   PageBlockPullQuote.fromJson(Map<String, dynamic> json)  {
@@ -495,17 +514,20 @@ class PageBlockPullQuote extends PageBlock {
 }
 
 class PageBlockAnimation extends PageBlock {
-  Animation animation;
-  PageBlockCaption caption;
-  bool needAutoplay;
 
-  /// An animation. 
-  /// [animation] Animation file; may be null . 
-  /// [caption] Animation caption . 
-  /// [needAutoplay] True, if the animation should be played automatically
+  /// An animation
   PageBlockAnimation({this.animation,
     this.caption,
     this.needAutoplay});
+
+  /// [animation] Animation file; may be null 
+  Animation animation;
+
+  /// [caption] Animation caption 
+  PageBlockCaption caption;
+
+  /// [needAutoplay] True, if the animation should be played automatically
+  bool needAutoplay;
 
   /// Parse from a json
   PageBlockAnimation.fromJson(Map<String, dynamic> json)  {
@@ -531,14 +553,16 @@ class PageBlockAnimation extends PageBlock {
 }
 
 class PageBlockAudio extends PageBlock {
-  Audio audio;
-  PageBlockCaption caption;
 
-  /// An audio file. 
-  /// [audio] Audio file; may be null . 
-  /// [caption] Audio file caption
+  /// An audio file
   PageBlockAudio({this.audio,
     this.caption});
+
+  /// [audio] Audio file; may be null 
+  Audio audio;
+
+  /// [caption] Audio file caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockAudio.fromJson(Map<String, dynamic> json)  {
@@ -562,17 +586,20 @@ class PageBlockAudio extends PageBlock {
 }
 
 class PageBlockPhoto extends PageBlock {
-  Photo photo;
-  PageBlockCaption caption;
-  String url;
 
-  /// A photo. 
-  /// [photo] Photo file; may be null . 
-  /// [caption] Photo caption . 
-  /// [url] URL that needs to be opened when the photo is clicked
+  /// A photo
   PageBlockPhoto({this.photo,
     this.caption,
     this.url});
+
+  /// [photo] Photo file; may be null 
+  Photo photo;
+
+  /// [caption] Photo caption 
+  PageBlockCaption caption;
+
+  /// [url] URL that needs to be opened when the photo is clicked
+  String url;
 
   /// Parse from a json
   PageBlockPhoto.fromJson(Map<String, dynamic> json)  {
@@ -598,20 +625,24 @@ class PageBlockPhoto extends PageBlock {
 }
 
 class PageBlockVideo extends PageBlock {
-  Video video;
-  PageBlockCaption caption;
-  bool needAutoplay;
-  bool isLooped;
 
-  /// A video. 
-  /// [video] Video file; may be null . 
-  /// [caption] Video caption . 
-  /// [needAutoplay] True, if the video should be played automatically . 
-  /// [isLooped] True, if the video should be looped
+  /// A video
   PageBlockVideo({this.video,
     this.caption,
     this.needAutoplay,
     this.isLooped});
+
+  /// [video] Video file; may be null 
+  Video video;
+
+  /// [caption] Video caption 
+  PageBlockCaption caption;
+
+  /// [needAutoplay] True, if the video should be played automatically 
+  bool needAutoplay;
+
+  /// [isLooped] True, if the video should be looped
+  bool isLooped;
 
   /// Parse from a json
   PageBlockVideo.fromJson(Map<String, dynamic> json)  {
@@ -639,14 +670,16 @@ class PageBlockVideo extends PageBlock {
 }
 
 class PageBlockVoiceNote extends PageBlock {
-  VoiceNote voiceNote;
-  PageBlockCaption caption;
 
-  /// A voice note. 
-  /// [voiceNote] Voice note; may be null . 
-  /// [caption] Voice note caption
+  /// A voice note
   PageBlockVoiceNote({this.voiceNote,
     this.caption});
+
+  /// [voiceNote] Voice note; may be null 
+  VoiceNote voiceNote;
+
+  /// [caption] Voice note caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockVoiceNote.fromJson(Map<String, dynamic> json)  {
@@ -670,11 +703,12 @@ class PageBlockVoiceNote extends PageBlock {
 }
 
 class PageBlockCover extends PageBlock {
-  PageBlock cover;
 
-  /// A page cover. 
-  /// [cover] Cover
+  /// A page cover
   PageBlockCover({this.cover});
+
+  /// [cover] Cover
+  PageBlock cover;
 
   /// Parse from a json
   PageBlockCover.fromJson(Map<String, dynamic> json)  {
@@ -696,24 +730,8 @@ class PageBlockCover extends PageBlock {
 }
 
 class PageBlockEmbedded extends PageBlock {
-  String url;
-  String html;
-  Photo posterPhoto;
-  int width;
-  int height;
-  PageBlockCaption caption;
-  bool isFullWidth;
-  bool allowScrolling;
 
-  /// An embedded web page. 
-  /// [url] Web page URL, if available . 
-  /// [html] HTML-markup of the embedded page . 
-  /// [posterPhoto] Poster photo, if available; may be null . 
-  /// [width] Block width; 0 if unknown . 
-  /// [height] Block height; 0 if unknown . 
-  /// [caption] Block caption . 
-  /// [isFullWidth] True, if the block should be full width . 
-  /// [allowScrolling] True, if scrolling should be allowed
+  /// An embedded web page
   PageBlockEmbedded({this.url,
     this.html,
     this.posterPhoto,
@@ -722,6 +740,30 @@ class PageBlockEmbedded extends PageBlock {
     this.caption,
     this.isFullWidth,
     this.allowScrolling});
+
+  /// [url] Web page URL, if available 
+  String url;
+
+  /// [html] HTML-markup of the embedded page 
+  String html;
+
+  /// [posterPhoto] Poster photo, if available; may be null 
+  Photo posterPhoto;
+
+  /// [width] Block width; 0 if unknown 
+  int width;
+
+  /// [height] Block height; 0 if unknown 
+  int height;
+
+  /// [caption] Block caption 
+  PageBlockCaption caption;
+
+  /// [isFullWidth] True, if the block should be full width 
+  bool isFullWidth;
+
+  /// [allowScrolling] True, if scrolling should be allowed
+  bool allowScrolling;
 
   /// Parse from a json
   PageBlockEmbedded.fromJson(Map<String, dynamic> json)  {
@@ -757,26 +799,32 @@ class PageBlockEmbedded extends PageBlock {
 }
 
 class PageBlockEmbeddedPost extends PageBlock {
-  String url;
-  String author;
-  Photo authorPhoto;
-  int date;
-  List<PageBlock> pageBlocks;
-  PageBlockCaption caption;
 
-  /// An embedded post. 
-  /// [url] Web page URL . 
-  /// [author] Post author . 
-  /// [authorPhoto] Post author photo; may be null . 
-  /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown . 
-  /// [pageBlocks] Post content . 
-  /// [caption] Post caption
+  /// An embedded post
   PageBlockEmbeddedPost({this.url,
     this.author,
     this.authorPhoto,
     this.date,
     this.pageBlocks,
     this.caption});
+
+  /// [url] Web page URL 
+  String url;
+
+  /// [author] Post author 
+  String author;
+
+  /// [authorPhoto] Post author photo; may be null 
+  Photo authorPhoto;
+
+  /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown 
+  int date;
+
+  /// [pageBlocks] Post content 
+  List<PageBlock> pageBlocks;
+
+  /// [caption] Post caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockEmbeddedPost.fromJson(Map<String, dynamic> json)  {
@@ -808,14 +856,16 @@ class PageBlockEmbeddedPost extends PageBlock {
 }
 
 class PageBlockCollage extends PageBlock {
-  List<PageBlock> pageBlocks;
-  PageBlockCaption caption;
 
-  /// A collage. 
-  /// [pageBlocks] Collage item contents . 
-  /// [caption] Block caption
+  /// A collage
   PageBlockCollage({this.pageBlocks,
     this.caption});
+
+  /// [pageBlocks] Collage item contents 
+  List<PageBlock> pageBlocks;
+
+  /// [caption] Block caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockCollage.fromJson(Map<String, dynamic> json)  {
@@ -839,14 +889,16 @@ class PageBlockCollage extends PageBlock {
 }
 
 class PageBlockSlideshow extends PageBlock {
-  List<PageBlock> pageBlocks;
-  PageBlockCaption caption;
 
-  /// A slideshow. 
-  /// [pageBlocks] Slideshow item contents . 
-  /// [caption] Block caption
+  /// A slideshow
   PageBlockSlideshow({this.pageBlocks,
     this.caption});
+
+  /// [pageBlocks] Slideshow item contents 
+  List<PageBlock> pageBlocks;
+
+  /// [caption] Block caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockSlideshow.fromJson(Map<String, dynamic> json)  {
@@ -870,17 +922,20 @@ class PageBlockSlideshow extends PageBlock {
 }
 
 class PageBlockChatLink extends PageBlock {
-  String title;
-  ChatPhotoInfo photo;
-  String username;
 
-  /// A link to a chat. 
-  /// [title] Chat title . 
-  /// [photo] Chat photo; may be null . 
-  /// [username] Chat username, by which all other information about the chat should be resolved
+  /// A link to a chat
   PageBlockChatLink({this.title,
     this.photo,
     this.username});
+
+  /// [title] Chat title 
+  String title;
+
+  /// [photo] Chat photo; may be null 
+  ChatPhotoInfo photo;
+
+  /// [username] Chat username, by which all other information about the chat should be resolved
+  String username;
 
   /// Parse from a json
   PageBlockChatLink.fromJson(Map<String, dynamic> json)  {
@@ -906,20 +961,24 @@ class PageBlockChatLink extends PageBlock {
 }
 
 class PageBlockTable extends PageBlock {
-  RichText caption;
-  List<List<PageBlockTableCell>> cells;
-  bool isBordered;
-  bool isStriped;
 
-  /// A table. 
-  /// [caption] Table caption . 
-  /// [cells] Table cells . 
-  /// [isBordered] True, if the table is bordered . 
-  /// [isStriped] True, if the table is striped
+  /// A table
   PageBlockTable({this.caption,
     this.cells,
     this.isBordered,
     this.isStriped});
+
+  /// [caption] Table caption 
+  RichText caption;
+
+  /// [cells] Table cells 
+  List<List<PageBlockTableCell>> cells;
+
+  /// [isBordered] True, if the table is bordered 
+  bool isBordered;
+
+  /// [isStriped] True, if the table is striped
+  bool isStriped;
 
   /// Parse from a json
   PageBlockTable.fromJson(Map<String, dynamic> json)  {
@@ -947,17 +1006,20 @@ class PageBlockTable extends PageBlock {
 }
 
 class PageBlockDetails extends PageBlock {
-  RichText header;
-  List<PageBlock> pageBlocks;
-  bool isOpen;
 
-  /// A collapsible block. 
-  /// [header] Always visible heading for the block . 
-  /// [pageBlocks] Block contents . 
-  /// [isOpen] True, if the block is open by default
+  /// A collapsible block
   PageBlockDetails({this.header,
     this.pageBlocks,
     this.isOpen});
+
+  /// [header] Always visible heading for the block 
+  RichText header;
+
+  /// [pageBlocks] Block contents 
+  List<PageBlock> pageBlocks;
+
+  /// [isOpen] True, if the block is open by default
+  bool isOpen;
 
   /// Parse from a json
   PageBlockDetails.fromJson(Map<String, dynamic> json)  {
@@ -983,14 +1045,16 @@ class PageBlockDetails extends PageBlock {
 }
 
 class PageBlockRelatedArticles extends PageBlock {
-  RichText header;
-  List<PageBlockRelatedArticle> articles;
 
-  /// Related articles. 
-  /// [header] Block header . 
-  /// [articles] List of related articles
+  /// Related articles
   PageBlockRelatedArticles({this.header,
     this.articles});
+
+  /// [header] Block header 
+  RichText header;
+
+  /// [articles] List of related articles
+  List<PageBlockRelatedArticle> articles;
 
   /// Parse from a json
   PageBlockRelatedArticles.fromJson(Map<String, dynamic> json)  {
@@ -1014,23 +1078,28 @@ class PageBlockRelatedArticles extends PageBlock {
 }
 
 class PageBlockMap extends PageBlock {
-  Location location;
-  int zoom;
-  int width;
-  int height;
-  PageBlockCaption caption;
 
-  /// A map. 
-  /// [location] Location of the map center . 
-  /// [zoom] Map zoom level . 
-  /// [width] Map width . 
-  /// [height] Map height . 
-  /// [caption] Block caption
+  /// A map
   PageBlockMap({this.location,
     this.zoom,
     this.width,
     this.height,
     this.caption});
+
+  /// [location] Location of the map center 
+  Location location;
+
+  /// [zoom] Map zoom level 
+  int zoom;
+
+  /// [width] Map width 
+  int width;
+
+  /// [height] Map height 
+  int height;
+
+  /// [caption] Block caption
+  PageBlockCaption caption;
 
   /// Parse from a json
   PageBlockMap.fromJson(Map<String, dynamic> json)  {

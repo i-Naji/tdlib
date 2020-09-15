@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetAccountTtl extends TdFunction {
-  AccountTtl ttl;
-  dynamic extra;
 
-  /// Changes the period of inactivity after which the account of the current user will automatically be deleted. 
-  /// [ttl] New account TTL
+  /// Changes the period of inactivity after which the account of the current user will automatically be deleted
   SetAccountTtl({this.ttl});
+
+  /// [ttl] New account TTL
+  AccountTtl ttl;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetAccountTtl.fromJson(Map<String, dynamic> json) ;

@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class EditMessageLiveLocation extends TdFunction {
-  int chatId;
-  int messageId;
-  ReplyMarkup replyMarkup;
-  Location location;
-  dynamic extra;
 
-  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side. 
-  /// [chatId] The chat the message belongs to. 
-  /// [messageId] Identifier of the message . 
-  /// [replyMarkup] The new message reply markup; for bots only . 
-  /// [location] New location content of the message; may be null. Pass null to stop sharing the live location
+  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side
   EditMessageLiveLocation({this.chatId,
     this.messageId,
     this.replyMarkup,
     this.location});
+
+  /// [chatId] The chat the message belongs to
+  int chatId;
+
+  /// [messageId] Identifier of the message 
+  int messageId;
+
+  /// [replyMarkup] The new message reply markup; for bots only 
+  ReplyMarkup replyMarkup;
+
+  /// [location] New location content of the message; may be null. Pass null to stop sharing the live location
+  Location location;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditMessageLiveLocation.fromJson(Map<String, dynamic> json) ;

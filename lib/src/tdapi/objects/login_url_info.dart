@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class LoginUrlInfo extends TdObject {
-  
 
   /// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl
   LoginUrlInfo();
+
+  
 
   /// a LoginUrlInfo return type can be :
   /// * LoginUrlInfoOpen
@@ -34,15 +35,19 @@ class LoginUrlInfo extends TdObject {
 }
 
 class LoginUrlInfoOpen extends LoginUrlInfo {
-  String url;
-  bool skipConfirm;
-  dynamic extra;
 
-  /// An HTTP url needs to be open. 
-  /// [url] The URL to open . 
-  /// [skipConfirm] True, if there is no need to show an ordinary open URL confirm
+  /// An HTTP url needs to be open
   LoginUrlInfoOpen({this.url,
     this.skipConfirm});
+
+  /// [url] The URL to open 
+  String url;
+
+  /// [skipConfirm] True, if there is no need to show an ordinary open URL confirm
+  bool skipConfirm;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LoginUrlInfoOpen.fromJson(Map<String, dynamic> json)  {
@@ -67,21 +72,27 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
 }
 
 class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
-  String url;
-  String domain;
-  int botUserId;
-  bool requestWriteAccess;
-  dynamic extra;
 
-  /// An authorization confirmation dialog needs to be shown to the user. 
-  /// [url] An HTTP URL to be opened . 
-  /// [domain] A domain of the URL. 
-  /// [botUserId] User identifier of a bot linked with the website. 
-  /// [requestWriteAccess] True, if the user needs to be requested to give the permission to the bot to send them messages
+  /// An authorization confirmation dialog needs to be shown to the user
   LoginUrlInfoRequestConfirmation({this.url,
     this.domain,
     this.botUserId,
     this.requestWriteAccess});
+
+  /// [url] An HTTP URL to be opened 
+  String url;
+
+  /// [domain] A domain of the URL
+  String domain;
+
+  /// [botUserId] User identifier of a bot linked with the website
+  int botUserId;
+
+  /// [requestWriteAccess] True, if the user needs to be requested to give the permission to the bot to send them messages
+  bool requestWriteAccess;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LoginUrlInfoRequestConfirmation.fromJson(Map<String, dynamic> json)  {

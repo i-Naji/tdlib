@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class LanguagePackString extends TdObject {
-  String key;
-  LanguagePackStringValue value;
 
-  /// Represents one language pack string. 
-  /// [key] String key . 
-  /// [value] String value
+  /// Represents one language pack string
   LanguagePackString({this.key,
     this.value});
+
+  /// [key] String key 
+  String key;
+
+  /// [value] String value
+  LanguagePackStringValue value;
 
   /// Parse from a json
   LanguagePackString.fromJson(Map<String, dynamic> json)  {

@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class GetArchivedStickerSets extends TdFunction {
-  bool isMasks;
-  int offsetStickerSetId;
-  int limit;
-  dynamic extra;
 
-  /// Returns a list of archived sticker sets. 
-  /// [isMasks] Pass true to return mask stickers sets; pass false to return ordinary sticker sets . 
-  /// [offsetStickerSetId] Identifier of the sticker set from which to return the result . 
-  /// [limit] The maximum number of sticker sets to return
+  /// Returns a list of archived sticker sets
   GetArchivedStickerSets({this.isMasks,
     this.offsetStickerSetId,
     this.limit});
+
+  /// [isMasks] Pass true to return mask stickers sets; pass false to return ordinary sticker sets 
+  bool isMasks;
+
+  /// [offsetStickerSetId] Identifier of the sticker set from which to return the result 
+  int offsetStickerSetId;
+
+  /// [limit] The maximum number of sticker sets to return
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetArchivedStickerSets.fromJson(Map<String, dynamic> json) ;

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class StickerSets extends TdObject {
-  int totalCount;
-  List<StickerSetInfo> sets;
-  dynamic extra;
 
-  /// Represents a list of sticker sets. 
-  /// [totalCount] Approximate total number of sticker sets found . 
-  /// [sets] List of sticker sets
+  /// Represents a list of sticker sets
   StickerSets({this.totalCount,
     this.sets});
+
+  /// [totalCount] Approximate total number of sticker sets found 
+  int totalCount;
+
+  /// [sets] List of sticker sets
+  List<StickerSetInfo> sets;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StickerSets.fromJson(Map<String, dynamic> json)  {

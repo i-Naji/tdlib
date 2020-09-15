@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class CreateTemporaryPassword extends TdFunction {
-  String password;
-  int validFor;
-  dynamic extra;
 
-  /// Creates a new temporary password for processing payments. 
-  /// [password] Persistent user password . 
-  /// [validFor] Time during which the temporary password will be valid, in seconds; should be between 60 and 86400
+  /// Creates a new temporary password for processing payments
   CreateTemporaryPassword({this.password,
     this.validFor});
+
+  /// [password] Persistent user password 
+  String password;
+
+  /// [validFor] Time during which the temporary password will be valid, in seconds; should be between 60 and 86400
+  int validFor;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CreateTemporaryPassword.fromJson(Map<String, dynamic> json) ;

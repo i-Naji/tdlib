@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class NetworkStatistics extends TdObject {
-  int sinceDate;
-  List<NetworkStatisticsEntry> entries;
-  dynamic extra;
 
-  /// A full list of available network statistic entries. 
-  /// [sinceDate] Point in time (Unix timestamp) when the app began collecting statistics . 
-  /// [entries] Network statistics entries
+  /// A full list of available network statistic entries
   NetworkStatistics({this.sinceDate,
     this.entries});
+
+  /// [sinceDate] Point in time (Unix timestamp) when the app began collecting statistics 
+  int sinceDate;
+
+  /// [entries] Network statistics entries
+  List<NetworkStatisticsEntry> entries;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   NetworkStatistics.fromJson(Map<String, dynamic> json)  {

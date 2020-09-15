@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatMemberStatus extends TdObject {
-  
 
   /// Provides information about the status of a member in a chat
   ChatMemberStatus();
+
+  
 
   /// a ChatMemberStatus return type can be :
   /// * ChatMemberStatusCreator
@@ -46,14 +47,16 @@ class ChatMemberStatus extends TdObject {
 }
 
 class ChatMemberStatusCreator extends ChatMemberStatus {
-  String customTitle;
-  bool isMember;
 
-  /// The user is the owner of a chat and has all the administrator privileges. 
-  /// [customTitle] A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only. 
-  /// [isMember] True, if the user is a member of the chat
+  /// The user is the owner of a chat and has all the administrator privileges
   ChatMemberStatusCreator({this.customTitle,
     this.isMember});
+
+  /// [customTitle] A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+  String customTitle;
+
+  /// [isMember] True, if the user is a member of the chat
+  bool isMember;
 
   /// Parse from a json
   ChatMemberStatusCreator.fromJson(Map<String, dynamic> json)  {
@@ -77,28 +80,8 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
 }
 
 class ChatMemberStatusAdministrator extends ChatMemberStatus {
-  String customTitle;
-  bool canBeEdited;
-  bool canChangeInfo;
-  bool canPostMessages;
-  bool canEditMessages;
-  bool canDeleteMessages;
-  bool canInviteUsers;
-  bool canRestrictMembers;
-  bool canPinMessages;
-  bool canPromoteMembers;
 
-  /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges. 
-  /// [customTitle] A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only. 
-  /// [canBeEdited] True, if the current user can edit the administrator privileges for the called user. 
-  /// [canChangeInfo] True, if the administrator can change the chat title, photo, and other settings. 
-  /// [canPostMessages] True, if the administrator can create channel posts; applicable to channels only. 
-  /// [canEditMessages] True, if the administrator can edit messages of other users and pin messages; applicable to channels only. 
-  /// [canDeleteMessages] True, if the administrator can delete messages of other users. 
-  /// [canInviteUsers] True, if the administrator can invite new users to the chat. 
-  /// [canRestrictMembers] True, if the administrator can restrict, ban, or unban chat members. 
-  /// [canPinMessages] True, if the administrator can pin messages; applicable to groups only. 
-  /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
+  /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges
   ChatMemberStatusAdministrator({this.customTitle,
     this.canBeEdited,
     this.canChangeInfo,
@@ -109,6 +92,36 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
     this.canRestrictMembers,
     this.canPinMessages,
     this.canPromoteMembers});
+
+  /// [customTitle] A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+  String customTitle;
+
+  /// [canBeEdited] True, if the current user can edit the administrator privileges for the called user
+  bool canBeEdited;
+
+  /// [canChangeInfo] True, if the administrator can change the chat title, photo, and other settings
+  bool canChangeInfo;
+
+  /// [canPostMessages] True, if the administrator can create channel posts; applicable to channels only
+  bool canPostMessages;
+
+  /// [canEditMessages] True, if the administrator can edit messages of other users and pin messages; applicable to channels only
+  bool canEditMessages;
+
+  /// [canDeleteMessages] True, if the administrator can delete messages of other users
+  bool canDeleteMessages;
+
+  /// [canInviteUsers] True, if the administrator can invite new users to the chat
+  bool canInviteUsers;
+
+  /// [canRestrictMembers] True, if the administrator can restrict, ban, or unban chat members
+  bool canRestrictMembers;
+
+  /// [canPinMessages] True, if the administrator can pin messages; applicable to groups only
+  bool canPinMessages;
+
+  /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
+  bool canPromoteMembers;
 
   /// Parse from a json
   ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json)  {
@@ -148,10 +161,11 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
 }
 
 class ChatMemberStatusMember extends ChatMemberStatus {
-  
 
   /// The user is a member of a chat, without any additional privileges or restrictions
   ChatMemberStatusMember();
+
+  
 
   /// Parse from a json
   ChatMemberStatusMember.fromJson(Map<String, dynamic> json) ;
@@ -170,17 +184,20 @@ class ChatMemberStatusMember extends ChatMemberStatus {
 }
 
 class ChatMemberStatusRestricted extends ChatMemberStatus {
-  bool isMember;
-  int restrictedUntilDate;
-  ChatPermissions permissions;
 
-  /// The user is under certain restrictions in the chat. Not supported in basic groups and channels. 
-  /// [isMember] True, if the user is a member of the chat. 
-  /// [restrictedUntilDate] Point in time (Unix timestamp) when restrictions will be lifted from the user; 0 if never. If the user is restricted for more than 366 days or for less than 30 seconds from the current time, the user is considered to be restricted forever. 
-  /// [permissions] User permissions in the chat
+  /// The user is under certain restrictions in the chat. Not supported in basic groups and channels
   ChatMemberStatusRestricted({this.isMember,
     this.restrictedUntilDate,
     this.permissions});
+
+  /// [isMember] True, if the user is a member of the chat
+  bool isMember;
+
+  /// [restrictedUntilDate] Point in time (Unix timestamp) when restrictions will be lifted from the user; 0 if never. If the user is restricted for more than 366 days or for less than 30 seconds from the current time, the user is considered to be restricted forever
+  int restrictedUntilDate;
+
+  /// [permissions] User permissions in the chat
+  ChatPermissions permissions;
 
   /// Parse from a json
   ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json)  {
@@ -206,10 +223,11 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
 }
 
 class ChatMemberStatusLeft extends ChatMemberStatus {
-  
 
   /// The user is not a chat member
   ChatMemberStatusLeft();
+
+  
 
   /// Parse from a json
   ChatMemberStatusLeft.fromJson(Map<String, dynamic> json) ;
@@ -228,11 +246,12 @@ class ChatMemberStatusLeft extends ChatMemberStatus {
 }
 
 class ChatMemberStatusBanned extends ChatMemberStatus {
-  int bannedUntilDate;
 
-  /// The user was banned (and hence is not a member of the chat). Implies the user can't return to the chat or view messages. 
-  /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever
+  /// The user was banned (and hence is not a member of the chat). Implies the user can't return to the chat or view messages
   ChatMemberStatusBanned({this.bannedUntilDate});
+
+  /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever
+  int bannedUntilDate;
 
   /// Parse from a json
   ChatMemberStatusBanned.fromJson(Map<String, dynamic> json)  {

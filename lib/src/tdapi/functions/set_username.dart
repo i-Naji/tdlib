@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetUsername extends TdFunction {
-  String username;
-  dynamic extra;
 
-  /// Changes the username of the current user. 
-  /// [username] The new value of the username. Use an empty string to remove the username
+  /// Changes the username of the current user
   SetUsername({this.username});
+
+  /// [username] The new value of the username. Use an empty string to remove the username
+  String username;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetUsername.fromJson(Map<String, dynamic> json) ;

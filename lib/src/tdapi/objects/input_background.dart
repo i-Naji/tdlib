@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputBackground extends TdObject {
-  
 
   /// Contains information about background to set
   InputBackground();
+
+  
 
   /// a InputBackground return type can be :
   /// * InputBackgroundLocal
@@ -34,11 +35,12 @@ class InputBackground extends TdObject {
 }
 
 class InputBackgroundLocal extends InputBackground {
-  InputFile background;
 
-  /// A background from a local file. 
-  /// [background] Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
+  /// A background from a local file
   InputBackgroundLocal({this.background});
+
+  /// [background] Background file to use. Only inputFileLocal and inputFileGenerated are supported. The file must be in JPEG format for wallpapers and in PNG format for patterns
+  InputFile background;
 
   /// Parse from a json
   InputBackgroundLocal.fromJson(Map<String, dynamic> json)  {
@@ -60,15 +62,16 @@ class InputBackgroundLocal extends InputBackground {
 }
 
 class InputBackgroundRemote extends InputBackground {
-  int backgroundId;
 
-  /// A background from the server. 
-  /// [backgroundId] The background identifier
+  /// A background from the server
   InputBackgroundRemote({this.backgroundId});
+
+  /// [backgroundId] The background identifier
+  int backgroundId;
 
   /// Parse from a json
   InputBackgroundRemote.fromJson(Map<String, dynamic> json)  {
-    this.backgroundId = json['background_id'];
+    this.backgroundId = int.tryParse(json['background_id'] ?? "");
   }
 
   @override

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class OptionValue extends TdObject {
-  
 
   /// Represents the value of an option
   OptionValue();
+
+  
 
   /// a OptionValue return type can be :
   /// * OptionValueBoolean
@@ -40,12 +41,15 @@ class OptionValue extends TdObject {
 }
 
 class OptionValueBoolean extends OptionValue {
-  bool value;
-  dynamic extra;
 
-  /// Represents a boolean option. 
-  /// [value] The value of the option
+  /// Represents a boolean option
   OptionValueBoolean({this.value});
+
+  /// [value] The value of the option
+  bool value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   OptionValueBoolean.fromJson(Map<String, dynamic> json)  {
@@ -68,10 +72,12 @@ class OptionValueBoolean extends OptionValue {
 }
 
 class OptionValueEmpty extends OptionValue {
-  dynamic extra;
 
   /// Represents an unknown option or an option which has a default value
   OptionValueEmpty();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   OptionValueEmpty.fromJson(Map<String, dynamic> json)  {
@@ -92,12 +98,15 @@ class OptionValueEmpty extends OptionValue {
 }
 
 class OptionValueInteger extends OptionValue {
-  int value;
-  dynamic extra;
 
-  /// Represents an integer option. 
-  /// [value] The value of the option
+  /// Represents an integer option
   OptionValueInteger({this.value});
+
+  /// [value] The value of the option
+  int value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   OptionValueInteger.fromJson(Map<String, dynamic> json)  {
@@ -120,12 +129,15 @@ class OptionValueInteger extends OptionValue {
 }
 
 class OptionValueString extends OptionValue {
-  String value;
-  dynamic extra;
 
-  /// Represents a string option. 
-  /// [value] The value of the option
+  /// Represents a string option
   OptionValueString({this.value});
+
+  /// [value] The value of the option
+  String value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   OptionValueString.fromJson(Map<String, dynamic> json)  {

@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class BasicGroup extends TdObject {
-  int id;
-  int memberCount;
-  ChatMemberStatus status;
-  bool isActive;
-  int upgradedToSupergroupId;
-  dynamic extra;
 
-  /// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users). 
-  /// [id] Group identifier. 
-  /// [memberCount] Number of members in the group. 
-  /// [status] Status of the current user in the group. 
-  /// [isActive] True, if the group is active. 
-  /// [upgradedToSupergroupId] Identifier of the supergroup to which this group was upgraded; 0 if none
+  /// Represents a basic group of 0-200 users (must be upgraded to a supergroup to accommodate more than 200 users)
   BasicGroup({this.id,
     this.memberCount,
     this.status,
     this.isActive,
     this.upgradedToSupergroupId});
+
+  /// [id] Group identifier
+  int id;
+
+  /// [memberCount] Number of members in the group
+  int memberCount;
+
+  /// [status] Status of the current user in the group
+  ChatMemberStatus status;
+
+  /// [isActive] True, if the group is active
+  bool isActive;
+
+  /// [upgradedToSupergroupId] Identifier of the supergroup to which this group was upgraded; 0 if none
+  int upgradedToSupergroupId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   BasicGroup.fromJson(Map<String, dynamic> json)  {

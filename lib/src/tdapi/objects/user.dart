@@ -1,41 +1,8 @@
 part of '../tdapi.dart';
 
 class User extends TdObject {
-  int id;
-  String firstName;
-  String lastName;
-  String username;
-  String phoneNumber;
-  UserStatus status;
-  ProfilePhoto profilePhoto;
-  bool isContact;
-  bool isMutualContact;
-  bool isVerified;
-  bool isSupport;
-  String restrictionReason;
-  bool isScam;
-  bool haveAccess;
-  UserType type;
-  String languageCode;
-  dynamic extra;
 
-  /// Represents a user. 
-  /// [id] User identifier. 
-  /// [firstName] First name of the user. 
-  /// [lastName] Last name of the user. 
-  /// [username] Username of the user. 
-  /// [phoneNumber] Phone number of the user. 
-  /// [status] Current online status of the user. 
-  /// [profilePhoto] Profile photo of the user; may be null. 
-  /// [isContact] The user is a contact of the current user. 
-  /// [isMutualContact] The user is a contact of the current user and the current user is a contact of the user. 
-  /// [isVerified] True, if the user is verified. 
-  /// [isSupport] True, if the user is Telegram support account. 
-  /// [restrictionReason] If non-empty, it contains a human-readable description of the reason why access to this user must be restricted. 
-  /// [isScam] True, if many users reported this user as a scam. 
-  /// [haveAccess] If false, the user is inaccessible, and the only information known about the user is inside this class. It can't be passed to any method except GetUser. 
-  /// [type] Type of the user. 
-  /// [languageCode] IETF language tag of the user's language; only available to bots
+  /// Represents a user
   User({this.id,
     this.firstName,
     this.lastName,
@@ -52,6 +19,57 @@ class User extends TdObject {
     this.haveAccess,
     this.type,
     this.languageCode});
+
+  /// [id] User identifier
+  int id;
+
+  /// [firstName] First name of the user
+  String firstName;
+
+  /// [lastName] Last name of the user
+  String lastName;
+
+  /// [username] Username of the user
+  String username;
+
+  /// [phoneNumber] Phone number of the user
+  String phoneNumber;
+
+  /// [status] Current online status of the user
+  UserStatus status;
+
+  /// [profilePhoto] Profile photo of the user; may be null
+  ProfilePhoto profilePhoto;
+
+  /// [isContact] The user is a contact of the current user
+  bool isContact;
+
+  /// [isMutualContact] The user is a contact of the current user and the current user is a contact of the user
+  bool isMutualContact;
+
+  /// [isVerified] True, if the user is verified
+  bool isVerified;
+
+  /// [isSupport] True, if the user is Telegram support account
+  bool isSupport;
+
+  /// [restrictionReason] If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
+  String restrictionReason;
+
+  /// [isScam] True, if many users reported this user as a scam
+  bool isScam;
+
+  /// [haveAccess] If false, the user is inaccessible, and the only information known about the user is inside this class. It can't be passed to any method except GetUser
+  bool haveAccess;
+
+  /// [type] Type of the user
+  UserType type;
+
+  /// [languageCode] IETF language tag of the user's language; only available to bots
+  String languageCode;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   User.fromJson(Map<String, dynamic> json)  {

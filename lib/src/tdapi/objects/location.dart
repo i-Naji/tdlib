@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class Location extends TdObject {
-  double latitude;
-  double longitude;
 
-  /// Describes a location on planet Earth. 
-  /// [latitude] Latitude of the location in degrees; as defined by the sender . 
-  /// [longitude] Longitude of the location, in degrees; as defined by the sender
+  /// Describes a location on planet Earth
   Location({this.latitude,
     this.longitude});
+
+  /// [latitude] Latitude of the location in degrees; as defined by the sender 
+  double latitude;
+
+  /// [longitude] Longitude of the location, in degrees; as defined by the sender
+  double longitude;
 
   /// Parse from a json
   Location.fromJson(Map<String, dynamic> json)  {

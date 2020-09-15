@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ReorderChatFilters extends TdFunction {
-  List<int> chatFilterIds;
-  dynamic extra;
 
-  /// Changes the order of chat filters. 
-  /// [chatFilterIds] Identifiers of chat filters in the new correct order
+  /// Changes the order of chat filters
   ReorderChatFilters({this.chatFilterIds});
+
+  /// [chatFilterIds] Identifiers of chat filters in the new correct order
+  List<int> chatFilterIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ReorderChatFilters.fromJson(Map<String, dynamic> json) ;

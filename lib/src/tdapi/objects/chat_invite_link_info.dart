@@ -1,25 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatInviteLinkInfo extends TdObject {
-  int chatId;
-  int accessibleFor;
-  ChatType type;
-  String title;
-  ChatPhotoInfo photo;
-  int memberCount;
-  List<int> memberUserIds;
-  bool isPublic;
-  dynamic extra;
 
-  /// Contains information about a chat invite link. 
-  /// [chatId] Chat identifier of the invite link; 0 if the user have no access to the chat before joining. 
-  /// [accessibleFor] If non-zero, the remaining time for which read access is granted to the chat, in seconds. 
-  /// [type] Contains information about the type of the chat. 
-  /// [title] Title of the chat. 
-  /// [photo] Chat photo; may be null. 
-  /// [memberCount] Number of members in the chat. 
-  /// [memberUserIds] User identifiers of some chat members that may be known to the current user. 
-  /// [isPublic] True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
+  /// Contains information about a chat invite link
   ChatInviteLinkInfo({this.chatId,
     this.accessibleFor,
     this.type,
@@ -28,6 +11,33 @@ class ChatInviteLinkInfo extends TdObject {
     this.memberCount,
     this.memberUserIds,
     this.isPublic});
+
+  /// [chatId] Chat identifier of the invite link; 0 if the user have no access to the chat before joining
+  int chatId;
+
+  /// [accessibleFor] If non-zero, the remaining time for which read access is granted to the chat, in seconds
+  int accessibleFor;
+
+  /// [type] Contains information about the type of the chat
+  ChatType type;
+
+  /// [title] Title of the chat
+  String title;
+
+  /// [photo] Chat photo; may be null
+  ChatPhotoInfo photo;
+
+  /// [memberCount] Number of members in the chat
+  int memberCount;
+
+  /// [memberUserIds] User identifiers of some chat members that may be known to the current user
+  List<int> memberUserIds;
+
+  /// [isPublic] True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
+  bool isPublic;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatInviteLinkInfo.fromJson(Map<String, dynamic> json)  {

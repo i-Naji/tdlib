@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class GetChatStatisticsUrl extends TdFunction {
-  int chatId;
-  String parameters;
-  bool isDark;
-  dynamic extra;
 
-  /// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics is disabled and can be deleted in the future. 
-  /// [chatId] Chat identifier . 
-  /// [parameters] Parameters from "tg://statsrefresh?params=******" link . 
-  /// [isDark] Pass true if a URL with the dark theme must be returned
+  /// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics is disabled and can be deleted in the future
   GetChatStatisticsUrl({this.chatId,
     this.parameters,
     this.isDark});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [parameters] Parameters from "tg://statsrefresh?params=******" link 
+  String parameters;
+
+  /// [isDark] Pass true if a URL with the dark theme must be returned
+  bool isDark;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatStatisticsUrl.fromJson(Map<String, dynamic> json) ;

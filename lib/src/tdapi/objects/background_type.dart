@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class BackgroundType extends TdObject {
-  
 
   /// Describes the type of a background
   BackgroundType();
+
+  
 
   /// a BackgroundType return type can be :
   /// * BackgroundTypeWallpaper
@@ -37,14 +38,16 @@ class BackgroundType extends TdObject {
 }
 
 class BackgroundTypeWallpaper extends BackgroundType {
-  bool isBlurred;
-  bool isMoving;
 
-  /// A wallpaper in JPEG format. 
-  /// [isBlurred] True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12. 
-  /// [isMoving] True, if the background needs to be slightly moved when device is tilted
+  /// A wallpaper in JPEG format
   BackgroundTypeWallpaper({this.isBlurred,
     this.isMoving});
+
+  /// [isBlurred] True, if the wallpaper must be downscaled to fit in 450x450 square and then box-blurred with radius 12
+  bool isBlurred;
+
+  /// [isMoving] True, if the background needs to be slightly moved when device is tilted
+  bool isMoving;
 
   /// Parse from a json
   BackgroundTypeWallpaper.fromJson(Map<String, dynamic> json)  {
@@ -68,17 +71,20 @@ class BackgroundTypeWallpaper extends BackgroundType {
 }
 
 class BackgroundTypePattern extends BackgroundType {
-  BackgroundFill fill;
-  int intensity;
-  bool isMoving;
 
-  /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user. 
-  /// [fill] Description of the background fill. 
-  /// [intensity] Intensity of the pattern when it is shown above the filled background, 0-100. 
-  /// [isMoving] True, if the background needs to be slightly moved when device is tilted
+  /// A PNG or TGV (gzipped subset of SVG with MIME type "application/x-tgwallpattern") pattern to be combined with the background fill chosen by the user
   BackgroundTypePattern({this.fill,
     this.intensity,
     this.isMoving});
+
+  /// [fill] Description of the background fill
+  BackgroundFill fill;
+
+  /// [intensity] Intensity of the pattern when it is shown above the filled background, 0-100
+  int intensity;
+
+  /// [isMoving] True, if the background needs to be slightly moved when device is tilted
+  bool isMoving;
 
   /// Parse from a json
   BackgroundTypePattern.fromJson(Map<String, dynamic> json)  {
@@ -104,11 +110,12 @@ class BackgroundTypePattern extends BackgroundType {
 }
 
 class BackgroundTypeFill extends BackgroundType {
-  BackgroundFill fill;
 
-  /// A filled background. 
-  /// [fill] Description of the background fill
+  /// A filled background
   BackgroundTypeFill({this.fill});
+
+  /// [fill] Description of the background fill
+  BackgroundFill fill;
 
   /// Parse from a json
   BackgroundTypeFill.fromJson(Map<String, dynamic> json)  {

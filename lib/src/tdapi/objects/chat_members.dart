@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ChatMembers extends TdObject {
-  int totalCount;
-  List<ChatMember> members;
-  dynamic extra;
 
-  /// Contains a list of chat members. 
-  /// [totalCount] Approximate total count of chat members found . 
-  /// [members] A list of chat members
+  /// Contains a list of chat members
   ChatMembers({this.totalCount,
     this.members});
+
+  /// [totalCount] Approximate total count of chat members found 
+  int totalCount;
+
+  /// [members] A list of chat members
+  List<ChatMember> members;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatMembers.fromJson(Map<String, dynamic> json)  {

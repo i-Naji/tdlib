@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class PhoneNumberAuthenticationSettings extends TdObject {
-  bool allowFlashCall;
-  bool isCurrentPhoneNumber;
-  bool allowSmsRetrieverApi;
 
-  /// Contains settings for the authentication of the user's phone number. 
-  /// [allowFlashCall] Pass true if the authentication code may be sent via flash call to the specified phone number. 
-  /// [isCurrentPhoneNumber] Pass true if the authenticated phone number is used on the current device. 
-  /// [allowSmsRetrieverApi] For official applications only. True, if the app can use Android SMS Retriever API (requires Google Play Services
+  /// Contains settings for the authentication of the user's phone number
   PhoneNumberAuthenticationSettings({this.allowFlashCall,
     this.isCurrentPhoneNumber,
     this.allowSmsRetrieverApi});
+
+  /// [allowFlashCall] Pass true if the authentication code may be sent via flash call to the specified phone number
+  bool allowFlashCall;
+
+  /// [isCurrentPhoneNumber] Pass true if the authenticated phone number is used on the current device
+  bool isCurrentPhoneNumber;
+
+  /// [allowSmsRetrieverApi] For official applications only. True, if the app can use Android SMS Retriever API (requires Google Play Services
+  bool allowSmsRetrieverApi;
 
   /// Parse from a json
   PhoneNumberAuthenticationSettings.fromJson(Map<String, dynamic> json)  {

@@ -1,51 +1,8 @@
 part of '../tdapi.dart';
 
 class WebPage extends TdObject {
-  String url;
-  String displayUrl;
-  String type;
-  String siteName;
-  String title;
-  FormattedText description;
-  Photo photo;
-  String embedUrl;
-  String embedType;
-  int embedWidth;
-  int embedHeight;
-  int duration;
-  String author;
-  Animation animation;
-  Audio audio;
-  Document document;
-  Sticker sticker;
-  Video video;
-  VideoNote videoNote;
-  VoiceNote voiceNote;
-  int instantViewVersion;
-  dynamic extra;
 
-  /// Describes a web page preview. 
-  /// [url] Original URL of the link. 
-  /// [displayUrl] URL to display. 
-  /// [type] Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else. 
-  /// [siteName] Short name of the site (e.g., Google Docs, App Store). 
-  /// [title] Title of the content. 
-  /// [description] Description of the content. 
-  /// [photo] Image representing the content; may be null. 
-  /// [embedUrl] URL to show in the embedded preview. 
-  /// [embedType] MIME type of the embedded preview, (e.g., text/html or video/mp4). 
-  /// [embedWidth] Width of the embedded preview. 
-  /// [embedHeight] Height of the embedded preview. 
-  /// [duration] Duration of the content, in seconds. 
-  /// [author] Author of the content. 
-  /// [animation] Preview of the content as an animation, if available; may be null. 
-  /// [audio] Preview of the content as an audio file, if available; may be null. 
-  /// [document] Preview of the content as a document, if available (currently only available for small PDF files and ZIP archives); may be null. 
-  /// [sticker] Preview of the content as a sticker for small WEBP files, if available; may be null. 
-  /// [video] Preview of the content as a video, if available; may be null. 
-  /// [videoNote] Preview of the content as a video note, if available; may be null. 
-  /// [voiceNote] Preview of the content as a voice note, if available; may be null. 
-  /// [instantViewVersion] Version of instant view, available for the web page (currently can be 1 or 2), 0 if none
+  /// Describes a web page preview
   WebPage({this.url,
     this.displayUrl,
     this.type,
@@ -67,6 +24,72 @@ class WebPage extends TdObject {
     this.videoNote,
     this.voiceNote,
     this.instantViewVersion});
+
+  /// [url] Original URL of the link
+  String url;
+
+  /// [displayUrl] URL to display
+  String displayUrl;
+
+  /// [type] Type of the web page. Can be: article, photo, audio, video, document, profile, app, or something else
+  String type;
+
+  /// [siteName] Short name of the site (e.g., Google Docs, App Store)
+  String siteName;
+
+  /// [title] Title of the content
+  String title;
+
+  /// [description] Description of the content
+  FormattedText description;
+
+  /// [photo] Image representing the content; may be null
+  Photo photo;
+
+  /// [embedUrl] URL to show in the embedded preview
+  String embedUrl;
+
+  /// [embedType] MIME type of the embedded preview, (e.g., text/html or video/mp4)
+  String embedType;
+
+  /// [embedWidth] Width of the embedded preview
+  int embedWidth;
+
+  /// [embedHeight] Height of the embedded preview
+  int embedHeight;
+
+  /// [duration] Duration of the content, in seconds
+  int duration;
+
+  /// [author] Author of the content
+  String author;
+
+  /// [animation] Preview of the content as an animation, if available; may be null
+  Animation animation;
+
+  /// [audio] Preview of the content as an audio file, if available; may be null
+  Audio audio;
+
+  /// [document] Preview of the content as a document, if available (currently only available for small PDF files and ZIP archives); may be null
+  Document document;
+
+  /// [sticker] Preview of the content as a sticker for small WEBP files, if available; may be null
+  Sticker sticker;
+
+  /// [video] Preview of the content as a video, if available; may be null
+  Video video;
+
+  /// [videoNote] Preview of the content as a video note, if available; may be null
+  VideoNote videoNote;
+
+  /// [voiceNote] Preview of the content as a voice note, if available; may be null
+  VoiceNote voiceNote;
+
+  /// [instantViewVersion] Version of instant view, available for the web page (currently can be 1 or 2), 0 if none
+  int instantViewVersion;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   WebPage.fromJson(Map<String, dynamic> json)  {

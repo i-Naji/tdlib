@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Backgrounds extends TdObject {
-  List<Background> backgrounds;
-  dynamic extra;
 
-  /// Contains a list of backgrounds. 
-  /// [backgrounds] A list of backgrounds
+  /// Contains a list of backgrounds
   Backgrounds({this.backgrounds});
+
+  /// [backgrounds] A list of backgrounds
+  List<Background> backgrounds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Backgrounds.fromJson(Map<String, dynamic> json)  {

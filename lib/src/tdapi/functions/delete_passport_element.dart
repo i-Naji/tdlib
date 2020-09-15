@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class DeletePassportElement extends TdFunction {
-  PassportElementType type;
-  dynamic extra;
 
-  /// Deletes a Telegram Passport element. 
-  /// [type] Element type
+  /// Deletes a Telegram Passport element
   DeletePassportElement({this.type});
+
+  /// [type] Element type
+  PassportElementType type;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeletePassportElement.fromJson(Map<String, dynamic> json) ;

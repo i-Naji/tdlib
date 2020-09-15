@@ -1,23 +1,28 @@
 part of '../tdapi.dart';
 
 class Contact extends TdObject {
-  String phoneNumber;
-  String firstName;
-  String lastName;
-  String vcard;
-  int userId;
 
-  /// Describes a user contact. 
-  /// [phoneNumber] Phone number of the user . 
-  /// [firstName] First name of the user; 1-255 characters in length . 
-  /// [lastName] Last name of the user . 
-  /// [vcard] Additional data about the user in a form of vCard; 0-2048 bytes in length . 
-  /// [userId] Identifier of the user, if known; otherwise 0
+  /// Describes a user contact
   Contact({this.phoneNumber,
     this.firstName,
     this.lastName,
     this.vcard,
     this.userId});
+
+  /// [phoneNumber] Phone number of the user 
+  String phoneNumber;
+
+  /// [firstName] First name of the user; 1-255 characters in length 
+  String firstName;
+
+  /// [lastName] Last name of the user 
+  String lastName;
+
+  /// [vcard] Additional data about the user in a form of vCard; 0-2048 bytes in length 
+  String vcard;
+
+  /// [userId] Identifier of the user, if known; otherwise 0
+  int userId;
 
   /// Parse from a json
   Contact.fromJson(Map<String, dynamic> json)  {

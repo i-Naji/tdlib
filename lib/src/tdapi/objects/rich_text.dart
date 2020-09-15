@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class RichText extends TdObject {
-  
 
   /// Describes a text object inside an instant-view web page
   RichText();
+
+  
 
   /// a RichText return type can be :
   /// * RichTextPlain
@@ -79,11 +80,12 @@ class RichText extends TdObject {
 }
 
 class RichTextPlain extends RichText {
-  String text;
 
-  /// A plain text. 
-  /// [text] Text
+  /// A plain text
   RichTextPlain({this.text});
+
+  /// [text] Text
+  String text;
 
   /// Parse from a json
   RichTextPlain.fromJson(Map<String, dynamic> json)  {
@@ -105,11 +107,12 @@ class RichTextPlain extends RichText {
 }
 
 class RichTextBold extends RichText {
-  RichText text;
 
-  /// A bold rich text. 
-  /// [text] Text
+  /// A bold rich text
   RichTextBold({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextBold.fromJson(Map<String, dynamic> json)  {
@@ -131,11 +134,12 @@ class RichTextBold extends RichText {
 }
 
 class RichTextItalic extends RichText {
-  RichText text;
 
-  /// An italicized rich text. 
-  /// [text] Text
+  /// An italicized rich text
   RichTextItalic({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextItalic.fromJson(Map<String, dynamic> json)  {
@@ -157,11 +161,12 @@ class RichTextItalic extends RichText {
 }
 
 class RichTextUnderline extends RichText {
-  RichText text;
 
-  /// An underlined rich text. 
-  /// [text] Text
+  /// An underlined rich text
   RichTextUnderline({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextUnderline.fromJson(Map<String, dynamic> json)  {
@@ -183,11 +188,12 @@ class RichTextUnderline extends RichText {
 }
 
 class RichTextStrikethrough extends RichText {
-  RichText text;
 
-  /// A strikethrough rich text. 
-  /// [text] Text
+  /// A strikethrough rich text
   RichTextStrikethrough({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextStrikethrough.fromJson(Map<String, dynamic> json)  {
@@ -209,11 +215,12 @@ class RichTextStrikethrough extends RichText {
 }
 
 class RichTextFixed extends RichText {
-  RichText text;
 
-  /// A fixed-width rich text. 
-  /// [text] Text
+  /// A fixed-width rich text
   RichTextFixed({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextFixed.fromJson(Map<String, dynamic> json)  {
@@ -235,17 +242,20 @@ class RichTextFixed extends RichText {
 }
 
 class RichTextUrl extends RichText {
-  RichText text;
-  String url;
-  bool isCached;
 
-  /// A rich text URL link. 
-  /// [text] Text . 
-  /// [url] URL . 
-  /// [isCached] True, if the URL has cached instant view server-side
+  /// A rich text URL link
   RichTextUrl({this.text,
     this.url,
     this.isCached});
+
+  /// [text] Text 
+  RichText text;
+
+  /// [url] URL 
+  String url;
+
+  /// [isCached] True, if the URL has cached instant view server-side
+  bool isCached;
 
   /// Parse from a json
   RichTextUrl.fromJson(Map<String, dynamic> json)  {
@@ -271,14 +281,16 @@ class RichTextUrl extends RichText {
 }
 
 class RichTextEmailAddress extends RichText {
-  RichText text;
-  String emailAddress;
 
-  /// A rich text email link. 
-  /// [text] Text . 
-  /// [emailAddress] Email address
+  /// A rich text email link
   RichTextEmailAddress({this.text,
     this.emailAddress});
+
+  /// [text] Text 
+  RichText text;
+
+  /// [emailAddress] Email address
+  String emailAddress;
 
   /// Parse from a json
   RichTextEmailAddress.fromJson(Map<String, dynamic> json)  {
@@ -302,11 +314,12 @@ class RichTextEmailAddress extends RichText {
 }
 
 class RichTextSubscript extends RichText {
-  RichText text;
 
-  /// A subscript rich text. 
-  /// [text] Text
+  /// A subscript rich text
   RichTextSubscript({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextSubscript.fromJson(Map<String, dynamic> json)  {
@@ -328,11 +341,12 @@ class RichTextSubscript extends RichText {
 }
 
 class RichTextSuperscript extends RichText {
-  RichText text;
 
-  /// A superscript rich text. 
-  /// [text] Text
+  /// A superscript rich text
   RichTextSuperscript({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextSuperscript.fromJson(Map<String, dynamic> json)  {
@@ -354,11 +368,12 @@ class RichTextSuperscript extends RichText {
 }
 
 class RichTextMarked extends RichText {
-  RichText text;
 
-  /// A marked rich text. 
-  /// [text] Text
+  /// A marked rich text
   RichTextMarked({this.text});
+
+  /// [text] Text
+  RichText text;
 
   /// Parse from a json
   RichTextMarked.fromJson(Map<String, dynamic> json)  {
@@ -380,14 +395,16 @@ class RichTextMarked extends RichText {
 }
 
 class RichTextPhoneNumber extends RichText {
-  RichText text;
-  String phoneNumber;
 
-  /// A rich text phone number. 
-  /// [text] Text . 
-  /// [phoneNumber] Phone number
+  /// A rich text phone number
   RichTextPhoneNumber({this.text,
     this.phoneNumber});
+
+  /// [text] Text 
+  RichText text;
+
+  /// [phoneNumber] Phone number
+  String phoneNumber;
 
   /// Parse from a json
   RichTextPhoneNumber.fromJson(Map<String, dynamic> json)  {
@@ -411,17 +428,20 @@ class RichTextPhoneNumber extends RichText {
 }
 
 class RichTextIcon extends RichText {
-  Document document;
-  int width;
-  int height;
 
-  /// A small image inside the text. 
-  /// [document] The image represented as a document. The image can be in GIF, JPEG or PNG format. 
-  /// [width] Width of a bounding box in which the image should be shown; 0 if unknown. 
-  /// [height] Height of a bounding box in which the image should be shown; 0 if unknown
+  /// A small image inside the text
   RichTextIcon({this.document,
     this.width,
     this.height});
+
+  /// [document] The image represented as a document. The image can be in GIF, JPEG or PNG format
+  Document document;
+
+  /// [width] Width of a bounding box in which the image should be shown; 0 if unknown
+  int width;
+
+  /// [height] Height of a bounding box in which the image should be shown; 0 if unknown
+  int height;
 
   /// Parse from a json
   RichTextIcon.fromJson(Map<String, dynamic> json)  {
@@ -447,17 +467,20 @@ class RichTextIcon extends RichText {
 }
 
 class RichTextReference extends RichText {
-  RichText text;
-  RichText referenceText;
-  String url;
 
-  /// A rich text reference of a text on the same web page. 
-  /// [text] The text . 
-  /// [referenceText] The text to show on click . 
-  /// [url] An HTTP URL, opening the reference
+  /// A rich text reference of a text on the same web page
   RichTextReference({this.text,
     this.referenceText,
     this.url});
+
+  /// [text] The text 
+  RichText text;
+
+  /// [referenceText] The text to show on click 
+  RichText referenceText;
+
+  /// [url] An HTTP URL, opening the reference
+  String url;
 
   /// Parse from a json
   RichTextReference.fromJson(Map<String, dynamic> json)  {
@@ -483,11 +506,12 @@ class RichTextReference extends RichText {
 }
 
 class RichTextAnchor extends RichText {
-  String name;
 
-  /// An anchor. 
-  /// [name] Anchor name
+  /// An anchor
   RichTextAnchor({this.name});
+
+  /// [name] Anchor name
+  String name;
 
   /// Parse from a json
   RichTextAnchor.fromJson(Map<String, dynamic> json)  {
@@ -509,17 +533,20 @@ class RichTextAnchor extends RichText {
 }
 
 class RichTextAnchorLink extends RichText {
-  RichText text;
-  String name;
-  String url;
 
-  /// A link to an anchor on the same web page. 
-  /// [text] The link text . 
-  /// [name] The anchor name. If the name is empty, the link should bring back to top . 
-  /// [url] An HTTP URL, opening the anchor
+  /// A link to an anchor on the same web page
   RichTextAnchorLink({this.text,
     this.name,
     this.url});
+
+  /// [text] The link text 
+  RichText text;
+
+  /// [name] The anchor name. If the name is empty, the link should bring back to top 
+  String name;
+
+  /// [url] An HTTP URL, opening the anchor
+  String url;
 
   /// Parse from a json
   RichTextAnchorLink.fromJson(Map<String, dynamic> json)  {
@@ -545,11 +572,12 @@ class RichTextAnchorLink extends RichText {
 }
 
 class RichTexts extends RichText {
-  List<RichText> texts;
 
-  /// A concatenation of rich texts. 
-  /// [texts] Texts
+  /// A concatenation of rich texts
   RichTexts({this.texts});
+
+  /// [texts] Texts
+  List<RichText> texts;
 
   /// Parse from a json
   RichTexts.fromJson(Map<String, dynamic> json)  {

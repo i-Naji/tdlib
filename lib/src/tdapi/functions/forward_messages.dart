@@ -1,23 +1,8 @@
 part of '../tdapi.dart';
 
 class ForwardMessages extends TdFunction {
-  int chatId;
-  int fromChatId;
-  List<int> messageIds;
-  SendMessageOptions options;
-  bool asAlbum;
-  bool sendCopy;
-  bool removeCaption;
-  dynamic extra;
 
-  /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message. 
-  /// [chatId] Identifier of the chat to which to forward messages. 
-  /// [fromChatId] Identifier of the chat from which to forward messages . 
-  /// [messageIds] Identifiers of the messages to forward. 
-  /// [options] Options to be used to send the messages. 
-  /// [asAlbum] True, if the messages should be grouped into an album after forwarding. For this to work, no more than 10 messages may be forwarded, and all of them must be photo or video messages. 
-  /// [sendCopy] True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat. 
-  /// [removeCaption] True, if media captions of message copies needs to be removed. Ignored if send_copy is false
+  /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   ForwardMessages({this.chatId,
     this.fromChatId,
     this.messageIds,
@@ -25,6 +10,30 @@ class ForwardMessages extends TdFunction {
     this.asAlbum,
     this.sendCopy,
     this.removeCaption});
+
+  /// [chatId] Identifier of the chat to which to forward messages
+  int chatId;
+
+  /// [fromChatId] Identifier of the chat from which to forward messages 
+  int fromChatId;
+
+  /// [messageIds] Identifiers of the messages to forward
+  List<int> messageIds;
+
+  /// [options] Options to be used to send the messages
+  SendMessageOptions options;
+
+  /// [asAlbum] True, if the messages should be grouped into an album after forwarding. For this to work, no more than 10 messages may be forwarded, and all of them must be photo or video messages
+  bool asAlbum;
+
+  /// [sendCopy] True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat
+  bool sendCopy;
+
+  /// [removeCaption] True, if media captions of message copies needs to be removed. Ignored if send_copy is false
+  bool removeCaption;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ForwardMessages.fromJson(Map<String, dynamic> json) ;

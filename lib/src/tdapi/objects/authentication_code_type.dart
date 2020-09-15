@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class AuthenticationCodeType extends TdObject {
-  
 
   /// Provides information about the method by which an authentication code is delivered to the user
   AuthenticationCodeType();
+
+  
 
   /// a AuthenticationCodeType return type can be :
   /// * AuthenticationCodeTypeTelegramMessage
@@ -40,11 +41,12 @@ class AuthenticationCodeType extends TdObject {
 }
 
 class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
-  int length;
 
-  /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session. 
-  /// [length] Length of the code
+  /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session
   AuthenticationCodeTypeTelegramMessage({this.length});
+
+  /// [length] Length of the code
+  int length;
 
   /// Parse from a json
   AuthenticationCodeTypeTelegramMessage.fromJson(Map<String, dynamic> json)  {
@@ -66,11 +68,12 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
 }
 
 class AuthenticationCodeTypeSms extends AuthenticationCodeType {
-  int length;
 
-  /// An authentication code is delivered via an SMS message to the specified phone number. 
-  /// [length] Length of the code
+  /// An authentication code is delivered via an SMS message to the specified phone number
   AuthenticationCodeTypeSms({this.length});
+
+  /// [length] Length of the code
+  int length;
 
   /// Parse from a json
   AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json)  {
@@ -92,11 +95,12 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
 }
 
 class AuthenticationCodeTypeCall extends AuthenticationCodeType {
-  int length;
 
-  /// An authentication code is delivered via a phone call to the specified phone number. 
-  /// [length] Length of the code
+  /// An authentication code is delivered via a phone call to the specified phone number
   AuthenticationCodeTypeCall({this.length});
+
+  /// [length] Length of the code
+  int length;
 
   /// Parse from a json
   AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json)  {
@@ -118,11 +122,12 @@ class AuthenticationCodeTypeCall extends AuthenticationCodeType {
 }
 
 class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
-  String pattern;
 
-  /// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code. 
-  /// [pattern] Pattern of the phone number from which the call will be made
+  /// An authentication code is delivered by an immediately cancelled call to the specified phone number. The number from which the call was made is the code
   AuthenticationCodeTypeFlashCall({this.pattern});
+
+  /// [pattern] Pattern of the phone number from which the call will be made
+  String pattern;
 
   /// Parse from a json
   AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json)  {

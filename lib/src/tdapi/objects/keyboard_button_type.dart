@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class KeyboardButtonType extends TdObject {
-  
 
   /// Describes a keyboard button type
   KeyboardButtonType();
+
+  
 
   /// a KeyboardButtonType return type can be :
   /// * KeyboardButtonTypeText
@@ -40,10 +41,11 @@ class KeyboardButtonType extends TdObject {
 }
 
 class KeyboardButtonTypeText extends KeyboardButtonType {
-  
 
   /// A simple button, with text that should be sent when the button is pressed
   KeyboardButtonTypeText();
+
+  
 
   /// Parse from a json
   KeyboardButtonTypeText.fromJson(Map<String, dynamic> json) ;
@@ -62,10 +64,11 @@ class KeyboardButtonTypeText extends KeyboardButtonType {
 }
 
 class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
-  
 
   /// A button that sends the user's phone number when pressed; available only in private chats
   KeyboardButtonTypeRequestPhoneNumber();
+
+  
 
   /// Parse from a json
   KeyboardButtonTypeRequestPhoneNumber.fromJson(Map<String, dynamic> json) ;
@@ -84,10 +87,11 @@ class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
 }
 
 class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
-  
 
   /// A button that sends the user's location when pressed; available only in private chats
   KeyboardButtonTypeRequestLocation();
+
+  
 
   /// Parse from a json
   KeyboardButtonTypeRequestLocation.fromJson(Map<String, dynamic> json) ;
@@ -106,14 +110,16 @@ class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
 }
 
 class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
-  bool forceRegular;
-  bool forceQuiz;
 
-  /// A button that allows the user to create and send a poll when pressed; available only in private chats. 
-  /// [forceRegular] If true, only regular polls must be allowed to create . 
-  /// [forceQuiz] If true, only polls in quiz mode must be allowed to create
+  /// A button that allows the user to create and send a poll when pressed; available only in private chats
   KeyboardButtonTypeRequestPoll({this.forceRegular,
     this.forceQuiz});
+
+  /// [forceRegular] If true, only regular polls must be allowed to create 
+  bool forceRegular;
+
+  /// [forceQuiz] If true, only polls in quiz mode must be allowed to create
+  bool forceQuiz;
 
   /// Parse from a json
   KeyboardButtonTypeRequestPoll.fromJson(Map<String, dynamic> json)  {

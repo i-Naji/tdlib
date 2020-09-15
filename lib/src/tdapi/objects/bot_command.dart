@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class BotCommand extends TdObject {
-  String command;
-  String description;
 
-  /// Represents a command supported by a bot. 
-  /// [command] Text of the bot command . 
-  /// [description] Description of the bot command
+  /// Represents a command supported by a bot
   BotCommand({this.command,
     this.description});
+
+  /// [command] Text of the bot command 
+  String command;
+
+  /// [description] Description of the bot command
+  String description;
 
   /// Parse from a json
   BotCommand.fromJson(Map<String, dynamic> json)  {

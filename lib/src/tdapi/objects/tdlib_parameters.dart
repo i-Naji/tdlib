@@ -1,38 +1,8 @@
 part of '../tdapi.dart';
 
 class TdlibParameters extends TdObject {
-  bool useTestDc;
-  String databaseDirectory;
-  String filesDirectory;
-  bool useFileDatabase;
-  bool useChatInfoDatabase;
-  bool useMessageDatabase;
-  bool useSecretChats;
-  int apiId;
-  String apiHash;
-  String systemLanguageCode;
-  String deviceModel;
-  String systemVersion;
-  String applicationVersion;
-  bool enableStorageOptimizer;
-  bool ignoreFileNames;
 
-  /// Contains parameters for TDLib initialization. 
-  /// [useTestDc] If set to true, the Telegram test environment will be used instead of the production environment. 
-  /// [databaseDirectory] The path to the directory for the persistent database; if empty, the current working directory will be used. 
-  /// [filesDirectory] The path to the directory for storing files; if empty, database_directory will be used. 
-  /// [useFileDatabase] If set to true, information about downloaded and uploaded files will be saved between application restarts. 
-  /// [useChatInfoDatabase] If set to true, the library will maintain a cache of users, basic groups, supergroups, channels and secret chats. Implies use_file_database. 
-  /// [useMessageDatabase] If set to true, the library will maintain a cache of chats and messages. Implies use_chat_info_database. 
-  /// [useSecretChats] If set to true, support for secret chats will be enabled. 
-  /// [apiId] Application identifier for Telegram API access, which can be obtained at https://my.telegram.org. 
-  /// [apiHash] Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org. 
-  /// [systemLanguageCode] IETF language tag of the user's operating system language; must be non-empty. 
-  /// [deviceModel] Model of the device the application is being run on; must be non-empty. 
-  /// [systemVersion] Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib. 
-  /// [applicationVersion] Application version; must be non-empty. 
-  /// [enableStorageOptimizer] If set to true, old files will automatically be deleted. 
-  /// [ignoreFileNames] If set to true, original file names will be ignored. Otherwise, downloaded files will be saved under names as close as possible to the original name
+  /// Contains parameters for TDLib initialization
   TdlibParameters({this.useTestDc,
     this.databaseDirectory,
     this.filesDirectory,
@@ -48,6 +18,51 @@ class TdlibParameters extends TdObject {
     this.applicationVersion,
     this.enableStorageOptimizer,
     this.ignoreFileNames});
+
+  /// [useTestDc] If set to true, the Telegram test environment will be used instead of the production environment
+  bool useTestDc;
+
+  /// [databaseDirectory] The path to the directory for the persistent database; if empty, the current working directory will be used
+  String databaseDirectory;
+
+  /// [filesDirectory] The path to the directory for storing files; if empty, database_directory will be used
+  String filesDirectory;
+
+  /// [useFileDatabase] If set to true, information about downloaded and uploaded files will be saved between application restarts
+  bool useFileDatabase;
+
+  /// [useChatInfoDatabase] If set to true, the library will maintain a cache of users, basic groups, supergroups, channels and secret chats. Implies use_file_database
+  bool useChatInfoDatabase;
+
+  /// [useMessageDatabase] If set to true, the library will maintain a cache of chats and messages. Implies use_chat_info_database
+  bool useMessageDatabase;
+
+  /// [useSecretChats] If set to true, support for secret chats will be enabled
+  bool useSecretChats;
+
+  /// [apiId] Application identifier for Telegram API access, which can be obtained at https://my.telegram.org
+  int apiId;
+
+  /// [apiHash] Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org
+  String apiHash;
+
+  /// [systemLanguageCode] IETF language tag of the user's operating system language; must be non-empty
+  String systemLanguageCode;
+
+  /// [deviceModel] Model of the device the application is being run on; must be non-empty
+  String deviceModel;
+
+  /// [systemVersion] Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib
+  String systemVersion;
+
+  /// [applicationVersion] Application version; must be non-empty
+  String applicationVersion;
+
+  /// [enableStorageOptimizer] If set to true, old files will automatically be deleted
+  bool enableStorageOptimizer;
+
+  /// [ignoreFileNames] If set to true, original file names will be ignored. Otherwise, downloaded files will be saved under names as close as possible to the original name
+  bool ignoreFileNames;
 
   /// Parse from a json
   TdlibParameters.fromJson(Map<String, dynamic> json)  {

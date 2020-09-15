@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetJsonValue extends TdFunction {
-  String json;
-  dynamic extra;
 
-  /// Converts a JSON-serialized string to corresponding JsonValue object. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [json] The JSON-serialized string
+  /// Converts a JSON-serialized string to corresponding JsonValue object. This is an offline method. Can be called before authorization. Can be called synchronously
   GetJsonValue({this.json});
+
+  /// [json] The JSON-serialized string
+  String json;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetJsonValue.fromJson(Map<String, dynamic> json) ;

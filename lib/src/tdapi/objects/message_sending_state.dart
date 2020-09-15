@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class MessageSendingState extends TdObject {
-  
 
   /// Contains information about the sending state of the message
   MessageSendingState();
+
+  
 
   /// a MessageSendingState return type can be :
   /// * MessageSendingStatePending
@@ -34,10 +35,11 @@ class MessageSendingState extends TdObject {
 }
 
 class MessageSendingStatePending extends MessageSendingState {
-  
 
   /// The message is being sent now, but has not yet been delivered to the server
   MessageSendingStatePending();
+
+  
 
   /// Parse from a json
   MessageSendingStatePending.fromJson(Map<String, dynamic> json) ;
@@ -56,20 +58,24 @@ class MessageSendingStatePending extends MessageSendingState {
 }
 
 class MessageSendingStateFailed extends MessageSendingState {
-  int errorCode;
-  String errorMessage;
-  bool canRetry;
-  double retryAfter;
 
-  /// The message failed to be sent. 
-  /// [errorCode] An error code; 0 if unknown . 
-  /// [errorMessage] Error message. 
-  /// [canRetry] True, if the message can be re-sent. 
-  /// [retryAfter] Time left before the message can be re-sent, in seconds. No update is sent when this field changes
+  /// The message failed to be sent
   MessageSendingStateFailed({this.errorCode,
     this.errorMessage,
     this.canRetry,
     this.retryAfter});
+
+  /// [errorCode] An error code; 0 if unknown 
+  int errorCode;
+
+  /// [errorMessage] Error message
+  String errorMessage;
+
+  /// [canRetry] True, if the message can be re-sent
+  bool canRetry;
+
+  /// [retryAfter] Time left before the message can be re-sent, in seconds. No update is sent when this field changes
+  double retryAfter;
 
   /// Parse from a json
   MessageSendingStateFailed.fromJson(Map<String, dynamic> json)  {

@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class ShippingOption extends TdObject {
-  String id;
-  String title;
-  List<LabeledPricePart> priceParts;
 
-  /// One shipping option. 
-  /// [id] Shipping option identifier . 
-  /// [title] Option title . 
-  /// [priceParts] A list of objects used to calculate the total shipping costs
+  /// One shipping option
   ShippingOption({this.id,
     this.title,
     this.priceParts});
+
+  /// [id] Shipping option identifier 
+  String id;
+
+  /// [title] Option title 
+  String title;
+
+  /// [priceParts] A list of objects used to calculate the total shipping costs
+  List<LabeledPricePart> priceParts;
 
   /// Parse from a json
   ShippingOption.fromJson(Map<String, dynamic> json)  {

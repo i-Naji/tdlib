@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GameHighScores extends TdObject {
-  List<GameHighScore> scores;
-  dynamic extra;
 
-  /// Contains a list of game high scores. 
-  /// [scores] A list of game high scores
+  /// Contains a list of game high scores
   GameHighScores({this.scores});
+
+  /// [scores] A list of game high scores
+  List<GameHighScore> scores;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GameHighScores.fromJson(Map<String, dynamic> json)  {

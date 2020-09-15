@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ToggleSupergroupSignMessages extends TdFunction {
-  int supergroupId;
-  bool signMessages;
-  dynamic extra;
 
-  /// Toggles sender signatures messages sent in a channel; requires can_change_info rights. 
-  /// [supergroupId] Identifier of the channel . 
-  /// [signMessages] New value of sign_messages
+  /// Toggles sender signatures messages sent in a channel; requires can_change_info rights
   ToggleSupergroupSignMessages({this.supergroupId,
     this.signMessages});
+
+  /// [supergroupId] Identifier of the channel 
+  int supergroupId;
+
+  /// [signMessages] New value of sign_messages
+  bool signMessages;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ToggleSupergroupSignMessages.fromJson(Map<String, dynamic> json) ;

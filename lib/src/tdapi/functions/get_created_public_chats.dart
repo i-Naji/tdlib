@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetCreatedPublicChats extends TdFunction {
-  PublicChatType type;
-  dynamic extra;
 
-  /// Returns a list of public chats of the specified type, owned by the user. 
-  /// [type] Type of the public chats to return
+  /// Returns a list of public chats of the specified type, owned by the user
   GetCreatedPublicChats({this.type});
+
+  /// [type] Type of the public chats to return
+  PublicChatType type;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetCreatedPublicChats.fromJson(Map<String, dynamic> json) ;

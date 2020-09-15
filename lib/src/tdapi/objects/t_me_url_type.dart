@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class TMeUrlType extends TdObject {
-  
 
   /// Describes the type of a URL linking to an internal Telegram entity
   TMeUrlType();
+
+  
 
   /// a TMeUrlType return type can be :
   /// * TMeUrlTypeUser
@@ -40,11 +41,12 @@ class TMeUrlType extends TdObject {
 }
 
 class TMeUrlTypeUser extends TMeUrlType {
-  int userId;
 
-  /// A URL linking to a user. 
-  /// [userId] Identifier of the user
+  /// A URL linking to a user
   TMeUrlTypeUser({this.userId});
+
+  /// [userId] Identifier of the user
+  int userId;
 
   /// Parse from a json
   TMeUrlTypeUser.fromJson(Map<String, dynamic> json)  {
@@ -66,11 +68,12 @@ class TMeUrlTypeUser extends TMeUrlType {
 }
 
 class TMeUrlTypeSupergroup extends TMeUrlType {
-  int supergroupId;
 
-  /// A URL linking to a public supergroup or channel. 
-  /// [supergroupId] Identifier of the supergroup or channel
+  /// A URL linking to a public supergroup or channel
   TMeUrlTypeSupergroup({this.supergroupId});
+
+  /// [supergroupId] Identifier of the supergroup or channel
+  int supergroupId;
 
   /// Parse from a json
   TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json)  {
@@ -92,11 +95,12 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
 }
 
 class TMeUrlTypeChatInvite extends TMeUrlType {
-  ChatInviteLinkInfo info;
 
-  /// A chat invite link. 
-  /// [info] Chat invite link info
+  /// A chat invite link
   TMeUrlTypeChatInvite({this.info});
+
+  /// [info] Chat invite link info
+  ChatInviteLinkInfo info;
 
   /// Parse from a json
   TMeUrlTypeChatInvite.fromJson(Map<String, dynamic> json)  {
@@ -118,15 +122,16 @@ class TMeUrlTypeChatInvite extends TMeUrlType {
 }
 
 class TMeUrlTypeStickerSet extends TMeUrlType {
-  int stickerSetId;
 
-  /// A URL linking to a sticker set. 
-  /// [stickerSetId] Identifier of the sticker set
+  /// A URL linking to a sticker set
   TMeUrlTypeStickerSet({this.stickerSetId});
+
+  /// [stickerSetId] Identifier of the sticker set
+  int stickerSetId;
 
   /// Parse from a json
   TMeUrlTypeStickerSet.fromJson(Map<String, dynamic> json)  {
-    this.stickerSetId = json['sticker_set_id'];
+    this.stickerSetId = int.tryParse(json['sticker_set_id'] ?? "");
   }
 
   @override

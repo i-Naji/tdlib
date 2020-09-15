@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class KeyboardButton extends TdObject {
-  String text;
-  KeyboardButtonType type;
 
-  /// Represents a single button in a bot keyboard. 
-  /// [text] Text of the button . 
-  /// [type] Type of the button
+  /// Represents a single button in a bot keyboard
   KeyboardButton({this.text,
     this.type});
+
+  /// [text] Text of the button 
+  String text;
+
+  /// [type] Type of the button
+  KeyboardButtonType type;
 
   /// Parse from a json
   KeyboardButton.fromJson(Map<String, dynamic> json)  {

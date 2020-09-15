@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CallbackQueryPayload extends TdObject {
-  
 
   /// Represents a payload of a callback query
   CallbackQueryPayload();
+
+  
 
   /// a CallbackQueryPayload return type can be :
   /// * CallbackQueryPayloadData
@@ -34,11 +35,12 @@ class CallbackQueryPayload extends TdObject {
 }
 
 class CallbackQueryPayloadData extends CallbackQueryPayload {
-  String data;
 
-  /// The payload from a general callback button. 
-  /// [data] Data that was attached to the callback button
+  /// The payload from a general callback button
   CallbackQueryPayloadData({this.data});
+
+  /// [data] Data that was attached to the callback button
+  String data;
 
   /// Parse from a json
   CallbackQueryPayloadData.fromJson(Map<String, dynamic> json)  {
@@ -60,11 +62,12 @@ class CallbackQueryPayloadData extends CallbackQueryPayload {
 }
 
 class CallbackQueryPayloadGame extends CallbackQueryPayload {
-  String gameShortName;
 
-  /// The payload from a game callback button. 
-  /// [gameShortName] A short name of the game that was attached to the callback button
+  /// The payload from a game callback button
   CallbackQueryPayloadGame({this.gameShortName});
+
+  /// [gameShortName] A short name of the game that was attached to the callback button
+  String gameShortName;
 
   /// Parse from a json
   CallbackQueryPayloadGame.fromJson(Map<String, dynamic> json)  {

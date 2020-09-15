@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetChatMember extends TdFunction {
-  int chatId;
-  int userId;
-  dynamic extra;
 
-  /// Returns information about a single member of a chat. 
-  /// [chatId] Chat identifier . 
-  /// [userId] User identifier
+  /// Returns information about a single member of a chat
   GetChatMember({this.chatId,
     this.userId});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [userId] User identifier
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatMember.fromJson(Map<String, dynamic> json) ;

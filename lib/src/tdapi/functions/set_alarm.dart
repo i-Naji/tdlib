@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetAlarm extends TdFunction {
-  double seconds;
-  dynamic extra;
 
-  /// Succeeds after a specified amount of time has passed. Can be called before authorization. Can be called before initialization. 
-  /// [seconds] Number of seconds before the function returns
+  /// Succeeds after a specified amount of time has passed. Can be called before authorization. Can be called before initialization
   SetAlarm({this.seconds});
+
+  /// [seconds] Number of seconds before the function returns
+  double seconds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetAlarm.fromJson(Map<String, dynamic> json) ;

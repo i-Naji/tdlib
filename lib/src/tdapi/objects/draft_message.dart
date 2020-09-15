@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class DraftMessage extends TdObject {
-  int replyToMessageId;
-  int date;
-  InputMessageContent inputMessageText;
 
-  /// Contains information about a message draft. 
-  /// [replyToMessageId] Identifier of the message to reply to; 0 if none. 
-  /// [date] Point in time (Unix timestamp) when the draft was created. 
-  /// [inputMessageText] Content of the message draft; this should always be of type inputMessageText
+  /// Contains information about a message draft
   DraftMessage({this.replyToMessageId,
     this.date,
     this.inputMessageText});
+
+  /// [replyToMessageId] Identifier of the message to reply to; 0 if none
+  int replyToMessageId;
+
+  /// [date] Point in time (Unix timestamp) when the draft was created
+  int date;
+
+  /// [inputMessageText] Content of the message draft; this should always be of type inputMessageText
+  InputMessageContent inputMessageText;
 
   /// Parse from a json
   DraftMessage.fromJson(Map<String, dynamic> json)  {

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestReturnError extends TdFunction {
-  TdError error;
-  dynamic extra;
 
-  /// Returns the specified error and ensures that the Error object is used; for testing only. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [error] The error to be returned
+  /// Returns the specified error and ensures that the Error object is used; for testing only. This is an offline method. Can be called before authorization. Can be called synchronously
   TestReturnError({this.error});
+
+  /// [error] The error to be returned
+  TdError error;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestReturnError.fromJson(Map<String, dynamic> json) ;

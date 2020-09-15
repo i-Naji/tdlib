@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class ChatStatisticsMessageInteractionInfo extends TdObject {
-  int messageId;
-  int viewCount;
-  int forwardCount;
 
-  /// Contains statistics about interactions with a message. 
-  /// [messageId] Message identifier. 
-  /// [viewCount] Number of times the message was viewed. 
-  /// [forwardCount] Number of times the message was forwarded
+  /// Contains statistics about interactions with a message
   ChatStatisticsMessageInteractionInfo({this.messageId,
     this.viewCount,
     this.forwardCount});
+
+  /// [messageId] Message identifier
+  int messageId;
+
+  /// [viewCount] Number of times the message was viewed
+  int viewCount;
+
+  /// [forwardCount] Number of times the message was forwarded
+  int forwardCount;
 
   /// Parse from a json
   ChatStatisticsMessageInteractionInfo.fromJson(Map<String, dynamic> json)  {

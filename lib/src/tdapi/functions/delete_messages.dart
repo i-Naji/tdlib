@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class DeleteMessages extends TdFunction {
-  int chatId;
-  List<int> messageIds;
-  bool revoke;
-  dynamic extra;
 
-  /// Deletes messages. 
-  /// [chatId] Chat identifier . 
-  /// [messageIds] Identifiers of the messages to be deleted . 
-  /// [revoke] Pass true to try to delete messages for all chat members. Always true for supergroups, channels and secret chats
+  /// Deletes messages
   DeleteMessages({this.chatId,
     this.messageIds,
     this.revoke});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageIds] Identifiers of the messages to be deleted 
+  List<int> messageIds;
+
+  /// [revoke] Pass true to try to delete messages for all chat members. Always true for supergroups, channels and secret chats
+  bool revoke;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeleteMessages.fromJson(Map<String, dynamic> json) ;

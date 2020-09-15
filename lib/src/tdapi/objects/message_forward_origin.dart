@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class MessageForwardOrigin extends TdObject {
-  
 
   /// Contains information about the origin of a forwarded message
   MessageForwardOrigin();
+
+  
 
   /// a MessageForwardOrigin return type can be :
   /// * MessageForwardOriginUser
@@ -37,11 +38,12 @@ class MessageForwardOrigin extends TdObject {
 }
 
 class MessageForwardOriginUser extends MessageForwardOrigin {
-  int senderUserId;
 
-  /// The message was originally written by a known user. 
-  /// [senderUserId] Identifier of the user that originally sent the message
+  /// The message was originally written by a known user
   MessageForwardOriginUser({this.senderUserId});
+
+  /// [senderUserId] Identifier of the user that originally sent the message
+  int senderUserId;
 
   /// Parse from a json
   MessageForwardOriginUser.fromJson(Map<String, dynamic> json)  {
@@ -63,11 +65,12 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
 }
 
 class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
-  String senderName;
 
-  /// The message was originally written by a user, which is hidden by their privacy settings. 
-  /// [senderName] Name of the sender
+  /// The message was originally written by a user, which is hidden by their privacy settings
   MessageForwardOriginHiddenUser({this.senderName});
+
+  /// [senderName] Name of the sender
+  String senderName;
 
   /// Parse from a json
   MessageForwardOriginHiddenUser.fromJson(Map<String, dynamic> json)  {
@@ -89,17 +92,20 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
 }
 
 class MessageForwardOriginChannel extends MessageForwardOrigin {
-  int chatId;
-  int messageId;
-  String authorSignature;
 
-  /// The message was originally a post in a channel. 
-  /// [chatId] Identifier of the chat from which the message was originally forwarded. 
-  /// [messageId] Message identifier of the original message; 0 if unknown. 
-  /// [authorSignature] Original post author signature
+  /// The message was originally a post in a channel
   MessageForwardOriginChannel({this.chatId,
     this.messageId,
     this.authorSignature});
+
+  /// [chatId] Identifier of the chat from which the message was originally forwarded
+  int chatId;
+
+  /// [messageId] Message identifier of the original message; 0 if unknown
+  int messageId;
+
+  /// [authorSignature] Original post author signature
+  String authorSignature;
 
   /// Parse from a json
   MessageForwardOriginChannel.fromJson(Map<String, dynamic> json)  {

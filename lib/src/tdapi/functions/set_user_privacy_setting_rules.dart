@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetUserPrivacySettingRules extends TdFunction {
-  UserPrivacySetting setting;
-  UserPrivacySettingRules rules;
-  dynamic extra;
 
-  /// Changes user privacy settings. 
-  /// [setting] The privacy setting . 
-  /// [rules] The new privacy rules
+  /// Changes user privacy settings
   SetUserPrivacySettingRules({this.setting,
     this.rules});
+
+  /// [setting] The privacy setting 
+  UserPrivacySetting setting;
+
+  /// [rules] The new privacy rules
+  UserPrivacySettingRules rules;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetUserPrivacySettingRules.fromJson(Map<String, dynamic> json) ;

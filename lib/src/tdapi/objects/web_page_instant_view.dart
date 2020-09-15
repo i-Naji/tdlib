@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class WebPageInstantView extends TdObject {
-  List<PageBlock> pageBlocks;
-  int viewCount;
-  int version;
-  bool isRtl;
-  bool isFull;
-  dynamic extra;
 
-  /// Describes an instant view page for a web page. 
-  /// [pageBlocks] Content of the web page. 
-  /// [viewCount] Number of the instant view views; 0 if unknown. 
-  /// [version] Version of the instant view, currently can be 1 or 2. 
-  /// [isRtl] True, if the instant view must be shown from right to left. 
-  /// [isFull] True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
+  /// Describes an instant view page for a web page
   WebPageInstantView({this.pageBlocks,
     this.viewCount,
     this.version,
     this.isRtl,
     this.isFull});
+
+  /// [pageBlocks] Content of the web page
+  List<PageBlock> pageBlocks;
+
+  /// [viewCount] Number of the instant view views; 0 if unknown
+  int viewCount;
+
+  /// [version] Version of the instant view, currently can be 1 or 2
+  int version;
+
+  /// [isRtl] True, if the instant view must be shown from right to left
+  bool isRtl;
+
+  /// [isFull] True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
+  bool isFull;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   WebPageInstantView.fromJson(Map<String, dynamic> json)  {

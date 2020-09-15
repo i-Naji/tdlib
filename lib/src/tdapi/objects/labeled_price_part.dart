@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class LabeledPricePart extends TdObject {
-  String label;
-  int amount;
 
-  /// Portion of the price of a product (e.g., "delivery cost", "tax amount"). 
-  /// [label] Label for this portion of the product price . 
-  /// [amount] Currency amount in minimal quantity of the currency
+  /// Portion of the price of a product (e.g., "delivery cost", "tax amount")
   LabeledPricePart({this.label,
     this.amount});
+
+  /// [label] Label for this portion of the product price 
+  String label;
+
+  /// [amount] Currency amount in minimal quantity of the currency
+  int amount;
 
   /// Parse from a json
   LabeledPricePart.fromJson(Map<String, dynamic> json)  {

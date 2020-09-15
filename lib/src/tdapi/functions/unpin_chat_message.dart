@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class UnpinChatMessage extends TdFunction {
-  int chatId;
-  dynamic extra;
 
-  /// Removes the pinned message from a chat; requires can_pin_messages rights in the group or channel. 
-  /// [chatId] Identifier of the chat
+  /// Removes the pinned message from a chat; requires can_pin_messages rights in the group or channel
   UnpinChatMessage({this.chatId});
+
+  /// [chatId] Identifier of the chat
+  int chatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UnpinChatMessage.fromJson(Map<String, dynamic> json) ;

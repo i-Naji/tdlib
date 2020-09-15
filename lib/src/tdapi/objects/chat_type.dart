@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatType extends TdObject {
-  
 
   /// Describes the type of a chat
   ChatType();
+
+  
 
   /// a ChatType return type can be :
   /// * ChatTypePrivate
@@ -40,11 +41,12 @@ class ChatType extends TdObject {
 }
 
 class ChatTypePrivate extends ChatType {
-  int userId;
 
-  /// An ordinary chat with a user. 
-  /// [userId] User identifier
+  /// An ordinary chat with a user
   ChatTypePrivate({this.userId});
+
+  /// [userId] User identifier
+  int userId;
 
   /// Parse from a json
   ChatTypePrivate.fromJson(Map<String, dynamic> json)  {
@@ -66,11 +68,12 @@ class ChatTypePrivate extends ChatType {
 }
 
 class ChatTypeBasicGroup extends ChatType {
-  int basicGroupId;
 
-  /// A basic group (i.e., a chat with 0-200 other users). 
-  /// [basicGroupId] Basic group identifier
+  /// A basic group (i.e., a chat with 0-200 other users)
   ChatTypeBasicGroup({this.basicGroupId});
+
+  /// [basicGroupId] Basic group identifier
+  int basicGroupId;
 
   /// Parse from a json
   ChatTypeBasicGroup.fromJson(Map<String, dynamic> json)  {
@@ -92,14 +95,16 @@ class ChatTypeBasicGroup extends ChatType {
 }
 
 class ChatTypeSupergroup extends ChatType {
-  int supergroupId;
-  bool isChannel;
 
-  /// A supergroup (i.e. a chat with up to GetOption("supergroup_max_size") other users), or channel (with unlimited members). 
-  /// [supergroupId] Supergroup or channel identifier . 
-  /// [isChannel] True, if the supergroup is a channel
+  /// A supergroup (i.e. a chat with up to GetOption("supergroup_max_size") other users), or channel (with unlimited members)
   ChatTypeSupergroup({this.supergroupId,
     this.isChannel});
+
+  /// [supergroupId] Supergroup or channel identifier 
+  int supergroupId;
+
+  /// [isChannel] True, if the supergroup is a channel
+  bool isChannel;
 
   /// Parse from a json
   ChatTypeSupergroup.fromJson(Map<String, dynamic> json)  {
@@ -123,14 +128,16 @@ class ChatTypeSupergroup extends ChatType {
 }
 
 class ChatTypeSecret extends ChatType {
-  int secretChatId;
-  int userId;
 
-  /// A secret chat with a user. 
-  /// [secretChatId] Secret chat identifier . 
-  /// [userId] User identifier of the secret chat peer
+  /// A secret chat with a user
   ChatTypeSecret({this.secretChatId,
     this.userId});
+
+  /// [secretChatId] Secret chat identifier 
+  int secretChatId;
+
+  /// [userId] User identifier of the secret chat peer
+  int userId;
 
   /// Parse from a json
   ChatTypeSecret.fromJson(Map<String, dynamic> json)  {

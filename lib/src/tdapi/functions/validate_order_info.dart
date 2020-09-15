@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class ValidateOrderInfo extends TdFunction {
-  int chatId;
-  int messageId;
-  OrderInfo orderInfo;
-  bool allowSave;
-  dynamic extra;
 
-  /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice. 
-  /// [chatId] Chat identifier of the Invoice message . 
-  /// [messageId] Message identifier . 
-  /// [orderInfo] The order information, provided by the user . 
-  /// [allowSave] True, if the order information can be saved
+  /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
   ValidateOrderInfo({this.chatId,
     this.messageId,
     this.orderInfo,
     this.allowSave});
+
+  /// [chatId] Chat identifier of the Invoice message 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [orderInfo] The order information, provided by the user 
+  OrderInfo orderInfo;
+
+  /// [allowSave] True, if the order information can be saved
+  bool allowSave;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ValidateOrderInfo.fromJson(Map<String, dynamic> json) ;

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ChatsNearby extends TdObject {
-  List<ChatNearby> usersNearby;
-  List<ChatNearby> supergroupsNearby;
-  dynamic extra;
 
-  /// Represents a list of chats located nearby. 
-  /// [usersNearby] List of users nearby . 
-  /// [supergroupsNearby] List of location-based supergroups nearby
+  /// Represents a list of chats located nearby
   ChatsNearby({this.usersNearby,
     this.supergroupsNearby});
+
+  /// [usersNearby] List of users nearby 
+  List<ChatNearby> usersNearby;
+
+  /// [supergroupsNearby] List of location-based supergroups nearby
+  List<ChatNearby> supergroupsNearby;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatsNearby.fromJson(Map<String, dynamic> json)  {

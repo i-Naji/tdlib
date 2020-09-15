@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageText extends TdFunction {
-  String inlineMessageId;
-  ReplyMarkup replyMarkup;
-  InputMessageContent inputMessageContent;
-  dynamic extra;
 
-  /// Edits the text of an inline text or game message sent via a bot; for bots only. 
-  /// [inlineMessageId] Inline message identifier . 
-  /// [replyMarkup] The new message reply markup . 
-  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
+  /// Edits the text of an inline text or game message sent via a bot; for bots only
   EditInlineMessageText({this.inlineMessageId,
     this.replyMarkup,
     this.inputMessageContent});
+
+  /// [inlineMessageId] Inline message identifier 
+  String inlineMessageId;
+
+  /// [replyMarkup] The new message reply markup 
+  ReplyMarkup replyMarkup;
+
+  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
+  InputMessageContent inputMessageContent;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditInlineMessageText.fromJson(Map<String, dynamic> json) ;

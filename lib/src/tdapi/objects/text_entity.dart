@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class TextEntity extends TdObject {
-  int offset;
-  int length;
-  TextEntityType type;
 
-  /// Represents a part of the text that needs to be formatted in some unusual way. 
-  /// [offset] Offset of the entity, in UTF-16 code units . 
-  /// [length] Length of the entity, in UTF-16 code units . 
-  /// [type] Type of the entity
+  /// Represents a part of the text that needs to be formatted in some unusual way
   TextEntity({this.offset,
     this.length,
     this.type});
+
+  /// [offset] Offset of the entity, in UTF-16 code units 
+  int offset;
+
+  /// [length] Length of the entity, in UTF-16 code units 
+  int length;
+
+  /// [type] Type of the entity
+  TextEntityType type;
 
   /// Parse from a json
   TextEntity.fromJson(Map<String, dynamic> json)  {

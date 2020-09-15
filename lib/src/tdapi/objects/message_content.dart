@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class MessageContent extends TdObject {
-  
 
   /// Contains the content of a message
   MessageContent();
+
+  
 
   /// a MessageContent return type can be :
   /// * MessageText
@@ -151,14 +152,16 @@ class MessageContent extends TdObject {
 }
 
 class MessageText extends MessageContent {
-  FormattedText text;
-  WebPage webPage;
 
-  /// A text message. 
-  /// [text] Text of the message . 
-  /// [webPage] A preview of the web page that's mentioned in the text; may be null
+  /// A text message
   MessageText({this.text,
     this.webPage});
+
+  /// [text] Text of the message 
+  FormattedText text;
+
+  /// [webPage] A preview of the web page that's mentioned in the text; may be null
+  WebPage webPage;
 
   /// Parse from a json
   MessageText.fromJson(Map<String, dynamic> json)  {
@@ -182,17 +185,20 @@ class MessageText extends MessageContent {
 }
 
 class MessageAnimation extends MessageContent {
-  Animation animation;
-  FormattedText caption;
-  bool isSecret;
 
-  /// An animation message (GIF-style).. 
-  /// [animation] The animation description . 
-  /// [caption] Animation caption . 
-  /// [isSecret] True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
+  /// An animation message (GIF-style).
   MessageAnimation({this.animation,
     this.caption,
     this.isSecret});
+
+  /// [animation] The animation description 
+  Animation animation;
+
+  /// [caption] Animation caption 
+  FormattedText caption;
+
+  /// [isSecret] True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
+  bool isSecret;
 
   /// Parse from a json
   MessageAnimation.fromJson(Map<String, dynamic> json)  {
@@ -218,14 +224,16 @@ class MessageAnimation extends MessageContent {
 }
 
 class MessageAudio extends MessageContent {
-  Audio audio;
-  FormattedText caption;
 
-  /// An audio message. 
-  /// [audio] The audio description . 
-  /// [caption] Audio caption
+  /// An audio message
   MessageAudio({this.audio,
     this.caption});
+
+  /// [audio] The audio description 
+  Audio audio;
+
+  /// [caption] Audio caption
+  FormattedText caption;
 
   /// Parse from a json
   MessageAudio.fromJson(Map<String, dynamic> json)  {
@@ -249,14 +257,16 @@ class MessageAudio extends MessageContent {
 }
 
 class MessageDocument extends MessageContent {
-  Document document;
-  FormattedText caption;
 
-  /// A document message (general file). 
-  /// [document] The document description . 
-  /// [caption] Document caption
+  /// A document message (general file)
   MessageDocument({this.document,
     this.caption});
+
+  /// [document] The document description 
+  Document document;
+
+  /// [caption] Document caption
+  FormattedText caption;
 
   /// Parse from a json
   MessageDocument.fromJson(Map<String, dynamic> json)  {
@@ -280,17 +290,20 @@ class MessageDocument extends MessageContent {
 }
 
 class MessagePhoto extends MessageContent {
-  Photo photo;
-  FormattedText caption;
-  bool isSecret;
 
-  /// A photo message. 
-  /// [photo] The photo description . 
-  /// [caption] Photo caption . 
-  /// [isSecret] True, if the photo must be blurred and must be shown only while tapped
+  /// A photo message
   MessagePhoto({this.photo,
     this.caption,
     this.isSecret});
+
+  /// [photo] The photo description 
+  Photo photo;
+
+  /// [caption] Photo caption 
+  FormattedText caption;
+
+  /// [isSecret] True, if the photo must be blurred and must be shown only while tapped
+  bool isSecret;
 
   /// Parse from a json
   MessagePhoto.fromJson(Map<String, dynamic> json)  {
@@ -316,10 +329,11 @@ class MessagePhoto extends MessageContent {
 }
 
 class MessageExpiredPhoto extends MessageContent {
-  
 
   /// An expired photo message (self-destructed after TTL has elapsed)
   MessageExpiredPhoto();
+
+  
 
   /// Parse from a json
   MessageExpiredPhoto.fromJson(Map<String, dynamic> json) ;
@@ -338,11 +352,12 @@ class MessageExpiredPhoto extends MessageContent {
 }
 
 class MessageSticker extends MessageContent {
-  Sticker sticker;
 
-  /// A sticker message. 
-  /// [sticker] The sticker description
+  /// A sticker message
   MessageSticker({this.sticker});
+
+  /// [sticker] The sticker description
+  Sticker sticker;
 
   /// Parse from a json
   MessageSticker.fromJson(Map<String, dynamic> json)  {
@@ -364,17 +379,20 @@ class MessageSticker extends MessageContent {
 }
 
 class MessageVideo extends MessageContent {
-  Video video;
-  FormattedText caption;
-  bool isSecret;
 
-  /// A video message. 
-  /// [video] The video description . 
-  /// [caption] Video caption . 
-  /// [isSecret] True, if the video thumbnail must be blurred and the video must be shown only while tapped
+  /// A video message
   MessageVideo({this.video,
     this.caption,
     this.isSecret});
+
+  /// [video] The video description 
+  Video video;
+
+  /// [caption] Video caption 
+  FormattedText caption;
+
+  /// [isSecret] True, if the video thumbnail must be blurred and the video must be shown only while tapped
+  bool isSecret;
 
   /// Parse from a json
   MessageVideo.fromJson(Map<String, dynamic> json)  {
@@ -400,10 +418,11 @@ class MessageVideo extends MessageContent {
 }
 
 class MessageExpiredVideo extends MessageContent {
-  
 
   /// An expired video message (self-destructed after TTL has elapsed)
   MessageExpiredVideo();
+
+  
 
   /// Parse from a json
   MessageExpiredVideo.fromJson(Map<String, dynamic> json) ;
@@ -422,17 +441,20 @@ class MessageExpiredVideo extends MessageContent {
 }
 
 class MessageVideoNote extends MessageContent {
-  VideoNote videoNote;
-  bool isViewed;
-  bool isSecret;
 
-  /// A video note message. 
-  /// [videoNote] The video note description . 
-  /// [isViewed] True, if at least one of the recipients has viewed the video note . 
-  /// [isSecret] True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
+  /// A video note message
   MessageVideoNote({this.videoNote,
     this.isViewed,
     this.isSecret});
+
+  /// [videoNote] The video note description 
+  VideoNote videoNote;
+
+  /// [isViewed] True, if at least one of the recipients has viewed the video note 
+  bool isViewed;
+
+  /// [isSecret] True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
+  bool isSecret;
 
   /// Parse from a json
   MessageVideoNote.fromJson(Map<String, dynamic> json)  {
@@ -458,17 +480,20 @@ class MessageVideoNote extends MessageContent {
 }
 
 class MessageVoiceNote extends MessageContent {
-  VoiceNote voiceNote;
-  FormattedText caption;
-  bool isListened;
 
-  /// A voice note message. 
-  /// [voiceNote] The voice note description . 
-  /// [caption] Voice note caption . 
-  /// [isListened] True, if at least one of the recipients has listened to the voice note
+  /// A voice note message
   MessageVoiceNote({this.voiceNote,
     this.caption,
     this.isListened});
+
+  /// [voiceNote] The voice note description 
+  VoiceNote voiceNote;
+
+  /// [caption] Voice note caption 
+  FormattedText caption;
+
+  /// [isListened] True, if at least one of the recipients has listened to the voice note
+  bool isListened;
 
   /// Parse from a json
   MessageVoiceNote.fromJson(Map<String, dynamic> json)  {
@@ -494,17 +519,20 @@ class MessageVoiceNote extends MessageContent {
 }
 
 class MessageLocation extends MessageContent {
-  Location location;
-  int livePeriod;
-  int expiresIn;
 
-  /// A message with a location. 
-  /// [location] The location description . 
-  /// [livePeriod] Time relative to the message sent date until which the location can be updated, in seconds. 
-  /// [expiresIn] Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  /// A message with a location
   MessageLocation({this.location,
     this.livePeriod,
     this.expiresIn});
+
+  /// [location] The location description 
+  Location location;
+
+  /// [livePeriod] Time relative to the message sent date until which the location can be updated, in seconds
+  int livePeriod;
+
+  /// [expiresIn] Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  int expiresIn;
 
   /// Parse from a json
   MessageLocation.fromJson(Map<String, dynamic> json)  {
@@ -530,11 +558,12 @@ class MessageLocation extends MessageContent {
 }
 
 class MessageVenue extends MessageContent {
-  Venue venue;
 
-  /// A message with information about a venue. 
-  /// [venue] The venue description
+  /// A message with information about a venue
   MessageVenue({this.venue});
+
+  /// [venue] The venue description
+  Venue venue;
 
   /// Parse from a json
   MessageVenue.fromJson(Map<String, dynamic> json)  {
@@ -556,11 +585,12 @@ class MessageVenue extends MessageContent {
 }
 
 class MessageContact extends MessageContent {
-  Contact contact;
 
-  /// A message with a user contact. 
-  /// [contact] The contact description
+  /// A message with a user contact
   MessageContact({this.contact});
+
+  /// [contact] The contact description
+  Contact contact;
 
   /// Parse from a json
   MessageContact.fromJson(Map<String, dynamic> json)  {
@@ -582,23 +612,28 @@ class MessageContact extends MessageContent {
 }
 
 class MessageDice extends MessageContent {
-  Sticker initialStateSticker;
-  Sticker finalStateSticker;
-  String emoji;
-  int value;
-  int successAnimationFrameNumber;
 
-  /// A dice message. The dice value is randomly generated by the server. 
-  /// [initialStateSticker] The animated sticker with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known. 
-  /// [finalStateSticker] The animated sticker with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known. 
-  /// [emoji] Emoji on which the dice throw animation is based. 
-  /// [value] The dice value. If the value is 0, the dice don't have final state yet. 
-  /// [successAnimationFrameNumber] Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
+  /// A dice message. The dice value is randomly generated by the server
   MessageDice({this.initialStateSticker,
     this.finalStateSticker,
     this.emoji,
     this.value,
     this.successAnimationFrameNumber});
+
+  /// [initialStateSticker] The animated sticker with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  Sticker initialStateSticker;
+
+  /// [finalStateSticker] The animated sticker with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  Sticker finalStateSticker;
+
+  /// [emoji] Emoji on which the dice throw animation is based
+  String emoji;
+
+  /// [value] The dice value. If the value is 0, the dice don't have final state yet
+  int value;
+
+  /// [successAnimationFrameNumber] Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
+  int successAnimationFrameNumber;
 
   /// Parse from a json
   MessageDice.fromJson(Map<String, dynamic> json)  {
@@ -628,11 +663,12 @@ class MessageDice extends MessageContent {
 }
 
 class MessageGame extends MessageContent {
-  Game game;
 
-  /// A message with a game. 
-  /// [game] The game description
+  /// A message with a game
   MessageGame({this.game});
+
+  /// [game] The game description
+  Game game;
 
   /// Parse from a json
   MessageGame.fromJson(Map<String, dynamic> json)  {
@@ -654,11 +690,12 @@ class MessageGame extends MessageContent {
 }
 
 class MessagePoll extends MessageContent {
-  Poll poll;
 
-  /// A message with a poll. 
-  /// [poll] The poll description
+  /// A message with a poll
   MessagePoll({this.poll});
+
+  /// [poll] The poll description
+  Poll poll;
 
   /// Parse from a json
   MessagePoll.fromJson(Map<String, dynamic> json)  {
@@ -680,26 +717,8 @@ class MessagePoll extends MessageContent {
 }
 
 class MessageInvoice extends MessageContent {
-  String title;
-  String description;
-  Photo photo;
-  String currency;
-  int totalAmount;
-  String startParameter;
-  bool isTest;
-  bool needShippingAddress;
-  int receiptMessageId;
 
-  /// A message with an invoice from a bot. 
-  /// [title] Product title . 
-  /// [description] Product description . 
-  /// [photo] Product photo; may be null . 
-  /// [currency] Currency for the product price . 
-  /// [totalAmount] Product total price in the minimal quantity of the currency. 
-  /// [startParameter] Unique invoice bot start_parameter. To share an invoice use the URL https://t.me/{bot_username}?start={start_parameter}. 
-  /// [isTest] True, if the invoice is a test invoice. 
-  /// [needShippingAddress] True, if the shipping address should be specified. 
-  /// [receiptMessageId] The identifier of the message with the receipt, after the product has been purchased
+  /// A message with an invoice from a bot
   MessageInvoice({this.title,
     this.description,
     this.photo,
@@ -709,6 +728,33 @@ class MessageInvoice extends MessageContent {
     this.isTest,
     this.needShippingAddress,
     this.receiptMessageId});
+
+  /// [title] Product title 
+  String title;
+
+  /// [description] Product description 
+  String description;
+
+  /// [photo] Product photo; may be null 
+  Photo photo;
+
+  /// [currency] Currency for the product price 
+  String currency;
+
+  /// [totalAmount] Product total price in the minimal quantity of the currency
+  int totalAmount;
+
+  /// [startParameter] Unique invoice bot start_parameter. To share an invoice use the URL https://t.me/{bot_username}?start={start_parameter}
+  String startParameter;
+
+  /// [isTest] True, if the invoice is a test invoice
+  bool isTest;
+
+  /// [needShippingAddress] True, if the shipping address should be specified
+  bool needShippingAddress;
+
+  /// [receiptMessageId] The identifier of the message with the receipt, after the product has been purchased
+  int receiptMessageId;
 
   /// Parse from a json
   MessageInvoice.fromJson(Map<String, dynamic> json)  {
@@ -746,14 +792,16 @@ class MessageInvoice extends MessageContent {
 }
 
 class MessageCall extends MessageContent {
-  CallDiscardReason discardReason;
-  int duration;
 
-  /// A message with information about an ended call. 
-  /// [discardReason] Reason why the call was discarded . 
-  /// [duration] Call duration, in seconds
+  /// A message with information about an ended call
   MessageCall({this.discardReason,
     this.duration});
+
+  /// [discardReason] Reason why the call was discarded 
+  CallDiscardReason discardReason;
+
+  /// [duration] Call duration, in seconds
+  int duration;
 
   /// Parse from a json
   MessageCall.fromJson(Map<String, dynamic> json)  {
@@ -777,14 +825,16 @@ class MessageCall extends MessageContent {
 }
 
 class MessageBasicGroupChatCreate extends MessageContent {
-  String title;
-  List<int> memberUserIds;
 
-  /// A newly created basic group. 
-  /// [title] Title of the basic group . 
-  /// [memberUserIds] User identifiers of members in the basic group
+  /// A newly created basic group
   MessageBasicGroupChatCreate({this.title,
     this.memberUserIds});
+
+  /// [title] Title of the basic group 
+  String title;
+
+  /// [memberUserIds] User identifiers of members in the basic group
+  List<int> memberUserIds;
 
   /// Parse from a json
   MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json)  {
@@ -808,11 +858,12 @@ class MessageBasicGroupChatCreate extends MessageContent {
 }
 
 class MessageSupergroupChatCreate extends MessageContent {
-  String title;
 
-  /// A newly created supergroup or channel. 
-  /// [title] Title of the supergroup or channel
+  /// A newly created supergroup or channel
   MessageSupergroupChatCreate({this.title});
+
+  /// [title] Title of the supergroup or channel
+  String title;
 
   /// Parse from a json
   MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json)  {
@@ -834,11 +885,12 @@ class MessageSupergroupChatCreate extends MessageContent {
 }
 
 class MessageChatChangeTitle extends MessageContent {
-  String title;
 
-  /// An updated chat title. 
-  /// [title] New chat title
+  /// An updated chat title
   MessageChatChangeTitle({this.title});
+
+  /// [title] New chat title
+  String title;
 
   /// Parse from a json
   MessageChatChangeTitle.fromJson(Map<String, dynamic> json)  {
@@ -860,11 +912,12 @@ class MessageChatChangeTitle extends MessageContent {
 }
 
 class MessageChatChangePhoto extends MessageContent {
-  ChatPhoto photo;
 
-  /// An updated chat photo. 
-  /// [photo] New chat photo
+  /// An updated chat photo
   MessageChatChangePhoto({this.photo});
+
+  /// [photo] New chat photo
+  ChatPhoto photo;
 
   /// Parse from a json
   MessageChatChangePhoto.fromJson(Map<String, dynamic> json)  {
@@ -886,10 +939,11 @@ class MessageChatChangePhoto extends MessageContent {
 }
 
 class MessageChatDeletePhoto extends MessageContent {
-  
 
   /// A deleted chat photo
   MessageChatDeletePhoto();
+
+  
 
   /// Parse from a json
   MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) ;
@@ -908,11 +962,12 @@ class MessageChatDeletePhoto extends MessageContent {
 }
 
 class MessageChatAddMembers extends MessageContent {
-  List<int> memberUserIds;
 
-  /// New chat members were added. 
-  /// [memberUserIds] User identifiers of the new members
+  /// New chat members were added
   MessageChatAddMembers({this.memberUserIds});
+
+  /// [memberUserIds] User identifiers of the new members
+  List<int> memberUserIds;
 
   /// Parse from a json
   MessageChatAddMembers.fromJson(Map<String, dynamic> json)  {
@@ -934,10 +989,11 @@ class MessageChatAddMembers extends MessageContent {
 }
 
 class MessageChatJoinByLink extends MessageContent {
-  
 
   /// A new member joined the chat by invite link
   MessageChatJoinByLink();
+
+  
 
   /// Parse from a json
   MessageChatJoinByLink.fromJson(Map<String, dynamic> json) ;
@@ -956,11 +1012,12 @@ class MessageChatJoinByLink extends MessageContent {
 }
 
 class MessageChatDeleteMember extends MessageContent {
-  int userId;
 
-  /// A chat member was deleted. 
-  /// [userId] User identifier of the deleted chat member
+  /// A chat member was deleted
   MessageChatDeleteMember({this.userId});
+
+  /// [userId] User identifier of the deleted chat member
+  int userId;
 
   /// Parse from a json
   MessageChatDeleteMember.fromJson(Map<String, dynamic> json)  {
@@ -982,11 +1039,12 @@ class MessageChatDeleteMember extends MessageContent {
 }
 
 class MessageChatUpgradeTo extends MessageContent {
-  int supergroupId;
 
-  /// A basic group was upgraded to a supergroup and was deactivated as the result. 
-  /// [supergroupId] Identifier of the supergroup to which the basic group was upgraded
+  /// A basic group was upgraded to a supergroup and was deactivated as the result
   MessageChatUpgradeTo({this.supergroupId});
+
+  /// [supergroupId] Identifier of the supergroup to which the basic group was upgraded
+  int supergroupId;
 
   /// Parse from a json
   MessageChatUpgradeTo.fromJson(Map<String, dynamic> json)  {
@@ -1008,14 +1066,16 @@ class MessageChatUpgradeTo extends MessageContent {
 }
 
 class MessageChatUpgradeFrom extends MessageContent {
-  String title;
-  int basicGroupId;
 
-  /// A supergroup has been created from a basic group. 
-  /// [title] Title of the newly created supergroup . 
-  /// [basicGroupId] The identifier of the original basic group
+  /// A supergroup has been created from a basic group
   MessageChatUpgradeFrom({this.title,
     this.basicGroupId});
+
+  /// [title] Title of the newly created supergroup 
+  String title;
+
+  /// [basicGroupId] The identifier of the original basic group
+  int basicGroupId;
 
   /// Parse from a json
   MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json)  {
@@ -1039,11 +1099,12 @@ class MessageChatUpgradeFrom extends MessageContent {
 }
 
 class MessagePinMessage extends MessageContent {
-  int messageId;
 
-  /// A message has been pinned. 
-  /// [messageId] Identifier of the pinned message, can be an identifier of a deleted message or 0
+  /// A message has been pinned
   MessagePinMessage({this.messageId});
+
+  /// [messageId] Identifier of the pinned message, can be an identifier of a deleted message or 0
+  int messageId;
 
   /// Parse from a json
   MessagePinMessage.fromJson(Map<String, dynamic> json)  {
@@ -1065,10 +1126,11 @@ class MessagePinMessage extends MessageContent {
 }
 
 class MessageScreenshotTaken extends MessageContent {
-  
 
   /// A screenshot of a message in the chat has been taken
   MessageScreenshotTaken();
+
+  
 
   /// Parse from a json
   MessageScreenshotTaken.fromJson(Map<String, dynamic> json) ;
@@ -1087,11 +1149,12 @@ class MessageScreenshotTaken extends MessageContent {
 }
 
 class MessageChatSetTtl extends MessageContent {
-  int ttl;
 
-  /// The TTL (Time To Live) setting messages in a secret chat has been changed. 
-  /// [ttl] New TTL
+  /// The TTL (Time To Live) setting messages in a secret chat has been changed
   MessageChatSetTtl({this.ttl});
+
+  /// [ttl] New TTL
+  int ttl;
 
   /// Parse from a json
   MessageChatSetTtl.fromJson(Map<String, dynamic> json)  {
@@ -1113,11 +1176,12 @@ class MessageChatSetTtl extends MessageContent {
 }
 
 class MessageCustomServiceAction extends MessageContent {
-  String text;
 
-  /// A non-standard action has happened in the chat. 
-  /// [text] Message text to be shown in the chat
+  /// A non-standard action has happened in the chat
   MessageCustomServiceAction({this.text});
+
+  /// [text] Message text to be shown in the chat
+  String text;
 
   /// Parse from a json
   MessageCustomServiceAction.fromJson(Map<String, dynamic> json)  {
@@ -1139,22 +1203,25 @@ class MessageCustomServiceAction extends MessageContent {
 }
 
 class MessageGameScore extends MessageContent {
-  int gameMessageId;
-  int gameId;
-  int score;
 
-  /// A new high score was achieved in a game. 
-  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message . 
-  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game . 
-  /// [score] New score
+  /// A new high score was achieved in a game
   MessageGameScore({this.gameMessageId,
     this.gameId,
     this.score});
 
+  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message 
+  int gameMessageId;
+
+  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game 
+  int gameId;
+
+  /// [score] New score
+  int score;
+
   /// Parse from a json
   MessageGameScore.fromJson(Map<String, dynamic> json)  {
     this.gameMessageId = json['game_message_id'];
-    this.gameId = json['game_id'];
+    this.gameId = int.tryParse(json['game_id'] ?? "");
     this.score = json['score'];
   }
 
@@ -1175,17 +1242,20 @@ class MessageGameScore extends MessageContent {
 }
 
 class MessagePaymentSuccessful extends MessageContent {
-  int invoiceMessageId;
-  String currency;
-  int totalAmount;
 
-  /// A payment has been completed. 
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message . 
-  /// [currency] Currency for the price of the product . 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
+  /// A payment has been completed
   MessagePaymentSuccessful({this.invoiceMessageId,
     this.currency,
     this.totalAmount});
+
+  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message 
+  int invoiceMessageId;
+
+  /// [currency] Currency for the price of the product 
+  String currency;
+
+  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
+  int totalAmount;
 
   /// Parse from a json
   MessagePaymentSuccessful.fromJson(Map<String, dynamic> json)  {
@@ -1211,24 +1281,8 @@ class MessagePaymentSuccessful extends MessageContent {
 }
 
 class MessagePaymentSuccessfulBot extends MessageContent {
-  int invoiceMessageId;
-  String currency;
-  int totalAmount;
-  String invoicePayload;
-  String shippingOptionId;
-  OrderInfo orderInfo;
-  String telegramPaymentChargeId;
-  String providerPaymentChargeId;
 
-  /// A payment has been completed; for bots only. 
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message . 
-  /// [currency] Currency for price of the product. 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the currency. 
-  /// [invoicePayload] Invoice payload . 
-  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable . 
-  /// [orderInfo] Information about the order; may be null. 
-  /// [telegramPaymentChargeId] Telegram payment identifier. 
-  /// [providerPaymentChargeId] Provider payment identifier
+  /// A payment has been completed; for bots only
   MessagePaymentSuccessfulBot({this.invoiceMessageId,
     this.currency,
     this.totalAmount,
@@ -1237,6 +1291,30 @@ class MessagePaymentSuccessfulBot extends MessageContent {
     this.orderInfo,
     this.telegramPaymentChargeId,
     this.providerPaymentChargeId});
+
+  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message 
+  int invoiceMessageId;
+
+  /// [currency] Currency for price of the product
+  String currency;
+
+  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
+  int totalAmount;
+
+  /// [invoicePayload] Invoice payload 
+  String invoicePayload;
+
+  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable 
+  String shippingOptionId;
+
+  /// [orderInfo] Information about the order; may be null
+  OrderInfo orderInfo;
+
+  /// [telegramPaymentChargeId] Telegram payment identifier
+  String telegramPaymentChargeId;
+
+  /// [providerPaymentChargeId] Provider payment identifier
+  String providerPaymentChargeId;
 
   /// Parse from a json
   MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json)  {
@@ -1272,10 +1350,11 @@ class MessagePaymentSuccessfulBot extends MessageContent {
 }
 
 class MessageContactRegistered extends MessageContent {
-  
 
   /// A contact has registered with Telegram
   MessageContactRegistered();
+
+  
 
   /// Parse from a json
   MessageContactRegistered.fromJson(Map<String, dynamic> json) ;
@@ -1294,11 +1373,12 @@ class MessageContactRegistered extends MessageContent {
 }
 
 class MessageWebsiteConnected extends MessageContent {
-  String domainName;
 
-  /// The current user has connected a website by logging in using Telegram Login Widget on it. 
-  /// [domainName] Domain name of the connected website
+  /// The current user has connected a website by logging in using Telegram Login Widget on it
   MessageWebsiteConnected({this.domainName});
+
+  /// [domainName] Domain name of the connected website
+  String domainName;
 
   /// Parse from a json
   MessageWebsiteConnected.fromJson(Map<String, dynamic> json)  {
@@ -1320,11 +1400,12 @@ class MessageWebsiteConnected extends MessageContent {
 }
 
 class MessagePassportDataSent extends MessageContent {
-  List<PassportElementType> types;
 
-  /// Telegram Passport data has been sent. 
-  /// [types] List of Telegram Passport element types sent
+  /// Telegram Passport data has been sent
   MessagePassportDataSent({this.types});
+
+  /// [types] List of Telegram Passport element types sent
+  List<PassportElementType> types;
 
   /// Parse from a json
   MessagePassportDataSent.fromJson(Map<String, dynamic> json)  {
@@ -1346,14 +1427,16 @@ class MessagePassportDataSent extends MessageContent {
 }
 
 class MessagePassportDataReceived extends MessageContent {
-  List<EncryptedPassportElement> elements;
-  EncryptedCredentials credentials;
 
-  /// Telegram Passport data has been received; for bots only. 
-  /// [elements] List of received Telegram Passport elements . 
-  /// [credentials] Encrypted data credentials
+  /// Telegram Passport data has been received; for bots only
   MessagePassportDataReceived({this.elements,
     this.credentials});
+
+  /// [elements] List of received Telegram Passport elements 
+  List<EncryptedPassportElement> elements;
+
+  /// [credentials] Encrypted data credentials
+  EncryptedCredentials credentials;
 
   /// Parse from a json
   MessagePassportDataReceived.fromJson(Map<String, dynamic> json)  {
@@ -1377,10 +1460,11 @@ class MessagePassportDataReceived extends MessageContent {
 }
 
 class MessageUnsupported extends MessageContent {
-  
 
   /// Message content that is not supported in the current TDLib version
   MessageUnsupported();
+
+  
 
   /// Parse from a json
   MessageUnsupported.fromJson(Map<String, dynamic> json) ;

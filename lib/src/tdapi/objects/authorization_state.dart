@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class AuthorizationState extends TdObject {
-  
 
   /// Represents the current authorization state of the TDLib client
   AuthorizationState();
+
+  
 
   /// a AuthorizationState return type can be :
   /// * AuthorizationStateWaitTdlibParameters
@@ -61,10 +62,12 @@ class AuthorizationState extends TdObject {
 }
 
 class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
-  dynamic extra;
 
   /// TDLib needs TdlibParameters for initialization
   AuthorizationStateWaitTdlibParameters();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitTdlibParameters.fromJson(Map<String, dynamic> json)  {
@@ -85,12 +88,15 @@ class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
 }
 
 class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
-  bool isEncrypted;
-  dynamic extra;
 
-  /// TDLib needs an encryption key to decrypt the local database. 
-  /// [isEncrypted] True, if the database is currently encrypted
+  /// TDLib needs an encryption key to decrypt the local database
   AuthorizationStateWaitEncryptionKey({this.isEncrypted});
+
+  /// [isEncrypted] True, if the database is currently encrypted
+  bool isEncrypted;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitEncryptionKey.fromJson(Map<String, dynamic> json)  {
@@ -113,10 +119,12 @@ class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
 }
 
 class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
-  dynamic extra;
 
   /// TDLib needs the user's phone number to authorize. Call
   AuthorizationStateWaitPhoneNumber();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitPhoneNumber.fromJson(Map<String, dynamic> json)  {
@@ -137,12 +145,15 @@ class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
 }
 
 class AuthorizationStateWaitCode extends AuthorizationState {
-  AuthenticationCodeInfo codeInfo;
-  dynamic extra;
 
-  /// TDLib needs the user's authentication code to authorize. 
-  /// [codeInfo] Information about the authorization code that was sent
+  /// TDLib needs the user's authentication code to authorize
   AuthorizationStateWaitCode({this.codeInfo});
+
+  /// [codeInfo] Information about the authorization code that was sent
+  AuthenticationCodeInfo codeInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitCode.fromJson(Map<String, dynamic> json)  {
@@ -165,12 +176,15 @@ class AuthorizationStateWaitCode extends AuthorizationState {
 }
 
 class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
-  String link;
-  dynamic extra;
 
-  /// The user needs to confirm authorization on another logged in device by scanning a QR code with the provided link. 
-  /// [link] A tg:// URL for the QR code. The link will be updated frequently
+  /// The user needs to confirm authorization on another logged in device by scanning a QR code with the provided link
   AuthorizationStateWaitOtherDeviceConfirmation({this.link});
+
+  /// [link] A tg:// URL for the QR code. The link will be updated frequently
+  String link;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitOtherDeviceConfirmation.fromJson(Map<String, dynamic> json)  {
@@ -193,12 +207,15 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
 }
 
 class AuthorizationStateWaitRegistration extends AuthorizationState {
-  TermsOfService termsOfService;
-  dynamic extra;
 
-  /// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration. 
-  /// [termsOfService] Telegram terms of service
+  /// The user is unregistered and need to accept terms of service and enter their first name and last name to finish registration
   AuthorizationStateWaitRegistration({this.termsOfService});
+
+  /// [termsOfService] Telegram terms of service
+  TermsOfService termsOfService;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitRegistration.fromJson(Map<String, dynamic> json)  {
@@ -221,18 +238,23 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
 }
 
 class AuthorizationStateWaitPassword extends AuthorizationState {
-  String passwordHint;
-  bool hasRecoveryEmailAddress;
-  String recoveryEmailAddressPattern;
-  dynamic extra;
 
-  /// The user has been authorized, but needs to enter a password to start using the application. 
-  /// [passwordHint] Hint for the password; may be empty . 
-  /// [hasRecoveryEmailAddress] True, if a recovery email address has been set up. 
-  /// [recoveryEmailAddressPattern] Pattern of the email address to which the recovery email was sent; empty until a recovery email has been sent
+  /// The user has been authorized, but needs to enter a password to start using the application
   AuthorizationStateWaitPassword({this.passwordHint,
     this.hasRecoveryEmailAddress,
     this.recoveryEmailAddressPattern});
+
+  /// [passwordHint] Hint for the password; may be empty 
+  String passwordHint;
+
+  /// [hasRecoveryEmailAddress] True, if a recovery email address has been set up
+  bool hasRecoveryEmailAddress;
+
+  /// [recoveryEmailAddressPattern] Pattern of the email address to which the recovery email was sent; empty until a recovery email has been sent
+  String recoveryEmailAddressPattern;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateWaitPassword.fromJson(Map<String, dynamic> json)  {
@@ -259,10 +281,12 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
 }
 
 class AuthorizationStateReady extends AuthorizationState {
-  dynamic extra;
 
   /// The user has been successfully authorized. TDLib is now ready to answer queries
   AuthorizationStateReady();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateReady.fromJson(Map<String, dynamic> json)  {
@@ -283,10 +307,12 @@ class AuthorizationStateReady extends AuthorizationState {
 }
 
 class AuthorizationStateLoggingOut extends AuthorizationState {
-  dynamic extra;
 
   /// The user is currently logging out
   AuthorizationStateLoggingOut();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateLoggingOut.fromJson(Map<String, dynamic> json)  {
@@ -307,10 +333,12 @@ class AuthorizationStateLoggingOut extends AuthorizationState {
 }
 
 class AuthorizationStateClosing extends AuthorizationState {
-  dynamic extra;
 
   /// TDLib is closing, all subsequent queries will be answered with the error 500. Note that closing TDLib can take a while. All resources will be freed only after authorizationStateClosed has been received
   AuthorizationStateClosing();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateClosing.fromJson(Map<String, dynamic> json)  {
@@ -331,10 +359,12 @@ class AuthorizationStateClosing extends AuthorizationState {
 }
 
 class AuthorizationStateClosed extends AuthorizationState {
-  dynamic extra;
 
   /// TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to. with error code 500. To continue working, one should create a new instance of the TDLib client
   AuthorizationStateClosed();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthorizationStateClosed.fromJson(Map<String, dynamic> json)  {

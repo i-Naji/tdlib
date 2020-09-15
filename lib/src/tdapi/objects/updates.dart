@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Updates extends TdObject {
-  List<Update> updates;
-  dynamic extra;
 
-  /// Contains a list of updates. 
-  /// [updates] List of updates
+  /// Contains a list of updates
   Updates({this.updates});
+
+  /// [updates] List of updates
+  List<Update> updates;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Updates.fromJson(Map<String, dynamic> json)  {

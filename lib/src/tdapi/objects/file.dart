@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class File extends TdObject {
-  int id;
-  int size;
-  int expectedSize;
-  LocalFile local;
-  RemoteFile remote;
-  dynamic extra;
 
-  /// Represents a file. 
-  /// [id] Unique file identifier. 
-  /// [size] File size; 0 if unknown. 
-  /// [expectedSize] Expected file size in case the exact file size is unknown, but an approximate size is known. Can be used to show download/upload progress. 
-  /// [local] Information about the local copy of the file. 
-  /// [remote] Information about the remote copy of the file
+  /// Represents a file
   File({this.id,
     this.size,
     this.expectedSize,
     this.local,
     this.remote});
+
+  /// [id] Unique file identifier
+  int id;
+
+  /// [size] File size; 0 if unknown
+  int size;
+
+  /// [expectedSize] Expected file size in case the exact file size is unknown, but an approximate size is known. Can be used to show download/upload progress
+  int expectedSize;
+
+  /// [local] Information about the local copy of the file
+  LocalFile local;
+
+  /// [remote] Information about the remote copy of the file
+  RemoteFile remote;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   File.fromJson(Map<String, dynamic> json)  {

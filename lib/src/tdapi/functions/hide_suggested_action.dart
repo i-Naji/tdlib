@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class HideSuggestedAction extends TdFunction {
-  SuggestedAction action;
-  dynamic extra;
 
-  /// Hides a suggested action. 
-  /// [action] Suggested action to hide
+  /// Hides a suggested action
   HideSuggestedAction({this.action});
+
+  /// [action] Suggested action to hide
+  SuggestedAction action;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   HideSuggestedAction.fromJson(Map<String, dynamic> json) ;

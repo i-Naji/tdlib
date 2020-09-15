@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RemoveSavedAnimation extends TdFunction {
-  InputFile animation;
-  dynamic extra;
 
-  /// Removes an animation from the list of saved animations. 
-  /// [animation] Animation file to be removed
+  /// Removes an animation from the list of saved animations
   RemoveSavedAnimation({this.animation});
+
+  /// [animation] Animation file to be removed
+  InputFile animation;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RemoveSavedAnimation.fromJson(Map<String, dynamic> json) ;

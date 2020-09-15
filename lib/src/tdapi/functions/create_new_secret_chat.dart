@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CreateNewSecretChat extends TdFunction {
-  int userId;
-  dynamic extra;
 
-  /// Creates a new secret chat. Returns the newly created chat. 
-  /// [userId] Identifier of the target user
+  /// Creates a new secret chat. Returns the newly created chat
   CreateNewSecretChat({this.userId});
+
+  /// [userId] Identifier of the target user
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CreateNewSecretChat.fromJson(Map<String, dynamic> json) ;

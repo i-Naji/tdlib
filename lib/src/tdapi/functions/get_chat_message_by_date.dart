@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetChatMessageByDate extends TdFunction {
-  int chatId;
-  int date;
-  dynamic extra;
 
-  /// Returns the last message sent in a chat no later than the specified date. 
-  /// [chatId] Chat identifier . 
-  /// [date] Point in time (Unix timestamp) relative to which to search for messages
+  /// Returns the last message sent in a chat no later than the specified date
   GetChatMessageByDate({this.chatId,
     this.date});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [date] Point in time (Unix timestamp) relative to which to search for messages
+  int date;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatMessageByDate.fromJson(Map<String, dynamic> json) ;

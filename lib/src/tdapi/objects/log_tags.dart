@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class LogTags extends TdObject {
-  List<String> tags;
-  dynamic extra;
 
-  /// Contains a list of available TDLib internal log tags. 
-  /// [tags] List of log tags
+  /// Contains a list of available TDLib internal log tags
   LogTags({this.tags});
+
+  /// [tags] List of log tags
+  List<String> tags;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LogTags.fromJson(Map<String, dynamic> json)  {

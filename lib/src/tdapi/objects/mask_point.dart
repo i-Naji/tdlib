@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class MaskPoint extends TdObject {
-  
 
   /// Part of the face, relative to which a mask should be placed
   MaskPoint();
+
+  
 
   /// a MaskPoint return type can be :
   /// * MaskPointForehead
@@ -40,10 +41,11 @@ class MaskPoint extends TdObject {
 }
 
 class MaskPointForehead extends MaskPoint {
-  
 
   /// A mask should be placed relatively to the forehead
   MaskPointForehead();
+
+  
 
   /// Parse from a json
   MaskPointForehead.fromJson(Map<String, dynamic> json) ;
@@ -62,10 +64,11 @@ class MaskPointForehead extends MaskPoint {
 }
 
 class MaskPointEyes extends MaskPoint {
-  
 
   /// A mask should be placed relatively to the eyes
   MaskPointEyes();
+
+  
 
   /// Parse from a json
   MaskPointEyes.fromJson(Map<String, dynamic> json) ;
@@ -84,10 +87,11 @@ class MaskPointEyes extends MaskPoint {
 }
 
 class MaskPointMouth extends MaskPoint {
-  
 
   /// A mask should be placed relatively to the mouth
   MaskPointMouth();
+
+  
 
   /// Parse from a json
   MaskPointMouth.fromJson(Map<String, dynamic> json) ;
@@ -106,10 +110,11 @@ class MaskPointMouth extends MaskPoint {
 }
 
 class MaskPointChin extends MaskPoint {
-  
 
   /// A mask should be placed relatively to the chin
   MaskPointChin();
+
+  
 
   /// Parse from a json
   MaskPointChin.fromJson(Map<String, dynamic> json) ;

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RecoverPassword extends TdFunction {
-  String recoveryCode;
-  dynamic extra;
 
-  /// Recovers the password using a recovery code sent to an email address that was previously set up. 
-  /// [recoveryCode] Recovery code to check
+  /// Recovers the password using a recovery code sent to an email address that was previously set up
   RecoverPassword({this.recoveryCode});
+
+  /// [recoveryCode] Recovery code to check
+  String recoveryCode;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RecoverPassword.fromJson(Map<String, dynamic> json) ;

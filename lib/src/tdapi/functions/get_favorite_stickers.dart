@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class GetFavoriteStickers extends TdFunction {
-  dynamic extra;
 
   /// Returns favorite stickers
   GetFavoriteStickers();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetFavoriteStickers.fromJson(Map<String, dynamic> json) ;

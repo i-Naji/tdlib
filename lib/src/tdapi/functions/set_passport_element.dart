@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetPassportElement extends TdFunction {
-  InputPassportElement element;
-  String password;
-  dynamic extra;
 
-  /// Adds an element to the user's Telegram Passport. May return an error with a message "PHONE_VERIFICATION_NEEDED" or "EMAIL_VERIFICATION_NEEDED" if the chosen phone number or the chosen email address must be verified first. 
-  /// [element] Input Telegram Passport element . 
-  /// [password] Password of the current user
+  /// Adds an element to the user's Telegram Passport. May return an error with a message "PHONE_VERIFICATION_NEEDED" or "EMAIL_VERIFICATION_NEEDED" if the chosen phone number or the chosen email address must be verified first
   SetPassportElement({this.element,
     this.password});
+
+  /// [element] Input Telegram Passport element 
+  InputPassportElement element;
+
+  /// [password] Password of the current user
+  String password;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetPassportElement.fromJson(Map<String, dynamic> json) ;

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetChatStatistics extends TdFunction {
-  int chatId;
-  bool isDark;
-  dynamic extra;
 
-  /// Returns detailed statistics about a chat. Currently this method can be used only for supergroups and channels. Requires administrator rights in the channel. 
-  /// [chatId] Chat identifier . 
-  /// [isDark] Pass true if a dark theme is used by the app
+  /// Returns detailed statistics about a chat. Currently this method can be used only for supergroups and channels. Requires administrator rights in the channel
   GetChatStatistics({this.chatId,
     this.isDark});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [isDark] Pass true if a dark theme is used by the app
+  bool isDark;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatStatistics.fromJson(Map<String, dynamic> json) ;

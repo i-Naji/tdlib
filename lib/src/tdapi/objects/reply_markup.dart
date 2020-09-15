@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ReplyMarkup extends TdObject {
-  
 
   /// Contains a description of a custom keyboard and actions that can be done with it to quickly reply to bots
   ReplyMarkup();
+
+  
 
   /// a ReplyMarkup return type can be :
   /// * ReplyMarkupRemoveKeyboard
@@ -40,11 +41,12 @@ class ReplyMarkup extends TdObject {
 }
 
 class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
-  bool isPersonal;
 
-  /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent. 
-  /// [isPersonal] True, if the keyboard is removed only for the mentioned users or the target user of a reply
+  /// Instructs application to remove the keyboard once this message has been received. This kind of keyboard can't be received in an incoming message; instead, UpdateChatReplyMarkup with message_id == 0 will be sent
   ReplyMarkupRemoveKeyboard({this.isPersonal});
+
+  /// [isPersonal] True, if the keyboard is removed only for the mentioned users or the target user of a reply
+  bool isPersonal;
 
   /// Parse from a json
   ReplyMarkupRemoveKeyboard.fromJson(Map<String, dynamic> json)  {
@@ -66,11 +68,12 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
 }
 
 class ReplyMarkupForceReply extends ReplyMarkup {
-  bool isPersonal;
 
-  /// Instructs application to force a reply to this message. 
-  /// [isPersonal] True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply
+  /// Instructs application to force a reply to this message
   ReplyMarkupForceReply({this.isPersonal});
+
+  /// [isPersonal] True, if a forced reply must automatically be shown to the current user. For outgoing messages, specify true to show the forced reply only for the mentioned users and for the target user of a reply
+  bool isPersonal;
 
   /// Parse from a json
   ReplyMarkupForceReply.fromJson(Map<String, dynamic> json)  {
@@ -92,20 +95,24 @@ class ReplyMarkupForceReply extends ReplyMarkup {
 }
 
 class ReplyMarkupShowKeyboard extends ReplyMarkup {
-  List<List<KeyboardButton>> rows;
-  bool resizeKeyboard;
-  bool oneTime;
-  bool isPersonal;
 
-  /// Contains a custom keyboard layout to quickly reply to bots. 
-  /// [rows] A list of rows of bot keyboard buttons. 
-  /// [resizeKeyboard] True, if the application needs to resize the keyboard vertically. 
-  /// [oneTime] True, if the application needs to hide the keyboard after use. 
-  /// [isPersonal] True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
+  /// Contains a custom keyboard layout to quickly reply to bots
   ReplyMarkupShowKeyboard({this.rows,
     this.resizeKeyboard,
     this.oneTime,
     this.isPersonal});
+
+  /// [rows] A list of rows of bot keyboard buttons
+  List<List<KeyboardButton>> rows;
+
+  /// [resizeKeyboard] True, if the application needs to resize the keyboard vertically
+  bool resizeKeyboard;
+
+  /// [oneTime] True, if the application needs to hide the keyboard after use
+  bool oneTime;
+
+  /// [isPersonal] True, if the keyboard must automatically be shown to the current user. For outgoing messages, specify true to show the keyboard only for the mentioned users and for the target user of a reply
+  bool isPersonal;
 
   /// Parse from a json
   ReplyMarkupShowKeyboard.fromJson(Map<String, dynamic> json)  {
@@ -133,11 +140,12 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
 }
 
 class ReplyMarkupInlineKeyboard extends ReplyMarkup {
-  List<List<InlineKeyboardButton>> rows;
 
-  /// Contains an inline keyboard layout. 
-  /// [rows] A list of rows of inline keyboard buttons
+  /// Contains an inline keyboard layout
   ReplyMarkupInlineKeyboard({this.rows});
+
+  /// [rows] A list of rows of inline keyboard buttons
+  List<List<InlineKeyboardButton>> rows;
 
   /// Parse from a json
   ReplyMarkupInlineKeyboard.fromJson(Map<String, dynamic> json)  {

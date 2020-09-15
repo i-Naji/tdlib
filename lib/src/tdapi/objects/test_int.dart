@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestInt extends TdObject {
-  int value;
-  dynamic extra;
 
-  /// A simple object containing a number; for testing only. 
-  /// [value] Number
+  /// A simple object containing a number; for testing only
   TestInt({this.value});
+
+  /// [value] Number
+  int value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestInt.fromJson(Map<String, dynamic> json)  {

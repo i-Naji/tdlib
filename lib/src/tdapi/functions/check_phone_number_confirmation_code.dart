@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CheckPhoneNumberConfirmationCode extends TdFunction {
-  String code;
-  dynamic extra;
 
-  /// Checks phone number confirmation code. 
-  /// [code] The phone number confirmation code
+  /// Checks phone number confirmation code
   CheckPhoneNumberConfirmationCode({this.code});
+
+  /// [code] The phone number confirmation code
+  String code;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json) ;

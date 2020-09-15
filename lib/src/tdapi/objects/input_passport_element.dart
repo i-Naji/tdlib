@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputPassportElement extends TdObject {
-  
 
   /// Contains information about a Telegram Passport element to be saved
   InputPassportElement();
+
+  
 
   /// a InputPassportElement return type can be :
   /// * InputPassportElementPersonalDetails
@@ -67,11 +68,12 @@ class InputPassportElement extends TdObject {
 }
 
 class InputPassportElementPersonalDetails extends InputPassportElement {
-  PersonalDetails personalDetails;
 
-  /// A Telegram Passport element to be saved containing the user's personal details. 
-  /// [personalDetails] Personal details of the user
+  /// A Telegram Passport element to be saved containing the user's personal details
   InputPassportElementPersonalDetails({this.personalDetails});
+
+  /// [personalDetails] Personal details of the user
+  PersonalDetails personalDetails;
 
   /// Parse from a json
   InputPassportElementPersonalDetails.fromJson(Map<String, dynamic> json)  {
@@ -93,11 +95,12 @@ class InputPassportElementPersonalDetails extends InputPassportElement {
 }
 
 class InputPassportElementPassport extends InputPassportElement {
-  InputIdentityDocument passport;
 
-  /// A Telegram Passport element to be saved containing the user's passport. 
-  /// [passport] The passport to be saved
+  /// A Telegram Passport element to be saved containing the user's passport
   InputPassportElementPassport({this.passport});
+
+  /// [passport] The passport to be saved
+  InputIdentityDocument passport;
 
   /// Parse from a json
   InputPassportElementPassport.fromJson(Map<String, dynamic> json)  {
@@ -119,11 +122,12 @@ class InputPassportElementPassport extends InputPassportElement {
 }
 
 class InputPassportElementDriverLicense extends InputPassportElement {
-  InputIdentityDocument driverLicense;
 
-  /// A Telegram Passport element to be saved containing the user's driver license. 
-  /// [driverLicense] The driver license to be saved
+  /// A Telegram Passport element to be saved containing the user's driver license
   InputPassportElementDriverLicense({this.driverLicense});
+
+  /// [driverLicense] The driver license to be saved
+  InputIdentityDocument driverLicense;
 
   /// Parse from a json
   InputPassportElementDriverLicense.fromJson(Map<String, dynamic> json)  {
@@ -145,11 +149,12 @@ class InputPassportElementDriverLicense extends InputPassportElement {
 }
 
 class InputPassportElementIdentityCard extends InputPassportElement {
-  InputIdentityDocument identityCard;
 
-  /// A Telegram Passport element to be saved containing the user's identity card. 
-  /// [identityCard] The identity card to be saved
+  /// A Telegram Passport element to be saved containing the user's identity card
   InputPassportElementIdentityCard({this.identityCard});
+
+  /// [identityCard] The identity card to be saved
+  InputIdentityDocument identityCard;
 
   /// Parse from a json
   InputPassportElementIdentityCard.fromJson(Map<String, dynamic> json)  {
@@ -171,11 +176,12 @@ class InputPassportElementIdentityCard extends InputPassportElement {
 }
 
 class InputPassportElementInternalPassport extends InputPassportElement {
-  InputIdentityDocument internalPassport;
 
-  /// A Telegram Passport element to be saved containing the user's internal passport. 
-  /// [internalPassport] The internal passport to be saved
+  /// A Telegram Passport element to be saved containing the user's internal passport
   InputPassportElementInternalPassport({this.internalPassport});
+
+  /// [internalPassport] The internal passport to be saved
+  InputIdentityDocument internalPassport;
 
   /// Parse from a json
   InputPassportElementInternalPassport.fromJson(Map<String, dynamic> json)  {
@@ -197,11 +203,12 @@ class InputPassportElementInternalPassport extends InputPassportElement {
 }
 
 class InputPassportElementAddress extends InputPassportElement {
-  Address address;
 
-  /// A Telegram Passport element to be saved containing the user's address. 
-  /// [address] The address to be saved
+  /// A Telegram Passport element to be saved containing the user's address
   InputPassportElementAddress({this.address});
+
+  /// [address] The address to be saved
+  Address address;
 
   /// Parse from a json
   InputPassportElementAddress.fromJson(Map<String, dynamic> json)  {
@@ -223,11 +230,12 @@ class InputPassportElementAddress extends InputPassportElement {
 }
 
 class InputPassportElementUtilityBill extends InputPassportElement {
-  InputPersonalDocument utilityBill;
 
-  /// A Telegram Passport element to be saved containing the user's utility bill. 
-  /// [utilityBill] The utility bill to be saved
+  /// A Telegram Passport element to be saved containing the user's utility bill
   InputPassportElementUtilityBill({this.utilityBill});
+
+  /// [utilityBill] The utility bill to be saved
+  InputPersonalDocument utilityBill;
 
   /// Parse from a json
   InputPassportElementUtilityBill.fromJson(Map<String, dynamic> json)  {
@@ -249,11 +257,12 @@ class InputPassportElementUtilityBill extends InputPassportElement {
 }
 
 class InputPassportElementBankStatement extends InputPassportElement {
-  InputPersonalDocument bankStatement;
 
-  /// A Telegram Passport element to be saved containing the user's bank statement. 
-  /// [bankStatement] The bank statement to be saved
+  /// A Telegram Passport element to be saved containing the user's bank statement
   InputPassportElementBankStatement({this.bankStatement});
+
+  /// [bankStatement] The bank statement to be saved
+  InputPersonalDocument bankStatement;
 
   /// Parse from a json
   InputPassportElementBankStatement.fromJson(Map<String, dynamic> json)  {
@@ -275,11 +284,12 @@ class InputPassportElementBankStatement extends InputPassportElement {
 }
 
 class InputPassportElementRentalAgreement extends InputPassportElement {
-  InputPersonalDocument rentalAgreement;
 
-  /// A Telegram Passport element to be saved containing the user's rental agreement. 
-  /// [rentalAgreement] The rental agreement to be saved
+  /// A Telegram Passport element to be saved containing the user's rental agreement
   InputPassportElementRentalAgreement({this.rentalAgreement});
+
+  /// [rentalAgreement] The rental agreement to be saved
+  InputPersonalDocument rentalAgreement;
 
   /// Parse from a json
   InputPassportElementRentalAgreement.fromJson(Map<String, dynamic> json)  {
@@ -301,11 +311,12 @@ class InputPassportElementRentalAgreement extends InputPassportElement {
 }
 
 class InputPassportElementPassportRegistration extends InputPassportElement {
-  InputPersonalDocument passportRegistration;
 
-  /// A Telegram Passport element to be saved containing the user's passport registration. 
-  /// [passportRegistration] The passport registration page to be saved
+  /// A Telegram Passport element to be saved containing the user's passport registration
   InputPassportElementPassportRegistration({this.passportRegistration});
+
+  /// [passportRegistration] The passport registration page to be saved
+  InputPersonalDocument passportRegistration;
 
   /// Parse from a json
   InputPassportElementPassportRegistration.fromJson(Map<String, dynamic> json)  {
@@ -327,11 +338,12 @@ class InputPassportElementPassportRegistration extends InputPassportElement {
 }
 
 class InputPassportElementTemporaryRegistration extends InputPassportElement {
-  InputPersonalDocument temporaryRegistration;
 
-  /// A Telegram Passport element to be saved containing the user's temporary registration. 
-  /// [temporaryRegistration] The temporary registration document to be saved
+  /// A Telegram Passport element to be saved containing the user's temporary registration
   InputPassportElementTemporaryRegistration({this.temporaryRegistration});
+
+  /// [temporaryRegistration] The temporary registration document to be saved
+  InputPersonalDocument temporaryRegistration;
 
   /// Parse from a json
   InputPassportElementTemporaryRegistration.fromJson(Map<String, dynamic> json)  {
@@ -353,11 +365,12 @@ class InputPassportElementTemporaryRegistration extends InputPassportElement {
 }
 
 class InputPassportElementPhoneNumber extends InputPassportElement {
-  String phoneNumber;
 
-  /// A Telegram Passport element to be saved containing the user's phone number. 
-  /// [phoneNumber] The phone number to be saved
+  /// A Telegram Passport element to be saved containing the user's phone number
   InputPassportElementPhoneNumber({this.phoneNumber});
+
+  /// [phoneNumber] The phone number to be saved
+  String phoneNumber;
 
   /// Parse from a json
   InputPassportElementPhoneNumber.fromJson(Map<String, dynamic> json)  {
@@ -379,11 +392,12 @@ class InputPassportElementPhoneNumber extends InputPassportElement {
 }
 
 class InputPassportElementEmailAddress extends InputPassportElement {
-  String emailAddress;
 
-  /// A Telegram Passport element to be saved containing the user's email address. 
-  /// [emailAddress] The email address to be saved
+  /// A Telegram Passport element to be saved containing the user's email address
   InputPassportElementEmailAddress({this.emailAddress});
+
+  /// [emailAddress] The email address to be saved
+  String emailAddress;
 
   /// Parse from a json
   InputPassportElementEmailAddress.fromJson(Map<String, dynamic> json)  {

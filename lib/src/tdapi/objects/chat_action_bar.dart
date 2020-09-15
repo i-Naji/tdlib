@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatActionBar extends TdObject {
-  
 
   /// Describes actions which should be possible to do through a chat action bar
   ChatActionBar();
+
+  
 
   /// a ChatActionBar return type can be :
   /// * ChatActionBarReportSpam
@@ -43,11 +44,12 @@ class ChatActionBar extends TdObject {
 }
 
 class ChatActionBarReportSpam extends ChatActionBar {
-  bool canUnarchive;
 
-  /// The chat can be reported as spam using the method reportChat with the reason chatReportReasonSpam. 
-  /// [canUnarchive] If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
+  /// The chat can be reported as spam using the method reportChat with the reason chatReportReasonSpam
   ChatActionBarReportSpam({this.canUnarchive});
+
+  /// [canUnarchive] If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
+  bool canUnarchive;
 
   /// Parse from a json
   ChatActionBarReportSpam.fromJson(Map<String, dynamic> json)  {
@@ -69,10 +71,11 @@ class ChatActionBarReportSpam extends ChatActionBar {
 }
 
 class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
-  
 
   /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason chatReportReasonUnrelatedLocation
   ChatActionBarReportUnrelatedLocation();
+
+  
 
   /// Parse from a json
   ChatActionBarReportUnrelatedLocation.fromJson(Map<String, dynamic> json) ;
@@ -91,14 +94,16 @@ class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
 }
 
 class ChatActionBarReportAddBlock extends ChatActionBar {
-  bool canUnarchive;
-  int distance;
 
-  /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method blockUser, or the other user can be added to the contact list using the method addContact. 
-  /// [canUnarchive] If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings. 
-  /// [distance] If non-negative, the current user was found by the peer through searchChatsNearby and this is the distance between the users
+  /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method blockUser, or the other user can be added to the contact list using the method addContact
   ChatActionBarReportAddBlock({this.canUnarchive,
     this.distance});
+
+  /// [canUnarchive] If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
+  bool canUnarchive;
+
+  /// [distance] If non-negative, the current user was found by the peer through searchChatsNearby and this is the distance between the users
+  int distance;
 
   /// Parse from a json
   ChatActionBarReportAddBlock.fromJson(Map<String, dynamic> json)  {
@@ -122,10 +127,11 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
 }
 
 class ChatActionBarAddContact extends ChatActionBar {
-  
 
   /// The chat is a private or secret chat and the other user can be added to the contact list using the method addContact
   ChatActionBarAddContact();
+
+  
 
   /// Parse from a json
   ChatActionBarAddContact.fromJson(Map<String, dynamic> json) ;
@@ -144,10 +150,11 @@ class ChatActionBarAddContact extends ChatActionBar {
 }
 
 class ChatActionBarSharePhoneNumber extends ChatActionBar {
-  
 
   /// The chat is a private or secret chat with a mutual contact and the user's phone number can be shared with the other user using the method sharePhoneNumber
   ChatActionBarSharePhoneNumber();
+
+  
 
   /// Parse from a json
   ChatActionBarSharePhoneNumber.fromJson(Map<String, dynamic> json) ;

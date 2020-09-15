@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class GameHighScore extends TdObject {
-  int position;
-  int userId;
-  int score;
 
-  /// Contains one row of the game high score table. 
-  /// [position] Position in the high score table . 
-  /// [userId] User identifier . 
-  /// [score] User score
+  /// Contains one row of the game high score table
   GameHighScore({this.position,
     this.userId,
     this.score});
+
+  /// [position] Position in the high score table 
+  int position;
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [score] User score
+  int score;
 
   /// Parse from a json
   GameHighScore.fromJson(Map<String, dynamic> json)  {

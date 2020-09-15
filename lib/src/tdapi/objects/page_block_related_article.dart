@@ -1,26 +1,32 @@
 part of '../tdapi.dart';
 
 class PageBlockRelatedArticle extends TdObject {
-  String url;
-  String title;
-  String description;
-  Photo photo;
-  String author;
-  int publishDate;
 
-  /// Contains information about a related article. 
-  /// [url] Related article URL . 
-  /// [title] Article title; may be empty . 
-  /// [description] Article description; may be empty. 
-  /// [photo] Article photo; may be null. 
-  /// [author] Article author; may be empty . 
-  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  /// Contains information about a related article
   PageBlockRelatedArticle({this.url,
     this.title,
     this.description,
     this.photo,
     this.author,
     this.publishDate});
+
+  /// [url] Related article URL 
+  String url;
+
+  /// [title] Article title; may be empty 
+  String title;
+
+  /// [description] Article description; may be empty
+  String description;
+
+  /// [photo] Article photo; may be null
+  Photo photo;
+
+  /// [author] Article author; may be empty 
+  String author;
+
+  /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
+  int publishDate;
 
   /// Parse from a json
   PageBlockRelatedArticle.fromJson(Map<String, dynamic> json)  {

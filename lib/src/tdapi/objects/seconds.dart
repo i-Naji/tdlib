@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Seconds extends TdObject {
-  double seconds;
-  dynamic extra;
 
-  /// Contains a value representing a number of seconds. 
-  /// [seconds] Number of seconds
+  /// Contains a value representing a number of seconds
   Seconds({this.seconds});
+
+  /// [seconds] Number of seconds
+  double seconds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Seconds.fromJson(Map<String, dynamic> json)  {

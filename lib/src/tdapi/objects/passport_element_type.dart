@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PassportElementType extends TdObject {
-  
 
   /// Contains the type of a Telegram Passport element
   PassportElementType();
+
+  
 
   /// a PassportElementType return type can be :
   /// * PassportElementTypePersonalDetails
@@ -67,10 +68,11 @@ class PassportElementType extends TdObject {
 }
 
 class PassportElementTypePersonalDetails extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's personal details
   PassportElementTypePersonalDetails();
+
+  
 
   /// Parse from a json
   PassportElementTypePersonalDetails.fromJson(Map<String, dynamic> json) ;
@@ -89,10 +91,11 @@ class PassportElementTypePersonalDetails extends PassportElementType {
 }
 
 class PassportElementTypePassport extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's passport
   PassportElementTypePassport();
+
+  
 
   /// Parse from a json
   PassportElementTypePassport.fromJson(Map<String, dynamic> json) ;
@@ -111,10 +114,11 @@ class PassportElementTypePassport extends PassportElementType {
 }
 
 class PassportElementTypeDriverLicense extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's driver license
   PassportElementTypeDriverLicense();
+
+  
 
   /// Parse from a json
   PassportElementTypeDriverLicense.fromJson(Map<String, dynamic> json) ;
@@ -133,10 +137,11 @@ class PassportElementTypeDriverLicense extends PassportElementType {
 }
 
 class PassportElementTypeIdentityCard extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's identity card
   PassportElementTypeIdentityCard();
+
+  
 
   /// Parse from a json
   PassportElementTypeIdentityCard.fromJson(Map<String, dynamic> json) ;
@@ -155,10 +160,11 @@ class PassportElementTypeIdentityCard extends PassportElementType {
 }
 
 class PassportElementTypeInternalPassport extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's internal passport
   PassportElementTypeInternalPassport();
+
+  
 
   /// Parse from a json
   PassportElementTypeInternalPassport.fromJson(Map<String, dynamic> json) ;
@@ -177,10 +183,11 @@ class PassportElementTypeInternalPassport extends PassportElementType {
 }
 
 class PassportElementTypeAddress extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's address
   PassportElementTypeAddress();
+
+  
 
   /// Parse from a json
   PassportElementTypeAddress.fromJson(Map<String, dynamic> json) ;
@@ -199,10 +206,11 @@ class PassportElementTypeAddress extends PassportElementType {
 }
 
 class PassportElementTypeUtilityBill extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's utility bill
   PassportElementTypeUtilityBill();
+
+  
 
   /// Parse from a json
   PassportElementTypeUtilityBill.fromJson(Map<String, dynamic> json) ;
@@ -221,10 +229,11 @@ class PassportElementTypeUtilityBill extends PassportElementType {
 }
 
 class PassportElementTypeBankStatement extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's bank statement
   PassportElementTypeBankStatement();
+
+  
 
   /// Parse from a json
   PassportElementTypeBankStatement.fromJson(Map<String, dynamic> json) ;
@@ -243,10 +252,11 @@ class PassportElementTypeBankStatement extends PassportElementType {
 }
 
 class PassportElementTypeRentalAgreement extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's rental agreement
   PassportElementTypeRentalAgreement();
+
+  
 
   /// Parse from a json
   PassportElementTypeRentalAgreement.fromJson(Map<String, dynamic> json) ;
@@ -265,10 +275,11 @@ class PassportElementTypeRentalAgreement extends PassportElementType {
 }
 
 class PassportElementTypePassportRegistration extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the registration page of the user's passport
   PassportElementTypePassportRegistration();
+
+  
 
   /// Parse from a json
   PassportElementTypePassportRegistration.fromJson(Map<String, dynamic> json) ;
@@ -287,10 +298,11 @@ class PassportElementTypePassportRegistration extends PassportElementType {
 }
 
 class PassportElementTypeTemporaryRegistration extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's temporary registration
   PassportElementTypeTemporaryRegistration();
+
+  
 
   /// Parse from a json
   PassportElementTypeTemporaryRegistration.fromJson(Map<String, dynamic> json) ;
@@ -309,10 +321,11 @@ class PassportElementTypeTemporaryRegistration extends PassportElementType {
 }
 
 class PassportElementTypePhoneNumber extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's phone number
   PassportElementTypePhoneNumber();
+
+  
 
   /// Parse from a json
   PassportElementTypePhoneNumber.fromJson(Map<String, dynamic> json) ;
@@ -331,10 +344,11 @@ class PassportElementTypePhoneNumber extends PassportElementType {
 }
 
 class PassportElementTypeEmailAddress extends PassportElementType {
-  
 
   /// A Telegram Passport element containing the user's email address
   PassportElementTypeEmailAddress();
+
+  
 
   /// Parse from a json
   PassportElementTypeEmailAddress.fromJson(Map<String, dynamic> json) ;

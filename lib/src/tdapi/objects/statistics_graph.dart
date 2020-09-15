@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class StatisticsGraph extends TdObject {
-  
 
   /// Describes a statistics graph
   StatisticsGraph();
+
+  
 
   /// a StatisticsGraph return type can be :
   /// * StatisticsGraphData
@@ -37,15 +38,19 @@ class StatisticsGraph extends TdObject {
 }
 
 class StatisticsGraphData extends StatisticsGraph {
-  String jsonData;
-  String zoomToken;
-  dynamic extra;
 
-  /// A graph data. 
-  /// [jsonData] Graph data in JSON format . 
-  /// [zoomToken] If non-empty, a token which can be used to receive a zoomed in graph
+  /// A graph data
   StatisticsGraphData({this.jsonData,
     this.zoomToken});
+
+  /// [jsonData] Graph data in JSON format 
+  String jsonData;
+
+  /// [zoomToken] If non-empty, a token which can be used to receive a zoomed in graph
+  String zoomToken;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StatisticsGraphData.fromJson(Map<String, dynamic> json)  {
@@ -70,12 +75,15 @@ class StatisticsGraphData extends StatisticsGraph {
 }
 
 class StatisticsGraphAsync extends StatisticsGraph {
-  String token;
-  dynamic extra;
 
-  /// The graph data to be asynchronously loaded through getChatStatisticsGraph. 
-  /// [token] The token to use for data loading
+  /// The graph data to be asynchronously loaded through getChatStatisticsGraph
   StatisticsGraphAsync({this.token});
+
+  /// [token] The token to use for data loading
+  String token;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StatisticsGraphAsync.fromJson(Map<String, dynamic> json)  {
@@ -98,12 +106,15 @@ class StatisticsGraphAsync extends StatisticsGraph {
 }
 
 class StatisticsGraphError extends StatisticsGraph {
-  String errorMessage;
-  dynamic extra;
 
-  /// An error message to be shown to the user instead of the graph. 
-  /// [errorMessage] The error message
+  /// An error message to be shown to the user instead of the graph
   StatisticsGraphError({this.errorMessage});
+
+  /// [errorMessage] The error message
+  String errorMessage;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StatisticsGraphError.fromJson(Map<String, dynamic> json)  {

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputCredentials extends TdObject {
-  
 
   /// Contains information about the payment method chosen by the user
   InputCredentials();
+
+  
 
   /// a InputCredentials return type can be :
   /// * InputCredentialsSaved
@@ -40,11 +41,12 @@ class InputCredentials extends TdObject {
 }
 
 class InputCredentialsSaved extends InputCredentials {
-  String savedCredentialsId;
 
-  /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password. 
-  /// [savedCredentialsId] Identifier of the saved credentials
+  /// Applies if a user chooses some previously saved payment credentials. To use their previously saved credentials, the user must have a valid temporary password
   InputCredentialsSaved({this.savedCredentialsId});
+
+  /// [savedCredentialsId] Identifier of the saved credentials
+  String savedCredentialsId;
 
   /// Parse from a json
   InputCredentialsSaved.fromJson(Map<String, dynamic> json)  {
@@ -66,14 +68,16 @@ class InputCredentialsSaved extends InputCredentials {
 }
 
 class InputCredentialsNew extends InputCredentials {
-  String data;
-  bool allowSave;
 
-  /// Applies if a user enters new credentials on a payment provider website. 
-  /// [data] Contains JSON-encoded data with a credential identifier from the payment provider . 
-  /// [allowSave] True, if the credential identifier can be saved on the server side
+  /// Applies if a user enters new credentials on a payment provider website
   InputCredentialsNew({this.data,
     this.allowSave});
+
+  /// [data] Contains JSON-encoded data with a credential identifier from the payment provider 
+  String data;
+
+  /// [allowSave] True, if the credential identifier can be saved on the server side
+  bool allowSave;
 
   /// Parse from a json
   InputCredentialsNew.fromJson(Map<String, dynamic> json)  {
@@ -97,11 +101,12 @@ class InputCredentialsNew extends InputCredentials {
 }
 
 class InputCredentialsAndroidPay extends InputCredentials {
-  String data;
 
-  /// Applies if a user enters new credentials using Android Pay. 
-  /// [data] JSON-encoded data with the credential identifier
+  /// Applies if a user enters new credentials using Android Pay
   InputCredentialsAndroidPay({this.data});
+
+  /// [data] JSON-encoded data with the credential identifier
+  String data;
 
   /// Parse from a json
   InputCredentialsAndroidPay.fromJson(Map<String, dynamic> json)  {
@@ -123,11 +128,12 @@ class InputCredentialsAndroidPay extends InputCredentials {
 }
 
 class InputCredentialsApplePay extends InputCredentials {
-  String data;
 
-  /// Applies if a user enters new credentials using Apple Pay. 
-  /// [data] JSON-encoded data with the credential identifier
+  /// Applies if a user enters new credentials using Apple Pay
   InputCredentialsApplePay({this.data});
+
+  /// [data] JSON-encoded data with the credential identifier
+  String data;
 
   /// Parse from a json
   InputCredentialsApplePay.fromJson(Map<String, dynamic> json)  {

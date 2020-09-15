@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetChatPinnedMessage extends TdFunction {
-  int chatId;
-  dynamic extra;
 
-  /// Returns information about a pinned chat message. 
-  /// [chatId] Identifier of the chat the message belongs to
+  /// Returns information about a pinned chat message
   GetChatPinnedMessage({this.chatId});
+
+  /// [chatId] Identifier of the chat the message belongs to
+  int chatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatPinnedMessage.fromJson(Map<String, dynamic> json) ;

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class PublicMessageLink extends TdObject {
-  String link;
-  String html;
-  dynamic extra;
 
-  /// Contains a public HTTPS link to a message in a supergroup or channel with a username. 
-  /// [link] Message link . 
-  /// [html] HTML-code for embedding the message
+  /// Contains a public HTTPS link to a message in a supergroup or channel with a username
   PublicMessageLink({this.link,
     this.html});
+
+  /// [link] Message link 
+  String link;
+
+  /// [html] HTML-code for embedding the message
+  String html;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PublicMessageLink.fromJson(Map<String, dynamic> json)  {

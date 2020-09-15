@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Hashtags extends TdObject {
-  List<String> hashtags;
-  dynamic extra;
 
-  /// Contains a list of hashtags. 
-  /// [hashtags] A list of hashtags
+  /// Contains a list of hashtags
   Hashtags({this.hashtags});
+
+  /// [hashtags] A list of hashtags
+  List<String> hashtags;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Hashtags.fromJson(Map<String, dynamic> json)  {

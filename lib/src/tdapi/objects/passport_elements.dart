@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class PassportElements extends TdObject {
-  List<PassportElement> elements;
-  dynamic extra;
 
-  /// Contains information about saved Telegram Passport elements. 
-  /// [elements] Telegram Passport elements
+  /// Contains information about saved Telegram Passport elements
   PassportElements({this.elements});
+
+  /// [elements] Telegram Passport elements
+  List<PassportElement> elements;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PassportElements.fromJson(Map<String, dynamic> json)  {

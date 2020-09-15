@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class ChatNearby extends TdObject {
-  int chatId;
-  int distance;
 
-  /// Describes a chat located nearby. 
-  /// [chatId] Chat identifier . 
-  /// [distance] Distance to the chat location in meters
+  /// Describes a chat located nearby
   ChatNearby({this.chatId,
     this.distance});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [distance] Distance to the chat location in meters
+  int distance;
 
   /// Parse from a json
   ChatNearby.fromJson(Map<String, dynamic> json)  {

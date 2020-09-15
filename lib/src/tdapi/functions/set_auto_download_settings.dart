@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetAutoDownloadSettings extends TdFunction {
-  AutoDownloadSettings settings;
-  NetworkType type;
-  dynamic extra;
 
-  /// Sets auto-download settings. 
-  /// [settings] New user auto-download settings . 
-  /// [type] Type of the network for which the new settings are applied
+  /// Sets auto-download settings
   SetAutoDownloadSettings({this.settings,
     this.type});
+
+  /// [settings] New user auto-download settings 
+  AutoDownloadSettings settings;
+
+  /// [type] Type of the network for which the new settings are applied
+  NetworkType type;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetAutoDownloadSettings.fromJson(Map<String, dynamic> json) ;

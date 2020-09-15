@@ -1,23 +1,28 @@
 part of '../tdapi.dart';
 
 class CallProtocol extends TdObject {
-  bool udpP2p;
-  bool udpReflector;
-  int minLayer;
-  int maxLayer;
-  List<String> libraryVersions;
 
-  /// Specifies the supported call protocols. 
-  /// [udpP2p] True, if UDP peer-to-peer connections are supported. 
-  /// [udpReflector] True, if connection through UDP reflectors is supported. 
-  /// [minLayer] The minimum supported API layer; use 65. 
-  /// [maxLayer] The maximum supported API layer; use 65. 
-  /// [libraryVersions] List of supported libtgvoip versions
+  /// Specifies the supported call protocols
   CallProtocol({this.udpP2p,
     this.udpReflector,
     this.minLayer,
     this.maxLayer,
     this.libraryVersions});
+
+  /// [udpP2p] True, if UDP peer-to-peer connections are supported
+  bool udpP2p;
+
+  /// [udpReflector] True, if connection through UDP reflectors is supported
+  bool udpReflector;
+
+  /// [minLayer] The minimum supported API layer; use 65
+  int minLayer;
+
+  /// [maxLayer] The maximum supported API layer; use 65
+  int maxLayer;
+
+  /// [libraryVersions] List of supported libtgvoip versions
+  List<String> libraryVersions;
 
   /// Parse from a json
   CallProtocol.fromJson(Map<String, dynamic> json)  {

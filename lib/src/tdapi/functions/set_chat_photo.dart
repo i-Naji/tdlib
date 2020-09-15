@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetChatPhoto extends TdFunction {
-  int chatId;
-  InputChatPhoto photo;
-  dynamic extra;
 
-  /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights. 
-  /// [chatId] Chat identifier. 
-  /// [photo] New chat photo. You can pass null to delete the chat photo
+  /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info rights
   SetChatPhoto({this.chatId,
     this.photo});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// [photo] New chat photo. You can pass null to delete the chat photo
+  InputChatPhoto photo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetChatPhoto.fromJson(Map<String, dynamic> json) ;

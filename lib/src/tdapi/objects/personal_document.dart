@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class PersonalDocument extends TdObject {
-  List<DatedFile> files;
-  List<DatedFile> translation;
 
-  /// A personal document, containing some information about a user. 
-  /// [files] List of files containing the pages of the document . 
-  /// [translation] List of files containing a certified English translation of the document
+  /// A personal document, containing some information about a user
   PersonalDocument({this.files,
     this.translation});
+
+  /// [files] List of files containing the pages of the document 
+  List<DatedFile> files;
+
+  /// [translation] List of files containing a certified English translation of the document
+  List<DatedFile> translation;
 
   /// Parse from a json
   PersonalDocument.fromJson(Map<String, dynamic> json)  {

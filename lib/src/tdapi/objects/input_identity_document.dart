@@ -1,26 +1,32 @@
 part of '../tdapi.dart';
 
 class InputIdentityDocument extends TdObject {
-  String number;
-  Date expiryDate;
-  InputFile frontSide;
-  InputFile reverseSide;
-  InputFile selfie;
-  List<InputFile> translation;
 
-  /// An identity document to be saved to Telegram Passport. 
-  /// [number] Document number; 1-24 characters . 
-  /// [expiryDate] Document expiry date, if available . 
-  /// [frontSide] Front side of the document. 
-  /// [reverseSide] Reverse side of the document; only for driver license and identity card. 
-  /// [selfie] Selfie with the document, if available . 
-  /// [translation] List of files containing a certified English translation of the document
+  /// An identity document to be saved to Telegram Passport
   InputIdentityDocument({this.number,
     this.expiryDate,
     this.frontSide,
     this.reverseSide,
     this.selfie,
     this.translation});
+
+  /// [number] Document number; 1-24 characters 
+  String number;
+
+  /// [expiryDate] Document expiry date, if available 
+  Date expiryDate;
+
+  /// [frontSide] Front side of the document
+  InputFile frontSide;
+
+  /// [reverseSide] Reverse side of the document; only for driver license and identity card
+  InputFile reverseSide;
+
+  /// [selfie] Selfie with the document, if available 
+  InputFile selfie;
+
+  /// [translation] List of files containing a certified English translation of the document
+  List<InputFile> translation;
 
   /// Parse from a json
   InputIdentityDocument.fromJson(Map<String, dynamic> json)  {

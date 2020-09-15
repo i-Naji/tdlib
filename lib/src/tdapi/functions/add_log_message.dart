@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class AddLogMessage extends TdFunction {
-  int verbosityLevel;
-  String text;
-  dynamic extra;
 
-  /// Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [verbosityLevel] The minimum verbosity level needed for the message to be logged, 0-1023. 
-  /// [text] Text of a message to log
+  /// Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously
   AddLogMessage({this.verbosityLevel,
     this.text});
+
+  /// [verbosityLevel] The minimum verbosity level needed for the message to be logged, 0-1023
+  int verbosityLevel;
+
+  /// [text] Text of a message to log
+  String text;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AddLogMessage.fromJson(Map<String, dynamic> json) ;

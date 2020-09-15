@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class TextParseMode extends TdObject {
-  
 
   /// Describes the way the text should be parsed for TextEntities
   TextParseMode();
+
+  
 
   /// a TextParseMode return type can be :
   /// * TextParseModeMarkdown
@@ -34,11 +35,12 @@ class TextParseMode extends TdObject {
 }
 
 class TextParseModeMarkdown extends TextParseMode {
-  int version;
 
-  /// The text uses Markdown-style formatting. 
-  /// [version] Version of the parser: 0 or 1 - Telegram Bot API "Markdown" parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode
+  /// The text uses Markdown-style formatting
   TextParseModeMarkdown({this.version});
+
+  /// [version] Version of the parser: 0 or 1 - Telegram Bot API "Markdown" parse mode, 2 - Telegram Bot API "MarkdownV2" parse mode
+  int version;
 
   /// Parse from a json
   TextParseModeMarkdown.fromJson(Map<String, dynamic> json)  {
@@ -60,10 +62,11 @@ class TextParseModeMarkdown extends TextParseMode {
 }
 
 class TextParseModeHTML extends TextParseMode {
-  
 
   /// The text uses HTML-style formatting. The same as Telegram Bot API "HTML" parse mode
   TextParseModeHTML();
+
+  
 
   /// Parse from a json
   TextParseModeHTML.fromJson(Map<String, dynamic> json) ;

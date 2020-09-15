@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class Update extends TdObject {
-  
 
   /// Contains notifications about data changes
   Update();
+
+  
 
   /// a Update return type can be :
   /// * UpdateAuthorizationState
@@ -262,12 +263,15 @@ class Update extends TdObject {
 }
 
 class UpdateAuthorizationState extends Update {
-  AuthorizationState authorizationState;
-  dynamic extra;
 
-  /// The user authorization state has changed. 
-  /// [authorizationState] New authorization state
+  /// The user authorization state has changed
   UpdateAuthorizationState({this.authorizationState});
+
+  /// [authorizationState] New authorization state
+  AuthorizationState authorizationState;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateAuthorizationState.fromJson(Map<String, dynamic> json)  {
@@ -290,12 +294,15 @@ class UpdateAuthorizationState extends Update {
 }
 
 class UpdateNewMessage extends Update {
-  Message message;
-  dynamic extra;
 
-  /// A new message was received; can also be an outgoing message. 
-  /// [message] The new message
+  /// A new message was received; can also be an outgoing message
   UpdateNewMessage({this.message});
+
+  /// [message] The new message
+  Message message;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNewMessage.fromJson(Map<String, dynamic> json)  {
@@ -318,15 +325,19 @@ class UpdateNewMessage extends Update {
 }
 
 class UpdateMessageSendAcknowledged extends Update {
-  int chatId;
-  int messageId;
-  dynamic extra;
 
-  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message. 
-  /// [chatId] The chat identifier of the sent message. 
-  /// [messageId] A temporary message identifier
+  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
   UpdateMessageSendAcknowledged({this.chatId,
     this.messageId});
+
+  /// [chatId] The chat identifier of the sent message
+  int chatId;
+
+  /// [messageId] A temporary message identifier
+  int messageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json)  {
@@ -351,15 +362,19 @@ class UpdateMessageSendAcknowledged extends Update {
 }
 
 class UpdateMessageSendSucceeded extends Update {
-  Message message;
-  int oldMessageId;
-  dynamic extra;
 
-  /// A message has been successfully sent. 
-  /// [message] Information about the sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change . 
-  /// [oldMessageId] The previous temporary message identifier
+  /// A message has been successfully sent
   UpdateMessageSendSucceeded({this.message,
     this.oldMessageId});
+
+  /// [message] Information about the sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change 
+  Message message;
+
+  /// [oldMessageId] The previous temporary message identifier
+  int oldMessageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json)  {
@@ -384,21 +399,27 @@ class UpdateMessageSendSucceeded extends Update {
 }
 
 class UpdateMessageSendFailed extends Update {
-  Message message;
-  int oldMessageId;
-  int errorCode;
-  String errorMessage;
-  dynamic extra;
 
-  /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update. 
-  /// [message] Contains information about the message which failed to send. 
-  /// [oldMessageId] The previous temporary message identifier . 
-  /// [errorCode] An error code . 
-  /// [errorMessage] Error message
+  /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update
   UpdateMessageSendFailed({this.message,
     this.oldMessageId,
     this.errorCode,
     this.errorMessage});
+
+  /// [message] Contains information about the message which failed to send
+  Message message;
+
+  /// [oldMessageId] The previous temporary message identifier 
+  int oldMessageId;
+
+  /// [errorCode] An error code 
+  int errorCode;
+
+  /// [errorMessage] Error message
+  String errorMessage;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageSendFailed.fromJson(Map<String, dynamic> json)  {
@@ -427,18 +448,23 @@ class UpdateMessageSendFailed extends Update {
 }
 
 class UpdateMessageContent extends Update {
-  int chatId;
-  int messageId;
-  MessageContent newContent;
-  dynamic extra;
 
-  /// The message content has changed. 
-  /// [chatId] Chat identifier . 
-  /// [messageId] Message identifier . 
-  /// [newContent] New message content
+  /// The message content has changed
   UpdateMessageContent({this.chatId,
     this.messageId,
     this.newContent});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [newContent] New message content
+  MessageContent newContent;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageContent.fromJson(Map<String, dynamic> json)  {
@@ -465,21 +491,27 @@ class UpdateMessageContent extends Update {
 }
 
 class UpdateMessageEdited extends Update {
-  int chatId;
-  int messageId;
-  int editDate;
-  ReplyMarkup replyMarkup;
-  dynamic extra;
 
-  /// A message was edited. Changes in the message content will come in a separate updateMessageContent. 
-  /// [chatId] Chat identifier . 
-  /// [messageId] Message identifier . 
-  /// [editDate] Point in time (Unix timestamp) when the message was edited . 
-  /// [replyMarkup] New message reply markup; may be null
+  /// A message was edited. Changes in the message content will come in a separate updateMessageContent
   UpdateMessageEdited({this.chatId,
     this.messageId,
     this.editDate,
     this.replyMarkup});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [editDate] Point in time (Unix timestamp) when the message was edited 
+  int editDate;
+
+  /// [replyMarkup] New message reply markup; may be null
+  ReplyMarkup replyMarkup;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageEdited.fromJson(Map<String, dynamic> json)  {
@@ -508,18 +540,23 @@ class UpdateMessageEdited extends Update {
 }
 
 class UpdateMessageViews extends Update {
-  int chatId;
-  int messageId;
-  int views;
-  dynamic extra;
 
-  /// The view count of the message has changed. 
-  /// [chatId] Chat identifier . 
-  /// [messageId] Message identifier . 
-  /// [views] New value of the view count
+  /// The view count of the message has changed
   UpdateMessageViews({this.chatId,
     this.messageId,
     this.views});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [views] New value of the view count
+  int views;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageViews.fromJson(Map<String, dynamic> json)  {
@@ -546,15 +583,19 @@ class UpdateMessageViews extends Update {
 }
 
 class UpdateMessageContentOpened extends Update {
-  int chatId;
-  int messageId;
-  dynamic extra;
 
-  /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the TTL timer for self-destructing messages. 
-  /// [chatId] Chat identifier . 
-  /// [messageId] Message identifier
+  /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the TTL timer for self-destructing messages
   UpdateMessageContentOpened({this.chatId,
     this.messageId});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageId] Message identifier
+  int messageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageContentOpened.fromJson(Map<String, dynamic> json)  {
@@ -579,18 +620,23 @@ class UpdateMessageContentOpened extends Update {
 }
 
 class UpdateMessageMentionRead extends Update {
-  int chatId;
-  int messageId;
-  int unreadMentionCount;
-  dynamic extra;
 
-  /// A message with an unread mention was read. 
-  /// [chatId] Chat identifier . 
-  /// [messageId] Message identifier . 
-  /// [unreadMentionCount] The new number of unread mention messages left in the chat
+  /// A message with an unread mention was read
   UpdateMessageMentionRead({this.chatId,
     this.messageId,
     this.unreadMentionCount});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageId] Message identifier 
+  int messageId;
+
+  /// [unreadMentionCount] The new number of unread mention messages left in the chat
+  int unreadMentionCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageMentionRead.fromJson(Map<String, dynamic> json)  {
@@ -617,15 +663,19 @@ class UpdateMessageMentionRead extends Update {
 }
 
 class UpdateMessageLiveLocationViewed extends Update {
-  int chatId;
-  int messageId;
-  dynamic extra;
 
-  /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location. 
-  /// [chatId] Identifier of the chat with the live location message. 
-  /// [messageId] Identifier of the message with live location
+  /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location
   UpdateMessageLiveLocationViewed({this.chatId,
     this.messageId});
+
+  /// [chatId] Identifier of the chat with the live location message
+  int chatId;
+
+  /// [messageId] Identifier of the message with live location
+  int messageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json)  {
@@ -650,12 +700,15 @@ class UpdateMessageLiveLocationViewed extends Update {
 }
 
 class UpdateNewChat extends Update {
-  Chat chat;
-  dynamic extra;
 
-  /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates. 
-  /// [chat] The chat
+  /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
   UpdateNewChat({this.chat});
+
+  /// [chat] The chat
+  Chat chat;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNewChat.fromJson(Map<String, dynamic> json)  {
@@ -678,15 +731,19 @@ class UpdateNewChat extends Update {
 }
 
 class UpdateChatTitle extends Update {
-  int chatId;
-  String title;
-  dynamic extra;
 
-  /// The title of a chat was changed. 
-  /// [chatId] Chat identifier . 
-  /// [title] The new chat title
+  /// The title of a chat was changed
   UpdateChatTitle({this.chatId,
     this.title});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [title] The new chat title
+  String title;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatTitle.fromJson(Map<String, dynamic> json)  {
@@ -711,15 +768,19 @@ class UpdateChatTitle extends Update {
 }
 
 class UpdateChatPhoto extends Update {
-  int chatId;
-  ChatPhotoInfo photo;
-  dynamic extra;
 
-  /// A chat photo was changed. 
-  /// [chatId] Chat identifier . 
-  /// [photo] The new chat photo; may be null
+  /// A chat photo was changed
   UpdateChatPhoto({this.chatId,
     this.photo});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [photo] The new chat photo; may be null
+  ChatPhotoInfo photo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatPhoto.fromJson(Map<String, dynamic> json)  {
@@ -744,15 +805,19 @@ class UpdateChatPhoto extends Update {
 }
 
 class UpdateChatPermissions extends Update {
-  int chatId;
-  ChatPermissions permissions;
-  dynamic extra;
 
-  /// Chat permissions was changed. 
-  /// [chatId] Chat identifier . 
-  /// [permissions] The new chat permissions
+  /// Chat permissions was changed
   UpdateChatPermissions({this.chatId,
     this.permissions});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [permissions] The new chat permissions
+  ChatPermissions permissions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatPermissions.fromJson(Map<String, dynamic> json)  {
@@ -777,18 +842,23 @@ class UpdateChatPermissions extends Update {
 }
 
 class UpdateChatLastMessage extends Update {
-  int chatId;
-  Message lastMessage;
-  List<ChatPosition> positions;
-  dynamic extra;
 
-  /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case. 
-  /// [chatId] Chat identifier . 
-  /// [lastMessage] The new last message in the chat; may be null . 
-  /// [positions] The new chat positions in the chat lists
+  /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case
   UpdateChatLastMessage({this.chatId,
     this.lastMessage,
     this.positions});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [lastMessage] The new last message in the chat; may be null 
+  Message lastMessage;
+
+  /// [positions] The new chat positions in the chat lists
+  List<ChatPosition> positions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatLastMessage.fromJson(Map<String, dynamic> json)  {
@@ -815,15 +885,19 @@ class UpdateChatLastMessage extends Update {
 }
 
 class UpdateChatPosition extends Update {
-  int chatId;
-  ChatPosition position;
-  dynamic extra;
 
-  /// The position of a chat in a chat list has changed. Instead of this update updateChatLastMessage or updateChatDraftMessage might be sent. 
-  /// [chatId] Chat identifier . 
-  /// [position] New chat position. If new order is 0, then the chat needs to be removed from the list
+  /// The position of a chat in a chat list has changed. Instead of this update updateChatLastMessage or updateChatDraftMessage might be sent
   UpdateChatPosition({this.chatId,
     this.position});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [position] New chat position. If new order is 0, then the chat needs to be removed from the list
+  ChatPosition position;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatPosition.fromJson(Map<String, dynamic> json)  {
@@ -848,15 +922,19 @@ class UpdateChatPosition extends Update {
 }
 
 class UpdateChatIsMarkedAsUnread extends Update {
-  int chatId;
-  bool isMarkedAsUnread;
-  dynamic extra;
 
-  /// A chat was marked as unread or was read. 
-  /// [chatId] Chat identifier . 
-  /// [isMarkedAsUnread] New value of is_marked_as_unread
+  /// A chat was marked as unread or was read
   UpdateChatIsMarkedAsUnread({this.chatId,
     this.isMarkedAsUnread});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [isMarkedAsUnread] New value of is_marked_as_unread
+  bool isMarkedAsUnread;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json)  {
@@ -881,15 +959,19 @@ class UpdateChatIsMarkedAsUnread extends Update {
 }
 
 class UpdateChatHasScheduledMessages extends Update {
-  int chatId;
-  bool hasScheduledMessages;
-  dynamic extra;
 
-  /// A chat's has_scheduled_messages field has changed. 
-  /// [chatId] Chat identifier . 
-  /// [hasScheduledMessages] New value of has_scheduled_messages
+  /// A chat's has_scheduled_messages field has changed
   UpdateChatHasScheduledMessages({this.chatId,
     this.hasScheduledMessages});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [hasScheduledMessages] New value of has_scheduled_messages
+  bool hasScheduledMessages;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json)  {
@@ -914,15 +996,19 @@ class UpdateChatHasScheduledMessages extends Update {
 }
 
 class UpdateChatDefaultDisableNotification extends Update {
-  int chatId;
-  bool defaultDisableNotification;
-  dynamic extra;
 
-  /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed. 
-  /// [chatId] Chat identifier . 
-  /// [defaultDisableNotification] The new default_disable_notification value
+  /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed
   UpdateChatDefaultDisableNotification({this.chatId,
     this.defaultDisableNotification});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [defaultDisableNotification] The new default_disable_notification value
+  bool defaultDisableNotification;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatDefaultDisableNotification.fromJson(Map<String, dynamic> json)  {
@@ -947,18 +1033,23 @@ class UpdateChatDefaultDisableNotification extends Update {
 }
 
 class UpdateChatReadInbox extends Update {
-  int chatId;
-  int lastReadInboxMessageId;
-  int unreadCount;
-  dynamic extra;
 
-  /// Incoming messages were read or number of unread messages has been changed. 
-  /// [chatId] Chat identifier . 
-  /// [lastReadInboxMessageId] Identifier of the last read incoming message . 
-  /// [unreadCount] The number of unread messages left in the chat
+  /// Incoming messages were read or number of unread messages has been changed
   UpdateChatReadInbox({this.chatId,
     this.lastReadInboxMessageId,
     this.unreadCount});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [lastReadInboxMessageId] Identifier of the last read incoming message 
+  int lastReadInboxMessageId;
+
+  /// [unreadCount] The number of unread messages left in the chat
+  int unreadCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatReadInbox.fromJson(Map<String, dynamic> json)  {
@@ -985,15 +1076,19 @@ class UpdateChatReadInbox extends Update {
 }
 
 class UpdateChatReadOutbox extends Update {
-  int chatId;
-  int lastReadOutboxMessageId;
-  dynamic extra;
 
-  /// Outgoing messages were read. 
-  /// [chatId] Chat identifier . 
-  /// [lastReadOutboxMessageId] Identifier of last read outgoing message
+  /// Outgoing messages were read
   UpdateChatReadOutbox({this.chatId,
     this.lastReadOutboxMessageId});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [lastReadOutboxMessageId] Identifier of last read outgoing message
+  int lastReadOutboxMessageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatReadOutbox.fromJson(Map<String, dynamic> json)  {
@@ -1018,15 +1113,19 @@ class UpdateChatReadOutbox extends Update {
 }
 
 class UpdateChatUnreadMentionCount extends Update {
-  int chatId;
-  int unreadMentionCount;
-  dynamic extra;
 
-  /// The chat unread_mention_count has changed. 
-  /// [chatId] Chat identifier . 
-  /// [unreadMentionCount] The number of unread mention messages left in the chat
+  /// The chat unread_mention_count has changed
   UpdateChatUnreadMentionCount({this.chatId,
     this.unreadMentionCount});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [unreadMentionCount] The number of unread mention messages left in the chat
+  int unreadMentionCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json)  {
@@ -1051,15 +1150,19 @@ class UpdateChatUnreadMentionCount extends Update {
 }
 
 class UpdateChatNotificationSettings extends Update {
-  int chatId;
-  ChatNotificationSettings notificationSettings;
-  dynamic extra;
 
-  /// Notification settings for a chat were changed. 
-  /// [chatId] Chat identifier . 
-  /// [notificationSettings] The new notification settings
+  /// Notification settings for a chat were changed
   UpdateChatNotificationSettings({this.chatId,
     this.notificationSettings});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [notificationSettings] The new notification settings
+  ChatNotificationSettings notificationSettings;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json)  {
@@ -1084,15 +1187,19 @@ class UpdateChatNotificationSettings extends Update {
 }
 
 class UpdateScopeNotificationSettings extends Update {
-  NotificationSettingsScope scope;
-  ScopeNotificationSettings notificationSettings;
-  dynamic extra;
 
-  /// Notification settings for some type of chats were updated. 
-  /// [scope] Types of chats for which notification settings were updated . 
-  /// [notificationSettings] The new notification settings
+  /// Notification settings for some type of chats were updated
   UpdateScopeNotificationSettings({this.scope,
     this.notificationSettings});
+
+  /// [scope] Types of chats for which notification settings were updated 
+  NotificationSettingsScope scope;
+
+  /// [notificationSettings] The new notification settings
+  ScopeNotificationSettings notificationSettings;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json)  {
@@ -1117,15 +1224,19 @@ class UpdateScopeNotificationSettings extends Update {
 }
 
 class UpdateChatActionBar extends Update {
-  int chatId;
-  ChatActionBar actionBar;
-  dynamic extra;
 
-  /// The chat action bar was changed. 
-  /// [chatId] Chat identifier . 
-  /// [actionBar] The new value of the action bar; may be null
+  /// The chat action bar was changed
   UpdateChatActionBar({this.chatId,
     this.actionBar});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [actionBar] The new value of the action bar; may be null
+  ChatActionBar actionBar;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatActionBar.fromJson(Map<String, dynamic> json)  {
@@ -1150,15 +1261,19 @@ class UpdateChatActionBar extends Update {
 }
 
 class UpdateChatPinnedMessage extends Update {
-  int chatId;
-  int pinnedMessageId;
-  dynamic extra;
 
-  /// The chat pinned message was changed. 
-  /// [chatId] Chat identifier . 
-  /// [pinnedMessageId] The new identifier of the pinned message; 0 if there is no pinned message in the chat
+  /// The chat pinned message was changed
   UpdateChatPinnedMessage({this.chatId,
     this.pinnedMessageId});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [pinnedMessageId] The new identifier of the pinned message; 0 if there is no pinned message in the chat
+  int pinnedMessageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatPinnedMessage.fromJson(Map<String, dynamic> json)  {
@@ -1183,15 +1298,19 @@ class UpdateChatPinnedMessage extends Update {
 }
 
 class UpdateChatReplyMarkup extends Update {
-  int chatId;
-  int replyMarkupMessageId;
-  dynamic extra;
 
-  /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user. 
-  /// [chatId] Chat identifier. 
-  /// [replyMarkupMessageId] Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
+  /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
   UpdateChatReplyMarkup({this.chatId,
     this.replyMarkupMessageId});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// [replyMarkupMessageId] Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
+  int replyMarkupMessageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json)  {
@@ -1216,18 +1335,23 @@ class UpdateChatReplyMarkup extends Update {
 }
 
 class UpdateChatDraftMessage extends Update {
-  int chatId;
-  DraftMessage draftMessage;
-  List<ChatPosition> positions;
-  dynamic extra;
 
-  /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update shouldn't be applied. 
-  /// [chatId] Chat identifier . 
-  /// [draftMessage] The new draft message; may be null . 
-  /// [positions] The new chat positions in the chat lists
+  /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update shouldn't be applied
   UpdateChatDraftMessage({this.chatId,
     this.draftMessage,
     this.positions});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [draftMessage] The new draft message; may be null 
+  DraftMessage draftMessage;
+
+  /// [positions] The new chat positions in the chat lists
+  List<ChatPosition> positions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatDraftMessage.fromJson(Map<String, dynamic> json)  {
@@ -1254,12 +1378,15 @@ class UpdateChatDraftMessage extends Update {
 }
 
 class UpdateChatFilters extends Update {
-  List<ChatFilterInfo> chatFilters;
-  dynamic extra;
 
-  /// The list of chat filters or a chat filter has changed. 
-  /// [chatFilters] The new list of chat filters
+  /// The list of chat filters or a chat filter has changed
   UpdateChatFilters({this.chatFilters});
+
+  /// [chatFilters] The new list of chat filters
+  List<ChatFilterInfo> chatFilters;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatFilters.fromJson(Map<String, dynamic> json)  {
@@ -1282,15 +1409,19 @@ class UpdateChatFilters extends Update {
 }
 
 class UpdateChatOnlineMemberCount extends Update {
-  int chatId;
-  int onlineMemberCount;
-  dynamic extra;
 
-  /// The number of online group members has changed. This update with non-zero count is sent only for currently opened chats. There is no guarantee that it will be sent just after the count has changed. 
-  /// [chatId] Identifier of the chat . 
-  /// [onlineMemberCount] New number of online members in the chat, or 0 if unknown
+  /// The number of online group members has changed. This update with non-zero count is sent only for currently opened chats. There is no guarantee that it will be sent just after the count has changed
   UpdateChatOnlineMemberCount({this.chatId,
     this.onlineMemberCount});
+
+  /// [chatId] Identifier of the chat 
+  int chatId;
+
+  /// [onlineMemberCount] New number of online members in the chat, or 0 if unknown
+  int onlineMemberCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json)  {
@@ -1315,15 +1446,19 @@ class UpdateChatOnlineMemberCount extends Update {
 }
 
 class UpdateNotification extends Update {
-  int notificationGroupId;
-  Notification notification;
-  dynamic extra;
 
-  /// A notification was changed. 
-  /// [notificationGroupId] Unique notification group identifier . 
-  /// [notification] Changed notification
+  /// A notification was changed
   UpdateNotification({this.notificationGroupId,
     this.notification});
+
+  /// [notificationGroupId] Unique notification group identifier 
+  int notificationGroupId;
+
+  /// [notification] Changed notification
+  Notification notification;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNotification.fromJson(Map<String, dynamic> json)  {
@@ -1348,25 +1483,8 @@ class UpdateNotification extends Update {
 }
 
 class UpdateNotificationGroup extends Update {
-  int notificationGroupId;
-  NotificationGroupType type;
-  int chatId;
-  int notificationSettingsChatId;
-  bool isSilent;
-  int totalCount;
-  List<Notification> addedNotifications;
-  List<int> removedNotificationIds;
-  dynamic extra;
 
-  /// A list of active notifications in a notification group has changed. 
-  /// [notificationGroupId] Unique notification group identifier. 
-  /// [type] New type of the notification group. 
-  /// [chatId] Identifier of a chat to which all notifications in the group belong. 
-  /// [notificationSettingsChatId] Chat identifier, which notification settings must be applied to the added notifications. 
-  /// [isSilent] True, if the notifications should be shown without sound. 
-  /// [totalCount] Total number of unread notifications in the group, can be bigger than number of active notifications. 
-  /// [addedNotifications] List of added group notifications, sorted by notification updateNotificationGroup. 
-  /// [removedNotificationIds] Identifiers of removed group notifications, sorted by notification updateNotificationGroup
+  /// A list of active notifications in a notification group has changed
   UpdateNotificationGroup({this.notificationGroupId,
     this.type,
     this.chatId,
@@ -1375,6 +1493,33 @@ class UpdateNotificationGroup extends Update {
     this.totalCount,
     this.addedNotifications,
     this.removedNotificationIds});
+
+  /// [notificationGroupId] Unique notification group identifier
+  int notificationGroupId;
+
+  /// [type] New type of the notification group
+  NotificationGroupType type;
+
+  /// [chatId] Identifier of a chat to which all notifications in the group belong
+  int chatId;
+
+  /// [notificationSettingsChatId] Chat identifier, which notification settings must be applied to the added notifications
+  int notificationSettingsChatId;
+
+  /// [isSilent] True, if the notifications should be shown without sound
+  bool isSilent;
+
+  /// [totalCount] Total number of unread notifications in the group, can be bigger than number of active notifications
+  int totalCount;
+
+  /// [addedNotifications] List of added group notifications, sorted by notification updateNotificationGroup
+  List<Notification> addedNotifications;
+
+  /// [removedNotificationIds] Identifiers of removed group notifications, sorted by notification updateNotificationGroup
+  List<int> removedNotificationIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNotificationGroup.fromJson(Map<String, dynamic> json)  {
@@ -1411,12 +1556,15 @@ class UpdateNotificationGroup extends Update {
 }
 
 class UpdateActiveNotifications extends Update {
-  List<NotificationGroup> groups;
-  dynamic extra;
 
-  /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update. 
-  /// [groups] Lists of active notification groups
+  /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
   UpdateActiveNotifications({this.groups});
+
+  /// [groups] Lists of active notification groups
+  List<NotificationGroup> groups;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateActiveNotifications.fromJson(Map<String, dynamic> json)  {
@@ -1439,15 +1587,19 @@ class UpdateActiveNotifications extends Update {
 }
 
 class UpdateHavePendingNotifications extends Update {
-  bool haveDelayedNotifications;
-  bool haveUnreceivedNotifications;
-  dynamic extra;
 
-  /// Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications. 
-  /// [haveDelayedNotifications] True, if there are some delayed notification updates, which will be sent soon. 
-  /// [haveUnreceivedNotifications] True, if there can be some yet unreceived notifications, which are being fetched from the server
+  /// Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications
   UpdateHavePendingNotifications({this.haveDelayedNotifications,
     this.haveUnreceivedNotifications});
+
+  /// [haveDelayedNotifications] True, if there are some delayed notification updates, which will be sent soon
+  bool haveDelayedNotifications;
+
+  /// [haveUnreceivedNotifications] True, if there can be some yet unreceived notifications, which are being fetched from the server
+  bool haveUnreceivedNotifications;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json)  {
@@ -1472,21 +1624,27 @@ class UpdateHavePendingNotifications extends Update {
 }
 
 class UpdateDeleteMessages extends Update {
-  int chatId;
-  List<int> messageIds;
-  bool isPermanent;
-  bool fromCache;
-  dynamic extra;
 
-  /// Some messages were deleted. 
-  /// [chatId] Chat identifier . 
-  /// [messageIds] Identifiers of the deleted messages. 
-  /// [isPermanent] True, if the messages are permanently deleted by a user (as opposed to just becoming inaccessible). 
-  /// [fromCache] True, if the messages are deleted only from the cache and can possibly be retrieved again in the future
+  /// Some messages were deleted
   UpdateDeleteMessages({this.chatId,
     this.messageIds,
     this.isPermanent,
     this.fromCache});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [messageIds] Identifiers of the deleted messages
+  List<int> messageIds;
+
+  /// [isPermanent] True, if the messages are permanently deleted by a user (as opposed to just becoming inaccessible)
+  bool isPermanent;
+
+  /// [fromCache] True, if the messages are deleted only from the cache and can possibly be retrieved again in the future
+  bool fromCache;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateDeleteMessages.fromJson(Map<String, dynamic> json)  {
@@ -1515,18 +1673,23 @@ class UpdateDeleteMessages extends Update {
 }
 
 class UpdateUserChatAction extends Update {
-  int chatId;
-  int userId;
-  ChatAction action;
-  dynamic extra;
 
-  /// User activity in the chat has changed. 
-  /// [chatId] Chat identifier . 
-  /// [userId] Identifier of a user performing an action . 
-  /// [action] The action description
+  /// User activity in the chat has changed
   UpdateUserChatAction({this.chatId,
     this.userId,
     this.action});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [userId] Identifier of a user performing an action 
+  int userId;
+
+  /// [action] The action description
+  ChatAction action;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUserChatAction.fromJson(Map<String, dynamic> json)  {
@@ -1553,15 +1716,19 @@ class UpdateUserChatAction extends Update {
 }
 
 class UpdateUserStatus extends Update {
-  int userId;
-  UserStatus status;
-  dynamic extra;
 
-  /// The user went online or offline. 
-  /// [userId] User identifier . 
-  /// [status] New status of the user
+  /// The user went online or offline
   UpdateUserStatus({this.userId,
     this.status});
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [status] New status of the user
+  UserStatus status;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUserStatus.fromJson(Map<String, dynamic> json)  {
@@ -1586,12 +1753,15 @@ class UpdateUserStatus extends Update {
 }
 
 class UpdateUser extends Update {
-  User user;
-  dynamic extra;
 
-  /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application. 
-  /// [user] New data about the user
+  /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
   UpdateUser({this.user});
+
+  /// [user] New data about the user
+  User user;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUser.fromJson(Map<String, dynamic> json)  {
@@ -1614,12 +1784,15 @@ class UpdateUser extends Update {
 }
 
 class UpdateBasicGroup extends Update {
-  BasicGroup basicGroup;
-  dynamic extra;
 
-  /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application. 
-  /// [basicGroup] New data about the group
+  /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
   UpdateBasicGroup({this.basicGroup});
+
+  /// [basicGroup] New data about the group
+  BasicGroup basicGroup;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateBasicGroup.fromJson(Map<String, dynamic> json)  {
@@ -1642,12 +1815,15 @@ class UpdateBasicGroup extends Update {
 }
 
 class UpdateSupergroup extends Update {
-  Supergroup supergroup;
-  dynamic extra;
 
-  /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application. 
-  /// [supergroup] New data about the supergroup
+  /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
   UpdateSupergroup({this.supergroup});
+
+  /// [supergroup] New data about the supergroup
+  Supergroup supergroup;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSupergroup.fromJson(Map<String, dynamic> json)  {
@@ -1670,12 +1846,15 @@ class UpdateSupergroup extends Update {
 }
 
 class UpdateSecretChat extends Update {
-  SecretChat secretChat;
-  dynamic extra;
 
-  /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application. 
-  /// [secretChat] New data about the secret chat
+  /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
   UpdateSecretChat({this.secretChat});
+
+  /// [secretChat] New data about the secret chat
+  SecretChat secretChat;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSecretChat.fromJson(Map<String, dynamic> json)  {
@@ -1698,15 +1877,19 @@ class UpdateSecretChat extends Update {
 }
 
 class UpdateUserFullInfo extends Update {
-  int userId;
-  UserFullInfo userFullInfo;
-  dynamic extra;
 
-  /// Some data from userFullInfo has been changed. 
-  /// [userId] User identifier . 
-  /// [userFullInfo] New full information about the user
+  /// Some data from userFullInfo has been changed
   UpdateUserFullInfo({this.userId,
     this.userFullInfo});
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [userFullInfo] New full information about the user
+  UserFullInfo userFullInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUserFullInfo.fromJson(Map<String, dynamic> json)  {
@@ -1731,15 +1914,19 @@ class UpdateUserFullInfo extends Update {
 }
 
 class UpdateBasicGroupFullInfo extends Update {
-  int basicGroupId;
-  BasicGroupFullInfo basicGroupFullInfo;
-  dynamic extra;
 
-  /// Some data from basicGroupFullInfo has been changed. 
-  /// [basicGroupId] Identifier of a basic group . 
-  /// [basicGroupFullInfo] New full information about the group
+  /// Some data from basicGroupFullInfo has been changed
   UpdateBasicGroupFullInfo({this.basicGroupId,
     this.basicGroupFullInfo});
+
+  /// [basicGroupId] Identifier of a basic group 
+  int basicGroupId;
+
+  /// [basicGroupFullInfo] New full information about the group
+  BasicGroupFullInfo basicGroupFullInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json)  {
@@ -1764,15 +1951,19 @@ class UpdateBasicGroupFullInfo extends Update {
 }
 
 class UpdateSupergroupFullInfo extends Update {
-  int supergroupId;
-  SupergroupFullInfo supergroupFullInfo;
-  dynamic extra;
 
-  /// Some data from supergroupFullInfo has been changed. 
-  /// [supergroupId] Identifier of the supergroup or channel . 
-  /// [supergroupFullInfo] New full information about the supergroup
+  /// Some data from supergroupFullInfo has been changed
   UpdateSupergroupFullInfo({this.supergroupId,
     this.supergroupFullInfo});
+
+  /// [supergroupId] Identifier of the supergroup or channel 
+  int supergroupId;
+
+  /// [supergroupFullInfo] New full information about the supergroup
+  SupergroupFullInfo supergroupFullInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json)  {
@@ -1797,15 +1988,19 @@ class UpdateSupergroupFullInfo extends Update {
 }
 
 class UpdateServiceNotification extends Update {
-  String type;
-  MessageContent content;
-  dynamic extra;
 
-  /// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification. 
-  /// [type] Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" should be shown under notification; if user presses the second, all local data should be destroyed using Destroy method. 
-  /// [content] Notification content
+  /// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification
   UpdateServiceNotification({this.type,
     this.content});
+
+  /// [type] Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" should be shown under notification; if user presses the second, all local data should be destroyed using Destroy method
+  String type;
+
+  /// [content] Notification content
+  MessageContent content;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateServiceNotification.fromJson(Map<String, dynamic> json)  {
@@ -1830,12 +2025,15 @@ class UpdateServiceNotification extends Update {
 }
 
 class UpdateFile extends Update {
-  File file;
-  dynamic extra;
 
-  /// Information about a file was updated. 
-  /// [file] New data about the file
+  /// Information about a file was updated
   UpdateFile({this.file});
+
+  /// [file] New data about the file
+  File file;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateFile.fromJson(Map<String, dynamic> json)  {
@@ -1858,25 +2056,31 @@ class UpdateFile extends Update {
 }
 
 class UpdateFileGenerationStart extends Update {
-  int generationId;
-  String originalPath;
-  String destinationPath;
-  String conversion;
-  dynamic extra;
 
-  /// The file generation process needs to be started by the application. 
-  /// [generationId] Unique identifier for the generation process. 
-  /// [originalPath] The path to a file from which a new file is generated; may be empty. 
-  /// [destinationPath] The path to a file that should be created and where the new file should be generated. 
-  /// [conversion] String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the application
+  /// The file generation process needs to be started by the application
   UpdateFileGenerationStart({this.generationId,
     this.originalPath,
     this.destinationPath,
     this.conversion});
 
+  /// [generationId] Unique identifier for the generation process
+  int generationId;
+
+  /// [originalPath] The path to a file from which a new file is generated; may be empty
+  String originalPath;
+
+  /// [destinationPath] The path to a file that should be created and where the new file should be generated
+  String destinationPath;
+
+  /// [conversion] String specifying the conversion applied to the original file. If conversion is "#url#" than original_path contains an HTTP/HTTPS URL of a file, which should be downloaded by the application
+  String conversion;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateFileGenerationStart.fromJson(Map<String, dynamic> json)  {
-    this.generationId = json['generation_id'];
+    this.generationId = int.tryParse(json['generation_id'] ?? "");
     this.originalPath = json['original_path'];
     this.destinationPath = json['destination_path'];
     this.conversion = json['conversion'];
@@ -1901,16 +2105,19 @@ class UpdateFileGenerationStart extends Update {
 }
 
 class UpdateFileGenerationStop extends Update {
-  int generationId;
-  dynamic extra;
 
-  /// File generation is no longer needed. 
-  /// [generationId] Unique identifier for the generation process
+  /// File generation is no longer needed
   UpdateFileGenerationStop({this.generationId});
+
+  /// [generationId] Unique identifier for the generation process
+  int generationId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateFileGenerationStop.fromJson(Map<String, dynamic> json)  {
-    this.generationId = json['generation_id'];
+    this.generationId = int.tryParse(json['generation_id'] ?? "");
     this.extra = json['@extra'];
   }
 
@@ -1929,12 +2136,15 @@ class UpdateFileGenerationStop extends Update {
 }
 
 class UpdateCall extends Update {
-  Call call;
-  dynamic extra;
 
-  /// New call was created or information about a call was updated. 
-  /// [call] New data about a call
+  /// New call was created or information about a call was updated
   UpdateCall({this.call});
+
+  /// [call] New data about a call
+  Call call;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateCall.fromJson(Map<String, dynamic> json)  {
@@ -1957,15 +2167,19 @@ class UpdateCall extends Update {
 }
 
 class UpdateUserPrivacySettingRules extends Update {
-  UserPrivacySetting setting;
-  UserPrivacySettingRules rules;
-  dynamic extra;
 
-  /// Some privacy setting rules have been changed. 
-  /// [setting] The privacy setting . 
-  /// [rules] New privacy rules
+  /// Some privacy setting rules have been changed
   UpdateUserPrivacySettingRules({this.setting,
     this.rules});
+
+  /// [setting] The privacy setting 
+  UserPrivacySetting setting;
+
+  /// [rules] New privacy rules
+  UserPrivacySettingRules rules;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json)  {
@@ -1990,18 +2204,23 @@ class UpdateUserPrivacySettingRules extends Update {
 }
 
 class UpdateUnreadMessageCount extends Update {
-  ChatList chatList;
-  int unreadCount;
-  int unreadUnmutedCount;
-  dynamic extra;
 
-  /// Number of unread messages in a chat list has changed. This update is sent only if the message database is used. 
-  /// [chatList] The chat list with changed number of unread messages. 
-  /// [unreadCount] Total number of unread messages. 
-  /// [unreadUnmutedCount] Total number of unread messages in unmuted chats
+  /// Number of unread messages in a chat list has changed. This update is sent only if the message database is used
   UpdateUnreadMessageCount({this.chatList,
     this.unreadCount,
     this.unreadUnmutedCount});
+
+  /// [chatList] The chat list with changed number of unread messages
+  ChatList chatList;
+
+  /// [unreadCount] Total number of unread messages
+  int unreadCount;
+
+  /// [unreadUnmutedCount] Total number of unread messages in unmuted chats
+  int unreadUnmutedCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json)  {
@@ -2028,27 +2247,35 @@ class UpdateUnreadMessageCount extends Update {
 }
 
 class UpdateUnreadChatCount extends Update {
-  ChatList chatList;
-  int totalCount;
-  int unreadCount;
-  int unreadUnmutedCount;
-  int markedAsUnreadCount;
-  int markedAsUnreadUnmutedCount;
-  dynamic extra;
 
-  /// Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used. 
-  /// [chatList] The chat list with changed number of unread messages. 
-  /// [totalCount] Approximate total number of chats in the chat list. 
-  /// [unreadCount] Total number of unread chats. 
-  /// [unreadUnmutedCount] Total number of unread unmuted chats. 
-  /// [markedAsUnreadCount] Total number of chats marked as unread. 
-  /// [markedAsUnreadUnmutedCount] Total number of unmuted chats marked as unread
+  /// Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used
   UpdateUnreadChatCount({this.chatList,
     this.totalCount,
     this.unreadCount,
     this.unreadUnmutedCount,
     this.markedAsUnreadCount,
     this.markedAsUnreadUnmutedCount});
+
+  /// [chatList] The chat list with changed number of unread messages
+  ChatList chatList;
+
+  /// [totalCount] Approximate total number of chats in the chat list
+  int totalCount;
+
+  /// [unreadCount] Total number of unread chats
+  int unreadCount;
+
+  /// [unreadUnmutedCount] Total number of unread unmuted chats
+  int unreadUnmutedCount;
+
+  /// [markedAsUnreadCount] Total number of chats marked as unread
+  int markedAsUnreadCount;
+
+  /// [markedAsUnreadUnmutedCount] Total number of unmuted chats marked as unread
+  int markedAsUnreadUnmutedCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUnreadChatCount.fromJson(Map<String, dynamic> json)  {
@@ -2081,15 +2308,19 @@ class UpdateUnreadChatCount extends Update {
 }
 
 class UpdateOption extends Update {
-  String name;
-  OptionValue value;
-  dynamic extra;
 
-  /// An option changed its value. 
-  /// [name] The option name . 
-  /// [value] The new option value
+  /// An option changed its value
   UpdateOption({this.name,
     this.value});
+
+  /// [name] The option name 
+  String name;
+
+  /// [value] The new option value
+  OptionValue value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateOption.fromJson(Map<String, dynamic> json)  {
@@ -2114,12 +2345,15 @@ class UpdateOption extends Update {
 }
 
 class UpdateStickerSet extends Update {
-  StickerSet stickerSet;
-  dynamic extra;
 
-  /// A sticker set has changed. 
-  /// [stickerSet] The sticker set
+  /// A sticker set has changed
   UpdateStickerSet({this.stickerSet});
+
+  /// [stickerSet] The sticker set
+  StickerSet stickerSet;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateStickerSet.fromJson(Map<String, dynamic> json)  {
@@ -2142,15 +2376,19 @@ class UpdateStickerSet extends Update {
 }
 
 class UpdateInstalledStickerSets extends Update {
-  bool isMasks;
-  List<int> stickerSetIds;
-  dynamic extra;
 
-  /// The list of installed sticker sets was updated. 
-  /// [isMasks] True, if the list of installed mask sticker sets was updated . 
-  /// [stickerSetIds] The new list of installed ordinary sticker sets
+  /// The list of installed sticker sets was updated
   UpdateInstalledStickerSets({this.isMasks,
     this.stickerSetIds});
+
+  /// [isMasks] True, if the list of installed mask sticker sets was updated 
+  bool isMasks;
+
+  /// [stickerSetIds] The new list of installed ordinary sticker sets
+  List<int> stickerSetIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json)  {
@@ -2175,12 +2413,15 @@ class UpdateInstalledStickerSets extends Update {
 }
 
 class UpdateTrendingStickerSets extends Update {
-  StickerSets stickerSets;
-  dynamic extra;
 
-  /// The list of trending sticker sets was updated or some of them were viewed. 
-  /// [stickerSets] The prefix of the list of trending sticker sets with the newest trending sticker sets
+  /// The list of trending sticker sets was updated or some of them were viewed
   UpdateTrendingStickerSets({this.stickerSets});
+
+  /// [stickerSets] The prefix of the list of trending sticker sets with the newest trending sticker sets
+  StickerSets stickerSets;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json)  {
@@ -2203,15 +2444,19 @@ class UpdateTrendingStickerSets extends Update {
 }
 
 class UpdateRecentStickers extends Update {
-  bool isAttached;
-  List<int> stickerIds;
-  dynamic extra;
 
-  /// The list of recently used stickers was updated. 
-  /// [isAttached] True, if the list of stickers attached to photo or video files was updated, otherwise the list of sent stickers is updated . 
-  /// [stickerIds] The new list of file identifiers of recently used stickers
+  /// The list of recently used stickers was updated
   UpdateRecentStickers({this.isAttached,
     this.stickerIds});
+
+  /// [isAttached] True, if the list of stickers attached to photo or video files was updated, otherwise the list of sent stickers is updated 
+  bool isAttached;
+
+  /// [stickerIds] The new list of file identifiers of recently used stickers
+  List<int> stickerIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateRecentStickers.fromJson(Map<String, dynamic> json)  {
@@ -2236,12 +2481,15 @@ class UpdateRecentStickers extends Update {
 }
 
 class UpdateFavoriteStickers extends Update {
-  List<int> stickerIds;
-  dynamic extra;
 
-  /// The list of favorite stickers was updated. 
-  /// [stickerIds] The new list of file identifiers of favorite stickers
+  /// The list of favorite stickers was updated
   UpdateFavoriteStickers({this.stickerIds});
+
+  /// [stickerIds] The new list of file identifiers of favorite stickers
+  List<int> stickerIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateFavoriteStickers.fromJson(Map<String, dynamic> json)  {
@@ -2264,12 +2512,15 @@ class UpdateFavoriteStickers extends Update {
 }
 
 class UpdateSavedAnimations extends Update {
-  List<int> animationIds;
-  dynamic extra;
 
-  /// The list of saved animations was updated. 
-  /// [animationIds] The new list of file identifiers of saved animations
+  /// The list of saved animations was updated
   UpdateSavedAnimations({this.animationIds});
+
+  /// [animationIds] The new list of file identifiers of saved animations
+  List<int> animationIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSavedAnimations.fromJson(Map<String, dynamic> json)  {
@@ -2292,15 +2543,19 @@ class UpdateSavedAnimations extends Update {
 }
 
 class UpdateSelectedBackground extends Update {
-  bool forDarkTheme;
-  Background background;
-  dynamic extra;
 
-  /// The selected background has changed. 
-  /// [forDarkTheme] True, if background for dark theme has changed . 
-  /// [background] The new selected background; may be null
+  /// The selected background has changed
   UpdateSelectedBackground({this.forDarkTheme,
     this.background});
+
+  /// [forDarkTheme] True, if background for dark theme has changed 
+  bool forDarkTheme;
+
+  /// [background] The new selected background; may be null
+  Background background;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSelectedBackground.fromJson(Map<String, dynamic> json)  {
@@ -2325,18 +2580,23 @@ class UpdateSelectedBackground extends Update {
 }
 
 class UpdateLanguagePackStrings extends Update {
-  String localizationTarget;
-  String languagePackId;
-  List<LanguagePackString> strings;
-  dynamic extra;
 
-  /// Some language pack strings have been updated. 
-  /// [localizationTarget] Localization target to which the language pack belongs . 
-  /// [languagePackId] Identifier of the updated language pack . 
-  /// [strings] List of changed language pack strings
+  /// Some language pack strings have been updated
   UpdateLanguagePackStrings({this.localizationTarget,
     this.languagePackId,
     this.strings});
+
+  /// [localizationTarget] Localization target to which the language pack belongs 
+  String localizationTarget;
+
+  /// [languagePackId] Identifier of the updated language pack 
+  String languagePackId;
+
+  /// [strings] List of changed language pack strings
+  List<LanguagePackString> strings;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json)  {
@@ -2363,12 +2623,15 @@ class UpdateLanguagePackStrings extends Update {
 }
 
 class UpdateConnectionState extends Update {
-  ConnectionState state;
-  dynamic extra;
 
-  /// The connection state has changed. 
-  /// [state] The new connection state
+  /// The connection state has changed
   UpdateConnectionState({this.state});
+
+  /// [state] The new connection state
+  ConnectionState state;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateConnectionState.fromJson(Map<String, dynamic> json)  {
@@ -2391,15 +2654,19 @@ class UpdateConnectionState extends Update {
 }
 
 class UpdateTermsOfService extends Update {
-  String termsOfServiceId;
-  TermsOfService termsOfService;
-  dynamic extra;
 
-  /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update". 
-  /// [termsOfServiceId] Identifier of the terms of service . 
-  /// [termsOfService] The new terms of service
+  /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update"
   UpdateTermsOfService({this.termsOfServiceId,
     this.termsOfService});
+
+  /// [termsOfServiceId] Identifier of the terms of service 
+  String termsOfServiceId;
+
+  /// [termsOfService] The new terms of service
+  TermsOfService termsOfService;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateTermsOfService.fromJson(Map<String, dynamic> json)  {
@@ -2424,12 +2691,15 @@ class UpdateTermsOfService extends Update {
 }
 
 class UpdateUsersNearby extends Update {
-  List<ChatNearby> usersNearby;
-  dynamic extra;
 
-  /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request. 
-  /// [usersNearby] The new list of users nearby
+  /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request
   UpdateUsersNearby({this.usersNearby});
+
+  /// [usersNearby] The new list of users nearby
+  List<ChatNearby> usersNearby;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateUsersNearby.fromJson(Map<String, dynamic> json)  {
@@ -2452,12 +2722,15 @@ class UpdateUsersNearby extends Update {
 }
 
 class UpdateDiceEmojis extends Update {
-  List<String> emojis;
-  dynamic extra;
 
-  /// The list of supported dice emojis has changed. 
-  /// [emojis] The new list of supported dice emojis
+  /// The list of supported dice emojis has changed
   UpdateDiceEmojis({this.emojis});
+
+  /// [emojis] The new list of supported dice emojis
+  List<String> emojis;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateDiceEmojis.fromJson(Map<String, dynamic> json)  {
@@ -2480,15 +2753,19 @@ class UpdateDiceEmojis extends Update {
 }
 
 class UpdateAnimationSearchParameters extends Update {
-  String provider;
-  List<String> emojis;
-  dynamic extra;
 
-  /// The parameters of animation search through GetOption("animation_search_bot_username") bot has changed. 
-  /// [provider] Name of the animation search provider . 
-  /// [emojis] The new list of emojis suggested for searching
+  /// The parameters of animation search through GetOption("animation_search_bot_username") bot has changed
   UpdateAnimationSearchParameters({this.provider,
     this.emojis});
+
+  /// [provider] Name of the animation search provider 
+  String provider;
+
+  /// [emojis] The new list of emojis suggested for searching
+  List<String> emojis;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json)  {
@@ -2513,15 +2790,19 @@ class UpdateAnimationSearchParameters extends Update {
 }
 
 class UpdateSuggestedActions extends Update {
-  List<SuggestedAction> addedActions;
-  List<SuggestedAction> removedActions;
-  dynamic extra;
 
-  /// The list of suggested to the user actions has changed. 
-  /// [addedActions] Added suggested actions . 
-  /// [removedActions] Removed suggested actions
+  /// The list of suggested to the user actions has changed
   UpdateSuggestedActions({this.addedActions,
     this.removedActions});
+
+  /// [addedActions] Added suggested actions 
+  List<SuggestedAction> addedActions;
+
+  /// [removedActions] Removed suggested actions
+  List<SuggestedAction> removedActions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateSuggestedActions.fromJson(Map<String, dynamic> json)  {
@@ -2546,28 +2827,35 @@ class UpdateSuggestedActions extends Update {
 }
 
 class UpdateNewInlineQuery extends Update {
-  int id;
-  int senderUserId;
-  Location userLocation;
-  String query;
-  String offset;
-  dynamic extra;
 
-  /// A new incoming inline query; for bots only. 
-  /// [id] Unique query identifier . 
-  /// [senderUserId] Identifier of the user who sent the query . 
-  /// [userLocation] User location; may be null. 
-  /// [query] Text of the query. 
-  /// [offset] Offset of the first entry to return
+  /// A new incoming inline query; for bots only
   UpdateNewInlineQuery({this.id,
     this.senderUserId,
     this.userLocation,
     this.query,
     this.offset});
 
+  /// [id] Unique query identifier 
+  int id;
+
+  /// [senderUserId] Identifier of the user who sent the query 
+  int senderUserId;
+
+  /// [userLocation] User location; may be null
+  Location userLocation;
+
+  /// [query] Text of the query
+  String query;
+
+  /// [offset] Offset of the first entry to return
+  String offset;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewInlineQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.senderUserId = json['sender_user_id'];
     this.userLocation = Location.fromJson(json['user_location'] ?? <String, dynamic>{});
     this.query = json['query'];
@@ -2594,24 +2882,31 @@ class UpdateNewInlineQuery extends Update {
 }
 
 class UpdateNewChosenInlineResult extends Update {
-  int senderUserId;
-  Location userLocation;
-  String query;
-  String resultId;
-  String inlineMessageId;
-  dynamic extra;
 
-  /// The user has chosen a result of an inline query; for bots only. 
-  /// [senderUserId] Identifier of the user who sent the query . 
-  /// [userLocation] User location; may be null. 
-  /// [query] Text of the query. 
-  /// [resultId] Identifier of the chosen result . 
-  /// [inlineMessageId] Identifier of the sent inline message, if known
+  /// The user has chosen a result of an inline query; for bots only
   UpdateNewChosenInlineResult({this.senderUserId,
     this.userLocation,
     this.query,
     this.resultId,
     this.inlineMessageId});
+
+  /// [senderUserId] Identifier of the user who sent the query 
+  int senderUserId;
+
+  /// [userLocation] User location; may be null
+  Location userLocation;
+
+  /// [query] Text of the query
+  String query;
+
+  /// [resultId] Identifier of the chosen result 
+  String resultId;
+
+  /// [inlineMessageId] Identifier of the sent inline message, if known
+  String inlineMessageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json)  {
@@ -2642,21 +2937,8 @@ class UpdateNewChosenInlineResult extends Update {
 }
 
 class UpdateNewCallbackQuery extends Update {
-  int id;
-  int senderUserId;
-  int chatId;
-  int messageId;
-  int chatInstance;
-  CallbackQueryPayload payload;
-  dynamic extra;
 
-  /// A new incoming callback query; for bots only. 
-  /// [id] Unique query identifier . 
-  /// [senderUserId] Identifier of the user who sent the query. 
-  /// [chatId] Identifier of the chat where the query was sent. 
-  /// [messageId] Identifier of the message, from which the query originated. 
-  /// [chatInstance] Identifier that uniquely corresponds to the chat to which the message was sent. 
-  /// [payload] Query payload
+  /// A new incoming callback query; for bots only
   UpdateNewCallbackQuery({this.id,
     this.senderUserId,
     this.chatId,
@@ -2664,13 +2946,34 @@ class UpdateNewCallbackQuery extends Update {
     this.chatInstance,
     this.payload});
 
+  /// [id] Unique query identifier 
+  int id;
+
+  /// [senderUserId] Identifier of the user who sent the query
+  int senderUserId;
+
+  /// [chatId] Identifier of the chat where the query was sent
+  int chatId;
+
+  /// [messageId] Identifier of the message, from which the query originated
+  int messageId;
+
+  /// [chatInstance] Identifier that uniquely corresponds to the chat to which the message was sent
+  int chatInstance;
+
+  /// [payload] Query payload
+  CallbackQueryPayload payload;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.senderUserId = json['sender_user_id'];
     this.chatId = json['chat_id'];
     this.messageId = json['message_id'];
-    this.chatInstance = json['chat_instance'];
+    this.chatInstance = int.tryParse(json['chat_instance'] ?? "");
     this.payload = CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{});
     this.extra = json['@extra'];
   }
@@ -2695,31 +2998,38 @@ class UpdateNewCallbackQuery extends Update {
 }
 
 class UpdateNewInlineCallbackQuery extends Update {
-  int id;
-  int senderUserId;
-  String inlineMessageId;
-  int chatInstance;
-  CallbackQueryPayload payload;
-  dynamic extra;
 
-  /// A new incoming callback query from a message sent via a bot; for bots only. 
-  /// [id] Unique query identifier . 
-  /// [senderUserId] Identifier of the user who sent the query . 
-  /// [inlineMessageId] Identifier of the inline message, from which the query originated. 
-  /// [chatInstance] An identifier uniquely corresponding to the chat a message was sent to. 
-  /// [payload] Query payload
+  /// A new incoming callback query from a message sent via a bot; for bots only
   UpdateNewInlineCallbackQuery({this.id,
     this.senderUserId,
     this.inlineMessageId,
     this.chatInstance,
     this.payload});
 
+  /// [id] Unique query identifier 
+  int id;
+
+  /// [senderUserId] Identifier of the user who sent the query 
+  int senderUserId;
+
+  /// [inlineMessageId] Identifier of the inline message, from which the query originated
+  String inlineMessageId;
+
+  /// [chatInstance] An identifier uniquely corresponding to the chat a message was sent to
+  int chatInstance;
+
+  /// [payload] Query payload
+  CallbackQueryPayload payload;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.senderUserId = json['sender_user_id'];
     this.inlineMessageId = json['inline_message_id'];
-    this.chatInstance = json['chat_instance'];
+    this.chatInstance = int.tryParse(json['chat_instance'] ?? "");
     this.payload = CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{});
     this.extra = json['@extra'];
   }
@@ -2743,25 +3053,31 @@ class UpdateNewInlineCallbackQuery extends Update {
 }
 
 class UpdateNewShippingQuery extends Update {
-  int id;
-  int senderUserId;
-  String invoicePayload;
-  Address shippingAddress;
-  dynamic extra;
 
-  /// A new incoming shipping query; for bots only. Only for invoices with flexible price. 
-  /// [id] Unique query identifier . 
-  /// [senderUserId] Identifier of the user who sent the query . 
-  /// [invoicePayload] Invoice payload . 
-  /// [shippingAddress] User shipping address
+  /// A new incoming shipping query; for bots only. Only for invoices with flexible price
   UpdateNewShippingQuery({this.id,
     this.senderUserId,
     this.invoicePayload,
     this.shippingAddress});
 
+  /// [id] Unique query identifier 
+  int id;
+
+  /// [senderUserId] Identifier of the user who sent the query 
+  int senderUserId;
+
+  /// [invoicePayload] Invoice payload 
+  String invoicePayload;
+
+  /// [shippingAddress] User shipping address
+  Address shippingAddress;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewShippingQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.senderUserId = json['sender_user_id'];
     this.invoicePayload = json['invoice_payload'];
     this.shippingAddress = Address.fromJson(json['shipping_address'] ?? <String, dynamic>{});
@@ -2786,23 +3102,8 @@ class UpdateNewShippingQuery extends Update {
 }
 
 class UpdateNewPreCheckoutQuery extends Update {
-  int id;
-  int senderUserId;
-  String currency;
-  int totalAmount;
-  String invoicePayload;
-  String shippingOptionId;
-  OrderInfo orderInfo;
-  dynamic extra;
 
-  /// A new incoming pre-checkout query; for bots only. Contains full information about a checkout. 
-  /// [id] Unique query identifier . 
-  /// [senderUserId] Identifier of the user who sent the query . 
-  /// [currency] Currency for the product price . 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the currency. 
-  /// [invoicePayload] Invoice payload. 
-  /// [shippingOptionId] Identifier of a shipping option chosen by the user; may be empty if not applicable . 
-  /// [orderInfo] Information about the order; may be null
+  /// A new incoming pre-checkout query; for bots only. Contains full information about a checkout
   UpdateNewPreCheckoutQuery({this.id,
     this.senderUserId,
     this.currency,
@@ -2811,9 +3112,33 @@ class UpdateNewPreCheckoutQuery extends Update {
     this.shippingOptionId,
     this.orderInfo});
 
+  /// [id] Unique query identifier 
+  int id;
+
+  /// [senderUserId] Identifier of the user who sent the query 
+  int senderUserId;
+
+  /// [currency] Currency for the product price 
+  String currency;
+
+  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
+  int totalAmount;
+
+  /// [invoicePayload] Invoice payload
+  String invoicePayload;
+
+  /// [shippingOptionId] Identifier of a shipping option chosen by the user; may be empty if not applicable 
+  String shippingOptionId;
+
+  /// [orderInfo] Information about the order; may be null
+  OrderInfo orderInfo;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.senderUserId = json['sender_user_id'];
     this.currency = json['currency'];
     this.totalAmount = json['total_amount'];
@@ -2844,12 +3169,15 @@ class UpdateNewPreCheckoutQuery extends Update {
 }
 
 class UpdateNewCustomEvent extends Update {
-  String event;
-  dynamic extra;
 
-  /// A new incoming event; for bots only. 
-  /// [event] A JSON-serialized event
+  /// A new incoming event; for bots only
   UpdateNewCustomEvent({this.event});
+
+  /// [event] A JSON-serialized event
+  String event;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdateNewCustomEvent.fromJson(Map<String, dynamic> json)  {
@@ -2872,22 +3200,27 @@ class UpdateNewCustomEvent extends Update {
 }
 
 class UpdateNewCustomQuery extends Update {
-  int id;
-  String data;
-  int timeout;
-  dynamic extra;
 
-  /// A new incoming query; for bots only. 
-  /// [id] The query identifier . 
-  /// [data] JSON-serialized query data . 
-  /// [timeout] Query timeout
+  /// A new incoming query; for bots only
   UpdateNewCustomQuery({this.id,
     this.data,
     this.timeout});
 
+  /// [id] The query identifier 
+  int id;
+
+  /// [data] JSON-serialized query data 
+  String data;
+
+  /// [timeout] Query timeout
+  int timeout;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdateNewCustomQuery.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.data = json['data'];
     this.timeout = json['timeout'];
     this.extra = json['@extra'];
@@ -2910,12 +3243,15 @@ class UpdateNewCustomQuery extends Update {
 }
 
 class UpdatePoll extends Update {
-  Poll poll;
-  dynamic extra;
 
-  /// A poll was updated; for bots only. 
-  /// [poll] New data about the poll
+  /// A poll was updated; for bots only
   UpdatePoll({this.poll});
+
+  /// [poll] New data about the poll
+  Poll poll;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UpdatePoll.fromJson(Map<String, dynamic> json)  {
@@ -2938,22 +3274,27 @@ class UpdatePoll extends Update {
 }
 
 class UpdatePollAnswer extends Update {
-  int pollId;
-  int userId;
-  List<int> optionIds;
-  dynamic extra;
 
-  /// A user changed the answer to a poll; for bots only. 
-  /// [pollId] Unique poll identifier . 
-  /// [userId] The user, who changed the answer to the poll . 
-  /// [optionIds] 0-based identifiers of answer options, chosen by the user
+  /// A user changed the answer to a poll; for bots only
   UpdatePollAnswer({this.pollId,
     this.userId,
     this.optionIds});
 
+  /// [pollId] Unique poll identifier 
+  int pollId;
+
+  /// [userId] The user, who changed the answer to the poll 
+  int userId;
+
+  /// [optionIds] 0-based identifiers of answer options, chosen by the user
+  List<int> optionIds;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   UpdatePollAnswer.fromJson(Map<String, dynamic> json)  {
-    this.pollId = json['poll_id'];
+    this.pollId = int.tryParse(json['poll_id'] ?? "");
     this.userId = json['user_id'];
     this.optionIds = List<int>.from((json['option_ids'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];

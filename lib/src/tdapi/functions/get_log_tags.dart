@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class GetLogTags extends TdFunction {
-  dynamic extra;
 
   /// Returns list of available TDLib internal log tags, for example,
   GetLogTags();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetLogTags.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class SupergroupMembersFilter extends TdObject {
-  
 
   /// Specifies the kind of chat members to return in getSupergroupMembers
   SupergroupMembersFilter();
+
+  
 
   /// a SupergroupMembersFilter return type can be :
   /// * SupergroupMembersFilterRecent
@@ -49,10 +50,11 @@ class SupergroupMembersFilter extends TdObject {
 }
 
 class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
-  
 
   /// Returns recently active users in reverse chronological order
   SupergroupMembersFilterRecent();
+
+  
 
   /// Parse from a json
   SupergroupMembersFilterRecent.fromJson(Map<String, dynamic> json) ;
@@ -71,11 +73,12 @@ class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
-  String query;
 
-  /// Returns contacts of the user, which are members of the supergroup or channel. 
-  /// [query] Query to search for
+  /// Returns contacts of the user, which are members of the supergroup or channel
   SupergroupMembersFilterContacts({this.query});
+
+  /// [query] Query to search for
+  String query;
 
   /// Parse from a json
   SupergroupMembersFilterContacts.fromJson(Map<String, dynamic> json)  {
@@ -97,10 +100,11 @@ class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
-  
 
   /// Returns the owner and administrators
   SupergroupMembersFilterAdministrators();
+
+  
 
   /// Parse from a json
   SupergroupMembersFilterAdministrators.fromJson(Map<String, dynamic> json) ;
@@ -119,11 +123,12 @@ class SupergroupMembersFilterAdministrators extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
-  String query;
 
-  /// Used to search for supergroup or channel members via a (string) query. 
-  /// [query] Query to search for
+  /// Used to search for supergroup or channel members via a (string) query
   SupergroupMembersFilterSearch({this.query});
+
+  /// [query] Query to search for
+  String query;
 
   /// Parse from a json
   SupergroupMembersFilterSearch.fromJson(Map<String, dynamic> json)  {
@@ -145,11 +150,12 @@ class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
-  String query;
 
-  /// Returns restricted supergroup members; can be used only by administrators. 
-  /// [query] Query to search for
+  /// Returns restricted supergroup members; can be used only by administrators
   SupergroupMembersFilterRestricted({this.query});
+
+  /// [query] Query to search for
+  String query;
 
   /// Parse from a json
   SupergroupMembersFilterRestricted.fromJson(Map<String, dynamic> json)  {
@@ -171,11 +177,12 @@ class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
-  String query;
 
-  /// Returns users banned from the supergroup or channel; can be used only by administrators. 
-  /// [query] Query to search for
+  /// Returns users banned from the supergroup or channel; can be used only by administrators
   SupergroupMembersFilterBanned({this.query});
+
+  /// [query] Query to search for
+  String query;
 
   /// Parse from a json
   SupergroupMembersFilterBanned.fromJson(Map<String, dynamic> json)  {
@@ -197,10 +204,11 @@ class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
 }
 
 class SupergroupMembersFilterBots extends SupergroupMembersFilter {
-  
 
   /// Returns bot members of the supergroup or channel
   SupergroupMembersFilterBots();
+
+  
 
   /// Parse from a json
   SupergroupMembersFilterBots.fromJson(Map<String, dynamic> json) ;

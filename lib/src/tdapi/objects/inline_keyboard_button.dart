@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class InlineKeyboardButton extends TdObject {
-  String text;
-  InlineKeyboardButtonType type;
 
-  /// Represents a single button in an inline keyboard. 
-  /// [text] Text of the button . 
-  /// [type] Type of the button
+  /// Represents a single button in an inline keyboard
   InlineKeyboardButton({this.text,
     this.type});
+
+  /// [text] Text of the button 
+  String text;
+
+  /// [type] Type of the button
+  InlineKeyboardButtonType type;
 
   /// Parse from a json
   InlineKeyboardButton.fromJson(Map<String, dynamic> json)  {

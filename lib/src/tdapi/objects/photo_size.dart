@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class PhotoSize extends TdObject {
-  String type;
-  File photo;
-  int width;
-  int height;
 
-  /// Photo description. 
-  /// [type] Thumbnail type (see https://core.telegram.org/constructor/photoSize) . 
-  /// [photo] Information about the photo file . 
-  /// [width] Photo width . 
-  /// [height] Photo height
+  /// Photo description
   PhotoSize({this.type,
     this.photo,
     this.width,
     this.height});
+
+  /// [type] Thumbnail type (see https://core.telegram.org/constructor/photoSize) 
+  String type;
+
+  /// [photo] Information about the photo file 
+  File photo;
+
+  /// [width] Photo width 
+  int width;
+
+  /// [height] Photo height
+  int height;
 
   /// Parse from a json
   PhotoSize.fromJson(Map<String, dynamic> json)  {

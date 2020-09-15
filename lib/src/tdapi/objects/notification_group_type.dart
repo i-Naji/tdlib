@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class NotificationGroupType extends TdObject {
-  
 
   /// Describes the type of notifications in a notification group
   NotificationGroupType();
+
+  
 
   /// a NotificationGroupType return type can be :
   /// * NotificationGroupTypeMessages
@@ -40,10 +41,11 @@ class NotificationGroupType extends TdObject {
 }
 
 class NotificationGroupTypeMessages extends NotificationGroupType {
-  
 
   /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with ordinary unread messages
   NotificationGroupTypeMessages();
+
+  
 
   /// Parse from a json
   NotificationGroupTypeMessages.fromJson(Map<String, dynamic> json) ;
@@ -62,10 +64,11 @@ class NotificationGroupTypeMessages extends NotificationGroupType {
 }
 
 class NotificationGroupTypeMentions extends NotificationGroupType {
-  
 
   /// A group containing notifications of type notificationTypeNewMessage and notificationTypeNewPushMessage with unread mentions of the current user, replies to their messages, or a pinned message
   NotificationGroupTypeMentions();
+
+  
 
   /// Parse from a json
   NotificationGroupTypeMentions.fromJson(Map<String, dynamic> json) ;
@@ -84,10 +87,11 @@ class NotificationGroupTypeMentions extends NotificationGroupType {
 }
 
 class NotificationGroupTypeSecretChat extends NotificationGroupType {
-  
 
   /// A group containing a notification of type notificationTypeNewSecretChat
   NotificationGroupTypeSecretChat();
+
+  
 
   /// Parse from a json
   NotificationGroupTypeSecretChat.fromJson(Map<String, dynamic> json) ;
@@ -106,10 +110,11 @@ class NotificationGroupTypeSecretChat extends NotificationGroupType {
 }
 
 class NotificationGroupTypeCalls extends NotificationGroupType {
-  
 
   /// A group containing notifications of type notificationTypeNewCall
   NotificationGroupTypeCalls();
+
+  
 
   /// Parse from a json
   NotificationGroupTypeCalls.fromJson(Map<String, dynamic> json) ;

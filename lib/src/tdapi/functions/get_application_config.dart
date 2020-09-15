@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class GetApplicationConfig extends TdFunction {
-  dynamic extra;
 
   /// Returns application config, provided by the server. Can be called before authorization
   GetApplicationConfig();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetApplicationConfig.fromJson(Map<String, dynamic> json) ;

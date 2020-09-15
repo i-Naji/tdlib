@@ -1,28 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatEventLogFilters extends TdObject {
-  bool messageEdits;
-  bool messageDeletions;
-  bool messagePins;
-  bool memberJoins;
-  bool memberLeaves;
-  bool memberInvites;
-  bool memberPromotions;
-  bool memberRestrictions;
-  bool infoChanges;
-  bool settingChanges;
 
-  /// Represents a set of filters used to obtain a chat event log. 
-  /// [messageEdits] True, if message edits should be returned. 
-  /// [messageDeletions] True, if message deletions should be returned. 
-  /// [messagePins] True, if pin/unpin events should be returned. 
-  /// [memberJoins] True, if members joining events should be returned. 
-  /// [memberLeaves] True, if members leaving events should be returned. 
-  /// [memberInvites] True, if invited member events should be returned. 
-  /// [memberPromotions] True, if member promotion/demotion events should be returned. 
-  /// [memberRestrictions] True, if member restricted/unrestricted/banned/unbanned events should be returned. 
-  /// [infoChanges] True, if changes in chat information should be returned. 
-  /// [settingChanges] True, if changes in chat settings should be returned
+  /// Represents a set of filters used to obtain a chat event log
   ChatEventLogFilters({this.messageEdits,
     this.messageDeletions,
     this.messagePins,
@@ -33,6 +13,36 @@ class ChatEventLogFilters extends TdObject {
     this.memberRestrictions,
     this.infoChanges,
     this.settingChanges});
+
+  /// [messageEdits] True, if message edits should be returned
+  bool messageEdits;
+
+  /// [messageDeletions] True, if message deletions should be returned
+  bool messageDeletions;
+
+  /// [messagePins] True, if pin/unpin events should be returned
+  bool messagePins;
+
+  /// [memberJoins] True, if members joining events should be returned
+  bool memberJoins;
+
+  /// [memberLeaves] True, if members leaving events should be returned
+  bool memberLeaves;
+
+  /// [memberInvites] True, if invited member events should be returned
+  bool memberInvites;
+
+  /// [memberPromotions] True, if member promotion/demotion events should be returned
+  bool memberPromotions;
+
+  /// [memberRestrictions] True, if member restricted/unrestricted/banned/unbanned events should be returned
+  bool memberRestrictions;
+
+  /// [infoChanges] True, if changes in chat information should be returned
+  bool infoChanges;
+
+  /// [settingChanges] True, if changes in chat settings should be returned
+  bool settingChanges;
 
   /// Parse from a json
   ChatEventLogFilters.fromJson(Map<String, dynamic> json)  {

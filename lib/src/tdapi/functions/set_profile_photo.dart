@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetProfilePhoto extends TdFunction {
-  InputChatPhoto photo;
-  dynamic extra;
 
-  /// Changes a profile photo for the current user. 
-  /// [photo] Profile photo to set
+  /// Changes a profile photo for the current user
   SetProfilePhoto({this.photo});
+
+  /// [photo] Profile photo to set
+  InputChatPhoto photo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetProfilePhoto.fromJson(Map<String, dynamic> json) ;

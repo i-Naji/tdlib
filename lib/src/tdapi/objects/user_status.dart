@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class UserStatus extends TdObject {
-  
 
   /// Describes the last time the user was online
   UserStatus();
+
+  
 
   /// a UserStatus return type can be :
   /// * UserStatusEmpty
@@ -46,10 +47,11 @@ class UserStatus extends TdObject {
 }
 
 class UserStatusEmpty extends UserStatus {
-  
 
   /// The user status was never changed
   UserStatusEmpty();
+
+  
 
   /// Parse from a json
   UserStatusEmpty.fromJson(Map<String, dynamic> json) ;
@@ -68,11 +70,12 @@ class UserStatusEmpty extends UserStatus {
 }
 
 class UserStatusOnline extends UserStatus {
-  int expires;
 
-  /// The user is online. 
-  /// [expires] Point in time (Unix timestamp) when the user's online status will expire
+  /// The user is online
   UserStatusOnline({this.expires});
+
+  /// [expires] Point in time (Unix timestamp) when the user's online status will expire
+  int expires;
 
   /// Parse from a json
   UserStatusOnline.fromJson(Map<String, dynamic> json)  {
@@ -94,11 +97,12 @@ class UserStatusOnline extends UserStatus {
 }
 
 class UserStatusOffline extends UserStatus {
-  int wasOnline;
 
-  /// The user is offline. 
-  /// [wasOnline] Point in time (Unix timestamp) when the user was last online
+  /// The user is offline
   UserStatusOffline({this.wasOnline});
+
+  /// [wasOnline] Point in time (Unix timestamp) when the user was last online
+  int wasOnline;
 
   /// Parse from a json
   UserStatusOffline.fromJson(Map<String, dynamic> json)  {
@@ -120,10 +124,11 @@ class UserStatusOffline extends UserStatus {
 }
 
 class UserStatusRecently extends UserStatus {
-  
 
   /// The user was online recently
   UserStatusRecently();
+
+  
 
   /// Parse from a json
   UserStatusRecently.fromJson(Map<String, dynamic> json) ;
@@ -142,10 +147,11 @@ class UserStatusRecently extends UserStatus {
 }
 
 class UserStatusLastWeek extends UserStatus {
-  
 
   /// The user is offline, but was online last week
   UserStatusLastWeek();
+
+  
 
   /// Parse from a json
   UserStatusLastWeek.fromJson(Map<String, dynamic> json) ;
@@ -164,10 +170,11 @@ class UserStatusLastWeek extends UserStatus {
 }
 
 class UserStatusLastMonth extends UserStatus {
-  
 
   /// The user is offline, but was online last month
   UserStatusLastMonth();
+
+  
 
   /// Parse from a json
   UserStatusLastMonth.fromJson(Map<String, dynamic> json) ;

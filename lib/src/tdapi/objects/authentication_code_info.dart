@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class AuthenticationCodeInfo extends TdObject {
-  String phoneNumber;
-  AuthenticationCodeType type;
-  AuthenticationCodeType nextType;
-  int timeout;
-  dynamic extra;
 
-  /// Information about the authentication code that was sent. 
-  /// [phoneNumber] A phone number that is being authenticated . 
-  /// [type] Describes the way the code was sent to the user . 
-  /// [nextType] Describes the way the next code will be sent to the user; may be null . 
-  /// [timeout] Timeout before the code should be re-sent, in seconds
+  /// Information about the authentication code that was sent
   AuthenticationCodeInfo({this.phoneNumber,
     this.type,
     this.nextType,
     this.timeout});
+
+  /// [phoneNumber] A phone number that is being authenticated 
+  String phoneNumber;
+
+  /// [type] Describes the way the code was sent to the user 
+  AuthenticationCodeType type;
+
+  /// [nextType] Describes the way the next code will be sent to the user; may be null 
+  AuthenticationCodeType nextType;
+
+  /// [timeout] Timeout before the code should be re-sent, in seconds
+  int timeout;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AuthenticationCodeInfo.fromJson(Map<String, dynamic> json)  {

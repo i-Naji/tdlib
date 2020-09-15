@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class EditMessageReplyMarkup extends TdFunction {
-  int chatId;
-  int messageId;
-  ReplyMarkup replyMarkup;
-  dynamic extra;
 
-  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side. 
-  /// [chatId] The chat the message belongs to. 
-  /// [messageId] Identifier of the message . 
-  /// [replyMarkup] The new message reply markup
+  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
   EditMessageReplyMarkup({this.chatId,
     this.messageId,
     this.replyMarkup});
+
+  /// [chatId] The chat the message belongs to
+  int chatId;
+
+  /// [messageId] Identifier of the message 
+  int messageId;
+
+  /// [replyMarkup] The new message reply markup
+  ReplyMarkup replyMarkup;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditMessageReplyMarkup.fromJson(Map<String, dynamic> json) ;

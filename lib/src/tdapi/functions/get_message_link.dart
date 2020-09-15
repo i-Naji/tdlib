@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetMessageLink extends TdFunction {
-  int chatId;
-  int messageId;
-  dynamic extra;
 
-  /// Returns a private HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels. The link will work only for members of the chat. 
-  /// [chatId] Identifier of the chat to which the message belongs. 
-  /// [messageId] Identifier of the message
+  /// Returns a private HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels. The link will work only for members of the chat
   GetMessageLink({this.chatId,
     this.messageId});
+
+  /// [chatId] Identifier of the chat to which the message belongs
+  int chatId;
+
+  /// [messageId] Identifier of the message
+  int messageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetMessageLink.fromJson(Map<String, dynamic> json) ;

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestVectorStringObject extends TdObject {
-  List<TestString> value;
-  dynamic extra;
 
-  /// A simple object containing a vector of objects that hold a string; for testing only. 
-  /// [value] Vector of objects
+  /// A simple object containing a vector of objects that hold a string; for testing only
   TestVectorStringObject({this.value});
+
+  /// [value] Vector of objects
+  List<TestString> value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestVectorStringObject.fromJson(Map<String, dynamic> json)  {

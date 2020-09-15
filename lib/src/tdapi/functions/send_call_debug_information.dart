@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SendCallDebugInformation extends TdFunction {
-  int callId;
-  String debugInformation;
-  dynamic extra;
 
-  /// Sends debug information for a call. 
-  /// [callId] Call identifier . 
-  /// [debugInformation] Debug information in application-specific format
+  /// Sends debug information for a call
   SendCallDebugInformation({this.callId,
     this.debugInformation});
+
+  /// [callId] Call identifier 
+  int callId;
+
+  /// [debugInformation] Debug information in application-specific format
+  String debugInformation;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SendCallDebugInformation.fromJson(Map<String, dynamic> json) ;

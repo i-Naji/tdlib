@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatEventAction extends TdObject {
-  
 
   /// Represents a chat event
   ChatEventAction();
+
+  
 
   /// a ChatEventAction return type can be :
   /// * ChatEventMessageEdited
@@ -94,14 +95,16 @@ class ChatEventAction extends TdObject {
 }
 
 class ChatEventMessageEdited extends ChatEventAction {
-  Message oldMessage;
-  Message newMessage;
 
-  /// A message was edited. 
-  /// [oldMessage] The original message before the edit . 
-  /// [newMessage] The message after it was edited
+  /// A message was edited
   ChatEventMessageEdited({this.oldMessage,
     this.newMessage});
+
+  /// [oldMessage] The original message before the edit 
+  Message oldMessage;
+
+  /// [newMessage] The message after it was edited
+  Message newMessage;
 
   /// Parse from a json
   ChatEventMessageEdited.fromJson(Map<String, dynamic> json)  {
@@ -125,11 +128,12 @@ class ChatEventMessageEdited extends ChatEventAction {
 }
 
 class ChatEventMessageDeleted extends ChatEventAction {
-  Message message;
 
-  /// A message was deleted. 
-  /// [message] Deleted message
+  /// A message was deleted
   ChatEventMessageDeleted({this.message});
+
+  /// [message] Deleted message
+  Message message;
 
   /// Parse from a json
   ChatEventMessageDeleted.fromJson(Map<String, dynamic> json)  {
@@ -151,11 +155,12 @@ class ChatEventMessageDeleted extends ChatEventAction {
 }
 
 class ChatEventPollStopped extends ChatEventAction {
-  Message message;
 
-  /// A poll in a message was stopped. 
-  /// [message] The message with the poll
+  /// A poll in a message was stopped
   ChatEventPollStopped({this.message});
+
+  /// [message] The message with the poll
+  Message message;
 
   /// Parse from a json
   ChatEventPollStopped.fromJson(Map<String, dynamic> json)  {
@@ -177,11 +182,12 @@ class ChatEventPollStopped extends ChatEventAction {
 }
 
 class ChatEventMessagePinned extends ChatEventAction {
-  Message message;
 
-  /// A message was pinned. 
-  /// [message] Pinned message
+  /// A message was pinned
   ChatEventMessagePinned({this.message});
+
+  /// [message] Pinned message
+  Message message;
 
   /// Parse from a json
   ChatEventMessagePinned.fromJson(Map<String, dynamic> json)  {
@@ -203,10 +209,11 @@ class ChatEventMessagePinned extends ChatEventAction {
 }
 
 class ChatEventMessageUnpinned extends ChatEventAction {
-  
 
   /// A message was unpinned
   ChatEventMessageUnpinned();
+
+  
 
   /// Parse from a json
   ChatEventMessageUnpinned.fromJson(Map<String, dynamic> json) ;
@@ -225,10 +232,11 @@ class ChatEventMessageUnpinned extends ChatEventAction {
 }
 
 class ChatEventMemberJoined extends ChatEventAction {
-  
 
   /// A new member joined the chat
   ChatEventMemberJoined();
+
+  
 
   /// Parse from a json
   ChatEventMemberJoined.fromJson(Map<String, dynamic> json) ;
@@ -247,10 +255,11 @@ class ChatEventMemberJoined extends ChatEventAction {
 }
 
 class ChatEventMemberLeft extends ChatEventAction {
-  
 
   /// A member left the chat
   ChatEventMemberLeft();
+
+  
 
   /// Parse from a json
   ChatEventMemberLeft.fromJson(Map<String, dynamic> json) ;
@@ -269,14 +278,16 @@ class ChatEventMemberLeft extends ChatEventAction {
 }
 
 class ChatEventMemberInvited extends ChatEventAction {
-  int userId;
-  ChatMemberStatus status;
 
-  /// A new chat member was invited. 
-  /// [userId] New member user identifier . 
-  /// [status] New member status
+  /// A new chat member was invited
   ChatEventMemberInvited({this.userId,
     this.status});
+
+  /// [userId] New member user identifier 
+  int userId;
+
+  /// [status] New member status
+  ChatMemberStatus status;
 
   /// Parse from a json
   ChatEventMemberInvited.fromJson(Map<String, dynamic> json)  {
@@ -300,17 +311,20 @@ class ChatEventMemberInvited extends ChatEventAction {
 }
 
 class ChatEventMemberPromoted extends ChatEventAction {
-  int userId;
-  ChatMemberStatus oldStatus;
-  ChatMemberStatus newStatus;
 
-  /// A chat member has gained/lost administrator status, or the list of their administrator privileges has changed. 
-  /// [userId] Chat member user identifier . 
-  /// [oldStatus] Previous status of the chat member . 
-  /// [newStatus] New status of the chat member
+  /// A chat member has gained/lost administrator status, or the list of their administrator privileges has changed
   ChatEventMemberPromoted({this.userId,
     this.oldStatus,
     this.newStatus});
+
+  /// [userId] Chat member user identifier 
+  int userId;
+
+  /// [oldStatus] Previous status of the chat member 
+  ChatMemberStatus oldStatus;
+
+  /// [newStatus] New status of the chat member
+  ChatMemberStatus newStatus;
 
   /// Parse from a json
   ChatEventMemberPromoted.fromJson(Map<String, dynamic> json)  {
@@ -336,17 +350,20 @@ class ChatEventMemberPromoted extends ChatEventAction {
 }
 
 class ChatEventMemberRestricted extends ChatEventAction {
-  int userId;
-  ChatMemberStatus oldStatus;
-  ChatMemberStatus newStatus;
 
-  /// A chat member was restricted/unrestricted or banned/unbanned, or the list of their restrictions has changed. 
-  /// [userId] Chat member user identifier . 
-  /// [oldStatus] Previous status of the chat member . 
-  /// [newStatus] New status of the chat member
+  /// A chat member was restricted/unrestricted or banned/unbanned, or the list of their restrictions has changed
   ChatEventMemberRestricted({this.userId,
     this.oldStatus,
     this.newStatus});
+
+  /// [userId] Chat member user identifier 
+  int userId;
+
+  /// [oldStatus] Previous status of the chat member 
+  ChatMemberStatus oldStatus;
+
+  /// [newStatus] New status of the chat member
+  ChatMemberStatus newStatus;
 
   /// Parse from a json
   ChatEventMemberRestricted.fromJson(Map<String, dynamic> json)  {
@@ -372,14 +389,16 @@ class ChatEventMemberRestricted extends ChatEventAction {
 }
 
 class ChatEventTitleChanged extends ChatEventAction {
-  String oldTitle;
-  String newTitle;
 
-  /// The chat title was changed. 
-  /// [oldTitle] Previous chat title . 
-  /// [newTitle] New chat title
+  /// The chat title was changed
   ChatEventTitleChanged({this.oldTitle,
     this.newTitle});
+
+  /// [oldTitle] Previous chat title 
+  String oldTitle;
+
+  /// [newTitle] New chat title
+  String newTitle;
 
   /// Parse from a json
   ChatEventTitleChanged.fromJson(Map<String, dynamic> json)  {
@@ -403,14 +422,16 @@ class ChatEventTitleChanged extends ChatEventAction {
 }
 
 class ChatEventPermissionsChanged extends ChatEventAction {
-  ChatPermissions oldPermissions;
-  ChatPermissions newPermissions;
 
-  /// The chat permissions was changed. 
-  /// [oldPermissions] Previous chat permissions . 
-  /// [newPermissions] New chat permissions
+  /// The chat permissions was changed
   ChatEventPermissionsChanged({this.oldPermissions,
     this.newPermissions});
+
+  /// [oldPermissions] Previous chat permissions 
+  ChatPermissions oldPermissions;
+
+  /// [newPermissions] New chat permissions
+  ChatPermissions newPermissions;
 
   /// Parse from a json
   ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json)  {
@@ -434,14 +455,16 @@ class ChatEventPermissionsChanged extends ChatEventAction {
 }
 
 class ChatEventDescriptionChanged extends ChatEventAction {
-  String oldDescription;
-  String newDescription;
 
-  /// The chat description was changed. 
-  /// [oldDescription] Previous chat description . 
-  /// [newDescription] New chat description
+  /// The chat description was changed
   ChatEventDescriptionChanged({this.oldDescription,
     this.newDescription});
+
+  /// [oldDescription] Previous chat description 
+  String oldDescription;
+
+  /// [newDescription] New chat description
+  String newDescription;
 
   /// Parse from a json
   ChatEventDescriptionChanged.fromJson(Map<String, dynamic> json)  {
@@ -465,14 +488,16 @@ class ChatEventDescriptionChanged extends ChatEventAction {
 }
 
 class ChatEventUsernameChanged extends ChatEventAction {
-  String oldUsername;
-  String newUsername;
 
-  /// The chat username was changed. 
-  /// [oldUsername] Previous chat username . 
-  /// [newUsername] New chat username
+  /// The chat username was changed
   ChatEventUsernameChanged({this.oldUsername,
     this.newUsername});
+
+  /// [oldUsername] Previous chat username 
+  String oldUsername;
+
+  /// [newUsername] New chat username
+  String newUsername;
 
   /// Parse from a json
   ChatEventUsernameChanged.fromJson(Map<String, dynamic> json)  {
@@ -496,14 +521,16 @@ class ChatEventUsernameChanged extends ChatEventAction {
 }
 
 class ChatEventPhotoChanged extends ChatEventAction {
-  ChatPhoto oldPhoto;
-  ChatPhoto newPhoto;
 
-  /// The chat photo was changed. 
-  /// [oldPhoto] Previous chat photo value; may be null . 
-  /// [newPhoto] New chat photo value; may be null
+  /// The chat photo was changed
   ChatEventPhotoChanged({this.oldPhoto,
     this.newPhoto});
+
+  /// [oldPhoto] Previous chat photo value; may be null 
+  ChatPhoto oldPhoto;
+
+  /// [newPhoto] New chat photo value; may be null
+  ChatPhoto newPhoto;
 
   /// Parse from a json
   ChatEventPhotoChanged.fromJson(Map<String, dynamic> json)  {
@@ -527,11 +554,12 @@ class ChatEventPhotoChanged extends ChatEventAction {
 }
 
 class ChatEventInvitesToggled extends ChatEventAction {
-  bool canInviteUsers;
 
-  /// The can_invite_users permission of a supergroup chat was toggled. 
-  /// [canInviteUsers] New value of can_invite_users permission
+  /// The can_invite_users permission of a supergroup chat was toggled
   ChatEventInvitesToggled({this.canInviteUsers});
+
+  /// [canInviteUsers] New value of can_invite_users permission
+  bool canInviteUsers;
 
   /// Parse from a json
   ChatEventInvitesToggled.fromJson(Map<String, dynamic> json)  {
@@ -553,14 +581,16 @@ class ChatEventInvitesToggled extends ChatEventAction {
 }
 
 class ChatEventLinkedChatChanged extends ChatEventAction {
-  int oldLinkedChatId;
-  int newLinkedChatId;
 
-  /// The linked chat of a supergroup was changed. 
-  /// [oldLinkedChatId] Previous supergroup linked chat identifier . 
-  /// [newLinkedChatId] New supergroup linked chat identifier
+  /// The linked chat of a supergroup was changed
   ChatEventLinkedChatChanged({this.oldLinkedChatId,
     this.newLinkedChatId});
+
+  /// [oldLinkedChatId] Previous supergroup linked chat identifier 
+  int oldLinkedChatId;
+
+  /// [newLinkedChatId] New supergroup linked chat identifier
+  int newLinkedChatId;
 
   /// Parse from a json
   ChatEventLinkedChatChanged.fromJson(Map<String, dynamic> json)  {
@@ -584,14 +614,16 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
 }
 
 class ChatEventSlowModeDelayChanged extends ChatEventAction {
-  int oldSlowModeDelay;
-  int newSlowModeDelay;
 
-  /// The slow_mode_delay setting of a supergroup was changed. 
-  /// [oldSlowModeDelay] Previous value of slow_mode_delay . 
-  /// [newSlowModeDelay] New value of slow_mode_delay
+  /// The slow_mode_delay setting of a supergroup was changed
   ChatEventSlowModeDelayChanged({this.oldSlowModeDelay,
     this.newSlowModeDelay});
+
+  /// [oldSlowModeDelay] Previous value of slow_mode_delay 
+  int oldSlowModeDelay;
+
+  /// [newSlowModeDelay] New value of slow_mode_delay
+  int newSlowModeDelay;
 
   /// Parse from a json
   ChatEventSlowModeDelayChanged.fromJson(Map<String, dynamic> json)  {
@@ -615,11 +647,12 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
 }
 
 class ChatEventSignMessagesToggled extends ChatEventAction {
-  bool signMessages;
 
-  /// The sign_messages setting of a channel was toggled. 
-  /// [signMessages] New value of sign_messages
+  /// The sign_messages setting of a channel was toggled
   ChatEventSignMessagesToggled({this.signMessages});
+
+  /// [signMessages] New value of sign_messages
+  bool signMessages;
 
   /// Parse from a json
   ChatEventSignMessagesToggled.fromJson(Map<String, dynamic> json)  {
@@ -641,19 +674,21 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
 }
 
 class ChatEventStickerSetChanged extends ChatEventAction {
-  int oldStickerSetId;
-  int newStickerSetId;
 
-  /// The supergroup sticker set was changed. 
-  /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none . 
-  /// [newStickerSetId] New identifier of the chat sticker set; 0 if none
+  /// The supergroup sticker set was changed
   ChatEventStickerSetChanged({this.oldStickerSetId,
     this.newStickerSetId});
 
+  /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none 
+  int oldStickerSetId;
+
+  /// [newStickerSetId] New identifier of the chat sticker set; 0 if none
+  int newStickerSetId;
+
   /// Parse from a json
   ChatEventStickerSetChanged.fromJson(Map<String, dynamic> json)  {
-    this.oldStickerSetId = json['old_sticker_set_id'];
-    this.newStickerSetId = json['new_sticker_set_id'];
+    this.oldStickerSetId = int.tryParse(json['old_sticker_set_id'] ?? "");
+    this.newStickerSetId = int.tryParse(json['new_sticker_set_id'] ?? "");
   }
 
   @override
@@ -672,14 +707,16 @@ class ChatEventStickerSetChanged extends ChatEventAction {
 }
 
 class ChatEventLocationChanged extends ChatEventAction {
-  ChatLocation oldLocation;
-  ChatLocation newLocation;
 
-  /// The supergroup location was changed. 
-  /// [oldLocation] Previous location; may be null . 
-  /// [newLocation] New location; may be null
+  /// The supergroup location was changed
   ChatEventLocationChanged({this.oldLocation,
     this.newLocation});
+
+  /// [oldLocation] Previous location; may be null 
+  ChatLocation oldLocation;
+
+  /// [newLocation] New location; may be null
+  ChatLocation newLocation;
 
   /// Parse from a json
   ChatEventLocationChanged.fromJson(Map<String, dynamic> json)  {
@@ -703,11 +740,12 @@ class ChatEventLocationChanged extends ChatEventAction {
 }
 
 class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
-  bool isAllHistoryAvailable;
 
-  /// The is_all_history_available setting of a supergroup was toggled. 
-  /// [isAllHistoryAvailable] New value of is_all_history_available
+  /// The is_all_history_available setting of a supergroup was toggled
   ChatEventIsAllHistoryAvailableToggled({this.isAllHistoryAvailable});
+
+  /// [isAllHistoryAvailable] New value of is_all_history_available
+  bool isAllHistoryAvailable;
 
   /// Parse from a json
   ChatEventIsAllHistoryAvailableToggled.fromJson(Map<String, dynamic> json)  {

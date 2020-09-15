@@ -1,26 +1,8 @@
 part of '../tdapi.dart';
 
 class Sticker extends TdObject {
-  int setId;
-  int width;
-  int height;
-  String emoji;
-  bool isAnimated;
-  bool isMask;
-  MaskPosition maskPosition;
-  Thumbnail thumbnail;
-  File sticker;
 
-  /// Describes a sticker. 
-  /// [setId] The identifier of the sticker set to which the sticker belongs; 0 if none . 
-  /// [width] Sticker width; as defined by the sender . 
-  /// [height] Sticker height; as defined by the sender. 
-  /// [emoji] Emoji corresponding to the sticker. 
-  /// [isAnimated] True, if the sticker is an animated sticker in TGS format . 
-  /// [isMask] True, if the sticker is a mask . 
-  /// [maskPosition] Position where the mask should be placed; may be null. 
-  /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null. 
-  /// [sticker] File containing the sticker
+  /// Describes a sticker
   Sticker({this.setId,
     this.width,
     this.height,
@@ -31,9 +13,36 @@ class Sticker extends TdObject {
     this.thumbnail,
     this.sticker});
 
+  /// [setId] The identifier of the sticker set to which the sticker belongs; 0 if none 
+  int setId;
+
+  /// [width] Sticker width; as defined by the sender 
+  int width;
+
+  /// [height] Sticker height; as defined by the sender
+  int height;
+
+  /// [emoji] Emoji corresponding to the sticker
+  String emoji;
+
+  /// [isAnimated] True, if the sticker is an animated sticker in TGS format 
+  bool isAnimated;
+
+  /// [isMask] True, if the sticker is a mask 
+  bool isMask;
+
+  /// [maskPosition] Position where the mask should be placed; may be null
+  MaskPosition maskPosition;
+
+  /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null
+  Thumbnail thumbnail;
+
+  /// [sticker] File containing the sticker
+  File sticker;
+
   /// Parse from a json
   Sticker.fromJson(Map<String, dynamic> json)  {
-    this.setId = json['set_id'];
+    this.setId = int.tryParse(json['set_id'] ?? "");
     this.width = json['width'];
     this.height = json['height'];
     this.emoji = json['emoji'];

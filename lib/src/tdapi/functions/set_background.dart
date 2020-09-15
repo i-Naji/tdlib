@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class SetBackground extends TdFunction {
-  InputBackground background;
-  BackgroundType type;
-  bool forDarkTheme;
-  dynamic extra;
 
-  /// Changes the background selected by the user; adds background to the list of installed backgrounds. 
-  /// [background] The input background to use, null for filled backgrounds. 
-  /// [type] Background type; null for default background. The method will return error 404 if type is null. 
-  /// [forDarkTheme] True, if the background is chosen for dark theme
+  /// Changes the background selected by the user; adds background to the list of installed backgrounds
   SetBackground({this.background,
     this.type,
     this.forDarkTheme});
+
+  /// [background] The input background to use, null for filled backgrounds
+  InputBackground background;
+
+  /// [type] Background type; null for default background. The method will return error 404 if type is null
+  BackgroundType type;
+
+  /// [forDarkTheme] True, if the background is chosen for dark theme
+  bool forDarkTheme;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetBackground.fromJson(Map<String, dynamic> json) ;

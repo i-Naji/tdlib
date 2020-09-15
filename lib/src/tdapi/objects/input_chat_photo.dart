@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputChatPhoto extends TdObject {
-  
 
   /// Describes a photo to be set as a user profile or chat photo
   InputChatPhoto();
+
+  
 
   /// a InputChatPhoto return type can be :
   /// * InputChatPhotoPrevious
@@ -37,15 +38,16 @@ class InputChatPhoto extends TdObject {
 }
 
 class InputChatPhotoPrevious extends InputChatPhoto {
-  int chatPhotoId;
 
-  /// A previously used profile photo of the current user. 
-  /// [chatPhotoId] Identifier of the profile photo to reuse
+  /// A previously used profile photo of the current user
   InputChatPhotoPrevious({this.chatPhotoId});
+
+  /// [chatPhotoId] Identifier of the profile photo to reuse
+  int chatPhotoId;
 
   /// Parse from a json
   InputChatPhotoPrevious.fromJson(Map<String, dynamic> json)  {
-    this.chatPhotoId = json['chat_photo_id'];
+    this.chatPhotoId = int.tryParse(json['chat_photo_id'] ?? "");
   }
 
   @override
@@ -63,11 +65,12 @@ class InputChatPhotoPrevious extends InputChatPhoto {
 }
 
 class InputChatPhotoStatic extends InputChatPhoto {
-  InputFile photo;
 
-  /// A static photo in JPEG format. 
-  /// [photo] Photo to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed
+  /// A static photo in JPEG format
   InputChatPhotoStatic({this.photo});
+
+  /// [photo] Photo to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed
+  InputFile photo;
 
   /// Parse from a json
   InputChatPhotoStatic.fromJson(Map<String, dynamic> json)  {
@@ -89,14 +92,16 @@ class InputChatPhotoStatic extends InputChatPhoto {
 }
 
 class InputChatPhotoAnimation extends InputChatPhoto {
-  InputFile animation;
-  double mainFrameTimestamp;
 
-  /// An animation in MPEG4 format; must be square, shorter than 10 seconds, have width between 160 and 800 and be at most 2MB in size. 
-  /// [animation] Animation to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed. 
-  /// [mainFrameTimestamp] Timestamp of the frame, which will be used as static chat photo
+  /// An animation in MPEG4 format; must be square, shorter than 10 seconds, have width between 160 and 800 and be at most 2MB in size
   InputChatPhotoAnimation({this.animation,
     this.mainFrameTimestamp});
+
+  /// [animation] Animation to be set as profile photo. Only inputFileLocal and inputFileGenerated are allowed
+  InputFile animation;
+
+  /// [mainFrameTimestamp] Timestamp of the frame, which will be used as static chat photo
+  double mainFrameTimestamp;
 
   /// Parse from a json
   InputChatPhotoAnimation.fromJson(Map<String, dynamic> json)  {

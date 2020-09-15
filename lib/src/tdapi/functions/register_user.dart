@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class RegisterUser extends TdFunction {
-  String firstName;
-  String lastName;
-  dynamic extra;
 
-  /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration. 
-  /// [firstName] The first name of the user; 1-64 characters. 
-  /// [lastName] The last name of the user; 0-64 characters
+  /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration
   RegisterUser({this.firstName,
     this.lastName});
+
+  /// [firstName] The first name of the user; 1-64 characters
+  String firstName;
+
+  /// [lastName] The last name of the user; 0-64 characters
+  String lastName;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RegisterUser.fromJson(Map<String, dynamic> json) ;

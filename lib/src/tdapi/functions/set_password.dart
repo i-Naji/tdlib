@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class SetPassword extends TdFunction {
-  String oldPassword;
-  String newPassword;
-  String newHint;
-  bool setRecoveryEmailAddress;
-  String newRecoveryEmailAddress;
-  dynamic extra;
 
-  /// Changes the password for the user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed. 
-  /// [oldPassword] Previous password of the user. 
-  /// [newPassword] New password of the user; may be empty to remove the password . 
-  /// [newHint] New password hint; may be empty . 
-  /// [setRecoveryEmailAddress] Pass true if the recovery email address should be changed . 
-  /// [newRecoveryEmailAddress] New recovery email address; may be empty
+  /// Changes the password for the user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed
   SetPassword({this.oldPassword,
     this.newPassword,
     this.newHint,
     this.setRecoveryEmailAddress,
     this.newRecoveryEmailAddress});
+
+  /// [oldPassword] Previous password of the user
+  String oldPassword;
+
+  /// [newPassword] New password of the user; may be empty to remove the password 
+  String newPassword;
+
+  /// [newHint] New password hint; may be empty 
+  String newHint;
+
+  /// [setRecoveryEmailAddress] Pass true if the recovery email address should be changed 
+  bool setRecoveryEmailAddress;
+
+  /// [newRecoveryEmailAddress] New recovery email address; may be empty
+  String newRecoveryEmailAddress;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetPassword.fromJson(Map<String, dynamic> json) ;

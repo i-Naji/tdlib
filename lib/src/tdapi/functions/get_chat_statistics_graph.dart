@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class GetChatStatisticsGraph extends TdFunction {
-  int chatId;
-  String token;
-  int x;
-  dynamic extra;
 
-  /// Loads asynchronous or zoomed in chat statistics graph. 
-  /// [chatId] Chat identifier . 
-  /// [token] The token for graph loading . 
-  /// [x] X-value for zoomed in graph or 0 otherwise
+  /// Loads asynchronous or zoomed in chat statistics graph
   GetChatStatisticsGraph({this.chatId,
     this.token,
     this.x});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [token] The token for graph loading 
+  String token;
+
+  /// [x] X-value for zoomed in graph or 0 otherwise
+  int x;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatStatisticsGraph.fromJson(Map<String, dynamic> json) ;

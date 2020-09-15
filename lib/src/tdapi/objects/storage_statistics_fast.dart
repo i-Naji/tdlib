@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class StorageStatisticsFast extends TdObject {
-  int filesSize;
-  int fileCount;
-  int databaseSize;
-  int languagePackDatabaseSize;
-  int logSize;
-  dynamic extra;
 
-  /// Contains approximate storage usage statistics, excluding files of unknown file type. 
-  /// [filesSize] Approximate total size of files . 
-  /// [fileCount] Approximate number of files. 
-  /// [databaseSize] Size of the database. 
-  /// [languagePackDatabaseSize] Size of the language pack database . 
-  /// [logSize] Size of the TDLib internal log
+  /// Contains approximate storage usage statistics, excluding files of unknown file type
   StorageStatisticsFast({this.filesSize,
     this.fileCount,
     this.databaseSize,
     this.languagePackDatabaseSize,
     this.logSize});
+
+  /// [filesSize] Approximate total size of files 
+  int filesSize;
+
+  /// [fileCount] Approximate number of files
+  int fileCount;
+
+  /// [databaseSize] Size of the database
+  int databaseSize;
+
+  /// [languagePackDatabaseSize] Size of the language pack database 
+  int languagePackDatabaseSize;
+
+  /// [logSize] Size of the TDLib internal log
+  int logSize;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StorageStatisticsFast.fromJson(Map<String, dynamic> json)  {

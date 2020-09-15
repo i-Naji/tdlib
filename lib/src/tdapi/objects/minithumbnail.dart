@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class Minithumbnail extends TdObject {
-  int width;
-  int height;
-  String data;
 
-  /// Thumbnail image of a very poor quality and low resolution. 
-  /// [width] Thumbnail width, usually doesn't exceed 40 . 
-  /// [height] Thumbnail height, usually doesn't exceed 40 . 
-  /// [data] The thumbnail in JPEG format
+  /// Thumbnail image of a very poor quality and low resolution
   Minithumbnail({this.width,
     this.height,
     this.data});
+
+  /// [width] Thumbnail width, usually doesn't exceed 40 
+  int width;
+
+  /// [height] Thumbnail height, usually doesn't exceed 40 
+  int height;
+
+  /// [data] The thumbnail in JPEG format
+  String data;
 
   /// Parse from a json
   Minithumbnail.fromJson(Map<String, dynamic> json)  {

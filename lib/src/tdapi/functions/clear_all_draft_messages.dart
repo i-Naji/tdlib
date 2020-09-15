@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ClearAllDraftMessages extends TdFunction {
-  bool excludeSecretChats;
-  dynamic extra;
 
-  /// Clears draft messages in all chats. 
-  /// [excludeSecretChats] If true, local draft messages in secret chats will not be cleared
+  /// Clears draft messages in all chats
   ClearAllDraftMessages({this.excludeSecretChats});
+
+  /// [excludeSecretChats] If true, local draft messages in secret chats will not be cleared
+  bool excludeSecretChats;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ClearAllDraftMessages.fromJson(Map<String, dynamic> json) ;

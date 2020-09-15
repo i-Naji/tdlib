@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class LogStream extends TdObject {
-  
 
   /// Describes a stream to which TDLib internal log is written
   LogStream();
+
+  
 
   /// a LogStream return type can be :
   /// * LogStreamDefault
@@ -37,10 +38,12 @@ class LogStream extends TdObject {
 }
 
 class LogStreamDefault extends LogStream {
-  dynamic extra;
 
   /// The log is written to stderr or an OS specific log
   LogStreamDefault();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LogStreamDefault.fromJson(Map<String, dynamic> json)  {
@@ -61,15 +64,19 @@ class LogStreamDefault extends LogStream {
 }
 
 class LogStreamFile extends LogStream {
-  String path;
-  int maxFileSize;
-  dynamic extra;
 
-  /// The log is written to a file. 
-  /// [path] Path to the file to where the internal TDLib log will be written . 
-  /// [maxFileSize] The maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated
+  /// The log is written to a file
   LogStreamFile({this.path,
     this.maxFileSize});
+
+  /// [path] Path to the file to where the internal TDLib log will be written 
+  String path;
+
+  /// [maxFileSize] The maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated
+  int maxFileSize;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LogStreamFile.fromJson(Map<String, dynamic> json)  {
@@ -94,10 +101,12 @@ class LogStreamFile extends LogStream {
 }
 
 class LogStreamEmpty extends LogStream {
-  dynamic extra;
 
   /// The log is written nowhere
   LogStreamEmpty();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LogStreamEmpty.fromJson(Map<String, dynamic> json)  {

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CallProblem extends TdObject {
-  
 
   /// Describes the exact type of a problem with a call
   CallProblem();
+
+  
 
   /// a CallProblem return type can be :
   /// * CallProblemEcho
@@ -49,10 +50,11 @@ class CallProblem extends TdObject {
 }
 
 class CallProblemEcho extends CallProblem {
-  
 
   /// The user heard their own voice
   CallProblemEcho();
+
+  
 
   /// Parse from a json
   CallProblemEcho.fromJson(Map<String, dynamic> json) ;
@@ -71,10 +73,11 @@ class CallProblemEcho extends CallProblem {
 }
 
 class CallProblemNoise extends CallProblem {
-  
 
   /// The user heard background noise
   CallProblemNoise();
+
+  
 
   /// Parse from a json
   CallProblemNoise.fromJson(Map<String, dynamic> json) ;
@@ -93,10 +96,11 @@ class CallProblemNoise extends CallProblem {
 }
 
 class CallProblemInterruptions extends CallProblem {
-  
 
   /// The other side kept disappearing
   CallProblemInterruptions();
+
+  
 
   /// Parse from a json
   CallProblemInterruptions.fromJson(Map<String, dynamic> json) ;
@@ -115,10 +119,11 @@ class CallProblemInterruptions extends CallProblem {
 }
 
 class CallProblemDistortedSpeech extends CallProblem {
-  
 
   /// The speech was distorted
   CallProblemDistortedSpeech();
+
+  
 
   /// Parse from a json
   CallProblemDistortedSpeech.fromJson(Map<String, dynamic> json) ;
@@ -137,10 +142,11 @@ class CallProblemDistortedSpeech extends CallProblem {
 }
 
 class CallProblemSilentLocal extends CallProblem {
-  
 
   /// The user couldn't hear the other side
   CallProblemSilentLocal();
+
+  
 
   /// Parse from a json
   CallProblemSilentLocal.fromJson(Map<String, dynamic> json) ;
@@ -159,10 +165,11 @@ class CallProblemSilentLocal extends CallProblem {
 }
 
 class CallProblemSilentRemote extends CallProblem {
-  
 
   /// The other side couldn't hear the user
   CallProblemSilentRemote();
+
+  
 
   /// Parse from a json
   CallProblemSilentRemote.fromJson(Map<String, dynamic> json) ;
@@ -181,10 +188,11 @@ class CallProblemSilentRemote extends CallProblem {
 }
 
 class CallProblemDropped extends CallProblem {
-  
 
   /// The call ended unexpectedly
   CallProblemDropped();
+
+  
 
   /// Parse from a json
   CallProblemDropped.fromJson(Map<String, dynamic> json) ;

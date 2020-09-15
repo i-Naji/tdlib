@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetChatClientData extends TdFunction {
-  int chatId;
-  String clientData;
-  dynamic extra;
 
-  /// Changes application-specific data associated with a chat. 
-  /// [chatId] Chat identifier . 
-  /// [clientData] New value of client_data
+  /// Changes application-specific data associated with a chat
   SetChatClientData({this.chatId,
     this.clientData});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [clientData] New value of client_data
+  String clientData;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetChatClientData.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class SearchMessagesFilter extends TdObject {
-  
 
   /// Represents a filter for message search results
   SearchMessagesFilter();
+
+  
 
   /// a SearchMessagesFilter return type can be :
   /// * SearchMessagesFilterEmpty
@@ -79,10 +80,11 @@ class SearchMessagesFilter extends TdObject {
 }
 
 class SearchMessagesFilterEmpty extends SearchMessagesFilter {
-  
 
   /// Returns all found messages, no filter is applied
   SearchMessagesFilterEmpty();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterEmpty.fromJson(Map<String, dynamic> json) ;
@@ -101,10 +103,11 @@ class SearchMessagesFilterEmpty extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterAnimation extends SearchMessagesFilter {
-  
 
   /// Returns only animation messages
   SearchMessagesFilterAnimation();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterAnimation.fromJson(Map<String, dynamic> json) ;
@@ -123,10 +126,11 @@ class SearchMessagesFilterAnimation extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterAudio extends SearchMessagesFilter {
-  
 
   /// Returns only audio messages
   SearchMessagesFilterAudio();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterAudio.fromJson(Map<String, dynamic> json) ;
@@ -145,10 +149,11 @@ class SearchMessagesFilterAudio extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterDocument extends SearchMessagesFilter {
-  
 
   /// Returns only document messages
   SearchMessagesFilterDocument();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterDocument.fromJson(Map<String, dynamic> json) ;
@@ -167,10 +172,11 @@ class SearchMessagesFilterDocument extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterPhoto extends SearchMessagesFilter {
-  
 
   /// Returns only photo messages
   SearchMessagesFilterPhoto();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterPhoto.fromJson(Map<String, dynamic> json) ;
@@ -189,10 +195,11 @@ class SearchMessagesFilterPhoto extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterVideo extends SearchMessagesFilter {
-  
 
   /// Returns only video messages
   SearchMessagesFilterVideo();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterVideo.fromJson(Map<String, dynamic> json) ;
@@ -211,10 +218,11 @@ class SearchMessagesFilterVideo extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
-  
 
   /// Returns only voice note messages
   SearchMessagesFilterVoiceNote();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterVoiceNote.fromJson(Map<String, dynamic> json) ;
@@ -233,10 +241,11 @@ class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
-  
 
   /// Returns only photo and video messages
   SearchMessagesFilterPhotoAndVideo();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterPhotoAndVideo.fromJson(Map<String, dynamic> json) ;
@@ -255,10 +264,11 @@ class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterUrl extends SearchMessagesFilter {
-  
 
   /// Returns only messages containing URLs
   SearchMessagesFilterUrl();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterUrl.fromJson(Map<String, dynamic> json) ;
@@ -277,10 +287,11 @@ class SearchMessagesFilterUrl extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
-  
 
   /// Returns only messages containing chat photos
   SearchMessagesFilterChatPhoto();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterChatPhoto.fromJson(Map<String, dynamic> json) ;
@@ -299,10 +310,11 @@ class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterCall extends SearchMessagesFilter {
-  
 
   /// Returns only call messages
   SearchMessagesFilterCall();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterCall.fromJson(Map<String, dynamic> json) ;
@@ -321,10 +333,11 @@ class SearchMessagesFilterCall extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterMissedCall extends SearchMessagesFilter {
-  
 
   /// Returns only incoming call messages with missed/declined discard reasons
   SearchMessagesFilterMissedCall();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterMissedCall.fromJson(Map<String, dynamic> json) ;
@@ -343,10 +356,11 @@ class SearchMessagesFilterMissedCall extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
-  
 
   /// Returns only video note messages
   SearchMessagesFilterVideoNote();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterVideoNote.fromJson(Map<String, dynamic> json) ;
@@ -365,10 +379,11 @@ class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
-  
 
   /// Returns only voice and video note messages
   SearchMessagesFilterVoiceAndVideoNote();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterVoiceAndVideoNote.fromJson(Map<String, dynamic> json) ;
@@ -387,10 +402,11 @@ class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterMention extends SearchMessagesFilter {
-  
 
   /// Returns only messages with mentions of the current user, or messages that are replies to their messages
   SearchMessagesFilterMention();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterMention.fromJson(Map<String, dynamic> json) ;
@@ -409,10 +425,11 @@ class SearchMessagesFilterMention extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
-  
 
   /// Returns only messages with unread mentions of the current user, or messages that are replies to their messages. When using this filter the results can't be additionally filtered by a query or by the sending user
   SearchMessagesFilterUnreadMention();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterUnreadMention.fromJson(Map<String, dynamic> json) ;
@@ -431,10 +448,11 @@ class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
 }
 
 class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
-  
 
   /// Returns only failed to send messages. This filter can be used only if the message database is used
   SearchMessagesFilterFailedToSend();
+
+  
 
   /// Parse from a json
   SearchMessagesFilterFailedToSend.fromJson(Map<String, dynamic> json) ;

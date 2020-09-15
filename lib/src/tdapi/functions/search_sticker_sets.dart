@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SearchStickerSets extends TdFunction {
-  String query;
-  dynamic extra;
 
-  /// Searches for ordinary sticker sets by looking for specified query in their title and name. Excludes installed sticker sets from the results. 
-  /// [query] Query to search for
+  /// Searches for ordinary sticker sets by looking for specified query in their title and name. Excludes installed sticker sets from the results
   SearchStickerSets({this.query});
+
+  /// [query] Query to search for
+  String query;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SearchStickerSets.fromJson(Map<String, dynamic> json) ;

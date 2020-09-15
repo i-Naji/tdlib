@@ -1,28 +1,8 @@
 part of '../tdapi.dart';
 
 class Video extends TdObject {
-  int duration;
-  int width;
-  int height;
-  String fileName;
-  String mimeType;
-  bool hasStickers;
-  bool supportsStreaming;
-  Minithumbnail minithumbnail;
-  Thumbnail thumbnail;
-  File video;
 
-  /// Describes a video file. 
-  /// [duration] Duration of the video, in seconds; as defined by the sender . 
-  /// [width] Video width; as defined by the sender . 
-  /// [height] Video height; as defined by the sender. 
-  /// [fileName] Original name of the file; as defined by the sender. 
-  /// [mimeType] MIME type of the file; as defined by the sender. 
-  /// [hasStickers] True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets. 
-  /// [supportsStreaming] True, if the video should be tried to be streamed. 
-  /// [minithumbnail] Video minithumbnail; may be null. 
-  /// [thumbnail] Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null. 
-  /// [video] File containing the video
+  /// Describes a video file
   Video({this.duration,
     this.width,
     this.height,
@@ -33,6 +13,36 @@ class Video extends TdObject {
     this.minithumbnail,
     this.thumbnail,
     this.video});
+
+  /// [duration] Duration of the video, in seconds; as defined by the sender 
+  int duration;
+
+  /// [width] Video width; as defined by the sender 
+  int width;
+
+  /// [height] Video height; as defined by the sender
+  int height;
+
+  /// [fileName] Original name of the file; as defined by the sender
+  String fileName;
+
+  /// [mimeType] MIME type of the file; as defined by the sender
+  String mimeType;
+
+  /// [hasStickers] True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets
+  bool hasStickers;
+
+  /// [supportsStreaming] True, if the video should be tried to be streamed
+  bool supportsStreaming;
+
+  /// [minithumbnail] Video minithumbnail; may be null
+  Minithumbnail minithumbnail;
+
+  /// [thumbnail] Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null
+  Thumbnail thumbnail;
+
+  /// [video] File containing the video
+  File video;
 
   /// Parse from a json
   Video.fromJson(Map<String, dynamic> json)  {

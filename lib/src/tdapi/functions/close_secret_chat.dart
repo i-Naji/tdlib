@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CloseSecretChat extends TdFunction {
-  int secretChatId;
-  dynamic extra;
 
-  /// Closes a secret chat, effectively transferring its state to secretChatStateClosed. 
-  /// [secretChatId] Secret chat identifier
+  /// Closes a secret chat, effectively transferring its state to secretChatStateClosed
   CloseSecretChat({this.secretChatId});
+
+  /// [secretChatId] Secret chat identifier
+  int secretChatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CloseSecretChat.fromJson(Map<String, dynamic> json) ;

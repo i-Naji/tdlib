@@ -1,23 +1,8 @@
 part of '../tdapi.dart';
 
 class PaymentForm extends TdObject {
-  Invoice invoice;
-  String url;
-  PaymentsProviderStripe paymentsProvider;
-  OrderInfo savedOrderInfo;
-  SavedCredentials savedCredentials;
-  bool canSaveCredentials;
-  bool needPassword;
-  dynamic extra;
 
-  /// Contains information about an invoice payment form. 
-  /// [invoice] Full information of the invoice . 
-  /// [url] Payment form URL . 
-  /// [paymentsProvider] Contains information about the payment provider, if available, to support it natively without the need for opening the URL; may be null. 
-  /// [savedOrderInfo] Saved server-side order information; may be null. 
-  /// [savedCredentials] Contains information about saved card credentials; may be null . 
-  /// [canSaveCredentials] True, if the user can choose to save credentials . 
-  /// [needPassword] True, if the user will be able to save credentials protected by a password they set up
+  /// Contains information about an invoice payment form
   PaymentForm({this.invoice,
     this.url,
     this.paymentsProvider,
@@ -25,6 +10,30 @@ class PaymentForm extends TdObject {
     this.savedCredentials,
     this.canSaveCredentials,
     this.needPassword});
+
+  /// [invoice] Full information of the invoice 
+  Invoice invoice;
+
+  /// [url] Payment form URL 
+  String url;
+
+  /// [paymentsProvider] Contains information about the payment provider, if available, to support it natively without the need for opening the URL; may be null
+  PaymentsProviderStripe paymentsProvider;
+
+  /// [savedOrderInfo] Saved server-side order information; may be null
+  OrderInfo savedOrderInfo;
+
+  /// [savedCredentials] Contains information about saved card credentials; may be null 
+  SavedCredentials savedCredentials;
+
+  /// [canSaveCredentials] True, if the user can choose to save credentials 
+  bool canSaveCredentials;
+
+  /// [needPassword] True, if the user will be able to save credentials protected by a password they set up
+  bool needPassword;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PaymentForm.fromJson(Map<String, dynamic> json)  {

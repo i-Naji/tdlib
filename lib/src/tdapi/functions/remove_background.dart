@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RemoveBackground extends TdFunction {
-  int backgroundId;
-  dynamic extra;
 
-  /// Removes background from the list of installed backgrounds. 
-  /// [backgroundId] The background identifier
+  /// Removes background from the list of installed backgrounds
   RemoveBackground({this.backgroundId});
+
+  /// [backgroundId] The background identifier
+  int backgroundId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RemoveBackground.fromJson(Map<String, dynamic> json) ;

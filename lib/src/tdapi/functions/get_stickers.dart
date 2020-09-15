@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetStickers extends TdFunction {
-  String emoji;
-  int limit;
-  dynamic extra;
 
-  /// Returns stickers from the installed sticker sets that correspond to a given emoji. If the emoji is not empty, favorite and recently used stickers may also be returned. 
-  /// [emoji] String representation of emoji. If empty, returns all known installed stickers . 
-  /// [limit] The maximum number of stickers to be returned
+  /// Returns stickers from the installed sticker sets that correspond to a given emoji. If the emoji is not empty, favorite and recently used stickers may also be returned
   GetStickers({this.emoji,
     this.limit});
+
+  /// [emoji] String representation of emoji. If empty, returns all known installed stickers 
+  String emoji;
+
+  /// [limit] The maximum number of stickers to be returned
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetStickers.fromJson(Map<String, dynamic> json) ;

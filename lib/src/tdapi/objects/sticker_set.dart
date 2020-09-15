@@ -1,33 +1,8 @@
 part of '../tdapi.dart';
 
 class StickerSet extends TdObject {
-  int id;
-  String title;
-  String name;
-  Thumbnail thumbnail;
-  bool isInstalled;
-  bool isArchived;
-  bool isOfficial;
-  bool isAnimated;
-  bool isMasks;
-  bool isViewed;
-  List<Sticker> stickers;
-  List<Emojis> emojis;
-  dynamic extra;
 
-  /// Represents a sticker set. 
-  /// [id] Identifier of the sticker set. 
-  /// [title] Title of the sticker set . 
-  /// [name] Name of the sticker set . 
-  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed. 
-  /// [isInstalled] True, if the sticker set has been installed by the current user. 
-  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously. 
-  /// [isOfficial] True, if the sticker set is official. 
-  /// [isAnimated] True, is the stickers in the set are animated . 
-  /// [isMasks] True, if the stickers in the set are masks . 
-  /// [isViewed] True for already viewed trending sticker sets. 
-  /// [stickers] List of stickers in this set. 
-  /// [emojis] A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+  /// Represents a sticker set
   StickerSet({this.id,
     this.title,
     this.name,
@@ -41,9 +16,48 @@ class StickerSet extends TdObject {
     this.stickers,
     this.emojis});
 
+  /// [id] Identifier of the sticker set
+  int id;
+
+  /// [title] Title of the sticker set 
+  String title;
+
+  /// [name] Name of the sticker set 
+  String name;
+
+  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
+  Thumbnail thumbnail;
+
+  /// [isInstalled] True, if the sticker set has been installed by the current user
+  bool isInstalled;
+
+  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+  bool isArchived;
+
+  /// [isOfficial] True, if the sticker set is official
+  bool isOfficial;
+
+  /// [isAnimated] True, is the stickers in the set are animated 
+  bool isAnimated;
+
+  /// [isMasks] True, if the stickers in the set are masks 
+  bool isMasks;
+
+  /// [isViewed] True for already viewed trending sticker sets
+  bool isViewed;
+
+  /// [stickers] List of stickers in this set
+  List<Sticker> stickers;
+
+  /// [emojis] A list of emoji corresponding to the stickers in the same order. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
+  List<Emojis> emojis;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   StickerSet.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.title = json['title'];
     this.name = json['name'];
     this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});

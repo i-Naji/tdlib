@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CanTransferOwnershipResult extends TdObject {
-  
 
   /// Represents result of checking whether the current session can be used to transfer a chat ownership to another user
   CanTransferOwnershipResult();
+
+  
 
   /// a CanTransferOwnershipResult return type can be :
   /// * CanTransferOwnershipResultOk
@@ -40,10 +41,12 @@ class CanTransferOwnershipResult extends TdObject {
 }
 
 class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
-  dynamic extra;
 
   /// The session can be used
   CanTransferOwnershipResultOk();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CanTransferOwnershipResultOk.fromJson(Map<String, dynamic> json)  {
@@ -64,10 +67,12 @@ class CanTransferOwnershipResultOk extends CanTransferOwnershipResult {
 }
 
 class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershipResult {
-  dynamic extra;
 
   /// The 2-step verification needs to be enabled first
   CanTransferOwnershipResultPasswordNeeded();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CanTransferOwnershipResultPasswordNeeded.fromJson(Map<String, dynamic> json)  {
@@ -88,12 +93,15 @@ class CanTransferOwnershipResultPasswordNeeded extends CanTransferOwnershipResul
 }
 
 class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwnershipResult {
-  int retryAfter;
-  dynamic extra;
 
-  /// The 2-step verification was enabled recently, user needs to wait. 
-  /// [retryAfter] Time left before the session can be used to transfer ownership of a chat, in seconds
+  /// The 2-step verification was enabled recently, user needs to wait
   CanTransferOwnershipResultPasswordTooFresh({this.retryAfter});
+
+  /// [retryAfter] Time left before the session can be used to transfer ownership of a chat, in seconds
+  int retryAfter;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CanTransferOwnershipResultPasswordTooFresh.fromJson(Map<String, dynamic> json)  {
@@ -116,12 +124,15 @@ class CanTransferOwnershipResultPasswordTooFresh extends CanTransferOwnershipRes
 }
 
 class CanTransferOwnershipResultSessionTooFresh extends CanTransferOwnershipResult {
-  int retryAfter;
-  dynamic extra;
 
-  /// The session was created recently, user needs to wait. 
-  /// [retryAfter] Time left before the session can be used to transfer ownership of a chat, in seconds
+  /// The session was created recently, user needs to wait
   CanTransferOwnershipResultSessionTooFresh({this.retryAfter});
+
+  /// [retryAfter] Time left before the session can be used to transfer ownership of a chat, in seconds
+  int retryAfter;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CanTransferOwnershipResultSessionTooFresh.fromJson(Map<String, dynamic> json)  {

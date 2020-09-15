@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class TestGetDifference extends TdFunction {
-  dynamic extra;
 
   /// Forces an updates.getDifference call to the Telegram servers; for testing only
   TestGetDifference();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestGetDifference.fromJson(Map<String, dynamic> json) ;

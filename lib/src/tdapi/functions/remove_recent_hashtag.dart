@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RemoveRecentHashtag extends TdFunction {
-  String hashtag;
-  dynamic extra;
 
-  /// Removes a hashtag from the list of recently used hashtags. 
-  /// [hashtag] Hashtag to delete
+  /// Removes a hashtag from the list of recently used hashtags
   RemoveRecentHashtag({this.hashtag});
+
+  /// [hashtag] Hashtag to delete
+  String hashtag;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RemoveRecentHashtag.fromJson(Map<String, dynamic> json) ;

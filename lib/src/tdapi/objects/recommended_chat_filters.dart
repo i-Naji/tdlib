@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RecommendedChatFilters extends TdObject {
-  List<RecommendedChatFilter> chatFilters;
-  dynamic extra;
 
-  /// Contains a list of recommended chat filters. 
-  /// [chatFilters] List of recommended chat filters
+  /// Contains a list of recommended chat filters
   RecommendedChatFilters({this.chatFilters});
+
+  /// [chatFilters] List of recommended chat filters
+  List<RecommendedChatFilter> chatFilters;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RecommendedChatFilters.fromJson(Map<String, dynamic> json)  {

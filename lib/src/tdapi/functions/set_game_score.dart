@@ -1,27 +1,35 @@
 part of '../tdapi.dart';
 
 class SetGameScore extends TdFunction {
-  int chatId;
-  int messageId;
-  bool editMessage;
-  int userId;
-  int score;
-  bool force;
-  dynamic extra;
 
-  /// Updates the game score of the specified user in the game; for bots only. 
-  /// [chatId] The chat to which the message with the game belongs . 
-  /// [messageId] Identifier of the message . 
-  /// [editMessage] True, if the message should be edited . 
-  /// [userId] User identifier . 
-  /// [score] The new score. 
-  /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
+  /// Updates the game score of the specified user in the game; for bots only
   SetGameScore({this.chatId,
     this.messageId,
     this.editMessage,
     this.userId,
     this.score,
     this.force});
+
+  /// [chatId] The chat to which the message with the game belongs 
+  int chatId;
+
+  /// [messageId] Identifier of the message 
+  int messageId;
+
+  /// [editMessage] True, if the message should be edited 
+  bool editMessage;
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [score] The new score
+  int score;
+
+  /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
+  bool force;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetGameScore.fromJson(Map<String, dynamic> json) ;

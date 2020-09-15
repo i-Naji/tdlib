@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class Users extends TdObject {
-  int totalCount;
-  List<int> userIds;
-  dynamic extra;
 
-  /// Represents a list of users. 
-  /// [totalCount] Approximate total count of users found . 
-  /// [userIds] A list of user identifiers
+  /// Represents a list of users
   Users({this.totalCount,
     this.userIds});
+
+  /// [totalCount] Approximate total count of users found 
+  int totalCount;
+
+  /// [userIds] A list of user identifiers
+  List<int> userIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Users.fromJson(Map<String, dynamic> json)  {

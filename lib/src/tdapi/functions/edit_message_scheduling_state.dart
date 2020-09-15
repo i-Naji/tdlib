@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class EditMessageSchedulingState extends TdFunction {
-  int chatId;
-  int messageId;
-  MessageSchedulingState schedulingState;
-  dynamic extra;
 
-  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed. 
-  /// [chatId] The chat the message belongs to . 
-  /// [messageId] Identifier of the message . 
-  /// [schedulingState] The new message scheduling state. Pass null to send the message immediately
+  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
   EditMessageSchedulingState({this.chatId,
     this.messageId,
     this.schedulingState});
+
+  /// [chatId] The chat the message belongs to 
+  int chatId;
+
+  /// [messageId] Identifier of the message 
+  int messageId;
+
+  /// [schedulingState] The new message scheduling state. Pass null to send the message immediately
+  MessageSchedulingState schedulingState;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditMessageSchedulingState.fromJson(Map<String, dynamic> json) ;

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Animations extends TdObject {
-  List<Animation> animations;
-  dynamic extra;
 
-  /// Represents a list of animations. 
-  /// [animations] List of animations
+  /// Represents a list of animations
   Animations({this.animations});
+
+  /// [animations] List of animations
+  List<Animation> animations;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Animations.fromJson(Map<String, dynamic> json)  {

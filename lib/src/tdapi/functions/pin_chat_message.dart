@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class PinChatMessage extends TdFunction {
-  int chatId;
-  int messageId;
-  bool disableNotification;
-  dynamic extra;
 
-  /// Pins a message in a chat; requires can_pin_messages rights. 
-  /// [chatId] Identifier of the chat . 
-  /// [messageId] Identifier of the new pinned message . 
-  /// [disableNotification] True, if there should be no notification about the pinned message
+  /// Pins a message in a chat; requires can_pin_messages rights
   PinChatMessage({this.chatId,
     this.messageId,
     this.disableNotification});
+
+  /// [chatId] Identifier of the chat 
+  int chatId;
+
+  /// [messageId] Identifier of the new pinned message 
+  int messageId;
+
+  /// [disableNotification] True, if there should be no notification about the pinned message
+  bool disableNotification;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PinChatMessage.fromJson(Map<String, dynamic> json) ;

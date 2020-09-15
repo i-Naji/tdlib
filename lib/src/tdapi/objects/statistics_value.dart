@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class StatisticsValue extends TdObject {
-  double value;
-  double previousValue;
-  double growthRatePercentage;
 
-  /// A statistics value. 
-  /// [value] The value . 
-  /// [previousValue] The value for the previous day . 
-  /// [growthRatePercentage] The growth rate of the value, as a percentage
+  /// A statistics value
   StatisticsValue({this.value,
     this.previousValue,
     this.growthRatePercentage});
+
+  /// [value] The value 
+  double value;
+
+  /// [previousValue] The value for the previous day 
+  double previousValue;
+
+  /// [growthRatePercentage] The growth rate of the value, as a percentage
+  double growthRatePercentage;
 
   /// Parse from a json
   StatisticsValue.fromJson(Map<String, dynamic> json)  {

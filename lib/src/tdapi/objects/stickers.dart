@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Stickers extends TdObject {
-  List<Sticker> stickers;
-  dynamic extra;
 
-  /// Represents a list of stickers. 
-  /// [stickers] List of stickers
+  /// Represents a list of stickers
   Stickers({this.stickers});
+
+  /// [stickers] List of stickers
+  List<Sticker> stickers;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Stickers.fromJson(Map<String, dynamic> json)  {

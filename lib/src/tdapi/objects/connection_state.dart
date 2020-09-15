@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ConnectionState extends TdObject {
-  
 
   /// Describes the current state of the connection to Telegram servers
   ConnectionState();
+
+  
 
   /// a ConnectionState return type can be :
   /// * ConnectionStateWaitingForNetwork
@@ -43,10 +44,11 @@ class ConnectionState extends TdObject {
 }
 
 class ConnectionStateWaitingForNetwork extends ConnectionState {
-  
 
   /// Currently waiting for the network to become available. Use setNetworkType to change the available network type
   ConnectionStateWaitingForNetwork();
+
+  
 
   /// Parse from a json
   ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) ;
@@ -65,10 +67,11 @@ class ConnectionStateWaitingForNetwork extends ConnectionState {
 }
 
 class ConnectionStateConnectingToProxy extends ConnectionState {
-  
 
   /// Currently establishing a connection with a proxy server
   ConnectionStateConnectingToProxy();
+
+  
 
   /// Parse from a json
   ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) ;
@@ -87,10 +90,11 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
 }
 
 class ConnectionStateConnecting extends ConnectionState {
-  
 
   /// Currently establishing a connection to the Telegram servers
   ConnectionStateConnecting();
+
+  
 
   /// Parse from a json
   ConnectionStateConnecting.fromJson(Map<String, dynamic> json) ;
@@ -109,10 +113,11 @@ class ConnectionStateConnecting extends ConnectionState {
 }
 
 class ConnectionStateUpdating extends ConnectionState {
-  
 
   /// Downloading data received while the application was offline
   ConnectionStateUpdating();
+
+  
 
   /// Parse from a json
   ConnectionStateUpdating.fromJson(Map<String, dynamic> json) ;
@@ -131,10 +136,11 @@ class ConnectionStateUpdating extends ConnectionState {
 }
 
 class ConnectionStateReady extends ConnectionState {
-  
 
   /// There is a working connection to the Telegram servers
   ConnectionStateReady();
+
+  
 
   /// Parse from a json
   ConnectionStateReady.fromJson(Map<String, dynamic> json) ;

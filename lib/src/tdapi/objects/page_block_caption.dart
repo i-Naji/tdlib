@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class PageBlockCaption extends TdObject {
-  RichText text;
-  RichText credit;
 
-  /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit. 
-  /// [text] Content of the caption . 
-  /// [credit] Block credit (like HTML tag <cite>)
+  /// Contains a caption of an instant view web page block, consisting of a text and a trailing credit
   PageBlockCaption({this.text,
     this.credit});
+
+  /// [text] Content of the caption 
+  RichText text;
+
+  /// [credit] Block credit (like HTML tag <cite>)
+  RichText credit;
 
   /// Parse from a json
   PageBlockCaption.fromJson(Map<String, dynamic> json)  {

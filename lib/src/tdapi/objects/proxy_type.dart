@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ProxyType extends TdObject {
-  
 
   /// Describes the type of a proxy server
   ProxyType();
+
+  
 
   /// a ProxyType return type can be :
   /// * ProxyTypeSocks5
@@ -37,14 +38,16 @@ class ProxyType extends TdObject {
 }
 
 class ProxyTypeSocks5 extends ProxyType {
-  String username;
-  String password;
 
-  /// A SOCKS5 proxy server. 
-  /// [username] Username for logging in; may be empty . 
-  /// [password] Password for logging in; may be empty
+  /// A SOCKS5 proxy server
   ProxyTypeSocks5({this.username,
     this.password});
+
+  /// [username] Username for logging in; may be empty 
+  String username;
+
+  /// [password] Password for logging in; may be empty
+  String password;
 
   /// Parse from a json
   ProxyTypeSocks5.fromJson(Map<String, dynamic> json)  {
@@ -68,17 +71,20 @@ class ProxyTypeSocks5 extends ProxyType {
 }
 
 class ProxyTypeHttp extends ProxyType {
-  String username;
-  String password;
-  bool httpOnly;
 
-  /// A HTTP transparent proxy server. 
-  /// [username] Username for logging in; may be empty . 
-  /// [password] Password for logging in; may be empty . 
-  /// [httpOnly] Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
+  /// A HTTP transparent proxy server
   ProxyTypeHttp({this.username,
     this.password,
     this.httpOnly});
+
+  /// [username] Username for logging in; may be empty 
+  String username;
+
+  /// [password] Password for logging in; may be empty 
+  String password;
+
+  /// [httpOnly] Pass true if the proxy supports only HTTP requests and doesn't support transparent TCP connections via HTTP CONNECT method
+  bool httpOnly;
 
   /// Parse from a json
   ProxyTypeHttp.fromJson(Map<String, dynamic> json)  {
@@ -104,11 +110,12 @@ class ProxyTypeHttp extends ProxyType {
 }
 
 class ProxyTypeMtproto extends ProxyType {
-  String secret;
 
-  /// An MTProto proxy server. 
-  /// [secret] The proxy's secret in hexadecimal encoding
+  /// An MTProto proxy server
   ProxyTypeMtproto({this.secret});
+
+  /// [secret] The proxy's secret in hexadecimal encoding
+  String secret;
 
   /// Parse from a json
   ProxyTypeMtproto.fromJson(Map<String, dynamic> json)  {

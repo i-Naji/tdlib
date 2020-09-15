@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatStatistics extends TdObject {
-  
 
   /// Contains a detailed statistics about a chat
   ChatStatistics();
+
+  
 
   /// a ChatStatistics return type can be :
   /// * ChatStatisticsSupergroup
@@ -34,41 +35,8 @@ class ChatStatistics extends TdObject {
 }
 
 class ChatStatisticsSupergroup extends ChatStatistics {
-  DateRange period;
-  StatisticsValue memberCount;
-  StatisticsValue messageCount;
-  StatisticsValue viewerCount;
-  StatisticsValue senderCount;
-  StatisticsGraph memberCountGraph;
-  StatisticsGraph joinGraph;
-  StatisticsGraph joinBySourceGraph;
-  StatisticsGraph languageGraph;
-  StatisticsGraph messageContentGraph;
-  StatisticsGraph actionGraph;
-  StatisticsGraph dayGraph;
-  StatisticsGraph weekGraph;
-  List<ChatStatisticsMessageSenderInfo> topSenders;
-  List<ChatStatisticsAdministratorActionsInfo> topAdministrators;
-  List<ChatStatisticsInviterInfo> topInviters;
-  dynamic extra;
 
-  /// A detailed statistics about a supergroup chat. 
-  /// [period] A period to which the statistics applies. 
-  /// [memberCount] Number of members in the chat. 
-  /// [messageCount] Number of messages sent to the chat. 
-  /// [viewerCount] Number of users who viewed messages in the chat. 
-  /// [senderCount] Number of users who sent messages to the chat. 
-  /// [memberCountGraph] A graph containing number of members in the chat. 
-  /// [joinGraph] A graph containing number of members joined and left the chat. 
-  /// [joinBySourceGraph] A graph containing number of new member joins per source. 
-  /// [languageGraph] A graph containing distribution of active users per language. 
-  /// [messageContentGraph] A graph containing distribution of sent messages by content type. 
-  /// [actionGraph] A graph containing number of different actions in the chat. 
-  /// [dayGraph] A graph containing distribution of message views per hour. 
-  /// [weekGraph] A graph containing distribution of message views per day of week. 
-  /// [topSenders] List of users sent most messages in the last week. 
-  /// [topAdministrators] List of most active administrators in the last week. 
-  /// [topInviters] List of most active inviters of new members in the last week
+  /// A detailed statistics about a supergroup chat
   ChatStatisticsSupergroup({this.period,
     this.memberCount,
     this.messageCount,
@@ -85,6 +53,57 @@ class ChatStatisticsSupergroup extends ChatStatistics {
     this.topSenders,
     this.topAdministrators,
     this.topInviters});
+
+  /// [period] A period to which the statistics applies
+  DateRange period;
+
+  /// [memberCount] Number of members in the chat
+  StatisticsValue memberCount;
+
+  /// [messageCount] Number of messages sent to the chat
+  StatisticsValue messageCount;
+
+  /// [viewerCount] Number of users who viewed messages in the chat
+  StatisticsValue viewerCount;
+
+  /// [senderCount] Number of users who sent messages to the chat
+  StatisticsValue senderCount;
+
+  /// [memberCountGraph] A graph containing number of members in the chat
+  StatisticsGraph memberCountGraph;
+
+  /// [joinGraph] A graph containing number of members joined and left the chat
+  StatisticsGraph joinGraph;
+
+  /// [joinBySourceGraph] A graph containing number of new member joins per source
+  StatisticsGraph joinBySourceGraph;
+
+  /// [languageGraph] A graph containing distribution of active users per language
+  StatisticsGraph languageGraph;
+
+  /// [messageContentGraph] A graph containing distribution of sent messages by content type
+  StatisticsGraph messageContentGraph;
+
+  /// [actionGraph] A graph containing number of different actions in the chat
+  StatisticsGraph actionGraph;
+
+  /// [dayGraph] A graph containing distribution of message views per hour
+  StatisticsGraph dayGraph;
+
+  /// [weekGraph] A graph containing distribution of message views per day of week
+  StatisticsGraph weekGraph;
+
+  /// [topSenders] List of users sent most messages in the last week
+  List<ChatStatisticsMessageSenderInfo> topSenders;
+
+  /// [topAdministrators] List of most active administrators in the last week
+  List<ChatStatisticsAdministratorActionsInfo> topAdministrators;
+
+  /// [topInviters] List of most active inviters of new members in the last week
+  List<ChatStatisticsInviterInfo> topInviters;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatStatisticsSupergroup.fromJson(Map<String, dynamic> json)  {
@@ -137,39 +156,8 @@ class ChatStatisticsSupergroup extends ChatStatistics {
 }
 
 class ChatStatisticsChannel extends ChatStatistics {
-  DateRange period;
-  StatisticsValue memberCount;
-  StatisticsValue meanViewCount;
-  StatisticsValue meanShareCount;
-  double enabledNotificationsPercentage;
-  StatisticsGraph memberCountGraph;
-  StatisticsGraph joinGraph;
-  StatisticsGraph muteGraph;
-  StatisticsGraph viewCountByHourGraph;
-  StatisticsGraph viewCountBySourceGraph;
-  StatisticsGraph joinBySourceGraph;
-  StatisticsGraph languageGraph;
-  StatisticsGraph messageInteractionGraph;
-  StatisticsGraph instantViewInteractionGraph;
-  List<ChatStatisticsMessageInteractionInfo> recentMessageInteractions;
-  dynamic extra;
 
-  /// A detailed statistics about a channel chat. 
-  /// [period] A period to which the statistics applies. 
-  /// [memberCount] Number of members in the chat. 
-  /// [meanViewCount] Mean number of times the recently sent messages was viewed. 
-  /// [meanShareCount] Mean number of times the recently sent messages was shared. 
-  /// [enabledNotificationsPercentage] A percentage of users with enabled notifications for the chat. 
-  /// [memberCountGraph] A graph containing number of members in the chat. 
-  /// [joinGraph] A graph containing number of members joined and left the chat. 
-  /// [muteGraph] A graph containing number of members muted and unmuted the chat. 
-  /// [viewCountByHourGraph] A graph containing number of message views in a given hour in the last two weeks. 
-  /// [viewCountBySourceGraph] A graph containing number of message views per source. 
-  /// [joinBySourceGraph] A graph containing number of new member joins per source. 
-  /// [languageGraph] A graph containing number of users viewed chat messages per language. 
-  /// [messageInteractionGraph] A graph containing number of chat message views and shares. 
-  /// [instantViewInteractionGraph] A graph containing number of views of associated with the chat instant views. 
-  /// [recentMessageInteractions] Detailed statistics about number of views and shares of recently sent messages
+  /// A detailed statistics about a channel chat
   ChatStatisticsChannel({this.period,
     this.memberCount,
     this.meanViewCount,
@@ -185,6 +173,54 @@ class ChatStatisticsChannel extends ChatStatistics {
     this.messageInteractionGraph,
     this.instantViewInteractionGraph,
     this.recentMessageInteractions});
+
+  /// [period] A period to which the statistics applies
+  DateRange period;
+
+  /// [memberCount] Number of members in the chat
+  StatisticsValue memberCount;
+
+  /// [meanViewCount] Mean number of times the recently sent messages was viewed
+  StatisticsValue meanViewCount;
+
+  /// [meanShareCount] Mean number of times the recently sent messages was shared
+  StatisticsValue meanShareCount;
+
+  /// [enabledNotificationsPercentage] A percentage of users with enabled notifications for the chat
+  double enabledNotificationsPercentage;
+
+  /// [memberCountGraph] A graph containing number of members in the chat
+  StatisticsGraph memberCountGraph;
+
+  /// [joinGraph] A graph containing number of members joined and left the chat
+  StatisticsGraph joinGraph;
+
+  /// [muteGraph] A graph containing number of members muted and unmuted the chat
+  StatisticsGraph muteGraph;
+
+  /// [viewCountByHourGraph] A graph containing number of message views in a given hour in the last two weeks
+  StatisticsGraph viewCountByHourGraph;
+
+  /// [viewCountBySourceGraph] A graph containing number of message views per source
+  StatisticsGraph viewCountBySourceGraph;
+
+  /// [joinBySourceGraph] A graph containing number of new member joins per source
+  StatisticsGraph joinBySourceGraph;
+
+  /// [languageGraph] A graph containing number of users viewed chat messages per language
+  StatisticsGraph languageGraph;
+
+  /// [messageInteractionGraph] A graph containing number of chat message views and shares
+  StatisticsGraph messageInteractionGraph;
+
+  /// [instantViewInteractionGraph] A graph containing number of views of associated with the chat instant views
+  StatisticsGraph instantViewInteractionGraph;
+
+  /// [recentMessageInteractions] Detailed statistics about number of views and shares of recently sent messages
+  List<ChatStatisticsMessageInteractionInfo> recentMessageInteractions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatStatisticsChannel.fromJson(Map<String, dynamic> json)  {

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputSticker extends TdObject {
-  
 
   /// Describes a sticker that needs to be added to a sticker set
   InputSticker();
+
+  
 
   /// a InputSticker return type can be :
   /// * InputStickerStatic
@@ -34,17 +35,20 @@ class InputSticker extends TdObject {
 }
 
 class InputStickerStatic extends InputSticker {
-  InputFile sticker;
-  String emojis;
-  MaskPosition maskPosition;
 
-  /// A static sticker in PNG format, which will be converted to WEBP server-side. 
-  /// [sticker] PNG image with the sticker; must be up to 512 KB in size and fit in a 512x512 square. 
-  /// [emojis] Emojis corresponding to the sticker. 
-  /// [maskPosition] For masks, position where the mask should be placed; may be null
+  /// A static sticker in PNG format, which will be converted to WEBP server-side
   InputStickerStatic({this.sticker,
     this.emojis,
     this.maskPosition});
+
+  /// [sticker] PNG image with the sticker; must be up to 512 KB in size and fit in a 512x512 square
+  InputFile sticker;
+
+  /// [emojis] Emojis corresponding to the sticker
+  String emojis;
+
+  /// [maskPosition] For masks, position where the mask should be placed; may be null
+  MaskPosition maskPosition;
 
   /// Parse from a json
   InputStickerStatic.fromJson(Map<String, dynamic> json)  {
@@ -70,14 +74,16 @@ class InputStickerStatic extends InputSticker {
 }
 
 class InputStickerAnimated extends InputSticker {
-  InputFile sticker;
-  String emojis;
 
-  /// An animated sticker in TGS format. 
-  /// [sticker] File with the animated sticker. Only local or uploaded within a week files are supported. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements. 
-  /// [emojis] Emojis corresponding to the sticker
+  /// An animated sticker in TGS format
   InputStickerAnimated({this.sticker,
     this.emojis});
+
+  /// [sticker] File with the animated sticker. Only local or uploaded within a week files are supported. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+  InputFile sticker;
+
+  /// [emojis] Emojis corresponding to the sticker
+  String emojis;
 
   /// Parse from a json
   InputStickerAnimated.fromJson(Map<String, dynamic> json)  {

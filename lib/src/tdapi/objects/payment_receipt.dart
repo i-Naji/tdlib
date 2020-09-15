@@ -1,27 +1,35 @@
 part of '../tdapi.dart';
 
 class PaymentReceipt extends TdObject {
-  int date;
-  int paymentsProviderUserId;
-  Invoice invoice;
-  OrderInfo orderInfo;
-  ShippingOption shippingOption;
-  String credentialsTitle;
-  dynamic extra;
 
-  /// Contains information about a successful payment. 
-  /// [date] Point in time (Unix timestamp) when the payment was made . 
-  /// [paymentsProviderUserId] User identifier of the payment provider bot . 
-  /// [invoice] Contains information about the invoice. 
-  /// [orderInfo] Contains order information; may be null. 
-  /// [shippingOption] Chosen shipping option; may be null . 
-  /// [credentialsTitle] Title of the saved credentials
+  /// Contains information about a successful payment
   PaymentReceipt({this.date,
     this.paymentsProviderUserId,
     this.invoice,
     this.orderInfo,
     this.shippingOption,
     this.credentialsTitle});
+
+  /// [date] Point in time (Unix timestamp) when the payment was made 
+  int date;
+
+  /// [paymentsProviderUserId] User identifier of the payment provider bot 
+  int paymentsProviderUserId;
+
+  /// [invoice] Contains information about the invoice
+  Invoice invoice;
+
+  /// [orderInfo] Contains order information; may be null
+  OrderInfo orderInfo;
+
+  /// [shippingOption] Chosen shipping option; may be null 
+  ShippingOption shippingOption;
+
+  /// [credentialsTitle] Title of the saved credentials
+  String credentialsTitle;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PaymentReceipt.fromJson(Map<String, dynamic> json)  {

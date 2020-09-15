@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class SetInlineGameScore extends TdFunction {
-  String inlineMessageId;
-  bool editMessage;
-  int userId;
-  int score;
-  bool force;
-  dynamic extra;
 
-  /// Updates the game score of the specified user in a game; for bots only. 
-  /// [inlineMessageId] Inline message identifier . 
-  /// [editMessage] True, if the message should be edited . 
-  /// [userId] User identifier . 
-  /// [score] The new score. 
-  /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
+  /// Updates the game score of the specified user in a game; for bots only
   SetInlineGameScore({this.inlineMessageId,
     this.editMessage,
     this.userId,
     this.score,
     this.force});
+
+  /// [inlineMessageId] Inline message identifier 
+  String inlineMessageId;
+
+  /// [editMessage] True, if the message should be edited 
+  bool editMessage;
+
+  /// [userId] User identifier 
+  int userId;
+
+  /// [score] The new score
+  int score;
+
+  /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
+  bool force;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetInlineGameScore.fromJson(Map<String, dynamic> json) ;

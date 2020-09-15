@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CustomRequestResult extends TdObject {
-  String result;
-  dynamic extra;
 
-  /// Contains the result of a custom request. 
-  /// [result] A JSON-serialized result
+  /// Contains the result of a custom request
   CustomRequestResult({this.result});
+
+  /// [result] A JSON-serialized result
+  String result;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CustomRequestResult.fromJson(Map<String, dynamic> json)  {

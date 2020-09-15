@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class NetworkType extends TdObject {
-  
 
   /// Represents the type of a network
   NetworkType();
+
+  
 
   /// a NetworkType return type can be :
   /// * NetworkTypeNone
@@ -43,10 +44,11 @@ class NetworkType extends TdObject {
 }
 
 class NetworkTypeNone extends NetworkType {
-  
 
   /// The network is not available
   NetworkTypeNone();
+
+  
 
   /// Parse from a json
   NetworkTypeNone.fromJson(Map<String, dynamic> json) ;
@@ -65,10 +67,11 @@ class NetworkTypeNone extends NetworkType {
 }
 
 class NetworkTypeMobile extends NetworkType {
-  
 
   /// A mobile network
   NetworkTypeMobile();
+
+  
 
   /// Parse from a json
   NetworkTypeMobile.fromJson(Map<String, dynamic> json) ;
@@ -87,10 +90,11 @@ class NetworkTypeMobile extends NetworkType {
 }
 
 class NetworkTypeMobileRoaming extends NetworkType {
-  
 
   /// A mobile roaming network
   NetworkTypeMobileRoaming();
+
+  
 
   /// Parse from a json
   NetworkTypeMobileRoaming.fromJson(Map<String, dynamic> json) ;
@@ -109,10 +113,11 @@ class NetworkTypeMobileRoaming extends NetworkType {
 }
 
 class NetworkTypeWiFi extends NetworkType {
-  
 
   /// A Wi-Fi network
   NetworkTypeWiFi();
+
+  
 
   /// Parse from a json
   NetworkTypeWiFi.fromJson(Map<String, dynamic> json) ;
@@ -131,10 +136,11 @@ class NetworkTypeWiFi extends NetworkType {
 }
 
 class NetworkTypeOther extends NetworkType {
-  
 
   /// A different network type (e.g., Ethernet network)
   NetworkTypeOther();
+
+  
 
   /// Parse from a json
   NetworkTypeOther.fromJson(Map<String, dynamic> json) ;

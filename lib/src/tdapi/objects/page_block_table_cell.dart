@@ -1,26 +1,32 @@
 part of '../tdapi.dart';
 
 class PageBlockTableCell extends TdObject {
-  RichText text;
-  bool isHeader;
-  int colspan;
-  int rowspan;
-  PageBlockHorizontalAlignment align;
-  PageBlockVerticalAlignment valign;
 
-  /// Represents a cell of a table. 
-  /// [text] Cell text; may be null. If the text is null, then the cell should be invisible . 
-  /// [isHeader] True, if it is a header cell. 
-  /// [colspan] The number of columns the cell should span. 
-  /// [rowspan] The number of rows the cell should span. 
-  /// [align] Horizontal cell content alignment. 
-  /// [valign] Vertical cell content alignment
+  /// Represents a cell of a table
   PageBlockTableCell({this.text,
     this.isHeader,
     this.colspan,
     this.rowspan,
     this.align,
     this.valign});
+
+  /// [text] Cell text; may be null. If the text is null, then the cell should be invisible 
+  RichText text;
+
+  /// [isHeader] True, if it is a header cell
+  bool isHeader;
+
+  /// [colspan] The number of columns the cell should span
+  int colspan;
+
+  /// [rowspan] The number of rows the cell should span
+  int rowspan;
+
+  /// [align] Horizontal cell content alignment
+  PageBlockHorizontalAlignment align;
+
+  /// [valign] Vertical cell content alignment
+  PageBlockVerticalAlignment valign;
 
   /// Parse from a json
   PageBlockTableCell.fromJson(Map<String, dynamic> json)  {

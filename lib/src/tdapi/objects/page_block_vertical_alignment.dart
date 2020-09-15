@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PageBlockVerticalAlignment extends TdObject {
-  
 
   /// Describes a Vertical alignment of a table cell content
   PageBlockVerticalAlignment();
+
+  
 
   /// a PageBlockVerticalAlignment return type can be :
   /// * PageBlockVerticalAlignmentTop
@@ -37,10 +38,11 @@ class PageBlockVerticalAlignment extends TdObject {
 }
 
 class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
-  
 
   /// The content should be top-aligned
   PageBlockVerticalAlignmentTop();
+
+  
 
   /// Parse from a json
   PageBlockVerticalAlignmentTop.fromJson(Map<String, dynamic> json) ;
@@ -59,10 +61,11 @@ class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
 }
 
 class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
-  
 
   /// The content should be middle-aligned
   PageBlockVerticalAlignmentMiddle();
+
+  
 
   /// Parse from a json
   PageBlockVerticalAlignmentMiddle.fromJson(Map<String, dynamic> json) ;
@@ -81,10 +84,11 @@ class PageBlockVerticalAlignmentMiddle extends PageBlockVerticalAlignment {
 }
 
 class PageBlockVerticalAlignmentBottom extends PageBlockVerticalAlignment {
-  
 
   /// The content should be bottom-aligned
   PageBlockVerticalAlignmentBottom();
+
+  
 
   /// Parse from a json
   PageBlockVerticalAlignmentBottom.fromJson(Map<String, dynamic> json) ;

@@ -1,24 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatPermissions extends TdObject {
-  bool canSendMessages;
-  bool canSendMediaMessages;
-  bool canSendPolls;
-  bool canSendOtherMessages;
-  bool canAddWebPagePreviews;
-  bool canChangeInfo;
-  bool canInviteUsers;
-  bool canPinMessages;
 
-  /// Describes actions that a user is allowed to take in a chat. 
-  /// [canSendMessages] True, if the user can send text messages, contacts, locations, and venues. 
-  /// [canSendMediaMessages] True, if the user can send audio files, documents, photos, videos, video notes, and voice notes. Implies can_send_messages permissions. 
-  /// [canSendPolls] True, if the user can send polls. Implies can_send_messages permissions. 
-  /// [canSendOtherMessages] True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_messages permissions. 
-  /// [canAddWebPagePreviews] True, if the user may add a web page preview to their messages. Implies can_send_messages permissions. 
-  /// [canChangeInfo] True, if the user can change the chat title, photo, and other settings. 
-  /// [canInviteUsers] True, if the user can invite new users to the chat. 
-  /// [canPinMessages] True, if the user can pin messages
+  /// Describes actions that a user is allowed to take in a chat
   ChatPermissions({this.canSendMessages,
     this.canSendMediaMessages,
     this.canSendPolls,
@@ -27,6 +11,30 @@ class ChatPermissions extends TdObject {
     this.canChangeInfo,
     this.canInviteUsers,
     this.canPinMessages});
+
+  /// [canSendMessages] True, if the user can send text messages, contacts, locations, and venues
+  bool canSendMessages;
+
+  /// [canSendMediaMessages] True, if the user can send audio files, documents, photos, videos, video notes, and voice notes. Implies can_send_messages permissions
+  bool canSendMediaMessages;
+
+  /// [canSendPolls] True, if the user can send polls. Implies can_send_messages permissions
+  bool canSendPolls;
+
+  /// [canSendOtherMessages] True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_messages permissions
+  bool canSendOtherMessages;
+
+  /// [canAddWebPagePreviews] True, if the user may add a web page preview to their messages. Implies can_send_messages permissions
+  bool canAddWebPagePreviews;
+
+  /// [canChangeInfo] True, if the user can change the chat title, photo, and other settings
+  bool canChangeInfo;
+
+  /// [canInviteUsers] True, if the user can invite new users to the chat
+  bool canInviteUsers;
+
+  /// [canPinMessages] True, if the user can pin messages
+  bool canPinMessages;
 
   /// Parse from a json
   ChatPermissions.fromJson(Map<String, dynamic> json)  {

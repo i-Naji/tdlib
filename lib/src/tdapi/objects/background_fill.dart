@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class BackgroundFill extends TdObject {
-  
 
   /// Describes a fill of a background
   BackgroundFill();
+
+  
 
   /// a BackgroundFill return type can be :
   /// * BackgroundFillSolid
@@ -34,11 +35,12 @@ class BackgroundFill extends TdObject {
 }
 
 class BackgroundFillSolid extends BackgroundFill {
-  int color;
 
-  /// Describes a solid fill of a background. 
-  /// [color] A color of the background in the RGB24 format
+  /// Describes a solid fill of a background
   BackgroundFillSolid({this.color});
+
+  /// [color] A color of the background in the RGB24 format
+  int color;
 
   /// Parse from a json
   BackgroundFillSolid.fromJson(Map<String, dynamic> json)  {
@@ -60,17 +62,20 @@ class BackgroundFillSolid extends BackgroundFill {
 }
 
 class BackgroundFillGradient extends BackgroundFill {
-  int topColor;
-  int bottomColor;
-  int rotationAngle;
 
-  /// Describes a gradient fill of a background. 
-  /// [topColor] A top color of the background in the RGB24 format . 
-  /// [bottomColor] A bottom color of the background in the RGB24 format. 
-  /// [rotationAngle] Clockwise rotation angle of the gradient, in degrees; 0-359. Should be always divisible by 45
+  /// Describes a gradient fill of a background
   BackgroundFillGradient({this.topColor,
     this.bottomColor,
     this.rotationAngle});
+
+  /// [topColor] A top color of the background in the RGB24 format 
+  int topColor;
+
+  /// [bottomColor] A bottom color of the background in the RGB24 format
+  int bottomColor;
+
+  /// [rotationAngle] Clockwise rotation angle of the gradient, in degrees; 0-359. Should be always divisible by 45
+  int rotationAngle;
 
   /// Parse from a json
   BackgroundFillGradient.fromJson(Map<String, dynamic> json)  {

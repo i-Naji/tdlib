@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetCommands extends TdFunction {
-  List<BotCommand> commands;
-  dynamic extra;
 
-  /// Sets the list of commands supported by the bot; for bots only. 
-  /// [commands] List of the bot's commands
+  /// Sets the list of commands supported by the bot; for bots only
   SetCommands({this.commands});
+
+  /// [commands] List of the bot's commands
+  List<BotCommand> commands;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetCommands.fromJson(Map<String, dynamic> json) ;

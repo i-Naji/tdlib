@@ -1,26 +1,32 @@
 part of '../tdapi.dart';
 
 class IdentityDocument extends TdObject {
-  String number;
-  Date expiryDate;
-  DatedFile frontSide;
-  DatedFile reverseSide;
-  DatedFile selfie;
-  List<DatedFile> translation;
 
-  /// An identity document. 
-  /// [number] Document number; 1-24 characters . 
-  /// [expiryDate] Document expiry date; may be null . 
-  /// [frontSide] Front side of the document. 
-  /// [reverseSide] Reverse side of the document; only for driver license and identity card. 
-  /// [selfie] Selfie with the document; may be null . 
-  /// [translation] List of files containing a certified English translation of the document
+  /// An identity document
   IdentityDocument({this.number,
     this.expiryDate,
     this.frontSide,
     this.reverseSide,
     this.selfie,
     this.translation});
+
+  /// [number] Document number; 1-24 characters 
+  String number;
+
+  /// [expiryDate] Document expiry date; may be null 
+  Date expiryDate;
+
+  /// [frontSide] Front side of the document
+  DatedFile frontSide;
+
+  /// [reverseSide] Reverse side of the document; only for driver license and identity card
+  DatedFile reverseSide;
+
+  /// [selfie] Selfie with the document; may be null 
+  DatedFile selfie;
+
+  /// [translation] List of files containing a certified English translation of the document
+  List<DatedFile> translation;
 
   /// Parse from a json
   IdentityDocument.fromJson(Map<String, dynamic> json)  {

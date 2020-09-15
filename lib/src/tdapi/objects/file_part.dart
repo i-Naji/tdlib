@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class FilePart extends TdObject {
-  String data;
-  dynamic extra;
 
-  /// Contains a part of a file. 
-  /// [data] File bytes
+  /// Contains a part of a file
   FilePart({this.data});
+
+  /// [data] File bytes
+  String data;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   FilePart.fromJson(Map<String, dynamic> json)  {

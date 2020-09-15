@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Text extends TdObject {
-  String text;
-  dynamic extra;
 
-  /// Contains some text. 
-  /// [text] Text
+  /// Contains some text
   Text({this.text});
+
+  /// [text] Text
+  String text;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Text.fromJson(Map<String, dynamic> json)  {

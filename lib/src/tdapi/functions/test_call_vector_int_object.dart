@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestCallVectorIntObject extends TdFunction {
-  List<TestInt> x;
-  dynamic extra;
 
-  /// Returns the received vector of objects containing a number; for testing only. This is an offline method. Can be called before authorization. 
-  /// [x] Vector of objects to return
+  /// Returns the received vector of objects containing a number; for testing only. This is an offline method. Can be called before authorization
   TestCallVectorIntObject({this.x});
+
+  /// [x] Vector of objects to return
+  List<TestInt> x;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestCallVectorIntObject.fromJson(Map<String, dynamic> json) ;

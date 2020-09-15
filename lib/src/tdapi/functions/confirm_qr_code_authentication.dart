@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ConfirmQrCodeAuthentication extends TdFunction {
-  String link;
-  dynamic extra;
 
-  /// Confirms QR code authentication on another device. Returns created session on success. 
-  /// [link] A link from a QR code. The link must be scanned by the in-app camera
+  /// Confirms QR code authentication on another device. Returns created session on success
   ConfirmQrCodeAuthentication({this.link});
+
+  /// [link] A link from a QR code. The link must be scanned by the in-app camera
+  String link;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ConfirmQrCodeAuthentication.fromJson(Map<String, dynamic> json) ;

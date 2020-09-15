@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class PassportElementsWithErrors extends TdObject {
-  List<PassportElement> elements;
-  List<PassportElementError> errors;
-  dynamic extra;
 
-  /// Contains information about a Telegram Passport elements and corresponding errors. 
-  /// [elements] Telegram Passport elements . 
-  /// [errors] Errors in the elements that are already available
+  /// Contains information about a Telegram Passport elements and corresponding errors
   PassportElementsWithErrors({this.elements,
     this.errors});
+
+  /// [elements] Telegram Passport elements 
+  List<PassportElement> elements;
+
+  /// [errors] Errors in the elements that are already available
+  List<PassportElementError> errors;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PassportElementsWithErrors.fromJson(Map<String, dynamic> json)  {

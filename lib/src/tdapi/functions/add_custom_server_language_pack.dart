@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class AddCustomServerLanguagePack extends TdFunction {
-  String languagePackId;
-  dynamic extra;
 
-  /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization. 
-  /// [languagePackId] Identifier of a language pack to be added; may be different from a name that is used in an "https://t.me/setlanguage/" link
+  /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
   AddCustomServerLanguagePack({this.languagePackId});
+
+  /// [languagePackId] Identifier of a language pack to be added; may be different from a name that is used in an "https://t.me/setlanguage/" link
+  String languagePackId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AddCustomServerLanguagePack.fromJson(Map<String, dynamic> json) ;

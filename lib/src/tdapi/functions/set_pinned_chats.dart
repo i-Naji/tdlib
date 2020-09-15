@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetPinnedChats extends TdFunction {
-  ChatList chatList;
-  List<int> chatIds;
-  dynamic extra;
 
-  /// Changes the order of pinned chats. 
-  /// [chatList] Chat list in which to change the order of pinned chats . 
-  /// [chatIds] The new list of pinned chats
+  /// Changes the order of pinned chats
   SetPinnedChats({this.chatList,
     this.chatIds});
+
+  /// [chatList] Chat list in which to change the order of pinned chats 
+  ChatList chatList;
+
+  /// [chatIds] The new list of pinned chats
+  List<int> chatIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetPinnedChats.fromJson(Map<String, dynamic> json) ;

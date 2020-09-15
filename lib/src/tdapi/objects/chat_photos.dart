@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ChatPhotos extends TdObject {
-  int totalCount;
-  List<ChatPhoto> photos;
-  dynamic extra;
 
-  /// Contains a list of chat or user profile photos. 
-  /// [totalCount] Total number of photos . 
-  /// [photos] List of photos
+  /// Contains a list of chat or user profile photos
   ChatPhotos({this.totalCount,
     this.photos});
+
+  /// [totalCount] Total number of photos 
+  int totalCount;
+
+  /// [photos] List of photos
+  List<ChatPhoto> photos;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatPhotos.fromJson(Map<String, dynamic> json)  {

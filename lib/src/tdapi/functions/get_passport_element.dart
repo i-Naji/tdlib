@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetPassportElement extends TdFunction {
-  PassportElementType type;
-  String password;
-  dynamic extra;
 
-  /// Returns one of the available Telegram Passport elements. 
-  /// [type] Telegram Passport element type . 
-  /// [password] Password of the current user
+  /// Returns one of the available Telegram Passport elements
   GetPassportElement({this.type,
     this.password});
+
+  /// [type] Telegram Passport element type 
+  PassportElementType type;
+
+  /// [password] Password of the current user
+  String password;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetPassportElement.fromJson(Map<String, dynamic> json) ;

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetSecretChat extends TdFunction {
-  int secretChatId;
-  dynamic extra;
 
-  /// Returns information about a secret chat by its identifier. This is an offline request. 
-  /// [secretChatId] Secret chat identifier
+  /// Returns information about a secret chat by its identifier. This is an offline request
   GetSecretChat({this.secretChatId});
+
+  /// [secretChatId] Secret chat identifier
+  int secretChatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetSecretChat.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatReportReason extends TdObject {
-  
 
   /// Describes the reason why a chat is reported
   ChatReportReason();
+
+  
 
   /// a ChatReportReason return type can be :
   /// * ChatReportReasonSpam
@@ -49,10 +50,11 @@ class ChatReportReason extends TdObject {
 }
 
 class ChatReportReasonSpam extends ChatReportReason {
-  
 
   /// The chat contains spam messages
   ChatReportReasonSpam();
+
+  
 
   /// Parse from a json
   ChatReportReasonSpam.fromJson(Map<String, dynamic> json) ;
@@ -71,10 +73,11 @@ class ChatReportReasonSpam extends ChatReportReason {
 }
 
 class ChatReportReasonViolence extends ChatReportReason {
-  
 
   /// The chat promotes violence
   ChatReportReasonViolence();
+
+  
 
   /// Parse from a json
   ChatReportReasonViolence.fromJson(Map<String, dynamic> json) ;
@@ -93,10 +96,11 @@ class ChatReportReasonViolence extends ChatReportReason {
 }
 
 class ChatReportReasonPornography extends ChatReportReason {
-  
 
   /// The chat contains pornographic messages
   ChatReportReasonPornography();
+
+  
 
   /// Parse from a json
   ChatReportReasonPornography.fromJson(Map<String, dynamic> json) ;
@@ -115,10 +119,11 @@ class ChatReportReasonPornography extends ChatReportReason {
 }
 
 class ChatReportReasonChildAbuse extends ChatReportReason {
-  
 
   /// The chat has child abuse related content
   ChatReportReasonChildAbuse();
+
+  
 
   /// Parse from a json
   ChatReportReasonChildAbuse.fromJson(Map<String, dynamic> json) ;
@@ -137,10 +142,11 @@ class ChatReportReasonChildAbuse extends ChatReportReason {
 }
 
 class ChatReportReasonCopyright extends ChatReportReason {
-  
 
   /// The chat contains copyrighted content
   ChatReportReasonCopyright();
+
+  
 
   /// Parse from a json
   ChatReportReasonCopyright.fromJson(Map<String, dynamic> json) ;
@@ -159,10 +165,11 @@ class ChatReportReasonCopyright extends ChatReportReason {
 }
 
 class ChatReportReasonUnrelatedLocation extends ChatReportReason {
-  
 
   /// The location-based chat is unrelated to its stated location
   ChatReportReasonUnrelatedLocation();
+
+  
 
   /// Parse from a json
   ChatReportReasonUnrelatedLocation.fromJson(Map<String, dynamic> json) ;
@@ -181,11 +188,12 @@ class ChatReportReasonUnrelatedLocation extends ChatReportReason {
 }
 
 class ChatReportReasonCustom extends ChatReportReason {
-  String text;
 
-  /// A custom reason provided by the user. 
-  /// [text] Report text
+  /// A custom reason provided by the user
   ChatReportReasonCustom({this.text});
+
+  /// [text] Report text
+  String text;
 
   /// Parse from a json
   ChatReportReasonCustom.fromJson(Map<String, dynamic> json)  {

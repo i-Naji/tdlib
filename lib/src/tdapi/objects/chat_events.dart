@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ChatEvents extends TdObject {
-  List<ChatEvent> events;
-  dynamic extra;
 
-  /// Contains a list of chat events. 
-  /// [events] List of events
+  /// Contains a list of chat events
   ChatEvents({this.events});
+
+  /// [events] List of events
+  List<ChatEvent> events;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatEvents.fromJson(Map<String, dynamic> json)  {

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class HttpUrl extends TdObject {
-  String url;
-  dynamic extra;
 
-  /// Contains an HTTP URL. 
-  /// [url] The URL
+  /// Contains an HTTP URL
   HttpUrl({this.url});
+
+  /// [url] The URL
+  String url;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   HttpUrl.fromJson(Map<String, dynamic> json)  {

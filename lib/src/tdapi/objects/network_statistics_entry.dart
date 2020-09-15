@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class NetworkStatisticsEntry extends TdObject {
-  
 
   /// Contains statistics about network usage
   NetworkStatisticsEntry();
+
+  
 
   /// a NetworkStatisticsEntry return type can be :
   /// * NetworkStatisticsEntryFile
@@ -34,20 +35,24 @@ class NetworkStatisticsEntry extends TdObject {
 }
 
 class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
-  FileType fileType;
-  NetworkType networkType;
-  int sentBytes;
-  int receivedBytes;
 
-  /// Contains information about the total amount of data that was used to send and receive files. 
-  /// [fileType] Type of the file the data is part of . 
-  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type. 
-  /// [sentBytes] Total number of bytes sent. 
-  /// [receivedBytes] Total number of bytes received
+  /// Contains information about the total amount of data that was used to send and receive files
   NetworkStatisticsEntryFile({this.fileType,
     this.networkType,
     this.sentBytes,
     this.receivedBytes});
+
+  /// [fileType] Type of the file the data is part of 
+  FileType fileType;
+
+  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  NetworkType networkType;
+
+  /// [sentBytes] Total number of bytes sent
+  int sentBytes;
+
+  /// [receivedBytes] Total number of bytes received
+  int receivedBytes;
 
   /// Parse from a json
   NetworkStatisticsEntryFile.fromJson(Map<String, dynamic> json)  {
@@ -75,20 +80,24 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 }
 
 class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
-  NetworkType networkType;
-  int sentBytes;
-  int receivedBytes;
-  double duration;
 
-  /// Contains information about the total amount of data that was used for calls. 
-  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type. 
-  /// [sentBytes] Total number of bytes sent. 
-  /// [receivedBytes] Total number of bytes received . 
-  /// [duration] Total call duration, in seconds
+  /// Contains information about the total amount of data that was used for calls
   NetworkStatisticsEntryCall({this.networkType,
     this.sentBytes,
     this.receivedBytes,
     this.duration});
+
+  /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
+  NetworkType networkType;
+
+  /// [sentBytes] Total number of bytes sent
+  int sentBytes;
+
+  /// [receivedBytes] Total number of bytes received 
+  int receivedBytes;
+
+  /// [duration] Total call duration, in seconds
+  double duration;
 
   /// Parse from a json
   NetworkStatisticsEntryCall.fromJson(Map<String, dynamic> json)  {

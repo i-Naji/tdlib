@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InlineQueryResult extends TdObject {
-  
 
   /// Represents a single result of an inline query
   InlineQueryResult();
+
+  
 
   /// a InlineQueryResult return type can be :
   /// * InlineQueryResultArticle
@@ -64,26 +65,32 @@ class InlineQueryResult extends TdObject {
 }
 
 class InlineQueryResultArticle extends InlineQueryResult {
-  String id;
-  String url;
-  bool hideUrl;
-  String title;
-  String description;
-  Thumbnail thumbnail;
 
-  /// Represents a link to an article or web page. 
-  /// [id] Unique identifier of the query result . 
-  /// [url] URL of the result, if it exists . 
-  /// [hideUrl] True, if the URL must be not shown . 
-  /// [title] Title of the result. 
-  /// [description] A short description of the result. 
-  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  /// Represents a link to an article or web page
   InlineQueryResultArticle({this.id,
     this.url,
     this.hideUrl,
     this.title,
     this.description,
     this.thumbnail});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [url] URL of the result, if it exists 
+  String url;
+
+  /// [hideUrl] True, if the URL must be not shown 
+  bool hideUrl;
+
+  /// [title] Title of the result
+  String title;
+
+  /// [description] A short description of the result
+  String description;
+
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  Thumbnail thumbnail;
 
   /// Parse from a json
   InlineQueryResultArticle.fromJson(Map<String, dynamic> json)  {
@@ -115,17 +122,20 @@ class InlineQueryResultArticle extends InlineQueryResult {
 }
 
 class InlineQueryResultContact extends InlineQueryResult {
-  String id;
-  Contact contact;
-  Thumbnail thumbnail;
 
-  /// Represents a user contact. 
-  /// [id] Unique identifier of the query result . 
-  /// [contact] A user contact . 
-  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  /// Represents a user contact
   InlineQueryResultContact({this.id,
     this.contact,
     this.thumbnail});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [contact] A user contact 
+  Contact contact;
+
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  Thumbnail thumbnail;
 
   /// Parse from a json
   InlineQueryResultContact.fromJson(Map<String, dynamic> json)  {
@@ -151,20 +161,24 @@ class InlineQueryResultContact extends InlineQueryResult {
 }
 
 class InlineQueryResultLocation extends InlineQueryResult {
-  String id;
-  Location location;
-  String title;
-  Thumbnail thumbnail;
 
-  /// Represents a point on the map. 
-  /// [id] Unique identifier of the query result . 
-  /// [location] Location result . 
-  /// [title] Title of the result . 
-  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  /// Represents a point on the map
   InlineQueryResultLocation({this.id,
     this.location,
     this.title,
     this.thumbnail});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [location] Location result 
+  Location location;
+
+  /// [title] Title of the result 
+  String title;
+
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  Thumbnail thumbnail;
 
   /// Parse from a json
   InlineQueryResultLocation.fromJson(Map<String, dynamic> json)  {
@@ -192,17 +206,20 @@ class InlineQueryResultLocation extends InlineQueryResult {
 }
 
 class InlineQueryResultVenue extends InlineQueryResult {
-  String id;
-  Venue venue;
-  Thumbnail thumbnail;
 
-  /// Represents information about a venue. 
-  /// [id] Unique identifier of the query result . 
-  /// [venue] Venue result . 
-  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  /// Represents information about a venue
   InlineQueryResultVenue({this.id,
     this.venue,
     this.thumbnail});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [venue] Venue result 
+  Venue venue;
+
+  /// [thumbnail] Result thumbnail in JPEG format; may be null
+  Thumbnail thumbnail;
 
   /// Parse from a json
   InlineQueryResultVenue.fromJson(Map<String, dynamic> json)  {
@@ -228,14 +245,16 @@ class InlineQueryResultVenue extends InlineQueryResult {
 }
 
 class InlineQueryResultGame extends InlineQueryResult {
-  String id;
-  Game game;
 
-  /// Represents information about a game. 
-  /// [id] Unique identifier of the query result . 
-  /// [game] Game result
+  /// Represents information about a game
   InlineQueryResultGame({this.id,
     this.game});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [game] Game result
+  Game game;
 
   /// Parse from a json
   InlineQueryResultGame.fromJson(Map<String, dynamic> json)  {
@@ -259,17 +278,20 @@ class InlineQueryResultGame extends InlineQueryResult {
 }
 
 class InlineQueryResultAnimation extends InlineQueryResult {
-  String id;
-  Animation animation;
-  String title;
 
-  /// Represents an animation file. 
-  /// [id] Unique identifier of the query result . 
-  /// [animation] Animation file . 
-  /// [title] Animation title
+  /// Represents an animation file
   InlineQueryResultAnimation({this.id,
     this.animation,
     this.title});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [animation] Animation file 
+  Animation animation;
+
+  /// [title] Animation title
+  String title;
 
   /// Parse from a json
   InlineQueryResultAnimation.fromJson(Map<String, dynamic> json)  {
@@ -295,14 +317,16 @@ class InlineQueryResultAnimation extends InlineQueryResult {
 }
 
 class InlineQueryResultAudio extends InlineQueryResult {
-  String id;
-  Audio audio;
 
-  /// Represents an audio file. 
-  /// [id] Unique identifier of the query result . 
-  /// [audio] Audio file
+  /// Represents an audio file
   InlineQueryResultAudio({this.id,
     this.audio});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [audio] Audio file
+  Audio audio;
 
   /// Parse from a json
   InlineQueryResultAudio.fromJson(Map<String, dynamic> json)  {
@@ -326,20 +350,24 @@ class InlineQueryResultAudio extends InlineQueryResult {
 }
 
 class InlineQueryResultDocument extends InlineQueryResult {
-  String id;
-  Document document;
-  String title;
-  String description;
 
-  /// Represents a document. 
-  /// [id] Unique identifier of the query result . 
-  /// [document] Document . 
-  /// [title] Document title . 
-  /// [description] Document description
+  /// Represents a document
   InlineQueryResultDocument({this.id,
     this.document,
     this.title,
     this.description});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [document] Document 
+  Document document;
+
+  /// [title] Document title 
+  String title;
+
+  /// [description] Document description
+  String description;
 
   /// Parse from a json
   InlineQueryResultDocument.fromJson(Map<String, dynamic> json)  {
@@ -367,20 +395,24 @@ class InlineQueryResultDocument extends InlineQueryResult {
 }
 
 class InlineQueryResultPhoto extends InlineQueryResult {
-  String id;
-  Photo photo;
-  String title;
-  String description;
 
-  /// Represents a photo. 
-  /// [id] Unique identifier of the query result . 
-  /// [photo] Photo . 
-  /// [title] Title of the result, if known . 
-  /// [description] A short description of the result, if known
+  /// Represents a photo
   InlineQueryResultPhoto({this.id,
     this.photo,
     this.title,
     this.description});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [photo] Photo 
+  Photo photo;
+
+  /// [title] Title of the result, if known 
+  String title;
+
+  /// [description] A short description of the result, if known
+  String description;
 
   /// Parse from a json
   InlineQueryResultPhoto.fromJson(Map<String, dynamic> json)  {
@@ -408,14 +440,16 @@ class InlineQueryResultPhoto extends InlineQueryResult {
 }
 
 class InlineQueryResultSticker extends InlineQueryResult {
-  String id;
-  Sticker sticker;
 
-  /// Represents a sticker. 
-  /// [id] Unique identifier of the query result . 
-  /// [sticker] Sticker
+  /// Represents a sticker
   InlineQueryResultSticker({this.id,
     this.sticker});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [sticker] Sticker
+  Sticker sticker;
 
   /// Parse from a json
   InlineQueryResultSticker.fromJson(Map<String, dynamic> json)  {
@@ -439,20 +473,24 @@ class InlineQueryResultSticker extends InlineQueryResult {
 }
 
 class InlineQueryResultVideo extends InlineQueryResult {
-  String id;
-  Video video;
-  String title;
-  String description;
 
-  /// Represents a video. 
-  /// [id] Unique identifier of the query result . 
-  /// [video] Video . 
-  /// [title] Title of the video . 
-  /// [description] Description of the video
+  /// Represents a video
   InlineQueryResultVideo({this.id,
     this.video,
     this.title,
     this.description});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [video] Video 
+  Video video;
+
+  /// [title] Title of the video 
+  String title;
+
+  /// [description] Description of the video
+  String description;
 
   /// Parse from a json
   InlineQueryResultVideo.fromJson(Map<String, dynamic> json)  {
@@ -480,17 +518,20 @@ class InlineQueryResultVideo extends InlineQueryResult {
 }
 
 class InlineQueryResultVoiceNote extends InlineQueryResult {
-  String id;
-  VoiceNote voiceNote;
-  String title;
 
-  /// Represents a voice note. 
-  /// [id] Unique identifier of the query result . 
-  /// [voiceNote] Voice note . 
-  /// [title] Title of the voice note
+  /// Represents a voice note
   InlineQueryResultVoiceNote({this.id,
     this.voiceNote,
     this.title});
+
+  /// [id] Unique identifier of the query result 
+  String id;
+
+  /// [voiceNote] Voice note 
+  VoiceNote voiceNote;
+
+  /// [title] Title of the voice note
+  String title;
 
   /// Parse from a json
   InlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json)  {

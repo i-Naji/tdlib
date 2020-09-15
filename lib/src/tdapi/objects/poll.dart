@@ -1,28 +1,8 @@
 part of '../tdapi.dart';
 
 class Poll extends TdObject {
-  int id;
-  String question;
-  List<PollOption> options;
-  int totalVoterCount;
-  List<int> recentVoterUserIds;
-  bool isAnonymous;
-  PollType type;
-  int openPeriod;
-  int closeDate;
-  bool isClosed;
 
-  /// Describes a poll. 
-  /// [id] Unique poll identifier . 
-  /// [question] Poll question, 1-255 characters . 
-  /// [options] List of poll answer options. 
-  /// [totalVoterCount] Total number of voters, participating in the poll. 
-  /// [recentVoterUserIds] User identifiers of recent voters, if the poll is non-anonymous. 
-  /// [isAnonymous] True, if the poll is anonymous. 
-  /// [type] Type of the poll. 
-  /// [openPeriod] Amount of time the poll will be active after creation, in seconds. 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed . 
-  /// [isClosed] True, if the poll is closed
+  /// Describes a poll
   Poll({this.id,
     this.question,
     this.options,
@@ -34,9 +14,39 @@ class Poll extends TdObject {
     this.closeDate,
     this.isClosed});
 
+  /// [id] Unique poll identifier 
+  int id;
+
+  /// [question] Poll question, 1-255 characters 
+  String question;
+
+  /// [options] List of poll answer options
+  List<PollOption> options;
+
+  /// [totalVoterCount] Total number of voters, participating in the poll
+  int totalVoterCount;
+
+  /// [recentVoterUserIds] User identifiers of recent voters, if the poll is non-anonymous
+  List<int> recentVoterUserIds;
+
+  /// [isAnonymous] True, if the poll is anonymous
+  bool isAnonymous;
+
+  /// [type] Type of the poll
+  PollType type;
+
+  /// [openPeriod] Amount of time the poll will be active after creation, in seconds
+  int openPeriod;
+
+  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed 
+  int closeDate;
+
+  /// [isClosed] True, if the poll is closed
+  bool isClosed;
+
   /// Parse from a json
   Poll.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.question = json['question'];
     this.options = List<PollOption>.from((json['options'] ?? []).map((item) => PollOption.fromJson(item ?? <String, dynamic>{})).toList());
     this.totalVoterCount = json['total_voter_count'];

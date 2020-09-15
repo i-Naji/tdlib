@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetChatFilterDefaultIconName extends TdFunction {
-  ChatFilter filter;
-  dynamic extra;
 
-  /// Returns default icon name for a filter. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [filter] Chat filter
+  /// Returns default icon name for a filter. This is an offline method. Can be called before authorization. Can be called synchronously
   GetChatFilterDefaultIconName({this.filter});
+
+  /// [filter] Chat filter
+  ChatFilter filter;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatFilterDefaultIconName.fromJson(Map<String, dynamic> json) ;

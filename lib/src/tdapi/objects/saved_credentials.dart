@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class SavedCredentials extends TdObject {
-  String id;
-  String title;
 
-  /// Contains information about saved card credentials. 
-  /// [id] Unique identifier of the saved credentials . 
-  /// [title] Title of the saved credentials
+  /// Contains information about saved card credentials
   SavedCredentials({this.id,
     this.title});
+
+  /// [id] Unique identifier of the saved credentials 
+  String id;
+
+  /// [title] Title of the saved credentials
+  String title;
 
   /// Parse from a json
   SavedCredentials.fromJson(Map<String, dynamic> json)  {

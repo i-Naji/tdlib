@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatAction extends TdObject {
-  
 
   /// Describes the different types of activity in a chat
   ChatAction();
+
+  
 
   /// a ChatAction return type can be :
   /// * ChatActionTyping
@@ -67,10 +68,11 @@ class ChatAction extends TdObject {
 }
 
 class ChatActionTyping extends ChatAction {
-  
 
   /// The user is typing a message
   ChatActionTyping();
+
+  
 
   /// Parse from a json
   ChatActionTyping.fromJson(Map<String, dynamic> json) ;
@@ -89,10 +91,11 @@ class ChatActionTyping extends ChatAction {
 }
 
 class ChatActionRecordingVideo extends ChatAction {
-  
 
   /// The user is recording a video
   ChatActionRecordingVideo();
+
+  
 
   /// Parse from a json
   ChatActionRecordingVideo.fromJson(Map<String, dynamic> json) ;
@@ -111,11 +114,12 @@ class ChatActionRecordingVideo extends ChatAction {
 }
 
 class ChatActionUploadingVideo extends ChatAction {
-  int progress;
 
-  /// The user is uploading a video. 
-  /// [progress] Upload progress, as a percentage
+  /// The user is uploading a video
   ChatActionUploadingVideo({this.progress});
+
+  /// [progress] Upload progress, as a percentage
+  int progress;
 
   /// Parse from a json
   ChatActionUploadingVideo.fromJson(Map<String, dynamic> json)  {
@@ -137,10 +141,11 @@ class ChatActionUploadingVideo extends ChatAction {
 }
 
 class ChatActionRecordingVoiceNote extends ChatAction {
-  
 
   /// The user is recording a voice note
   ChatActionRecordingVoiceNote();
+
+  
 
   /// Parse from a json
   ChatActionRecordingVoiceNote.fromJson(Map<String, dynamic> json) ;
@@ -159,11 +164,12 @@ class ChatActionRecordingVoiceNote extends ChatAction {
 }
 
 class ChatActionUploadingVoiceNote extends ChatAction {
-  int progress;
 
-  /// The user is uploading a voice note. 
-  /// [progress] Upload progress, as a percentage
+  /// The user is uploading a voice note
   ChatActionUploadingVoiceNote({this.progress});
+
+  /// [progress] Upload progress, as a percentage
+  int progress;
 
   /// Parse from a json
   ChatActionUploadingVoiceNote.fromJson(Map<String, dynamic> json)  {
@@ -185,11 +191,12 @@ class ChatActionUploadingVoiceNote extends ChatAction {
 }
 
 class ChatActionUploadingPhoto extends ChatAction {
-  int progress;
 
-  /// The user is uploading a photo. 
-  /// [progress] Upload progress, as a percentage
+  /// The user is uploading a photo
   ChatActionUploadingPhoto({this.progress});
+
+  /// [progress] Upload progress, as a percentage
+  int progress;
 
   /// Parse from a json
   ChatActionUploadingPhoto.fromJson(Map<String, dynamic> json)  {
@@ -211,11 +218,12 @@ class ChatActionUploadingPhoto extends ChatAction {
 }
 
 class ChatActionUploadingDocument extends ChatAction {
-  int progress;
 
-  /// The user is uploading a document. 
-  /// [progress] Upload progress, as a percentage
+  /// The user is uploading a document
   ChatActionUploadingDocument({this.progress});
+
+  /// [progress] Upload progress, as a percentage
+  int progress;
 
   /// Parse from a json
   ChatActionUploadingDocument.fromJson(Map<String, dynamic> json)  {
@@ -237,10 +245,11 @@ class ChatActionUploadingDocument extends ChatAction {
 }
 
 class ChatActionChoosingLocation extends ChatAction {
-  
 
   /// The user is picking a location or venue to send
   ChatActionChoosingLocation();
+
+  
 
   /// Parse from a json
   ChatActionChoosingLocation.fromJson(Map<String, dynamic> json) ;
@@ -259,10 +268,11 @@ class ChatActionChoosingLocation extends ChatAction {
 }
 
 class ChatActionChoosingContact extends ChatAction {
-  
 
   /// The user is picking a contact to send
   ChatActionChoosingContact();
+
+  
 
   /// Parse from a json
   ChatActionChoosingContact.fromJson(Map<String, dynamic> json) ;
@@ -281,10 +291,11 @@ class ChatActionChoosingContact extends ChatAction {
 }
 
 class ChatActionStartPlayingGame extends ChatAction {
-  
 
   /// The user has started to play a game
   ChatActionStartPlayingGame();
+
+  
 
   /// Parse from a json
   ChatActionStartPlayingGame.fromJson(Map<String, dynamic> json) ;
@@ -303,10 +314,11 @@ class ChatActionStartPlayingGame extends ChatAction {
 }
 
 class ChatActionRecordingVideoNote extends ChatAction {
-  
 
   /// The user is recording a video note
   ChatActionRecordingVideoNote();
+
+  
 
   /// Parse from a json
   ChatActionRecordingVideoNote.fromJson(Map<String, dynamic> json) ;
@@ -325,11 +337,12 @@ class ChatActionRecordingVideoNote extends ChatAction {
 }
 
 class ChatActionUploadingVideoNote extends ChatAction {
-  int progress;
 
-  /// The user is uploading a video note. 
-  /// [progress] Upload progress, as a percentage
+  /// The user is uploading a video note
   ChatActionUploadingVideoNote({this.progress});
+
+  /// [progress] Upload progress, as a percentage
+  int progress;
 
   /// Parse from a json
   ChatActionUploadingVideoNote.fromJson(Map<String, dynamic> json)  {
@@ -351,10 +364,11 @@ class ChatActionUploadingVideoNote extends ChatAction {
 }
 
 class ChatActionCancel extends ChatAction {
-  
 
   /// The user has cancelled the previous action
   ChatActionCancel();
+
+  
 
   /// Parse from a json
   ChatActionCancel.fromJson(Map<String, dynamic> json) ;

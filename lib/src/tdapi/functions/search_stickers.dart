@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SearchStickers extends TdFunction {
-  String emoji;
-  int limit;
-  dynamic extra;
 
-  /// Searches for stickers from public sticker sets that correspond to a given emoji. 
-  /// [emoji] String representation of emoji; must be non-empty . 
-  /// [limit] The maximum number of stickers to be returned
+  /// Searches for stickers from public sticker sets that correspond to a given emoji
   SearchStickers({this.emoji,
     this.limit});
+
+  /// [emoji] String representation of emoji; must be non-empty 
+  String emoji;
+
+  /// [limit] The maximum number of stickers to be returned
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SearchStickers.fromJson(Map<String, dynamic> json) ;

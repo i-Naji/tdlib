@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class CreateCall extends TdFunction {
-  int userId;
-  CallProtocol protocol;
-  dynamic extra;
 
-  /// Creates a new call. 
-  /// [userId] Identifier of the user to be called . 
-  /// [protocol] Description of the call protocols supported by the application
+  /// Creates a new call
   CreateCall({this.userId,
     this.protocol});
+
+  /// [userId] Identifier of the user to be called 
+  int userId;
+
+  /// [protocol] Description of the call protocols supported by the application
+  CallProtocol protocol;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CreateCall.fromJson(Map<String, dynamic> json) ;

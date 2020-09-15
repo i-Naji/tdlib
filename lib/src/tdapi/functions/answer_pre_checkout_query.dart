@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class AnswerPreCheckoutQuery extends TdFunction {
-  int preCheckoutQueryId;
-  String errorMessage;
-  dynamic extra;
 
-  /// Sets the result of a pre-checkout query; for bots only. 
-  /// [preCheckoutQueryId] Identifier of the pre-checkout query . 
-  /// [errorMessage] An error message, empty on success
+  /// Sets the result of a pre-checkout query; for bots only
   AnswerPreCheckoutQuery({this.preCheckoutQueryId,
     this.errorMessage});
+
+  /// [preCheckoutQueryId] Identifier of the pre-checkout query 
+  int preCheckoutQueryId;
+
+  /// [errorMessage] An error message, empty on success
+  String errorMessage;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AnswerPreCheckoutQuery.fromJson(Map<String, dynamic> json) ;

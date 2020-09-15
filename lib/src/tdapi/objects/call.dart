@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class Call extends TdObject {
-  int id;
-  int userId;
-  bool isOutgoing;
-  CallState state;
 
-  /// Describes a call. 
-  /// [id] Call identifier, not persistent . 
-  /// [userId] Peer user identifier . 
-  /// [isOutgoing] True, if the call is outgoing . 
-  /// [state] Call state
+  /// Describes a call
   Call({this.id,
     this.userId,
     this.isOutgoing,
     this.state});
+
+  /// [id] Call identifier, not persistent 
+  int id;
+
+  /// [userId] Peer user identifier 
+  int userId;
+
+  /// [isOutgoing] True, if the call is outgoing 
+  bool isOutgoing;
+
+  /// [state] Call state
+  CallState state;
 
   /// Parse from a json
   Call.fromJson(Map<String, dynamic> json)  {

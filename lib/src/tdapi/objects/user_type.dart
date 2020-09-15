@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class UserType extends TdObject {
-  
 
   /// Represents the type of a user. The following types are possible: regular users, deleted users and bots
   UserType();
+
+  
 
   /// a UserType return type can be :
   /// * UserTypeRegular
@@ -40,10 +41,11 @@ class UserType extends TdObject {
 }
 
 class UserTypeRegular extends UserType {
-  
 
   /// A regular user
   UserTypeRegular();
+
+  
 
   /// Parse from a json
   UserTypeRegular.fromJson(Map<String, dynamic> json) ;
@@ -62,10 +64,11 @@ class UserTypeRegular extends UserType {
 }
 
 class UserTypeDeleted extends UserType {
-  
 
   /// A deleted user or deleted bot. No information on the user besides the user identifier is available. It is not possible to perform any active actions on this type of user
   UserTypeDeleted();
+
+  
 
   /// Parse from a json
   UserTypeDeleted.fromJson(Map<String, dynamic> json) ;
@@ -84,23 +87,28 @@ class UserTypeDeleted extends UserType {
 }
 
 class UserTypeBot extends UserType {
-  bool canJoinGroups;
-  bool canReadAllGroupMessages;
-  bool isInline;
-  String inlineQueryPlaceholder;
-  bool needLocation;
 
-  /// A bot (see https://core.telegram.org/bots). 
-  /// [canJoinGroups] True, if the bot can be invited to basic group and supergroup chats. 
-  /// [canReadAllGroupMessages] True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages. 
-  /// [isInline] True, if the bot supports inline queries. 
-  /// [inlineQueryPlaceholder] Placeholder for inline queries (displayed on the application input field) . 
-  /// [needLocation] True, if the location of the user should be sent with every inline query to this bot
+  /// A bot (see https://core.telegram.org/bots)
   UserTypeBot({this.canJoinGroups,
     this.canReadAllGroupMessages,
     this.isInline,
     this.inlineQueryPlaceholder,
     this.needLocation});
+
+  /// [canJoinGroups] True, if the bot can be invited to basic group and supergroup chats
+  bool canJoinGroups;
+
+  /// [canReadAllGroupMessages] True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
+  bool canReadAllGroupMessages;
+
+  /// [isInline] True, if the bot supports inline queries
+  bool isInline;
+
+  /// [inlineQueryPlaceholder] Placeholder for inline queries (displayed on the application input field) 
+  String inlineQueryPlaceholder;
+
+  /// [needLocation] True, if the location of the user should be sent with every inline query to this bot
+  bool needLocation;
 
   /// Parse from a json
   UserTypeBot.fromJson(Map<String, dynamic> json)  {
@@ -130,10 +138,11 @@ class UserTypeBot extends UserType {
 }
 
 class UserTypeUnknown extends UserType {
-  
 
   /// No information on the user besides the user identifier is available, yet this user has not been deleted. This object is extremely rare and must be handled like a deleted user. It is not possible to perform any actions on users of this type
   UserTypeUnknown();
+
+  
 
   /// Parse from a json
   UserTypeUnknown.fromJson(Map<String, dynamic> json) ;

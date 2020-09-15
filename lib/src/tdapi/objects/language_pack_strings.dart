@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class LanguagePackStrings extends TdObject {
-  List<LanguagePackString> strings;
-  dynamic extra;
 
-  /// Contains a list of language pack strings. 
-  /// [strings] A list of language pack strings
+  /// Contains a list of language pack strings
   LanguagePackStrings({this.strings});
+
+  /// [strings] A list of language pack strings
+  List<LanguagePackString> strings;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LanguagePackStrings.fromJson(Map<String, dynamic> json)  {

@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class EncryptedCredentials extends TdObject {
-  String data;
-  String hash;
-  String secret;
 
-  /// Contains encrypted Telegram Passport data credentials. 
-  /// [data] The encrypted credentials . 
-  /// [hash] The decrypted data hash . 
-  /// [secret] Secret for data decryption, encrypted with the service's public key
+  /// Contains encrypted Telegram Passport data credentials
   EncryptedCredentials({this.data,
     this.hash,
     this.secret});
+
+  /// [data] The encrypted credentials 
+  String data;
+
+  /// [hash] The decrypted data hash 
+  String hash;
+
+  /// [secret] Secret for data decryption, encrypted with the service's public key
+  String secret;
 
   /// Parse from a json
   EncryptedCredentials.fromJson(Map<String, dynamic> json)  {

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetDatabaseEncryptionKey extends TdFunction {
-  String newEncryptionKey;
-  dynamic extra;
 
-  /// Changes the database encryption key. Usually the encryption key is never changed and is stored in some OS keychain. 
-  /// [newEncryptionKey] New encryption key
+  /// Changes the database encryption key. Usually the encryption key is never changed and is stored in some OS keychain
   SetDatabaseEncryptionKey({this.newEncryptionKey});
+
+  /// [newEncryptionKey] New encryption key
+  String newEncryptionKey;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetDatabaseEncryptionKey.fromJson(Map<String, dynamic> json) ;

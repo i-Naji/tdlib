@@ -1,26 +1,32 @@
 part of '../tdapi.dart';
 
 class Address extends TdObject {
-  String countryCode;
-  String state;
-  String city;
-  String streetLine1;
-  String streetLine2;
-  String postalCode;
 
-  /// Describes an address. 
-  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code . 
-  /// [state] State, if applicable . 
-  /// [city] City . 
-  /// [streetLine1] First line of the address . 
-  /// [streetLine2] Second line of the address . 
-  /// [postalCode] Address postal code
+  /// Describes an address
   Address({this.countryCode,
     this.state,
     this.city,
     this.streetLine1,
     this.streetLine2,
     this.postalCode});
+
+  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code 
+  String countryCode;
+
+  /// [state] State, if applicable 
+  String state;
+
+  /// [city] City 
+  String city;
+
+  /// [streetLine1] First line of the address 
+  String streetLine1;
+
+  /// [streetLine2] Second line of the address 
+  String streetLine2;
+
+  /// [postalCode] Address postal code
+  String postalCode;
 
   /// Parse from a json
   Address.fromJson(Map<String, dynamic> json)  {

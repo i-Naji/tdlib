@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CheckChatUsernameResult extends TdObject {
-  
 
   /// Represents result of checking whether a username can be set for a chat
   CheckChatUsernameResult();
+
+  
 
   /// a CheckChatUsernameResult return type can be :
   /// * CheckChatUsernameResultOk
@@ -43,10 +44,12 @@ class CheckChatUsernameResult extends TdObject {
 }
 
 class CheckChatUsernameResultOk extends CheckChatUsernameResult {
-  dynamic extra;
 
   /// The username can be set
   CheckChatUsernameResultOk();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatUsernameResultOk.fromJson(Map<String, dynamic> json)  {
@@ -67,10 +70,12 @@ class CheckChatUsernameResultOk extends CheckChatUsernameResult {
 }
 
 class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
-  dynamic extra;
 
   /// The username is invalid
   CheckChatUsernameResultUsernameInvalid();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatUsernameResultUsernameInvalid.fromJson(Map<String, dynamic> json)  {
@@ -91,10 +96,12 @@ class CheckChatUsernameResultUsernameInvalid extends CheckChatUsernameResult {
 }
 
 class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
-  dynamic extra;
 
   /// The username is occupied
   CheckChatUsernameResultUsernameOccupied();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatUsernameResultUsernameOccupied.fromJson(Map<String, dynamic> json)  {
@@ -115,10 +122,12 @@ class CheckChatUsernameResultUsernameOccupied extends CheckChatUsernameResult {
 }
 
 class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult {
-  dynamic extra;
 
   /// The user has too much chats with username, one of them should be made private first
   CheckChatUsernameResultPublicChatsTooMuch();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatUsernameResultPublicChatsTooMuch.fromJson(Map<String, dynamic> json)  {
@@ -139,10 +148,12 @@ class CheckChatUsernameResultPublicChatsTooMuch extends CheckChatUsernameResult 
 }
 
 class CheckChatUsernameResultPublicGroupsUnavailable extends CheckChatUsernameResult {
-  dynamic extra;
 
   /// The user can't be a member of a public supergroup
   CheckChatUsernameResultPublicGroupsUnavailable();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatUsernameResultPublicGroupsUnavailable.fromJson(Map<String, dynamic> json)  {

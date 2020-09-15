@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SearchBackground extends TdFunction {
-  String name;
-  dynamic extra;
 
-  /// Searches for a background by its name. 
-  /// [name] The name of the background
+  /// Searches for a background by its name
   SearchBackground({this.name});
+
+  /// [name] The name of the background
+  String name;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SearchBackground.fromJson(Map<String, dynamic> json) ;

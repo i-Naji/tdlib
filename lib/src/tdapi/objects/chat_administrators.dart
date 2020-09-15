@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ChatAdministrators extends TdObject {
-  List<ChatAdministrator> administrators;
-  dynamic extra;
 
-  /// Represents a list of chat administrators. 
-  /// [administrators] A list of chat administrators
+  /// Represents a list of chat administrators
   ChatAdministrators({this.administrators});
+
+  /// [administrators] A list of chat administrators
+  List<ChatAdministrator> administrators;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatAdministrators.fromJson(Map<String, dynamic> json)  {

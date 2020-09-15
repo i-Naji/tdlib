@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Count extends TdObject {
-  int count;
-  dynamic extra;
 
-  /// Contains a counter. 
-  /// [count] Count
+  /// Contains a counter
   Count({this.count});
+
+  /// [count] Count
+  int count;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Count.fromJson(Map<String, dynamic> json)  {

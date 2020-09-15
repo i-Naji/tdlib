@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CheckRecoveryEmailAddressCode extends TdFunction {
-  String code;
-  dynamic extra;
 
-  /// Checks the 2-step verification recovery email address verification code. 
-  /// [code] Verification code
+  /// Checks the 2-step verification recovery email address verification code
   CheckRecoveryEmailAddressCode({this.code});
+
+  /// [code] Verification code
+  String code;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckRecoveryEmailAddressCode.fromJson(Map<String, dynamic> json) ;

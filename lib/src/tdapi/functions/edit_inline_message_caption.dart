@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageCaption extends TdFunction {
-  String inlineMessageId;
-  ReplyMarkup replyMarkup;
-  FormattedText caption;
-  dynamic extra;
 
-  /// Edits the caption of an inline message sent via a bot; for bots only. 
-  /// [inlineMessageId] Inline message identifier . 
-  /// [replyMarkup] The new message reply markup . 
-  /// [caption] New message content caption; 0-GetOption("message_caption_length_max") characters
+  /// Edits the caption of an inline message sent via a bot; for bots only
   EditInlineMessageCaption({this.inlineMessageId,
     this.replyMarkup,
     this.caption});
+
+  /// [inlineMessageId] Inline message identifier 
+  String inlineMessageId;
+
+  /// [replyMarkup] The new message reply markup 
+  ReplyMarkup replyMarkup;
+
+  /// [caption] New message content caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditInlineMessageCaption.fromJson(Map<String, dynamic> json) ;

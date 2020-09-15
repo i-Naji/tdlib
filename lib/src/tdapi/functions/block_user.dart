@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class BlockUser extends TdFunction {
-  int userId;
-  dynamic extra;
 
-  /// Blocks a user. 
-  /// [userId] User identifier
+  /// Blocks a user
   BlockUser({this.userId});
+
+  /// [userId] User identifier
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   BlockUser.fromJson(Map<String, dynamic> json) ;

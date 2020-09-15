@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestVectorInt extends TdObject {
-  List<int> value;
-  dynamic extra;
 
-  /// A simple object containing a vector of numbers; for testing only. 
-  /// [value] Vector of numbers
+  /// A simple object containing a vector of numbers; for testing only
   TestVectorInt({this.value});
+
+  /// [value] Vector of numbers
+  List<int> value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestVectorInt.fromJson(Map<String, dynamic> json)  {

@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class MessageLinkInfo extends TdObject {
-  bool isPublic;
-  int chatId;
-  Message message;
-  bool forAlbum;
-  dynamic extra;
 
-  /// Contains information about a link to a message in a chat. 
-  /// [isPublic] True, if the link is a public link for a message in a chat. 
-  /// [chatId] If found, identifier of the chat to which the message belongs, 0 otherwise. 
-  /// [message] If found, the linked message; may be null. 
-  /// [forAlbum] True, if the whole media album to which the message belongs is linked
+  /// Contains information about a link to a message in a chat
   MessageLinkInfo({this.isPublic,
     this.chatId,
     this.message,
     this.forAlbum});
+
+  /// [isPublic] True, if the link is a public link for a message in a chat
+  bool isPublic;
+
+  /// [chatId] If found, identifier of the chat to which the message belongs, 0 otherwise
+  int chatId;
+
+  /// [message] If found, the linked message; may be null
+  Message message;
+
+  /// [forAlbum] True, if the whole media album to which the message belongs is linked
+  bool forAlbum;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   MessageLinkInfo.fromJson(Map<String, dynamic> json)  {

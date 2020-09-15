@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetChatFilter extends TdFunction {
-  int chatFilterId;
-  dynamic extra;
 
-  /// Returns information about a chat filter by its identifier. 
-  /// [chatFilterId] Chat filter identifier
+  /// Returns information about a chat filter by its identifier
   GetChatFilter({this.chatFilterId});
+
+  /// [chatFilterId] Chat filter identifier
+  int chatFilterId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetChatFilter.fromJson(Map<String, dynamic> json) ;

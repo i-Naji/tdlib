@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class ResetNetworkStatistics extends TdFunction {
-  dynamic extra;
 
   /// Resets all network data usage statistics to zero. Can be called before authorization
   ResetNetworkStatistics();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ResetNetworkStatistics.fromJson(Map<String, dynamic> json) ;

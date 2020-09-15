@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class CancelDownloadFile extends TdFunction {
-  int fileId;
-  bool onlyIfPending;
-  dynamic extra;
 
-  /// Stops the downloading of a file. If a file has already been downloaded, does nothing. 
-  /// [fileId] Identifier of a file to stop downloading . 
-  /// [onlyIfPending] Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
+  /// Stops the downloading of a file. If a file has already been downloaded, does nothing
   CancelDownloadFile({this.fileId,
     this.onlyIfPending});
+
+  /// [fileId] Identifier of a file to stop downloading 
+  int fileId;
+
+  /// [onlyIfPending] Pass true to stop downloading only if it hasn't been started, i.e. request hasn't been sent to server
+  bool onlyIfPending;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CancelDownloadFile.fromJson(Map<String, dynamic> json) ;

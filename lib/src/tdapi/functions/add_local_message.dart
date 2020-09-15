@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class AddLocalMessage extends TdFunction {
-  int chatId;
-  int senderUserId;
-  int replyToMessageId;
-  bool disableNotification;
-  InputMessageContent inputMessageContent;
-  dynamic extra;
 
-  /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message. 
-  /// [chatId] Target chat . 
-  /// [senderUserId] Identifier of the user who will be shown as the sender of the message; may be 0 for channel posts. 
-  /// [replyToMessageId] Identifier of the message to reply to or 0. 
-  /// [disableNotification] Pass true to disable notification for the message . 
-  /// [inputMessageContent] The content of the message to be added
+  /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message
   AddLocalMessage({this.chatId,
     this.senderUserId,
     this.replyToMessageId,
     this.disableNotification,
     this.inputMessageContent});
+
+  /// [chatId] Target chat 
+  int chatId;
+
+  /// [senderUserId] Identifier of the user who will be shown as the sender of the message; may be 0 for channel posts
+  int senderUserId;
+
+  /// [replyToMessageId] Identifier of the message to reply to or 0
+  int replyToMessageId;
+
+  /// [disableNotification] Pass true to disable notification for the message 
+  bool disableNotification;
+
+  /// [inputMessageContent] The content of the message to be added
+  InputMessageContent inputMessageContent;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AddLocalMessage.fromJson(Map<String, dynamic> json) ;

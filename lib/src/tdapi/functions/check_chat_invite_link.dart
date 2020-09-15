@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CheckChatInviteLink extends TdFunction {
-  String inviteLink;
-  dynamic extra;
 
-  /// Checks the validity of an invite link for a chat and returns information about the corresponding chat. 
-  /// [inviteLink] Invite link to be checked; should begin with "https://t.me/joinchat/", "https://telegram.me/joinchat/", or "https://telegram.dog/joinchat/"
+  /// Checks the validity of an invite link for a chat and returns information about the corresponding chat
   CheckChatInviteLink({this.inviteLink});
+
+  /// [inviteLink] Invite link to be checked; should begin with "https://t.me/joinchat/", "https://telegram.me/joinchat/", or "https://telegram.dog/joinchat/"
+  String inviteLink;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckChatInviteLink.fromJson(Map<String, dynamic> json) ;

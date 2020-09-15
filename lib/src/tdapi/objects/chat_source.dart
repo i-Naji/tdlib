@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ChatSource extends TdObject {
-  
 
   /// Describes a reason why an external chat is shown in a chat list
   ChatSource();
+
+  
 
   /// a ChatSource return type can be :
   /// * ChatSourceMtprotoProxy
@@ -34,10 +35,11 @@ class ChatSource extends TdObject {
 }
 
 class ChatSourceMtprotoProxy extends ChatSource {
-  
 
   /// The chat is sponsored by the user's MTProxy server
   ChatSourceMtprotoProxy();
+
+  
 
   /// Parse from a json
   ChatSourceMtprotoProxy.fromJson(Map<String, dynamic> json) ;
@@ -56,14 +58,16 @@ class ChatSourceMtprotoProxy extends ChatSource {
 }
 
 class ChatSourcePublicServiceAnnouncement extends ChatSource {
-  String type;
-  String text;
 
-  /// The chat contains a public service announcement. 
-  /// [type] The type of the announcement . 
-  /// [text] The text of the announcement
+  /// The chat contains a public service announcement
   ChatSourcePublicServiceAnnouncement({this.type,
     this.text});
+
+  /// [type] The type of the announcement 
+  String type;
+
+  /// [text] The text of the announcement
+  String text;
 
   /// Parse from a json
   ChatSourcePublicServiceAnnouncement.fromJson(Map<String, dynamic> json)  {

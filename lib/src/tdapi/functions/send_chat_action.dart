@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SendChatAction extends TdFunction {
-  int chatId;
-  ChatAction action;
-  dynamic extra;
 
-  /// Sends a notification about user activity in a chat. 
-  /// [chatId] Chat identifier . 
-  /// [action] The action description
+  /// Sends a notification about user activity in a chat
   SendChatAction({this.chatId,
     this.action});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [action] The action description
+  ChatAction action;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SendChatAction.fromJson(Map<String, dynamic> json) ;

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestBytes extends TdObject {
-  String value;
-  dynamic extra;
 
-  /// A simple object containing a sequence of bytes; for testing only. 
-  /// [value] Bytes
+  /// A simple object containing a sequence of bytes; for testing only
   TestBytes({this.value});
+
+  /// [value] Bytes
+  String value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestBytes.fromJson(Map<String, dynamic> json)  {

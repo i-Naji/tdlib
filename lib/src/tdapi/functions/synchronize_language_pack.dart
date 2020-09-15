@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SynchronizeLanguagePack extends TdFunction {
-  String languagePackId;
-  dynamic extra;
 
-  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization. 
-  /// [languagePackId] Language pack identifier
+  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization
   SynchronizeLanguagePack({this.languagePackId});
+
+  /// [languagePackId] Language pack identifier
+  String languagePackId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SynchronizeLanguagePack.fromJson(Map<String, dynamic> json) ;

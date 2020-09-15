@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetLogStream extends TdFunction {
-  LogStream logStream;
-  dynamic extra;
 
-  /// Sets new log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [logStream] New log stream
+  /// Sets new log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
   SetLogStream({this.logStream});
+
+  /// [logStream] New log stream
+  LogStream logStream;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetLogStream.fromJson(Map<String, dynamic> json) ;

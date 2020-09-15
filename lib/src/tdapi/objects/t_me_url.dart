@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class TMeUrl extends TdObject {
-  String url;
-  TMeUrlType type;
 
-  /// Represents a URL linking to an internal Telegram entity. 
-  /// [url] URL . 
-  /// [type] Type of the URL
+  /// Represents a URL linking to an internal Telegram entity
   TMeUrl({this.url,
     this.type});
+
+  /// [url] URL 
+  String url;
+
+  /// [type] Type of the URL
+  TMeUrlType type;
 
   /// Parse from a json
   TMeUrl.fromJson(Map<String, dynamic> json)  {

@@ -1,21 +1,8 @@
 part of '../tdapi.dart';
 
 class Background extends TdObject {
-  int id;
-  bool isDefault;
-  bool isDark;
-  String name;
-  Document document;
-  BackgroundType type;
-  dynamic extra;
 
-  /// Describes a chat background. 
-  /// [id] Unique background identifier. 
-  /// [isDefault] True, if this is one of default backgrounds. 
-  /// [isDark] True, if the background is dark and is recommended to be used with dark theme. 
-  /// [name] Unique background name. 
-  /// [document] Document with the background; may be null. Null only for filled backgrounds. 
-  /// [type] Type of the background
+  /// Describes a chat background
   Background({this.id,
     this.isDefault,
     this.isDark,
@@ -23,9 +10,30 @@ class Background extends TdObject {
     this.document,
     this.type});
 
+  /// [id] Unique background identifier
+  int id;
+
+  /// [isDefault] True, if this is one of default backgrounds
+  bool isDefault;
+
+  /// [isDark] True, if the background is dark and is recommended to be used with dark theme
+  bool isDark;
+
+  /// [name] Unique background name
+  String name;
+
+  /// [document] Document with the background; may be null. Null only for filled backgrounds
+  Document document;
+
+  /// [type] Type of the background
+  BackgroundType type;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   Background.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.isDefault = json['is_default'];
     this.isDark = json['is_dark'];
     this.name = json['name'];

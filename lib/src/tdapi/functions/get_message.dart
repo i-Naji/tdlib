@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetMessage extends TdFunction {
-  int chatId;
-  int messageId;
-  dynamic extra;
 
-  /// Returns information about a message. 
-  /// [chatId] Identifier of the chat the message belongs to . 
-  /// [messageId] Identifier of the message to get
+  /// Returns information about a message
   GetMessage({this.chatId,
     this.messageId});
+
+  /// [chatId] Identifier of the chat the message belongs to 
+  int chatId;
+
+  /// [messageId] Identifier of the message to get
+  int messageId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetMessage.fromJson(Map<String, dynamic> json) ;

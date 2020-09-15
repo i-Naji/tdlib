@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class ScopeNotificationSettings extends TdObject {
-  int muteFor;
-  String sound;
-  bool showPreview;
-  bool disablePinnedMessageNotifications;
-  bool disableMentionNotifications;
-  dynamic extra;
 
-  /// Contains information about notification settings for several chats. 
-  /// [muteFor] Time left before notifications will be unmuted, in seconds. 
-  /// [sound] The name of an audio file to be used for notification sounds; only applies to iOS applications. 
-  /// [showPreview] True, if message content should be displayed in notifications. 
-  /// [disablePinnedMessageNotifications] True, if notifications for incoming pinned messages will be created as for an ordinary unread message. 
-  /// [disableMentionNotifications] True, if notifications for messages with mentions will be created as for an ordinary unread message
+  /// Contains information about notification settings for several chats
   ScopeNotificationSettings({this.muteFor,
     this.sound,
     this.showPreview,
     this.disablePinnedMessageNotifications,
     this.disableMentionNotifications});
+
+  /// [muteFor] Time left before notifications will be unmuted, in seconds
+  int muteFor;
+
+  /// [sound] The name of an audio file to be used for notification sounds; only applies to iOS applications
+  String sound;
+
+  /// [showPreview] True, if message content should be displayed in notifications
+  bool showPreview;
+
+  /// [disablePinnedMessageNotifications] True, if notifications for incoming pinned messages will be created as for an ordinary unread message
+  bool disablePinnedMessageNotifications;
+
+  /// [disableMentionNotifications] True, if notifications for messages with mentions will be created as for an ordinary unread message
+  bool disableMentionNotifications;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ScopeNotificationSettings.fromJson(Map<String, dynamic> json)  {

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TerminateSession extends TdFunction {
-  int sessionId;
-  dynamic extra;
 
-  /// Terminates a session of the current user. 
-  /// [sessionId] Session identifier
+  /// Terminates a session of the current user
   TerminateSession({this.sessionId});
+
+  /// [sessionId] Session identifier
+  int sessionId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TerminateSession.fromJson(Map<String, dynamic> json) ;

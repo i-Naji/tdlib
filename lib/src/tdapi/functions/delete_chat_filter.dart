@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class DeleteChatFilter extends TdFunction {
-  int chatFilterId;
-  dynamic extra;
 
-  /// Deletes existing chat filter. 
-  /// [chatFilterId] Chat filter identifier
+  /// Deletes existing chat filter
   DeleteChatFilter({this.chatFilterId});
+
+  /// [chatFilterId] Chat filter identifier
+  int chatFilterId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeleteChatFilter.fromJson(Map<String, dynamic> json) ;

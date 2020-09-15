@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class CallbackQueryAnswer extends TdObject {
-  String text;
-  bool showAlert;
-  String url;
-  dynamic extra;
 
-  /// Contains a bot's answer to a callback query. 
-  /// [text] Text of the answer . 
-  /// [showAlert] True, if an alert should be shown to the user instead of a toast notification . 
-  /// [url] URL to be opened
+  /// Contains a bot's answer to a callback query
   CallbackQueryAnswer({this.text,
     this.showAlert,
     this.url});
+
+  /// [text] Text of the answer 
+  String text;
+
+  /// [showAlert] True, if an alert should be shown to the user instead of a toast notification 
+  bool showAlert;
+
+  /// [url] URL to be opened
+  String url;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CallbackQueryAnswer.fromJson(Map<String, dynamic> json)  {

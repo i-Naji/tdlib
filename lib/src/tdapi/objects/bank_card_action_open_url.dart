@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class BankCardActionOpenUrl extends TdObject {
-  String text;
-  String url;
 
-  /// Describes an action associated with a bank card number. 
-  /// [text] Action text . 
-  /// [url] The URL to be opened
+  /// Describes an action associated with a bank card number
   BankCardActionOpenUrl({this.text,
     this.url});
+
+  /// [text] Action text 
+  String text;
+
+  /// [url] The URL to be opened
+  String url;
 
   /// Parse from a json
   BankCardActionOpenUrl.fromJson(Map<String, dynamic> json)  {

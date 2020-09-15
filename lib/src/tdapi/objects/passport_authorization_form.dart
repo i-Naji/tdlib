@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class PassportAuthorizationForm extends TdObject {
-  int id;
-  List<PassportRequiredElement> requiredElements;
-  String privacyPolicyUrl;
-  dynamic extra;
 
-  /// Contains information about a Telegram Passport authorization form that was requested. 
-  /// [id] Unique identifier of the authorization form. 
-  /// [requiredElements] Information about the Telegram Passport elements that need to be provided to complete the form. 
-  /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty
+  /// Contains information about a Telegram Passport authorization form that was requested
   PassportAuthorizationForm({this.id,
     this.requiredElements,
     this.privacyPolicyUrl});
+
+  /// [id] Unique identifier of the authorization form
+  int id;
+
+  /// [requiredElements] Information about the Telegram Passport elements that need to be provided to complete the form
+  List<PassportRequiredElement> requiredElements;
+
+  /// [privacyPolicyUrl] URL for the privacy policy of the service; may be empty
+  String privacyPolicyUrl;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PassportAuthorizationForm.fromJson(Map<String, dynamic> json)  {

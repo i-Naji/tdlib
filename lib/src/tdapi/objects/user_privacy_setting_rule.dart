@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class UserPrivacySettingRule extends TdObject {
-  
 
   /// Represents a single rule for managing privacy settings
   UserPrivacySettingRule();
+
+  
 
   /// a UserPrivacySettingRule return type can be :
   /// * UserPrivacySettingRuleAllowAll
@@ -52,10 +53,11 @@ class UserPrivacySettingRule extends TdObject {
 }
 
 class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
-  
 
   /// A rule to allow all users to do something
   UserPrivacySettingRuleAllowAll();
+
+  
 
   /// Parse from a json
   UserPrivacySettingRuleAllowAll.fromJson(Map<String, dynamic> json) ;
@@ -74,10 +76,11 @@ class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
-  
 
   /// A rule to allow all of a user's contacts to do something
   UserPrivacySettingRuleAllowContacts();
+
+  
 
   /// Parse from a json
   UserPrivacySettingRuleAllowContacts.fromJson(Map<String, dynamic> json) ;
@@ -96,11 +99,12 @@ class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
-  List<int> userIds;
 
-  /// A rule to allow certain specified users to do something. 
-  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  /// A rule to allow certain specified users to do something
   UserPrivacySettingRuleAllowUsers({this.userIds});
+
+  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  List<int> userIds;
 
   /// Parse from a json
   UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json)  {
@@ -122,11 +126,12 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
-  List<int> chatIds;
 
-  /// A rule to allow all members of certain specified basic groups and supergroups to doing something. 
-  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  /// A rule to allow all members of certain specified basic groups and supergroups to doing something
   UserPrivacySettingRuleAllowChatMembers({this.chatIds});
+
+  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  List<int> chatIds;
 
   /// Parse from a json
   UserPrivacySettingRuleAllowChatMembers.fromJson(Map<String, dynamic> json)  {
@@ -148,10 +153,11 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
-  
 
   /// A rule to restrict all users from doing something
   UserPrivacySettingRuleRestrictAll();
+
+  
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictAll.fromJson(Map<String, dynamic> json) ;
@@ -170,10 +176,11 @@ class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
-  
 
   /// A rule to restrict all contacts of a user from doing something
   UserPrivacySettingRuleRestrictContacts();
+
+  
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictContacts.fromJson(Map<String, dynamic> json) ;
@@ -192,11 +199,12 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
-  List<int> userIds;
 
-  /// A rule to restrict all specified users from doing something. 
-  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  /// A rule to restrict all specified users from doing something
   UserPrivacySettingRuleRestrictUsers({this.userIds});
+
+  /// [userIds] The user identifiers, total number of users in all rules must not exceed 1000
+  List<int> userIds;
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json)  {
@@ -218,11 +226,12 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
 }
 
 class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
-  List<int> chatIds;
 
-  /// A rule to restrict all members of specified basic groups and supergroups from doing something. 
-  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  /// A rule to restrict all members of specified basic groups and supergroups from doing something
   UserPrivacySettingRuleRestrictChatMembers({this.chatIds});
+
+  /// [chatIds] The chat identifiers, total number of chats in all rules must not exceed 20
+  List<int> chatIds;
 
   /// Parse from a json
   UserPrivacySettingRuleRestrictChatMembers.fromJson(Map<String, dynamic> json)  {

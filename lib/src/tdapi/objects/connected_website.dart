@@ -1,26 +1,8 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsite extends TdObject {
-  int id;
-  String domainName;
-  int botUserId;
-  String browser;
-  String platform;
-  int logInDate;
-  int lastActiveDate;
-  String ip;
-  String location;
 
-  /// Contains information about one website the current user is logged in with Telegram. 
-  /// [id] Website identifier. 
-  /// [domainName] The domain name of the website. 
-  /// [botUserId] User identifier of a bot linked with the website. 
-  /// [browser] The version of a browser used to log in. 
-  /// [platform] Operating system the browser is running on. 
-  /// [logInDate] Point in time (Unix timestamp) when the user was logged in. 
-  /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used. 
-  /// [ip] IP address from which the user was logged in, in human-readable format. 
-  /// [location] Human-readable description of a country and a region, from which the user was logged in, based on the IP address
+  /// Contains information about one website the current user is logged in with Telegram
   ConnectedWebsite({this.id,
     this.domainName,
     this.botUserId,
@@ -31,9 +13,36 @@ class ConnectedWebsite extends TdObject {
     this.ip,
     this.location});
 
+  /// [id] Website identifier
+  int id;
+
+  /// [domainName] The domain name of the website
+  String domainName;
+
+  /// [botUserId] User identifier of a bot linked with the website
+  int botUserId;
+
+  /// [browser] The version of a browser used to log in
+  String browser;
+
+  /// [platform] Operating system the browser is running on
+  String platform;
+
+  /// [logInDate] Point in time (Unix timestamp) when the user was logged in
+  int logInDate;
+
+  /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used
+  int lastActiveDate;
+
+  /// [ip] IP address from which the user was logged in, in human-readable format
+  String ip;
+
+  /// [location] Human-readable description of a country and a region, from which the user was logged in, based on the IP address
+  String location;
+
   /// Parse from a json
   ConnectedWebsite.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.domainName = json['domain_name'];
     this.botUserId = json['bot_user_id'];
     this.browser = json['browser'];

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class AddChatMembers extends TdFunction {
-  int chatId;
-  List<int> userIds;
-  dynamic extra;
 
-  /// Adds multiple new members to a chat. Currently this option is only available for supergroups and channels. This option can't be used to join a chat. Members can't be added to a channel if it has more than 200 members. Members will not be added until the chat state has been synchronized with the server. 
-  /// [chatId] Chat identifier. 
-  /// [userIds] Identifiers of the users to be added to the chat
+  /// Adds multiple new members to a chat. Currently this option is only available for supergroups and channels. This option can't be used to join a chat. Members can't be added to a channel if it has more than 200 members. Members will not be added until the chat state has been synchronized with the server
   AddChatMembers({this.chatId,
     this.userIds});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// [userIds] Identifiers of the users to be added to the chat
+  List<int> userIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AddChatMembers.fromJson(Map<String, dynamic> json) ;

@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class DiscardCall extends TdFunction {
-  int callId;
-  bool isDisconnected;
-  int duration;
-  int connectionId;
-  dynamic extra;
 
-  /// Discards a call. 
-  /// [callId] Call identifier . 
-  /// [isDisconnected] True, if the user was disconnected . 
-  /// [duration] The call duration, in seconds . 
-  /// [connectionId] Identifier of the connection used during the call
+  /// Discards a call
   DiscardCall({this.callId,
     this.isDisconnected,
     this.duration,
     this.connectionId});
+
+  /// [callId] Call identifier 
+  int callId;
+
+  /// [isDisconnected] True, if the user was disconnected 
+  bool isDisconnected;
+
+  /// [duration] The call duration, in seconds 
+  int duration;
+
+  /// [connectionId] Identifier of the connection used during the call
+  int connectionId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DiscardCall.fromJson(Map<String, dynamic> json) ;

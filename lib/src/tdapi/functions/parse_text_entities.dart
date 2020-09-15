@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ParseTextEntities extends TdFunction {
-  String text;
-  TextParseMode parseMode;
-  dynamic extra;
 
-  /// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously. 
-  /// [text] The text to parse . 
-  /// [parseMode] Text parse mode
+  /// Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
   ParseTextEntities({this.text,
     this.parseMode});
+
+  /// [text] The text to parse 
+  String text;
+
+  /// [parseMode] Text parse mode
+  TextParseMode parseMode;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ParseTextEntities.fromJson(Map<String, dynamic> json) ;

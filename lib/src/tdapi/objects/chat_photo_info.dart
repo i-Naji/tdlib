@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class ChatPhotoInfo extends TdObject {
-  File small;
-  File big;
-  bool hasAnimation;
 
-  /// Contains basic information about the photo of a chat. 
-  /// [small] A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed. 
-  /// [big] A big (640x640) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed. 
-  /// [hasAnimation] True, if the photo has animated variant
+  /// Contains basic information about the photo of a chat
   ChatPhotoInfo({this.small,
     this.big,
     this.hasAnimation});
+
+  /// [small] A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
+  File small;
+
+  /// [big] A big (640x640) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
+  File big;
+
+  /// [hasAnimation] True, if the photo has animated variant
+  bool hasAnimation;
 
   /// Parse from a json
   ChatPhotoInfo.fromJson(Map<String, dynamic> json)  {

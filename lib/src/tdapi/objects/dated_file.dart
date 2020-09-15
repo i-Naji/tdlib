@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class DatedFile extends TdObject {
-  File file;
-  int date;
 
-  /// File with the date it was uploaded. 
-  /// [file] The file . 
-  /// [date] Point in time (Unix timestamp) when the file was uploaded
+  /// File with the date it was uploaded
   DatedFile({this.file,
     this.date});
+
+  /// [file] The file 
+  File file;
+
+  /// [date] Point in time (Unix timestamp) when the file was uploaded
+  int date;
 
   /// Parse from a json
   DatedFile.fromJson(Map<String, dynamic> json)  {

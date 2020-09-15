@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class JsonValue extends TdObject {
-  
 
   /// Represents a JSON value
   JsonValue();
+
+  
 
   /// a JsonValue return type can be :
   /// * JsonValueNull
@@ -46,10 +47,12 @@ class JsonValue extends TdObject {
 }
 
 class JsonValueNull extends JsonValue {
-  dynamic extra;
 
   /// Represents a null JSON value
   JsonValueNull();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueNull.fromJson(Map<String, dynamic> json)  {
@@ -70,12 +73,15 @@ class JsonValueNull extends JsonValue {
 }
 
 class JsonValueBoolean extends JsonValue {
-  bool value;
-  dynamic extra;
 
-  /// Represents a boolean JSON value. 
-  /// [value] The value
+  /// Represents a boolean JSON value
   JsonValueBoolean({this.value});
+
+  /// [value] The value
+  bool value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueBoolean.fromJson(Map<String, dynamic> json)  {
@@ -98,12 +104,15 @@ class JsonValueBoolean extends JsonValue {
 }
 
 class JsonValueNumber extends JsonValue {
-  double value;
-  dynamic extra;
 
-  /// Represents a numeric JSON value. 
-  /// [value] The value
+  /// Represents a numeric JSON value
   JsonValueNumber({this.value});
+
+  /// [value] The value
+  double value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueNumber.fromJson(Map<String, dynamic> json)  {
@@ -126,12 +135,15 @@ class JsonValueNumber extends JsonValue {
 }
 
 class JsonValueString extends JsonValue {
-  String value;
-  dynamic extra;
 
-  /// Represents a string JSON value. 
-  /// [value] The value
+  /// Represents a string JSON value
   JsonValueString({this.value});
+
+  /// [value] The value
+  String value;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueString.fromJson(Map<String, dynamic> json)  {
@@ -154,12 +166,15 @@ class JsonValueString extends JsonValue {
 }
 
 class JsonValueArray extends JsonValue {
-  List<JsonValue> values;
-  dynamic extra;
 
-  /// Represents a JSON array. 
-  /// [values] The list of array elements
+  /// Represents a JSON array
   JsonValueArray({this.values});
+
+  /// [values] The list of array elements
+  List<JsonValue> values;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueArray.fromJson(Map<String, dynamic> json)  {
@@ -182,12 +197,15 @@ class JsonValueArray extends JsonValue {
 }
 
 class JsonValueObject extends JsonValue {
-  List<JsonObjectMember> members;
-  dynamic extra;
 
-  /// Represents a JSON object. 
-  /// [members] The list of object members
+  /// Represents a JSON object
   JsonValueObject({this.members});
+
+  /// [members] The list of object members
+  List<JsonObjectMember> members;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   JsonValueObject.fromJson(Map<String, dynamic> json)  {

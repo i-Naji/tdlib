@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetChatDraftMessage extends TdFunction {
-  int chatId;
-  DraftMessage draftMessage;
-  dynamic extra;
 
-  /// Changes the draft message in a chat. 
-  /// [chatId] Chat identifier . 
-  /// [draftMessage] New draft message; may be null
+  /// Changes the draft message in a chat
   SetChatDraftMessage({this.chatId,
     this.draftMessage});
+
+  /// [chatId] Chat identifier 
+  int chatId;
+
+  /// [draftMessage] New draft message; may be null
+  DraftMessage draftMessage;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetChatDraftMessage.fromJson(Map<String, dynamic> json) ;

@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class StorageStatisticsByFileType extends TdObject {
-  FileType fileType;
-  int size;
-  int count;
 
-  /// Contains the storage usage statistics for a specific file type. 
-  /// [fileType] File type . 
-  /// [size] Total size of the files . 
-  /// [count] Total number of files
+  /// Contains the storage usage statistics for a specific file type
   StorageStatisticsByFileType({this.fileType,
     this.size,
     this.count});
+
+  /// [fileType] File type 
+  FileType fileType;
+
+  /// [size] Total size of the files 
+  int size;
+
+  /// [count] Total number of files
+  int count;
 
   /// Parse from a json
   StorageStatisticsByFileType.fromJson(Map<String, dynamic> json)  {

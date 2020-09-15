@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class SendMessageAlbum extends TdFunction {
-  int chatId;
-  int replyToMessageId;
-  SendMessageOptions options;
-  List<InputMessageContent> inputMessageContents;
-  dynamic extra;
 
-  /// Sends messages grouped together into an album. Currently only photo and video messages can be grouped into an album. Returns sent messages. 
-  /// [chatId] Target chat. 
-  /// [replyToMessageId] Identifier of a message to reply to or 0. 
-  /// [options] Options to be used to send the messages. 
-  /// [inputMessageContents] Contents of messages to be sent
+  /// Sends messages grouped together into an album. Currently only photo and video messages can be grouped into an album. Returns sent messages
   SendMessageAlbum({this.chatId,
     this.replyToMessageId,
     this.options,
     this.inputMessageContents});
+
+  /// [chatId] Target chat
+  int chatId;
+
+  /// [replyToMessageId] Identifier of a message to reply to or 0
+  int replyToMessageId;
+
+  /// [options] Options to be used to send the messages
+  SendMessageOptions options;
+
+  /// [inputMessageContents] Contents of messages to be sent
+  List<InputMessageContent> inputMessageContents;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SendMessageAlbum.fromJson(Map<String, dynamic> json) ;

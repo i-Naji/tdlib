@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class BasicGroupFullInfo extends TdObject {
-  ChatPhoto photo;
-  String description;
-  int creatorUserId;
-  List<ChatMember> members;
-  String inviteLink;
-  dynamic extra;
 
-  /// Contains full information about a basic group. 
-  /// [photo] Chat photo; may be null. 
-  /// [description] Group description. 
-  /// [creatorUserId] User identifier of the creator of the group; 0 if unknown. 
-  /// [members] Group members. 
-  /// [inviteLink] Invite link for this group; available only after it has been generated at least once and only for the group creator
+  /// Contains full information about a basic group
   BasicGroupFullInfo({this.photo,
     this.description,
     this.creatorUserId,
     this.members,
     this.inviteLink});
+
+  /// [photo] Chat photo; may be null
+  ChatPhoto photo;
+
+  /// [description] Group description
+  String description;
+
+  /// [creatorUserId] User identifier of the creator of the group; 0 if unknown
+  int creatorUserId;
+
+  /// [members] Group members
+  List<ChatMember> members;
+
+  /// [inviteLink] Invite link for this group; available only after it has been generated at least once and only for the group creator
+  String inviteLink;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   BasicGroupFullInfo.fromJson(Map<String, dynamic> json)  {

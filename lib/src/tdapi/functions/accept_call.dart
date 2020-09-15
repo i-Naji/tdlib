@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class AcceptCall extends TdFunction {
-  int callId;
-  CallProtocol protocol;
-  dynamic extra;
 
-  /// Accepts an incoming call. 
-  /// [callId] Call identifier . 
-  /// [protocol] Description of the call protocols supported by the application
+  /// Accepts an incoming call
   AcceptCall({this.callId,
     this.protocol});
+
+  /// [callId] Call identifier 
+  int callId;
+
+  /// [protocol] Description of the call protocols supported by the application
+  CallProtocol protocol;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AcceptCall.fromJson(Map<String, dynamic> json) ;

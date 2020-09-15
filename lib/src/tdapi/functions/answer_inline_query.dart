@@ -1,23 +1,8 @@
 part of '../tdapi.dart';
 
 class AnswerInlineQuery extends TdFunction {
-  int inlineQueryId;
-  bool isPersonal;
-  List<InputInlineQueryResult> results;
-  int cacheTime;
-  String nextOffset;
-  String switchPmText;
-  String switchPmParameter;
-  dynamic extra;
 
-  /// Sets the result of an inline query; for bots only. 
-  /// [inlineQueryId] Identifier of the inline query . 
-  /// [isPersonal] True, if the result of the query can be cached for the specified user. 
-  /// [results] The results of the query. 
-  /// [cacheTime] Allowed time to cache the results of the query, in seconds . 
-  /// [nextOffset] Offset for the next inline query; pass an empty string if there are no more results. 
-  /// [switchPmText] If non-empty, this text should be shown on the button that opens a private chat with the bot and sends a start message to the bot with the parameter switch_pm_parameter. 
-  /// [switchPmParameter] The parameter for the bot start message
+  /// Sets the result of an inline query; for bots only
   AnswerInlineQuery({this.inlineQueryId,
     this.isPersonal,
     this.results,
@@ -25,6 +10,30 @@ class AnswerInlineQuery extends TdFunction {
     this.nextOffset,
     this.switchPmText,
     this.switchPmParameter});
+
+  /// [inlineQueryId] Identifier of the inline query 
+  int inlineQueryId;
+
+  /// [isPersonal] True, if the result of the query can be cached for the specified user
+  bool isPersonal;
+
+  /// [results] The results of the query
+  List<InputInlineQueryResult> results;
+
+  /// [cacheTime] Allowed time to cache the results of the query, in seconds 
+  int cacheTime;
+
+  /// [nextOffset] Offset for the next inline query; pass an empty string if there are no more results
+  String nextOffset;
+
+  /// [switchPmText] If non-empty, this text should be shown on the button that opens a private chat with the bot and sends a start message to the bot with the parameter switch_pm_parameter
+  String switchPmText;
+
+  /// [switchPmParameter] The parameter for the bot start message
+  String switchPmParameter;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AnswerInlineQuery.fromJson(Map<String, dynamic> json) ;

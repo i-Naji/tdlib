@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InlineKeyboardButtonType extends TdObject {
-  
 
   /// Describes the type of an inline keyboard button
   InlineKeyboardButtonType();
+
+  
 
   /// a InlineKeyboardButtonType return type can be :
   /// * InlineKeyboardButtonTypeUrl
@@ -46,11 +47,12 @@ class InlineKeyboardButtonType extends TdObject {
 }
 
 class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
-  String url;
 
-  /// A button that opens a specified URL. 
-  /// [url] HTTP or tg:// URL to open
+  /// A button that opens a specified URL
   InlineKeyboardButtonTypeUrl({this.url});
+
+  /// [url] HTTP or tg:// URL to open
+  String url;
 
   /// Parse from a json
   InlineKeyboardButtonTypeUrl.fromJson(Map<String, dynamic> json)  {
@@ -72,17 +74,20 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
-  String url;
-  int id;
-  String forwardText;
 
-  /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that. 
-  /// [url] An HTTP URL to open . 
-  /// [id] Unique button identifier . 
-  /// [forwardText] If non-empty, new text of the button in forwarded messages
+  /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that
   InlineKeyboardButtonTypeLoginUrl({this.url,
     this.id,
     this.forwardText});
+
+  /// [url] An HTTP URL to open 
+  String url;
+
+  /// [id] Unique button identifier 
+  int id;
+
+  /// [forwardText] If non-empty, new text of the button in forwarded messages
+  String forwardText;
 
   /// Parse from a json
   InlineKeyboardButtonTypeLoginUrl.fromJson(Map<String, dynamic> json)  {
@@ -108,11 +113,12 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
-  String data;
 
-  /// A button that sends a special callback query to a bot. 
-  /// [data] Data to be sent to the bot via a callback query
+  /// A button that sends a special callback query to a bot
   InlineKeyboardButtonTypeCallback({this.data});
+
+  /// [data] Data to be sent to the bot via a callback query
+  String data;
 
   /// Parse from a json
   InlineKeyboardButtonTypeCallback.fromJson(Map<String, dynamic> json)  {
@@ -134,10 +140,11 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
-  
 
   /// A button with a game that sends a special callback query to a bot. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageGame
   InlineKeyboardButtonTypeCallbackGame();
+
+  
 
   /// Parse from a json
   InlineKeyboardButtonTypeCallbackGame.fromJson(Map<String, dynamic> json) ;
@@ -156,14 +163,16 @@ class InlineKeyboardButtonTypeCallbackGame extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
-  String query;
-  bool inCurrentChat;
 
-  /// A button that forces an inline query to the bot to be inserted in the input field. 
-  /// [query] Inline query to be sent to the bot . 
-  /// [inCurrentChat] True, if the inline query should be sent from the current chat
+  /// A button that forces an inline query to the bot to be inserted in the input field
   InlineKeyboardButtonTypeSwitchInline({this.query,
     this.inCurrentChat});
+
+  /// [query] Inline query to be sent to the bot 
+  String query;
+
+  /// [inCurrentChat] True, if the inline query should be sent from the current chat
+  bool inCurrentChat;
 
   /// Parse from a json
   InlineKeyboardButtonTypeSwitchInline.fromJson(Map<String, dynamic> json)  {
@@ -187,10 +196,11 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
-  
 
   /// A button to buy something. This button must be in the first column and row of the keyboard and can be attached only to a message with content of the type messageInvoice
   InlineKeyboardButtonTypeBuy();
+
+  
 
   /// Parse from a json
   InlineKeyboardButtonTypeBuy.fromJson(Map<String, dynamic> json) ;

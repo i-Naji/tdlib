@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class BankCardInfo extends TdObject {
-  String title;
-  List<BankCardActionOpenUrl> actions;
-  dynamic extra;
 
-  /// Information about a bank card. 
-  /// [title] Title of the bank card description . 
-  /// [actions] Actions that can be done with the bank card number
+  /// Information about a bank card
   BankCardInfo({this.title,
     this.actions});
+
+  /// [title] Title of the bank card description 
+  String title;
+
+  /// [actions] Actions that can be done with the bank card number
+  List<BankCardActionOpenUrl> actions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   BankCardInfo.fromJson(Map<String, dynamic> json)  {

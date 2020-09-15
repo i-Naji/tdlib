@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class Ok extends TdObject {
-  dynamic extra;
 
   /// An object of this type is returned on a successful function call for certain functions
   Ok();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Ok.fromJson(Map<String, dynamic> json)  {

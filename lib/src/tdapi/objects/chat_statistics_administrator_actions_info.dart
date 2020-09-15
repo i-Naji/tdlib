@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
-  int userId;
-  int deletedMessageCount;
-  int bannedUserCount;
-  int restrictedUserCount;
 
-  /// Contains statistics about administrator actions done by a user. 
-  /// [userId] Administrator user identifier. 
-  /// [deletedMessageCount] Number of messages deleted by the administrator. 
-  /// [bannedUserCount] Number of users banned by the administrator. 
-  /// [restrictedUserCount] Number of users restricted by the administrator
+  /// Contains statistics about administrator actions done by a user
   ChatStatisticsAdministratorActionsInfo({this.userId,
     this.deletedMessageCount,
     this.bannedUserCount,
     this.restrictedUserCount});
+
+  /// [userId] Administrator user identifier
+  int userId;
+
+  /// [deletedMessageCount] Number of messages deleted by the administrator
+  int deletedMessageCount;
+
+  /// [bannedUserCount] Number of users banned by the administrator
+  int bannedUserCount;
+
+  /// [restrictedUserCount] Number of users restricted by the administrator
+  int restrictedUserCount;
 
   /// Parse from a json
   ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json)  {

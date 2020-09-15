@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Chats extends TdObject {
-  List<int> chatIds;
-  dynamic extra;
 
-  /// Represents a list of chats. 
-  /// [chatIds] List of chat identifiers
+  /// Represents a list of chats
   Chats({this.chatIds});
+
+  /// [chatIds] List of chat identifiers
+  List<int> chatIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Chats.fromJson(Map<String, dynamic> json)  {

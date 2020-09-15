@@ -1,24 +1,31 @@
 part of '../tdapi.dart';
 
 class PasswordState extends TdObject {
-  bool hasPassword;
-  String passwordHint;
-  bool hasRecoveryEmailAddress;
-  bool hasPassportData;
-  EmailAddressAuthenticationCodeInfo recoveryEmailAddressCodeInfo;
-  dynamic extra;
 
-  /// Represents the current state of 2-step verification. 
-  /// [hasPassword] True, if a 2-step verification password is set . 
-  /// [passwordHint] Hint for the password; may be empty. 
-  /// [hasRecoveryEmailAddress] True, if a recovery email is set. 
-  /// [hasPassportData] True, if some Telegram Passport elements were saved. 
-  /// [recoveryEmailAddressCodeInfo] Information about the recovery email address to which the confirmation email was sent; may be null
+  /// Represents the current state of 2-step verification
   PasswordState({this.hasPassword,
     this.passwordHint,
     this.hasRecoveryEmailAddress,
     this.hasPassportData,
     this.recoveryEmailAddressCodeInfo});
+
+  /// [hasPassword] True, if a 2-step verification password is set 
+  bool hasPassword;
+
+  /// [passwordHint] Hint for the password; may be empty
+  String passwordHint;
+
+  /// [hasRecoveryEmailAddress] True, if a recovery email is set
+  bool hasRecoveryEmailAddress;
+
+  /// [hasPassportData] True, if some Telegram Passport elements were saved
+  bool hasPassportData;
+
+  /// [recoveryEmailAddressCodeInfo] Information about the recovery email address to which the confirmation email was sent; may be null
+  EmailAddressAuthenticationCodeInfo recoveryEmailAddressCodeInfo;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   PasswordState.fromJson(Map<String, dynamic> json)  {

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageReplyMarkup extends TdFunction {
-  String inlineMessageId;
-  ReplyMarkup replyMarkup;
-  dynamic extra;
 
-  /// Edits the reply markup of an inline message sent via a bot; for bots only. 
-  /// [inlineMessageId] Inline message identifier . 
-  /// [replyMarkup] The new message reply markup
+  /// Edits the reply markup of an inline message sent via a bot; for bots only
   EditInlineMessageReplyMarkup({this.inlineMessageId,
     this.replyMarkup});
+
+  /// [inlineMessageId] Inline message identifier 
+  String inlineMessageId;
+
+  /// [replyMarkup] The new message reply markup
+  ReplyMarkup replyMarkup;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditInlineMessageReplyMarkup.fromJson(Map<String, dynamic> json) ;

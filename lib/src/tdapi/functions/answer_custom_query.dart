@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class AnswerCustomQuery extends TdFunction {
-  int customQueryId;
-  String data;
-  dynamic extra;
 
-  /// Answers a custom query; for bots only. 
-  /// [customQueryId] Identifier of a custom query . 
-  /// [data] JSON-serialized answer to the query
+  /// Answers a custom query; for bots only
   AnswerCustomQuery({this.customQueryId,
     this.data});
+
+  /// [customQueryId] Identifier of a custom query 
+  int customQueryId;
+
+  /// [data] JSON-serialized answer to the query
+  String data;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AnswerCustomQuery.fromJson(Map<String, dynamic> json) ;

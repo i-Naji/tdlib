@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SharePhoneNumber extends TdFunction {
-  int userId;
-  dynamic extra;
 
-  /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber. 
-  /// [userId] Identifier of the user with whom to share the phone number. The user must be a mutual contact
+  /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber
   SharePhoneNumber({this.userId});
+
+  /// [userId] Identifier of the user with whom to share the phone number. The user must be a mutual contact
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SharePhoneNumber.fromJson(Map<String, dynamic> json) ;

@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class ChatLocation extends TdObject {
-  Location location;
-  String address;
 
-  /// Represents a location to which a chat is connected. 
-  /// [location] The location . 
-  /// [address] Location address; 1-64 characters, as defined by the chat owner
+  /// Represents a location to which a chat is connected
   ChatLocation({this.location,
     this.address});
+
+  /// [location] The location 
+  Location location;
+
+  /// [address] Location address; 1-64 characters, as defined by the chat owner
+  String address;
 
   /// Parse from a json
   ChatLocation.fromJson(Map<String, dynamic> json)  {

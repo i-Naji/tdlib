@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class CheckAuthenticationBotToken extends TdFunction {
-  String token;
-  dynamic extra;
 
-  /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in. 
-  /// [token] The bot token
+  /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in
   CheckAuthenticationBotToken({this.token});
+
+  /// [token] The bot token
+  String token;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   CheckAuthenticationBotToken.fromJson(Map<String, dynamic> json) ;

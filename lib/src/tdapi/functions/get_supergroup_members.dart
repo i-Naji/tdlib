@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class GetSupergroupMembers extends TdFunction {
-  int supergroupId;
-  SupergroupMembersFilter filter;
-  int offset;
-  int limit;
-  dynamic extra;
 
-  /// Returns information about members or banned users in a supergroup or channel. Can be used only if SupergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters. 
-  /// [supergroupId] Identifier of the supergroup or channel. 
-  /// [filter] The type of users to return. By default, supergroupMembersRecent. 
-  /// [offset] Number of users to skip . 
-  /// [limit] The maximum number of users be returned; up to 200
+  /// Returns information about members or banned users in a supergroup or channel. Can be used only if SupergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
   GetSupergroupMembers({this.supergroupId,
     this.filter,
     this.offset,
     this.limit});
+
+  /// [supergroupId] Identifier of the supergroup or channel
+  int supergroupId;
+
+  /// [filter] The type of users to return. By default, supergroupMembersRecent
+  SupergroupMembersFilter filter;
+
+  /// [offset] Number of users to skip 
+  int offset;
+
+  /// [limit] The maximum number of users be returned; up to 200
+  int limit;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetSupergroupMembers.fromJson(Map<String, dynamic> json) ;

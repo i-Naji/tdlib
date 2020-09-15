@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PushMessageContent extends TdObject {
-  
 
   /// Contains content of a push message notification
   PushMessageContent();
+
+  
 
   /// a PushMessageContent return type can be :
   /// * PushMessageContentHidden
@@ -106,11 +107,12 @@ class PushMessageContent extends TdObject {
 }
 
 class PushMessageContentHidden extends PushMessageContent {
-  bool isPinned;
 
-  /// A general message with hidden content. 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A general message with hidden content
   PushMessageContentHidden({this.isPinned});
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentHidden.fromJson(Map<String, dynamic> json)  {
@@ -132,17 +134,20 @@ class PushMessageContentHidden extends PushMessageContent {
 }
 
 class PushMessageContentAnimation extends PushMessageContent {
-  Animation animation;
-  String caption;
-  bool isPinned;
 
-  /// An animation message (GIF-style).. 
-  /// [animation] Message content; may be null . 
-  /// [caption] Animation caption . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// An animation message (GIF-style).
   PushMessageContentAnimation({this.animation,
     this.caption,
     this.isPinned});
+
+  /// [animation] Message content; may be null 
+  Animation animation;
+
+  /// [caption] Animation caption 
+  String caption;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentAnimation.fromJson(Map<String, dynamic> json)  {
@@ -168,14 +173,16 @@ class PushMessageContentAnimation extends PushMessageContent {
 }
 
 class PushMessageContentAudio extends PushMessageContent {
-  Audio audio;
-  bool isPinned;
 
-  /// An audio message. 
-  /// [audio] Message content; may be null . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// An audio message
   PushMessageContentAudio({this.audio,
     this.isPinned});
+
+  /// [audio] Message content; may be null 
+  Audio audio;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentAudio.fromJson(Map<String, dynamic> json)  {
@@ -199,14 +206,16 @@ class PushMessageContentAudio extends PushMessageContent {
 }
 
 class PushMessageContentContact extends PushMessageContent {
-  String name;
-  bool isPinned;
 
-  /// A message with a user contact. 
-  /// [name] Contact's name . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with a user contact
   PushMessageContentContact({this.name,
     this.isPinned});
+
+  /// [name] Contact's name 
+  String name;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentContact.fromJson(Map<String, dynamic> json)  {
@@ -230,10 +239,11 @@ class PushMessageContentContact extends PushMessageContent {
 }
 
 class PushMessageContentContactRegistered extends PushMessageContent {
-  
 
   /// A contact has registered with Telegram
   PushMessageContentContactRegistered();
+
+  
 
   /// Parse from a json
   PushMessageContentContactRegistered.fromJson(Map<String, dynamic> json) ;
@@ -252,14 +262,16 @@ class PushMessageContentContactRegistered extends PushMessageContent {
 }
 
 class PushMessageContentDocument extends PushMessageContent {
-  Document document;
-  bool isPinned;
 
-  /// A document message (a general file). 
-  /// [document] Message content; may be null . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A document message (a general file)
   PushMessageContentDocument({this.document,
     this.isPinned});
+
+  /// [document] Message content; may be null 
+  Document document;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentDocument.fromJson(Map<String, dynamic> json)  {
@@ -283,14 +295,16 @@ class PushMessageContentDocument extends PushMessageContent {
 }
 
 class PushMessageContentGame extends PushMessageContent {
-  String title;
-  bool isPinned;
 
-  /// A message with a game. 
-  /// [title] Game title, empty for pinned game message . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with a game
   PushMessageContentGame({this.title,
     this.isPinned});
+
+  /// [title] Game title, empty for pinned game message 
+  String title;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentGame.fromJson(Map<String, dynamic> json)  {
@@ -314,17 +328,20 @@ class PushMessageContentGame extends PushMessageContent {
 }
 
 class PushMessageContentGameScore extends PushMessageContent {
-  String title;
-  int score;
-  bool isPinned;
 
-  /// A new high score was achieved in a game. 
-  /// [title] Game title, empty for pinned message . 
-  /// [score] New score, 0 for pinned message . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A new high score was achieved in a game
   PushMessageContentGameScore({this.title,
     this.score,
     this.isPinned});
+
+  /// [title] Game title, empty for pinned message 
+  String title;
+
+  /// [score] New score, 0 for pinned message 
+  int score;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentGameScore.fromJson(Map<String, dynamic> json)  {
@@ -350,14 +367,16 @@ class PushMessageContentGameScore extends PushMessageContent {
 }
 
 class PushMessageContentInvoice extends PushMessageContent {
-  String price;
-  bool isPinned;
 
-  /// A message with an invoice from a bot. 
-  /// [price] Product price . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with an invoice from a bot
   PushMessageContentInvoice({this.price,
     this.isPinned});
+
+  /// [price] Product price 
+  String price;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentInvoice.fromJson(Map<String, dynamic> json)  {
@@ -381,14 +400,16 @@ class PushMessageContentInvoice extends PushMessageContent {
 }
 
 class PushMessageContentLocation extends PushMessageContent {
-  bool isLive;
-  bool isPinned;
 
-  /// A message with a location. 
-  /// [isLive] True, if the location is live . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with a location
   PushMessageContentLocation({this.isLive,
     this.isPinned});
+
+  /// [isLive] True, if the location is live 
+  bool isLive;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentLocation.fromJson(Map<String, dynamic> json)  {
@@ -412,20 +433,24 @@ class PushMessageContentLocation extends PushMessageContent {
 }
 
 class PushMessageContentPhoto extends PushMessageContent {
-  Photo photo;
-  String caption;
-  bool isSecret;
-  bool isPinned;
 
-  /// A photo message. 
-  /// [photo] Message content; may be null . 
-  /// [caption] Photo caption . 
-  /// [isSecret] True, if the photo is secret . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A photo message
   PushMessageContentPhoto({this.photo,
     this.caption,
     this.isSecret,
     this.isPinned});
+
+  /// [photo] Message content; may be null 
+  Photo photo;
+
+  /// [caption] Photo caption 
+  String caption;
+
+  /// [isSecret] True, if the photo is secret 
+  bool isSecret;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentPhoto.fromJson(Map<String, dynamic> json)  {
@@ -453,17 +478,20 @@ class PushMessageContentPhoto extends PushMessageContent {
 }
 
 class PushMessageContentPoll extends PushMessageContent {
-  String question;
-  bool isRegular;
-  bool isPinned;
 
-  /// A message with a poll. 
-  /// [question] Poll question . 
-  /// [isRegular] True, if the poll is regular and not in quiz mode . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with a poll
   PushMessageContentPoll({this.question,
     this.isRegular,
     this.isPinned});
+
+  /// [question] Poll question 
+  String question;
+
+  /// [isRegular] True, if the poll is regular and not in quiz mode 
+  bool isRegular;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentPoll.fromJson(Map<String, dynamic> json)  {
@@ -489,10 +517,11 @@ class PushMessageContentPoll extends PushMessageContent {
 }
 
 class PushMessageContentScreenshotTaken extends PushMessageContent {
-  
 
   /// A screenshot of a message in the chat has been taken
   PushMessageContentScreenshotTaken();
+
+  
 
   /// Parse from a json
   PushMessageContentScreenshotTaken.fromJson(Map<String, dynamic> json) ;
@@ -511,17 +540,20 @@ class PushMessageContentScreenshotTaken extends PushMessageContent {
 }
 
 class PushMessageContentSticker extends PushMessageContent {
-  Sticker sticker;
-  String emoji;
-  bool isPinned;
 
-  /// A message with a sticker. 
-  /// [sticker] Message content; may be null . 
-  /// [emoji] Emoji corresponding to the sticker; may be empty . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A message with a sticker
   PushMessageContentSticker({this.sticker,
     this.emoji,
     this.isPinned});
+
+  /// [sticker] Message content; may be null 
+  Sticker sticker;
+
+  /// [emoji] Emoji corresponding to the sticker; may be empty 
+  String emoji;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentSticker.fromJson(Map<String, dynamic> json)  {
@@ -547,14 +579,16 @@ class PushMessageContentSticker extends PushMessageContent {
 }
 
 class PushMessageContentText extends PushMessageContent {
-  String text;
-  bool isPinned;
 
-  /// A text message. 
-  /// [text] Message text . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A text message
   PushMessageContentText({this.text,
     this.isPinned});
+
+  /// [text] Message text 
+  String text;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentText.fromJson(Map<String, dynamic> json)  {
@@ -578,20 +612,24 @@ class PushMessageContentText extends PushMessageContent {
 }
 
 class PushMessageContentVideo extends PushMessageContent {
-  Video video;
-  String caption;
-  bool isSecret;
-  bool isPinned;
 
-  /// A video message. 
-  /// [video] Message content; may be null . 
-  /// [caption] Video caption . 
-  /// [isSecret] True, if the video is secret . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A video message
   PushMessageContentVideo({this.video,
     this.caption,
     this.isSecret,
     this.isPinned});
+
+  /// [video] Message content; may be null 
+  Video video;
+
+  /// [caption] Video caption 
+  String caption;
+
+  /// [isSecret] True, if the video is secret 
+  bool isSecret;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentVideo.fromJson(Map<String, dynamic> json)  {
@@ -619,14 +657,16 @@ class PushMessageContentVideo extends PushMessageContent {
 }
 
 class PushMessageContentVideoNote extends PushMessageContent {
-  VideoNote videoNote;
-  bool isPinned;
 
-  /// A video note message. 
-  /// [videoNote] Message content; may be null . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A video note message
   PushMessageContentVideoNote({this.videoNote,
     this.isPinned});
+
+  /// [videoNote] Message content; may be null 
+  VideoNote videoNote;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentVideoNote.fromJson(Map<String, dynamic> json)  {
@@ -650,14 +690,16 @@ class PushMessageContentVideoNote extends PushMessageContent {
 }
 
 class PushMessageContentVoiceNote extends PushMessageContent {
-  VoiceNote voiceNote;
-  bool isPinned;
 
-  /// A voice note message. 
-  /// [voiceNote] Message content; may be null . 
-  /// [isPinned] True, if the message is a pinned message with the specified content
+  /// A voice note message
   PushMessageContentVoiceNote({this.voiceNote,
     this.isPinned});
+
+  /// [voiceNote] Message content; may be null 
+  VoiceNote voiceNote;
+
+  /// [isPinned] True, if the message is a pinned message with the specified content
+  bool isPinned;
 
   /// Parse from a json
   PushMessageContentVoiceNote.fromJson(Map<String, dynamic> json)  {
@@ -681,10 +723,11 @@ class PushMessageContentVoiceNote extends PushMessageContent {
 }
 
 class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
-  
 
   /// A newly created basic group
   PushMessageContentBasicGroupChatCreate();
+
+  
 
   /// Parse from a json
   PushMessageContentBasicGroupChatCreate.fromJson(Map<String, dynamic> json) ;
@@ -703,17 +746,20 @@ class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
 }
 
 class PushMessageContentChatAddMembers extends PushMessageContent {
-  String memberName;
-  bool isCurrentUser;
-  bool isReturned;
 
-  /// New chat members were invited to a group. 
-  /// [memberName] Name of the added member . 
-  /// [isCurrentUser] True, if the current user was added to the group. 
-  /// [isReturned] True, if the user has returned to the group themself
+  /// New chat members were invited to a group
   PushMessageContentChatAddMembers({this.memberName,
     this.isCurrentUser,
     this.isReturned});
+
+  /// [memberName] Name of the added member 
+  String memberName;
+
+  /// [isCurrentUser] True, if the current user was added to the group
+  bool isCurrentUser;
+
+  /// [isReturned] True, if the user has returned to the group themself
+  bool isReturned;
 
   /// Parse from a json
   PushMessageContentChatAddMembers.fromJson(Map<String, dynamic> json)  {
@@ -739,10 +785,11 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
 }
 
 class PushMessageContentChatChangePhoto extends PushMessageContent {
-  
 
   /// A chat photo was edited
   PushMessageContentChatChangePhoto();
+
+  
 
   /// Parse from a json
   PushMessageContentChatChangePhoto.fromJson(Map<String, dynamic> json) ;
@@ -761,11 +808,12 @@ class PushMessageContentChatChangePhoto extends PushMessageContent {
 }
 
 class PushMessageContentChatChangeTitle extends PushMessageContent {
-  String title;
 
-  /// A chat title was edited. 
-  /// [title] New chat title
+  /// A chat title was edited
   PushMessageContentChatChangeTitle({this.title});
+
+  /// [title] New chat title
+  String title;
 
   /// Parse from a json
   PushMessageContentChatChangeTitle.fromJson(Map<String, dynamic> json)  {
@@ -787,17 +835,20 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
 }
 
 class PushMessageContentChatDeleteMember extends PushMessageContent {
-  String memberName;
-  bool isCurrentUser;
-  bool isLeft;
 
-  /// A chat member was deleted. 
-  /// [memberName] Name of the deleted member . 
-  /// [isCurrentUser] True, if the current user was deleted from the group. 
-  /// [isLeft] True, if the user has left the group themself
+  /// A chat member was deleted
   PushMessageContentChatDeleteMember({this.memberName,
     this.isCurrentUser,
     this.isLeft});
+
+  /// [memberName] Name of the deleted member 
+  String memberName;
+
+  /// [isCurrentUser] True, if the current user was deleted from the group
+  bool isCurrentUser;
+
+  /// [isLeft] True, if the user has left the group themself
+  bool isLeft;
 
   /// Parse from a json
   PushMessageContentChatDeleteMember.fromJson(Map<String, dynamic> json)  {
@@ -823,10 +874,11 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
 }
 
 class PushMessageContentChatJoinByLink extends PushMessageContent {
-  
 
   /// A new member joined the chat by invite link
   PushMessageContentChatJoinByLink();
+
+  
 
   /// Parse from a json
   PushMessageContentChatJoinByLink.fromJson(Map<String, dynamic> json) ;
@@ -845,11 +897,12 @@ class PushMessageContentChatJoinByLink extends PushMessageContent {
 }
 
 class PushMessageContentMessageForwards extends PushMessageContent {
-  int totalCount;
 
-  /// A forwarded messages. 
-  /// [totalCount] Number of forwarded messages
+  /// A forwarded messages
   PushMessageContentMessageForwards({this.totalCount});
+
+  /// [totalCount] Number of forwarded messages
+  int totalCount;
 
   /// Parse from a json
   PushMessageContentMessageForwards.fromJson(Map<String, dynamic> json)  {
@@ -871,17 +924,20 @@ class PushMessageContentMessageForwards extends PushMessageContent {
 }
 
 class PushMessageContentMediaAlbum extends PushMessageContent {
-  int totalCount;
-  bool hasPhotos;
-  bool hasVideos;
 
-  /// A media album. 
-  /// [totalCount] Number of messages in the album . 
-  /// [hasPhotos] True, if the album has at least one photo . 
-  /// [hasVideos] True, if the album has at least one video
+  /// A media album
   PushMessageContentMediaAlbum({this.totalCount,
     this.hasPhotos,
     this.hasVideos});
+
+  /// [totalCount] Number of messages in the album 
+  int totalCount;
+
+  /// [hasPhotos] True, if the album has at least one photo 
+  bool hasPhotos;
+
+  /// [hasVideos] True, if the album has at least one video
+  bool hasVideos;
 
   /// Parse from a json
   PushMessageContentMediaAlbum.fromJson(Map<String, dynamic> json)  {

@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class Sessions extends TdObject {
-  List<Session> sessions;
-  dynamic extra;
 
-  /// Contains a list of sessions. 
-  /// [sessions] List of sessions
+  /// Contains a list of sessions
   Sessions({this.sessions});
+
+  /// [sessions] List of sessions
+  List<Session> sessions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Sessions.fromJson(Map<String, dynamic> json)  {

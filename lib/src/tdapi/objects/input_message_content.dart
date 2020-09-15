@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class InputMessageContent extends TdObject {
-  
 
   /// The content of a message to send
   InputMessageContent();
+
+  
 
   /// a InputMessageContent return type can be :
   /// * InputMessageText
@@ -79,17 +80,20 @@ class InputMessageContent extends TdObject {
 }
 
 class InputMessageText extends InputMessageContent {
-  FormattedText text;
-  bool disableWebPagePreview;
-  bool clearDraft;
 
-  /// A text message. 
-  /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually. 
-  /// [disableWebPagePreview] True, if rich web page previews for URLs in the message text should be disabled. 
-  /// [clearDraft] True, if a chat message draft should be deleted
+  /// A text message
   InputMessageText({this.text,
     this.disableWebPagePreview,
     this.clearDraft});
+
+  /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  FormattedText text;
+
+  /// [disableWebPagePreview] True, if rich web page previews for URLs in the message text should be disabled
+  bool disableWebPagePreview;
+
+  /// [clearDraft] True, if a chat message draft should be deleted
+  bool clearDraft;
 
   /// Parse from a json
   InputMessageText.fromJson(Map<String, dynamic> json)  {
@@ -115,22 +119,8 @@ class InputMessageText extends InputMessageContent {
 }
 
 class InputMessageAnimation extends InputMessageContent {
-  InputFile animation;
-  InputThumbnail thumbnail;
-  List<int> addedStickerFileIds;
-  int duration;
-  int width;
-  int height;
-  FormattedText caption;
 
-  /// An animation message (GIF-style).. 
-  /// [animation] Animation file to be sent . 
-  /// [thumbnail] Animation thumbnail, if available . 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the animation, if applicable. 
-  /// [duration] Duration of the animation, in seconds. 
-  /// [width] Width of the animation; may be replaced by the server . 
-  /// [height] Height of the animation; may be replaced by the server . 
-  /// [caption] Animation caption; 0-GetOption("message_caption_length_max") characters
+  /// An animation message (GIF-style).
   InputMessageAnimation({this.animation,
     this.thumbnail,
     this.addedStickerFileIds,
@@ -138,6 +128,27 @@ class InputMessageAnimation extends InputMessageContent {
     this.width,
     this.height,
     this.caption});
+
+  /// [animation] Animation file to be sent 
+  InputFile animation;
+
+  /// [thumbnail] Animation thumbnail, if available 
+  InputThumbnail thumbnail;
+
+  /// [addedStickerFileIds] File identifiers of the stickers added to the animation, if applicable
+  List<int> addedStickerFileIds;
+
+  /// [duration] Duration of the animation, in seconds
+  int duration;
+
+  /// [width] Width of the animation; may be replaced by the server 
+  int width;
+
+  /// [height] Height of the animation; may be replaced by the server 
+  int height;
+
+  /// [caption] Animation caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
 
   /// Parse from a json
   InputMessageAnimation.fromJson(Map<String, dynamic> json)  {
@@ -171,26 +182,32 @@ class InputMessageAnimation extends InputMessageContent {
 }
 
 class InputMessageAudio extends InputMessageContent {
-  InputFile audio;
-  InputThumbnail albumCoverThumbnail;
-  int duration;
-  String title;
-  String performer;
-  FormattedText caption;
 
-  /// An audio message. 
-  /// [audio] Audio file to be sent . 
-  /// [albumCoverThumbnail] Thumbnail of the cover for the album, if available . 
-  /// [duration] Duration of the audio, in seconds; may be replaced by the server . 
-  /// [title] Title of the audio; 0-64 characters; may be replaced by the server. 
-  /// [performer] Performer of the audio; 0-64 characters, may be replaced by the server. 
-  /// [caption] Audio caption; 0-GetOption("message_caption_length_max") characters
+  /// An audio message
   InputMessageAudio({this.audio,
     this.albumCoverThumbnail,
     this.duration,
     this.title,
     this.performer,
     this.caption});
+
+  /// [audio] Audio file to be sent 
+  InputFile audio;
+
+  /// [albumCoverThumbnail] Thumbnail of the cover for the album, if available 
+  InputThumbnail albumCoverThumbnail;
+
+  /// [duration] Duration of the audio, in seconds; may be replaced by the server 
+  int duration;
+
+  /// [title] Title of the audio; 0-64 characters; may be replaced by the server
+  String title;
+
+  /// [performer] Performer of the audio; 0-64 characters, may be replaced by the server
+  String performer;
+
+  /// [caption] Audio caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
 
   /// Parse from a json
   InputMessageAudio.fromJson(Map<String, dynamic> json)  {
@@ -222,20 +239,24 @@ class InputMessageAudio extends InputMessageContent {
 }
 
 class InputMessageDocument extends InputMessageContent {
-  InputFile document;
-  InputThumbnail thumbnail;
-  bool forceFile;
-  FormattedText caption;
 
-  /// A document message (general file). 
-  /// [document] Document to be sent . 
-  /// [thumbnail] Document thumbnail, if available . 
-  /// [forceFile] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats . 
-  /// [caption] Document caption; 0-GetOption("message_caption_length_max") characters
+  /// A document message (general file)
   InputMessageDocument({this.document,
     this.thumbnail,
     this.forceFile,
     this.caption});
+
+  /// [document] Document to be sent 
+  InputFile document;
+
+  /// [thumbnail] Document thumbnail, if available 
+  InputThumbnail thumbnail;
+
+  /// [forceFile] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats 
+  bool forceFile;
+
+  /// [caption] Document caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
 
   /// Parse from a json
   InputMessageDocument.fromJson(Map<String, dynamic> json)  {
@@ -263,22 +284,8 @@ class InputMessageDocument extends InputMessageContent {
 }
 
 class InputMessagePhoto extends InputMessageContent {
-  InputFile photo;
-  InputThumbnail thumbnail;
-  List<int> addedStickerFileIds;
-  int width;
-  int height;
-  FormattedText caption;
-  int ttl;
 
-  /// A photo message. 
-  /// [photo] Photo to send . 
-  /// [thumbnail] Photo thumbnail to be sent, this is sent to the other party in secret chats only . 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable . 
-  /// [width] Photo width . 
-  /// [height] Photo height . 
-  /// [caption] Photo caption; 0-GetOption("message_caption_length_max") characters. 
-  /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
+  /// A photo message
   InputMessagePhoto({this.photo,
     this.thumbnail,
     this.addedStickerFileIds,
@@ -286,6 +293,27 @@ class InputMessagePhoto extends InputMessageContent {
     this.height,
     this.caption,
     this.ttl});
+
+  /// [photo] Photo to send 
+  InputFile photo;
+
+  /// [thumbnail] Photo thumbnail to be sent, this is sent to the other party in secret chats only 
+  InputThumbnail thumbnail;
+
+  /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable 
+  List<int> addedStickerFileIds;
+
+  /// [width] Photo width 
+  int width;
+
+  /// [height] Photo height 
+  int height;
+
+  /// [caption] Photo caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
+
+  /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
+  int ttl;
 
   /// Parse from a json
   InputMessagePhoto.fromJson(Map<String, dynamic> json)  {
@@ -319,20 +347,24 @@ class InputMessagePhoto extends InputMessageContent {
 }
 
 class InputMessageSticker extends InputMessageContent {
-  InputFile sticker;
-  InputThumbnail thumbnail;
-  int width;
-  int height;
 
-  /// A sticker message. 
-  /// [sticker] Sticker to be sent . 
-  /// [thumbnail] Sticker thumbnail, if available . 
-  /// [width] Sticker width . 
-  /// [height] Sticker height
+  /// A sticker message
   InputMessageSticker({this.sticker,
     this.thumbnail,
     this.width,
     this.height});
+
+  /// [sticker] Sticker to be sent 
+  InputFile sticker;
+
+  /// [thumbnail] Sticker thumbnail, if available 
+  InputThumbnail thumbnail;
+
+  /// [width] Sticker width 
+  int width;
+
+  /// [height] Sticker height
+  int height;
 
   /// Parse from a json
   InputMessageSticker.fromJson(Map<String, dynamic> json)  {
@@ -360,26 +392,8 @@ class InputMessageSticker extends InputMessageContent {
 }
 
 class InputMessageVideo extends InputMessageContent {
-  InputFile video;
-  InputThumbnail thumbnail;
-  List<int> addedStickerFileIds;
-  int duration;
-  int width;
-  int height;
-  bool supportsStreaming;
-  FormattedText caption;
-  int ttl;
 
-  /// A video message. 
-  /// [video] Video to be sent . 
-  /// [thumbnail] Video thumbnail, if available . 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the video, if applicable. 
-  /// [duration] Duration of the video, in seconds. 
-  /// [width] Video width . 
-  /// [height] Video height . 
-  /// [supportsStreaming] True, if the video should be tried to be streamed. 
-  /// [caption] Video caption; 0-GetOption("message_caption_length_max") characters. 
-  /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
+  /// A video message
   InputMessageVideo({this.video,
     this.thumbnail,
     this.addedStickerFileIds,
@@ -389,6 +403,33 @@ class InputMessageVideo extends InputMessageContent {
     this.supportsStreaming,
     this.caption,
     this.ttl});
+
+  /// [video] Video to be sent 
+  InputFile video;
+
+  /// [thumbnail] Video thumbnail, if available 
+  InputThumbnail thumbnail;
+
+  /// [addedStickerFileIds] File identifiers of the stickers added to the video, if applicable
+  List<int> addedStickerFileIds;
+
+  /// [duration] Duration of the video, in seconds
+  int duration;
+
+  /// [width] Video width 
+  int width;
+
+  /// [height] Video height 
+  int height;
+
+  /// [supportsStreaming] True, if the video should be tried to be streamed
+  bool supportsStreaming;
+
+  /// [caption] Video caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
+
+  /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
+  int ttl;
 
   /// Parse from a json
   InputMessageVideo.fromJson(Map<String, dynamic> json)  {
@@ -426,20 +467,24 @@ class InputMessageVideo extends InputMessageContent {
 }
 
 class InputMessageVideoNote extends InputMessageContent {
-  InputFile videoNote;
-  InputThumbnail thumbnail;
-  int duration;
-  int length;
 
-  /// A video note message. 
-  /// [videoNote] Video note to be sent . 
-  /// [thumbnail] Video thumbnail, if available . 
-  /// [duration] Duration of the video, in seconds . 
-  /// [length] Video width and height; must be positive and not greater than 640
+  /// A video note message
   InputMessageVideoNote({this.videoNote,
     this.thumbnail,
     this.duration,
     this.length});
+
+  /// [videoNote] Video note to be sent 
+  InputFile videoNote;
+
+  /// [thumbnail] Video thumbnail, if available 
+  InputThumbnail thumbnail;
+
+  /// [duration] Duration of the video, in seconds 
+  int duration;
+
+  /// [length] Video width and height; must be positive and not greater than 640
+  int length;
 
   /// Parse from a json
   InputMessageVideoNote.fromJson(Map<String, dynamic> json)  {
@@ -467,20 +512,24 @@ class InputMessageVideoNote extends InputMessageContent {
 }
 
 class InputMessageVoiceNote extends InputMessageContent {
-  InputFile voiceNote;
-  int duration;
-  String waveform;
-  FormattedText caption;
 
-  /// A voice note message. 
-  /// [voiceNote] Voice note to be sent . 
-  /// [duration] Duration of the voice note, in seconds . 
-  /// [waveform] Waveform representation of the voice note, in 5-bit format . 
-  /// [caption] Voice note caption; 0-GetOption("message_caption_length_max") characters
+  /// A voice note message
   InputMessageVoiceNote({this.voiceNote,
     this.duration,
     this.waveform,
     this.caption});
+
+  /// [voiceNote] Voice note to be sent 
+  InputFile voiceNote;
+
+  /// [duration] Duration of the voice note, in seconds 
+  int duration;
+
+  /// [waveform] Waveform representation of the voice note, in 5-bit format 
+  String waveform;
+
+  /// [caption] Voice note caption; 0-GetOption("message_caption_length_max") characters
+  FormattedText caption;
 
   /// Parse from a json
   InputMessageVoiceNote.fromJson(Map<String, dynamic> json)  {
@@ -508,14 +557,16 @@ class InputMessageVoiceNote extends InputMessageContent {
 }
 
 class InputMessageLocation extends InputMessageContent {
-  Location location;
-  int livePeriod;
 
-  /// A message with a location. 
-  /// [location] Location to be sent . 
-  /// [livePeriod] Period for which the location can be updated, in seconds; should be between 60 and 86400 for a live location and 0 otherwise
+  /// A message with a location
   InputMessageLocation({this.location,
     this.livePeriod});
+
+  /// [location] Location to be sent 
+  Location location;
+
+  /// [livePeriod] Period for which the location can be updated, in seconds; should be between 60 and 86400 for a live location and 0 otherwise
+  int livePeriod;
 
   /// Parse from a json
   InputMessageLocation.fromJson(Map<String, dynamic> json)  {
@@ -539,11 +590,12 @@ class InputMessageLocation extends InputMessageContent {
 }
 
 class InputMessageVenue extends InputMessageContent {
-  Venue venue;
 
-  /// A message with information about a venue. 
-  /// [venue] Venue to send
+  /// A message with information about a venue
   InputMessageVenue({this.venue});
+
+  /// [venue] Venue to send
+  Venue venue;
 
   /// Parse from a json
   InputMessageVenue.fromJson(Map<String, dynamic> json)  {
@@ -565,11 +617,12 @@ class InputMessageVenue extends InputMessageContent {
 }
 
 class InputMessageContact extends InputMessageContent {
-  Contact contact;
 
-  /// A message containing a user contact. 
-  /// [contact] Contact to send
+  /// A message containing a user contact
   InputMessageContact({this.contact});
+
+  /// [contact] Contact to send
+  Contact contact;
 
   /// Parse from a json
   InputMessageContact.fromJson(Map<String, dynamic> json)  {
@@ -591,14 +644,16 @@ class InputMessageContact extends InputMessageContent {
 }
 
 class InputMessageDice extends InputMessageContent {
-  String emoji;
-  bool clearDraft;
 
-  /// A dice message. 
-  /// [emoji] Emoji on which the dice throw animation is based . 
-  /// [clearDraft] True, if a chat message draft should be deleted
+  /// A dice message
   InputMessageDice({this.emoji,
     this.clearDraft});
+
+  /// [emoji] Emoji on which the dice throw animation is based 
+  String emoji;
+
+  /// [clearDraft] True, if a chat message draft should be deleted
+  bool clearDraft;
 
   /// Parse from a json
   InputMessageDice.fromJson(Map<String, dynamic> json)  {
@@ -622,14 +677,16 @@ class InputMessageDice extends InputMessageContent {
 }
 
 class InputMessageGame extends InputMessageContent {
-  int botUserId;
-  String gameShortName;
 
-  /// A message with a game; not supported for channels or secret chats. 
-  /// [botUserId] User identifier of the bot that owns the game . 
-  /// [gameShortName] Short name of the game
+  /// A message with a game; not supported for channels or secret chats
   InputMessageGame({this.botUserId,
     this.gameShortName});
+
+  /// [botUserId] User identifier of the bot that owns the game 
+  int botUserId;
+
+  /// [gameShortName] Short name of the game
+  String gameShortName;
 
   /// Parse from a json
   InputMessageGame.fromJson(Map<String, dynamic> json)  {
@@ -653,30 +710,8 @@ class InputMessageGame extends InputMessageContent {
 }
 
 class InputMessageInvoice extends InputMessageContent {
-  Invoice invoice;
-  String title;
-  String description;
-  String photoUrl;
-  int photoSize;
-  int photoWidth;
-  int photoHeight;
-  String payload;
-  String providerToken;
-  String providerData;
-  String startParameter;
 
-  /// A message with an invoice; can be used only by bots and only in private chats. 
-  /// [invoice] Invoice . 
-  /// [title] Product title; 1-32 characters . 
-  /// [description] Product description; 0-255 characters . 
-  /// [photoUrl] Product photo URL; optional . 
-  /// [photoSize] Product photo size . 
-  /// [photoWidth] Product photo width . 
-  /// [photoHeight] Product photo height. 
-  /// [payload] The invoice payload. 
-  /// [providerToken] Payment provider token . 
-  /// [providerData] JSON-encoded data about the invoice, which will be shared with the payment provider . 
-  /// [startParameter] Unique invoice bot start_parameter for the generation of this invoice
+  /// A message with an invoice; can be used only by bots and only in private chats
   InputMessageInvoice({this.invoice,
     this.title,
     this.description,
@@ -688,6 +723,39 @@ class InputMessageInvoice extends InputMessageContent {
     this.providerToken,
     this.providerData,
     this.startParameter});
+
+  /// [invoice] Invoice 
+  Invoice invoice;
+
+  /// [title] Product title; 1-32 characters 
+  String title;
+
+  /// [description] Product description; 0-255 characters 
+  String description;
+
+  /// [photoUrl] Product photo URL; optional 
+  String photoUrl;
+
+  /// [photoSize] Product photo size 
+  int photoSize;
+
+  /// [photoWidth] Product photo width 
+  int photoWidth;
+
+  /// [photoHeight] Product photo height
+  int photoHeight;
+
+  /// [payload] The invoice payload
+  String payload;
+
+  /// [providerToken] Payment provider token 
+  String providerToken;
+
+  /// [providerData] JSON-encoded data about the invoice, which will be shared with the payment provider 
+  String providerData;
+
+  /// [startParameter] Unique invoice bot start_parameter for the generation of this invoice
+  String startParameter;
 
   /// Parse from a json
   InputMessageInvoice.fromJson(Map<String, dynamic> json)  {
@@ -729,22 +797,8 @@ class InputMessageInvoice extends InputMessageContent {
 }
 
 class InputMessagePoll extends InputMessageContent {
-  String question;
-  List<String> options;
-  bool isAnonymous;
-  PollType type;
-  int openPeriod;
-  int closeDate;
-  bool isClosed;
 
-  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot. 
-  /// [question] Poll question, 1-255 characters . 
-  /// [options] List of poll answer options, 2-10 strings 1-100 characters each. 
-  /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels. 
-  /// [type] Type of the poll. 
-  /// [openPeriod] Amount of time the poll will be active after creation, in seconds; for bots only. 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed; for bots only. 
-  /// [isClosed] True, if the poll needs to be sent already closed; for bots only
+  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
   InputMessagePoll({this.question,
     this.options,
     this.isAnonymous,
@@ -752,6 +806,27 @@ class InputMessagePoll extends InputMessageContent {
     this.openPeriod,
     this.closeDate,
     this.isClosed});
+
+  /// [question] Poll question, 1-255 characters 
+  String question;
+
+  /// [options] List of poll answer options, 2-10 strings 1-100 characters each
+  List<String> options;
+
+  /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
+  bool isAnonymous;
+
+  /// [type] Type of the poll
+  PollType type;
+
+  /// [openPeriod] Amount of time the poll will be active after creation, in seconds; for bots only
+  int openPeriod;
+
+  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed; for bots only
+  int closeDate;
+
+  /// [isClosed] True, if the poll needs to be sent already closed; for bots only
+  bool isClosed;
 
   /// Parse from a json
   InputMessagePoll.fromJson(Map<String, dynamic> json)  {
@@ -785,23 +860,28 @@ class InputMessagePoll extends InputMessageContent {
 }
 
 class InputMessageForwarded extends InputMessageContent {
-  int fromChatId;
-  int messageId;
-  bool inGameShare;
-  bool sendCopy;
-  bool removeCaption;
 
-  /// A forwarded message. 
-  /// [fromChatId] Identifier for the chat this forwarded message came from . 
-  /// [messageId] Identifier of the message to forward. 
-  /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages. 
-  /// [sendCopy] True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat. 
-  /// [removeCaption] True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
+  /// A forwarded message
   InputMessageForwarded({this.fromChatId,
     this.messageId,
     this.inGameShare,
     this.sendCopy,
     this.removeCaption});
+
+  /// [fromChatId] Identifier for the chat this forwarded message came from 
+  int fromChatId;
+
+  /// [messageId] Identifier of the message to forward
+  int messageId;
+
+  /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages
+  bool inGameShare;
+
+  /// [sendCopy] True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat
+  bool sendCopy;
+
+  /// [removeCaption] True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
+  bool removeCaption;
 
   /// Parse from a json
   InputMessageForwarded.fromJson(Map<String, dynamic> json)  {

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class Messages extends TdObject {
-  int totalCount;
-  List<Message> messages;
-  dynamic extra;
 
-  /// Contains a list of messages. 
-  /// [totalCount] Approximate total count of messages found . 
-  /// [messages] List of messages; messages may be null
+  /// Contains a list of messages
   Messages({this.totalCount,
     this.messages});
+
+  /// [totalCount] Approximate total count of messages found 
+  int totalCount;
+
+  /// [messages] List of messages; messages may be null
+  List<Message> messages;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   Messages.fromJson(Map<String, dynamic> json)  {

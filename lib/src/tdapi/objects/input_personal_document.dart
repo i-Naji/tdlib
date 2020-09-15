@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class InputPersonalDocument extends TdObject {
-  List<InputFile> files;
-  List<InputFile> translation;
 
-  /// A personal document to be saved to Telegram Passport. 
-  /// [files] List of files containing the pages of the document . 
-  /// [translation] List of files containing a certified English translation of the document
+  /// A personal document to be saved to Telegram Passport
   InputPersonalDocument({this.files,
     this.translation});
+
+  /// [files] List of files containing the pages of the document 
+  List<InputFile> files;
+
+  /// [translation] List of files containing a certified English translation of the document
+  List<InputFile> translation;
 
   /// Parse from a json
   InputPersonalDocument.fromJson(Map<String, dynamic> json)  {

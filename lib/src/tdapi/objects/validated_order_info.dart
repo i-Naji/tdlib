@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ValidatedOrderInfo extends TdObject {
-  String orderInfoId;
-  List<ShippingOption> shippingOptions;
-  dynamic extra;
 
-  /// Contains a temporary identifier of validated order information, which is stored for one hour. Also contains the available shipping options. 
-  /// [orderInfoId] Temporary identifier of the order information . 
-  /// [shippingOptions] Available shipping options
+  /// Contains a temporary identifier of validated order information, which is stored for one hour. Also contains the available shipping options
   ValidatedOrderInfo({this.orderInfoId,
     this.shippingOptions});
+
+  /// [orderInfoId] Temporary identifier of the order information 
+  String orderInfoId;
+
+  /// [shippingOptions] Available shipping options
+  List<ShippingOption> shippingOptions;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ValidatedOrderInfo.fromJson(Map<String, dynamic> json)  {

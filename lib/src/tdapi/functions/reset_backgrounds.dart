@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class ResetBackgrounds extends TdFunction {
-  dynamic extra;
 
   /// Resets list of installed backgrounds to its default value
   ResetBackgrounds();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ResetBackgrounds.fromJson(Map<String, dynamic> json) ;

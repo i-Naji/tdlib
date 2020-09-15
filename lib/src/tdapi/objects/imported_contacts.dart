@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class ImportedContacts extends TdObject {
-  List<int> userIds;
-  List<int> importerCount;
-  dynamic extra;
 
-  /// Represents the result of an ImportContacts request. 
-  /// [userIds] User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user. 
-  /// [importerCount] The number of users that imported the corresponding contact; 0 for already registered users or if unavailable
+  /// Represents the result of an ImportContacts request
   ImportedContacts({this.userIds,
     this.importerCount});
+
+  /// [userIds] User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user
+  List<int> userIds;
+
+  /// [importerCount] The number of users that imported the corresponding contact; 0 for already registered users or if unavailable
+  List<int> importerCount;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ImportedContacts.fromJson(Map<String, dynamic> json)  {

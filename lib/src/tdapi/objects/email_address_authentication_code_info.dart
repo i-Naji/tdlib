@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class EmailAddressAuthenticationCodeInfo extends TdObject {
-  String emailAddressPattern;
-  int length;
-  dynamic extra;
 
-  /// Information about the email address authentication code that was sent. 
-  /// [emailAddressPattern] Pattern of the email address to which an authentication code was sent . 
-  /// [length] Length of the code; 0 if unknown
+  /// Information about the email address authentication code that was sent
   EmailAddressAuthenticationCodeInfo({this.emailAddressPattern,
     this.length});
+
+  /// [emailAddressPattern] Pattern of the email address to which an authentication code was sent 
+  String emailAddressPattern;
+
+  /// [length] Length of the code; 0 if unknown
+  int length;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EmailAddressAuthenticationCodeInfo.fromJson(Map<String, dynamic> json)  {

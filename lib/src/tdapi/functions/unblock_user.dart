@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class UnblockUser extends TdFunction {
-  int userId;
-  dynamic extra;
 
-  /// Unblocks a user. 
-  /// [userId] User identifier
+  /// Unblocks a user
   UnblockUser({this.userId});
+
+  /// [userId] User identifier
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UnblockUser.fromJson(Map<String, dynamic> json) ;

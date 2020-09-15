@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsites extends TdObject {
-  List<ConnectedWebsite> websites;
-  dynamic extra;
 
-  /// Contains a list of websites the current user is logged in with Telegram. 
-  /// [websites] List of connected websites
+  /// Contains a list of websites the current user is logged in with Telegram
   ConnectedWebsites({this.websites});
+
+  /// [websites] List of connected websites
+  List<ConnectedWebsite> websites;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ConnectedWebsites.fromJson(Map<String, dynamic> json)  {

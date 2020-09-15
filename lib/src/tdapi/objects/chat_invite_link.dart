@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class ChatInviteLink extends TdObject {
-  String inviteLink;
-  dynamic extra;
 
-  /// Contains a chat invite link. 
-  /// [inviteLink] Chat invite link
+  /// Contains a chat invite link
   ChatInviteLink({this.inviteLink});
+
+  /// [inviteLink] Chat invite link
+  String inviteLink;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ChatInviteLink.fromJson(Map<String, dynamic> json)  {

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class RemoveNotification extends TdFunction {
-  int notificationGroupId;
-  int notificationId;
-  dynamic extra;
 
-  /// Removes an active notification from notification list. Needs to be called only if the notification is removed by the current user. 
-  /// [notificationGroupId] Identifier of notification group to which the notification belongs . 
-  /// [notificationId] Identifier of removed notification
+  /// Removes an active notification from notification list. Needs to be called only if the notification is removed by the current user
   RemoveNotification({this.notificationGroupId,
     this.notificationId});
+
+  /// [notificationGroupId] Identifier of notification group to which the notification belongs 
+  int notificationGroupId;
+
+  /// [notificationId] Identifier of removed notification
+  int notificationId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RemoveNotification.fromJson(Map<String, dynamic> json) ;

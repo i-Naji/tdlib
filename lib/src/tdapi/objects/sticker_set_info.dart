@@ -1,32 +1,8 @@
 part of '../tdapi.dart';
 
 class StickerSetInfo extends TdObject {
-  int id;
-  String title;
-  String name;
-  Thumbnail thumbnail;
-  bool isInstalled;
-  bool isArchived;
-  bool isOfficial;
-  bool isAnimated;
-  bool isMasks;
-  bool isViewed;
-  int size;
-  List<Sticker> covers;
 
-  /// Represents short information about a sticker set. 
-  /// [id] Identifier of the sticker set. 
-  /// [title] Title of the sticker set . 
-  /// [name] Name of the sticker set . 
-  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. 
-  /// [isInstalled] True, if the sticker set has been installed by current user. 
-  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously. 
-  /// [isOfficial] True, if the sticker set is official. 
-  /// [isAnimated] True, is the stickers in the set are animated . 
-  /// [isMasks] True, if the stickers in the set are masks . 
-  /// [isViewed] True for already viewed trending sticker sets. 
-  /// [size] Total number of stickers in the set. 
-  /// [covers] Contains up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full set should be requested
+  /// Represents short information about a sticker set
   StickerSetInfo({this.id,
     this.title,
     this.name,
@@ -40,9 +16,45 @@ class StickerSetInfo extends TdObject {
     this.size,
     this.covers});
 
+  /// [id] Identifier of the sticker set
+  int id;
+
+  /// [title] Title of the sticker set 
+  String title;
+
+  /// [name] Name of the sticker set 
+  String name;
+
+  /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
+  Thumbnail thumbnail;
+
+  /// [isInstalled] True, if the sticker set has been installed by current user
+  bool isInstalled;
+
+  /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
+  bool isArchived;
+
+  /// [isOfficial] True, if the sticker set is official
+  bool isOfficial;
+
+  /// [isAnimated] True, is the stickers in the set are animated 
+  bool isAnimated;
+
+  /// [isMasks] True, if the stickers in the set are masks 
+  bool isMasks;
+
+  /// [isViewed] True for already viewed trending sticker sets
+  bool isViewed;
+
+  /// [size] Total number of stickers in the set
+  int size;
+
+  /// [covers] Contains up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full set should be requested
+  List<Sticker> covers;
+
   /// Parse from a json
   StickerSetInfo.fromJson(Map<String, dynamic> json)  {
-    this.id = json['id'];
+    this.id = int.tryParse(json['id'] ?? "");
     this.title = json['title'];
     this.name = json['name'];
     this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});

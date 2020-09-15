@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class FoundMessages extends TdObject {
-  List<Message> messages;
-  int nextFromSearchId;
-  dynamic extra;
 
-  /// Contains a list of messages found by a search. 
-  /// [messages] List of messages . 
-  /// [nextFromSearchId] Value to pass as from_search_id to get more results
+  /// Contains a list of messages found by a search
   FoundMessages({this.messages,
     this.nextFromSearchId});
+
+  /// [messages] List of messages 
+  List<Message> messages;
+
+  /// [nextFromSearchId] Value to pass as from_search_id to get more results
+  int nextFromSearchId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   FoundMessages.fromJson(Map<String, dynamic> json)  {
     this.messages = List<Message>.from((json['messages'] ?? []).map((item) => Message.fromJson(item ?? <String, dynamic>{})).toList());
-    this.nextFromSearchId = json['next_from_search_id'];
+    this.nextFromSearchId = int.tryParse(json['next_from_search_id'] ?? "");
     this.extra = json['@extra'];
   }
 

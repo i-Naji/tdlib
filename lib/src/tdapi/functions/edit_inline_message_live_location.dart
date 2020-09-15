@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageLiveLocation extends TdFunction {
-  String inlineMessageId;
-  ReplyMarkup replyMarkup;
-  Location location;
-  dynamic extra;
 
-  /// Edits the content of a live location in an inline message sent via a bot; for bots only. 
-  /// [inlineMessageId] Inline message identifier . 
-  /// [replyMarkup] The new message reply markup . 
-  /// [location] New location content of the message; may be null. Pass null to stop sharing the live location
+  /// Edits the content of a live location in an inline message sent via a bot; for bots only
   EditInlineMessageLiveLocation({this.inlineMessageId,
     this.replyMarkup,
     this.location});
+
+  /// [inlineMessageId] Inline message identifier 
+  String inlineMessageId;
+
+  /// [replyMarkup] The new message reply markup 
+  ReplyMarkup replyMarkup;
+
+  /// [location] New location content of the message; may be null. Pass null to stop sharing the live location
+  Location location;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditInlineMessageLiveLocation.fromJson(Map<String, dynamic> json) ;

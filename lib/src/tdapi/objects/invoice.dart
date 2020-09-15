@@ -1,28 +1,8 @@
 part of '../tdapi.dart';
 
 class Invoice extends TdObject {
-  String currency;
-  List<LabeledPricePart> priceParts;
-  bool isTest;
-  bool needName;
-  bool needPhoneNumber;
-  bool needEmailAddress;
-  bool needShippingAddress;
-  bool sendPhoneNumberToProvider;
-  bool sendEmailAddressToProvider;
-  bool isFlexible;
 
-  /// Product invoice. 
-  /// [currency] ISO 4217 currency code . 
-  /// [priceParts] A list of objects used to calculate the total price of the product . 
-  /// [isTest] True, if the payment is a test payment. 
-  /// [needName] True, if the user's name is needed for payment. 
-  /// [needPhoneNumber] True, if the user's phone number is needed for payment . 
-  /// [needEmailAddress] True, if the user's email address is needed for payment. 
-  /// [needShippingAddress] True, if the user's shipping address is needed for payment. 
-  /// [sendPhoneNumberToProvider] True, if the user's phone number will be sent to the provider. 
-  /// [sendEmailAddressToProvider] True, if the user's email address will be sent to the provider. 
-  /// [isFlexible] True, if the total price depends on the shipping method
+  /// Product invoice
   Invoice({this.currency,
     this.priceParts,
     this.isTest,
@@ -33,6 +13,36 @@ class Invoice extends TdObject {
     this.sendPhoneNumberToProvider,
     this.sendEmailAddressToProvider,
     this.isFlexible});
+
+  /// [currency] ISO 4217 currency code 
+  String currency;
+
+  /// [priceParts] A list of objects used to calculate the total price of the product 
+  List<LabeledPricePart> priceParts;
+
+  /// [isTest] True, if the payment is a test payment
+  bool isTest;
+
+  /// [needName] True, if the user's name is needed for payment
+  bool needName;
+
+  /// [needPhoneNumber] True, if the user's phone number is needed for payment 
+  bool needPhoneNumber;
+
+  /// [needEmailAddress] True, if the user's email address is needed for payment
+  bool needEmailAddress;
+
+  /// [needShippingAddress] True, if the user's shipping address is needed for payment
+  bool needShippingAddress;
+
+  /// [sendPhoneNumberToProvider] True, if the user's phone number will be sent to the provider
+  bool sendPhoneNumberToProvider;
+
+  /// [sendEmailAddressToProvider] True, if the user's email address will be sent to the provider
+  bool sendEmailAddressToProvider;
+
+  /// [isFlexible] True, if the total price depends on the shipping method
+  bool isFlexible;
 
   /// Parse from a json
   Invoice.fromJson(Map<String, dynamic> json)  {

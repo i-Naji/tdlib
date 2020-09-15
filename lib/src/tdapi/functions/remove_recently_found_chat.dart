@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RemoveRecentlyFoundChat extends TdFunction {
-  int chatId;
-  dynamic extra;
 
-  /// Removes a chat from the list of recently found chats. 
-  /// [chatId] Identifier of the chat to be removed
+  /// Removes a chat from the list of recently found chats
   RemoveRecentlyFoundChat({this.chatId});
+
+  /// [chatId] Identifier of the chat to be removed
+  int chatId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RemoveRecentlyFoundChat.fromJson(Map<String, dynamic> json) ;

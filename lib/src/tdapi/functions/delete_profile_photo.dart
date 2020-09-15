@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class DeleteProfilePhoto extends TdFunction {
-  int profilePhotoId;
-  dynamic extra;
 
-  /// Deletes a profile photo. 
-  /// [profilePhotoId] Identifier of the profile photo to delete
+  /// Deletes a profile photo
   DeleteProfilePhoto({this.profilePhotoId});
+
+  /// [profilePhotoId] Identifier of the profile photo to delete
+  int profilePhotoId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeleteProfilePhoto.fromJson(Map<String, dynamic> json) ;

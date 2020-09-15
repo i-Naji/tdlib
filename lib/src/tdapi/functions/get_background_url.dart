@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetBackgroundUrl extends TdFunction {
-  String name;
-  BackgroundType type;
-  dynamic extra;
 
-  /// Constructs a persistent HTTP URL for a background. 
-  /// [name] Background name . 
-  /// [type] Background type
+  /// Constructs a persistent HTTP URL for a background
   GetBackgroundUrl({this.name,
     this.type});
+
+  /// [name] Background name 
+  String name;
+
+  /// [type] Background type
+  BackgroundType type;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetBackgroundUrl.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CallDiscardReason extends TdObject {
-  
 
   /// Describes the reason why a call was discarded
   CallDiscardReason();
+
+  
 
   /// a CallDiscardReason return type can be :
   /// * CallDiscardReasonEmpty
@@ -43,10 +44,11 @@ class CallDiscardReason extends TdObject {
 }
 
 class CallDiscardReasonEmpty extends CallDiscardReason {
-  
 
   /// The call wasn't discarded, or the reason is unknown
   CallDiscardReasonEmpty();
+
+  
 
   /// Parse from a json
   CallDiscardReasonEmpty.fromJson(Map<String, dynamic> json) ;
@@ -65,10 +67,11 @@ class CallDiscardReasonEmpty extends CallDiscardReason {
 }
 
 class CallDiscardReasonMissed extends CallDiscardReason {
-  
 
   /// The call was ended before the conversation started. It was cancelled by the caller or missed by the other party
   CallDiscardReasonMissed();
+
+  
 
   /// Parse from a json
   CallDiscardReasonMissed.fromJson(Map<String, dynamic> json) ;
@@ -87,10 +90,11 @@ class CallDiscardReasonMissed extends CallDiscardReason {
 }
 
 class CallDiscardReasonDeclined extends CallDiscardReason {
-  
 
   /// The call was ended before the conversation started. It was declined by the other party
   CallDiscardReasonDeclined();
+
+  
 
   /// Parse from a json
   CallDiscardReasonDeclined.fromJson(Map<String, dynamic> json) ;
@@ -109,10 +113,11 @@ class CallDiscardReasonDeclined extends CallDiscardReason {
 }
 
 class CallDiscardReasonDisconnected extends CallDiscardReason {
-  
 
   /// The call was ended during the conversation because the users were disconnected
   CallDiscardReasonDisconnected();
+
+  
 
   /// Parse from a json
   CallDiscardReasonDisconnected.fromJson(Map<String, dynamic> json) ;
@@ -131,10 +136,11 @@ class CallDiscardReasonDisconnected extends CallDiscardReason {
 }
 
 class CallDiscardReasonHungUp extends CallDiscardReason {
-  
 
   /// The call was ended because one of the parties hung up
   CallDiscardReasonHungUp();
+
+  
 
   /// Parse from a json
   CallDiscardReasonHungUp.fromJson(Map<String, dynamic> json) ;

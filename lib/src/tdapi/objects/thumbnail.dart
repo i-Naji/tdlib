@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class Thumbnail extends TdObject {
-  ThumbnailFormat format;
-  int width;
-  int height;
-  File file;
 
-  /// Represents a thumbnail. 
-  /// [format] Thumbnail format . 
-  /// [width] Thumbnail width . 
-  /// [height] Thumbnail height . 
-  /// [file] The thumbnail
+  /// Represents a thumbnail
   Thumbnail({this.format,
     this.width,
     this.height,
     this.file});
+
+  /// [format] Thumbnail format 
+  ThumbnailFormat format;
+
+  /// [width] Thumbnail width 
+  int width;
+
+  /// [height] Thumbnail height 
+  int height;
+
+  /// [file] The thumbnail
+  File file;
 
   /// Parse from a json
   Thumbnail.fromJson(Map<String, dynamic> json)  {

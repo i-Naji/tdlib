@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class GetPassportAuthorizationForm extends TdFunction {
-  int botUserId;
-  String scope;
-  String publicKey;
-  String nonce;
-  dynamic extra;
 
-  /// Returns a Telegram Passport authorization form for sharing data with a service. 
-  /// [botUserId] User identifier of the service's bot . 
-  /// [scope] Telegram Passport element types requested by the service . 
-  /// [publicKey] Service's public_key . 
-  /// [nonce] Authorization form nonce provided by the service
+  /// Returns a Telegram Passport authorization form for sharing data with a service
   GetPassportAuthorizationForm({this.botUserId,
     this.scope,
     this.publicKey,
     this.nonce});
+
+  /// [botUserId] User identifier of the service's bot 
+  int botUserId;
+
+  /// [scope] Telegram Passport element types requested by the service 
+  String scope;
+
+  /// [publicKey] Service's public_key 
+  String publicKey;
+
+  /// [nonce] Authorization form nonce provided by the service
+  String nonce;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json) ;

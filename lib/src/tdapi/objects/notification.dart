@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class Notification extends TdObject {
-  int id;
-  int date;
-  bool isSilent;
-  NotificationType type;
 
-  /// Contains information about a notification. 
-  /// [id] Unique persistent identifier of this notification . 
-  /// [date] Notification date. 
-  /// [isSilent] True, if the notification was initially silent. 
-  /// [type] Notification type
+  /// Contains information about a notification
   Notification({this.id,
     this.date,
     this.isSilent,
     this.type});
+
+  /// [id] Unique persistent identifier of this notification 
+  int id;
+
+  /// [date] Notification date
+  int date;
+
+  /// [isSilent] True, if the notification was initially silent
+  bool isSilent;
+
+  /// [type] Notification type
+  NotificationType type;
 
   /// Parse from a json
   Notification.fromJson(Map<String, dynamic> json)  {

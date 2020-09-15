@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetUserFullInfo extends TdFunction {
-  int userId;
-  dynamic extra;
 
-  /// Returns full information about a user by their identifier. 
-  /// [userId] User identifier
+  /// Returns full information about a user by their identifier
   GetUserFullInfo({this.userId});
+
+  /// [userId] User identifier
+  int userId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetUserFullInfo.fromJson(Map<String, dynamic> json) ;

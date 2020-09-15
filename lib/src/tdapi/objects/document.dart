@@ -1,23 +1,28 @@
 part of '../tdapi.dart';
 
 class Document extends TdObject {
-  String fileName;
-  String mimeType;
-  Minithumbnail minithumbnail;
-  Thumbnail thumbnail;
-  File document;
 
-  /// Describes a document of any type. 
-  /// [fileName] Original name of the file; as defined by the sender . 
-  /// [mimeType] MIME type of the file; as defined by the sender. 
-  /// [minithumbnail] Document minithumbnail; may be null. 
-  /// [thumbnail] Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null . 
-  /// [document] File containing the document
+  /// Describes a document of any type
   Document({this.fileName,
     this.mimeType,
     this.minithumbnail,
     this.thumbnail,
     this.document});
+
+  /// [fileName] Original name of the file; as defined by the sender 
+  String fileName;
+
+  /// [mimeType] MIME type of the file; as defined by the sender
+  String mimeType;
+
+  /// [minithumbnail] Document minithumbnail; may be null
+  Minithumbnail minithumbnail;
+
+  /// [thumbnail] Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null 
+  Thumbnail thumbnail;
+
+  /// [document] File containing the document
+  File document;
 
   /// Parse from a json
   Document.fromJson(Map<String, dynamic> json)  {

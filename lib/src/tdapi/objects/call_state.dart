@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class CallState extends TdObject {
-  
 
   /// Describes the current call state
   CallState();
+
+  
 
   /// a CallState return type can be :
   /// * CallStatePending
@@ -46,14 +47,16 @@ class CallState extends TdObject {
 }
 
 class CallStatePending extends CallState {
-  bool isCreated;
-  bool isReceived;
 
-  /// The call is pending, waiting to be accepted by a user. 
-  /// [isCreated] True, if the call has already been created by the server . 
-  /// [isReceived] True, if the call has already been received by the other party
+  /// The call is pending, waiting to be accepted by a user
   CallStatePending({this.isCreated,
     this.isReceived});
+
+  /// [isCreated] True, if the call has already been created by the server 
+  bool isCreated;
+
+  /// [isReceived] True, if the call has already been received by the other party
+  bool isReceived;
 
   /// Parse from a json
   CallStatePending.fromJson(Map<String, dynamic> json)  {
@@ -77,10 +80,11 @@ class CallStatePending extends CallState {
 }
 
 class CallStateExchangingKeys extends CallState {
-  
 
   /// The call has been answered and encryption keys are being exchanged
   CallStateExchangingKeys();
+
+  
 
   /// Parse from a json
   CallStateExchangingKeys.fromJson(Map<String, dynamic> json) ;
@@ -99,26 +103,32 @@ class CallStateExchangingKeys extends CallState {
 }
 
 class CallStateReady extends CallState {
-  CallProtocol protocol;
-  List<CallConnection> connections;
-  String config;
-  String encryptionKey;
-  List<String> emojis;
-  bool allowP2p;
 
-  /// The call is ready to use. 
-  /// [protocol] Call protocols supported by the peer . 
-  /// [connections] Available UDP reflectors . 
-  /// [config] A JSON-encoded call config . 
-  /// [encryptionKey] Call encryption key . 
-  /// [emojis] Encryption key emojis fingerprint . 
-  /// [allowP2p] True, if peer-to-peer connection is allowed by users privacy settings
+  /// The call is ready to use
   CallStateReady({this.protocol,
     this.connections,
     this.config,
     this.encryptionKey,
     this.emojis,
     this.allowP2p});
+
+  /// [protocol] Call protocols supported by the peer 
+  CallProtocol protocol;
+
+  /// [connections] Available UDP reflectors 
+  List<CallConnection> connections;
+
+  /// [config] A JSON-encoded call config 
+  String config;
+
+  /// [encryptionKey] Call encryption key 
+  String encryptionKey;
+
+  /// [emojis] Encryption key emojis fingerprint 
+  List<String> emojis;
+
+  /// [allowP2p] True, if peer-to-peer connection is allowed by users privacy settings
+  bool allowP2p;
 
   /// Parse from a json
   CallStateReady.fromJson(Map<String, dynamic> json)  {
@@ -150,10 +160,11 @@ class CallStateReady extends CallState {
 }
 
 class CallStateHangingUp extends CallState {
-  
 
   /// The call is hanging up after discardCall has been called
   CallStateHangingUp();
+
+  
 
   /// Parse from a json
   CallStateHangingUp.fromJson(Map<String, dynamic> json) ;
@@ -172,17 +183,20 @@ class CallStateHangingUp extends CallState {
 }
 
 class CallStateDiscarded extends CallState {
-  CallDiscardReason reason;
-  bool needRating;
-  bool needDebugInformation;
 
-  /// The call has ended successfully. 
-  /// [reason] The reason, why the call has ended . 
-  /// [needRating] True, if the call rating should be sent to the server . 
-  /// [needDebugInformation] True, if the call debug information should be sent to the server
+  /// The call has ended successfully
   CallStateDiscarded({this.reason,
     this.needRating,
     this.needDebugInformation});
+
+  /// [reason] The reason, why the call has ended 
+  CallDiscardReason reason;
+
+  /// [needRating] True, if the call rating should be sent to the server 
+  bool needRating;
+
+  /// [needDebugInformation] True, if the call debug information should be sent to the server
+  bool needDebugInformation;
 
   /// Parse from a json
   CallStateDiscarded.fromJson(Map<String, dynamic> json)  {
@@ -208,11 +222,12 @@ class CallStateDiscarded extends CallState {
 }
 
 class CallStateError extends CallState {
-  TdError error;
 
-  /// The call has ended with an error. 
-  /// [error] Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
+  /// The call has ended with an error
   CallStateError({this.error});
+
+  /// [error] Error. An error with the code 4005000 will be returned if an outgoing call is missed because of an expired timeout
+  TdError error;
 
   /// Parse from a json
   CallStateError.fromJson(Map<String, dynamic> json)  {

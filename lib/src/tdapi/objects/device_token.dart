@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class DeviceToken extends TdObject {
-  
 
   /// Represents a data needed to subscribe for push notifications through registerDevice method. To use specific push notification service, you must specify the correct application platform and upload valid server authentication data at https://my.telegram.org
   DeviceToken();
+
+  
 
   /// a DeviceToken return type can be :
   /// * DeviceTokenFirebaseCloudMessaging
@@ -61,14 +62,16 @@ class DeviceToken extends TdObject {
 }
 
 class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
-  String token;
-  bool encrypt;
 
-  /// A token for Firebase Cloud Messaging. 
-  /// [token] Device registration token; may be empty to de-register a device . 
-  /// [encrypt] True, if push notifications should be additionally encrypted
+  /// A token for Firebase Cloud Messaging
   DeviceTokenFirebaseCloudMessaging({this.token,
     this.encrypt});
+
+  /// [token] Device registration token; may be empty to de-register a device 
+  String token;
+
+  /// [encrypt] True, if push notifications should be additionally encrypted
+  bool encrypt;
 
   /// Parse from a json
   DeviceTokenFirebaseCloudMessaging.fromJson(Map<String, dynamic> json)  {
@@ -92,14 +95,16 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
 }
 
 class DeviceTokenApplePush extends DeviceToken {
-  String deviceToken;
-  bool isAppSandbox;
 
-  /// A token for Apple Push Notification service. 
-  /// [deviceToken] Device token; may be empty to de-register a device . 
-  /// [isAppSandbox] True, if App Sandbox is enabled
+  /// A token for Apple Push Notification service
   DeviceTokenApplePush({this.deviceToken,
     this.isAppSandbox});
+
+  /// [deviceToken] Device token; may be empty to de-register a device 
+  String deviceToken;
+
+  /// [isAppSandbox] True, if App Sandbox is enabled
+  bool isAppSandbox;
 
   /// Parse from a json
   DeviceTokenApplePush.fromJson(Map<String, dynamic> json)  {
@@ -123,17 +128,20 @@ class DeviceTokenApplePush extends DeviceToken {
 }
 
 class DeviceTokenApplePushVoIP extends DeviceToken {
-  String deviceToken;
-  bool isAppSandbox;
-  bool encrypt;
 
-  /// A token for Apple Push Notification service VoIP notifications. 
-  /// [deviceToken] Device token; may be empty to de-register a device . 
-  /// [isAppSandbox] True, if App Sandbox is enabled . 
-  /// [encrypt] True, if push notifications should be additionally encrypted
+  /// A token for Apple Push Notification service VoIP notifications
   DeviceTokenApplePushVoIP({this.deviceToken,
     this.isAppSandbox,
     this.encrypt});
+
+  /// [deviceToken] Device token; may be empty to de-register a device 
+  String deviceToken;
+
+  /// [isAppSandbox] True, if App Sandbox is enabled 
+  bool isAppSandbox;
+
+  /// [encrypt] True, if push notifications should be additionally encrypted
+  bool encrypt;
 
   /// Parse from a json
   DeviceTokenApplePushVoIP.fromJson(Map<String, dynamic> json)  {
@@ -159,11 +167,12 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
 }
 
 class DeviceTokenWindowsPush extends DeviceToken {
-  String accessToken;
 
-  /// A token for Windows Push Notification Services. 
-  /// [accessToken] The access token that will be used to send notifications; may be empty to de-register a device
+  /// A token for Windows Push Notification Services
   DeviceTokenWindowsPush({this.accessToken});
+
+  /// [accessToken] The access token that will be used to send notifications; may be empty to de-register a device
+  String accessToken;
 
   /// Parse from a json
   DeviceTokenWindowsPush.fromJson(Map<String, dynamic> json)  {
@@ -185,11 +194,12 @@ class DeviceTokenWindowsPush extends DeviceToken {
 }
 
 class DeviceTokenMicrosoftPush extends DeviceToken {
-  String channelUri;
 
-  /// A token for Microsoft Push Notification Service. 
-  /// [channelUri] Push notification channel URI; may be empty to de-register a device
+  /// A token for Microsoft Push Notification Service
   DeviceTokenMicrosoftPush({this.channelUri});
+
+  /// [channelUri] Push notification channel URI; may be empty to de-register a device
+  String channelUri;
 
   /// Parse from a json
   DeviceTokenMicrosoftPush.fromJson(Map<String, dynamic> json)  {
@@ -211,11 +221,12 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
 }
 
 class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
-  String channelUri;
 
-  /// A token for Microsoft Push Notification Service VoIP channel. 
-  /// [channelUri] Push notification channel URI; may be empty to de-register a device
+  /// A token for Microsoft Push Notification Service VoIP channel
   DeviceTokenMicrosoftPushVoIP({this.channelUri});
+
+  /// [channelUri] Push notification channel URI; may be empty to de-register a device
+  String channelUri;
 
   /// Parse from a json
   DeviceTokenMicrosoftPushVoIP.fromJson(Map<String, dynamic> json)  {
@@ -237,17 +248,20 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
 }
 
 class DeviceTokenWebPush extends DeviceToken {
-  String endpoint;
-  String p256dhBase64url;
-  String authBase64url;
 
-  /// A token for web Push API. 
-  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to de-register a device. 
-  /// [p256dhBase64url] Base64url-encoded P-256 elliptic curve Diffie-Hellman public key. 
-  /// [authBase64url] Base64url-encoded authentication secret
+  /// A token for web Push API
   DeviceTokenWebPush({this.endpoint,
     this.p256dhBase64url,
     this.authBase64url});
+
+  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to de-register a device
+  String endpoint;
+
+  /// [p256dhBase64url] Base64url-encoded P-256 elliptic curve Diffie-Hellman public key
+  String p256dhBase64url;
+
+  /// [authBase64url] Base64url-encoded authentication secret
+  String authBase64url;
 
   /// Parse from a json
   DeviceTokenWebPush.fromJson(Map<String, dynamic> json)  {
@@ -273,11 +287,12 @@ class DeviceTokenWebPush extends DeviceToken {
 }
 
 class DeviceTokenSimplePush extends DeviceToken {
-  String endpoint;
 
-  /// A token for Simple Push API for Firefox OS. 
-  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to de-register a device
+  /// A token for Simple Push API for Firefox OS
   DeviceTokenSimplePush({this.endpoint});
+
+  /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to de-register a device
+  String endpoint;
 
   /// Parse from a json
   DeviceTokenSimplePush.fromJson(Map<String, dynamic> json)  {
@@ -299,11 +314,12 @@ class DeviceTokenSimplePush extends DeviceToken {
 }
 
 class DeviceTokenUbuntuPush extends DeviceToken {
-  String token;
 
-  /// A token for Ubuntu Push Client service. 
-  /// [token] Token; may be empty to de-register a device
+  /// A token for Ubuntu Push Client service
   DeviceTokenUbuntuPush({this.token});
+
+  /// [token] Token; may be empty to de-register a device
+  String token;
 
   /// Parse from a json
   DeviceTokenUbuntuPush.fromJson(Map<String, dynamic> json)  {
@@ -325,11 +341,12 @@ class DeviceTokenUbuntuPush extends DeviceToken {
 }
 
 class DeviceTokenBlackBerryPush extends DeviceToken {
-  String token;
 
-  /// A token for BlackBerry Push Service. 
-  /// [token] Token; may be empty to de-register a device
+  /// A token for BlackBerry Push Service
   DeviceTokenBlackBerryPush({this.token});
+
+  /// [token] Token; may be empty to de-register a device
+  String token;
 
   /// Parse from a json
   DeviceTokenBlackBerryPush.fromJson(Map<String, dynamic> json)  {
@@ -351,11 +368,12 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
 }
 
 class DeviceTokenTizenPush extends DeviceToken {
-  String regId;
 
-  /// A token for Tizen Push Service. 
-  /// [regId] Push service registration identifier; may be empty to de-register a device
+  /// A token for Tizen Push Service
   DeviceTokenTizenPush({this.regId});
+
+  /// [regId] Push service registration identifier; may be empty to de-register a device
+  String regId;
 
   /// Parse from a json
   DeviceTokenTizenPush.fromJson(Map<String, dynamic> json)  {

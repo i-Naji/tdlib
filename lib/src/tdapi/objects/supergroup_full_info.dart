@@ -1,49 +1,8 @@
 part of '../tdapi.dart';
 
 class SupergroupFullInfo extends TdObject {
-  ChatPhoto photo;
-  String description;
-  int memberCount;
-  int administratorCount;
-  int restrictedCount;
-  int bannedCount;
-  int linkedChatId;
-  int slowModeDelay;
-  double slowModeDelayExpiresIn;
-  bool canGetMembers;
-  bool canSetUsername;
-  bool canSetStickerSet;
-  bool canSetLocation;
-  bool canViewStatistics;
-  bool isAllHistoryAvailable;
-  int stickerSetId;
-  ChatLocation location;
-  String inviteLink;
-  int upgradedFromBasicGroupId;
-  int upgradedFromMaxMessageId;
-  dynamic extra;
 
-  /// Contains full information about a supergroup or channel. 
-  /// [photo] Chat photo; may be null. 
-  /// [description] Supergroup or channel description. 
-  /// [memberCount] Number of members in the supergroup or channel; 0 if unknown. 
-  /// [administratorCount] Number of privileged users in the supergroup or channel; 0 if unknown. 
-  /// [restrictedCount] Number of restricted users in the supergroup; 0 if unknown. 
-  /// [bannedCount] Number of users banned from chat; 0 if unknown. 
-  /// [linkedChatId] Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown. 
-  /// [slowModeDelay] Delay between consecutive sent messages for non-administrator supergroup members, in seconds. 
-  /// [slowModeDelayExpiresIn] Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero. 
-  /// [canGetMembers] True, if members of the chat can be retrieved. 
-  /// [canSetUsername] True, if the chat username can be changed. 
-  /// [canSetStickerSet] True, if the supergroup sticker set can be changed. 
-  /// [canSetLocation] True, if the supergroup location can be changed. 
-  /// [canViewStatistics] True, if the channel statistics is available. 
-  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public or discussion groups and both public and private channels, old messages are always available, so this option affects only private supergroups without a linked chat. The value of this field is only available for chat administrators. 
-  /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none. 
-  /// [location] Location to which the supergroup is connected; may be null. 
-  /// [inviteLink] Invite link for this chat. 
-  /// [upgradedFromBasicGroupId] Identifier of the basic group from which supergroup was upgraded; 0 if none. 
-  /// [upgradedFromMaxMessageId] Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none
+  /// Contains full information about a supergroup or channel
   SupergroupFullInfo({this.photo,
     this.description,
     this.memberCount,
@@ -65,6 +24,69 @@ class SupergroupFullInfo extends TdObject {
     this.upgradedFromBasicGroupId,
     this.upgradedFromMaxMessageId});
 
+  /// [photo] Chat photo; may be null
+  ChatPhoto photo;
+
+  /// [description] Supergroup or channel description
+  String description;
+
+  /// [memberCount] Number of members in the supergroup or channel; 0 if unknown
+  int memberCount;
+
+  /// [administratorCount] Number of privileged users in the supergroup or channel; 0 if unknown
+  int administratorCount;
+
+  /// [restrictedCount] Number of restricted users in the supergroup; 0 if unknown
+  int restrictedCount;
+
+  /// [bannedCount] Number of users banned from chat; 0 if unknown
+  int bannedCount;
+
+  /// [linkedChatId] Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown
+  int linkedChatId;
+
+  /// [slowModeDelay] Delay between consecutive sent messages for non-administrator supergroup members, in seconds
+  int slowModeDelay;
+
+  /// [slowModeDelayExpiresIn] Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
+  double slowModeDelayExpiresIn;
+
+  /// [canGetMembers] True, if members of the chat can be retrieved
+  bool canGetMembers;
+
+  /// [canSetUsername] True, if the chat username can be changed
+  bool canSetUsername;
+
+  /// [canSetStickerSet] True, if the supergroup sticker set can be changed
+  bool canSetStickerSet;
+
+  /// [canSetLocation] True, if the supergroup location can be changed
+  bool canSetLocation;
+
+  /// [canViewStatistics] True, if the channel statistics is available
+  bool canViewStatistics;
+
+  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public or discussion groups and both public and private channels, old messages are always available, so this option affects only private supergroups without a linked chat. The value of this field is only available for chat administrators
+  bool isAllHistoryAvailable;
+
+  /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
+  int stickerSetId;
+
+  /// [location] Location to which the supergroup is connected; may be null
+  ChatLocation location;
+
+  /// [inviteLink] Invite link for this chat
+  String inviteLink;
+
+  /// [upgradedFromBasicGroupId] Identifier of the basic group from which supergroup was upgraded; 0 if none
+  int upgradedFromBasicGroupId;
+
+  /// [upgradedFromMaxMessageId] Identifier of the last message in the basic group from which supergroup was upgraded; 0 if none
+  int upgradedFromMaxMessageId;
+
+  /// callback sign
+  dynamic extra;
+
   /// Parse from a json
   SupergroupFullInfo.fromJson(Map<String, dynamic> json)  {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
@@ -82,7 +104,7 @@ class SupergroupFullInfo extends TdObject {
     this.canSetLocation = json['can_set_location'];
     this.canViewStatistics = json['can_view_statistics'];
     this.isAllHistoryAvailable = json['is_all_history_available'];
-    this.stickerSetId = json['sticker_set_id'];
+    this.stickerSetId = int.tryParse(json['sticker_set_id'] ?? "");
     this.location = ChatLocation.fromJson(json['location'] ?? <String, dynamic>{});
     this.inviteLink = json['invite_link'];
     this.upgradedFromBasicGroupId = json['upgraded_from_basic_group_id'];

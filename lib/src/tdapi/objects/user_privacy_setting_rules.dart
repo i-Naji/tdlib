@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class UserPrivacySettingRules extends TdObject {
-  List<UserPrivacySettingRule> rules;
-  dynamic extra;
 
-  /// A list of privacy rules. Rules are matched in the specified order. The first matched rule defines the privacy setting for a given user. If no rule matches, the action is not allowed. 
-  /// [rules] A list of rules
+  /// A list of privacy rules. Rules are matched in the specified order. The first matched rule defines the privacy setting for a given user. If no rule matches, the action is not allowed
   UserPrivacySettingRules({this.rules});
+
+  /// [rules] A list of rules
+  List<UserPrivacySettingRule> rules;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   UserPrivacySettingRules.fromJson(Map<String, dynamic> json)  {

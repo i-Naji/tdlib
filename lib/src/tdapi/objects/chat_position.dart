@@ -1,25 +1,29 @@
 part of '../tdapi.dart';
 
 class ChatPosition extends TdObject {
-  ChatList list;
-  int order;
-  bool isPinned;
-  ChatSource source;
 
-  /// Describes a position of a chat in a chat list. 
-  /// [list] The chat list. 
-  /// [order] A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order. 
-  /// [isPinned] True, if the chat is pinned in the chat list. 
-  /// [source] Source of the chat in the chat list; may be null
+  /// Describes a position of a chat in a chat list
   ChatPosition({this.list,
     this.order,
     this.isPinned,
     this.source});
 
+  /// [list] The chat list
+  ChatList list;
+
+  /// [order] A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order
+  int order;
+
+  /// [isPinned] True, if the chat is pinned in the chat list
+  bool isPinned;
+
+  /// [source] Source of the chat in the chat list; may be null
+  ChatSource source;
+
   /// Parse from a json
   ChatPosition.fromJson(Map<String, dynamic> json)  {
     this.list = ChatList.fromJson(json['list'] ?? <String, dynamic>{});
-    this.order = json['order'];
+    this.order = int.tryParse(json['order'] ?? "");
     this.isPinned = json['is_pinned'];
     this.source = ChatSource.fromJson(json['source'] ?? <String, dynamic>{});
   }

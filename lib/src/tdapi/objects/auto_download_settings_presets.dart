@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class AutoDownloadSettingsPresets extends TdObject {
-  AutoDownloadSettings low;
-  AutoDownloadSettings medium;
-  AutoDownloadSettings high;
-  dynamic extra;
 
-  /// Contains auto-download settings presets for the user. 
-  /// [low] Preset with lowest settings; supposed to be used by default when roaming. 
-  /// [medium] Preset with medium settings; supposed to be used by default when using mobile data. 
-  /// [high] Preset with highest settings; supposed to be used by default when connected on Wi-Fi
+  /// Contains auto-download settings presets for the user
   AutoDownloadSettingsPresets({this.low,
     this.medium,
     this.high});
+
+  /// [low] Preset with lowest settings; supposed to be used by default when roaming
+  AutoDownloadSettings low;
+
+  /// [medium] Preset with medium settings; supposed to be used by default when using mobile data
+  AutoDownloadSettings medium;
+
+  /// [high] Preset with highest settings; supposed to be used by default when connected on Wi-Fi
+  AutoDownloadSettings high;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AutoDownloadSettingsPresets.fromJson(Map<String, dynamic> json)  {

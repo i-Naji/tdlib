@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class GetNetworkStatistics extends TdFunction {
-  bool onlyCurrent;
-  dynamic extra;
 
-  /// Returns network data usage statistics. Can be called before authorization. 
-  /// [onlyCurrent] If true, returns only data for the current library launch
+  /// Returns network data usage statistics. Can be called before authorization
   GetNetworkStatistics({this.onlyCurrent});
+
+  /// [onlyCurrent] If true, returns only data for the current library launch
+  bool onlyCurrent;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetNetworkStatistics.fromJson(Map<String, dynamic> json) ;

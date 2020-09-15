@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class TestCallString extends TdFunction {
-  String x;
-  dynamic extra;
 
-  /// Returns the received string; for testing only. This is an offline method. Can be called before authorization. 
-  /// [x] String to return
+  /// Returns the received string; for testing only. This is an offline method. Can be called before authorization
   TestCallString({this.x});
+
+  /// [x] String to return
+  String x;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   TestCallString.fromJson(Map<String, dynamic> json) ;

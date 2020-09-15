@@ -1,17 +1,20 @@
 part of '../tdapi.dart';
 
 class SendMessageOptions extends TdObject {
-  bool disableNotification;
-  bool fromBackground;
-  MessageSchedulingState schedulingState;
 
-  /// Options to be used when a message is send. 
-  /// [disableNotification] Pass true to disable notification for the message. Must be false if the message is sent to a secret chat. 
-  /// [fromBackground] Pass true if the message is sent from the background. 
-  /// [schedulingState] Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  /// Options to be used when a message is send
   SendMessageOptions({this.disableNotification,
     this.fromBackground,
     this.schedulingState});
+
+  /// [disableNotification] Pass true to disable notification for the message. Must be false if the message is sent to a secret chat
+  bool disableNotification;
+
+  /// [fromBackground] Pass true if the message is sent from the background
+  bool fromBackground;
+
+  /// [schedulingState] Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  MessageSchedulingState schedulingState;
 
   /// Parse from a json
   SendMessageOptions.fromJson(Map<String, dynamic> json)  {

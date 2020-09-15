@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class RequestQrCodeAuthentication extends TdFunction {
-  List<int> otherUserIds;
-  dynamic extra;
 
-  /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword. 
-  /// [otherUserIds] List of user identifiers of other users currently using the application
+  /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber,. or if there is no pending authentication query and the current authorization state is authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
   RequestQrCodeAuthentication({this.otherUserIds});
+
+  /// [otherUserIds] List of user identifiers of other users currently using the application
+  List<int> otherUserIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   RequestQrCodeAuthentication.fromJson(Map<String, dynamic> json) ;

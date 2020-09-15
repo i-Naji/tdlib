@@ -1,14 +1,16 @@
 part of '../tdapi.dart';
 
 class PageBlockListItem extends TdObject {
-  String label;
-  List<PageBlock> pageBlocks;
 
-  /// Describes an item of a list page block. 
-  /// [label] Item label . 
-  /// [pageBlocks] Item blocks
+  /// Describes an item of a list page block
   PageBlockListItem({this.label,
     this.pageBlocks});
+
+  /// [label] Item label 
+  String label;
+
+  /// [pageBlocks] Item blocks
+  List<PageBlock> pageBlocks;
 
   /// Parse from a json
   PageBlockListItem.fromJson(Map<String, dynamic> json)  {

@@ -1,23 +1,28 @@
 part of '../tdapi.dart';
 
 class NotificationGroup extends TdObject {
-  int id;
-  NotificationGroupType type;
-  int chatId;
-  int totalCount;
-  List<Notification> notifications;
 
-  /// Describes a group of notifications. 
-  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group . 
-  /// [type] Type of the group. 
-  /// [chatId] Identifier of a chat to which all notifications in the group belong. 
-  /// [totalCount] Total number of active notifications in the group. 
-  /// [notifications] The list of active notifications
+  /// Describes a group of notifications
   NotificationGroup({this.id,
     this.type,
     this.chatId,
     this.totalCount,
     this.notifications});
+
+  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group 
+  int id;
+
+  /// [type] Type of the group
+  NotificationGroupType type;
+
+  /// [chatId] Identifier of a chat to which all notifications in the group belong
+  int chatId;
+
+  /// [totalCount] Total number of active notifications in the group
+  int totalCount;
+
+  /// [notifications] The list of active notifications
+  List<Notification> notifications;
 
   /// Parse from a json
   NotificationGroup.fromJson(Map<String, dynamic> json)  {

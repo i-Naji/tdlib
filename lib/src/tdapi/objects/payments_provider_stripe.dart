@@ -1,20 +1,24 @@
 part of '../tdapi.dart';
 
 class PaymentsProviderStripe extends TdObject {
-  String publishableKey;
-  bool needCountry;
-  bool needPostalCode;
-  bool needCardholderName;
 
-  /// Stripe payment provider. 
-  /// [publishableKey] Stripe API publishable key . 
-  /// [needCountry] True, if the user country must be provided . 
-  /// [needPostalCode] True, if the user ZIP/postal code must be provided . 
-  /// [needCardholderName] True, if the cardholder name must be provided
+  /// Stripe payment provider
   PaymentsProviderStripe({this.publishableKey,
     this.needCountry,
     this.needPostalCode,
     this.needCardholderName});
+
+  /// [publishableKey] Stripe API publishable key 
+  String publishableKey;
+
+  /// [needCountry] True, if the user country must be provided 
+  bool needCountry;
+
+  /// [needPostalCode] True, if the user ZIP/postal code must be provided 
+  bool needPostalCode;
+
+  /// [needCardholderName] True, if the cardholder name must be provided
+  bool needCardholderName;
 
   /// Parse from a json
   PaymentsProviderStripe.fromJson(Map<String, dynamic> json)  {

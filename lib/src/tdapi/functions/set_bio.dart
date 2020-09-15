@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class SetBio extends TdFunction {
-  String bio;
-  dynamic extra;
 
-  /// Changes the bio of the current user. 
-  /// [bio] The new value of the user bio; 0-70 characters without line feeds
+  /// Changes the bio of the current user
   SetBio({this.bio});
+
+  /// [bio] The new value of the user bio; 0-70 characters without line feeds
+  String bio;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetBio.fromJson(Map<String, dynamic> json) ;

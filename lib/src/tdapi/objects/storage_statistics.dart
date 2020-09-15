@@ -1,18 +1,23 @@
 part of '../tdapi.dart';
 
 class StorageStatistics extends TdObject {
-  int size;
-  int count;
-  List<StorageStatisticsByChat> byChat;
-  dynamic extra;
 
-  /// Contains the exact storage usage statistics split by chats and file type. 
-  /// [size] Total size of files . 
-  /// [count] Total number of files . 
-  /// [byChat] Statistics split by chats
+  /// Contains the exact storage usage statistics split by chats and file type
   StorageStatistics({this.size,
     this.count,
     this.byChat});
+
+  /// [size] Total size of files 
+  int size;
+
+  /// [count] Total number of files 
+  int count;
+
+  /// [byChat] Statistics split by chats
+  List<StorageStatisticsByChat> byChat;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   StorageStatistics.fromJson(Map<String, dynamic> json)  {

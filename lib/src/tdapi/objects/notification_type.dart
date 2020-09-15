@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class NotificationType extends TdObject {
-  
 
   /// Contains detailed information about a notification
   NotificationType();
+
+  
 
   /// a NotificationType return type can be :
   /// * NotificationTypeNewMessage
@@ -40,11 +41,12 @@ class NotificationType extends TdObject {
 }
 
 class NotificationTypeNewMessage extends NotificationType {
-  Message message;
 
-  /// New message was received. 
-  /// [message] The message
+  /// New message was received
   NotificationTypeNewMessage({this.message});
+
+  /// [message] The message
+  Message message;
 
   /// Parse from a json
   NotificationTypeNewMessage.fromJson(Map<String, dynamic> json)  {
@@ -66,10 +68,11 @@ class NotificationTypeNewMessage extends NotificationType {
 }
 
 class NotificationTypeNewSecretChat extends NotificationType {
-  
 
   /// New secret chat was created
   NotificationTypeNewSecretChat();
+
+  
 
   /// Parse from a json
   NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) ;
@@ -88,11 +91,12 @@ class NotificationTypeNewSecretChat extends NotificationType {
 }
 
 class NotificationTypeNewCall extends NotificationType {
-  int callId;
 
-  /// New call was received. 
-  /// [callId] Call identifier
+  /// New call was received
   NotificationTypeNewCall({this.callId});
+
+  /// [callId] Call identifier
+  int callId;
 
   /// Parse from a json
   NotificationTypeNewCall.fromJson(Map<String, dynamic> json)  {
@@ -114,23 +118,28 @@ class NotificationTypeNewCall extends NotificationType {
 }
 
 class NotificationTypeNewPushMessage extends NotificationType {
-  int messageId;
-  int senderUserId;
-  String senderName;
-  bool isOutgoing;
-  PushMessageContent content;
 
-  /// New message was received through a push notification. 
-  /// [messageId] The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages and as reply_to_message_id. 
-  /// [senderUserId] Sender of the message; 0 if unknown. Corresponding user may be inaccessible. 
-  /// [senderName] Name of the sender; can be different from the name of the sender user. 
-  /// [isOutgoing] True, if the message is outgoing. 
-  /// [content] Push message content
+  /// New message was received through a push notification
   NotificationTypeNewPushMessage({this.messageId,
     this.senderUserId,
     this.senderName,
     this.isOutgoing,
     this.content});
+
+  /// [messageId] The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages and as reply_to_message_id
+  int messageId;
+
+  /// [senderUserId] Sender of the message; 0 if unknown. Corresponding user may be inaccessible
+  int senderUserId;
+
+  /// [senderName] Name of the sender; can be different from the name of the sender user
+  String senderName;
+
+  /// [isOutgoing] True, if the message is outgoing
+  bool isOutgoing;
+
+  /// [content] Push message content
+  PushMessageContent content;
 
   /// Parse from a json
   NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json)  {

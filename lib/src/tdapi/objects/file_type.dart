@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class FileType extends TdObject {
-  
 
   /// Represents the type of a file
   FileType();
+
+  
 
   /// a FileType return type can be :
   /// * FileTypeNone
@@ -76,10 +77,11 @@ class FileType extends TdObject {
 }
 
 class FileTypeNone extends FileType {
-  
 
   /// The data is not a file
   FileTypeNone();
+
+  
 
   /// Parse from a json
   FileTypeNone.fromJson(Map<String, dynamic> json) ;
@@ -98,10 +100,11 @@ class FileTypeNone extends FileType {
 }
 
 class FileTypeAnimation extends FileType {
-  
 
   /// The file is an animation
   FileTypeAnimation();
+
+  
 
   /// Parse from a json
   FileTypeAnimation.fromJson(Map<String, dynamic> json) ;
@@ -120,10 +123,11 @@ class FileTypeAnimation extends FileType {
 }
 
 class FileTypeAudio extends FileType {
-  
 
   /// The file is an audio file
   FileTypeAudio();
+
+  
 
   /// Parse from a json
   FileTypeAudio.fromJson(Map<String, dynamic> json) ;
@@ -142,10 +146,11 @@ class FileTypeAudio extends FileType {
 }
 
 class FileTypeDocument extends FileType {
-  
 
   /// The file is a document
   FileTypeDocument();
+
+  
 
   /// Parse from a json
   FileTypeDocument.fromJson(Map<String, dynamic> json) ;
@@ -164,10 +169,11 @@ class FileTypeDocument extends FileType {
 }
 
 class FileTypePhoto extends FileType {
-  
 
   /// The file is a photo
   FileTypePhoto();
+
+  
 
   /// Parse from a json
   FileTypePhoto.fromJson(Map<String, dynamic> json) ;
@@ -186,10 +192,11 @@ class FileTypePhoto extends FileType {
 }
 
 class FileTypeProfilePhoto extends FileType {
-  
 
   /// The file is a profile photo
   FileTypeProfilePhoto();
+
+  
 
   /// Parse from a json
   FileTypeProfilePhoto.fromJson(Map<String, dynamic> json) ;
@@ -208,10 +215,11 @@ class FileTypeProfilePhoto extends FileType {
 }
 
 class FileTypeSecret extends FileType {
-  
 
   /// The file was sent to a secret chat (the file type is not known to the server)
   FileTypeSecret();
+
+  
 
   /// Parse from a json
   FileTypeSecret.fromJson(Map<String, dynamic> json) ;
@@ -230,10 +238,11 @@ class FileTypeSecret extends FileType {
 }
 
 class FileTypeSecretThumbnail extends FileType {
-  
 
   /// The file is a thumbnail of a file from a secret chat
   FileTypeSecretThumbnail();
+
+  
 
   /// Parse from a json
   FileTypeSecretThumbnail.fromJson(Map<String, dynamic> json) ;
@@ -252,10 +261,11 @@ class FileTypeSecretThumbnail extends FileType {
 }
 
 class FileTypeSecure extends FileType {
-  
 
   /// The file is a file from Secure storage used for storing Telegram Passport files
   FileTypeSecure();
+
+  
 
   /// Parse from a json
   FileTypeSecure.fromJson(Map<String, dynamic> json) ;
@@ -274,10 +284,11 @@ class FileTypeSecure extends FileType {
 }
 
 class FileTypeSticker extends FileType {
-  
 
   /// The file is a sticker
   FileTypeSticker();
+
+  
 
   /// Parse from a json
   FileTypeSticker.fromJson(Map<String, dynamic> json) ;
@@ -296,10 +307,11 @@ class FileTypeSticker extends FileType {
 }
 
 class FileTypeThumbnail extends FileType {
-  
 
   /// The file is a thumbnail of another file
   FileTypeThumbnail();
+
+  
 
   /// Parse from a json
   FileTypeThumbnail.fromJson(Map<String, dynamic> json) ;
@@ -318,10 +330,11 @@ class FileTypeThumbnail extends FileType {
 }
 
 class FileTypeUnknown extends FileType {
-  
 
   /// The file type is not yet known
   FileTypeUnknown();
+
+  
 
   /// Parse from a json
   FileTypeUnknown.fromJson(Map<String, dynamic> json) ;
@@ -340,10 +353,11 @@ class FileTypeUnknown extends FileType {
 }
 
 class FileTypeVideo extends FileType {
-  
 
   /// The file is a video
   FileTypeVideo();
+
+  
 
   /// Parse from a json
   FileTypeVideo.fromJson(Map<String, dynamic> json) ;
@@ -362,10 +376,11 @@ class FileTypeVideo extends FileType {
 }
 
 class FileTypeVideoNote extends FileType {
-  
 
   /// The file is a video note
   FileTypeVideoNote();
+
+  
 
   /// Parse from a json
   FileTypeVideoNote.fromJson(Map<String, dynamic> json) ;
@@ -384,10 +399,11 @@ class FileTypeVideoNote extends FileType {
 }
 
 class FileTypeVoiceNote extends FileType {
-  
 
   /// The file is a voice note
   FileTypeVoiceNote();
+
+  
 
   /// Parse from a json
   FileTypeVoiceNote.fromJson(Map<String, dynamic> json) ;
@@ -406,10 +422,11 @@ class FileTypeVoiceNote extends FileType {
 }
 
 class FileTypeWallpaper extends FileType {
-  
 
   /// The file is a wallpaper or a background pattern
   FileTypeWallpaper();
+
+  
 
   /// Parse from a json
   FileTypeWallpaper.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class ThumbnailFormat extends TdObject {
-  
 
   /// Describes format of the thumbnail
   ThumbnailFormat();
+
+  
 
   /// a ThumbnailFormat return type can be :
   /// * ThumbnailFormatJpeg
@@ -46,10 +47,11 @@ class ThumbnailFormat extends TdObject {
 }
 
 class ThumbnailFormatJpeg extends ThumbnailFormat {
-  
 
   /// The thumbnail is in JPEG format
   ThumbnailFormatJpeg();
+
+  
 
   /// Parse from a json
   ThumbnailFormatJpeg.fromJson(Map<String, dynamic> json) ;
@@ -68,10 +70,11 @@ class ThumbnailFormatJpeg extends ThumbnailFormat {
 }
 
 class ThumbnailFormatPng extends ThumbnailFormat {
-  
 
   /// The thumbnail is in PNG format. It will be used only for background patterns
   ThumbnailFormatPng();
+
+  
 
   /// Parse from a json
   ThumbnailFormatPng.fromJson(Map<String, dynamic> json) ;
@@ -90,10 +93,11 @@ class ThumbnailFormatPng extends ThumbnailFormat {
 }
 
 class ThumbnailFormatWebp extends ThumbnailFormat {
-  
 
   /// The thumbnail is in WEBP format. It will be used only for some stickers
   ThumbnailFormatWebp();
+
+  
 
   /// Parse from a json
   ThumbnailFormatWebp.fromJson(Map<String, dynamic> json) ;
@@ -112,10 +116,11 @@ class ThumbnailFormatWebp extends ThumbnailFormat {
 }
 
 class ThumbnailFormatGif extends ThumbnailFormat {
-  
 
   /// The thumbnail is in static GIF format. It will be used only for some bot inline results
   ThumbnailFormatGif();
+
+  
 
   /// Parse from a json
   ThumbnailFormatGif.fromJson(Map<String, dynamic> json) ;
@@ -134,10 +139,11 @@ class ThumbnailFormatGif extends ThumbnailFormat {
 }
 
 class ThumbnailFormatTgs extends ThumbnailFormat {
-  
 
   /// The thumbnail is in TGS format. It will be used only for animated sticker sets
   ThumbnailFormatTgs();
+
+  
 
   /// Parse from a json
   ThumbnailFormatTgs.fromJson(Map<String, dynamic> json) ;
@@ -156,10 +162,11 @@ class ThumbnailFormatTgs extends ThumbnailFormat {
 }
 
 class ThumbnailFormatMpeg4 extends ThumbnailFormat {
-  
 
   /// The thumbnail is in MPEG4 format. It will be used only for some animations and videos
   ThumbnailFormatMpeg4();
+
+  
 
   /// Parse from a json
   ThumbnailFormatMpeg4.fromJson(Map<String, dynamic> json) ;

@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class SetStickerPositionInSet extends TdFunction {
-  InputFile sticker;
-  int position;
-  dynamic extra;
 
-  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot. 
-  /// [sticker] Sticker. 
-  /// [position] New position of the sticker in the set, zero-based
+  /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot
   SetStickerPositionInSet({this.sticker,
     this.position});
+
+  /// [sticker] Sticker
+  InputFile sticker;
+
+  /// [position] New position of the sticker in the set, zero-based
+  int position;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   SetStickerPositionInSet.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class ClearRecentlyFoundChats extends TdFunction {
-  dynamic extra;
 
   /// Clears the list of recently found chats
   ClearRecentlyFoundChats();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   ClearRecentlyFoundChats.fromJson(Map<String, dynamic> json) ;

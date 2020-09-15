@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class FinishFileGeneration extends TdFunction {
-  int generationId;
-  TdError error;
-  dynamic extra;
 
-  /// Finishes the file generation. 
-  /// [generationId] The identifier of the generation process. 
-  /// [error] If set, means that file generation has failed and should be terminated
+  /// Finishes the file generation
   FinishFileGeneration({this.generationId,
     this.error});
+
+  /// [generationId] The identifier of the generation process
+  int generationId;
+
+  /// [error] If set, means that file generation has failed and should be terminated
+  TdError error;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   FinishFileGeneration.fromJson(Map<String, dynamic> json) ;

@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PublicChatType extends TdObject {
-  
 
   /// Describes a type of public chats
   PublicChatType();
+
+  
 
   /// a PublicChatType return type can be :
   /// * PublicChatTypeHasUsername
@@ -34,10 +35,11 @@ class PublicChatType extends TdObject {
 }
 
 class PublicChatTypeHasUsername extends PublicChatType {
-  
 
   /// The chat is public, because it has username
   PublicChatTypeHasUsername();
+
+  
 
   /// Parse from a json
   PublicChatTypeHasUsername.fromJson(Map<String, dynamic> json) ;
@@ -56,10 +58,11 @@ class PublicChatTypeHasUsername extends PublicChatType {
 }
 
 class PublicChatTypeIsLocationBased extends PublicChatType {
-  
 
   /// The chat is public, because it is a location-based supergroup
   PublicChatTypeIsLocationBased();
+
+  
 
   /// Parse from a json
   PublicChatTypeIsLocationBased.fromJson(Map<String, dynamic> json) ;

@@ -1,23 +1,28 @@
 part of '../tdapi.dart';
 
 class MessageForwardInfo extends TdObject {
-  MessageForwardOrigin origin;
-  int date;
-  String publicServiceAnnouncementType;
-  int fromChatId;
-  int fromMessageId;
 
-  /// Contains information about a forwarded message. 
-  /// [origin] Origin of a forwarded message. 
-  /// [date] Point in time (Unix timestamp) when the message was originally sent. 
-  /// [publicServiceAnnouncementType] The type of a public service announcement for the forwarded message. 
-  /// [fromChatId] For messages forwarded to the chat with the current user (Saved Messages) or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown. 
-  /// [fromMessageId] For messages forwarded to the chat with the current user (Saved Messages) or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
+  /// Contains information about a forwarded message
   MessageForwardInfo({this.origin,
     this.date,
     this.publicServiceAnnouncementType,
     this.fromChatId,
     this.fromMessageId});
+
+  /// [origin] Origin of a forwarded message
+  MessageForwardOrigin origin;
+
+  /// [date] Point in time (Unix timestamp) when the message was originally sent
+  int date;
+
+  /// [publicServiceAnnouncementType] The type of a public service announcement for the forwarded message
+  String publicServiceAnnouncementType;
+
+  /// [fromChatId] For messages forwarded to the chat with the current user (Saved Messages) or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown
+  int fromChatId;
+
+  /// [fromMessageId] For messages forwarded to the chat with the current user (Saved Messages) or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
+  int fromMessageId;
 
   /// Parse from a json
   MessageForwardInfo.fromJson(Map<String, dynamic> json)  {

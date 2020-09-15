@@ -1,15 +1,19 @@
 part of '../tdapi.dart';
 
 class GetMessages extends TdFunction {
-  int chatId;
-  List<int> messageIds;
-  dynamic extra;
 
-  /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result. 
-  /// [chatId] Identifier of the chat the messages belong to . 
-  /// [messageIds] Identifiers of the messages to get
+  /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result
   GetMessages({this.chatId,
     this.messageIds});
+
+  /// [chatId] Identifier of the chat the messages belong to 
+  int chatId;
+
+  /// [messageIds] Identifiers of the messages to get
+  List<int> messageIds;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   GetMessages.fromJson(Map<String, dynamic> json) ;

@@ -1,21 +1,27 @@
 part of '../tdapi.dart';
 
 class EditMessageText extends TdFunction {
-  int chatId;
-  int messageId;
-  ReplyMarkup replyMarkup;
-  InputMessageContent inputMessageContent;
-  dynamic extra;
 
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side. 
-  /// [chatId] The chat the message belongs to. 
-  /// [messageId] Identifier of the message . 
-  /// [replyMarkup] The new message reply markup; for bots only . 
-  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
   EditMessageText({this.chatId,
     this.messageId,
     this.replyMarkup,
     this.inputMessageContent});
+
+  /// [chatId] The chat the message belongs to
+  int chatId;
+
+  /// [messageId] Identifier of the message 
+  int messageId;
+
+  /// [replyMarkup] The new message reply markup; for bots only 
+  ReplyMarkup replyMarkup;
+
+  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
+  InputMessageContent inputMessageContent;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   EditMessageText.fromJson(Map<String, dynamic> json) ;

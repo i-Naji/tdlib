@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class MessageSchedulingState extends TdObject {
-  
 
   /// Contains information about the time when a scheduled message will be sent
   MessageSchedulingState();
+
+  
 
   /// a MessageSchedulingState return type can be :
   /// * MessageSchedulingStateSendAtDate
@@ -34,11 +35,12 @@ class MessageSchedulingState extends TdObject {
 }
 
 class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
-  int sendDate;
 
-  /// The message will be sent at the specified date. 
-  /// [sendDate] Date the message will be sent. The date must be within 367 days in the future
+  /// The message will be sent at the specified date
   MessageSchedulingStateSendAtDate({this.sendDate});
+
+  /// [sendDate] Date the message will be sent. The date must be within 367 days in the future
+  int sendDate;
 
   /// Parse from a json
   MessageSchedulingStateSendAtDate.fromJson(Map<String, dynamic> json)  {
@@ -60,10 +62,11 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
 }
 
 class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
-  
 
   /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known
   MessageSchedulingStateSendWhenOnline();
+
+  
 
   /// Parse from a json
   MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json) ;

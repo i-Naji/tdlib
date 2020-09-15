@@ -1,10 +1,12 @@
 part of '../tdapi.dart';
 
 class DeleteSavedOrderInfo extends TdFunction {
-  dynamic extra;
 
   /// Deletes saved order info
   DeleteSavedOrderInfo();
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   DeleteSavedOrderInfo.fromJson(Map<String, dynamic> json) ;

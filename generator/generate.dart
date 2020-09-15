@@ -208,7 +208,7 @@ class DartTdDocumentationGenerator {
       } else {
         toJsonFields.add('\"@type\": CONSTRUCTOR,');
         obj.variables.forEach((variable) {
-          variables.add('${variable.type} ${variable.argName};');
+          variables.add('/// [${variable.argName}] ${variable.description}\n  ${variable.type} ${variable.argName};');
           arguments.add('this.${variable.argName}');
           fromJsonFields.add('this.${variable.argName} = ${variable.read};');
           toJsonFields.add('\n      "${variable.name}": ${variable.write},');
@@ -216,12 +216,12 @@ class DartTdDocumentationGenerator {
         if (obj.isFunction) {
           fromJsonFields = [];
           parent = 'TdFunction';
-          variables.add('dynamic extra;');
+          variables.add('/// callback sign\n  dynamic extra;');
           toJsonFields.add('\n      "@extra": this.extra,');
         } else {
           if (_objects.any((func) =>
               func.isFunction && func.relevantObjects.contains(obj.name))) {
-            variables.add('dynamic extra;');
+            variables.add('/// callback sign\n  dynamic extra;');
             fromJsonFields.add('this.extra = json[\'@extra\'];');
           }
           if (obj.hasParent) {
@@ -243,15 +243,16 @@ class DartTdDocumentationGenerator {
           .replaceAll('PART', objectPart)
           .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
           .replaceAll('PARENT', parent)
-          .replaceAll('VARIABLES', variables.join('\n  '))
+          .replaceAll('VARIABLES', variables.join('\n\n  '))
           .replaceAll(
               'DESCRIPTION',
-              obj.description +
-                  (hasFactory
-                      ? ''
-                      : (obj.variables.isNotEmpty
-                          ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
-                          : '')))
+              obj.description
+//                  + (hasFactory
+//                      ? ''
+//                      : (obj.variables.isNotEmpty
+//                          ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
+//                          : ''))
+          )
           .replaceAll('ARGUMENTS',
               arguments.isEmpty ? '' : '{${arguments.join(',\n    ')}}')
           .replaceAll(

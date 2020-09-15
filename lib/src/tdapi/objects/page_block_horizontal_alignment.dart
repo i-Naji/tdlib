@@ -1,10 +1,11 @@
 part of '../tdapi.dart';
 
 class PageBlockHorizontalAlignment extends TdObject {
-  
 
   /// Describes a horizontal alignment of a table cell content
   PageBlockHorizontalAlignment();
+
+  
 
   /// a PageBlockHorizontalAlignment return type can be :
   /// * PageBlockHorizontalAlignmentLeft
@@ -37,10 +38,11 @@ class PageBlockHorizontalAlignment extends TdObject {
 }
 
 class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
-  
 
   /// The content should be left-aligned
   PageBlockHorizontalAlignmentLeft();
+
+  
 
   /// Parse from a json
   PageBlockHorizontalAlignmentLeft.fromJson(Map<String, dynamic> json) ;
@@ -59,10 +61,11 @@ class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
 }
 
 class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
-  
 
   /// The content should be center-aligned
   PageBlockHorizontalAlignmentCenter();
+
+  
 
   /// Parse from a json
   PageBlockHorizontalAlignmentCenter.fromJson(Map<String, dynamic> json) ;
@@ -81,10 +84,11 @@ class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
 }
 
 class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
-  
 
   /// The content should be right-aligned
   PageBlockHorizontalAlignmentRight();
+
+  
 
   /// Parse from a json
   PageBlockHorizontalAlignmentRight.fromJson(Map<String, dynamic> json) ;

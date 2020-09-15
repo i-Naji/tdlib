@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class AcceptTermsOfService extends TdFunction {
-  String termsOfServiceId;
-  dynamic extra;
 
-  /// Accepts Telegram terms of services. 
-  /// [termsOfServiceId] Terms of service identifier
+  /// Accepts Telegram terms of services
   AcceptTermsOfService({this.termsOfServiceId});
+
+  /// [termsOfServiceId] Terms of service identifier
+  String termsOfServiceId;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   AcceptTermsOfService.fromJson(Map<String, dynamic> json) ;

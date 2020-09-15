@@ -1,12 +1,15 @@
 part of '../tdapi.dart';
 
 class LocalizationTargetInfo extends TdObject {
-  List<LanguagePackInfo> languagePacks;
-  dynamic extra;
 
-  /// Contains information about the current localization target. 
-  /// [languagePacks] List of available language packs for this application
+  /// Contains information about the current localization target
   LocalizationTargetInfo({this.languagePacks});
+
+  /// [languagePacks] List of available language packs for this application
+  List<LanguagePackInfo> languagePacks;
+
+  /// callback sign
+  dynamic extra;
 
   /// Parse from a json
   LocalizationTargetInfo.fromJson(Map<String, dynamic> json)  {
