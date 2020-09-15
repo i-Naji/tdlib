@@ -412,7 +412,7 @@ class TlObjectArg {
     String readFromJson;
     if (dartTypes.contains(type)) {
       if (isInt64){
-        readFromJson = 'int.parse($pattern)'; // todo: change to BigInt or String!
+        readFromJson = 'int.tryParse($pattern ?? "")'; // todo: change to BigInt or String!
       }else {
         readFromJson = pattern;
       }
