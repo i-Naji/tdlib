@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class SetLogStream extends TdFunction {
 
-  /// Sets new log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Sets new log stream for internal logging of TDLib. Can be called synchronously
   SetLogStream({this.logStream});
 
   /// [logStream] New log stream

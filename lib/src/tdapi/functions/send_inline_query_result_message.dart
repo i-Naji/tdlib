@@ -17,7 +17,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   int replyToMessageId;
 
   /// [options] Options to be used to send the message
-  SendMessageOptions options;
+  MessageSendOptions options;
 
   /// [queryId] Identifier of the inline query
   int queryId;

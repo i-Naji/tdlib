@@ -794,8 +794,12 @@ class MessageInvoice extends MessageContent {
 class MessageCall extends MessageContent {
 
   /// A message with information about an ended call
-  MessageCall({this.discardReason,
+  MessageCall({this.isVideo,
+    this.discardReason,
     this.duration});
+
+  /// [isVideo] True, if the call was a video call 
+  bool isVideo;
 
   /// [discardReason] Reason why the call was discarded 
   CallDiscardReason discardReason;
@@ -805,6 +809,7 @@ class MessageCall extends MessageContent {
 
   /// Parse from a json
   MessageCall.fromJson(Map<String, dynamic> json)  {
+    this.isVideo = json['is_video'];
     this.discardReason = CallDiscardReason.fromJson(json['discard_reason'] ?? <String, dynamic>{});
     this.duration = json['duration'];
   }
@@ -813,6 +818,7 @@ class MessageCall extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
+      "is_video": this.isVideo,
       "discard_reason": this.discardReason == null ? null : this.discardReason.toJson(),
       "duration": this.duration,
     };

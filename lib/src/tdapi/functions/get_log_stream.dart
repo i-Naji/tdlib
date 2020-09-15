@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetLogStream extends TdFunction {
 
-  /// Returns information about currently used log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
   GetLogStream();
 
   /// callback sign

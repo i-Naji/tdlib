@@ -106,7 +106,7 @@ class CallStateReady extends CallState {
 
   /// The call is ready to use
   CallStateReady({this.protocol,
-    this.connections,
+    this.servers,
     this.config,
     this.encryptionKey,
     this.emojis,
@@ -115,8 +115,8 @@ class CallStateReady extends CallState {
   /// [protocol] Call protocols supported by the peer 
   CallProtocol protocol;
 
-  /// [connections] Available UDP reflectors 
-  List<CallConnection> connections;
+  /// [servers] List of available call servers 
+  List<CallServer> servers;
 
   /// [config] A JSON-encoded call config 
   String config;
@@ -133,7 +133,7 @@ class CallStateReady extends CallState {
   /// Parse from a json
   CallStateReady.fromJson(Map<String, dynamic> json)  {
     this.protocol = CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{});
-    this.connections = List<CallConnection>.from((json['connections'] ?? []).map((item) => CallConnection.fromJson(item ?? <String, dynamic>{})).toList());
+    this.servers = List<CallServer>.from((json['servers'] ?? []).map((item) => CallServer.fromJson(item ?? <String, dynamic>{})).toList());
     this.config = json['config'];
     this.encryptionKey = json['encryption_key'];
     this.emojis = List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
@@ -145,7 +145,7 @@ class CallStateReady extends CallState {
     return {
       "@type": CONSTRUCTOR,
       "protocol": this.protocol == null ? null : this.protocol.toJson(),
-      "connections": this.connections.map((i) => i.toJson()).toList(),
+      "servers": this.servers.map((i) => i.toJson()).toList(),
       "config": this.config,
       "encryption_key": this.encryptionKey,
       "emojis": this.emojis.map((i) => i).toList(),

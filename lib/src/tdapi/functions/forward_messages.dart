@@ -21,7 +21,7 @@ class ForwardMessages extends TdFunction {
   List<int> messageIds;
 
   /// [options] Options to be used to send the messages
-  SendMessageOptions options;
+  MessageSendOptions options;
 
   /// [asAlbum] True, if the messages should be grouped into an album after forwarding. For this to work, no more than 10 messages may be forwarded, and all of them must be photo or video messages
   bool asAlbum;

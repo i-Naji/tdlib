@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetMarkdownText extends TdFunction {
 
-  /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously
   GetMarkdownText({this.text});
 
   /// [text] The text

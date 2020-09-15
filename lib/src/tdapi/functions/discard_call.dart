@@ -6,6 +6,7 @@ class DiscardCall extends TdFunction {
   DiscardCall({this.callId,
     this.isDisconnected,
     this.duration,
+    this.isVideo,
     this.connectionId});
 
   /// [callId] Call identifier 
@@ -16,6 +17,9 @@ class DiscardCall extends TdFunction {
 
   /// [duration] The call duration, in seconds 
   int duration;
+
+  /// [isVideo] True, if the call was a video call 
+  bool isVideo;
 
   /// [connectionId] Identifier of the connection used during the call
   int connectionId;
@@ -33,6 +37,7 @@ class DiscardCall extends TdFunction {
       "call_id": this.callId,
       "is_disconnected": this.isDisconnected,
       "duration": this.duration,
+      "is_video": this.isVideo,
       "connection_id": this.connectionId,
       "@extra": this.extra,
     };

@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class AddLogMessage extends TdFunction {
 
-  /// Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Adds a message to TDLib internal log. Can be called synchronously
   AddLogMessage({this.verbosityLevel,
     this.text});
 

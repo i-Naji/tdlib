@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetPushReceiverId extends TdFunction {
 
-  /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously
   GetPushReceiverId({this.payload});
 
   /// [payload] JSON-encoded push notification payload

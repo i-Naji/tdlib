@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class ParseMarkdown extends TdFunction {
 
-  /// Parses Markdown entities in a human-friendly format, ignoring mark up errors. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
   ParseMarkdown({this.text});
 
   /// [text] The text to parse. For example, "__italic__

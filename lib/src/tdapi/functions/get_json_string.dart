@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetJsonString extends TdFunction {
 
-  /// Converts a JsonValue object to corresponding JSON-serialized string. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
   GetJsonString({this.jsonValue});
 
   /// [jsonValue] The JsonValue object

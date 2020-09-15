@@ -21,7 +21,7 @@ class ChatPermissions extends TdObject {
   /// [canSendPolls] True, if the user can send polls. Implies can_send_messages permissions
   bool canSendPolls;
 
-  /// [canSendOtherMessages] True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_messages permissions
+  /// [canSendOtherMessages] True, if the user can send animations, games, stickers and dice and use inline bots. Implies can_send_messages permissions
   bool canSendOtherMessages;
 
   /// [canAddWebPagePreviews] True, if the user may add a web page preview to their messages. Implies can_send_messages permissions

@@ -6,6 +6,7 @@ class UserFullInfo extends TdObject {
   UserFullInfo({this.photo,
     this.isBlocked,
     this.canBeCalled,
+    this.supportsVideoCalls,
     this.hasPrivateCalls,
     this.needPhoneNumberPrivacyException,
     this.bio,
@@ -21,6 +22,9 @@ class UserFullInfo extends TdObject {
 
   /// [canBeCalled] True, if the user can be called
   bool canBeCalled;
+
+  /// [supportsVideoCalls] True, if a video call can be created with the user
+  bool supportsVideoCalls;
 
   /// [hasPrivateCalls] True, if the user can't be called due to their privacy settings
   bool hasPrivateCalls;
@@ -48,6 +52,7 @@ class UserFullInfo extends TdObject {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.isBlocked = json['is_blocked'];
     this.canBeCalled = json['can_be_called'];
+    this.supportsVideoCalls = json['supports_video_calls'];
     this.hasPrivateCalls = json['has_private_calls'];
     this.needPhoneNumberPrivacyException = json['need_phone_number_privacy_exception'];
     this.bio = json['bio'];
@@ -64,6 +69,7 @@ class UserFullInfo extends TdObject {
       "photo": this.photo == null ? null : this.photo.toJson(),
       "is_blocked": this.isBlocked,
       "can_be_called": this.canBeCalled,
+      "supports_video_calls": this.supportsVideoCalls,
       "has_private_calls": this.hasPrivateCalls,
       "need_phone_number_privacy_exception": this.needPhoneNumberPrivacyException,
       "bio": this.bio,

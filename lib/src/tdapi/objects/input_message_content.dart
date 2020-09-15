@@ -807,7 +807,7 @@ class InputMessagePoll extends InputMessageContent {
     this.closeDate,
     this.isClosed});
 
-  /// [question] Poll question, 1-255 characters 
+  /// [question] Poll question, 1-255 characters (up to 300 characters for bots) 
   String question;
 
   /// [options] List of poll answer options, 2-10 strings 1-100 characters each
@@ -865,8 +865,7 @@ class InputMessageForwarded extends InputMessageContent {
   InputMessageForwarded({this.fromChatId,
     this.messageId,
     this.inGameShare,
-    this.sendCopy,
-    this.removeCaption});
+    this.copyOptions});
 
   /// [fromChatId] Identifier for the chat this forwarded message came from 
   int fromChatId;
@@ -877,19 +876,15 @@ class InputMessageForwarded extends InputMessageContent {
   /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages
   bool inGameShare;
 
-  /// [sendCopy] True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat
-  bool sendCopy;
-
-  /// [removeCaption] True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
-  bool removeCaption;
+  /// [copyOptions] Options to be used to copy content of the message without a link to the original message
+  MessageCopyOptions copyOptions;
 
   /// Parse from a json
   InputMessageForwarded.fromJson(Map<String, dynamic> json)  {
     this.fromChatId = json['from_chat_id'];
     this.messageId = json['message_id'];
     this.inGameShare = json['in_game_share'];
-    this.sendCopy = json['send_copy'];
-    this.removeCaption = json['remove_caption'];
+    this.copyOptions = MessageCopyOptions.fromJson(json['copy_options'] ?? <String, dynamic>{});
   }
 
   @override
@@ -899,8 +894,7 @@ class InputMessageForwarded extends InputMessageContent {
       "from_chat_id": this.fromChatId,
       "message_id": this.messageId,
       "in_game_share": this.inGameShare,
-      "send_copy": this.sendCopy,
-      "remove_caption": this.removeCaption,
+      "copy_options": this.copyOptions == null ? null : this.copyOptions.toJson(),
     };
   }
 

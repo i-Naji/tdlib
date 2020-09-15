@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetLogTagVerbosityLevel extends TdFunction {
 
-  /// Returns current verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously
   GetLogTagVerbosityLevel({this.tag});
 
   /// [tag] Logging tag to change verbosity level

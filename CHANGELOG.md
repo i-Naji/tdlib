@@ -1,8 +1,10 @@
+## 1.3.0
+* Update tdlib api to **v1.6.8**
+
 ## 1.2.2
 * Fix call `toJson` for _Null_ parameters (#14)
-* Convert mistaken returned int64 as string to int (#15, #18)
+* Convert mistakenly returned int64 as a string to int (#15, #18)
 * Reformat documents style
-
 
 ## 1.2.1
 * Update tdlib api to **v1.6.7**

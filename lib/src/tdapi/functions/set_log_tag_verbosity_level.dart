@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class SetLogTagVerbosityLevel extends TdFunction {
 
-  /// Sets the verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously
   SetLogTagVerbosityLevel({this.tag,
     this.newVerbosityLevel});
 

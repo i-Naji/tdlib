@@ -6,6 +6,7 @@ class Call extends TdObject {
   Call({this.id,
     this.userId,
     this.isOutgoing,
+    this.isVideo,
     this.state});
 
   /// [id] Call identifier, not persistent 
@@ -17,6 +18,9 @@ class Call extends TdObject {
   /// [isOutgoing] True, if the call is outgoing 
   bool isOutgoing;
 
+  /// [isVideo] True, if the call is a video call 
+  bool isVideo;
+
   /// [state] Call state
   CallState state;
 
@@ -25,6 +29,7 @@ class Call extends TdObject {
     this.id = json['id'];
     this.userId = json['user_id'];
     this.isOutgoing = json['is_outgoing'];
+    this.isVideo = json['is_video'];
     this.state = CallState.fromJson(json['state'] ?? <String, dynamic>{});
   }
 
@@ -35,6 +40,7 @@ class Call extends TdObject {
       "id": this.id,
       "user_id": this.userId,
       "is_outgoing": this.isOutgoing,
+      "is_video": this.isVideo,
       "state": this.state == null ? null : this.state.toJson(),
     };
   }

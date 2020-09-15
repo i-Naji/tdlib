@@ -58,6 +58,7 @@ class Update extends TdObject {
   /// * UpdateFileGenerationStart
   /// * UpdateFileGenerationStop
   /// * UpdateCall
+  /// * UpdateNewCallSignalingData
   /// * UpdateUserPrivacySettingRules
   /// * UpdateUnreadMessageCount
   /// * UpdateUnreadChatCount
@@ -188,6 +189,8 @@ class Update extends TdObject {
         return UpdateFileGenerationStop.fromJson(json);
       case UpdateCall.CONSTRUCTOR:
         return UpdateCall.fromJson(json);
+      case UpdateNewCallSignalingData.CONSTRUCTOR:
+        return UpdateNewCallSignalingData.fromJson(json);
       case UpdateUserPrivacySettingRules.CONSTRUCTOR:
         return UpdateUserPrivacySettingRules.fromJson(json);
       case UpdateUnreadMessageCount.CONSTRUCTOR:
@@ -2166,6 +2169,43 @@ class UpdateCall extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class UpdateNewCallSignalingData extends Update {
+
+  /// New call signaling data arrived
+  UpdateNewCallSignalingData({this.callId,
+    this.data});
+
+  /// [callId] The call identifier 
+  int callId;
+
+  /// [data] The data
+  String data;
+
+  /// callback sign
+  dynamic extra;
+
+  /// Parse from a json
+  UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json)  {
+    this.callId = json['call_id'];
+    this.data = json['data'];
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "call_id": this.callId,
+      "data": this.data,
+    };
+  }
+
+  static const CONSTRUCTOR = 'updateNewCallSignalingData';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class UpdateUserPrivacySettingRules extends Update {
 
   /// Some privacy setting rules have been changed
@@ -2624,7 +2664,7 @@ class UpdateLanguagePackStrings extends Update {
 
 class UpdateConnectionState extends Update {
 
-  /// The connection state has changed
+  /// The connection state has changed. This update must be used only to show the user a human-readable description of the connection state
   UpdateConnectionState({this.state});
 
   /// [state] The new connection state

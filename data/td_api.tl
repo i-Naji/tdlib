@@ -301,7 +301,7 @@ venue location:location title:string address:string provider:string id:string ty
 //@param_description Game description @photo Game photo @animation Game animation; may be null
 game id:int64 short_name:string title:string text:formattedText description:string photo:photo animation:animation = Game;
 
-//@description Describes a poll @id Unique poll identifier @question Poll question, 1-255 characters @options List of poll answer options
+//@description Describes a poll @id Unique poll identifier @question Poll question, 1-300 characters @options List of poll answer options
 //@total_voter_count Total number of voters, participating in the poll @recent_voter_user_ids User identifiers of recent voters, if the poll is non-anonymous
 //@is_anonymous True, if the poll is anonymous @type Type of the poll
 //@open_period Amount of time the poll will be active after creation, in seconds @close_date Point in time (Unix timestamp) when the poll will be automatically closed @is_closed True, if the poll is closed
@@ -405,12 +405,13 @@ user id:int32 first_name:string last_name:string username:string phone_number:st
 //@photo User profile photo; may be null
 //@is_blocked True, if the user is blocked by the current user
 //@can_be_called True, if the user can be called
+//@supports_video_calls True, if a video call can be created with the user
 //@has_private_calls True, if the user can't be called due to their privacy settings
 //@need_phone_number_privacy_exception True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
 //@bio A short user bio @share_text For bots, the text that is included with the link when users share the bot
 //@group_in_common_count Number of group chats where both the other user and the current user are a member; 0 for the current user
 //@bot_info If the user is a bot, information about the bot; may be null
-userFullInfo photo:chatPhoto is_blocked:Bool can_be_called:Bool has_private_calls:Bool need_phone_number_privacy_exception:Bool bio:string share_text:string group_in_common_count:int32 bot_info:botInfo = UserFullInfo;
+userFullInfo photo:chatPhoto is_blocked:Bool can_be_called:Bool supports_video_calls:Bool has_private_calls:Bool need_phone_number_privacy_exception:Bool bio:string share_text:string group_in_common_count:int32 bot_info:botInfo = UserFullInfo;
 
 //@description Represents a list of users @total_count Approximate total count of users found @user_ids A list of user identifiers
 users total_count:int32 user_ids:vector<int32> = Users;
@@ -427,7 +428,7 @@ chatAdministrators administrators:vector<chatAdministrator> = ChatAdministrators
 //@can_send_messages True, if the user can send text messages, contacts, locations, and venues
 //@can_send_media_messages True, if the user can send audio files, documents, photos, videos, video notes, and voice notes. Implies can_send_messages permissions
 //@can_send_polls True, if the user can send polls. Implies can_send_messages permissions
-//@can_send_other_messages True, if the user can send animations, games, and stickers and use inline bots. Implies can_send_messages permissions
+//@can_send_other_messages True, if the user can send animations, games, stickers and dice and use inline bots. Implies can_send_messages permissions
 //@can_add_web_page_previews True, if the user may add a web page preview to their messages. Implies can_send_messages permissions
 //@can_change_info True, if the user can change the chat title, photo, and other settings
 //@can_invite_users True, if the user can invite new users to the chat
@@ -1542,8 +1543,8 @@ messagePoll poll:poll = MessageContent;
 //@need_shipping_address True, if the shipping address should be specified @receipt_message_id The identifier of the message with the receipt, after the product has been purchased
 messageInvoice title:string description:string photo:photo currency:string total_amount:int53 start_parameter:string is_test:Bool need_shipping_address:Bool receipt_message_id:int53 = MessageContent;
 
-//@description A message with information about an ended call @discard_reason Reason why the call was discarded @duration Call duration, in seconds
-messageCall discard_reason:CallDiscardReason duration:int32 = MessageContent;
+//@description A message with information about an ended call @is_video True, if the call was a video call @discard_reason Reason why the call was discarded @duration Call duration, in seconds
+messageCall is_video:Bool discard_reason:CallDiscardReason duration:int32 = MessageContent;
 
 //@description A newly created basic group @title Title of the basic group @member_user_ids User identifiers of members in the basic group
 messageBasicGroupChatCreate title:string member_user_ids:vector<int32> = MessageContent;
@@ -1682,11 +1683,17 @@ messageSchedulingStateSendAtDate send_date:int32 = MessageSchedulingState;
 messageSchedulingStateSendWhenOnline = MessageSchedulingState;
 
 
-//@description Options to be used when a message is send
+//@description Options to be used when a message is sent
 //@disable_notification Pass true to disable notification for the message. Must be false if the message is sent to a secret chat
 //@from_background Pass true if the message is sent from the background
 //@scheduling_state Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
-sendMessageOptions disable_notification:Bool from_background:Bool scheduling_state:MessageSchedulingState = SendMessageOptions;
+messageSendOptions disable_notification:Bool from_background:Bool scheduling_state:MessageSchedulingState = MessageSendOptions;
+
+//@description Options to be used when a message content is copied without a link to the original message
+//@send_copy True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat
+//@replace_caption True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false
+//@new_caption New message caption. Ignored if replace_caption is false
+messageCopyOptions send_copy:Bool replace_caption:Bool new_caption:formattedText = MessageCopyOptions;
 
 
 //@class InputMessageContent @description The content of a message to send
@@ -1743,7 +1750,7 @@ inputMessageGame bot_user_id:int32 game_short_name:string = InputMessageContent;
 //@payload The invoice payload @provider_token Payment provider token @provider_data JSON-encoded data about the invoice, which will be shared with the payment provider @start_parameter Unique invoice bot start_parameter for the generation of this invoice
 inputMessageInvoice invoice:invoice title:string description:string photo_url:string photo_size:int32 photo_width:int32 photo_height:int32 payload:bytes provider_token:string provider_data:string start_parameter:string = InputMessageContent;
 
-//@description A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot @question Poll question, 1-255 characters @options List of poll answer options, 2-10 strings 1-100 characters each
+//@description A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot @question Poll question, 1-255 characters (up to 300 characters for bots) @options List of poll answer options, 2-10 strings 1-100 characters each
 //@is_anonymous True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels @type Type of the poll
 //@open_period Amount of time the poll will be active after creation, in seconds; for bots only
 //@close_date Point in time (Unix timestamp) when the poll will be automatically closed; for bots only
@@ -1752,9 +1759,8 @@ inputMessagePoll question:string options:vector<string> is_anonymous:Bool type:P
 
 //@description A forwarded message @from_chat_id Identifier for the chat this forwarded message came from @message_id Identifier of the message to forward
 //@in_game_share True, if a game message should be shared within a launched game; applies only to game messages
-//@send_copy True, if content of the message needs to be copied without a link to the original message. Always true if the message is forwarded to a secret chat
-//@remove_caption True, if media caption of the message copy needs to be removed. Ignored if send_copy is false
-inputMessageForwarded from_chat_id:int53 message_id:int53 in_game_share:Bool send_copy:Bool remove_caption:Bool = InputMessageContent;
+//@copy_options Options to be used to copy content of the message without a link to the original message
+inputMessageForwarded from_chat_id:int53 message_id:int53 in_game_share:Bool copy_options:messageCopyOptions = InputMessageContent;
 
 
 //@class SearchMessagesFilter @description Represents a filter for message search results
@@ -1912,8 +1918,18 @@ callDiscardReasonHungUp = CallDiscardReason;
 //@library_versions List of supported libtgvoip versions
 callProtocol udp_p2p:Bool udp_reflector:Bool min_layer:int32 max_layer:int32 library_versions:vector<string> = CallProtocol;
 
-//@description Describes the address of UDP reflectors @id Reflector identifier @ip IPv4 reflector address @ipv6 IPv6 reflector address @port Reflector port number @peer_tag Connection peer tag
-callConnection id:int64 ip:string ipv6:string port:int32 peer_tag:bytes = CallConnection;
+
+//@class CallServerType @description Describes the type of a call server
+
+//@description A Telegram call reflector @peer_tag A peer tag to be used with the reflector
+callServerTypeTelegramReflector peer_tag:bytes = CallServerType;
+
+//@description A WebRTC server @username Username to be used for authentification @password Authentication password @supports_turn True, if the server supports TURN @supports_stun True, if the server supports STUN
+callServerTypeWebrtc username:string password:string supports_turn:Bool supports_stun:Bool = CallServerType;
+
+
+//@description Describes a server for relaying call data @id Server identifier @ip_address Server IPv4 address @ipv6_address Server IPv6 address @port Server port number @type Server type
+callServer id:int64 ip_address:string ipv6_address:string port:int32 type:CallServerType = CallServer;
 
 
 //@description Contains the call identifier @id Call identifier
@@ -1928,8 +1944,8 @@ callStatePending is_created:Bool is_received:Bool = CallState;
 //@description The call has been answered and encryption keys are being exchanged
 callStateExchangingKeys = CallState;
 
-//@description The call is ready to use @protocol Call protocols supported by the peer @connections Available UDP reflectors @config A JSON-encoded call config @encryption_key Call encryption key @emojis Encryption key emojis fingerprint @allow_p2p True, if peer-to-peer connection is allowed by users privacy settings
-callStateReady protocol:callProtocol connections:vector<callConnection> config:string encryption_key:bytes emojis:vector<string> allow_p2p:Bool = CallState;
+//@description The call is ready to use @protocol Call protocols supported by the peer @servers List of available call servers @config A JSON-encoded call config @encryption_key Call encryption key @emojis Encryption key emojis fingerprint @allow_p2p True, if peer-to-peer connection is allowed by users privacy settings
+callStateReady protocol:callProtocol servers:vector<callServer> config:string encryption_key:bytes emojis:vector<string> allow_p2p:Bool = CallState;
 
 //@description The call is hanging up after discardCall has been called
 callStateHangingUp = CallState;
@@ -1965,8 +1981,8 @@ callProblemSilentRemote = CallProblem;
 callProblemDropped = CallProblem;
 
 
-//@description Describes a call @id Call identifier, not persistent @user_id Peer user identifier @is_outgoing True, if the call is outgoing @state Call state
-call id:int32 user_id:int32 is_outgoing:Bool state:CallState = Call;
+//@description Describes a call @id Call identifier, not persistent @user_id Peer user identifier @is_outgoing True, if the call is outgoing @is_video True, if the call is a video call @state Call state
+call id:int32 user_id:int32 is_outgoing:Bool is_video:Bool state:CallState = Call;
 
 
 //@description Contains settings for the authentication of the user's phone number
@@ -3184,6 +3200,9 @@ updateFileGenerationStop generation_id:int64 = Update;
 //@description New call was created or information about a call was updated @call New data about a call
 updateCall call:call = Update;
 
+//@description New call signaling data arrived @call_id The call identifier @data The data
+updateNewCallSignalingData call_id:int32 data:bytes = Update;
+
 //@description Some privacy setting rules have been changed @setting The privacy setting @rules New privacy rules
 updateUserPrivacySettingRules setting:UserPrivacySetting rules:userPrivacySettingRules = Update;
 
@@ -3225,7 +3244,7 @@ updateSelectedBackground for_dark_theme:Bool background:background = Update;
 //@description Some language pack strings have been updated @localization_target Localization target to which the language pack belongs @language_pack_id Identifier of the updated language pack @strings List of changed language pack strings
 updateLanguagePackStrings localization_target:string language_pack_id:string strings:vector<languagePackString> = Update;
 
-//@description The connection state has changed @state The new connection state
+//@description The connection state has changed. This update must be used only to show the user a human-readable description of the connection state @state The new connection state
 updateConnectionState state:ConnectionState = Update;
 
 //@description New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update" @terms_of_service_id Identifier of the terms of service @terms_of_service The new terms of service
@@ -3320,7 +3339,7 @@ testVectorStringObject value:vector<testString> = TestVectorStringObject;
 
 ---functions---
 
-//@description Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state
+//@description Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
 getAuthorizationState = AuthorizationState;
 
 
@@ -3365,10 +3384,10 @@ checkAuthenticationBotToken token:string = Ok;
 //@description Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, updateAuthorizationState with authorizationStateClosed will be sent
 logOut = Ok;
 
-//@description Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent
+//@description Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
 close = Ok;
 
-//@description Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent
+//@description Closes the TDLib instance, destroying all local data without a proper logout. The current user session will remain in the list of all active sessions. All local data will be destroyed. After the destruction completes updateAuthorizationState with authorizationStateClosed will be sent. Can be called before authorization
 destroy = Ok;
 
 
@@ -3376,7 +3395,7 @@ destroy = Ok;
 confirmQrCodeAuthentication link:string = Session;
 
 
-//@description Returns all updates needed to restore current TDLib state, i.e. all actual UpdateAuthorizationState/UpdateUser/UpdateNewChat and others. This is especially useful if TDLib is run in a separate process. This is an offline method. Can be called before authorization
+//@description Returns all updates needed to restore current TDLib state, i.e. all actual UpdateAuthorizationState/UpdateUser/UpdateNewChat and others. This is especially useful if TDLib is run in a separate process. Can be called before initialization
 getCurrentState = Updates;
 
 
@@ -3612,13 +3631,13 @@ getMessageLinkInfo url:string = MessageLinkInfo;
 //@chat_id Target chat @reply_to_message_id Identifier of the message to reply to or 0
 //@options Options to be used to send the message
 //@reply_markup Markup for replying to the message; for bots only @input_message_content The content of the message to be sent
-sendMessage chat_id:int53 reply_to_message_id:int53 options:sendMessageOptions reply_markup:ReplyMarkup input_message_content:InputMessageContent = Message;
+sendMessage chat_id:int53 reply_to_message_id:int53 options:messageSendOptions reply_markup:ReplyMarkup input_message_content:InputMessageContent = Message;
 
 //@description Sends messages grouped together into an album. Currently only photo and video messages can be grouped into an album. Returns sent messages
 //@chat_id Target chat @reply_to_message_id Identifier of a message to reply to or 0
 //@options Options to be used to send the messages
 //@input_message_contents Contents of messages to be sent
-sendMessageAlbum chat_id:int53 reply_to_message_id:int53 options:sendMessageOptions input_message_contents:vector<InputMessageContent> = Messages;
+sendMessageAlbum chat_id:int53 reply_to_message_id:int53 options:messageSendOptions input_message_contents:vector<InputMessageContent> = Messages;
 
 //@description Invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message
 //@bot_user_id Identifier of the bot @chat_id Identifier of the target chat @parameter A hidden parameter sent to the bot for deep linking purposes (https://core.telegram.org/bots#deep-linking)
@@ -3629,7 +3648,7 @@ sendBotStartMessage bot_user_id:int32 chat_id:int53 parameter:string = Message;
 //@options Options to be used to send the message
 //@query_id Identifier of the inline query @result_id Identifier of the inline result
 //@hide_via_bot If true, there will be no mention of a bot, via which the message is sent. Can be used only for bots GetOption("animation_search_bot_username"), GetOption("photo_search_bot_username") and GetOption("venue_search_bot_username")
-sendInlineQueryResultMessage chat_id:int53 reply_to_message_id:int53 options:sendMessageOptions query_id:int64 result_id:string hide_via_bot:Bool = Message;
+sendInlineQueryResultMessage chat_id:int53 reply_to_message_id:int53 options:messageSendOptions query_id:int64 result_id:string hide_via_bot:Bool = Message;
 
 //@description Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
 //@chat_id Identifier of the chat to which to forward messages @from_chat_id Identifier of the chat from which to forward messages @message_ids Identifiers of the messages to forward
@@ -3637,7 +3656,7 @@ sendInlineQueryResultMessage chat_id:int53 reply_to_message_id:int53 options:sen
 //@as_album True, if the messages should be grouped into an album after forwarding. For this to work, no more than 10 messages may be forwarded, and all of them must be photo or video messages
 //@send_copy True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat
 //@remove_caption True, if media captions of message copies needs to be removed. Ignored if send_copy is false
-forwardMessages chat_id:int53 from_chat_id:int53 message_ids:vector<int53> options:sendMessageOptions as_album:Bool send_copy:Bool remove_caption:Bool = Messages;
+forwardMessages chat_id:int53 from_chat_id:int53 message_ids:vector<int53> options:messageSendOptions as_album:Bool send_copy:Bool remove_caption:Bool = Messages;
 
 //@description Resends messages which failed to send. Can be called only for messages for which messageSendingStateFailed.can_retry is true and after specified in messageSendingStateFailed.retry_after time passed.
 //-If a message is re-sent, the corresponding failed to send message is deleted. Returns the sent messages in the same order as the message identifiers passed in message_ids. If a message can't be re-sent, null will be returned instead of the message
@@ -3701,36 +3720,36 @@ editInlineMessageReplyMarkup inline_message_id:string reply_markup:ReplyMarkup =
 editMessageSchedulingState chat_id:int53 message_id:int53 scheduling_state:MessageSchedulingState = Ok;
 
 
-//@description Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously @text The text in which to look for entites
+//@description Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. Can be called synchronously @text The text in which to look for entites
 getTextEntities text:string = TextEntities;
 
-//@description Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously @text The text to parse @parse_mode Text parse mode
+//@description Parses Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities contained in the text. Can be called synchronously @text The text to parse @parse_mode Text parse mode
 parseTextEntities text:string parse_mode:TextParseMode = FormattedText;
 
-//@description Parses Markdown entities in a human-friendly format, ignoring mark up errors. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
 //@text The text to parse. For example, "__italic__ ~~strikethrough~~ **bold** `code` ```pre``` __[italic__ text_url](telegram.org) __italic**bold italic__bold**"
 parseMarkdown text:formattedText = FormattedText;
 
-//@description Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. This is an offline method. Can be called before authorization. Can be called synchronously @text The text
+//@description Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously @text The text
 getMarkdownText text:formattedText = FormattedText;
 
-//@description Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously @file_name The name of the file or path to the file
+//@description Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously @file_name The name of the file or path to the file
 getFileMimeType file_name:string = Text;
 
-//@description Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously @mime_type The MIME type of the file
+//@description Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. Can be called synchronously @mime_type The MIME type of the file
 getFileExtension mime_type:string = Text;
 
-//@description Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. This is an offline method. Can be called before authorization. Can be called synchronously @file_name File name or path to the file
+//@description Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously @file_name File name or path to the file
 cleanFileName file_name:string = Text;
 
-//@description Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
 //@language_pack_database_path Path to the language pack database in which strings are stored @localization_target Localization target to which the language pack belongs @language_pack_id Language pack identifier @key Language pack key of the string to be returned
 getLanguagePackString language_pack_database_path:string localization_target:string language_pack_id:string key:string = LanguagePackStringValue;
 
-//@description Converts a JSON-serialized string to corresponding JsonValue object. This is an offline method. Can be called before authorization. Can be called synchronously @json The JSON-serialized string
+//@description Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously @json The JSON-serialized string
 getJsonValue json:string = JsonValue;
 
-//@description Converts a JsonValue object to corresponding JSON-serialized string. This is an offline method. Can be called before authorization. Can be called synchronously @json_value The JsonValue object
+//@description Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously @json_value The JsonValue object
 getJsonString json_value:JsonValue = Text;
 
 
@@ -3882,7 +3901,7 @@ reorderChatFilters chat_filter_ids:vector<int32> = Ok;
 //@description Returns recommended chat filters for the current user
 getRecommendedChatFilters = RecommendedChatFilters;
 
-//@description Returns default icon name for a filter. This is an offline method. Can be called before authorization. Can be called synchronously @filter Chat filter
+//@description Returns default icon name for a filter. Can be called synchronously @filter Chat filter
 getChatFilterDefaultIconName filter:chatFilter = Text;
 
 
@@ -4052,14 +4071,17 @@ checkChatInviteLink invite_link:string = ChatInviteLinkInfo;
 joinChatByInviteLink invite_link:string = Chat;
 
 
-//@description Creates a new call @user_id Identifier of the user to be called @protocol Description of the call protocols supported by the application
-createCall user_id:int32 protocol:callProtocol = CallId;
+//@description Creates a new call @user_id Identifier of the user to be called @protocol Description of the call protocols supported by the application @is_video True, if a video call needs to be created
+createCall user_id:int32 protocol:callProtocol is_video:Bool = CallId;
 
 //@description Accepts an incoming call @call_id Call identifier @protocol Description of the call protocols supported by the application
 acceptCall call_id:int32 protocol:callProtocol = Ok;
 
-//@description Discards a call @call_id Call identifier @is_disconnected True, if the user was disconnected @duration The call duration, in seconds @connection_id Identifier of the connection used during the call
-discardCall call_id:int32 is_disconnected:Bool duration:int32 connection_id:int64 = Ok;
+//@description Sends call signaling data @call_id Call identifier @data The data
+sendCallSignalingData call_id:int32 data:bytes = Ok;
+
+//@description Discards a call @call_id Call identifier @is_disconnected True, if the user was disconnected @duration The call duration, in seconds @is_video True, if the call was a video call @connection_id Identifier of the connection used during the call
+discardCall call_id:int32 is_disconnected:Bool duration:int32 is_video:Bool connection_id:int64 = Ok;
 
 //@description Sends a call rating @call_id Call identifier @rating Call rating; 1-5 @comment An optional user comment if the rating is less than 5 @problems List of the exact types of problems with the call, specified by the user
 sendCallRating call_id:int32 rating:int32 comment:string problems:vector<CallProblem> = Ok;
@@ -4386,7 +4408,7 @@ registerDevice device_token:DeviceToken other_user_ids:vector<int32> = PushRecei
 //@payload JSON-encoded push notification payload with all fields sent by the server, and "google.sent_time" and "google.notification.sound" fields added
 processPushNotification payload:string = Ok;
 
-//@description Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. This is an offline method. Can be called before authorization. Can be called synchronously @payload JSON-encoded push notification payload
+//@description Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously @payload JSON-encoded push notification payload
 getPushReceiverId payload:string = PushReceiverId;
 
 
@@ -4594,7 +4616,7 @@ sendCustomRequest method:string parameters:string = CustomRequestResult;
 answerCustomQuery custom_query_id:int64 data:string = Ok;
 
 
-//@description Succeeds after a specified amount of time has passed. Can be called before authorization. Can be called before initialization @seconds Number of seconds before the function returns
+//@description Succeeds after a specified amount of time has passed. Can be called before initialization @seconds Number of seconds before the function returns
 setAlarm seconds:double = Ok;
 
 
@@ -4640,30 +4662,30 @@ getProxyLink proxy_id:int32 = Text;
 pingProxy proxy_id:int32 = Seconds;
 
 
-//@description Sets new log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously @log_stream New log stream
+//@description Sets new log stream for internal logging of TDLib. Can be called synchronously @log_stream New log stream
 setLogStream log_stream:LogStream = Ok;
 
-//@description Returns information about currently used log stream for internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
 getLogStream = LogStream;
 
-//@description Sets the verbosity level of the internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Sets the verbosity level of the internal logging of TDLib. Can be called synchronously
 //@new_verbosity_level New value of the verbosity level for logging. Value 0 corresponds to fatal errors, value 1 corresponds to errors, value 2 corresponds to warnings and debug warnings, value 3 corresponds to informational, value 4 corresponds to debug, value 5 corresponds to verbose debug, value greater than 5 and up to 1023 can be used to enable even more logging
 setLogVerbosityLevel new_verbosity_level:int32 = Ok;
 
-//@description Returns current verbosity level of the internal logging of TDLib. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Returns current verbosity level of the internal logging of TDLib. Can be called synchronously
 getLogVerbosityLevel = LogVerbosityLevel;
 
-//@description Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
 getLogTags = LogTags;
 
-//@description Sets the verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously
 //@tag Logging tag to change verbosity level @new_verbosity_level New verbosity level; 1-1024
 setLogTagVerbosityLevel tag:string new_verbosity_level:int32 = Ok;
 
-//@description Returns current verbosity level for a specified TDLib internal log tag. This is an offline method. Can be called before authorization. Can be called synchronously @tag Logging tag to change verbosity level
+//@description Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously @tag Logging tag to change verbosity level
 getLogTagVerbosityLevel tag:string = LogVerbosityLevel;
 
-//@description Adds a message to TDLib internal log. This is an offline method. Can be called before authorization. Can be called synchronously
+//@description Adds a message to TDLib internal log. Can be called synchronously
 //@verbosity_level The minimum verbosity level needed for the message to be logged, 0-1023 @text Text of a message to log
 addLogMessage verbosity_level:int32 text:string = Ok;
 
@@ -4693,5 +4715,5 @@ testProxy server:string port:int32 type:ProxyType dc_id:int32 timeout:double = O
 testGetDifference = Ok;
 //@description Does nothing and ensures that the Update object is used; for testing only. This is an offline method. Can be called before authorization
 testUseUpdate = Update;
-//@description Returns the specified error and ensures that the Error object is used; for testing only. This is an offline method. Can be called before authorization. Can be called synchronously @error The error to be returned
+//@description Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously @error The error to be returned
 testReturnError error:error = Error;

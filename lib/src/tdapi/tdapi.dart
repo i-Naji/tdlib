@@ -152,7 +152,8 @@ part 'objects/message_content.dart';
 part 'objects/text_entity_type.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/message_scheduling_state.dart';
-part 'objects/send_message_options.dart';
+part 'objects/message_send_options.dart';
+part 'objects/message_copy_options.dart';
 part 'objects/input_message_content.dart';
 part 'objects/search_messages_filter.dart';
 part 'objects/chat_action.dart';
@@ -164,7 +165,8 @@ part 'objects/sticker_set_info.dart';
 part 'objects/sticker_sets.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_protocol.dart';
-part 'objects/call_connection.dart';
+part 'objects/call_server_type.dart';
+part 'objects/call_server.dart';
 part 'objects/call_id.dart';
 part 'objects/call_state.dart';
 part 'objects/call_problem.dart';
@@ -461,6 +463,7 @@ part 'functions/check_chat_invite_link.dart';
 part 'functions/join_chat_by_invite_link.dart';
 part 'functions/create_call.dart';
 part 'functions/accept_call.dart';
+part 'functions/send_call_signaling_data.dart';
 part 'functions/discard_call.dart';
 part 'functions/send_call_rating.dart';
 part 'functions/send_call_debug_information.dart';
@@ -1071,7 +1074,8 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'messageSchedulingState': (d) => MessageSchedulingState.fromJson(d),
     'messageSchedulingStateSendAtDate': (d) => MessageSchedulingStateSendAtDate.fromJson(d),
     'messageSchedulingStateSendWhenOnline': (d) => MessageSchedulingStateSendWhenOnline.fromJson(d),
-    'sendMessageOptions': (d) => SendMessageOptions.fromJson(d),
+    'messageSendOptions': (d) => MessageSendOptions.fromJson(d),
+    'messageCopyOptions': (d) => MessageCopyOptions.fromJson(d),
     'inputMessageContent': (d) => InputMessageContent.fromJson(d),
     'inputMessageText': (d) => InputMessageText.fromJson(d),
     'inputMessageAnimation': (d) => InputMessageAnimation.fromJson(d),
@@ -1141,7 +1145,10 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'callDiscardReasonDisconnected': (d) => CallDiscardReasonDisconnected.fromJson(d),
     'callDiscardReasonHungUp': (d) => CallDiscardReasonHungUp.fromJson(d),
     'callProtocol': (d) => CallProtocol.fromJson(d),
-    'callConnection': (d) => CallConnection.fromJson(d),
+    'callServerType': (d) => CallServerType.fromJson(d),
+    'callServerTypeTelegramReflector': (d) => CallServerTypeTelegramReflector.fromJson(d),
+    'callServerTypeWebrtc': (d) => CallServerTypeWebrtc.fromJson(d),
+    'callServer': (d) => CallServer.fromJson(d),
     'callId': (d) => CallId.fromJson(d),
     'callState': (d) => CallState.fromJson(d),
     'callStatePending': (d) => CallStatePending.fromJson(d),
@@ -1493,6 +1500,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
     'updateFileGenerationStart': (d) => UpdateFileGenerationStart.fromJson(d),
     'updateFileGenerationStop': (d) => UpdateFileGenerationStop.fromJson(d),
     'updateCall': (d) => UpdateCall.fromJson(d),
+    'updateNewCallSignalingData': (d) => UpdateNewCallSignalingData.fromJson(d),
     'updateUserPrivacySettingRules': (d) => UpdateUserPrivacySettingRules.fromJson(d),
     'updateUnreadMessageCount': (d) => UpdateUnreadMessageCount.fromJson(d),
     'updateUnreadChatCount': (d) => UpdateUnreadChatCount.fromJson(d),

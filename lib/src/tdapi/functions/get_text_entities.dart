@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetTextEntities extends TdFunction {
 
-  /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. This is an offline method. Can be called before authorization. Can be called synchronously
+  /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. Can be called synchronously
   GetTextEntities({this.text});
 
   /// [text] The text in which to look for entites

@@ -17,7 +17,7 @@ class Poll extends TdObject {
   /// [id] Unique poll identifier 
   int id;
 
-  /// [question] Poll question, 1-255 characters 
+  /// [question] Poll question, 1-300 characters 
   String question;
 
   /// [options] List of poll answer options
