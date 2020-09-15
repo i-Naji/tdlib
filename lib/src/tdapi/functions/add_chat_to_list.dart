@@ -19,7 +19,7 @@ class AddChatToList extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "@extra": this.extra,
     };
   }

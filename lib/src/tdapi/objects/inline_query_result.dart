@@ -104,7 +104,7 @@ class InlineQueryResultArticle extends InlineQueryResult {
       "hide_url": this.hideUrl,
       "title": this.title,
       "description": this.description,
-      "thumbnail": this.thumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
     };
   }
 
@@ -139,8 +139,8 @@ class InlineQueryResultContact extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "contact": this.contact.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "contact": this.contact == null ? null : this.contact.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
     };
   }
 
@@ -179,9 +179,9 @@ class InlineQueryResultLocation extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "title": this.title,
-      "thumbnail": this.thumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
     };
   }
 
@@ -216,8 +216,8 @@ class InlineQueryResultVenue extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "venue": this.venue.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "venue": this.venue == null ? null : this.venue.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
     };
   }
 
@@ -248,7 +248,7 @@ class InlineQueryResultGame extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "game": this.game.toJson(),
+      "game": this.game == null ? null : this.game.toJson(),
     };
   }
 
@@ -283,7 +283,7 @@ class InlineQueryResultAnimation extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "animation": this.animation.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
       "title": this.title,
     };
   }
@@ -315,7 +315,7 @@ class InlineQueryResultAudio extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "audio": this.audio.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
     };
   }
 
@@ -354,7 +354,7 @@ class InlineQueryResultDocument extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "document": this.document.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
       "title": this.title,
       "description": this.description,
     };
@@ -395,7 +395,7 @@ class InlineQueryResultPhoto extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "title": this.title,
       "description": this.description,
     };
@@ -428,7 +428,7 @@ class InlineQueryResultSticker extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
     };
   }
 
@@ -467,7 +467,7 @@ class InlineQueryResultVideo extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "video": this.video.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
       "title": this.title,
       "description": this.description,
     };
@@ -504,7 +504,7 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
     return {
       "@type": CONSTRUCTOR,
       "id": this.id,
-      "voice_note": this.voiceNote.toJson(),
+      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
       "title": this.title,
     };
   }

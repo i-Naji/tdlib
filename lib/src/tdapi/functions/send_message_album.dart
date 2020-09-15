@@ -26,7 +26,7 @@ class SendMessageAlbum extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "reply_to_message_id": this.replyToMessageId,
-      "options": this.options.toJson(),
+      "options": this.options == null ? null : this.options.toJson(),
       "input_message_contents": this.inputMessageContents.map((i) => i.toJson()).toList(),
       "@extra": this.extra,
     };

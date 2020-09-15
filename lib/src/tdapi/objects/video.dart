@@ -59,9 +59,9 @@ class Video extends TdObject {
       "mime_type": this.mimeType,
       "has_stickers": this.hasStickers,
       "supports_streaming": this.supportsStreaming,
-      "minithumbnail": this.minithumbnail.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
-      "video": this.video.toJson(),
+      "minithumbnail": this.minithumbnail == null ? null : this.minithumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
     };
   }
 

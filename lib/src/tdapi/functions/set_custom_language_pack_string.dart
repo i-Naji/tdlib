@@ -19,7 +19,7 @@ class SetCustomLanguagePackString extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "language_pack_id": this.languagePackId,
-      "new_string": this.newString.toJson(),
+      "new_string": this.newString == null ? null : this.newString.toJson(),
       "@extra": this.extra,
     };
   }

@@ -21,7 +21,7 @@ class KeyboardButton extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "text": this.text,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
     };
   }
 

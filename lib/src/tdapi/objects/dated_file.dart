@@ -20,7 +20,7 @@ class DatedFile extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file": this.file.toJson(),
+      "file": this.file == null ? null : this.file.toJson(),
       "date": this.date,
     };
   }

@@ -26,8 +26,8 @@ class EditMessageCaption extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "caption": this.caption.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "@extra": this.extra,
     };
   }

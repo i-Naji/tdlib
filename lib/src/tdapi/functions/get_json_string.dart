@@ -15,7 +15,7 @@ class GetJsonString extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "json_value": this.jsonValue.toJson(),
+      "json_value": this.jsonValue == null ? null : this.jsonValue.toJson(),
       "@extra": this.extra,
     };
   }

@@ -31,7 +31,7 @@ class EditProxy extends TdFunction {
       "server": this.server,
       "port": this.port,
       "enable": this.enable,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "@extra": this.extra,
     };
   }

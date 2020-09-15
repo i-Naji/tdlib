@@ -33,7 +33,7 @@ class OrderInfo extends TdObject {
       "name": this.name,
       "phone_number": this.phoneNumber,
       "email_address": this.emailAddress,
-      "shipping_address": this.shippingAddress.toJson(),
+      "shipping_address": this.shippingAddress == null ? null : this.shippingAddress.toJson(),
     };
   }
 

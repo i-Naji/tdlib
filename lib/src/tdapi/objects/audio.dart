@@ -49,9 +49,9 @@ class Audio extends TdObject {
       "performer": this.performer,
       "file_name": this.fileName,
       "mime_type": this.mimeType,
-      "album_cover_minithumbnail": this.albumCoverMinithumbnail.toJson(),
-      "album_cover_thumbnail": this.albumCoverThumbnail.toJson(),
-      "audio": this.audio.toJson(),
+      "album_cover_minithumbnail": this.albumCoverMinithumbnail == null ? null : this.albumCoverMinithumbnail.toJson(),
+      "album_cover_thumbnail": this.albumCoverThumbnail == null ? null : this.albumCoverThumbnail.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
     };
   }
 

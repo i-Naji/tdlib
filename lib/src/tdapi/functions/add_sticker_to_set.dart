@@ -23,7 +23,7 @@ class AddStickerToSet extends TdFunction {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
       "name": this.name,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "@extra": this.extra,
     };
   }

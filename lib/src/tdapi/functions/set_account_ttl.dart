@@ -15,7 +15,7 @@ class SetAccountTtl extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "ttl": this.ttl.toJson(),
+      "ttl": this.ttl == null ? null : this.ttl.toJson(),
       "@extra": this.extra,
     };
   }

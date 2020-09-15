@@ -31,7 +31,7 @@ class Call extends TdObject {
       "id": this.id,
       "user_id": this.userId,
       "is_outgoing": this.isOutgoing,
-      "state": this.state.toJson(),
+      "state": this.state == null ? null : this.state.toJson(),
     };
   }
 

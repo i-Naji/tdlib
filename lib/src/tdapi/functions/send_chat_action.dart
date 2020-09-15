@@ -19,7 +19,7 @@ class SendChatAction extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "action": this.action.toJson(),
+      "action": this.action == null ? null : this.action.toJson(),
       "@extra": this.extra,
     };
   }

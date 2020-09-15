@@ -18,7 +18,7 @@ class RemoveTopChat extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "category": this.category.toJson(),
+      "category": this.category == null ? null : this.category.toJson(),
       "chat_id": this.chatId,
       "@extra": this.extra,
     };

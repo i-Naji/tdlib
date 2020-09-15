@@ -24,7 +24,7 @@ class TermsOfService extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "min_user_age": this.minUserAge,
       "show_popup": this.showPopup,
     };

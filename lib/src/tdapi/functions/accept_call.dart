@@ -19,7 +19,7 @@ class AcceptCall extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "call_id": this.callId,
-      "protocol": this.protocol.toJson(),
+      "protocol": this.protocol == null ? null : this.protocol.toJson(),
       "@extra": this.extra,
     };
   }

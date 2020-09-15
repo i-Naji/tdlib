@@ -18,7 +18,7 @@ class GetTopChats extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "category": this.category.toJson(),
+      "category": this.category == null ? null : this.category.toJson(),
       "limit": this.limit,
       "@extra": this.extra,
     };

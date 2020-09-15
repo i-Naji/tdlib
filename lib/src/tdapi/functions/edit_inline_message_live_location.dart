@@ -22,8 +22,8 @@ class EditInlineMessageLiveLocation extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": this.inlineMessageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "location": this.location.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "@extra": this.extra,
     };
   }

@@ -19,7 +19,7 @@ class EditInlineMessageReplyMarkup extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": this.inlineMessageId,
-      "reply_markup": this.replyMarkup.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
       "@extra": this.extra,
     };
   }

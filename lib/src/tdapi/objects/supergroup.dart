@@ -69,7 +69,7 @@ class Supergroup extends TdObject {
       "id": this.id,
       "username": this.username,
       "date": this.date,
-      "status": this.status.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
       "member_count": this.memberCount,
       "has_linked_chat": this.hasLinkedChat,
       "has_location": this.hasLocation,

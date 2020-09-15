@@ -19,7 +19,7 @@ class GetRemoteFile extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "remote_file_id": this.remoteFileId,
-      "file_type": this.fileType.toJson(),
+      "file_type": this.fileType == null ? null : this.fileType.toJson(),
       "@extra": this.extra,
     };
   }

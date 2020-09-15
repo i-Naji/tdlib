@@ -31,7 +31,7 @@ class SendPaymentForm extends TdFunction {
       "message_id": this.messageId,
       "order_info_id": this.orderInfoId,
       "shipping_option_id": this.shippingOptionId,
-      "credentials": this.credentials.toJson(),
+      "credentials": this.credentials == null ? null : this.credentials.toJson(),
       "@extra": this.extra,
     };
   }

@@ -19,7 +19,7 @@ class SetOption extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "name": this.name,
-      "value": this.value.toJson(),
+      "value": this.value == null ? null : this.value.toJson(),
       "@extra": this.extra,
     };
   }

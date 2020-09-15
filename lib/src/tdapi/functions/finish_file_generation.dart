@@ -19,7 +19,7 @@ class FinishFileGeneration extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "generation_id": this.generationId,
-      "error": this.error.toJson(),
+      "error": this.error == null ? null : this.error.toJson(),
       "@extra": this.extra,
     };
   }

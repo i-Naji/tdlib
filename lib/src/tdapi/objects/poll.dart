@@ -58,7 +58,7 @@ class Poll extends TdObject {
       "total_voter_count": this.totalVoterCount,
       "recent_voter_user_ids": this.recentVoterUserIds.map((i) => i).toList(),
       "is_anonymous": this.isAnonymous,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "open_period": this.openPeriod,
       "close_date": this.closeDate,
       "is_closed": this.isClosed,

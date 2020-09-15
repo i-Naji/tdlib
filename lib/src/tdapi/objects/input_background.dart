@@ -49,7 +49,7 @@ class InputBackgroundLocal extends InputBackground {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "background": this.background.toJson(),
+      "background": this.background == null ? null : this.background.toJson(),
     };
   }
 

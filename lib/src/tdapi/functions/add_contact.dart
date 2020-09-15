@@ -18,7 +18,7 @@ class AddContact extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "contact": this.contact.toJson(),
+      "contact": this.contact == null ? null : this.contact.toJson(),
       "share_phone_number": this.sharePhoneNumber,
       "@extra": this.extra,
     };

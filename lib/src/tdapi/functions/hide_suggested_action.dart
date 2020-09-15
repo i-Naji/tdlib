@@ -15,7 +15,7 @@ class HideSuggestedAction extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "action": this.action.toJson(),
+      "action": this.action == null ? null : this.action.toJson(),
       "@extra": this.extra,
     };
   }

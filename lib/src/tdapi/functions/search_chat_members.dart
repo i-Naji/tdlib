@@ -27,7 +27,7 @@ class SearchChatMembers extends TdFunction {
       "chat_id": this.chatId,
       "query": this.query,
       "limit": this.limit,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "@extra": this.extra,
     };
   }

@@ -19,7 +19,7 @@ class SetChatDraftMessage extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "draft_message": this.draftMessage.toJson(),
+      "draft_message": this.draftMessage == null ? null : this.draftMessage.toJson(),
       "@extra": this.extra,
     };
   }

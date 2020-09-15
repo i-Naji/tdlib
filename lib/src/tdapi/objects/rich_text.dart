@@ -120,7 +120,7 @@ class RichTextBold extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -146,7 +146,7 @@ class RichTextItalic extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -172,7 +172,7 @@ class RichTextUnderline extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -198,7 +198,7 @@ class RichTextStrikethrough extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -224,7 +224,7 @@ class RichTextFixed extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -258,7 +258,7 @@ class RichTextUrl extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "url": this.url,
       "is_cached": this.isCached,
     };
@@ -290,7 +290,7 @@ class RichTextEmailAddress extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "email_address": this.emailAddress,
     };
   }
@@ -317,7 +317,7 @@ class RichTextSubscript extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -343,7 +343,7 @@ class RichTextSuperscript extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -369,7 +369,7 @@ class RichTextMarked extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
     };
   }
 
@@ -399,7 +399,7 @@ class RichTextPhoneNumber extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "phone_number": this.phoneNumber,
     };
   }
@@ -434,7 +434,7 @@ class RichTextIcon extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
       "width": this.width,
       "height": this.height,
     };
@@ -470,8 +470,8 @@ class RichTextReference extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
-      "reference_text": this.referenceText.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
+      "reference_text": this.referenceText == null ? null : this.referenceText.toJson(),
       "url": this.url,
     };
   }
@@ -532,7 +532,7 @@ class RichTextAnchorLink extends RichText {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "name": this.name,
       "url": this.url,
     };

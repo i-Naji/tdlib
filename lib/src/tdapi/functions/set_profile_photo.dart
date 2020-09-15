@@ -15,7 +15,7 @@ class SetProfilePhoto extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "@extra": this.extra,
     };
   }

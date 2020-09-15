@@ -155,7 +155,7 @@ class PushMessageContentAnimation extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
       "caption": this.caption,
       "is_pinned": this.isPinned,
     };
@@ -187,7 +187,7 @@ class PushMessageContentAudio extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
       "is_pinned": this.isPinned,
     };
   }
@@ -271,7 +271,7 @@ class PushMessageContentDocument extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
       "is_pinned": this.isPinned,
     };
   }
@@ -439,7 +439,7 @@ class PushMessageContentPhoto extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "caption": this.caption,
       "is_secret": this.isSecret,
       "is_pinned": this.isPinned,
@@ -534,7 +534,7 @@ class PushMessageContentSticker extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "emoji": this.emoji,
       "is_pinned": this.isPinned,
     };
@@ -605,7 +605,7 @@ class PushMessageContentVideo extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
       "caption": this.caption,
       "is_secret": this.isSecret,
       "is_pinned": this.isPinned,
@@ -638,7 +638,7 @@ class PushMessageContentVideoNote extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video_note": this.videoNote.toJson(),
+      "video_note": this.videoNote == null ? null : this.videoNote.toJson(),
       "is_pinned": this.isPinned,
     };
   }
@@ -669,7 +669,7 @@ class PushMessageContentVoiceNote extends PushMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote.toJson(),
+      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
       "is_pinned": this.isPinned,
     };
   }

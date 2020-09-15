@@ -28,10 +28,10 @@ class ChatPosition extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "list": this.list.toJson(),
+      "list": this.list == null ? null : this.list.toJson(),
       "order": this.order,
       "is_pinned": this.isPinned,
-      "source": this.source.toJson(),
+      "source": this.source == null ? null : this.source.toJson(),
     };
   }
 

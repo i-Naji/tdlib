@@ -42,11 +42,11 @@ class PaymentForm extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "invoice": this.invoice.toJson(),
+      "invoice": this.invoice == null ? null : this.invoice.toJson(),
       "url": this.url,
-      "payments_provider": this.paymentsProvider.toJson(),
-      "saved_order_info": this.savedOrderInfo.toJson(),
-      "saved_credentials": this.savedCredentials.toJson(),
+      "payments_provider": this.paymentsProvider == null ? null : this.paymentsProvider.toJson(),
+      "saved_order_info": this.savedOrderInfo == null ? null : this.savedOrderInfo.toJson(),
+      "saved_credentials": this.savedCredentials == null ? null : this.savedCredentials.toJson(),
       "can_save_credentials": this.canSaveCredentials,
       "need_password": this.needPassword,
     };

@@ -31,7 +31,7 @@ class VoiceNote extends TdObject {
       "duration": this.duration,
       "waveform": this.waveform,
       "mime_type": this.mimeType,
-      "voice": this.voice.toJson(),
+      "voice": this.voice == null ? null : this.voice.toJson(),
     };
   }
 

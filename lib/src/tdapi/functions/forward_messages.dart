@@ -36,7 +36,7 @@ class ForwardMessages extends TdFunction {
       "chat_id": this.chatId,
       "from_chat_id": this.fromChatId,
       "message_ids": this.messageIds.map((i) => i).toList(),
-      "options": this.options.toJson(),
+      "options": this.options == null ? null : this.options.toJson(),
       "as_album": this.asAlbum,
       "send_copy": this.sendCopy,
       "remove_caption": this.removeCaption,

@@ -83,8 +83,8 @@ class User extends TdObject {
       "last_name": this.lastName,
       "username": this.username,
       "phone_number": this.phoneNumber,
-      "status": this.status.toJson(),
-      "profile_photo": this.profilePhoto.toJson(),
+      "status": this.status == null ? null : this.status.toJson(),
+      "profile_photo": this.profilePhoto == null ? null : this.profilePhoto.toJson(),
       "is_contact": this.isContact,
       "is_mutual_contact": this.isMutualContact,
       "is_verified": this.isVerified,
@@ -92,7 +92,7 @@ class User extends TdObject {
       "restriction_reason": this.restrictionReason,
       "is_scam": this.isScam,
       "have_access": this.haveAccess,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "language_code": this.languageCode,
     };
   }

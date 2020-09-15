@@ -25,7 +25,7 @@ class AnimatedChatPhoto extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "length": this.length,
-      "file": this.file.toJson(),
+      "file": this.file == null ? null : this.file.toJson(),
       "main_frame_timestamp": this.mainFrameTimestamp,
     };
   }

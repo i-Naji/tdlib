@@ -423,14 +423,16 @@ class TlObjectArg {
         .replaceAll('TYPE', type);
   }
 
-  static String getWrite(String argName, String type, {String itemName = 'i'}) {
+  static String getWrite(String argName, String type, {String itemName = 'i', isList = false}) {
     String writeToJson;
     if (dartTypes.contains(type)) {
       writeToJson = '';
     } else if (type.startsWith('List')) {
       final subType = type.substring(5, type.length - 1);
       writeToJson =
-          '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i')}).toList()';
+          '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
+    } else if (!isList) {
+      writeToJson = ' == null ? null : this.${argName}.toJson()';
     } else {
       writeToJson = '.toJson()';
     }

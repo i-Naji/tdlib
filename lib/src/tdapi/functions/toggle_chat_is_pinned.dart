@@ -21,7 +21,7 @@ class ToggleChatIsPinned extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "chat_id": this.chatId,
       "is_pinned": this.isPinned,
       "@extra": this.extra,

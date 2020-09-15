@@ -31,7 +31,7 @@ class AddLocalMessage extends TdFunction {
       "sender_user_id": this.senderUserId,
       "reply_to_message_id": this.replyToMessageId,
       "disable_notification": this.disableNotification,
-      "input_message_content": this.inputMessageContent.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }

@@ -102,7 +102,7 @@ class InputMessageText extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text.toJson(),
+      "text": this.text == null ? null : this.text.toJson(),
       "disable_web_page_preview": this.disableWebPagePreview,
       "clear_draft": this.clearDraft,
     };
@@ -154,13 +154,13 @@ class InputMessageAnimation extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "animation": this.animation == null ? null : this.animation.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "duration": this.duration,
       "width": this.width,
       "height": this.height,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -206,12 +206,12 @@ class InputMessageAudio extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio.toJson(),
-      "album_cover_thumbnail": this.albumCoverThumbnail.toJson(),
+      "audio": this.audio == null ? null : this.audio.toJson(),
+      "album_cover_thumbnail": this.albumCoverThumbnail == null ? null : this.albumCoverThumbnail.toJson(),
       "duration": this.duration,
       "title": this.title,
       "performer": this.performer,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -249,10 +249,10 @@ class InputMessageDocument extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "force_file": this.forceFile,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -302,12 +302,12 @@ class InputMessagePhoto extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "width": this.width,
       "height": this.height,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "ttl": this.ttl,
     };
   }
@@ -346,8 +346,8 @@ class InputMessageSticker extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "width": this.width,
       "height": this.height,
     };
@@ -407,14 +407,14 @@ class InputMessageVideo extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "video": this.video == null ? null : this.video.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
       "duration": this.duration,
       "width": this.width,
       "height": this.height,
       "supports_streaming": this.supportsStreaming,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
       "ttl": this.ttl,
     };
   }
@@ -453,8 +453,8 @@ class InputMessageVideoNote extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "video_note": this.videoNote.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
+      "video_note": this.videoNote == null ? null : this.videoNote.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "duration": this.duration,
       "length": this.length,
     };
@@ -494,10 +494,10 @@ class InputMessageVoiceNote extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote.toJson(),
+      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
       "duration": this.duration,
       "waveform": this.waveform,
-      "caption": this.caption.toJson(),
+      "caption": this.caption == null ? null : this.caption.toJson(),
     };
   }
 
@@ -527,7 +527,7 @@ class InputMessageLocation extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "live_period": this.livePeriod,
     };
   }
@@ -554,7 +554,7 @@ class InputMessageVenue extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "venue": this.venue.toJson(),
+      "venue": this.venue == null ? null : this.venue.toJson(),
     };
   }
 
@@ -580,7 +580,7 @@ class InputMessageContact extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "contact": this.contact.toJson(),
+      "contact": this.contact == null ? null : this.contact.toJson(),
     };
   }
 
@@ -708,7 +708,7 @@ class InputMessageInvoice extends InputMessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "invoice": this.invoice.toJson(),
+      "invoice": this.invoice == null ? null : this.invoice.toJson(),
       "title": this.title,
       "description": this.description,
       "photo_url": this.photoUrl,
@@ -771,7 +771,7 @@ class InputMessagePoll extends InputMessageContent {
       "question": this.question,
       "options": this.options.map((i) => i).toList(),
       "is_anonymous": this.isAnonymous,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "open_period": this.openPeriod,
       "close_date": this.closeDate,
       "is_closed": this.isClosed,

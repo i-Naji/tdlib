@@ -30,7 +30,7 @@ class SearchMessages extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList.toJson(),
+      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
       "query": this.query,
       "offset_date": this.offsetDate,
       "offset_chat_id": this.offsetChatId,

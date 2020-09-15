@@ -26,8 +26,8 @@ class EditMessageLiveLocation extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "reply_markup": this.replyMarkup.toJson(),
-      "location": this.location.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "location": this.location == null ? null : this.location.toJson(),
       "@extra": this.extra,
     };
   }

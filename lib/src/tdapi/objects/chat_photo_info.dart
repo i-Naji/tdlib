@@ -24,8 +24,8 @@ class ChatPhotoInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "small": this.small.toJson(),
-      "big": this.big.toJson(),
+      "small": this.small == null ? null : this.small.toJson(),
+      "big": this.big == null ? null : this.big.toJson(),
       "has_animation": this.hasAnimation,
     };
   }

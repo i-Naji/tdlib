@@ -15,7 +15,7 @@ class AddNetworkStatistics extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "entry": this.entry.toJson(),
+      "entry": this.entry == null ? null : this.entry.toJson(),
       "@extra": this.extra,
     };
   }

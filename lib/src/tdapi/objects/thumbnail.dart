@@ -28,10 +28,10 @@ class Thumbnail extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "format": this.format.toJson(),
+      "format": this.format == null ? null : this.format.toJson(),
       "width": this.width,
       "height": this.height,
-      "file": this.file.toJson(),
+      "file": this.file == null ? null : this.file.toJson(),
     };
   }
 

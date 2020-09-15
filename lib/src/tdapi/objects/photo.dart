@@ -25,7 +25,7 @@ class Photo extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "has_stickers": this.hasStickers,
-      "minithumbnail": this.minithumbnail.toJson(),
+      "minithumbnail": this.minithumbnail == null ? null : this.minithumbnail.toJson(),
       "sizes": this.sizes.map((i) => i.toJson()).toList(),
     };
   }

@@ -26,7 +26,7 @@ class DraftMessage extends TdObject {
       "@type": CONSTRUCTOR,
       "reply_to_message_id": this.replyToMessageId,
       "date": this.date,
-      "input_message_text": this.inputMessageText.toJson(),
+      "input_message_text": this.inputMessageText == null ? null : this.inputMessageText.toJson(),
     };
   }
 

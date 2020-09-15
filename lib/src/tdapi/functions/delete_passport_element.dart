@@ -15,7 +15,7 @@ class DeletePassportElement extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "type": this.type.toJson(),
+      "type": this.type == null ? null : this.type.toJson(),
       "@extra": this.extra,
     };
   }

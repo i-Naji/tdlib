@@ -19,7 +19,7 @@ class EditChatFilter extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "chat_filter_id": this.chatFilterId,
-      "filter": this.filter.toJson(),
+      "filter": this.filter == null ? null : this.filter.toJson(),
       "@extra": this.extra,
     };
   }

@@ -26,7 +26,7 @@ class SendMessageOptions extends TdObject {
       "@type": CONSTRUCTOR,
       "disable_notification": this.disableNotification,
       "from_background": this.fromBackground,
-      "scheduling_state": this.schedulingState.toJson(),
+      "scheduling_state": this.schedulingState == null ? null : this.schedulingState.toJson(),
     };
   }
 

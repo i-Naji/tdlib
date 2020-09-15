@@ -18,7 +18,7 @@ class SetStickerPositionInSet extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker.toJson(),
+      "sticker": this.sticker == null ? null : this.sticker.toJson(),
       "position": this.position,
       "@extra": this.extra,
     };

@@ -15,7 +15,7 @@ class SetTdlibParameters extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "parameters": this.parameters.toJson(),
+      "parameters": this.parameters == null ? null : this.parameters.toJson(),
       "@extra": this.extra,
     };
   }

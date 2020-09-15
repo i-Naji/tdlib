@@ -39,7 +39,7 @@ class PageBlockRelatedArticle extends TdObject {
       "url": this.url,
       "title": this.title,
       "description": this.description,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "author": this.author,
       "publish_date": this.publishDate,
     };

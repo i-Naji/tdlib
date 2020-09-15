@@ -134,7 +134,7 @@ class CallStateReady extends CallState {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "protocol": this.protocol.toJson(),
+      "protocol": this.protocol == null ? null : this.protocol.toJson(),
       "connections": this.connections.map((i) => i.toJson()).toList(),
       "config": this.config,
       "encryption_key": this.encryptionKey,
@@ -195,7 +195,7 @@ class CallStateDiscarded extends CallState {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "reason": this.reason.toJson(),
+      "reason": this.reason == null ? null : this.reason.toJson(),
       "need_rating": this.needRating,
       "need_debug_information": this.needDebugInformation,
     };
@@ -223,7 +223,7 @@ class CallStateError extends CallState {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "error": this.error.toJson(),
+      "error": this.error == null ? null : this.error.toJson(),
     };
   }
 

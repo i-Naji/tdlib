@@ -15,7 +15,7 @@ class GetScopeNotificationSettings extends TdFunction {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "scope": this.scope.toJson(),
+      "scope": this.scope == null ? null : this.scope.toJson(),
       "@extra": this.extra,
     };
   }

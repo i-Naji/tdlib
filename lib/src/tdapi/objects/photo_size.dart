@@ -29,7 +29,7 @@ class PhotoSize extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "type": this.type,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "width": this.width,
       "height": this.height,
     };

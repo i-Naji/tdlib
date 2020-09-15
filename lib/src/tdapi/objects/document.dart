@@ -34,9 +34,9 @@ class Document extends TdObject {
       "@type": CONSTRUCTOR,
       "file_name": this.fileName,
       "mime_type": this.mimeType,
-      "minithumbnail": this.minithumbnail.toJson(),
-      "thumbnail": this.thumbnail.toJson(),
-      "document": this.document.toJson(),
+      "minithumbnail": this.minithumbnail == null ? null : this.minithumbnail.toJson(),
+      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
+      "document": this.document == null ? null : this.document.toJson(),
     };
   }
 

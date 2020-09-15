@@ -29,9 +29,9 @@ class SendMessage extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "reply_to_message_id": this.replyToMessageId,
-      "options": this.options.toJson(),
-      "reply_markup": this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent.toJson(),
+      "options": this.options == null ? null : this.options.toJson(),
+      "reply_markup": this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }

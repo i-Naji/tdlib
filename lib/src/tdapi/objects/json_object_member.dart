@@ -21,7 +21,7 @@ class JsonObjectMember extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "key": this.key,
-      "value": this.value.toJson(),
+      "value": this.value == null ? null : this.value.toJson(),
     };
   }
 

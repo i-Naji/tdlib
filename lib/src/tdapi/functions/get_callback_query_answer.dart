@@ -23,7 +23,7 @@ class GetCallbackQueryAnswer extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "payload": this.payload.toJson(),
+      "payload": this.payload == null ? null : this.payload.toJson(),
       "@extra": this.extra,
     };
   }

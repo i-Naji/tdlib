@@ -50,7 +50,7 @@ class UserFullInfo extends TdObject {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo.toJson(),
       "is_blocked": this.isBlocked,
       "can_be_called": this.canBeCalled,
       "has_private_calls": this.hasPrivateCalls,
@@ -58,7 +58,7 @@ class UserFullInfo extends TdObject {
       "bio": this.bio,
       "share_text": this.shareText,
       "group_in_common_count": this.groupInCommonCount,
-      "bot_info": this.botInfo.toJson(),
+      "bot_info": this.botInfo == null ? null : this.botInfo.toJson(),
     };
   }
 
