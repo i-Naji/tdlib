@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tdlib_example/utils/router.dart';
+import 'package:tdlib_example/utils/router.dart' as utilrouter;
 import 'package:tdlib_example/utils/const.dart';
 import 'package:tdlib_example/services/telegram_service.dart';
 import 'package:tdlib_example/services/locator.dart';
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: locator<NavigationService>().navigatorKey,
       title: 'Flutter Demo',
       theme: ThemeData.dark(),
-      onGenerateRoute: Router.generateRoute,
+      onGenerateRoute: utilrouter.Router.generateRoute,
       initialRoute: initRoute,
     );
   }
