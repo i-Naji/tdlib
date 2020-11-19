@@ -1,18 +1,15 @@
 part of '../tdapi.dart';
 
 class ChatList extends TdObject {
-
   /// Describes a list of chats
   ChatList();
-
-  
 
   /// a ChatList return type can be :
   /// * ChatListMain
   /// * ChatListArchive
   /// * ChatListFilter
-  factory ChatList.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatList.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatListMain.CONSTRUCTOR:
         return ChatListMain.fromJson(json);
       case ChatListArchive.CONSTRUCTOR:
@@ -26,26 +23,21 @@ class ChatList extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'chatList';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListMain extends ChatList {
-
   /// A main list of chats
   ChatListMain();
 
-  
-
   /// Parse from a json
-  ChatListMain.fromJson(Map<String, dynamic> json) ;
+  ChatListMain.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -55,20 +47,17 @@ class ChatListMain extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListMain';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListArchive extends ChatList {
-
   /// A list of chats usually located at the top of the main chat list. Unmuted chats are automatically moved from the Archive to the Main chat list when a new message arrives
   ChatListArchive();
 
-  
-
   /// Parse from a json
-  ChatListArchive.fromJson(Map<String, dynamic> json) ;
+  ChatListArchive.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -78,13 +67,12 @@ class ChatListArchive extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListArchive';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatListFilter extends ChatList {
-
   /// A list of chats belonging to a chat filter
   ChatListFilter({this.chatFilterId});
 
@@ -92,7 +80,7 @@ class ChatListFilter extends ChatList {
   int chatFilterId;
 
   /// Parse from a json
-  ChatListFilter.fromJson(Map<String, dynamic> json)  {
+  ChatListFilter.fromJson(Map<String, dynamic> json) {
     this.chatFilterId = json['chat_filter_id'];
   }
 
@@ -105,7 +93,7 @@ class ChatListFilter extends ChatList {
   }
 
   static const CONSTRUCTOR = 'chatListFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

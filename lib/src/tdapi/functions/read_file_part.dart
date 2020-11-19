@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class ReadFilePart extends TdFunction {
-
   /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file
-  ReadFilePart({this.fileId,
-    this.offset,
-    this.count});
+  ReadFilePart({this.fileId, this.offset, this.count});
 
   /// [fileId] Identifier of the file. The file must be located in the TDLib file cache
   int fileId;
@@ -20,7 +17,7 @@ class ReadFilePart extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ReadFilePart.fromJson(Map<String, dynamic> json) ;
+  ReadFilePart.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class ReadFilePart extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'readFilePart';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

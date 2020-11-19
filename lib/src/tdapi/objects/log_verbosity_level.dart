@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class LogVerbosityLevel extends TdObject {
-
   /// Contains a TDLib internal log verbosity level
   LogVerbosityLevel({this.verbosityLevel});
 
@@ -12,7 +11,7 @@ class LogVerbosityLevel extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  LogVerbosityLevel.fromJson(Map<String, dynamic> json)  {
+  LogVerbosityLevel.fromJson(Map<String, dynamic> json) {
     this.verbosityLevel = json['verbosity_level'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class LogVerbosityLevel extends TdObject {
   }
 
   static const CONSTRUCTOR = 'logVerbosityLevel';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

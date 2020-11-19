@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class SetPollAnswer extends TdFunction {
-
   /// Changes the user answer to a poll. A poll in quiz mode can be answered only once
-  SetPollAnswer({this.chatId,
-    this.messageId,
-    this.optionIds});
+  SetPollAnswer({this.chatId, this.messageId, this.optionIds});
 
   /// [chatId] Identifier of the chat to which the poll belongs
   int chatId;
@@ -20,7 +17,7 @@ class SetPollAnswer extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetPollAnswer.fromJson(Map<String, dynamic> json) ;
+  SetPollAnswer.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class SetPollAnswer extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setPollAnswer';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

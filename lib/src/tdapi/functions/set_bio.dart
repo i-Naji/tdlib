@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SetBio extends TdFunction {
-
   /// Changes the bio of the current user
   SetBio({this.bio});
 
@@ -12,7 +11,7 @@ class SetBio extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetBio.fromJson(Map<String, dynamic> json) ;
+  SetBio.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SetBio extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setBio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

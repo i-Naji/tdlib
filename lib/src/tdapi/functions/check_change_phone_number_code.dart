@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckChangePhoneNumberCode extends TdFunction {
-
   /// Checks the authentication code sent to confirm a new phone number of the user
   CheckChangePhoneNumberCode({this.code});
 
@@ -12,7 +11,7 @@ class CheckChangePhoneNumberCode extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckChangePhoneNumberCode.fromJson(Map<String, dynamic> json) ;
+  CheckChangePhoneNumberCode.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckChangePhoneNumberCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkChangePhoneNumberCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

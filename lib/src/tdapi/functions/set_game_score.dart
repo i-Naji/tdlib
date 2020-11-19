@@ -1,25 +1,25 @@
 part of '../tdapi.dart';
 
 class SetGameScore extends TdFunction {
-
   /// Updates the game score of the specified user in the game; for bots only
-  SetGameScore({this.chatId,
-    this.messageId,
-    this.editMessage,
-    this.userId,
-    this.score,
-    this.force});
+  SetGameScore(
+      {this.chatId,
+      this.messageId,
+      this.editMessage,
+      this.userId,
+      this.score,
+      this.force});
 
-  /// [chatId] The chat to which the message with the game belongs 
+  /// [chatId] The chat to which the message with the game belongs
   int chatId;
 
-  /// [messageId] Identifier of the message 
+  /// [messageId] Identifier of the message
   int messageId;
 
-  /// [editMessage] True, if the message should be edited 
+  /// [editMessage] True, if the message should be edited
   bool editMessage;
 
-  /// [userId] User identifier 
+  /// [userId] User identifier
   int userId;
 
   /// [score] The new score
@@ -32,7 +32,7 @@ class SetGameScore extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetGameScore.fromJson(Map<String, dynamic> json) ;
+  SetGameScore.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -49,7 +49,7 @@ class SetGameScore extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

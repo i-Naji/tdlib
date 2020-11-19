@@ -1,35 +1,35 @@
 part of '../tdapi.dart';
 
 class Address extends TdObject {
-
   /// Describes an address
-  Address({this.countryCode,
-    this.state,
-    this.city,
-    this.streetLine1,
-    this.streetLine2,
-    this.postalCode});
+  Address(
+      {this.countryCode,
+      this.state,
+      this.city,
+      this.streetLine1,
+      this.streetLine2,
+      this.postalCode});
 
-  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code 
+  /// [countryCode] A two-letter ISO 3166-1 alpha-2 country code
   String countryCode;
 
-  /// [state] State, if applicable 
+  /// [state] State, if applicable
   String state;
 
-  /// [city] City 
+  /// [city] City
   String city;
 
-  /// [streetLine1] First line of the address 
+  /// [streetLine1] First line of the address
   String streetLine1;
 
-  /// [streetLine2] Second line of the address 
+  /// [streetLine2] Second line of the address
   String streetLine2;
 
   /// [postalCode] Address postal code
   String postalCode;
 
   /// Parse from a json
-  Address.fromJson(Map<String, dynamic> json)  {
+  Address.fromJson(Map<String, dynamic> json) {
     this.countryCode = json['country_code'];
     this.state = json['state'];
     this.city = json['city'];
@@ -52,7 +52,7 @@ class Address extends TdObject {
   }
 
   static const CONSTRUCTOR = 'address';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

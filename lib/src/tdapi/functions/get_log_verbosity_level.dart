@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetLogVerbosityLevel extends TdFunction {
-
   /// Returns current verbosity level of the internal logging of TDLib. Can be called synchronously
   GetLogVerbosityLevel();
 
@@ -9,7 +8,7 @@ class GetLogVerbosityLevel extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetLogVerbosityLevel.fromJson(Map<String, dynamic> json) ;
+  GetLogVerbosityLevel.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetLogVerbosityLevel extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLogVerbosityLevel';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

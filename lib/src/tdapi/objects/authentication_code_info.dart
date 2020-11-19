@@ -1,20 +1,17 @@
 part of '../tdapi.dart';
 
 class AuthenticationCodeInfo extends TdObject {
-
   /// Information about the authentication code that was sent
-  AuthenticationCodeInfo({this.phoneNumber,
-    this.type,
-    this.nextType,
-    this.timeout});
+  AuthenticationCodeInfo(
+      {this.phoneNumber, this.type, this.nextType, this.timeout});
 
-  /// [phoneNumber] A phone number that is being authenticated 
+  /// [phoneNumber] A phone number that is being authenticated
   String phoneNumber;
 
-  /// [type] Describes the way the code was sent to the user 
+  /// [type] Describes the way the code was sent to the user
   AuthenticationCodeType type;
 
-  /// [nextType] Describes the way the next code will be sent to the user; may be null 
+  /// [nextType] Describes the way the next code will be sent to the user; may be null
   AuthenticationCodeType nextType;
 
   /// [timeout] Timeout before the code should be re-sent, in seconds
@@ -24,10 +21,12 @@ class AuthenticationCodeInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  AuthenticationCodeInfo.fromJson(Map<String, dynamic> json)  {
+  AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) {
     this.phoneNumber = json['phone_number'];
-    this.type = AuthenticationCodeType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.nextType = AuthenticationCodeType.fromJson(json['next_type'] ?? <String, dynamic>{});
+    this.type =
+        AuthenticationCodeType.fromJson(json['type'] ?? <String, dynamic>{});
+    this.nextType = AuthenticationCodeType.fromJson(
+        json['next_type'] ?? <String, dynamic>{});
     this.timeout = json['timeout'];
     this.extra = json['@extra'];
   }
@@ -44,7 +43,7 @@ class AuthenticationCodeInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'authenticationCodeInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

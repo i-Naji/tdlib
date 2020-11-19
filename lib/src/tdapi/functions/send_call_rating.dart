@@ -1,20 +1,16 @@
 part of '../tdapi.dart';
 
 class SendCallRating extends TdFunction {
-
   /// Sends a call rating
-  SendCallRating({this.callId,
-    this.rating,
-    this.comment,
-    this.problems});
+  SendCallRating({this.callId, this.rating, this.comment, this.problems});
 
-  /// [callId] Call identifier 
+  /// [callId] Call identifier
   int callId;
 
-  /// [rating] Call rating; 1-5 
+  /// [rating] Call rating; 1-5
   int rating;
 
-  /// [comment] An optional user comment if the rating is less than 5 
+  /// [comment] An optional user comment if the rating is less than 5
   String comment;
 
   /// [problems] List of the exact types of problems with the call, specified by the user
@@ -24,7 +20,7 @@ class SendCallRating extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendCallRating.fromJson(Map<String, dynamic> json) ;
+  SendCallRating.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -39,7 +35,7 @@ class SendCallRating extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendCallRating';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetSecretChat extends TdFunction {
-
   /// Returns information about a secret chat by its identifier. This is an offline request
   GetSecretChat({this.secretChatId});
 
@@ -12,7 +11,7 @@ class GetSecretChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetSecretChat.fromJson(Map<String, dynamic> json) ;
+  GetSecretChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetSecretChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSecretChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

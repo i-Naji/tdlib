@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SetSupergroupStickerSet extends TdFunction {
-
   /// Changes the sticker set of a supergroup; requires can_change_info rights
-  SetSupergroupStickerSet({this.supergroupId,
-    this.stickerSetId});
+  SetSupergroupStickerSet({this.supergroupId, this.stickerSetId});
 
-  /// [supergroupId] Identifier of the supergroup 
+  /// [supergroupId] Identifier of the supergroup
   int supergroupId;
 
   /// [stickerSetId] New value of the supergroup sticker set identifier. Use 0 to remove the supergroup sticker set
@@ -16,7 +14,7 @@ class SetSupergroupStickerSet extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetSupergroupStickerSet.fromJson(Map<String, dynamic> json) ;
+  SetSupergroupStickerSet.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SetSupergroupStickerSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setSupergroupStickerSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

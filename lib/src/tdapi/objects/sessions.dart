@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Sessions extends TdObject {
-
   /// Contains a list of sessions
   Sessions({this.sessions});
 
@@ -12,8 +11,10 @@ class Sessions extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Sessions.fromJson(Map<String, dynamic> json)  {
-    this.sessions = List<Session>.from((json['sessions'] ?? []).map((item) => Session.fromJson(item ?? <String, dynamic>{})).toList());
+  Sessions.fromJson(Map<String, dynamic> json) {
+    this.sessions = List<Session>.from((json['sessions'] ?? [])
+        .map((item) => Session.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +27,7 @@ class Sessions extends TdObject {
   }
 
   static const CONSTRUCTOR = 'sessions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

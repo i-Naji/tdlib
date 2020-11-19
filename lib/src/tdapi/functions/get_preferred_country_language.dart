@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetPreferredCountryLanguage extends TdFunction {
-
   /// Returns an IETF language tag of the language preferred in the country, which should be used to fill native fields in Telegram Passport personal details. Returns a 404 error if unknown
   GetPreferredCountryLanguage({this.countryCode});
 
@@ -12,7 +11,7 @@ class GetPreferredCountryLanguage extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetPreferredCountryLanguage.fromJson(Map<String, dynamic> json) ;
+  GetPreferredCountryLanguage.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetPreferredCountryLanguage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPreferredCountryLanguage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

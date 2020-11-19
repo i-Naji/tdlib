@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ImportContacts extends TdFunction {
-
   /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
   ImportContacts({this.contacts});
 
@@ -12,7 +11,7 @@ class ImportContacts extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ImportContacts.fromJson(Map<String, dynamic> json) ;
+  ImportContacts.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ImportContacts extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'importContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,22 +1,22 @@
 part of '../tdapi.dart';
 
 class Sticker extends TdObject {
-
   /// Describes a sticker
-  Sticker({this.setId,
-    this.width,
-    this.height,
-    this.emoji,
-    this.isAnimated,
-    this.isMask,
-    this.maskPosition,
-    this.thumbnail,
-    this.sticker});
+  Sticker(
+      {this.setId,
+      this.width,
+      this.height,
+      this.emoji,
+      this.isAnimated,
+      this.isMask,
+      this.maskPosition,
+      this.thumbnail,
+      this.sticker});
 
-  /// [setId] The identifier of the sticker set to which the sticker belongs; 0 if none 
+  /// [setId] The identifier of the sticker set to which the sticker belongs; 0 if none
   int setId;
 
-  /// [width] Sticker width; as defined by the sender 
+  /// [width] Sticker width; as defined by the sender
   int width;
 
   /// [height] Sticker height; as defined by the sender
@@ -25,10 +25,10 @@ class Sticker extends TdObject {
   /// [emoji] Emoji corresponding to the sticker
   String emoji;
 
-  /// [isAnimated] True, if the sticker is an animated sticker in TGS format 
+  /// [isAnimated] True, if the sticker is an animated sticker in TGS format
   bool isAnimated;
 
-  /// [isMask] True, if the sticker is a mask 
+  /// [isMask] True, if the sticker is a mask
   bool isMask;
 
   /// [maskPosition] Position where the mask should be placed; may be null
@@ -41,15 +41,17 @@ class Sticker extends TdObject {
   File sticker;
 
   /// Parse from a json
-  Sticker.fromJson(Map<String, dynamic> json)  {
+  Sticker.fromJson(Map<String, dynamic> json) {
     this.setId = int.tryParse(json['set_id'] ?? "");
     this.width = json['width'];
     this.height = json['height'];
     this.emoji = json['emoji'];
     this.isAnimated = json['is_animated'];
     this.isMask = json['is_mask'];
-    this.maskPosition = MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{});
-    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.maskPosition =
+        MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{});
+    this.thumbnail =
+        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.sticker = File.fromJson(json['sticker'] ?? <String, dynamic>{});
   }
 
@@ -63,14 +65,15 @@ class Sticker extends TdObject {
       "emoji": this.emoji,
       "is_animated": this.isAnimated,
       "is_mask": this.isMask,
-      "mask_position": this.maskPosition == null ? null : this.maskPosition.toJson(),
+      "mask_position":
+          this.maskPosition == null ? null : this.maskPosition.toJson(),
       "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "sticker": this.sticker == null ? null : this.sticker.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'sticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SendChatSetTtlMessage extends TdFunction {
-
   /// Changes the current TTL setting (sets a new self-destruct timer) in a secret chat and sends the corresponding message
-  SendChatSetTtlMessage({this.chatId,
-    this.ttl});
+  SendChatSetTtlMessage({this.chatId, this.ttl});
 
-  /// [chatId] Chat identifier 
+  /// [chatId] Chat identifier
   int chatId;
 
   /// [ttl] New TTL value, in seconds
@@ -16,7 +14,7 @@ class SendChatSetTtlMessage extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendChatSetTtlMessage.fromJson(Map<String, dynamic> json) ;
+  SendChatSetTtlMessage.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SendChatSetTtlMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendChatSetTtlMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

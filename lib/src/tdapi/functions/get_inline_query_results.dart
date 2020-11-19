@@ -1,13 +1,13 @@
 part of '../tdapi.dart';
 
 class GetInlineQueryResults extends TdFunction {
-
   /// Sends an inline query to a bot and returns its results. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires
-  GetInlineQueryResults({this.botUserId,
-    this.chatId,
-    this.userLocation,
-    this.query,
-    this.offset});
+  GetInlineQueryResults(
+      {this.botUserId,
+      this.chatId,
+      this.userLocation,
+      this.query,
+      this.offset});
 
   /// [botUserId] The identifier of the target bot
   int botUserId;
@@ -15,10 +15,10 @@ class GetInlineQueryResults extends TdFunction {
   /// [chatId] Identifier of the chat where the query was sent
   int chatId;
 
-  /// [userLocation] Location of the user, only if needed 
+  /// [userLocation] Location of the user, only if needed
   Location userLocation;
 
-  /// [query] Text of the query 
+  /// [query] Text of the query
   String query;
 
   /// [offset] Offset of the first entry to return
@@ -28,7 +28,7 @@ class GetInlineQueryResults extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetInlineQueryResults.fromJson(Map<String, dynamic> json) ;
+  GetInlineQueryResults.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -36,7 +36,8 @@ class GetInlineQueryResults extends TdFunction {
       "@type": CONSTRUCTOR,
       "bot_user_id": this.botUserId,
       "chat_id": this.chatId,
-      "user_location": this.userLocation == null ? null : this.userLocation.toJson(),
+      "user_location":
+          this.userLocation == null ? null : this.userLocation.toJson(),
       "query": this.query,
       "offset": this.offset,
       "@extra": this.extra,
@@ -44,7 +45,7 @@ class GetInlineQueryResults extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInlineQueryResults';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

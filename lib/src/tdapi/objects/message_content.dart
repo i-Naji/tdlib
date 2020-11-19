@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class MessageContent extends TdObject {
-
   /// Contains the content of a message
   MessageContent();
-
-  
 
   /// a MessageContent return type can be :
   /// * MessageText
@@ -48,9 +45,10 @@ class MessageContent extends TdObject {
   /// * MessageWebsiteConnected
   /// * MessagePassportDataSent
   /// * MessagePassportDataReceived
+  /// * MessageProximityAlertTriggered
   /// * MessageUnsupported
-  factory MessageContent.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageContent.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageText.CONSTRUCTOR:
         return MessageText.fromJson(json);
       case MessageAnimation.CONSTRUCTOR:
@@ -131,6 +129,8 @@ class MessageContent extends TdObject {
         return MessagePassportDataSent.fromJson(json);
       case MessagePassportDataReceived.CONSTRUCTOR:
         return MessagePassportDataReceived.fromJson(json);
+      case MessageProximityAlertTriggered.CONSTRUCTOR:
+        return MessageProximityAlertTriggered.fromJson(json);
       case MessageUnsupported.CONSTRUCTOR:
         return MessageUnsupported.fromJson(json);
       default:
@@ -140,31 +140,27 @@ class MessageContent extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'messageContent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageText extends MessageContent {
-
   /// A text message
-  MessageText({this.text,
-    this.webPage});
+  MessageText({this.text, this.webPage});
 
-  /// [text] Text of the message 
+  /// [text] Text of the message
   FormattedText text;
 
   /// [webPage] A preview of the web page that's mentioned in the text; may be null
   WebPage webPage;
 
   /// Parse from a json
-  MessageText.fromJson(Map<String, dynamic> json)  {
+  MessageText.fromJson(Map<String, dynamic> json) {
     this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
     this.webPage = WebPage.fromJson(json['web_page'] ?? <String, dynamic>{});
   }
@@ -179,31 +175,30 @@ class MessageText extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageAnimation extends MessageContent {
-
   /// An animation message (GIF-style).
-  MessageAnimation({this.animation,
-    this.caption,
-    this.isSecret});
+  MessageAnimation({this.animation, this.caption, this.isSecret});
 
-  /// [animation] The animation description 
+  /// [animation] The animation description
   Animation animation;
 
-  /// [caption] Animation caption 
+  /// [caption] Animation caption
   FormattedText caption;
 
   /// [isSecret] True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
   bool isSecret;
 
   /// Parse from a json
-  MessageAnimation.fromJson(Map<String, dynamic> json)  {
-    this.animation = Animation.fromJson(json['animation'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+  MessageAnimation.fromJson(Map<String, dynamic> json) {
+    this.animation =
+        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
     this.isSecret = json['is_secret'];
   }
 
@@ -218,27 +213,26 @@ class MessageAnimation extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageAudio extends MessageContent {
-
   /// An audio message
-  MessageAudio({this.audio,
-    this.caption});
+  MessageAudio({this.audio, this.caption});
 
-  /// [audio] The audio description 
+  /// [audio] The audio description
   Audio audio;
 
   /// [caption] Audio caption
   FormattedText caption;
 
   /// Parse from a json
-  MessageAudio.fromJson(Map<String, dynamic> json)  {
+  MessageAudio.fromJson(Map<String, dynamic> json) {
     this.audio = Audio.fromJson(json['audio'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
   @override
@@ -251,27 +245,26 @@ class MessageAudio extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageAudio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageDocument extends MessageContent {
-
   /// A document message (general file)
-  MessageDocument({this.document,
-    this.caption});
+  MessageDocument({this.document, this.caption});
 
-  /// [document] The document description 
+  /// [document] The document description
   Document document;
 
   /// [caption] Document caption
   FormattedText caption;
 
   /// Parse from a json
-  MessageDocument.fromJson(Map<String, dynamic> json)  {
+  MessageDocument.fromJson(Map<String, dynamic> json) {
     this.document = Document.fromJson(json['document'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
   }
 
   @override
@@ -284,31 +277,29 @@ class MessageDocument extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageDocument';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePhoto extends MessageContent {
-
   /// A photo message
-  MessagePhoto({this.photo,
-    this.caption,
-    this.isSecret});
+  MessagePhoto({this.photo, this.caption, this.isSecret});
 
-  /// [photo] The photo description 
+  /// [photo] The photo description
   Photo photo;
 
-  /// [caption] Photo caption 
+  /// [caption] Photo caption
   FormattedText caption;
 
   /// [isSecret] True, if the photo must be blurred and must be shown only while tapped
   bool isSecret;
 
   /// Parse from a json
-  MessagePhoto.fromJson(Map<String, dynamic> json)  {
+  MessagePhoto.fromJson(Map<String, dynamic> json) {
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
     this.isSecret = json['is_secret'];
   }
 
@@ -323,20 +314,17 @@ class MessagePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageExpiredPhoto extends MessageContent {
-
   /// An expired photo message (self-destructed after TTL has elapsed)
   MessageExpiredPhoto();
 
-  
-
   /// Parse from a json
-  MessageExpiredPhoto.fromJson(Map<String, dynamic> json) ;
+  MessageExpiredPhoto.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -346,13 +334,12 @@ class MessageExpiredPhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageExpiredPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSticker extends MessageContent {
-
   /// A sticker message
   MessageSticker({this.sticker});
 
@@ -360,7 +347,7 @@ class MessageSticker extends MessageContent {
   Sticker sticker;
 
   /// Parse from a json
-  MessageSticker.fromJson(Map<String, dynamic> json)  {
+  MessageSticker.fromJson(Map<String, dynamic> json) {
     this.sticker = Sticker.fromJson(json['sticker'] ?? <String, dynamic>{});
   }
 
@@ -373,31 +360,29 @@ class MessageSticker extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageSticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVideo extends MessageContent {
-
   /// A video message
-  MessageVideo({this.video,
-    this.caption,
-    this.isSecret});
+  MessageVideo({this.video, this.caption, this.isSecret});
 
-  /// [video] The video description 
+  /// [video] The video description
   Video video;
 
-  /// [caption] Video caption 
+  /// [caption] Video caption
   FormattedText caption;
 
   /// [isSecret] True, if the video thumbnail must be blurred and the video must be shown only while tapped
   bool isSecret;
 
   /// Parse from a json
-  MessageVideo.fromJson(Map<String, dynamic> json)  {
+  MessageVideo.fromJson(Map<String, dynamic> json) {
     this.video = Video.fromJson(json['video'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
     this.isSecret = json['is_secret'];
   }
 
@@ -412,20 +397,17 @@ class MessageVideo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageExpiredVideo extends MessageContent {
-
   /// An expired video message (self-destructed after TTL has elapsed)
   MessageExpiredVideo();
 
-  
-
   /// Parse from a json
-  MessageExpiredVideo.fromJson(Map<String, dynamic> json) ;
+  MessageExpiredVideo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -435,30 +417,28 @@ class MessageExpiredVideo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageExpiredVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVideoNote extends MessageContent {
-
   /// A video note message
-  MessageVideoNote({this.videoNote,
-    this.isViewed,
-    this.isSecret});
+  MessageVideoNote({this.videoNote, this.isViewed, this.isSecret});
 
-  /// [videoNote] The video note description 
+  /// [videoNote] The video note description
   VideoNote videoNote;
 
-  /// [isViewed] True, if at least one of the recipients has viewed the video note 
+  /// [isViewed] True, if at least one of the recipients has viewed the video note
   bool isViewed;
 
   /// [isSecret] True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
   bool isSecret;
 
   /// Parse from a json
-  MessageVideoNote.fromJson(Map<String, dynamic> json)  {
-    this.videoNote = VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{});
+  MessageVideoNote.fromJson(Map<String, dynamic> json) {
+    this.videoNote =
+        VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{});
     this.isViewed = json['is_viewed'];
     this.isSecret = json['is_secret'];
   }
@@ -474,31 +454,30 @@ class MessageVideoNote extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVideoNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVoiceNote extends MessageContent {
-
   /// A voice note message
-  MessageVoiceNote({this.voiceNote,
-    this.caption,
-    this.isListened});
+  MessageVoiceNote({this.voiceNote, this.caption, this.isListened});
 
-  /// [voiceNote] The voice note description 
+  /// [voiceNote] The voice note description
   VoiceNote voiceNote;
 
-  /// [caption] Voice note caption 
+  /// [caption] Voice note caption
   FormattedText caption;
 
   /// [isListened] True, if at least one of the recipients has listened to the voice note
   bool isListened;
 
   /// Parse from a json
-  MessageVoiceNote.fromJson(Map<String, dynamic> json)  {
-    this.voiceNote = VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
-    this.caption = FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
+  MessageVoiceNote.fromJson(Map<String, dynamic> json) {
+    this.voiceNote =
+        VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
+    this.caption =
+        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
     this.isListened = json['is_listened'];
   }
 
@@ -513,32 +492,42 @@ class MessageVoiceNote extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVoiceNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageLocation extends MessageContent {
-
   /// A message with a location
-  MessageLocation({this.location,
-    this.livePeriod,
-    this.expiresIn});
+  MessageLocation(
+      {this.location,
+      this.livePeriod,
+      this.expiresIn,
+      this.heading,
+      this.proximityAlertRadius});
 
-  /// [location] The location description 
+  /// [location] The location description
   Location location;
 
-  /// [livePeriod] Time relative to the message sent date until which the location can be updated, in seconds
+  /// [livePeriod] Time relative to the message send date, for which the location can be updated, in seconds
   int livePeriod;
 
   /// [expiresIn] Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
   int expiresIn;
 
+  /// [heading] For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
+  int heading;
+
+  /// [proximityAlertRadius] For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only for the message sender
+  int proximityAlertRadius;
+
   /// Parse from a json
-  MessageLocation.fromJson(Map<String, dynamic> json)  {
+  MessageLocation.fromJson(Map<String, dynamic> json) {
     this.location = Location.fromJson(json['location'] ?? <String, dynamic>{});
     this.livePeriod = json['live_period'];
     this.expiresIn = json['expires_in'];
+    this.heading = json['heading'];
+    this.proximityAlertRadius = json['proximity_alert_radius'];
   }
 
   @override
@@ -548,17 +537,18 @@ class MessageLocation extends MessageContent {
       "location": this.location == null ? null : this.location.toJson(),
       "live_period": this.livePeriod,
       "expires_in": this.expiresIn,
+      "heading": this.heading,
+      "proximity_alert_radius": this.proximityAlertRadius,
     };
   }
 
   static const CONSTRUCTOR = 'messageLocation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageVenue extends MessageContent {
-
   /// A message with information about a venue
   MessageVenue({this.venue});
 
@@ -566,7 +556,7 @@ class MessageVenue extends MessageContent {
   Venue venue;
 
   /// Parse from a json
-  MessageVenue.fromJson(Map<String, dynamic> json)  {
+  MessageVenue.fromJson(Map<String, dynamic> json) {
     this.venue = Venue.fromJson(json['venue'] ?? <String, dynamic>{});
   }
 
@@ -579,13 +569,12 @@ class MessageVenue extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageVenue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageContact extends MessageContent {
-
   /// A message with a user contact
   MessageContact({this.contact});
 
@@ -593,7 +582,7 @@ class MessageContact extends MessageContent {
   Contact contact;
 
   /// Parse from a json
-  MessageContact.fromJson(Map<String, dynamic> json)  {
+  MessageContact.fromJson(Map<String, dynamic> json) {
     this.contact = Contact.fromJson(json['contact'] ?? <String, dynamic>{});
   }
 
@@ -606,25 +595,25 @@ class MessageContact extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageContact';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageDice extends MessageContent {
-
   /// A dice message. The dice value is randomly generated by the server
-  MessageDice({this.initialStateSticker,
-    this.finalStateSticker,
-    this.emoji,
-    this.value,
-    this.successAnimationFrameNumber});
+  MessageDice(
+      {this.initialState,
+      this.finalState,
+      this.emoji,
+      this.value,
+      this.successAnimationFrameNumber});
 
-  /// [initialStateSticker] The animated sticker with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-  Sticker initialStateSticker;
+  /// [initialState] The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  DiceStickers initialState;
 
-  /// [finalStateSticker] The animated sticker with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-  Sticker finalStateSticker;
+  /// [finalState] The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  DiceStickers finalState;
 
   /// [emoji] Emoji on which the dice throw animation is based
   String emoji;
@@ -636,9 +625,11 @@ class MessageDice extends MessageContent {
   int successAnimationFrameNumber;
 
   /// Parse from a json
-  MessageDice.fromJson(Map<String, dynamic> json)  {
-    this.initialStateSticker = Sticker.fromJson(json['initial_state_sticker'] ?? <String, dynamic>{});
-    this.finalStateSticker = Sticker.fromJson(json['final_state_sticker'] ?? <String, dynamic>{});
+  MessageDice.fromJson(Map<String, dynamic> json) {
+    this.initialState =
+        DiceStickers.fromJson(json['initial_state'] ?? <String, dynamic>{});
+    this.finalState =
+        DiceStickers.fromJson(json['final_state'] ?? <String, dynamic>{});
     this.emoji = json['emoji'];
     this.value = json['value'];
     this.successAnimationFrameNumber = json['success_animation_frame_number'];
@@ -648,8 +639,9 @@ class MessageDice extends MessageContent {
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "initial_state_sticker": this.initialStateSticker == null ? null : this.initialStateSticker.toJson(),
-      "final_state_sticker": this.finalStateSticker == null ? null : this.finalStateSticker.toJson(),
+      "initial_state":
+          this.initialState == null ? null : this.initialState.toJson(),
+      "final_state": this.finalState == null ? null : this.finalState.toJson(),
       "emoji": this.emoji,
       "value": this.value,
       "success_animation_frame_number": this.successAnimationFrameNumber,
@@ -657,13 +649,12 @@ class MessageDice extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageDice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageGame extends MessageContent {
-
   /// A message with a game
   MessageGame({this.game});
 
@@ -671,7 +662,7 @@ class MessageGame extends MessageContent {
   Game game;
 
   /// Parse from a json
-  MessageGame.fromJson(Map<String, dynamic> json)  {
+  MessageGame.fromJson(Map<String, dynamic> json) {
     this.game = Game.fromJson(json['game'] ?? <String, dynamic>{});
   }
 
@@ -684,13 +675,12 @@ class MessageGame extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageGame';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePoll extends MessageContent {
-
   /// A message with a poll
   MessagePoll({this.poll});
 
@@ -698,7 +688,7 @@ class MessagePoll extends MessageContent {
   Poll poll;
 
   /// Parse from a json
-  MessagePoll.fromJson(Map<String, dynamic> json)  {
+  MessagePoll.fromJson(Map<String, dynamic> json) {
     this.poll = Poll.fromJson(json['poll'] ?? <String, dynamic>{});
   }
 
@@ -711,34 +701,34 @@ class MessagePoll extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePoll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageInvoice extends MessageContent {
-
   /// A message with an invoice from a bot
-  MessageInvoice({this.title,
-    this.description,
-    this.photo,
-    this.currency,
-    this.totalAmount,
-    this.startParameter,
-    this.isTest,
-    this.needShippingAddress,
-    this.receiptMessageId});
+  MessageInvoice(
+      {this.title,
+      this.description,
+      this.photo,
+      this.currency,
+      this.totalAmount,
+      this.startParameter,
+      this.isTest,
+      this.needShippingAddress,
+      this.receiptMessageId});
 
-  /// [title] Product title 
+  /// [title] Product title
   String title;
 
-  /// [description] Product description 
+  /// [description] Product description
   String description;
 
-  /// [photo] Product photo; may be null 
+  /// [photo] Product photo; may be null
   Photo photo;
 
-  /// [currency] Currency for the product price 
+  /// [currency] Currency for the product price
   String currency;
 
   /// [totalAmount] Product total price in the minimal quantity of the currency
@@ -757,7 +747,7 @@ class MessageInvoice extends MessageContent {
   int receiptMessageId;
 
   /// Parse from a json
-  MessageInvoice.fromJson(Map<String, dynamic> json)  {
+  MessageInvoice.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
     this.description = json['description'];
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
@@ -786,31 +776,29 @@ class MessageInvoice extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageInvoice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageCall extends MessageContent {
-
   /// A message with information about an ended call
-  MessageCall({this.isVideo,
-    this.discardReason,
-    this.duration});
+  MessageCall({this.isVideo, this.discardReason, this.duration});
 
-  /// [isVideo] True, if the call was a video call 
+  /// [isVideo] True, if the call was a video call
   bool isVideo;
 
-  /// [discardReason] Reason why the call was discarded 
+  /// [discardReason] Reason why the call was discarded
   CallDiscardReason discardReason;
 
   /// [duration] Call duration, in seconds
   int duration;
 
   /// Parse from a json
-  MessageCall.fromJson(Map<String, dynamic> json)  {
+  MessageCall.fromJson(Map<String, dynamic> json) {
     this.isVideo = json['is_video'];
-    this.discardReason = CallDiscardReason.fromJson(json['discard_reason'] ?? <String, dynamic>{});
+    this.discardReason = CallDiscardReason.fromJson(
+        json['discard_reason'] ?? <String, dynamic>{});
     this.duration = json['duration'];
   }
 
@@ -819,33 +807,33 @@ class MessageCall extends MessageContent {
     return {
       "@type": CONSTRUCTOR,
       "is_video": this.isVideo,
-      "discard_reason": this.discardReason == null ? null : this.discardReason.toJson(),
+      "discard_reason":
+          this.discardReason == null ? null : this.discardReason.toJson(),
       "duration": this.duration,
     };
   }
 
   static const CONSTRUCTOR = 'messageCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageBasicGroupChatCreate extends MessageContent {
-
   /// A newly created basic group
-  MessageBasicGroupChatCreate({this.title,
-    this.memberUserIds});
+  MessageBasicGroupChatCreate({this.title, this.memberUserIds});
 
-  /// [title] Title of the basic group 
+  /// [title] Title of the basic group
   String title;
 
   /// [memberUserIds] User identifiers of members in the basic group
   List<int> memberUserIds;
 
   /// Parse from a json
-  MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json)  {
+  MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
-    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
+    this.memberUserIds = List<int>.from(
+        (json['member_user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -858,13 +846,12 @@ class MessageBasicGroupChatCreate extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageBasicGroupChatCreate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSupergroupChatCreate extends MessageContent {
-
   /// A newly created supergroup or channel
   MessageSupergroupChatCreate({this.title});
 
@@ -872,7 +859,7 @@ class MessageSupergroupChatCreate extends MessageContent {
   String title;
 
   /// Parse from a json
-  MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json)  {
+  MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
   }
 
@@ -885,13 +872,12 @@ class MessageSupergroupChatCreate extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageSupergroupChatCreate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatChangeTitle extends MessageContent {
-
   /// An updated chat title
   MessageChatChangeTitle({this.title});
 
@@ -899,7 +885,7 @@ class MessageChatChangeTitle extends MessageContent {
   String title;
 
   /// Parse from a json
-  MessageChatChangeTitle.fromJson(Map<String, dynamic> json)  {
+  MessageChatChangeTitle.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
   }
 
@@ -912,13 +898,12 @@ class MessageChatChangeTitle extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatChangeTitle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatChangePhoto extends MessageContent {
-
   /// An updated chat photo
   MessageChatChangePhoto({this.photo});
 
@@ -926,7 +911,7 @@ class MessageChatChangePhoto extends MessageContent {
   ChatPhoto photo;
 
   /// Parse from a json
-  MessageChatChangePhoto.fromJson(Map<String, dynamic> json)  {
+  MessageChatChangePhoto.fromJson(Map<String, dynamic> json) {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
   }
 
@@ -939,20 +924,17 @@ class MessageChatChangePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatChangePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatDeletePhoto extends MessageContent {
-
   /// A deleted chat photo
   MessageChatDeletePhoto();
 
-  
-
   /// Parse from a json
-  MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) ;
+  MessageChatDeletePhoto.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -962,13 +944,12 @@ class MessageChatDeletePhoto extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatDeletePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatAddMembers extends MessageContent {
-
   /// New chat members were added
   MessageChatAddMembers({this.memberUserIds});
 
@@ -976,8 +957,9 @@ class MessageChatAddMembers extends MessageContent {
   List<int> memberUserIds;
 
   /// Parse from a json
-  MessageChatAddMembers.fromJson(Map<String, dynamic> json)  {
-    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
+  MessageChatAddMembers.fromJson(Map<String, dynamic> json) {
+    this.memberUserIds = List<int>.from(
+        (json['member_user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -989,20 +971,17 @@ class MessageChatAddMembers extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatAddMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatJoinByLink extends MessageContent {
-
   /// A new member joined the chat by invite link
   MessageChatJoinByLink();
 
-  
-
   /// Parse from a json
-  MessageChatJoinByLink.fromJson(Map<String, dynamic> json) ;
+  MessageChatJoinByLink.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1012,13 +991,12 @@ class MessageChatJoinByLink extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatJoinByLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatDeleteMember extends MessageContent {
-
   /// A chat member was deleted
   MessageChatDeleteMember({this.userId});
 
@@ -1026,7 +1004,7 @@ class MessageChatDeleteMember extends MessageContent {
   int userId;
 
   /// Parse from a json
-  MessageChatDeleteMember.fromJson(Map<String, dynamic> json)  {
+  MessageChatDeleteMember.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
   }
 
@@ -1039,13 +1017,12 @@ class MessageChatDeleteMember extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatDeleteMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatUpgradeTo extends MessageContent {
-
   /// A basic group was upgraded to a supergroup and was deactivated as the result
   MessageChatUpgradeTo({this.supergroupId});
 
@@ -1053,7 +1030,7 @@ class MessageChatUpgradeTo extends MessageContent {
   int supergroupId;
 
   /// Parse from a json
-  MessageChatUpgradeTo.fromJson(Map<String, dynamic> json)  {
+  MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) {
     this.supergroupId = json['supergroup_id'];
   }
 
@@ -1066,25 +1043,23 @@ class MessageChatUpgradeTo extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatUpgradeTo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatUpgradeFrom extends MessageContent {
-
   /// A supergroup has been created from a basic group
-  MessageChatUpgradeFrom({this.title,
-    this.basicGroupId});
+  MessageChatUpgradeFrom({this.title, this.basicGroupId});
 
-  /// [title] Title of the newly created supergroup 
+  /// [title] Title of the newly created supergroup
   String title;
 
   /// [basicGroupId] The identifier of the original basic group
   int basicGroupId;
 
   /// Parse from a json
-  MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json)  {
+  MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
     this.basicGroupId = json['basic_group_id'];
   }
@@ -1099,13 +1074,12 @@ class MessageChatUpgradeFrom extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatUpgradeFrom';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePinMessage extends MessageContent {
-
   /// A message has been pinned
   MessagePinMessage({this.messageId});
 
@@ -1113,7 +1087,7 @@ class MessagePinMessage extends MessageContent {
   int messageId;
 
   /// Parse from a json
-  MessagePinMessage.fromJson(Map<String, dynamic> json)  {
+  MessagePinMessage.fromJson(Map<String, dynamic> json) {
     this.messageId = json['message_id'];
   }
 
@@ -1126,20 +1100,17 @@ class MessagePinMessage extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePinMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageScreenshotTaken extends MessageContent {
-
   /// A screenshot of a message in the chat has been taken
   MessageScreenshotTaken();
 
-  
-
   /// Parse from a json
-  MessageScreenshotTaken.fromJson(Map<String, dynamic> json) ;
+  MessageScreenshotTaken.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1149,13 +1120,12 @@ class MessageScreenshotTaken extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageScreenshotTaken';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageChatSetTtl extends MessageContent {
-
   /// The TTL (Time To Live) setting messages in a secret chat has been changed
   MessageChatSetTtl({this.ttl});
 
@@ -1163,7 +1133,7 @@ class MessageChatSetTtl extends MessageContent {
   int ttl;
 
   /// Parse from a json
-  MessageChatSetTtl.fromJson(Map<String, dynamic> json)  {
+  MessageChatSetTtl.fromJson(Map<String, dynamic> json) {
     this.ttl = json['ttl'];
   }
 
@@ -1176,13 +1146,12 @@ class MessageChatSetTtl extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageChatSetTtl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageCustomServiceAction extends MessageContent {
-
   /// A non-standard action has happened in the chat
   MessageCustomServiceAction({this.text});
 
@@ -1190,7 +1159,7 @@ class MessageCustomServiceAction extends MessageContent {
   String text;
 
   /// Parse from a json
-  MessageCustomServiceAction.fromJson(Map<String, dynamic> json)  {
+  MessageCustomServiceAction.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
   }
 
@@ -1203,29 +1172,26 @@ class MessageCustomServiceAction extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageCustomServiceAction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageGameScore extends MessageContent {
-
   /// A new high score was achieved in a game
-  MessageGameScore({this.gameMessageId,
-    this.gameId,
-    this.score});
+  MessageGameScore({this.gameMessageId, this.gameId, this.score});
 
-  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message 
+  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message
   int gameMessageId;
 
-  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game 
+  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game
   int gameId;
 
   /// [score] New score
   int score;
 
   /// Parse from a json
-  MessageGameScore.fromJson(Map<String, dynamic> json)  {
+  MessageGameScore.fromJson(Map<String, dynamic> json) {
     this.gameMessageId = json['game_message_id'];
     this.gameId = int.tryParse(json['game_id'] ?? "");
     this.score = json['score'];
@@ -1242,29 +1208,27 @@ class MessageGameScore extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePaymentSuccessful extends MessageContent {
-
   /// A payment has been completed
-  MessagePaymentSuccessful({this.invoiceMessageId,
-    this.currency,
-    this.totalAmount});
+  MessagePaymentSuccessful(
+      {this.invoiceMessageId, this.currency, this.totalAmount});
 
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message 
+  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
   int invoiceMessageId;
 
-  /// [currency] Currency for the price of the product 
+  /// [currency] Currency for the price of the product
   String currency;
 
   /// [totalAmount] Total price for the product, in the minimal quantity of the currency
   int totalAmount;
 
   /// Parse from a json
-  MessagePaymentSuccessful.fromJson(Map<String, dynamic> json)  {
+  MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) {
     this.invoiceMessageId = json['invoice_message_id'];
     this.currency = json['currency'];
     this.totalAmount = json['total_amount'];
@@ -1281,24 +1245,24 @@ class MessagePaymentSuccessful extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePaymentSuccessful';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePaymentSuccessfulBot extends MessageContent {
-
   /// A payment has been completed; for bots only
-  MessagePaymentSuccessfulBot({this.invoiceMessageId,
-    this.currency,
-    this.totalAmount,
-    this.invoicePayload,
-    this.shippingOptionId,
-    this.orderInfo,
-    this.telegramPaymentChargeId,
-    this.providerPaymentChargeId});
+  MessagePaymentSuccessfulBot(
+      {this.invoiceMessageId,
+      this.currency,
+      this.totalAmount,
+      this.invoicePayload,
+      this.shippingOptionId,
+      this.orderInfo,
+      this.telegramPaymentChargeId,
+      this.providerPaymentChargeId});
 
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message 
+  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
   int invoiceMessageId;
 
   /// [currency] Currency for price of the product
@@ -1307,10 +1271,10 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// [totalAmount] Total price for the product, in the minimal quantity of the currency
   int totalAmount;
 
-  /// [invoicePayload] Invoice payload 
+  /// [invoicePayload] Invoice payload
   String invoicePayload;
 
-  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable 
+  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable
   String shippingOptionId;
 
   /// [orderInfo] Information about the order; may be null
@@ -1323,13 +1287,14 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   String providerPaymentChargeId;
 
   /// Parse from a json
-  MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json)  {
+  MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) {
     this.invoiceMessageId = json['invoice_message_id'];
     this.currency = json['currency'];
     this.totalAmount = json['total_amount'];
     this.invoicePayload = json['invoice_payload'];
     this.shippingOptionId = json['shipping_option_id'];
-    this.orderInfo = OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{});
+    this.orderInfo =
+        OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{});
     this.telegramPaymentChargeId = json['telegram_payment_charge_id'];
     this.providerPaymentChargeId = json['provider_payment_charge_id'];
   }
@@ -1350,20 +1315,17 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePaymentSuccessfulBot';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageContactRegistered extends MessageContent {
-
   /// A contact has registered with Telegram
   MessageContactRegistered();
 
-  
-
   /// Parse from a json
-  MessageContactRegistered.fromJson(Map<String, dynamic> json) ;
+  MessageContactRegistered.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1373,13 +1335,12 @@ class MessageContactRegistered extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageContactRegistered';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageWebsiteConnected extends MessageContent {
-
   /// The current user has connected a website by logging in using Telegram Login Widget on it
   MessageWebsiteConnected({this.domainName});
 
@@ -1387,7 +1348,7 @@ class MessageWebsiteConnected extends MessageContent {
   String domainName;
 
   /// Parse from a json
-  MessageWebsiteConnected.fromJson(Map<String, dynamic> json)  {
+  MessageWebsiteConnected.fromJson(Map<String, dynamic> json) {
     this.domainName = json['domain_name'];
   }
 
@@ -1400,13 +1361,12 @@ class MessageWebsiteConnected extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageWebsiteConnected';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePassportDataSent extends MessageContent {
-
   /// Telegram Passport data has been sent
   MessagePassportDataSent({this.types});
 
@@ -1414,8 +1374,11 @@ class MessagePassportDataSent extends MessageContent {
   List<PassportElementType> types;
 
   /// Parse from a json
-  MessagePassportDataSent.fromJson(Map<String, dynamic> json)  {
-    this.types = List<PassportElementType>.from((json['types'] ?? []).map((item) => PassportElementType.fromJson(item ?? <String, dynamic>{})).toList());
+  MessagePassportDataSent.fromJson(Map<String, dynamic> json) {
+    this.types = List<PassportElementType>.from((json['types'] ?? [])
+        .map(
+            (item) => PassportElementType.fromJson(item ?? <String, dynamic>{}))
+        .toList());
   }
 
   @override
@@ -1427,27 +1390,29 @@ class MessagePassportDataSent extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messagePassportDataSent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessagePassportDataReceived extends MessageContent {
-
   /// Telegram Passport data has been received; for bots only
-  MessagePassportDataReceived({this.elements,
-    this.credentials});
+  MessagePassportDataReceived({this.elements, this.credentials});
 
-  /// [elements] List of received Telegram Passport elements 
+  /// [elements] List of received Telegram Passport elements
   List<EncryptedPassportElement> elements;
 
   /// [credentials] Encrypted data credentials
   EncryptedCredentials credentials;
 
   /// Parse from a json
-  MessagePassportDataReceived.fromJson(Map<String, dynamic> json)  {
-    this.elements = List<EncryptedPassportElement>.from((json['elements'] ?? []).map((item) => EncryptedPassportElement.fromJson(item ?? <String, dynamic>{})).toList());
-    this.credentials = EncryptedCredentials.fromJson(json['credentials'] ?? <String, dynamic>{});
+  MessagePassportDataReceived.fromJson(Map<String, dynamic> json) {
+    this.elements = List<EncryptedPassportElement>.from((json['elements'] ?? [])
+        .map((item) =>
+            EncryptedPassportElement.fromJson(item ?? <String, dynamic>{}))
+        .toList());
+    this.credentials = EncryptedCredentials.fromJson(
+        json['credentials'] ?? <String, dynamic>{});
   }
 
   @override
@@ -1455,25 +1420,61 @@ class MessagePassportDataReceived extends MessageContent {
     return {
       "@type": CONSTRUCTOR,
       "elements": this.elements.map((i) => i.toJson()).toList(),
-      "credentials": this.credentials == null ? null : this.credentials.toJson(),
+      "credentials":
+          this.credentials == null ? null : this.credentials.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'messagePassportDataReceived';
-  
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class MessageProximityAlertTriggered extends MessageContent {
+  /// A user in the chat came within proximity alert range
+  MessageProximityAlertTriggered({this.traveler, this.watcher, this.distance});
+
+  /// [traveler] The user or chat, which triggered the proximity alert
+  MessageSender traveler;
+
+  /// [watcher] The user or chat, which subscribed for the proximity alert
+  MessageSender watcher;
+
+  /// [distance] The distance between the users
+  int distance;
+
+  /// Parse from a json
+  MessageProximityAlertTriggered.fromJson(Map<String, dynamic> json) {
+    this.traveler =
+        MessageSender.fromJson(json['traveler'] ?? <String, dynamic>{});
+    this.watcher =
+        MessageSender.fromJson(json['watcher'] ?? <String, dynamic>{});
+    this.distance = json['distance'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "traveler": this.traveler == null ? null : this.traveler.toJson(),
+      "watcher": this.watcher == null ? null : this.watcher.toJson(),
+      "distance": this.distance,
+    };
+  }
+
+  static const CONSTRUCTOR = 'messageProximityAlertTriggered';
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageUnsupported extends MessageContent {
-
   /// Message content that is not supported in the current TDLib version
   MessageUnsupported();
 
-  
-
   /// Parse from a json
-  MessageUnsupported.fromJson(Map<String, dynamic> json) ;
+  MessageUnsupported.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -1483,7 +1484,7 @@ class MessageUnsupported extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageUnsupported';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

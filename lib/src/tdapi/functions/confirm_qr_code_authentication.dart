@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ConfirmQrCodeAuthentication extends TdFunction {
-
   /// Confirms QR code authentication on another device. Returns created session on success
   ConfirmQrCodeAuthentication({this.link});
 
@@ -12,7 +11,7 @@ class ConfirmQrCodeAuthentication extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ConfirmQrCodeAuthentication.fromJson(Map<String, dynamic> json) ;
+  ConfirmQrCodeAuthentication.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ConfirmQrCodeAuthentication extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'confirmQrCodeAuthentication';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

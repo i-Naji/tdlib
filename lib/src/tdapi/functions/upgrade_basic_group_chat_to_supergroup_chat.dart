@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
-
   /// Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges. Deactivates the original basic group
   UpgradeBasicGroupChatToSupergroupChat({this.chatId});
 
@@ -12,7 +11,7 @@ class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  UpgradeBasicGroupChatToSupergroupChat.fromJson(Map<String, dynamic> json) ;
+  UpgradeBasicGroupChatToSupergroupChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class UpgradeBasicGroupChatToSupergroupChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'upgradeBasicGroupChatToSupergroupChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class ImportedContacts extends TdObject {
-
   /// Represents the result of an ImportContacts request
-  ImportedContacts({this.userIds,
-    this.importerCount});
+  ImportedContacts({this.userIds, this.importerCount});
 
   /// [userIds] User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user
   List<int> userIds;
@@ -16,9 +14,11 @@ class ImportedContacts extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ImportedContacts.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
-    this.importerCount = List<int>.from((json['importer_count'] ?? []).map((item) => item).toList());
+  ImportedContacts.fromJson(Map<String, dynamic> json) {
+    this.userIds =
+        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
+    this.importerCount = List<int>.from(
+        (json['importer_count'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -32,7 +32,7 @@ class ImportedContacts extends TdObject {
   }
 
   static const CONSTRUCTOR = 'importedContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

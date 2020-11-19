@@ -1,17 +1,14 @@
 part of '../tdapi.dart';
 
 class TextParseMode extends TdObject {
-
   /// Describes the way the text should be parsed for TextEntities
   TextParseMode();
-
-  
 
   /// a TextParseMode return type can be :
   /// * TextParseModeMarkdown
   /// * TextParseModeHTML
-  factory TextParseMode.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory TextParseMode.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case TextParseModeMarkdown.CONSTRUCTOR:
         return TextParseModeMarkdown.fromJson(json);
       case TextParseModeHTML.CONSTRUCTOR:
@@ -23,19 +20,16 @@ class TextParseMode extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'textParseMode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class TextParseModeMarkdown extends TextParseMode {
-
   /// The text uses Markdown-style formatting
   TextParseModeMarkdown({this.version});
 
@@ -43,7 +37,7 @@ class TextParseModeMarkdown extends TextParseMode {
   int version;
 
   /// Parse from a json
-  TextParseModeMarkdown.fromJson(Map<String, dynamic> json)  {
+  TextParseModeMarkdown.fromJson(Map<String, dynamic> json) {
     this.version = json['version'];
   }
 
@@ -56,20 +50,17 @@ class TextParseModeMarkdown extends TextParseMode {
   }
 
   static const CONSTRUCTOR = 'textParseModeMarkdown';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class TextParseModeHTML extends TextParseMode {
-
   /// The text uses HTML-style formatting. The same as Telegram Bot API "HTML" parse mode
   TextParseModeHTML();
 
-  
-
   /// Parse from a json
-  TextParseModeHTML.fromJson(Map<String, dynamic> json) ;
+  TextParseModeHTML.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -79,7 +70,7 @@ class TextParseModeHTML extends TextParseMode {
   }
 
   static const CONSTRUCTOR = 'textParseModeHTML';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

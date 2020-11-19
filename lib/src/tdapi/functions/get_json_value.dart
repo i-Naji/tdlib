@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetJsonValue extends TdFunction {
-
   /// Converts a JSON-serialized string to corresponding JsonValue object. Can be called synchronously
   GetJsonValue({this.json});
 
@@ -12,7 +11,7 @@ class GetJsonValue extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetJsonValue.fromJson(Map<String, dynamic> json) ;
+  GetJsonValue.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetJsonValue extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getJsonValue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

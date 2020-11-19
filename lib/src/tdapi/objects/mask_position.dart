@@ -1,12 +1,8 @@
 part of '../tdapi.dart';
 
 class MaskPosition extends TdObject {
-
   /// Position on a photo where a mask should be placed
-  MaskPosition({this.point,
-    this.xShift,
-    this.yShift,
-    this.scale});
+  MaskPosition({this.point, this.xShift, this.yShift, this.scale});
 
   /// [point] Part of the face, relative to which the mask should be placed
   MaskPoint point;
@@ -21,7 +17,7 @@ class MaskPosition extends TdObject {
   double scale;
 
   /// Parse from a json
-  MaskPosition.fromJson(Map<String, dynamic> json)  {
+  MaskPosition.fromJson(Map<String, dynamic> json) {
     this.point = MaskPoint.fromJson(json['point'] ?? <String, dynamic>{});
     this.xShift = json['x_shift'];
     this.yShift = json['y_shift'];
@@ -40,7 +36,7 @@ class MaskPosition extends TdObject {
   }
 
   static const CONSTRUCTOR = 'maskPosition';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

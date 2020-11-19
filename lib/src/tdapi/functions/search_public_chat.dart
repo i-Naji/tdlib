@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SearchPublicChat extends TdFunction {
-
   /// Searches a public chat by its username. Currently only private chats, supergroups and channels can be public. Returns the chat if found; otherwise an error is returned
   SearchPublicChat({this.username});
 
@@ -12,7 +11,7 @@ class SearchPublicChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchPublicChat.fromJson(Map<String, dynamic> json) ;
+  SearchPublicChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SearchPublicChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchPublicChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

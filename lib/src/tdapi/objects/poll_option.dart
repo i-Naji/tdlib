@@ -1,18 +1,18 @@
 part of '../tdapi.dart';
 
 class PollOption extends TdObject {
-
   /// Describes one answer option of a poll
-  PollOption({this.text,
-    this.voterCount,
-    this.votePercentage,
-    this.isChosen,
-    this.isBeingChosen});
+  PollOption(
+      {this.text,
+      this.voterCount,
+      this.votePercentage,
+      this.isChosen,
+      this.isBeingChosen});
 
-  /// [text] Option text, 1-100 characters 
+  /// [text] Option text, 1-100 characters
   String text;
 
-  /// [voterCount] Number of voters for this option, available only for closed or voted polls 
+  /// [voterCount] Number of voters for this option, available only for closed or voted polls
   int voterCount;
 
   /// [votePercentage] The percentage of votes for this option, 0-100
@@ -25,7 +25,7 @@ class PollOption extends TdObject {
   bool isBeingChosen;
 
   /// Parse from a json
-  PollOption.fromJson(Map<String, dynamic> json)  {
+  PollOption.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
     this.voterCount = json['voter_count'];
     this.votePercentage = json['vote_percentage'];
@@ -46,7 +46,7 @@ class PollOption extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pollOption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

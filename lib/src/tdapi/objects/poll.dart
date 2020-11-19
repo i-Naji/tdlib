@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class Poll extends TdObject {
-
   /// Describes a poll
-  Poll({this.id,
-    this.question,
-    this.options,
-    this.totalVoterCount,
-    this.recentVoterUserIds,
-    this.isAnonymous,
-    this.type,
-    this.openPeriod,
-    this.closeDate,
-    this.isClosed});
+  Poll(
+      {this.id,
+      this.question,
+      this.options,
+      this.totalVoterCount,
+      this.recentVoterUserIds,
+      this.isAnonymous,
+      this.type,
+      this.openPeriod,
+      this.closeDate,
+      this.isClosed});
 
-  /// [id] Unique poll identifier 
+  /// [id] Unique poll identifier
   int id;
 
-  /// [question] Poll question, 1-300 characters 
+  /// [question] Poll question, 1-300 characters
   String question;
 
   /// [options] List of poll answer options
@@ -38,19 +38,22 @@ class Poll extends TdObject {
   /// [openPeriod] Amount of time the poll will be active after creation, in seconds
   int openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed 
+  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed
   int closeDate;
 
   /// [isClosed] True, if the poll is closed
   bool isClosed;
 
   /// Parse from a json
-  Poll.fromJson(Map<String, dynamic> json)  {
+  Poll.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.question = json['question'];
-    this.options = List<PollOption>.from((json['options'] ?? []).map((item) => PollOption.fromJson(item ?? <String, dynamic>{})).toList());
+    this.options = List<PollOption>.from((json['options'] ?? [])
+        .map((item) => PollOption.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.totalVoterCount = json['total_voter_count'];
-    this.recentVoterUserIds = List<int>.from((json['recent_voter_user_ids'] ?? []).map((item) => item).toList());
+    this.recentVoterUserIds = List<int>.from(
+        (json['recent_voter_user_ids'] ?? []).map((item) => item).toList());
     this.isAnonymous = json['is_anonymous'];
     this.type = PollType.fromJson(json['type'] ?? <String, dynamic>{});
     this.openPeriod = json['open_period'];
@@ -76,7 +79,7 @@ class Poll extends TdObject {
   }
 
   static const CONSTRUCTOR = 'poll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

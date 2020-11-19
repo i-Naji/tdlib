@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetChatAdministrators extends TdFunction {
-
   /// Returns a list of administrators of the chat with their custom titles
   GetChatAdministrators({this.chatId});
 
@@ -12,7 +11,7 @@ class GetChatAdministrators extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetChatAdministrators.fromJson(Map<String, dynamic> json) ;
+  GetChatAdministrators.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetChatAdministrators extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatAdministrators';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

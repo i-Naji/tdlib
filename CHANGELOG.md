@@ -1,3 +1,6 @@
+## 1.4.0
+* Update tdlib api to **v1.6.10**
+
 ## 1.3.0
 * Update tdlib api to **v1.6.8**
 

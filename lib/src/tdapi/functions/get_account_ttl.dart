@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetAccountTtl extends TdFunction {
-
   /// Returns the period of inactivity after which the account of the current user will automatically be deleted
   GetAccountTtl();
 
@@ -9,7 +8,7 @@ class GetAccountTtl extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetAccountTtl.fromJson(Map<String, dynamic> json) ;
+  GetAccountTtl.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetAccountTtl extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getAccountTtl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

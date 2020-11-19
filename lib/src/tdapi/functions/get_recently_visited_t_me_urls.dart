@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetRecentlyVisitedTMeUrls extends TdFunction {
-
   /// Returns t.me URLs recently visited by a newly registered user
   GetRecentlyVisitedTMeUrls({this.referrer});
 
@@ -12,7 +11,7 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetRecentlyVisitedTMeUrls.fromJson(Map<String, dynamic> json) ;
+  GetRecentlyVisitedTMeUrls.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecentlyVisitedTMeUrls';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

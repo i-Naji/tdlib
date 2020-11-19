@@ -1,13 +1,9 @@
 part of '../tdapi.dart';
 
 class DownloadFile extends TdFunction {
-
   /// Downloads a file from the cloud. Download progress and completion of the download will be notified through updateFile updates
-  DownloadFile({this.fileId,
-    this.priority,
-    this.offset,
-    this.limit,
-    this.synchronous});
+  DownloadFile(
+      {this.fileId, this.priority, this.offset, this.limit, this.synchronous});
 
   /// [fileId] Identifier of the file to download
   int fileId;
@@ -28,7 +24,7 @@ class DownloadFile extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DownloadFile.fromJson(Map<String, dynamic> json) ;
+  DownloadFile.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,7 +40,7 @@ class DownloadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'downloadFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

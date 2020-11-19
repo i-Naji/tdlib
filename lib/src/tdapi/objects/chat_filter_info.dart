@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatFilterInfo extends TdObject {
-
   /// Contains basic information about a chat filter
-  ChatFilterInfo({this.id,
-    this.title,
-    this.iconName});
+  ChatFilterInfo({this.id, this.title, this.iconName});
 
   /// [id] Unique chat filter identifier
   int id;
@@ -20,7 +17,7 @@ class ChatFilterInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ChatFilterInfo.fromJson(Map<String, dynamic> json)  {
+  ChatFilterInfo.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.title = json['title'];
     this.iconName = json['icon_name'];
@@ -38,7 +35,7 @@ class ChatFilterInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatFilterInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

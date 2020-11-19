@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class Invoice extends TdObject {
-
   /// Product invoice
-  Invoice({this.currency,
-    this.priceParts,
-    this.isTest,
-    this.needName,
-    this.needPhoneNumber,
-    this.needEmailAddress,
-    this.needShippingAddress,
-    this.sendPhoneNumberToProvider,
-    this.sendEmailAddressToProvider,
-    this.isFlexible});
+  Invoice(
+      {this.currency,
+      this.priceParts,
+      this.isTest,
+      this.needName,
+      this.needPhoneNumber,
+      this.needEmailAddress,
+      this.needShippingAddress,
+      this.sendPhoneNumberToProvider,
+      this.sendEmailAddressToProvider,
+      this.isFlexible});
 
-  /// [currency] ISO 4217 currency code 
+  /// [currency] ISO 4217 currency code
   String currency;
 
-  /// [priceParts] A list of objects used to calculate the total price of the product 
+  /// [priceParts] A list of objects used to calculate the total price of the product
   List<LabeledPricePart> priceParts;
 
   /// [isTest] True, if the payment is a test payment
@@ -26,7 +26,7 @@ class Invoice extends TdObject {
   /// [needName] True, if the user's name is needed for payment
   bool needName;
 
-  /// [needPhoneNumber] True, if the user's phone number is needed for payment 
+  /// [needPhoneNumber] True, if the user's phone number is needed for payment
   bool needPhoneNumber;
 
   /// [needEmailAddress] True, if the user's email address is needed for payment
@@ -45,9 +45,11 @@ class Invoice extends TdObject {
   bool isFlexible;
 
   /// Parse from a json
-  Invoice.fromJson(Map<String, dynamic> json)  {
+  Invoice.fromJson(Map<String, dynamic> json) {
     this.currency = json['currency'];
-    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? []).map((item) => LabeledPricePart.fromJson(item ?? <String, dynamic>{})).toList());
+    this.priceParts = List<LabeledPricePart>.from((json['price_parts'] ?? [])
+        .map((item) => LabeledPricePart.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.isTest = json['is_test'];
     this.needName = json['need_name'];
     this.needPhoneNumber = json['need_phone_number'];
@@ -76,7 +78,7 @@ class Invoice extends TdObject {
   }
 
   static const CONSTRUCTOR = 'invoice';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

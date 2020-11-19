@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveSavedAnimation extends TdFunction {
-
   /// Removes an animation from the list of saved animations
   RemoveSavedAnimation({this.animation});
 
@@ -12,7 +11,7 @@ class RemoveSavedAnimation extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveSavedAnimation.fromJson(Map<String, dynamic> json) ;
+  RemoveSavedAnimation.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveSavedAnimation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeSavedAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CloseSecretChat extends TdFunction {
-
   /// Closes a secret chat, effectively transferring its state to secretChatStateClosed
   CloseSecretChat({this.secretChatId});
 
@@ -12,7 +11,7 @@ class CloseSecretChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CloseSecretChat.fromJson(Map<String, dynamic> json) ;
+  CloseSecretChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CloseSecretChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'closeSecretChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class NetworkStatistics extends TdObject {
-
   /// A full list of available network statistic entries
-  NetworkStatistics({this.sinceDate,
-    this.entries});
+  NetworkStatistics({this.sinceDate, this.entries});
 
-  /// [sinceDate] Point in time (Unix timestamp) when the app began collecting statistics 
+  /// [sinceDate] Point in time (Unix timestamp) from which the statistics are collected
   int sinceDate;
 
   /// [entries] Network statistics entries
@@ -16,9 +14,12 @@ class NetworkStatistics extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  NetworkStatistics.fromJson(Map<String, dynamic> json)  {
+  NetworkStatistics.fromJson(Map<String, dynamic> json) {
     this.sinceDate = json['since_date'];
-    this.entries = List<NetworkStatisticsEntry>.from((json['entries'] ?? []).map((item) => NetworkStatisticsEntry.fromJson(item ?? <String, dynamic>{})).toList());
+    this.entries = List<NetworkStatisticsEntry>.from((json['entries'] ?? [])
+        .map((item) =>
+            NetworkStatisticsEntry.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -32,7 +33,7 @@ class NetworkStatistics extends TdObject {
   }
 
   static const CONSTRUCTOR = 'networkStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

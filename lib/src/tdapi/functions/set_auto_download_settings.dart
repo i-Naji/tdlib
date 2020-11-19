@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SetAutoDownloadSettings extends TdFunction {
-
   /// Sets auto-download settings
-  SetAutoDownloadSettings({this.settings,
-    this.type});
+  SetAutoDownloadSettings({this.settings, this.type});
 
-  /// [settings] New user auto-download settings 
+  /// [settings] New user auto-download settings
   AutoDownloadSettings settings;
 
   /// [type] Type of the network for which the new settings are applied
@@ -16,7 +14,7 @@ class SetAutoDownloadSettings extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetAutoDownloadSettings.fromJson(Map<String, dynamic> json) ;
+  SetAutoDownloadSettings.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SetAutoDownloadSettings extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setAutoDownloadSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

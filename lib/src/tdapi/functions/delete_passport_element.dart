@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DeletePassportElement extends TdFunction {
-
   /// Deletes a Telegram Passport element
   DeletePassportElement({this.type});
 
@@ -12,7 +11,7 @@ class DeletePassportElement extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DeletePassportElement.fromJson(Map<String, dynamic> json) ;
+  DeletePassportElement.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class DeletePassportElement extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deletePassportElement';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

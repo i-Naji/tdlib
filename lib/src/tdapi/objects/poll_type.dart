@@ -1,17 +1,14 @@
 part of '../tdapi.dart';
 
 class PollType extends TdObject {
-
   /// Describes the type of a poll
   PollType();
-
-  
 
   /// a PollType return type can be :
   /// * PollTypeRegular
   /// * PollTypeQuiz
-  factory PollType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PollType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PollTypeRegular.CONSTRUCTOR:
         return PollTypeRegular.fromJson(json);
       case PollTypeQuiz.CONSTRUCTOR:
@@ -23,19 +20,16 @@ class PollType extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'pollType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class PollTypeRegular extends PollType {
-
   /// A regular poll
   PollTypeRegular({this.allowMultipleAnswers});
 
@@ -43,7 +37,7 @@ class PollTypeRegular extends PollType {
   bool allowMultipleAnswers;
 
   /// Parse from a json
-  PollTypeRegular.fromJson(Map<String, dynamic> json)  {
+  PollTypeRegular.fromJson(Map<String, dynamic> json) {
     this.allowMultipleAnswers = json['allow_multiple_answers'];
   }
 
@@ -56,16 +50,14 @@ class PollTypeRegular extends PollType {
   }
 
   static const CONSTRUCTOR = 'pollTypeRegular';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class PollTypeQuiz extends PollType {
-
   /// A poll in quiz mode, which has exactly one correct answer option and can be answered only once
-  PollTypeQuiz({this.correctOptionId,
-    this.explanation});
+  PollTypeQuiz({this.correctOptionId, this.explanation});
 
   /// [correctOptionId] 0-based identifier of the correct answer option; -1 for a yet unanswered poll
   int correctOptionId;
@@ -74,9 +66,10 @@ class PollTypeQuiz extends PollType {
   FormattedText explanation;
 
   /// Parse from a json
-  PollTypeQuiz.fromJson(Map<String, dynamic> json)  {
+  PollTypeQuiz.fromJson(Map<String, dynamic> json) {
     this.correctOptionId = json['correct_option_id'];
-    this.explanation = FormattedText.fromJson(json['explanation'] ?? <String, dynamic>{});
+    this.explanation =
+        FormattedText.fromJson(json['explanation'] ?? <String, dynamic>{});
   }
 
   @override
@@ -84,12 +77,13 @@ class PollTypeQuiz extends PollType {
     return {
       "@type": CONSTRUCTOR,
       "correct_option_id": this.correctOptionId,
-      "explanation": this.explanation == null ? null : this.explanation.toJson(),
+      "explanation":
+          this.explanation == null ? null : this.explanation.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'pollTypeQuiz';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

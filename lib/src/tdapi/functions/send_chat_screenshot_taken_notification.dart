@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SendChatScreenshotTakenNotification extends TdFunction {
-
   /// Sends a notification about a screenshot taken in a chat. Supported only in private and secret chats
   SendChatScreenshotTakenNotification({this.chatId});
 
@@ -12,7 +11,7 @@ class SendChatScreenshotTakenNotification extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendChatScreenshotTakenNotification.fromJson(Map<String, dynamic> json) ;
+  SendChatScreenshotTakenNotification.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SendChatScreenshotTakenNotification extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendChatScreenshotTakenNotification';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

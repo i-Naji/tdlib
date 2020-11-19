@@ -3,8 +3,7 @@ package org.naji.td.tdlib;
 import android.os.Looper;
 import android.os.Handler;
 import android.content.Context;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.drinkless.tdlib.JsonClient;
 
@@ -21,13 +20,12 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 // todo: no context
 /** TdlibPlugin */
-public class TdlibPlugin implements MethodCallHandler, StreamHandler, FlutterPlugin {
+public class TdlibPlugin implements MethodCallHandler, FlutterPlugin {
   private static final String TDLIB_CHANNEL_NAME = "channel/to/tdlib";
   private static final String TDLIB_RECEIVE_CHANNEL_NAME = "channel/to/tdlib/receive";
   private MethodChannel methodChannel;
   private EventChannel eventChannel;
-
-  private final HashMap<Long, Client> clients = new HashMap<Long, Client>();
+  private final List<Client> clients = new ArrayList<Client>();
 
   /** Plugin registration. */
   public static void registerWith(Registrar registrar) {
@@ -155,29 +153,6 @@ public class TdlibPlugin implements MethodCallHandler, StreamHandler, FlutterPlu
       stopFlag = true;
     }
   }
-
-  @Override
-  public void onListen(Object arguments, EventSink events) {
-    long clientId = ((Number) arguments).longValue();
-    Client client = clients.get(clientId);
-    if (client == null) {
-      client = new Client(clientId, events);
-      clients.put(clientId, client);
-      new Thread(client, String.format("TDLib Client#%s", clientId)).start();
-    } else {
-      events.error("UNAVAILABLE", "This Client Already is being listened to ", null);
-    }
-
-  }
-
-  @Override
-  public void onCancel(Object arguments) {
-    long clientId = ((Number) arguments).longValue();
-    Client client = clients.remove(clientId);
-    if (client != null) {
-      client.close();
-    }
-  }
   
   @Override
   public void onDetachedFromEngine(FlutterPluginBinding binding) {
@@ -194,7 +169,28 @@ public class TdlibPlugin implements MethodCallHandler, StreamHandler, FlutterPlu
     methodChannel = new MethodChannel(messenger, TDLIB_CHANNEL_NAME);
     eventChannel  = new EventChannel(messenger, TDLIB_RECEIVE_CHANNEL_NAME);
 
-    eventChannel.setStreamHandler(this);
+    eventChannel.setStreamHandler(new StreamHandler() {
+      private Client client;
+
+      @Override
+      public void onListen(Object arguments, EventSink events) {
+        long clientId = ((Number) arguments).longValue();
+        for (Client entry : clients) {
+          if (entry.clientId == clientId){
+            events.error("UNAVAILABLE", "This Client Already is being listened to ", null);
+          }
+        }
+        client = new Client(clientId, events);
+        clients.add(client);
+        new Thread(client, String.format("TDLib Client#%s", clientId)).start();
+      }
+
+      @Override
+      public void onCancel(Object args) {
+        client.close();
+        clients.remove(client);
+      }
+    });
     methodChannel.setMethodCallHandler(this);
 
   }
@@ -204,8 +200,8 @@ public class TdlibPlugin implements MethodCallHandler, StreamHandler, FlutterPlu
     methodChannel = null;
     eventChannel.setStreamHandler(null);
     eventChannel = null;
-    for (Map.Entry<Long, Client> entry : clients.entrySet()) {
-      entry.getValue().close();
+    for (Client entry : clients) {
+      entry.close();
     }
     clients.clear();
   }

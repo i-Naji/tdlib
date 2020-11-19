@@ -1,16 +1,16 @@
 part of '../tdapi.dart';
 
 class PageBlockTableCell extends TdObject {
-
   /// Represents a cell of a table
-  PageBlockTableCell({this.text,
-    this.isHeader,
-    this.colspan,
-    this.rowspan,
-    this.align,
-    this.valign});
+  PageBlockTableCell(
+      {this.text,
+      this.isHeader,
+      this.colspan,
+      this.rowspan,
+      this.align,
+      this.valign});
 
-  /// [text] Cell text; may be null. If the text is null, then the cell should be invisible 
+  /// [text] Cell text; may be null. If the text is null, then the cell should be invisible
   RichText text;
 
   /// [isHeader] True, if it is a header cell
@@ -29,13 +29,15 @@ class PageBlockTableCell extends TdObject {
   PageBlockVerticalAlignment valign;
 
   /// Parse from a json
-  PageBlockTableCell.fromJson(Map<String, dynamic> json)  {
+  PageBlockTableCell.fromJson(Map<String, dynamic> json) {
     this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
     this.isHeader = json['is_header'];
     this.colspan = json['colspan'];
     this.rowspan = json['rowspan'];
-    this.align = PageBlockHorizontalAlignment.fromJson(json['align'] ?? <String, dynamic>{});
-    this.valign = PageBlockVerticalAlignment.fromJson(json['valign'] ?? <String, dynamic>{});
+    this.align = PageBlockHorizontalAlignment.fromJson(
+        json['align'] ?? <String, dynamic>{});
+    this.valign = PageBlockVerticalAlignment.fromJson(
+        json['valign'] ?? <String, dynamic>{});
   }
 
   @override
@@ -52,7 +54,7 @@ class PageBlockTableCell extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockTableCell';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

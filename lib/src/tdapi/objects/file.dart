@@ -1,13 +1,8 @@
 part of '../tdapi.dart';
 
 class File extends TdObject {
-
   /// Represents a file
-  File({this.id,
-    this.size,
-    this.expectedSize,
-    this.local,
-    this.remote});
+  File({this.id, this.size, this.expectedSize, this.local, this.remote});
 
   /// [id] Unique file identifier
   int id;
@@ -28,7 +23,7 @@ class File extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  File.fromJson(Map<String, dynamic> json)  {
+  File.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.size = json['size'];
     this.expectedSize = json['expected_size'];
@@ -50,7 +45,7 @@ class File extends TdObject {
   }
 
   static const CONSTRUCTOR = 'file';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

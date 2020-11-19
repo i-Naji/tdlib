@@ -1,23 +1,20 @@
 part of '../tdapi.dart';
 
 class TermsOfService extends TdObject {
-
   /// Contains Telegram terms of service
-  TermsOfService({this.text,
-    this.minUserAge,
-    this.showPopup});
+  TermsOfService({this.text, this.minUserAge, this.showPopup});
 
-  /// [text] Text of the terms of service 
+  /// [text] Text of the terms of service
   FormattedText text;
 
-  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if any 
+  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if any
   int minUserAge;
 
   /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
   bool showPopup;
 
   /// Parse from a json
-  TermsOfService.fromJson(Map<String, dynamic> json)  {
+  TermsOfService.fromJson(Map<String, dynamic> json) {
     this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
     this.minUserAge = json['min_user_age'];
     this.showPopup = json['show_popup'];
@@ -34,7 +31,7 @@ class TermsOfService extends TdObject {
   }
 
   static const CONSTRUCTOR = 'termsOfService';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,18 +1,13 @@
 part of '../tdapi.dart';
 
 class TestProxy extends TdFunction {
-
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
-  TestProxy({this.server,
-    this.port,
-    this.type,
-    this.dcId,
-    this.timeout});
+  TestProxy({this.server, this.port, this.type, this.dcId, this.timeout});
 
-  /// [server] Proxy server IP address 
+  /// [server] Proxy server IP address
   String server;
 
-  /// [port] Proxy server port 
+  /// [port] Proxy server port
   int port;
 
   /// [type] Proxy type
@@ -28,7 +23,7 @@ class TestProxy extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  TestProxy.fromJson(Map<String, dynamic> json) ;
+  TestProxy.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,7 +39,7 @@ class TestProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

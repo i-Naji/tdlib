@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatEventAction extends TdObject {
-
   /// Represents a chat event
   ChatEventAction();
-
-  
 
   /// a ChatEventAction return type can be :
   /// * ChatEventMessageEdited
@@ -30,8 +27,8 @@ class ChatEventAction extends TdObject {
   /// * ChatEventStickerSetChanged
   /// * ChatEventLocationChanged
   /// * ChatEventIsAllHistoryAvailableToggled
-  factory ChatEventAction.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ChatEventAction.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ChatEventMessageEdited.CONSTRUCTOR:
         return ChatEventMessageEdited.fromJson(json);
       case ChatEventMessageDeleted.CONSTRUCTOR:
@@ -83,33 +80,31 @@ class ChatEventAction extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'chatEventAction';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageEdited extends ChatEventAction {
-
   /// A message was edited
-  ChatEventMessageEdited({this.oldMessage,
-    this.newMessage});
+  ChatEventMessageEdited({this.oldMessage, this.newMessage});
 
-  /// [oldMessage] The original message before the edit 
+  /// [oldMessage] The original message before the edit
   Message oldMessage;
 
   /// [newMessage] The message after it was edited
   Message newMessage;
 
   /// Parse from a json
-  ChatEventMessageEdited.fromJson(Map<String, dynamic> json)  {
-    this.oldMessage = Message.fromJson(json['old_message'] ?? <String, dynamic>{});
-    this.newMessage = Message.fromJson(json['new_message'] ?? <String, dynamic>{});
+  ChatEventMessageEdited.fromJson(Map<String, dynamic> json) {
+    this.oldMessage =
+        Message.fromJson(json['old_message'] ?? <String, dynamic>{});
+    this.newMessage =
+        Message.fromJson(json['new_message'] ?? <String, dynamic>{});
   }
 
   @override
@@ -122,13 +117,12 @@ class ChatEventMessageEdited extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessageEdited';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageDeleted extends ChatEventAction {
-
   /// A message was deleted
   ChatEventMessageDeleted({this.message});
 
@@ -136,7 +130,7 @@ class ChatEventMessageDeleted extends ChatEventAction {
   Message message;
 
   /// Parse from a json
-  ChatEventMessageDeleted.fromJson(Map<String, dynamic> json)  {
+  ChatEventMessageDeleted.fromJson(Map<String, dynamic> json) {
     this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
   }
 
@@ -149,13 +143,12 @@ class ChatEventMessageDeleted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessageDeleted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPollStopped extends ChatEventAction {
-
   /// A poll in a message was stopped
   ChatEventPollStopped({this.message});
 
@@ -163,7 +156,7 @@ class ChatEventPollStopped extends ChatEventAction {
   Message message;
 
   /// Parse from a json
-  ChatEventPollStopped.fromJson(Map<String, dynamic> json)  {
+  ChatEventPollStopped.fromJson(Map<String, dynamic> json) {
     this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
   }
 
@@ -176,13 +169,12 @@ class ChatEventPollStopped extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventPollStopped';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessagePinned extends ChatEventAction {
-
   /// A message was pinned
   ChatEventMessagePinned({this.message});
 
@@ -190,7 +182,7 @@ class ChatEventMessagePinned extends ChatEventAction {
   Message message;
 
   /// Parse from a json
-  ChatEventMessagePinned.fromJson(Map<String, dynamic> json)  {
+  ChatEventMessagePinned.fromJson(Map<String, dynamic> json) {
     this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
   }
 
@@ -203,43 +195,43 @@ class ChatEventMessagePinned extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMessagePinned';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMessageUnpinned extends ChatEventAction {
-
   /// A message was unpinned
-  ChatEventMessageUnpinned();
+  ChatEventMessageUnpinned({this.message});
 
-  
+  /// [message] Unpinned message
+  Message message;
 
   /// Parse from a json
-  ChatEventMessageUnpinned.fromJson(Map<String, dynamic> json) ;
+  ChatEventMessageUnpinned.fromJson(Map<String, dynamic> json) {
+    this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
+      "message": this.message == null ? null : this.message.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'chatEventMessageUnpinned';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberJoined extends ChatEventAction {
-
   /// A new member joined the chat
   ChatEventMemberJoined();
 
-  
-
   /// Parse from a json
-  ChatEventMemberJoined.fromJson(Map<String, dynamic> json) ;
+  ChatEventMemberJoined.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -249,20 +241,17 @@ class ChatEventMemberJoined extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberJoined';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberLeft extends ChatEventAction {
-
   /// A member left the chat
   ChatEventMemberLeft();
 
-  
-
   /// Parse from a json
-  ChatEventMemberLeft.fromJson(Map<String, dynamic> json) ;
+  ChatEventMemberLeft.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -272,27 +261,26 @@ class ChatEventMemberLeft extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberLeft';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberInvited extends ChatEventAction {
-
   /// A new chat member was invited
-  ChatEventMemberInvited({this.userId,
-    this.status});
+  ChatEventMemberInvited({this.userId, this.status});
 
-  /// [userId] New member user identifier 
+  /// [userId] New member user identifier
   int userId;
 
   /// [status] New member status
   ChatMemberStatus status;
 
   /// Parse from a json
-  ChatEventMemberInvited.fromJson(Map<String, dynamic> json)  {
+  ChatEventMemberInvited.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
-    this.status = ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
+    this.status =
+        ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
   }
 
   @override
@@ -305,32 +293,31 @@ class ChatEventMemberInvited extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberInvited';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberPromoted extends ChatEventAction {
-
   /// A chat member has gained/lost administrator status, or the list of their administrator privileges has changed
-  ChatEventMemberPromoted({this.userId,
-    this.oldStatus,
-    this.newStatus});
+  ChatEventMemberPromoted({this.userId, this.oldStatus, this.newStatus});
 
-  /// [userId] Chat member user identifier 
+  /// [userId] Chat member user identifier
   int userId;
 
-  /// [oldStatus] Previous status of the chat member 
+  /// [oldStatus] Previous status of the chat member
   ChatMemberStatus oldStatus;
 
   /// [newStatus] New status of the chat member
   ChatMemberStatus newStatus;
 
   /// Parse from a json
-  ChatEventMemberPromoted.fromJson(Map<String, dynamic> json)  {
+  ChatEventMemberPromoted.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
-    this.oldStatus = ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{});
-    this.newStatus = ChatMemberStatus.fromJson(json['new_status'] ?? <String, dynamic>{});
+    this.oldStatus =
+        ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{});
+    this.newStatus =
+        ChatMemberStatus.fromJson(json['new_status'] ?? <String, dynamic>{});
   }
 
   @override
@@ -344,32 +331,31 @@ class ChatEventMemberPromoted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberPromoted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventMemberRestricted extends ChatEventAction {
-
   /// A chat member was restricted/unrestricted or banned/unbanned, or the list of their restrictions has changed
-  ChatEventMemberRestricted({this.userId,
-    this.oldStatus,
-    this.newStatus});
+  ChatEventMemberRestricted({this.userId, this.oldStatus, this.newStatus});
 
-  /// [userId] Chat member user identifier 
+  /// [userId] Chat member user identifier
   int userId;
 
-  /// [oldStatus] Previous status of the chat member 
+  /// [oldStatus] Previous status of the chat member
   ChatMemberStatus oldStatus;
 
   /// [newStatus] New status of the chat member
   ChatMemberStatus newStatus;
 
   /// Parse from a json
-  ChatEventMemberRestricted.fromJson(Map<String, dynamic> json)  {
+  ChatEventMemberRestricted.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
-    this.oldStatus = ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{});
-    this.newStatus = ChatMemberStatus.fromJson(json['new_status'] ?? <String, dynamic>{});
+    this.oldStatus =
+        ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{});
+    this.newStatus =
+        ChatMemberStatus.fromJson(json['new_status'] ?? <String, dynamic>{});
   }
 
   @override
@@ -383,25 +369,23 @@ class ChatEventMemberRestricted extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventMemberRestricted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventTitleChanged extends ChatEventAction {
-
   /// The chat title was changed
-  ChatEventTitleChanged({this.oldTitle,
-    this.newTitle});
+  ChatEventTitleChanged({this.oldTitle, this.newTitle});
 
-  /// [oldTitle] Previous chat title 
+  /// [oldTitle] Previous chat title
   String oldTitle;
 
   /// [newTitle] New chat title
   String newTitle;
 
   /// Parse from a json
-  ChatEventTitleChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventTitleChanged.fromJson(Map<String, dynamic> json) {
     this.oldTitle = json['old_title'];
     this.newTitle = json['new_title'];
   }
@@ -416,58 +400,58 @@ class ChatEventTitleChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventTitleChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPermissionsChanged extends ChatEventAction {
-
   /// The chat permissions was changed
-  ChatEventPermissionsChanged({this.oldPermissions,
-    this.newPermissions});
+  ChatEventPermissionsChanged({this.oldPermissions, this.newPermissions});
 
-  /// [oldPermissions] Previous chat permissions 
+  /// [oldPermissions] Previous chat permissions
   ChatPermissions oldPermissions;
 
   /// [newPermissions] New chat permissions
   ChatPermissions newPermissions;
 
   /// Parse from a json
-  ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json)  {
-    this.oldPermissions = ChatPermissions.fromJson(json['old_permissions'] ?? <String, dynamic>{});
-    this.newPermissions = ChatPermissions.fromJson(json['new_permissions'] ?? <String, dynamic>{});
+  ChatEventPermissionsChanged.fromJson(Map<String, dynamic> json) {
+    this.oldPermissions = ChatPermissions.fromJson(
+        json['old_permissions'] ?? <String, dynamic>{});
+    this.newPermissions = ChatPermissions.fromJson(
+        json['new_permissions'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_permissions": this.oldPermissions == null ? null : this.oldPermissions.toJson(),
-      "new_permissions": this.newPermissions == null ? null : this.newPermissions.toJson(),
+      "old_permissions":
+          this.oldPermissions == null ? null : this.oldPermissions.toJson(),
+      "new_permissions":
+          this.newPermissions == null ? null : this.newPermissions.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'chatEventPermissionsChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventDescriptionChanged extends ChatEventAction {
-
   /// The chat description was changed
-  ChatEventDescriptionChanged({this.oldDescription,
-    this.newDescription});
+  ChatEventDescriptionChanged({this.oldDescription, this.newDescription});
 
-  /// [oldDescription] Previous chat description 
+  /// [oldDescription] Previous chat description
   String oldDescription;
 
   /// [newDescription] New chat description
   String newDescription;
 
   /// Parse from a json
-  ChatEventDescriptionChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventDescriptionChanged.fromJson(Map<String, dynamic> json) {
     this.oldDescription = json['old_description'];
     this.newDescription = json['new_description'];
   }
@@ -482,25 +466,23 @@ class ChatEventDescriptionChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventDescriptionChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventUsernameChanged extends ChatEventAction {
-
   /// The chat username was changed
-  ChatEventUsernameChanged({this.oldUsername,
-    this.newUsername});
+  ChatEventUsernameChanged({this.oldUsername, this.newUsername});
 
-  /// [oldUsername] Previous chat username 
+  /// [oldUsername] Previous chat username
   String oldUsername;
 
   /// [newUsername] New chat username
   String newUsername;
 
   /// Parse from a json
-  ChatEventUsernameChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventUsernameChanged.fromJson(Map<String, dynamic> json) {
     this.oldUsername = json['old_username'];
     this.newUsername = json['new_username'];
   }
@@ -515,27 +497,27 @@ class ChatEventUsernameChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventUsernameChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventPhotoChanged extends ChatEventAction {
-
   /// The chat photo was changed
-  ChatEventPhotoChanged({this.oldPhoto,
-    this.newPhoto});
+  ChatEventPhotoChanged({this.oldPhoto, this.newPhoto});
 
-  /// [oldPhoto] Previous chat photo value; may be null 
+  /// [oldPhoto] Previous chat photo value; may be null
   ChatPhoto oldPhoto;
 
   /// [newPhoto] New chat photo value; may be null
   ChatPhoto newPhoto;
 
   /// Parse from a json
-  ChatEventPhotoChanged.fromJson(Map<String, dynamic> json)  {
-    this.oldPhoto = ChatPhoto.fromJson(json['old_photo'] ?? <String, dynamic>{});
-    this.newPhoto = ChatPhoto.fromJson(json['new_photo'] ?? <String, dynamic>{});
+  ChatEventPhotoChanged.fromJson(Map<String, dynamic> json) {
+    this.oldPhoto =
+        ChatPhoto.fromJson(json['old_photo'] ?? <String, dynamic>{});
+    this.newPhoto =
+        ChatPhoto.fromJson(json['new_photo'] ?? <String, dynamic>{});
   }
 
   @override
@@ -548,13 +530,12 @@ class ChatEventPhotoChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventPhotoChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventInvitesToggled extends ChatEventAction {
-
   /// The can_invite_users permission of a supergroup chat was toggled
   ChatEventInvitesToggled({this.canInviteUsers});
 
@@ -562,7 +543,7 @@ class ChatEventInvitesToggled extends ChatEventAction {
   bool canInviteUsers;
 
   /// Parse from a json
-  ChatEventInvitesToggled.fromJson(Map<String, dynamic> json)  {
+  ChatEventInvitesToggled.fromJson(Map<String, dynamic> json) {
     this.canInviteUsers = json['can_invite_users'];
   }
 
@@ -575,25 +556,23 @@ class ChatEventInvitesToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventInvitesToggled';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventLinkedChatChanged extends ChatEventAction {
-
   /// The linked chat of a supergroup was changed
-  ChatEventLinkedChatChanged({this.oldLinkedChatId,
-    this.newLinkedChatId});
+  ChatEventLinkedChatChanged({this.oldLinkedChatId, this.newLinkedChatId});
 
-  /// [oldLinkedChatId] Previous supergroup linked chat identifier 
+  /// [oldLinkedChatId] Previous supergroup linked chat identifier
   int oldLinkedChatId;
 
   /// [newLinkedChatId] New supergroup linked chat identifier
   int newLinkedChatId;
 
   /// Parse from a json
-  ChatEventLinkedChatChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventLinkedChatChanged.fromJson(Map<String, dynamic> json) {
     this.oldLinkedChatId = json['old_linked_chat_id'];
     this.newLinkedChatId = json['new_linked_chat_id'];
   }
@@ -608,25 +587,23 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventLinkedChatChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventSlowModeDelayChanged extends ChatEventAction {
-
   /// The slow_mode_delay setting of a supergroup was changed
-  ChatEventSlowModeDelayChanged({this.oldSlowModeDelay,
-    this.newSlowModeDelay});
+  ChatEventSlowModeDelayChanged({this.oldSlowModeDelay, this.newSlowModeDelay});
 
-  /// [oldSlowModeDelay] Previous value of slow_mode_delay 
+  /// [oldSlowModeDelay] Previous value of slow_mode_delay
   int oldSlowModeDelay;
 
   /// [newSlowModeDelay] New value of slow_mode_delay
   int newSlowModeDelay;
 
   /// Parse from a json
-  ChatEventSlowModeDelayChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventSlowModeDelayChanged.fromJson(Map<String, dynamic> json) {
     this.oldSlowModeDelay = json['old_slow_mode_delay'];
     this.newSlowModeDelay = json['new_slow_mode_delay'];
   }
@@ -641,13 +618,12 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventSlowModeDelayChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventSignMessagesToggled extends ChatEventAction {
-
   /// The sign_messages setting of a channel was toggled
   ChatEventSignMessagesToggled({this.signMessages});
 
@@ -655,7 +631,7 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   bool signMessages;
 
   /// Parse from a json
-  ChatEventSignMessagesToggled.fromJson(Map<String, dynamic> json)  {
+  ChatEventSignMessagesToggled.fromJson(Map<String, dynamic> json) {
     this.signMessages = json['sign_messages'];
   }
 
@@ -668,25 +644,23 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventSignMessagesToggled';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventStickerSetChanged extends ChatEventAction {
-
   /// The supergroup sticker set was changed
-  ChatEventStickerSetChanged({this.oldStickerSetId,
-    this.newStickerSetId});
+  ChatEventStickerSetChanged({this.oldStickerSetId, this.newStickerSetId});
 
-  /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none 
+  /// [oldStickerSetId] Previous identifier of the chat sticker set; 0 if none
   int oldStickerSetId;
 
   /// [newStickerSetId] New identifier of the chat sticker set; 0 if none
   int newStickerSetId;
 
   /// Parse from a json
-  ChatEventStickerSetChanged.fromJson(Map<String, dynamic> json)  {
+  ChatEventStickerSetChanged.fromJson(Map<String, dynamic> json) {
     this.oldStickerSetId = int.tryParse(json['old_sticker_set_id'] ?? "");
     this.newStickerSetId = int.tryParse(json['new_sticker_set_id'] ?? "");
   }
@@ -701,46 +675,47 @@ class ChatEventStickerSetChanged extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventStickerSetChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventLocationChanged extends ChatEventAction {
-
   /// The supergroup location was changed
-  ChatEventLocationChanged({this.oldLocation,
-    this.newLocation});
+  ChatEventLocationChanged({this.oldLocation, this.newLocation});
 
-  /// [oldLocation] Previous location; may be null 
+  /// [oldLocation] Previous location; may be null
   ChatLocation oldLocation;
 
   /// [newLocation] New location; may be null
   ChatLocation newLocation;
 
   /// Parse from a json
-  ChatEventLocationChanged.fromJson(Map<String, dynamic> json)  {
-    this.oldLocation = ChatLocation.fromJson(json['old_location'] ?? <String, dynamic>{});
-    this.newLocation = ChatLocation.fromJson(json['new_location'] ?? <String, dynamic>{});
+  ChatEventLocationChanged.fromJson(Map<String, dynamic> json) {
+    this.oldLocation =
+        ChatLocation.fromJson(json['old_location'] ?? <String, dynamic>{});
+    this.newLocation =
+        ChatLocation.fromJson(json['new_location'] ?? <String, dynamic>{});
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "old_location": this.oldLocation == null ? null : this.oldLocation.toJson(),
-      "new_location": this.newLocation == null ? null : this.newLocation.toJson(),
+      "old_location":
+          this.oldLocation == null ? null : this.oldLocation.toJson(),
+      "new_location":
+          this.newLocation == null ? null : this.newLocation.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'chatEventLocationChanged';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
-
   /// The is_all_history_available setting of a supergroup was toggled
   ChatEventIsAllHistoryAvailableToggled({this.isAllHistoryAvailable});
 
@@ -748,7 +723,7 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   bool isAllHistoryAvailable;
 
   /// Parse from a json
-  ChatEventIsAllHistoryAvailableToggled.fromJson(Map<String, dynamic> json)  {
+  ChatEventIsAllHistoryAvailableToggled.fromJson(Map<String, dynamic> json) {
     this.isAllHistoryAvailable = json['is_all_history_available'];
   }
 
@@ -761,7 +736,7 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventIsAllHistoryAvailableToggled';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,19 +1,17 @@
 part of '../tdapi.dart';
 
 class RecommendedChatFilter extends TdObject {
-
   /// Describes a recommended chat filter
-  RecommendedChatFilter({this.filter,
-    this.description});
+  RecommendedChatFilter({this.filter, this.description});
 
-  /// [filter] The chat filter 
+  /// [filter] The chat filter
   ChatFilter filter;
 
   /// [description] Chat filter description
   String description;
 
   /// Parse from a json
-  RecommendedChatFilter.fromJson(Map<String, dynamic> json)  {
+  RecommendedChatFilter.fromJson(Map<String, dynamic> json) {
     this.filter = ChatFilter.fromJson(json['filter'] ?? <String, dynamic>{});
     this.description = json['description'];
   }
@@ -28,7 +26,7 @@ class RecommendedChatFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'recommendedChatFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

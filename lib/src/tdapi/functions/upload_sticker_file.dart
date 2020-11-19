@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class UploadStickerFile extends TdFunction {
-
   /// Uploads a PNG image with a sticker; for bots only; returns the uploaded file
-  UploadStickerFile({this.userId,
-    this.pngSticker});
+  UploadStickerFile({this.userId, this.pngSticker});
 
   /// [userId] Sticker file owner
   int userId;
@@ -16,7 +14,7 @@ class UploadStickerFile extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  UploadStickerFile.fromJson(Map<String, dynamic> json) ;
+  UploadStickerFile.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class UploadStickerFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'uploadStickerFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

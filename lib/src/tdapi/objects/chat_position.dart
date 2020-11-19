@@ -1,12 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatPosition extends TdObject {
-
   /// Describes a position of a chat in a chat list
-  ChatPosition({this.list,
-    this.order,
-    this.isPinned,
-    this.source});
+  ChatPosition({this.list, this.order, this.isPinned, this.source});
 
   /// [list] The chat list
   ChatList list;
@@ -21,7 +17,7 @@ class ChatPosition extends TdObject {
   ChatSource source;
 
   /// Parse from a json
-  ChatPosition.fromJson(Map<String, dynamic> json)  {
+  ChatPosition.fromJson(Map<String, dynamic> json) {
     this.list = ChatList.fromJson(json['list'] ?? <String, dynamic>{});
     this.order = int.tryParse(json['order'] ?? "");
     this.isPinned = json['is_pinned'];
@@ -40,7 +36,7 @@ class ChatPosition extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatPosition';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

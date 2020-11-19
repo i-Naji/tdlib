@@ -1,16 +1,16 @@
 part of '../tdapi.dart';
 
 class ChatPermissions extends TdObject {
-
   /// Describes actions that a user is allowed to take in a chat
-  ChatPermissions({this.canSendMessages,
-    this.canSendMediaMessages,
-    this.canSendPolls,
-    this.canSendOtherMessages,
-    this.canAddWebPagePreviews,
-    this.canChangeInfo,
-    this.canInviteUsers,
-    this.canPinMessages});
+  ChatPermissions(
+      {this.canSendMessages,
+      this.canSendMediaMessages,
+      this.canSendPolls,
+      this.canSendOtherMessages,
+      this.canAddWebPagePreviews,
+      this.canChangeInfo,
+      this.canInviteUsers,
+      this.canPinMessages});
 
   /// [canSendMessages] True, if the user can send text messages, contacts, locations, and venues
   bool canSendMessages;
@@ -21,7 +21,7 @@ class ChatPermissions extends TdObject {
   /// [canSendPolls] True, if the user can send polls. Implies can_send_messages permissions
   bool canSendPolls;
 
-  /// [canSendOtherMessages] True, if the user can send animations, games, stickers and dice and use inline bots. Implies can_send_messages permissions
+  /// [canSendOtherMessages] True, if the user can send animations, games, stickers, and dice and use inline bots. Implies can_send_messages permissions
   bool canSendOtherMessages;
 
   /// [canAddWebPagePreviews] True, if the user may add a web page preview to their messages. Implies can_send_messages permissions
@@ -37,7 +37,7 @@ class ChatPermissions extends TdObject {
   bool canPinMessages;
 
   /// Parse from a json
-  ChatPermissions.fromJson(Map<String, dynamic> json)  {
+  ChatPermissions.fromJson(Map<String, dynamic> json) {
     this.canSendMessages = json['can_send_messages'];
     this.canSendMediaMessages = json['can_send_media_messages'];
     this.canSendPolls = json['can_send_polls'];
@@ -64,7 +64,7 @@ class ChatPermissions extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatPermissions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

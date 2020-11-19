@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetSavedAnimations extends TdFunction {
-
   /// Returns saved animations
   GetSavedAnimations();
 
@@ -9,7 +8,7 @@ class GetSavedAnimations extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetSavedAnimations.fromJson(Map<String, dynamic> json) ;
+  GetSavedAnimations.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetSavedAnimations extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSavedAnimations';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

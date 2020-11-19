@@ -1,24 +1,24 @@
 part of '../tdapi.dart';
 
 class User extends TdObject {
-
   /// Represents a user
-  User({this.id,
-    this.firstName,
-    this.lastName,
-    this.username,
-    this.phoneNumber,
-    this.status,
-    this.profilePhoto,
-    this.isContact,
-    this.isMutualContact,
-    this.isVerified,
-    this.isSupport,
-    this.restrictionReason,
-    this.isScam,
-    this.haveAccess,
-    this.type,
-    this.languageCode});
+  User(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.username,
+      this.phoneNumber,
+      this.status,
+      this.profilePhoto,
+      this.isContact,
+      this.isMutualContact,
+      this.isVerified,
+      this.isSupport,
+      this.restrictionReason,
+      this.isScam,
+      this.haveAccess,
+      this.type,
+      this.languageCode});
 
   /// [id] User identifier
   int id;
@@ -72,14 +72,15 @@ class User extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  User.fromJson(Map<String, dynamic> json)  {
+  User.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.firstName = json['first_name'];
     this.lastName = json['last_name'];
     this.username = json['username'];
     this.phoneNumber = json['phone_number'];
     this.status = UserStatus.fromJson(json['status'] ?? <String, dynamic>{});
-    this.profilePhoto = ProfilePhoto.fromJson(json['profile_photo'] ?? <String, dynamic>{});
+    this.profilePhoto =
+        ProfilePhoto.fromJson(json['profile_photo'] ?? <String, dynamic>{});
     this.isContact = json['is_contact'];
     this.isMutualContact = json['is_mutual_contact'];
     this.isVerified = json['is_verified'];
@@ -102,7 +103,8 @@ class User extends TdObject {
       "username": this.username,
       "phone_number": this.phoneNumber,
       "status": this.status == null ? null : this.status.toJson(),
-      "profile_photo": this.profilePhoto == null ? null : this.profilePhoto.toJson(),
+      "profile_photo":
+          this.profilePhoto == null ? null : this.profilePhoto.toJson(),
       "is_contact": this.isContact,
       "is_mutual_contact": this.isMutualContact,
       "is_verified": this.isVerified,
@@ -116,7 +118,7 @@ class User extends TdObject {
   }
 
   static const CONSTRUCTOR = 'user';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

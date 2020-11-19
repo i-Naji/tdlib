@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class LocalizationTargetInfo extends TdObject {
-
   /// Contains information about the current localization target
   LocalizationTargetInfo({this.languagePacks});
 
@@ -12,8 +11,11 @@ class LocalizationTargetInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  LocalizationTargetInfo.fromJson(Map<String, dynamic> json)  {
-    this.languagePacks = List<LanguagePackInfo>.from((json['language_packs'] ?? []).map((item) => LanguagePackInfo.fromJson(item ?? <String, dynamic>{})).toList());
+  LocalizationTargetInfo.fromJson(Map<String, dynamic> json) {
+    this.languagePacks = List<LanguagePackInfo>.from((json['language_packs'] ??
+            [])
+        .map((item) => LanguagePackInfo.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +28,7 @@ class LocalizationTargetInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'localizationTargetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

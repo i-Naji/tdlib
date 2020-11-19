@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class SetBackground extends TdFunction {
-
   /// Changes the background selected by the user; adds background to the list of installed backgrounds
-  SetBackground({this.background,
-    this.type,
-    this.forDarkTheme});
+  SetBackground({this.background, this.type, this.forDarkTheme});
 
   /// [background] The input background to use, null for filled backgrounds
   InputBackground background;
@@ -20,7 +17,7 @@ class SetBackground extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetBackground.fromJson(Map<String, dynamic> json) ;
+  SetBackground.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class SetBackground extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

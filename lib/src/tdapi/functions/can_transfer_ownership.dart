@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CanTransferOwnership extends TdFunction {
-
   /// Checks whether the current session can be used to transfer a chat ownership to another user
   CanTransferOwnership();
 
@@ -9,7 +8,7 @@ class CanTransferOwnership extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CanTransferOwnership.fromJson(Map<String, dynamic> json) ;
+  CanTransferOwnership.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class CanTransferOwnership extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'canTransferOwnership';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

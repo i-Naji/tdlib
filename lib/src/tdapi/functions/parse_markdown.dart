@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ParseMarkdown extends TdFunction {
-
   /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
   ParseMarkdown({this.text});
 
@@ -12,7 +11,7 @@ class ParseMarkdown extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ParseMarkdown.fromJson(Map<String, dynamic> json) ;
+  ParseMarkdown.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ParseMarkdown extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'parseMarkdown';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

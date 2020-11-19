@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetUserPrivacySettingRules extends TdFunction {
-
   /// Returns the current privacy settings
   GetUserPrivacySettingRules({this.setting});
 
@@ -12,7 +11,7 @@ class GetUserPrivacySettingRules extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetUserPrivacySettingRules.fromJson(Map<String, dynamic> json) ;
+  GetUserPrivacySettingRules.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetUserPrivacySettingRules extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getUserPrivacySettingRules';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

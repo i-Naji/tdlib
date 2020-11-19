@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class AcceptTermsOfService extends TdFunction {
-
   /// Accepts Telegram terms of services
   AcceptTermsOfService({this.termsOfServiceId});
 
@@ -12,7 +11,7 @@ class AcceptTermsOfService extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AcceptTermsOfService.fromJson(Map<String, dynamic> json) ;
+  AcceptTermsOfService.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class AcceptTermsOfService extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'acceptTermsOfService';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

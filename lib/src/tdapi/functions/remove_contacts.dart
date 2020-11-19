@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveContacts extends TdFunction {
-
   /// Removes users from the contact list
   RemoveContacts({this.userIds});
 
@@ -12,7 +11,7 @@ class RemoveContacts extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveContacts.fromJson(Map<String, dynamic> json) ;
+  RemoveContacts.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveContacts extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

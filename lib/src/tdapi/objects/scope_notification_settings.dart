@@ -1,13 +1,13 @@
 part of '../tdapi.dart';
 
 class ScopeNotificationSettings extends TdObject {
-
   /// Contains information about notification settings for several chats
-  ScopeNotificationSettings({this.muteFor,
-    this.sound,
-    this.showPreview,
-    this.disablePinnedMessageNotifications,
-    this.disableMentionNotifications});
+  ScopeNotificationSettings(
+      {this.muteFor,
+      this.sound,
+      this.showPreview,
+      this.disablePinnedMessageNotifications,
+      this.disableMentionNotifications});
 
   /// [muteFor] Time left before notifications will be unmuted, in seconds
   int muteFor;
@@ -28,11 +28,12 @@ class ScopeNotificationSettings extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ScopeNotificationSettings.fromJson(Map<String, dynamic> json)  {
+  ScopeNotificationSettings.fromJson(Map<String, dynamic> json) {
     this.muteFor = json['mute_for'];
     this.sound = json['sound'];
     this.showPreview = json['show_preview'];
-    this.disablePinnedMessageNotifications = json['disable_pinned_message_notifications'];
+    this.disablePinnedMessageNotifications =
+        json['disable_pinned_message_notifications'];
     this.disableMentionNotifications = json['disable_mention_notifications'];
     this.extra = json['@extra'];
   }
@@ -44,13 +45,14 @@ class ScopeNotificationSettings extends TdObject {
       "mute_for": this.muteFor,
       "sound": this.sound,
       "show_preview": this.showPreview,
-      "disable_pinned_message_notifications": this.disablePinnedMessageNotifications,
+      "disable_pinned_message_notifications":
+          this.disablePinnedMessageNotifications,
       "disable_mention_notifications": this.disableMentionNotifications,
     };
   }
 
   static const CONSTRUCTOR = 'scopeNotificationSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

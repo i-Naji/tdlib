@@ -1,23 +1,20 @@
 part of '../tdapi.dart';
 
 class ChatAdministrator extends TdObject {
-
   /// Contains information about a chat administrator
-  ChatAdministrator({this.userId,
-    this.customTitle,
-    this.isOwner});
+  ChatAdministrator({this.userId, this.customTitle, this.isOwner});
 
-  /// [userId] User identifier of the administrator 
+  /// [userId] User identifier of the administrator
   int userId;
 
-  /// [customTitle] Custom title of the administrator 
+  /// [customTitle] Custom title of the administrator
   String customTitle;
 
   /// [isOwner] True, if the user is the owner of the chat
   bool isOwner;
 
   /// Parse from a json
-  ChatAdministrator.fromJson(Map<String, dynamic> json)  {
+  ChatAdministrator.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
     this.customTitle = json['custom_title'];
     this.isOwner = json['is_owner'];
@@ -34,7 +31,7 @@ class ChatAdministrator extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatAdministrator';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

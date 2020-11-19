@@ -1,19 +1,19 @@
 part of '../tdapi.dart';
 
 class PageBlockRelatedArticle extends TdObject {
-
   /// Contains information about a related article
-  PageBlockRelatedArticle({this.url,
-    this.title,
-    this.description,
-    this.photo,
-    this.author,
-    this.publishDate});
+  PageBlockRelatedArticle(
+      {this.url,
+      this.title,
+      this.description,
+      this.photo,
+      this.author,
+      this.publishDate});
 
-  /// [url] Related article URL 
+  /// [url] Related article URL
   String url;
 
-  /// [title] Article title; may be empty 
+  /// [title] Article title; may be empty
   String title;
 
   /// [description] Article description; may be empty
@@ -22,14 +22,14 @@ class PageBlockRelatedArticle extends TdObject {
   /// [photo] Article photo; may be null
   Photo photo;
 
-  /// [author] Article author; may be empty 
+  /// [author] Article author; may be empty
   String author;
 
   /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
   int publishDate;
 
   /// Parse from a json
-  PageBlockRelatedArticle.fromJson(Map<String, dynamic> json)  {
+  PageBlockRelatedArticle.fromJson(Map<String, dynamic> json) {
     this.url = json['url'];
     this.title = json['title'];
     this.description = json['description'];
@@ -52,7 +52,7 @@ class PageBlockRelatedArticle extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockRelatedArticle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

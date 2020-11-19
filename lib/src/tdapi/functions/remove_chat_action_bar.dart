@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveChatActionBar extends TdFunction {
-
   /// Removes a chat action bar without any other action
   RemoveChatActionBar({this.chatId});
 
@@ -12,7 +11,7 @@ class RemoveChatActionBar extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveChatActionBar.fromJson(Map<String, dynamic> json) ;
+  RemoveChatActionBar.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveChatActionBar extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeChatActionBar';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ResetBackgrounds extends TdFunction {
-
   /// Resets list of installed backgrounds to its default value
   ResetBackgrounds();
 
@@ -9,7 +8,7 @@ class ResetBackgrounds extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ResetBackgrounds.fromJson(Map<String, dynamic> json) ;
+  ResetBackgrounds.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class ResetBackgrounds extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'resetBackgrounds';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

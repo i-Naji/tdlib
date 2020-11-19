@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class GetCallbackQueryAnswer extends TdFunction {
-
   /// Sends a callback query to a bot and returns an answer. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires
-  GetCallbackQueryAnswer({this.chatId,
-    this.messageId,
-    this.payload});
+  GetCallbackQueryAnswer({this.chatId, this.messageId, this.payload});
 
-  /// [chatId] Identifier of the chat with the message 
+  /// [chatId] Identifier of the chat with the message
   int chatId;
 
-  /// [messageId] Identifier of the message from which the query originated 
+  /// [messageId] Identifier of the message from which the query originated
   int messageId;
 
   /// [payload] Query payload
@@ -20,7 +17,7 @@ class GetCallbackQueryAnswer extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetCallbackQueryAnswer.fromJson(Map<String, dynamic> json) ;
+  GetCallbackQueryAnswer.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class GetCallbackQueryAnswer extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getCallbackQueryAnswer';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

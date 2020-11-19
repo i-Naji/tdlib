@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetChatFilter extends TdFunction {
-
   /// Returns information about a chat filter by its identifier
   GetChatFilter({this.chatFilterId});
 
@@ -12,7 +11,7 @@ class GetChatFilter extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetChatFilter.fromJson(Map<String, dynamic> json) ;
+  GetChatFilter.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetChatFilter extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

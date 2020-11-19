@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckRecoveryEmailAddressCode extends TdFunction {
-
   /// Checks the 2-step verification recovery email address verification code
   CheckRecoveryEmailAddressCode({this.code});
 
@@ -12,7 +11,7 @@ class CheckRecoveryEmailAddressCode extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckRecoveryEmailAddressCode.fromJson(Map<String, dynamic> json) ;
+  CheckRecoveryEmailAddressCode.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckRecoveryEmailAddressCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkRecoveryEmailAddressCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SetPinnedChats extends TdFunction {
-
   /// Changes the order of pinned chats
-  SetPinnedChats({this.chatList,
-    this.chatIds});
+  SetPinnedChats({this.chatList, this.chatIds});
 
-  /// [chatList] Chat list in which to change the order of pinned chats 
+  /// [chatList] Chat list in which to change the order of pinned chats
   ChatList chatList;
 
   /// [chatIds] The new list of pinned chats
@@ -16,7 +14,7 @@ class SetPinnedChats extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetPinnedChats.fromJson(Map<String, dynamic> json) ;
+  SetPinnedChats.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SetPinnedChats extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setPinnedChats';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

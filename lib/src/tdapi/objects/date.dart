@@ -1,23 +1,20 @@
 part of '../tdapi.dart';
 
 class Date extends TdObject {
-
   /// Represents a date according to the Gregorian calendar
-  Date({this.day,
-    this.month,
-    this.year});
+  Date({this.day, this.month, this.year});
 
-  /// [day] Day of the month, 1-31 
+  /// [day] Day of the month, 1-31
   int day;
 
-  /// [month] Month, 1-12 
+  /// [month] Month, 1-12
   int month;
 
   /// [year] Year, 1-9999
   int year;
 
   /// Parse from a json
-  Date.fromJson(Map<String, dynamic> json)  {
+  Date.fromJson(Map<String, dynamic> json) {
     this.day = json['day'];
     this.month = json['month'];
     this.year = json['year'];
@@ -34,7 +31,7 @@ class Date extends TdObject {
   }
 
   static const CONSTRUCTOR = 'date';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

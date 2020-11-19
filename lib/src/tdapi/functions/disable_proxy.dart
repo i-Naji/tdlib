@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DisableProxy extends TdFunction {
-
   /// Disables the currently enabled proxy. Can be called before authorization
   DisableProxy();
 
@@ -9,7 +8,7 @@ class DisableProxy extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DisableProxy.fromJson(Map<String, dynamic> json) ;
+  DisableProxy.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class DisableProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'disableProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

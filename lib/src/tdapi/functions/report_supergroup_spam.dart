@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class ReportSupergroupSpam extends TdFunction {
-
   /// Reports some messages from a user in a supergroup as spam; requires administrator rights in the supergroup
-  ReportSupergroupSpam({this.supergroupId,
-    this.userId,
-    this.messageIds});
+  ReportSupergroupSpam({this.supergroupId, this.userId, this.messageIds});
 
-  /// [supergroupId] Supergroup identifier 
+  /// [supergroupId] Supergroup identifier
   int supergroupId;
 
-  /// [userId] User identifier 
+  /// [userId] User identifier
   int userId;
 
   /// [messageIds] Identifiers of messages sent in the supergroup by the user. This list must be non-empty
@@ -20,7 +17,7 @@ class ReportSupergroupSpam extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ReportSupergroupSpam.fromJson(Map<String, dynamic> json) ;
+  ReportSupergroupSpam.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class ReportSupergroupSpam extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'reportSupergroupSpam';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

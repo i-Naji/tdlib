@@ -1,14 +1,14 @@
 part of '../tdapi.dart';
 
 class Background extends TdObject {
-
   /// Describes a chat background
-  Background({this.id,
-    this.isDefault,
-    this.isDark,
-    this.name,
-    this.document,
-    this.type});
+  Background(
+      {this.id,
+      this.isDefault,
+      this.isDark,
+      this.name,
+      this.document,
+      this.type});
 
   /// [id] Unique background identifier
   int id;
@@ -32,7 +32,7 @@ class Background extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Background.fromJson(Map<String, dynamic> json)  {
+  Background.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.isDefault = json['is_default'];
     this.isDark = json['is_dark'];
@@ -56,7 +56,7 @@ class Background extends TdObject {
   }
 
   static const CONSTRUCTOR = 'background';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetTemporaryPasswordState extends TdFunction {
-
   /// Returns information about the current temporary password
   GetTemporaryPasswordState();
 
@@ -9,7 +8,7 @@ class GetTemporaryPasswordState extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetTemporaryPasswordState.fromJson(Map<String, dynamic> json) ;
+  GetTemporaryPasswordState.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetTemporaryPasswordState extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getTemporaryPasswordState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

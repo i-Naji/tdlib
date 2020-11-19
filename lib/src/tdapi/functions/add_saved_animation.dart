@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class AddSavedAnimation extends TdFunction {
-
   /// Manually adds a new animation to the list of saved animations. The new animation is added to the beginning of the list. If the animation was already in the list, it is removed first. Only non-secret video animations with MIME type "video/mp4" can be added to the list
   AddSavedAnimation({this.animation});
 
@@ -12,7 +11,7 @@ class AddSavedAnimation extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AddSavedAnimation.fromJson(Map<String, dynamic> json) ;
+  AddSavedAnimation.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class AddSavedAnimation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addSavedAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

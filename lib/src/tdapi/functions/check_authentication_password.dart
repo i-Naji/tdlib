@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckAuthenticationPassword extends TdFunction {
-
   /// Checks the authentication password for correctness. Works only when the current authorization state is authorizationStateWaitPassword
   CheckAuthenticationPassword({this.password});
 
@@ -12,7 +11,7 @@ class CheckAuthenticationPassword extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckAuthenticationPassword.fromJson(Map<String, dynamic> json) ;
+  CheckAuthenticationPassword.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckAuthenticationPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkAuthenticationPassword';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

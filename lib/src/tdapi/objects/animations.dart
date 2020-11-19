@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Animations extends TdObject {
-
   /// Represents a list of animations
   Animations({this.animations});
 
@@ -12,8 +11,10 @@ class Animations extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Animations.fromJson(Map<String, dynamic> json)  {
-    this.animations = List<Animation>.from((json['animations'] ?? []).map((item) => Animation.fromJson(item ?? <String, dynamic>{})).toList());
+  Animations.fromJson(Map<String, dynamic> json) {
+    this.animations = List<Animation>.from((json['animations'] ?? [])
+        .map((item) => Animation.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +27,7 @@ class Animations extends TdObject {
   }
 
   static const CONSTRUCTOR = 'animations';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

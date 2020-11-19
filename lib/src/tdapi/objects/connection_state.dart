@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class ConnectionState extends TdObject {
-
   /// Describes the current state of the connection to Telegram servers
   ConnectionState();
-
-  
 
   /// a ConnectionState return type can be :
   /// * ConnectionStateWaitingForNetwork
@@ -13,8 +10,8 @@ class ConnectionState extends TdObject {
   /// * ConnectionStateConnecting
   /// * ConnectionStateUpdating
   /// * ConnectionStateReady
-  factory ConnectionState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory ConnectionState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case ConnectionStateWaitingForNetwork.CONSTRUCTOR:
         return ConnectionStateWaitingForNetwork.fromJson(json);
       case ConnectionStateConnectingToProxy.CONSTRUCTOR:
@@ -32,26 +29,21 @@ class ConnectionState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'connectionState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateWaitingForNetwork extends ConnectionState {
-
   /// Currently waiting for the network to become available. Use setNetworkType to change the available network type
   ConnectionStateWaitingForNetwork();
 
-  
-
   /// Parse from a json
-  ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json) ;
+  ConnectionStateWaitingForNetwork.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -61,20 +53,17 @@ class ConnectionStateWaitingForNetwork extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateWaitingForNetwork';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateConnectingToProxy extends ConnectionState {
-
   /// Currently establishing a connection with a proxy server
   ConnectionStateConnectingToProxy();
 
-  
-
   /// Parse from a json
-  ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json) ;
+  ConnectionStateConnectingToProxy.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -84,20 +73,17 @@ class ConnectionStateConnectingToProxy extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateConnectingToProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateConnecting extends ConnectionState {
-
   /// Currently establishing a connection to the Telegram servers
   ConnectionStateConnecting();
 
-  
-
   /// Parse from a json
-  ConnectionStateConnecting.fromJson(Map<String, dynamic> json) ;
+  ConnectionStateConnecting.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -107,20 +93,17 @@ class ConnectionStateConnecting extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateConnecting';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateUpdating extends ConnectionState {
-
   /// Downloading data received while the application was offline
   ConnectionStateUpdating();
 
-  
-
   /// Parse from a json
-  ConnectionStateUpdating.fromJson(Map<String, dynamic> json) ;
+  ConnectionStateUpdating.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -130,20 +113,17 @@ class ConnectionStateUpdating extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateUpdating';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class ConnectionStateReady extends ConnectionState {
-
   /// There is a working connection to the Telegram servers
   ConnectionStateReady();
 
-  
-
   /// Parse from a json
-  ConnectionStateReady.fromJson(Map<String, dynamic> json) ;
+  ConnectionStateReady.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -153,7 +133,7 @@ class ConnectionStateReady extends ConnectionState {
   }
 
   static const CONSTRUCTOR = 'connectionStateReady';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

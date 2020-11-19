@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class RegisterUser extends TdFunction {
-
   /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration
-  RegisterUser({this.firstName,
-    this.lastName});
+  RegisterUser({this.firstName, this.lastName});
 
   /// [firstName] The first name of the user; 1-64 characters
   String firstName;
@@ -16,7 +14,7 @@ class RegisterUser extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RegisterUser.fromJson(Map<String, dynamic> json) ;
+  RegisterUser.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class RegisterUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'registerUser';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

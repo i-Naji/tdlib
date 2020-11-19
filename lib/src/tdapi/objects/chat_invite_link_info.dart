@@ -1,18 +1,18 @@
 part of '../tdapi.dart';
 
 class ChatInviteLinkInfo extends TdObject {
-
   /// Contains information about a chat invite link
-  ChatInviteLinkInfo({this.chatId,
-    this.accessibleFor,
-    this.type,
-    this.title,
-    this.photo,
-    this.memberCount,
-    this.memberUserIds,
-    this.isPublic});
+  ChatInviteLinkInfo(
+      {this.chatId,
+      this.accessibleFor,
+      this.type,
+      this.title,
+      this.photo,
+      this.memberCount,
+      this.memberUserIds,
+      this.isPublic});
 
-  /// [chatId] Chat identifier of the invite link; 0 if the user have no access to the chat before joining
+  /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   int chatId;
 
   /// [accessibleFor] If non-zero, the remaining time for which read access is granted to the chat, in seconds
@@ -40,14 +40,15 @@ class ChatInviteLinkInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ChatInviteLinkInfo.fromJson(Map<String, dynamic> json)  {
+  ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) {
     this.chatId = json['chat_id'];
     this.accessibleFor = json['accessible_for'];
     this.type = ChatType.fromJson(json['type'] ?? <String, dynamic>{});
     this.title = json['title'];
     this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.memberCount = json['member_count'];
-    this.memberUserIds = List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList());
+    this.memberUserIds = List<int>.from(
+        (json['member_user_ids'] ?? []).map((item) => item).toList());
     this.isPublic = json['is_public'];
     this.extra = json['@extra'];
   }
@@ -68,7 +69,7 @@ class ChatInviteLinkInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatInviteLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

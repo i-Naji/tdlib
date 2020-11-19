@@ -1,17 +1,17 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsite extends TdObject {
-
   /// Contains information about one website the current user is logged in with Telegram
-  ConnectedWebsite({this.id,
-    this.domainName,
-    this.botUserId,
-    this.browser,
-    this.platform,
-    this.logInDate,
-    this.lastActiveDate,
-    this.ip,
-    this.location});
+  ConnectedWebsite(
+      {this.id,
+      this.domainName,
+      this.botUserId,
+      this.browser,
+      this.platform,
+      this.logInDate,
+      this.lastActiveDate,
+      this.ip,
+      this.location});
 
   /// [id] Website identifier
   int id;
@@ -41,7 +41,7 @@ class ConnectedWebsite extends TdObject {
   String location;
 
   /// Parse from a json
-  ConnectedWebsite.fromJson(Map<String, dynamic> json)  {
+  ConnectedWebsite.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.domainName = json['domain_name'];
     this.botUserId = json['bot_user_id'];
@@ -70,7 +70,7 @@ class ConnectedWebsite extends TdObject {
   }
 
   static const CONSTRUCTOR = 'connectedWebsite';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

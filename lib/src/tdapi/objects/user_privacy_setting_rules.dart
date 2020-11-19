@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class UserPrivacySettingRules extends TdObject {
-
   /// A list of privacy rules. Rules are matched in the specified order. The first matched rule defines the privacy setting for a given user. If no rule matches, the action is not allowed
   UserPrivacySettingRules({this.rules});
 
@@ -12,8 +11,11 @@ class UserPrivacySettingRules extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  UserPrivacySettingRules.fromJson(Map<String, dynamic> json)  {
-    this.rules = List<UserPrivacySettingRule>.from((json['rules'] ?? []).map((item) => UserPrivacySettingRule.fromJson(item ?? <String, dynamic>{})).toList());
+  UserPrivacySettingRules.fromJson(Map<String, dynamic> json) {
+    this.rules = List<UserPrivacySettingRule>.from((json['rules'] ?? [])
+        .map((item) =>
+            UserPrivacySettingRule.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +28,7 @@ class UserPrivacySettingRules extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRules';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetStorageStatistics extends TdFunction {
-
   /// Returns storage usage statistics. Can be called before authorization
   GetStorageStatistics({this.chatLimit});
 
@@ -12,7 +11,7 @@ class GetStorageStatistics extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetStorageStatistics.fromJson(Map<String, dynamic> json) ;
+  GetStorageStatistics.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetStorageStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getStorageStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

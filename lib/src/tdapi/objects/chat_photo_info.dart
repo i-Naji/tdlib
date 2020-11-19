@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class ChatPhotoInfo extends TdObject {
-
   /// Contains basic information about the photo of a chat
-  ChatPhotoInfo({this.small,
-    this.big,
-    this.hasAnimation});
+  ChatPhotoInfo({this.small, this.big, this.hasAnimation});
 
   /// [small] A small (160x160) chat photo variant in JPEG format. The file can be downloaded only before the photo is changed
   File small;
@@ -17,7 +14,7 @@ class ChatPhotoInfo extends TdObject {
   bool hasAnimation;
 
   /// Parse from a json
-  ChatPhotoInfo.fromJson(Map<String, dynamic> json)  {
+  ChatPhotoInfo.fromJson(Map<String, dynamic> json) {
     this.small = File.fromJson(json['small'] ?? <String, dynamic>{});
     this.big = File.fromJson(json['big'] ?? <String, dynamic>{});
     this.hasAnimation = json['has_animation'];
@@ -34,7 +31,7 @@ class ChatPhotoInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatPhotoInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

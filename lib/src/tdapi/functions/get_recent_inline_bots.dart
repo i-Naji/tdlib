@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetRecentInlineBots extends TdFunction {
-
   /// Returns up to 20 recently used inline bots in the order of their last usage
   GetRecentInlineBots();
 
@@ -9,7 +8,7 @@ class GetRecentInlineBots extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetRecentInlineBots.fromJson(Map<String, dynamic> json) ;
+  GetRecentInlineBots.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetRecentInlineBots extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecentInlineBots';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

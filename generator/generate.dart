@@ -123,9 +123,8 @@ class DartTdDocumentationGenerator {
         final classReturnType = classData.group(3);
         final args = (classArgs == null)
             ? <String, String>{}
-            : Map<String, String>.fromIterable( // ignore: prefer_for_elements_to_map_fromIterable
-                classArgs.trim().split(
-                    ' '),
+            // ignore: prefer_for_elements_to_map_fromIterable
+            : Map<String, String>.fromIterable(classArgs.trim().split(' '),
                 key: (var arg) => arg.split(':')[0],
                 value: (var arg) => arg.split(':')[1]);
 
@@ -208,7 +207,8 @@ class DartTdDocumentationGenerator {
       } else {
         toJsonFields.add('\"@type\": CONSTRUCTOR,');
         obj.variables.forEach((variable) {
-          variables.add('/// [${variable.argName}] ${variable.description}\n  ${variable.type} ${variable.argName};');
+          variables.add(
+              '/// [${variable.argName}] ${variable.description}\n  ${variable.type} ${variable.argName};');
           arguments.add('this.${variable.argName}');
           fromJsonFields.add('this.${variable.argName} = ${variable.read};');
           toJsonFields.add('\n      "${variable.name}": ${variable.write},');
@@ -244,15 +244,13 @@ class DartTdDocumentationGenerator {
           .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
           .replaceAll('PARENT', parent)
           .replaceAll('VARIABLES', variables.join('\n\n  '))
-          .replaceAll(
-              'DESCRIPTION',
-              obj.description
+          .replaceAll('DESCRIPTION', obj.description
 //                  + (hasFactory
 //                      ? ''
 //                      : (obj.variables.isNotEmpty
 //                          ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
 //                          : ''))
-          )
+              )
           .replaceAll('ARGUMENTS',
               arguments.isEmpty ? '' : '{${arguments.join(',\n    ')}}')
           .replaceAll(
@@ -386,7 +384,7 @@ class TlObjectArg {
     this.argName = argName ?? lowerFirstChar(camelCase(this.name));
     this.type = getType(tlType);
     if (this.type == 'Error') this.type = 'TdError';
-    this.read = getRead(this.name, this.type, isInt64: tlType=='int64');
+    this.read = getRead(this.name, this.type, isInt64: tlType == 'int64');
     this.write = getWrite(this.argName, this.type);
   }
 
@@ -409,12 +407,15 @@ class TlObjectArg {
   }
 
   static String getRead(String name, String type,
-      {String pattern = 'PLACE', String itemName = 'item', bool isInt64 = false}) {
+      {String pattern = 'PLACE',
+      String itemName = 'item',
+      bool isInt64 = false}) {
     String readFromJson;
     if (dartTypes.contains(type)) {
-      if (isInt64){
-        readFromJson = 'int.tryParse($pattern ?? "")'; // todo: change to BigInt or String!
-      }else {
+      if (isInt64) {
+        readFromJson =
+            'int.tryParse($pattern ?? "")'; // todo: change to BigInt or String!
+      } else {
         readFromJson = pattern;
       }
     } else if (type.startsWith('List')) {
@@ -429,7 +430,8 @@ class TlObjectArg {
         .replaceAll('TYPE', type);
   }
 
-  static String getWrite(String argName, String type, {String itemName = 'i', isList = false}) {
+  static String getWrite(String argName, String type,
+      {String itemName = 'i', isList = false}) {
     String writeToJson;
     if (dartTypes.contains(type)) {
       writeToJson = '';

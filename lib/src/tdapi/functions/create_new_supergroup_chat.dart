@@ -1,20 +1,17 @@
 part of '../tdapi.dart';
 
 class CreateNewSupergroupChat extends TdFunction {
-
   /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
-  CreateNewSupergroupChat({this.title,
-    this.isChannel,
-    this.description,
-    this.location});
+  CreateNewSupergroupChat(
+      {this.title, this.isChannel, this.description, this.location});
 
-  /// [title] Title of the new chat; 1-128 characters 
+  /// [title] Title of the new chat; 1-128 characters
   String title;
 
-  /// [isChannel] True, if a channel chat should be created 
+  /// [isChannel] True, if a channel chat should be created
   bool isChannel;
 
-  /// [description] Chat description; 0-255 characters 
+  /// [description] Chat description; 0-255 characters
   String description;
 
   /// [location] Chat location if a location-based supergroup is being created
@@ -24,7 +21,7 @@ class CreateNewSupergroupChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CreateNewSupergroupChat.fromJson(Map<String, dynamic> json) ;
+  CreateNewSupergroupChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -39,7 +36,7 @@ class CreateNewSupergroupChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createNewSupergroupChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

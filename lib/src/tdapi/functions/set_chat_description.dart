@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SetChatDescription extends TdFunction {
-
   /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info rights
-  SetChatDescription({this.chatId,
-    this.description});
+  SetChatDescription({this.chatId, this.description});
 
-  /// [chatId] Identifier of the chat 
+  /// [chatId] Identifier of the chat
   int chatId;
 
   /// [description] New chat description; 0-255 characters
@@ -16,7 +14,7 @@ class SetChatDescription extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetChatDescription.fromJson(Map<String, dynamic> json) ;
+  SetChatDescription.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SetChatDescription extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setChatDescription';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

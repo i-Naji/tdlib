@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SearchStickerSets extends TdFunction {
-
   /// Searches for ordinary sticker sets by looking for specified query in their title and name. Excludes installed sticker sets from the results
   SearchStickerSets({this.query});
 
@@ -12,7 +11,7 @@ class SearchStickerSets extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchStickerSets.fromJson(Map<String, dynamic> json) ;
+  SearchStickerSets.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SearchStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchStickerSets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

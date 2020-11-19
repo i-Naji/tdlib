@@ -1,15 +1,16 @@
 part of '../tdapi.dart';
 
 class SearchChatMessages extends TdFunction {
-
   /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages should be used instead), or without an enabled message database. For optimal performance the number of returned messages is chosen by the library
-  SearchChatMessages({this.chatId,
-    this.query,
-    this.senderUserId,
-    this.fromMessageId,
-    this.offset,
-    this.limit,
-    this.filter});
+  SearchChatMessages(
+      {this.chatId,
+      this.query,
+      this.sender,
+      this.fromMessageId,
+      this.offset,
+      this.limit,
+      this.filter,
+      this.messageThreadId});
 
   /// [chatId] Identifier of the chat in which to search messages
   int chatId;
@@ -17,8 +18,8 @@ class SearchChatMessages extends TdFunction {
   /// [query] Query to search for
   String query;
 
-  /// [senderUserId] If not 0, only messages sent by the specified user will be returned. Not supported in secret chats
-  int senderUserId;
+  /// [sender] If not null, only messages sent by the specified sender will be returned. Not supported in secret chats
+  MessageSender sender;
 
   /// [fromMessageId] Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
   int fromMessageId;
@@ -32,11 +33,14 @@ class SearchChatMessages extends TdFunction {
   /// [filter] Filter for message content in the search results
   SearchMessagesFilter filter;
 
+  /// [messageThreadId] If not 0, only messages in the specified thread will be returned; supergroups only
+  int messageThreadId;
+
   /// callback sign
   dynamic extra;
 
   /// Parse from a json
-  SearchChatMessages.fromJson(Map<String, dynamic> json) ;
+  SearchChatMessages.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,17 +48,18 @@ class SearchChatMessages extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "query": this.query,
-      "sender_user_id": this.senderUserId,
+      "sender": this.sender == null ? null : this.sender.toJson(),
       "from_message_id": this.fromMessageId,
       "offset": this.offset,
       "limit": this.limit,
       "filter": this.filter == null ? null : this.filter.toJson(),
+      "message_thread_id": this.messageThreadId,
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'searchChatMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

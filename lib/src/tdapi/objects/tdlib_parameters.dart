@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class TdlibParameters extends TdObject {
-
   /// Contains parameters for TDLib initialization
-  TdlibParameters({this.useTestDc,
-    this.databaseDirectory,
-    this.filesDirectory,
-    this.useFileDatabase,
-    this.useChatInfoDatabase,
-    this.useMessageDatabase,
-    this.useSecretChats,
-    this.apiId,
-    this.apiHash,
-    this.systemLanguageCode,
-    this.deviceModel,
-    this.systemVersion,
-    this.applicationVersion,
-    this.enableStorageOptimizer,
-    this.ignoreFileNames});
+  TdlibParameters(
+      {this.useTestDc,
+      this.databaseDirectory,
+      this.filesDirectory,
+      this.useFileDatabase,
+      this.useChatInfoDatabase,
+      this.useMessageDatabase,
+      this.useSecretChats,
+      this.apiId,
+      this.apiHash,
+      this.systemLanguageCode,
+      this.deviceModel,
+      this.systemVersion,
+      this.applicationVersion,
+      this.enableStorageOptimizer,
+      this.ignoreFileNames});
 
   /// [useTestDc] If set to true, the Telegram test environment will be used instead of the production environment
   bool useTestDc;
@@ -65,7 +65,7 @@ class TdlibParameters extends TdObject {
   bool ignoreFileNames;
 
   /// Parse from a json
-  TdlibParameters.fromJson(Map<String, dynamic> json)  {
+  TdlibParameters.fromJson(Map<String, dynamic> json) {
     this.useTestDc = json['use_test_dc'];
     this.databaseDirectory = json['database_directory'];
     this.filesDirectory = json['files_directory'];
@@ -106,7 +106,7 @@ class TdlibParameters extends TdObject {
   }
 
   static const CONSTRUCTOR = 'tdlibParameters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

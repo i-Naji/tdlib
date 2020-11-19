@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class PageBlockListItem extends TdObject {
-
   /// Describes an item of a list page block
-  PageBlockListItem({this.label,
-    this.pageBlocks});
+  PageBlockListItem({this.label, this.pageBlocks});
 
-  /// [label] Item label 
+  /// [label] Item label
   String label;
 
   /// [pageBlocks] Item blocks
   List<PageBlock> pageBlocks;
 
   /// Parse from a json
-  PageBlockListItem.fromJson(Map<String, dynamic> json)  {
+  PageBlockListItem.fromJson(Map<String, dynamic> json) {
     this.label = json['label'];
-    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item ?? <String, dynamic>{})).toList());
+    this.pageBlocks = List<PageBlock>.from((json['page_blocks'] ?? [])
+        .map((item) => PageBlock.fromJson(item ?? <String, dynamic>{}))
+        .toList());
   }
 
   @override
@@ -28,7 +28,7 @@ class PageBlockListItem extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pageBlockListItem';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,12 +1,8 @@
 part of '../tdapi.dart';
 
 class ProfilePhoto extends TdObject {
-
   /// Describes a user profile photo
-  ProfilePhoto({this.id,
-    this.small,
-    this.big,
-    this.hasAnimation});
+  ProfilePhoto({this.id, this.small, this.big, this.hasAnimation});
 
   /// [id] Photo identifier; 0 for an empty photo. Can be used to find a photo in a list of user profile photos
   int id;
@@ -21,7 +17,7 @@ class ProfilePhoto extends TdObject {
   bool hasAnimation;
 
   /// Parse from a json
-  ProfilePhoto.fromJson(Map<String, dynamic> json)  {
+  ProfilePhoto.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.small = File.fromJson(json['small'] ?? <String, dynamic>{});
     this.big = File.fromJson(json['big'] ?? <String, dynamic>{});
@@ -40,7 +36,7 @@ class ProfilePhoto extends TdObject {
   }
 
   static const CONSTRUCTOR = 'profilePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SetLogStream extends TdFunction {
-
   /// Sets new log stream for internal logging of TDLib. Can be called synchronously
   SetLogStream({this.logStream});
 
@@ -12,7 +11,7 @@ class SetLogStream extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetLogStream.fromJson(Map<String, dynamic> json) ;
+  SetLogStream.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SetLogStream extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setLogStream';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

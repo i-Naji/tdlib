@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class BotInfo extends TdObject {
-
   /// Provides information about a bot and its supported commands
-  BotInfo({this.description,
-    this.commands});
+  BotInfo({this.description, this.commands});
 
-  /// [description] Long description shown on the user info page 
+  /// [description] Long description shown on the user info page
   String description;
 
   /// [commands] A list of commands supported by the bot
   List<BotCommand> commands;
 
   /// Parse from a json
-  BotInfo.fromJson(Map<String, dynamic> json)  {
+  BotInfo.fromJson(Map<String, dynamic> json) {
     this.description = json['description'];
-    this.commands = List<BotCommand>.from((json['commands'] ?? []).map((item) => BotCommand.fromJson(item ?? <String, dynamic>{})).toList());
+    this.commands = List<BotCommand>.from((json['commands'] ?? [])
+        .map((item) => BotCommand.fromJson(item ?? <String, dynamic>{}))
+        .toList());
   }
 
   @override
@@ -28,7 +28,7 @@ class BotInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'botInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

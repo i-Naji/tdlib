@@ -1,28 +1,25 @@
 part of '../tdapi.dart';
 
 class Thumbnail extends TdObject {
-
   /// Represents a thumbnail
-  Thumbnail({this.format,
-    this.width,
-    this.height,
-    this.file});
+  Thumbnail({this.format, this.width, this.height, this.file});
 
-  /// [format] Thumbnail format 
+  /// [format] Thumbnail format
   ThumbnailFormat format;
 
-  /// [width] Thumbnail width 
+  /// [width] Thumbnail width
   int width;
 
-  /// [height] Thumbnail height 
+  /// [height] Thumbnail height
   int height;
 
   /// [file] The thumbnail
   File file;
 
   /// Parse from a json
-  Thumbnail.fromJson(Map<String, dynamic> json)  {
-    this.format = ThumbnailFormat.fromJson(json['format'] ?? <String, dynamic>{});
+  Thumbnail.fromJson(Map<String, dynamic> json) {
+    this.format =
+        ThumbnailFormat.fromJson(json['format'] ?? <String, dynamic>{});
     this.width = json['width'];
     this.height = json['height'];
     this.file = File.fromJson(json['file'] ?? <String, dynamic>{});
@@ -40,7 +37,7 @@ class Thumbnail extends TdObject {
   }
 
   static const CONSTRUCTOR = 'thumbnail';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DisconnectAllWebsites extends TdFunction {
-
   /// Disconnects all websites from the current user's Telegram account
   DisconnectAllWebsites();
 
@@ -9,7 +8,7 @@ class DisconnectAllWebsites extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DisconnectAllWebsites.fromJson(Map<String, dynamic> json) ;
+  DisconnectAllWebsites.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class DisconnectAllWebsites extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'disconnectAllWebsites';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

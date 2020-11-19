@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Updates extends TdObject {
-
   /// Contains a list of updates
   Updates({this.updates});
 
@@ -12,8 +11,10 @@ class Updates extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Updates.fromJson(Map<String, dynamic> json)  {
-    this.updates = List<Update>.from((json['updates'] ?? []).map((item) => Update.fromJson(item ?? <String, dynamic>{})).toList());
+  Updates.fromJson(Map<String, dynamic> json) {
+    this.updates = List<Update>.from((json['updates'] ?? [])
+        .map((item) => Update.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +27,7 @@ class Updates extends TdObject {
   }
 
   static const CONSTRUCTOR = 'updates';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

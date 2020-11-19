@@ -1,17 +1,14 @@
 part of '../tdapi.dart';
 
 class LoginUrlInfo extends TdObject {
-
   /// Contains information about an inline button of type inlineKeyboardButtonTypeLoginUrl
   LoginUrlInfo();
-
-  
 
   /// a LoginUrlInfo return type can be :
   /// * LoginUrlInfoOpen
   /// * LoginUrlInfoRequestConfirmation
-  factory LoginUrlInfo.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory LoginUrlInfo.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case LoginUrlInfoOpen.CONSTRUCTOR:
         return LoginUrlInfoOpen.fromJson(json);
       case LoginUrlInfoRequestConfirmation.CONSTRUCTOR:
@@ -23,24 +20,20 @@ class LoginUrlInfo extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'loginUrlInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class LoginUrlInfoOpen extends LoginUrlInfo {
-
   /// An HTTP url needs to be open
-  LoginUrlInfoOpen({this.url,
-    this.skipConfirm});
+  LoginUrlInfoOpen({this.url, this.skipConfirm});
 
-  /// [url] The URL to open 
+  /// [url] The URL to open
   String url;
 
   /// [skipConfirm] True, if there is no need to show an ordinary open URL confirm
@@ -50,7 +43,7 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   dynamic extra;
 
   /// Parse from a json
-  LoginUrlInfoOpen.fromJson(Map<String, dynamic> json)  {
+  LoginUrlInfoOpen.fromJson(Map<String, dynamic> json) {
     this.url = json['url'];
     this.skipConfirm = json['skip_confirm'];
     this.extra = json['@extra'];
@@ -66,20 +59,17 @@ class LoginUrlInfoOpen extends LoginUrlInfo {
   }
 
   static const CONSTRUCTOR = 'loginUrlInfoOpen';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
-
   /// An authorization confirmation dialog needs to be shown to the user
-  LoginUrlInfoRequestConfirmation({this.url,
-    this.domain,
-    this.botUserId,
-    this.requestWriteAccess});
+  LoginUrlInfoRequestConfirmation(
+      {this.url, this.domain, this.botUserId, this.requestWriteAccess});
 
-  /// [url] An HTTP URL to be opened 
+  /// [url] An HTTP URL to be opened
   String url;
 
   /// [domain] A domain of the URL
@@ -95,7 +85,7 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   dynamic extra;
 
   /// Parse from a json
-  LoginUrlInfoRequestConfirmation.fromJson(Map<String, dynamic> json)  {
+  LoginUrlInfoRequestConfirmation.fromJson(Map<String, dynamic> json) {
     this.url = json['url'];
     this.domain = json['domain'];
     this.botUserId = json['bot_user_id'];
@@ -115,7 +105,7 @@ class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
   }
 
   static const CONSTRUCTOR = 'loginUrlInfoRequestConfirmation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

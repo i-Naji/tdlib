@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DatabaseStatistics extends TdObject {
-
   /// Contains database statistics
   DatabaseStatistics({this.statistics});
 
@@ -12,7 +11,7 @@ class DatabaseStatistics extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  DatabaseStatistics.fromJson(Map<String, dynamic> json)  {
+  DatabaseStatistics.fromJson(Map<String, dynamic> json) {
     this.statistics = json['statistics'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class DatabaseStatistics extends TdObject {
   }
 
   static const CONSTRUCTOR = 'databaseStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

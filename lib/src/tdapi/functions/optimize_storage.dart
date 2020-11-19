@@ -1,17 +1,17 @@
 part of '../tdapi.dart';
 
 class OptimizeStorage extends TdFunction {
-
   /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted
-  OptimizeStorage({this.size,
-    this.ttl,
-    this.count,
-    this.immunityDelay,
-    this.fileTypes,
-    this.chatIds,
-    this.excludeChatIds,
-    this.returnDeletedFileStatistics,
-    this.chatLimit});
+  OptimizeStorage(
+      {this.size,
+      this.ttl,
+      this.count,
+      this.immunityDelay,
+      this.fileTypes,
+      this.chatIds,
+      this.excludeChatIds,
+      this.returnDeletedFileStatistics,
+      this.chatLimit});
 
   /// [size] Limit on the total size of files after deletion. Pass -1 to use the default limit
   int size;
@@ -34,7 +34,7 @@ class OptimizeStorage extends TdFunction {
   /// [excludeChatIds] If not empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
   List<int> excludeChatIds;
 
-  /// [returnDeletedFileStatistics] Pass true if deleted file statistics needs to be returned instead of the whole storage usage statistics. Affects only returned statistics
+  /// [returnDeletedFileStatistics] Pass true if deleted file statistics must be returned instead of the whole storage usage statistics. Affects only returned statistics
   bool returnDeletedFileStatistics;
 
   /// [chatLimit] Same as in getStorageStatistics. Affects only returned statistics
@@ -44,7 +44,7 @@ class OptimizeStorage extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  OptimizeStorage.fromJson(Map<String, dynamic> json) ;
+  OptimizeStorage.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -64,7 +64,7 @@ class OptimizeStorage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'optimizeStorage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

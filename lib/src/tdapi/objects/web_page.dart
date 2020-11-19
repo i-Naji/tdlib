@@ -1,29 +1,29 @@
 part of '../tdapi.dart';
 
 class WebPage extends TdObject {
-
   /// Describes a web page preview
-  WebPage({this.url,
-    this.displayUrl,
-    this.type,
-    this.siteName,
-    this.title,
-    this.description,
-    this.photo,
-    this.embedUrl,
-    this.embedType,
-    this.embedWidth,
-    this.embedHeight,
-    this.duration,
-    this.author,
-    this.animation,
-    this.audio,
-    this.document,
-    this.sticker,
-    this.video,
-    this.videoNote,
-    this.voiceNote,
-    this.instantViewVersion});
+  WebPage(
+      {this.url,
+      this.displayUrl,
+      this.type,
+      this.siteName,
+      this.title,
+      this.description,
+      this.photo,
+      this.embedUrl,
+      this.embedType,
+      this.embedWidth,
+      this.embedHeight,
+      this.duration,
+      this.author,
+      this.animation,
+      this.audio,
+      this.document,
+      this.sticker,
+      this.video,
+      this.videoNote,
+      this.voiceNote,
+      this.instantViewVersion});
 
   /// [url] Original URL of the link
   String url;
@@ -92,13 +92,14 @@ class WebPage extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  WebPage.fromJson(Map<String, dynamic> json)  {
+  WebPage.fromJson(Map<String, dynamic> json) {
     this.url = json['url'];
     this.displayUrl = json['display_url'];
     this.type = json['type'];
     this.siteName = json['site_name'];
     this.title = json['title'];
-    this.description = FormattedText.fromJson(json['description'] ?? <String, dynamic>{});
+    this.description =
+        FormattedText.fromJson(json['description'] ?? <String, dynamic>{});
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
     this.embedUrl = json['embed_url'];
     this.embedType = json['embed_type'];
@@ -106,13 +107,16 @@ class WebPage extends TdObject {
     this.embedHeight = json['embed_height'];
     this.duration = json['duration'];
     this.author = json['author'];
-    this.animation = Animation.fromJson(json['animation'] ?? <String, dynamic>{});
+    this.animation =
+        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
     this.audio = Audio.fromJson(json['audio'] ?? <String, dynamic>{});
     this.document = Document.fromJson(json['document'] ?? <String, dynamic>{});
     this.sticker = Sticker.fromJson(json['sticker'] ?? <String, dynamic>{});
     this.video = Video.fromJson(json['video'] ?? <String, dynamic>{});
-    this.videoNote = VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{});
-    this.voiceNote = VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
+    this.videoNote =
+        VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{});
+    this.voiceNote =
+        VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
     this.instantViewVersion = json['instant_view_version'];
     this.extra = json['@extra'];
   }
@@ -126,7 +130,8 @@ class WebPage extends TdObject {
       "type": this.type,
       "site_name": this.siteName,
       "title": this.title,
-      "description": this.description == null ? null : this.description.toJson(),
+      "description":
+          this.description == null ? null : this.description.toJson(),
       "photo": this.photo == null ? null : this.photo.toJson(),
       "embed_url": this.embedUrl,
       "embed_type": this.embedType,
@@ -146,7 +151,7 @@ class WebPage extends TdObject {
   }
 
   static const CONSTRUCTOR = 'webPage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

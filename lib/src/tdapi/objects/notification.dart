@@ -1,14 +1,10 @@
 part of '../tdapi.dart';
 
 class Notification extends TdObject {
-
   /// Contains information about a notification
-  Notification({this.id,
-    this.date,
-    this.isSilent,
-    this.type});
+  Notification({this.id, this.date, this.isSilent, this.type});
 
-  /// [id] Unique persistent identifier of this notification 
+  /// [id] Unique persistent identifier of this notification
   int id;
 
   /// [date] Notification date
@@ -21,7 +17,7 @@ class Notification extends TdObject {
   NotificationType type;
 
   /// Parse from a json
-  Notification.fromJson(Map<String, dynamic> json)  {
+  Notification.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.date = json['date'];
     this.isSilent = json['is_silent'];
@@ -40,7 +36,7 @@ class Notification extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notification';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

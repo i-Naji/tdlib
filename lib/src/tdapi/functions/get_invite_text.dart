@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetInviteText extends TdFunction {
-
   /// Returns the default text for invitation messages to be used as a placeholder when the current user invites friends to Telegram
   GetInviteText();
 
@@ -9,7 +8,7 @@ class GetInviteText extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetInviteText.fromJson(Map<String, dynamic> json) ;
+  GetInviteText.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetInviteText extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInviteText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveRecentHashtag extends TdFunction {
-
   /// Removes a hashtag from the list of recently used hashtags
   RemoveRecentHashtag({this.hashtag});
 
@@ -12,7 +11,7 @@ class RemoveRecentHashtag extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveRecentHashtag.fromJson(Map<String, dynamic> json) ;
+  RemoveRecentHashtag.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveRecentHashtag extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeRecentHashtag';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

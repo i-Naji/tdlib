@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class SearchInstalledStickerSets extends TdFunction {
-
   /// Searches for installed sticker sets by looking for specified query in their title and name
-  SearchInstalledStickerSets({this.isMasks,
-    this.query,
-    this.limit});
+  SearchInstalledStickerSets({this.isMasks, this.query, this.limit});
 
-  /// [isMasks] Pass true to return mask sticker sets; pass false to return ordinary sticker sets 
+  /// [isMasks] Pass true to return mask sticker sets; pass false to return ordinary sticker sets
   bool isMasks;
 
-  /// [query] Query to search for 
+  /// [query] Query to search for
   String query;
 
   /// [limit] The maximum number of sticker sets to return
@@ -20,7 +17,7 @@ class SearchInstalledStickerSets extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchInstalledStickerSets.fromJson(Map<String, dynamic> json) ;
+  SearchInstalledStickerSets.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class SearchInstalledStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchInstalledStickerSets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

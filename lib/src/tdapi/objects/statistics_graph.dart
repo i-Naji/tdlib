@@ -1,18 +1,15 @@
 part of '../tdapi.dart';
 
 class StatisticsGraph extends TdObject {
-
   /// Describes a statistics graph
   StatisticsGraph();
-
-  
 
   /// a StatisticsGraph return type can be :
   /// * StatisticsGraphData
   /// * StatisticsGraphAsync
   /// * StatisticsGraphError
-  factory StatisticsGraph.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory StatisticsGraph.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case StatisticsGraphData.CONSTRUCTOR:
         return StatisticsGraphData.fromJson(json);
       case StatisticsGraphAsync.CONSTRUCTOR:
@@ -26,24 +23,20 @@ class StatisticsGraph extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'statisticsGraph';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphData extends StatisticsGraph {
-
   /// A graph data
-  StatisticsGraphData({this.jsonData,
-    this.zoomToken});
+  StatisticsGraphData({this.jsonData, this.zoomToken});
 
-  /// [jsonData] Graph data in JSON format 
+  /// [jsonData] Graph data in JSON format
   String jsonData;
 
   /// [zoomToken] If non-empty, a token which can be used to receive a zoomed in graph
@@ -53,7 +46,7 @@ class StatisticsGraphData extends StatisticsGraph {
   dynamic extra;
 
   /// Parse from a json
-  StatisticsGraphData.fromJson(Map<String, dynamic> json)  {
+  StatisticsGraphData.fromJson(Map<String, dynamic> json) {
     this.jsonData = json['json_data'];
     this.zoomToken = json['zoom_token'];
     this.extra = json['@extra'];
@@ -69,14 +62,13 @@ class StatisticsGraphData extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphData';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphAsync extends StatisticsGraph {
-
-  /// The graph data to be asynchronously loaded through getChatStatisticsGraph
+  /// The graph data to be asynchronously loaded through getStatisticsGraph
   StatisticsGraphAsync({this.token});
 
   /// [token] The token to use for data loading
@@ -86,7 +78,7 @@ class StatisticsGraphAsync extends StatisticsGraph {
   dynamic extra;
 
   /// Parse from a json
-  StatisticsGraphAsync.fromJson(Map<String, dynamic> json)  {
+  StatisticsGraphAsync.fromJson(Map<String, dynamic> json) {
     this.token = json['token'];
     this.extra = json['@extra'];
   }
@@ -100,13 +92,12 @@ class StatisticsGraphAsync extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphAsync';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class StatisticsGraphError extends StatisticsGraph {
-
   /// An error message to be shown to the user instead of the graph
   StatisticsGraphError({this.errorMessage});
 
@@ -117,7 +108,7 @@ class StatisticsGraphError extends StatisticsGraph {
   dynamic extra;
 
   /// Parse from a json
-  StatisticsGraphError.fromJson(Map<String, dynamic> json)  {
+  StatisticsGraphError.fromJson(Map<String, dynamic> json) {
     this.errorMessage = json['error_message'];
     this.extra = json['@extra'];
   }
@@ -131,7 +122,7 @@ class StatisticsGraphError extends StatisticsGraph {
   }
 
   static const CONSTRUCTOR = 'statisticsGraphError';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

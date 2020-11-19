@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetLocalizationTargetInfo extends TdFunction {
-
   /// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization
   GetLocalizationTargetInfo({this.onlyLocal});
 
@@ -12,7 +11,7 @@ class GetLocalizationTargetInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetLocalizationTargetInfo.fromJson(Map<String, dynamic> json) ;
+  GetLocalizationTargetInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetLocalizationTargetInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLocalizationTargetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

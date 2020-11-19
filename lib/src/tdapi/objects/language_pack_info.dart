@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class LanguagePackInfo extends TdObject {
-
   /// Contains information about a language pack
-  LanguagePackInfo({this.id,
-    this.baseLanguagePackId,
-    this.name,
-    this.nativeName,
-    this.pluralCode,
-    this.isOfficial,
-    this.isRtl,
-    this.isBeta,
-    this.isInstalled,
-    this.totalStringCount,
-    this.translatedStringCount,
-    this.localStringCount,
-    this.translationUrl});
+  LanguagePackInfo(
+      {this.id,
+      this.baseLanguagePackId,
+      this.name,
+      this.nativeName,
+      this.pluralCode,
+      this.isOfficial,
+      this.isRtl,
+      this.isBeta,
+      this.isInstalled,
+      this.totalStringCount,
+      this.translatedStringCount,
+      this.localStringCount,
+      this.translationUrl});
 
   /// [id] Unique language pack identifier
   String id;
@@ -35,7 +35,7 @@ class LanguagePackInfo extends TdObject {
   /// [isOfficial] True, if the language pack is official
   bool isOfficial;
 
-  /// [isRtl] True, if the language pack strings are RTL 
+  /// [isRtl] True, if the language pack strings are RTL
   bool isRtl;
 
   /// [isBeta] True, if the language pack is a beta language pack
@@ -60,7 +60,7 @@ class LanguagePackInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  LanguagePackInfo.fromJson(Map<String, dynamic> json)  {
+  LanguagePackInfo.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.baseLanguagePackId = json['base_language_pack_id'];
     this.name = json['name'];
@@ -98,7 +98,7 @@ class LanguagePackInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'languagePackInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

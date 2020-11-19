@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class UserStatus extends TdObject {
-
   /// Describes the last time the user was online
   UserStatus();
-
-  
 
   /// a UserStatus return type can be :
   /// * UserStatusEmpty
@@ -14,8 +11,8 @@ class UserStatus extends TdObject {
   /// * UserStatusRecently
   /// * UserStatusLastWeek
   /// * UserStatusLastMonth
-  factory UserStatus.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory UserStatus.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case UserStatusEmpty.CONSTRUCTOR:
         return UserStatusEmpty.fromJson(json);
       case UserStatusOnline.CONSTRUCTOR:
@@ -35,26 +32,21 @@ class UserStatus extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'userStatus';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusEmpty extends UserStatus {
-
   /// The user status was never changed
   UserStatusEmpty();
 
-  
-
   /// Parse from a json
-  UserStatusEmpty.fromJson(Map<String, dynamic> json) ;
+  UserStatusEmpty.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -64,13 +56,12 @@ class UserStatusEmpty extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusEmpty';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusOnline extends UserStatus {
-
   /// The user is online
   UserStatusOnline({this.expires});
 
@@ -78,7 +69,7 @@ class UserStatusOnline extends UserStatus {
   int expires;
 
   /// Parse from a json
-  UserStatusOnline.fromJson(Map<String, dynamic> json)  {
+  UserStatusOnline.fromJson(Map<String, dynamic> json) {
     this.expires = json['expires'];
   }
 
@@ -91,13 +82,12 @@ class UserStatusOnline extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusOnline';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusOffline extends UserStatus {
-
   /// The user is offline
   UserStatusOffline({this.wasOnline});
 
@@ -105,7 +95,7 @@ class UserStatusOffline extends UserStatus {
   int wasOnline;
 
   /// Parse from a json
-  UserStatusOffline.fromJson(Map<String, dynamic> json)  {
+  UserStatusOffline.fromJson(Map<String, dynamic> json) {
     this.wasOnline = json['was_online'];
   }
 
@@ -118,20 +108,17 @@ class UserStatusOffline extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusOffline';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusRecently extends UserStatus {
-
   /// The user was online recently
   UserStatusRecently();
 
-  
-
   /// Parse from a json
-  UserStatusRecently.fromJson(Map<String, dynamic> json) ;
+  UserStatusRecently.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -141,20 +128,17 @@ class UserStatusRecently extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusRecently';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusLastWeek extends UserStatus {
-
   /// The user is offline, but was online last week
   UserStatusLastWeek();
 
-  
-
   /// Parse from a json
-  UserStatusLastWeek.fromJson(Map<String, dynamic> json) ;
+  UserStatusLastWeek.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -164,20 +148,17 @@ class UserStatusLastWeek extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusLastWeek';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserStatusLastMonth extends UserStatus {
-
   /// The user is offline, but was online last month
   UserStatusLastMonth();
 
-  
-
   /// Parse from a json
-  UserStatusLastMonth.fromJson(Map<String, dynamic> json) ;
+  UserStatusLastMonth.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -187,7 +168,7 @@ class UserStatusLastMonth extends UserStatus {
   }
 
   static const CONSTRUCTOR = 'userStatusLastMonth';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

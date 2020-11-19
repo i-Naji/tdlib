@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class TestSquareInt extends TdFunction {
-
   /// Returns the squared received number; for testing only. This is an offline method. Can be called before authorization
   TestSquareInt({this.x});
 
@@ -12,7 +11,7 @@ class TestSquareInt extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  TestSquareInt.fromJson(Map<String, dynamic> json) ;
+  TestSquareInt.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class TestSquareInt extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testSquareInt';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

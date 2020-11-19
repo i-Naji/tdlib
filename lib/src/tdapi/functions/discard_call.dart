@@ -1,24 +1,24 @@
 part of '../tdapi.dart';
 
 class DiscardCall extends TdFunction {
-
   /// Discards a call
-  DiscardCall({this.callId,
-    this.isDisconnected,
-    this.duration,
-    this.isVideo,
-    this.connectionId});
+  DiscardCall(
+      {this.callId,
+      this.isDisconnected,
+      this.duration,
+      this.isVideo,
+      this.connectionId});
 
-  /// [callId] Call identifier 
+  /// [callId] Call identifier
   int callId;
 
-  /// [isDisconnected] True, if the user was disconnected 
+  /// [isDisconnected] True, if the user was disconnected
   bool isDisconnected;
 
-  /// [duration] The call duration, in seconds 
+  /// [duration] The call duration, in seconds
   int duration;
 
-  /// [isVideo] True, if the call was a video call 
+  /// [isVideo] True, if the call was a video call
   bool isVideo;
 
   /// [connectionId] Identifier of the connection used during the call
@@ -28,7 +28,7 @@ class DiscardCall extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DiscardCall.fromJson(Map<String, dynamic> json) ;
+  DiscardCall.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,7 +44,7 @@ class DiscardCall extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'discardCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

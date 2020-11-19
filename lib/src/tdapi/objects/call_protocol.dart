@@ -1,13 +1,13 @@
 part of '../tdapi.dart';
 
 class CallProtocol extends TdObject {
-
   /// Specifies the supported call protocols
-  CallProtocol({this.udpP2p,
-    this.udpReflector,
-    this.minLayer,
-    this.maxLayer,
-    this.libraryVersions});
+  CallProtocol(
+      {this.udpP2p,
+      this.udpReflector,
+      this.minLayer,
+      this.maxLayer,
+      this.libraryVersions});
 
   /// [udpP2p] True, if UDP peer-to-peer connections are supported
   bool udpP2p;
@@ -25,12 +25,13 @@ class CallProtocol extends TdObject {
   List<String> libraryVersions;
 
   /// Parse from a json
-  CallProtocol.fromJson(Map<String, dynamic> json)  {
+  CallProtocol.fromJson(Map<String, dynamic> json) {
     this.udpP2p = json['udp_p2p'];
     this.udpReflector = json['udp_reflector'];
     this.minLayer = json['min_layer'];
     this.maxLayer = json['max_layer'];
-    this.libraryVersions = List<String>.from((json['library_versions'] ?? []).map((item) => item).toList());
+    this.libraryVersions = List<String>.from(
+        (json['library_versions'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -46,7 +47,7 @@ class CallProtocol extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callProtocol';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

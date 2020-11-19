@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetSavedOrderInfo extends TdFunction {
-
   /// Returns saved order info, if any
   GetSavedOrderInfo();
 
@@ -9,7 +8,7 @@ class GetSavedOrderInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetSavedOrderInfo.fromJson(Map<String, dynamic> json) ;
+  GetSavedOrderInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetSavedOrderInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSavedOrderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

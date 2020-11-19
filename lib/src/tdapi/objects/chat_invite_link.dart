@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ChatInviteLink extends TdObject {
-
   /// Contains a chat invite link
   ChatInviteLink({this.inviteLink});
 
@@ -12,7 +11,7 @@ class ChatInviteLink extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ChatInviteLink.fromJson(Map<String, dynamic> json)  {
+  ChatInviteLink.fromJson(Map<String, dynamic> json) {
     this.inviteLink = json['invite_link'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class ChatInviteLink extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,23 +1,20 @@
 part of '../tdapi.dart';
 
 class StatisticsValue extends TdObject {
-
   /// A statistics value
-  StatisticsValue({this.value,
-    this.previousValue,
-    this.growthRatePercentage});
+  StatisticsValue({this.value, this.previousValue, this.growthRatePercentage});
 
-  /// [value] The value 
+  /// [value] The value
   double value;
 
-  /// [previousValue] The value for the previous day 
+  /// [previousValue] The value for the previous day
   double previousValue;
 
   /// [growthRatePercentage] The growth rate of the value, as a percentage
   double growthRatePercentage;
 
   /// Parse from a json
-  StatisticsValue.fromJson(Map<String, dynamic> json)  {
+  StatisticsValue.fromJson(Map<String, dynamic> json) {
     this.value = json['value'];
     this.previousValue = json['previous_value'];
     this.growthRatePercentage = json['growth_rate_percentage'];
@@ -34,7 +31,7 @@ class StatisticsValue extends TdObject {
   }
 
   static const CONSTRUCTOR = 'statisticsValue';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

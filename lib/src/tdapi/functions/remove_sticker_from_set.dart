@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveStickerFromSet extends TdFunction {
-
   /// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot
   RemoveStickerFromSet({this.sticker});
 
@@ -12,7 +11,7 @@ class RemoveStickerFromSet extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveStickerFromSet.fromJson(Map<String, dynamic> json) ;
+  RemoveStickerFromSet.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveStickerFromSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeStickerFromSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

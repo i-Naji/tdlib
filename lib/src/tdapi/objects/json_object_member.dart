@@ -1,19 +1,17 @@
 part of '../tdapi.dart';
 
 class JsonObjectMember extends TdObject {
-
   /// Represents one member of a JSON object
-  JsonObjectMember({this.key,
-    this.value});
+  JsonObjectMember({this.key, this.value});
 
-  /// [key] Member's key 
+  /// [key] Member's key
   String key;
 
   /// [value] Member's value
   JsonValue value;
 
   /// Parse from a json
-  JsonObjectMember.fromJson(Map<String, dynamic> json)  {
+  JsonObjectMember.fromJson(Map<String, dynamic> json) {
     this.key = json['key'];
     this.value = JsonValue.fromJson(json['value'] ?? <String, dynamic>{});
   }
@@ -28,7 +26,7 @@ class JsonObjectMember extends TdObject {
   }
 
   static const CONSTRUCTOR = 'jsonObjectMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckCreatedPublicChatsLimit extends TdFunction {
-
   /// Checks whether the maximum number of owned public chats has been reached. Returns corresponding error if the limit was reached
   CheckCreatedPublicChatsLimit({this.type});
 
@@ -12,7 +11,7 @@ class CheckCreatedPublicChatsLimit extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckCreatedPublicChatsLimit.fromJson(Map<String, dynamic> json) ;
+  CheckCreatedPublicChatsLimit.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckCreatedPublicChatsLimit extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkCreatedPublicChatsLimit';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

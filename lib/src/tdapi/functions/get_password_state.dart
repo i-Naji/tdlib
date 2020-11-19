@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetPasswordState extends TdFunction {
-
   /// Returns the current state of 2-step verification
   GetPasswordState();
 
@@ -9,7 +8,7 @@ class GetPasswordState extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetPasswordState.fromJson(Map<String, dynamic> json) ;
+  GetPasswordState.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetPasswordState extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPasswordState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

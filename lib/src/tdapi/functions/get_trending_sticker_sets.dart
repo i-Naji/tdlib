@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class GetTrendingStickerSets extends TdFunction {
-
   /// Returns a list of trending sticker sets. For the optimal performance the number of returned sticker sets is chosen by the library
-  GetTrendingStickerSets({this.offset,
-    this.limit});
+  GetTrendingStickerSets({this.offset, this.limit});
 
   /// [offset] The offset from which to return the sticker sets; must be non-negative
   int offset;
@@ -16,7 +14,7 @@ class GetTrendingStickerSets extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetTrendingStickerSets.fromJson(Map<String, dynamic> json) ;
+  GetTrendingStickerSets.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class GetTrendingStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getTrendingStickerSets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

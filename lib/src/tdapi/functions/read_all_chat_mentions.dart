@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ReadAllChatMentions extends TdFunction {
-
   /// Marks all mentions in a chat as read
   ReadAllChatMentions({this.chatId});
 
@@ -12,7 +11,7 @@ class ReadAllChatMentions extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ReadAllChatMentions.fromJson(Map<String, dynamic> json) ;
+  ReadAllChatMentions.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ReadAllChatMentions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'readAllChatMentions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

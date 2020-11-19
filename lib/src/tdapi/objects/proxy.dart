@@ -1,28 +1,28 @@
 part of '../tdapi.dart';
 
 class Proxy extends TdObject {
-
   /// Contains information about a proxy server
-  Proxy({this.id,
-    this.server,
-    this.port,
-    this.lastUsedDate,
-    this.isEnabled,
-    this.type});
+  Proxy(
+      {this.id,
+      this.server,
+      this.port,
+      this.lastUsedDate,
+      this.isEnabled,
+      this.type});
 
-  /// [id] Unique identifier of the proxy 
+  /// [id] Unique identifier of the proxy
   int id;
 
-  /// [server] Proxy server IP address 
+  /// [server] Proxy server IP address
   String server;
 
-  /// [port] Proxy server port 
+  /// [port] Proxy server port
   int port;
 
-  /// [lastUsedDate] Point in time (Unix timestamp) when the proxy was last used; 0 if never 
+  /// [lastUsedDate] Point in time (Unix timestamp) when the proxy was last used; 0 if never
   int lastUsedDate;
 
-  /// [isEnabled] True, if the proxy is enabled now 
+  /// [isEnabled] True, if the proxy is enabled now
   bool isEnabled;
 
   /// [type] Type of the proxy
@@ -32,7 +32,7 @@ class Proxy extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Proxy.fromJson(Map<String, dynamic> json)  {
+  Proxy.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.server = json['server'];
     this.port = json['port'];
@@ -56,7 +56,7 @@ class Proxy extends TdObject {
   }
 
   static const CONSTRUCTOR = 'proxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

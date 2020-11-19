@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class TerminateSession extends TdFunction {
-
   /// Terminates a session of the current user
   TerminateSession({this.sessionId});
 
@@ -12,7 +11,7 @@ class TerminateSession extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  TerminateSession.fromJson(Map<String, dynamic> json) ;
+  TerminateSession.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class TerminateSession extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'terminateSession';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SearchBackground extends TdFunction {
-
   /// Searches for a background by its name
   SearchBackground({this.name});
 
@@ -12,7 +11,7 @@ class SearchBackground extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchBackground.fromJson(Map<String, dynamic> json) ;
+  SearchBackground.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SearchBackground extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

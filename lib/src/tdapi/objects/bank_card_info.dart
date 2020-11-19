@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class BankCardInfo extends TdObject {
-
   /// Information about a bank card
-  BankCardInfo({this.title,
-    this.actions});
+  BankCardInfo({this.title, this.actions});
 
-  /// [title] Title of the bank card description 
+  /// [title] Title of the bank card description
   String title;
 
   /// [actions] Actions that can be done with the bank card number
@@ -16,9 +14,12 @@ class BankCardInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  BankCardInfo.fromJson(Map<String, dynamic> json)  {
+  BankCardInfo.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
-    this.actions = List<BankCardActionOpenUrl>.from((json['actions'] ?? []).map((item) => BankCardActionOpenUrl.fromJson(item ?? <String, dynamic>{})).toList());
+    this.actions = List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
+        .map((item) =>
+            BankCardActionOpenUrl.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -32,7 +33,7 @@ class BankCardInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'bankCardInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

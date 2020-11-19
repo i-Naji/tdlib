@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsites extends TdObject {
-
   /// Contains a list of websites the current user is logged in with Telegram
   ConnectedWebsites({this.websites});
 
@@ -12,8 +11,10 @@ class ConnectedWebsites extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ConnectedWebsites.fromJson(Map<String, dynamic> json)  {
-    this.websites = List<ConnectedWebsite>.from((json['websites'] ?? []).map((item) => ConnectedWebsite.fromJson(item ?? <String, dynamic>{})).toList());
+  ConnectedWebsites.fromJson(Map<String, dynamic> json) {
+    this.websites = List<ConnectedWebsite>.from((json['websites'] ?? [])
+        .map((item) => ConnectedWebsite.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +27,7 @@ class ConnectedWebsites extends TdObject {
   }
 
   static const CONSTRUCTOR = 'connectedWebsites';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetBankCardInfo extends TdFunction {
-
   /// Returns information about a bank card
   GetBankCardInfo({this.bankCardNumber});
 
@@ -12,7 +11,7 @@ class GetBankCardInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetBankCardInfo.fromJson(Map<String, dynamic> json) ;
+  GetBankCardInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetBankCardInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBankCardInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

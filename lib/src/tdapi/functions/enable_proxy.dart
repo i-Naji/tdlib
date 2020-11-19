@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class EnableProxy extends TdFunction {
-
   /// Enables a proxy. Only one proxy can be enabled at a time. Can be called before authorization
   EnableProxy({this.proxyId});
 
@@ -12,7 +11,7 @@ class EnableProxy extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  EnableProxy.fromJson(Map<String, dynamic> json) ;
+  EnableProxy.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class EnableProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'enableProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

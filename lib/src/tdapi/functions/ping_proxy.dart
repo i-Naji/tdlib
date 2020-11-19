@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class PingProxy extends TdFunction {
-
   /// Computes time needed to receive a response from a Telegram server through a proxy. Can be called before authorization
   PingProxy({this.proxyId});
 
@@ -12,7 +11,7 @@ class PingProxy extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  PingProxy.fromJson(Map<String, dynamic> json) ;
+  PingProxy.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class PingProxy extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'pingProxy';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

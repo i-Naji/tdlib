@@ -1,20 +1,17 @@
 part of '../tdapi.dart';
 
 class ValidateOrderInfo extends TdFunction {
-
   /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
-  ValidateOrderInfo({this.chatId,
-    this.messageId,
-    this.orderInfo,
-    this.allowSave});
+  ValidateOrderInfo(
+      {this.chatId, this.messageId, this.orderInfo, this.allowSave});
 
-  /// [chatId] Chat identifier of the Invoice message 
+  /// [chatId] Chat identifier of the Invoice message
   int chatId;
 
-  /// [messageId] Message identifier 
+  /// [messageId] Message identifier
   int messageId;
 
-  /// [orderInfo] The order information, provided by the user 
+  /// [orderInfo] The order information, provided by the user
   OrderInfo orderInfo;
 
   /// [allowSave] True, if the order information can be saved
@@ -24,7 +21,7 @@ class ValidateOrderInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ValidateOrderInfo.fromJson(Map<String, dynamic> json) ;
+  ValidateOrderInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -39,7 +36,7 @@ class ValidateOrderInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'validateOrderInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

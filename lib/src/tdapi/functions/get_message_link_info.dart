@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetMessageLinkInfo extends TdFunction {
-
   /// Returns information about a public or private message link
   GetMessageLinkInfo({this.url});
 
@@ -12,7 +11,7 @@ class GetMessageLinkInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetMessageLinkInfo.fromJson(Map<String, dynamic> json) ;
+  GetMessageLinkInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetMessageLinkInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getMessageLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

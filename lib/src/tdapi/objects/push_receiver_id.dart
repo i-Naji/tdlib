@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class PushReceiverId extends TdObject {
-
   /// Contains a globally unique push receiver identifier, which can be used to identify which account has received a push notification
   PushReceiverId({this.id});
 
@@ -12,7 +11,7 @@ class PushReceiverId extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  PushReceiverId.fromJson(Map<String, dynamic> json)  {
+  PushReceiverId.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class PushReceiverId extends TdObject {
   }
 
   static const CONSTRUCTOR = 'pushReceiverId';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

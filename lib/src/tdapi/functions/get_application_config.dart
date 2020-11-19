@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetApplicationConfig extends TdFunction {
-
   /// Returns application config, provided by the server. Can be called before authorization
   GetApplicationConfig();
 
@@ -9,7 +8,7 @@ class GetApplicationConfig extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetApplicationConfig.fromJson(Map<String, dynamic> json) ;
+  GetApplicationConfig.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetApplicationConfig extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getApplicationConfig';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

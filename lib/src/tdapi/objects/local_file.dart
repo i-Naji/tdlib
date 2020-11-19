@@ -1,16 +1,16 @@
 part of '../tdapi.dart';
 
 class LocalFile extends TdObject {
-
   /// Represents a local file
-  LocalFile({this.path,
-    this.canBeDownloaded,
-    this.canBeDeleted,
-    this.isDownloadingActive,
-    this.isDownloadingCompleted,
-    this.downloadOffset,
-    this.downloadedPrefixSize,
-    this.downloadedSize});
+  LocalFile(
+      {this.path,
+      this.canBeDownloaded,
+      this.canBeDeleted,
+      this.isDownloadingActive,
+      this.isDownloadingCompleted,
+      this.downloadOffset,
+      this.downloadedPrefixSize,
+      this.downloadedSize});
 
   /// [path] Local path to the locally available file part; may be empty
   String path;
@@ -37,7 +37,7 @@ class LocalFile extends TdObject {
   int downloadedSize;
 
   /// Parse from a json
-  LocalFile.fromJson(Map<String, dynamic> json)  {
+  LocalFile.fromJson(Map<String, dynamic> json) {
     this.path = json['path'];
     this.canBeDownloaded = json['can_be_downloaded'];
     this.canBeDeleted = json['can_be_deleted'];
@@ -64,7 +64,7 @@ class LocalFile extends TdObject {
   }
 
   static const CONSTRUCTOR = 'localFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

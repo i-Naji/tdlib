@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetTextEntities extends TdFunction {
-
   /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. Can be called synchronously
   GetTextEntities({this.text});
 
@@ -12,7 +11,7 @@ class GetTextEntities extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetTextEntities.fromJson(Map<String, dynamic> json) ;
+  GetTextEntities.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetTextEntities extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getTextEntities';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

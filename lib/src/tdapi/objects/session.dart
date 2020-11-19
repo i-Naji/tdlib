@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class Session extends TdObject {
-
   /// Contains information about one session in a Telegram application used by the current user. Sessions should be shown to the user in the returned order
-  Session({this.id,
-    this.isCurrent,
-    this.isPasswordPending,
-    this.apiId,
-    this.applicationName,
-    this.applicationVersion,
-    this.isOfficialApplication,
-    this.deviceModel,
-    this.platform,
-    this.systemVersion,
-    this.logInDate,
-    this.lastActiveDate,
-    this.ip,
-    this.country,
-    this.region});
+  Session(
+      {this.id,
+      this.isCurrent,
+      this.isPasswordPending,
+      this.apiId,
+      this.applicationName,
+      this.applicationVersion,
+      this.isOfficialApplication,
+      this.deviceModel,
+      this.platform,
+      this.systemVersion,
+      this.logInDate,
+      this.lastActiveDate,
+      this.ip,
+      this.country,
+      this.region});
 
   /// [id] Session identifier
   int id;
@@ -68,7 +68,7 @@ class Session extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Session.fromJson(Map<String, dynamic> json)  {
+  Session.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.isCurrent = json['is_current'];
     this.isPasswordPending = json['is_password_pending'];
@@ -110,7 +110,7 @@ class Session extends TdObject {
   }
 
   static const CONSTRUCTOR = 'session';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

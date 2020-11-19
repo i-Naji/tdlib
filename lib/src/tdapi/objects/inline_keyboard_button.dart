@@ -1,21 +1,20 @@
 part of '../tdapi.dart';
 
 class InlineKeyboardButton extends TdObject {
-
   /// Represents a single button in an inline keyboard
-  InlineKeyboardButton({this.text,
-    this.type});
+  InlineKeyboardButton({this.text, this.type});
 
-  /// [text] Text of the button 
+  /// [text] Text of the button
   String text;
 
   /// [type] Type of the button
   InlineKeyboardButtonType type;
 
   /// Parse from a json
-  InlineKeyboardButton.fromJson(Map<String, dynamic> json)  {
+  InlineKeyboardButton.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
-    this.type = InlineKeyboardButtonType.fromJson(json['type'] ?? <String, dynamic>{});
+    this.type =
+        InlineKeyboardButtonType.fromJson(json['type'] ?? <String, dynamic>{});
   }
 
   @override
@@ -28,7 +27,7 @@ class InlineKeyboardButton extends TdObject {
   }
 
   static const CONSTRUCTOR = 'inlineKeyboardButton';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

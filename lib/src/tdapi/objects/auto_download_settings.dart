@@ -1,16 +1,16 @@
 part of '../tdapi.dart';
 
 class AutoDownloadSettings extends TdObject {
-
   /// Contains auto-download settings
-  AutoDownloadSettings({this.isAutoDownloadEnabled,
-    this.maxPhotoFileSize,
-    this.maxVideoFileSize,
-    this.maxOtherFileSize,
-    this.videoUploadBitrate,
-    this.preloadLargeVideos,
-    this.preloadNextAudio,
-    this.useLessDataForCalls});
+  AutoDownloadSettings(
+      {this.isAutoDownloadEnabled,
+      this.maxPhotoFileSize,
+      this.maxVideoFileSize,
+      this.maxOtherFileSize,
+      this.videoUploadBitrate,
+      this.preloadLargeVideos,
+      this.preloadNextAudio,
+      this.useLessDataForCalls});
 
   /// [isAutoDownloadEnabled] True, if the auto-download is enabled
   bool isAutoDownloadEnabled;
@@ -27,7 +27,7 @@ class AutoDownloadSettings extends TdObject {
   /// [videoUploadBitrate] The maximum suggested bitrate for uploaded videos
   int videoUploadBitrate;
 
-  /// [preloadLargeVideos] True, if the beginning of videos needs to be preloaded for instant playback
+  /// [preloadLargeVideos] True, if the beginning of video files needs to be preloaded for instant playback
   bool preloadLargeVideos;
 
   /// [preloadNextAudio] True, if the next audio track needs to be preloaded while the user is listening to an audio file
@@ -37,7 +37,7 @@ class AutoDownloadSettings extends TdObject {
   bool useLessDataForCalls;
 
   /// Parse from a json
-  AutoDownloadSettings.fromJson(Map<String, dynamic> json)  {
+  AutoDownloadSettings.fromJson(Map<String, dynamic> json) {
     this.isAutoDownloadEnabled = json['is_auto_download_enabled'];
     this.maxPhotoFileSize = json['max_photo_file_size'];
     this.maxVideoFileSize = json['max_video_file_size'];
@@ -64,7 +64,7 @@ class AutoDownloadSettings extends TdObject {
   }
 
   static const CONSTRUCTOR = 'autoDownloadSettings';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

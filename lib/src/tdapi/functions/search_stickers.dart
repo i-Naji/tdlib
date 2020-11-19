@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SearchStickers extends TdFunction {
-
   /// Searches for stickers from public sticker sets that correspond to a given emoji
-  SearchStickers({this.emoji,
-    this.limit});
+  SearchStickers({this.emoji, this.limit});
 
-  /// [emoji] String representation of emoji; must be non-empty 
+  /// [emoji] String representation of emoji; must be non-empty
   String emoji;
 
   /// [limit] The maximum number of stickers to be returned
@@ -16,7 +14,7 @@ class SearchStickers extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchStickers.fromJson(Map<String, dynamic> json) ;
+  SearchStickers.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SearchStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

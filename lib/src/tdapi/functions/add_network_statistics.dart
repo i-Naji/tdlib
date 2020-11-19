@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class AddNetworkStatistics extends TdFunction {
-
   /// Adds the specified data to data usage statistics. Can be called before authorization
   AddNetworkStatistics({this.entry});
 
@@ -12,7 +11,7 @@ class AddNetworkStatistics extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AddNetworkStatistics.fromJson(Map<String, dynamic> json) ;
+  AddNetworkStatistics.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class AddNetworkStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addNetworkStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

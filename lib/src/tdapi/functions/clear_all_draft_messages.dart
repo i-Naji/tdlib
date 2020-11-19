@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ClearAllDraftMessages extends TdFunction {
-
   /// Clears draft messages in all chats
   ClearAllDraftMessages({this.excludeSecretChats});
 
@@ -12,7 +11,7 @@ class ClearAllDraftMessages extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ClearAllDraftMessages.fromJson(Map<String, dynamic> json) ;
+  ClearAllDraftMessages.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ClearAllDraftMessages extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearAllDraftMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

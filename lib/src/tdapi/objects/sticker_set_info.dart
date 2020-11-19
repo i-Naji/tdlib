@@ -1,28 +1,28 @@
 part of '../tdapi.dart';
 
 class StickerSetInfo extends TdObject {
-
   /// Represents short information about a sticker set
-  StickerSetInfo({this.id,
-    this.title,
-    this.name,
-    this.thumbnail,
-    this.isInstalled,
-    this.isArchived,
-    this.isOfficial,
-    this.isAnimated,
-    this.isMasks,
-    this.isViewed,
-    this.size,
-    this.covers});
+  StickerSetInfo(
+      {this.id,
+      this.title,
+      this.name,
+      this.thumbnail,
+      this.isInstalled,
+      this.isArchived,
+      this.isOfficial,
+      this.isAnimated,
+      this.isMasks,
+      this.isViewed,
+      this.size,
+      this.covers});
 
   /// [id] Identifier of the sticker set
   int id;
 
-  /// [title] Title of the sticker set 
+  /// [title] Title of the sticker set
   String title;
 
-  /// [name] Name of the sticker set 
+  /// [name] Name of the sticker set
   String name;
 
   /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
@@ -37,10 +37,10 @@ class StickerSetInfo extends TdObject {
   /// [isOfficial] True, if the sticker set is official
   bool isOfficial;
 
-  /// [isAnimated] True, is the stickers in the set are animated 
+  /// [isAnimated] True, is the stickers in the set are animated
   bool isAnimated;
 
-  /// [isMasks] True, if the stickers in the set are masks 
+  /// [isMasks] True, if the stickers in the set are masks
   bool isMasks;
 
   /// [isViewed] True for already viewed trending sticker sets
@@ -53,11 +53,12 @@ class StickerSetInfo extends TdObject {
   List<Sticker> covers;
 
   /// Parse from a json
-  StickerSetInfo.fromJson(Map<String, dynamic> json)  {
+  StickerSetInfo.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.title = json['title'];
     this.name = json['name'];
-    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnail =
+        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.isInstalled = json['is_installed'];
     this.isArchived = json['is_archived'];
     this.isOfficial = json['is_official'];
@@ -65,7 +66,9 @@ class StickerSetInfo extends TdObject {
     this.isMasks = json['is_masks'];
     this.isViewed = json['is_viewed'];
     this.size = json['size'];
-    this.covers = List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item ?? <String, dynamic>{})).toList());
+    this.covers = List<Sticker>.from((json['covers'] ?? [])
+        .map((item) => Sticker.fromJson(item ?? <String, dynamic>{}))
+        .toList());
   }
 
   @override
@@ -88,7 +91,7 @@ class StickerSetInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'stickerSetInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

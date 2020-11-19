@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetFile extends TdFunction {
-
   /// Returns information about a file; this is an offline request
   GetFile({this.fileId});
 
@@ -12,7 +11,7 @@ class GetFile extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetFile.fromJson(Map<String, dynamic> json) ;
+  GetFile.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

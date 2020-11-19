@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetLanguagePackInfo extends TdFunction {
-
   /// Returns information about a language pack. Returned language pack identifier may be different from a provided one. Can be called before authorization
   GetLanguagePackInfo({this.languagePackId});
 
@@ -12,7 +11,7 @@ class GetLanguagePackInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetLanguagePackInfo.fromJson(Map<String, dynamic> json) ;
+  GetLanguagePackInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetLanguagePackInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getLanguagePackInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

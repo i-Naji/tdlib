@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RecoverAuthenticationPassword extends TdFunction {
-
   /// Recovers the password with a password recovery code sent to an email address that was previously set up. Works only when the current authorization state is authorizationStateWaitPassword
   RecoverAuthenticationPassword({this.recoveryCode});
 
@@ -12,7 +11,7 @@ class RecoverAuthenticationPassword extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RecoverAuthenticationPassword.fromJson(Map<String, dynamic> json) ;
+  RecoverAuthenticationPassword.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RecoverAuthenticationPassword extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'recoverAuthenticationPassword';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

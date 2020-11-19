@@ -1,12 +1,11 @@
 part of '../tdapi.dart';
 
 class GetPassportAuthorizationFormAvailableElements extends TdFunction {
-
   /// Returns already available Telegram Passport elements suitable for completing a Telegram Passport authorization form. Result can be received only once for each authorization form
-  GetPassportAuthorizationFormAvailableElements({this.autorizationFormId,
-    this.password});
+  GetPassportAuthorizationFormAvailableElements(
+      {this.autorizationFormId, this.password});
 
-  /// [autorizationFormId] Authorization form identifier 
+  /// [autorizationFormId] Authorization form identifier
   int autorizationFormId;
 
   /// [password] Password of the current user
@@ -16,7 +15,8 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetPassportAuthorizationFormAvailableElements.fromJson(Map<String, dynamic> json) ;
+  GetPassportAuthorizationFormAvailableElements.fromJson(
+      Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPassportAuthorizationFormAvailableElements';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

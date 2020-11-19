@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetSupergroupFullInfo extends TdFunction {
-
   /// Returns full information about a supergroup or a channel by its identifier, cached for up to 1 minute
   GetSupergroupFullInfo({this.supergroupId});
 
@@ -12,7 +11,7 @@ class GetSupergroupFullInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetSupergroupFullInfo.fromJson(Map<String, dynamic> json) ;
+  GetSupergroupFullInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetSupergroupFullInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getSupergroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

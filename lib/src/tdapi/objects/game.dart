@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class Game extends TdObject {
-
   /// Describes a game
-  Game({this.id,
-    this.shortName,
-    this.title,
-    this.text,
-    this.description,
-    this.photo,
-    this.animation});
+  Game(
+      {this.id,
+      this.shortName,
+      this.title,
+      this.text,
+      this.description,
+      this.photo,
+      this.animation});
 
-  /// [id] Game game 
+  /// [id] Game game
   int id;
 
-  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} 
+  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name}
   String shortName;
 
-  /// [title] Game title 
+  /// [title] Game title
   String title;
 
   /// [text] Game text, usually containing scoreboards for a game
@@ -26,21 +26,22 @@ class Game extends TdObject {
   /// [description] Game description
   String description;
 
-  /// [photo] Game photo 
+  /// [photo] Game photo
   Photo photo;
 
   /// [animation] Game animation; may be null
   Animation animation;
 
   /// Parse from a json
-  Game.fromJson(Map<String, dynamic> json)  {
+  Game.fromJson(Map<String, dynamic> json) {
     this.id = int.tryParse(json['id'] ?? "");
     this.shortName = json['short_name'];
     this.title = json['title'];
     this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
     this.description = json['description'];
     this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.animation = Animation.fromJson(json['animation'] ?? <String, dynamic>{});
+    this.animation =
+        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
   }
 
   @override
@@ -58,7 +59,7 @@ class Game extends TdObject {
   }
 
   static const CONSTRUCTOR = 'game';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

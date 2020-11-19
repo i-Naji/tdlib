@@ -1,15 +1,15 @@
 part of '../tdapi.dart';
 
 class StorageStatisticsFast extends TdObject {
-
   /// Contains approximate storage usage statistics, excluding files of unknown file type
-  StorageStatisticsFast({this.filesSize,
-    this.fileCount,
-    this.databaseSize,
-    this.languagePackDatabaseSize,
-    this.logSize});
+  StorageStatisticsFast(
+      {this.filesSize,
+      this.fileCount,
+      this.databaseSize,
+      this.languagePackDatabaseSize,
+      this.logSize});
 
-  /// [filesSize] Approximate total size of files 
+  /// [filesSize] Approximate total size of files
   int filesSize;
 
   /// [fileCount] Approximate number of files
@@ -18,7 +18,7 @@ class StorageStatisticsFast extends TdObject {
   /// [databaseSize] Size of the database
   int databaseSize;
 
-  /// [languagePackDatabaseSize] Size of the language pack database 
+  /// [languagePackDatabaseSize] Size of the language pack database
   int languagePackDatabaseSize;
 
   /// [logSize] Size of the TDLib internal log
@@ -28,7 +28,7 @@ class StorageStatisticsFast extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  StorageStatisticsFast.fromJson(Map<String, dynamic> json)  {
+  StorageStatisticsFast.fromJson(Map<String, dynamic> json) {
     this.filesSize = json['files_size'];
     this.fileCount = json['file_count'];
     this.databaseSize = json['database_size'];
@@ -50,7 +50,7 @@ class StorageStatisticsFast extends TdObject {
   }
 
   static const CONSTRUCTOR = 'storageStatisticsFast';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ClearRecentStickers extends TdFunction {
-
   /// Clears the list of recently used stickers
   ClearRecentStickers({this.isAttached});
 
@@ -12,7 +11,7 @@ class ClearRecentStickers extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ClearRecentStickers.fromJson(Map<String, dynamic> json) ;
+  ClearRecentStickers.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ClearRecentStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'clearRecentStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetDeepLinkInfo extends TdFunction {
-
   /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization
   GetDeepLinkInfo({this.link});
 
@@ -12,7 +11,7 @@ class GetDeepLinkInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetDeepLinkInfo.fromJson(Map<String, dynamic> json) ;
+  GetDeepLinkInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetDeepLinkInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getDeepLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

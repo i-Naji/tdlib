@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetFileMimeType extends TdFunction {
-
   /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously
   GetFileMimeType({this.fileName});
 
@@ -12,7 +11,7 @@ class GetFileMimeType extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetFileMimeType.fromJson(Map<String, dynamic> json) ;
+  GetFileMimeType.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetFileMimeType extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getFileMimeType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

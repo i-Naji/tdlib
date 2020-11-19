@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class Supergroup extends TdObject {
-
   /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
-  Supergroup({this.id,
-    this.username,
-    this.date,
-    this.status,
-    this.memberCount,
-    this.hasLinkedChat,
-    this.hasLocation,
-    this.signMessages,
-    this.isSlowModeEnabled,
-    this.isChannel,
-    this.isVerified,
-    this.restrictionReason,
-    this.isScam});
+  Supergroup(
+      {this.id,
+      this.username,
+      this.date,
+      this.status,
+      this.memberCount,
+      this.hasLinkedChat,
+      this.hasLocation,
+      this.signMessages,
+      this.isSlowModeEnabled,
+      this.isChannel,
+      this.isVerified,
+      this.restrictionReason,
+      this.isScam});
 
   /// [id] Supergroup or channel identifier
   int id;
@@ -60,11 +60,12 @@ class Supergroup extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Supergroup.fromJson(Map<String, dynamic> json)  {
+  Supergroup.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.username = json['username'];
     this.date = json['date'];
-    this.status = ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
+    this.status =
+        ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
     this.memberCount = json['member_count'];
     this.hasLinkedChat = json['has_linked_chat'];
     this.hasLocation = json['has_location'];
@@ -98,7 +99,7 @@ class Supergroup extends TdObject {
   }
 
   static const CONSTRUCTOR = 'supergroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

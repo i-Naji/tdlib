@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DeleteProfilePhoto extends TdFunction {
-
   /// Deletes a profile photo
   DeleteProfilePhoto({this.profilePhotoId});
 
@@ -12,7 +11,7 @@ class DeleteProfilePhoto extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DeleteProfilePhoto.fromJson(Map<String, dynamic> json) ;
+  DeleteProfilePhoto.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class DeleteProfilePhoto extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteProfilePhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,24 +1,24 @@
 part of '../tdapi.dart';
 
 class AddLocalMessage extends TdFunction {
-
   /// Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message
-  AddLocalMessage({this.chatId,
-    this.senderUserId,
-    this.replyToMessageId,
-    this.disableNotification,
-    this.inputMessageContent});
+  AddLocalMessage(
+      {this.chatId,
+      this.sender,
+      this.replyToMessageId,
+      this.disableNotification,
+      this.inputMessageContent});
 
-  /// [chatId] Target chat 
+  /// [chatId] Target chat
   int chatId;
 
-  /// [senderUserId] Identifier of the user who will be shown as the sender of the message; may be 0 for channel posts
-  int senderUserId;
+  /// [sender] The sender sender of the message
+  MessageSender sender;
 
   /// [replyToMessageId] Identifier of the message to reply to or 0
   int replyToMessageId;
 
-  /// [disableNotification] Pass true to disable notification for the message 
+  /// [disableNotification] Pass true to disable notification for the message
   bool disableNotification;
 
   /// [inputMessageContent] The content of the message to be added
@@ -28,23 +28,25 @@ class AddLocalMessage extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AddLocalMessage.fromJson(Map<String, dynamic> json) ;
+  AddLocalMessage.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "sender_user_id": this.senderUserId,
+      "sender": this.sender == null ? null : this.sender.toJson(),
       "reply_to_message_id": this.replyToMessageId,
       "disable_notification": this.disableNotification,
-      "input_message_content": this.inputMessageContent == null ? null : this.inputMessageContent.toJson(),
+      "input_message_content": this.inputMessageContent == null
+          ? null
+          : this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }
 
   static const CONSTRUCTOR = 'addLocalMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

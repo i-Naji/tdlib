@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveRecentlyFoundChat extends TdFunction {
-
   /// Removes a chat from the list of recently found chats
   RemoveRecentlyFoundChat({this.chatId});
 
@@ -12,7 +11,7 @@ class RemoveRecentlyFoundChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveRecentlyFoundChat.fromJson(Map<String, dynamic> json) ;
+  RemoveRecentlyFoundChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveRecentlyFoundChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeRecentlyFoundChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class SendPhoneNumberConfirmationCode extends TdFunction {
-
   /// Sends phone number confirmation code. Should be called when user presses "https://t.me/confirmphone?phone=*******&hash=**********" or "tg://confirmphone?phone=*******&hash=**********" link
-  SendPhoneNumberConfirmationCode({this.hash,
-    this.phoneNumber,
-    this.settings});
+  SendPhoneNumberConfirmationCode({this.hash, this.phoneNumber, this.settings});
 
   /// [hash] Value of the "hash" parameter from the link
   String hash;
@@ -20,7 +17,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json) ;
+  SendPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

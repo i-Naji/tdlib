@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class ChangePhoneNumber extends TdFunction {
-
   /// Changes the phone number of the user and sends an authentication code to the user's new phone number. On success, returns information about the sent code
-  ChangePhoneNumber({this.phoneNumber,
-    this.settings});
+  ChangePhoneNumber({this.phoneNumber, this.settings});
 
   /// [phoneNumber] The new phone number of the user in international format
   String phoneNumber;
@@ -16,7 +14,7 @@ class ChangePhoneNumber extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ChangePhoneNumber.fromJson(Map<String, dynamic> json) ;
+  ChangePhoneNumber.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class ChangePhoneNumber extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'changePhoneNumber';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

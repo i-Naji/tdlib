@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class JoinChat extends TdFunction {
-
   /// Adds current user as a new member to a chat. Private and secret chats can't be joined using this method
   JoinChat({this.chatId});
 
@@ -12,7 +11,7 @@ class JoinChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  JoinChat.fromJson(Map<String, dynamic> json) ;
+  JoinChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class JoinChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'joinChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,15 +1,15 @@
 part of '../tdapi.dart';
 
 class SecretChat extends TdObject {
-
   /// Represents a secret chat
-  SecretChat({this.id,
-    this.userId,
-    this.state,
-    this.isOutbound,
-    this.ttl,
-    this.keyHash,
-    this.layer});
+  SecretChat(
+      {this.id,
+      this.userId,
+      this.state,
+      this.isOutbound,
+      this.ttl,
+      this.keyHash,
+      this.layer});
 
   /// [id] Secret chat identifier
   int id;
@@ -36,7 +36,7 @@ class SecretChat extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  SecretChat.fromJson(Map<String, dynamic> json)  {
+  SecretChat.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.userId = json['user_id'];
     this.state = SecretChatState.fromJson(json['state'] ?? <String, dynamic>{});
@@ -62,7 +62,7 @@ class SecretChat extends TdObject {
   }
 
   static const CONSTRUCTOR = 'secretChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

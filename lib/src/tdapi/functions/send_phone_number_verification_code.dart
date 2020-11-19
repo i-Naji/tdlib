@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class SendPhoneNumberVerificationCode extends TdFunction {
-
   /// Sends a code to verify a phone number to be added to a user's Telegram Passport
-  SendPhoneNumberVerificationCode({this.phoneNumber,
-    this.settings});
+  SendPhoneNumberVerificationCode({this.phoneNumber, this.settings});
 
   /// [phoneNumber] The phone number of the user, in international format
   String phoneNumber;
@@ -16,7 +14,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json) ;
+  SendPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendPhoneNumberVerificationCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

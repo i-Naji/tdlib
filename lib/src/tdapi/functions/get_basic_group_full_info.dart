@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetBasicGroupFullInfo extends TdFunction {
-
   /// Returns full information about a basic group by its identifier
   GetBasicGroupFullInfo({this.basicGroupId});
 
@@ -12,7 +11,7 @@ class GetBasicGroupFullInfo extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetBasicGroupFullInfo.fromJson(Map<String, dynamic> json) ;
+  GetBasicGroupFullInfo.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetBasicGroupFullInfo extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getBasicGroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

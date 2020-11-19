@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class DeleteChatMessagesFromUser extends TdFunction {
-
   /// Deletes all messages sent by the specified user to a chat. Supported only for supergroups; requires can_delete_messages administrator privileges
-  DeleteChatMessagesFromUser({this.chatId,
-    this.userId});
+  DeleteChatMessagesFromUser({this.chatId, this.userId});
 
-  /// [chatId] Chat identifier 
+  /// [chatId] Chat identifier
   int chatId;
 
   /// [userId] User identifier
@@ -16,7 +14,7 @@ class DeleteChatMessagesFromUser extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DeleteChatMessagesFromUser.fromJson(Map<String, dynamic> json) ;
+  DeleteChatMessagesFromUser.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class DeleteChatMessagesFromUser extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatMessagesFromUser';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

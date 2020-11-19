@@ -1,18 +1,18 @@
 part of '../tdapi.dart';
 
 class UserFullInfo extends TdObject {
-
   /// Contains full information about a user
-  UserFullInfo({this.photo,
-    this.isBlocked,
-    this.canBeCalled,
-    this.supportsVideoCalls,
-    this.hasPrivateCalls,
-    this.needPhoneNumberPrivacyException,
-    this.bio,
-    this.shareText,
-    this.groupInCommonCount,
-    this.botInfo});
+  UserFullInfo(
+      {this.photo,
+      this.isBlocked,
+      this.canBeCalled,
+      this.supportsVideoCalls,
+      this.hasPrivateCalls,
+      this.needPhoneNumberPrivacyException,
+      this.bio,
+      this.shareText,
+      this.groupInCommonCount,
+      this.botInfo});
 
   /// [photo] User profile photo; may be null
   ChatPhoto photo;
@@ -48,13 +48,14 @@ class UserFullInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  UserFullInfo.fromJson(Map<String, dynamic> json)  {
+  UserFullInfo.fromJson(Map<String, dynamic> json) {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.isBlocked = json['is_blocked'];
     this.canBeCalled = json['can_be_called'];
     this.supportsVideoCalls = json['supports_video_calls'];
     this.hasPrivateCalls = json['has_private_calls'];
-    this.needPhoneNumberPrivacyException = json['need_phone_number_privacy_exception'];
+    this.needPhoneNumberPrivacyException =
+        json['need_phone_number_privacy_exception'];
     this.bio = json['bio'];
     this.shareText = json['share_text'];
     this.groupInCommonCount = json['group_in_common_count'];
@@ -71,7 +72,8 @@ class UserFullInfo extends TdObject {
       "can_be_called": this.canBeCalled,
       "supports_video_calls": this.supportsVideoCalls,
       "has_private_calls": this.hasPrivateCalls,
-      "need_phone_number_privacy_exception": this.needPhoneNumberPrivacyException,
+      "need_phone_number_privacy_exception":
+          this.needPhoneNumberPrivacyException,
       "bio": this.bio,
       "share_text": this.shareText,
       "group_in_common_count": this.groupInCommonCount,
@@ -80,7 +82,7 @@ class UserFullInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'userFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

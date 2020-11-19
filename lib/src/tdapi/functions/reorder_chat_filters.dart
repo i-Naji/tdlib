@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ReorderChatFilters extends TdFunction {
-
   /// Changes the order of chat filters
   ReorderChatFilters({this.chatFilterIds});
 
@@ -12,7 +11,7 @@ class ReorderChatFilters extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ReorderChatFilters.fromJson(Map<String, dynamic> json) ;
+  ReorderChatFilters.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class ReorderChatFilters extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'reorderChatFilters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

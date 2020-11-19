@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class ChangeStickerSet extends TdFunction {
-
   /// Installs/uninstalls or activates/archives a sticker set
-  ChangeStickerSet({this.setId,
-    this.isInstalled,
-    this.isArchived});
+  ChangeStickerSet({this.setId, this.isInstalled, this.isArchived});
 
-  /// [setId] Identifier of the sticker set 
+  /// [setId] Identifier of the sticker set
   int setId;
 
-  /// [isInstalled] The new value of is_installed 
+  /// [isInstalled] The new value of is_installed
   bool isInstalled;
 
   /// [isArchived] The new value of is_archived. A sticker set can't be installed and archived simultaneously
@@ -20,7 +17,7 @@ class ChangeStickerSet extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ChangeStickerSet.fromJson(Map<String, dynamic> json) ;
+  ChangeStickerSet.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class ChangeStickerSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'changeStickerSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

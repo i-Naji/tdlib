@@ -1,18 +1,15 @@
 part of '../tdapi.dart';
 
 class PageBlockHorizontalAlignment extends TdObject {
-
   /// Describes a horizontal alignment of a table cell content
   PageBlockHorizontalAlignment();
-
-  
 
   /// a PageBlockHorizontalAlignment return type can be :
   /// * PageBlockHorizontalAlignmentLeft
   /// * PageBlockHorizontalAlignmentCenter
   /// * PageBlockHorizontalAlignmentRight
-  factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PageBlockHorizontalAlignmentLeft.CONSTRUCTOR:
         return PageBlockHorizontalAlignmentLeft.fromJson(json);
       case PageBlockHorizontalAlignmentCenter.CONSTRUCTOR:
@@ -26,26 +23,21 @@ class PageBlockHorizontalAlignment extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignment';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
-
   /// The content should be left-aligned
   PageBlockHorizontalAlignmentLeft();
 
-  
-
   /// Parse from a json
-  PageBlockHorizontalAlignmentLeft.fromJson(Map<String, dynamic> json) ;
+  PageBlockHorizontalAlignmentLeft.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -55,20 +47,17 @@ class PageBlockHorizontalAlignmentLeft extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentLeft';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
-
   /// The content should be center-aligned
   PageBlockHorizontalAlignmentCenter();
 
-  
-
   /// Parse from a json
-  PageBlockHorizontalAlignmentCenter.fromJson(Map<String, dynamic> json) ;
+  PageBlockHorizontalAlignmentCenter.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -78,20 +67,17 @@ class PageBlockHorizontalAlignmentCenter extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentCenter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
-
   /// The content should be right-aligned
   PageBlockHorizontalAlignmentRight();
 
-  
-
   /// Parse from a json
-  PageBlockHorizontalAlignmentRight.fromJson(Map<String, dynamic> json) ;
+  PageBlockHorizontalAlignmentRight.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -101,7 +87,7 @@ class PageBlockHorizontalAlignmentRight extends PageBlockHorizontalAlignment {
   }
 
   static const CONSTRUCTOR = 'pageBlockHorizontalAlignmentRight';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

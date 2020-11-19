@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class TemporaryPasswordState extends TdObject {
-
   /// Returns information about the availability of a temporary password, which can be used for payments
-  TemporaryPasswordState({this.hasPassword,
-    this.validFor});
+  TemporaryPasswordState({this.hasPassword, this.validFor});
 
-  /// [hasPassword] True, if a temporary password is available 
+  /// [hasPassword] True, if a temporary password is available
   bool hasPassword;
 
   /// [validFor] Time left before the temporary password expires, in seconds
@@ -16,7 +14,7 @@ class TemporaryPasswordState extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  TemporaryPasswordState.fromJson(Map<String, dynamic> json)  {
+  TemporaryPasswordState.fromJson(Map<String, dynamic> json) {
     this.hasPassword = json['has_password'];
     this.validFor = json['valid_for'];
     this.extra = json['@extra'];
@@ -32,7 +30,7 @@ class TemporaryPasswordState extends TdObject {
   }
 
   static const CONSTRUCTOR = 'temporaryPasswordState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

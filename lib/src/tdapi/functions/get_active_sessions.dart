@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetActiveSessions extends TdFunction {
-
   /// Returns all active sessions of the current user
   GetActiveSessions();
 
@@ -9,7 +8,7 @@ class GetActiveSessions extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetActiveSessions.fromJson(Map<String, dynamic> json) ;
+  GetActiveSessions.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetActiveSessions extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getActiveSessions';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

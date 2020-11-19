@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Seconds extends TdObject {
-
   /// Contains a value representing a number of seconds
   Seconds({this.seconds});
 
@@ -12,7 +11,7 @@ class Seconds extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Seconds.fromJson(Map<String, dynamic> json)  {
+  Seconds.fromJson(Map<String, dynamic> json) {
     this.seconds = json['seconds'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class Seconds extends TdObject {
   }
 
   static const CONSTRUCTOR = 'seconds';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

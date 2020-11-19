@@ -1,23 +1,23 @@
 part of '../tdapi.dart';
 
 class Video extends TdObject {
-
   /// Describes a video file
-  Video({this.duration,
-    this.width,
-    this.height,
-    this.fileName,
-    this.mimeType,
-    this.hasStickers,
-    this.supportsStreaming,
-    this.minithumbnail,
-    this.thumbnail,
-    this.video});
+  Video(
+      {this.duration,
+      this.width,
+      this.height,
+      this.fileName,
+      this.mimeType,
+      this.hasStickers,
+      this.supportsStreaming,
+      this.minithumbnail,
+      this.thumbnail,
+      this.video});
 
-  /// [duration] Duration of the video, in seconds; as defined by the sender 
+  /// [duration] Duration of the video, in seconds; as defined by the sender
   int duration;
 
-  /// [width] Video width; as defined by the sender 
+  /// [width] Video width; as defined by the sender
   int width;
 
   /// [height] Video height; as defined by the sender
@@ -45,7 +45,7 @@ class Video extends TdObject {
   File video;
 
   /// Parse from a json
-  Video.fromJson(Map<String, dynamic> json)  {
+  Video.fromJson(Map<String, dynamic> json) {
     this.duration = json['duration'];
     this.width = json['width'];
     this.height = json['height'];
@@ -53,8 +53,10 @@ class Video extends TdObject {
     this.mimeType = json['mime_type'];
     this.hasStickers = json['has_stickers'];
     this.supportsStreaming = json['supports_streaming'];
-    this.minithumbnail = Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.thumbnail = Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.minithumbnail =
+        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
+    this.thumbnail =
+        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.video = File.fromJson(json['video'] ?? <String, dynamic>{});
   }
 
@@ -69,14 +71,15 @@ class Video extends TdObject {
       "mime_type": this.mimeType,
       "has_stickers": this.hasStickers,
       "supports_streaming": this.supportsStreaming,
-      "minithumbnail": this.minithumbnail == null ? null : this.minithumbnail.toJson(),
+      "minithumbnail":
+          this.minithumbnail == null ? null : this.minithumbnail.toJson(),
       "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "video": this.video == null ? null : this.video.toJson(),
     };
   }
 
   static const CONSTRUCTOR = 'video';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

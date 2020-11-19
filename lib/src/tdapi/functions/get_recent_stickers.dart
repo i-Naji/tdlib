@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetRecentStickers extends TdFunction {
-
   /// Returns a list of recently used stickers
   GetRecentStickers({this.isAttached});
 
@@ -12,7 +11,7 @@ class GetRecentStickers extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetRecentStickers.fromJson(Map<String, dynamic> json) ;
+  GetRecentStickers.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetRecentStickers extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getRecentStickers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

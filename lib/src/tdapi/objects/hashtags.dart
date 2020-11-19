@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Hashtags extends TdObject {
-
   /// Contains a list of hashtags
   Hashtags({this.hashtags});
 
@@ -12,8 +11,9 @@ class Hashtags extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Hashtags.fromJson(Map<String, dynamic> json)  {
-    this.hashtags = List<String>.from((json['hashtags'] ?? []).map((item) => item).toList());
+  Hashtags.fromJson(Map<String, dynamic> json) {
+    this.hashtags = List<String>.from(
+        (json['hashtags'] ?? []).map((item) => item).toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +26,7 @@ class Hashtags extends TdObject {
   }
 
   static const CONSTRUCTOR = 'hashtags';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

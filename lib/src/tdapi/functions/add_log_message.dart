@@ -1,10 +1,8 @@
 part of '../tdapi.dart';
 
 class AddLogMessage extends TdFunction {
-
   /// Adds a message to TDLib internal log. Can be called synchronously
-  AddLogMessage({this.verbosityLevel,
-    this.text});
+  AddLogMessage({this.verbosityLevel, this.text});
 
   /// [verbosityLevel] The minimum verbosity level needed for the message to be logged, 0-1023
   int verbosityLevel;
@@ -16,7 +14,7 @@ class AddLogMessage extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AddLogMessage.fromJson(Map<String, dynamic> json) ;
+  AddLogMessage.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class AddLogMessage extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addLogMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

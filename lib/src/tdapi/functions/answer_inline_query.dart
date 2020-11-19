@@ -1,17 +1,17 @@
 part of '../tdapi.dart';
 
 class AnswerInlineQuery extends TdFunction {
-
   /// Sets the result of an inline query; for bots only
-  AnswerInlineQuery({this.inlineQueryId,
-    this.isPersonal,
-    this.results,
-    this.cacheTime,
-    this.nextOffset,
-    this.switchPmText,
-    this.switchPmParameter});
+  AnswerInlineQuery(
+      {this.inlineQueryId,
+      this.isPersonal,
+      this.results,
+      this.cacheTime,
+      this.nextOffset,
+      this.switchPmText,
+      this.switchPmParameter});
 
-  /// [inlineQueryId] Identifier of the inline query 
+  /// [inlineQueryId] Identifier of the inline query
   int inlineQueryId;
 
   /// [isPersonal] True, if the result of the query can be cached for the specified user
@@ -20,7 +20,7 @@ class AnswerInlineQuery extends TdFunction {
   /// [results] The results of the query
   List<InputInlineQueryResult> results;
 
-  /// [cacheTime] Allowed time to cache the results of the query, in seconds 
+  /// [cacheTime] Allowed time to cache the results of the query, in seconds
   int cacheTime;
 
   /// [nextOffset] Offset for the next inline query; pass an empty string if there are no more results
@@ -36,7 +36,7 @@ class AnswerInlineQuery extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AnswerInlineQuery.fromJson(Map<String, dynamic> json) ;
+  AnswerInlineQuery.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -54,7 +54,7 @@ class AnswerInlineQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerInlineQuery';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

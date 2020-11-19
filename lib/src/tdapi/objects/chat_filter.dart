@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class ChatFilter extends TdObject {
-
   /// Represents a filter of user chats
-  ChatFilter({this.title,
-    this.iconName,
-    this.pinnedChatIds,
-    this.includedChatIds,
-    this.excludedChatIds,
-    this.excludeMuted,
-    this.excludeRead,
-    this.excludeArchived,
-    this.includeContacts,
-    this.includeNonContacts,
-    this.includeBots,
-    this.includeGroups,
-    this.includeChannels});
+  ChatFilter(
+      {this.title,
+      this.iconName,
+      this.pinnedChatIds,
+      this.includedChatIds,
+      this.excludedChatIds,
+      this.excludeMuted,
+      this.excludeRead,
+      this.excludeArchived,
+      this.includeContacts,
+      this.includeNonContacts,
+      this.includeBots,
+      this.includeGroups,
+      this.includeChannels});
 
   /// [title] The title of the filter; 1-12 characters without line feeds
   String title;
@@ -32,7 +32,7 @@ class ChatFilter extends TdObject {
   /// [excludedChatIds] The chat identifiers of always excluded chats in the filtered chat list
   List<int> excludedChatIds;
 
-  /// [excludeMuted] True, if the muted chats need to be excluded
+  /// [excludeMuted] True, if muted chats need to be excluded
   bool excludeMuted;
 
   /// [excludeRead] True, if read chats need to be excluded
@@ -60,12 +60,15 @@ class ChatFilter extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  ChatFilter.fromJson(Map<String, dynamic> json)  {
+  ChatFilter.fromJson(Map<String, dynamic> json) {
     this.title = json['title'];
     this.iconName = json['icon_name'];
-    this.pinnedChatIds = List<int>.from((json['pinned_chat_ids'] ?? []).map((item) => item).toList());
-    this.includedChatIds = List<int>.from((json['included_chat_ids'] ?? []).map((item) => item).toList());
-    this.excludedChatIds = List<int>.from((json['excluded_chat_ids'] ?? []).map((item) => item).toList());
+    this.pinnedChatIds = List<int>.from(
+        (json['pinned_chat_ids'] ?? []).map((item) => item).toList());
+    this.includedChatIds = List<int>.from(
+        (json['included_chat_ids'] ?? []).map((item) => item).toList());
+    this.excludedChatIds = List<int>.from(
+        (json['excluded_chat_ids'] ?? []).map((item) => item).toList());
     this.excludeMuted = json['exclude_muted'];
     this.excludeRead = json['exclude_read'];
     this.excludeArchived = json['exclude_archived'];
@@ -98,7 +101,7 @@ class ChatFilter extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

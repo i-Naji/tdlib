@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Close extends TdFunction {
-
   /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
   Close();
 
@@ -9,7 +8,7 @@ class Close extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  Close.fromJson(Map<String, dynamic> json) ;
+  Close.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class Close extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'close';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

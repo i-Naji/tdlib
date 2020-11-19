@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SearchHashtags extends TdFunction {
-
   /// Searches for recently used hashtags by their prefix
-  SearchHashtags({this.prefix,
-    this.limit});
+  SearchHashtags({this.prefix, this.limit});
 
-  /// [prefix] Hashtag prefix to search for 
+  /// [prefix] Hashtag prefix to search for
   String prefix;
 
   /// [limit] The maximum number of hashtags to be returned
@@ -16,7 +14,7 @@ class SearchHashtags extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SearchHashtags.fromJson(Map<String, dynamic> json) ;
+  SearchHashtags.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SearchHashtags extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'searchHashtags';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

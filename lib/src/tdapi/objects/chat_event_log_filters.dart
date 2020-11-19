@@ -1,18 +1,18 @@
 part of '../tdapi.dart';
 
 class ChatEventLogFilters extends TdObject {
-
   /// Represents a set of filters used to obtain a chat event log
-  ChatEventLogFilters({this.messageEdits,
-    this.messageDeletions,
-    this.messagePins,
-    this.memberJoins,
-    this.memberLeaves,
-    this.memberInvites,
-    this.memberPromotions,
-    this.memberRestrictions,
-    this.infoChanges,
-    this.settingChanges});
+  ChatEventLogFilters(
+      {this.messageEdits,
+      this.messageDeletions,
+      this.messagePins,
+      this.memberJoins,
+      this.memberLeaves,
+      this.memberInvites,
+      this.memberPromotions,
+      this.memberRestrictions,
+      this.infoChanges,
+      this.settingChanges});
 
   /// [messageEdits] True, if message edits should be returned
   bool messageEdits;
@@ -45,7 +45,7 @@ class ChatEventLogFilters extends TdObject {
   bool settingChanges;
 
   /// Parse from a json
-  ChatEventLogFilters.fromJson(Map<String, dynamic> json)  {
+  ChatEventLogFilters.fromJson(Map<String, dynamic> json) {
     this.messageEdits = json['message_edits'];
     this.messageDeletions = json['message_deletions'];
     this.messagePins = json['message_pins'];
@@ -76,7 +76,7 @@ class ChatEventLogFilters extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatEventLogFilters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SetUsername extends TdFunction {
-
   /// Changes the username of the current user
   SetUsername({this.username});
 
@@ -12,7 +11,7 @@ class SetUsername extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetUsername.fromJson(Map<String, dynamic> json) ;
+  SetUsername.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class SetUsername extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setUsername';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

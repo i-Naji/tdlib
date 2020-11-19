@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class ReportChat extends TdFunction {
-
   /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if this is a private chats with a bot, a private chat with a user sharing their location, a supergroup, or a channel, since other chats can't be checked by moderators
-  ReportChat({this.chatId,
-    this.reason,
-    this.messageIds});
+  ReportChat({this.chatId, this.reason, this.messageIds});
 
-  /// [chatId] Chat identifier 
+  /// [chatId] Chat identifier
   int chatId;
 
-  /// [reason] The reason for reporting the chat 
+  /// [reason] The reason for reporting the chat
   ChatReportReason reason;
 
   /// [messageIds] Identifiers of reported messages, if any
@@ -20,7 +17,7 @@ class ReportChat extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  ReportChat.fromJson(Map<String, dynamic> json) ;
+  ReportChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class ReportChat extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'reportChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

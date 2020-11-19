@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class DeleteChatFilter extends TdFunction {
-
   /// Deletes existing chat filter
   DeleteChatFilter({this.chatFilterId});
 
@@ -12,7 +11,7 @@ class DeleteChatFilter extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  DeleteChatFilter.fromJson(Map<String, dynamic> json) ;
+  DeleteChatFilter.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class DeleteChatFilter extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'deleteChatFilter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

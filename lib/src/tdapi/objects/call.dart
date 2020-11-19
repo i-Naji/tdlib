@@ -1,31 +1,26 @@
 part of '../tdapi.dart';
 
 class Call extends TdObject {
-
   /// Describes a call
-  Call({this.id,
-    this.userId,
-    this.isOutgoing,
-    this.isVideo,
-    this.state});
+  Call({this.id, this.userId, this.isOutgoing, this.isVideo, this.state});
 
-  /// [id] Call identifier, not persistent 
+  /// [id] Call identifier, not persistent
   int id;
 
-  /// [userId] Peer user identifier 
+  /// [userId] Peer user identifier
   int userId;
 
-  /// [isOutgoing] True, if the call is outgoing 
+  /// [isOutgoing] True, if the call is outgoing
   bool isOutgoing;
 
-  /// [isVideo] True, if the call is a video call 
+  /// [isVideo] True, if the call is a video call
   bool isVideo;
 
   /// [state] Call state
   CallState state;
 
   /// Parse from a json
-  Call.fromJson(Map<String, dynamic> json)  {
+  Call.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.userId = json['user_id'];
     this.isOutgoing = json['is_outgoing'];
@@ -46,7 +41,7 @@ class Call extends TdObject {
   }
 
   static const CONSTRUCTOR = 'call';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

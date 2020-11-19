@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Ok extends TdObject {
-
   /// An object of this type is returned on a successful function call for certain functions
   Ok();
 
@@ -9,7 +8,7 @@ class Ok extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Ok.fromJson(Map<String, dynamic> json)  {
+  Ok.fromJson(Map<String, dynamic> json) {
     this.extra = json['@extra'];
   }
 
@@ -21,7 +20,7 @@ class Ok extends TdObject {
   }
 
   static const CONSTRUCTOR = 'ok';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

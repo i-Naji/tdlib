@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class SaveApplicationLogEvent extends TdFunction {
-
   /// Saves application log event on the server. Can be called before authorization
-  SaveApplicationLogEvent({this.type,
-    this.chatId,
-    this.data});
+  SaveApplicationLogEvent({this.type, this.chatId, this.data});
 
-  /// [type] Event type 
+  /// [type] Event type
   String type;
 
-  /// [chatId] Optional chat identifier, associated with the event 
+  /// [chatId] Optional chat identifier, associated with the event
   int chatId;
 
   /// [data] The log event data
@@ -20,7 +17,7 @@ class SaveApplicationLogEvent extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SaveApplicationLogEvent.fromJson(Map<String, dynamic> json) ;
+  SaveApplicationLogEvent.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class SaveApplicationLogEvent extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'saveApplicationLogEvent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

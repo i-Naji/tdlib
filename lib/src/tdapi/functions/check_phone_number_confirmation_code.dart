@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckPhoneNumberConfirmationCode extends TdFunction {
-
   /// Checks phone number confirmation code
   CheckPhoneNumberConfirmationCode({this.code});
 
@@ -12,7 +11,7 @@ class CheckPhoneNumberConfirmationCode extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json) ;
+  CheckPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckPhoneNumberConfirmationCode extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkPhoneNumberConfirmationCode';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

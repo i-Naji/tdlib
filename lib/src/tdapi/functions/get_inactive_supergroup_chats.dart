@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetInactiveSupergroupChats extends TdFunction {
-
   /// Returns a list of recently inactive supergroups and channels. Can be used when user reaches limit on the number of joined supergroups and channels and receives CHANNELS_TOO_MUCH error
   GetInactiveSupergroupChats();
 
@@ -9,7 +8,7 @@ class GetInactiveSupergroupChats extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetInactiveSupergroupChats.fromJson(Map<String, dynamic> json) ;
+  GetInactiveSupergroupChats.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetInactiveSupergroupChats extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInactiveSupergroupChats';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

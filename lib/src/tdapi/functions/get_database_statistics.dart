@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetDatabaseStatistics extends TdFunction {
-
   /// Returns database statistics
   GetDatabaseStatistics();
 
@@ -9,7 +8,7 @@ class GetDatabaseStatistics extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetDatabaseStatistics.fromJson(Map<String, dynamic> json) ;
+  GetDatabaseStatistics.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -20,7 +19,7 @@ class GetDatabaseStatistics extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getDatabaseStatistics';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

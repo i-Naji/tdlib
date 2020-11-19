@@ -1,28 +1,28 @@
 part of '../tdapi.dart';
 
 class SupergroupFullInfo extends TdObject {
-
   /// Contains full information about a supergroup or channel
-  SupergroupFullInfo({this.photo,
-    this.description,
-    this.memberCount,
-    this.administratorCount,
-    this.restrictedCount,
-    this.bannedCount,
-    this.linkedChatId,
-    this.slowModeDelay,
-    this.slowModeDelayExpiresIn,
-    this.canGetMembers,
-    this.canSetUsername,
-    this.canSetStickerSet,
-    this.canSetLocation,
-    this.canViewStatistics,
-    this.isAllHistoryAvailable,
-    this.stickerSetId,
-    this.location,
-    this.inviteLink,
-    this.upgradedFromBasicGroupId,
-    this.upgradedFromMaxMessageId});
+  SupergroupFullInfo(
+      {this.photo,
+      this.description,
+      this.memberCount,
+      this.administratorCount,
+      this.restrictedCount,
+      this.bannedCount,
+      this.linkedChatId,
+      this.slowModeDelay,
+      this.slowModeDelayExpiresIn,
+      this.canGetMembers,
+      this.canSetUsername,
+      this.canSetStickerSet,
+      this.canSetLocation,
+      this.canGetStatistics,
+      this.isAllHistoryAvailable,
+      this.stickerSetId,
+      this.location,
+      this.inviteLink,
+      this.upgradedFromBasicGroupId,
+      this.upgradedFromMaxMessageId});
 
   /// [photo] Chat photo; may be null
   ChatPhoto photo;
@@ -63,8 +63,8 @@ class SupergroupFullInfo extends TdObject {
   /// [canSetLocation] True, if the supergroup location can be changed
   bool canSetLocation;
 
-  /// [canViewStatistics] True, if the channel statistics is available
-  bool canViewStatistics;
+  /// [canGetStatistics] True, if the supergroup or channel statistics are available
+  bool canGetStatistics;
 
   /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public or discussion groups and both public and private channels, old messages are always available, so this option affects only private supergroups without a linked chat. The value of this field is only available for chat administrators
   bool isAllHistoryAvailable;
@@ -88,7 +88,7 @@ class SupergroupFullInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  SupergroupFullInfo.fromJson(Map<String, dynamic> json)  {
+  SupergroupFullInfo.fromJson(Map<String, dynamic> json) {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.description = json['description'];
     this.memberCount = json['member_count'];
@@ -102,10 +102,11 @@ class SupergroupFullInfo extends TdObject {
     this.canSetUsername = json['can_set_username'];
     this.canSetStickerSet = json['can_set_sticker_set'];
     this.canSetLocation = json['can_set_location'];
-    this.canViewStatistics = json['can_view_statistics'];
+    this.canGetStatistics = json['can_get_statistics'];
     this.isAllHistoryAvailable = json['is_all_history_available'];
     this.stickerSetId = int.tryParse(json['sticker_set_id'] ?? "");
-    this.location = ChatLocation.fromJson(json['location'] ?? <String, dynamic>{});
+    this.location =
+        ChatLocation.fromJson(json['location'] ?? <String, dynamic>{});
     this.inviteLink = json['invite_link'];
     this.upgradedFromBasicGroupId = json['upgraded_from_basic_group_id'];
     this.upgradedFromMaxMessageId = json['upgraded_from_max_message_id'];
@@ -129,7 +130,7 @@ class SupergroupFullInfo extends TdObject {
       "can_set_username": this.canSetUsername,
       "can_set_sticker_set": this.canSetStickerSet,
       "can_set_location": this.canSetLocation,
-      "can_view_statistics": this.canViewStatistics,
+      "can_get_statistics": this.canGetStatistics,
       "is_all_history_available": this.isAllHistoryAvailable,
       "sticker_set_id": this.stickerSetId,
       "location": this.location == null ? null : this.location.toJson(),
@@ -140,7 +141,7 @@ class SupergroupFullInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'supergroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class PassportElements extends TdObject {
-
   /// Contains information about saved Telegram Passport elements
   PassportElements({this.elements});
 
@@ -12,8 +11,10 @@ class PassportElements extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  PassportElements.fromJson(Map<String, dynamic> json)  {
-    this.elements = List<PassportElement>.from((json['elements'] ?? []).map((item) => PassportElement.fromJson(item ?? <String, dynamic>{})).toList());
+  PassportElements.fromJson(Map<String, dynamic> json) {
+    this.elements = List<PassportElement>.from((json['elements'] ?? [])
+        .map((item) => PassportElement.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.extra = json['@extra'];
   }
 
@@ -26,7 +27,7 @@ class PassportElements extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passportElements';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

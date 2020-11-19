@@ -1,17 +1,14 @@
 part of '../tdapi.dart';
 
 class InputBackground extends TdObject {
-
   /// Contains information about background to set
   InputBackground();
-
-  
 
   /// a InputBackground return type can be :
   /// * InputBackgroundLocal
   /// * InputBackgroundRemote
-  factory InputBackground.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory InputBackground.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case InputBackgroundLocal.CONSTRUCTOR:
         return InputBackgroundLocal.fromJson(json);
       case InputBackgroundRemote.CONSTRUCTOR:
@@ -23,19 +20,16 @@ class InputBackground extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'inputBackground';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class InputBackgroundLocal extends InputBackground {
-
   /// A background from a local file
   InputBackgroundLocal({this.background});
 
@@ -43,8 +37,9 @@ class InputBackgroundLocal extends InputBackground {
   InputFile background;
 
   /// Parse from a json
-  InputBackgroundLocal.fromJson(Map<String, dynamic> json)  {
-    this.background = InputFile.fromJson(json['background'] ?? <String, dynamic>{});
+  InputBackgroundLocal.fromJson(Map<String, dynamic> json) {
+    this.background =
+        InputFile.fromJson(json['background'] ?? <String, dynamic>{});
   }
 
   @override
@@ -56,13 +51,12 @@ class InputBackgroundLocal extends InputBackground {
   }
 
   static const CONSTRUCTOR = 'inputBackgroundLocal';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class InputBackgroundRemote extends InputBackground {
-
   /// A background from the server
   InputBackgroundRemote({this.backgroundId});
 
@@ -70,7 +64,7 @@ class InputBackgroundRemote extends InputBackground {
   int backgroundId;
 
   /// Parse from a json
-  InputBackgroundRemote.fromJson(Map<String, dynamic> json)  {
+  InputBackgroundRemote.fromJson(Map<String, dynamic> json) {
     this.backgroundId = int.tryParse(json['background_id'] ?? "");
   }
 
@@ -83,7 +77,7 @@ class InputBackgroundRemote extends InputBackground {
   }
 
   static const CONSTRUCTOR = 'inputBackgroundRemote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

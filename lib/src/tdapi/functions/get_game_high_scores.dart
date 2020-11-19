@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class GetGameHighScores extends TdFunction {
-
   /// Returns the high scores for a game and some part of the high score table in the range of the specified user; for bots only
-  GetGameHighScores({this.chatId,
-    this.messageId,
-    this.userId});
+  GetGameHighScores({this.chatId, this.messageId, this.userId});
 
-  /// [chatId] The chat that contains the message with the game 
+  /// [chatId] The chat that contains the message with the game
   int chatId;
 
-  /// [messageId] Identifier of the message 
+  /// [messageId] Identifier of the message
   int messageId;
 
   /// [userId] User identifier
@@ -20,7 +17,7 @@ class GetGameHighScores extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetGameHighScores.fromJson(Map<String, dynamic> json) ;
+  GetGameHighScores.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class GetGameHighScores extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getGameHighScores';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

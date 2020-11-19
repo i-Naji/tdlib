@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class SendCallDebugInformation extends TdFunction {
-
   /// Sends debug information for a call
-  SendCallDebugInformation({this.callId,
-    this.debugInformation});
+  SendCallDebugInformation({this.callId, this.debugInformation});
 
-  /// [callId] Call identifier 
+  /// [callId] Call identifier
   int callId;
 
   /// [debugInformation] Debug information in application-specific format
@@ -16,7 +14,7 @@ class SendCallDebugInformation extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SendCallDebugInformation.fromJson(Map<String, dynamic> json) ;
+  SendCallDebugInformation.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class SendCallDebugInformation extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'sendCallDebugInformation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

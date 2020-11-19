@@ -1,15 +1,11 @@
 part of '../tdapi.dart';
 
 class NotificationGroup extends TdObject {
-
   /// Describes a group of notifications
-  NotificationGroup({this.id,
-    this.type,
-    this.chatId,
-    this.totalCount,
-    this.notifications});
+  NotificationGroup(
+      {this.id, this.type, this.chatId, this.totalCount, this.notifications});
 
-  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group 
+  /// [id] Unique persistent auto-incremented from 1 identifier of the notification group
   int id;
 
   /// [type] Type of the group
@@ -25,12 +21,15 @@ class NotificationGroup extends TdObject {
   List<Notification> notifications;
 
   /// Parse from a json
-  NotificationGroup.fromJson(Map<String, dynamic> json)  {
+  NotificationGroup.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
-    this.type = NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
+    this.type =
+        NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
     this.chatId = json['chat_id'];
     this.totalCount = json['total_count'];
-    this.notifications = List<Notification>.from((json['notifications'] ?? []).map((item) => Notification.fromJson(item ?? <String, dynamic>{})).toList());
+    this.notifications = List<Notification>.from((json['notifications'] ?? [])
+        .map((item) => Notification.fromJson(item ?? <String, dynamic>{}))
+        .toList());
   }
 
   @override
@@ -46,7 +45,7 @@ class NotificationGroup extends TdObject {
   }
 
   static const CONSTRUCTOR = 'notificationGroup';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

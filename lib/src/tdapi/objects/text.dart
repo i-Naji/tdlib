@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Text extends TdObject {
-
   /// Contains some text
   Text({this.text});
 
@@ -12,7 +11,7 @@ class Text extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Text.fromJson(Map<String, dynamic> json)  {
+  Text.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class Text extends TdObject {
   }
 
   static const CONSTRUCTOR = 'text';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

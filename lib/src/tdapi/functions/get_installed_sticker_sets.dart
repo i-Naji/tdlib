@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetInstalledStickerSets extends TdFunction {
-
   /// Returns a list of installed sticker sets
   GetInstalledStickerSets({this.isMasks});
 
@@ -12,7 +11,7 @@ class GetInstalledStickerSets extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetInstalledStickerSets.fromJson(Map<String, dynamic> json) ;
+  GetInstalledStickerSets.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class GetInstalledStickerSets extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getInstalledStickerSets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

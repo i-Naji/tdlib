@@ -1,13 +1,13 @@
 part of '../tdapi.dart';
 
 class BasicGroupFullInfo extends TdObject {
-
   /// Contains full information about a basic group
-  BasicGroupFullInfo({this.photo,
-    this.description,
-    this.creatorUserId,
-    this.members,
-    this.inviteLink});
+  BasicGroupFullInfo(
+      {this.photo,
+      this.description,
+      this.creatorUserId,
+      this.members,
+      this.inviteLink});
 
   /// [photo] Chat photo; may be null
   ChatPhoto photo;
@@ -28,11 +28,13 @@ class BasicGroupFullInfo extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  BasicGroupFullInfo.fromJson(Map<String, dynamic> json)  {
+  BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
     this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
     this.description = json['description'];
     this.creatorUserId = json['creator_user_id'];
-    this.members = List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item ?? <String, dynamic>{})).toList());
+    this.members = List<ChatMember>.from((json['members'] ?? [])
+        .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.inviteLink = json['invite_link'];
     this.extra = json['@extra'];
   }
@@ -50,7 +52,7 @@ class BasicGroupFullInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'basicGroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

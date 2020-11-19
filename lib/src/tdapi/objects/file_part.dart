@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class FilePart extends TdObject {
-
   /// Contains a part of a file
   FilePart({this.data});
 
@@ -12,7 +11,7 @@ class FilePart extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  FilePart.fromJson(Map<String, dynamic> json)  {
+  FilePart.fromJson(Map<String, dynamic> json) {
     this.data = json['data'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class FilePart extends TdObject {
   }
 
   static const CONSTRUCTOR = 'filePart';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

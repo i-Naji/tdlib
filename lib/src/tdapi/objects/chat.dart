@@ -1,31 +1,31 @@
 part of '../tdapi.dart';
 
 class Chat extends TdObject {
-
   /// A chat. (Can be a private chat, basic group, supergroup, or secret chat)
-  Chat({this.id,
-    this.type,
-    this.title,
-    this.photo,
-    this.permissions,
-    this.lastMessage,
-    this.positions,
-    this.isMarkedAsUnread,
-    this.hasScheduledMessages,
-    this.canBeDeletedOnlyForSelf,
-    this.canBeDeletedForAllUsers,
-    this.canBeReported,
-    this.defaultDisableNotification,
-    this.unreadCount,
-    this.lastReadInboxMessageId,
-    this.lastReadOutboxMessageId,
-    this.unreadMentionCount,
-    this.notificationSettings,
-    this.actionBar,
-    this.pinnedMessageId,
-    this.replyMarkupMessageId,
-    this.draftMessage,
-    this.clientData});
+  Chat(
+      {this.id,
+      this.type,
+      this.title,
+      this.photo,
+      this.permissions,
+      this.lastMessage,
+      this.positions,
+      this.isMarkedAsUnread,
+      this.isBlocked,
+      this.hasScheduledMessages,
+      this.canBeDeletedOnlyForSelf,
+      this.canBeDeletedForAllUsers,
+      this.canBeReported,
+      this.defaultDisableNotification,
+      this.unreadCount,
+      this.lastReadInboxMessageId,
+      this.lastReadOutboxMessageId,
+      this.unreadMentionCount,
+      this.notificationSettings,
+      this.actionBar,
+      this.replyMarkupMessageId,
+      this.draftMessage,
+      this.clientData});
 
   /// [id] Chat unique identifier
   int id;
@@ -50,6 +50,9 @@ class Chat extends TdObject {
 
   /// [isMarkedAsUnread] True, if the chat is marked as unread
   bool isMarkedAsUnread;
+
+  /// [isBlocked] True, if the chat is blocked by the current user and private messages from the chat can't be received
+  bool isBlocked;
 
   /// [hasScheduledMessages] True, if the chat has scheduled messages
   bool hasScheduledMessages;
@@ -84,9 +87,6 @@ class Chat extends TdObject {
   /// [actionBar] Describes actions which should be possible to do through a chat action bar; may be null
   ChatActionBar actionBar;
 
-  /// [pinnedMessageId] Identifier of the pinned message in the chat; 0 if none
-  int pinnedMessageId;
-
   /// [replyMarkupMessageId] Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
   int replyMarkupMessageId;
 
@@ -100,15 +100,20 @@ class Chat extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  Chat.fromJson(Map<String, dynamic> json)  {
+  Chat.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.type = ChatType.fromJson(json['type'] ?? <String, dynamic>{});
     this.title = json['title'];
     this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.permissions = ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
-    this.lastMessage = Message.fromJson(json['last_message'] ?? <String, dynamic>{});
-    this.positions = List<ChatPosition>.from((json['positions'] ?? []).map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{})).toList());
+    this.permissions =
+        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
+    this.lastMessage =
+        Message.fromJson(json['last_message'] ?? <String, dynamic>{});
+    this.positions = List<ChatPosition>.from((json['positions'] ?? [])
+        .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.isMarkedAsUnread = json['is_marked_as_unread'];
+    this.isBlocked = json['is_blocked'];
     this.hasScheduledMessages = json['has_scheduled_messages'];
     this.canBeDeletedOnlyForSelf = json['can_be_deleted_only_for_self'];
     this.canBeDeletedForAllUsers = json['can_be_deleted_for_all_users'];
@@ -118,11 +123,13 @@ class Chat extends TdObject {
     this.lastReadInboxMessageId = json['last_read_inbox_message_id'];
     this.lastReadOutboxMessageId = json['last_read_outbox_message_id'];
     this.unreadMentionCount = json['unread_mention_count'];
-    this.notificationSettings = ChatNotificationSettings.fromJson(json['notification_settings'] ?? <String, dynamic>{});
-    this.actionBar = ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{});
-    this.pinnedMessageId = json['pinned_message_id'];
+    this.notificationSettings = ChatNotificationSettings.fromJson(
+        json['notification_settings'] ?? <String, dynamic>{});
+    this.actionBar =
+        ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{});
     this.replyMarkupMessageId = json['reply_markup_message_id'];
-    this.draftMessage = DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{});
+    this.draftMessage =
+        DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{});
     this.clientData = json['client_data'];
     this.extra = json['@extra'];
   }
@@ -135,10 +142,13 @@ class Chat extends TdObject {
       "type": this.type == null ? null : this.type.toJson(),
       "title": this.title,
       "photo": this.photo == null ? null : this.photo.toJson(),
-      "permissions": this.permissions == null ? null : this.permissions.toJson(),
-      "last_message": this.lastMessage == null ? null : this.lastMessage.toJson(),
+      "permissions":
+          this.permissions == null ? null : this.permissions.toJson(),
+      "last_message":
+          this.lastMessage == null ? null : this.lastMessage.toJson(),
       "positions": this.positions.map((i) => i.toJson()).toList(),
       "is_marked_as_unread": this.isMarkedAsUnread,
+      "is_blocked": this.isBlocked,
       "has_scheduled_messages": this.hasScheduledMessages,
       "can_be_deleted_only_for_self": this.canBeDeletedOnlyForSelf,
       "can_be_deleted_for_all_users": this.canBeDeletedForAllUsers,
@@ -148,17 +158,19 @@ class Chat extends TdObject {
       "last_read_inbox_message_id": this.lastReadInboxMessageId,
       "last_read_outbox_message_id": this.lastReadOutboxMessageId,
       "unread_mention_count": this.unreadMentionCount,
-      "notification_settings": this.notificationSettings == null ? null : this.notificationSettings.toJson(),
+      "notification_settings": this.notificationSettings == null
+          ? null
+          : this.notificationSettings.toJson(),
       "action_bar": this.actionBar == null ? null : this.actionBar.toJson(),
-      "pinned_message_id": this.pinnedMessageId,
       "reply_markup_message_id": this.replyMarkupMessageId,
-      "draft_message": this.draftMessage == null ? null : this.draftMessage.toJson(),
+      "draft_message":
+          this.draftMessage == null ? null : this.draftMessage.toJson(),
       "client_data": this.clientData,
     };
   }
 
   static const CONSTRUCTOR = 'chat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

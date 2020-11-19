@@ -1,19 +1,16 @@
 part of '../tdapi.dart';
 
 class NotificationType extends TdObject {
-
   /// Contains detailed information about a notification
   NotificationType();
-
-  
 
   /// a NotificationType return type can be :
   /// * NotificationTypeNewMessage
   /// * NotificationTypeNewSecretChat
   /// * NotificationTypeNewCall
   /// * NotificationTypeNewPushMessage
-  factory NotificationType.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory NotificationType.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case NotificationTypeNewMessage.CONSTRUCTOR:
         return NotificationTypeNewMessage.fromJson(json);
       case NotificationTypeNewSecretChat.CONSTRUCTOR:
@@ -29,19 +26,16 @@ class NotificationType extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'notificationType';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewMessage extends NotificationType {
-
   /// New message was received
   NotificationTypeNewMessage({this.message});
 
@@ -49,7 +43,7 @@ class NotificationTypeNewMessage extends NotificationType {
   Message message;
 
   /// Parse from a json
-  NotificationTypeNewMessage.fromJson(Map<String, dynamic> json)  {
+  NotificationTypeNewMessage.fromJson(Map<String, dynamic> json) {
     this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
   }
 
@@ -62,20 +56,17 @@ class NotificationTypeNewMessage extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewSecretChat extends NotificationType {
-
   /// New secret chat was created
   NotificationTypeNewSecretChat();
 
-  
-
   /// Parse from a json
-  NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json) ;
+  NotificationTypeNewSecretChat.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -85,13 +76,12 @@ class NotificationTypeNewSecretChat extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewSecretChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewCall extends NotificationType {
-
   /// New call was received
   NotificationTypeNewCall({this.callId});
 
@@ -99,7 +89,7 @@ class NotificationTypeNewCall extends NotificationType {
   int callId;
 
   /// Parse from a json
-  NotificationTypeNewCall.fromJson(Map<String, dynamic> json)  {
+  NotificationTypeNewCall.fromJson(Map<String, dynamic> json) {
     this.callId = json['call_id'];
   }
 
@@ -112,27 +102,27 @@ class NotificationTypeNewCall extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class NotificationTypeNewPushMessage extends NotificationType {
-
   /// New message was received through a push notification
-  NotificationTypeNewPushMessage({this.messageId,
-    this.senderUserId,
-    this.senderName,
-    this.isOutgoing,
-    this.content});
+  NotificationTypeNewPushMessage(
+      {this.messageId,
+      this.sender,
+      this.senderName,
+      this.isOutgoing,
+      this.content});
 
-  /// [messageId] The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages and as reply_to_message_id
+  /// [messageId] The message identifier. The message will not be available in the chat history, but the notificationTypeNewPushMessage can be used in viewMessages, or as reply_to_message_id
   int messageId;
 
-  /// [senderUserId] Sender of the message; 0 if unknown. Corresponding user may be inaccessible
-  int senderUserId;
+  /// [sender] The sender of the message. Corresponding user or chat may be inaccessible
+  MessageSender sender;
 
-  /// [senderName] Name of the sender; can be different from the name of the sender user
+  /// [senderName] Name of the sender
   String senderName;
 
   /// [isOutgoing] True, if the message is outgoing
@@ -142,12 +132,13 @@ class NotificationTypeNewPushMessage extends NotificationType {
   PushMessageContent content;
 
   /// Parse from a json
-  NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json)  {
+  NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json) {
     this.messageId = json['message_id'];
-    this.senderUserId = json['sender_user_id'];
+    this.sender = MessageSender.fromJson(json['sender'] ?? <String, dynamic>{});
     this.senderName = json['sender_name'];
     this.isOutgoing = json['is_outgoing'];
-    this.content = PushMessageContent.fromJson(json['content'] ?? <String, dynamic>{});
+    this.content =
+        PushMessageContent.fromJson(json['content'] ?? <String, dynamic>{});
   }
 
   @override
@@ -155,7 +146,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
     return {
       "@type": CONSTRUCTOR,
       "message_id": this.messageId,
-      "sender_user_id": this.senderUserId,
+      "sender": this.sender == null ? null : this.sender.toJson(),
       "sender_name": this.senderName,
       "is_outgoing": this.isOutgoing,
       "content": this.content == null ? null : this.content.toJson(),
@@ -163,7 +154,7 @@ class NotificationTypeNewPushMessage extends NotificationType {
   }
 
   static const CONSTRUCTOR = 'notificationTypeNewPushMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

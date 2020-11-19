@@ -1,21 +1,21 @@
 part of '../tdapi.dart';
 
 class SetInlineGameScore extends TdFunction {
-
   /// Updates the game score of the specified user in a game; for bots only
-  SetInlineGameScore({this.inlineMessageId,
-    this.editMessage,
-    this.userId,
-    this.score,
-    this.force});
+  SetInlineGameScore(
+      {this.inlineMessageId,
+      this.editMessage,
+      this.userId,
+      this.score,
+      this.force});
 
-  /// [inlineMessageId] Inline message identifier 
+  /// [inlineMessageId] Inline message identifier
   String inlineMessageId;
 
-  /// [editMessage] True, if the message should be edited 
+  /// [editMessage] True, if the message should be edited
   bool editMessage;
 
-  /// [userId] User identifier 
+  /// [userId] User identifier
   int userId;
 
   /// [score] The new score
@@ -28,7 +28,7 @@ class SetInlineGameScore extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  SetInlineGameScore.fromJson(Map<String, dynamic> json) ;
+  SetInlineGameScore.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,7 +44,7 @@ class SetInlineGameScore extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'setInlineGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

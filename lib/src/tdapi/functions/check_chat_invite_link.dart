@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CheckChatInviteLink extends TdFunction {
-
   /// Checks the validity of an invite link for a chat and returns information about the corresponding chat
   CheckChatInviteLink({this.inviteLink});
 
@@ -12,7 +11,7 @@ class CheckChatInviteLink extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CheckChatInviteLink.fromJson(Map<String, dynamic> json) ;
+  CheckChatInviteLink.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CheckChatInviteLink extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'checkChatInviteLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

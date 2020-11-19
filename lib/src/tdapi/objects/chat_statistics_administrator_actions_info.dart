@@ -1,12 +1,12 @@
 part of '../tdapi.dart';
 
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
-
   /// Contains statistics about administrator actions done by a user
-  ChatStatisticsAdministratorActionsInfo({this.userId,
-    this.deletedMessageCount,
-    this.bannedUserCount,
-    this.restrictedUserCount});
+  ChatStatisticsAdministratorActionsInfo(
+      {this.userId,
+      this.deletedMessageCount,
+      this.bannedUserCount,
+      this.restrictedUserCount});
 
   /// [userId] Administrator user identifier
   int userId;
@@ -21,7 +21,7 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   int restrictedUserCount;
 
   /// Parse from a json
-  ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json)  {
+  ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) {
     this.userId = json['user_id'];
     this.deletedMessageCount = json['deleted_message_count'];
     this.bannedUserCount = json['banned_user_count'];
@@ -40,7 +40,7 @@ class ChatStatisticsAdministratorActionsInfo extends TdObject {
   }
 
   static const CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

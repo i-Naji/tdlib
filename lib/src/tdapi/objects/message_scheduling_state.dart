@@ -1,17 +1,14 @@
 part of '../tdapi.dart';
 
 class MessageSchedulingState extends TdObject {
-
   /// Contains information about the time when a scheduled message will be sent
   MessageSchedulingState();
-
-  
 
   /// a MessageSchedulingState return type can be :
   /// * MessageSchedulingStateSendAtDate
   /// * MessageSchedulingStateSendWhenOnline
-  factory MessageSchedulingState.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory MessageSchedulingState.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case MessageSchedulingStateSendAtDate.CONSTRUCTOR:
         return MessageSchedulingStateSendAtDate.fromJson(json);
       case MessageSchedulingStateSendWhenOnline.CONSTRUCTOR:
@@ -23,19 +20,16 @@ class MessageSchedulingState extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'messageSchedulingState';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
-
   /// The message will be sent at the specified date
   MessageSchedulingStateSendAtDate({this.sendDate});
 
@@ -43,7 +37,7 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   int sendDate;
 
   /// Parse from a json
-  MessageSchedulingStateSendAtDate.fromJson(Map<String, dynamic> json)  {
+  MessageSchedulingStateSendAtDate.fromJson(Map<String, dynamic> json) {
     this.sendDate = json['send_date'];
   }
 
@@ -56,20 +50,17 @@ class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   }
 
   static const CONSTRUCTOR = 'messageSchedulingStateSendAtDate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
-
   /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known
   MessageSchedulingStateSendWhenOnline();
 
-  
-
   /// Parse from a json
-  MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json) ;
+  MessageSchedulingStateSendWhenOnline.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -79,7 +70,7 @@ class MessageSchedulingStateSendWhenOnline extends MessageSchedulingState {
   }
 
   static const CONSTRUCTOR = 'messageSchedulingStateSendWhenOnline';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

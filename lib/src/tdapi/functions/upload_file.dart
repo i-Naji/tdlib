@@ -1,13 +1,10 @@
 part of '../tdapi.dart';
 
 class UploadFile extends TdFunction {
-
   /// Asynchronously uploads a file to the cloud without sending it in a message. updateFile will be used to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it will be sent in a message
-  UploadFile({this.file,
-    this.fileType,
-    this.priority});
+  UploadFile({this.file, this.fileType, this.priority});
 
-  /// [file] File to upload 
+  /// [file] File to upload
   InputFile file;
 
   /// [fileType] File type
@@ -20,7 +17,7 @@ class UploadFile extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  UploadFile.fromJson(Map<String, dynamic> json) ;
+  UploadFile.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class UploadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'uploadFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

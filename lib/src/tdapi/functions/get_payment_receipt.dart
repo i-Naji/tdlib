@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class GetPaymentReceipt extends TdFunction {
-
   /// Returns information about a successful payment
-  GetPaymentReceipt({this.chatId,
-    this.messageId});
+  GetPaymentReceipt({this.chatId, this.messageId});
 
-  /// [chatId] Chat identifier of the PaymentSuccessful message 
+  /// [chatId] Chat identifier of the PaymentSuccessful message
   int chatId;
 
   /// [messageId] Message identifier
@@ -16,7 +14,7 @@ class GetPaymentReceipt extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetPaymentReceipt.fromJson(Map<String, dynamic> json) ;
+  GetPaymentReceipt.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class GetPaymentReceipt extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getPaymentReceipt';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

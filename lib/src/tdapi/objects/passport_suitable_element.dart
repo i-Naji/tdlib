@@ -1,14 +1,14 @@
 part of '../tdapi.dart';
 
 class PassportSuitableElement extends TdObject {
-
   /// Contains information about a Telegram Passport element that was requested by a service
-  PassportSuitableElement({this.type,
-    this.isSelfieRequired,
-    this.isTranslationRequired,
-    this.isNativeNameRequired});
+  PassportSuitableElement(
+      {this.type,
+      this.isSelfieRequired,
+      this.isTranslationRequired,
+      this.isNativeNameRequired});
 
-  /// [type] Type of the element 
+  /// [type] Type of the element
   PassportElementType type;
 
   /// [isSelfieRequired] True, if a selfie is required with the identity document
@@ -21,8 +21,9 @@ class PassportSuitableElement extends TdObject {
   bool isNativeNameRequired;
 
   /// Parse from a json
-  PassportSuitableElement.fromJson(Map<String, dynamic> json)  {
-    this.type = PassportElementType.fromJson(json['type'] ?? <String, dynamic>{});
+  PassportSuitableElement.fromJson(Map<String, dynamic> json) {
+    this.type =
+        PassportElementType.fromJson(json['type'] ?? <String, dynamic>{});
     this.isSelfieRequired = json['is_selfie_required'];
     this.isTranslationRequired = json['is_translation_required'];
     this.isNativeNameRequired = json['is_native_name_required'];
@@ -40,7 +41,7 @@ class PassportSuitableElement extends TdObject {
   }
 
   static const CONSTRUCTOR = 'passportSuitableElement';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

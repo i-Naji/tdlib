@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class AccountTtl extends TdObject {
-
   /// Contains information about the period of inactivity after which the current user's account will automatically be deleted
   AccountTtl({this.days});
 
@@ -12,7 +11,7 @@ class AccountTtl extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  AccountTtl.fromJson(Map<String, dynamic> json)  {
+  AccountTtl.fromJson(Map<String, dynamic> json) {
     this.days = json['days'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class AccountTtl extends TdObject {
   }
 
   static const CONSTRUCTOR = 'accountTtl';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

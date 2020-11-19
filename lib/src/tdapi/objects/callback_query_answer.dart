@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class CallbackQueryAnswer extends TdObject {
-
   /// Contains a bot's answer to a callback query
-  CallbackQueryAnswer({this.text,
-    this.showAlert,
-    this.url});
+  CallbackQueryAnswer({this.text, this.showAlert, this.url});
 
-  /// [text] Text of the answer 
+  /// [text] Text of the answer
   String text;
 
-  /// [showAlert] True, if an alert should be shown to the user instead of a toast notification 
+  /// [showAlert] True, if an alert should be shown to the user instead of a toast notification
   bool showAlert;
 
   /// [url] URL to be opened
@@ -20,7 +17,7 @@ class CallbackQueryAnswer extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  CallbackQueryAnswer.fromJson(Map<String, dynamic> json)  {
+  CallbackQueryAnswer.fromJson(Map<String, dynamic> json) {
     this.text = json['text'];
     this.showAlert = json['show_alert'];
     this.url = json['url'];
@@ -38,7 +35,7 @@ class CallbackQueryAnswer extends TdObject {
   }
 
   static const CONSTRUCTOR = 'callbackQueryAnswer';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

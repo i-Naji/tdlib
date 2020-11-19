@@ -1,12 +1,10 @@
 part of '../tdapi.dart';
 
 class AnswerPreCheckoutQuery extends TdFunction {
-
   /// Sets the result of a pre-checkout query; for bots only
-  AnswerPreCheckoutQuery({this.preCheckoutQueryId,
-    this.errorMessage});
+  AnswerPreCheckoutQuery({this.preCheckoutQueryId, this.errorMessage});
 
-  /// [preCheckoutQueryId] Identifier of the pre-checkout query 
+  /// [preCheckoutQueryId] Identifier of the pre-checkout query
   int preCheckoutQueryId;
 
   /// [errorMessage] An error message, empty on success
@@ -16,7 +14,7 @@ class AnswerPreCheckoutQuery extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AnswerPreCheckoutQuery.fromJson(Map<String, dynamic> json) ;
+  AnswerPreCheckoutQuery.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,7 +27,7 @@ class AnswerPreCheckoutQuery extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'answerPreCheckoutQuery';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

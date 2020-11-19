@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class TestCallBytes extends TdFunction {
-
   /// Returns the received bytes; for testing only. This is an offline method. Can be called before authorization
   TestCallBytes({this.x});
 
@@ -12,7 +11,7 @@ class TestCallBytes extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  TestCallBytes.fromJson(Map<String, dynamic> json) ;
+  TestCallBytes.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class TestCallBytes extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testCallBytes';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

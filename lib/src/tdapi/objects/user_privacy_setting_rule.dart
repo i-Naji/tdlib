@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class UserPrivacySettingRule extends TdObject {
-
   /// Represents a single rule for managing privacy settings
   UserPrivacySettingRule();
-
-  
 
   /// a UserPrivacySettingRule return type can be :
   /// * UserPrivacySettingRuleAllowAll
@@ -16,8 +13,8 @@ class UserPrivacySettingRule extends TdObject {
   /// * UserPrivacySettingRuleRestrictContacts
   /// * UserPrivacySettingRuleRestrictUsers
   /// * UserPrivacySettingRuleRestrictChatMembers
-  factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case UserPrivacySettingRuleAllowAll.CONSTRUCTOR:
         return UserPrivacySettingRuleAllowAll.fromJson(json);
       case UserPrivacySettingRuleAllowContacts.CONSTRUCTOR:
@@ -41,26 +38,21 @@ class UserPrivacySettingRule extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRule';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
-
   /// A rule to allow all users to do something
   UserPrivacySettingRuleAllowAll();
 
-  
-
   /// Parse from a json
-  UserPrivacySettingRuleAllowAll.fromJson(Map<String, dynamic> json) ;
+  UserPrivacySettingRuleAllowAll.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -70,20 +62,17 @@ class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowAll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
-
   /// A rule to allow all of a user's contacts to do something
   UserPrivacySettingRuleAllowContacts();
 
-  
-
   /// Parse from a json
-  UserPrivacySettingRuleAllowContacts.fromJson(Map<String, dynamic> json) ;
+  UserPrivacySettingRuleAllowContacts.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -93,13 +82,12 @@ class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
-
   /// A rule to allow certain specified users to do something
   UserPrivacySettingRuleAllowUsers({this.userIds});
 
@@ -107,8 +95,9 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   List<int> userIds;
 
   /// Parse from a json
-  UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
+  UserPrivacySettingRuleAllowUsers.fromJson(Map<String, dynamic> json) {
+    this.userIds =
+        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -120,13 +109,12 @@ class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowUsers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
-
   /// A rule to allow all members of certain specified basic groups and supergroups to doing something
   UserPrivacySettingRuleAllowChatMembers({this.chatIds});
 
@@ -134,8 +122,9 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
   List<int> chatIds;
 
   /// Parse from a json
-  UserPrivacySettingRuleAllowChatMembers.fromJson(Map<String, dynamic> json)  {
-    this.chatIds = List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
+  UserPrivacySettingRuleAllowChatMembers.fromJson(Map<String, dynamic> json) {
+    this.chatIds =
+        List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -147,20 +136,17 @@ class UserPrivacySettingRuleAllowChatMembers extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleAllowChatMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
-
   /// A rule to restrict all users from doing something
   UserPrivacySettingRuleRestrictAll();
 
-  
-
   /// Parse from a json
-  UserPrivacySettingRuleRestrictAll.fromJson(Map<String, dynamic> json) ;
+  UserPrivacySettingRuleRestrictAll.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -170,20 +156,17 @@ class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictAll';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
-
   /// A rule to restrict all contacts of a user from doing something
   UserPrivacySettingRuleRestrictContacts();
 
-  
-
   /// Parse from a json
-  UserPrivacySettingRuleRestrictContacts.fromJson(Map<String, dynamic> json) ;
+  UserPrivacySettingRuleRestrictContacts.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -193,13 +176,12 @@ class UserPrivacySettingRuleRestrictContacts extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
-
   /// A rule to restrict all specified users from doing something
   UserPrivacySettingRuleRestrictUsers({this.userIds});
 
@@ -207,8 +189,9 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   List<int> userIds;
 
   /// Parse from a json
-  UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json)  {
-    this.userIds = List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
+  UserPrivacySettingRuleRestrictUsers.fromJson(Map<String, dynamic> json) {
+    this.userIds =
+        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -220,13 +203,12 @@ class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictUsers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
-
   /// A rule to restrict all members of specified basic groups and supergroups from doing something
   UserPrivacySettingRuleRestrictChatMembers({this.chatIds});
 
@@ -234,8 +216,10 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
   List<int> chatIds;
 
   /// Parse from a json
-  UserPrivacySettingRuleRestrictChatMembers.fromJson(Map<String, dynamic> json)  {
-    this.chatIds = List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
+  UserPrivacySettingRuleRestrictChatMembers.fromJson(
+      Map<String, dynamic> json) {
+    this.chatIds =
+        List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
   }
 
   @override
@@ -247,7 +231,7 @@ class UserPrivacySettingRuleRestrictChatMembers extends UserPrivacySettingRule {
   }
 
   static const CONSTRUCTOR = 'userPrivacySettingRuleRestrictChatMembers';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

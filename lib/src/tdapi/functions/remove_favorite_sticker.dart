@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class RemoveFavoriteSticker extends TdFunction {
-
   /// Removes a sticker from the list of favorite stickers
   RemoveFavoriteSticker({this.sticker});
 
@@ -12,7 +11,7 @@ class RemoveFavoriteSticker extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  RemoveFavoriteSticker.fromJson(Map<String, dynamic> json) ;
+  RemoveFavoriteSticker.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class RemoveFavoriteSticker extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'removeFavoriteSticker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CancelUploadFile extends TdFunction {
-
   /// Stops the uploading of a file. Supported only for files uploaded by using uploadFile. For other files the behavior is undefined
   CancelUploadFile({this.fileId});
 
@@ -12,7 +11,7 @@ class CancelUploadFile extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CancelUploadFile.fromJson(Map<String, dynamic> json) ;
+  CancelUploadFile.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class CancelUploadFile extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'cancelUploadFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

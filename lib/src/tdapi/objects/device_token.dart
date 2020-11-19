@@ -1,11 +1,8 @@
 part of '../tdapi.dart';
 
 class DeviceToken extends TdObject {
-
-  /// Represents a data needed to subscribe for push notifications through registerDevice method. To use specific push notification service, you must specify the correct application platform and upload valid server authentication data at https://my.telegram.org
+  /// Represents a data needed to subscribe for push notifications through registerDevice method. To use specific push notification service, the correct application platform must be specified and a valid server authentication data must be uploaded at https://my.telegram.org
   DeviceToken();
-
-  
 
   /// a DeviceToken return type can be :
   /// * DeviceTokenFirebaseCloudMessaging
@@ -19,8 +16,8 @@ class DeviceToken extends TdObject {
   /// * DeviceTokenUbuntuPush
   /// * DeviceTokenBlackBerryPush
   /// * DeviceTokenTizenPush
-  factory DeviceToken.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory DeviceToken.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR:
         return DeviceTokenFirebaseCloudMessaging.fromJson(json);
       case DeviceTokenApplePush.CONSTRUCTOR:
@@ -50,31 +47,27 @@ class DeviceToken extends TdObject {
 
   @override
   Map<String, dynamic> toJson() {
-    return {
-      
-    };
+    return {};
   }
 
   static const CONSTRUCTOR = 'deviceToken';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
-
   /// A token for Firebase Cloud Messaging
-  DeviceTokenFirebaseCloudMessaging({this.token,
-    this.encrypt});
+  DeviceTokenFirebaseCloudMessaging({this.token, this.encrypt});
 
-  /// [token] Device registration token; may be empty to de-register a device 
+  /// [token] Device registration token; may be empty to de-register a device
   String token;
 
   /// [encrypt] True, if push notifications should be additionally encrypted
   bool encrypt;
 
   /// Parse from a json
-  DeviceTokenFirebaseCloudMessaging.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenFirebaseCloudMessaging.fromJson(Map<String, dynamic> json) {
     this.token = json['token'];
     this.encrypt = json['encrypt'];
   }
@@ -89,25 +82,23 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenFirebaseCloudMessaging';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenApplePush extends DeviceToken {
-
   /// A token for Apple Push Notification service
-  DeviceTokenApplePush({this.deviceToken,
-    this.isAppSandbox});
+  DeviceTokenApplePush({this.deviceToken, this.isAppSandbox});
 
-  /// [deviceToken] Device token; may be empty to de-register a device 
+  /// [deviceToken] Device token; may be empty to de-register a device
   String deviceToken;
 
   /// [isAppSandbox] True, if App Sandbox is enabled
   bool isAppSandbox;
 
   /// Parse from a json
-  DeviceTokenApplePush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenApplePush.fromJson(Map<String, dynamic> json) {
     this.deviceToken = json['device_token'];
     this.isAppSandbox = json['is_app_sandbox'];
   }
@@ -122,29 +113,26 @@ class DeviceTokenApplePush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenApplePush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenApplePushVoIP extends DeviceToken {
-
   /// A token for Apple Push Notification service VoIP notifications
-  DeviceTokenApplePushVoIP({this.deviceToken,
-    this.isAppSandbox,
-    this.encrypt});
+  DeviceTokenApplePushVoIP({this.deviceToken, this.isAppSandbox, this.encrypt});
 
-  /// [deviceToken] Device token; may be empty to de-register a device 
+  /// [deviceToken] Device token; may be empty to de-register a device
   String deviceToken;
 
-  /// [isAppSandbox] True, if App Sandbox is enabled 
+  /// [isAppSandbox] True, if App Sandbox is enabled
   bool isAppSandbox;
 
   /// [encrypt] True, if push notifications should be additionally encrypted
   bool encrypt;
 
   /// Parse from a json
-  DeviceTokenApplePushVoIP.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenApplePushVoIP.fromJson(Map<String, dynamic> json) {
     this.deviceToken = json['device_token'];
     this.isAppSandbox = json['is_app_sandbox'];
     this.encrypt = json['encrypt'];
@@ -161,13 +149,12 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenApplePushVoIP';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenWindowsPush extends DeviceToken {
-
   /// A token for Windows Push Notification Services
   DeviceTokenWindowsPush({this.accessToken});
 
@@ -175,7 +162,7 @@ class DeviceTokenWindowsPush extends DeviceToken {
   String accessToken;
 
   /// Parse from a json
-  DeviceTokenWindowsPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenWindowsPush.fromJson(Map<String, dynamic> json) {
     this.accessToken = json['access_token'];
   }
 
@@ -188,13 +175,12 @@ class DeviceTokenWindowsPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenWindowsPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenMicrosoftPush extends DeviceToken {
-
   /// A token for Microsoft Push Notification Service
   DeviceTokenMicrosoftPush({this.channelUri});
 
@@ -202,7 +188,7 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   String channelUri;
 
   /// Parse from a json
-  DeviceTokenMicrosoftPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenMicrosoftPush.fromJson(Map<String, dynamic> json) {
     this.channelUri = json['channel_uri'];
   }
 
@@ -215,13 +201,12 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenMicrosoftPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
-
   /// A token for Microsoft Push Notification Service VoIP channel
   DeviceTokenMicrosoftPushVoIP({this.channelUri});
 
@@ -229,7 +214,7 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   String channelUri;
 
   /// Parse from a json
-  DeviceTokenMicrosoftPushVoIP.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenMicrosoftPushVoIP.fromJson(Map<String, dynamic> json) {
     this.channelUri = json['channel_uri'];
   }
 
@@ -242,17 +227,14 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenMicrosoftPushVoIP';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenWebPush extends DeviceToken {
-
   /// A token for web Push API
-  DeviceTokenWebPush({this.endpoint,
-    this.p256dhBase64url,
-    this.authBase64url});
+  DeviceTokenWebPush({this.endpoint, this.p256dhBase64url, this.authBase64url});
 
   /// [endpoint] Absolute URL exposed by the push service where the application server can send push messages; may be empty to de-register a device
   String endpoint;
@@ -264,7 +246,7 @@ class DeviceTokenWebPush extends DeviceToken {
   String authBase64url;
 
   /// Parse from a json
-  DeviceTokenWebPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenWebPush.fromJson(Map<String, dynamic> json) {
     this.endpoint = json['endpoint'];
     this.p256dhBase64url = json['p256dh_base64url'];
     this.authBase64url = json['auth_base64url'];
@@ -281,13 +263,12 @@ class DeviceTokenWebPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenWebPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenSimplePush extends DeviceToken {
-
   /// A token for Simple Push API for Firefox OS
   DeviceTokenSimplePush({this.endpoint});
 
@@ -295,7 +276,7 @@ class DeviceTokenSimplePush extends DeviceToken {
   String endpoint;
 
   /// Parse from a json
-  DeviceTokenSimplePush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenSimplePush.fromJson(Map<String, dynamic> json) {
     this.endpoint = json['endpoint'];
   }
 
@@ -308,13 +289,12 @@ class DeviceTokenSimplePush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenSimplePush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenUbuntuPush extends DeviceToken {
-
   /// A token for Ubuntu Push Client service
   DeviceTokenUbuntuPush({this.token});
 
@@ -322,7 +302,7 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   String token;
 
   /// Parse from a json
-  DeviceTokenUbuntuPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenUbuntuPush.fromJson(Map<String, dynamic> json) {
     this.token = json['token'];
   }
 
@@ -335,13 +315,12 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenUbuntuPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenBlackBerryPush extends DeviceToken {
-
   /// A token for BlackBerry Push Service
   DeviceTokenBlackBerryPush({this.token});
 
@@ -349,7 +328,7 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
   String token;
 
   /// Parse from a json
-  DeviceTokenBlackBerryPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenBlackBerryPush.fromJson(Map<String, dynamic> json) {
     this.token = json['token'];
   }
 
@@ -362,13 +341,12 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenBlackBerryPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 class DeviceTokenTizenPush extends DeviceToken {
-
   /// A token for Tizen Push Service
   DeviceTokenTizenPush({this.regId});
 
@@ -376,7 +354,7 @@ class DeviceTokenTizenPush extends DeviceToken {
   String regId;
 
   /// Parse from a json
-  DeviceTokenTizenPush.fromJson(Map<String, dynamic> json)  {
+  DeviceTokenTizenPush.fromJson(Map<String, dynamic> json) {
     this.regId = json['reg_id'];
   }
 
@@ -389,7 +367,7 @@ class DeviceTokenTizenPush extends DeviceToken {
   }
 
   static const CONSTRUCTOR = 'deviceTokenTizenPush';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

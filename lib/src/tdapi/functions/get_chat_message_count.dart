@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class GetChatMessageCount extends TdFunction {
-
   /// Returns approximate number of messages of the specified type in the chat
-  GetChatMessageCount({this.chatId,
-    this.filter,
-    this.returnLocal});
+  GetChatMessageCount({this.chatId, this.filter, this.returnLocal});
 
-  /// [chatId] Identifier of the chat in which to count messages 
+  /// [chatId] Identifier of the chat in which to count messages
   int chatId;
 
-  /// [filter] Filter for message content; searchMessagesFilterEmpty is unsupported in this function 
+  /// [filter] Filter for message content; searchMessagesFilterEmpty is unsupported in this function
   SearchMessagesFilter filter;
 
   /// [returnLocal] If true, returns count that is available locally without sending network requests, returning -1 if the number of messages is unknown
@@ -20,7 +17,7 @@ class GetChatMessageCount extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  GetChatMessageCount.fromJson(Map<String, dynamic> json) ;
+  GetChatMessageCount.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class GetChatMessageCount extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'getChatMessageCount';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

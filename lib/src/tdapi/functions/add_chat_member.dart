@@ -1,16 +1,13 @@
 part of '../tdapi.dart';
 
 class AddChatMember extends TdFunction {
-
   /// Adds a new member to a chat. Members can't be added to private or secret chats. Members will not be added until the chat state has been synchronized with the server
-  AddChatMember({this.chatId,
-    this.userId,
-    this.forwardLimit});
+  AddChatMember({this.chatId, this.userId, this.forwardLimit});
 
   /// [chatId] Chat identifier
   int chatId;
 
-  /// [userId] Identifier of the user 
+  /// [userId] Identifier of the user
   int userId;
 
   /// [forwardLimit] The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels
@@ -20,7 +17,7 @@ class AddChatMember extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  AddChatMember.fromJson(Map<String, dynamic> json) ;
+  AddChatMember.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +31,7 @@ class AddChatMember extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'addChatMember';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

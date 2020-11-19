@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class TestString extends TdObject {
-
   /// A simple object containing a string; for testing only
   TestString({this.value});
 
@@ -12,7 +11,7 @@ class TestString extends TdObject {
   dynamic extra;
 
   /// Parse from a json
-  TestString.fromJson(Map<String, dynamic> json)  {
+  TestString.fromJson(Map<String, dynamic> json) {
     this.value = json['value'];
     this.extra = json['@extra'];
   }
@@ -26,7 +25,7 @@ class TestString extends TdObject {
   }
 
   static const CONSTRUCTOR = 'testString';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

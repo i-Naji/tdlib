@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class TestCallVectorStringObject extends TdFunction {
-
   /// Returns the received vector of objects containing a string; for testing only. This is an offline method. Can be called before authorization
   TestCallVectorStringObject({this.x});
 
@@ -12,7 +11,7 @@ class TestCallVectorStringObject extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  TestCallVectorStringObject.fromJson(Map<String, dynamic> json) ;
+  TestCallVectorStringObject.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -24,7 +23,7 @@ class TestCallVectorStringObject extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'testCallVectorStringObject';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

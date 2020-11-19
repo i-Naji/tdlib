@@ -1,13 +1,9 @@
 part of '../tdapi.dart';
 
 class CreateNewStickerSet extends TdFunction {
-
   /// Creates a new sticker set; for bots only. Returns the newly created sticker set
-  CreateNewStickerSet({this.userId,
-    this.title,
-    this.name,
-    this.isMasks,
-    this.stickers});
+  CreateNewStickerSet(
+      {this.userId, this.title, this.name, this.isMasks, this.stickers});
 
   /// [userId] Sticker set owner
   int userId;
@@ -28,7 +24,7 @@ class CreateNewStickerSet extends TdFunction {
   dynamic extra;
 
   /// Parse from a json
-  CreateNewStickerSet.fromJson(Map<String, dynamic> json) ;
+  CreateNewStickerSet.fromJson(Map<String, dynamic> json);
 
   @override
   Map<String, dynamic> toJson() {
@@ -44,7 +40,7 @@ class CreateNewStickerSet extends TdFunction {
   }
 
   static const CONSTRUCTOR = 'createNewStickerSet';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
