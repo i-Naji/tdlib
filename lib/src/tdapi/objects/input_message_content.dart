@@ -353,7 +353,8 @@ class InputMessagePhoto extends InputMessageContent {
 
 class InputMessageSticker extends InputMessageContent {
   /// A sticker message
-  InputMessageSticker({this.sticker, this.thumbnail, this.width, this.height});
+  InputMessageSticker(
+      {this.sticker, this.thumbnail, this.width, this.height, this.emoji});
 
   /// [sticker] Sticker to be sent
   InputFile sticker;
@@ -367,6 +368,9 @@ class InputMessageSticker extends InputMessageContent {
   /// [height] Sticker height
   int height;
 
+  /// [emoji] Emoji used to choose the sticker
+  String emoji;
+
   /// Parse from a json
   InputMessageSticker.fromJson(Map<String, dynamic> json) {
     this.sticker = InputFile.fromJson(json['sticker'] ?? <String, dynamic>{});
@@ -374,6 +378,7 @@ class InputMessageSticker extends InputMessageContent {
         InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.width = json['width'];
     this.height = json['height'];
+    this.emoji = json['emoji'];
   }
 
   @override
@@ -384,6 +389,7 @@ class InputMessageSticker extends InputMessageContent {
       "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "width": this.width,
       "height": this.height,
+      "emoji": this.emoji,
     };
   }
 

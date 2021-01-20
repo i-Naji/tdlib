@@ -23,6 +23,8 @@ class Chat extends TdObject {
       this.unreadMentionCount,
       this.notificationSettings,
       this.actionBar,
+      this.voiceChatGroupCallId,
+      this.isVoiceChatEmpty,
       this.replyMarkupMessageId,
       this.draftMessage,
       this.clientData});
@@ -87,6 +89,12 @@ class Chat extends TdObject {
   /// [actionBar] Describes actions which should be possible to do through a chat action bar; may be null
   ChatActionBar actionBar;
 
+  /// [voiceChatGroupCallId] Group call identifier of an active voice chat; 0 if none or unknown. The voice chat can be received through the method getGroupCall
+  int voiceChatGroupCallId;
+
+  /// [isVoiceChatEmpty] True, if an active voice chat is empty
+  bool isVoiceChatEmpty;
+
   /// [replyMarkupMessageId] Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat
   int replyMarkupMessageId;
 
@@ -127,6 +135,8 @@ class Chat extends TdObject {
         json['notification_settings'] ?? <String, dynamic>{});
     this.actionBar =
         ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{});
+    this.voiceChatGroupCallId = json['voice_chat_group_call_id'];
+    this.isVoiceChatEmpty = json['is_voice_chat_empty'];
     this.replyMarkupMessageId = json['reply_markup_message_id'];
     this.draftMessage =
         DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{});
@@ -162,6 +172,8 @@ class Chat extends TdObject {
           ? null
           : this.notificationSettings.toJson(),
       "action_bar": this.actionBar == null ? null : this.actionBar.toJson(),
+      "voice_chat_group_call_id": this.voiceChatGroupCallId,
+      "is_voice_chat_empty": this.isVoiceChatEmpty,
       "reply_markup_message_id": this.replyMarkupMessageId,
       "draft_message":
           this.draftMessage == null ? null : this.draftMessage.toJson(),

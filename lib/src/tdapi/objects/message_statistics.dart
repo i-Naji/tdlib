@@ -5,14 +5,14 @@ class MessageStatistics extends TdObject {
   MessageStatistics({this.messageInteractionGraph});
 
   /// [messageInteractionGraph] A graph containing number of message views and shares
-  StatisticsGraph messageInteractionGraph;
+  StatisticalGraph messageInteractionGraph;
 
   /// callback sign
   dynamic extra;
 
   /// Parse from a json
   MessageStatistics.fromJson(Map<String, dynamic> json) {
-    this.messageInteractionGraph = StatisticsGraph.fromJson(
+    this.messageInteractionGraph = StatisticalGraph.fromJson(
         json['message_interaction_graph'] ?? <String, dynamic>{});
     this.extra = json['@extra'];
   }

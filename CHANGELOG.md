@@ -1,3 +1,6 @@
+## 1.5.0
+* Update tdlib api to **v1.7.0**
+
 ## 1.4.2
 * Stop stream on `destroyClient`.
 

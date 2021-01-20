@@ -27,6 +27,10 @@ class ChatEventAction extends TdObject {
   /// * ChatEventStickerSetChanged
   /// * ChatEventLocationChanged
   /// * ChatEventIsAllHistoryAvailableToggled
+  /// * ChatEventVoiceChatCreated
+  /// * ChatEventVoiceChatDiscarded
+  /// * ChatEventVoiceChatParticipantIsMutedToggled
+  /// * ChatEventVoiceChatMuteNewParticipantsToggled
   factory ChatEventAction.fromJson(Map<String, dynamic> json) {
     switch (json["@type"]) {
       case ChatEventMessageEdited.CONSTRUCTOR:
@@ -73,6 +77,14 @@ class ChatEventAction extends TdObject {
         return ChatEventLocationChanged.fromJson(json);
       case ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR:
         return ChatEventIsAllHistoryAvailableToggled.fromJson(json);
+      case ChatEventVoiceChatCreated.CONSTRUCTOR:
+        return ChatEventVoiceChatCreated.fromJson(json);
+      case ChatEventVoiceChatDiscarded.CONSTRUCTOR:
+        return ChatEventVoiceChatDiscarded.fromJson(json);
+      case ChatEventVoiceChatParticipantIsMutedToggled.CONSTRUCTOR:
+        return ChatEventVoiceChatParticipantIsMutedToggled.fromJson(json);
+      case ChatEventVoiceChatMuteNewParticipantsToggled.CONSTRUCTOR:
+        return ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(json);
       default:
         return null;
     }
@@ -736,6 +748,117 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   }
 
   static const CONSTRUCTOR = 'chatEventIsAllHistoryAvailableToggled';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatEventVoiceChatCreated extends ChatEventAction {
+  /// A voice chat was created
+  ChatEventVoiceChatCreated({this.groupCallId});
+
+  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+  int groupCallId;
+
+  /// Parse from a json
+  ChatEventVoiceChatCreated.fromJson(Map<String, dynamic> json) {
+    this.groupCallId = json['group_call_id'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call_id": this.groupCallId,
+    };
+  }
+
+  static const CONSTRUCTOR = 'chatEventVoiceChatCreated';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatEventVoiceChatDiscarded extends ChatEventAction {
+  /// A voice chat was discarded
+  ChatEventVoiceChatDiscarded({this.groupCallId});
+
+  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+  int groupCallId;
+
+  /// Parse from a json
+  ChatEventVoiceChatDiscarded.fromJson(Map<String, dynamic> json) {
+    this.groupCallId = json['group_call_id'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call_id": this.groupCallId,
+    };
+  }
+
+  static const CONSTRUCTOR = 'chatEventVoiceChatDiscarded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatEventVoiceChatParticipantIsMutedToggled extends ChatEventAction {
+  /// A voice chat participant was muted or unmuted
+  ChatEventVoiceChatParticipantIsMutedToggled({this.userId, this.isMuted});
+
+  /// [userId] Identifier of the affected user
+  int userId;
+
+  /// [isMuted] New value of is_muted
+  bool isMuted;
+
+  /// Parse from a json
+  ChatEventVoiceChatParticipantIsMutedToggled.fromJson(
+      Map<String, dynamic> json) {
+    this.userId = json['user_id'];
+    this.isMuted = json['is_muted'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "user_id": this.userId,
+      "is_muted": this.isMuted,
+    };
+  }
+
+  static const CONSTRUCTOR = 'chatEventVoiceChatParticipantIsMutedToggled';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class ChatEventVoiceChatMuteNewParticipantsToggled extends ChatEventAction {
+  /// The mute_new_participants setting of a voice chat was toggled
+  ChatEventVoiceChatMuteNewParticipantsToggled({this.muteNewParticipants});
+
+  /// [muteNewParticipants] New value of the mute_new_participants setting
+  bool muteNewParticipants;
+
+  /// Parse from a json
+  ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(
+      Map<String, dynamic> json) {
+    this.muteNewParticipants = json['mute_new_participants'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "mute_new_participants": this.muteNewParticipants,
+    };
+  }
+
+  static const CONSTRUCTOR = 'chatEventVoiceChatMuteNewParticipantsToggled';
 
   @override
   String getConstructor() => CONSTRUCTOR;

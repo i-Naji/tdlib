@@ -15,7 +15,7 @@ class ChatInviteLinkInfo extends TdObject {
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   int chatId;
 
-  /// [accessibleFor] If non-zero, the remaining time for which read access is granted to the chat, in seconds
+  /// [accessibleFor] If non-zero, the amount of time for which read access to the chat will remain available, in seconds
   int accessibleFor;
 
   /// [type] Contains information about the type of the chat

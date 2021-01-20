@@ -16,7 +16,7 @@ class ForwardMessages extends TdFunction {
   /// [fromChatId] Identifier of the chat from which to forward messages
   int fromChatId;
 
-  /// [messageIds] Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order
+  /// [messageIds] Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously
   List<int> messageIds;
 
   /// [options] Options to be used to send the messages

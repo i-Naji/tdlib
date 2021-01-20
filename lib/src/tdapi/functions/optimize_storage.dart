@@ -34,7 +34,7 @@ class OptimizeStorage extends TdFunction {
   /// [excludeChatIds] If not empty, files from the given chats are excluded. Use 0 as chat identifier to exclude all files not belonging to any chat (e.g., profile photos)
   List<int> excludeChatIds;
 
-  /// [returnDeletedFileStatistics] Pass true if deleted file statistics must be returned instead of the whole storage usage statistics. Affects only returned statistics
+  /// [returnDeletedFileStatistics] Pass true if statistics about the files that were deleted must be returned instead of the whole storage usage statistics. Affects only returned statistics
   bool returnDeletedFileStatistics;
 
   /// [chatLimit] Same as in getStorageStatistics. Affects only returned statistics

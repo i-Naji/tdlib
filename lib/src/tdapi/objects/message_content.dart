@@ -24,6 +24,9 @@ class MessageContent extends TdObject {
   /// * MessagePoll
   /// * MessageInvoice
   /// * MessageCall
+  /// * MessageVoiceChatStarted
+  /// * MessageVoiceChatEnded
+  /// * MessageInviteVoiceChatParticipants
   /// * MessageBasicGroupChatCreate
   /// * MessageSupergroupChatCreate
   /// * MessageChatChangeTitle
@@ -87,6 +90,12 @@ class MessageContent extends TdObject {
         return MessageInvoice.fromJson(json);
       case MessageCall.CONSTRUCTOR:
         return MessageCall.fromJson(json);
+      case MessageVoiceChatStarted.CONSTRUCTOR:
+        return MessageVoiceChatStarted.fromJson(json);
+      case MessageVoiceChatEnded.CONSTRUCTOR:
+        return MessageVoiceChatEnded.fromJson(json);
+      case MessageInviteVoiceChatParticipants.CONSTRUCTOR:
+        return MessageInviteVoiceChatParticipants.fromJson(json);
       case MessageBasicGroupChatCreate.CONSTRUCTOR:
         return MessageBasicGroupChatCreate.fromJson(json);
       case MessageSupergroupChatCreate.CONSTRUCTOR:
@@ -814,6 +823,90 @@ class MessageCall extends MessageContent {
   }
 
   static const CONSTRUCTOR = 'messageCall';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class MessageVoiceChatStarted extends MessageContent {
+  /// A newly created voice chat
+  MessageVoiceChatStarted({this.groupCallId});
+
+  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+  int groupCallId;
+
+  /// Parse from a json
+  MessageVoiceChatStarted.fromJson(Map<String, dynamic> json) {
+    this.groupCallId = json['group_call_id'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call_id": this.groupCallId,
+    };
+  }
+
+  static const CONSTRUCTOR = 'messageVoiceChatStarted';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class MessageVoiceChatEnded extends MessageContent {
+  /// A message with information about an ended voice chat
+  MessageVoiceChatEnded({this.duration});
+
+  /// [duration] Call duration
+  int duration;
+
+  /// Parse from a json
+  MessageVoiceChatEnded.fromJson(Map<String, dynamic> json) {
+    this.duration = json['duration'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "duration": this.duration,
+    };
+  }
+
+  static const CONSTRUCTOR = 'messageVoiceChatEnded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class MessageInviteVoiceChatParticipants extends MessageContent {
+  /// A message with information about an invite to a voice chat
+  MessageInviteVoiceChatParticipants({this.groupCallId, this.userIds});
+
+  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
+  int groupCallId;
+
+  /// [userIds] Invited user identifiers
+  List<int> userIds;
+
+  /// Parse from a json
+  MessageInviteVoiceChatParticipants.fromJson(Map<String, dynamic> json) {
+    this.groupCallId = json['group_call_id'];
+    this.userIds =
+        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call_id": this.groupCallId,
+      "user_ids": this.userIds.map((i) => i).toList(),
+    };
+  }
+
+  static const CONSTRUCTOR = 'messageInviteVoiceChatParticipants';
 
   @override
   String getConstructor() => CONSTRUCTOR;

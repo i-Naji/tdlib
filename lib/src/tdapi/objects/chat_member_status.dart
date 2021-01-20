@@ -78,7 +78,7 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
 }
 
 class ChatMemberStatusAdministrator extends ChatMemberStatus {
-  /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, and ban unprivileged members. In supergroups and channels, there are more detailed options for administrator privileges
+  /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
   ChatMemberStatusAdministrator(
       {this.customTitle,
       this.canBeEdited,
@@ -90,6 +90,7 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
       this.canRestrictMembers,
       this.canPinMessages,
       this.canPromoteMembers,
+      this.canManageVoiceChats,
       this.isAnonymous});
 
   /// [customTitle] A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
@@ -122,6 +123,9 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
   bool canPromoteMembers;
 
+  /// [canManageVoiceChats] True, if the administrator can manage voice chats; applicable to groups only
+  bool canManageVoiceChats;
+
   /// [isAnonymous] True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   bool isAnonymous;
 
@@ -137,6 +141,7 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
     this.canRestrictMembers = json['can_restrict_members'];
     this.canPinMessages = json['can_pin_messages'];
     this.canPromoteMembers = json['can_promote_members'];
+    this.canManageVoiceChats = json['can_manage_voice_chats'];
     this.isAnonymous = json['is_anonymous'];
   }
 
@@ -154,6 +159,7 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
       "can_restrict_members": this.canRestrictMembers,
       "can_pin_messages": this.canPinMessages,
       "can_promote_members": this.canPromoteMembers,
+      "can_manage_voice_chats": this.canManageVoiceChats,
       "is_anonymous": this.isAnonymous,
     };
   }

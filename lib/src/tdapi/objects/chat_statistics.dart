@@ -53,40 +53,40 @@ class ChatStatisticsSupergroup extends ChatStatistics {
   DateRange period;
 
   /// [memberCount] Number of members in the chat
-  StatisticsValue memberCount;
+  StatisticalValue memberCount;
 
   /// [messageCount] Number of messages sent to the chat
-  StatisticsValue messageCount;
+  StatisticalValue messageCount;
 
   /// [viewerCount] Number of users who viewed messages in the chat
-  StatisticsValue viewerCount;
+  StatisticalValue viewerCount;
 
   /// [senderCount] Number of users who sent messages to the chat
-  StatisticsValue senderCount;
+  StatisticalValue senderCount;
 
   /// [memberCountGraph] A graph containing number of members in the chat
-  StatisticsGraph memberCountGraph;
+  StatisticalGraph memberCountGraph;
 
   /// [joinGraph] A graph containing number of members joined and left the chat
-  StatisticsGraph joinGraph;
+  StatisticalGraph joinGraph;
 
   /// [joinBySourceGraph] A graph containing number of new member joins per source
-  StatisticsGraph joinBySourceGraph;
+  StatisticalGraph joinBySourceGraph;
 
   /// [languageGraph] A graph containing distribution of active users per language
-  StatisticsGraph languageGraph;
+  StatisticalGraph languageGraph;
 
   /// [messageContentGraph] A graph containing distribution of sent messages by content type
-  StatisticsGraph messageContentGraph;
+  StatisticalGraph messageContentGraph;
 
   /// [actionGraph] A graph containing number of different actions in the chat
-  StatisticsGraph actionGraph;
+  StatisticalGraph actionGraph;
 
   /// [dayGraph] A graph containing distribution of message views per hour
-  StatisticsGraph dayGraph;
+  StatisticalGraph dayGraph;
 
   /// [weekGraph] A graph containing distribution of message views per day of week
-  StatisticsGraph weekGraph;
+  StatisticalGraph weekGraph;
 
   /// [topSenders] List of users sent most messages in the last week
   List<ChatStatisticsMessageSenderInfo> topSenders;
@@ -104,29 +104,29 @@ class ChatStatisticsSupergroup extends ChatStatistics {
   ChatStatisticsSupergroup.fromJson(Map<String, dynamic> json) {
     this.period = DateRange.fromJson(json['period'] ?? <String, dynamic>{});
     this.memberCount =
-        StatisticsValue.fromJson(json['member_count'] ?? <String, dynamic>{});
+        StatisticalValue.fromJson(json['member_count'] ?? <String, dynamic>{});
     this.messageCount =
-        StatisticsValue.fromJson(json['message_count'] ?? <String, dynamic>{});
+        StatisticalValue.fromJson(json['message_count'] ?? <String, dynamic>{});
     this.viewerCount =
-        StatisticsValue.fromJson(json['viewer_count'] ?? <String, dynamic>{});
+        StatisticalValue.fromJson(json['viewer_count'] ?? <String, dynamic>{});
     this.senderCount =
-        StatisticsValue.fromJson(json['sender_count'] ?? <String, dynamic>{});
-    this.memberCountGraph = StatisticsGraph.fromJson(
+        StatisticalValue.fromJson(json['sender_count'] ?? <String, dynamic>{});
+    this.memberCountGraph = StatisticalGraph.fromJson(
         json['member_count_graph'] ?? <String, dynamic>{});
     this.joinGraph =
-        StatisticsGraph.fromJson(json['join_graph'] ?? <String, dynamic>{});
-    this.joinBySourceGraph = StatisticsGraph.fromJson(
+        StatisticalGraph.fromJson(json['join_graph'] ?? <String, dynamic>{});
+    this.joinBySourceGraph = StatisticalGraph.fromJson(
         json['join_by_source_graph'] ?? <String, dynamic>{});
-    this.languageGraph =
-        StatisticsGraph.fromJson(json['language_graph'] ?? <String, dynamic>{});
-    this.messageContentGraph = StatisticsGraph.fromJson(
+    this.languageGraph = StatisticalGraph.fromJson(
+        json['language_graph'] ?? <String, dynamic>{});
+    this.messageContentGraph = StatisticalGraph.fromJson(
         json['message_content_graph'] ?? <String, dynamic>{});
     this.actionGraph =
-        StatisticsGraph.fromJson(json['action_graph'] ?? <String, dynamic>{});
+        StatisticalGraph.fromJson(json['action_graph'] ?? <String, dynamic>{});
     this.dayGraph =
-        StatisticsGraph.fromJson(json['day_graph'] ?? <String, dynamic>{});
+        StatisticalGraph.fromJson(json['day_graph'] ?? <String, dynamic>{});
     this.weekGraph =
-        StatisticsGraph.fromJson(json['week_graph'] ?? <String, dynamic>{});
+        StatisticalGraph.fromJson(json['week_graph'] ?? <String, dynamic>{});
     this.topSenders = List<ChatStatisticsMessageSenderInfo>.from(
         (json['top_senders'] ?? [])
             .map((item) => ChatStatisticsMessageSenderInfo.fromJson(
@@ -209,43 +209,43 @@ class ChatStatisticsChannel extends ChatStatistics {
   DateRange period;
 
   /// [memberCount] Number of members in the chat
-  StatisticsValue memberCount;
+  StatisticalValue memberCount;
 
   /// [meanViewCount] Mean number of times the recently sent messages was viewed
-  StatisticsValue meanViewCount;
+  StatisticalValue meanViewCount;
 
   /// [meanShareCount] Mean number of times the recently sent messages was shared
-  StatisticsValue meanShareCount;
+  StatisticalValue meanShareCount;
 
   /// [enabledNotificationsPercentage] A percentage of users with enabled notifications for the chat
   double enabledNotificationsPercentage;
 
   /// [memberCountGraph] A graph containing number of members in the chat
-  StatisticsGraph memberCountGraph;
+  StatisticalGraph memberCountGraph;
 
   /// [joinGraph] A graph containing number of members joined and left the chat
-  StatisticsGraph joinGraph;
+  StatisticalGraph joinGraph;
 
   /// [muteGraph] A graph containing number of members muted and unmuted the chat
-  StatisticsGraph muteGraph;
+  StatisticalGraph muteGraph;
 
   /// [viewCountByHourGraph] A graph containing number of message views in a given hour in the last two weeks
-  StatisticsGraph viewCountByHourGraph;
+  StatisticalGraph viewCountByHourGraph;
 
   /// [viewCountBySourceGraph] A graph containing number of message views per source
-  StatisticsGraph viewCountBySourceGraph;
+  StatisticalGraph viewCountBySourceGraph;
 
   /// [joinBySourceGraph] A graph containing number of new member joins per source
-  StatisticsGraph joinBySourceGraph;
+  StatisticalGraph joinBySourceGraph;
 
   /// [languageGraph] A graph containing number of users viewed chat messages per language
-  StatisticsGraph languageGraph;
+  StatisticalGraph languageGraph;
 
   /// [messageInteractionGraph] A graph containing number of chat message views and shares
-  StatisticsGraph messageInteractionGraph;
+  StatisticalGraph messageInteractionGraph;
 
   /// [instantViewInteractionGraph] A graph containing number of views of associated with the chat instant views
-  StatisticsGraph instantViewInteractionGraph;
+  StatisticalGraph instantViewInteractionGraph;
 
   /// [recentMessageInteractions] Detailed statistics about number of views and shares of recently sent messages
   List<ChatStatisticsMessageInteractionInfo> recentMessageInteractions;
@@ -257,30 +257,30 @@ class ChatStatisticsChannel extends ChatStatistics {
   ChatStatisticsChannel.fromJson(Map<String, dynamic> json) {
     this.period = DateRange.fromJson(json['period'] ?? <String, dynamic>{});
     this.memberCount =
-        StatisticsValue.fromJson(json['member_count'] ?? <String, dynamic>{});
-    this.meanViewCount = StatisticsValue.fromJson(
+        StatisticalValue.fromJson(json['member_count'] ?? <String, dynamic>{});
+    this.meanViewCount = StatisticalValue.fromJson(
         json['mean_view_count'] ?? <String, dynamic>{});
-    this.meanShareCount = StatisticsValue.fromJson(
+    this.meanShareCount = StatisticalValue.fromJson(
         json['mean_share_count'] ?? <String, dynamic>{});
     this.enabledNotificationsPercentage =
         json['enabled_notifications_percentage'];
-    this.memberCountGraph = StatisticsGraph.fromJson(
+    this.memberCountGraph = StatisticalGraph.fromJson(
         json['member_count_graph'] ?? <String, dynamic>{});
     this.joinGraph =
-        StatisticsGraph.fromJson(json['join_graph'] ?? <String, dynamic>{});
+        StatisticalGraph.fromJson(json['join_graph'] ?? <String, dynamic>{});
     this.muteGraph =
-        StatisticsGraph.fromJson(json['mute_graph'] ?? <String, dynamic>{});
-    this.viewCountByHourGraph = StatisticsGraph.fromJson(
+        StatisticalGraph.fromJson(json['mute_graph'] ?? <String, dynamic>{});
+    this.viewCountByHourGraph = StatisticalGraph.fromJson(
         json['view_count_by_hour_graph'] ?? <String, dynamic>{});
-    this.viewCountBySourceGraph = StatisticsGraph.fromJson(
+    this.viewCountBySourceGraph = StatisticalGraph.fromJson(
         json['view_count_by_source_graph'] ?? <String, dynamic>{});
-    this.joinBySourceGraph = StatisticsGraph.fromJson(
+    this.joinBySourceGraph = StatisticalGraph.fromJson(
         json['join_by_source_graph'] ?? <String, dynamic>{});
-    this.languageGraph =
-        StatisticsGraph.fromJson(json['language_graph'] ?? <String, dynamic>{});
-    this.messageInteractionGraph = StatisticsGraph.fromJson(
+    this.languageGraph = StatisticalGraph.fromJson(
+        json['language_graph'] ?? <String, dynamic>{});
+    this.messageInteractionGraph = StatisticalGraph.fromJson(
         json['message_interaction_graph'] ?? <String, dynamic>{});
-    this.instantViewInteractionGraph = StatisticsGraph.fromJson(
+    this.instantViewInteractionGraph = StatisticalGraph.fromJson(
         json['instant_view_interaction_graph'] ?? <String, dynamic>{});
     this.recentMessageInteractions =
         List<ChatStatisticsMessageInteractionInfo>.from(

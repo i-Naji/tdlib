@@ -10,6 +10,7 @@ class Sticker extends TdObject {
       this.isAnimated,
       this.isMask,
       this.maskPosition,
+      this.outline,
       this.thumbnail,
       this.sticker});
 
@@ -34,6 +35,9 @@ class Sticker extends TdObject {
   /// [maskPosition] Position where the mask should be placed; may be null
   MaskPosition maskPosition;
 
+  /// [outline] Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  List<ClosedVectorPath> outline;
+
   /// [thumbnail] Sticker thumbnail in WEBP or JPEG format; may be null
   Thumbnail thumbnail;
 
@@ -50,6 +54,9 @@ class Sticker extends TdObject {
     this.isMask = json['is_mask'];
     this.maskPosition =
         MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{});
+    this.outline = List<ClosedVectorPath>.from((json['outline'] ?? [])
+        .map((item) => ClosedVectorPath.fromJson(item ?? <String, dynamic>{}))
+        .toList());
     this.thumbnail =
         Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
     this.sticker = File.fromJson(json['sticker'] ?? <String, dynamic>{});
@@ -67,6 +74,7 @@ class Sticker extends TdObject {
       "is_mask": this.isMask,
       "mask_position":
           this.maskPosition == null ? null : this.maskPosition.toJson(),
+      "outline": this.outline.map((i) => i.toJson()).toList(),
       "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
       "sticker": this.sticker == null ? null : this.sticker.toJson(),
     };

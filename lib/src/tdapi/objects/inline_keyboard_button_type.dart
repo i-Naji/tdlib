@@ -71,7 +71,7 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
 }
 
 class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
-  /// A button that opens a specified URL and automatically logs in in current user if they allowed to do that
+  /// A button that opens a specified URL and automatically authorize the current user if allowed to do so
   InlineKeyboardButtonTypeLoginUrl({this.url, this.id, this.forwardText});
 
   /// [url] An HTTP URL to open

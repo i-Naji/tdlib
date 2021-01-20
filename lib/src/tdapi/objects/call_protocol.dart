@@ -21,7 +21,7 @@ class CallProtocol extends TdObject {
   /// [maxLayer] The maximum supported API layer; use 65
   int maxLayer;
 
-  /// [libraryVersions] List of supported libtgvoip versions
+  /// [libraryVersions] List of supported tgcalls versions
   List<String> libraryVersions;
 
   /// Parse from a json

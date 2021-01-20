@@ -126,7 +126,7 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
   /// [chatId] Identifier of the chat from which the message was originally forwarded
   int chatId;
 
-  /// [messageId] Message identifier of the original message; 0 if unknown
+  /// [messageId] Message identifier of the original message
   int messageId;
 
   /// [authorSignature] Original post author signature

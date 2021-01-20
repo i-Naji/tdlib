@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class MessageReplyInfo extends TdObject {
-  /// Contains information about message replies
+  /// Contains information about replies to a message
   MessageReplyInfo(
       {this.replyCount,
       this.recentRepliers,

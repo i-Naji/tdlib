@@ -26,6 +26,7 @@ class Update extends TdObject {
   /// * UpdateChatIsMarkedAsUnread
   /// * UpdateChatIsBlocked
   /// * UpdateChatHasScheduledMessages
+  /// * UpdateChatVoiceChat
   /// * UpdateChatDefaultDisableNotification
   /// * UpdateChatReadInbox
   /// * UpdateChatReadOutbox
@@ -56,6 +57,8 @@ class Update extends TdObject {
   /// * UpdateFileGenerationStart
   /// * UpdateFileGenerationStop
   /// * UpdateCall
+  /// * UpdateGroupCall
+  /// * UpdateGroupCallParticipant
   /// * UpdateNewCallSignalingData
   /// * UpdateUserPrivacySettingRules
   /// * UpdateUnreadMessageCount
@@ -129,6 +132,8 @@ class Update extends TdObject {
         return UpdateChatIsBlocked.fromJson(json);
       case UpdateChatHasScheduledMessages.CONSTRUCTOR:
         return UpdateChatHasScheduledMessages.fromJson(json);
+      case UpdateChatVoiceChat.CONSTRUCTOR:
+        return UpdateChatVoiceChat.fromJson(json);
       case UpdateChatDefaultDisableNotification.CONSTRUCTOR:
         return UpdateChatDefaultDisableNotification.fromJson(json);
       case UpdateChatReadInbox.CONSTRUCTOR:
@@ -189,6 +194,10 @@ class Update extends TdObject {
         return UpdateFileGenerationStop.fromJson(json);
       case UpdateCall.CONSTRUCTOR:
         return UpdateCall.fromJson(json);
+      case UpdateGroupCall.CONSTRUCTOR:
+        return UpdateGroupCall.fromJson(json);
+      case UpdateGroupCallParticipant.CONSTRUCTOR:
+        return UpdateGroupCallParticipant.fromJson(json);
       case UpdateNewCallSignalingData.CONSTRUCTOR:
         return UpdateNewCallSignalingData.fromJson(json);
       case UpdateUserPrivacySettingRules.CONSTRUCTOR:
@@ -1042,6 +1051,47 @@ class UpdateChatHasScheduledMessages extends Update {
   }
 
   static const CONSTRUCTOR = 'updateChatHasScheduledMessages';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class UpdateChatVoiceChat extends Update {
+  /// A chat voice chat state has changed
+  UpdateChatVoiceChat(
+      {this.chatId, this.voiceChatGroupCallId, this.isVoiceChatEmpty});
+
+  /// [chatId] Chat identifier
+  int chatId;
+
+  /// [voiceChatGroupCallId] New value of voice_chat_group_call_id
+  int voiceChatGroupCallId;
+
+  /// [isVoiceChatEmpty] New value of is_voice_chat_empty
+  bool isVoiceChatEmpty;
+
+  /// callback sign
+  dynamic extra;
+
+  /// Parse from a json
+  UpdateChatVoiceChat.fromJson(Map<String, dynamic> json) {
+    this.chatId = json['chat_id'];
+    this.voiceChatGroupCallId = json['voice_chat_group_call_id'];
+    this.isVoiceChatEmpty = json['is_voice_chat_empty'];
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "chat_id": this.chatId,
+      "voice_chat_group_call_id": this.voiceChatGroupCallId,
+      "is_voice_chat_empty": this.isVoiceChatEmpty,
+    };
+  }
+
+  static const CONSTRUCTOR = 'updateChatVoiceChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2177,6 +2227,74 @@ class UpdateCall extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+class UpdateGroupCall extends Update {
+  /// Information about a group call was updated
+  UpdateGroupCall({this.groupCall});
+
+  /// [groupCall] New data about a group call
+  GroupCall groupCall;
+
+  /// callback sign
+  dynamic extra;
+
+  /// Parse from a json
+  UpdateGroupCall.fromJson(Map<String, dynamic> json) {
+    this.groupCall =
+        GroupCall.fromJson(json['group_call'] ?? <String, dynamic>{});
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call": this.groupCall == null ? null : this.groupCall.toJson(),
+    };
+  }
+
+  static const CONSTRUCTOR = 'updateGroupCall';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+class UpdateGroupCallParticipant extends Update {
+  /// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined
+  UpdateGroupCallParticipant({this.groupCallId, this.participant});
+
+  /// [groupCallId] Identifier of group call
+  int groupCallId;
+
+  /// [participant] New data about a participant
+  GroupCallParticipant participant;
+
+  /// callback sign
+  dynamic extra;
+
+  /// Parse from a json
+  UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) {
+    this.groupCallId = json['group_call_id'];
+    this.participant = GroupCallParticipant.fromJson(
+        json['participant'] ?? <String, dynamic>{});
+    this.extra = json['@extra'];
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return {
+      "@type": CONSTRUCTOR,
+      "group_call_id": this.groupCallId,
+      "participant":
+          this.participant == null ? null : this.participant.toJson(),
+    };
+  }
+
+  static const CONSTRUCTOR = 'updateGroupCallParticipant';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 class UpdateNewCallSignalingData extends Update {
   /// New call signaling data arrived
   UpdateNewCallSignalingData({this.callId, this.data});
@@ -2871,7 +2989,12 @@ class UpdateSuggestedActions extends Update {
 class UpdateNewInlineQuery extends Update {
   /// A new incoming inline query; for bots only
   UpdateNewInlineQuery(
-      {this.id, this.senderUserId, this.userLocation, this.query, this.offset});
+      {this.id,
+      this.senderUserId,
+      this.userLocation,
+      this.chatType,
+      this.query,
+      this.offset});
 
   /// [id] Unique query identifier
   int id;
@@ -2881,6 +3004,9 @@ class UpdateNewInlineQuery extends Update {
 
   /// [userLocation] User location; may be null
   Location userLocation;
+
+  /// [chatType] Contains information about the type of the chat, from which the query originated; may be null if unknown
+  ChatType chatType;
 
   /// [query] Text of the query
   String query;
@@ -2897,6 +3023,7 @@ class UpdateNewInlineQuery extends Update {
     this.senderUserId = json['sender_user_id'];
     this.userLocation =
         Location.fromJson(json['user_location'] ?? <String, dynamic>{});
+    this.chatType = ChatType.fromJson(json['chat_type'] ?? <String, dynamic>{});
     this.query = json['query'];
     this.offset = json['offset'];
     this.extra = json['@extra'];
@@ -2910,6 +3037,7 @@ class UpdateNewInlineQuery extends Update {
       "sender_user_id": this.senderUserId,
       "user_location":
           this.userLocation == null ? null : this.userLocation.toJson(),
+      "chat_type": this.chatType == null ? null : this.chatType.toJson(),
       "query": this.query,
       "offset": this.offset,
     };

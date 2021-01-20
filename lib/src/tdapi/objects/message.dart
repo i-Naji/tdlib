@@ -109,10 +109,10 @@ class Message extends TdObject {
   /// [viaBotUserId] If non-zero, the user identifier of the bot through which this message was sent
   int viaBotUserId;
 
-  /// [authorSignature] For channel posts and anonymous administrator messages, optional author signature
+  /// [authorSignature] For channel posts and anonymous group messages, optional author signature
   String authorSignature;
 
-  /// [mediaAlbumId] Unique identifier of an album this message belongs to. Only photos and videos can be grouped together in albums
+  /// [mediaAlbumId] Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
   int mediaAlbumId;
 
   /// [restrictionReason] If non-empty, contains a human-readable description of the reason why access to this message must be restricted

@@ -28,6 +28,7 @@ part 'objects/thumbnail_format.dart';
 part 'objects/thumbnail.dart';
 part 'objects/mask_point.dart';
 part 'objects/mask_position.dart';
+part 'objects/closed_vector_path.dart';
 part 'objects/poll_option.dart';
 part 'objects/poll_type.dart';
 part 'objects/animation.dart';
@@ -176,7 +177,15 @@ part 'objects/call_protocol.dart';
 part 'objects/call_server_type.dart';
 part 'objects/call_server.dart';
 part 'objects/call_id.dart';
+part 'objects/group_call_id.dart';
 part 'objects/call_state.dart';
+part 'objects/group_call_recent_speaker.dart';
+part 'objects/group_call.dart';
+part 'objects/group_call_payload_fingerprint.dart';
+part 'objects/group_call_payload.dart';
+part 'objects/group_call_join_response_candidate.dart';
+part 'objects/group_call_join_response.dart';
+part 'objects/group_call_participant.dart';
 part 'objects/call_problem.dart';
 part 'objects/call.dart';
 part 'objects/phone_number_authentication_settings.dart';
@@ -258,14 +267,16 @@ part 'objects/proxy.dart';
 part 'objects/proxies.dart';
 part 'objects/input_sticker.dart';
 part 'objects/date_range.dart';
-part 'objects/statistics_value.dart';
-part 'objects/statistics_graph.dart';
+part 'objects/statistical_value.dart';
+part 'objects/statistical_graph.dart';
 part 'objects/chat_statistics_message_interaction_info.dart';
 part 'objects/chat_statistics_message_sender_info.dart';
 part 'objects/chat_statistics_administrator_actions_info.dart';
 part 'objects/chat_statistics_inviter_info.dart';
 part 'objects/chat_statistics.dart';
 part 'objects/message_statistics.dart';
+part 'objects/point.dart';
+part 'objects/vector_path_command.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
 part 'objects/log_stream.dart';
@@ -482,6 +493,16 @@ part 'functions/send_call_signaling_data.dart';
 part 'functions/discard_call.dart';
 part 'functions/send_call_rating.dart';
 part 'functions/send_call_debug_information.dart';
+part 'functions/create_voice_chat.dart';
+part 'functions/get_group_call.dart';
+part 'functions/join_group_call.dart';
+part 'functions/toggle_group_call_mute_new_participants.dart';
+part 'functions/invite_group_call_participants.dart';
+part 'functions/set_group_call_participant_is_speaking.dart';
+part 'functions/toggle_group_call_participant_is_muted.dart';
+part 'functions/load_group_call_participants.dart';
+part 'functions/leave_group_call.dart';
+part 'functions/discard_group_call.dart';
 part 'functions/toggle_message_sender_is_blocked.dart';
 part 'functions/block_message_sender_from_replies.dart';
 part 'functions/get_blocked_message_senders.dart';
@@ -590,7 +611,7 @@ part 'functions/report_chat.dart';
 part 'functions/get_chat_statistics_url.dart';
 part 'functions/get_chat_statistics.dart';
 part 'functions/get_message_statistics.dart';
-part 'functions/get_statistics_graph.dart';
+part 'functions/get_statistical_graph.dart';
 part 'functions/get_storage_statistics.dart';
 part 'functions/get_storage_statistics_fast.dart';
 part 'functions/get_database_statistics.dart';
@@ -733,6 +754,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'maskPointMouth': (d) => MaskPointMouth.fromJson(d),
   'maskPointChin': (d) => MaskPointChin.fromJson(d),
   'maskPosition': (d) => MaskPosition.fromJson(d),
+  'closedVectorPath': (d) => ClosedVectorPath.fromJson(d),
   'pollOption': (d) => PollOption.fromJson(d),
   'pollType': (d) => PollType.fromJson(d),
   'pollTypeRegular': (d) => PollTypeRegular.fromJson(d),
@@ -1153,6 +1175,10 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'messagePoll': (d) => MessagePoll.fromJson(d),
   'messageInvoice': (d) => MessageInvoice.fromJson(d),
   'messageCall': (d) => MessageCall.fromJson(d),
+  'messageVoiceChatStarted': (d) => MessageVoiceChatStarted.fromJson(d),
+  'messageVoiceChatEnded': (d) => MessageVoiceChatEnded.fromJson(d),
+  'messageInviteVoiceChatParticipants': (d) =>
+      MessageInviteVoiceChatParticipants.fromJson(d),
   'messageBasicGroupChatCreate': (d) => MessageBasicGroupChatCreate.fromJson(d),
   'messageSupergroupChatCreate': (d) => MessageSupergroupChatCreate.fromJson(d),
   'messageChatChangeTitle': (d) => MessageChatChangeTitle.fromJson(d),
@@ -1295,6 +1321,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'callServerTypeWebrtc': (d) => CallServerTypeWebrtc.fromJson(d),
   'callServer': (d) => CallServer.fromJson(d),
   'callId': (d) => CallId.fromJson(d),
+  'groupCallId': (d) => GroupCallId.fromJson(d),
   'callState': (d) => CallState.fromJson(d),
   'callStatePending': (d) => CallStatePending.fromJson(d),
   'callStateExchangingKeys': (d) => CallStateExchangingKeys.fromJson(d),
@@ -1302,6 +1329,14 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'callStateHangingUp': (d) => CallStateHangingUp.fromJson(d),
   'callStateDiscarded': (d) => CallStateDiscarded.fromJson(d),
   'callStateError': (d) => CallStateError.fromJson(d),
+  'groupCallRecentSpeaker': (d) => GroupCallRecentSpeaker.fromJson(d),
+  'groupCall': (d) => GroupCall.fromJson(d),
+  'groupCallPayloadFingerprint': (d) => GroupCallPayloadFingerprint.fromJson(d),
+  'groupCallPayload': (d) => GroupCallPayload.fromJson(d),
+  'groupCallJoinResponseCandidate': (d) =>
+      GroupCallJoinResponseCandidate.fromJson(d),
+  'groupCallJoinResponse': (d) => GroupCallJoinResponse.fromJson(d),
+  'groupCallParticipant': (d) => GroupCallParticipant.fromJson(d),
   'callProblem': (d) => CallProblem.fromJson(d),
   'callProblemEcho': (d) => CallProblemEcho.fromJson(d),
   'callProblemNoise': (d) => CallProblemNoise.fromJson(d),
@@ -1390,6 +1425,12 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatEventLocationChanged': (d) => ChatEventLocationChanged.fromJson(d),
   'chatEventIsAllHistoryAvailableToggled': (d) =>
       ChatEventIsAllHistoryAvailableToggled.fromJson(d),
+  'chatEventVoiceChatCreated': (d) => ChatEventVoiceChatCreated.fromJson(d),
+  'chatEventVoiceChatDiscarded': (d) => ChatEventVoiceChatDiscarded.fromJson(d),
+  'chatEventVoiceChatParticipantIsMutedToggled': (d) =>
+      ChatEventVoiceChatParticipantIsMutedToggled.fromJson(d),
+  'chatEventVoiceChatMuteNewParticipantsToggled': (d) =>
+      ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(d),
   'chatEvent': (d) => ChatEvent.fromJson(d),
   'chatEvents': (d) => ChatEvents.fromJson(d),
   'chatEventLogFilters': (d) => ChatEventLogFilters.fromJson(d),
@@ -1649,11 +1690,11 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'inputStickerStatic': (d) => InputStickerStatic.fromJson(d),
   'inputStickerAnimated': (d) => InputStickerAnimated.fromJson(d),
   'dateRange': (d) => DateRange.fromJson(d),
-  'statisticsValue': (d) => StatisticsValue.fromJson(d),
-  'statisticsGraph': (d) => StatisticsGraph.fromJson(d),
-  'statisticsGraphData': (d) => StatisticsGraphData.fromJson(d),
-  'statisticsGraphAsync': (d) => StatisticsGraphAsync.fromJson(d),
-  'statisticsGraphError': (d) => StatisticsGraphError.fromJson(d),
+  'statisticalValue': (d) => StatisticalValue.fromJson(d),
+  'statisticalGraph': (d) => StatisticalGraph.fromJson(d),
+  'statisticalGraphData': (d) => StatisticalGraphData.fromJson(d),
+  'statisticalGraphAsync': (d) => StatisticalGraphAsync.fromJson(d),
+  'statisticalGraphError': (d) => StatisticalGraphError.fromJson(d),
   'chatStatisticsMessageInteractionInfo': (d) =>
       ChatStatisticsMessageInteractionInfo.fromJson(d),
   'chatStatisticsMessageSenderInfo': (d) =>
@@ -1665,6 +1706,11 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'chatStatisticsSupergroup': (d) => ChatStatisticsSupergroup.fromJson(d),
   'chatStatisticsChannel': (d) => ChatStatisticsChannel.fromJson(d),
   'messageStatistics': (d) => MessageStatistics.fromJson(d),
+  'point': (d) => Point.fromJson(d),
+  'vectorPathCommand': (d) => VectorPathCommand.fromJson(d),
+  'vectorPathCommandLine': (d) => VectorPathCommandLine.fromJson(d),
+  'vectorPathCommandCubicBezierCurve': (d) =>
+      VectorPathCommandCubicBezierCurve.fromJson(d),
   'update': (d) => Update.fromJson(d),
   'updateAuthorizationState': (d) => UpdateAuthorizationState.fromJson(d),
   'updateNewMessage': (d) => UpdateNewMessage.fromJson(d),
@@ -1691,6 +1737,7 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'updateChatIsBlocked': (d) => UpdateChatIsBlocked.fromJson(d),
   'updateChatHasScheduledMessages': (d) =>
       UpdateChatHasScheduledMessages.fromJson(d),
+  'updateChatVoiceChat': (d) => UpdateChatVoiceChat.fromJson(d),
   'updateChatDefaultDisableNotification': (d) =>
       UpdateChatDefaultDisableNotification.fromJson(d),
   'updateChatReadInbox': (d) => UpdateChatReadInbox.fromJson(d),
@@ -1726,6 +1773,8 @@ final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
   'updateFileGenerationStart': (d) => UpdateFileGenerationStart.fromJson(d),
   'updateFileGenerationStop': (d) => UpdateFileGenerationStop.fromJson(d),
   'updateCall': (d) => UpdateCall.fromJson(d),
+  'updateGroupCall': (d) => UpdateGroupCall.fromJson(d),
+  'updateGroupCallParticipant': (d) => UpdateGroupCallParticipant.fromJson(d),
   'updateNewCallSignalingData': (d) => UpdateNewCallSignalingData.fromJson(d),
   'updateUserPrivacySettingRules': (d) =>
       UpdateUserPrivacySettingRules.fromJson(d),

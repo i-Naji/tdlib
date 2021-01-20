@@ -7,6 +7,7 @@ class StickerSet extends TdObject {
       this.title,
       this.name,
       this.thumbnail,
+      this.thumbnailOutline,
       this.isInstalled,
       this.isArchived,
       this.isOfficial,
@@ -27,6 +28,9 @@ class StickerSet extends TdObject {
 
   /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   Thumbnail thumbnail;
+
+  /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
+  List<ClosedVectorPath> thumbnailOutline;
 
   /// [isInstalled] True, if the sticker set has been installed by the current user
   bool isInstalled;
@@ -62,6 +66,11 @@ class StickerSet extends TdObject {
     this.name = json['name'];
     this.thumbnail =
         Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
+    this.thumbnailOutline = List<ClosedVectorPath>.from(
+        (json['thumbnail_outline'] ?? [])
+            .map((item) =>
+                ClosedVectorPath.fromJson(item ?? <String, dynamic>{}))
+            .toList());
     this.isInstalled = json['is_installed'];
     this.isArchived = json['is_archived'];
     this.isOfficial = json['is_official'];
@@ -85,6 +94,8 @@ class StickerSet extends TdObject {
       "title": this.title,
       "name": this.name,
       "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
+      "thumbnail_outline":
+          this.thumbnailOutline.map((i) => i.toJson()).toList(),
       "is_installed": this.isInstalled,
       "is_archived": this.isArchived,
       "is_official": this.isOfficial,

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class JoinChat extends TdFunction {
-  /// Adds current user as a new member to a chat. Private and secret chats can't be joined using this method
+  /// Adds the current user as a new member to a chat. Private and secret chats can't be joined using this method
   JoinChat({this.chatId});
 
   /// [chatId] Chat identifier
