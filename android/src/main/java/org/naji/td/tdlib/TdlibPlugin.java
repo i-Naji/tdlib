@@ -3,6 +3,9 @@ package org.naji.td.tdlib;
 import android.os.Looper;
 import android.os.Handler;
 import android.content.Context;
+// import android.util.Log;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.*;
 
 import org.drinkless.tdlib.JsonClient;
@@ -105,7 +108,17 @@ public class TdlibPlugin implements MethodCallHandler, FlutterPlugin {
         result.success((long) JsonClient.create());
         break;
       case "clientDestroy": {
-        JsonClient.destroy((long) call.argument("client"));
+        long clientId  = call.argument("client");
+        for (Client entry : clients) {
+          // Log.i("call", String.valueOf(entry.clientId));
+          if (entry.clientId == clientId){
+            entry.close();
+            JsonClient.destroy((long) clientId);
+            clients.remove(entry);
+            break;
+          }
+        }
+
         result.success(null);
         break;
       }
@@ -178,6 +191,7 @@ public class TdlibPlugin implements MethodCallHandler, FlutterPlugin {
         for (Client entry : clients) {
           if (entry.clientId == clientId){
             events.error("UNAVAILABLE", "This Client Already is being listened to ", null);
+            return;
           }
         }
         client = new Client(clientId, events);
@@ -187,6 +201,7 @@ public class TdlibPlugin implements MethodCallHandler, FlutterPlugin {
 
       @Override
       public void onCancel(Object args) {
+        // Log.i("onCancel", args.toString());
         client.close();
         clients.remove(client);
       }
@@ -201,7 +216,10 @@ public class TdlibPlugin implements MethodCallHandler, FlutterPlugin {
     eventChannel.setStreamHandler(null);
     eventChannel = null;
     for (Client entry : clients) {
-      entry.close();
+      if (!entry.stopFlag){
+        entry.close();
+        JsonClient.destroy(entry.clientId);
+      }
     }
     clients.clear();
   }
