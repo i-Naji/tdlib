@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetChatListsToAddChat extends TdFunction {
   /// Returns chat lists to which the chat can be added. This is an offline request
-  GetChatListsToAddChat({this.chatId});
+  GetChatListsToAddChat({required this.chatId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetChatListsToAddChat.fromJson(Map<String, dynamic> json);
+  factory GetChatListsToAddChat.fromJson(Map<String, dynamic> json) {
+    return GetChatListsToAddChat(
+      chatId: json['chat_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

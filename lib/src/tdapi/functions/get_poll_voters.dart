@@ -3,7 +3,12 @@ part of '../tdapi.dart';
 class GetPollVoters extends TdFunction {
   /// Returns users voted for the specified option in a non-anonymous polls. For the optimal performance the number of returned users is chosen by the library
   GetPollVoters(
-      {this.chatId, this.messageId, this.optionId, this.offset, this.limit});
+      {required this.chatId,
+      required this.messageId,
+      required this.optionId,
+      required this.offset,
+      required this.limit,
+      this.extra});
 
   /// [chatId] Identifier of the chat to which the poll belongs
   int chatId;
@@ -21,10 +26,19 @@ class GetPollVoters extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetPollVoters.fromJson(Map<String, dynamic> json);
+  factory GetPollVoters.fromJson(Map<String, dynamic> json) {
+    return GetPollVoters(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      optionId: json['option_id'],
+      offset: json['offset'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

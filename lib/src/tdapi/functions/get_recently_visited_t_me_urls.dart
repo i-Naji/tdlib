@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetRecentlyVisitedTMeUrls extends TdFunction {
   /// Returns t.me URLs recently visited by a newly registered user
-  GetRecentlyVisitedTMeUrls({this.referrer});
+  GetRecentlyVisitedTMeUrls({required this.referrer, this.extra});
 
   /// [referrer] Google Play referrer to identify the user
   String referrer;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetRecentlyVisitedTMeUrls.fromJson(Map<String, dynamic> json);
+  factory GetRecentlyVisitedTMeUrls.fromJson(Map<String, dynamic> json) {
+    return GetRecentlyVisitedTMeUrls(
+      referrer: json['referrer'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

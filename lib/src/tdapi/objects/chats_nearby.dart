@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class ChatsNearby extends TdObject {
   /// Represents a list of chats located nearby
-  ChatsNearby({this.usersNearby, this.supergroupsNearby});
+  ChatsNearby(
+      {required this.usersNearby, required this.supergroupsNearby, this.extra});
 
   /// [usersNearby] List of users nearby
   List<ChatNearby> usersNearby;
@@ -11,18 +12,20 @@ class ChatsNearby extends TdObject {
   List<ChatNearby> supergroupsNearby;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ChatsNearby.fromJson(Map<String, dynamic> json) {
-    this.usersNearby = List<ChatNearby>.from((json['users_nearby'] ?? [])
-        .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.supergroupsNearby = List<ChatNearby>.from(
-        (json['supergroups_nearby'] ?? [])
-            .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.extra = json['@extra'];
+  factory ChatsNearby.fromJson(Map<String, dynamic> json) {
+    return ChatsNearby(
+      usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+          .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      supergroupsNearby: List<ChatNearby>.from(
+          (json['supergroups_nearby'] ?? [])
+              .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
+              .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override

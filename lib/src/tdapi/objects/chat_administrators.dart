@@ -2,22 +2,24 @@ part of '../tdapi.dart';
 
 class ChatAdministrators extends TdObject {
   /// Represents a list of chat administrators
-  ChatAdministrators({this.administrators});
+  ChatAdministrators({required this.administrators, this.extra});
 
   /// [administrators] A list of chat administrators
   List<ChatAdministrator> administrators;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ChatAdministrators.fromJson(Map<String, dynamic> json) {
-    this.administrators = List<ChatAdministrator>.from(
-        (json['administrators'] ?? [])
-            .map((item) =>
-                ChatAdministrator.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.extra = json['@extra'];
+  factory ChatAdministrators.fromJson(Map<String, dynamic> json) {
+    return ChatAdministrators(
+      administrators: List<ChatAdministrator>.from((json['administrators'] ??
+              [])
+          .map(
+              (item) => ChatAdministrator.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override

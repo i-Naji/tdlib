@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class TransferChatOwnership extends TdFunction {
   /// Changes the owner of a chat. The current user must be a current owner of the chat. Use the method canTransferOwnership to check whether the ownership can be transferred from the current session. Available only for supergroups and channel chats
-  TransferChatOwnership({this.chatId, this.userId, this.password});
+  TransferChatOwnership(
+      {required this.chatId,
+      required this.userId,
+      required this.password,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -14,10 +18,17 @@ class TransferChatOwnership extends TdFunction {
   String password;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  TransferChatOwnership.fromJson(Map<String, dynamic> json);
+  factory TransferChatOwnership.fromJson(Map<String, dynamic> json) {
+    return TransferChatOwnership(
+      chatId: json['chat_id'],
+      userId: json['user_id'],
+      password: json['password'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

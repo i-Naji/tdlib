@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class ReadAllChatMentions extends TdFunction {
   /// Marks all mentions in a chat as read
-  ReadAllChatMentions({this.chatId});
+  ReadAllChatMentions({required this.chatId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ReadAllChatMentions.fromJson(Map<String, dynamic> json);
+  factory ReadAllChatMentions.fromJson(Map<String, dynamic> json) {
+    return ReadAllChatMentions(
+      chatId: json['chat_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

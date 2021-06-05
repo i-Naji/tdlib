@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class GetChatMessageCount extends TdFunction {
   /// Returns approximate number of messages of the specified type in the chat
-  GetChatMessageCount({this.chatId, this.filter, this.returnLocal});
+  GetChatMessageCount(
+      {required this.chatId,
+      required this.filter,
+      required this.returnLocal,
+      this.extra});
 
   /// [chatId] Identifier of the chat in which to count messages
   int chatId;
@@ -14,17 +18,25 @@ class GetChatMessageCount extends TdFunction {
   bool returnLocal;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetChatMessageCount.fromJson(Map<String, dynamic> json);
+  factory GetChatMessageCount.fromJson(Map<String, dynamic> json) {
+    return GetChatMessageCount(
+      chatId: json['chat_id'],
+      filter:
+          SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
+      returnLocal: json['return_local'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "filter": this.filter == null ? null : this.filter.toJson(),
+      "filter": this.filter.toJson(),
       "return_local": this.returnLocal,
       "@extra": this.extra,
     };

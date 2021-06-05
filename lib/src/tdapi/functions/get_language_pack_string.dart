@@ -3,10 +3,11 @@ part of '../tdapi.dart';
 class GetLanguagePackString extends TdFunction {
   /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
   GetLanguagePackString(
-      {this.languagePackDatabasePath,
-      this.localizationTarget,
-      this.languagePackId,
-      this.key});
+      {required this.languagePackDatabasePath,
+      required this.localizationTarget,
+      required this.languagePackId,
+      required this.key,
+      this.extra});
 
   /// [languagePackDatabasePath] Path to the language pack database in which strings are stored
   String languagePackDatabasePath;
@@ -21,10 +22,18 @@ class GetLanguagePackString extends TdFunction {
   String key;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetLanguagePackString.fromJson(Map<String, dynamic> json);
+  factory GetLanguagePackString.fromJson(Map<String, dynamic> json) {
+    return GetLanguagePackString(
+      languagePackDatabasePath: json['language_pack_database_path'],
+      localizationTarget: json['localization_target'],
+      languagePackId: json['language_pack_id'],
+      key: json['key'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

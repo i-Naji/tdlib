@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class SearchHashtags extends TdFunction {
   /// Searches for recently used hashtags by their prefix
-  SearchHashtags({this.prefix, this.limit});
+  SearchHashtags({required this.prefix, required this.limit, this.extra});
 
   /// [prefix] Hashtag prefix to search for
   String prefix;
@@ -11,10 +11,16 @@ class SearchHashtags extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SearchHashtags.fromJson(Map<String, dynamic> json);
+  factory SearchHashtags.fromJson(Map<String, dynamic> json) {
+    return SearchHashtags(
+      prefix: json['prefix'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

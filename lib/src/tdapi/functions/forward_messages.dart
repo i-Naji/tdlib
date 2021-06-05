@@ -3,12 +3,13 @@ part of '../tdapi.dart';
 class ForwardMessages extends TdFunction {
   /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   ForwardMessages(
-      {this.chatId,
-      this.fromChatId,
-      this.messageIds,
-      this.options,
-      this.sendCopy,
-      this.removeCaption});
+      {required this.chatId,
+      required this.fromChatId,
+      required this.messageIds,
+      required this.options,
+      required this.sendCopy,
+      required this.removeCaption,
+      this.extra});
 
   /// [chatId] Identifier of the chat to which to forward messages
   int chatId;
@@ -29,10 +30,22 @@ class ForwardMessages extends TdFunction {
   bool removeCaption;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ForwardMessages.fromJson(Map<String, dynamic> json);
+  factory ForwardMessages.fromJson(Map<String, dynamic> json) {
+    return ForwardMessages(
+      chatId: json['chat_id'],
+      fromChatId: json['from_chat_id'],
+      messageIds: List<int>.from(
+          (json['message_ids'] ?? []).map((item) => item).toList()),
+      options:
+          MessageSendOptions.fromJson(json['options'] ?? <String, dynamic>{}),
+      sendCopy: json['send_copy'],
+      removeCaption: json['remove_caption'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -41,7 +54,7 @@ class ForwardMessages extends TdFunction {
       "chat_id": this.chatId,
       "from_chat_id": this.fromChatId,
       "message_ids": this.messageIds.map((i) => i).toList(),
-      "options": this.options == null ? null : this.options.toJson(),
+      "options": this.options.toJson(),
       "send_copy": this.sendCopy,
       "remove_caption": this.removeCaption,
       "@extra": this.extra,

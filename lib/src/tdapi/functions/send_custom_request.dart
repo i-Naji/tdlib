@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class SendCustomRequest extends TdFunction {
   /// Sends a custom request; for bots only
-  SendCustomRequest({this.method, this.parameters});
+  SendCustomRequest(
+      {required this.method, required this.parameters, this.extra});
 
   /// [method] The method name
   String method;
@@ -11,10 +12,16 @@ class SendCustomRequest extends TdFunction {
   String parameters;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SendCustomRequest.fromJson(Map<String, dynamic> json);
+  factory SendCustomRequest.fromJson(Map<String, dynamic> json) {
+    return SendCustomRequest(
+      method: json['method'],
+      parameters: json['parameters'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

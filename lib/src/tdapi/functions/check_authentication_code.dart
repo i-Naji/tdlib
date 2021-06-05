@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class CheckAuthenticationCode extends TdFunction {
   /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode
-  CheckAuthenticationCode({this.code});
+  CheckAuthenticationCode({required this.code, this.extra});
 
   /// [code] The verification code received via SMS, Telegram message, phone call, or flash call
   String code;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  CheckAuthenticationCode.fromJson(Map<String, dynamic> json);
+  factory CheckAuthenticationCode.fromJson(Map<String, dynamic> json) {
+    return CheckAuthenticationCode(
+      code: json['code'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

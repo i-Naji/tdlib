@@ -3,7 +3,9 @@ part of '../tdapi.dart';
 class ToggleChatDefaultDisableNotification extends TdFunction {
   /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat
   ToggleChatDefaultDisableNotification(
-      {this.chatId, this.defaultDisableNotification});
+      {required this.chatId,
+      required this.defaultDisableNotification,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -12,10 +14,17 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
   bool defaultDisableNotification;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ToggleChatDefaultDisableNotification.fromJson(Map<String, dynamic> json);
+  factory ToggleChatDefaultDisableNotification.fromJson(
+      Map<String, dynamic> json) {
+    return ToggleChatDefaultDisableNotification(
+      chatId: json['chat_id'],
+      defaultDisableNotification: json['default_disable_notification'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

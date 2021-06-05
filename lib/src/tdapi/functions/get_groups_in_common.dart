@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class GetGroupsInCommon extends TdFunction {
   /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date
-  GetGroupsInCommon({this.userId, this.offsetChatId, this.limit});
+  GetGroupsInCommon(
+      {required this.userId,
+      required this.offsetChatId,
+      required this.limit,
+      this.extra});
 
   /// [userId] User identifier
   int userId;
@@ -14,10 +18,17 @@ class GetGroupsInCommon extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetGroupsInCommon.fromJson(Map<String, dynamic> json);
+  factory GetGroupsInCommon.fromJson(Map<String, dynamic> json) {
+    return GetGroupsInCommon(
+      userId: json['user_id'],
+      offsetChatId: json['offset_chat_id'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

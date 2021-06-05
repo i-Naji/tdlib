@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class ToggleChatIsMarkedAsUnread extends TdFunction {
   /// Changes the marked as unread state of a chat
-  ToggleChatIsMarkedAsUnread({this.chatId, this.isMarkedAsUnread});
+  ToggleChatIsMarkedAsUnread(
+      {required this.chatId, required this.isMarkedAsUnread, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -11,10 +12,16 @@ class ToggleChatIsMarkedAsUnread extends TdFunction {
   bool isMarkedAsUnread;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ToggleChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json);
+  factory ToggleChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) {
+    return ToggleChatIsMarkedAsUnread(
+      chatId: json['chat_id'],
+      isMarkedAsUnread: json['is_marked_as_unread'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

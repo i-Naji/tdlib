@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class SetSupergroupUsername extends TdFunction {
   /// Changes the username of a supergroup or channel, requires owner privileges in the supergroup or channel
-  SetSupergroupUsername({this.supergroupId, this.username});
+  SetSupergroupUsername(
+      {required this.supergroupId, required this.username, this.extra});
 
   /// [supergroupId] Identifier of the supergroup or channel
   int supergroupId;
@@ -11,10 +12,16 @@ class SetSupergroupUsername extends TdFunction {
   String username;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetSupergroupUsername.fromJson(Map<String, dynamic> json);
+  factory SetSupergroupUsername.fromJson(Map<String, dynamic> json) {
+    return SetSupergroupUsername(
+      supergroupId: json['supergroup_id'],
+      username: json['username'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

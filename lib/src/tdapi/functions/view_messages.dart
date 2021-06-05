@@ -3,7 +3,11 @@ part of '../tdapi.dart';
 class ViewMessages extends TdFunction {
   /// Informs TDLib that messages are being viewed by the user. Many useful activities depend on whether the messages are currently being viewed or not (e.g., marking messages as read, incrementing a view counter, updating a view counter, removing deleted messages in supergroups and channels)
   ViewMessages(
-      {this.chatId, this.messageThreadId, this.messageIds, this.forceRead});
+      {required this.chatId,
+      required this.messageThreadId,
+      required this.messageIds,
+      required this.forceRead,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -18,10 +22,19 @@ class ViewMessages extends TdFunction {
   bool forceRead;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ViewMessages.fromJson(Map<String, dynamic> json);
+  factory ViewMessages.fromJson(Map<String, dynamic> json) {
+    return ViewMessages(
+      chatId: json['chat_id'],
+      messageThreadId: json['message_thread_id'],
+      messageIds: List<int>.from(
+          (json['message_ids'] ?? []).map((item) => item).toList()),
+      forceRead: json['force_read'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

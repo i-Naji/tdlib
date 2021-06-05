@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class SetLogTagVerbosityLevel extends TdFunction {
   /// Sets the verbosity level for a specified TDLib internal log tag. Can be called synchronously
-  SetLogTagVerbosityLevel({this.tag, this.newVerbosityLevel});
+  SetLogTagVerbosityLevel(
+      {required this.tag, required this.newVerbosityLevel, this.extra});
 
   /// [tag] Logging tag to change verbosity level
   String tag;
@@ -11,10 +12,16 @@ class SetLogTagVerbosityLevel extends TdFunction {
   int newVerbosityLevel;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json);
+  factory SetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json) {
+    return SetLogTagVerbosityLevel(
+      tag: json['tag'],
+      newVerbosityLevel: json['new_verbosity_level'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

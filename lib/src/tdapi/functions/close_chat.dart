@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class CloseChat extends TdFunction {
   /// Informs TDLib that the chat is closed by the user. Many useful activities depend on the chat being opened or closed
-  CloseChat({this.chatId});
+  CloseChat({required this.chatId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  CloseChat.fromJson(Map<String, dynamic> json);
+  factory CloseChat.fromJson(Map<String, dynamic> json) {
+    return CloseChat(
+      chatId: json['chat_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

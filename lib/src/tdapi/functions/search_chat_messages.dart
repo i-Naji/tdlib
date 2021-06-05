@@ -3,14 +3,15 @@ part of '../tdapi.dart';
 class SearchChatMessages extends TdFunction {
   /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages should be used instead), or without an enabled message database. For optimal performance the number of returned messages is chosen by the library
   SearchChatMessages(
-      {this.chatId,
-      this.query,
+      {required this.chatId,
+      required this.query,
       this.sender,
-      this.fromMessageId,
-      this.offset,
-      this.limit,
-      this.filter,
-      this.messageThreadId});
+      required this.fromMessageId,
+      required this.offset,
+      required this.limit,
+      required this.filter,
+      required this.messageThreadId,
+      this.extra});
 
   /// [chatId] Identifier of the chat in which to search messages
   int chatId;
@@ -19,7 +20,7 @@ class SearchChatMessages extends TdFunction {
   String query;
 
   /// [sender] If not null, only messages sent by the specified sender will be returned. Not supported in secret chats
-  MessageSender sender;
+  MessageSender? sender;
 
   /// [fromMessageId] Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
   int fromMessageId;
@@ -37,10 +38,23 @@ class SearchChatMessages extends TdFunction {
   int messageThreadId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SearchChatMessages.fromJson(Map<String, dynamic> json);
+  factory SearchChatMessages.fromJson(Map<String, dynamic> json) {
+    return SearchChatMessages(
+      chatId: json['chat_id'],
+      query: json['query'],
+      sender: MessageSender.fromJson(json['sender'] ?? <String, dynamic>{}),
+      fromMessageId: json['from_message_id'],
+      offset: json['offset'],
+      limit: json['limit'],
+      filter:
+          SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
+      messageThreadId: json['message_thread_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -48,11 +62,11 @@ class SearchChatMessages extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "query": this.query,
-      "sender": this.sender == null ? null : this.sender.toJson(),
+      "sender": this.sender == null ? null : this.sender!.toJson(),
       "from_message_id": this.fromMessageId,
       "offset": this.offset,
       "limit": this.limit,
-      "filter": this.filter == null ? null : this.filter.toJson(),
+      "filter": this.filter.toJson(),
       "message_thread_id": this.messageThreadId,
       "@extra": this.extra,
     };

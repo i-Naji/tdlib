@@ -61,22 +61,22 @@ class DartTdDocumentationGenerator {
     for (final line in lines) {
       // check if we are in types section or functions section.
       if (sectionRegx.hasMatch(line)) {
-        section = sectionRegx.firstMatch(line).group(1);
+        section = sectionRegx.firstMatch(line)!.group(1) ?? '';
         continue;
       }
 
       // check for class type description line
       if (classRegx.hasMatch(line)) {
-        final classData = classRegx.firstMatch(line);
-        final className = classData.group(1);
-        final classDes = classData.group(2);
+        final classData = classRegx.firstMatch(line)!;
+        final className = classData.group(1)!;
+        final classDes = classData.group(2) ?? '';
         _objects.add(TlObject(className, classDes, 'classes'));
         continue;
       }
 
       // check documentation line.
       if (docsRegx.hasMatch(line)) {
-        final docData = docsRegx.firstMatch(line);
+        final docData = docsRegx.firstMatch(line)!;
 
         // if line start with '//-', this line is continuation of last line.
         final continuation = (docData.group(2) == null) ? false : true;
@@ -85,7 +85,7 @@ class DartTdDocumentationGenerator {
         final isDescription = docData.group(3) == 'description' ? true : false;
 
         // rest of information from this line, after description state.
-        final docs = docData.group(4).trim();
+        final docs = docData.group(4)!.trim();
 
         // variables description start with '@VARIABLE_NAME', @ is a sign of extra descriptions.
         final hasExtra = docData.group(5) == '@' ? true : false;
@@ -109,24 +109,28 @@ class DartTdDocumentationGenerator {
         }
         if (hasExtra) {
           // where the '@' is the variables descriptions sign, splitting extra information by this sign separates descriptions.
-          variablesDescriptions.addAll(extraData.split('@'));
+          variablesDescriptions.addAll(extraData!.split('@'));
         }
         continue;
       }
 
       // check for the last line of
       if (fieldsRegx.hasMatch(line)) {
-        final classData = fieldsRegx.firstMatch(line);
+        final classData = fieldsRegx.firstMatch(line)!;
 
-        final className = classData.group(1);
+        final className = classData.group(1)!;
         final classArgs = classData.group(2);
         final classReturnType = classData.group(3);
-        final args = (classArgs == null)
-            ? <String, String>{}
-            // ignore: prefer_for_elements_to_map_fromIterable
-            : Map<String, String>.fromIterable(classArgs.trim().split(' '),
-                key: (var arg) => arg.split(':')[0],
-                value: (var arg) => arg.split(':')[1]);
+        final Map<String, String> args = {};
+        if (classArgs != null) {
+          // ignore: prefer_for_elements_to_map_fromIterable
+          for (final arg in classArgs.trim().split(' ')) {
+            final kv = arg.split(':');
+            final name = kv[0];
+            final type = kv[1];
+            args[name] = type;
+          }
+        }
 
         // store class data and reset class and variables descriptions.
         _objects.add(TlObject(
@@ -180,57 +184,66 @@ class DartTdDocumentationGenerator {
     if (objectsDir.existsSync()) objectsDir.deleteSync(recursive: true);
     objectsDir.createSync(recursive: true);
 
+    final temple = File('generator/main_class.tmpl').readAsStringSync();
     for (final obj in _objects) {
-      final temple = File('generator/main_class.tmpl').readAsStringSync();
       final snakeName = snakeCase(obj.name);
       final folderName = sectionFolder(obj.type);
       var finalDir = '$tdApiDir/$folderName/$snakeName.dart';
 
-      var parent = 'TdObject';
+      String parent = 'TdObject';
       final variables = <String>[];
       final arguments = <String>[];
-      var hasFactory = false;
+      var hasFactory = true;
       var fromJsonFields = <String>[];
       final toJsonFields = <String>[];
       var writeMode = FileMode.write;
       var objectPart = mainPart;
       if (obj.isParent) {
-        hasFactory = true;
         fromJsonFields.add('switch(json["@type"]) {');
         obj.relevantObjects.forEach((String relevantObject) {
           fromJsonFields.add('  case $relevantObject.CONSTRUCTOR:');
           fromJsonFields.add('    return $relevantObject.fromJson(json);');
         });
         fromJsonFields.add('  default:');
-        fromJsonFields.add('    return null;');
+        fromJsonFields.add('    return ${obj.name}();');
         fromJsonFields.add('}');
       } else {
+        fromJsonFields.add('return ${obj.className}(');
         toJsonFields.add('\"@type\": CONSTRUCTOR,');
         obj.variables.forEach((variable) {
-          variables.add(
-              '/// [${variable.argName}] ${variable.description}\n  ${variable.type} ${variable.argName};');
-          arguments.add('this.${variable.argName}');
-          fromJsonFields.add('this.${variable.argName} = ${variable.read};');
+          if (variable.isNullable) {
+            variables.add(
+                '/// [${variable.argName}] ${variable.description}\n  ${variable.type}? ${variable.argName};');
+            arguments.add('this.${variable.argName}');
+          } else {
+            variables.add(
+                '/// [${variable.argName}] ${variable.description}\n  ${variable.type} ${variable.argName};');
+            arguments.add('required this.${variable.argName}');
+          }
+          fromJsonFields.add('  ${variable.argName}: ${variable.read},');
           toJsonFields.add('\n      "${variable.name}": ${variable.write},');
         });
         if (obj.isFunction) {
-          fromJsonFields = [];
           parent = 'TdFunction';
-          variables.add('/// callback sign\n  dynamic extra;');
+          variables.add('/// callback sign\n  dynamic? extra;');
+          arguments.add('this.extra');
+          fromJsonFields.add('  extra: json[\'@extra\'],');
           toJsonFields.add('\n      "@extra": this.extra,');
         } else {
           if (_objects.any((func) =>
               func.isFunction && func.relevantObjects.contains(obj.name))) {
-            variables.add('/// callback sign\n  dynamic extra;');
-            fromJsonFields.add('this.extra = json[\'@extra\'];');
+            variables.add('/// callback sign\n  dynamic? extra;');
+            arguments.add('this.extra');
+            fromJsonFields.add('  extra: json[\'@extra\'],');
           }
           if (obj.hasParent) {
             objectPart = '';
-            parent = obj.returnType;
+            parent = obj.returnType!;
             writeMode = FileMode.append;
             finalDir = '$tdApiDir/$folderName/${snakeCase(parent)}.dart';
           }
         }
+        fromJsonFields.add(');');
       }
       if (!obj.hasParent) {
         tdApiFile.writeAsStringSync('part \'$folderName/$snakeName.dart\';\n',
@@ -241,21 +254,24 @@ class DartTdDocumentationGenerator {
       final stringObj = temple
           //.replaceAll('PART', '')
           .replaceAll('PART', objectPart)
-          .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
+          .replaceAll('CLASS_NAME', obj.className)
           .replaceAll('PARENT', parent)
           .replaceAll('VARIABLES', variables.join('\n\n  '))
           .replaceAll('DESCRIPTION', obj.description
-//                  + (hasFactory
+//                  + (obj.isParent
 //                      ? ''
 //                      : (obj.variables.isNotEmpty
 //                          ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
 //                          : ''))
               )
-          .replaceAll('ARGUMENTS',
-              arguments.isEmpty ? '' : '{${arguments.join(',\n    ')}}')
+          .replaceAll(
+              'ARGUMENTS',
+              arguments.isEmpty
+                  ? ''
+                  : '\n      {${arguments.join(',\n      ')}}')
           .replaceAll(
               'DOC',
-              hasFactory
+              obj.isParent
                   ? ('a ${obj.name} return type can be :\n  /// * ' +
                       obj.relevantObjects.join('\n  /// * '))
                   : 'Parse from a json')
@@ -264,7 +280,7 @@ class DartTdDocumentationGenerator {
               'FROM_JSON',
               fromJsonFields.isEmpty
                   ? ';'
-                  : ' {\n    ${fromJsonFields.join('\n    ')}\n  }')
+                  : '{\n    ${fromJsonFields.join('\n    ')}\n  }')
           .replaceAll('TO_JSON', toJsonFields.join(''))
           .replaceAll('ID', lowerFirstChar(obj.name));
 
@@ -278,7 +294,7 @@ class DartTdDocumentationGenerator {
     //_objects.where((obj) => !obj.hasParent && _objects.any((func) => func.relevantObjects.contains(obj.name))).forEach((obj){
     _objects.where((obj) => !obj.isFunction).forEach((obj) {
       tdApiFile.writeAsStringSync(
-          '\n    \'${lowerFirstChar(obj.name)}\': (d) => ${obj.name == 'Error' ? 'TdError' : obj.name}.fromJson(d),',
+          '\n    \'${lowerFirstChar(obj.name)}\': (d) => ${obj.className}.fromJson(d),',
           mode: FileMode.append);
     });
     tdApiFile.writeAsStringSync('\n};\n', mode: FileMode.append);
@@ -332,21 +348,30 @@ class TlObject {
   final String name;
   final String description;
   final String type;
-  List<String> relevantObjects;
-  List<String> variablesDescriptions;
-  Map<String, String> argsData;
-  List<TlObjectArg> variables;
-  String returnType;
+  List<String> variablesDescriptions = [];
+  Map<String, String> argsData = {};
+  String? returnType;
+  List<String> relevantObjects = [];
+  List<TlObjectArg> variables = [];
 
   TlObject(this.name, this.description, this.type,
-      {this.variablesDescriptions,
-      this.argsData,
+      {variablesDescriptions,
+      argsData,
       this.returnType,
-      String relevantObjects,
-      List<TlObjectArg> variables}) {
-    this.variablesDescriptions = variablesDescriptions ?? <String>[];
-    this.relevantObjects = relevantObjects ?? <String>[];
-    this.variables = variables ?? <TlObjectArg>[];
+      relevantObjects,
+      variables}) {
+    if (variablesDescriptions != null) {
+      this.variablesDescriptions = variablesDescriptions;
+    }
+    if (argsData != null) {
+      this.argsData = argsData;
+    }
+    if (relevantObjects != null) {
+      this.relevantObjects = relevantObjects;
+    }
+    if (variables != null) {
+      this.variables = variables;
+    }
   }
 
   bool get isFunction => type == 'functions';
@@ -357,6 +382,8 @@ class TlObject {
   // type == 'types' ok?
   bool get hasParent => !isFunction && name != returnType && !isParent;
 
+  String get className => name == 'Error' ? 'TdError' : name;
+
   void makeVariablesList() {
     variablesDescriptions.forEach((variableData) {
       final splitVariableData = variableData.split(' ');
@@ -364,9 +391,9 @@ class TlObject {
           ? 'description'
           : splitVariableData[0];
       final variableDescription = splitVariableData.sublist(1).join(' ');
-      final variableType = argsData[variableName];
-      final obj =
-          TlObjectArg(variableName, variableDescription, tlType: variableType);
+      final variableType = argsData[variableName]!;
+      final obj = TlObjectArg(variableName, variableDescription.trim(),
+          tlType: variableType);
       variables.add(obj);
     });
   }
@@ -375,18 +402,22 @@ class TlObject {
 class TlObjectArg {
   String name;
   String description;
-  String argName;
-  String type;
-  String read;
-  String write;
+  late String argName;
+  late String type;
+  late String read;
+  late String write;
 
-  TlObjectArg(this.name, this.description, {String argName, String tlType}) {
+  TlObjectArg(this.name, this.description,
+      {String? argName, required String tlType}) {
     this.argName = argName ?? lowerFirstChar(camelCase(this.name));
     this.type = getType(tlType);
     if (this.type == 'Error') this.type = 'TdError';
-    this.read = getRead(this.name, this.type, isInt64: tlType == 'int64');
-    this.write = getWrite(this.argName, this.type);
+    this.read = getRead(this.name, this.type,
+        isInt64: tlType == 'int64', isNullable: this.isNullable);
+    this.write = getWrite(this.argName, this.type, isNullable: this.isNullable);
   }
+
+  bool get isNullable => description.contains('null');
 
   static String getType(type, {String prefix = 'TYPE'}) {
     String dartType;
@@ -409,19 +440,22 @@ class TlObjectArg {
   static String getRead(String name, String type,
       {String pattern = 'PLACE',
       String itemName = 'item',
-      bool isInt64 = false}) {
+      bool isInt64 = false,
+      bool isNullable = false}) {
     String readFromJson;
     if (dartTypes.contains(type)) {
       if (isInt64) {
         readFromJson =
-            'int.tryParse($pattern ?? "")'; // todo: change to BigInt or String!
+            'int.tryParse($pattern ?? "")${isNullable ? '' : ' ?? 0'}'; // todo: change to BigInt or String!
       } else {
         readFromJson = pattern;
       }
     } else if (type.startsWith('List')) {
       final subType = type.substring(5, type.length - 1);
+      final str =
+          getRead(name, subType, pattern: itemName, itemName: 'innerItem');
       readFromJson =
-          'TYPE.from(($pattern ?? []).map(($itemName) => ${getRead(name, subType, pattern: itemName, itemName: 'innerItem')}).toList())';
+          'TYPE.from(($pattern ?? []).map(($itemName) => ${str}).toList())';
     } else {
       readFromJson = 'TYPE.fromJson($pattern ?? <String, dynamic>{})';
     }
@@ -431,20 +465,28 @@ class TlObjectArg {
   }
 
   static String getWrite(String argName, String type,
-      {String itemName = 'i', isList = false}) {
+      {String itemName = 'i', isList = false, isNullable = false}) {
     String writeToJson;
     if (dartTypes.contains(type)) {
       writeToJson = '';
     } else if (type.startsWith('List')) {
       final subType = type.substring(5, type.length - 1);
-      writeToJson =
-          '.map(($itemName) => ${getWrite(itemName, subType, itemName: '${itemName}i', isList: true)}).toList()';
-    } else if (!isList) {
-      writeToJson = ' == null ? null : this.${argName}.toJson()';
+      final stmt =
+          getWrite(itemName, subType, itemName: '${itemName}i', isList: true);
+      writeToJson = '.map(($itemName) => ${stmt}).toList()';
     } else {
       writeToJson = '.toJson()';
     }
-    return '${itemName.length == 1 ? 'this.$argName' : itemName.substring(0, itemName.length - 1)}$writeToJson';
+    String name;
+    if (itemName.length == 1) {
+      name = 'this.${argName}';
+    } else {
+      name = itemName.substring(0, itemName.length - 1);
+    }
+    if (isNullable) {
+      name = '${name} == null ? null : ${name}!';
+    }
+    return '${name}$writeToJson';
   }
 
   static String getBuiltInDartType(String type) {

@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class SetPassportElementErrors extends TdFunction {
   /// Informs the user that some of the elements in their Telegram Passport contain errors; for bots only. The user will not be able to resend the elements, until the errors are fixed
-  SetPassportElementErrors({this.userId, this.errors});
+  SetPassportElementErrors(
+      {required this.userId, required this.errors, this.extra});
 
   /// [userId] User identifier
   int userId;
@@ -11,10 +12,19 @@ class SetPassportElementErrors extends TdFunction {
   List<InputPassportElementError> errors;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetPassportElementErrors.fromJson(Map<String, dynamic> json);
+  factory SetPassportElementErrors.fromJson(Map<String, dynamic> json) {
+    return SetPassportElementErrors(
+      userId: json['user_id'],
+      errors: List<InputPassportElementError>.from((json['errors'] ?? [])
+          .map((item) =>
+              InputPassportElementError.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

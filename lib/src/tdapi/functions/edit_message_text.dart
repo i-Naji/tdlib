@@ -3,10 +3,11 @@ part of '../tdapi.dart';
 class EditMessageText extends TdFunction {
   /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
   EditMessageText(
-      {this.chatId,
-      this.messageId,
-      this.replyMarkup,
-      this.inputMessageContent});
+      {required this.chatId,
+      required this.messageId,
+      required this.replyMarkup,
+      required this.inputMessageContent,
+      this.extra});
 
   /// [chatId] The chat the message belongs to
   int chatId;
@@ -21,10 +22,20 @@ class EditMessageText extends TdFunction {
   InputMessageContent inputMessageContent;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  EditMessageText.fromJson(Map<String, dynamic> json);
+  factory EditMessageText.fromJson(Map<String, dynamic> json) {
+    return EditMessageText(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
+      inputMessageContent: InputMessageContent.fromJson(
+          json['input_message_content'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -32,11 +43,8 @@ class EditMessageText extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent == null
-          ? null
-          : this.inputMessageContent.toJson(),
+      "reply_markup": this.replyMarkup.toJson(),
+      "input_message_content": this.inputMessageContent.toJson(),
       "@extra": this.extra,
     };
   }

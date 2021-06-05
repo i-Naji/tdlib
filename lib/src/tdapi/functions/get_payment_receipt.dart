@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class GetPaymentReceipt extends TdFunction {
   /// Returns information about a successful payment
-  GetPaymentReceipt({this.chatId, this.messageId});
+  GetPaymentReceipt(
+      {required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] Chat identifier of the PaymentSuccessful message
   int chatId;
@@ -11,10 +12,16 @@ class GetPaymentReceipt extends TdFunction {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetPaymentReceipt.fromJson(Map<String, dynamic> json);
+  factory GetPaymentReceipt.fromJson(Map<String, dynamic> json) {
+    return GetPaymentReceipt(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

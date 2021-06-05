@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class UnpinChatMessage extends TdFunction {
   /// Removes a pinned message from a chat; requires can_pin_messages rights in the group or can_edit_messages rights in the channel
-  UnpinChatMessage({this.chatId, this.messageId});
+  UnpinChatMessage({required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] Identifier of the chat
   int chatId;
@@ -11,10 +11,16 @@ class UnpinChatMessage extends TdFunction {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UnpinChatMessage.fromJson(Map<String, dynamic> json);
+  factory UnpinChatMessage.fromJson(Map<String, dynamic> json) {
+    return UnpinChatMessage(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

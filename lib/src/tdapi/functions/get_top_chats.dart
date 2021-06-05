@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetTopChats extends TdFunction {
   /// Returns a list of frequently used chats. Supported only if the chat info database is enabled
-  GetTopChats({this.category, this.limit});
+  GetTopChats({required this.category, required this.limit, this.extra});
 
   /// [category] Category of chats to be returned
   TopChatCategory category;
@@ -11,16 +11,23 @@ class GetTopChats extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetTopChats.fromJson(Map<String, dynamic> json);
+  factory GetTopChats.fromJson(Map<String, dynamic> json) {
+    return GetTopChats(
+      category:
+          TopChatCategory.fromJson(json['category'] ?? <String, dynamic>{}),
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "category": this.category == null ? null : this.category.toJson(),
+      "category": this.category.toJson(),
       "limit": this.limit,
       "@extra": this.extra,
     };

@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetBackgrounds extends TdFunction {
   /// Returns backgrounds installed by the user
-  GetBackgrounds({this.forDarkTheme});
+  GetBackgrounds({required this.forDarkTheme, this.extra});
 
   /// [forDarkTheme] True, if the backgrounds must be ordered for dark theme
   bool forDarkTheme;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetBackgrounds.fromJson(Map<String, dynamic> json);
+  factory GetBackgrounds.fromJson(Map<String, dynamic> json) {
+    return GetBackgrounds(
+      forDarkTheme: json['for_dark_theme'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

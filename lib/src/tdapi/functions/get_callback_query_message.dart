@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class GetCallbackQueryMessage extends TdFunction {
   /// Returns information about a message with the callback button that originated a callback query; for bots only
-  GetCallbackQueryMessage({this.chatId, this.messageId, this.callbackQueryId});
+  GetCallbackQueryMessage(
+      {required this.chatId,
+      required this.messageId,
+      required this.callbackQueryId,
+      this.extra});
 
   /// [chatId] Identifier of the chat the message belongs to
   int chatId;
@@ -14,10 +18,17 @@ class GetCallbackQueryMessage extends TdFunction {
   int callbackQueryId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetCallbackQueryMessage.fromJson(Map<String, dynamic> json);
+  factory GetCallbackQueryMessage.fromJson(Map<String, dynamic> json) {
+    return GetCallbackQueryMessage(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      callbackQueryId: int.tryParse(json['callback_query_id'] ?? "") ?? 0,
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

@@ -2,7 +2,12 @@ part of '../tdapi.dart';
 
 class GetMessageLink extends TdFunction {
   /// Returns an HTTPS link to a message in a chat. Available only for already sent messages in supergroups and channels. This is an offline request
-  GetMessageLink({this.chatId, this.messageId, this.forAlbum, this.forComment});
+  GetMessageLink(
+      {required this.chatId,
+      required this.messageId,
+      required this.forAlbum,
+      required this.forComment,
+      this.extra});
 
   /// [chatId] Identifier of the chat to which the message belongs
   int chatId;
@@ -17,10 +22,18 @@ class GetMessageLink extends TdFunction {
   bool forComment;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetMessageLink.fromJson(Map<String, dynamic> json);
+  factory GetMessageLink.fromJson(Map<String, dynamic> json) {
+    return GetMessageLink(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      forAlbum: json['for_album'],
+      forComment: json['for_comment'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

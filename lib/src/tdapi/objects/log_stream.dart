@@ -17,7 +17,7 @@ class LogStream extends TdObject {
       case LogStreamEmpty.CONSTRUCTOR:
         return LogStreamEmpty.fromJson(json);
       default:
-        return null;
+        return LogStream();
     }
   }
 
@@ -34,14 +34,16 @@ class LogStream extends TdObject {
 
 class LogStreamDefault extends LogStream {
   /// The log is written to stderr or an OS specific log
-  LogStreamDefault();
+  LogStreamDefault({this.extra});
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  LogStreamDefault.fromJson(Map<String, dynamic> json) {
-    this.extra = json['@extra'];
+  factory LogStreamDefault.fromJson(Map<String, dynamic> json) {
+    return LogStreamDefault(
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -59,7 +61,11 @@ class LogStreamDefault extends LogStream {
 
 class LogStreamFile extends LogStream {
   /// The log is written to a file
-  LogStreamFile({this.path, this.maxFileSize, this.redirectStderr});
+  LogStreamFile(
+      {required this.path,
+      required this.maxFileSize,
+      required this.redirectStderr,
+      this.extra});
 
   /// [path] Path to the file to where the internal TDLib log will be written
   String path;
@@ -71,14 +77,16 @@ class LogStreamFile extends LogStream {
   bool redirectStderr;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  LogStreamFile.fromJson(Map<String, dynamic> json) {
-    this.path = json['path'];
-    this.maxFileSize = json['max_file_size'];
-    this.redirectStderr = json['redirect_stderr'];
-    this.extra = json['@extra'];
+  factory LogStreamFile.fromJson(Map<String, dynamic> json) {
+    return LogStreamFile(
+      path: json['path'],
+      maxFileSize: json['max_file_size'],
+      redirectStderr: json['redirect_stderr'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -99,14 +107,16 @@ class LogStreamFile extends LogStream {
 
 class LogStreamEmpty extends LogStream {
   /// The log is written nowhere
-  LogStreamEmpty();
+  LogStreamEmpty({this.extra});
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  LogStreamEmpty.fromJson(Map<String, dynamic> json) {
-    this.extra = json['@extra'];
+  factory LogStreamEmpty.fromJson(Map<String, dynamic> json) {
+    return LogStreamEmpty(
+      extra: json['@extra'],
+    );
   }
 
   @override

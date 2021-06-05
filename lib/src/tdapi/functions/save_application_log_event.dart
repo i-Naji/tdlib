@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class SaveApplicationLogEvent extends TdFunction {
   /// Saves application log event on the server. Can be called before authorization
-  SaveApplicationLogEvent({this.type, this.chatId, this.data});
+  SaveApplicationLogEvent(
+      {required this.type,
+      required this.chatId,
+      required this.data,
+      this.extra});
 
   /// [type] Event type
   String type;
@@ -14,10 +18,17 @@ class SaveApplicationLogEvent extends TdFunction {
   JsonValue data;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SaveApplicationLogEvent.fromJson(Map<String, dynamic> json);
+  factory SaveApplicationLogEvent.fromJson(Map<String, dynamic> json) {
+    return SaveApplicationLogEvent(
+      type: json['type'],
+      chatId: json['chat_id'],
+      data: JsonValue.fromJson(json['data'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -25,7 +36,7 @@ class SaveApplicationLogEvent extends TdFunction {
       "@type": CONSTRUCTOR,
       "type": this.type,
       "chat_id": this.chatId,
-      "data": this.data == null ? null : this.data.toJson(),
+      "data": this.data.toJson(),
       "@extra": this.extra,
     };
   }

@@ -2,22 +2,27 @@ part of '../tdapi.dart';
 
 class SearchChatsNearby extends TdFunction {
   /// Returns a list of users and location-based supergroups nearby. The list of users nearby will be updated for 60 seconds after the request by the updates updateUsersNearby. The request should be sent again every 25 seconds with adjusted location to not miss new chats
-  SearchChatsNearby({this.location});
+  SearchChatsNearby({required this.location, this.extra});
 
   /// [location] Current user location
   Location location;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SearchChatsNearby.fromJson(Map<String, dynamic> json);
+  factory SearchChatsNearby.fromJson(Map<String, dynamic> json) {
+    return SearchChatsNearby(
+      location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location == null ? null : this.location.toJson(),
+      "location": this.location.toJson(),
       "@extra": this.extra,
     };
   }

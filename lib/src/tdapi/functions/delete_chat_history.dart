@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class DeleteChatHistory extends TdFunction {
   /// Deletes all messages in the chat. Use Chat.can_be_deleted_only_for_self and Chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat
-  DeleteChatHistory({this.chatId, this.removeFromChatList, this.revoke});
+  DeleteChatHistory(
+      {required this.chatId,
+      required this.removeFromChatList,
+      required this.revoke,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -14,10 +18,17 @@ class DeleteChatHistory extends TdFunction {
   bool revoke;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  DeleteChatHistory.fromJson(Map<String, dynamic> json);
+  factory DeleteChatHistory.fromJson(Map<String, dynamic> json) {
+    return DeleteChatHistory(
+      chatId: json['chat_id'],
+      removeFromChatList: json['remove_from_chat_list'],
+      revoke: json['revoke'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

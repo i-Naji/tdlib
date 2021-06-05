@@ -1,9 +1,12 @@
 part of 'tdapi.dart';
 
-abstract class TdObject {
+class TdObject {
   static const CONSTRUCTOR = 'object';
   TdObject();
   TdObject.fromJson(Map<String, dynamic> json);
-  Map<String, dynamic> toJson();
+  Map<String, dynamic> toJson() {
+    return {};
+  }
+
   String getConstructor() => CONSTRUCTOR;
 }

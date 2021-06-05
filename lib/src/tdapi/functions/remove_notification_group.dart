@@ -2,7 +2,10 @@ part of '../tdapi.dart';
 
 class RemoveNotificationGroup extends TdFunction {
   /// Removes a group of active notifications. Needs to be called only if the notification group is removed by the current user
-  RemoveNotificationGroup({this.notificationGroupId, this.maxNotificationId});
+  RemoveNotificationGroup(
+      {required this.notificationGroupId,
+      required this.maxNotificationId,
+      this.extra});
 
   /// [notificationGroupId] Notification group identifier
   int notificationGroupId;
@@ -11,10 +14,16 @@ class RemoveNotificationGroup extends TdFunction {
   int maxNotificationId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  RemoveNotificationGroup.fromJson(Map<String, dynamic> json);
+  factory RemoveNotificationGroup.fromJson(Map<String, dynamic> json) {
+    return RemoveNotificationGroup(
+      notificationGroupId: json['notification_group_id'],
+      maxNotificationId: json['max_notification_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

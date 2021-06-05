@@ -2,16 +2,22 @@ part of '../tdapi.dart';
 
 class RemoveContacts extends TdFunction {
   /// Removes users from the contact list
-  RemoveContacts({this.userIds});
+  RemoveContacts({required this.userIds, this.extra});
 
   /// [userIds] Identifiers of users to be deleted
   List<int> userIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  RemoveContacts.fromJson(Map<String, dynamic> json);
+  factory RemoveContacts.fromJson(Map<String, dynamic> json) {
+    return RemoveContacts(
+      userIds:
+          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

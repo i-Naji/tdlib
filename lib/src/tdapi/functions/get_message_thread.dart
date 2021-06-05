@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetMessageThread extends TdFunction {
   /// Returns information about a message thread. Can be used only if message.can_get_message_thread == true
-  GetMessageThread({this.chatId, this.messageId});
+  GetMessageThread({required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -11,10 +11,16 @@ class GetMessageThread extends TdFunction {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetMessageThread.fromJson(Map<String, dynamic> json);
+  factory GetMessageThread.fromJson(Map<String, dynamic> json) {
+    return GetMessageThread(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

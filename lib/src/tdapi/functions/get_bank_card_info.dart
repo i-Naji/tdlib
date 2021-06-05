@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetBankCardInfo extends TdFunction {
   /// Returns information about a bank card
-  GetBankCardInfo({this.bankCardNumber});
+  GetBankCardInfo({required this.bankCardNumber, this.extra});
 
   /// [bankCardNumber] The bank card number
   String bankCardNumber;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetBankCardInfo.fromJson(Map<String, dynamic> json);
+  factory GetBankCardInfo.fromJson(Map<String, dynamic> json) {
+    return GetBankCardInfo(
+      bankCardNumber: json['bank_card_number'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

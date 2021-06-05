@@ -3,7 +3,10 @@ part of '../tdapi.dart';
 class ToggleGroupCallParticipantIsMuted extends TdFunction {
   /// Toggles whether a group call participant is muted, unmuted, or allowed to unmute themself
   ToggleGroupCallParticipantIsMuted(
-      {this.groupCallId, this.userId, this.isMuted});
+      {required this.groupCallId,
+      required this.userId,
+      required this.isMuted,
+      this.extra});
 
   /// [groupCallId] Group call identifier
   int groupCallId;
@@ -15,10 +18,18 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
   bool isMuted;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ToggleGroupCallParticipantIsMuted.fromJson(Map<String, dynamic> json);
+  factory ToggleGroupCallParticipantIsMuted.fromJson(
+      Map<String, dynamic> json) {
+    return ToggleGroupCallParticipantIsMuted(
+      groupCallId: json['group_call_id'],
+      userId: json['user_id'],
+      isMuted: json['is_muted'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

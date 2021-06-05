@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class CreateTemporaryPassword extends TdFunction {
   /// Creates a new temporary password for processing payments
-  CreateTemporaryPassword({this.password, this.validFor});
+  CreateTemporaryPassword(
+      {required this.password, required this.validFor, this.extra});
 
   /// [password] Persistent user password
   String password;
@@ -11,10 +12,16 @@ class CreateTemporaryPassword extends TdFunction {
   int validFor;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  CreateTemporaryPassword.fromJson(Map<String, dynamic> json);
+  factory CreateTemporaryPassword.fromJson(Map<String, dynamic> json) {
+    return CreateTemporaryPassword(
+      password: json['password'],
+      validFor: json['valid_for'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

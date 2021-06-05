@@ -3,7 +3,10 @@ part of '../tdapi.dart';
 class SetGroupCallParticipantIsSpeaking extends TdFunction {
   /// Informs TDLib that a group call participant speaking state has changed
   SetGroupCallParticipantIsSpeaking(
-      {this.groupCallId, this.source, this.isSpeaking});
+      {required this.groupCallId,
+      required this.source,
+      required this.isSpeaking,
+      this.extra});
 
   /// [groupCallId] Group call identifier
   int groupCallId;
@@ -15,10 +18,18 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
   bool isSpeaking;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetGroupCallParticipantIsSpeaking.fromJson(Map<String, dynamic> json);
+  factory SetGroupCallParticipantIsSpeaking.fromJson(
+      Map<String, dynamic> json) {
+    return SetGroupCallParticipantIsSpeaking(
+      groupCallId: json['group_call_id'],
+      source: json['source'],
+      isSpeaking: json['is_speaking'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

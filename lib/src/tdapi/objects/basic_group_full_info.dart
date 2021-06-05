@@ -4,13 +4,14 @@ class BasicGroupFullInfo extends TdObject {
   /// Contains full information about a basic group
   BasicGroupFullInfo(
       {this.photo,
-      this.description,
-      this.creatorUserId,
-      this.members,
-      this.inviteLink});
+      required this.description,
+      required this.creatorUserId,
+      required this.members,
+      required this.inviteLink,
+      this.extra});
 
   /// [photo] Chat photo; may be null
-  ChatPhoto photo;
+  ChatPhoto? photo;
 
   /// [description] Group description
   String description;
@@ -25,25 +26,27 @@ class BasicGroupFullInfo extends TdObject {
   String inviteLink;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.description = json['description'];
-    this.creatorUserId = json['creator_user_id'];
-    this.members = List<ChatMember>.from((json['members'] ?? [])
-        .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.inviteLink = json['invite_link'];
-    this.extra = json['@extra'];
+  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
+    return BasicGroupFullInfo(
+      photo: ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{}),
+      description: json['description'],
+      creatorUserId: json['creator_user_id'],
+      members: List<ChatMember>.from((json['members'] ?? [])
+          .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      inviteLink: json['invite_link'],
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo == null ? null : this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo!.toJson(),
       "description": this.description,
       "creator_user_id": this.creatorUserId,
       "members": this.members.map((i) => i.toJson()).toList(),

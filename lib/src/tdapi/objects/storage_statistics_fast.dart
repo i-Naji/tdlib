@@ -3,11 +3,12 @@ part of '../tdapi.dart';
 class StorageStatisticsFast extends TdObject {
   /// Contains approximate storage usage statistics, excluding files of unknown file type
   StorageStatisticsFast(
-      {this.filesSize,
-      this.fileCount,
-      this.databaseSize,
-      this.languagePackDatabaseSize,
-      this.logSize});
+      {required this.filesSize,
+      required this.fileCount,
+      required this.databaseSize,
+      required this.languagePackDatabaseSize,
+      required this.logSize,
+      this.extra});
 
   /// [filesSize] Approximate total size of files
   int filesSize;
@@ -25,16 +26,18 @@ class StorageStatisticsFast extends TdObject {
   int logSize;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  StorageStatisticsFast.fromJson(Map<String, dynamic> json) {
-    this.filesSize = json['files_size'];
-    this.fileCount = json['file_count'];
-    this.databaseSize = json['database_size'];
-    this.languagePackDatabaseSize = json['language_pack_database_size'];
-    this.logSize = json['log_size'];
-    this.extra = json['@extra'];
+  factory StorageStatisticsFast.fromJson(Map<String, dynamic> json) {
+    return StorageStatisticsFast(
+      filesSize: json['files_size'],
+      fileCount: json['file_count'],
+      databaseSize: json['database_size'],
+      languagePackDatabaseSize: json['language_pack_database_size'],
+      logSize: json['log_size'],
+      extra: json['@extra'],
+    );
   }
 
   @override

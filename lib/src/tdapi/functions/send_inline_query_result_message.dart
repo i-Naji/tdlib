@@ -3,13 +3,14 @@ part of '../tdapi.dart';
 class SendInlineQueryResultMessage extends TdFunction {
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
   SendInlineQueryResultMessage(
-      {this.chatId,
-      this.messageThreadId,
-      this.replyToMessageId,
-      this.options,
-      this.queryId,
-      this.resultId,
-      this.hideViaBot});
+      {required this.chatId,
+      required this.messageThreadId,
+      required this.replyToMessageId,
+      required this.options,
+      required this.queryId,
+      required this.resultId,
+      required this.hideViaBot,
+      this.extra});
 
   /// [chatId] Target chat
   int chatId;
@@ -33,10 +34,22 @@ class SendInlineQueryResultMessage extends TdFunction {
   bool hideViaBot;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SendInlineQueryResultMessage.fromJson(Map<String, dynamic> json);
+  factory SendInlineQueryResultMessage.fromJson(Map<String, dynamic> json) {
+    return SendInlineQueryResultMessage(
+      chatId: json['chat_id'],
+      messageThreadId: json['message_thread_id'],
+      replyToMessageId: json['reply_to_message_id'],
+      options:
+          MessageSendOptions.fromJson(json['options'] ?? <String, dynamic>{}),
+      queryId: int.tryParse(json['query_id'] ?? "") ?? 0,
+      resultId: json['result_id'],
+      hideViaBot: json['hide_via_bot'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -45,7 +58,7 @@ class SendInlineQueryResultMessage extends TdFunction {
       "chat_id": this.chatId,
       "message_thread_id": this.messageThreadId,
       "reply_to_message_id": this.replyToMessageId,
-      "options": this.options == null ? null : this.options.toJson(),
+      "options": this.options.toJson(),
       "query_id": this.queryId,
       "result_id": this.resultId,
       "hide_via_bot": this.hideViaBot,

@@ -3,7 +3,11 @@ part of '../tdapi.dart';
 class GetSupergroupMembers extends TdFunction {
   /// Returns information about members or banned users in a supergroup or channel. Can be used only if SupergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
   GetSupergroupMembers(
-      {this.supergroupId, this.filter, this.offset, this.limit});
+      {required this.supergroupId,
+      required this.filter,
+      required this.offset,
+      required this.limit,
+      this.extra});
 
   /// [supergroupId] Identifier of the supergroup or channel
   int supergroupId;
@@ -18,17 +22,26 @@ class GetSupergroupMembers extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetSupergroupMembers.fromJson(Map<String, dynamic> json);
+  factory GetSupergroupMembers.fromJson(Map<String, dynamic> json) {
+    return GetSupergroupMembers(
+      supergroupId: json['supergroup_id'],
+      filter: SupergroupMembersFilter.fromJson(
+          json['filter'] ?? <String, dynamic>{}),
+      offset: json['offset'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
-      "filter": this.filter == null ? null : this.filter.toJson(),
+      "filter": this.filter.toJson(),
       "offset": this.offset,
       "limit": this.limit,
       "@extra": this.extra,

@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class GetMessageStatistics extends TdFunction {
   /// Returns detailed statistics about a message. Can be used only if Message.can_get_statistics == true
-  GetMessageStatistics({this.chatId, this.messageId, this.isDark});
+  GetMessageStatistics(
+      {required this.chatId,
+      required this.messageId,
+      required this.isDark,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -14,10 +18,17 @@ class GetMessageStatistics extends TdFunction {
   bool isDark;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetMessageStatistics.fromJson(Map<String, dynamic> json);
+  factory GetMessageStatistics.fromJson(Map<String, dynamic> json) {
+    return GetMessageStatistics(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      isDark: json['is_dark'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

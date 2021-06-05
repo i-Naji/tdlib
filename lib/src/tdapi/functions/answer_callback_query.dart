@@ -3,11 +3,12 @@ part of '../tdapi.dart';
 class AnswerCallbackQuery extends TdFunction {
   /// Sets the result of a callback query; for bots only
   AnswerCallbackQuery(
-      {this.callbackQueryId,
-      this.text,
-      this.showAlert,
-      this.url,
-      this.cacheTime});
+      {required this.callbackQueryId,
+      required this.text,
+      required this.showAlert,
+      required this.url,
+      required this.cacheTime,
+      this.extra});
 
   /// [callbackQueryId] Identifier of the callback query
   int callbackQueryId;
@@ -25,10 +26,19 @@ class AnswerCallbackQuery extends TdFunction {
   int cacheTime;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  AnswerCallbackQuery.fromJson(Map<String, dynamic> json);
+  factory AnswerCallbackQuery.fromJson(Map<String, dynamic> json) {
+    return AnswerCallbackQuery(
+      callbackQueryId: int.tryParse(json['callback_query_id'] ?? "") ?? 0,
+      text: json['text'],
+      showAlert: json['show_alert'],
+      url: json['url'],
+      cacheTime: json['cache_time'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

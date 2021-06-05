@@ -2,7 +2,7 @@ part of '../tdapi.dart';
 
 class GetChatStatistics extends TdFunction {
   /// Returns detailed statistics about a chat. Currently this method can be used only for supergroups and channels. Can be used only if SupergroupFullInfo.can_get_statistics == true
-  GetChatStatistics({this.chatId, this.isDark});
+  GetChatStatistics({required this.chatId, required this.isDark, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -11,10 +11,16 @@ class GetChatStatistics extends TdFunction {
   bool isDark;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetChatStatistics.fromJson(Map<String, dynamic> json);
+  factory GetChatStatistics.fromJson(Map<String, dynamic> json) {
+    return GetChatStatistics(
+      chatId: json['chat_id'],
+      isDark: json['is_dark'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

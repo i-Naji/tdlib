@@ -257,7 +257,7 @@ class Update extends TdObject {
       case UpdatePollAnswer.CONSTRUCTOR:
         return UpdatePollAnswer.fromJson(json);
       default:
-        return null;
+        return Update();
     }
   }
 
@@ -274,28 +274,28 @@ class Update extends TdObject {
 
 class UpdateAuthorizationState extends Update {
   /// The user authorization state has changed
-  UpdateAuthorizationState({this.authorizationState});
+  UpdateAuthorizationState({required this.authorizationState, this.extra});
 
   /// [authorizationState] New authorization state
   AuthorizationState authorizationState;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateAuthorizationState.fromJson(Map<String, dynamic> json) {
-    this.authorizationState = AuthorizationState.fromJson(
-        json['authorization_state'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateAuthorizationState.fromJson(Map<String, dynamic> json) {
+    return UpdateAuthorizationState(
+      authorizationState: AuthorizationState.fromJson(
+          json['authorization_state'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "authorization_state": this.authorizationState == null
-          ? null
-          : this.authorizationState.toJson(),
+      "authorization_state": this.authorizationState.toJson(),
     };
   }
 
@@ -307,25 +307,27 @@ class UpdateAuthorizationState extends Update {
 
 class UpdateNewMessage extends Update {
   /// A new message was received; can also be an outgoing message
-  UpdateNewMessage({this.message});
+  UpdateNewMessage({required this.message, this.extra});
 
   /// [message] The new message
   Message message;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewMessage.fromJson(Map<String, dynamic> json) {
-    this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewMessage.fromJson(Map<String, dynamic> json) {
+    return UpdateNewMessage(
+      message: Message.fromJson(json['message'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message == null ? null : this.message.toJson(),
+      "message": this.message.toJson(),
     };
   }
 
@@ -337,7 +339,8 @@ class UpdateNewMessage extends Update {
 
 class UpdateMessageSendAcknowledged extends Update {
   /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
-  UpdateMessageSendAcknowledged({this.chatId, this.messageId});
+  UpdateMessageSendAcknowledged(
+      {required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] The chat identifier of the sent message
   int chatId;
@@ -346,13 +349,15 @@ class UpdateMessageSendAcknowledged extends Update {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.extra = json['@extra'];
+  factory UpdateMessageSendAcknowledged.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageSendAcknowledged(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -372,7 +377,8 @@ class UpdateMessageSendAcknowledged extends Update {
 
 class UpdateMessageSendSucceeded extends Update {
   /// A message has been successfully sent
-  UpdateMessageSendSucceeded({this.message, this.oldMessageId});
+  UpdateMessageSendSucceeded(
+      {required this.message, required this.oldMessageId, this.extra});
 
   /// [message] Information about the sent message. Usually only the message identifier, date, and content are changed, but almost all other fields can also change
   Message message;
@@ -381,20 +387,22 @@ class UpdateMessageSendSucceeded extends Update {
   int oldMessageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json) {
-    this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
-    this.oldMessageId = json['old_message_id'];
-    this.extra = json['@extra'];
+  factory UpdateMessageSendSucceeded.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageSendSucceeded(
+      message: Message.fromJson(json['message'] ?? <String, dynamic>{}),
+      oldMessageId: json['old_message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message == null ? null : this.message.toJson(),
+      "message": this.message.toJson(),
       "old_message_id": this.oldMessageId,
     };
   }
@@ -408,7 +416,11 @@ class UpdateMessageSendSucceeded extends Update {
 class UpdateMessageSendFailed extends Update {
   /// A message failed to send. Be aware that some messages being sent can be irrecoverably deleted, in which case updateDeleteMessages will be received instead of this update
   UpdateMessageSendFailed(
-      {this.message, this.oldMessageId, this.errorCode, this.errorMessage});
+      {required this.message,
+      required this.oldMessageId,
+      required this.errorCode,
+      required this.errorMessage,
+      this.extra});
 
   /// [message] Contains information about the message which failed to send
   Message message;
@@ -423,22 +435,24 @@ class UpdateMessageSendFailed extends Update {
   String errorMessage;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) {
-    this.message = Message.fromJson(json['message'] ?? <String, dynamic>{});
-    this.oldMessageId = json['old_message_id'];
-    this.errorCode = json['error_code'];
-    this.errorMessage = json['error_message'];
-    this.extra = json['@extra'];
+  factory UpdateMessageSendFailed.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageSendFailed(
+      message: Message.fromJson(json['message'] ?? <String, dynamic>{}),
+      oldMessageId: json['old_message_id'],
+      errorCode: json['error_code'],
+      errorMessage: json['error_message'],
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "message": this.message == null ? null : this.message.toJson(),
+      "message": this.message.toJson(),
       "old_message_id": this.oldMessageId,
       "error_code": this.errorCode,
       "error_message": this.errorMessage,
@@ -453,7 +467,11 @@ class UpdateMessageSendFailed extends Update {
 
 class UpdateMessageContent extends Update {
   /// The message content has changed
-  UpdateMessageContent({this.chatId, this.messageId, this.newContent});
+  UpdateMessageContent(
+      {required this.chatId,
+      required this.messageId,
+      required this.newContent,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -465,15 +483,17 @@ class UpdateMessageContent extends Update {
   MessageContent newContent;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageContent.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.newContent =
-        MessageContent.fromJson(json['new_content'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateMessageContent.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageContent(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      newContent:
+          MessageContent.fromJson(json['new_content'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -482,7 +502,7 @@ class UpdateMessageContent extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "new_content": this.newContent == null ? null : this.newContent.toJson(),
+      "new_content": this.newContent.toJson(),
     };
   }
 
@@ -495,7 +515,11 @@ class UpdateMessageContent extends Update {
 class UpdateMessageEdited extends Update {
   /// A message was edited. Changes in the message content will come in a separate updateMessageContent
   UpdateMessageEdited(
-      {this.chatId, this.messageId, this.editDate, this.replyMarkup});
+      {required this.chatId,
+      required this.messageId,
+      required this.editDate,
+      this.replyMarkup,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -507,19 +531,21 @@ class UpdateMessageEdited extends Update {
   int editDate;
 
   /// [replyMarkup] New message reply markup; may be null
-  ReplyMarkup replyMarkup;
+  ReplyMarkup? replyMarkup;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageEdited.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.editDate = json['edit_date'];
-    this.replyMarkup =
-        ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateMessageEdited.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageEdited(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      editDate: json['edit_date'],
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -530,7 +556,7 @@ class UpdateMessageEdited extends Update {
       "message_id": this.messageId,
       "edit_date": this.editDate,
       "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
+          this.replyMarkup == null ? null : this.replyMarkup!.toJson(),
     };
   }
 
@@ -542,7 +568,11 @@ class UpdateMessageEdited extends Update {
 
 class UpdateMessageIsPinned extends Update {
   /// The message pinned state was changed
-  UpdateMessageIsPinned({this.chatId, this.messageId, this.isPinned});
+  UpdateMessageIsPinned(
+      {required this.chatId,
+      required this.messageId,
+      required this.isPinned,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -554,14 +584,16 @@ class UpdateMessageIsPinned extends Update {
   bool isPinned;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageIsPinned.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.isPinned = json['is_pinned'];
-    this.extra = json['@extra'];
+  factory UpdateMessageIsPinned.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageIsPinned(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      isPinned: json['is_pinned'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -583,7 +615,10 @@ class UpdateMessageIsPinned extends Update {
 class UpdateMessageInteractionInfo extends Update {
   /// The information about interactions with a message has changed
   UpdateMessageInteractionInfo(
-      {this.chatId, this.messageId, this.interactionInfo});
+      {required this.chatId,
+      required this.messageId,
+      this.interactionInfo,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -592,18 +627,20 @@ class UpdateMessageInteractionInfo extends Update {
   int messageId;
 
   /// [interactionInfo] New information about interactions with the message; may be null
-  MessageInteractionInfo interactionInfo;
+  MessageInteractionInfo? interactionInfo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageInteractionInfo.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.interactionInfo = MessageInteractionInfo.fromJson(
-        json['interaction_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateMessageInteractionInfo.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageInteractionInfo(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      interactionInfo: MessageInteractionInfo.fromJson(
+          json['interaction_info'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -613,7 +650,7 @@ class UpdateMessageInteractionInfo extends Update {
       "chat_id": this.chatId,
       "message_id": this.messageId,
       "interaction_info":
-          this.interactionInfo == null ? null : this.interactionInfo.toJson(),
+          this.interactionInfo == null ? null : this.interactionInfo!.toJson(),
     };
   }
 
@@ -625,7 +662,8 @@ class UpdateMessageInteractionInfo extends Update {
 
 class UpdateMessageContentOpened extends Update {
   /// The message content was opened. Updates voice note messages to "listened", video note messages to "viewed" and starts the TTL timer for self-destructing messages
-  UpdateMessageContentOpened({this.chatId, this.messageId});
+  UpdateMessageContentOpened(
+      {required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -634,13 +672,15 @@ class UpdateMessageContentOpened extends Update {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageContentOpened.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.extra = json['@extra'];
+  factory UpdateMessageContentOpened.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageContentOpened(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -661,7 +701,10 @@ class UpdateMessageContentOpened extends Update {
 class UpdateMessageMentionRead extends Update {
   /// A message with an unread mention was read
   UpdateMessageMentionRead(
-      {this.chatId, this.messageId, this.unreadMentionCount});
+      {required this.chatId,
+      required this.messageId,
+      required this.unreadMentionCount,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -673,14 +716,16 @@ class UpdateMessageMentionRead extends Update {
   int unreadMentionCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageMentionRead.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.unreadMentionCount = json['unread_mention_count'];
-    this.extra = json['@extra'];
+  factory UpdateMessageMentionRead.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageMentionRead(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      unreadMentionCount: json['unread_mention_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -701,7 +746,8 @@ class UpdateMessageMentionRead extends Update {
 
 class UpdateMessageLiveLocationViewed extends Update {
   /// A message with a live location was viewed. When the update is received, the application is supposed to update the live location
-  UpdateMessageLiveLocationViewed({this.chatId, this.messageId});
+  UpdateMessageLiveLocationViewed(
+      {required this.chatId, required this.messageId, this.extra});
 
   /// [chatId] Identifier of the chat with the live location message
   int chatId;
@@ -710,13 +756,15 @@ class UpdateMessageLiveLocationViewed extends Update {
   int messageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.extra = json['@extra'];
+  factory UpdateMessageLiveLocationViewed.fromJson(Map<String, dynamic> json) {
+    return UpdateMessageLiveLocationViewed(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -736,25 +784,27 @@ class UpdateMessageLiveLocationViewed extends Update {
 
 class UpdateNewChat extends Update {
   /// A new chat has been loaded/created. This update is guaranteed to come before the chat identifier is returned to the application. The chat field changes will be reported through separate updates
-  UpdateNewChat({this.chat});
+  UpdateNewChat({required this.chat, this.extra});
 
   /// [chat] The chat
   Chat chat;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewChat.fromJson(Map<String, dynamic> json) {
-    this.chat = Chat.fromJson(json['chat'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewChat.fromJson(Map<String, dynamic> json) {
+    return UpdateNewChat(
+      chat: Chat.fromJson(json['chat'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat": this.chat == null ? null : this.chat.toJson(),
+      "chat": this.chat.toJson(),
     };
   }
 
@@ -766,7 +816,7 @@ class UpdateNewChat extends Update {
 
 class UpdateChatTitle extends Update {
   /// The title of a chat was changed
-  UpdateChatTitle({this.chatId, this.title});
+  UpdateChatTitle({required this.chatId, required this.title, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -775,13 +825,15 @@ class UpdateChatTitle extends Update {
   String title;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatTitle.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.title = json['title'];
-    this.extra = json['@extra'];
+  factory UpdateChatTitle.fromJson(Map<String, dynamic> json) {
+    return UpdateChatTitle(
+      chatId: json['chat_id'],
+      title: json['title'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -801,22 +853,24 @@ class UpdateChatTitle extends Update {
 
 class UpdateChatPhoto extends Update {
   /// A chat photo was changed
-  UpdateChatPhoto({this.chatId, this.photo});
+  UpdateChatPhoto({required this.chatId, this.photo, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// [photo] The new chat photo; may be null
-  ChatPhotoInfo photo;
+  ChatPhotoInfo? photo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatPhoto.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateChatPhoto.fromJson(Map<String, dynamic> json) {
+    return UpdateChatPhoto(
+      chatId: json['chat_id'],
+      photo: ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -824,7 +878,7 @@ class UpdateChatPhoto extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "photo": this.photo == null ? null : this.photo.toJson(),
+      "photo": this.photo == null ? null : this.photo!.toJson(),
     };
   }
 
@@ -836,7 +890,8 @@ class UpdateChatPhoto extends Update {
 
 class UpdateChatPermissions extends Update {
   /// Chat permissions was changed
-  UpdateChatPermissions({this.chatId, this.permissions});
+  UpdateChatPermissions(
+      {required this.chatId, required this.permissions, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -845,14 +900,16 @@ class UpdateChatPermissions extends Update {
   ChatPermissions permissions;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatPermissions.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.permissions =
-        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateChatPermissions.fromJson(Map<String, dynamic> json) {
+    return UpdateChatPermissions(
+      chatId: json['chat_id'],
+      permissions:
+          ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -860,8 +917,7 @@ class UpdateChatPermissions extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "permissions":
-          this.permissions == null ? null : this.permissions.toJson(),
+      "permissions": this.permissions.toJson(),
     };
   }
 
@@ -873,29 +929,35 @@ class UpdateChatPermissions extends Update {
 
 class UpdateChatLastMessage extends Update {
   /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case
-  UpdateChatLastMessage({this.chatId, this.lastMessage, this.positions});
+  UpdateChatLastMessage(
+      {required this.chatId,
+      this.lastMessage,
+      required this.positions,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// [lastMessage] The new last message in the chat; may be null
-  Message lastMessage;
+  Message? lastMessage;
 
   /// [positions] The new chat positions in the chat lists
   List<ChatPosition> positions;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatLastMessage.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.lastMessage =
-        Message.fromJson(json['last_message'] ?? <String, dynamic>{});
-    this.positions = List<ChatPosition>.from((json['positions'] ?? [])
-        .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateChatLastMessage.fromJson(Map<String, dynamic> json) {
+    return UpdateChatLastMessage(
+      chatId: json['chat_id'],
+      lastMessage:
+          Message.fromJson(json['last_message'] ?? <String, dynamic>{}),
+      positions: List<ChatPosition>.from((json['positions'] ?? [])
+          .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -904,7 +966,7 @@ class UpdateChatLastMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "last_message":
-          this.lastMessage == null ? null : this.lastMessage.toJson(),
+          this.lastMessage == null ? null : this.lastMessage!.toJson(),
       "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
@@ -917,7 +979,8 @@ class UpdateChatLastMessage extends Update {
 
 class UpdateChatPosition extends Update {
   /// The position of a chat in a chat list has changed. Instead of this update updateChatLastMessage or updateChatDraftMessage might be sent
-  UpdateChatPosition({this.chatId, this.position});
+  UpdateChatPosition(
+      {required this.chatId, required this.position, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -926,14 +989,15 @@ class UpdateChatPosition extends Update {
   ChatPosition position;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatPosition.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.position =
-        ChatPosition.fromJson(json['position'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateChatPosition.fromJson(Map<String, dynamic> json) {
+    return UpdateChatPosition(
+      chatId: json['chat_id'],
+      position: ChatPosition.fromJson(json['position'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -941,7 +1005,7 @@ class UpdateChatPosition extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "position": this.position == null ? null : this.position.toJson(),
+      "position": this.position.toJson(),
     };
   }
 
@@ -953,7 +1017,8 @@ class UpdateChatPosition extends Update {
 
 class UpdateChatIsMarkedAsUnread extends Update {
   /// A chat was marked as unread or was read
-  UpdateChatIsMarkedAsUnread({this.chatId, this.isMarkedAsUnread});
+  UpdateChatIsMarkedAsUnread(
+      {required this.chatId, required this.isMarkedAsUnread, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -962,13 +1027,15 @@ class UpdateChatIsMarkedAsUnread extends Update {
   bool isMarkedAsUnread;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.isMarkedAsUnread = json['is_marked_as_unread'];
-    this.extra = json['@extra'];
+  factory UpdateChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) {
+    return UpdateChatIsMarkedAsUnread(
+      chatId: json['chat_id'],
+      isMarkedAsUnread: json['is_marked_as_unread'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -988,7 +1055,8 @@ class UpdateChatIsMarkedAsUnread extends Update {
 
 class UpdateChatIsBlocked extends Update {
   /// A chat was blocked or unblocked
-  UpdateChatIsBlocked({this.chatId, this.isBlocked});
+  UpdateChatIsBlocked(
+      {required this.chatId, required this.isBlocked, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -997,13 +1065,15 @@ class UpdateChatIsBlocked extends Update {
   bool isBlocked;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatIsBlocked.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.isBlocked = json['is_blocked'];
-    this.extra = json['@extra'];
+  factory UpdateChatIsBlocked.fromJson(Map<String, dynamic> json) {
+    return UpdateChatIsBlocked(
+      chatId: json['chat_id'],
+      isBlocked: json['is_blocked'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1023,7 +1093,8 @@ class UpdateChatIsBlocked extends Update {
 
 class UpdateChatHasScheduledMessages extends Update {
   /// A chat's has_scheduled_messages field has changed
-  UpdateChatHasScheduledMessages({this.chatId, this.hasScheduledMessages});
+  UpdateChatHasScheduledMessages(
+      {required this.chatId, required this.hasScheduledMessages, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1032,13 +1103,15 @@ class UpdateChatHasScheduledMessages extends Update {
   bool hasScheduledMessages;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.hasScheduledMessages = json['has_scheduled_messages'];
-    this.extra = json['@extra'];
+  factory UpdateChatHasScheduledMessages.fromJson(Map<String, dynamic> json) {
+    return UpdateChatHasScheduledMessages(
+      chatId: json['chat_id'],
+      hasScheduledMessages: json['has_scheduled_messages'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1059,7 +1132,10 @@ class UpdateChatHasScheduledMessages extends Update {
 class UpdateChatVoiceChat extends Update {
   /// A chat voice chat state has changed
   UpdateChatVoiceChat(
-      {this.chatId, this.voiceChatGroupCallId, this.isVoiceChatEmpty});
+      {required this.chatId,
+      required this.voiceChatGroupCallId,
+      required this.isVoiceChatEmpty,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1071,14 +1147,16 @@ class UpdateChatVoiceChat extends Update {
   bool isVoiceChatEmpty;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatVoiceChat.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.voiceChatGroupCallId = json['voice_chat_group_call_id'];
-    this.isVoiceChatEmpty = json['is_voice_chat_empty'];
-    this.extra = json['@extra'];
+  factory UpdateChatVoiceChat.fromJson(Map<String, dynamic> json) {
+    return UpdateChatVoiceChat(
+      chatId: json['chat_id'],
+      voiceChatGroupCallId: json['voice_chat_group_call_id'],
+      isVoiceChatEmpty: json['is_voice_chat_empty'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1100,7 +1178,9 @@ class UpdateChatVoiceChat extends Update {
 class UpdateChatDefaultDisableNotification extends Update {
   /// The value of the default disable_notification parameter, used when a message is sent to the chat, was changed
   UpdateChatDefaultDisableNotification(
-      {this.chatId, this.defaultDisableNotification});
+      {required this.chatId,
+      required this.defaultDisableNotification,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1109,13 +1189,16 @@ class UpdateChatDefaultDisableNotification extends Update {
   bool defaultDisableNotification;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatDefaultDisableNotification.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.defaultDisableNotification = json['default_disable_notification'];
-    this.extra = json['@extra'];
+  factory UpdateChatDefaultDisableNotification.fromJson(
+      Map<String, dynamic> json) {
+    return UpdateChatDefaultDisableNotification(
+      chatId: json['chat_id'],
+      defaultDisableNotification: json['default_disable_notification'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1136,7 +1219,10 @@ class UpdateChatDefaultDisableNotification extends Update {
 class UpdateChatReadInbox extends Update {
   /// Incoming messages were read or number of unread messages has been changed
   UpdateChatReadInbox(
-      {this.chatId, this.lastReadInboxMessageId, this.unreadCount});
+      {required this.chatId,
+      required this.lastReadInboxMessageId,
+      required this.unreadCount,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1148,14 +1234,16 @@ class UpdateChatReadInbox extends Update {
   int unreadCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatReadInbox.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.lastReadInboxMessageId = json['last_read_inbox_message_id'];
-    this.unreadCount = json['unread_count'];
-    this.extra = json['@extra'];
+  factory UpdateChatReadInbox.fromJson(Map<String, dynamic> json) {
+    return UpdateChatReadInbox(
+      chatId: json['chat_id'],
+      lastReadInboxMessageId: json['last_read_inbox_message_id'],
+      unreadCount: json['unread_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1176,7 +1264,10 @@ class UpdateChatReadInbox extends Update {
 
 class UpdateChatReadOutbox extends Update {
   /// Outgoing messages were read
-  UpdateChatReadOutbox({this.chatId, this.lastReadOutboxMessageId});
+  UpdateChatReadOutbox(
+      {required this.chatId,
+      required this.lastReadOutboxMessageId,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1185,13 +1276,15 @@ class UpdateChatReadOutbox extends Update {
   int lastReadOutboxMessageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatReadOutbox.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.lastReadOutboxMessageId = json['last_read_outbox_message_id'];
-    this.extra = json['@extra'];
+  factory UpdateChatReadOutbox.fromJson(Map<String, dynamic> json) {
+    return UpdateChatReadOutbox(
+      chatId: json['chat_id'],
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1211,7 +1304,8 @@ class UpdateChatReadOutbox extends Update {
 
 class UpdateChatUnreadMentionCount extends Update {
   /// The chat unread_mention_count has changed
-  UpdateChatUnreadMentionCount({this.chatId, this.unreadMentionCount});
+  UpdateChatUnreadMentionCount(
+      {required this.chatId, required this.unreadMentionCount, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1220,13 +1314,15 @@ class UpdateChatUnreadMentionCount extends Update {
   int unreadMentionCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.unreadMentionCount = json['unread_mention_count'];
-    this.extra = json['@extra'];
+  factory UpdateChatUnreadMentionCount.fromJson(Map<String, dynamic> json) {
+    return UpdateChatUnreadMentionCount(
+      chatId: json['chat_id'],
+      unreadMentionCount: json['unread_mention_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1246,7 +1342,8 @@ class UpdateChatUnreadMentionCount extends Update {
 
 class UpdateChatNotificationSettings extends Update {
   /// Notification settings for a chat were changed
-  UpdateChatNotificationSettings({this.chatId, this.notificationSettings});
+  UpdateChatNotificationSettings(
+      {required this.chatId, required this.notificationSettings, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1255,14 +1352,16 @@ class UpdateChatNotificationSettings extends Update {
   ChatNotificationSettings notificationSettings;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.notificationSettings = ChatNotificationSettings.fromJson(
-        json['notification_settings'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateChatNotificationSettings.fromJson(Map<String, dynamic> json) {
+    return UpdateChatNotificationSettings(
+      chatId: json['chat_id'],
+      notificationSettings: ChatNotificationSettings.fromJson(
+          json['notification_settings'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1270,9 +1369,7 @@ class UpdateChatNotificationSettings extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "notification_settings": this.notificationSettings == null
-          ? null
-          : this.notificationSettings.toJson(),
+      "notification_settings": this.notificationSettings.toJson(),
     };
   }
 
@@ -1284,7 +1381,8 @@ class UpdateChatNotificationSettings extends Update {
 
 class UpdateScopeNotificationSettings extends Update {
   /// Notification settings for some type of chats were updated
-  UpdateScopeNotificationSettings({this.scope, this.notificationSettings});
+  UpdateScopeNotificationSettings(
+      {required this.scope, required this.notificationSettings, this.extra});
 
   /// [scope] Types of chats for which notification settings were updated
   NotificationSettingsScope scope;
@@ -1293,25 +1391,25 @@ class UpdateScopeNotificationSettings extends Update {
   ScopeNotificationSettings notificationSettings;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json) {
-    this.scope = NotificationSettingsScope.fromJson(
-        json['scope'] ?? <String, dynamic>{});
-    this.notificationSettings = ScopeNotificationSettings.fromJson(
-        json['notification_settings'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateScopeNotificationSettings.fromJson(Map<String, dynamic> json) {
+    return UpdateScopeNotificationSettings(
+      scope: NotificationSettingsScope.fromJson(
+          json['scope'] ?? <String, dynamic>{}),
+      notificationSettings: ScopeNotificationSettings.fromJson(
+          json['notification_settings'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "scope": this.scope == null ? null : this.scope.toJson(),
-      "notification_settings": this.notificationSettings == null
-          ? null
-          : this.notificationSettings.toJson(),
+      "scope": this.scope.toJson(),
+      "notification_settings": this.notificationSettings.toJson(),
     };
   }
 
@@ -1323,23 +1421,25 @@ class UpdateScopeNotificationSettings extends Update {
 
 class UpdateChatActionBar extends Update {
   /// The chat action bar was changed
-  UpdateChatActionBar({this.chatId, this.actionBar});
+  UpdateChatActionBar({required this.chatId, this.actionBar, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// [actionBar] The new value of the action bar; may be null
-  ChatActionBar actionBar;
+  ChatActionBar? actionBar;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatActionBar.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.actionBar =
-        ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateChatActionBar.fromJson(Map<String, dynamic> json) {
+    return UpdateChatActionBar(
+      chatId: json['chat_id'],
+      actionBar:
+          ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1347,7 +1447,7 @@ class UpdateChatActionBar extends Update {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
-      "action_bar": this.actionBar == null ? null : this.actionBar.toJson(),
+      "action_bar": this.actionBar == null ? null : this.actionBar!.toJson(),
     };
   }
 
@@ -1359,7 +1459,8 @@ class UpdateChatActionBar extends Update {
 
 class UpdateChatReplyMarkup extends Update {
   /// The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user
-  UpdateChatReplyMarkup({this.chatId, this.replyMarkupMessageId});
+  UpdateChatReplyMarkup(
+      {required this.chatId, required this.replyMarkupMessageId, this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1368,13 +1469,15 @@ class UpdateChatReplyMarkup extends Update {
   int replyMarkupMessageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.replyMarkupMessageId = json['reply_markup_message_id'];
-    this.extra = json['@extra'];
+  factory UpdateChatReplyMarkup.fromJson(Map<String, dynamic> json) {
+    return UpdateChatReplyMarkup(
+      chatId: json['chat_id'],
+      replyMarkupMessageId: json['reply_markup_message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1394,29 +1497,35 @@ class UpdateChatReplyMarkup extends Update {
 
 class UpdateChatDraftMessage extends Update {
   /// A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update shouldn't be applied
-  UpdateChatDraftMessage({this.chatId, this.draftMessage, this.positions});
+  UpdateChatDraftMessage(
+      {required this.chatId,
+      this.draftMessage,
+      required this.positions,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
 
   /// [draftMessage] The new draft message; may be null
-  DraftMessage draftMessage;
+  DraftMessage? draftMessage;
 
   /// [positions] The new chat positions in the chat lists
   List<ChatPosition> positions;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.draftMessage =
-        DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{});
-    this.positions = List<ChatPosition>.from((json['positions'] ?? [])
-        .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateChatDraftMessage.fromJson(Map<String, dynamic> json) {
+    return UpdateChatDraftMessage(
+      chatId: json['chat_id'],
+      draftMessage:
+          DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{}),
+      positions: List<ChatPosition>.from((json['positions'] ?? [])
+          .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1425,7 +1534,7 @@ class UpdateChatDraftMessage extends Update {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "draft_message":
-          this.draftMessage == null ? null : this.draftMessage.toJson(),
+          this.draftMessage == null ? null : this.draftMessage!.toJson(),
       "positions": this.positions.map((i) => i.toJson()).toList(),
     };
   }
@@ -1438,20 +1547,22 @@ class UpdateChatDraftMessage extends Update {
 
 class UpdateChatFilters extends Update {
   /// The list of chat filters or a chat filter has changed
-  UpdateChatFilters({this.chatFilters});
+  UpdateChatFilters({required this.chatFilters, this.extra});
 
   /// [chatFilters] The new list of chat filters
   List<ChatFilterInfo> chatFilters;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatFilters.fromJson(Map<String, dynamic> json) {
-    this.chatFilters = List<ChatFilterInfo>.from((json['chat_filters'] ?? [])
-        .map((item) => ChatFilterInfo.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateChatFilters.fromJson(Map<String, dynamic> json) {
+    return UpdateChatFilters(
+      chatFilters: List<ChatFilterInfo>.from((json['chat_filters'] ?? [])
+          .map((item) => ChatFilterInfo.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1470,7 +1581,8 @@ class UpdateChatFilters extends Update {
 
 class UpdateChatOnlineMemberCount extends Update {
   /// The number of online group members has changed. This update with non-zero count is sent only for currently opened chats. There is no guarantee that it will be sent just after the count has changed
-  UpdateChatOnlineMemberCount({this.chatId, this.onlineMemberCount});
+  UpdateChatOnlineMemberCount(
+      {required this.chatId, required this.onlineMemberCount, this.extra});
 
   /// [chatId] Identifier of the chat
   int chatId;
@@ -1479,13 +1591,15 @@ class UpdateChatOnlineMemberCount extends Update {
   int onlineMemberCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.onlineMemberCount = json['online_member_count'];
-    this.extra = json['@extra'];
+  factory UpdateChatOnlineMemberCount.fromJson(Map<String, dynamic> json) {
+    return UpdateChatOnlineMemberCount(
+      chatId: json['chat_id'],
+      onlineMemberCount: json['online_member_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1505,7 +1619,10 @@ class UpdateChatOnlineMemberCount extends Update {
 
 class UpdateNotification extends Update {
   /// A notification was changed
-  UpdateNotification({this.notificationGroupId, this.notification});
+  UpdateNotification(
+      {required this.notificationGroupId,
+      required this.notification,
+      this.extra});
 
   /// [notificationGroupId] Unique notification group identifier
   int notificationGroupId;
@@ -1514,14 +1631,16 @@ class UpdateNotification extends Update {
   Notification notification;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNotification.fromJson(Map<String, dynamic> json) {
-    this.notificationGroupId = json['notification_group_id'];
-    this.notification =
-        Notification.fromJson(json['notification'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNotification.fromJson(Map<String, dynamic> json) {
+    return UpdateNotification(
+      notificationGroupId: json['notification_group_id'],
+      notification:
+          Notification.fromJson(json['notification'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1529,8 +1648,7 @@ class UpdateNotification extends Update {
     return {
       "@type": CONSTRUCTOR,
       "notification_group_id": this.notificationGroupId,
-      "notification":
-          this.notification == null ? null : this.notification.toJson(),
+      "notification": this.notification.toJson(),
     };
   }
 
@@ -1543,14 +1661,15 @@ class UpdateNotification extends Update {
 class UpdateNotificationGroup extends Update {
   /// A list of active notifications in a notification group has changed
   UpdateNotificationGroup(
-      {this.notificationGroupId,
-      this.type,
-      this.chatId,
-      this.notificationSettingsChatId,
-      this.isSilent,
-      this.totalCount,
-      this.addedNotifications,
-      this.removedNotificationIds});
+      {required this.notificationGroupId,
+      required this.type,
+      required this.chatId,
+      required this.notificationSettingsChatId,
+      required this.isSilent,
+      required this.totalCount,
+      required this.addedNotifications,
+      required this.removedNotificationIds,
+      this.extra});
 
   /// [notificationGroupId] Unique notification group identifier
   int notificationGroupId;
@@ -1577,24 +1696,27 @@ class UpdateNotificationGroup extends Update {
   List<int> removedNotificationIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNotificationGroup.fromJson(Map<String, dynamic> json) {
-    this.notificationGroupId = json['notification_group_id'];
-    this.type =
-        NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.chatId = json['chat_id'];
-    this.notificationSettingsChatId = json['notification_settings_chat_id'];
-    this.isSilent = json['is_silent'];
-    this.totalCount = json['total_count'];
-    this.addedNotifications = List<Notification>.from(
-        (json['added_notifications'] ?? [])
-            .map((item) => Notification.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.removedNotificationIds = List<int>.from(
-        (json['removed_notification_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateNotificationGroup.fromJson(Map<String, dynamic> json) {
+    return UpdateNotificationGroup(
+      notificationGroupId: json['notification_group_id'],
+      type: NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{}),
+      chatId: json['chat_id'],
+      notificationSettingsChatId: json['notification_settings_chat_id'],
+      isSilent: json['is_silent'],
+      totalCount: json['total_count'],
+      addedNotifications: List<Notification>.from(
+          (json['added_notifications'] ?? [])
+              .map((item) => Notification.fromJson(item ?? <String, dynamic>{}))
+              .toList()),
+      removedNotificationIds: List<int>.from(
+          (json['removed_notification_ids'] ?? [])
+              .map((item) => item)
+              .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1602,7 +1724,7 @@ class UpdateNotificationGroup extends Update {
     return {
       "@type": CONSTRUCTOR,
       "notification_group_id": this.notificationGroupId,
-      "type": this.type == null ? null : this.type.toJson(),
+      "type": this.type.toJson(),
       "chat_id": this.chatId,
       "notification_settings_chat_id": this.notificationSettingsChatId,
       "is_silent": this.isSilent,
@@ -1622,20 +1744,23 @@ class UpdateNotificationGroup extends Update {
 
 class UpdateActiveNotifications extends Update {
   /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
-  UpdateActiveNotifications({this.groups});
+  UpdateActiveNotifications({required this.groups, this.extra});
 
   /// [groups] Lists of active notification groups
   List<NotificationGroup> groups;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateActiveNotifications.fromJson(Map<String, dynamic> json) {
-    this.groups = List<NotificationGroup>.from((json['groups'] ?? [])
-        .map((item) => NotificationGroup.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateActiveNotifications.fromJson(Map<String, dynamic> json) {
+    return UpdateActiveNotifications(
+      groups: List<NotificationGroup>.from((json['groups'] ?? [])
+          .map(
+              (item) => NotificationGroup.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1655,7 +1780,9 @@ class UpdateActiveNotifications extends Update {
 class UpdateHavePendingNotifications extends Update {
   /// Describes whether there are some pending notification updates. Can be used to prevent application from killing, while there are some pending notifications
   UpdateHavePendingNotifications(
-      {this.haveDelayedNotifications, this.haveUnreceivedNotifications});
+      {required this.haveDelayedNotifications,
+      required this.haveUnreceivedNotifications,
+      this.extra});
 
   /// [haveDelayedNotifications] True, if there are some delayed notification updates, which will be sent soon
   bool haveDelayedNotifications;
@@ -1664,13 +1791,15 @@ class UpdateHavePendingNotifications extends Update {
   bool haveUnreceivedNotifications;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) {
-    this.haveDelayedNotifications = json['have_delayed_notifications'];
-    this.haveUnreceivedNotifications = json['have_unreceived_notifications'];
-    this.extra = json['@extra'];
+  factory UpdateHavePendingNotifications.fromJson(Map<String, dynamic> json) {
+    return UpdateHavePendingNotifications(
+      haveDelayedNotifications: json['have_delayed_notifications'],
+      haveUnreceivedNotifications: json['have_unreceived_notifications'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1691,7 +1820,11 @@ class UpdateHavePendingNotifications extends Update {
 class UpdateDeleteMessages extends Update {
   /// Some messages were deleted
   UpdateDeleteMessages(
-      {this.chatId, this.messageIds, this.isPermanent, this.fromCache});
+      {required this.chatId,
+      required this.messageIds,
+      required this.isPermanent,
+      required this.fromCache,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1706,16 +1839,18 @@ class UpdateDeleteMessages extends Update {
   bool fromCache;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateDeleteMessages.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageIds = List<int>.from(
-        (json['message_ids'] ?? []).map((item) => item).toList());
-    this.isPermanent = json['is_permanent'];
-    this.fromCache = json['from_cache'];
-    this.extra = json['@extra'];
+  factory UpdateDeleteMessages.fromJson(Map<String, dynamic> json) {
+    return UpdateDeleteMessages(
+      chatId: json['chat_id'],
+      messageIds: List<int>.from(
+          (json['message_ids'] ?? []).map((item) => item).toList()),
+      isPermanent: json['is_permanent'],
+      fromCache: json['from_cache'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1738,7 +1873,11 @@ class UpdateDeleteMessages extends Update {
 class UpdateUserChatAction extends Update {
   /// User activity in the chat has changed
   UpdateUserChatAction(
-      {this.chatId, this.messageThreadId, this.userId, this.action});
+      {required this.chatId,
+      required this.messageThreadId,
+      required this.userId,
+      required this.action,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -1753,15 +1892,17 @@ class UpdateUserChatAction extends Update {
   ChatAction action;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUserChatAction.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.messageThreadId = json['message_thread_id'];
-    this.userId = json['user_id'];
-    this.action = ChatAction.fromJson(json['action'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateUserChatAction.fromJson(Map<String, dynamic> json) {
+    return UpdateUserChatAction(
+      chatId: json['chat_id'],
+      messageThreadId: json['message_thread_id'],
+      userId: json['user_id'],
+      action: ChatAction.fromJson(json['action'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1771,7 +1912,7 @@ class UpdateUserChatAction extends Update {
       "chat_id": this.chatId,
       "message_thread_id": this.messageThreadId,
       "user_id": this.userId,
-      "action": this.action == null ? null : this.action.toJson(),
+      "action": this.action.toJson(),
     };
   }
 
@@ -1783,7 +1924,7 @@ class UpdateUserChatAction extends Update {
 
 class UpdateUserStatus extends Update {
   /// The user went online or offline
-  UpdateUserStatus({this.userId, this.status});
+  UpdateUserStatus({required this.userId, required this.status, this.extra});
 
   /// [userId] User identifier
   int userId;
@@ -1792,13 +1933,15 @@ class UpdateUserStatus extends Update {
   UserStatus status;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUserStatus.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-    this.status = UserStatus.fromJson(json['status'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateUserStatus.fromJson(Map<String, dynamic> json) {
+    return UpdateUserStatus(
+      userId: json['user_id'],
+      status: UserStatus.fromJson(json['status'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1806,7 +1949,7 @@ class UpdateUserStatus extends Update {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "status": this.status == null ? null : this.status.toJson(),
+      "status": this.status.toJson(),
     };
   }
 
@@ -1818,25 +1961,27 @@ class UpdateUserStatus extends Update {
 
 class UpdateUser extends Update {
   /// Some data of a user has changed. This update is guaranteed to come before the user identifier is returned to the application
-  UpdateUser({this.user});
+  UpdateUser({required this.user, this.extra});
 
   /// [user] New data about the user
   User user;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUser.fromJson(Map<String, dynamic> json) {
-    this.user = User.fromJson(json['user'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateUser.fromJson(Map<String, dynamic> json) {
+    return UpdateUser(
+      user: User.fromJson(json['user'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "user": this.user == null ? null : this.user.toJson(),
+      "user": this.user.toJson(),
     };
   }
 
@@ -1848,26 +1993,28 @@ class UpdateUser extends Update {
 
 class UpdateBasicGroup extends Update {
   /// Some data of a basic group has changed. This update is guaranteed to come before the basic group identifier is returned to the application
-  UpdateBasicGroup({this.basicGroup});
+  UpdateBasicGroup({required this.basicGroup, this.extra});
 
   /// [basicGroup] New data about the group
   BasicGroup basicGroup;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateBasicGroup.fromJson(Map<String, dynamic> json) {
-    this.basicGroup =
-        BasicGroup.fromJson(json['basic_group'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateBasicGroup.fromJson(Map<String, dynamic> json) {
+    return UpdateBasicGroup(
+      basicGroup:
+          BasicGroup.fromJson(json['basic_group'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "basic_group": this.basicGroup == null ? null : this.basicGroup.toJson(),
+      "basic_group": this.basicGroup.toJson(),
     };
   }
 
@@ -1879,26 +2026,28 @@ class UpdateBasicGroup extends Update {
 
 class UpdateSupergroup extends Update {
   /// Some data of a supergroup or a channel has changed. This update is guaranteed to come before the supergroup identifier is returned to the application
-  UpdateSupergroup({this.supergroup});
+  UpdateSupergroup({required this.supergroup, this.extra});
 
   /// [supergroup] New data about the supergroup
   Supergroup supergroup;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSupergroup.fromJson(Map<String, dynamic> json) {
-    this.supergroup =
-        Supergroup.fromJson(json['supergroup'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateSupergroup.fromJson(Map<String, dynamic> json) {
+    return UpdateSupergroup(
+      supergroup:
+          Supergroup.fromJson(json['supergroup'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "supergroup": this.supergroup == null ? null : this.supergroup.toJson(),
+      "supergroup": this.supergroup.toJson(),
     };
   }
 
@@ -1910,26 +2059,28 @@ class UpdateSupergroup extends Update {
 
 class UpdateSecretChat extends Update {
   /// Some data of a secret chat has changed. This update is guaranteed to come before the secret chat identifier is returned to the application
-  UpdateSecretChat({this.secretChat});
+  UpdateSecretChat({required this.secretChat, this.extra});
 
   /// [secretChat] New data about the secret chat
   SecretChat secretChat;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSecretChat.fromJson(Map<String, dynamic> json) {
-    this.secretChat =
-        SecretChat.fromJson(json['secret_chat'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateSecretChat.fromJson(Map<String, dynamic> json) {
+    return UpdateSecretChat(
+      secretChat:
+          SecretChat.fromJson(json['secret_chat'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "secret_chat": this.secretChat == null ? null : this.secretChat.toJson(),
+      "secret_chat": this.secretChat.toJson(),
     };
   }
 
@@ -1941,7 +2092,8 @@ class UpdateSecretChat extends Update {
 
 class UpdateUserFullInfo extends Update {
   /// Some data from userFullInfo has been changed
-  UpdateUserFullInfo({this.userId, this.userFullInfo});
+  UpdateUserFullInfo(
+      {required this.userId, required this.userFullInfo, this.extra});
 
   /// [userId] User identifier
   int userId;
@@ -1950,14 +2102,16 @@ class UpdateUserFullInfo extends Update {
   UserFullInfo userFullInfo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUserFullInfo.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-    this.userFullInfo =
-        UserFullInfo.fromJson(json['user_full_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateUserFullInfo.fromJson(Map<String, dynamic> json) {
+    return UpdateUserFullInfo(
+      userId: json['user_id'],
+      userFullInfo:
+          UserFullInfo.fromJson(json['user_full_info'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -1965,8 +2119,7 @@ class UpdateUserFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "user_id": this.userId,
-      "user_full_info":
-          this.userFullInfo == null ? null : this.userFullInfo.toJson(),
+      "user_full_info": this.userFullInfo.toJson(),
     };
   }
 
@@ -1978,7 +2131,10 @@ class UpdateUserFullInfo extends Update {
 
 class UpdateBasicGroupFullInfo extends Update {
   /// Some data from basicGroupFullInfo has been changed
-  UpdateBasicGroupFullInfo({this.basicGroupId, this.basicGroupFullInfo});
+  UpdateBasicGroupFullInfo(
+      {required this.basicGroupId,
+      required this.basicGroupFullInfo,
+      this.extra});
 
   /// [basicGroupId] Identifier of a basic group
   int basicGroupId;
@@ -1987,14 +2143,16 @@ class UpdateBasicGroupFullInfo extends Update {
   BasicGroupFullInfo basicGroupFullInfo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
-    this.basicGroupId = json['basic_group_id'];
-    this.basicGroupFullInfo = BasicGroupFullInfo.fromJson(
-        json['basic_group_full_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateBasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
+    return UpdateBasicGroupFullInfo(
+      basicGroupId: json['basic_group_id'],
+      basicGroupFullInfo: BasicGroupFullInfo.fromJson(
+          json['basic_group_full_info'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2002,9 +2160,7 @@ class UpdateBasicGroupFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "basic_group_id": this.basicGroupId,
-      "basic_group_full_info": this.basicGroupFullInfo == null
-          ? null
-          : this.basicGroupFullInfo.toJson(),
+      "basic_group_full_info": this.basicGroupFullInfo.toJson(),
     };
   }
 
@@ -2016,7 +2172,10 @@ class UpdateBasicGroupFullInfo extends Update {
 
 class UpdateSupergroupFullInfo extends Update {
   /// Some data from supergroupFullInfo has been changed
-  UpdateSupergroupFullInfo({this.supergroupId, this.supergroupFullInfo});
+  UpdateSupergroupFullInfo(
+      {required this.supergroupId,
+      required this.supergroupFullInfo,
+      this.extra});
 
   /// [supergroupId] Identifier of the supergroup or channel
   int supergroupId;
@@ -2025,14 +2184,16 @@ class UpdateSupergroupFullInfo extends Update {
   SupergroupFullInfo supergroupFullInfo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json) {
-    this.supergroupId = json['supergroup_id'];
-    this.supergroupFullInfo = SupergroupFullInfo.fromJson(
-        json['supergroup_full_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateSupergroupFullInfo.fromJson(Map<String, dynamic> json) {
+    return UpdateSupergroupFullInfo(
+      supergroupId: json['supergroup_id'],
+      supergroupFullInfo: SupergroupFullInfo.fromJson(
+          json['supergroup_full_info'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2040,9 +2201,7 @@ class UpdateSupergroupFullInfo extends Update {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": this.supergroupId,
-      "supergroup_full_info": this.supergroupFullInfo == null
-          ? null
-          : this.supergroupFullInfo.toJson(),
+      "supergroup_full_info": this.supergroupFullInfo.toJson(),
     };
   }
 
@@ -2054,7 +2213,8 @@ class UpdateSupergroupFullInfo extends Update {
 
 class UpdateServiceNotification extends Update {
   /// Service notification from the server. Upon receiving this the application must show a popup with the content of the notification
-  UpdateServiceNotification({this.type, this.content});
+  UpdateServiceNotification(
+      {required this.type, required this.content, this.extra});
 
   /// [type] Notification type. If type begins with "AUTH_KEY_DROP_", then two buttons "Cancel" and "Log out" should be shown under notification; if user presses the second, all local data should be destroyed using Destroy method
   String type;
@@ -2063,14 +2223,15 @@ class UpdateServiceNotification extends Update {
   MessageContent content;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateServiceNotification.fromJson(Map<String, dynamic> json) {
-    this.type = json['type'];
-    this.content =
-        MessageContent.fromJson(json['content'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateServiceNotification.fromJson(Map<String, dynamic> json) {
+    return UpdateServiceNotification(
+      type: json['type'],
+      content: MessageContent.fromJson(json['content'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2078,7 +2239,7 @@ class UpdateServiceNotification extends Update {
     return {
       "@type": CONSTRUCTOR,
       "type": this.type,
-      "content": this.content == null ? null : this.content.toJson(),
+      "content": this.content.toJson(),
     };
   }
 
@@ -2090,25 +2251,27 @@ class UpdateServiceNotification extends Update {
 
 class UpdateFile extends Update {
   /// Information about a file was updated
-  UpdateFile({this.file});
+  UpdateFile({required this.file, this.extra});
 
   /// [file] New data about the file
   File file;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateFile.fromJson(Map<String, dynamic> json) {
-    this.file = File.fromJson(json['file'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateFile.fromJson(Map<String, dynamic> json) {
+    return UpdateFile(
+      file: File.fromJson(json['file'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "file": this.file == null ? null : this.file.toJson(),
+      "file": this.file.toJson(),
     };
   }
 
@@ -2121,10 +2284,11 @@ class UpdateFile extends Update {
 class UpdateFileGenerationStart extends Update {
   /// The file generation process needs to be started by the application
   UpdateFileGenerationStart(
-      {this.generationId,
-      this.originalPath,
-      this.destinationPath,
-      this.conversion});
+      {required this.generationId,
+      required this.originalPath,
+      required this.destinationPath,
+      required this.conversion,
+      this.extra});
 
   /// [generationId] Unique identifier for the generation process
   int generationId;
@@ -2139,15 +2303,17 @@ class UpdateFileGenerationStart extends Update {
   String conversion;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateFileGenerationStart.fromJson(Map<String, dynamic> json) {
-    this.generationId = int.tryParse(json['generation_id'] ?? "");
-    this.originalPath = json['original_path'];
-    this.destinationPath = json['destination_path'];
-    this.conversion = json['conversion'];
-    this.extra = json['@extra'];
+  factory UpdateFileGenerationStart.fromJson(Map<String, dynamic> json) {
+    return UpdateFileGenerationStart(
+      generationId: int.tryParse(json['generation_id'] ?? "") ?? 0,
+      originalPath: json['original_path'],
+      destinationPath: json['destination_path'],
+      conversion: json['conversion'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2169,18 +2335,20 @@ class UpdateFileGenerationStart extends Update {
 
 class UpdateFileGenerationStop extends Update {
   /// File generation is no longer needed
-  UpdateFileGenerationStop({this.generationId});
+  UpdateFileGenerationStop({required this.generationId, this.extra});
 
   /// [generationId] Unique identifier for the generation process
   int generationId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateFileGenerationStop.fromJson(Map<String, dynamic> json) {
-    this.generationId = int.tryParse(json['generation_id'] ?? "");
-    this.extra = json['@extra'];
+  factory UpdateFileGenerationStop.fromJson(Map<String, dynamic> json) {
+    return UpdateFileGenerationStop(
+      generationId: int.tryParse(json['generation_id'] ?? "") ?? 0,
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2199,25 +2367,27 @@ class UpdateFileGenerationStop extends Update {
 
 class UpdateCall extends Update {
   /// New call was created or information about a call was updated
-  UpdateCall({this.call});
+  UpdateCall({required this.call, this.extra});
 
   /// [call] New data about a call
   Call call;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateCall.fromJson(Map<String, dynamic> json) {
-    this.call = Call.fromJson(json['call'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateCall.fromJson(Map<String, dynamic> json) {
+    return UpdateCall(
+      call: Call.fromJson(json['call'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "call": this.call == null ? null : this.call.toJson(),
+      "call": this.call.toJson(),
     };
   }
 
@@ -2229,26 +2399,27 @@ class UpdateCall extends Update {
 
 class UpdateGroupCall extends Update {
   /// Information about a group call was updated
-  UpdateGroupCall({this.groupCall});
+  UpdateGroupCall({required this.groupCall, this.extra});
 
   /// [groupCall] New data about a group call
   GroupCall groupCall;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateGroupCall.fromJson(Map<String, dynamic> json) {
-    this.groupCall =
-        GroupCall.fromJson(json['group_call'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateGroupCall.fromJson(Map<String, dynamic> json) {
+    return UpdateGroupCall(
+      groupCall: GroupCall.fromJson(json['group_call'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "group_call": this.groupCall == null ? null : this.groupCall.toJson(),
+      "group_call": this.groupCall.toJson(),
     };
   }
 
@@ -2260,7 +2431,8 @@ class UpdateGroupCall extends Update {
 
 class UpdateGroupCallParticipant extends Update {
   /// Information about a group call participant was changed. The updates are sent only after the group call is received through getGroupCall and only if the call is joined or being joined
-  UpdateGroupCallParticipant({this.groupCallId, this.participant});
+  UpdateGroupCallParticipant(
+      {required this.groupCallId, required this.participant, this.extra});
 
   /// [groupCallId] Identifier of group call
   int groupCallId;
@@ -2269,14 +2441,16 @@ class UpdateGroupCallParticipant extends Update {
   GroupCallParticipant participant;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) {
-    this.groupCallId = json['group_call_id'];
-    this.participant = GroupCallParticipant.fromJson(
-        json['participant'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateGroupCallParticipant.fromJson(Map<String, dynamic> json) {
+    return UpdateGroupCallParticipant(
+      groupCallId: json['group_call_id'],
+      participant: GroupCallParticipant.fromJson(
+          json['participant'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2284,8 +2458,7 @@ class UpdateGroupCallParticipant extends Update {
     return {
       "@type": CONSTRUCTOR,
       "group_call_id": this.groupCallId,
-      "participant":
-          this.participant == null ? null : this.participant.toJson(),
+      "participant": this.participant.toJson(),
     };
   }
 
@@ -2297,7 +2470,8 @@ class UpdateGroupCallParticipant extends Update {
 
 class UpdateNewCallSignalingData extends Update {
   /// New call signaling data arrived
-  UpdateNewCallSignalingData({this.callId, this.data});
+  UpdateNewCallSignalingData(
+      {required this.callId, required this.data, this.extra});
 
   /// [callId] The call identifier
   int callId;
@@ -2306,13 +2480,15 @@ class UpdateNewCallSignalingData extends Update {
   String data;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json) {
-    this.callId = json['call_id'];
-    this.data = json['data'];
-    this.extra = json['@extra'];
+  factory UpdateNewCallSignalingData.fromJson(Map<String, dynamic> json) {
+    return UpdateNewCallSignalingData(
+      callId: json['call_id'],
+      data: json['data'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2332,7 +2508,8 @@ class UpdateNewCallSignalingData extends Update {
 
 class UpdateUserPrivacySettingRules extends Update {
   /// Some privacy setting rules have been changed
-  UpdateUserPrivacySettingRules({this.setting, this.rules});
+  UpdateUserPrivacySettingRules(
+      {required this.setting, required this.rules, this.extra});
 
   /// [setting] The privacy setting
   UserPrivacySetting setting;
@@ -2341,23 +2518,25 @@ class UpdateUserPrivacySettingRules extends Update {
   UserPrivacySettingRules rules;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json) {
-    this.setting =
-        UserPrivacySetting.fromJson(json['setting'] ?? <String, dynamic>{});
-    this.rules =
-        UserPrivacySettingRules.fromJson(json['rules'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateUserPrivacySettingRules.fromJson(Map<String, dynamic> json) {
+    return UpdateUserPrivacySettingRules(
+      setting:
+          UserPrivacySetting.fromJson(json['setting'] ?? <String, dynamic>{}),
+      rules: UserPrivacySettingRules.fromJson(
+          json['rules'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "setting": this.setting == null ? null : this.setting.toJson(),
-      "rules": this.rules == null ? null : this.rules.toJson(),
+      "setting": this.setting.toJson(),
+      "rules": this.rules.toJson(),
     };
   }
 
@@ -2370,7 +2549,10 @@ class UpdateUserPrivacySettingRules extends Update {
 class UpdateUnreadMessageCount extends Update {
   /// Number of unread messages in a chat list has changed. This update is sent only if the message database is used
   UpdateUnreadMessageCount(
-      {this.chatList, this.unreadCount, this.unreadUnmutedCount});
+      {required this.chatList,
+      required this.unreadCount,
+      required this.unreadUnmutedCount,
+      this.extra});
 
   /// [chatList] The chat list with changed number of unread messages
   ChatList chatList;
@@ -2382,21 +2564,23 @@ class UpdateUnreadMessageCount extends Update {
   int unreadUnmutedCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json) {
-    this.chatList = ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{});
-    this.unreadCount = json['unread_count'];
-    this.unreadUnmutedCount = json['unread_unmuted_count'];
-    this.extra = json['@extra'];
+  factory UpdateUnreadMessageCount.fromJson(Map<String, dynamic> json) {
+    return UpdateUnreadMessageCount(
+      chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
+      unreadCount: json['unread_count'],
+      unreadUnmutedCount: json['unread_unmuted_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
+      "chat_list": this.chatList.toJson(),
       "unread_count": this.unreadCount,
       "unread_unmuted_count": this.unreadUnmutedCount,
     };
@@ -2411,12 +2595,13 @@ class UpdateUnreadMessageCount extends Update {
 class UpdateUnreadChatCount extends Update {
   /// Number of unread chats, i.e. with unread messages or marked as unread, has changed. This update is sent only if the message database is used
   UpdateUnreadChatCount(
-      {this.chatList,
-      this.totalCount,
-      this.unreadCount,
-      this.unreadUnmutedCount,
-      this.markedAsUnreadCount,
-      this.markedAsUnreadUnmutedCount});
+      {required this.chatList,
+      required this.totalCount,
+      required this.unreadCount,
+      required this.unreadUnmutedCount,
+      required this.markedAsUnreadCount,
+      required this.markedAsUnreadUnmutedCount,
+      this.extra});
 
   /// [chatList] The chat list with changed number of unread messages
   ChatList chatList;
@@ -2437,24 +2622,26 @@ class UpdateUnreadChatCount extends Update {
   int markedAsUnreadUnmutedCount;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUnreadChatCount.fromJson(Map<String, dynamic> json) {
-    this.chatList = ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{});
-    this.totalCount = json['total_count'];
-    this.unreadCount = json['unread_count'];
-    this.unreadUnmutedCount = json['unread_unmuted_count'];
-    this.markedAsUnreadCount = json['marked_as_unread_count'];
-    this.markedAsUnreadUnmutedCount = json['marked_as_unread_unmuted_count'];
-    this.extra = json['@extra'];
+  factory UpdateUnreadChatCount.fromJson(Map<String, dynamic> json) {
+    return UpdateUnreadChatCount(
+      chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
+      totalCount: json['total_count'],
+      unreadCount: json['unread_count'],
+      unreadUnmutedCount: json['unread_unmuted_count'],
+      markedAsUnreadCount: json['marked_as_unread_count'],
+      markedAsUnreadUnmutedCount: json['marked_as_unread_unmuted_count'],
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
+      "chat_list": this.chatList.toJson(),
       "total_count": this.totalCount,
       "unread_count": this.unreadCount,
       "unread_unmuted_count": this.unreadUnmutedCount,
@@ -2471,7 +2658,7 @@ class UpdateUnreadChatCount extends Update {
 
 class UpdateOption extends Update {
   /// An option changed its value
-  UpdateOption({this.name, this.value});
+  UpdateOption({required this.name, required this.value, this.extra});
 
   /// [name] The option name
   String name;
@@ -2480,13 +2667,15 @@ class UpdateOption extends Update {
   OptionValue value;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateOption.fromJson(Map<String, dynamic> json) {
-    this.name = json['name'];
-    this.value = OptionValue.fromJson(json['value'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateOption.fromJson(Map<String, dynamic> json) {
+    return UpdateOption(
+      name: json['name'],
+      value: OptionValue.fromJson(json['value'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2494,7 +2683,7 @@ class UpdateOption extends Update {
     return {
       "@type": CONSTRUCTOR,
       "name": this.name,
-      "value": this.value == null ? null : this.value.toJson(),
+      "value": this.value.toJson(),
     };
   }
 
@@ -2506,26 +2695,28 @@ class UpdateOption extends Update {
 
 class UpdateStickerSet extends Update {
   /// A sticker set has changed
-  UpdateStickerSet({this.stickerSet});
+  UpdateStickerSet({required this.stickerSet, this.extra});
 
   /// [stickerSet] The sticker set
   StickerSet stickerSet;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateStickerSet.fromJson(Map<String, dynamic> json) {
-    this.stickerSet =
-        StickerSet.fromJson(json['sticker_set'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateStickerSet.fromJson(Map<String, dynamic> json) {
+    return UpdateStickerSet(
+      stickerSet:
+          StickerSet.fromJson(json['sticker_set'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_set": this.stickerSet == null ? null : this.stickerSet.toJson(),
+      "sticker_set": this.stickerSet.toJson(),
     };
   }
 
@@ -2537,7 +2728,8 @@ class UpdateStickerSet extends Update {
 
 class UpdateInstalledStickerSets extends Update {
   /// The list of installed sticker sets was updated
-  UpdateInstalledStickerSets({this.isMasks, this.stickerSetIds});
+  UpdateInstalledStickerSets(
+      {required this.isMasks, required this.stickerSetIds, this.extra});
 
   /// [isMasks] True, if the list of installed mask sticker sets was updated
   bool isMasks;
@@ -2546,14 +2738,16 @@ class UpdateInstalledStickerSets extends Update {
   List<int> stickerSetIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) {
-    this.isMasks = json['is_masks'];
-    this.stickerSetIds = List<int>.from(
-        (json['sticker_set_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateInstalledStickerSets.fromJson(Map<String, dynamic> json) {
+    return UpdateInstalledStickerSets(
+      isMasks: json['is_masks'],
+      stickerSetIds: List<int>.from(
+          (json['sticker_set_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2573,27 +2767,28 @@ class UpdateInstalledStickerSets extends Update {
 
 class UpdateTrendingStickerSets extends Update {
   /// The list of trending sticker sets was updated or some of them were viewed
-  UpdateTrendingStickerSets({this.stickerSets});
+  UpdateTrendingStickerSets({required this.stickerSets, this.extra});
 
   /// [stickerSets] The prefix of the list of trending sticker sets with the newest trending sticker sets
   StickerSets stickerSets;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) {
-    this.stickerSets =
-        StickerSets.fromJson(json['sticker_sets'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateTrendingStickerSets.fromJson(Map<String, dynamic> json) {
+    return UpdateTrendingStickerSets(
+      stickerSets:
+          StickerSets.fromJson(json['sticker_sets'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "sticker_sets":
-          this.stickerSets == null ? null : this.stickerSets.toJson(),
+      "sticker_sets": this.stickerSets.toJson(),
     };
   }
 
@@ -2605,7 +2800,8 @@ class UpdateTrendingStickerSets extends Update {
 
 class UpdateRecentStickers extends Update {
   /// The list of recently used stickers was updated
-  UpdateRecentStickers({this.isAttached, this.stickerIds});
+  UpdateRecentStickers(
+      {required this.isAttached, required this.stickerIds, this.extra});
 
   /// [isAttached] True, if the list of stickers attached to photo or video files was updated, otherwise the list of sent stickers is updated
   bool isAttached;
@@ -2614,14 +2810,16 @@ class UpdateRecentStickers extends Update {
   List<int> stickerIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateRecentStickers.fromJson(Map<String, dynamic> json) {
-    this.isAttached = json['is_attached'];
-    this.stickerIds = List<int>.from(
-        (json['sticker_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateRecentStickers.fromJson(Map<String, dynamic> json) {
+    return UpdateRecentStickers(
+      isAttached: json['is_attached'],
+      stickerIds: List<int>.from(
+          (json['sticker_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2641,19 +2839,21 @@ class UpdateRecentStickers extends Update {
 
 class UpdateFavoriteStickers extends Update {
   /// The list of favorite stickers was updated
-  UpdateFavoriteStickers({this.stickerIds});
+  UpdateFavoriteStickers({required this.stickerIds, this.extra});
 
   /// [stickerIds] The new list of file identifiers of favorite stickers
   List<int> stickerIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) {
-    this.stickerIds = List<int>.from(
-        (json['sticker_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateFavoriteStickers.fromJson(Map<String, dynamic> json) {
+    return UpdateFavoriteStickers(
+      stickerIds: List<int>.from(
+          (json['sticker_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2672,19 +2872,21 @@ class UpdateFavoriteStickers extends Update {
 
 class UpdateSavedAnimations extends Update {
   /// The list of saved animations was updated
-  UpdateSavedAnimations({this.animationIds});
+  UpdateSavedAnimations({required this.animationIds, this.extra});
 
   /// [animationIds] The new list of file identifiers of saved animations
   List<int> animationIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSavedAnimations.fromJson(Map<String, dynamic> json) {
-    this.animationIds = List<int>.from(
-        (json['animation_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateSavedAnimations.fromJson(Map<String, dynamic> json) {
+    return UpdateSavedAnimations(
+      animationIds: List<int>.from(
+          (json['animation_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2703,23 +2905,26 @@ class UpdateSavedAnimations extends Update {
 
 class UpdateSelectedBackground extends Update {
   /// The selected background has changed
-  UpdateSelectedBackground({this.forDarkTheme, this.background});
+  UpdateSelectedBackground(
+      {required this.forDarkTheme, this.background, this.extra});
 
   /// [forDarkTheme] True, if background for dark theme has changed
   bool forDarkTheme;
 
   /// [background] The new selected background; may be null
-  Background background;
+  Background? background;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSelectedBackground.fromJson(Map<String, dynamic> json) {
-    this.forDarkTheme = json['for_dark_theme'];
-    this.background =
-        Background.fromJson(json['background'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateSelectedBackground.fromJson(Map<String, dynamic> json) {
+    return UpdateSelectedBackground(
+      forDarkTheme: json['for_dark_theme'],
+      background:
+          Background.fromJson(json['background'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2727,7 +2932,7 @@ class UpdateSelectedBackground extends Update {
     return {
       "@type": CONSTRUCTOR,
       "for_dark_theme": this.forDarkTheme,
-      "background": this.background == null ? null : this.background.toJson(),
+      "background": this.background == null ? null : this.background!.toJson(),
     };
   }
 
@@ -2740,7 +2945,10 @@ class UpdateSelectedBackground extends Update {
 class UpdateLanguagePackStrings extends Update {
   /// Some language pack strings have been updated
   UpdateLanguagePackStrings(
-      {this.localizationTarget, this.languagePackId, this.strings});
+      {required this.localizationTarget,
+      required this.languagePackId,
+      required this.strings,
+      this.extra});
 
   /// [localizationTarget] Localization target to which the language pack belongs
   String localizationTarget;
@@ -2752,16 +2960,19 @@ class UpdateLanguagePackStrings extends Update {
   List<LanguagePackString> strings;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) {
-    this.localizationTarget = json['localization_target'];
-    this.languagePackId = json['language_pack_id'];
-    this.strings = List<LanguagePackString>.from((json['strings'] ?? [])
-        .map((item) => LanguagePackString.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateLanguagePackStrings.fromJson(Map<String, dynamic> json) {
+    return UpdateLanguagePackStrings(
+      localizationTarget: json['localization_target'],
+      languagePackId: json['language_pack_id'],
+      strings: List<LanguagePackString>.from((json['strings'] ?? [])
+          .map((item) =>
+              LanguagePackString.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2782,25 +2993,27 @@ class UpdateLanguagePackStrings extends Update {
 
 class UpdateConnectionState extends Update {
   /// The connection state has changed. This update must be used only to show a human-readable description of the connection state
-  UpdateConnectionState({this.state});
+  UpdateConnectionState({required this.state, this.extra});
 
   /// [state] The new connection state
   ConnectionState state;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateConnectionState.fromJson(Map<String, dynamic> json) {
-    this.state = ConnectionState.fromJson(json['state'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateConnectionState.fromJson(Map<String, dynamic> json) {
+    return UpdateConnectionState(
+      state: ConnectionState.fromJson(json['state'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "state": this.state == null ? null : this.state.toJson(),
+      "state": this.state.toJson(),
     };
   }
 
@@ -2812,7 +3025,10 @@ class UpdateConnectionState extends Update {
 
 class UpdateTermsOfService extends Update {
   /// New terms of service must be accepted by the user. If the terms of service are declined, then the deleteAccount method should be called with the reason "Decline ToS update"
-  UpdateTermsOfService({this.termsOfServiceId, this.termsOfService});
+  UpdateTermsOfService(
+      {required this.termsOfServiceId,
+      required this.termsOfService,
+      this.extra});
 
   /// [termsOfServiceId] Identifier of the terms of service
   String termsOfServiceId;
@@ -2821,14 +3037,16 @@ class UpdateTermsOfService extends Update {
   TermsOfService termsOfService;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateTermsOfService.fromJson(Map<String, dynamic> json) {
-    this.termsOfServiceId = json['terms_of_service_id'];
-    this.termsOfService = TermsOfService.fromJson(
-        json['terms_of_service'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateTermsOfService.fromJson(Map<String, dynamic> json) {
+    return UpdateTermsOfService(
+      termsOfServiceId: json['terms_of_service_id'],
+      termsOfService: TermsOfService.fromJson(
+          json['terms_of_service'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2836,8 +3054,7 @@ class UpdateTermsOfService extends Update {
     return {
       "@type": CONSTRUCTOR,
       "terms_of_service_id": this.termsOfServiceId,
-      "terms_of_service":
-          this.termsOfService == null ? null : this.termsOfService.toJson(),
+      "terms_of_service": this.termsOfService.toJson(),
     };
   }
 
@@ -2849,20 +3066,22 @@ class UpdateTermsOfService extends Update {
 
 class UpdateUsersNearby extends Update {
   /// The list of users nearby has changed. The update is guaranteed to be sent only 60 seconds after a successful searchChatsNearby request
-  UpdateUsersNearby({this.usersNearby});
+  UpdateUsersNearby({required this.usersNearby, this.extra});
 
   /// [usersNearby] The new list of users nearby
   List<ChatNearby> usersNearby;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateUsersNearby.fromJson(Map<String, dynamic> json) {
-    this.usersNearby = List<ChatNearby>.from((json['users_nearby'] ?? [])
-        .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateUsersNearby.fromJson(Map<String, dynamic> json) {
+    return UpdateUsersNearby(
+      usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? [])
+          .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2881,19 +3100,21 @@ class UpdateUsersNearby extends Update {
 
 class UpdateDiceEmojis extends Update {
   /// The list of supported dice emojis has changed
-  UpdateDiceEmojis({this.emojis});
+  UpdateDiceEmojis({required this.emojis, this.extra});
 
   /// [emojis] The new list of supported dice emojis
   List<String> emojis;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateDiceEmojis.fromJson(Map<String, dynamic> json) {
-    this.emojis =
-        List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateDiceEmojis.fromJson(Map<String, dynamic> json) {
+    return UpdateDiceEmojis(
+      emojis: List<String>.from(
+          (json['emojis'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2912,7 +3133,8 @@ class UpdateDiceEmojis extends Update {
 
 class UpdateAnimationSearchParameters extends Update {
   /// The parameters of animation search through GetOption("animation_search_bot_username") bot has changed
-  UpdateAnimationSearchParameters({this.provider, this.emojis});
+  UpdateAnimationSearchParameters(
+      {required this.provider, required this.emojis, this.extra});
 
   /// [provider] Name of the animation search provider
   String provider;
@@ -2921,14 +3143,16 @@ class UpdateAnimationSearchParameters extends Update {
   List<String> emojis;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) {
-    this.provider = json['provider'];
-    this.emojis =
-        List<String>.from((json['emojis'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdateAnimationSearchParameters.fromJson(Map<String, dynamic> json) {
+    return UpdateAnimationSearchParameters(
+      provider: json['provider'],
+      emojis: List<String>.from(
+          (json['emojis'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2948,7 +3172,8 @@ class UpdateAnimationSearchParameters extends Update {
 
 class UpdateSuggestedActions extends Update {
   /// The list of suggested to the user actions has changed
-  UpdateSuggestedActions({this.addedActions, this.removedActions});
+  UpdateSuggestedActions(
+      {required this.addedActions, required this.removedActions, this.extra});
 
   /// [addedActions] Added suggested actions
   List<SuggestedAction> addedActions;
@@ -2957,18 +3182,19 @@ class UpdateSuggestedActions extends Update {
   List<SuggestedAction> removedActions;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateSuggestedActions.fromJson(Map<String, dynamic> json) {
-    this.addedActions = List<SuggestedAction>.from((json['added_actions'] ?? [])
-        .map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.removedActions = List<SuggestedAction>.from((json['removed_actions'] ??
-            [])
-        .map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory UpdateSuggestedActions.fromJson(Map<String, dynamic> json) {
+    return UpdateSuggestedActions(
+      addedActions: List<SuggestedAction>.from((json['added_actions'] ?? [])
+          .map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      removedActions: List<SuggestedAction>.from((json['removed_actions'] ?? [])
+          .map((item) => SuggestedAction.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -2989,12 +3215,13 @@ class UpdateSuggestedActions extends Update {
 class UpdateNewInlineQuery extends Update {
   /// A new incoming inline query; for bots only
   UpdateNewInlineQuery(
-      {this.id,
-      this.senderUserId,
+      {required this.id,
+      required this.senderUserId,
       this.userLocation,
       this.chatType,
-      this.query,
-      this.offset});
+      required this.query,
+      required this.offset,
+      this.extra});
 
   /// [id] Unique query identifier
   int id;
@@ -3003,10 +3230,10 @@ class UpdateNewInlineQuery extends Update {
   int senderUserId;
 
   /// [userLocation] User location; may be null
-  Location userLocation;
+  Location? userLocation;
 
   /// [chatType] Contains information about the type of the chat, from which the query originated; may be null if unknown
-  ChatType chatType;
+  ChatType? chatType;
 
   /// [query] Text of the query
   String query;
@@ -3015,18 +3242,20 @@ class UpdateNewInlineQuery extends Update {
   String offset;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewInlineQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.senderUserId = json['sender_user_id'];
-    this.userLocation =
-        Location.fromJson(json['user_location'] ?? <String, dynamic>{});
-    this.chatType = ChatType.fromJson(json['chat_type'] ?? <String, dynamic>{});
-    this.query = json['query'];
-    this.offset = json['offset'];
-    this.extra = json['@extra'];
+  factory UpdateNewInlineQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewInlineQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      senderUserId: json['sender_user_id'],
+      userLocation:
+          Location.fromJson(json['user_location'] ?? <String, dynamic>{}),
+      chatType: ChatType.fromJson(json['chat_type'] ?? <String, dynamic>{}),
+      query: json['query'],
+      offset: json['offset'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3036,8 +3265,8 @@ class UpdateNewInlineQuery extends Update {
       "id": this.id,
       "sender_user_id": this.senderUserId,
       "user_location":
-          this.userLocation == null ? null : this.userLocation.toJson(),
-      "chat_type": this.chatType == null ? null : this.chatType.toJson(),
+          this.userLocation == null ? null : this.userLocation!.toJson(),
+      "chat_type": this.chatType == null ? null : this.chatType!.toJson(),
       "query": this.query,
       "offset": this.offset,
     };
@@ -3052,17 +3281,18 @@ class UpdateNewInlineQuery extends Update {
 class UpdateNewChosenInlineResult extends Update {
   /// The user has chosen a result of an inline query; for bots only
   UpdateNewChosenInlineResult(
-      {this.senderUserId,
+      {required this.senderUserId,
       this.userLocation,
-      this.query,
-      this.resultId,
-      this.inlineMessageId});
+      required this.query,
+      required this.resultId,
+      required this.inlineMessageId,
+      this.extra});
 
   /// [senderUserId] Identifier of the user who sent the query
   int senderUserId;
 
   /// [userLocation] User location; may be null
-  Location userLocation;
+  Location? userLocation;
 
   /// [query] Text of the query
   String query;
@@ -3074,17 +3304,19 @@ class UpdateNewChosenInlineResult extends Update {
   String inlineMessageId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json) {
-    this.senderUserId = json['sender_user_id'];
-    this.userLocation =
-        Location.fromJson(json['user_location'] ?? <String, dynamic>{});
-    this.query = json['query'];
-    this.resultId = json['result_id'];
-    this.inlineMessageId = json['inline_message_id'];
-    this.extra = json['@extra'];
+  factory UpdateNewChosenInlineResult.fromJson(Map<String, dynamic> json) {
+    return UpdateNewChosenInlineResult(
+      senderUserId: json['sender_user_id'],
+      userLocation:
+          Location.fromJson(json['user_location'] ?? <String, dynamic>{}),
+      query: json['query'],
+      resultId: json['result_id'],
+      inlineMessageId: json['inline_message_id'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3093,7 +3325,7 @@ class UpdateNewChosenInlineResult extends Update {
       "@type": CONSTRUCTOR,
       "sender_user_id": this.senderUserId,
       "user_location":
-          this.userLocation == null ? null : this.userLocation.toJson(),
+          this.userLocation == null ? null : this.userLocation!.toJson(),
       "query": this.query,
       "result_id": this.resultId,
       "inline_message_id": this.inlineMessageId,
@@ -3109,12 +3341,13 @@ class UpdateNewChosenInlineResult extends Update {
 class UpdateNewCallbackQuery extends Update {
   /// A new incoming callback query; for bots only
   UpdateNewCallbackQuery(
-      {this.id,
-      this.senderUserId,
-      this.chatId,
-      this.messageId,
-      this.chatInstance,
-      this.payload});
+      {required this.id,
+      required this.senderUserId,
+      required this.chatId,
+      required this.messageId,
+      required this.chatInstance,
+      required this.payload,
+      this.extra});
 
   /// [id] Unique query identifier
   int id;
@@ -3135,18 +3368,20 @@ class UpdateNewCallbackQuery extends Update {
   CallbackQueryPayload payload;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.senderUserId = json['sender_user_id'];
-    this.chatId = json['chat_id'];
-    this.messageId = json['message_id'];
-    this.chatInstance = int.tryParse(json['chat_instance'] ?? "");
-    this.payload =
-        CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewCallbackQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewCallbackQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      senderUserId: json['sender_user_id'],
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      chatInstance: int.tryParse(json['chat_instance'] ?? "") ?? 0,
+      payload:
+          CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3158,7 +3393,7 @@ class UpdateNewCallbackQuery extends Update {
       "chat_id": this.chatId,
       "message_id": this.messageId,
       "chat_instance": this.chatInstance,
-      "payload": this.payload == null ? null : this.payload.toJson(),
+      "payload": this.payload.toJson(),
     };
   }
 
@@ -3171,11 +3406,12 @@ class UpdateNewCallbackQuery extends Update {
 class UpdateNewInlineCallbackQuery extends Update {
   /// A new incoming callback query from a message sent via a bot; for bots only
   UpdateNewInlineCallbackQuery(
-      {this.id,
-      this.senderUserId,
-      this.inlineMessageId,
-      this.chatInstance,
-      this.payload});
+      {required this.id,
+      required this.senderUserId,
+      required this.inlineMessageId,
+      required this.chatInstance,
+      required this.payload,
+      this.extra});
 
   /// [id] Unique query identifier
   int id;
@@ -3193,17 +3429,19 @@ class UpdateNewInlineCallbackQuery extends Update {
   CallbackQueryPayload payload;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.senderUserId = json['sender_user_id'];
-    this.inlineMessageId = json['inline_message_id'];
-    this.chatInstance = int.tryParse(json['chat_instance'] ?? "");
-    this.payload =
-        CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewInlineCallbackQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewInlineCallbackQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      senderUserId: json['sender_user_id'],
+      inlineMessageId: json['inline_message_id'],
+      chatInstance: int.tryParse(json['chat_instance'] ?? "") ?? 0,
+      payload:
+          CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3214,7 +3452,7 @@ class UpdateNewInlineCallbackQuery extends Update {
       "sender_user_id": this.senderUserId,
       "inline_message_id": this.inlineMessageId,
       "chat_instance": this.chatInstance,
-      "payload": this.payload == null ? null : this.payload.toJson(),
+      "payload": this.payload.toJson(),
     };
   }
 
@@ -3227,7 +3465,11 @@ class UpdateNewInlineCallbackQuery extends Update {
 class UpdateNewShippingQuery extends Update {
   /// A new incoming shipping query; for bots only. Only for invoices with flexible price
   UpdateNewShippingQuery(
-      {this.id, this.senderUserId, this.invoicePayload, this.shippingAddress});
+      {required this.id,
+      required this.senderUserId,
+      required this.invoicePayload,
+      required this.shippingAddress,
+      this.extra});
 
   /// [id] Unique query identifier
   int id;
@@ -3242,16 +3484,18 @@ class UpdateNewShippingQuery extends Update {
   Address shippingAddress;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewShippingQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.senderUserId = json['sender_user_id'];
-    this.invoicePayload = json['invoice_payload'];
-    this.shippingAddress =
-        Address.fromJson(json['shipping_address'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewShippingQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewShippingQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      senderUserId: json['sender_user_id'],
+      invoicePayload: json['invoice_payload'],
+      shippingAddress:
+          Address.fromJson(json['shipping_address'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3261,8 +3505,7 @@ class UpdateNewShippingQuery extends Update {
       "id": this.id,
       "sender_user_id": this.senderUserId,
       "invoice_payload": this.invoicePayload,
-      "shipping_address":
-          this.shippingAddress == null ? null : this.shippingAddress.toJson(),
+      "shipping_address": this.shippingAddress.toJson(),
     };
   }
 
@@ -3275,13 +3518,14 @@ class UpdateNewShippingQuery extends Update {
 class UpdateNewPreCheckoutQuery extends Update {
   /// A new incoming pre-checkout query; for bots only. Contains full information about a checkout
   UpdateNewPreCheckoutQuery(
-      {this.id,
-      this.senderUserId,
-      this.currency,
-      this.totalAmount,
-      this.invoicePayload,
-      this.shippingOptionId,
-      this.orderInfo});
+      {required this.id,
+      required this.senderUserId,
+      required this.currency,
+      required this.totalAmount,
+      required this.invoicePayload,
+      required this.shippingOptionId,
+      this.orderInfo,
+      this.extra});
 
   /// [id] Unique query identifier
   int id;
@@ -3302,22 +3546,23 @@ class UpdateNewPreCheckoutQuery extends Update {
   String shippingOptionId;
 
   /// [orderInfo] Information about the order; may be null
-  OrderInfo orderInfo;
+  OrderInfo? orderInfo;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.senderUserId = json['sender_user_id'];
-    this.currency = json['currency'];
-    this.totalAmount = json['total_amount'];
-    this.invoicePayload = json['invoice_payload'];
-    this.shippingOptionId = json['shipping_option_id'];
-    this.orderInfo =
-        OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdateNewPreCheckoutQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewPreCheckoutQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      senderUserId: json['sender_user_id'],
+      currency: json['currency'],
+      totalAmount: json['total_amount'],
+      invoicePayload: json['invoice_payload'],
+      shippingOptionId: json['shipping_option_id'],
+      orderInfo: OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3330,7 +3575,7 @@ class UpdateNewPreCheckoutQuery extends Update {
       "total_amount": this.totalAmount,
       "invoice_payload": this.invoicePayload,
       "shipping_option_id": this.shippingOptionId,
-      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
+      "order_info": this.orderInfo == null ? null : this.orderInfo!.toJson(),
     };
   }
 
@@ -3342,18 +3587,20 @@ class UpdateNewPreCheckoutQuery extends Update {
 
 class UpdateNewCustomEvent extends Update {
   /// A new incoming event; for bots only
-  UpdateNewCustomEvent({this.event});
+  UpdateNewCustomEvent({required this.event, this.extra});
 
   /// [event] A JSON-serialized event
   String event;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewCustomEvent.fromJson(Map<String, dynamic> json) {
-    this.event = json['event'];
-    this.extra = json['@extra'];
+  factory UpdateNewCustomEvent.fromJson(Map<String, dynamic> json) {
+    return UpdateNewCustomEvent(
+      event: json['event'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3372,7 +3619,11 @@ class UpdateNewCustomEvent extends Update {
 
 class UpdateNewCustomQuery extends Update {
   /// A new incoming query; for bots only
-  UpdateNewCustomQuery({this.id, this.data, this.timeout});
+  UpdateNewCustomQuery(
+      {required this.id,
+      required this.data,
+      required this.timeout,
+      this.extra});
 
   /// [id] The query identifier
   int id;
@@ -3384,14 +3635,16 @@ class UpdateNewCustomQuery extends Update {
   int timeout;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdateNewCustomQuery.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.data = json['data'];
-    this.timeout = json['timeout'];
-    this.extra = json['@extra'];
+  factory UpdateNewCustomQuery.fromJson(Map<String, dynamic> json) {
+    return UpdateNewCustomQuery(
+      id: int.tryParse(json['id'] ?? "") ?? 0,
+      data: json['data'],
+      timeout: json['timeout'],
+      extra: json['@extra'],
+    );
   }
 
   @override
@@ -3412,25 +3665,27 @@ class UpdateNewCustomQuery extends Update {
 
 class UpdatePoll extends Update {
   /// A poll was updated; for bots only
-  UpdatePoll({this.poll});
+  UpdatePoll({required this.poll, this.extra});
 
   /// [poll] New data about the poll
   Poll poll;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdatePoll.fromJson(Map<String, dynamic> json) {
-    this.poll = Poll.fromJson(json['poll'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
+  factory UpdatePoll.fromJson(Map<String, dynamic> json) {
+    return UpdatePoll(
+      poll: Poll.fromJson(json['poll'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
   }
 
   @override
   Map<String, dynamic> toJson() {
     return {
       "@type": CONSTRUCTOR,
-      "poll": this.poll == null ? null : this.poll.toJson(),
+      "poll": this.poll.toJson(),
     };
   }
 
@@ -3442,7 +3697,11 @@ class UpdatePoll extends Update {
 
 class UpdatePollAnswer extends Update {
   /// A user changed the answer to a poll; for bots only
-  UpdatePollAnswer({this.pollId, this.userId, this.optionIds});
+  UpdatePollAnswer(
+      {required this.pollId,
+      required this.userId,
+      required this.optionIds,
+      this.extra});
 
   /// [pollId] Unique poll identifier
   int pollId;
@@ -3454,15 +3713,17 @@ class UpdatePollAnswer extends Update {
   List<int> optionIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  UpdatePollAnswer.fromJson(Map<String, dynamic> json) {
-    this.pollId = int.tryParse(json['poll_id'] ?? "");
-    this.userId = json['user_id'];
-    this.optionIds =
-        List<int>.from((json['option_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
+  factory UpdatePollAnswer.fromJson(Map<String, dynamic> json) {
+    return UpdatePollAnswer(
+      pollId: int.tryParse(json['poll_id'] ?? "") ?? 0,
+      userId: json['user_id'],
+      optionIds: List<int>.from(
+          (json['option_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override

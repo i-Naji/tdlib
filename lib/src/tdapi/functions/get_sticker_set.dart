@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetStickerSet extends TdFunction {
   /// Returns information about a sticker set by its identifier
-  GetStickerSet({this.setId});
+  GetStickerSet({required this.setId, this.extra});
 
   /// [setId] Identifier of the sticker set
   int setId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetStickerSet.fromJson(Map<String, dynamic> json);
+  factory GetStickerSet.fromJson(Map<String, dynamic> json) {
+    return GetStickerSet(
+      setId: int.tryParse(json['set_id'] ?? "") ?? 0,
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

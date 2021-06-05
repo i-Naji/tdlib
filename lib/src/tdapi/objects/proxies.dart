@@ -2,20 +2,22 @@ part of '../tdapi.dart';
 
 class Proxies extends TdObject {
   /// Represents a list of proxy servers
-  Proxies({this.proxies});
+  Proxies({required this.proxies, this.extra});
 
   /// [proxies] List of proxy servers
   List<Proxy> proxies;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  Proxies.fromJson(Map<String, dynamic> json) {
-    this.proxies = List<Proxy>.from((json['proxies'] ?? [])
-        .map((item) => Proxy.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory Proxies.fromJson(Map<String, dynamic> json) {
+    return Proxies(
+      proxies: List<Proxy>.from((json['proxies'] ?? [])
+          .map((item) => Proxy.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override

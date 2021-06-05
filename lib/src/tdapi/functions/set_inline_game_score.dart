@@ -3,11 +3,12 @@ part of '../tdapi.dart';
 class SetInlineGameScore extends TdFunction {
   /// Updates the game score of the specified user in a game; for bots only
   SetInlineGameScore(
-      {this.inlineMessageId,
-      this.editMessage,
-      this.userId,
-      this.score,
-      this.force});
+      {required this.inlineMessageId,
+      required this.editMessage,
+      required this.userId,
+      required this.score,
+      required this.force,
+      this.extra});
 
   /// [inlineMessageId] Inline message identifier
   String inlineMessageId;
@@ -25,10 +26,19 @@ class SetInlineGameScore extends TdFunction {
   bool force;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetInlineGameScore.fromJson(Map<String, dynamic> json);
+  factory SetInlineGameScore.fromJson(Map<String, dynamic> json) {
+    return SetInlineGameScore(
+      inlineMessageId: json['inline_message_id'],
+      editMessage: json['edit_message'],
+      userId: json['user_id'],
+      score: json['score'],
+      force: json['force'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

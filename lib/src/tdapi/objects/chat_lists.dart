@@ -2,20 +2,22 @@ part of '../tdapi.dart';
 
 class ChatLists extends TdObject {
   /// Contains a list of chat lists
-  ChatLists({this.chatLists});
+  ChatLists({required this.chatLists, this.extra});
 
   /// [chatLists] List of chat lists
   List<ChatList> chatLists;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ChatLists.fromJson(Map<String, dynamic> json) {
-    this.chatLists = List<ChatList>.from((json['chat_lists'] ?? [])
-        .map((item) => ChatList.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
+  factory ChatLists.fromJson(Map<String, dynamic> json) {
+    return ChatLists(
+      chatLists: List<ChatList>.from((json['chat_lists'] ?? [])
+          .map((item) => ChatList.fromJson(item ?? <String, dynamic>{}))
+          .toList()),
+      extra: json['@extra'],
+    );
   }
 
   @override

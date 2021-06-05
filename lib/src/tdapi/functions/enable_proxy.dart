@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class EnableProxy extends TdFunction {
   /// Enables a proxy. Only one proxy can be enabled at a time. Can be called before authorization
-  EnableProxy({this.proxyId});
+  EnableProxy({required this.proxyId, this.extra});
 
   /// [proxyId] Proxy identifier
   int proxyId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  EnableProxy.fromJson(Map<String, dynamic> json);
+  factory EnableProxy.fromJson(Map<String, dynamic> json) {
+    return EnableProxy(
+      proxyId: json['proxy_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

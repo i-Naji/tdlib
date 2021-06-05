@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class GetChatStatisticsUrl extends TdFunction {
   /// Returns an HTTP URL with the chat statistics. Currently this method of getting the statistics are disabled and can be deleted in the future
-  GetChatStatisticsUrl({this.chatId, this.parameters, this.isDark});
+  GetChatStatisticsUrl(
+      {required this.chatId,
+      required this.parameters,
+      required this.isDark,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -14,10 +18,17 @@ class GetChatStatisticsUrl extends TdFunction {
   bool isDark;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetChatStatisticsUrl.fromJson(Map<String, dynamic> json);
+  factory GetChatStatisticsUrl.fromJson(Map<String, dynamic> json) {
+    return GetChatStatisticsUrl(
+      chatId: json['chat_id'],
+      parameters: json['parameters'],
+      isDark: json['is_dark'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

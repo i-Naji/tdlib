@@ -3,11 +3,12 @@ part of '../tdapi.dart';
 class GetMessageThreadHistory extends TdFunction {
   /// Returns messages in a message thread of a message. Can be used only if message.can_get_message_thread == true. Message thread of a channel message is in the channel's linked supergroup.. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance the number of returned messages is chosen by the library
   GetMessageThreadHistory(
-      {this.chatId,
-      this.messageId,
-      this.fromMessageId,
-      this.offset,
-      this.limit});
+      {required this.chatId,
+      required this.messageId,
+      required this.fromMessageId,
+      required this.offset,
+      required this.limit,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -25,10 +26,19 @@ class GetMessageThreadHistory extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetMessageThreadHistory.fromJson(Map<String, dynamic> json);
+  factory GetMessageThreadHistory.fromJson(Map<String, dynamic> json) {
+    return GetMessageThreadHistory(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      fromMessageId: json['from_message_id'],
+      offset: json['offset'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

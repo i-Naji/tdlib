@@ -3,7 +3,12 @@ part of '../tdapi.dart';
 class SearchSecretMessages extends TdFunction {
   /// Searches for messages in secret chats. Returns the results in reverse chronological order. For optimal performance the number of returned messages is chosen by the library
   SearchSecretMessages(
-      {this.chatId, this.query, this.offset, this.limit, this.filter});
+      {required this.chatId,
+      required this.query,
+      required this.offset,
+      required this.limit,
+      required this.filter,
+      this.extra});
 
   /// [chatId] Identifier of the chat in which to search. Specify 0 to search in all secret chats
   int chatId;
@@ -21,10 +26,20 @@ class SearchSecretMessages extends TdFunction {
   SearchMessagesFilter filter;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SearchSecretMessages.fromJson(Map<String, dynamic> json);
+  factory SearchSecretMessages.fromJson(Map<String, dynamic> json) {
+    return SearchSecretMessages(
+      chatId: json['chat_id'],
+      query: json['query'],
+      offset: json['offset'],
+      limit: json['limit'],
+      filter:
+          SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -34,7 +49,7 @@ class SearchSecretMessages extends TdFunction {
       "query": this.query,
       "offset": this.offset,
       "limit": this.limit,
-      "filter": this.filter == null ? null : this.filter.toJson(),
+      "filter": this.filter.toJson(),
       "@extra": this.extra,
     };
   }

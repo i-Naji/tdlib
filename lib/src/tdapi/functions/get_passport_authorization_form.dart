@@ -3,7 +3,11 @@ part of '../tdapi.dart';
 class GetPassportAuthorizationForm extends TdFunction {
   /// Returns a Telegram Passport authorization form for sharing data with a service
   GetPassportAuthorizationForm(
-      {this.botUserId, this.scope, this.publicKey, this.nonce});
+      {required this.botUserId,
+      required this.scope,
+      required this.publicKey,
+      required this.nonce,
+      this.extra});
 
   /// [botUserId] User identifier of the service's bot
   int botUserId;
@@ -18,10 +22,18 @@ class GetPassportAuthorizationForm extends TdFunction {
   String nonce;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json);
+  factory GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json) {
+    return GetPassportAuthorizationForm(
+      botUserId: json['bot_user_id'],
+      scope: json['scope'],
+      publicKey: json['public_key'],
+      nonce: json['nonce'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

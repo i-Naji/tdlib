@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class TestCallVectorInt extends TdFunction {
   /// Returns the received vector of numbers; for testing only. This is an offline method. Can be called before authorization
-  TestCallVectorInt({this.x});
+  TestCallVectorInt({required this.x, this.extra});
 
   /// [x] Vector of numbers to return
   List<int> x;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  TestCallVectorInt.fromJson(Map<String, dynamic> json);
+  factory TestCallVectorInt.fromJson(Map<String, dynamic> json) {
+    return TestCallVectorInt(
+      x: List<int>.from((json['x'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

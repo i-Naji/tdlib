@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class InviteGroupCallParticipants extends TdFunction {
   /// Invites users to a group call. Sends a service message of type messageInviteToGroupCall for voice chats
-  InviteGroupCallParticipants({this.groupCallId, this.userIds});
+  InviteGroupCallParticipants(
+      {required this.groupCallId, required this.userIds, this.extra});
 
   /// [groupCallId] Group call identifier
   int groupCallId;
@@ -11,10 +12,17 @@ class InviteGroupCallParticipants extends TdFunction {
   List<int> userIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  InviteGroupCallParticipants.fromJson(Map<String, dynamic> json);
+  factory InviteGroupCallParticipants.fromJson(Map<String, dynamic> json) {
+    return InviteGroupCallParticipants(
+      groupCallId: json['group_call_id'],
+      userIds:
+          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

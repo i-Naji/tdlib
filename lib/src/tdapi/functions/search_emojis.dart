@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class SearchEmojis extends TdFunction {
   /// Searches for emojis by keywords. Supported only if the file database is enabled
-  SearchEmojis({this.text, this.exactMatch, this.inputLanguageCodes});
+  SearchEmojis(
+      {required this.text,
+      required this.exactMatch,
+      required this.inputLanguageCodes,
+      this.extra});
 
   /// [text] Text to search for
   String text;
@@ -14,10 +18,18 @@ class SearchEmojis extends TdFunction {
   List<String> inputLanguageCodes;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SearchEmojis.fromJson(Map<String, dynamic> json);
+  factory SearchEmojis.fromJson(Map<String, dynamic> json) {
+    return SearchEmojis(
+      text: json['text'],
+      exactMatch: json['exact_match'],
+      inputLanguageCodes: List<String>.from(
+          (json['input_language_codes'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

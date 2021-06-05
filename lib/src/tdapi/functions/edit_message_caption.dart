@@ -3,7 +3,11 @@ part of '../tdapi.dart';
 class EditMessageCaption extends TdFunction {
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   EditMessageCaption(
-      {this.chatId, this.messageId, this.replyMarkup, this.caption});
+      {required this.chatId,
+      required this.messageId,
+      required this.replyMarkup,
+      required this.caption,
+      this.extra});
 
   /// [chatId] The chat the message belongs to
   int chatId;
@@ -18,10 +22,19 @@ class EditMessageCaption extends TdFunction {
   FormattedText caption;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  EditMessageCaption.fromJson(Map<String, dynamic> json);
+  factory EditMessageCaption.fromJson(Map<String, dynamic> json) {
+    return EditMessageCaption(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      replyMarkup:
+          ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
+      caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -29,9 +42,8 @@ class EditMessageCaption extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "message_id": this.messageId,
-      "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "reply_markup": this.replyMarkup.toJson(),
+      "caption": this.caption.toJson(),
       "@extra": this.extra,
     };
   }

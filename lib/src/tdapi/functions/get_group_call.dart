@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class GetGroupCall extends TdFunction {
   /// Returns information about a group call
-  GetGroupCall({this.groupCallId});
+  GetGroupCall({required this.groupCallId, this.extra});
 
   /// [groupCallId] Group call identifier
   int groupCallId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetGroupCall.fromJson(Map<String, dynamic> json);
+  factory GetGroupCall.fromJson(Map<String, dynamic> json) {
+    return GetGroupCall(
+      groupCallId: json['group_call_id'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

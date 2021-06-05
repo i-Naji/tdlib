@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class ChangeStickerSet extends TdFunction {
   /// Installs/uninstalls or activates/archives a sticker set
-  ChangeStickerSet({this.setId, this.isInstalled, this.isArchived});
+  ChangeStickerSet(
+      {required this.setId,
+      required this.isInstalled,
+      required this.isArchived,
+      this.extra});
 
   /// [setId] Identifier of the sticker set
   int setId;
@@ -14,10 +18,17 @@ class ChangeStickerSet extends TdFunction {
   bool isArchived;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ChangeStickerSet.fromJson(Map<String, dynamic> json);
+  factory ChangeStickerSet.fromJson(Map<String, dynamic> json) {
+    return ChangeStickerSet(
+      setId: int.tryParse(json['set_id'] ?? "") ?? 0,
+      isInstalled: json['is_installed'],
+      isArchived: json['is_archived'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

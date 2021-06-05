@@ -3,7 +3,11 @@ part of '../tdapi.dart';
 class GetMessagePublicForwards extends TdFunction {
   /// Returns forwarded copies of a channel message to different public channels. For optimal performance the number of returned messages is chosen by the library
   GetMessagePublicForwards(
-      {this.chatId, this.messageId, this.offset, this.limit});
+      {required this.chatId,
+      required this.messageId,
+      required this.offset,
+      required this.limit,
+      this.extra});
 
   /// [chatId] Chat identifier of the message
   int chatId;
@@ -18,10 +22,18 @@ class GetMessagePublicForwards extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetMessagePublicForwards.fromJson(Map<String, dynamic> json);
+  factory GetMessagePublicForwards.fromJson(Map<String, dynamic> json) {
+    return GetMessagePublicForwards(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      offset: json['offset'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

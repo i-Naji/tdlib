@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class GetBlockedMessageSenders extends TdFunction {
   /// Returns users and chats that were blocked by the current user
-  GetBlockedMessageSenders({this.offset, this.limit});
+  GetBlockedMessageSenders(
+      {required this.offset, required this.limit, this.extra});
 
   /// [offset] Number of users and chats to skip in the result; must be non-negative
   int offset;
@@ -11,10 +12,16 @@ class GetBlockedMessageSenders extends TdFunction {
   int limit;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GetBlockedMessageSenders.fromJson(Map<String, dynamic> json);
+  factory GetBlockedMessageSenders.fromJson(Map<String, dynamic> json) {
+    return GetBlockedMessageSenders(
+      offset: json['offset'],
+      limit: json['limit'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

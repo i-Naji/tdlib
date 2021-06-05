@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class ReportSupergroupSpam extends TdFunction {
   /// Reports some messages from a user in a supergroup as spam; requires administrator rights in the supergroup
-  ReportSupergroupSpam({this.supergroupId, this.userId, this.messageIds});
+  ReportSupergroupSpam(
+      {required this.supergroupId,
+      required this.userId,
+      required this.messageIds,
+      this.extra});
 
   /// [supergroupId] Supergroup identifier
   int supergroupId;
@@ -14,10 +18,18 @@ class ReportSupergroupSpam extends TdFunction {
   List<int> messageIds;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  ReportSupergroupSpam.fromJson(Map<String, dynamic> json);
+  factory ReportSupergroupSpam.fromJson(Map<String, dynamic> json) {
+    return ReportSupergroupSpam(
+      supergroupId: json['supergroup_id'],
+      userId: json['user_id'],
+      messageIds: List<int>.from(
+          (json['message_ids'] ?? []).map((item) => item).toList()),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

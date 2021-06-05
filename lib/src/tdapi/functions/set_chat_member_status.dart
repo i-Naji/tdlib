@@ -2,7 +2,11 @@ part of '../tdapi.dart';
 
 class SetChatMemberStatus extends TdFunction {
   /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for adding new members to the chat and transferring chat ownership; instead, use addChatMember or transferChatOwnership. The chat member status will not be changed until it has been synchronized with the server
-  SetChatMemberStatus({this.chatId, this.userId, this.status});
+  SetChatMemberStatus(
+      {required this.chatId,
+      required this.userId,
+      required this.status,
+      this.extra});
 
   /// [chatId] Chat identifier
   int chatId;
@@ -14,10 +18,17 @@ class SetChatMemberStatus extends TdFunction {
   ChatMemberStatus status;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetChatMemberStatus.fromJson(Map<String, dynamic> json);
+  factory SetChatMemberStatus.fromJson(Map<String, dynamic> json) {
+    return SetChatMemberStatus(
+      chatId: json['chat_id'],
+      userId: json['user_id'],
+      status: ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{}),
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
@@ -25,7 +36,7 @@ class SetChatMemberStatus extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": this.chatId,
       "user_id": this.userId,
-      "status": this.status == null ? null : this.status.toJson(),
+      "status": this.status.toJson(),
       "@extra": this.extra,
     };
   }

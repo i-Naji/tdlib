@@ -3,12 +3,13 @@ part of '../tdapi.dart';
 class SetGameScore extends TdFunction {
   /// Updates the game score of the specified user in the game; for bots only
   SetGameScore(
-      {this.chatId,
-      this.messageId,
-      this.editMessage,
-      this.userId,
-      this.score,
-      this.force});
+      {required this.chatId,
+      required this.messageId,
+      required this.editMessage,
+      required this.userId,
+      required this.score,
+      required this.force,
+      this.extra});
 
   /// [chatId] The chat to which the message with the game belongs
   int chatId;
@@ -29,10 +30,20 @@ class SetGameScore extends TdFunction {
   bool force;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  SetGameScore.fromJson(Map<String, dynamic> json);
+  factory SetGameScore.fromJson(Map<String, dynamic> json) {
+    return SetGameScore(
+      chatId: json['chat_id'],
+      messageId: json['message_id'],
+      editMessage: json['edit_message'],
+      userId: json['user_id'],
+      score: json['score'],
+      force: json['force'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

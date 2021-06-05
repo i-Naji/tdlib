@@ -2,18 +2,20 @@ part of '../tdapi.dart';
 
 class GroupCallId extends TdObject {
   /// Contains the group call identifier
-  GroupCallId({this.id});
+  GroupCallId({required this.id, this.extra});
 
   /// [id] Group call identifier
   int id;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  GroupCallId.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
-    this.extra = json['@extra'];
+  factory GroupCallId.fromJson(Map<String, dynamic> json) {
+    return GroupCallId(
+      id: json['id'],
+      extra: json['@extra'],
+    );
   }
 
   @override

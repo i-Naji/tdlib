@@ -2,16 +2,21 @@ part of '../tdapi.dart';
 
 class DeleteProfilePhoto extends TdFunction {
   /// Deletes a profile photo
-  DeleteProfilePhoto({this.profilePhotoId});
+  DeleteProfilePhoto({required this.profilePhotoId, this.extra});
 
   /// [profilePhotoId] Identifier of the profile photo to delete
   int profilePhotoId;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  DeleteProfilePhoto.fromJson(Map<String, dynamic> json);
+  factory DeleteProfilePhoto.fromJson(Map<String, dynamic> json) {
+    return DeleteProfilePhoto(
+      profilePhotoId: int.tryParse(json['profile_photo_id'] ?? "") ?? 0,
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {

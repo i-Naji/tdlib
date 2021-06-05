@@ -2,7 +2,8 @@ part of '../tdapi.dart';
 
 class CancelDownloadFile extends TdFunction {
   /// Stops the downloading of a file. If a file has already been downloaded, does nothing
-  CancelDownloadFile({this.fileId, this.onlyIfPending});
+  CancelDownloadFile(
+      {required this.fileId, required this.onlyIfPending, this.extra});
 
   /// [fileId] Identifier of a file to stop downloading
   int fileId;
@@ -11,10 +12,16 @@ class CancelDownloadFile extends TdFunction {
   bool onlyIfPending;
 
   /// callback sign
-  dynamic extra;
+  dynamic? extra;
 
   /// Parse from a json
-  CancelDownloadFile.fromJson(Map<String, dynamic> json);
+  factory CancelDownloadFile.fromJson(Map<String, dynamic> json) {
+    return CancelDownloadFile(
+      fileId: json['file_id'],
+      onlyIfPending: json['only_if_pending'],
+      extra: json['@extra'],
+    );
+  }
 
   @override
   Map<String, dynamic> toJson() {
