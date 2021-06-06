@@ -45,7 +45,7 @@ class MessageForwardOriginUser extends MessageForwardOrigin {
   /// Parse from a json
   factory MessageForwardOriginUser.fromJson(Map<String, dynamic> json) {
     return MessageForwardOriginUser(
-      senderUserId: json['sender_user_id'],
+      senderUserId: json['sender_user_id'] ?? 0,
     );
   }
 
@@ -77,8 +77,8 @@ class MessageForwardOriginChat extends MessageForwardOrigin {
   /// Parse from a json
   factory MessageForwardOriginChat.fromJson(Map<String, dynamic> json) {
     return MessageForwardOriginChat(
-      senderChatId: json['sender_chat_id'],
-      authorSignature: json['author_signature'],
+      senderChatId: json['sender_chat_id'] ?? 0,
+      authorSignature: json['author_signature'] ?? "",
     );
   }
 
@@ -107,7 +107,7 @@ class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
   /// Parse from a json
   factory MessageForwardOriginHiddenUser.fromJson(Map<String, dynamic> json) {
     return MessageForwardOriginHiddenUser(
-      senderName: json['sender_name'],
+      senderName: json['sender_name'] ?? "",
     );
   }
 
@@ -144,9 +144,9 @@ class MessageForwardOriginChannel extends MessageForwardOrigin {
   /// Parse from a json
   factory MessageForwardOriginChannel.fromJson(Map<String, dynamic> json) {
     return MessageForwardOriginChannel(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      authorSignature: json['author_signature'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      authorSignature: json['author_signature'] ?? "",
     );
   }
 

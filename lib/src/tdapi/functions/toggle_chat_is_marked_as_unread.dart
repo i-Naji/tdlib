@@ -17,8 +17,8 @@ class ToggleChatIsMarkedAsUnread extends TdFunction {
   /// Parse from a json
   factory ToggleChatIsMarkedAsUnread.fromJson(Map<String, dynamic> json) {
     return ToggleChatIsMarkedAsUnread(
-      chatId: json['chat_id'],
-      isMarkedAsUnread: json['is_marked_as_unread'],
+      chatId: json['chat_id'] ?? 0,
+      isMarkedAsUnread: json['is_marked_as_unread'] ?? false,
       extra: json['@extra'],
     );
   }

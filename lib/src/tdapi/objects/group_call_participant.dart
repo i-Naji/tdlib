@@ -39,13 +39,13 @@ class GroupCallParticipant extends TdObject {
   /// Parse from a json
   factory GroupCallParticipant.fromJson(Map<String, dynamic> json) {
     return GroupCallParticipant(
-      userId: json['user_id'],
-      source: json['source'],
-      isSpeaking: json['is_speaking'],
-      canBeMuted: json['can_be_muted'],
-      canBeUnmuted: json['can_be_unmuted'],
-      isMuted: json['is_muted'],
-      canUnmuteSelf: json['can_unmute_self'],
+      userId: json['user_id'] ?? 0,
+      source: json['source'] ?? 0,
+      isSpeaking: json['is_speaking'] ?? false,
+      canBeMuted: json['can_be_muted'] ?? false,
+      canBeUnmuted: json['can_be_unmuted'] ?? false,
+      isMuted: json['is_muted'] ?? false,
+      canUnmuteSelf: json['can_unmute_self'] ?? false,
       order: int.tryParse(json['order'] ?? "") ?? 0,
     );
   }

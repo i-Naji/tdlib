@@ -13,7 +13,7 @@ class GetSupergroupFullInfo extends TdFunction {
   /// Parse from a json
   factory GetSupergroupFullInfo.fromJson(Map<String, dynamic> json) {
     return GetSupergroupFullInfo(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
       extra: json['@extra'],
     );
   }

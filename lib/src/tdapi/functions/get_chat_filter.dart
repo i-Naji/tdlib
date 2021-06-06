@@ -13,7 +13,7 @@ class GetChatFilter extends TdFunction {
   /// Parse from a json
   factory GetChatFilter.fromJson(Map<String, dynamic> json) {
     return GetChatFilter(
-      chatFilterId: json['chat_filter_id'],
+      chatFilterId: json['chat_filter_id'] ?? 0,
       extra: json['@extra'],
     );
   }

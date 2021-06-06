@@ -13,7 +13,7 @@ class Text extends TdObject {
   /// Parse from a json
   factory Text.fromJson(Map<String, dynamic> json) {
     return Text(
-      text: json['text'],
+      text: json['text'] ?? "",
       extra: json['@extra'],
     );
   }

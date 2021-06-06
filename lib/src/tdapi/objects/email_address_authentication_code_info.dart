@@ -18,8 +18,8 @@ class EmailAddressAuthenticationCodeInfo extends TdObject {
   factory EmailAddressAuthenticationCodeInfo.fromJson(
       Map<String, dynamic> json) {
     return EmailAddressAuthenticationCodeInfo(
-      emailAddressPattern: json['email_address_pattern'],
-      length: json['length'],
+      emailAddressPattern: json['email_address_pattern'] ?? "",
+      length: json['length'] ?? 0,
       extra: json['@extra'],
     );
   }

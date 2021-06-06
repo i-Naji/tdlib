@@ -13,8 +13,8 @@ class GroupCallRecentSpeaker extends TdObject {
   /// Parse from a json
   factory GroupCallRecentSpeaker.fromJson(Map<String, dynamic> json) {
     return GroupCallRecentSpeaker(
-      userId: json['user_id'],
-      isSpeaking: json['is_speaking'],
+      userId: json['user_id'] ?? 0,
+      isSpeaking: json['is_speaking'] ?? false,
     );
   }
 

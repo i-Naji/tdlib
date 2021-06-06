@@ -59,19 +59,19 @@ class GroupCallJoinResponseCandidate extends TdObject {
   /// Parse from a json
   factory GroupCallJoinResponseCandidate.fromJson(Map<String, dynamic> json) {
     return GroupCallJoinResponseCandidate(
-      port: json['port'],
-      protocol: json['protocol'],
-      network: json['network'],
-      generation: json['generation'],
-      id: json['id'],
-      component: json['component'],
-      foundation: json['foundation'],
-      priority: json['priority'],
-      ip: json['ip'],
-      type: json['type'],
-      tcpType: json['tcp_type'],
-      relAddr: json['rel_addr'],
-      relPort: json['rel_port'],
+      port: json['port'] ?? "",
+      protocol: json['protocol'] ?? "",
+      network: json['network'] ?? "",
+      generation: json['generation'] ?? "",
+      id: json['id'] ?? "",
+      component: json['component'] ?? "",
+      foundation: json['foundation'] ?? "",
+      priority: json['priority'] ?? "",
+      ip: json['ip'] ?? "",
+      type: json['type'] ?? "",
+      tcpType: json['tcp_type'] ?? "",
+      relAddr: json['rel_addr'] ?? "",
+      relPort: json['rel_port'] ?? "",
     );
   }
 

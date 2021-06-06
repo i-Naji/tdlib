@@ -24,9 +24,9 @@ class ToggleGroupCallParticipantIsMuted extends TdFunction {
   factory ToggleGroupCallParticipantIsMuted.fromJson(
       Map<String, dynamic> json) {
     return ToggleGroupCallParticipantIsMuted(
-      groupCallId: json['group_call_id'],
-      userId: json['user_id'],
-      isMuted: json['is_muted'],
+      groupCallId: json['group_call_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
+      isMuted: json['is_muted'] ?? false,
       extra: json['@extra'],
     );
   }

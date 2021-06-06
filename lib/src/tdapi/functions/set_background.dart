@@ -23,7 +23,7 @@ class SetBackground extends TdFunction {
       background:
           InputBackground.fromJson(json['background'] ?? <String, dynamic>{}),
       type: BackgroundType.fromJson(json['type'] ?? <String, dynamic>{}),
-      forDarkTheme: json['for_dark_theme'],
+      forDarkTheme: json['for_dark_theme'] ?? false,
       extra: json['@extra'],
     );
   }

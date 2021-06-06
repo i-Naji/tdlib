@@ -23,9 +23,9 @@ class GetChatStatisticsUrl extends TdFunction {
   /// Parse from a json
   factory GetChatStatisticsUrl.fromJson(Map<String, dynamic> json) {
     return GetChatStatisticsUrl(
-      chatId: json['chat_id'],
-      parameters: json['parameters'],
-      isDark: json['is_dark'],
+      chatId: json['chat_id'] ?? 0,
+      parameters: json['parameters'] ?? "",
+      isDark: json['is_dark'] ?? false,
       extra: json['@extra'],
     );
   }

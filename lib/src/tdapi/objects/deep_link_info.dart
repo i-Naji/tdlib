@@ -18,7 +18,7 @@ class DeepLinkInfo extends TdObject {
   factory DeepLinkInfo.fromJson(Map<String, dynamic> json) {
     return DeepLinkInfo(
       text: FormattedText.fromJson(json['text'] ?? <String, dynamic>{}),
-      needUpdateApplication: json['need_update_application'],
+      needUpdateApplication: json['need_update_application'] ?? false,
       extra: json['@extra'],
     );
   }

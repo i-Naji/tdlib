@@ -18,7 +18,7 @@ class SetStickerPositionInSet extends TdFunction {
   factory SetStickerPositionInSet.fromJson(Map<String, dynamic> json) {
     return SetStickerPositionInSet(
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
-      position: json['position'],
+      position: json['position'] ?? 0,
       extra: json['@extra'],
     );
   }

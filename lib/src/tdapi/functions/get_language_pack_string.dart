@@ -27,10 +27,10 @@ class GetLanguagePackString extends TdFunction {
   /// Parse from a json
   factory GetLanguagePackString.fromJson(Map<String, dynamic> json) {
     return GetLanguagePackString(
-      languagePackDatabasePath: json['language_pack_database_path'],
-      localizationTarget: json['localization_target'],
-      languagePackId: json['language_pack_id'],
-      key: json['key'],
+      languagePackDatabasePath: json['language_pack_database_path'] ?? "",
+      localizationTarget: json['localization_target'] ?? "",
+      languagePackId: json['language_pack_id'] ?? "",
+      key: json['key'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class GetAttachedStickerSets extends TdFunction {
   /// Parse from a json
   factory GetAttachedStickerSets.fromJson(Map<String, dynamic> json) {
     return GetAttachedStickerSets(
-      fileId: json['file_id'],
+      fileId: json['file_id'] ?? 0,
       extra: json['@extra'],
     );
   }

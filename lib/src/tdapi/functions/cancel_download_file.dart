@@ -17,8 +17,8 @@ class CancelDownloadFile extends TdFunction {
   /// Parse from a json
   factory CancelDownloadFile.fromJson(Map<String, dynamic> json) {
     return CancelDownloadFile(
-      fileId: json['file_id'],
-      onlyIfPending: json['only_if_pending'],
+      fileId: json['file_id'] ?? 0,
+      onlyIfPending: json['only_if_pending'] ?? false,
       extra: json['@extra'],
     );
   }

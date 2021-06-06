@@ -16,8 +16,8 @@ class SearchStickers extends TdFunction {
   /// Parse from a json
   factory SearchStickers.fromJson(Map<String, dynamic> json) {
     return SearchStickers(
-      emoji: json['emoji'],
-      limit: json['limit'],
+      emoji: json['emoji'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

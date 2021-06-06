@@ -13,7 +13,7 @@ class GetJsonValue extends TdFunction {
   /// Parse from a json
   factory GetJsonValue.fromJson(Map<String, dynamic> json) {
     return GetJsonValue(
-      json: json['json'],
+      json: json['json'] ?? "",
       extra: json['@extra'],
     );
   }

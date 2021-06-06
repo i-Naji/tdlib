@@ -13,7 +13,7 @@ class RemoveRecentHashtag extends TdFunction {
   /// Parse from a json
   factory RemoveRecentHashtag.fromJson(Map<String, dynamic> json) {
     return RemoveRecentHashtag(
-      hashtag: json['hashtag'],
+      hashtag: json['hashtag'] ?? "",
       extra: json['@extra'],
     );
   }

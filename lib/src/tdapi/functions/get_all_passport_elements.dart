@@ -13,7 +13,7 @@ class GetAllPassportElements extends TdFunction {
   /// Parse from a json
   factory GetAllPassportElements.fromJson(Map<String, dynamic> json) {
     return GetAllPassportElements(
-      password: json['password'],
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

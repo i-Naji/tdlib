@@ -23,9 +23,9 @@ class ReadFilePart extends TdFunction {
   /// Parse from a json
   factory ReadFilePart.fromJson(Map<String, dynamic> json) {
     return ReadFilePart(
-      fileId: json['file_id'],
-      offset: json['offset'],
-      count: json['count'],
+      fileId: json['file_id'] ?? 0,
+      offset: json['offset'] ?? 0,
+      count: json['count'] ?? 0,
       extra: json['@extra'],
     );
   }

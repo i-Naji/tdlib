@@ -23,10 +23,10 @@ class GetChatMessageCount extends TdFunction {
   /// Parse from a json
   factory GetChatMessageCount.fromJson(Map<String, dynamic> json) {
     return GetChatMessageCount(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       filter:
           SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
-      returnLocal: json['return_local'],
+      returnLocal: json['return_local'] ?? false,
       extra: json['@extra'],
     );
   }

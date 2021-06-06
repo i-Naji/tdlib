@@ -17,8 +17,8 @@ class SetSupergroupUsername extends TdFunction {
   /// Parse from a json
   factory SetSupergroupUsername.fromJson(Map<String, dynamic> json) {
     return SetSupergroupUsername(
-      supergroupId: json['supergroup_id'],
-      username: json['username'],
+      supergroupId: json['supergroup_id'] ?? 0,
+      username: json['username'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -17,8 +17,8 @@ class SearchChatRecentLocationMessages extends TdFunction {
   /// Parse from a json
   factory SearchChatRecentLocationMessages.fromJson(Map<String, dynamic> json) {
     return SearchChatRecentLocationMessages(
-      chatId: json['chat_id'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

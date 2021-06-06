@@ -13,7 +13,7 @@ class CreateNewSecretChat extends TdFunction {
   /// Parse from a json
   factory CreateNewSecretChat.fromJson(Map<String, dynamic> json) {
     return CreateNewSecretChat(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

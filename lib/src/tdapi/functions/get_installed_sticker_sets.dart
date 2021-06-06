@@ -13,7 +13,7 @@ class GetInstalledStickerSets extends TdFunction {
   /// Parse from a json
   factory GetInstalledStickerSets.fromJson(Map<String, dynamic> json) {
     return GetInstalledStickerSets(
-      isMasks: json['is_masks'],
+      isMasks: json['is_masks'] ?? false,
       extra: json['@extra'],
     );
   }

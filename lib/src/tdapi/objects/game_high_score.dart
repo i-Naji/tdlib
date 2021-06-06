@@ -17,9 +17,9 @@ class GameHighScore extends TdObject {
   /// Parse from a json
   factory GameHighScore.fromJson(Map<String, dynamic> json) {
     return GameHighScore(
-      position: json['position'],
-      userId: json['user_id'],
-      score: json['score'],
+      position: json['position'] ?? 0,
+      userId: json['user_id'] ?? 0,
+      score: json['score'] ?? 0,
     );
   }
 

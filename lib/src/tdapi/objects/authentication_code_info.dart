@@ -27,12 +27,12 @@ class AuthenticationCodeInfo extends TdObject {
   /// Parse from a json
   factory AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) {
     return AuthenticationCodeInfo(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] ?? "",
       type:
           AuthenticationCodeType.fromJson(json['type'] ?? <String, dynamic>{}),
       nextType: AuthenticationCodeType.fromJson(
           json['next_type'] ?? <String, dynamic>{}),
-      timeout: json['timeout'],
+      timeout: json['timeout'] ?? 0,
       extra: json['@extra'],
     );
   }

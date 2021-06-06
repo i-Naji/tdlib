@@ -16,8 +16,8 @@ class MessageLink extends TdObject {
   /// Parse from a json
   factory MessageLink.fromJson(Map<String, dynamic> json) {
     return MessageLink(
-      link: json['link'],
-      isPublic: json['is_public'],
+      link: json['link'] ?? "",
+      isPublic: json['is_public'] ?? false,
       extra: json['@extra'],
     );
   }

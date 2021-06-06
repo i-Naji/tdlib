@@ -32,11 +32,11 @@ class Venue extends TdObject {
   factory Venue.fromJson(Map<String, dynamic> json) {
     return Venue(
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      title: json['title'],
-      address: json['address'],
-      provider: json['provider'],
-      id: json['id'],
-      type: json['type'],
+      title: json['title'] ?? "",
+      address: json['address'] ?? "",
+      provider: json['provider'] ?? "",
+      id: json['id'] ?? "",
+      type: json['type'] ?? "",
     );
   }
 

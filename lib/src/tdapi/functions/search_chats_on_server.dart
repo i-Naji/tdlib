@@ -16,8 +16,8 @@ class SearchChatsOnServer extends TdFunction {
   /// Parse from a json
   factory SearchChatsOnServer.fromJson(Map<String, dynamic> json) {
     return SearchChatsOnServer(
-      query: json['query'],
-      limit: json['limit'],
+      query: json['query'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

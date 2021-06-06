@@ -39,7 +39,7 @@ class BackgroundFillSolid extends BackgroundFill {
   /// Parse from a json
   factory BackgroundFillSolid.fromJson(Map<String, dynamic> json) {
     return BackgroundFillSolid(
-      color: json['color'],
+      color: json['color'] ?? 0,
     );
   }
 
@@ -76,9 +76,9 @@ class BackgroundFillGradient extends BackgroundFill {
   /// Parse from a json
   factory BackgroundFillGradient.fromJson(Map<String, dynamic> json) {
     return BackgroundFillGradient(
-      topColor: json['top_color'],
-      bottomColor: json['bottom_color'],
-      rotationAngle: json['rotation_angle'],
+      topColor: json['top_color'] ?? 0,
+      bottomColor: json['bottom_color'] ?? 0,
+      rotationAngle: json['rotation_angle'] ?? 0,
     );
   }
 

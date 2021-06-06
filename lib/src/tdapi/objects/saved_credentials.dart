@@ -13,8 +13,8 @@ class SavedCredentials extends TdObject {
   /// Parse from a json
   factory SavedCredentials.fromJson(Map<String, dynamic> json) {
     return SavedCredentials(
-      id: json['id'],
-      title: json['title'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
     );
   }
 

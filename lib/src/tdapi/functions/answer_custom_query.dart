@@ -18,7 +18,7 @@ class AnswerCustomQuery extends TdFunction {
   factory AnswerCustomQuery.fromJson(Map<String, dynamic> json) {
     return AnswerCustomQuery(
       customQueryId: int.tryParse(json['custom_query_id'] ?? "") ?? 0,
-      data: json['data'],
+      data: json['data'] ?? "",
       extra: json['@extra'],
     );
   }

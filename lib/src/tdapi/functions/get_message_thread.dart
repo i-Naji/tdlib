@@ -16,8 +16,8 @@ class GetMessageThread extends TdFunction {
   /// Parse from a json
   factory GetMessageThread.fromJson(Map<String, dynamic> json) {
     return GetMessageThread(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       extra: json['@extra'],
     );
   }

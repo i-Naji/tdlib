@@ -27,10 +27,10 @@ class GetPassportAuthorizationForm extends TdFunction {
   /// Parse from a json
   factory GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json) {
     return GetPassportAuthorizationForm(
-      botUserId: json['bot_user_id'],
-      scope: json['scope'],
-      publicKey: json['public_key'],
-      nonce: json['nonce'],
+      botUserId: json['bot_user_id'] ?? 0,
+      scope: json['scope'] ?? "",
+      publicKey: json['public_key'] ?? "",
+      nonce: json['nonce'] ?? "",
       extra: json['@extra'],
     );
   }

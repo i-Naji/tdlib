@@ -13,7 +13,7 @@ class RecoveryEmailAddress extends TdObject {
   /// Parse from a json
   factory RecoveryEmailAddress.fromJson(Map<String, dynamic> json) {
     return RecoveryEmailAddress(
-      recoveryEmailAddress: json['recovery_email_address'],
+      recoveryEmailAddress: json['recovery_email_address'] ?? "",
       extra: json['@extra'],
     );
   }

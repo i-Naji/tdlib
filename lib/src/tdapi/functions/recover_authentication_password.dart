@@ -13,7 +13,7 @@ class RecoverAuthenticationPassword extends TdFunction {
   /// Parse from a json
   factory RecoverAuthenticationPassword.fromJson(Map<String, dynamic> json) {
     return RecoverAuthenticationPassword(
-      recoveryCode: json['recovery_code'],
+      recoveryCode: json['recovery_code'] ?? "",
       extra: json['@extra'],
     );
   }

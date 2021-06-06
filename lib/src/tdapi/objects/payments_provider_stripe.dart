@@ -23,10 +23,10 @@ class PaymentsProviderStripe extends TdObject {
   /// Parse from a json
   factory PaymentsProviderStripe.fromJson(Map<String, dynamic> json) {
     return PaymentsProviderStripe(
-      publishableKey: json['publishable_key'],
-      needCountry: json['need_country'],
-      needPostalCode: json['need_postal_code'],
-      needCardholderName: json['need_cardholder_name'],
+      publishableKey: json['publishable_key'] ?? "",
+      needCountry: json['need_country'] ?? false,
+      needPostalCode: json['need_postal_code'] ?? false,
+      needCardholderName: json['need_cardholder_name'] ?? false,
     );
   }
 

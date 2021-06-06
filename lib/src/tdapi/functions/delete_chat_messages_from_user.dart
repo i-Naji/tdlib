@@ -17,8 +17,8 @@ class DeleteChatMessagesFromUser extends TdFunction {
   /// Parse from a json
   factory DeleteChatMessagesFromUser.fromJson(Map<String, dynamic> json) {
     return DeleteChatMessagesFromUser(
-      chatId: json['chat_id'],
-      userId: json['user_id'],
+      chatId: json['chat_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

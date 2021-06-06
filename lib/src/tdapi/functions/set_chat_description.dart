@@ -17,8 +17,8 @@ class SetChatDescription extends TdFunction {
   /// Parse from a json
   factory SetChatDescription.fromJson(Map<String, dynamic> json) {
     return SetChatDescription(
-      chatId: json['chat_id'],
-      description: json['description'],
+      chatId: json['chat_id'] ?? 0,
+      description: json['description'] ?? "",
       extra: json['@extra'],
     );
   }

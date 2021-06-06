@@ -27,10 +27,10 @@ class GetMessagePublicForwards extends TdFunction {
   /// Parse from a json
   factory GetMessagePublicForwards.fromJson(Map<String, dynamic> json) {
     return GetMessagePublicForwards(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      offset: json['offset'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      offset: json['offset'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

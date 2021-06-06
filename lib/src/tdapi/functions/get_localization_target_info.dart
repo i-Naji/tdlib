@@ -13,7 +13,7 @@ class GetLocalizationTargetInfo extends TdFunction {
   /// Parse from a json
   factory GetLocalizationTargetInfo.fromJson(Map<String, dynamic> json) {
     return GetLocalizationTargetInfo(
-      onlyLocal: json['only_local'],
+      onlyLocal: json['only_local'] ?? false,
       extra: json['@extra'],
     );
   }

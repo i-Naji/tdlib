@@ -13,7 +13,7 @@ class FilePart extends TdObject {
   /// Parse from a json
   factory FilePart.fromJson(Map<String, dynamic> json) {
     return FilePart(
-      data: json['data'],
+      data: json['data'] ?? "",
       extra: json['@extra'],
     );
   }

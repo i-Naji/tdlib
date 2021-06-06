@@ -399,7 +399,7 @@ class InputPassportElementPhoneNumber extends InputPassportElement {
   /// Parse from a json
   factory InputPassportElementPhoneNumber.fromJson(Map<String, dynamic> json) {
     return InputPassportElementPhoneNumber(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] ?? "",
     );
   }
 
@@ -427,7 +427,7 @@ class InputPassportElementEmailAddress extends InputPassportElement {
   /// Parse from a json
   factory InputPassportElementEmailAddress.fromJson(Map<String, dynamic> json) {
     return InputPassportElementEmailAddress(
-      emailAddress: json['email_address'],
+      emailAddress: json['email_address'] ?? "",
     );
   }
 

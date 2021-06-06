@@ -19,8 +19,8 @@ class MessageSendOptions extends TdObject {
   /// Parse from a json
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) {
     return MessageSendOptions(
-      disableNotification: json['disable_notification'],
-      fromBackground: json['from_background'],
+      disableNotification: json['disable_notification'] ?? false,
+      fromBackground: json['from_background'] ?? false,
       schedulingState: MessageSchedulingState.fromJson(
           json['scheduling_state'] ?? <String, dynamic>{}),
     );

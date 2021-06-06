@@ -16,7 +16,7 @@ class SetOption extends TdFunction {
   /// Parse from a json
   factory SetOption.fromJson(Map<String, dynamic> json) {
     return SetOption(
-      name: json['name'],
+      name: json['name'] ?? "",
       value: OptionValue.fromJson(json['value'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

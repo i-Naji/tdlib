@@ -13,7 +13,8 @@ class TestCallVectorString extends TdFunction {
   /// Parse from a json
   factory TestCallVectorString.fromJson(Map<String, dynamic> json) {
     return TestCallVectorString(
-      x: List<String>.from((json['x'] ?? []).map((item) => item).toList()),
+      x: List<String>.from(
+          (json['x'] ?? []).map((item) => item ?? "").toList()),
       extra: json['@extra'],
     );
   }

@@ -27,12 +27,12 @@ class CallProtocol extends TdObject {
   /// Parse from a json
   factory CallProtocol.fromJson(Map<String, dynamic> json) {
     return CallProtocol(
-      udpP2p: json['udp_p2p'],
-      udpReflector: json['udp_reflector'],
-      minLayer: json['min_layer'],
-      maxLayer: json['max_layer'],
+      udpP2p: json['udp_p2p'] ?? false,
+      udpReflector: json['udp_reflector'] ?? false,
+      minLayer: json['min_layer'] ?? 0,
+      maxLayer: json['max_layer'] ?? 0,
       libraryVersions: List<String>.from(
-          (json['library_versions'] ?? []).map((item) => item).toList()),
+          (json['library_versions'] ?? []).map((item) => item ?? "").toList()),
     );
   }
 

@@ -13,7 +13,7 @@ class GetFile extends TdFunction {
   /// Parse from a json
   factory GetFile.fromJson(Map<String, dynamic> json) {
     return GetFile(
-      fileId: json['file_id'],
+      fileId: json['file_id'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -47,19 +47,20 @@ class ChatNotificationSettings extends TdObject {
   /// Parse from a json
   factory ChatNotificationSettings.fromJson(Map<String, dynamic> json) {
     return ChatNotificationSettings(
-      useDefaultMuteFor: json['use_default_mute_for'],
-      muteFor: json['mute_for'],
-      useDefaultSound: json['use_default_sound'],
-      sound: json['sound'],
-      useDefaultShowPreview: json['use_default_show_preview'],
-      showPreview: json['show_preview'],
+      useDefaultMuteFor: json['use_default_mute_for'] ?? false,
+      muteFor: json['mute_for'] ?? 0,
+      useDefaultSound: json['use_default_sound'] ?? false,
+      sound: json['sound'] ?? "",
+      useDefaultShowPreview: json['use_default_show_preview'] ?? false,
+      showPreview: json['show_preview'] ?? false,
       useDefaultDisablePinnedMessageNotifications:
-          json['use_default_disable_pinned_message_notifications'],
+          json['use_default_disable_pinned_message_notifications'] ?? false,
       disablePinnedMessageNotifications:
-          json['disable_pinned_message_notifications'],
+          json['disable_pinned_message_notifications'] ?? false,
       useDefaultDisableMentionNotifications:
-          json['use_default_disable_mention_notifications'],
-      disableMentionNotifications: json['disable_mention_notifications'],
+          json['use_default_disable_mention_notifications'] ?? false,
+      disableMentionNotifications:
+          json['disable_mention_notifications'] ?? false,
     );
   }
 

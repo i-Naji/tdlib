@@ -18,8 +18,8 @@ class GetPassportAuthorizationFormAvailableElements extends TdFunction {
   factory GetPassportAuthorizationFormAvailableElements.fromJson(
       Map<String, dynamic> json) {
     return GetPassportAuthorizationFormAvailableElements(
-      autorizationFormId: json['autorization_form_id'],
-      password: json['password'],
+      autorizationFormId: json['autorization_form_id'] ?? 0,
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

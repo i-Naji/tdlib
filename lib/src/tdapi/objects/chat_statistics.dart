@@ -256,7 +256,8 @@ class ChatStatisticsChannel extends ChatStatistics {
           json['mean_view_count'] ?? <String, dynamic>{}),
       meanShareCount: StatisticalValue.fromJson(
           json['mean_share_count'] ?? <String, dynamic>{}),
-      enabledNotificationsPercentage: json['enabled_notifications_percentage'],
+      enabledNotificationsPercentage:
+          json['enabled_notifications_percentage'] ?? 0,
       memberCountGraph: StatisticalGraph.fromJson(
           json['member_count_graph'] ?? <String, dynamic>{}),
       joinGraph:

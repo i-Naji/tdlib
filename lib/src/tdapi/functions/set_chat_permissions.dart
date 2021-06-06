@@ -17,7 +17,7 @@ class SetChatPermissions extends TdFunction {
   /// Parse from a json
   factory SetChatPermissions.fromJson(Map<String, dynamic> json) {
     return SetChatPermissions(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       permissions:
           ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{}),
       extra: json['@extra'],

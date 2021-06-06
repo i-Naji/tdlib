@@ -17,8 +17,8 @@ class LoadGroupCallParticipants extends TdFunction {
   /// Parse from a json
   factory LoadGroupCallParticipants.fromJson(Map<String, dynamic> json) {
     return LoadGroupCallParticipants(
-      groupCallId: json['group_call_id'],
-      limit: json['limit'],
+      groupCallId: json['group_call_id'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

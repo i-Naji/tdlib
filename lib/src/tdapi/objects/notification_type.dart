@@ -95,7 +95,7 @@ class NotificationTypeNewCall extends NotificationType {
   /// Parse from a json
   factory NotificationTypeNewCall.fromJson(Map<String, dynamic> json) {
     return NotificationTypeNewCall(
-      callId: json['call_id'],
+      callId: json['call_id'] ?? 0,
     );
   }
 
@@ -140,10 +140,10 @@ class NotificationTypeNewPushMessage extends NotificationType {
   /// Parse from a json
   factory NotificationTypeNewPushMessage.fromJson(Map<String, dynamic> json) {
     return NotificationTypeNewPushMessage(
-      messageId: json['message_id'],
+      messageId: json['message_id'] ?? 0,
       sender: MessageSender.fromJson(json['sender'] ?? <String, dynamic>{}),
-      senderName: json['sender_name'],
-      isOutgoing: json['is_outgoing'],
+      senderName: json['sender_name'] ?? "",
+      isOutgoing: json['is_outgoing'] ?? false,
       content:
           PushMessageContent.fromJson(json['content'] ?? <String, dynamic>{}),
     );

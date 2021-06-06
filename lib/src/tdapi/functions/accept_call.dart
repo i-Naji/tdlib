@@ -16,7 +16,7 @@ class AcceptCall extends TdFunction {
   /// Parse from a json
   factory AcceptCall.fromJson(Map<String, dynamic> json) {
     return AcceptCall(
-      callId: json['call_id'],
+      callId: json['call_id'] ?? 0,
       protocol: CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

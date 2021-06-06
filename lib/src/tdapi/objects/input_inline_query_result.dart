@@ -110,15 +110,15 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultAnimation.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultAnimation(
-      id: json['id'],
-      title: json['title'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailMimeType: json['thumbnail_mime_type'],
-      videoUrl: json['video_url'],
-      videoMimeType: json['video_mime_type'],
-      videoDuration: json['video_duration'],
-      videoWidth: json['video_width'],
-      videoHeight: json['video_height'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailMimeType: json['thumbnail_mime_type'] ?? "",
+      videoUrl: json['video_url'] ?? "",
+      videoMimeType: json['video_mime_type'] ?? "",
+      videoDuration: json['video_duration'] ?? 0,
+      videoWidth: json['video_width'] ?? 0,
+      videoHeight: json['video_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -198,14 +198,14 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultArticle.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultArticle(
-      id: json['id'],
-      url: json['url'],
-      hideUrl: json['hide_url'],
-      title: json['title'],
-      description: json['description'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
+      id: json['id'] ?? "",
+      url: json['url'] ?? "",
+      hideUrl: json['hide_url'] ?? false,
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailWidth: json['thumbnail_width'] ?? 0,
+      thumbnailHeight: json['thumbnail_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -272,11 +272,11 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultAudio.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultAudio(
-      id: json['id'],
-      title: json['title'],
-      performer: json['performer'],
-      audioUrl: json['audio_url'],
-      audioDuration: json['audio_duration'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      performer: json['performer'] ?? "",
+      audioUrl: json['audio_url'] ?? "",
+      audioDuration: json['audio_duration'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -340,11 +340,11 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultContact.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultContact(
-      id: json['id'],
+      id: json['id'] ?? "",
       contact: Contact.fromJson(json['contact'] ?? <String, dynamic>{}),
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailWidth: json['thumbnail_width'] ?? 0,
+      thumbnailHeight: json['thumbnail_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -420,14 +420,14 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultDocument.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultDocument(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      documentUrl: json['document_url'],
-      mimeType: json['mime_type'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      documentUrl: json['document_url'] ?? "",
+      mimeType: json['mime_type'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailWidth: json['thumbnail_width'] ?? 0,
+      thumbnailHeight: json['thumbnail_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -476,8 +476,8 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultGame(
-      id: json['id'],
-      gameShortName: json['game_short_name'],
+      id: json['id'] ?? "",
+      gameShortName: json['game_short_name'] ?? "",
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
     );
@@ -543,13 +543,13 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultLocation.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultLocation(
-      id: json['id'],
+      id: json['id'] ?? "",
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      livePeriod: json['live_period'],
-      title: json['title'],
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
+      livePeriod: json['live_period'] ?? 0,
+      title: json['title'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailWidth: json['thumbnail_width'] ?? 0,
+      thumbnailHeight: json['thumbnail_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -623,13 +623,13 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultPhoto.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultPhoto(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      thumbnailUrl: json['thumbnail_url'],
-      photoUrl: json['photo_url'],
-      photoWidth: json['photo_width'],
-      photoHeight: json['photo_height'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      photoUrl: json['photo_url'] ?? "",
+      photoWidth: json['photo_width'] ?? 0,
+      photoHeight: json['photo_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -695,11 +695,11 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultSticker.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultSticker(
-      id: json['id'],
-      thumbnailUrl: json['thumbnail_url'],
-      stickerUrl: json['sticker_url'],
-      stickerWidth: json['sticker_width'],
-      stickerHeight: json['sticker_height'],
+      id: json['id'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      stickerUrl: json['sticker_url'] ?? "",
+      stickerWidth: json['sticker_width'] ?? 0,
+      stickerHeight: json['sticker_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -763,11 +763,11 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultVenue.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultVenue(
-      id: json['id'],
+      id: json['id'] ?? "",
       venue: Venue.fromJson(json['venue'] ?? <String, dynamic>{}),
-      thumbnailUrl: json['thumbnail_url'],
-      thumbnailWidth: json['thumbnail_width'],
-      thumbnailHeight: json['thumbnail_height'],
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      thumbnailWidth: json['thumbnail_width'] ?? 0,
+      thumbnailHeight: json['thumbnail_height'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -847,15 +847,15 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultVideo.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultVideo(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      thumbnailUrl: json['thumbnail_url'],
-      videoUrl: json['video_url'],
-      mimeType: json['mime_type'],
-      videoWidth: json['video_width'],
-      videoHeight: json['video_height'],
-      videoDuration: json['video_duration'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      thumbnailUrl: json['thumbnail_url'] ?? "",
+      videoUrl: json['video_url'] ?? "",
+      mimeType: json['mime_type'] ?? "",
+      videoWidth: json['video_width'] ?? 0,
+      videoHeight: json['video_height'] ?? 0,
+      videoDuration: json['video_duration'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(
@@ -919,10 +919,10 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   /// Parse from a json
   factory InputInlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) {
     return InputInlineQueryResultVoiceNote(
-      id: json['id'],
-      title: json['title'],
-      voiceNoteUrl: json['voice_note_url'],
-      voiceNoteDuration: json['voice_note_duration'],
+      id: json['id'] ?? "",
+      title: json['title'] ?? "",
+      voiceNoteUrl: json['voice_note_url'] ?? "",
+      voiceNoteDuration: json['voice_note_duration'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(

@@ -45,7 +45,7 @@ class ChatTypePrivate extends ChatType {
   /// Parse from a json
   factory ChatTypePrivate.fromJson(Map<String, dynamic> json) {
     return ChatTypePrivate(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
     );
   }
 
@@ -73,7 +73,7 @@ class ChatTypeBasicGroup extends ChatType {
   /// Parse from a json
   factory ChatTypeBasicGroup.fromJson(Map<String, dynamic> json) {
     return ChatTypeBasicGroup(
-      basicGroupId: json['basic_group_id'],
+      basicGroupId: json['basic_group_id'] ?? 0,
     );
   }
 
@@ -104,8 +104,8 @@ class ChatTypeSupergroup extends ChatType {
   /// Parse from a json
   factory ChatTypeSupergroup.fromJson(Map<String, dynamic> json) {
     return ChatTypeSupergroup(
-      supergroupId: json['supergroup_id'],
-      isChannel: json['is_channel'],
+      supergroupId: json['supergroup_id'] ?? 0,
+      isChannel: json['is_channel'] ?? false,
     );
   }
 
@@ -137,8 +137,8 @@ class ChatTypeSecret extends ChatType {
   /// Parse from a json
   factory ChatTypeSecret.fromJson(Map<String, dynamic> json) {
     return ChatTypeSecret(
-      secretChatId: json['secret_chat_id'],
-      userId: json['user_id'],
+      secretChatId: json['secret_chat_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
     );
   }
 

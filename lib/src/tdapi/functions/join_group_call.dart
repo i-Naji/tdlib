@@ -27,11 +27,11 @@ class JoinGroupCall extends TdFunction {
   /// Parse from a json
   factory JoinGroupCall.fromJson(Map<String, dynamic> json) {
     return JoinGroupCall(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
       payload:
           GroupCallPayload.fromJson(json['payload'] ?? <String, dynamic>{}),
-      source: json['source'],
-      isMuted: json['is_muted'],
+      source: json['source'] ?? 0,
+      isMuted: json['is_muted'] ?? false,
       extra: json['@extra'],
     );
   }

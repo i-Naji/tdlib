@@ -48,7 +48,7 @@ class OptionValueBoolean extends OptionValue {
   /// Parse from a json
   factory OptionValueBoolean.fromJson(Map<String, dynamic> json) {
     return OptionValueBoolean(
-      value: json['value'],
+      value: json['value'] ?? false,
       extra: json['@extra'],
     );
   }
@@ -139,7 +139,7 @@ class OptionValueString extends OptionValue {
   /// Parse from a json
   factory OptionValueString.fromJson(Map<String, dynamic> json) {
     return OptionValueString(
-      value: json['value'],
+      value: json['value'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -441,7 +441,7 @@ class PassportElementPhoneNumber extends PassportElement {
   /// Parse from a json
   factory PassportElementPhoneNumber.fromJson(Map<String, dynamic> json) {
     return PassportElementPhoneNumber(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] ?? "",
       extra: json['@extra'],
     );
   }
@@ -473,7 +473,7 @@ class PassportElementEmailAddress extends PassportElement {
   /// Parse from a json
   factory PassportElementEmailAddress.fromJson(Map<String, dynamic> json) {
     return PassportElementEmailAddress(
-      emailAddress: json['email_address'],
+      emailAddress: json['email_address'] ?? "",
       extra: json['@extra'],
     );
   }

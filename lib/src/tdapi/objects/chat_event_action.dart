@@ -303,7 +303,7 @@ class ChatEventMemberInvited extends ChatEventAction {
   /// Parse from a json
   factory ChatEventMemberInvited.fromJson(Map<String, dynamic> json) {
     return ChatEventMemberInvited(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       status: ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{}),
     );
   }
@@ -340,7 +340,7 @@ class ChatEventMemberPromoted extends ChatEventAction {
   /// Parse from a json
   factory ChatEventMemberPromoted.fromJson(Map<String, dynamic> json) {
     return ChatEventMemberPromoted(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       oldStatus:
           ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{}),
       newStatus:
@@ -381,7 +381,7 @@ class ChatEventMemberRestricted extends ChatEventAction {
   /// Parse from a json
   factory ChatEventMemberRestricted.fromJson(Map<String, dynamic> json) {
     return ChatEventMemberRestricted(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       oldStatus:
           ChatMemberStatus.fromJson(json['old_status'] ?? <String, dynamic>{}),
       newStatus:
@@ -418,8 +418,8 @@ class ChatEventTitleChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventTitleChanged.fromJson(Map<String, dynamic> json) {
     return ChatEventTitleChanged(
-      oldTitle: json['old_title'],
-      newTitle: json['new_title'],
+      oldTitle: json['old_title'] ?? "",
+      newTitle: json['new_title'] ?? "",
     );
   }
 
@@ -488,8 +488,8 @@ class ChatEventDescriptionChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventDescriptionChanged.fromJson(Map<String, dynamic> json) {
     return ChatEventDescriptionChanged(
-      oldDescription: json['old_description'],
-      newDescription: json['new_description'],
+      oldDescription: json['old_description'] ?? "",
+      newDescription: json['new_description'] ?? "",
     );
   }
 
@@ -522,8 +522,8 @@ class ChatEventUsernameChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventUsernameChanged.fromJson(Map<String, dynamic> json) {
     return ChatEventUsernameChanged(
-      oldUsername: json['old_username'],
-      newUsername: json['new_username'],
+      oldUsername: json['old_username'] ?? "",
+      newUsername: json['new_username'] ?? "",
     );
   }
 
@@ -585,7 +585,7 @@ class ChatEventInvitesToggled extends ChatEventAction {
   /// Parse from a json
   factory ChatEventInvitesToggled.fromJson(Map<String, dynamic> json) {
     return ChatEventInvitesToggled(
-      canInviteUsers: json['can_invite_users'],
+      canInviteUsers: json['can_invite_users'] ?? false,
     );
   }
 
@@ -617,8 +617,8 @@ class ChatEventLinkedChatChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventLinkedChatChanged.fromJson(Map<String, dynamic> json) {
     return ChatEventLinkedChatChanged(
-      oldLinkedChatId: json['old_linked_chat_id'],
-      newLinkedChatId: json['new_linked_chat_id'],
+      oldLinkedChatId: json['old_linked_chat_id'] ?? 0,
+      newLinkedChatId: json['new_linked_chat_id'] ?? 0,
     );
   }
 
@@ -651,8 +651,8 @@ class ChatEventSlowModeDelayChanged extends ChatEventAction {
   /// Parse from a json
   factory ChatEventSlowModeDelayChanged.fromJson(Map<String, dynamic> json) {
     return ChatEventSlowModeDelayChanged(
-      oldSlowModeDelay: json['old_slow_mode_delay'],
-      newSlowModeDelay: json['new_slow_mode_delay'],
+      oldSlowModeDelay: json['old_slow_mode_delay'] ?? 0,
+      newSlowModeDelay: json['new_slow_mode_delay'] ?? 0,
     );
   }
 
@@ -681,7 +681,7 @@ class ChatEventSignMessagesToggled extends ChatEventAction {
   /// Parse from a json
   factory ChatEventSignMessagesToggled.fromJson(Map<String, dynamic> json) {
     return ChatEventSignMessagesToggled(
-      signMessages: json['sign_messages'],
+      signMessages: json['sign_messages'] ?? false,
     );
   }
 
@@ -781,7 +781,7 @@ class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
   factory ChatEventIsAllHistoryAvailableToggled.fromJson(
       Map<String, dynamic> json) {
     return ChatEventIsAllHistoryAvailableToggled(
-      isAllHistoryAvailable: json['is_all_history_available'],
+      isAllHistoryAvailable: json['is_all_history_available'] ?? false,
     );
   }
 
@@ -809,7 +809,7 @@ class ChatEventVoiceChatCreated extends ChatEventAction {
   /// Parse from a json
   factory ChatEventVoiceChatCreated.fromJson(Map<String, dynamic> json) {
     return ChatEventVoiceChatCreated(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
     );
   }
 
@@ -837,7 +837,7 @@ class ChatEventVoiceChatDiscarded extends ChatEventAction {
   /// Parse from a json
   factory ChatEventVoiceChatDiscarded.fromJson(Map<String, dynamic> json) {
     return ChatEventVoiceChatDiscarded(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
     );
   }
 
@@ -870,8 +870,8 @@ class ChatEventVoiceChatParticipantIsMutedToggled extends ChatEventAction {
   factory ChatEventVoiceChatParticipantIsMutedToggled.fromJson(
       Map<String, dynamic> json) {
     return ChatEventVoiceChatParticipantIsMutedToggled(
-      userId: json['user_id'],
-      isMuted: json['is_muted'],
+      userId: json['user_id'] ?? 0,
+      isMuted: json['is_muted'] ?? false,
     );
   }
 
@@ -902,7 +902,7 @@ class ChatEventVoiceChatMuteNewParticipantsToggled extends ChatEventAction {
   factory ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(
       Map<String, dynamic> json) {
     return ChatEventVoiceChatMuteNewParticipantsToggled(
-      muteNewParticipants: json['mute_new_participants'],
+      muteNewParticipants: json['mute_new_participants'] ?? false,
     );
   }
 

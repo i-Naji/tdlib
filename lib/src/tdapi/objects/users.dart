@@ -16,9 +16,9 @@ class Users extends TdObject {
   /// Parse from a json
   factory Users.fromJson(Map<String, dynamic> json) {
     return Users(
-      totalCount: json['total_count'],
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      totalCount: json['total_count'] ?? 0,
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

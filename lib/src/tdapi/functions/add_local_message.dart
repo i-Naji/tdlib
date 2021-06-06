@@ -31,10 +31,10 @@ class AddLocalMessage extends TdFunction {
   /// Parse from a json
   factory AddLocalMessage.fromJson(Map<String, dynamic> json) {
     return AddLocalMessage(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       sender: MessageSender.fromJson(json['sender'] ?? <String, dynamic>{}),
-      replyToMessageId: json['reply_to_message_id'],
-      disableNotification: json['disable_notification'],
+      replyToMessageId: json['reply_to_message_id'] ?? 0,
+      disableNotification: json['disable_notification'] ?? false,
       inputMessageContent: InputMessageContent.fromJson(
           json['input_message_content'] ?? <String, dynamic>{}),
       extra: json['@extra'],

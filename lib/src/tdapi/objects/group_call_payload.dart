@@ -17,8 +17,8 @@ class GroupCallPayload extends TdObject {
   /// Parse from a json
   factory GroupCallPayload.fromJson(Map<String, dynamic> json) {
     return GroupCallPayload(
-      ufrag: json['ufrag'],
-      pwd: json['pwd'],
+      ufrag: json['ufrag'] ?? "",
+      pwd: json['pwd'] ?? "",
       fingerprints: List<GroupCallPayloadFingerprint>.from(
           (json['fingerprints'] ?? [])
               .map((item) => GroupCallPayloadFingerprint.fromJson(

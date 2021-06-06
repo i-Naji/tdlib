@@ -48,7 +48,7 @@ class ChatActionBarReportSpam extends ChatActionBar {
   /// Parse from a json
   factory ChatActionBarReportSpam.fromJson(Map<String, dynamic> json) {
     return ChatActionBarReportSpam(
-      canUnarchive: json['can_unarchive'],
+      canUnarchive: json['can_unarchive'] ?? false,
     );
   }
 
@@ -103,8 +103,8 @@ class ChatActionBarReportAddBlock extends ChatActionBar {
   /// Parse from a json
   factory ChatActionBarReportAddBlock.fromJson(Map<String, dynamic> json) {
     return ChatActionBarReportAddBlock(
-      canUnarchive: json['can_unarchive'],
-      distance: json['distance'],
+      canUnarchive: json['can_unarchive'] ?? false,
+      distance: json['distance'] ?? 0,
     );
   }
 

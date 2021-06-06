@@ -444,35 +444,46 @@ class TlObjectArg {
       bool isNullable = false}) {
     String readFromJson;
     if (dartTypes.contains(type)) {
+      final dartType = type;
       if (isInt64) {
-        readFromJson =
-            'int.tryParse($pattern ?? "")${isNullable ? '' : ' ?? 0'}'; // todo: change to BigInt or String!
+        // todo: change to BigInt or String!
+        if (isNullable) {
+          readFromJson = 'int.tryParse($pattern ?? "")';
+        } else {
+          // readFromJson = 'int.tryParse($pattern!)!';
+          readFromJson =
+              'int.tryParse($pattern ?? "") ?? ${getDefaultJsonValue(dartType)}';
+        }
       } else {
-        readFromJson = pattern;
+        if (isNullable) {
+          readFromJson = pattern;
+        } else {
+          // readFromJson = '${pattern}!';
+          readFromJson = '${pattern} ?? ${getDefaultJsonValue(dartType)}';
+        }
       }
     } else if (type.startsWith('List')) {
-      final subType = type.substring(5, type.length - 1);
+      final dartType = type;
+      final subDartType = dartType.substring(5, dartType.length - 1);
       final str =
-          getRead(name, subType, pattern: itemName, itemName: 'innerItem');
+          getRead(name, subDartType, pattern: itemName, itemName: 'innerItem');
       readFromJson =
-          'TYPE.from(($pattern ?? []).map(($itemName) => ${str}).toList())';
+          '${dartType}.from(($pattern ?? []).map(($itemName) => ${str}).toList())';
     } else {
-      readFromJson = 'TYPE.fromJson($pattern ?? <String, dynamic>{})';
+      readFromJson = '${type}.fromJson($pattern ?? <String, dynamic>{})';
     }
-    return readFromJson
-        .replaceAll('PLACE', 'json[\'$name\']')
-        .replaceAll('TYPE', type);
+    return readFromJson.replaceAll('PLACE', 'json[\'$name\']');
   }
 
-  static String getWrite(String argName, String type,
+  static String getWrite(String argName, String dartType,
       {String itemName = 'i', isList = false, isNullable = false}) {
     String writeToJson;
-    if (dartTypes.contains(type)) {
+    if (dartTypes.contains(dartType)) {
       writeToJson = '';
-    } else if (type.startsWith('List')) {
-      final subType = type.substring(5, type.length - 1);
-      final stmt =
-          getWrite(itemName, subType, itemName: '${itemName}i', isList: true);
+    } else if (dartType.startsWith('List')) {
+      final subDartType = dartType.substring(5, dartType.length - 1);
+      final stmt = getWrite(itemName, subDartType,
+          itemName: '${itemName}i', isList: true);
       writeToJson = '.map(($itemName) => ${stmt}).toList()';
     } else {
       writeToJson = '.toJson()';
@@ -489,8 +500,8 @@ class TlObjectArg {
     return '${name}$writeToJson';
   }
 
-  static String getBuiltInDartType(String type) {
-    switch (type) {
+  static String getBuiltInDartType(String tdType) {
+    switch (tdType) {
       case 'int':
       case 'int32':
       case 'int53':
@@ -506,6 +517,20 @@ class TlObjectArg {
         return 'bool';
       default:
         return '';
+    }
+  }
+
+  static String getDefaultJsonValue(String dartType) {
+    switch (dartType) {
+      case 'int':
+      case 'double':
+        return '0';
+      case 'String':
+        return '""';
+      case 'bool':
+        return 'false';
+      default:
+        return 'null';
     }
   }
 }

@@ -39,7 +39,7 @@ class PollTypeRegular extends PollType {
   /// Parse from a json
   factory PollTypeRegular.fromJson(Map<String, dynamic> json) {
     return PollTypeRegular(
-      allowMultipleAnswers: json['allow_multiple_answers'],
+      allowMultipleAnswers: json['allow_multiple_answers'] ?? false,
     );
   }
 
@@ -70,7 +70,7 @@ class PollTypeQuiz extends PollType {
   /// Parse from a json
   factory PollTypeQuiz.fromJson(Map<String, dynamic> json) {
     return PollTypeQuiz(
-      correctOptionId: json['correct_option_id'],
+      correctOptionId: json['correct_option_id'] ?? 0,
       explanation:
           FormattedText.fromJson(json['explanation'] ?? <String, dynamic>{}),
     );

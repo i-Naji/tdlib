@@ -17,9 +17,9 @@ class GroupCallPayloadFingerprint extends TdObject {
   /// Parse from a json
   factory GroupCallPayloadFingerprint.fromJson(Map<String, dynamic> json) {
     return GroupCallPayloadFingerprint(
-      hash: json['hash'],
-      setup: json['setup'],
-      fingerprint: json['fingerprint'],
+      hash: json['hash'] ?? "",
+      setup: json['setup'] ?? "",
+      fingerprint: json['fingerprint'] ?? "",
     );
   }
 

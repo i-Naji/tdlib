@@ -16,8 +16,8 @@ class CheckChatUsername extends TdFunction {
   /// Parse from a json
   factory CheckChatUsername.fromJson(Map<String, dynamic> json) {
     return CheckChatUsername(
-      chatId: json['chat_id'],
-      username: json['username'],
+      chatId: json['chat_id'] ?? 0,
+      username: json['username'] ?? "",
       extra: json['@extra'],
     );
   }

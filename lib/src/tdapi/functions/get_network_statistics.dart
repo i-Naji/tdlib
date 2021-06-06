@@ -13,7 +13,7 @@ class GetNetworkStatistics extends TdFunction {
   /// Parse from a json
   factory GetNetworkStatistics.fromJson(Map<String, dynamic> json) {
     return GetNetworkStatistics(
-      onlyCurrent: json['only_current'],
+      onlyCurrent: json['only_current'] ?? false,
       extra: json['@extra'],
     );
   }

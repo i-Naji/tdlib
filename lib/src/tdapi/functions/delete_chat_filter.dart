@@ -13,7 +13,7 @@ class DeleteChatFilter extends TdFunction {
   /// Parse from a json
   factory DeleteChatFilter.fromJson(Map<String, dynamic> json) {
     return DeleteChatFilter(
-      chatFilterId: json['chat_filter_id'],
+      chatFilterId: json['chat_filter_id'] ?? 0,
       extra: json['@extra'],
     );
   }

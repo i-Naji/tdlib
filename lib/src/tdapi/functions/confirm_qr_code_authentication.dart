@@ -13,7 +13,7 @@ class ConfirmQrCodeAuthentication extends TdFunction {
   /// Parse from a json
   factory ConfirmQrCodeAuthentication.fromJson(Map<String, dynamic> json) {
     return ConfirmQrCodeAuthentication(
-      link: json['link'],
+      link: json['link'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class GetMessageLinkInfo extends TdFunction {
   /// Parse from a json
   factory GetMessageLinkInfo.fromJson(Map<String, dynamic> json) {
     return GetMessageLinkInfo(
-      url: json['url'],
+      url: json['url'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -45,7 +45,7 @@ class InputCredentialsSaved extends InputCredentials {
   /// Parse from a json
   factory InputCredentialsSaved.fromJson(Map<String, dynamic> json) {
     return InputCredentialsSaved(
-      savedCredentialsId: json['saved_credentials_id'],
+      savedCredentialsId: json['saved_credentials_id'] ?? "",
     );
   }
 
@@ -76,8 +76,8 @@ class InputCredentialsNew extends InputCredentials {
   /// Parse from a json
   factory InputCredentialsNew.fromJson(Map<String, dynamic> json) {
     return InputCredentialsNew(
-      data: json['data'],
-      allowSave: json['allow_save'],
+      data: json['data'] ?? "",
+      allowSave: json['allow_save'] ?? false,
     );
   }
 
@@ -106,7 +106,7 @@ class InputCredentialsAndroidPay extends InputCredentials {
   /// Parse from a json
   factory InputCredentialsAndroidPay.fromJson(Map<String, dynamic> json) {
     return InputCredentialsAndroidPay(
-      data: json['data'],
+      data: json['data'] ?? "",
     );
   }
 
@@ -134,7 +134,7 @@ class InputCredentialsApplePay extends InputCredentials {
   /// Parse from a json
   factory InputCredentialsApplePay.fromJson(Map<String, dynamic> json) {
     return InputCredentialsApplePay(
-      data: json['data'],
+      data: json['data'] ?? "",
     );
   }
 

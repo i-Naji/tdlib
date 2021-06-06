@@ -47,19 +47,20 @@ class OptimizeStorage extends TdFunction {
   /// Parse from a json
   factory OptimizeStorage.fromJson(Map<String, dynamic> json) {
     return OptimizeStorage(
-      size: json['size'],
-      ttl: json['ttl'],
-      count: json['count'],
-      immunityDelay: json['immunity_delay'],
+      size: json['size'] ?? 0,
+      ttl: json['ttl'] ?? 0,
+      count: json['count'] ?? 0,
+      immunityDelay: json['immunity_delay'] ?? 0,
       fileTypes: List<FileType>.from((json['file_types'] ?? [])
           .map((item) => FileType.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      chatIds:
-          List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList()),
+      chatIds: List<int>.from(
+          (json['chat_ids'] ?? []).map((item) => item ?? 0).toList()),
       excludeChatIds: List<int>.from(
-          (json['exclude_chat_ids'] ?? []).map((item) => item).toList()),
-      returnDeletedFileStatistics: json['return_deleted_file_statistics'],
-      chatLimit: json['chat_limit'],
+          (json['exclude_chat_ids'] ?? []).map((item) => item ?? 0).toList()),
+      returnDeletedFileStatistics:
+          json['return_deleted_file_statistics'] ?? false,
+      chatLimit: json['chat_limit'] ?? 0,
       extra: json['@extra'],
     );
   }

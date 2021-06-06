@@ -111,9 +111,9 @@ class Chat extends TdObject {
   /// Parse from a json
   factory Chat.fromJson(Map<String, dynamic> json) {
     return Chat(
-      id: json['id'],
+      id: json['id'] ?? 0,
       type: ChatType.fromJson(json['type'] ?? <String, dynamic>{}),
-      title: json['title'],
+      title: json['title'] ?? "",
       photo: ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{}),
       permissions:
           ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{}),
@@ -122,27 +122,27 @@ class Chat extends TdObject {
       positions: List<ChatPosition>.from((json['positions'] ?? [])
           .map((item) => ChatPosition.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      isMarkedAsUnread: json['is_marked_as_unread'],
-      isBlocked: json['is_blocked'],
-      hasScheduledMessages: json['has_scheduled_messages'],
-      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'],
-      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'],
-      canBeReported: json['can_be_reported'],
-      defaultDisableNotification: json['default_disable_notification'],
-      unreadCount: json['unread_count'],
-      lastReadInboxMessageId: json['last_read_inbox_message_id'],
-      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-      unreadMentionCount: json['unread_mention_count'],
+      isMarkedAsUnread: json['is_marked_as_unread'] ?? false,
+      isBlocked: json['is_blocked'] ?? false,
+      hasScheduledMessages: json['has_scheduled_messages'] ?? false,
+      canBeDeletedOnlyForSelf: json['can_be_deleted_only_for_self'] ?? false,
+      canBeDeletedForAllUsers: json['can_be_deleted_for_all_users'] ?? false,
+      canBeReported: json['can_be_reported'] ?? false,
+      defaultDisableNotification: json['default_disable_notification'] ?? false,
+      unreadCount: json['unread_count'] ?? 0,
+      lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+      unreadMentionCount: json['unread_mention_count'] ?? 0,
       notificationSettings: ChatNotificationSettings.fromJson(
           json['notification_settings'] ?? <String, dynamic>{}),
       actionBar:
           ChatActionBar.fromJson(json['action_bar'] ?? <String, dynamic>{}),
-      voiceChatGroupCallId: json['voice_chat_group_call_id'],
-      isVoiceChatEmpty: json['is_voice_chat_empty'],
-      replyMarkupMessageId: json['reply_markup_message_id'],
+      voiceChatGroupCallId: json['voice_chat_group_call_id'] ?? 0,
+      isVoiceChatEmpty: json['is_voice_chat_empty'] ?? false,
+      replyMarkupMessageId: json['reply_markup_message_id'] ?? 0,
       draftMessage:
           DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{}),
-      clientData: json['client_data'],
+      clientData: json['client_data'] ?? "",
       extra: json['@extra'],
     );
   }

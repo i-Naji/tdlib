@@ -13,7 +13,7 @@ class GetBackgrounds extends TdFunction {
   /// Parse from a json
   factory GetBackgrounds.fromJson(Map<String, dynamic> json) {
     return GetBackgrounds(
-      forDarkTheme: json['for_dark_theme'],
+      forDarkTheme: json['for_dark_theme'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -23,8 +23,8 @@ class EditMessageReplyMarkup extends TdFunction {
   /// Parse from a json
   factory EditMessageReplyMarkup.fromJson(Map<String, dynamic> json) {
     return EditMessageReplyMarkup(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       extra: json['@extra'],

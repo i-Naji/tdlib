@@ -29,8 +29,8 @@ class GetChats extends TdFunction {
     return GetChats(
       chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
       offsetOrder: int.tryParse(json['offset_order'] ?? "") ?? 0,
-      offsetChatId: json['offset_chat_id'],
-      limit: json['limit'],
+      offsetChatId: json['offset_chat_id'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

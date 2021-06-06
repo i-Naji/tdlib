@@ -16,8 +16,8 @@ class SendChatSetTtlMessage extends TdFunction {
   /// Parse from a json
   factory SendChatSetTtlMessage.fromJson(Map<String, dynamic> json) {
     return SendChatSetTtlMessage(
-      chatId: json['chat_id'],
-      ttl: json['ttl'],
+      chatId: json['chat_id'] ?? 0,
+      ttl: json['ttl'] ?? 0,
       extra: json['@extra'],
     );
   }

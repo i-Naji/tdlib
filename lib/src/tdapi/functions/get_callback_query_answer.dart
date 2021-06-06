@@ -23,8 +23,8 @@ class GetCallbackQueryAnswer extends TdFunction {
   /// Parse from a json
   factory GetCallbackQueryAnswer.fromJson(Map<String, dynamic> json) {
     return GetCallbackQueryAnswer(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       payload:
           CallbackQueryPayload.fromJson(json['payload'] ?? <String, dynamic>{}),
       extra: json['@extra'],

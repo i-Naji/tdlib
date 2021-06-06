@@ -23,7 +23,7 @@ class EditInlineMessageText extends TdFunction {
   /// Parse from a json
   factory EditInlineMessageText.fromJson(Map<String, dynamic> json) {
     return EditInlineMessageText(
-      inlineMessageId: json['inline_message_id'],
+      inlineMessageId: json['inline_message_id'] ?? "",
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(

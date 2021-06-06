@@ -49,8 +49,8 @@ class StatisticalGraphData extends StatisticalGraph {
   /// Parse from a json
   factory StatisticalGraphData.fromJson(Map<String, dynamic> json) {
     return StatisticalGraphData(
-      jsonData: json['json_data'],
-      zoomToken: json['zoom_token'],
+      jsonData: json['json_data'] ?? "",
+      zoomToken: json['zoom_token'] ?? "",
       extra: json['@extra'],
     );
   }
@@ -83,7 +83,7 @@ class StatisticalGraphAsync extends StatisticalGraph {
   /// Parse from a json
   factory StatisticalGraphAsync.fromJson(Map<String, dynamic> json) {
     return StatisticalGraphAsync(
-      token: json['token'],
+      token: json['token'] ?? "",
       extra: json['@extra'],
     );
   }
@@ -115,7 +115,7 @@ class StatisticalGraphError extends StatisticalGraph {
   /// Parse from a json
   factory StatisticalGraphError.fromJson(Map<String, dynamic> json) {
     return StatisticalGraphError(
-      errorMessage: json['error_message'],
+      errorMessage: json['error_message'] ?? "",
       extra: json['@extra'],
     );
   }

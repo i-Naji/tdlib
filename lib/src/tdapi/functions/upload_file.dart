@@ -25,7 +25,7 @@ class UploadFile extends TdFunction {
     return UploadFile(
       file: InputFile.fromJson(json['file'] ?? <String, dynamic>{}),
       fileType: FileType.fromJson(json['file_type'] ?? <String, dynamic>{}),
-      priority: json['priority'],
+      priority: json['priority'] ?? 0,
       extra: json['@extra'],
     );
   }

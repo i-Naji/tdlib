@@ -13,7 +13,7 @@ class SendEmailAddressVerificationCode extends TdFunction {
   /// Parse from a json
   factory SendEmailAddressVerificationCode.fromJson(Map<String, dynamic> json) {
     return SendEmailAddressVerificationCode(
-      emailAddress: json['email_address'],
+      emailAddress: json['email_address'] ?? "",
       extra: json['@extra'],
     );
   }

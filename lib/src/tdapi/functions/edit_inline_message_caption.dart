@@ -23,7 +23,7 @@ class EditInlineMessageCaption extends TdFunction {
   /// Parse from a json
   factory EditInlineMessageCaption.fromJson(Map<String, dynamic> json) {
     return EditInlineMessageCaption(
-      inlineMessageId: json['inline_message_id'],
+      inlineMessageId: json['inline_message_id'] ?? "",
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),

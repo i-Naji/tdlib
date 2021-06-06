@@ -27,9 +27,9 @@ class SendCallRating extends TdFunction {
   /// Parse from a json
   factory SendCallRating.fromJson(Map<String, dynamic> json) {
     return SendCallRating(
-      callId: json['call_id'],
-      rating: json['rating'],
-      comment: json['comment'],
+      callId: json['call_id'] ?? 0,
+      rating: json['rating'] ?? 0,
+      comment: json['comment'] ?? "",
       problems: List<CallProblem>.from((json['problems'] ?? [])
           .map((item) => CallProblem.fromJson(item ?? <String, dynamic>{}))
           .toList()),

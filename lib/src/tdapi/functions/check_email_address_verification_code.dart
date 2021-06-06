@@ -14,7 +14,7 @@ class CheckEmailAddressVerificationCode extends TdFunction {
   factory CheckEmailAddressVerificationCode.fromJson(
       Map<String, dynamic> json) {
     return CheckEmailAddressVerificationCode(
-      code: json['code'],
+      code: json['code'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -23,9 +23,9 @@ class GetGameHighScores extends TdFunction {
   /// Parse from a json
   factory GetGameHighScores.fromJson(Map<String, dynamic> json) {
     return GetGameHighScores(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      userId: json['user_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

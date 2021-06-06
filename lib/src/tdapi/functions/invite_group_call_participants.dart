@@ -17,9 +17,9 @@ class InviteGroupCallParticipants extends TdFunction {
   /// Parse from a json
   factory InviteGroupCallParticipants.fromJson(Map<String, dynamic> json) {
     return InviteGroupCallParticipants(
-      groupCallId: json['group_call_id'],
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      groupCallId: json['group_call_id'] ?? 0,
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

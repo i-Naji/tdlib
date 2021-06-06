@@ -39,14 +39,14 @@ class LocalFile extends TdObject {
   /// Parse from a json
   factory LocalFile.fromJson(Map<String, dynamic> json) {
     return LocalFile(
-      path: json['path'],
-      canBeDownloaded: json['can_be_downloaded'],
-      canBeDeleted: json['can_be_deleted'],
-      isDownloadingActive: json['is_downloading_active'],
-      isDownloadingCompleted: json['is_downloading_completed'],
-      downloadOffset: json['download_offset'],
-      downloadedPrefixSize: json['downloaded_prefix_size'],
-      downloadedSize: json['downloaded_size'],
+      path: json['path'] ?? "",
+      canBeDownloaded: json['can_be_downloaded'] ?? false,
+      canBeDeleted: json['can_be_deleted'] ?? false,
+      isDownloadingActive: json['is_downloading_active'] ?? false,
+      isDownloadingCompleted: json['is_downloading_completed'] ?? false,
+      downloadOffset: json['download_offset'] ?? 0,
+      downloadedPrefixSize: json['downloaded_prefix_size'] ?? 0,
+      downloadedSize: json['downloaded_size'] ?? 0,
     );
   }
 

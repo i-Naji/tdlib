@@ -17,7 +17,7 @@ class SetSupergroupStickerSet extends TdFunction {
   /// Parse from a json
   factory SetSupergroupStickerSet.fromJson(Map<String, dynamic> json) {
     return SetSupergroupStickerSet(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
       stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
       extra: json['@extra'],
     );

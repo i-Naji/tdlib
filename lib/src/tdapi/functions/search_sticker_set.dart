@@ -13,7 +13,7 @@ class SearchStickerSet extends TdFunction {
   /// Parse from a json
   factory SearchStickerSet.fromJson(Map<String, dynamic> json) {
     return SearchStickerSet(
-      name: json['name'],
+      name: json['name'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -82,9 +82,9 @@ class LogStreamFile extends LogStream {
   /// Parse from a json
   factory LogStreamFile.fromJson(Map<String, dynamic> json) {
     return LogStreamFile(
-      path: json['path'],
-      maxFileSize: json['max_file_size'],
-      redirectStderr: json['redirect_stderr'],
+      path: json['path'] ?? "",
+      maxFileSize: json['max_file_size'] ?? 0,
+      redirectStderr: json['redirect_stderr'] ?? false,
       extra: json['@extra'],
     );
   }

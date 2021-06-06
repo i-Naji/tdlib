@@ -35,14 +35,14 @@ class ForwardMessages extends TdFunction {
   /// Parse from a json
   factory ForwardMessages.fromJson(Map<String, dynamic> json) {
     return ForwardMessages(
-      chatId: json['chat_id'],
-      fromChatId: json['from_chat_id'],
+      chatId: json['chat_id'] ?? 0,
+      fromChatId: json['from_chat_id'] ?? 0,
       messageIds: List<int>.from(
-          (json['message_ids'] ?? []).map((item) => item).toList()),
+          (json['message_ids'] ?? []).map((item) => item ?? 0).toList()),
       options:
           MessageSendOptions.fromJson(json['options'] ?? <String, dynamic>{}),
-      sendCopy: json['send_copy'],
-      removeCaption: json['remove_caption'],
+      sendCopy: json['send_copy'] ?? false,
+      removeCaption: json['remove_caption'] ?? false,
       extra: json['@extra'],
     );
   }

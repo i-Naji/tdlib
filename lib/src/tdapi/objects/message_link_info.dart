@@ -31,11 +31,11 @@ class MessageLinkInfo extends TdObject {
   /// Parse from a json
   factory MessageLinkInfo.fromJson(Map<String, dynamic> json) {
     return MessageLinkInfo(
-      isPublic: json['is_public'],
-      chatId: json['chat_id'],
+      isPublic: json['is_public'] ?? false,
+      chatId: json['chat_id'] ?? 0,
       message: Message.fromJson(json['message'] ?? <String, dynamic>{}),
-      forAlbum: json['for_album'],
-      forComment: json['for_comment'],
+      forAlbum: json['for_album'] ?? false,
+      forComment: json['for_comment'] ?? false,
       extra: json['@extra'],
     );
   }

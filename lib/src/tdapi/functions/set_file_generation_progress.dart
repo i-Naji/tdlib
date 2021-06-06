@@ -24,8 +24,8 @@ class SetFileGenerationProgress extends TdFunction {
   factory SetFileGenerationProgress.fromJson(Map<String, dynamic> json) {
     return SetFileGenerationProgress(
       generationId: int.tryParse(json['generation_id'] ?? "") ?? 0,
-      expectedSize: json['expected_size'],
-      localPrefixSize: json['local_prefix_size'],
+      expectedSize: json['expected_size'] ?? 0,
+      localPrefixSize: json['local_prefix_size'] ?? 0,
       extra: json['@extra'],
     );
   }

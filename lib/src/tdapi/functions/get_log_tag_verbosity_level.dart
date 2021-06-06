@@ -13,7 +13,7 @@ class GetLogTagVerbosityLevel extends TdFunction {
   /// Parse from a json
   factory GetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json) {
     return GetLogTagVerbosityLevel(
-      tag: json['tag'],
+      tag: json['tag'] ?? "",
       extra: json['@extra'],
     );
   }

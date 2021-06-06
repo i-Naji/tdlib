@@ -36,9 +36,9 @@ class Background extends TdObject {
   factory Background.fromJson(Map<String, dynamic> json) {
     return Background(
       id: int.tryParse(json['id'] ?? "") ?? 0,
-      isDefault: json['is_default'],
-      isDark: json['is_dark'],
-      name: json['name'],
+      isDefault: json['is_default'] ?? false,
+      isDark: json['is_dark'] ?? false,
+      name: json['name'] ?? "",
       document: Document.fromJson(json['document'] ?? <String, dynamic>{}),
       type: BackgroundType.fromJson(json['type'] ?? <String, dynamic>{}),
       extra: json['@extra'],

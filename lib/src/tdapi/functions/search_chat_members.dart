@@ -27,9 +27,9 @@ class SearchChatMembers extends TdFunction {
   /// Parse from a json
   factory SearchChatMembers.fromJson(Map<String, dynamic> json) {
     return SearchChatMembers(
-      chatId: json['chat_id'],
-      query: json['query'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      query: json['query'] ?? "",
+      limit: json['limit'] ?? 0,
       filter: ChatMembersFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

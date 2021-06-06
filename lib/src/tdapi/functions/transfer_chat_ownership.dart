@@ -23,9 +23,9 @@ class TransferChatOwnership extends TdFunction {
   /// Parse from a json
   factory TransferChatOwnership.fromJson(Map<String, dynamic> json) {
     return TransferChatOwnership(
-      chatId: json['chat_id'],
-      userId: json['user_id'],
-      password: json['password'],
+      chatId: json['chat_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

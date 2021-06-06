@@ -23,8 +23,8 @@ class SetChatDraftMessage extends TdFunction {
   /// Parse from a json
   factory SetChatDraftMessage.fromJson(Map<String, dynamic> json) {
     return SetChatDraftMessage(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageThreadId: json['message_thread_id'] ?? 0,
       draftMessage:
           DraftMessage.fromJson(json['draft_message'] ?? <String, dynamic>{}),
       extra: json['@extra'],

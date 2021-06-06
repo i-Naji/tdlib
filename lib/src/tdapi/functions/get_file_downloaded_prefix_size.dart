@@ -17,8 +17,8 @@ class GetFileDownloadedPrefixSize extends TdFunction {
   /// Parse from a json
   factory GetFileDownloadedPrefixSize.fromJson(Map<String, dynamic> json) {
     return GetFileDownloadedPrefixSize(
-      fileId: json['file_id'],
-      offset: json['offset'],
+      fileId: json['file_id'] ?? 0,
+      offset: json['offset'] ?? 0,
       extra: json['@extra'],
     );
   }

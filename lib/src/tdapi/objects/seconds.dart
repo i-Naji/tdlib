@@ -13,7 +13,7 @@ class Seconds extends TdObject {
   /// Parse from a json
   factory Seconds.fromJson(Map<String, dynamic> json) {
     return Seconds(
-      seconds: json['seconds'],
+      seconds: json['seconds'] ?? 0,
       extra: json['@extra'],
     );
   }

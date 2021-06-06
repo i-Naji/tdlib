@@ -24,8 +24,8 @@ class ChangeStickerSet extends TdFunction {
   factory ChangeStickerSet.fromJson(Map<String, dynamic> json) {
     return ChangeStickerSet(
       setId: int.tryParse(json['set_id'] ?? "") ?? 0,
-      isInstalled: json['is_installed'],
-      isArchived: json['is_archived'],
+      isInstalled: json['is_installed'] ?? false,
+      isArchived: json['is_archived'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class ProcessPushNotification extends TdFunction {
   /// Parse from a json
   factory ProcessPushNotification.fromJson(Map<String, dynamic> json) {
     return ProcessPushNotification(
-      payload: json['payload'],
+      payload: json['payload'] ?? "",
       extra: json['@extra'],
     );
   }

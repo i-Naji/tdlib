@@ -17,8 +17,8 @@ class CreateTemporaryPassword extends TdFunction {
   /// Parse from a json
   factory CreateTemporaryPassword.fromJson(Map<String, dynamic> json) {
     return CreateTemporaryPassword(
-      password: json['password'],
-      validFor: json['valid_for'],
+      password: json['password'] ?? "",
+      validFor: json['valid_for'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -117,8 +117,8 @@ class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   /// Parse from a json
   factory KeyboardButtonTypeRequestPoll.fromJson(Map<String, dynamic> json) {
     return KeyboardButtonTypeRequestPoll(
-      forceRegular: json['force_regular'],
-      forceQuiz: json['force_quiz'],
+      forceRegular: json['force_regular'] ?? false,
+      forceQuiz: json['force_quiz'] ?? false,
     );
   }
 

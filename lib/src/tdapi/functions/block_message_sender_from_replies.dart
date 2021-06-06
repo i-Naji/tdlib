@@ -27,10 +27,10 @@ class BlockMessageSenderFromReplies extends TdFunction {
   /// Parse from a json
   factory BlockMessageSenderFromReplies.fromJson(Map<String, dynamic> json) {
     return BlockMessageSenderFromReplies(
-      messageId: json['message_id'],
-      deleteMessage: json['delete_message'],
-      deleteAllMessages: json['delete_all_messages'],
-      reportSpam: json['report_spam'],
+      messageId: json['message_id'] ?? 0,
+      deleteMessage: json['delete_message'] ?? false,
+      deleteAllMessages: json['delete_all_messages'] ?? false,
+      reportSpam: json['report_spam'] ?? false,
       extra: json['@extra'],
     );
   }

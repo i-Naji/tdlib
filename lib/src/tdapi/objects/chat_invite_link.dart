@@ -13,7 +13,7 @@ class ChatInviteLink extends TdObject {
   /// Parse from a json
   factory ChatInviteLink.fromJson(Map<String, dynamic> json) {
     return ChatInviteLink(
-      inviteLink: json['invite_link'],
+      inviteLink: json['invite_link'] ?? "",
       extra: json['@extra'],
     );
   }

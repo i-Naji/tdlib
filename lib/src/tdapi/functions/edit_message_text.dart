@@ -27,8 +27,8 @@ class EditMessageText extends TdFunction {
   /// Parse from a json
   factory EditMessageText.fromJson(Map<String, dynamic> json) {
     return EditMessageText(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(

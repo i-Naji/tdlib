@@ -13,7 +13,7 @@ class AcceptTermsOfService extends TdFunction {
   /// Parse from a json
   factory AcceptTermsOfService.fromJson(Map<String, dynamic> json) {
     return AcceptTermsOfService(
-      termsOfServiceId: json['terms_of_service_id'],
+      termsOfServiceId: json['terms_of_service_id'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -18,8 +18,8 @@ class TermsOfService extends TdObject {
   factory TermsOfService.fromJson(Map<String, dynamic> json) {
     return TermsOfService(
       text: FormattedText.fromJson(json['text'] ?? <String, dynamic>{}),
-      minUserAge: json['min_user_age'],
-      showPopup: json['show_popup'],
+      minUserAge: json['min_user_age'] ?? 0,
+      showPopup: json['show_popup'] ?? false,
     );
   }
 

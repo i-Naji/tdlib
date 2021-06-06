@@ -23,9 +23,9 @@ class SendBotStartMessage extends TdFunction {
   /// Parse from a json
   factory SendBotStartMessage.fromJson(Map<String, dynamic> json) {
     return SendBotStartMessage(
-      botUserId: json['bot_user_id'],
-      chatId: json['chat_id'],
-      parameter: json['parameter'],
+      botUserId: json['bot_user_id'] ?? 0,
+      chatId: json['chat_id'] ?? 0,
+      parameter: json['parameter'] ?? "",
       extra: json['@extra'],
     );
   }

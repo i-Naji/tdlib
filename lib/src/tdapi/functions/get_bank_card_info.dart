@@ -13,7 +13,7 @@ class GetBankCardInfo extends TdFunction {
   /// Parse from a json
   factory GetBankCardInfo.fromJson(Map<String, dynamic> json) {
     return GetBankCardInfo(
-      bankCardNumber: json['bank_card_number'],
+      bankCardNumber: json['bank_card_number'] ?? "",
       extra: json['@extra'],
     );
   }

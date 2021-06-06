@@ -28,7 +28,7 @@ class AnswerShippingQuery extends TdFunction {
               [])
           .map((item) => ShippingOption.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      errorMessage: json['error_message'],
+      errorMessage: json['error_message'] ?? "",
       extra: json['@extra'],
     );
   }

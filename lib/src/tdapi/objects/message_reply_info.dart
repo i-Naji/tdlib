@@ -27,13 +27,13 @@ class MessageReplyInfo extends TdObject {
   /// Parse from a json
   factory MessageReplyInfo.fromJson(Map<String, dynamic> json) {
     return MessageReplyInfo(
-      replyCount: json['reply_count'],
+      replyCount: json['reply_count'] ?? 0,
       recentRepliers: List<MessageSender>.from((json['recent_repliers'] ?? [])
           .map((item) => MessageSender.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      lastReadInboxMessageId: json['last_read_inbox_message_id'],
-      lastReadOutboxMessageId: json['last_read_outbox_message_id'],
-      lastMessageId: json['last_message_id'],
+      lastReadInboxMessageId: json['last_read_inbox_message_id'] ?? 0,
+      lastReadOutboxMessageId: json['last_read_outbox_message_id'] ?? 0,
+      lastMessageId: json['last_message_id'] ?? 0,
     );
   }
 

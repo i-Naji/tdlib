@@ -19,8 +19,8 @@ class RemoveNotificationGroup extends TdFunction {
   /// Parse from a json
   factory RemoveNotificationGroup.fromJson(Map<String, dynamic> json) {
     return RemoveNotificationGroup(
-      notificationGroupId: json['notification_group_id'],
-      maxNotificationId: json['max_notification_id'],
+      notificationGroupId: json['notification_group_id'] ?? 0,
+      maxNotificationId: json['max_notification_id'] ?? 0,
       extra: json['@extra'],
     );
   }

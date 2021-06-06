@@ -23,9 +23,9 @@ class ChatFilterInfo extends TdObject {
   /// Parse from a json
   factory ChatFilterInfo.fromJson(Map<String, dynamic> json) {
     return ChatFilterInfo(
-      id: json['id'],
-      title: json['title'],
-      iconName: json['icon_name'],
+      id: json['id'] ?? 0,
+      title: json['title'] ?? "",
+      iconName: json['icon_name'] ?? "",
       extra: json['@extra'],
     );
   }

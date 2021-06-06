@@ -27,8 +27,8 @@ class VideoNote extends TdObject {
   /// Parse from a json
   factory VideoNote.fromJson(Map<String, dynamic> json) {
     return VideoNote(
-      duration: json['duration'],
-      length: json['length'],
+      duration: json['duration'] ?? 0,
+      length: json['length'] ?? 0,
       minithumbnail:
           Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{}),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),

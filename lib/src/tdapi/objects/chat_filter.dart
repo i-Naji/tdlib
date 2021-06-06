@@ -63,22 +63,22 @@ class ChatFilter extends TdObject {
   /// Parse from a json
   factory ChatFilter.fromJson(Map<String, dynamic> json) {
     return ChatFilter(
-      title: json['title'],
-      iconName: json['icon_name'],
+      title: json['title'] ?? "",
+      iconName: json['icon_name'] ?? "",
       pinnedChatIds: List<int>.from(
-          (json['pinned_chat_ids'] ?? []).map((item) => item).toList()),
+          (json['pinned_chat_ids'] ?? []).map((item) => item ?? 0).toList()),
       includedChatIds: List<int>.from(
-          (json['included_chat_ids'] ?? []).map((item) => item).toList()),
+          (json['included_chat_ids'] ?? []).map((item) => item ?? 0).toList()),
       excludedChatIds: List<int>.from(
-          (json['excluded_chat_ids'] ?? []).map((item) => item).toList()),
-      excludeMuted: json['exclude_muted'],
-      excludeRead: json['exclude_read'],
-      excludeArchived: json['exclude_archived'],
-      includeContacts: json['include_contacts'],
-      includeNonContacts: json['include_non_contacts'],
-      includeBots: json['include_bots'],
-      includeGroups: json['include_groups'],
-      includeChannels: json['include_channels'],
+          (json['excluded_chat_ids'] ?? []).map((item) => item ?? 0).toList()),
+      excludeMuted: json['exclude_muted'] ?? false,
+      excludeRead: json['exclude_read'] ?? false,
+      excludeArchived: json['exclude_archived'] ?? false,
+      includeContacts: json['include_contacts'] ?? false,
+      includeNonContacts: json['include_non_contacts'] ?? false,
+      includeBots: json['include_bots'] ?? false,
+      includeGroups: json['include_groups'] ?? false,
+      includeChannels: json['include_channels'] ?? false,
       extra: json['@extra'],
     );
   }

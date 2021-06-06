@@ -13,7 +13,7 @@ class LeaveGroupCall extends TdFunction {
   /// Parse from a json
   factory LeaveGroupCall.fromJson(Map<String, dynamic> json) {
     return LeaveGroupCall(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
       extra: json['@extra'],
     );
   }

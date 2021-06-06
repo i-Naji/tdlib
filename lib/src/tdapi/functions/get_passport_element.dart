@@ -17,7 +17,7 @@ class GetPassportElement extends TdFunction {
   factory GetPassportElement.fromJson(Map<String, dynamic> json) {
     return GetPassportElement(
       type: PassportElementType.fromJson(json['type'] ?? <String, dynamic>{}),
-      password: json['password'],
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class CallId extends TdObject {
   /// Parse from a json
   factory CallId.fromJson(Map<String, dynamic> json) {
     return CallId(
-      id: json['id'],
+      id: json['id'] ?? 0,
       extra: json['@extra'],
     );
   }

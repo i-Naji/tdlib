@@ -73,7 +73,7 @@ class UserStatusOnline extends UserStatus {
   /// Parse from a json
   factory UserStatusOnline.fromJson(Map<String, dynamic> json) {
     return UserStatusOnline(
-      expires: json['expires'],
+      expires: json['expires'] ?? 0,
     );
   }
 
@@ -101,7 +101,7 @@ class UserStatusOffline extends UserStatus {
   /// Parse from a json
   factory UserStatusOffline.fromJson(Map<String, dynamic> json) {
     return UserStatusOffline(
-      wasOnline: json['was_online'],
+      wasOnline: json['was_online'] ?? 0,
     );
   }
 

@@ -36,11 +36,11 @@ class GetMapThumbnailFile extends TdFunction {
   factory GetMapThumbnailFile.fromJson(Map<String, dynamic> json) {
     return GetMapThumbnailFile(
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      zoom: json['zoom'],
-      width: json['width'],
-      height: json['height'],
-      scale: json['scale'],
-      chatId: json['chat_id'],
+      zoom: json['zoom'] ?? 0,
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
+      scale: json['scale'] ?? 0,
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class SetBio extends TdFunction {
   /// Parse from a json
   factory SetBio.fromJson(Map<String, dynamic> json) {
     return SetBio(
-      bio: json['bio'],
+      bio: json['bio'] ?? "",
       extra: json['@extra'],
     );
   }

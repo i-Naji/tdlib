@@ -23,10 +23,10 @@ class ReportSupergroupSpam extends TdFunction {
   /// Parse from a json
   factory ReportSupergroupSpam.fromJson(Map<String, dynamic> json) {
     return ReportSupergroupSpam(
-      supergroupId: json['supergroup_id'],
-      userId: json['user_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       messageIds: List<int>.from(
-          (json['message_ids'] ?? []).map((item) => item).toList()),
+          (json['message_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

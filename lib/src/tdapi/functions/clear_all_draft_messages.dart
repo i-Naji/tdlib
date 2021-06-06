@@ -13,7 +13,7 @@ class ClearAllDraftMessages extends TdFunction {
   /// Parse from a json
   factory ClearAllDraftMessages.fromJson(Map<String, dynamic> json) {
     return ClearAllDraftMessages(
-      excludeSecretChats: json['exclude_secret_chats'],
+      excludeSecretChats: json['exclude_secret_chats'] ?? false,
       extra: json['@extra'],
     );
   }

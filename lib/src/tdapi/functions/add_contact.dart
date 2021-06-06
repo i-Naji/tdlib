@@ -18,7 +18,7 @@ class AddContact extends TdFunction {
   factory AddContact.fromJson(Map<String, dynamic> json) {
     return AddContact(
       contact: Contact.fromJson(json['contact'] ?? <String, dynamic>{}),
-      sharePhoneNumber: json['share_phone_number'],
+      sharePhoneNumber: json['share_phone_number'] ?? false,
       extra: json['@extra'],
     );
   }

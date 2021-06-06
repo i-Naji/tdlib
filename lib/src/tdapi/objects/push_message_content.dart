@@ -111,7 +111,7 @@ class PushMessageContentHidden extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentHidden.fromJson(Map<String, dynamic> json) {
     return PushMessageContentHidden(
-      isPinned: json['is_pinned'],
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -147,8 +147,8 @@ class PushMessageContentAnimation extends PushMessageContent {
   factory PushMessageContentAnimation.fromJson(Map<String, dynamic> json) {
     return PushMessageContentAnimation(
       animation: Animation.fromJson(json['animation'] ?? <String, dynamic>{}),
-      caption: json['caption'],
-      isPinned: json['is_pinned'],
+      caption: json['caption'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -182,7 +182,7 @@ class PushMessageContentAudio extends PushMessageContent {
   factory PushMessageContentAudio.fromJson(Map<String, dynamic> json) {
     return PushMessageContentAudio(
       audio: Audio.fromJson(json['audio'] ?? <String, dynamic>{}),
-      isPinned: json['is_pinned'],
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -214,8 +214,8 @@ class PushMessageContentContact extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentContact.fromJson(Map<String, dynamic> json) {
     return PushMessageContentContact(
-      name: json['name'],
-      isPinned: json['is_pinned'],
+      name: json['name'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -271,7 +271,7 @@ class PushMessageContentDocument extends PushMessageContent {
   factory PushMessageContentDocument.fromJson(Map<String, dynamic> json) {
     return PushMessageContentDocument(
       document: Document.fromJson(json['document'] ?? <String, dynamic>{}),
-      isPinned: json['is_pinned'],
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -303,8 +303,8 @@ class PushMessageContentGame extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentGame.fromJson(Map<String, dynamic> json) {
     return PushMessageContentGame(
-      title: json['title'],
-      isPinned: json['is_pinned'],
+      title: json['title'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -340,9 +340,9 @@ class PushMessageContentGameScore extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentGameScore.fromJson(Map<String, dynamic> json) {
     return PushMessageContentGameScore(
-      title: json['title'],
-      score: json['score'],
-      isPinned: json['is_pinned'],
+      title: json['title'] ?? "",
+      score: json['score'] ?? 0,
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -375,8 +375,8 @@ class PushMessageContentInvoice extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentInvoice.fromJson(Map<String, dynamic> json) {
     return PushMessageContentInvoice(
-      price: json['price'],
-      isPinned: json['is_pinned'],
+      price: json['price'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -408,8 +408,8 @@ class PushMessageContentLocation extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentLocation.fromJson(Map<String, dynamic> json) {
     return PushMessageContentLocation(
-      isLive: json['is_live'],
-      isPinned: json['is_pinned'],
+      isLive: json['is_live'] ?? false,
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -452,9 +452,9 @@ class PushMessageContentPhoto extends PushMessageContent {
   factory PushMessageContentPhoto.fromJson(Map<String, dynamic> json) {
     return PushMessageContentPhoto(
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      caption: json['caption'],
-      isSecret: json['is_secret'],
-      isPinned: json['is_pinned'],
+      caption: json['caption'] ?? "",
+      isSecret: json['is_secret'] ?? false,
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -494,9 +494,9 @@ class PushMessageContentPoll extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentPoll.fromJson(Map<String, dynamic> json) {
     return PushMessageContentPoll(
-      question: json['question'],
-      isRegular: json['is_regular'],
-      isPinned: json['is_pinned'],
+      question: json['question'] ?? "",
+      isRegular: json['is_regular'] ?? false,
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -557,8 +557,8 @@ class PushMessageContentSticker extends PushMessageContent {
   factory PushMessageContentSticker.fromJson(Map<String, dynamic> json) {
     return PushMessageContentSticker(
       sticker: Sticker.fromJson(json['sticker'] ?? <String, dynamic>{}),
-      emoji: json['emoji'],
-      isPinned: json['is_pinned'],
+      emoji: json['emoji'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -591,8 +591,8 @@ class PushMessageContentText extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentText.fromJson(Map<String, dynamic> json) {
     return PushMessageContentText(
-      text: json['text'],
-      isPinned: json['is_pinned'],
+      text: json['text'] ?? "",
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -635,9 +635,9 @@ class PushMessageContentVideo extends PushMessageContent {
   factory PushMessageContentVideo.fromJson(Map<String, dynamic> json) {
     return PushMessageContentVideo(
       video: Video.fromJson(json['video'] ?? <String, dynamic>{}),
-      caption: json['caption'],
-      isSecret: json['is_secret'],
-      isPinned: json['is_pinned'],
+      caption: json['caption'] ?? "",
+      isSecret: json['is_secret'] ?? false,
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -672,7 +672,7 @@ class PushMessageContentVideoNote extends PushMessageContent {
   factory PushMessageContentVideoNote.fromJson(Map<String, dynamic> json) {
     return PushMessageContentVideoNote(
       videoNote: VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{}),
-      isPinned: json['is_pinned'],
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -705,7 +705,7 @@ class PushMessageContentVoiceNote extends PushMessageContent {
   factory PushMessageContentVoiceNote.fromJson(Map<String, dynamic> json) {
     return PushMessageContentVoiceNote(
       voiceNote: VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{}),
-      isPinned: json['is_pinned'],
+      isPinned: json['is_pinned'] ?? false,
     );
   }
 
@@ -766,9 +766,9 @@ class PushMessageContentChatAddMembers extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentChatAddMembers.fromJson(Map<String, dynamic> json) {
     return PushMessageContentChatAddMembers(
-      memberName: json['member_name'],
-      isCurrentUser: json['is_current_user'],
-      isReturned: json['is_returned'],
+      memberName: json['member_name'] ?? "",
+      isCurrentUser: json['is_current_user'] ?? false,
+      isReturned: json['is_returned'] ?? false,
     );
   }
 
@@ -822,7 +822,7 @@ class PushMessageContentChatChangeTitle extends PushMessageContent {
   factory PushMessageContentChatChangeTitle.fromJson(
       Map<String, dynamic> json) {
     return PushMessageContentChatChangeTitle(
-      title: json['title'],
+      title: json['title'] ?? "",
     );
   }
 
@@ -860,9 +860,9 @@ class PushMessageContentChatDeleteMember extends PushMessageContent {
   factory PushMessageContentChatDeleteMember.fromJson(
       Map<String, dynamic> json) {
     return PushMessageContentChatDeleteMember(
-      memberName: json['member_name'],
-      isCurrentUser: json['is_current_user'],
-      isLeft: json['is_left'],
+      memberName: json['member_name'] ?? "",
+      isCurrentUser: json['is_current_user'] ?? false,
+      isLeft: json['is_left'] ?? false,
     );
   }
 
@@ -915,7 +915,7 @@ class PushMessageContentMessageForwards extends PushMessageContent {
   factory PushMessageContentMessageForwards.fromJson(
       Map<String, dynamic> json) {
     return PushMessageContentMessageForwards(
-      totalCount: json['total_count'],
+      totalCount: json['total_count'] ?? 0,
     );
   }
 
@@ -960,11 +960,11 @@ class PushMessageContentMediaAlbum extends PushMessageContent {
   /// Parse from a json
   factory PushMessageContentMediaAlbum.fromJson(Map<String, dynamic> json) {
     return PushMessageContentMediaAlbum(
-      totalCount: json['total_count'],
-      hasPhotos: json['has_photos'],
-      hasVideos: json['has_videos'],
-      hasAudios: json['has_audios'],
-      hasDocuments: json['has_documents'],
+      totalCount: json['total_count'] ?? 0,
+      hasPhotos: json['has_photos'] ?? false,
+      hasVideos: json['has_videos'] ?? false,
+      hasAudios: json['has_audios'] ?? false,
+      hasDocuments: json['has_documents'] ?? false,
     );
   }
 

@@ -31,11 +31,11 @@ class TestProxy extends TdFunction {
   /// Parse from a json
   factory TestProxy.fromJson(Map<String, dynamic> json) {
     return TestProxy(
-      server: json['server'],
-      port: json['port'],
+      server: json['server'] ?? "",
+      port: json['port'] ?? 0,
       type: ProxyType.fromJson(json['type'] ?? <String, dynamic>{}),
-      dcId: json['dc_id'],
-      timeout: json['timeout'],
+      dcId: json['dc_id'] ?? 0,
+      timeout: json['timeout'] ?? 0,
       extra: json['@extra'],
     );
   }

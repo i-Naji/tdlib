@@ -106,11 +106,11 @@ class UserTypeBot extends UserType {
   /// Parse from a json
   factory UserTypeBot.fromJson(Map<String, dynamic> json) {
     return UserTypeBot(
-      canJoinGroups: json['can_join_groups'],
-      canReadAllGroupMessages: json['can_read_all_group_messages'],
-      isInline: json['is_inline'],
-      inlineQueryPlaceholder: json['inline_query_placeholder'],
-      needLocation: json['need_location'],
+      canJoinGroups: json['can_join_groups'] ?? false,
+      canReadAllGroupMessages: json['can_read_all_group_messages'] ?? false,
+      isInline: json['is_inline'] ?? false,
+      inlineQueryPlaceholder: json['inline_query_placeholder'] ?? "",
+      needLocation: json['need_location'] ?? false,
     );
   }
 

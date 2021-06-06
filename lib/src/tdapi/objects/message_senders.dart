@@ -16,7 +16,7 @@ class MessageSenders extends TdObject {
   /// Parse from a json
   factory MessageSenders.fromJson(Map<String, dynamic> json) {
     return MessageSenders(
-      totalCount: json['total_count'],
+      totalCount: json['total_count'] ?? 0,
       senders: List<MessageSender>.from((json['senders'] ?? [])
           .map((item) => MessageSender.fromJson(item ?? <String, dynamic>{}))
           .toList()),

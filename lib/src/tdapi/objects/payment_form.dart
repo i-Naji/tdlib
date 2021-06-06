@@ -40,15 +40,15 @@ class PaymentForm extends TdObject {
   factory PaymentForm.fromJson(Map<String, dynamic> json) {
     return PaymentForm(
       invoice: Invoice.fromJson(json['invoice'] ?? <String, dynamic>{}),
-      url: json['url'],
+      url: json['url'] ?? "",
       paymentsProvider: PaymentsProviderStripe.fromJson(
           json['payments_provider'] ?? <String, dynamic>{}),
       savedOrderInfo:
           OrderInfo.fromJson(json['saved_order_info'] ?? <String, dynamic>{}),
       savedCredentials: SavedCredentials.fromJson(
           json['saved_credentials'] ?? <String, dynamic>{}),
-      canSaveCredentials: json['can_save_credentials'],
-      needPassword: json['need_password'],
+      canSaveCredentials: json['can_save_credentials'] ?? false,
+      needPassword: json['need_password'] ?? false,
       extra: json['@extra'],
     );
   }

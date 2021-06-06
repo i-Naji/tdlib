@@ -27,9 +27,9 @@ class CreateNewSupergroupChat extends TdFunction {
   /// Parse from a json
   factory CreateNewSupergroupChat.fromJson(Map<String, dynamic> json) {
     return CreateNewSupergroupChat(
-      title: json['title'],
-      isChannel: json['is_channel'],
-      description: json['description'],
+      title: json['title'] ?? "",
+      isChannel: json['is_channel'] ?? false,
+      description: json['description'] ?? "",
       location: ChatLocation.fromJson(json['location'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

@@ -24,8 +24,8 @@ class WriteGeneratedFilePart extends TdFunction {
   factory WriteGeneratedFilePart.fromJson(Map<String, dynamic> json) {
     return WriteGeneratedFilePart(
       generationId: int.tryParse(json['generation_id'] ?? "") ?? 0,
-      offset: json['offset'],
-      data: json['data'],
+      offset: json['offset'] ?? 0,
+      data: json['data'] ?? "",
       extra: json['@extra'],
     );
   }

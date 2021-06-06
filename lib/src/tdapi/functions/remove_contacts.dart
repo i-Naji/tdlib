@@ -13,8 +13,8 @@ class RemoveContacts extends TdFunction {
   /// Parse from a json
   factory RemoveContacts.fromJson(Map<String, dynamic> json) {
     return RemoveContacts(
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

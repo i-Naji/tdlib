@@ -17,8 +17,8 @@ class SetChatSlowModeDelay extends TdFunction {
   /// Parse from a json
   factory SetChatSlowModeDelay.fromJson(Map<String, dynamic> json) {
     return SetChatSlowModeDelay(
-      chatId: json['chat_id'],
-      slowModeDelay: json['slow_mode_delay'],
+      chatId: json['chat_id'] ?? 0,
+      slowModeDelay: json['slow_mode_delay'] ?? 0,
       extra: json['@extra'],
     );
   }

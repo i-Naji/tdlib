@@ -13,7 +13,7 @@ class GetRecentStickers extends TdFunction {
   /// Parse from a json
   factory GetRecentStickers.fromJson(Map<String, dynamic> json) {
     return GetRecentStickers(
-      isAttached: json['is_attached'],
+      isAttached: json['is_attached'] ?? false,
       extra: json['@extra'],
     );
   }

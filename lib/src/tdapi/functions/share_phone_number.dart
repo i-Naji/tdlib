@@ -13,7 +13,7 @@ class SharePhoneNumber extends TdFunction {
   /// Parse from a json
   factory SharePhoneNumber.fromJson(Map<String, dynamic> json) {
     return SharePhoneNumber(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

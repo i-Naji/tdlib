@@ -13,8 +13,8 @@ class DateRange extends TdObject {
   /// Parse from a json
   factory DateRange.fromJson(Map<String, dynamic> json) {
     return DateRange(
-      startDate: json['start_date'],
-      endDate: json['end_date'],
+      startDate: json['start_date'] ?? 0,
+      endDate: json['end_date'] ?? 0,
     );
   }
 

@@ -62,7 +62,7 @@ class InputPassportElementErrorSourceUnspecified
   factory InputPassportElementErrorSourceUnspecified.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceUnspecified(
-      elementHash: json['element_hash'],
+      elementHash: json['element_hash'] ?? "",
     );
   }
 
@@ -96,8 +96,8 @@ class InputPassportElementErrorSourceDataField
   factory InputPassportElementErrorSourceDataField.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceDataField(
-      fieldName: json['field_name'],
-      dataHash: json['data_hash'],
+      fieldName: json['field_name'] ?? "",
+      dataHash: json['data_hash'] ?? "",
     );
   }
 
@@ -128,7 +128,7 @@ class InputPassportElementErrorSourceFrontSide
   factory InputPassportElementErrorSourceFrontSide.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceFrontSide(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] ?? "",
     );
   }
 
@@ -158,7 +158,7 @@ class InputPassportElementErrorSourceReverseSide
   factory InputPassportElementErrorSourceReverseSide.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceReverseSide(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] ?? "",
     );
   }
 
@@ -188,7 +188,7 @@ class InputPassportElementErrorSourceSelfie
   factory InputPassportElementErrorSourceSelfie.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceSelfie(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] ?? "",
     );
   }
 
@@ -218,7 +218,7 @@ class InputPassportElementErrorSourceTranslationFile
   factory InputPassportElementErrorSourceTranslationFile.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceTranslationFile(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] ?? "",
     );
   }
 
@@ -249,7 +249,7 @@ class InputPassportElementErrorSourceTranslationFiles
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceTranslationFiles(
       fileHashes: List<String>.from(
-          (json['file_hashes'] ?? []).map((item) => item).toList()),
+          (json['file_hashes'] ?? []).map((item) => item ?? "").toList()),
     );
   }
 
@@ -279,7 +279,7 @@ class InputPassportElementErrorSourceFile
   factory InputPassportElementErrorSourceFile.fromJson(
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceFile(
-      fileHash: json['file_hash'],
+      fileHash: json['file_hash'] ?? "",
     );
   }
 
@@ -310,7 +310,7 @@ class InputPassportElementErrorSourceFiles
       Map<String, dynamic> json) {
     return InputPassportElementErrorSourceFiles(
       fileHashes: List<String>.from(
-          (json['file_hashes'] ?? []).map((item) => item).toList()),
+          (json['file_hashes'] ?? []).map((item) => item ?? "").toList()),
     );
   }
 

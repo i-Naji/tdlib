@@ -27,12 +27,12 @@ class CountryInfo extends TdObject {
   /// Parse from a json
   factory CountryInfo.fromJson(Map<String, dynamic> json) {
     return CountryInfo(
-      countryCode: json['country_code'],
-      name: json['name'],
-      englishName: json['english_name'],
-      isHidden: json['is_hidden'],
+      countryCode: json['country_code'] ?? "",
+      name: json['name'] ?? "",
+      englishName: json['english_name'] ?? "",
+      isHidden: json['is_hidden'] ?? false,
       callingCodes: List<String>.from(
-          (json['calling_codes'] ?? []).map((item) => item).toList()),
+          (json['calling_codes'] ?? []).map((item) => item ?? "").toList()),
     );
   }
 

@@ -75,23 +75,23 @@ class User extends TdObject {
   /// Parse from a json
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      id: json['id'],
-      firstName: json['first_name'],
-      lastName: json['last_name'],
-      username: json['username'],
-      phoneNumber: json['phone_number'],
+      id: json['id'] ?? 0,
+      firstName: json['first_name'] ?? "",
+      lastName: json['last_name'] ?? "",
+      username: json['username'] ?? "",
+      phoneNumber: json['phone_number'] ?? "",
       status: UserStatus.fromJson(json['status'] ?? <String, dynamic>{}),
       profilePhoto:
           ProfilePhoto.fromJson(json['profile_photo'] ?? <String, dynamic>{}),
-      isContact: json['is_contact'],
-      isMutualContact: json['is_mutual_contact'],
-      isVerified: json['is_verified'],
-      isSupport: json['is_support'],
-      restrictionReason: json['restriction_reason'],
-      isScam: json['is_scam'],
-      haveAccess: json['have_access'],
+      isContact: json['is_contact'] ?? false,
+      isMutualContact: json['is_mutual_contact'] ?? false,
+      isVerified: json['is_verified'] ?? false,
+      isSupport: json['is_support'] ?? false,
+      restrictionReason: json['restriction_reason'] ?? "",
+      isScam: json['is_scam'] ?? false,
+      haveAccess: json['have_access'] ?? false,
       type: UserType.fromJson(json['type'] ?? <String, dynamic>{}),
-      languageCode: json['language_code'],
+      languageCode: json['language_code'] ?? "",
       extra: json['@extra'],
     );
   }

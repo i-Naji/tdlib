@@ -60,9 +60,9 @@ class ChatMemberStatusCreator extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusCreator.fromJson(Map<String, dynamic> json) {
     return ChatMemberStatusCreator(
-      customTitle: json['custom_title'],
-      isAnonymous: json['is_anonymous'],
-      isMember: json['is_member'],
+      customTitle: json['custom_title'] ?? "",
+      isAnonymous: json['is_anonymous'] ?? false,
+      isMember: json['is_member'] ?? false,
     );
   }
 
@@ -137,18 +137,18 @@ class ChatMemberStatusAdministrator extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json) {
     return ChatMemberStatusAdministrator(
-      customTitle: json['custom_title'],
-      canBeEdited: json['can_be_edited'],
-      canChangeInfo: json['can_change_info'],
-      canPostMessages: json['can_post_messages'],
-      canEditMessages: json['can_edit_messages'],
-      canDeleteMessages: json['can_delete_messages'],
-      canInviteUsers: json['can_invite_users'],
-      canRestrictMembers: json['can_restrict_members'],
-      canPinMessages: json['can_pin_messages'],
-      canPromoteMembers: json['can_promote_members'],
-      canManageVoiceChats: json['can_manage_voice_chats'],
-      isAnonymous: json['is_anonymous'],
+      customTitle: json['custom_title'] ?? "",
+      canBeEdited: json['can_be_edited'] ?? false,
+      canChangeInfo: json['can_change_info'] ?? false,
+      canPostMessages: json['can_post_messages'] ?? false,
+      canEditMessages: json['can_edit_messages'] ?? false,
+      canDeleteMessages: json['can_delete_messages'] ?? false,
+      canInviteUsers: json['can_invite_users'] ?? false,
+      canRestrictMembers: json['can_restrict_members'] ?? false,
+      canPinMessages: json['can_pin_messages'] ?? false,
+      canPromoteMembers: json['can_promote_members'] ?? false,
+      canManageVoiceChats: json['can_manage_voice_chats'] ?? false,
+      isAnonymous: json['is_anonymous'] ?? false,
     );
   }
 
@@ -218,8 +218,8 @@ class ChatMemberStatusRestricted extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json) {
     return ChatMemberStatusRestricted(
-      isMember: json['is_member'],
-      restrictedUntilDate: json['restricted_until_date'],
+      isMember: json['is_member'] ?? false,
+      restrictedUntilDate: json['restricted_until_date'] ?? 0,
       permissions:
           ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{}),
     );
@@ -273,7 +273,7 @@ class ChatMemberStatusBanned extends ChatMemberStatus {
   /// Parse from a json
   factory ChatMemberStatusBanned.fromJson(Map<String, dynamic> json) {
     return ChatMemberStatusBanned(
-      bannedUntilDate: json['banned_until_date'],
+      bannedUntilDate: json['banned_until_date'] ?? 0,
     );
   }
 

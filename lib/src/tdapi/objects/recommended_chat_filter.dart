@@ -14,7 +14,7 @@ class RecommendedChatFilter extends TdObject {
   factory RecommendedChatFilter.fromJson(Map<String, dynamic> json) {
     return RecommendedChatFilter(
       filter: ChatFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
-      description: json['description'],
+      description: json['description'] ?? "",
     );
   }
 

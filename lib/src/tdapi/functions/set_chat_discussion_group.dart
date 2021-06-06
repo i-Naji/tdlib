@@ -17,8 +17,8 @@ class SetChatDiscussionGroup extends TdFunction {
   /// Parse from a json
   factory SetChatDiscussionGroup.fromJson(Map<String, dynamic> json) {
     return SetChatDiscussionGroup(
-      chatId: json['chat_id'],
-      discussionChatId: json['discussion_chat_id'],
+      chatId: json['chat_id'] ?? 0,
+      discussionChatId: json['discussion_chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

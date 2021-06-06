@@ -20,8 +20,8 @@ class ToggleSupergroupIsAllHistoryAvailable extends TdFunction {
   factory ToggleSupergroupIsAllHistoryAvailable.fromJson(
       Map<String, dynamic> json) {
     return ToggleSupergroupIsAllHistoryAvailable(
-      supergroupId: json['supergroup_id'],
-      isAllHistoryAvailable: json['is_all_history_available'],
+      supergroupId: json['supergroup_id'] ?? 0,
+      isAllHistoryAvailable: json['is_all_history_available'] ?? false,
       extra: json['@extra'],
     );
   }

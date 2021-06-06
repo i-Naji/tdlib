@@ -27,10 +27,10 @@ class Call extends TdObject {
   /// Parse from a json
   factory Call.fromJson(Map<String, dynamic> json) {
     return Call(
-      id: json['id'],
-      userId: json['user_id'],
-      isOutgoing: json['is_outgoing'],
-      isVideo: json['is_video'],
+      id: json['id'] ?? 0,
+      userId: json['user_id'] ?? 0,
+      isOutgoing: json['is_outgoing'] ?? false,
+      isVideo: json['is_video'] ?? false,
       state: CallState.fromJson(json['state'] ?? <String, dynamic>{}),
     );
   }

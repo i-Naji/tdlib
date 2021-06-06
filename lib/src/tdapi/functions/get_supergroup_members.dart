@@ -27,11 +27,11 @@ class GetSupergroupMembers extends TdFunction {
   /// Parse from a json
   factory GetSupergroupMembers.fromJson(Map<String, dynamic> json) {
     return GetSupergroupMembers(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
       filter: SupergroupMembersFilter.fromJson(
           json['filter'] ?? <String, dynamic>{}),
-      offset: json['offset'],
-      limit: json['limit'],
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

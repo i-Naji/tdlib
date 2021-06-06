@@ -35,14 +35,14 @@ class GetChatEventLog extends TdFunction {
   /// Parse from a json
   factory GetChatEventLog.fromJson(Map<String, dynamic> json) {
     return GetChatEventLog(
-      chatId: json['chat_id'],
-      query: json['query'],
+      chatId: json['chat_id'] ?? 0,
+      query: json['query'] ?? "",
       fromEventId: int.tryParse(json['from_event_id'] ?? "") ?? 0,
-      limit: json['limit'],
+      limit: json['limit'] ?? 0,
       filters:
           ChatEventLogFilters.fromJson(json['filters'] ?? <String, dynamic>{}),
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

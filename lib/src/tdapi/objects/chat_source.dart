@@ -65,8 +65,8 @@ class ChatSourcePublicServiceAnnouncement extends ChatSource {
   factory ChatSourcePublicServiceAnnouncement.fromJson(
       Map<String, dynamic> json) {
     return ChatSourcePublicServiceAnnouncement(
-      type: json['type'],
-      text: json['text'],
+      type: json['type'] ?? "",
+      text: json['text'] ?? "",
     );
   }
 

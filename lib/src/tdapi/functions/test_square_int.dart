@@ -13,7 +13,7 @@ class TestSquareInt extends TdFunction {
   /// Parse from a json
   factory TestSquareInt.fromJson(Map<String, dynamic> json) {
     return TestSquareInt(
-      x: json['x'],
+      x: json['x'] ?? 0,
       extra: json['@extra'],
     );
   }

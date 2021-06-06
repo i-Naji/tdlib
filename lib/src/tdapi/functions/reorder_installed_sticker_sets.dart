@@ -17,9 +17,9 @@ class ReorderInstalledStickerSets extends TdFunction {
   /// Parse from a json
   factory ReorderInstalledStickerSets.fromJson(Map<String, dynamic> json) {
     return ReorderInstalledStickerSets(
-      isMasks: json['is_masks'],
+      isMasks: json['is_masks'] ?? false,
       stickerSetIds: List<int>.from(
-          (json['sticker_set_ids'] ?? []).map((item) => item).toList()),
+          (json['sticker_set_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

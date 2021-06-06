@@ -13,7 +13,7 @@ class GetEmojiSuggestionsUrl extends TdFunction {
   /// Parse from a json
   factory GetEmojiSuggestionsUrl.fromJson(Map<String, dynamic> json) {
     return GetEmojiSuggestionsUrl(
-      languageCode: json['language_code'],
+      languageCode: json['language_code'] ?? "",
       extra: json['@extra'],
     );
   }

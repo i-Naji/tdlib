@@ -13,7 +13,7 @@ class LeaveChat extends TdFunction {
   /// Parse from a json
   factory LeaveChat.fromJson(Map<String, dynamic> json) {
     return LeaveChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

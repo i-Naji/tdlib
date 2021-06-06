@@ -13,7 +13,7 @@ class GroupCallId extends TdObject {
   /// Parse from a json
   factory GroupCallId.fromJson(Map<String, dynamic> json) {
     return GroupCallId(
-      id: json['id'],
+      id: json['id'] ?? 0,
       extra: json['@extra'],
     );
   }

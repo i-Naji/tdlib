@@ -24,9 +24,9 @@ class SetGroupCallParticipantIsSpeaking extends TdFunction {
   factory SetGroupCallParticipantIsSpeaking.fromJson(
       Map<String, dynamic> json) {
     return SetGroupCallParticipantIsSpeaking(
-      groupCallId: json['group_call_id'],
-      source: json['source'],
-      isSpeaking: json['is_speaking'],
+      groupCallId: json['group_call_id'] ?? 0,
+      source: json['source'] ?? 0,
+      isSpeaking: json['is_speaking'] ?? false,
       extra: json['@extra'],
     );
   }

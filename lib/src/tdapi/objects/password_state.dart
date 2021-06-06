@@ -31,10 +31,10 @@ class PasswordState extends TdObject {
   /// Parse from a json
   factory PasswordState.fromJson(Map<String, dynamic> json) {
     return PasswordState(
-      hasPassword: json['has_password'],
-      passwordHint: json['password_hint'],
-      hasRecoveryEmailAddress: json['has_recovery_email_address'],
-      hasPassportData: json['has_passport_data'],
+      hasPassword: json['has_password'] ?? false,
+      passwordHint: json['password_hint'] ?? "",
+      hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
+      hasPassportData: json['has_passport_data'] ?? false,
       recoveryEmailAddressCodeInfo: EmailAddressAuthenticationCodeInfo.fromJson(
           json['recovery_email_address_code_info'] ?? <String, dynamic>{}),
       extra: json['@extra'],

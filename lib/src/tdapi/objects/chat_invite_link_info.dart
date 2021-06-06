@@ -43,15 +43,15 @@ class ChatInviteLinkInfo extends TdObject {
   /// Parse from a json
   factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) {
     return ChatInviteLinkInfo(
-      chatId: json['chat_id'],
-      accessibleFor: json['accessible_for'],
+      chatId: json['chat_id'] ?? 0,
+      accessibleFor: json['accessible_for'] ?? 0,
       type: ChatType.fromJson(json['type'] ?? <String, dynamic>{}),
-      title: json['title'],
+      title: json['title'] ?? "",
       photo: ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      memberCount: json['member_count'],
+      memberCount: json['member_count'] ?? 0,
       memberUserIds: List<int>.from(
-          (json['member_user_ids'] ?? []).map((item) => item).toList()),
-      isPublic: json['is_public'],
+          (json['member_user_ids'] ?? []).map((item) => item ?? 0).toList()),
+      isPublic: json['is_public'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -16,8 +16,8 @@ class TextEntity extends TdObject {
   /// Parse from a json
   factory TextEntity.fromJson(Map<String, dynamic> json) {
     return TextEntity(
-      offset: json['offset'],
-      length: json['length'],
+      offset: json['offset'] ?? 0,
+      length: json['length'] ?? 0,
       type: TextEntityType.fromJson(json['type'] ?? <String, dynamic>{}),
     );
   }

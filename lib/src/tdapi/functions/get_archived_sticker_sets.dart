@@ -23,10 +23,10 @@ class GetArchivedStickerSets extends TdFunction {
   /// Parse from a json
   factory GetArchivedStickerSets.fromJson(Map<String, dynamic> json) {
     return GetArchivedStickerSets(
-      isMasks: json['is_masks'],
+      isMasks: json['is_masks'] ?? false,
       offsetStickerSetId:
           int.tryParse(json['offset_sticker_set_id'] ?? "") ?? 0,
-      limit: json['limit'],
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

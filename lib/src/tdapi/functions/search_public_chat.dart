@@ -13,7 +13,7 @@ class SearchPublicChat extends TdFunction {
   /// Parse from a json
   factory SearchPublicChat.fromJson(Map<String, dynamic> json) {
     return SearchPublicChat(
-      username: json['username'],
+      username: json['username'] ?? "",
       extra: json['@extra'],
     );
   }

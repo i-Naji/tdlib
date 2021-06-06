@@ -23,10 +23,10 @@ class ReportChat extends TdFunction {
   /// Parse from a json
   factory ReportChat.fromJson(Map<String, dynamic> json) {
     return ReportChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       reason: ChatReportReason.fromJson(json['reason'] ?? <String, dynamic>{}),
       messageIds: List<int>.from(
-          (json['message_ids'] ?? []).map((item) => item).toList()),
+          (json['message_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

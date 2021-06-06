@@ -13,7 +13,7 @@ class SynchronizeLanguagePack extends TdFunction {
   /// Parse from a json
   factory SynchronizeLanguagePack.fromJson(Map<String, dynamic> json) {
     return SynchronizeLanguagePack(
-      languagePackId: json['language_pack_id'],
+      languagePackId: json['language_pack_id'] ?? "",
       extra: json['@extra'],
     );
   }

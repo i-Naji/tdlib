@@ -31,11 +31,11 @@ class DownloadFile extends TdFunction {
   /// Parse from a json
   factory DownloadFile.fromJson(Map<String, dynamic> json) {
     return DownloadFile(
-      fileId: json['file_id'],
-      priority: json['priority'],
-      offset: json['offset'],
-      limit: json['limit'],
-      synchronous: json['synchronous'],
+      fileId: json['file_id'] ?? 0,
+      priority: json['priority'] ?? 0,
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
+      synchronous: json['synchronous'] ?? false,
       extra: json['@extra'],
     );
   }

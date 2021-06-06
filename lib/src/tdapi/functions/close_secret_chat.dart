@@ -13,7 +13,7 @@ class CloseSecretChat extends TdFunction {
   /// Parse from a json
   factory CloseSecretChat.fromJson(Map<String, dynamic> json) {
     return CloseSecretChat(
-      secretChatId: json['secret_chat_id'],
+      secretChatId: json['secret_chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

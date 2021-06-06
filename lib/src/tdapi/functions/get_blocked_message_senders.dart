@@ -17,8 +17,8 @@ class GetBlockedMessageSenders extends TdFunction {
   /// Parse from a json
   factory GetBlockedMessageSenders.fromJson(Map<String, dynamic> json) {
     return GetBlockedMessageSenders(
-      offset: json['offset'],
-      limit: json['limit'],
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

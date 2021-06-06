@@ -31,10 +31,10 @@ class SendPaymentForm extends TdFunction {
   /// Parse from a json
   factory SendPaymentForm.fromJson(Map<String, dynamic> json) {
     return SendPaymentForm(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      orderInfoId: json['order_info_id'],
-      shippingOptionId: json['shipping_option_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      orderInfoId: json['order_info_id'] ?? "",
+      shippingOptionId: json['shipping_option_id'] ?? "",
       credentials:
           InputCredentials.fromJson(json['credentials'] ?? <String, dynamic>{}),
       extra: json['@extra'],

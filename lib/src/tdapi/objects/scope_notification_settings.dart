@@ -31,12 +31,13 @@ class ScopeNotificationSettings extends TdObject {
   /// Parse from a json
   factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) {
     return ScopeNotificationSettings(
-      muteFor: json['mute_for'],
-      sound: json['sound'],
-      showPreview: json['show_preview'],
+      muteFor: json['mute_for'] ?? 0,
+      sound: json['sound'] ?? "",
+      showPreview: json['show_preview'] ?? false,
       disablePinnedMessageNotifications:
-          json['disable_pinned_message_notifications'],
-      disableMentionNotifications: json['disable_mention_notifications'],
+          json['disable_pinned_message_notifications'] ?? false,
+      disableMentionNotifications:
+          json['disable_mention_notifications'] ?? false,
       extra: json['@extra'],
     );
   }

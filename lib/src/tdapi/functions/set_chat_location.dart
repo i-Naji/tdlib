@@ -16,7 +16,7 @@ class SetChatLocation extends TdFunction {
   /// Parse from a json
   factory SetChatLocation.fromJson(Map<String, dynamic> json) {
     return SetChatLocation(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       location: ChatLocation.fromJson(json['location'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

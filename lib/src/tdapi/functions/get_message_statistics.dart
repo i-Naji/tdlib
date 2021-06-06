@@ -23,9 +23,9 @@ class GetMessageStatistics extends TdFunction {
   /// Parse from a json
   factory GetMessageStatistics.fromJson(Map<String, dynamic> json) {
     return GetMessageStatistics(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      isDark: json['is_dark'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      isDark: json['is_dark'] ?? false,
       extra: json['@extra'],
     );
   }

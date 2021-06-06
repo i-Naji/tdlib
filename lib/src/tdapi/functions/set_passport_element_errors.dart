@@ -17,7 +17,7 @@ class SetPassportElementErrors extends TdFunction {
   /// Parse from a json
   factory SetPassportElementErrors.fromJson(Map<String, dynamic> json) {
     return SetPassportElementErrors(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       errors: List<InputPassportElementError>.from((json['errors'] ?? [])
           .map((item) =>
               InputPassportElementError.fromJson(item ?? <String, dynamic>{}))

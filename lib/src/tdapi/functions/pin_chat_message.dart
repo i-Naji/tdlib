@@ -27,10 +27,10 @@ class PinChatMessage extends TdFunction {
   /// Parse from a json
   factory PinChatMessage.fromJson(Map<String, dynamic> json) {
     return PinChatMessage(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      disableNotification: json['disable_notification'],
-      onlyForSelf: json['only_for_self'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      disableNotification: json['disable_notification'] ?? false,
+      onlyForSelf: json['only_for_self'] ?? false,
       extra: json['@extra'],
     );
   }

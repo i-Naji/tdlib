@@ -13,7 +13,7 @@ class GetTextEntities extends TdFunction {
   /// Parse from a json
   factory GetTextEntities.fromJson(Map<String, dynamic> json) {
     return GetTextEntities(
-      text: json['text'],
+      text: json['text'] ?? "",
       extra: json['@extra'],
     );
   }

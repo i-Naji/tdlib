@@ -19,8 +19,8 @@ class SetRecoveryEmailAddress extends TdFunction {
   /// Parse from a json
   factory SetRecoveryEmailAddress.fromJson(Map<String, dynamic> json) {
     return SetRecoveryEmailAddress(
-      password: json['password'],
-      newRecoveryEmailAddress: json['new_recovery_email_address'],
+      password: json['password'] ?? "",
+      newRecoveryEmailAddress: json['new_recovery_email_address'] ?? "",
       extra: json['@extra'],
     );
   }

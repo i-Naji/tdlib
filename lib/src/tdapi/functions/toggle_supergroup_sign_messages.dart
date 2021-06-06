@@ -17,8 +17,8 @@ class ToggleSupergroupSignMessages extends TdFunction {
   /// Parse from a json
   factory ToggleSupergroupSignMessages.fromJson(Map<String, dynamic> json) {
     return ToggleSupergroupSignMessages(
-      supergroupId: json['supergroup_id'],
-      signMessages: json['sign_messages'],
+      supergroupId: json['supergroup_id'] ?? 0,
+      signMessages: json['sign_messages'] ?? false,
       extra: json['@extra'],
     );
   }

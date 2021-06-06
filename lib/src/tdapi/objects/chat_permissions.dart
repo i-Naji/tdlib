@@ -39,14 +39,14 @@ class ChatPermissions extends TdObject {
   /// Parse from a json
   factory ChatPermissions.fromJson(Map<String, dynamic> json) {
     return ChatPermissions(
-      canSendMessages: json['can_send_messages'],
-      canSendMediaMessages: json['can_send_media_messages'],
-      canSendPolls: json['can_send_polls'],
-      canSendOtherMessages: json['can_send_other_messages'],
-      canAddWebPagePreviews: json['can_add_web_page_previews'],
-      canChangeInfo: json['can_change_info'],
-      canInviteUsers: json['can_invite_users'],
-      canPinMessages: json['can_pin_messages'],
+      canSendMessages: json['can_send_messages'] ?? false,
+      canSendMediaMessages: json['can_send_media_messages'] ?? false,
+      canSendPolls: json['can_send_polls'] ?? false,
+      canSendOtherMessages: json['can_send_other_messages'] ?? false,
+      canAddWebPagePreviews: json['can_add_web_page_previews'] ?? false,
+      canChangeInfo: json['can_change_info'] ?? false,
+      canInviteUsers: json['can_invite_users'] ?? false,
+      canPinMessages: json['can_pin_messages'] ?? false,
     );
   }
 

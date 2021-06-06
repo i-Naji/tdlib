@@ -98,7 +98,7 @@ class AuthorizationStateWaitEncryptionKey extends AuthorizationState {
   factory AuthorizationStateWaitEncryptionKey.fromJson(
       Map<String, dynamic> json) {
     return AuthorizationStateWaitEncryptionKey(
-      isEncrypted: json['is_encrypted'],
+      isEncrypted: json['is_encrypted'] ?? false,
       extra: json['@extra'],
     );
   }
@@ -193,7 +193,7 @@ class AuthorizationStateWaitOtherDeviceConfirmation extends AuthorizationState {
   factory AuthorizationStateWaitOtherDeviceConfirmation.fromJson(
       Map<String, dynamic> json) {
     return AuthorizationStateWaitOtherDeviceConfirmation(
-      link: json['link'],
+      link: json['link'] ?? "",
       extra: json['@extra'],
     );
   }
@@ -270,9 +270,9 @@ class AuthorizationStateWaitPassword extends AuthorizationState {
   /// Parse from a json
   factory AuthorizationStateWaitPassword.fromJson(Map<String, dynamic> json) {
     return AuthorizationStateWaitPassword(
-      passwordHint: json['password_hint'],
-      hasRecoveryEmailAddress: json['has_recovery_email_address'],
-      recoveryEmailAddressPattern: json['recovery_email_address_pattern'],
+      passwordHint: json['password_hint'] ?? "",
+      hasRecoveryEmailAddress: json['has_recovery_email_address'] ?? false,
+      recoveryEmailAddressPattern: json['recovery_email_address_pattern'] ?? "",
       extra: json['@extra'],
     );
   }

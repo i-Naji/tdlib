@@ -45,7 +45,7 @@ class TMeUrlTypeUser extends TMeUrlType {
   /// Parse from a json
   factory TMeUrlTypeUser.fromJson(Map<String, dynamic> json) {
     return TMeUrlTypeUser(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
     );
   }
 
@@ -73,7 +73,7 @@ class TMeUrlTypeSupergroup extends TMeUrlType {
   /// Parse from a json
   factory TMeUrlTypeSupergroup.fromJson(Map<String, dynamic> json) {
     return TMeUrlTypeSupergroup(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
     );
   }
 

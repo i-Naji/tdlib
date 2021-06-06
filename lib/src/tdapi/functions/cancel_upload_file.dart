@@ -13,7 +13,7 @@ class CancelUploadFile extends TdFunction {
   /// Parse from a json
   factory CancelUploadFile.fromJson(Map<String, dynamic> json) {
     return CancelUploadFile(
-      fileId: json['file_id'],
+      fileId: json['file_id'] ?? 0,
       extra: json['@extra'],
     );
   }

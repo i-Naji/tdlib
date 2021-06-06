@@ -54,7 +54,7 @@ class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
   /// Parse from a json
   factory InlineKeyboardButtonTypeUrl.fromJson(Map<String, dynamic> json) {
     return InlineKeyboardButtonTypeUrl(
-      url: json['url'],
+      url: json['url'] ?? "",
     );
   }
 
@@ -89,9 +89,9 @@ class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
   /// Parse from a json
   factory InlineKeyboardButtonTypeLoginUrl.fromJson(Map<String, dynamic> json) {
     return InlineKeyboardButtonTypeLoginUrl(
-      url: json['url'],
-      id: json['id'],
-      forwardText: json['forward_text'],
+      url: json['url'] ?? "",
+      id: json['id'] ?? 0,
+      forwardText: json['forward_text'] ?? "",
     );
   }
 
@@ -121,7 +121,7 @@ class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
   /// Parse from a json
   factory InlineKeyboardButtonTypeCallback.fromJson(Map<String, dynamic> json) {
     return InlineKeyboardButtonTypeCallback(
-      data: json['data'],
+      data: json['data'] ?? "",
     );
   }
 
@@ -151,7 +151,7 @@ class InlineKeyboardButtonTypeCallbackWithPassword
   factory InlineKeyboardButtonTypeCallbackWithPassword.fromJson(
       Map<String, dynamic> json) {
     return InlineKeyboardButtonTypeCallbackWithPassword(
-      data: json['data'],
+      data: json['data'] ?? "",
     );
   }
 
@@ -207,8 +207,8 @@ class InlineKeyboardButtonTypeSwitchInline extends InlineKeyboardButtonType {
   factory InlineKeyboardButtonTypeSwitchInline.fromJson(
       Map<String, dynamic> json) {
     return InlineKeyboardButtonTypeSwitchInline(
-      query: json['query'],
-      inCurrentChat: json['in_current_chat'],
+      query: json['query'] ?? "",
+      inCurrentChat: json['in_current_chat'] ?? false,
     );
   }
 

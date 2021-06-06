@@ -31,10 +31,10 @@ class SearchSecretMessages extends TdFunction {
   /// Parse from a json
   factory SearchSecretMessages.fromJson(Map<String, dynamic> json) {
     return SearchSecretMessages(
-      chatId: json['chat_id'],
-      query: json['query'],
-      offset: json['offset'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      query: json['query'] ?? "",
+      offset: json['offset'] ?? "",
+      limit: json['limit'] ?? 0,
       filter:
           SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
       extra: json['@extra'],

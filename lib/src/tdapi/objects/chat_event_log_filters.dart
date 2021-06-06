@@ -51,17 +51,17 @@ class ChatEventLogFilters extends TdObject {
   /// Parse from a json
   factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) {
     return ChatEventLogFilters(
-      messageEdits: json['message_edits'],
-      messageDeletions: json['message_deletions'],
-      messagePins: json['message_pins'],
-      memberJoins: json['member_joins'],
-      memberLeaves: json['member_leaves'],
-      memberInvites: json['member_invites'],
-      memberPromotions: json['member_promotions'],
-      memberRestrictions: json['member_restrictions'],
-      infoChanges: json['info_changes'],
-      settingChanges: json['setting_changes'],
-      voiceChatChanges: json['voice_chat_changes'],
+      messageEdits: json['message_edits'] ?? false,
+      messageDeletions: json['message_deletions'] ?? false,
+      messagePins: json['message_pins'] ?? false,
+      memberJoins: json['member_joins'] ?? false,
+      memberLeaves: json['member_leaves'] ?? false,
+      memberInvites: json['member_invites'] ?? false,
+      memberPromotions: json['member_promotions'] ?? false,
+      memberRestrictions: json['member_restrictions'] ?? false,
+      infoChanges: json['info_changes'] ?? false,
+      settingChanges: json['setting_changes'] ?? false,
+      voiceChatChanges: json['voice_chat_changes'] ?? false,
     );
   }
 

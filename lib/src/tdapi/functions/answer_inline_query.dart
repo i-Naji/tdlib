@@ -40,15 +40,15 @@ class AnswerInlineQuery extends TdFunction {
   factory AnswerInlineQuery.fromJson(Map<String, dynamic> json) {
     return AnswerInlineQuery(
       inlineQueryId: int.tryParse(json['inline_query_id'] ?? "") ?? 0,
-      isPersonal: json['is_personal'],
+      isPersonal: json['is_personal'] ?? false,
       results: List<InputInlineQueryResult>.from((json['results'] ?? [])
           .map((item) =>
               InputInlineQueryResult.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      cacheTime: json['cache_time'],
-      nextOffset: json['next_offset'],
-      switchPmText: json['switch_pm_text'],
-      switchPmParameter: json['switch_pm_parameter'],
+      cacheTime: json['cache_time'] ?? 0,
+      nextOffset: json['next_offset'] ?? "",
+      switchPmText: json['switch_pm_text'] ?? "",
+      switchPmParameter: json['switch_pm_parameter'] ?? "",
       extra: json['@extra'],
     );
   }

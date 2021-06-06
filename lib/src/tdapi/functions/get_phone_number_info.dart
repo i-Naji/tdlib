@@ -13,7 +13,7 @@ class GetPhoneNumberInfo extends TdFunction {
   /// Parse from a json
   factory GetPhoneNumberInfo.fromJson(Map<String, dynamic> json) {
     return GetPhoneNumberInfo(
-      phoneNumberPrefix: json['phone_number_prefix'],
+      phoneNumberPrefix: json['phone_number_prefix'] ?? "",
       extra: json['@extra'],
     );
   }

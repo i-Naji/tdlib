@@ -18,7 +18,7 @@ class GetTopChats extends TdFunction {
     return GetTopChats(
       category:
           TopChatCategory.fromJson(json['category'] ?? <String, dynamic>{}),
-      limit: json['limit'],
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

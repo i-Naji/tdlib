@@ -17,8 +17,8 @@ class SendCallDebugInformation extends TdFunction {
   /// Parse from a json
   factory SendCallDebugInformation.fromJson(Map<String, dynamic> json) {
     return SendCallDebugInformation(
-      callId: json['call_id'],
-      debugInformation: json['debug_information'],
+      callId: json['call_id'] ?? 0,
+      debugInformation: json['debug_information'] ?? "",
       extra: json['@extra'],
     );
   }

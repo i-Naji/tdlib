@@ -17,7 +17,7 @@ class SetCustomLanguagePackString extends TdFunction {
   /// Parse from a json
   factory SetCustomLanguagePackString.fromJson(Map<String, dynamic> json) {
     return SetCustomLanguagePackString(
-      languagePackId: json['language_pack_id'],
+      languagePackId: json['language_pack_id'] ?? "",
       newString: LanguagePackString.fromJson(
           json['new_string'] ?? <String, dynamic>{}),
       extra: json['@extra'],

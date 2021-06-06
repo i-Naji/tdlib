@@ -63,19 +63,19 @@ class LanguagePackInfo extends TdObject {
   /// Parse from a json
   factory LanguagePackInfo.fromJson(Map<String, dynamic> json) {
     return LanguagePackInfo(
-      id: json['id'],
-      baseLanguagePackId: json['base_language_pack_id'],
-      name: json['name'],
-      nativeName: json['native_name'],
-      pluralCode: json['plural_code'],
-      isOfficial: json['is_official'],
-      isRtl: json['is_rtl'],
-      isBeta: json['is_beta'],
-      isInstalled: json['is_installed'],
-      totalStringCount: json['total_string_count'],
-      translatedStringCount: json['translated_string_count'],
-      localStringCount: json['local_string_count'],
-      translationUrl: json['translation_url'],
+      id: json['id'] ?? "",
+      baseLanguagePackId: json['base_language_pack_id'] ?? "",
+      name: json['name'] ?? "",
+      nativeName: json['native_name'] ?? "",
+      pluralCode: json['plural_code'] ?? "",
+      isOfficial: json['is_official'] ?? false,
+      isRtl: json['is_rtl'] ?? false,
+      isBeta: json['is_beta'] ?? false,
+      isInstalled: json['is_installed'] ?? false,
+      totalStringCount: json['total_string_count'] ?? 0,
+      translatedStringCount: json['translated_string_count'] ?? 0,
+      localStringCount: json['local_string_count'] ?? 0,
+      translationUrl: json['translation_url'] ?? "",
       extra: json['@extra'],
     );
   }

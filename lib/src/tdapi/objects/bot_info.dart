@@ -13,7 +13,7 @@ class BotInfo extends TdObject {
   /// Parse from a json
   factory BotInfo.fromJson(Map<String, dynamic> json) {
     return BotInfo(
-      description: json['description'],
+      description: json['description'] ?? "",
       commands: List<BotCommand>.from((json['commands'] ?? [])
           .map((item) => BotCommand.fromJson(item ?? <String, dynamic>{}))
           .toList()),

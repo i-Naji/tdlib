@@ -17,10 +17,10 @@ class ImportedContacts extends TdObject {
   /// Parse from a json
   factory ImportedContacts.fromJson(Map<String, dynamic> json) {
     return ImportedContacts(
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
       importerCount: List<int>.from(
-          (json['importer_count'] ?? []).map((item) => item).toList()),
+          (json['importer_count'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

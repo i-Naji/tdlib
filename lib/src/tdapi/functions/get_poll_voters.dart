@@ -31,11 +31,11 @@ class GetPollVoters extends TdFunction {
   /// Parse from a json
   factory GetPollVoters.fromJson(Map<String, dynamic> json) {
     return GetPollVoters(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      optionId: json['option_id'],
-      offset: json['offset'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      optionId: json['option_id'] ?? 0,
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

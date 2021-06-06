@@ -20,9 +20,9 @@ class PhoneNumberAuthenticationSettings extends TdObject {
   factory PhoneNumberAuthenticationSettings.fromJson(
       Map<String, dynamic> json) {
     return PhoneNumberAuthenticationSettings(
-      allowFlashCall: json['allow_flash_call'],
-      isCurrentPhoneNumber: json['is_current_phone_number'],
-      allowSmsRetrieverApi: json['allow_sms_retriever_api'],
+      allowFlashCall: json['allow_flash_call'] ?? false,
+      isCurrentPhoneNumber: json['is_current_phone_number'] ?? false,
+      allowSmsRetrieverApi: json['allow_sms_retriever_api'] ?? false,
     );
   }
 

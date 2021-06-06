@@ -67,21 +67,21 @@ class TdlibParameters extends TdObject {
   /// Parse from a json
   factory TdlibParameters.fromJson(Map<String, dynamic> json) {
     return TdlibParameters(
-      useTestDc: json['use_test_dc'],
-      databaseDirectory: json['database_directory'],
-      filesDirectory: json['files_directory'],
-      useFileDatabase: json['use_file_database'],
-      useChatInfoDatabase: json['use_chat_info_database'],
-      useMessageDatabase: json['use_message_database'],
-      useSecretChats: json['use_secret_chats'],
-      apiId: json['api_id'],
-      apiHash: json['api_hash'],
-      systemLanguageCode: json['system_language_code'],
-      deviceModel: json['device_model'],
-      systemVersion: json['system_version'],
-      applicationVersion: json['application_version'],
-      enableStorageOptimizer: json['enable_storage_optimizer'],
-      ignoreFileNames: json['ignore_file_names'],
+      useTestDc: json['use_test_dc'] ?? false,
+      databaseDirectory: json['database_directory'] ?? "",
+      filesDirectory: json['files_directory'] ?? "",
+      useFileDatabase: json['use_file_database'] ?? false,
+      useChatInfoDatabase: json['use_chat_info_database'] ?? false,
+      useMessageDatabase: json['use_message_database'] ?? false,
+      useSecretChats: json['use_secret_chats'] ?? false,
+      apiId: json['api_id'] ?? 0,
+      apiHash: json['api_hash'] ?? "",
+      systemLanguageCode: json['system_language_code'] ?? "",
+      deviceModel: json['device_model'] ?? "",
+      systemVersion: json['system_version'] ?? "",
+      applicationVersion: json['application_version'] ?? "",
+      enableStorageOptimizer: json['enable_storage_optimizer'] ?? false,
+      ignoreFileNames: json['ignore_file_names'] ?? false,
     );
   }
 

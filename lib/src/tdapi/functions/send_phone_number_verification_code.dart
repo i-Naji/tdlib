@@ -17,7 +17,7 @@ class SendPhoneNumberVerificationCode extends TdFunction {
   /// Parse from a json
   factory SendPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json) {
     return SendPhoneNumberVerificationCode(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] ?? "",
       settings: PhoneNumberAuthenticationSettings.fromJson(
           json['settings'] ?? <String, dynamic>{}),
       extra: json['@extra'],

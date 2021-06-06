@@ -13,7 +13,7 @@ class GetFileMimeType extends TdFunction {
   /// Parse from a json
   factory GetFileMimeType.fromJson(Map<String, dynamic> json) {
     return GetFileMimeType(
-      fileName: json['file_name'],
+      fileName: json['file_name'] ?? "",
       extra: json['@extra'],
     );
   }

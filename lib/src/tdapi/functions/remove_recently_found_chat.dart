@@ -13,7 +13,7 @@ class RemoveRecentlyFoundChat extends TdFunction {
   /// Parse from a json
   factory RemoveRecentlyFoundChat.fromJson(Map<String, dynamic> json) {
     return RemoveRecentlyFoundChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class GetChatListsToAddChat extends TdFunction {
   /// Parse from a json
   factory GetChatListsToAddChat.fromJson(Map<String, dynamic> json) {
     return GetChatListsToAddChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

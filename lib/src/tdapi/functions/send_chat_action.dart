@@ -23,8 +23,8 @@ class SendChatAction extends TdFunction {
   /// Parse from a json
   factory SendChatAction.fromJson(Map<String, dynamic> json) {
     return SendChatAction(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageThreadId: json['message_thread_id'] ?? 0,
       action: ChatAction.fromJson(json['action'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

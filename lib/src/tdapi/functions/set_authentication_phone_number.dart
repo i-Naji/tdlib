@@ -17,7 +17,7 @@ class SetAuthenticationPhoneNumber extends TdFunction {
   /// Parse from a json
   factory SetAuthenticationPhoneNumber.fromJson(Map<String, dynamic> json) {
     return SetAuthenticationPhoneNumber(
-      phoneNumber: json['phone_number'],
+      phoneNumber: json['phone_number'] ?? "",
       settings: PhoneNumberAuthenticationSettings.fromJson(
           json['settings'] ?? <String, dynamic>{}),
       extra: json['@extra'],

@@ -23,9 +23,9 @@ class GetUserProfilePhotos extends TdFunction {
   /// Parse from a json
   factory GetUserProfilePhotos.fromJson(Map<String, dynamic> json) {
     return GetUserProfilePhotos(
-      userId: json['user_id'],
-      offset: json['offset'],
-      limit: json['limit'],
+      userId: json['user_id'] ?? 0,
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

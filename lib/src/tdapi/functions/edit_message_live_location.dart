@@ -35,13 +35,13 @@ class EditMessageLiveLocation extends TdFunction {
   /// Parse from a json
   factory EditMessageLiveLocation.fromJson(Map<String, dynamic> json) {
     return EditMessageLiveLocation(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      heading: json['heading'] ?? 0,
+      proximityAlertRadius: json['proximity_alert_radius'] ?? 0,
       extra: json['@extra'],
     );
   }

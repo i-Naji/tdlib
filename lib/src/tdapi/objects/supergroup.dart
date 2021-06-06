@@ -63,19 +63,19 @@ class Supergroup extends TdObject {
   /// Parse from a json
   factory Supergroup.fromJson(Map<String, dynamic> json) {
     return Supergroup(
-      id: json['id'],
-      username: json['username'],
-      date: json['date'],
+      id: json['id'] ?? 0,
+      username: json['username'] ?? "",
+      date: json['date'] ?? 0,
       status: ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{}),
-      memberCount: json['member_count'],
-      hasLinkedChat: json['has_linked_chat'],
-      hasLocation: json['has_location'],
-      signMessages: json['sign_messages'],
-      isSlowModeEnabled: json['is_slow_mode_enabled'],
-      isChannel: json['is_channel'],
-      isVerified: json['is_verified'],
-      restrictionReason: json['restriction_reason'],
-      isScam: json['is_scam'],
+      memberCount: json['member_count'] ?? 0,
+      hasLinkedChat: json['has_linked_chat'] ?? false,
+      hasLocation: json['has_location'] ?? false,
+      signMessages: json['sign_messages'] ?? false,
+      isSlowModeEnabled: json['is_slow_mode_enabled'] ?? false,
+      isChannel: json['is_channel'] ?? false,
+      isVerified: json['is_verified'] ?? false,
+      restrictionReason: json['restriction_reason'] ?? "",
+      isScam: json['is_scam'] ?? false,
       extra: json['@extra'],
     );
   }

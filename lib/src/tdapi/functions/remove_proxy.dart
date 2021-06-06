@@ -13,7 +13,7 @@ class RemoveProxy extends TdFunction {
   /// Parse from a json
   factory RemoveProxy.fromJson(Map<String, dynamic> json) {
     return RemoveProxy(
-      proxyId: json['proxy_id'],
+      proxyId: json['proxy_id'] ?? 0,
       extra: json['@extra'],
     );
   }

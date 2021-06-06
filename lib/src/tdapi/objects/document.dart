@@ -27,8 +27,8 @@ class Document extends TdObject {
   /// Parse from a json
   factory Document.fromJson(Map<String, dynamic> json) {
     return Document(
-      fileName: json['file_name'],
-      mimeType: json['mime_type'],
+      fileName: json['file_name'] ?? "",
+      mimeType: json['mime_type'] ?? "",
       minithumbnail:
           Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{}),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),

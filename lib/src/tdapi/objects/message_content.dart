@@ -210,7 +210,7 @@ class MessageAnimation extends MessageContent {
     return MessageAnimation(
       animation: Animation.fromJson(json['animation'] ?? <String, dynamic>{}),
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      isSecret: json['is_secret'],
+      isSecret: json['is_secret'] ?? false,
     );
   }
 
@@ -315,7 +315,7 @@ class MessagePhoto extends MessageContent {
     return MessagePhoto(
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      isSecret: json['is_secret'],
+      isSecret: json['is_secret'] ?? false,
     );
   }
 
@@ -404,7 +404,7 @@ class MessageVideo extends MessageContent {
     return MessageVideo(
       video: Video.fromJson(json['video'] ?? <String, dynamic>{}),
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      isSecret: json['is_secret'],
+      isSecret: json['is_secret'] ?? false,
     );
   }
 
@@ -466,8 +466,8 @@ class MessageVideoNote extends MessageContent {
   factory MessageVideoNote.fromJson(Map<String, dynamic> json) {
     return MessageVideoNote(
       videoNote: VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{}),
-      isViewed: json['is_viewed'],
-      isSecret: json['is_secret'],
+      isViewed: json['is_viewed'] ?? false,
+      isSecret: json['is_secret'] ?? false,
     );
   }
 
@@ -508,7 +508,7 @@ class MessageVoiceNote extends MessageContent {
     return MessageVoiceNote(
       voiceNote: VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{}),
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      isListened: json['is_listened'],
+      isListened: json['is_listened'] ?? false,
     );
   }
 
@@ -556,10 +556,10 @@ class MessageLocation extends MessageContent {
   factory MessageLocation.fromJson(Map<String, dynamic> json) {
     return MessageLocation(
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      livePeriod: json['live_period'],
-      expiresIn: json['expires_in'],
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      livePeriod: json['live_period'] ?? 0,
+      expiresIn: json['expires_in'] ?? 0,
+      heading: json['heading'] ?? 0,
+      proximityAlertRadius: json['proximity_alert_radius'] ?? 0,
     );
   }
 
@@ -668,9 +668,9 @@ class MessageDice extends MessageContent {
           DiceStickers.fromJson(json['initial_state'] ?? <String, dynamic>{}),
       finalState:
           DiceStickers.fromJson(json['final_state'] ?? <String, dynamic>{}),
-      emoji: json['emoji'],
-      value: json['value'],
-      successAnimationFrameNumber: json['success_animation_frame_number'],
+      emoji: json['emoji'] ?? "",
+      value: json['value'] ?? 0,
+      successAnimationFrameNumber: json['success_animation_frame_number'] ?? 0,
     );
   }
 
@@ -792,15 +792,15 @@ class MessageInvoice extends MessageContent {
   /// Parse from a json
   factory MessageInvoice.fromJson(Map<String, dynamic> json) {
     return MessageInvoice(
-      title: json['title'],
-      description: json['description'],
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      currency: json['currency'],
-      totalAmount: json['total_amount'],
-      startParameter: json['start_parameter'],
-      isTest: json['is_test'],
-      needShippingAddress: json['need_shipping_address'],
-      receiptMessageId: json['receipt_message_id'],
+      currency: json['currency'] ?? "",
+      totalAmount: json['total_amount'] ?? 0,
+      startParameter: json['start_parameter'] ?? "",
+      isTest: json['is_test'] ?? false,
+      needShippingAddress: json['need_shipping_address'] ?? false,
+      receiptMessageId: json['receipt_message_id'] ?? 0,
     );
   }
 
@@ -845,10 +845,10 @@ class MessageCall extends MessageContent {
   /// Parse from a json
   factory MessageCall.fromJson(Map<String, dynamic> json) {
     return MessageCall(
-      isVideo: json['is_video'],
+      isVideo: json['is_video'] ?? false,
       discardReason: CallDiscardReason.fromJson(
           json['discard_reason'] ?? <String, dynamic>{}),
-      duration: json['duration'],
+      duration: json['duration'] ?? 0,
     );
   }
 
@@ -878,7 +878,7 @@ class MessageVoiceChatStarted extends MessageContent {
   /// Parse from a json
   factory MessageVoiceChatStarted.fromJson(Map<String, dynamic> json) {
     return MessageVoiceChatStarted(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
     );
   }
 
@@ -906,7 +906,7 @@ class MessageVoiceChatEnded extends MessageContent {
   /// Parse from a json
   factory MessageVoiceChatEnded.fromJson(Map<String, dynamic> json) {
     return MessageVoiceChatEnded(
-      duration: json['duration'],
+      duration: json['duration'] ?? 0,
     );
   }
 
@@ -939,9 +939,9 @@ class MessageInviteVoiceChatParticipants extends MessageContent {
   factory MessageInviteVoiceChatParticipants.fromJson(
       Map<String, dynamic> json) {
     return MessageInviteVoiceChatParticipants(
-      groupCallId: json['group_call_id'],
-      userIds:
-          List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+      groupCallId: json['group_call_id'] ?? 0,
+      userIds: List<int>.from(
+          (json['user_ids'] ?? []).map((item) => item ?? 0).toList()),
     );
   }
 
@@ -974,9 +974,9 @@ class MessageBasicGroupChatCreate extends MessageContent {
   /// Parse from a json
   factory MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) {
     return MessageBasicGroupChatCreate(
-      title: json['title'],
+      title: json['title'] ?? "",
       memberUserIds: List<int>.from(
-          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+          (json['member_user_ids'] ?? []).map((item) => item ?? 0).toList()),
     );
   }
 
@@ -1005,7 +1005,7 @@ class MessageSupergroupChatCreate extends MessageContent {
   /// Parse from a json
   factory MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) {
     return MessageSupergroupChatCreate(
-      title: json['title'],
+      title: json['title'] ?? "",
     );
   }
 
@@ -1033,7 +1033,7 @@ class MessageChatChangeTitle extends MessageContent {
   /// Parse from a json
   factory MessageChatChangeTitle.fromJson(Map<String, dynamic> json) {
     return MessageChatChangeTitle(
-      title: json['title'],
+      title: json['title'] ?? "",
     );
   }
 
@@ -1112,7 +1112,7 @@ class MessageChatAddMembers extends MessageContent {
   factory MessageChatAddMembers.fromJson(Map<String, dynamic> json) {
     return MessageChatAddMembers(
       memberUserIds: List<int>.from(
-          (json['member_user_ids'] ?? []).map((item) => item).toList()),
+          (json['member_user_ids'] ?? []).map((item) => item ?? 0).toList()),
     );
   }
 
@@ -1162,7 +1162,7 @@ class MessageChatDeleteMember extends MessageContent {
   /// Parse from a json
   factory MessageChatDeleteMember.fromJson(Map<String, dynamic> json) {
     return MessageChatDeleteMember(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
     );
   }
 
@@ -1190,7 +1190,7 @@ class MessageChatUpgradeTo extends MessageContent {
   /// Parse from a json
   factory MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) {
     return MessageChatUpgradeTo(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
     );
   }
 
@@ -1221,8 +1221,8 @@ class MessageChatUpgradeFrom extends MessageContent {
   /// Parse from a json
   factory MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) {
     return MessageChatUpgradeFrom(
-      title: json['title'],
-      basicGroupId: json['basic_group_id'],
+      title: json['title'] ?? "",
+      basicGroupId: json['basic_group_id'] ?? 0,
     );
   }
 
@@ -1251,7 +1251,7 @@ class MessagePinMessage extends MessageContent {
   /// Parse from a json
   factory MessagePinMessage.fromJson(Map<String, dynamic> json) {
     return MessagePinMessage(
-      messageId: json['message_id'],
+      messageId: json['message_id'] ?? 0,
     );
   }
 
@@ -1301,7 +1301,7 @@ class MessageChatSetTtl extends MessageContent {
   /// Parse from a json
   factory MessageChatSetTtl.fromJson(Map<String, dynamic> json) {
     return MessageChatSetTtl(
-      ttl: json['ttl'],
+      ttl: json['ttl'] ?? 0,
     );
   }
 
@@ -1329,7 +1329,7 @@ class MessageCustomServiceAction extends MessageContent {
   /// Parse from a json
   factory MessageCustomServiceAction.fromJson(Map<String, dynamic> json) {
     return MessageCustomServiceAction(
-      text: json['text'],
+      text: json['text'] ?? "",
     );
   }
 
@@ -1364,9 +1364,9 @@ class MessageGameScore extends MessageContent {
   /// Parse from a json
   factory MessageGameScore.fromJson(Map<String, dynamic> json) {
     return MessageGameScore(
-      gameMessageId: json['game_message_id'],
+      gameMessageId: json['game_message_id'] ?? 0,
       gameId: int.tryParse(json['game_id'] ?? "") ?? 0,
-      score: json['score'],
+      score: json['score'] ?? 0,
     );
   }
 
@@ -1405,9 +1405,9 @@ class MessagePaymentSuccessful extends MessageContent {
   /// Parse from a json
   factory MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) {
     return MessagePaymentSuccessful(
-      invoiceMessageId: json['invoice_message_id'],
-      currency: json['currency'],
-      totalAmount: json['total_amount'],
+      invoiceMessageId: json['invoice_message_id'] ?? 0,
+      currency: json['currency'] ?? "",
+      totalAmount: json['total_amount'] ?? 0,
     );
   }
 
@@ -1466,14 +1466,14 @@ class MessagePaymentSuccessfulBot extends MessageContent {
   /// Parse from a json
   factory MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) {
     return MessagePaymentSuccessfulBot(
-      invoiceMessageId: json['invoice_message_id'],
-      currency: json['currency'],
-      totalAmount: json['total_amount'],
-      invoicePayload: json['invoice_payload'],
-      shippingOptionId: json['shipping_option_id'],
+      invoiceMessageId: json['invoice_message_id'] ?? 0,
+      currency: json['currency'] ?? "",
+      totalAmount: json['total_amount'] ?? 0,
+      invoicePayload: json['invoice_payload'] ?? "",
+      shippingOptionId: json['shipping_option_id'] ?? "",
       orderInfo: OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{}),
-      telegramPaymentChargeId: json['telegram_payment_charge_id'],
-      providerPaymentChargeId: json['provider_payment_charge_id'],
+      telegramPaymentChargeId: json['telegram_payment_charge_id'] ?? "",
+      providerPaymentChargeId: json['provider_payment_charge_id'] ?? "",
     );
   }
 
@@ -1530,7 +1530,7 @@ class MessageWebsiteConnected extends MessageContent {
   /// Parse from a json
   factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) {
     return MessageWebsiteConnected(
-      domainName: json['domain_name'],
+      domainName: json['domain_name'] ?? "",
     );
   }
 
@@ -1636,7 +1636,7 @@ class MessageProximityAlertTriggered extends MessageContent {
     return MessageProximityAlertTriggered(
       traveler: MessageSender.fromJson(json['traveler'] ?? <String, dynamic>{}),
       watcher: MessageSender.fromJson(json['watcher'] ?? <String, dynamic>{}),
-      distance: json['distance'],
+      distance: json['distance'] ?? 0,
     );
   }
 

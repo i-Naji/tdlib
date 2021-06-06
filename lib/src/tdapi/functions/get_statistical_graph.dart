@@ -20,9 +20,9 @@ class GetStatisticalGraph extends TdFunction {
   /// Parse from a json
   factory GetStatisticalGraph.fromJson(Map<String, dynamic> json) {
     return GetStatisticalGraph(
-      chatId: json['chat_id'],
-      token: json['token'],
-      x: json['x'],
+      chatId: json['chat_id'] ?? 0,
+      token: json['token'] ?? "",
+      x: json['x'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -23,8 +23,8 @@ class AddStickerToSet extends TdFunction {
   /// Parse from a json
   factory AddStickerToSet.fromJson(Map<String, dynamic> json) {
     return AddStickerToSet(
-      userId: json['user_id'],
-      name: json['name'],
+      userId: json['user_id'] ?? 0,
+      name: json['name'] ?? "",
       sticker: InputSticker.fromJson(json['sticker'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

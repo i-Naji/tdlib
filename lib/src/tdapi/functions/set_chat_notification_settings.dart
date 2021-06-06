@@ -17,7 +17,7 @@ class SetChatNotificationSettings extends TdFunction {
   /// Parse from a json
   factory SetChatNotificationSettings.fromJson(Map<String, dynamic> json) {
     return SetChatNotificationSettings(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       notificationSettings: ChatNotificationSettings.fromJson(
           json['notification_settings'] ?? <String, dynamic>{}),
       extra: json['@extra'],

@@ -13,7 +13,7 @@ class PageBlockListItem extends TdObject {
   /// Parse from a json
   factory PageBlockListItem.fromJson(Map<String, dynamic> json) {
     return PageBlockListItem(
-      label: json['label'],
+      label: json['label'] ?? "",
       pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
           .map((item) => PageBlock.fromJson(item ?? <String, dynamic>{}))
           .toList()),

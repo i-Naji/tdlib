@@ -23,10 +23,11 @@ class SearchEmojis extends TdFunction {
   /// Parse from a json
   factory SearchEmojis.fromJson(Map<String, dynamic> json) {
     return SearchEmojis(
-      text: json['text'],
-      exactMatch: json['exact_match'],
-      inputLanguageCodes: List<String>.from(
-          (json['input_language_codes'] ?? []).map((item) => item).toList()),
+      text: json['text'] ?? "",
+      exactMatch: json['exact_match'] ?? false,
+      inputLanguageCodes: List<String>.from((json['input_language_codes'] ?? [])
+          .map((item) => item ?? "")
+          .toList()),
       extra: json['@extra'],
     );
   }

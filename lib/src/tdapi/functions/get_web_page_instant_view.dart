@@ -17,8 +17,8 @@ class GetWebPageInstantView extends TdFunction {
   /// Parse from a json
   factory GetWebPageInstantView.fromJson(Map<String, dynamic> json) {
     return GetWebPageInstantView(
-      url: json['url'],
-      forceFull: json['force_full'],
+      url: json['url'] ?? "",
+      forceFull: json['force_full'] ?? false,
       extra: json['@extra'],
     );
   }

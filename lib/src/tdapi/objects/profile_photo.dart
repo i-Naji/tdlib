@@ -26,7 +26,7 @@ class ProfilePhoto extends TdObject {
       id: int.tryParse(json['id'] ?? "") ?? 0,
       small: File.fromJson(json['small'] ?? <String, dynamic>{}),
       big: File.fromJson(json['big'] ?? <String, dynamic>{}),
-      hasAnimation: json['has_animation'],
+      hasAnimation: json['has_animation'] ?? false,
     );
   }
 

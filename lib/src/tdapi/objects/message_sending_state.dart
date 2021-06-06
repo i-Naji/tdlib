@@ -74,10 +74,10 @@ class MessageSendingStateFailed extends MessageSendingState {
   /// Parse from a json
   factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) {
     return MessageSendingStateFailed(
-      errorCode: json['error_code'],
-      errorMessage: json['error_message'],
-      canRetry: json['can_retry'],
-      retryAfter: json['retry_after'],
+      errorCode: json['error_code'] ?? 0,
+      errorMessage: json['error_message'] ?? "",
+      canRetry: json['can_retry'] ?? false,
+      retryAfter: json['retry_after'] ?? 0,
     );
   }
 

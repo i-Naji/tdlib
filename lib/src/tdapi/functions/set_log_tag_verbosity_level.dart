@@ -17,8 +17,8 @@ class SetLogTagVerbosityLevel extends TdFunction {
   /// Parse from a json
   factory SetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json) {
     return SetLogTagVerbosityLevel(
-      tag: json['tag'],
-      newVerbosityLevel: json['new_verbosity_level'],
+      tag: json['tag'] ?? "",
+      newVerbosityLevel: json['new_verbosity_level'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -27,11 +27,11 @@ class ViewMessages extends TdFunction {
   /// Parse from a json
   factory ViewMessages.fromJson(Map<String, dynamic> json) {
     return ViewMessages(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageThreadId: json['message_thread_id'] ?? 0,
       messageIds: List<int>.from(
-          (json['message_ids'] ?? []).map((item) => item).toList()),
-      forceRead: json['force_read'],
+          (json['message_ids'] ?? []).map((item) => item ?? 0).toList()),
+      forceRead: json['force_read'] ?? false,
       extra: json['@extra'],
     );
   }

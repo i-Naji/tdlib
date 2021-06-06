@@ -39,14 +39,14 @@ class SendInlineQueryResultMessage extends TdFunction {
   /// Parse from a json
   factory SendInlineQueryResultMessage.fromJson(Map<String, dynamic> json) {
     return SendInlineQueryResultMessage(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
-      replyToMessageId: json['reply_to_message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageThreadId: json['message_thread_id'] ?? 0,
+      replyToMessageId: json['reply_to_message_id'] ?? 0,
       options:
           MessageSendOptions.fromJson(json['options'] ?? <String, dynamic>{}),
       queryId: int.tryParse(json['query_id'] ?? "") ?? 0,
-      resultId: json['result_id'],
-      hideViaBot: json['hide_via_bot'],
+      resultId: json['result_id'] ?? "",
+      hideViaBot: json['hide_via_bot'] ?? false,
       extra: json['@extra'],
     );
   }

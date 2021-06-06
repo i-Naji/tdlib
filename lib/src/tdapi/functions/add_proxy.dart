@@ -27,9 +27,9 @@ class AddProxy extends TdFunction {
   /// Parse from a json
   factory AddProxy.fromJson(Map<String, dynamic> json) {
     return AddProxy(
-      server: json['server'],
-      port: json['port'],
-      enable: json['enable'],
+      server: json['server'] ?? "",
+      port: json['port'] ?? 0,
+      enable: json['enable'] ?? false,
       type: ProxyType.fromJson(json['type'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

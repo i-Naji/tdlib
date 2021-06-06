@@ -27,10 +27,10 @@ class NotificationGroup extends TdObject {
   /// Parse from a json
   factory NotificationGroup.fromJson(Map<String, dynamic> json) {
     return NotificationGroup(
-      id: json['id'],
+      id: json['id'] ?? 0,
       type: NotificationGroupType.fromJson(json['type'] ?? <String, dynamic>{}),
-      chatId: json['chat_id'],
-      totalCount: json['total_count'],
+      chatId: json['chat_id'] ?? 0,
+      totalCount: json['total_count'] ?? 0,
       notifications: List<Notification>.from((json['notifications'] ?? [])
           .map((item) => Notification.fromJson(item ?? <String, dynamic>{}))
           .toList()),

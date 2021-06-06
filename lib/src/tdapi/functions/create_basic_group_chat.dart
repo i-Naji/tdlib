@@ -17,8 +17,8 @@ class CreateBasicGroupChat extends TdFunction {
   /// Parse from a json
   factory CreateBasicGroupChat.fromJson(Map<String, dynamic> json) {
     return CreateBasicGroupChat(
-      basicGroupId: json['basic_group_id'],
-      force: json['force'],
+      basicGroupId: json['basic_group_id'] ?? 0,
+      force: json['force'] ?? false,
       extra: json['@extra'],
     );
   }

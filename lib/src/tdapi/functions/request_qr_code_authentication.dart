@@ -14,7 +14,7 @@ class RequestQrCodeAuthentication extends TdFunction {
   factory RequestQrCodeAuthentication.fromJson(Map<String, dynamic> json) {
     return RequestQrCodeAuthentication(
       otherUserIds: List<int>.from(
-          (json['other_user_ids'] ?? []).map((item) => item).toList()),
+          (json['other_user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

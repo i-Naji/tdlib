@@ -60,21 +60,21 @@ class StickerSetInfo extends TdObject {
   factory StickerSetInfo.fromJson(Map<String, dynamic> json) {
     return StickerSetInfo(
       id: int.tryParse(json['id'] ?? "") ?? 0,
-      title: json['title'],
-      name: json['name'],
+      title: json['title'] ?? "",
+      name: json['name'] ?? "",
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
       thumbnailOutline: List<ClosedVectorPath>.from(
           (json['thumbnail_outline'] ?? [])
               .map((item) =>
                   ClosedVectorPath.fromJson(item ?? <String, dynamic>{}))
               .toList()),
-      isInstalled: json['is_installed'],
-      isArchived: json['is_archived'],
-      isOfficial: json['is_official'],
-      isAnimated: json['is_animated'],
-      isMasks: json['is_masks'],
-      isViewed: json['is_viewed'],
-      size: json['size'],
+      isInstalled: json['is_installed'] ?? false,
+      isArchived: json['is_archived'] ?? false,
+      isOfficial: json['is_official'] ?? false,
+      isAnimated: json['is_animated'] ?? false,
+      isMasks: json['is_masks'] ?? false,
+      isViewed: json['is_viewed'] ?? false,
+      size: json['size'] ?? 0,
       covers: List<Sticker>.from((json['covers'] ?? [])
           .map((item) => Sticker.fromJson(item ?? <String, dynamic>{}))
           .toList()),

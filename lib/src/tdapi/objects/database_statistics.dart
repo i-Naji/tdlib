@@ -13,7 +13,7 @@ class DatabaseStatistics extends TdObject {
   /// Parse from a json
   factory DatabaseStatistics.fromJson(Map<String, dynamic> json) {
     return DatabaseStatistics(
-      statistics: json['statistics'],
+      statistics: json['statistics'] ?? "",
       extra: json['@extra'],
     );
   }

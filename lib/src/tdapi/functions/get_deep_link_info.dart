@@ -13,7 +13,7 @@ class GetDeepLinkInfo extends TdFunction {
   /// Parse from a json
   factory GetDeepLinkInfo.fromJson(Map<String, dynamic> json) {
     return GetDeepLinkInfo(
-      link: json['link'],
+      link: json['link'] ?? "",
       extra: json['@extra'],
     );
   }

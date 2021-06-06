@@ -24,8 +24,8 @@ class PhoneNumberInfo extends TdObject {
   factory PhoneNumberInfo.fromJson(Map<String, dynamic> json) {
     return PhoneNumberInfo(
       country: CountryInfo.fromJson(json['country'] ?? <String, dynamic>{}),
-      countryCallingCode: json['country_calling_code'],
-      formattedPhoneNumber: json['formatted_phone_number'],
+      countryCallingCode: json['country_calling_code'] ?? "",
+      formattedPhoneNumber: json['formatted_phone_number'] ?? "",
       extra: json['@extra'],
     );
   }

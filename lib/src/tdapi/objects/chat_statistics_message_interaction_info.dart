@@ -20,9 +20,9 @@ class ChatStatisticsMessageInteractionInfo extends TdObject {
   factory ChatStatisticsMessageInteractionInfo.fromJson(
       Map<String, dynamic> json) {
     return ChatStatisticsMessageInteractionInfo(
-      messageId: json['message_id'],
-      viewCount: json['view_count'],
-      forwardCount: json['forward_count'],
+      messageId: json['message_id'] ?? 0,
+      viewCount: json['view_count'] ?? 0,
+      forwardCount: json['forward_count'] ?? 0,
     );
   }
 

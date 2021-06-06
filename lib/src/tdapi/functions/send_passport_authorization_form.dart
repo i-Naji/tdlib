@@ -17,7 +17,7 @@ class SendPassportAuthorizationForm extends TdFunction {
   /// Parse from a json
   factory SendPassportAuthorizationForm.fromJson(Map<String, dynamic> json) {
     return SendPassportAuthorizationForm(
-      autorizationFormId: json['autorization_form_id'],
+      autorizationFormId: json['autorization_form_id'] ?? 0,
       types: List<PassportElementType>.from((json['types'] ?? [])
           .map((item) =>
               PassportElementType.fromJson(item ?? <String, dynamic>{}))

@@ -32,10 +32,10 @@ class AnswerCallbackQuery extends TdFunction {
   factory AnswerCallbackQuery.fromJson(Map<String, dynamic> json) {
     return AnswerCallbackQuery(
       callbackQueryId: int.tryParse(json['callback_query_id'] ?? "") ?? 0,
-      text: json['text'],
-      showAlert: json['show_alert'],
-      url: json['url'],
-      cacheTime: json['cache_time'],
+      text: json['text'] ?? "",
+      showAlert: json['show_alert'] ?? false,
+      url: json['url'] ?? "",
+      cacheTime: json['cache_time'] ?? 0,
       extra: json['@extra'],
     );
   }

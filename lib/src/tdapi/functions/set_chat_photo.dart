@@ -16,7 +16,7 @@ class SetChatPhoto extends TdFunction {
   /// Parse from a json
   factory SetChatPhoto.fromJson(Map<String, dynamic> json) {
     return SetChatPhoto(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       photo: InputChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

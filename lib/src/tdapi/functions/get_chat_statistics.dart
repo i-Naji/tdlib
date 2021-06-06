@@ -16,8 +16,8 @@ class GetChatStatistics extends TdFunction {
   /// Parse from a json
   factory GetChatStatistics.fromJson(Map<String, dynamic> json) {
     return GetChatStatistics(
-      chatId: json['chat_id'],
-      isDark: json['is_dark'],
+      chatId: json['chat_id'] ?? 0,
+      isDark: json['is_dark'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -32,13 +32,13 @@ class InlineQueryResults extends TdObject {
   factory InlineQueryResults.fromJson(Map<String, dynamic> json) {
     return InlineQueryResults(
       inlineQueryId: int.tryParse(json['inline_query_id'] ?? "") ?? 0,
-      nextOffset: json['next_offset'],
+      nextOffset: json['next_offset'] ?? "",
       results: List<InlineQueryResult>.from((json['results'] ?? [])
           .map(
               (item) => InlineQueryResult.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      switchPmText: json['switch_pm_text'],
-      switchPmParameter: json['switch_pm_parameter'],
+      switchPmText: json['switch_pm_text'] ?? "",
+      switchPmParameter: json['switch_pm_parameter'] ?? "",
       extra: json['@extra'],
     );
   }

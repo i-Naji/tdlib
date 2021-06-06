@@ -13,7 +13,7 @@ class GetRecoveryEmailAddress extends TdFunction {
   /// Parse from a json
   factory GetRecoveryEmailAddress.fromJson(Map<String, dynamic> json) {
     return GetRecoveryEmailAddress(
-      password: json['password'],
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

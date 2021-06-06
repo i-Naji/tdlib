@@ -34,10 +34,10 @@ class WebPageInstantView extends TdObject {
       pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
           .map((item) => PageBlock.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      viewCount: json['view_count'],
-      version: json['version'],
-      isRtl: json['is_rtl'],
-      isFull: json['is_full'],
+      viewCount: json['view_count'] ?? 0,
+      version: json['version'] ?? 0,
+      isRtl: json['is_rtl'] ?? false,
+      isFull: json['is_full'] ?? false,
       extra: json['@extra'],
     );
   }

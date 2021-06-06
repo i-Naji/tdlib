@@ -13,7 +13,7 @@ class SetAlarm extends TdFunction {
   /// Parse from a json
   factory SetAlarm.fromJson(Map<String, dynamic> json) {
     return SetAlarm(
-      seconds: json['seconds'],
+      seconds: json['seconds'] ?? 0,
       extra: json['@extra'],
     );
   }

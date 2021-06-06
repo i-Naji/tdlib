@@ -13,7 +13,7 @@ class GetStorageStatistics extends TdFunction {
   /// Parse from a json
   factory GetStorageStatistics.fromJson(Map<String, dynamic> json) {
     return GetStorageStatistics(
-      chatLimit: json['chat_limit'],
+      chatLimit: json['chat_limit'] ?? 0,
       extra: json['@extra'],
     );
   }

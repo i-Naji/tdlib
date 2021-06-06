@@ -16,8 +16,8 @@ class SearchHashtags extends TdFunction {
   /// Parse from a json
   factory SearchHashtags.fromJson(Map<String, dynamic> json) {
     return SearchHashtags(
-      prefix: json['prefix'],
-      limit: json['limit'],
+      prefix: json['prefix'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

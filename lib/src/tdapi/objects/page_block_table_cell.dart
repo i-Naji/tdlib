@@ -32,9 +32,9 @@ class PageBlockTableCell extends TdObject {
   factory PageBlockTableCell.fromJson(Map<String, dynamic> json) {
     return PageBlockTableCell(
       text: RichText.fromJson(json['text'] ?? <String, dynamic>{}),
-      isHeader: json['is_header'],
-      colspan: json['colspan'],
-      rowspan: json['rowspan'],
+      isHeader: json['is_header'] ?? false,
+      colspan: json['colspan'] ?? 0,
+      rowspan: json['rowspan'] ?? 0,
       align: PageBlockHorizontalAlignment.fromJson(
           json['align'] ?? <String, dynamic>{}),
       valign: PageBlockVerticalAlignment.fromJson(

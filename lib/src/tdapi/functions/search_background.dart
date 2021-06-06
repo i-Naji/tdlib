@@ -13,7 +13,7 @@ class SearchBackground extends TdFunction {
   /// Parse from a json
   factory SearchBackground.fromJson(Map<String, dynamic> json) {
     return SearchBackground(
-      name: json['name'],
+      name: json['name'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class SetDatabaseEncryptionKey extends TdFunction {
   /// Parse from a json
   factory SetDatabaseEncryptionKey.fromJson(Map<String, dynamic> json) {
     return SetDatabaseEncryptionKey(
-      newEncryptionKey: json['new_encryption_key'],
+      newEncryptionKey: json['new_encryption_key'] ?? "",
       extra: json['@extra'],
     );
   }

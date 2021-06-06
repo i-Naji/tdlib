@@ -20,7 +20,7 @@ class RegisterDevice extends TdFunction {
       deviceToken:
           DeviceToken.fromJson(json['device_token'] ?? <String, dynamic>{}),
       otherUserIds: List<int>.from(
-          (json['other_user_ids'] ?? []).map((item) => item).toList()),
+          (json['other_user_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

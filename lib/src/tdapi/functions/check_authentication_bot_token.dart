@@ -13,7 +13,7 @@ class CheckAuthenticationBotToken extends TdFunction {
   /// Parse from a json
   factory CheckAuthenticationBotToken.fromJson(Map<String, dynamic> json) {
     return CheckAuthenticationBotToken(
-      token: json['token'],
+      token: json['token'] ?? "",
       extra: json['@extra'],
     );
   }

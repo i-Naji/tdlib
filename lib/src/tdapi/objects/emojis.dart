@@ -14,7 +14,7 @@ class Emojis extends TdObject {
   factory Emojis.fromJson(Map<String, dynamic> json) {
     return Emojis(
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
+          (json['emojis'] ?? []).map((item) => item ?? "").toList()),
       extra: json['@extra'],
     );
   }

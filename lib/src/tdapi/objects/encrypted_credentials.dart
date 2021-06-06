@@ -17,9 +17,9 @@ class EncryptedCredentials extends TdObject {
   /// Parse from a json
   factory EncryptedCredentials.fromJson(Map<String, dynamic> json) {
     return EncryptedCredentials(
-      data: json['data'],
-      hash: json['hash'],
-      secret: json['secret'],
+      data: json['data'] ?? "",
+      hash: json['hash'] ?? "",
+      secret: json['secret'] ?? "",
     );
   }
 

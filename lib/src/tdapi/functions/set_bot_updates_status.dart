@@ -19,8 +19,8 @@ class SetBotUpdatesStatus extends TdFunction {
   /// Parse from a json
   factory SetBotUpdatesStatus.fromJson(Map<String, dynamic> json) {
     return SetBotUpdatesStatus(
-      pendingUpdateCount: json['pending_update_count'],
-      errorMessage: json['error_message'],
+      pendingUpdateCount: json['pending_update_count'] ?? 0,
+      errorMessage: json['error_message'] ?? "",
       extra: json['@extra'],
     );
   }

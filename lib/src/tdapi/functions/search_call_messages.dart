@@ -23,9 +23,9 @@ class SearchCallMessages extends TdFunction {
   /// Parse from a json
   factory SearchCallMessages.fromJson(Map<String, dynamic> json) {
     return SearchCallMessages(
-      fromMessageId: json['from_message_id'],
-      limit: json['limit'],
-      onlyMissed: json['only_missed'],
+      fromMessageId: json['from_message_id'] ?? 0,
+      limit: json['limit'] ?? 0,
+      onlyMissed: json['only_missed'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -23,8 +23,8 @@ class SetStickerSetThumbnail extends TdFunction {
   /// Parse from a json
   factory SetStickerSetThumbnail.fromJson(Map<String, dynamic> json) {
     return SetStickerSetThumbnail(
-      userId: json['user_id'],
-      name: json['name'],
+      userId: json['user_id'] ?? 0,
+      name: json['name'] ?? "",
       thumbnail: InputFile.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

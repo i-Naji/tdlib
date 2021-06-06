@@ -19,7 +19,7 @@ class SetPassportElement extends TdFunction {
     return SetPassportElement(
       element:
           InputPassportElement.fromJson(json['element'] ?? <String, dynamic>{}),
-      password: json['password'],
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

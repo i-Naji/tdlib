@@ -28,7 +28,7 @@ class ChatPhoto extends TdObject {
   factory ChatPhoto.fromJson(Map<String, dynamic> json) {
     return ChatPhoto(
       id: int.tryParse(json['id'] ?? "") ?? 0,
-      addedDate: json['added_date'],
+      addedDate: json['added_date'] ?? 0,
       minithumbnail:
           Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{}),
       sizes: List<PhotoSize>.from((json['sizes'] ?? [])

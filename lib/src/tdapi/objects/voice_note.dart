@@ -23,9 +23,9 @@ class VoiceNote extends TdObject {
   /// Parse from a json
   factory VoiceNote.fromJson(Map<String, dynamic> json) {
     return VoiceNote(
-      duration: json['duration'],
-      waveform: json['waveform'],
-      mimeType: json['mime_type'],
+      duration: json['duration'] ?? 0,
+      waveform: json['waveform'] ?? "",
+      mimeType: json['mime_type'] ?? "",
       voice: File.fromJson(json['voice'] ?? <String, dynamic>{}),
     );
   }

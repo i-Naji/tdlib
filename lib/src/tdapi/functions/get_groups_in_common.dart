@@ -23,9 +23,9 @@ class GetGroupsInCommon extends TdFunction {
   /// Parse from a json
   factory GetGroupsInCommon.fromJson(Map<String, dynamic> json) {
     return GetGroupsInCommon(
-      userId: json['user_id'],
-      offsetChatId: json['offset_chat_id'],
-      limit: json['limit'],
+      userId: json['user_id'] ?? 0,
+      offsetChatId: json['offset_chat_id'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

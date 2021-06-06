@@ -31,10 +31,10 @@ class CreateNewStickerSet extends TdFunction {
   /// Parse from a json
   factory CreateNewStickerSet.fromJson(Map<String, dynamic> json) {
     return CreateNewStickerSet(
-      userId: json['user_id'],
-      title: json['title'],
-      name: json['name'],
-      isMasks: json['is_masks'],
+      userId: json['user_id'] ?? 0,
+      title: json['title'] ?? "",
+      name: json['name'] ?? "",
+      isMasks: json['is_masks'] ?? false,
       stickers: List<InputSticker>.from((json['stickers'] ?? [])
           .map((item) => InputSticker.fromJson(item ?? <String, dynamic>{}))
           .toList()),

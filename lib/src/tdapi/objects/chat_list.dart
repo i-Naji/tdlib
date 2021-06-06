@@ -86,7 +86,7 @@ class ChatListFilter extends ChatList {
   /// Parse from a json
   factory ChatListFilter.fromJson(Map<String, dynamic> json) {
     return ChatListFilter(
-      chatFilterId: json['chat_filter_id'],
+      chatFilterId: json['chat_filter_id'] ?? 0,
     );
   }
 

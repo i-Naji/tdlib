@@ -23,10 +23,10 @@ class DeleteMessages extends TdFunction {
   /// Parse from a json
   factory DeleteMessages.fromJson(Map<String, dynamic> json) {
     return DeleteMessages(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       messageIds: List<int>.from(
-          (json['message_ids'] ?? []).map((item) => item).toList()),
-      revoke: json['revoke'],
+          (json['message_ids'] ?? []).map((item) => item ?? 0).toList()),
+      revoke: json['revoke'] ?? false,
       extra: json['@extra'],
     );
   }

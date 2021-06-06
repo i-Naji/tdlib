@@ -23,9 +23,9 @@ class DeleteChatHistory extends TdFunction {
   /// Parse from a json
   factory DeleteChatHistory.fromJson(Map<String, dynamic> json) {
     return DeleteChatHistory(
-      chatId: json['chat_id'],
-      removeFromChatList: json['remove_from_chat_list'],
-      revoke: json['revoke'],
+      chatId: json['chat_id'] ?? 0,
+      removeFromChatList: json['remove_from_chat_list'] ?? false,
+      revoke: json['revoke'] ?? false,
       extra: json['@extra'],
     );
   }

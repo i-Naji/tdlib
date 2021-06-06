@@ -13,7 +13,7 @@ class GetChatAdministrators extends TdFunction {
   /// Parse from a json
   factory GetChatAdministrators.fromJson(Map<String, dynamic> json) {
     return GetChatAdministrators(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

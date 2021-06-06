@@ -39,11 +39,11 @@ class Audio extends TdObject {
   /// Parse from a json
   factory Audio.fromJson(Map<String, dynamic> json) {
     return Audio(
-      duration: json['duration'],
-      title: json['title'],
-      performer: json['performer'],
-      fileName: json['file_name'],
-      mimeType: json['mime_type'],
+      duration: json['duration'] ?? 0,
+      title: json['title'] ?? "",
+      performer: json['performer'] ?? "",
+      fileName: json['file_name'] ?? "",
+      mimeType: json['mime_type'] ?? "",
       albumCoverMinithumbnail: Minithumbnail.fromJson(
           json['album_cover_minithumbnail'] ?? <String, dynamic>{}),
       albumCoverThumbnail: Thumbnail.fromJson(

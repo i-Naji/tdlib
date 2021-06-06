@@ -31,10 +31,10 @@ class EditProxy extends TdFunction {
   /// Parse from a json
   factory EditProxy.fromJson(Map<String, dynamic> json) {
     return EditProxy(
-      proxyId: json['proxy_id'],
-      server: json['server'],
-      port: json['port'],
-      enable: json['enable'],
+      proxyId: json['proxy_id'] ?? 0,
+      server: json['server'] ?? "",
+      port: json['port'] ?? 0,
+      enable: json['enable'] ?? false,
       type: ProxyType.fromJson(json['type'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

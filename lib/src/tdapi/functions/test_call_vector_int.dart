@@ -13,7 +13,7 @@ class TestCallVectorInt extends TdFunction {
   /// Parse from a json
   factory TestCallVectorInt.fromJson(Map<String, dynamic> json) {
     return TestCallVectorInt(
-      x: List<int>.from((json['x'] ?? []).map((item) => item).toList()),
+      x: List<int>.from((json['x'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

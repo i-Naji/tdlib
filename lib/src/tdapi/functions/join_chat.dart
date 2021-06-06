@@ -13,7 +13,7 @@ class JoinChat extends TdFunction {
   /// Parse from a json
   factory JoinChat.fromJson(Map<String, dynamic> json) {
     return JoinChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

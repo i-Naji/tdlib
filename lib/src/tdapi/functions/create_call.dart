@@ -23,9 +23,9 @@ class CreateCall extends TdFunction {
   /// Parse from a json
   factory CreateCall.fromJson(Map<String, dynamic> json) {
     return CreateCall(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       protocol: CallProtocol.fromJson(json['protocol'] ?? <String, dynamic>{}),
-      isVideo: json['is_video'],
+      isVideo: json['is_video'] ?? false,
       extra: json['@extra'],
     );
   }

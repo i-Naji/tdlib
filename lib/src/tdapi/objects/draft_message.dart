@@ -19,8 +19,8 @@ class DraftMessage extends TdObject {
   /// Parse from a json
   factory DraftMessage.fromJson(Map<String, dynamic> json) {
     return DraftMessage(
-      replyToMessageId: json['reply_to_message_id'],
-      date: json['date'],
+      replyToMessageId: json['reply_to_message_id'] ?? 0,
+      date: json['date'] ?? 0,
       inputMessageText: InputMessageContent.fromJson(
           json['input_message_text'] ?? <String, dynamic>{}),
     );

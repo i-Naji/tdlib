@@ -17,8 +17,8 @@ class GetTrendingStickerSets extends TdFunction {
   /// Parse from a json
   factory GetTrendingStickerSets.fromJson(Map<String, dynamic> json) {
     return GetTrendingStickerSets(
-      offset: json['offset'],
-      limit: json['limit'],
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

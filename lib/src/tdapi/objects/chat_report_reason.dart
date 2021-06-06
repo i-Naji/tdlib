@@ -187,7 +187,7 @@ class ChatReportReasonCustom extends ChatReportReason {
   /// Parse from a json
   factory ChatReportReasonCustom.fromJson(Map<String, dynamic> json) {
     return ChatReportReasonCustom(
-      text: json['text'],
+      text: json['text'] ?? "",
     );
   }
 

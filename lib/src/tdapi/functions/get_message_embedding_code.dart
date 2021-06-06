@@ -23,9 +23,9 @@ class GetMessageEmbeddingCode extends TdFunction {
   /// Parse from a json
   factory GetMessageEmbeddingCode.fromJson(Map<String, dynamic> json) {
     return GetMessageEmbeddingCode(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      forAlbum: json['for_album'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      forAlbum: json['for_album'] ?? false,
       extra: json['@extra'],
     );
   }

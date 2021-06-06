@@ -21,7 +21,7 @@ class AnswerPreCheckoutQuery extends TdFunction {
     return AnswerPreCheckoutQuery(
       preCheckoutQueryId:
           int.tryParse(json['pre_checkout_query_id'] ?? "") ?? 0,
-      errorMessage: json['error_message'],
+      errorMessage: json['error_message'] ?? "",
       extra: json['@extra'],
     );
   }

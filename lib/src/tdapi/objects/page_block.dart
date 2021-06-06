@@ -180,7 +180,7 @@ class PageBlockAuthorDate extends PageBlock {
   factory PageBlockAuthorDate.fromJson(Map<String, dynamic> json) {
     return PageBlockAuthorDate(
       author: RichText.fromJson(json['author'] ?? <String, dynamic>{}),
-      publishDate: json['publish_date'],
+      publishDate: json['publish_date'] ?? 0,
     );
   }
 
@@ -325,7 +325,7 @@ class PageBlockPreformatted extends PageBlock {
   factory PageBlockPreformatted.fromJson(Map<String, dynamic> json) {
     return PageBlockPreformatted(
       text: RichText.fromJson(json['text'] ?? <String, dynamic>{}),
-      language: json['language'],
+      language: json['language'] ?? "",
     );
   }
 
@@ -404,7 +404,7 @@ class PageBlockAnchor extends PageBlock {
   /// Parse from a json
   factory PageBlockAnchor.fromJson(Map<String, dynamic> json) {
     return PageBlockAnchor(
-      name: json['name'],
+      name: json['name'] ?? "",
     );
   }
 
@@ -539,7 +539,7 @@ class PageBlockAnimation extends PageBlock {
       animation: Animation.fromJson(json['animation'] ?? <String, dynamic>{}),
       caption:
           PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{}),
-      needAutoplay: json['need_autoplay'],
+      needAutoplay: json['need_autoplay'] ?? false,
     );
   }
 
@@ -612,7 +612,7 @@ class PageBlockPhoto extends PageBlock {
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
       caption:
           PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{}),
-      url: json['url'],
+      url: json['url'] ?? "",
     );
   }
 
@@ -658,8 +658,8 @@ class PageBlockVideo extends PageBlock {
       video: Video.fromJson(json['video'] ?? <String, dynamic>{}),
       caption:
           PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{}),
-      needAutoplay: json['need_autoplay'],
-      isLooped: json['is_looped'],
+      needAutoplay: json['need_autoplay'] ?? false,
+      isLooped: json['is_looped'] ?? false,
     );
   }
 
@@ -781,15 +781,15 @@ class PageBlockEmbedded extends PageBlock {
   /// Parse from a json
   factory PageBlockEmbedded.fromJson(Map<String, dynamic> json) {
     return PageBlockEmbedded(
-      url: json['url'],
-      html: json['html'],
+      url: json['url'] ?? "",
+      html: json['html'] ?? "",
       posterPhoto: Photo.fromJson(json['poster_photo'] ?? <String, dynamic>{}),
-      width: json['width'],
-      height: json['height'],
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
       caption:
           PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{}),
-      isFullWidth: json['is_full_width'],
-      allowScrolling: json['allow_scrolling'],
+      isFullWidth: json['is_full_width'] ?? false,
+      allowScrolling: json['allow_scrolling'] ?? false,
     );
   }
 
@@ -846,10 +846,10 @@ class PageBlockEmbeddedPost extends PageBlock {
   /// Parse from a json
   factory PageBlockEmbeddedPost.fromJson(Map<String, dynamic> json) {
     return PageBlockEmbeddedPost(
-      url: json['url'],
-      author: json['author'],
+      url: json['url'] ?? "",
+      author: json['author'] ?? "",
       authorPhoto: Photo.fromJson(json['author_photo'] ?? <String, dynamic>{}),
-      date: json['date'],
+      date: json['date'] ?? 0,
       pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
           .map((item) => PageBlock.fromJson(item ?? <String, dynamic>{}))
           .toList()),
@@ -966,9 +966,9 @@ class PageBlockChatLink extends PageBlock {
   /// Parse from a json
   factory PageBlockChatLink.fromJson(Map<String, dynamic> json) {
     return PageBlockChatLink(
-      title: json['title'],
+      title: json['title'] ?? "",
       photo: ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      username: json['username'],
+      username: json['username'] ?? "",
     );
   }
 
@@ -1018,8 +1018,8 @@ class PageBlockTable extends PageBlock {
                   PageBlockTableCell.fromJson(innerItem ?? <String, dynamic>{}))
               .toList()))
           .toList()),
-      isBordered: json['is_bordered'],
-      isStriped: json['is_striped'],
+      isBordered: json['is_bordered'] ?? false,
+      isStriped: json['is_striped'] ?? false,
     );
   }
 
@@ -1062,7 +1062,7 @@ class PageBlockDetails extends PageBlock {
       pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
           .map((item) => PageBlock.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      isOpen: json['is_open'],
+      isOpen: json['is_open'] ?? false,
     );
   }
 
@@ -1146,9 +1146,9 @@ class PageBlockMap extends PageBlock {
   factory PageBlockMap.fromJson(Map<String, dynamic> json) {
     return PageBlockMap(
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      zoom: json['zoom'],
-      width: json['width'],
-      height: json['height'],
+      zoom: json['zoom'] ?? 0,
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
       caption:
           PageBlockCaption.fromJson(json['caption'] ?? <String, dynamic>{}),
     );

@@ -16,8 +16,8 @@ class AddLogMessage extends TdFunction {
   /// Parse from a json
   factory AddLogMessage.fromJson(Map<String, dynamic> json) {
     return AddLogMessage(
-      verbosityLevel: json['verbosity_level'],
-      text: json['text'],
+      verbosityLevel: json['verbosity_level'] ?? 0,
+      text: json['text'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -16,7 +16,7 @@ class Photo extends TdObject {
   /// Parse from a json
   factory Photo.fromJson(Map<String, dynamic> json) {
     return Photo(
-      hasStickers: json['has_stickers'],
+      hasStickers: json['has_stickers'] ?? false,
       minithumbnail:
           Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{}),
       sizes: List<PhotoSize>.from((json['sizes'] ?? [])

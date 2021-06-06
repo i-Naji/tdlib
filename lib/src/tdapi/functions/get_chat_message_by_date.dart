@@ -16,8 +16,8 @@ class GetChatMessageByDate extends TdFunction {
   /// Parse from a json
   factory GetChatMessageByDate.fromJson(Map<String, dynamic> json) {
     return GetChatMessageByDate(
-      chatId: json['chat_id'],
-      date: json['date'],
+      chatId: json['chat_id'] ?? 0,
+      date: json['date'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class DeleteLanguagePack extends TdFunction {
   /// Parse from a json
   factory DeleteLanguagePack.fromJson(Map<String, dynamic> json) {
     return DeleteLanguagePack(
-      languagePackId: json['language_pack_id'],
+      languagePackId: json['language_pack_id'] ?? "",
       extra: json['@extra'],
     );
   }

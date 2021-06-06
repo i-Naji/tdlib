@@ -14,7 +14,7 @@ class SendChatScreenshotTakenNotification extends TdFunction {
   factory SendChatScreenshotTakenNotification.fromJson(
       Map<String, dynamic> json) {
     return SendChatScreenshotTakenNotification(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

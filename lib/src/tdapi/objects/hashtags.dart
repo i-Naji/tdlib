@@ -14,7 +14,7 @@ class Hashtags extends TdObject {
   factory Hashtags.fromJson(Map<String, dynamic> json) {
     return Hashtags(
       hashtags: List<String>.from(
-          (json['hashtags'] ?? []).map((item) => item).toList()),
+          (json['hashtags'] ?? []).map((item) => item ?? "").toList()),
       extra: json['@extra'],
     );
   }

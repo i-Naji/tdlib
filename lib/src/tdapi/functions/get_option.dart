@@ -13,7 +13,7 @@ class GetOption extends TdFunction {
   /// Parse from a json
   factory GetOption.fromJson(Map<String, dynamic> json) {
     return GetOption(
-      name: json['name'],
+      name: json['name'] ?? "",
       extra: json['@extra'],
     );
   }

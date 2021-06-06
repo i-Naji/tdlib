@@ -48,11 +48,11 @@ class Sticker extends TdObject {
   factory Sticker.fromJson(Map<String, dynamic> json) {
     return Sticker(
       setId: int.tryParse(json['set_id'] ?? "") ?? 0,
-      width: json['width'],
-      height: json['height'],
-      emoji: json['emoji'],
-      isAnimated: json['is_animated'],
-      isMask: json['is_mask'],
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
+      emoji: json['emoji'] ?? "",
+      isAnimated: json['is_animated'] ?? false,
+      isMask: json['is_mask'] ?? false,
       maskPosition:
           MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{}),
       outline: List<ClosedVectorPath>.from((json['outline'] ?? [])

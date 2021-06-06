@@ -17,8 +17,8 @@ class SendCustomRequest extends TdFunction {
   /// Parse from a json
   factory SendCustomRequest.fromJson(Map<String, dynamic> json) {
     return SendCustomRequest(
-      method: json['method'],
-      parameters: json['parameters'],
+      method: json['method'] ?? "",
+      parameters: json['parameters'] ?? "",
       extra: json['@extra'],
     );
   }

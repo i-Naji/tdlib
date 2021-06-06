@@ -13,7 +13,7 @@ class GetGroupCall extends TdFunction {
   /// Parse from a json
   factory GetGroupCall.fromJson(Map<String, dynamic> json) {
     return GetGroupCall(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
       extra: json['@extra'],
     );
   }

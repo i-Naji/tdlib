@@ -13,7 +13,7 @@ class GetChatPinnedMessage extends TdFunction {
   /// Parse from a json
   factory GetChatPinnedMessage.fromJson(Map<String, dynamic> json) {
     return GetChatPinnedMessage(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

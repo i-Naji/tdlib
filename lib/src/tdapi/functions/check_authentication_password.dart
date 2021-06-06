@@ -13,7 +13,7 @@ class CheckAuthenticationPassword extends TdFunction {
   /// Parse from a json
   factory CheckAuthenticationPassword.fromJson(Map<String, dynamic> json) {
     return CheckAuthenticationPassword(
-      password: json['password'],
+      password: json['password'] ?? "",
       extra: json['@extra'],
     );
   }

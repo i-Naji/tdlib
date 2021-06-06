@@ -94,8 +94,8 @@ class InputMessageText extends InputMessageContent {
   factory InputMessageText.fromJson(Map<String, dynamic> json) {
     return InputMessageText(
       text: FormattedText.fromJson(json['text'] ?? <String, dynamic>{}),
-      disableWebPagePreview: json['disable_web_page_preview'],
-      clearDraft: json['clear_draft'],
+      disableWebPagePreview: json['disable_web_page_preview'] ?? false,
+      clearDraft: json['clear_draft'] ?? false,
     );
   }
 
@@ -153,11 +153,12 @@ class InputMessageAnimation extends InputMessageContent {
       animation: InputFile.fromJson(json['animation'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      addedStickerFileIds: List<int>.from(
-          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-      duration: json['duration'],
-      width: json['width'],
-      height: json['height'],
+      addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? [])
+          .map((item) => item ?? 0)
+          .toList()),
+      duration: json['duration'] ?? 0,
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
     );
   }
@@ -216,9 +217,9 @@ class InputMessageAudio extends InputMessageContent {
       audio: InputFile.fromJson(json['audio'] ?? <String, dynamic>{}),
       albumCoverThumbnail: InputThumbnail.fromJson(
           json['album_cover_thumbnail'] ?? <String, dynamic>{}),
-      duration: json['duration'],
-      title: json['title'],
-      performer: json['performer'],
+      duration: json['duration'] ?? 0,
+      title: json['title'] ?? "",
+      performer: json['performer'] ?? "",
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
     );
   }
@@ -268,7 +269,8 @@ class InputMessageDocument extends InputMessageContent {
       document: InputFile.fromJson(json['document'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      disableContentTypeDetection: json['disable_content_type_detection'],
+      disableContentTypeDetection:
+          json['disable_content_type_detection'] ?? false,
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
     );
   }
@@ -328,12 +330,13 @@ class InputMessagePhoto extends InputMessageContent {
       photo: InputFile.fromJson(json['photo'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      addedStickerFileIds: List<int>.from(
-          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-      width: json['width'],
-      height: json['height'],
+      addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? [])
+          .map((item) => item ?? 0)
+          .toList()),
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      ttl: json['ttl'],
+      ttl: json['ttl'] ?? 0,
     );
   }
 
@@ -387,9 +390,9 @@ class InputMessageSticker extends InputMessageContent {
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      width: json['width'],
-      height: json['height'],
-      emoji: json['emoji'],
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
+      emoji: json['emoji'] ?? "",
     );
   }
 
@@ -457,14 +460,15 @@ class InputMessageVideo extends InputMessageContent {
       video: InputFile.fromJson(json['video'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      addedStickerFileIds: List<int>.from(
-          (json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
-      duration: json['duration'],
-      width: json['width'],
-      height: json['height'],
-      supportsStreaming: json['supports_streaming'],
+      addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? [])
+          .map((item) => item ?? 0)
+          .toList()),
+      duration: json['duration'] ?? 0,
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
+      supportsStreaming: json['supports_streaming'] ?? false,
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
-      ttl: json['ttl'],
+      ttl: json['ttl'] ?? 0,
     );
   }
 
@@ -516,8 +520,8 @@ class InputMessageVideoNote extends InputMessageContent {
       videoNote: InputFile.fromJson(json['video_note'] ?? <String, dynamic>{}),
       thumbnail:
           InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
-      duration: json['duration'],
-      length: json['length'],
+      duration: json['duration'] ?? 0,
+      length: json['length'] ?? 0,
     );
   }
 
@@ -562,8 +566,8 @@ class InputMessageVoiceNote extends InputMessageContent {
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) {
     return InputMessageVoiceNote(
       voiceNote: InputFile.fromJson(json['voice_note'] ?? <String, dynamic>{}),
-      duration: json['duration'],
-      waveform: json['waveform'],
+      duration: json['duration'] ?? 0,
+      waveform: json['waveform'] ?? "",
       caption: FormattedText.fromJson(json['caption'] ?? <String, dynamic>{}),
     );
   }
@@ -609,9 +613,9 @@ class InputMessageLocation extends InputMessageContent {
   factory InputMessageLocation.fromJson(Map<String, dynamic> json) {
     return InputMessageLocation(
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      livePeriod: json['live_period'],
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      livePeriod: json['live_period'] ?? 0,
+      heading: json['heading'] ?? 0,
+      proximityAlertRadius: json['proximity_alert_radius'] ?? 0,
     );
   }
 
@@ -701,8 +705,8 @@ class InputMessageDice extends InputMessageContent {
   /// Parse from a json
   factory InputMessageDice.fromJson(Map<String, dynamic> json) {
     return InputMessageDice(
-      emoji: json['emoji'],
-      clearDraft: json['clear_draft'],
+      emoji: json['emoji'] ?? "",
+      clearDraft: json['clear_draft'] ?? false,
     );
   }
 
@@ -734,8 +738,8 @@ class InputMessageGame extends InputMessageContent {
   /// Parse from a json
   factory InputMessageGame.fromJson(Map<String, dynamic> json) {
     return InputMessageGame(
-      botUserId: json['bot_user_id'],
-      gameShortName: json['game_short_name'],
+      botUserId: json['bot_user_id'] ?? 0,
+      gameShortName: json['game_short_name'] ?? "",
     );
   }
 
@@ -806,16 +810,16 @@ class InputMessageInvoice extends InputMessageContent {
   factory InputMessageInvoice.fromJson(Map<String, dynamic> json) {
     return InputMessageInvoice(
       invoice: Invoice.fromJson(json['invoice'] ?? <String, dynamic>{}),
-      title: json['title'],
-      description: json['description'],
-      photoUrl: json['photo_url'],
-      photoSize: json['photo_size'],
-      photoWidth: json['photo_width'],
-      photoHeight: json['photo_height'],
-      payload: json['payload'],
-      providerToken: json['provider_token'],
-      providerData: json['provider_data'],
-      startParameter: json['start_parameter'],
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
+      photoUrl: json['photo_url'] ?? "",
+      photoSize: json['photo_size'] ?? 0,
+      photoWidth: json['photo_width'] ?? 0,
+      photoHeight: json['photo_height'] ?? 0,
+      payload: json['payload'] ?? "",
+      providerToken: json['provider_token'] ?? "",
+      providerData: json['provider_data'] ?? "",
+      startParameter: json['start_parameter'] ?? "",
     );
   }
 
@@ -878,14 +882,14 @@ class InputMessagePoll extends InputMessageContent {
   /// Parse from a json
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) {
     return InputMessagePoll(
-      question: json['question'],
+      question: json['question'] ?? "",
       options: List<String>.from(
-          (json['options'] ?? []).map((item) => item).toList()),
-      isAnonymous: json['is_anonymous'],
+          (json['options'] ?? []).map((item) => item ?? "").toList()),
+      isAnonymous: json['is_anonymous'] ?? false,
       type: PollType.fromJson(json['type'] ?? <String, dynamic>{}),
-      openPeriod: json['open_period'],
-      closeDate: json['close_date'],
-      isClosed: json['is_closed'],
+      openPeriod: json['open_period'] ?? 0,
+      closeDate: json['close_date'] ?? 0,
+      isClosed: json['is_closed'] ?? false,
     );
   }
 
@@ -932,9 +936,9 @@ class InputMessageForwarded extends InputMessageContent {
   /// Parse from a json
   factory InputMessageForwarded.fromJson(Map<String, dynamic> json) {
     return InputMessageForwarded(
-      fromChatId: json['from_chat_id'],
-      messageId: json['message_id'],
-      inGameShare: json['in_game_share'],
+      fromChatId: json['from_chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      inGameShare: json['in_game_share'] ?? false,
       copyOptions: MessageCopyOptions.fromJson(
           json['copy_options'] ?? <String, dynamic>{}),
     );

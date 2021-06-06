@@ -95,20 +95,20 @@ class WebPage extends TdObject {
   /// Parse from a json
   factory WebPage.fromJson(Map<String, dynamic> json) {
     return WebPage(
-      url: json['url'],
-      displayUrl: json['display_url'],
-      type: json['type'],
-      siteName: json['site_name'],
-      title: json['title'],
+      url: json['url'] ?? "",
+      displayUrl: json['display_url'] ?? "",
+      type: json['type'] ?? "",
+      siteName: json['site_name'] ?? "",
+      title: json['title'] ?? "",
       description:
           FormattedText.fromJson(json['description'] ?? <String, dynamic>{}),
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      embedUrl: json['embed_url'],
-      embedType: json['embed_type'],
-      embedWidth: json['embed_width'],
-      embedHeight: json['embed_height'],
-      duration: json['duration'],
-      author: json['author'],
+      embedUrl: json['embed_url'] ?? "",
+      embedType: json['embed_type'] ?? "",
+      embedWidth: json['embed_width'] ?? 0,
+      embedHeight: json['embed_height'] ?? 0,
+      duration: json['duration'] ?? 0,
+      author: json['author'] ?? "",
       animation: Animation.fromJson(json['animation'] ?? <String, dynamic>{}),
       audio: Audio.fromJson(json['audio'] ?? <String, dynamic>{}),
       document: Document.fromJson(json['document'] ?? <String, dynamic>{}),
@@ -116,7 +116,7 @@ class WebPage extends TdObject {
       video: Video.fromJson(json['video'] ?? <String, dynamic>{}),
       videoNote: VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{}),
       voiceNote: VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{}),
-      instantViewVersion: json['instant_view_version'],
+      instantViewVersion: json['instant_view_version'] ?? 0,
       extra: json['@extra'],
     );
   }

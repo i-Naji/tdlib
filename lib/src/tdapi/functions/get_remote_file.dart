@@ -17,7 +17,7 @@ class GetRemoteFile extends TdFunction {
   /// Parse from a json
   factory GetRemoteFile.fromJson(Map<String, dynamic> json) {
     return GetRemoteFile(
-      remoteFileId: json['remote_file_id'],
+      remoteFileId: json['remote_file_id'] ?? "",
       fileType: FileType.fromJson(json['file_type'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

@@ -27,10 +27,10 @@ class GetMessageLink extends TdFunction {
   /// Parse from a json
   factory GetMessageLink.fromJson(Map<String, dynamic> json) {
     return GetMessageLink(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      forAlbum: json['for_album'],
-      forComment: json['for_comment'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      forAlbum: json['for_album'] ?? false,
+      forComment: json['for_comment'] ?? false,
       extra: json['@extra'],
     );
   }

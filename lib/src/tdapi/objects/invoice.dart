@@ -47,18 +47,19 @@ class Invoice extends TdObject {
   /// Parse from a json
   factory Invoice.fromJson(Map<String, dynamic> json) {
     return Invoice(
-      currency: json['currency'],
+      currency: json['currency'] ?? "",
       priceParts: List<LabeledPricePart>.from((json['price_parts'] ?? [])
           .map((item) => LabeledPricePart.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      isTest: json['is_test'],
-      needName: json['need_name'],
-      needPhoneNumber: json['need_phone_number'],
-      needEmailAddress: json['need_email_address'],
-      needShippingAddress: json['need_shipping_address'],
-      sendPhoneNumberToProvider: json['send_phone_number_to_provider'],
-      sendEmailAddressToProvider: json['send_email_address_to_provider'],
-      isFlexible: json['is_flexible'],
+      isTest: json['is_test'] ?? false,
+      needName: json['need_name'] ?? false,
+      needPhoneNumber: json['need_phone_number'] ?? false,
+      needEmailAddress: json['need_email_address'] ?? false,
+      needShippingAddress: json['need_shipping_address'] ?? false,
+      sendPhoneNumberToProvider: json['send_phone_number_to_provider'] ?? false,
+      sendEmailAddressToProvider:
+          json['send_email_address_to_provider'] ?? false,
+      isFlexible: json['is_flexible'] ?? false,
     );
   }
 

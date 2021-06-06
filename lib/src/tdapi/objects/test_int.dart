@@ -13,7 +13,7 @@ class TestInt extends TdObject {
   /// Parse from a json
   factory TestInt.fromJson(Map<String, dynamic> json) {
     return TestInt(
-      value: json['value'],
+      value: json['value'] ?? 0,
       extra: json['@extra'],
     );
   }

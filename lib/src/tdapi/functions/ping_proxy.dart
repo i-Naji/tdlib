@@ -13,7 +13,7 @@ class PingProxy extends TdFunction {
   /// Parse from a json
   factory PingProxy.fromJson(Map<String, dynamic> json) {
     return PingProxy(
-      proxyId: json['proxy_id'],
+      proxyId: json['proxy_id'] ?? 0,
       extra: json['@extra'],
     );
   }

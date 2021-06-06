@@ -23,9 +23,9 @@ class Notification extends TdObject {
   /// Parse from a json
   factory Notification.fromJson(Map<String, dynamic> json) {
     return Notification(
-      id: json['id'],
-      date: json['date'],
-      isSilent: json['is_silent'],
+      id: json['id'] ?? 0,
+      date: json['date'] ?? 0,
+      isSilent: json['is_silent'] ?? false,
       type: NotificationType.fromJson(json['type'] ?? <String, dynamic>{}),
     );
   }

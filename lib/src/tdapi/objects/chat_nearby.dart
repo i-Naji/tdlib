@@ -13,8 +13,8 @@ class ChatNearby extends TdObject {
   /// Parse from a json
   factory ChatNearby.fromJson(Map<String, dynamic> json) {
     return ChatNearby(
-      chatId: json['chat_id'],
-      distance: json['distance'],
+      chatId: json['chat_id'] ?? 0,
+      distance: json['distance'] ?? 0,
     );
   }
 

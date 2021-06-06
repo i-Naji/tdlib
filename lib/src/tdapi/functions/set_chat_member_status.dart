@@ -23,8 +23,8 @@ class SetChatMemberStatus extends TdFunction {
   /// Parse from a json
   factory SetChatMemberStatus.fromJson(Map<String, dynamic> json) {
     return SetChatMemberStatus(
-      chatId: json['chat_id'],
-      userId: json['user_id'],
+      chatId: json['chat_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       status: ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

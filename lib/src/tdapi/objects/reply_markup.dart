@@ -45,7 +45,7 @@ class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
   /// Parse from a json
   factory ReplyMarkupRemoveKeyboard.fromJson(Map<String, dynamic> json) {
     return ReplyMarkupRemoveKeyboard(
-      isPersonal: json['is_personal'],
+      isPersonal: json['is_personal'] ?? false,
     );
   }
 
@@ -73,7 +73,7 @@ class ReplyMarkupForceReply extends ReplyMarkup {
   /// Parse from a json
   factory ReplyMarkupForceReply.fromJson(Map<String, dynamic> json) {
     return ReplyMarkupForceReply(
-      isPersonal: json['is_personal'],
+      isPersonal: json['is_personal'] ?? false,
     );
   }
 
@@ -120,9 +120,9 @@ class ReplyMarkupShowKeyboard extends ReplyMarkup {
                   KeyboardButton.fromJson(innerItem ?? <String, dynamic>{}))
               .toList()))
           .toList()),
-      resizeKeyboard: json['resize_keyboard'],
-      oneTime: json['one_time'],
-      isPersonal: json['is_personal'],
+      resizeKeyboard: json['resize_keyboard'] ?? false,
+      oneTime: json['one_time'] ?? false,
+      isPersonal: json['is_personal'] ?? false,
     );
   }
 

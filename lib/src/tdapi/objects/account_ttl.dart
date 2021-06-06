@@ -13,7 +13,7 @@ class AccountTtl extends TdObject {
   /// Parse from a json
   factory AccountTtl.fromJson(Map<String, dynamic> json) {
     return AccountTtl(
-      days: json['days'],
+      days: json['days'] ?? 0,
       extra: json['@extra'],
     );
   }

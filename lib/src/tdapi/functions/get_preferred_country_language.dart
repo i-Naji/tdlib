@@ -13,7 +13,7 @@ class GetPreferredCountryLanguage extends TdFunction {
   /// Parse from a json
   factory GetPreferredCountryLanguage.fromJson(Map<String, dynamic> json) {
     return GetPreferredCountryLanguage(
-      countryCode: json['country_code'],
+      countryCode: json['country_code'] ?? "",
       extra: json['@extra'],
     );
   }

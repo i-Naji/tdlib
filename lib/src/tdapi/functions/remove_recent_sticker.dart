@@ -17,7 +17,7 @@ class RemoveRecentSticker extends TdFunction {
   /// Parse from a json
   factory RemoveRecentSticker.fromJson(Map<String, dynamic> json) {
     return RemoveRecentSticker(
-      isAttached: json['is_attached'],
+      isAttached: json['is_attached'] ?? false,
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

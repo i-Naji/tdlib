@@ -13,7 +13,7 @@ class ClearRecentStickers extends TdFunction {
   /// Parse from a json
   factory ClearRecentStickers.fromJson(Map<String, dynamic> json) {
     return ClearRecentStickers(
-      isAttached: json['is_attached'],
+      isAttached: json['is_attached'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class TestCallBytes extends TdFunction {
   /// Parse from a json
   factory TestCallBytes.fromJson(Map<String, dynamic> json) {
     return TestCallBytes(
-      x: json['x'],
+      x: json['x'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -27,10 +27,10 @@ class ValidateOrderInfo extends TdFunction {
   /// Parse from a json
   factory ValidateOrderInfo.fromJson(Map<String, dynamic> json) {
     return ValidateOrderInfo(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
       orderInfo: OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{}),
-      allowSave: json['allow_save'],
+      allowSave: json['allow_save'] ?? false,
       extra: json['@extra'],
     );
   }

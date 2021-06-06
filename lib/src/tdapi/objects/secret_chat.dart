@@ -39,13 +39,13 @@ class SecretChat extends TdObject {
   /// Parse from a json
   factory SecretChat.fromJson(Map<String, dynamic> json) {
     return SecretChat(
-      id: json['id'],
-      userId: json['user_id'],
+      id: json['id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       state: SecretChatState.fromJson(json['state'] ?? <String, dynamic>{}),
-      isOutbound: json['is_outbound'],
-      ttl: json['ttl'],
-      keyHash: json['key_hash'],
-      layer: json['layer'],
+      isOutbound: json['is_outbound'] ?? false,
+      ttl: json['ttl'] ?? 0,
+      keyHash: json['key_hash'] ?? "",
+      layer: json['layer'] ?? 0,
       extra: json['@extra'],
     );
   }

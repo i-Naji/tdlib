@@ -16,8 +16,8 @@ class SendCallSignalingData extends TdFunction {
   /// Parse from a json
   factory SendCallSignalingData.fromJson(Map<String, dynamic> json) {
     return SendCallSignalingData(
-      callId: json['call_id'],
-      data: json['data'],
+      callId: json['call_id'] ?? 0,
+      data: json['data'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -16,8 +16,8 @@ class TdError extends TdObject {
   /// Parse from a json
   factory TdError.fromJson(Map<String, dynamic> json) {
     return TdError(
-      code: json['code'],
-      message: json['message'],
+      code: json['code'] ?? 0,
+      message: json['message'] ?? "",
       extra: json['@extra'],
     );
   }

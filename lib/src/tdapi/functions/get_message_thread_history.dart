@@ -31,11 +31,11 @@ class GetMessageThreadHistory extends TdFunction {
   /// Parse from a json
   factory GetMessageThreadHistory.fromJson(Map<String, dynamic> json) {
     return GetMessageThreadHistory(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      fromMessageId: json['from_message_id'],
-      offset: json['offset'],
-      limit: json['limit'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      fromMessageId: json['from_message_id'] ?? 0,
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

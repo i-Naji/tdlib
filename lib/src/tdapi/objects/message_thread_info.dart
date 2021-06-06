@@ -31,8 +31,8 @@ class MessageThreadInfo extends TdObject {
   /// Parse from a json
   factory MessageThreadInfo.fromJson(Map<String, dynamic> json) {
     return MessageThreadInfo(
-      chatId: json['chat_id'],
-      messageThreadId: json['message_thread_id'],
+      chatId: json['chat_id'] ?? 0,
+      messageThreadId: json['message_thread_id'] ?? 0,
       replyInfo:
           MessageReplyInfo.fromJson(json['reply_info'] ?? <String, dynamic>{}),
       messages: List<Message>.from((json['messages'] ?? [])

@@ -16,8 +16,8 @@ class SetName extends TdFunction {
   /// Parse from a json
   factory SetName.fromJson(Map<String, dynamic> json) {
     return SetName(
-      firstName: json['first_name'],
-      lastName: json['last_name'],
+      firstName: json['first_name'] ?? "",
+      lastName: json['last_name'] ?? "",
       extra: json['@extra'],
     );
   }

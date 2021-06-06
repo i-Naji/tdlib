@@ -17,9 +17,9 @@ class GetLanguagePackStrings extends TdFunction {
   /// Parse from a json
   factory GetLanguagePackStrings.fromJson(Map<String, dynamic> json) {
     return GetLanguagePackStrings(
-      languagePackId: json['language_pack_id'],
-      keys:
-          List<String>.from((json['keys'] ?? []).map((item) => item).toList()),
+      languagePackId: json['language_pack_id'] ?? "",
+      keys: List<String>.from(
+          (json['keys'] ?? []).map((item) => item ?? "").toList()),
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class GetRecentlyVisitedTMeUrls extends TdFunction {
   /// Parse from a json
   factory GetRecentlyVisitedTMeUrls.fromJson(Map<String, dynamic> json) {
     return GetRecentlyVisitedTMeUrls(
-      referrer: json['referrer'],
+      referrer: json['referrer'] ?? "",
       extra: json['@extra'],
     );
   }

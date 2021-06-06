@@ -17,7 +17,7 @@ class AddRecentSticker extends TdFunction {
   /// Parse from a json
   factory AddRecentSticker.fromJson(Map<String, dynamic> json) {
     return AddRecentSticker(
-      isAttached: json['is_attached'],
+      isAttached: json['is_attached'] ?? false,
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

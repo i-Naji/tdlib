@@ -13,7 +13,7 @@ class CheckChangePhoneNumberCode extends TdFunction {
   /// Parse from a json
   factory CheckChangePhoneNumberCode.fromJson(Map<String, dynamic> json) {
     return CheckChangePhoneNumberCode(
-      code: json['code'],
+      code: json['code'] ?? "",
       extra: json['@extra'],
     );
   }

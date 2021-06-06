@@ -14,7 +14,7 @@ class ReorderChatFilters extends TdFunction {
   factory ReorderChatFilters.fromJson(Map<String, dynamic> json) {
     return ReorderChatFilters(
       chatFilterIds: List<int>.from(
-          (json['chat_filter_ids'] ?? []).map((item) => item).toList()),
+          (json['chat_filter_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

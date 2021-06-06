@@ -39,14 +39,14 @@ class AutoDownloadSettings extends TdObject {
   /// Parse from a json
   factory AutoDownloadSettings.fromJson(Map<String, dynamic> json) {
     return AutoDownloadSettings(
-      isAutoDownloadEnabled: json['is_auto_download_enabled'],
-      maxPhotoFileSize: json['max_photo_file_size'],
-      maxVideoFileSize: json['max_video_file_size'],
-      maxOtherFileSize: json['max_other_file_size'],
-      videoUploadBitrate: json['video_upload_bitrate'],
-      preloadLargeVideos: json['preload_large_videos'],
-      preloadNextAudio: json['preload_next_audio'],
-      useLessDataForCalls: json['use_less_data_for_calls'],
+      isAutoDownloadEnabled: json['is_auto_download_enabled'] ?? false,
+      maxPhotoFileSize: json['max_photo_file_size'] ?? 0,
+      maxVideoFileSize: json['max_video_file_size'] ?? 0,
+      maxOtherFileSize: json['max_other_file_size'] ?? 0,
+      videoUploadBitrate: json['video_upload_bitrate'] ?? 0,
+      preloadLargeVideos: json['preload_large_videos'] ?? false,
+      preloadNextAudio: json['preload_next_audio'] ?? false,
+      useLessDataForCalls: json['use_less_data_for_calls'] ?? false,
     );
   }
 

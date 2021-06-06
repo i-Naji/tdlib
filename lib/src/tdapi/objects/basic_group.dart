@@ -31,11 +31,11 @@ class BasicGroup extends TdObject {
   /// Parse from a json
   factory BasicGroup.fromJson(Map<String, dynamic> json) {
     return BasicGroup(
-      id: json['id'],
-      memberCount: json['member_count'],
+      id: json['id'] ?? 0,
+      memberCount: json['member_count'] ?? 0,
       status: ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{}),
-      isActive: json['is_active'],
-      upgradedToSupergroupId: json['upgraded_to_supergroup_id'],
+      isActive: json['is_active'] ?? false,
+      upgradedToSupergroupId: json['upgraded_to_supergroup_id'] ?? 0,
       extra: json['@extra'],
     );
   }

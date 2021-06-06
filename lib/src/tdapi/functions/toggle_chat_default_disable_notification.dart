@@ -20,8 +20,8 @@ class ToggleChatDefaultDisableNotification extends TdFunction {
   factory ToggleChatDefaultDisableNotification.fromJson(
       Map<String, dynamic> json) {
     return ToggleChatDefaultDisableNotification(
-      chatId: json['chat_id'],
-      defaultDisableNotification: json['default_disable_notification'],
+      chatId: json['chat_id'] ?? 0,
+      defaultDisableNotification: json['default_disable_notification'] ?? false,
       extra: json['@extra'],
     );
   }

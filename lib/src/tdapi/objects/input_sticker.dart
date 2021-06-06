@@ -47,7 +47,7 @@ class InputStickerStatic extends InputSticker {
   factory InputStickerStatic.fromJson(Map<String, dynamic> json) {
     return InputStickerStatic(
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
-      emojis: json['emojis'],
+      emojis: json['emojis'] ?? "",
       maskPosition:
           MaskPosition.fromJson(json['mask_position'] ?? <String, dynamic>{}),
     );
@@ -84,7 +84,7 @@ class InputStickerAnimated extends InputSticker {
   factory InputStickerAnimated.fromJson(Map<String, dynamic> json) {
     return InputStickerAnimated(
       sticker: InputFile.fromJson(json['sticker'] ?? <String, dynamic>{}),
-      emojis: json['emojis'],
+      emojis: json['emojis'] ?? "",
     );
   }
 

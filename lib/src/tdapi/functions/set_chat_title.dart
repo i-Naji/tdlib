@@ -16,8 +16,8 @@ class SetChatTitle extends TdFunction {
   /// Parse from a json
   factory SetChatTitle.fromJson(Map<String, dynamic> json) {
     return SetChatTitle(
-      chatId: json['chat_id'],
-      title: json['title'],
+      chatId: json['chat_id'] ?? 0,
+      title: json['title'] ?? "",
       extra: json['@extra'],
     );
   }

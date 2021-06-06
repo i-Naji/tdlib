@@ -39,7 +39,7 @@ class TextParseModeMarkdown extends TextParseMode {
   /// Parse from a json
   factory TextParseModeMarkdown.fromJson(Map<String, dynamic> json) {
     return TextParseModeMarkdown(
-      version: json['version'],
+      version: json['version'] ?? 0,
     );
   }
 

@@ -45,8 +45,8 @@ class BackgroundTypeWallpaper extends BackgroundType {
   /// Parse from a json
   factory BackgroundTypeWallpaper.fromJson(Map<String, dynamic> json) {
     return BackgroundTypeWallpaper(
-      isBlurred: json['is_blurred'],
-      isMoving: json['is_moving'],
+      isBlurred: json['is_blurred'] ?? false,
+      isMoving: json['is_moving'] ?? false,
     );
   }
 
@@ -83,8 +83,8 @@ class BackgroundTypePattern extends BackgroundType {
   factory BackgroundTypePattern.fromJson(Map<String, dynamic> json) {
     return BackgroundTypePattern(
       fill: BackgroundFill.fromJson(json['fill'] ?? <String, dynamic>{}),
-      intensity: json['intensity'],
-      isMoving: json['is_moving'],
+      intensity: json['intensity'] ?? 0,
+      isMoving: json['is_moving'] ?? false,
     );
   }
 

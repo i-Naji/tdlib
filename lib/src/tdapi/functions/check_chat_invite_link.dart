@@ -13,7 +13,7 @@ class CheckChatInviteLink extends TdFunction {
   /// Parse from a json
   factory CheckChatInviteLink.fromJson(Map<String, dynamic> json) {
     return CheckChatInviteLink(
-      inviteLink: json['invite_link'],
+      inviteLink: json['invite_link'] ?? "",
       extra: json['@extra'],
     );
   }

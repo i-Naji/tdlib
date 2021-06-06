@@ -31,10 +31,10 @@ class DiscardCall extends TdFunction {
   /// Parse from a json
   factory DiscardCall.fromJson(Map<String, dynamic> json) {
     return DiscardCall(
-      callId: json['call_id'],
-      isDisconnected: json['is_disconnected'],
-      duration: json['duration'],
-      isVideo: json['is_video'],
+      callId: json['call_id'] ?? 0,
+      isDisconnected: json['is_disconnected'] ?? false,
+      duration: json['duration'] ?? 0,
+      isVideo: json['is_video'] ?? false,
       connectionId: int.tryParse(json['connection_id'] ?? "") ?? 0,
       extra: json['@extra'],
     );

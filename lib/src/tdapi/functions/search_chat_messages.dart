@@ -43,15 +43,15 @@ class SearchChatMessages extends TdFunction {
   /// Parse from a json
   factory SearchChatMessages.fromJson(Map<String, dynamic> json) {
     return SearchChatMessages(
-      chatId: json['chat_id'],
-      query: json['query'],
+      chatId: json['chat_id'] ?? 0,
+      query: json['query'] ?? "",
       sender: MessageSender.fromJson(json['sender'] ?? <String, dynamic>{}),
-      fromMessageId: json['from_message_id'],
-      offset: json['offset'],
-      limit: json['limit'],
+      fromMessageId: json['from_message_id'] ?? 0,
+      offset: json['offset'] ?? 0,
+      limit: json['limit'] ?? 0,
       filter:
           SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
-      messageThreadId: json['message_thread_id'],
+      messageThreadId: json['message_thread_id'] ?? 0,
       extra: json['@extra'],
     );
   }

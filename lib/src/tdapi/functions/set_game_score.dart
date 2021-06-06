@@ -35,12 +35,12 @@ class SetGameScore extends TdFunction {
   /// Parse from a json
   factory SetGameScore.fromJson(Map<String, dynamic> json) {
     return SetGameScore(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      editMessage: json['edit_message'],
-      userId: json['user_id'],
-      score: json['score'],
-      force: json['force'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      editMessage: json['edit_message'] ?? false,
+      userId: json['user_id'] ?? 0,
+      score: json['score'] ?? 0,
+      force: json['force'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class CheckDatabaseEncryptionKey extends TdFunction {
   /// Parse from a json
   factory CheckDatabaseEncryptionKey.fromJson(Map<String, dynamic> json) {
     return CheckDatabaseEncryptionKey(
-      encryptionKey: json['encryption_key'],
+      encryptionKey: json['encryption_key'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -44,14 +44,14 @@ class ConnectedWebsite extends TdObject {
   factory ConnectedWebsite.fromJson(Map<String, dynamic> json) {
     return ConnectedWebsite(
       id: int.tryParse(json['id'] ?? "") ?? 0,
-      domainName: json['domain_name'],
-      botUserId: json['bot_user_id'],
-      browser: json['browser'],
-      platform: json['platform'],
-      logInDate: json['log_in_date'],
-      lastActiveDate: json['last_active_date'],
-      ip: json['ip'],
-      location: json['location'],
+      domainName: json['domain_name'] ?? "",
+      botUserId: json['bot_user_id'] ?? 0,
+      browser: json['browser'] ?? "",
+      platform: json['platform'] ?? "",
+      logInDate: json['log_in_date'] ?? 0,
+      lastActiveDate: json['last_active_date'] ?? 0,
+      ip: json['ip'] ?? "",
+      location: json['location'] ?? "",
     );
   }
 

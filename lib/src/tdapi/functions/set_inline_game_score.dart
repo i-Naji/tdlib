@@ -31,11 +31,11 @@ class SetInlineGameScore extends TdFunction {
   /// Parse from a json
   factory SetInlineGameScore.fromJson(Map<String, dynamic> json) {
     return SetInlineGameScore(
-      inlineMessageId: json['inline_message_id'],
-      editMessage: json['edit_message'],
-      userId: json['user_id'],
-      score: json['score'],
-      force: json['force'],
+      inlineMessageId: json['inline_message_id'] ?? "",
+      editMessage: json['edit_message'] ?? false,
+      userId: json['user_id'] ?? 0,
+      score: json['score'] ?? 0,
+      force: json['force'] ?? false,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class TestCallString extends TdFunction {
   /// Parse from a json
   factory TestCallString.fromJson(Map<String, dynamic> json) {
     return TestCallString(
-      x: json['x'],
+      x: json['x'] ?? "",
       extra: json['@extra'],
     );
   }

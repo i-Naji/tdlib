@@ -31,7 +31,7 @@ class InputIdentityDocument extends TdObject {
   /// Parse from a json
   factory InputIdentityDocument.fromJson(Map<String, dynamic> json) {
     return InputIdentityDocument(
-      number: json['number'],
+      number: json['number'] ?? "",
       expiryDate: Date.fromJson(json['expiry_date'] ?? <String, dynamic>{}),
       frontSide: InputFile.fromJson(json['front_side'] ?? <String, dynamic>{}),
       reverseSide:

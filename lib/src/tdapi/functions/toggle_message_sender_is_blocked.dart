@@ -18,7 +18,7 @@ class ToggleMessageSenderIsBlocked extends TdFunction {
   factory ToggleMessageSenderIsBlocked.fromJson(Map<String, dynamic> json) {
     return ToggleMessageSenderIsBlocked(
       sender: MessageSender.fromJson(json['sender'] ?? <String, dynamic>{}),
-      isBlocked: json['is_blocked'],
+      isBlocked: json['is_blocked'] ?? false,
       extra: json['@extra'],
     );
   }

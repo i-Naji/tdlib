@@ -23,9 +23,9 @@ class SearchInstalledStickerSets extends TdFunction {
   /// Parse from a json
   factory SearchInstalledStickerSets.fromJson(Map<String, dynamic> json) {
     return SearchInstalledStickerSets(
-      isMasks: json['is_masks'],
-      query: json['query'],
-      limit: json['limit'],
+      isMasks: json['is_masks'] ?? false,
+      query: json['query'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class SetUsername extends TdFunction {
   /// Parse from a json
   factory SetUsername.fromJson(Map<String, dynamic> json) {
     return SetUsername(
-      username: json['username'],
+      username: json['username'] ?? "",
       extra: json['@extra'],
     );
   }

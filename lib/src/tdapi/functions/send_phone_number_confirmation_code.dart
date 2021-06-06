@@ -23,8 +23,8 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   /// Parse from a json
   factory SendPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json) {
     return SendPhoneNumberConfirmationCode(
-      hash: json['hash'],
-      phoneNumber: json['phone_number'],
+      hash: json['hash'] ?? "",
+      phoneNumber: json['phone_number'] ?? "",
       settings: PhoneNumberAuthenticationSettings.fromJson(
           json['settings'] ?? <String, dynamic>{}),
       extra: json['@extra'],

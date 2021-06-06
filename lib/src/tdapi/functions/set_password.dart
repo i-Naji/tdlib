@@ -31,11 +31,11 @@ class SetPassword extends TdFunction {
   /// Parse from a json
   factory SetPassword.fromJson(Map<String, dynamic> json) {
     return SetPassword(
-      oldPassword: json['old_password'],
-      newPassword: json['new_password'],
-      newHint: json['new_hint'],
-      setRecoveryEmailAddress: json['set_recovery_email_address'],
-      newRecoveryEmailAddress: json['new_recovery_email_address'],
+      oldPassword: json['old_password'] ?? "",
+      newPassword: json['new_password'] ?? "",
+      newHint: json['new_hint'] ?? "",
+      setRecoveryEmailAddress: json['set_recovery_email_address'] ?? false,
+      newRecoveryEmailAddress: json['new_recovery_email_address'] ?? "",
       extra: json['@extra'],
     );
   }

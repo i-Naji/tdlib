@@ -20,7 +20,7 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
     return GetChatNotificationSettingsExceptions(
       scope: NotificationSettingsScope.fromJson(
           json['scope'] ?? <String, dynamic>{}),
-      compareSound: json['compare_sound'],
+      compareSound: json['compare_sound'] ?? false,
       extra: json['@extra'],
     );
   }

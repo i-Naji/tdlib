@@ -90,11 +90,11 @@ class InlineQueryResultArticle extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultArticle.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultArticle(
-      id: json['id'],
-      url: json['url'],
-      hideUrl: json['hide_url'],
-      title: json['title'],
-      description: json['description'],
+      id: json['id'] ?? "",
+      url: json['url'] ?? "",
+      hideUrl: json['hide_url'] ?? false,
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
     );
   }
@@ -135,7 +135,7 @@ class InlineQueryResultContact extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultContact.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultContact(
-      id: json['id'],
+      id: json['id'] ?? "",
       contact: Contact.fromJson(json['contact'] ?? <String, dynamic>{}),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
     );
@@ -180,9 +180,9 @@ class InlineQueryResultLocation extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultLocation.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultLocation(
-      id: json['id'],
+      id: json['id'] ?? "",
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      title: json['title'],
+      title: json['title'] ?? "",
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
     );
   }
@@ -221,7 +221,7 @@ class InlineQueryResultVenue extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultVenue.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultVenue(
-      id: json['id'],
+      id: json['id'] ?? "",
       venue: Venue.fromJson(json['venue'] ?? <String, dynamic>{}),
       thumbnail: Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{}),
     );
@@ -256,7 +256,7 @@ class InlineQueryResultGame extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultGame.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultGame(
-      id: json['id'],
+      id: json['id'] ?? "",
       game: Game.fromJson(json['game'] ?? <String, dynamic>{}),
     );
   }
@@ -293,9 +293,9 @@ class InlineQueryResultAnimation extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultAnimation.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultAnimation(
-      id: json['id'],
+      id: json['id'] ?? "",
       animation: Animation.fromJson(json['animation'] ?? <String, dynamic>{}),
-      title: json['title'],
+      title: json['title'] ?? "",
     );
   }
 
@@ -328,7 +328,7 @@ class InlineQueryResultAudio extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultAudio.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultAudio(
-      id: json['id'],
+      id: json['id'] ?? "",
       audio: Audio.fromJson(json['audio'] ?? <String, dynamic>{}),
     );
   }
@@ -371,10 +371,10 @@ class InlineQueryResultDocument extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultDocument.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultDocument(
-      id: json['id'],
+      id: json['id'] ?? "",
       document: Document.fromJson(json['document'] ?? <String, dynamic>{}),
-      title: json['title'],
-      description: json['description'],
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
     );
   }
 
@@ -418,10 +418,10 @@ class InlineQueryResultPhoto extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultPhoto.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultPhoto(
-      id: json['id'],
+      id: json['id'] ?? "",
       photo: Photo.fromJson(json['photo'] ?? <String, dynamic>{}),
-      title: json['title'],
-      description: json['description'],
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
     );
   }
 
@@ -455,7 +455,7 @@ class InlineQueryResultSticker extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultSticker.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultSticker(
-      id: json['id'],
+      id: json['id'] ?? "",
       sticker: Sticker.fromJson(json['sticker'] ?? <String, dynamic>{}),
     );
   }
@@ -498,10 +498,10 @@ class InlineQueryResultVideo extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultVideo.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultVideo(
-      id: json['id'],
+      id: json['id'] ?? "",
       video: Video.fromJson(json['video'] ?? <String, dynamic>{}),
-      title: json['title'],
-      description: json['description'],
+      title: json['title'] ?? "",
+      description: json['description'] ?? "",
     );
   }
 
@@ -539,9 +539,9 @@ class InlineQueryResultVoiceNote extends InlineQueryResult {
   /// Parse from a json
   factory InlineQueryResultVoiceNote.fromJson(Map<String, dynamic> json) {
     return InlineQueryResultVoiceNote(
-      id: json['id'],
+      id: json['id'] ?? "",
       voiceNote: VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{}),
-      title: json['title'],
+      title: json['title'] ?? "",
     );
   }
 

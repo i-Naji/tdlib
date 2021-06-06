@@ -392,7 +392,7 @@ class TextEntityTypePreCode extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypePreCode.fromJson(Map<String, dynamic> json) {
     return TextEntityTypePreCode(
-      language: json['language'],
+      language: json['language'] ?? "",
     );
   }
 
@@ -420,7 +420,7 @@ class TextEntityTypeTextUrl extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeTextUrl.fromJson(Map<String, dynamic> json) {
     return TextEntityTypeTextUrl(
-      url: json['url'],
+      url: json['url'] ?? "",
     );
   }
 
@@ -448,7 +448,7 @@ class TextEntityTypeMentionName extends TextEntityType {
   /// Parse from a json
   factory TextEntityTypeMentionName.fromJson(Map<String, dynamic> json) {
     return TextEntityTypeMentionName(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
     );
   }
 

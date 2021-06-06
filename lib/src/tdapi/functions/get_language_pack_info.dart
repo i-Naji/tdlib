@@ -13,7 +13,7 @@ class GetLanguagePackInfo extends TdFunction {
   /// Parse from a json
   factory GetLanguagePackInfo.fromJson(Map<String, dynamic> json) {
     return GetLanguagePackInfo(
-      languagePackId: json['language_pack_id'],
+      languagePackId: json['language_pack_id'] ?? "",
       extra: json['@extra'],
     );
   }

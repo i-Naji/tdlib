@@ -16,7 +16,7 @@ class BankCardInfo extends TdObject {
   /// Parse from a json
   factory BankCardInfo.fromJson(Map<String, dynamic> json) {
     return BankCardInfo(
-      title: json['title'],
+      title: json['title'] ?? "",
       actions: List<BankCardActionOpenUrl>.from((json['actions'] ?? [])
           .map((item) =>
               BankCardActionOpenUrl.fromJson(item ?? <String, dynamic>{}))

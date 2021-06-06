@@ -13,7 +13,7 @@ class GetPushReceiverId extends TdFunction {
   /// Parse from a json
   factory GetPushReceiverId.fromJson(Map<String, dynamic> json) {
     return GetPushReceiverId(
-      payload: json['payload'],
+      payload: json['payload'] ?? "",
       extra: json['@extra'],
     );
   }

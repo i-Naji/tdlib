@@ -71,8 +71,8 @@ class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
   factory DeviceTokenFirebaseCloudMessaging.fromJson(
       Map<String, dynamic> json) {
     return DeviceTokenFirebaseCloudMessaging(
-      token: json['token'],
-      encrypt: json['encrypt'],
+      token: json['token'] ?? "",
+      encrypt: json['encrypt'] ?? false,
     );
   }
 
@@ -104,8 +104,8 @@ class DeviceTokenApplePush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenApplePush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenApplePush(
-      deviceToken: json['device_token'],
-      isAppSandbox: json['is_app_sandbox'],
+      deviceToken: json['device_token'] ?? "",
+      isAppSandbox: json['is_app_sandbox'] ?? false,
     );
   }
 
@@ -143,9 +143,9 @@ class DeviceTokenApplePushVoIP extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenApplePushVoIP.fromJson(Map<String, dynamic> json) {
     return DeviceTokenApplePushVoIP(
-      deviceToken: json['device_token'],
-      isAppSandbox: json['is_app_sandbox'],
-      encrypt: json['encrypt'],
+      deviceToken: json['device_token'] ?? "",
+      isAppSandbox: json['is_app_sandbox'] ?? false,
+      encrypt: json['encrypt'] ?? false,
     );
   }
 
@@ -175,7 +175,7 @@ class DeviceTokenWindowsPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenWindowsPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenWindowsPush(
-      accessToken: json['access_token'],
+      accessToken: json['access_token'] ?? "",
     );
   }
 
@@ -203,7 +203,7 @@ class DeviceTokenMicrosoftPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenMicrosoftPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenMicrosoftPush(
-      channelUri: json['channel_uri'],
+      channelUri: json['channel_uri'] ?? "",
     );
   }
 
@@ -231,7 +231,7 @@ class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenMicrosoftPushVoIP.fromJson(Map<String, dynamic> json) {
     return DeviceTokenMicrosoftPushVoIP(
-      channelUri: json['channel_uri'],
+      channelUri: json['channel_uri'] ?? "",
     );
   }
 
@@ -268,9 +268,9 @@ class DeviceTokenWebPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenWebPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenWebPush(
-      endpoint: json['endpoint'],
-      p256dhBase64url: json['p256dh_base64url'],
-      authBase64url: json['auth_base64url'],
+      endpoint: json['endpoint'] ?? "",
+      p256dhBase64url: json['p256dh_base64url'] ?? "",
+      authBase64url: json['auth_base64url'] ?? "",
     );
   }
 
@@ -300,7 +300,7 @@ class DeviceTokenSimplePush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenSimplePush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenSimplePush(
-      endpoint: json['endpoint'],
+      endpoint: json['endpoint'] ?? "",
     );
   }
 
@@ -328,7 +328,7 @@ class DeviceTokenUbuntuPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenUbuntuPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenUbuntuPush(
-      token: json['token'],
+      token: json['token'] ?? "",
     );
   }
 
@@ -356,7 +356,7 @@ class DeviceTokenBlackBerryPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenBlackBerryPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenBlackBerryPush(
-      token: json['token'],
+      token: json['token'] ?? "",
     );
   }
 
@@ -384,7 +384,7 @@ class DeviceTokenTizenPush extends DeviceToken {
   /// Parse from a json
   factory DeviceTokenTizenPush.fromJson(Map<String, dynamic> json) {
     return DeviceTokenTizenPush(
-      regId: json['reg_id'],
+      regId: json['reg_id'] ?? "",
     );
   }
 

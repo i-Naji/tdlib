@@ -13,7 +13,7 @@ class DeleteSupergroup extends TdFunction {
   /// Parse from a json
   factory DeleteSupergroup.fromJson(Map<String, dynamic> json) {
     return DeleteSupergroup(
-      supergroupId: json['supergroup_id'],
+      supergroupId: json['supergroup_id'] ?? 0,
       extra: json['@extra'],
     );
   }

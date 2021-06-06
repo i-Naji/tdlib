@@ -13,7 +13,7 @@ class CleanFileName extends TdFunction {
   /// Parse from a json
   factory CleanFileName.fromJson(Map<String, dynamic> json) {
     return CleanFileName(
-      fileName: json['file_name'],
+      fileName: json['file_name'] ?? "",
       extra: json['@extra'],
     );
   }

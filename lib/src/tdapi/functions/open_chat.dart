@@ -13,7 +13,7 @@ class OpenChat extends TdFunction {
   /// Parse from a json
   factory OpenChat.fromJson(Map<String, dynamic> json) {
     return OpenChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

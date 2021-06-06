@@ -13,7 +13,7 @@ class GetBasicGroupFullInfo extends TdFunction {
   /// Parse from a json
   factory GetBasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
     return GetBasicGroupFullInfo(
-      basicGroupId: json['basic_group_id'],
+      basicGroupId: json['basic_group_id'] ?? 0,
       extra: json['@extra'],
     );
   }

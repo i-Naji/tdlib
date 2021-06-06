@@ -31,12 +31,12 @@ class Address extends TdObject {
   /// Parse from a json
   factory Address.fromJson(Map<String, dynamic> json) {
     return Address(
-      countryCode: json['country_code'],
-      state: json['state'],
-      city: json['city'],
-      streetLine1: json['street_line1'],
-      streetLine2: json['street_line2'],
-      postalCode: json['postal_code'],
+      countryCode: json['country_code'] ?? "",
+      state: json['state'] ?? "",
+      city: json['city'] ?? "",
+      streetLine1: json['street_line1'] ?? "",
+      streetLine2: json['street_line2'] ?? "",
+      postalCode: json['postal_code'] ?? "",
     );
   }
 

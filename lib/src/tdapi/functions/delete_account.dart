@@ -13,7 +13,7 @@ class DeleteAccount extends TdFunction {
   /// Parse from a json
   factory DeleteAccount.fromJson(Map<String, dynamic> json) {
     return DeleteAccount(
-      reason: json['reason'],
+      reason: json['reason'] ?? "",
       extra: json['@extra'],
     );
   }

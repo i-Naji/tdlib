@@ -31,12 +31,12 @@ class EditInlineMessageLiveLocation extends TdFunction {
   /// Parse from a json
   factory EditInlineMessageLiveLocation.fromJson(Map<String, dynamic> json) {
     return EditInlineMessageLiveLocation(
-      inlineMessageId: json['inline_message_id'],
+      inlineMessageId: json['inline_message_id'] ?? "",
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       location: Location.fromJson(json['location'] ?? <String, dynamic>{}),
-      heading: json['heading'],
-      proximityAlertRadius: json['proximity_alert_radius'],
+      heading: json['heading'] ?? 0,
+      proximityAlertRadius: json['proximity_alert_radius'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -17,8 +17,8 @@ class SetChatClientData extends TdFunction {
   /// Parse from a json
   factory SetChatClientData.fromJson(Map<String, dynamic> json) {
     return SetChatClientData(
-      chatId: json['chat_id'],
-      clientData: json['client_data'],
+      chatId: json['chat_id'] ?? 0,
+      clientData: json['client_data'] ?? "",
       extra: json['@extra'],
     );
   }

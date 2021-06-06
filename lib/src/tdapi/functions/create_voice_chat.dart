@@ -13,7 +13,7 @@ class CreateVoiceChat extends TdFunction {
   /// Parse from a json
   factory CreateVoiceChat.fromJson(Map<String, dynamic> json) {
     return CreateVoiceChat(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

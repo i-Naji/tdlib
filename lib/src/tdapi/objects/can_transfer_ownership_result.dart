@@ -107,7 +107,7 @@ class CanTransferOwnershipResultPasswordTooFresh
   factory CanTransferOwnershipResultPasswordTooFresh.fromJson(
       Map<String, dynamic> json) {
     return CanTransferOwnershipResultPasswordTooFresh(
-      retryAfter: json['retry_after'],
+      retryAfter: json['retry_after'] ?? 0,
       extra: json['@extra'],
     );
   }
@@ -142,7 +142,7 @@ class CanTransferOwnershipResultSessionTooFresh
   factory CanTransferOwnershipResultSessionTooFresh.fromJson(
       Map<String, dynamic> json) {
     return CanTransferOwnershipResultSessionTooFresh(
-      retryAfter: json['retry_after'],
+      retryAfter: json['retry_after'] ?? 0,
       extra: json['@extra'],
     );
   }

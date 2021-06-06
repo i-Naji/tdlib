@@ -16,8 +16,8 @@ class GetChatMember extends TdFunction {
   /// Parse from a json
   factory GetChatMember.fromJson(Map<String, dynamic> json) {
     return GetChatMember(
-      chatId: json['chat_id'],
-      userId: json['user_id'],
+      chatId: json['chat_id'] ?? 0,
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

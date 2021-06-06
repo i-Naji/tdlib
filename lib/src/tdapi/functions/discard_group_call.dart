@@ -13,7 +13,7 @@ class DiscardGroupCall extends TdFunction {
   /// Parse from a json
   factory DiscardGroupCall.fromJson(Map<String, dynamic> json) {
     return DiscardGroupCall(
-      groupCallId: json['group_call_id'],
+      groupCallId: json['group_call_id'] ?? 0,
       extra: json['@extra'],
     );
   }

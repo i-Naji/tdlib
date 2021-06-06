@@ -23,8 +23,8 @@ class StorageStatistics extends TdObject {
   /// Parse from a json
   factory StorageStatistics.fromJson(Map<String, dynamic> json) {
     return StorageStatistics(
-      size: json['size'],
-      count: json['count'],
+      size: json['size'] ?? 0,
+      count: json['count'] ?? 0,
       byChat: List<StorageStatisticsByChat>.from((json['by_chat'] ?? [])
           .map((item) =>
               StorageStatisticsByChat.fromJson(item ?? <String, dynamic>{}))

@@ -20,8 +20,8 @@ class ToggleGroupCallMuteNewParticipants extends TdFunction {
   factory ToggleGroupCallMuteNewParticipants.fromJson(
       Map<String, dynamic> json) {
     return ToggleGroupCallMuteNewParticipants(
-      groupCallId: json['group_call_id'],
-      muteNewParticipants: json['mute_new_participants'],
+      groupCallId: json['group_call_id'] ?? 0,
+      muteNewParticipants: json['mute_new_participants'] ?? false,
       extra: json['@extra'],
     );
   }

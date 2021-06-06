@@ -59,23 +59,23 @@ class GroupCall extends TdObject {
   /// Parse from a json
   factory GroupCall.fromJson(Map<String, dynamic> json) {
     return GroupCall(
-      id: json['id'],
-      isActive: json['is_active'],
-      isJoined: json['is_joined'],
-      needRejoin: json['need_rejoin'],
-      canUnmuteSelf: json['can_unmute_self'],
-      canBeManaged: json['can_be_managed'],
-      participantCount: json['participant_count'],
-      loadedAllParticipants: json['loaded_all_participants'],
+      id: json['id'] ?? 0,
+      isActive: json['is_active'] ?? false,
+      isJoined: json['is_joined'] ?? false,
+      needRejoin: json['need_rejoin'] ?? false,
+      canUnmuteSelf: json['can_unmute_self'] ?? false,
+      canBeManaged: json['can_be_managed'] ?? false,
+      participantCount: json['participant_count'] ?? 0,
+      loadedAllParticipants: json['loaded_all_participants'] ?? false,
       recentSpeakers: List<GroupCallRecentSpeaker>.from(
           (json['recent_speakers'] ?? [])
               .map((item) =>
                   GroupCallRecentSpeaker.fromJson(item ?? <String, dynamic>{}))
               .toList()),
-      muteNewParticipants: json['mute_new_participants'],
+      muteNewParticipants: json['mute_new_participants'] ?? false,
       allowedChangeMuteNewParticipants:
-          json['allowed_change_mute_new_participants'],
-      duration: json['duration'],
+          json['allowed_change_mute_new_participants'] ?? false,
+      duration: json['duration'] ?? 0,
       extra: json['@extra'],
     );
   }

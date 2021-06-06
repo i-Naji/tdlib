@@ -46,7 +46,7 @@ class AuthenticationCodeTypeTelegramMessage extends AuthenticationCodeType {
   factory AuthenticationCodeTypeTelegramMessage.fromJson(
       Map<String, dynamic> json) {
     return AuthenticationCodeTypeTelegramMessage(
-      length: json['length'],
+      length: json['length'] ?? 0,
     );
   }
 
@@ -74,7 +74,7 @@ class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   /// Parse from a json
   factory AuthenticationCodeTypeSms.fromJson(Map<String, dynamic> json) {
     return AuthenticationCodeTypeSms(
-      length: json['length'],
+      length: json['length'] ?? 0,
     );
   }
 
@@ -102,7 +102,7 @@ class AuthenticationCodeTypeCall extends AuthenticationCodeType {
   /// Parse from a json
   factory AuthenticationCodeTypeCall.fromJson(Map<String, dynamic> json) {
     return AuthenticationCodeTypeCall(
-      length: json['length'],
+      length: json['length'] ?? 0,
     );
   }
 
@@ -130,7 +130,7 @@ class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
   /// Parse from a json
   factory AuthenticationCodeTypeFlashCall.fromJson(Map<String, dynamic> json) {
     return AuthenticationCodeTypeFlashCall(
-      pattern: json['pattern'],
+      pattern: json['pattern'] ?? "",
     );
   }
 

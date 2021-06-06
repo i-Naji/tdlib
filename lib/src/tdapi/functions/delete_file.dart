@@ -13,7 +13,7 @@ class DeleteFile extends TdFunction {
   /// Parse from a json
   factory DeleteFile.fromJson(Map<String, dynamic> json) {
     return DeleteFile(
-      fileId: json['file_id'],
+      fileId: json['file_id'] ?? 0,
       extra: json['@extra'],
     );
   }

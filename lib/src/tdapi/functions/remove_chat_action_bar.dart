@@ -13,7 +13,7 @@ class RemoveChatActionBar extends TdFunction {
   /// Parse from a json
   factory RemoveChatActionBar.fromJson(Map<String, dynamic> json) {
     return RemoveChatActionBar(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

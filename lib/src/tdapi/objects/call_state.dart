@@ -54,8 +54,8 @@ class CallStatePending extends CallState {
   /// Parse from a json
   factory CallStatePending.fromJson(Map<String, dynamic> json) {
     return CallStatePending(
-      isCreated: json['is_created'],
-      isReceived: json['is_received'],
+      isCreated: json['is_created'] ?? false,
+      isReceived: json['is_received'] ?? false,
     );
   }
 
@@ -131,11 +131,11 @@ class CallStateReady extends CallState {
       servers: List<CallServer>.from((json['servers'] ?? [])
           .map((item) => CallServer.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      config: json['config'],
-      encryptionKey: json['encryption_key'],
+      config: json['config'] ?? "",
+      encryptionKey: json['encryption_key'] ?? "",
       emojis: List<String>.from(
-          (json['emojis'] ?? []).map((item) => item).toList()),
-      allowP2p: json['allow_p2p'],
+          (json['emojis'] ?? []).map((item) => item ?? "").toList()),
+      allowP2p: json['allow_p2p'] ?? false,
     );
   }
 
@@ -200,8 +200,8 @@ class CallStateDiscarded extends CallState {
   factory CallStateDiscarded.fromJson(Map<String, dynamic> json) {
     return CallStateDiscarded(
       reason: CallDiscardReason.fromJson(json['reason'] ?? <String, dynamic>{}),
-      needRating: json['need_rating'],
-      needDebugInformation: json['need_debug_information'],
+      needRating: json['need_rating'] ?? false,
+      needDebugInformation: json['need_debug_information'] ?? false,
     );
   }
 

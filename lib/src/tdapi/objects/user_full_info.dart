@@ -52,15 +52,15 @@ class UserFullInfo extends TdObject {
   factory UserFullInfo.fromJson(Map<String, dynamic> json) {
     return UserFullInfo(
       photo: ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{}),
-      isBlocked: json['is_blocked'],
-      canBeCalled: json['can_be_called'],
-      supportsVideoCalls: json['supports_video_calls'],
-      hasPrivateCalls: json['has_private_calls'],
+      isBlocked: json['is_blocked'] ?? false,
+      canBeCalled: json['can_be_called'] ?? false,
+      supportsVideoCalls: json['supports_video_calls'] ?? false,
+      hasPrivateCalls: json['has_private_calls'] ?? false,
       needPhoneNumberPrivacyException:
-          json['need_phone_number_privacy_exception'],
-      bio: json['bio'],
-      shareText: json['share_text'],
-      groupInCommonCount: json['group_in_common_count'],
+          json['need_phone_number_privacy_exception'] ?? false,
+      bio: json['bio'] ?? "",
+      shareText: json['share_text'] ?? "",
+      groupInCommonCount: json['group_in_common_count'] ?? 0,
       botInfo: BotInfo.fromJson(json['bot_info'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

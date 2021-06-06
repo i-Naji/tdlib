@@ -17,8 +17,8 @@ class SetPinnedChats extends TdFunction {
   factory SetPinnedChats.fromJson(Map<String, dynamic> json) {
     return SetPinnedChats(
       chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
-      chatIds:
-          List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList()),
+      chatIds: List<int>.from(
+          (json['chat_ids'] ?? []).map((item) => item ?? 0).toList()),
       extra: json['@extra'],
     );
   }

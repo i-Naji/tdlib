@@ -27,10 +27,10 @@ class GetLoginUrl extends TdFunction {
   /// Parse from a json
   factory GetLoginUrl.fromJson(Map<String, dynamic> json) {
     return GetLoginUrl(
-      chatId: json['chat_id'],
-      messageId: json['message_id'],
-      buttonId: json['button_id'],
-      allowWriteAccess: json['allow_write_access'],
+      chatId: json['chat_id'] ?? 0,
+      messageId: json['message_id'] ?? 0,
+      buttonId: json['button_id'] ?? 0,
+      allowWriteAccess: json['allow_write_access'] ?? false,
       extra: json['@extra'],
     );
   }

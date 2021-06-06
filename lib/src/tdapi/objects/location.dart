@@ -19,9 +19,9 @@ class Location extends TdObject {
   /// Parse from a json
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(
-      latitude: json['latitude'],
-      longitude: json['longitude'],
-      horizontalAccuracy: json['horizontal_accuracy'],
+      latitude: json['latitude'] ?? 0,
+      longitude: json['longitude'] ?? 0,
+      horizontalAccuracy: json['horizontal_accuracy'] ?? 0,
     );
   }
 

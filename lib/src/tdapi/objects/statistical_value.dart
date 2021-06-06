@@ -19,9 +19,9 @@ class StatisticalValue extends TdObject {
   /// Parse from a json
   factory StatisticalValue.fromJson(Map<String, dynamic> json) {
     return StatisticalValue(
-      value: json['value'],
-      previousValue: json['previous_value'],
-      growthRatePercentage: json['growth_rate_percentage'],
+      value: json['value'] ?? 0,
+      previousValue: json['previous_value'] ?? 0,
+      growthRatePercentage: json['growth_rate_percentage'] ?? 0,
     );
   }
 

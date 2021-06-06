@@ -24,8 +24,8 @@ class Thumbnail extends TdObject {
   factory Thumbnail.fromJson(Map<String, dynamic> json) {
     return Thumbnail(
       format: ThumbnailFormat.fromJson(json['format'] ?? <String, dynamic>{}),
-      width: json['width'],
-      height: json['height'],
+      width: json['width'] ?? 0,
+      height: json['height'] ?? 0,
       file: File.fromJson(json['file'] ?? <String, dynamic>{}),
     );
   }

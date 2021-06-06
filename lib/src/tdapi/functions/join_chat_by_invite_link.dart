@@ -13,7 +13,7 @@ class JoinChatByInviteLink extends TdFunction {
   /// Parse from a json
   factory JoinChatByInviteLink.fromJson(Map<String, dynamic> json) {
     return JoinChatByInviteLink(
-      inviteLink: json['invite_link'],
+      inviteLink: json['invite_link'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -13,7 +13,7 @@ class CheckRecoveryEmailAddressCode extends TdFunction {
   /// Parse from a json
   factory CheckRecoveryEmailAddressCode.fromJson(Map<String, dynamic> json) {
     return CheckRecoveryEmailAddressCode(
-      code: json['code'],
+      code: json['code'] ?? "",
       extra: json['@extra'],
     );
   }

@@ -19,9 +19,9 @@ class ChatStatisticsMessageSenderInfo extends TdObject {
   /// Parse from a json
   factory ChatStatisticsMessageSenderInfo.fromJson(Map<String, dynamic> json) {
     return ChatStatisticsMessageSenderInfo(
-      userId: json['user_id'],
-      sentMessageCount: json['sent_message_count'],
-      averageCharacterCount: json['average_character_count'],
+      userId: json['user_id'] ?? 0,
+      sentMessageCount: json['sent_message_count'] ?? 0,
+      averageCharacterCount: json['average_character_count'] ?? 0,
     );
   }
 

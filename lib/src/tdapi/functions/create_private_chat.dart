@@ -16,8 +16,8 @@ class CreatePrivateChat extends TdFunction {
   /// Parse from a json
   factory CreatePrivateChat.fromJson(Map<String, dynamic> json) {
     return CreatePrivateChat(
-      userId: json['user_id'],
-      force: json['force'],
+      userId: json['user_id'] ?? 0,
+      force: json['force'] ?? false,
       extra: json['@extra'],
     );
   }

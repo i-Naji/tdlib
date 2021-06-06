@@ -13,7 +13,7 @@ class CheckPhoneNumberVerificationCode extends TdFunction {
   /// Parse from a json
   factory CheckPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json) {
     return CheckPhoneNumberVerificationCode(
-      code: json['code'],
+      code: json['code'] ?? "",
       extra: json['@extra'],
     );
   }

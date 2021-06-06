@@ -23,7 +23,7 @@ class EditInlineMessageMedia extends TdFunction {
   /// Parse from a json
   factory EditInlineMessageMedia.fromJson(Map<String, dynamic> json) {
     return EditInlineMessageMedia(
-      inlineMessageId: json['inline_message_id'],
+      inlineMessageId: json['inline_message_id'] ?? "",
       replyMarkup:
           ReplyMarkup.fromJson(json['reply_markup'] ?? <String, dynamic>{}),
       inputMessageContent: InputMessageContent.fromJson(

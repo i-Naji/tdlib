@@ -31,12 +31,12 @@ class GetInlineQueryResults extends TdFunction {
   /// Parse from a json
   factory GetInlineQueryResults.fromJson(Map<String, dynamic> json) {
     return GetInlineQueryResults(
-      botUserId: json['bot_user_id'],
-      chatId: json['chat_id'],
+      botUserId: json['bot_user_id'] ?? 0,
+      chatId: json['chat_id'] ?? 0,
       userLocation:
           Location.fromJson(json['user_location'] ?? <String, dynamic>{}),
-      query: json['query'],
-      offset: json['offset'],
+      query: json['query'] ?? "",
+      offset: json['offset'] ?? "",
       extra: json['@extra'],
     );
   }

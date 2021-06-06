@@ -18,7 +18,7 @@ class RemoveTopChat extends TdFunction {
     return RemoveTopChat(
       category:
           TopChatCategory.fromJson(json['category'] ?? <String, dynamic>{}),
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       extra: json['@extra'],
     );
   }

@@ -17,7 +17,7 @@ class UploadStickerFile extends TdFunction {
   /// Parse from a json
   factory UploadStickerFile.fromJson(Map<String, dynamic> json) {
     return UploadStickerFile(
-      userId: json['user_id'],
+      userId: json['user_id'] ?? 0,
       pngSticker:
           InputFile.fromJson(json['png_sticker'] ?? <String, dynamic>{}),
       extra: json['@extra'],

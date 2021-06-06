@@ -16,7 +16,7 @@ class AddChatToList extends TdFunction {
   /// Parse from a json
   factory AddChatToList.fromJson(Map<String, dynamic> json) {
     return AddChatToList(
-      chatId: json['chat_id'],
+      chatId: json['chat_id'] ?? 0,
       chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

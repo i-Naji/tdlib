@@ -32,12 +32,12 @@ class BasicGroupFullInfo extends TdObject {
   factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
     return BasicGroupFullInfo(
       photo: ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{}),
-      description: json['description'],
-      creatorUserId: json['creator_user_id'],
+      description: json['description'] ?? "",
+      creatorUserId: json['creator_user_id'] ?? 0,
       members: List<ChatMember>.from((json['members'] ?? [])
           .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
           .toList()),
-      inviteLink: json['invite_link'],
+      inviteLink: json['invite_link'] ?? "",
       extra: json['@extra'],
     );
   }

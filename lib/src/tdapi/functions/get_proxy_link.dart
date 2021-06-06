@@ -13,7 +13,7 @@ class GetProxyLink extends TdFunction {
   /// Parse from a json
   factory GetProxyLink.fromJson(Map<String, dynamic> json) {
     return GetProxyLink(
-      proxyId: json['proxy_id'],
+      proxyId: json['proxy_id'] ?? 0,
       extra: json['@extra'],
     );
   }

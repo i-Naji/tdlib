@@ -17,8 +17,8 @@ class GetInlineGameHighScores extends TdFunction {
   /// Parse from a json
   factory GetInlineGameHighScores.fromJson(Map<String, dynamic> json) {
     return GetInlineGameHighScores(
-      inlineMessageId: json['inline_message_id'],
-      userId: json['user_id'],
+      inlineMessageId: json['inline_message_id'] ?? "",
+      userId: json['user_id'] ?? 0,
       extra: json['@extra'],
     );
   }

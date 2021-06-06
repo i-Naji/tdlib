@@ -81,7 +81,7 @@ class JsonValueBoolean extends JsonValue {
   /// Parse from a json
   factory JsonValueBoolean.fromJson(Map<String, dynamic> json) {
     return JsonValueBoolean(
-      value: json['value'],
+      value: json['value'] ?? false,
       extra: json['@extra'],
     );
   }
@@ -113,7 +113,7 @@ class JsonValueNumber extends JsonValue {
   /// Parse from a json
   factory JsonValueNumber.fromJson(Map<String, dynamic> json) {
     return JsonValueNumber(
-      value: json['value'],
+      value: json['value'] ?? 0,
       extra: json['@extra'],
     );
   }
@@ -145,7 +145,7 @@ class JsonValueString extends JsonValue {
   /// Parse from a json
   factory JsonValueString.fromJson(Map<String, dynamic> json) {
     return JsonValueString(
-      value: json['value'],
+      value: json['value'] ?? "",
       extra: json['@extra'],
     );
   }

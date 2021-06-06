@@ -17,7 +17,7 @@ class EditChatFilter extends TdFunction {
   /// Parse from a json
   factory EditChatFilter.fromJson(Map<String, dynamic> json) {
     return EditChatFilter(
-      chatFilterId: json['chat_filter_id'],
+      chatFilterId: json['chat_filter_id'] ?? 0,
       filter: ChatFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
       extra: json['@extra'],
     );

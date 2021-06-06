@@ -48,15 +48,15 @@ class SearchMessages extends TdFunction {
   factory SearchMessages.fromJson(Map<String, dynamic> json) {
     return SearchMessages(
       chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
-      query: json['query'],
-      offsetDate: json['offset_date'],
-      offsetChatId: json['offset_chat_id'],
-      offsetMessageId: json['offset_message_id'],
-      limit: json['limit'],
+      query: json['query'] ?? "",
+      offsetDate: json['offset_date'] ?? 0,
+      offsetChatId: json['offset_chat_id'] ?? 0,
+      offsetMessageId: json['offset_message_id'] ?? 0,
+      limit: json['limit'] ?? 0,
       filter:
           SearchMessagesFilter.fromJson(json['filter'] ?? <String, dynamic>{}),
-      minDate: json['min_date'],
-      maxDate: json['max_date'],
+      minDate: json['min_date'] ?? 0,
+      maxDate: json['max_date'] ?? 0,
       extra: json['@extra'],
     );
   }

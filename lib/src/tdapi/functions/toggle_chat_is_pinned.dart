@@ -24,8 +24,8 @@ class ToggleChatIsPinned extends TdFunction {
   factory ToggleChatIsPinned.fromJson(Map<String, dynamic> json) {
     return ToggleChatIsPinned(
       chatList: ChatList.fromJson(json['chat_list'] ?? <String, dynamic>{}),
-      chatId: json['chat_id'],
-      isPinned: json['is_pinned'],
+      chatId: json['chat_id'] ?? 0,
+      isPinned: json['is_pinned'] ?? false,
       extra: json['@extra'],
     );
   }

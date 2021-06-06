@@ -16,8 +16,8 @@ class SearchContacts extends TdFunction {
   /// Parse from a json
   factory SearchContacts.fromJson(Map<String, dynamic> json) {
     return SearchContacts(
-      query: json['query'],
-      limit: json['limit'],
+      query: json['query'] ?? "",
+      limit: json['limit'] ?? 0,
       extra: json['@extra'],
     );
   }
