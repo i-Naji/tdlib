@@ -1,38 +1,61 @@
 part of '../tdapi.dart';
 
 class ChatMembers extends TdObject {
-  /// Contains a list of chat members
-  ChatMembers({this.totalCount, this.members});
 
-  /// [totalCount] Approximate total count of chat members found
-  int totalCount;
+  /// Contains a list of chat members
+  const ChatMembers({
+    required this.totalCount,
+    required this.members,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [totalCount] Approximate total count of chat members found 
+  final int totalCount;
 
   /// [members] A list of chat members
-  List<ChatMember> members;
+  final List<ChatMember> members;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatMembers.fromJson(Map<String, dynamic> json) {
-    this.totalCount = json['total_count'];
-    this.members = List<ChatMember>.from((json['members'] ?? [])
-        .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatMembers.fromJson(Map<String, dynamic> json) => ChatMembers(
+    totalCount: json['total_count'],
+    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "total_count": this.totalCount,
-      "members": this.members.map((i) => i.toJson()).toList(),
+      "total_count": totalCount,
+      "members": members.map((i) => i.toJson()).toList(),
     };
   }
+  
+  ChatMembers copyWith({
+    int? totalCount,
+    List<ChatMember>? members,
+    dynamic extra,
+    int? clientId,
+  }) => ChatMembers(
+    totalCount: totalCount ?? this.totalCount,
+    members: members ?? this.members,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatMembers';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

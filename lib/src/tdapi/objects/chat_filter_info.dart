@@ -1,41 +1,69 @@
 part of '../tdapi.dart';
 
 class ChatFilterInfo extends TdObject {
-  /// Contains basic information about a chat filter
-  ChatFilterInfo({this.id, this.title, this.iconName});
 
+  /// Contains basic information about a chat filter
+  const ChatFilterInfo({
+    required this.id,
+    required this.title,
+    required this.iconName,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [id] Unique chat filter identifier
-  int id;
+  final int id;
 
   /// [title] The title of the filter; 1-12 characters without line feeds
-  String title;
+  final String title;
 
-  /// [iconName] The icon name for short filter representation. One of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work"
-  String iconName;
+  /// [iconName] The chosen or default icon name for short filter representation. One of "All", "Unread", "Unmuted", "Bots", "Channels", "Groups", "Private", "Custom", "Setup", "Cat", "Crown", "Favorite", "Flower", "Game", "Home", "Love", "Mask", "Party", "Sport", "Study", "Trade", "Travel", "Work"
+  final String iconName;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatFilterInfo.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
-    this.title = json['title'];
-    this.iconName = json['icon_name'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatFilterInfo.fromJson(Map<String, dynamic> json) => ChatFilterInfo(
+    id: json['id'],
+    title: json['title'],
+    iconName: json['icon_name'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "title": this.title,
-      "icon_name": this.iconName,
+      "id": id,
+      "title": title,
+      "icon_name": iconName,
     };
   }
+  
+  ChatFilterInfo copyWith({
+    int? id,
+    String? title,
+    String? iconName,
+    dynamic extra,
+    int? clientId,
+  }) => ChatFilterInfo(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    iconName: iconName ?? this.iconName,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatFilterInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

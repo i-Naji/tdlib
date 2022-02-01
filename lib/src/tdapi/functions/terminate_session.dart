@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class TerminateSession extends TdFunction {
+
   /// Terminates a session of the current user
-  TerminateSession({this.sessionId});
-
+  const TerminateSession({
+    required this.sessionId,
+  });
+  
   /// [sessionId] Session identifier
-  int sessionId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  TerminateSession.fromJson(Map<String, dynamic> json);
-
+  final int sessionId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "session_id": this.sessionId,
-      "@extra": this.extra,
+      "session_id": sessionId,
+      "@extra": extra,
     };
   }
+  
+  TerminateSession copyWith({
+    int? sessionId,
+  }) => TerminateSession(
+    sessionId: sessionId ?? this.sessionId,
+  );
 
   static const CONSTRUCTOR = 'terminateSession';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

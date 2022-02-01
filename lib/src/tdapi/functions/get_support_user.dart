@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetSupportUser extends TdFunction {
+
   /// Returns a user that can be contacted to get support
-  GetSupportUser();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetSupportUser.fromJson(Map<String, dynamic> json);
-
+  const GetSupportUser();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetSupportUser copyWith() => const GetSupportUser();
 
   static const CONSTRUCTOR = 'getSupportUser';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

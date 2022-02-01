@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetGroupCall extends TdFunction {
+
   /// Returns information about a group call
-  GetGroupCall({this.groupCallId});
-
+  const GetGroupCall({
+    required this.groupCallId,
+  });
+  
   /// [groupCallId] Group call identifier
-  int groupCallId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetGroupCall.fromJson(Map<String, dynamic> json);
-
+  final int groupCallId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
-      "@extra": this.extra,
+      "group_call_id": groupCallId,
+      "@extra": extra,
     };
   }
+  
+  GetGroupCall copyWith({
+    int? groupCallId,
+  }) => GetGroupCall(
+    groupCallId: groupCallId ?? this.groupCallId,
+  );
 
   static const CONSTRUCTOR = 'getGroupCall';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

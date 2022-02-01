@@ -1,35 +1,39 @@
 part of '../tdapi.dart';
 
 class GetPassportAuthorizationFormAvailableElements extends TdFunction {
-  /// Returns already available Telegram Passport elements suitable for completing a Telegram Passport authorization form. Result can be received only once for each authorization form
-  GetPassportAuthorizationFormAvailableElements(
-      {this.autorizationFormId, this.password});
 
-  /// [autorizationFormId] Authorization form identifier
-  int autorizationFormId;
+  /// Returns already available Telegram Passport elements suitable for completing a Telegram Passport authorization form. Result can be received only once for each authorization form
+  const GetPassportAuthorizationFormAvailableElements({
+    required this.autorizationFormId,
+    required this.password,
+  });
+  
+  /// [autorizationFormId] Authorization form identifier 
+  final int autorizationFormId;
 
   /// [password] Password of the current user
-  String password;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetPassportAuthorizationFormAvailableElements.fromJson(
-      Map<String, dynamic> json);
-
+  final String password;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "autorization_form_id": this.autorizationFormId,
-      "password": this.password,
-      "@extra": this.extra,
+      "autorization_form_id": autorizationFormId,
+      "password": password,
+      "@extra": extra,
     };
   }
+  
+  GetPassportAuthorizationFormAvailableElements copyWith({
+    int? autorizationFormId,
+    String? password,
+  }) => GetPassportAuthorizationFormAvailableElements(
+    autorizationFormId: autorizationFormId ?? this.autorizationFormId,
+    password: password ?? this.password,
+  );
 
   static const CONSTRUCTOR = 'getPassportAuthorizationFormAvailableElements';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

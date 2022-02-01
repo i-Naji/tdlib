@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class FinishFileGeneration extends TdFunction {
+
   /// Finishes the file generation
-  FinishFileGeneration({this.generationId, this.error});
-
+  const FinishFileGeneration({
+    required this.generationId,
+    required this.error,
+  });
+  
   /// [generationId] The identifier of the generation process
-  int generationId;
+  final int generationId;
 
-  /// [error] If set, means that file generation has failed and should be terminated
-  TdError error;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  FinishFileGeneration.fromJson(Map<String, dynamic> json);
-
+  /// [error] If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
+  final TdError error;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "generation_id": this.generationId,
-      "error": this.error == null ? null : this.error.toJson(),
-      "@extra": this.extra,
+      "generation_id": generationId,
+      "error": error.toJson(),
+      "@extra": extra,
     };
   }
+  
+  FinishFileGeneration copyWith({
+    int? generationId,
+    TdError? error,
+  }) => FinishFileGeneration(
+    generationId: generationId ?? this.generationId,
+    error: error ?? this.error,
+  );
 
   static const CONSTRUCTOR = 'finishFileGeneration';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

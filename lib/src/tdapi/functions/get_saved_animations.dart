@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetSavedAnimations extends TdFunction {
+
   /// Returns saved animations
-  GetSavedAnimations();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetSavedAnimations.fromJson(Map<String, dynamic> json);
-
+  const GetSavedAnimations();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetSavedAnimations copyWith() => const GetSavedAnimations();
 
   static const CONSTRUCTOR = 'getSavedAnimations';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

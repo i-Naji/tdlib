@@ -1,31 +1,53 @@
 part of '../tdapi.dart';
 
 class TestString extends TdObject {
+
   /// A simple object containing a string; for testing only
-  TestString({this.value});
-
+  const TestString({
+    required this.value,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [value] String
-  String value;
+  final String value;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  TestString.fromJson(Map<String, dynamic> json) {
-    this.value = json['value'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory TestString.fromJson(Map<String, dynamic> json) => TestString(
+    value: json['value'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "value": this.value,
+      "value": value,
     };
   }
+  
+  TestString copyWith({
+    String? value,
+    dynamic extra,
+    int? clientId,
+  }) => TestString(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'testString';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

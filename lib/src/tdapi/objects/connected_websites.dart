@@ -1,33 +1,53 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsites extends TdObject {
+
   /// Contains a list of websites the current user is logged in with Telegram
-  ConnectedWebsites({this.websites});
-
+  const ConnectedWebsites({
+    required this.websites,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [websites] List of connected websites
-  List<ConnectedWebsite> websites;
+  final List<ConnectedWebsite> websites;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ConnectedWebsites.fromJson(Map<String, dynamic> json) {
-    this.websites = List<ConnectedWebsite>.from((json['websites'] ?? [])
-        .map((item) => ConnectedWebsite.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ConnectedWebsites.fromJson(Map<String, dynamic> json) => ConnectedWebsites(
+    websites: List<ConnectedWebsite>.from((json['websites'] ?? []).map((item) => ConnectedWebsite.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "websites": this.websites.map((i) => i.toJson()).toList(),
+      "websites": websites.map((i) => i.toJson()).toList(),
     };
   }
+  
+  ConnectedWebsites copyWith({
+    List<ConnectedWebsite>? websites,
+    dynamic extra,
+    int? clientId,
+  }) => ConnectedWebsites(
+    websites: websites ?? this.websites,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'connectedWebsites';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

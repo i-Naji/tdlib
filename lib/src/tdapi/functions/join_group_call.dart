@@ -1,41 +1,74 @@
 part of '../tdapi.dart';
 
 class JoinGroupCall extends TdFunction {
-  /// Joins a group call
-  JoinGroupCall({this.groupCallId, this.payload, this.source, this.isMuted});
 
+  /// Joins an active group call. Returns join response payload for tgcalls
+  const JoinGroupCall({
+    required this.groupCallId,
+    required this.participantId,
+    required this.audioSourceId,
+    required this.payload,
+    required this.isMuted,
+    required this.isMyVideoEnabled,
+    required this.inviteHash,
+  });
+  
   /// [groupCallId] Group call identifier
-  int groupCallId;
+  final int groupCallId;
 
-  /// [payload] Group join payload, received from tgcalls. Use null to cancel previous joinGroupCall request
-  GroupCallPayload payload;
+  /// [participantId] Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
+  final MessageSender participantId;
 
-  /// [source] Caller synchronization source identifier; received from tgcalls
-  int source;
+  /// [audioSourceId] Caller audio channel synchronization source identifier; received from tgcalls
+  final int audioSourceId;
+
+  /// [payload] Group call join payload; received from tgcalls
+  final String payload;
 
   /// [isMuted] True, if the user's microphone is muted
-  bool isMuted;
+  final bool isMuted;
 
-  /// callback sign
-  dynamic extra;
+  /// [isMyVideoEnabled] True, if the user's video is enabled
+  final bool isMyVideoEnabled;
 
-  /// Parse from a json
-  JoinGroupCall.fromJson(Map<String, dynamic> json);
-
+  /// [inviteHash] If non-empty, invite hash to be used to join the group call without being muted by administrators
+  final String inviteHash;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
-      "payload": this.payload == null ? null : this.payload.toJson(),
-      "source": this.source,
-      "is_muted": this.isMuted,
-      "@extra": this.extra,
+      "group_call_id": groupCallId,
+      "participant_id": participantId.toJson(),
+      "audio_source_id": audioSourceId,
+      "payload": payload,
+      "is_muted": isMuted,
+      "is_my_video_enabled": isMyVideoEnabled,
+      "invite_hash": inviteHash,
+      "@extra": extra,
     };
   }
+  
+  JoinGroupCall copyWith({
+    int? groupCallId,
+    MessageSender? participantId,
+    int? audioSourceId,
+    String? payload,
+    bool? isMuted,
+    bool? isMyVideoEnabled,
+    String? inviteHash,
+  }) => JoinGroupCall(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId ?? this.participantId,
+    audioSourceId: audioSourceId ?? this.audioSourceId,
+    payload: payload ?? this.payload,
+    isMuted: isMuted ?? this.isMuted,
+    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+    inviteHash: inviteHash ?? this.inviteHash,
+  );
 
   static const CONSTRUCTOR = 'joinGroupCall';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

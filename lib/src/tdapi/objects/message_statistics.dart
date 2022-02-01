@@ -1,34 +1,53 @@
 part of '../tdapi.dart';
 
 class MessageStatistics extends TdObject {
+
   /// A detailed statistics about a message
-  MessageStatistics({this.messageInteractionGraph});
-
+  const MessageStatistics({
+    required this.messageInteractionGraph,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [messageInteractionGraph] A graph containing number of message views and shares
-  StatisticalGraph messageInteractionGraph;
+  final StatisticalGraph messageInteractionGraph;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  MessageStatistics.fromJson(Map<String, dynamic> json) {
-    this.messageInteractionGraph = StatisticalGraph.fromJson(
-        json['message_interaction_graph'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory MessageStatistics.fromJson(Map<String, dynamic> json) => MessageStatistics(
+    messageInteractionGraph: StatisticalGraph.fromJson(json['message_interaction_graph']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "message_interaction_graph": this.messageInteractionGraph == null
-          ? null
-          : this.messageInteractionGraph.toJson(),
+      "message_interaction_graph": messageInteractionGraph.toJson(),
     };
   }
+  
+  MessageStatistics copyWith({
+    StatisticalGraph? messageInteractionGraph,
+    dynamic extra,
+    int? clientId,
+  }) => MessageStatistics(
+    messageInteractionGraph: messageInteractionGraph ?? this.messageInteractionGraph,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'messageStatistics';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

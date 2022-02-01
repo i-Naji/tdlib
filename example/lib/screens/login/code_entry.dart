@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:tdlib_example/services/telegram_service.dart';
-import 'package:tdlib/td_api.dart' show TdError;
 import 'package:provider/provider.dart';
 
-class CoodeEntrySreen extends StatefulWidget {
+import 'package:tdlib/td_api.dart' show TdError;
+
+import '../../services/telegram_service.dart';
+
+class CodeEntryScreen extends StatefulWidget {
+  const CodeEntryScreen({Key? key}) : super(key: key);
+
   @override
-  _CoodeEntrySreenState createState() => _CoodeEntrySreenState();
+  _CodeEntryScreenState createState() => _CodeEntryScreenState();
 }
 
-class _CoodeEntrySreenState extends State<CoodeEntrySreen> {
+class _CodeEntryScreenState extends State<CodeEntryScreen> {
   final String title = 'Submit Code';
   final TextEditingController _codeController = TextEditingController();
   bool _canShowButton = false;
-  String _codeError;
+  String? _codeError;
   bool _loadingStep = false;
 
   void codeListener() {
     if (_codeController.text.isNotEmpty && _codeController.text.length == 5) {
       setState(() => _canShowButton = true);
     } else {
-      {
-        setState(() => _canShowButton = false);
-      }
+      setState(() => _canShowButton = false);
     }
   }
 
@@ -53,11 +55,11 @@ class _CoodeEntrySreenState extends State<CoodeEntrySreen> {
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25.0),
-                borderSide: BorderSide(),
+                borderSide: const BorderSide(),
               ),
               labelText: "code",
-              errorText: _codeError ?? null,
-              errorStyle: TextStyle(
+              errorText: _codeError,
+              errorStyle: const TextStyle(
                 fontSize: 14.0,
               ),
               //contentPadding: EdgeInsets.zero
@@ -72,10 +74,10 @@ class _CoodeEntrySreenState extends State<CoodeEntrySreen> {
               onPressed: () => _nextStep(_codeController.text),
               tooltip: 'checkcode',
               child: _loadingStep
-                  ? CircularProgressIndicator(
+                  ? const CircularProgressIndicator(
                       backgroundColor: Colors.blue,
                     )
-                  : Icon(Icons.navigate_next),
+                  : const Icon(Icons.navigate_next),
             )
           : null, // This trailing comma makes auto-formatting nicer for build methods.
     );

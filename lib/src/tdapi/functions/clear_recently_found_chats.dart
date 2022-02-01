@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class ClearRecentlyFoundChats extends TdFunction {
+
   /// Clears the list of recently found chats
-  ClearRecentlyFoundChats();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ClearRecentlyFoundChats.fromJson(Map<String, dynamic> json);
-
+  const ClearRecentlyFoundChats();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  ClearRecentlyFoundChats copyWith() => const ClearRecentlyFoundChats();
 
   static const CONSTRUCTOR = 'clearRecentlyFoundChats';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,38 +1,61 @@
 part of '../tdapi.dart';
 
 class ChatPhotos extends TdObject {
-  /// Contains a list of chat or user profile photos
-  ChatPhotos({this.totalCount, this.photos});
 
-  /// [totalCount] Total number of photos
-  int totalCount;
+  /// Contains a list of chat or user profile photos
+  const ChatPhotos({
+    required this.totalCount,
+    required this.photos,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [totalCount] Total number of photos 
+  final int totalCount;
 
   /// [photos] List of photos
-  List<ChatPhoto> photos;
+  final List<ChatPhoto> photos;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatPhotos.fromJson(Map<String, dynamic> json) {
-    this.totalCount = json['total_count'];
-    this.photos = List<ChatPhoto>.from((json['photos'] ?? [])
-        .map((item) => ChatPhoto.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatPhotos.fromJson(Map<String, dynamic> json) => ChatPhotos(
+    totalCount: json['total_count'],
+    photos: List<ChatPhoto>.from((json['photos'] ?? []).map((item) => ChatPhoto.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "total_count": this.totalCount,
-      "photos": this.photos.map((i) => i.toJson()).toList(),
+      "total_count": totalCount,
+      "photos": photos.map((i) => i.toJson()).toList(),
     };
   }
+  
+  ChatPhotos copyWith({
+    int? totalCount,
+    List<ChatPhoto>? photos,
+    dynamic extra,
+    int? clientId,
+  }) => ChatPhotos(
+    totalCount: totalCount ?? this.totalCount,
+    photos: photos ?? this.photos,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatPhotos';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

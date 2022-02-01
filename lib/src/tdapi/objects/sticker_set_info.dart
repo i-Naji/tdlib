@@ -1,108 +1,133 @@
 part of '../tdapi.dart';
 
 class StickerSetInfo extends TdObject {
+
   /// Represents short information about a sticker set
-  StickerSetInfo(
-      {this.id,
-      this.title,
-      this.name,
-      this.thumbnail,
-      this.thumbnailOutline,
-      this.isInstalled,
-      this.isArchived,
-      this.isOfficial,
-      this.isAnimated,
-      this.isMasks,
-      this.isViewed,
-      this.size,
-      this.covers});
-
+  const StickerSetInfo({
+    required this.id,
+    required this.title,
+    required this.name,
+    this.thumbnail,
+    required this.thumbnailOutline,
+    required this.isInstalled,
+    required this.isArchived,
+    required this.isOfficial,
+    required this.isAnimated,
+    required this.isMasks,
+    required this.isViewed,
+    required this.size,
+    required this.covers,
+  });
+  
   /// [id] Identifier of the sticker set
-  int id;
+  final int id;
 
-  /// [title] Title of the sticker set
-  String title;
+  /// [title] Title of the sticker set 
+  final String title;
 
-  /// [name] Name of the sticker set
-  String name;
+  /// [name] Name of the sticker set 
+  final String name;
 
   /// [thumbnail] Sticker set thumbnail in WEBP or TGS format with width and height 100; may be null
-  Thumbnail thumbnail;
+  final Thumbnail? thumbnail;
 
   /// [thumbnailOutline] Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
-  List<ClosedVectorPath> thumbnailOutline;
+  final List<ClosedVectorPath> thumbnailOutline;
 
   /// [isInstalled] True, if the sticker set has been installed by the current user
-  bool isInstalled;
+  final bool isInstalled;
 
   /// [isArchived] True, if the sticker set has been archived. A sticker set can't be installed and archived simultaneously
-  bool isArchived;
+  final bool isArchived;
 
   /// [isOfficial] True, if the sticker set is official
-  bool isOfficial;
+  final bool isOfficial;
 
-  /// [isAnimated] True, is the stickers in the set are animated
-  bool isAnimated;
+  /// [isAnimated] True, is the stickers in the set are animated 
+  final bool isAnimated;
 
-  /// [isMasks] True, if the stickers in the set are masks
-  bool isMasks;
+  /// [isMasks] True, if the stickers in the set are masks 
+  final bool isMasks;
 
   /// [isViewed] True for already viewed trending sticker sets
-  bool isViewed;
+  final bool isViewed;
 
   /// [size] Total number of stickers in the set
-  int size;
+  final int size;
 
-  /// [covers] Contains up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full set should be requested
-  List<Sticker> covers;
-
+  /// [covers] Up to the first 5 stickers from the set, depending on the context. If the application needs more stickers the full sticker set needs to be requested
+  final List<Sticker> covers;
+  
   /// Parse from a json
-  StickerSetInfo.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.title = json['title'];
-    this.name = json['name'];
-    this.thumbnail =
-        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.thumbnailOutline = List<ClosedVectorPath>.from(
-        (json['thumbnail_outline'] ?? [])
-            .map((item) =>
-                ClosedVectorPath.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.isInstalled = json['is_installed'];
-    this.isArchived = json['is_archived'];
-    this.isOfficial = json['is_official'];
-    this.isAnimated = json['is_animated'];
-    this.isMasks = json['is_masks'];
-    this.isViewed = json['is_viewed'];
-    this.size = json['size'];
-    this.covers = List<Sticker>.from((json['covers'] ?? [])
-        .map((item) => Sticker.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-  }
-
+  factory StickerSetInfo.fromJson(Map<String, dynamic> json) => StickerSetInfo(
+    id: int.parse(json['id']),
+    title: json['title'],
+    name: json['name'],
+    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    thumbnailOutline: List<ClosedVectorPath>.from((json['thumbnail_outline'] ?? []).map((item) => ClosedVectorPath.fromJson(item)).toList()),
+    isInstalled: json['is_installed'],
+    isArchived: json['is_archived'],
+    isOfficial: json['is_official'],
+    isAnimated: json['is_animated'],
+    isMasks: json['is_masks'],
+    isViewed: json['is_viewed'],
+    size: json['size'],
+    covers: List<Sticker>.from((json['covers'] ?? []).map((item) => Sticker.fromJson(item)).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "title": this.title,
-      "name": this.name,
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "thumbnail_outline":
-          this.thumbnailOutline.map((i) => i.toJson()).toList(),
-      "is_installed": this.isInstalled,
-      "is_archived": this.isArchived,
-      "is_official": this.isOfficial,
-      "is_animated": this.isAnimated,
-      "is_masks": this.isMasks,
-      "is_viewed": this.isViewed,
-      "size": this.size,
-      "covers": this.covers.map((i) => i.toJson()).toList(),
+      "id": id,
+      "title": title,
+      "name": name,
+      "thumbnail": thumbnail?.toJson(),
+      "thumbnail_outline": thumbnailOutline.map((i) => i.toJson()).toList(),
+      "is_installed": isInstalled,
+      "is_archived": isArchived,
+      "is_official": isOfficial,
+      "is_animated": isAnimated,
+      "is_masks": isMasks,
+      "is_viewed": isViewed,
+      "size": size,
+      "covers": covers.map((i) => i.toJson()).toList(),
     };
   }
+  
+  StickerSetInfo copyWith({
+    int? id,
+    String? title,
+    String? name,
+    Thumbnail? thumbnail,
+    List<ClosedVectorPath>? thumbnailOutline,
+    bool? isInstalled,
+    bool? isArchived,
+    bool? isOfficial,
+    bool? isAnimated,
+    bool? isMasks,
+    bool? isViewed,
+    int? size,
+    List<Sticker>? covers,
+  }) => StickerSetInfo(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    name: name ?? this.name,
+    thumbnail: thumbnail ?? this.thumbnail,
+    thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+    isInstalled: isInstalled ?? this.isInstalled,
+    isArchived: isArchived ?? this.isArchived,
+    isOfficial: isOfficial ?? this.isOfficial,
+    isAnimated: isAnimated ?? this.isAnimated,
+    isMasks: isMasks ?? this.isMasks,
+    isViewed: isViewed ?? this.isViewed,
+    size: size ?? this.size,
+    covers: covers ?? this.covers,
+  );
 
   static const CONSTRUCTOR = 'stickerSetInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

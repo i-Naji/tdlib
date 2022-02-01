@@ -1,35 +1,53 @@
 part of '../tdapi.dart';
 
 class ChatAdministrators extends TdObject {
+
   /// Represents a list of chat administrators
-  ChatAdministrators({this.administrators});
-
+  const ChatAdministrators({
+    required this.administrators,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [administrators] A list of chat administrators
-  List<ChatAdministrator> administrators;
+  final List<ChatAdministrator> administrators;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatAdministrators.fromJson(Map<String, dynamic> json) {
-    this.administrators = List<ChatAdministrator>.from(
-        (json['administrators'] ?? [])
-            .map((item) =>
-                ChatAdministrator.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatAdministrators.fromJson(Map<String, dynamic> json) => ChatAdministrators(
+    administrators: List<ChatAdministrator>.from((json['administrators'] ?? []).map((item) => ChatAdministrator.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "administrators": this.administrators.map((i) => i.toJson()).toList(),
+      "administrators": administrators.map((i) => i.toJson()).toList(),
     };
   }
+  
+  ChatAdministrators copyWith({
+    List<ChatAdministrator>? administrators,
+    dynamic extra,
+    int? clientId,
+  }) => ChatAdministrators(
+    administrators: administrators ?? this.administrators,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatAdministrators';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tdlib_example/utils/router.dart' as utilrouter;
-import 'package:tdlib_example/utils/const.dart';
-import 'package:tdlib_example/services/telegram_service.dart';
-import 'package:tdlib_example/services/locator.dart';
+import 'package:tdlib/td_client.dart';
 
-void main() {
+import './utils/router.dart' as utilrouter;
+import './utils/const.dart';
+import './services/telegram_service.dart';
+import './services/locator.dart';
+
+void main() async {
   //SystemChrome.setSystemUIOverlayStyle(SystemUiOverlay.);
 
   WidgetsFlutterBinding.ensureInitialized();
   Provider.debugCheckInvalidValueType = null;
+  await TdPlugin.initialize();
   setupLocator();
   runApp(
     MultiProvider(
@@ -19,13 +22,13 @@ void main() {
           lazy: false,
         ),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  MyApp();
+  const MyApp({Key? key}): super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

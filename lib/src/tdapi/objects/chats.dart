@@ -1,37 +1,61 @@
 part of '../tdapi.dart';
 
 class Chats extends TdObject {
-  /// Represents a list of chats
-  Chats({this.totalCount, this.chatIds});
 
-  /// [totalCount] Approximate total count of chats found
-  int totalCount;
+  /// Represents a list of chats
+  const Chats({
+    required this.totalCount,
+    required this.chatIds,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [totalCount] Approximate total count of chats found 
+  final int totalCount;
 
   /// [chatIds] List of chat identifiers
-  List<int> chatIds;
+  final List<int> chatIds;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Chats.fromJson(Map<String, dynamic> json) {
-    this.totalCount = json['total_count'];
-    this.chatIds =
-        List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Chats.fromJson(Map<String, dynamic> json) => Chats(
+    totalCount: json['total_count'],
+    chatIds: List<int>.from((json['chat_ids'] ?? []).map((item) => item).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "total_count": this.totalCount,
-      "chat_ids": this.chatIds.map((i) => i).toList(),
+      "total_count": totalCount,
+      "chat_ids": chatIds.map((i) => i).toList(),
     };
   }
+  
+  Chats copyWith({
+    int? totalCount,
+    List<int>? chatIds,
+    dynamic extra,
+    int? clientId,
+  }) => Chats(
+    totalCount: totalCount ?? this.totalCount,
+    chatIds: chatIds ?? this.chatIds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chats';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

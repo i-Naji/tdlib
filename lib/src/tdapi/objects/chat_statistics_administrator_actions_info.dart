@@ -1,46 +1,61 @@
 part of '../tdapi.dart';
 
 class ChatStatisticsAdministratorActionsInfo extends TdObject {
-  /// Contains statistics about administrator actions done by a user
-  ChatStatisticsAdministratorActionsInfo(
-      {this.userId,
-      this.deletedMessageCount,
-      this.bannedUserCount,
-      this.restrictedUserCount});
 
+  /// Contains statistics about administrator actions done by a user
+  const ChatStatisticsAdministratorActionsInfo({
+    required this.userId,
+    required this.deletedMessageCount,
+    required this.bannedUserCount,
+    required this.restrictedUserCount,
+  });
+  
   /// [userId] Administrator user identifier
-  int userId;
+  final int userId;
 
   /// [deletedMessageCount] Number of messages deleted by the administrator
-  int deletedMessageCount;
+  final int deletedMessageCount;
 
   /// [bannedUserCount] Number of users banned by the administrator
-  int bannedUserCount;
+  final int bannedUserCount;
 
   /// [restrictedUserCount] Number of users restricted by the administrator
-  int restrictedUserCount;
-
+  final int restrictedUserCount;
+  
   /// Parse from a json
-  ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-    this.deletedMessageCount = json['deleted_message_count'];
-    this.bannedUserCount = json['banned_user_count'];
-    this.restrictedUserCount = json['restricted_user_count'];
-  }
-
+  factory ChatStatisticsAdministratorActionsInfo.fromJson(Map<String, dynamic> json) => ChatStatisticsAdministratorActionsInfo(
+    userId: json['user_id'],
+    deletedMessageCount: json['deleted_message_count'],
+    bannedUserCount: json['banned_user_count'],
+    restrictedUserCount: json['restricted_user_count'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "deleted_message_count": this.deletedMessageCount,
-      "banned_user_count": this.bannedUserCount,
-      "restricted_user_count": this.restrictedUserCount,
+      "user_id": userId,
+      "deleted_message_count": deletedMessageCount,
+      "banned_user_count": bannedUserCount,
+      "restricted_user_count": restrictedUserCount,
     };
   }
+  
+  ChatStatisticsAdministratorActionsInfo copyWith({
+    int? userId,
+    int? deletedMessageCount,
+    int? bannedUserCount,
+    int? restrictedUserCount,
+  }) => ChatStatisticsAdministratorActionsInfo(
+    userId: userId ?? this.userId,
+    deletedMessageCount: deletedMessageCount ?? this.deletedMessageCount,
+    bannedUserCount: bannedUserCount ?? this.bannedUserCount,
+    restrictedUserCount: restrictedUserCount ?? this.restrictedUserCount,
+  );
 
   static const CONSTRUCTOR = 'chatStatisticsAdministratorActionsInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

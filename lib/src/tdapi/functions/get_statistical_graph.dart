@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class GetStatisticalGraph extends TdFunction {
+
   /// Loads an asynchronous or a zoomed in statistical graph
-  GetStatisticalGraph({this.chatId, this.token, this.x});
+  const GetStatisticalGraph({
+    required this.chatId,
+    required this.token,
+    required this.x,
+  });
+  
+  /// [chatId] Chat identifier 
+  final int chatId;
 
-  /// [chatId] Chat identifier
-  int chatId;
-
-  /// [token] The token for graph loading
-  String token;
+  /// [token] The token for graph loading 
+  final String token;
 
   /// [x] X-value for zoomed in graph or 0 otherwise
-  int x;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetStatisticalGraph.fromJson(Map<String, dynamic> json);
-
+  final int x;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "token": this.token,
-      "x": this.x,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "token": token,
+      "x": x,
+      "@extra": extra,
     };
   }
+  
+  GetStatisticalGraph copyWith({
+    int? chatId,
+    String? token,
+    int? x,
+  }) => GetStatisticalGraph(
+    chatId: chatId ?? this.chatId,
+    token: token ?? this.token,
+    x: x ?? this.x,
+  );
 
   static const CONSTRUCTOR = 'getStatisticalGraph';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

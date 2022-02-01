@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class SearchInstalledStickerSets extends TdFunction {
+
   /// Searches for installed sticker sets by looking for specified query in their title and name
-  SearchInstalledStickerSets({this.isMasks, this.query, this.limit});
+  const SearchInstalledStickerSets({
+    required this.isMasks,
+    required this.query,
+    required this.limit,
+  });
+  
+  /// [isMasks] Pass true to return mask sticker sets; pass false to return ordinary sticker sets 
+  final bool isMasks;
 
-  /// [isMasks] Pass true to return mask sticker sets; pass false to return ordinary sticker sets
-  bool isMasks;
-
-  /// [query] Query to search for
-  String query;
+  /// [query] Query to search for 
+  final String query;
 
   /// [limit] The maximum number of sticker sets to return
-  int limit;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SearchInstalledStickerSets.fromJson(Map<String, dynamic> json);
-
+  final int limit;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "is_masks": this.isMasks,
-      "query": this.query,
-      "limit": this.limit,
-      "@extra": this.extra,
+      "is_masks": isMasks,
+      "query": query,
+      "limit": limit,
+      "@extra": extra,
     };
   }
+  
+  SearchInstalledStickerSets copyWith({
+    bool? isMasks,
+    String? query,
+    int? limit,
+  }) => SearchInstalledStickerSets(
+    isMasks: isMasks ?? this.isMasks,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+  );
 
   static const CONSTRUCTOR = 'searchInstalledStickerSets';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

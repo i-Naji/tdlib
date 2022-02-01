@@ -1,76 +1,101 @@
 part of '../tdapi.dart';
 
 class ConnectedWebsite extends TdObject {
-  /// Contains information about one website the current user is logged in with Telegram
-  ConnectedWebsite(
-      {this.id,
-      this.domainName,
-      this.botUserId,
-      this.browser,
-      this.platform,
-      this.logInDate,
-      this.lastActiveDate,
-      this.ip,
-      this.location});
 
+  /// Contains information about one website the current user is logged in with Telegram
+  const ConnectedWebsite({
+    required this.id,
+    required this.domainName,
+    required this.botUserId,
+    required this.browser,
+    required this.platform,
+    required this.logInDate,
+    required this.lastActiveDate,
+    required this.ip,
+    required this.location,
+  });
+  
   /// [id] Website identifier
-  int id;
+  final int id;
 
   /// [domainName] The domain name of the website
-  String domainName;
+  final String domainName;
 
   /// [botUserId] User identifier of a bot linked with the website
-  int botUserId;
+  final int botUserId;
 
   /// [browser] The version of a browser used to log in
-  String browser;
+  final String browser;
 
   /// [platform] Operating system the browser is running on
-  String platform;
+  final String platform;
 
   /// [logInDate] Point in time (Unix timestamp) when the user was logged in
-  int logInDate;
+  final int logInDate;
 
   /// [lastActiveDate] Point in time (Unix timestamp) when obtained authorization was last used
-  int lastActiveDate;
+  final int lastActiveDate;
 
   /// [ip] IP address from which the user was logged in, in human-readable format
-  String ip;
+  final String ip;
 
   /// [location] Human-readable description of a country and a region, from which the user was logged in, based on the IP address
-  String location;
-
+  final String location;
+  
   /// Parse from a json
-  ConnectedWebsite.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.domainName = json['domain_name'];
-    this.botUserId = json['bot_user_id'];
-    this.browser = json['browser'];
-    this.platform = json['platform'];
-    this.logInDate = json['log_in_date'];
-    this.lastActiveDate = json['last_active_date'];
-    this.ip = json['ip'];
-    this.location = json['location'];
-  }
-
+  factory ConnectedWebsite.fromJson(Map<String, dynamic> json) => ConnectedWebsite(
+    id: int.parse(json['id']),
+    domainName: json['domain_name'],
+    botUserId: json['bot_user_id'],
+    browser: json['browser'],
+    platform: json['platform'],
+    logInDate: json['log_in_date'],
+    lastActiveDate: json['last_active_date'],
+    ip: json['ip'],
+    location: json['location'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "domain_name": this.domainName,
-      "bot_user_id": this.botUserId,
-      "browser": this.browser,
-      "platform": this.platform,
-      "log_in_date": this.logInDate,
-      "last_active_date": this.lastActiveDate,
-      "ip": this.ip,
-      "location": this.location,
+      "id": id,
+      "domain_name": domainName,
+      "bot_user_id": botUserId,
+      "browser": browser,
+      "platform": platform,
+      "log_in_date": logInDate,
+      "last_active_date": lastActiveDate,
+      "ip": ip,
+      "location": location,
     };
   }
+  
+  ConnectedWebsite copyWith({
+    int? id,
+    String? domainName,
+    int? botUserId,
+    String? browser,
+    String? platform,
+    int? logInDate,
+    int? lastActiveDate,
+    String? ip,
+    String? location,
+  }) => ConnectedWebsite(
+    id: id ?? this.id,
+    domainName: domainName ?? this.domainName,
+    botUserId: botUserId ?? this.botUserId,
+    browser: browser ?? this.browser,
+    platform: platform ?? this.platform,
+    logInDate: logInDate ?? this.logInDate,
+    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+    ip: ip ?? this.ip,
+    location: location ?? this.location,
+  );
 
   static const CONSTRUCTOR = 'connectedWebsite';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

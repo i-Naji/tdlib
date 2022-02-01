@@ -1,37 +1,53 @@
 part of '../tdapi.dart';
 
 class TextEntity extends TdObject {
+
   /// Represents a part of the text that needs to be formatted in some unusual way
-  TextEntity({this.offset, this.length, this.type});
+  const TextEntity({
+    required this.offset,
+    required this.length,
+    required this.type,
+  });
+  
+  /// [offset] Offset of the entity, in UTF-16 code units 
+  final int offset;
 
-  /// [offset] Offset of the entity, in UTF-16 code units
-  int offset;
-
-  /// [length] Length of the entity, in UTF-16 code units
-  int length;
+  /// [length] Length of the entity, in UTF-16 code units 
+  final int length;
 
   /// [type] Type of the entity
-  TextEntityType type;
-
+  final TextEntityType type;
+  
   /// Parse from a json
-  TextEntity.fromJson(Map<String, dynamic> json) {
-    this.offset = json['offset'];
-    this.length = json['length'];
-    this.type = TextEntityType.fromJson(json['type'] ?? <String, dynamic>{});
-  }
-
+  factory TextEntity.fromJson(Map<String, dynamic> json) => TextEntity(
+    offset: json['offset'],
+    length: json['length'],
+    type: TextEntityType.fromJson(json['type']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "offset": this.offset,
-      "length": this.length,
-      "type": this.type == null ? null : this.type.toJson(),
+      "offset": offset,
+      "length": length,
+      "type": type.toJson(),
     };
   }
+  
+  TextEntity copyWith({
+    int? offset,
+    int? length,
+    TextEntityType? type,
+  }) => TextEntity(
+    offset: offset ?? this.offset,
+    length: length ?? this.length,
+    type: type ?? this.type,
+  );
 
   static const CONSTRUCTOR = 'textEntity';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

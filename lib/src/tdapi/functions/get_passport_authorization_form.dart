@@ -1,42 +1,53 @@
 part of '../tdapi.dart';
 
 class GetPassportAuthorizationForm extends TdFunction {
+
   /// Returns a Telegram Passport authorization form for sharing data with a service
-  GetPassportAuthorizationForm(
-      {this.botUserId, this.scope, this.publicKey, this.nonce});
+  const GetPassportAuthorizationForm({
+    required this.botUserId,
+    required this.scope,
+    required this.publicKey,
+    required this.nonce,
+  });
+  
+  /// [botUserId] User identifier of the service's bot 
+  final int botUserId;
 
-  /// [botUserId] User identifier of the service's bot
-  int botUserId;
+  /// [scope] Telegram Passport element types requested by the service 
+  final String scope;
 
-  /// [scope] Telegram Passport element types requested by the service
-  String scope;
+  /// [publicKey] Service's public key 
+  final String publicKey;
 
-  /// [publicKey] Service's public_key
-  String publicKey;
-
-  /// [nonce] Authorization form nonce provided by the service
-  String nonce;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetPassportAuthorizationForm.fromJson(Map<String, dynamic> json);
-
+  /// [nonce] Unique request identifier provided by the service
+  final String nonce;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "bot_user_id": this.botUserId,
-      "scope": this.scope,
-      "public_key": this.publicKey,
-      "nonce": this.nonce,
-      "@extra": this.extra,
+      "bot_user_id": botUserId,
+      "scope": scope,
+      "public_key": publicKey,
+      "nonce": nonce,
+      "@extra": extra,
     };
   }
+  
+  GetPassportAuthorizationForm copyWith({
+    int? botUserId,
+    String? scope,
+    String? publicKey,
+    String? nonce,
+  }) => GetPassportAuthorizationForm(
+    botUserId: botUserId ?? this.botUserId,
+    scope: scope ?? this.scope,
+    publicKey: publicKey ?? this.publicKey,
+    nonce: nonce ?? this.nonce,
+  );
 
   static const CONSTRUCTOR = 'getPassportAuthorizationForm';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

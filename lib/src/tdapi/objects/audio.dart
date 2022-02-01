@@ -1,76 +1,93 @@
 part of '../tdapi.dart';
 
 class Audio extends TdObject {
+
   /// Describes an audio file. Audio is usually in MP3 or M4A format
-  Audio(
-      {this.duration,
-      this.title,
-      this.performer,
-      this.fileName,
-      this.mimeType,
-      this.albumCoverMinithumbnail,
-      this.albumCoverThumbnail,
-      this.audio});
+  const Audio({
+    required this.duration,
+    required this.title,
+    required this.performer,
+    required this.fileName,
+    required this.mimeType,
+    this.albumCoverMinithumbnail,
+    this.albumCoverThumbnail,
+    required this.audio,
+  });
+  
+  /// [duration] Duration of the audio, in seconds; as defined by the sender 
+  final int duration;
 
-  /// [duration] Duration of the audio, in seconds; as defined by the sender
-  int duration;
-
-  /// [title] Title of the audio; as defined by the sender
-  String title;
+  /// [title] Title of the audio; as defined by the sender 
+  final String title;
 
   /// [performer] Performer of the audio; as defined by the sender
-  String performer;
+  final String performer;
 
   /// [fileName] Original name of the file; as defined by the sender
-  String fileName;
+  final String fileName;
 
-  /// [mimeType] The MIME type of the file; as defined by the sender
-  String mimeType;
+  /// [mimeType] The MIME type of the file; as defined by the sender 
+  final String mimeType;
 
   /// [albumCoverMinithumbnail] The minithumbnail of the album cover; may be null
-  Minithumbnail albumCoverMinithumbnail;
+  final Minithumbnail? albumCoverMinithumbnail;
 
-  /// [albumCoverThumbnail] The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail should be extracted from the downloaded file; may be null
-  Thumbnail albumCoverThumbnail;
+  /// [albumCoverThumbnail] The thumbnail of the album cover in JPEG format; as defined by the sender. The full size thumbnail is supposed to be extracted from the downloaded file; may be null
+  final Thumbnail? albumCoverThumbnail;
 
   /// [audio] File containing the audio
-  File audio;
-
+  final File audio;
+  
   /// Parse from a json
-  Audio.fromJson(Map<String, dynamic> json) {
-    this.duration = json['duration'];
-    this.title = json['title'];
-    this.performer = json['performer'];
-    this.fileName = json['file_name'];
-    this.mimeType = json['mime_type'];
-    this.albumCoverMinithumbnail = Minithumbnail.fromJson(
-        json['album_cover_minithumbnail'] ?? <String, dynamic>{});
-    this.albumCoverThumbnail = Thumbnail.fromJson(
-        json['album_cover_thumbnail'] ?? <String, dynamic>{});
-    this.audio = File.fromJson(json['audio'] ?? <String, dynamic>{});
-  }
-
+  factory Audio.fromJson(Map<String, dynamic> json) => Audio(
+    duration: json['duration'],
+    title: json['title'],
+    performer: json['performer'],
+    fileName: json['file_name'],
+    mimeType: json['mime_type'],
+    albumCoverMinithumbnail: json['album_cover_minithumbnail'] == null ? null : Minithumbnail.fromJson(json['album_cover_minithumbnail']),
+    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : Thumbnail.fromJson(json['album_cover_thumbnail']),
+    audio: File.fromJson(json['audio']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "duration": this.duration,
-      "title": this.title,
-      "performer": this.performer,
-      "file_name": this.fileName,
-      "mime_type": this.mimeType,
-      "album_cover_minithumbnail": this.albumCoverMinithumbnail == null
-          ? null
-          : this.albumCoverMinithumbnail.toJson(),
-      "album_cover_thumbnail": this.albumCoverThumbnail == null
-          ? null
-          : this.albumCoverThumbnail.toJson(),
-      "audio": this.audio == null ? null : this.audio.toJson(),
+      "duration": duration,
+      "title": title,
+      "performer": performer,
+      "file_name": fileName,
+      "mime_type": mimeType,
+      "album_cover_minithumbnail": albumCoverMinithumbnail?.toJson(),
+      "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
+      "audio": audio.toJson(),
     };
   }
+  
+  Audio copyWith({
+    int? duration,
+    String? title,
+    String? performer,
+    String? fileName,
+    String? mimeType,
+    Minithumbnail? albumCoverMinithumbnail,
+    Thumbnail? albumCoverThumbnail,
+    File? audio,
+  }) => Audio(
+    duration: duration ?? this.duration,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    albumCoverMinithumbnail: albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
+    albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+    audio: audio ?? this.audio,
+  );
 
   static const CONSTRUCTOR = 'audio';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

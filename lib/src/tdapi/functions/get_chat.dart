@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetChat extends TdFunction {
+
   /// Returns information about a chat by its identifier, this is an offline request if the current user is not a bot
-  GetChat({this.chatId});
-
+  const GetChat({
+    required this.chatId,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChat.fromJson(Map<String, dynamic> json);
-
+  final int chatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "@extra": extra,
     };
   }
+  
+  GetChat copyWith({
+    int? chatId,
+  }) => GetChat(
+    chatId: chatId ?? this.chatId,
+  );
 
   static const CONSTRUCTOR = 'getChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

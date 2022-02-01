@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class SetChatMemberStatus extends TdFunction {
-  /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for adding new members to the chat and transferring chat ownership; instead, use addChatMember or transferChatOwnership. The chat member status will not be changed until it has been synchronized with the server
-  SetChatMemberStatus({this.chatId, this.userId, this.status});
 
+  /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed
+  const SetChatMemberStatus({
+    required this.chatId,
+    required this.memberId,
+    required this.status,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
+  final int chatId;
 
-  /// [userId] User identifier
-  int userId;
+  /// [memberId] Member identifier. Chats can be only banned and unbanned in supergroups and channels 
+  final MessageSender memberId;
 
   /// [status] The new status of the member in the chat
-  ChatMemberStatus status;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetChatMemberStatus.fromJson(Map<String, dynamic> json);
-
+  final ChatMemberStatus status;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "user_id": this.userId,
-      "status": this.status == null ? null : this.status.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "member_id": memberId.toJson(),
+      "status": status.toJson(),
+      "@extra": extra,
     };
   }
+  
+  SetChatMemberStatus copyWith({
+    int? chatId,
+    MessageSender? memberId,
+    ChatMemberStatus? status,
+  }) => SetChatMemberStatus(
+    chatId: chatId ?? this.chatId,
+    memberId: memberId ?? this.memberId,
+    status: status ?? this.status,
+  );
 
   static const CONSTRUCTOR = 'setChatMemberStatus';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

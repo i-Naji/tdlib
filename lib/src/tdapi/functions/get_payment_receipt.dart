@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class GetPaymentReceipt extends TdFunction {
-  /// Returns information about a successful payment
-  GetPaymentReceipt({this.chatId, this.messageId});
 
-  /// [chatId] Chat identifier of the PaymentSuccessful message
-  int chatId;
+  /// Returns information about a successful payment
+  const GetPaymentReceipt({
+    required this.chatId,
+    required this.messageId,
+  });
+  
+  /// [chatId] Chat identifier of the PaymentSuccessful message 
+  final int chatId;
 
   /// [messageId] Message identifier
-  int messageId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetPaymentReceipt.fromJson(Map<String, dynamic> json);
-
+  final int messageId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "@extra": extra,
     };
   }
+  
+  GetPaymentReceipt copyWith({
+    int? chatId,
+    int? messageId,
+  }) => GetPaymentReceipt(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   static const CONSTRUCTOR = 'getPaymentReceipt';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

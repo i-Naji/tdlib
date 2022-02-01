@@ -1,58 +1,85 @@
 part of '../tdapi.dart';
 
 class InlineQueryResults extends TdObject {
+
   /// Represents the results of the inline query. Use sendInlineQueryResultMessage to send the result of the query
-  InlineQueryResults(
-      {this.inlineQueryId,
-      this.nextOffset,
-      this.results,
-      this.switchPmText,
-      this.switchPmParameter});
+  const InlineQueryResults({
+    required this.inlineQueryId,
+    required this.nextOffset,
+    required this.results,
+    required this.switchPmText,
+    required this.switchPmParameter,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [inlineQueryId] Unique identifier of the inline query 
+  final int inlineQueryId;
 
-  /// [inlineQueryId] Unique identifier of the inline query
-  int inlineQueryId;
-
-  /// [nextOffset] The offset for the next request. If empty, there are no more results
-  String nextOffset;
+  /// [nextOffset] The offset for the next request. If empty, there are no more results 
+  final String nextOffset;
 
   /// [results] Results of the query
-  List<InlineQueryResult> results;
+  final List<InlineQueryResult> results;
 
-  /// [switchPmText] If non-empty, this text should be shown on the button, which opens a private chat with the bot and sends the bot a start message with the switch_pm_parameter
-  String switchPmText;
+  /// [switchPmText] If non-empty, this text must be shown on the button, which opens a private chat with the bot and sends the bot a start message with the switch_pm_parameter
+  final String switchPmText;
 
   /// [switchPmParameter] Parameter for the bot start message
-  String switchPmParameter;
+  final String switchPmParameter;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  InlineQueryResults.fromJson(Map<String, dynamic> json) {
-    this.inlineQueryId = int.tryParse(json['inline_query_id'] ?? "");
-    this.nextOffset = json['next_offset'];
-    this.results = List<InlineQueryResult>.from((json['results'] ?? [])
-        .map((item) => InlineQueryResult.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.switchPmText = json['switch_pm_text'];
-    this.switchPmParameter = json['switch_pm_parameter'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory InlineQueryResults.fromJson(Map<String, dynamic> json) => InlineQueryResults(
+    inlineQueryId: int.parse(json['inline_query_id']),
+    nextOffset: json['next_offset'],
+    results: List<InlineQueryResult>.from((json['results'] ?? []).map((item) => InlineQueryResult.fromJson(item)).toList()),
+    switchPmText: json['switch_pm_text'],
+    switchPmParameter: json['switch_pm_parameter'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "inline_query_id": this.inlineQueryId,
-      "next_offset": this.nextOffset,
-      "results": this.results.map((i) => i.toJson()).toList(),
-      "switch_pm_text": this.switchPmText,
-      "switch_pm_parameter": this.switchPmParameter,
+      "inline_query_id": inlineQueryId,
+      "next_offset": nextOffset,
+      "results": results.map((i) => i.toJson()).toList(),
+      "switch_pm_text": switchPmText,
+      "switch_pm_parameter": switchPmParameter,
     };
   }
+  
+  InlineQueryResults copyWith({
+    int? inlineQueryId,
+    String? nextOffset,
+    List<InlineQueryResult>? results,
+    String? switchPmText,
+    String? switchPmParameter,
+    dynamic extra,
+    int? clientId,
+  }) => InlineQueryResults(
+    inlineQueryId: inlineQueryId ?? this.inlineQueryId,
+    nextOffset: nextOffset ?? this.nextOffset,
+    results: results ?? this.results,
+    switchPmText: switchPmText ?? this.switchPmText,
+    switchPmParameter: switchPmParameter ?? this.switchPmParameter,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'inlineQueryResults';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class SearchChatsOnServer extends TdFunction {
-  /// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list
-  SearchChatsOnServer({this.query, this.limit});
 
-  /// [query] Query to search for
-  String query;
+  /// Searches for the specified query in the title and username of already known chats via request to the server. Returns chats in the order seen in the main chat list
+  const SearchChatsOnServer({
+    required this.query,
+    required this.limit,
+  });
+  
+  /// [query] Query to search for 
+  final String query;
 
   /// [limit] The maximum number of chats to be returned
-  int limit;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SearchChatsOnServer.fromJson(Map<String, dynamic> json);
-
+  final int limit;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "query": this.query,
-      "limit": this.limit,
-      "@extra": this.extra,
+      "query": query,
+      "limit": limit,
+      "@extra": extra,
     };
   }
+  
+  SearchChatsOnServer copyWith({
+    String? query,
+    int? limit,
+  }) => SearchChatsOnServer(
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+  );
 
   static const CONSTRUCTOR = 'searchChatsOnServer';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

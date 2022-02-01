@@ -1,21 +1,22 @@
 part of '../tdapi.dart';
 
 class CallProblem extends TdObject {
-  /// Describes the exact type of a problem with a call
-  CallProblem();
 
+  /// Describes the exact type of a problem with a call
+  const CallProblem();
+  
   /// a CallProblem return type can be :
-  /// * CallProblemEcho
-  /// * CallProblemNoise
-  /// * CallProblemInterruptions
-  /// * CallProblemDistortedSpeech
-  /// * CallProblemSilentLocal
-  /// * CallProblemSilentRemote
-  /// * CallProblemDropped
-  /// * CallProblemDistortedVideo
-  /// * CallProblemPixelatedVideo
-  factory CallProblem.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [CallProblemEcho]
+  /// * [CallProblemNoise]
+  /// * [CallProblemInterruptions]
+  /// * [CallProblemDistortedSpeech]
+  /// * [CallProblemSilentLocal]
+  /// * [CallProblemSilentRemote]
+  /// * [CallProblemDropped]
+  /// * [CallProblemDistortedVideo]
+  /// * [CallProblemPixelatedVideo]
+  factory CallProblem.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case CallProblemEcho.CONSTRUCTOR:
         return CallProblemEcho.fromJson(json);
       case CallProblemNoise.CONSTRUCTOR:
@@ -35,197 +36,246 @@ class CallProblem extends TdObject {
       case CallProblemPixelatedVideo.CONSTRUCTOR:
         return CallProblemPixelatedVideo.fromJson(json);
       default:
-        return null;
+        return const CallProblem();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  CallProblem copyWith() => const CallProblem();
 
   static const CONSTRUCTOR = 'callProblem';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemEcho extends CallProblem {
+
   /// The user heard their own voice
-  CallProblemEcho();
-
+  const CallProblemEcho();
+  
   /// Parse from a json
-  CallProblemEcho.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemEcho.fromJson(Map<String, dynamic> json) => const CallProblemEcho();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemEcho copyWith() => const CallProblemEcho();
 
   static const CONSTRUCTOR = 'callProblemEcho';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemNoise extends CallProblem {
+
   /// The user heard background noise
-  CallProblemNoise();
-
+  const CallProblemNoise();
+  
   /// Parse from a json
-  CallProblemNoise.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemNoise.fromJson(Map<String, dynamic> json) => const CallProblemNoise();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemNoise copyWith() => const CallProblemNoise();
 
   static const CONSTRUCTOR = 'callProblemNoise';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemInterruptions extends CallProblem {
+
   /// The other side kept disappearing
-  CallProblemInterruptions();
-
+  const CallProblemInterruptions();
+  
   /// Parse from a json
-  CallProblemInterruptions.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemInterruptions.fromJson(Map<String, dynamic> json) => const CallProblemInterruptions();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemInterruptions copyWith() => const CallProblemInterruptions();
 
   static const CONSTRUCTOR = 'callProblemInterruptions';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemDistortedSpeech extends CallProblem {
+
   /// The speech was distorted
-  CallProblemDistortedSpeech();
-
+  const CallProblemDistortedSpeech();
+  
   /// Parse from a json
-  CallProblemDistortedSpeech.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemDistortedSpeech.fromJson(Map<String, dynamic> json) => const CallProblemDistortedSpeech();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemDistortedSpeech copyWith() => const CallProblemDistortedSpeech();
 
   static const CONSTRUCTOR = 'callProblemDistortedSpeech';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemSilentLocal extends CallProblem {
+
   /// The user couldn't hear the other side
-  CallProblemSilentLocal();
-
+  const CallProblemSilentLocal();
+  
   /// Parse from a json
-  CallProblemSilentLocal.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemSilentLocal.fromJson(Map<String, dynamic> json) => const CallProblemSilentLocal();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemSilentLocal copyWith() => const CallProblemSilentLocal();
 
   static const CONSTRUCTOR = 'callProblemSilentLocal';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemSilentRemote extends CallProblem {
+
   /// The other side couldn't hear the user
-  CallProblemSilentRemote();
-
+  const CallProblemSilentRemote();
+  
   /// Parse from a json
-  CallProblemSilentRemote.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemSilentRemote.fromJson(Map<String, dynamic> json) => const CallProblemSilentRemote();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemSilentRemote copyWith() => const CallProblemSilentRemote();
 
   static const CONSTRUCTOR = 'callProblemSilentRemote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemDropped extends CallProblem {
+
   /// The call ended unexpectedly
-  CallProblemDropped();
-
+  const CallProblemDropped();
+  
   /// Parse from a json
-  CallProblemDropped.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemDropped.fromJson(Map<String, dynamic> json) => const CallProblemDropped();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemDropped copyWith() => const CallProblemDropped();
 
   static const CONSTRUCTOR = 'callProblemDropped';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class CallProblemDistortedVideo extends CallProblem {
+
   /// The video was distorted
-  CallProblemDistortedVideo();
-
+  const CallProblemDistortedVideo();
+  
   /// Parse from a json
-  CallProblemDistortedVideo.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemDistortedVideo.fromJson(Map<String, dynamic> json) => const CallProblemDistortedVideo();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemDistortedVideo copyWith() => const CallProblemDistortedVideo();
 
   static const CONSTRUCTOR = 'callProblemDistortedVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class CallProblemPixelatedVideo extends CallProblem {
+
   /// The video was pixelated
-  CallProblemPixelatedVideo();
-
+  const CallProblemPixelatedVideo();
+  
   /// Parse from a json
-  CallProblemPixelatedVideo.fromJson(Map<String, dynamic> json);
-
+  factory CallProblemPixelatedVideo.fromJson(Map<String, dynamic> json) => const CallProblemPixelatedVideo();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  CallProblemPixelatedVideo copyWith() => const CallProblemPixelatedVideo();
 
   static const CONSTRUCTOR = 'callProblemPixelatedVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

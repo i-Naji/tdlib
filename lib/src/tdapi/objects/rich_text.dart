@@ -1,29 +1,30 @@
 part of '../tdapi.dart';
 
 class RichText extends TdObject {
-  /// Describes a text object inside an instant-view web page
-  RichText();
 
+  /// Describes a text object inside an instant-view web page
+  const RichText();
+  
   /// a RichText return type can be :
-  /// * RichTextPlain
-  /// * RichTextBold
-  /// * RichTextItalic
-  /// * RichTextUnderline
-  /// * RichTextStrikethrough
-  /// * RichTextFixed
-  /// * RichTextUrl
-  /// * RichTextEmailAddress
-  /// * RichTextSubscript
-  /// * RichTextSuperscript
-  /// * RichTextMarked
-  /// * RichTextPhoneNumber
-  /// * RichTextIcon
-  /// * RichTextReference
-  /// * RichTextAnchor
-  /// * RichTextAnchorLink
-  /// * RichTexts
-  factory RichText.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [RichTextPlain]
+  /// * [RichTextBold]
+  /// * [RichTextItalic]
+  /// * [RichTextUnderline]
+  /// * [RichTextStrikethrough]
+  /// * [RichTextFixed]
+  /// * [RichTextUrl]
+  /// * [RichTextEmailAddress]
+  /// * [RichTextSubscript]
+  /// * [RichTextSuperscript]
+  /// * [RichTextMarked]
+  /// * [RichTextPhoneNumber]
+  /// * [RichTextIcon]
+  /// * [RichTextReference]
+  /// * [RichTextAnchor]
+  /// * [RichTextAnchorLink]
+  /// * [RichTexts]
+  factory RichText.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case RichTextPlain.CONSTRUCTOR:
         return RichTextPlain.fromJson(json);
       case RichTextBold.CONSTRUCTOR:
@@ -59,511 +60,747 @@ class RichText extends TdObject {
       case RichTexts.CONSTRUCTOR:
         return RichTexts.fromJson(json);
       default:
-        return null;
+        return const RichText();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  RichText copyWith() => const RichText();
 
   static const CONSTRUCTOR = 'richText';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextPlain extends RichText {
+
   /// A plain text
-  RichTextPlain({this.text});
-
+  const RichTextPlain({
+    required this.text,
+  });
+  
   /// [text] Text
-  String text;
-
+  final String text;
+  
   /// Parse from a json
-  RichTextPlain.fromJson(Map<String, dynamic> json) {
-    this.text = json['text'];
-  }
-
+  factory RichTextPlain.fromJson(Map<String, dynamic> json) => RichTextPlain(
+    text: json['text'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text,
+      "text": text,
     };
   }
+  
+  @override
+  RichTextPlain copyWith({
+    String? text,
+  }) => RichTextPlain(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextPlain';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextBold extends RichText {
+
   /// A bold rich text
-  RichTextBold({this.text});
-
+  const RichTextBold({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextBold.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextBold.fromJson(Map<String, dynamic> json) => RichTextBold(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextBold copyWith({
+    RichText? text,
+  }) => RichTextBold(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextBold';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextItalic extends RichText {
+
   /// An italicized rich text
-  RichTextItalic({this.text});
-
+  const RichTextItalic({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextItalic.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextItalic.fromJson(Map<String, dynamic> json) => RichTextItalic(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextItalic copyWith({
+    RichText? text,
+  }) => RichTextItalic(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextItalic';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextUnderline extends RichText {
+
   /// An underlined rich text
-  RichTextUnderline({this.text});
-
+  const RichTextUnderline({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextUnderline.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextUnderline.fromJson(Map<String, dynamic> json) => RichTextUnderline(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextUnderline copyWith({
+    RichText? text,
+  }) => RichTextUnderline(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextUnderline';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextStrikethrough extends RichText {
+
   /// A strikethrough rich text
-  RichTextStrikethrough({this.text});
-
+  const RichTextStrikethrough({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextStrikethrough.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextStrikethrough.fromJson(Map<String, dynamic> json) => RichTextStrikethrough(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextStrikethrough copyWith({
+    RichText? text,
+  }) => RichTextStrikethrough(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextStrikethrough';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextFixed extends RichText {
+
   /// A fixed-width rich text
-  RichTextFixed({this.text});
-
+  const RichTextFixed({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextFixed.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextFixed.fromJson(Map<String, dynamic> json) => RichTextFixed(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextFixed copyWith({
+    RichText? text,
+  }) => RichTextFixed(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextFixed';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextUrl extends RichText {
+
   /// A rich text URL link
-  RichTextUrl({this.text, this.url, this.isCached});
+  const RichTextUrl({
+    required this.text,
+    required this.url,
+    required this.isCached,
+  });
+  
+  /// [text] Text 
+  final RichText text;
 
-  /// [text] Text
-  RichText text;
-
-  /// [url] URL
-  String url;
+  /// [url] URL 
+  final String url;
 
   /// [isCached] True, if the URL has cached instant view server-side
-  bool isCached;
-
+  final bool isCached;
+  
   /// Parse from a json
-  RichTextUrl.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.url = json['url'];
-    this.isCached = json['is_cached'];
-  }
-
+  factory RichTextUrl.fromJson(Map<String, dynamic> json) => RichTextUrl(
+    text: RichText.fromJson(json['text']),
+    url: json['url'],
+    isCached: json['is_cached'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "url": this.url,
-      "is_cached": this.isCached,
+      "text": text.toJson(),
+      "url": url,
+      "is_cached": isCached,
     };
   }
+  
+  @override
+  RichTextUrl copyWith({
+    RichText? text,
+    String? url,
+    bool? isCached,
+  }) => RichTextUrl(
+    text: text ?? this.text,
+    url: url ?? this.url,
+    isCached: isCached ?? this.isCached,
+  );
 
   static const CONSTRUCTOR = 'richTextUrl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextEmailAddress extends RichText {
-  /// A rich text email link
-  RichTextEmailAddress({this.text, this.emailAddress});
 
-  /// [text] Text
-  RichText text;
+  /// A rich text email link
+  const RichTextEmailAddress({
+    required this.text,
+    required this.emailAddress,
+  });
+  
+  /// [text] Text 
+  final RichText text;
 
   /// [emailAddress] Email address
-  String emailAddress;
-
+  final String emailAddress;
+  
   /// Parse from a json
-  RichTextEmailAddress.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.emailAddress = json['email_address'];
-  }
-
+  factory RichTextEmailAddress.fromJson(Map<String, dynamic> json) => RichTextEmailAddress(
+    text: RichText.fromJson(json['text']),
+    emailAddress: json['email_address'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "email_address": this.emailAddress,
+      "text": text.toJson(),
+      "email_address": emailAddress,
     };
   }
+  
+  @override
+  RichTextEmailAddress copyWith({
+    RichText? text,
+    String? emailAddress,
+  }) => RichTextEmailAddress(
+    text: text ?? this.text,
+    emailAddress: emailAddress ?? this.emailAddress,
+  );
 
   static const CONSTRUCTOR = 'richTextEmailAddress';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextSubscript extends RichText {
+
   /// A subscript rich text
-  RichTextSubscript({this.text});
-
+  const RichTextSubscript({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextSubscript.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextSubscript.fromJson(Map<String, dynamic> json) => RichTextSubscript(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextSubscript copyWith({
+    RichText? text,
+  }) => RichTextSubscript(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextSubscript';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextSuperscript extends RichText {
+
   /// A superscript rich text
-  RichTextSuperscript({this.text});
-
+  const RichTextSuperscript({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextSuperscript.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextSuperscript.fromJson(Map<String, dynamic> json) => RichTextSuperscript(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextSuperscript copyWith({
+    RichText? text,
+  }) => RichTextSuperscript(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextSuperscript';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextMarked extends RichText {
+
   /// A marked rich text
-  RichTextMarked({this.text});
-
+  const RichTextMarked({
+    required this.text,
+  });
+  
   /// [text] Text
-  RichText text;
-
+  final RichText text;
+  
   /// Parse from a json
-  RichTextMarked.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-  }
-
+  factory RichTextMarked.fromJson(Map<String, dynamic> json) => RichTextMarked(
+    text: RichText.fromJson(json['text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
+      "text": text.toJson(),
     };
   }
+  
+  @override
+  RichTextMarked copyWith({
+    RichText? text,
+  }) => RichTextMarked(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'richTextMarked';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextPhoneNumber extends RichText {
-  /// A rich text phone number
-  RichTextPhoneNumber({this.text, this.phoneNumber});
 
-  /// [text] Text
-  RichText text;
+  /// A rich text phone number
+  const RichTextPhoneNumber({
+    required this.text,
+    required this.phoneNumber,
+  });
+  
+  /// [text] Text 
+  final RichText text;
 
   /// [phoneNumber] Phone number
-  String phoneNumber;
-
+  final String phoneNumber;
+  
   /// Parse from a json
-  RichTextPhoneNumber.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.phoneNumber = json['phone_number'];
-  }
-
+  factory RichTextPhoneNumber.fromJson(Map<String, dynamic> json) => RichTextPhoneNumber(
+    text: RichText.fromJson(json['text']),
+    phoneNumber: json['phone_number'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "phone_number": this.phoneNumber,
+      "text": text.toJson(),
+      "phone_number": phoneNumber,
     };
   }
+  
+  @override
+  RichTextPhoneNumber copyWith({
+    RichText? text,
+    String? phoneNumber,
+  }) => RichTextPhoneNumber(
+    text: text ?? this.text,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+  );
 
   static const CONSTRUCTOR = 'richTextPhoneNumber';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextIcon extends RichText {
+
   /// A small image inside the text
-  RichTextIcon({this.document, this.width, this.height});
-
+  const RichTextIcon({
+    required this.document,
+    required this.width,
+    required this.height,
+  });
+  
   /// [document] The image represented as a document. The image can be in GIF, JPEG or PNG format
-  Document document;
+  final Document document;
 
-  /// [width] Width of a bounding box in which the image should be shown; 0 if unknown
-  int width;
+  /// [width] Width of a bounding box in which the image must be shown; 0 if unknown
+  final int width;
 
-  /// [height] Height of a bounding box in which the image should be shown; 0 if unknown
-  int height;
-
+  /// [height] Height of a bounding box in which the image must be shown; 0 if unknown
+  final int height;
+  
   /// Parse from a json
-  RichTextIcon.fromJson(Map<String, dynamic> json) {
-    this.document = Document.fromJson(json['document'] ?? <String, dynamic>{});
-    this.width = json['width'];
-    this.height = json['height'];
-  }
-
+  factory RichTextIcon.fromJson(Map<String, dynamic> json) => RichTextIcon(
+    document: Document.fromJson(json['document']),
+    width: json['width'],
+    height: json['height'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document == null ? null : this.document.toJson(),
-      "width": this.width,
-      "height": this.height,
+      "document": document.toJson(),
+      "width": width,
+      "height": height,
     };
   }
+  
+  @override
+  RichTextIcon copyWith({
+    Document? document,
+    int? width,
+    int? height,
+  }) => RichTextIcon(
+    document: document ?? this.document,
+    width: width ?? this.width,
+    height: height ?? this.height,
+  );
 
   static const CONSTRUCTOR = 'richTextIcon';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextReference extends RichText {
+
   /// A reference to a richTexts object on the same web page
-  RichTextReference({this.text, this.anchorName, this.url});
+  const RichTextReference({
+    required this.text,
+    required this.anchorName,
+    required this.url,
+  });
+  
+  /// [text] The text 
+  final RichText text;
 
-  /// [text] The text
-  RichText text;
-
-  /// [anchorName] The name of a richTextAnchor object, which is the first element of the target richTexts object
-  String anchorName;
+  /// [anchorName] The name of a richTextAnchor object, which is the first element of the target richTexts object 
+  final String anchorName;
 
   /// [url] An HTTP URL, opening the reference
-  String url;
-
+  final String url;
+  
   /// Parse from a json
-  RichTextReference.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.anchorName = json['anchor_name'];
-    this.url = json['url'];
-  }
-
+  factory RichTextReference.fromJson(Map<String, dynamic> json) => RichTextReference(
+    text: RichText.fromJson(json['text']),
+    anchorName: json['anchor_name'],
+    url: json['url'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "anchor_name": this.anchorName,
-      "url": this.url,
+      "text": text.toJson(),
+      "anchor_name": anchorName,
+      "url": url,
     };
   }
+  
+  @override
+  RichTextReference copyWith({
+    RichText? text,
+    String? anchorName,
+    String? url,
+  }) => RichTextReference(
+    text: text ?? this.text,
+    anchorName: anchorName ?? this.anchorName,
+    url: url ?? this.url,
+  );
 
   static const CONSTRUCTOR = 'richTextReference';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextAnchor extends RichText {
+
   /// An anchor
-  RichTextAnchor({this.name});
-
+  const RichTextAnchor({
+    required this.name,
+  });
+  
   /// [name] Anchor name
-  String name;
-
+  final String name;
+  
   /// Parse from a json
-  RichTextAnchor.fromJson(Map<String, dynamic> json) {
-    this.name = json['name'];
-  }
-
+  factory RichTextAnchor.fromJson(Map<String, dynamic> json) => RichTextAnchor(
+    name: json['name'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "name": this.name,
+      "name": name,
     };
   }
+  
+  @override
+  RichTextAnchor copyWith({
+    String? name,
+  }) => RichTextAnchor(
+    name: name ?? this.name,
+  );
 
   static const CONSTRUCTOR = 'richTextAnchor';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class RichTextAnchorLink extends RichText {
+
   /// A link to an anchor on the same web page
-  RichTextAnchorLink({this.text, this.anchorName, this.url});
+  const RichTextAnchorLink({
+    required this.text,
+    required this.anchorName,
+    required this.url,
+  });
+  
+  /// [text] The link text 
+  final RichText text;
 
-  /// [text] The link text
-  RichText text;
-
-  /// [anchorName] The anchor name. If the name is empty, the link should bring back to top
-  String anchorName;
+  /// [anchorName] The anchor name. If the name is empty, the link must bring back to top 
+  final String anchorName;
 
   /// [url] An HTTP URL, opening the anchor
-  String url;
-
+  final String url;
+  
   /// Parse from a json
-  RichTextAnchorLink.fromJson(Map<String, dynamic> json) {
-    this.text = RichText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.anchorName = json['anchor_name'];
-    this.url = json['url'];
-  }
-
+  factory RichTextAnchorLink.fromJson(Map<String, dynamic> json) => RichTextAnchorLink(
+    text: RichText.fromJson(json['text']),
+    anchorName: json['anchor_name'],
+    url: json['url'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "anchor_name": this.anchorName,
-      "url": this.url,
+      "text": text.toJson(),
+      "anchor_name": anchorName,
+      "url": url,
     };
   }
+  
+  @override
+  RichTextAnchorLink copyWith({
+    RichText? text,
+    String? anchorName,
+    String? url,
+  }) => RichTextAnchorLink(
+    text: text ?? this.text,
+    anchorName: anchorName ?? this.anchorName,
+    url: url ?? this.url,
+  );
 
   static const CONSTRUCTOR = 'richTextAnchorLink';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class RichTexts extends RichText {
+
   /// A concatenation of rich texts
-  RichTexts({this.texts});
-
+  const RichTexts({
+    required this.texts,
+  });
+  
   /// [texts] Texts
-  List<RichText> texts;
-
+  final List<RichText> texts;
+  
   /// Parse from a json
-  RichTexts.fromJson(Map<String, dynamic> json) {
-    this.texts = List<RichText>.from((json['texts'] ?? [])
-        .map((item) => RichText.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-  }
-
+  factory RichTexts.fromJson(Map<String, dynamic> json) => RichTexts(
+    texts: List<RichText>.from((json['texts'] ?? []).map((item) => RichText.fromJson(item)).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "texts": this.texts.map((i) => i.toJson()).toList(),
+      "texts": texts.map((i) => i.toJson()).toList(),
     };
   }
+  
+  @override
+  RichTexts copyWith({
+    List<RichText>? texts,
+  }) => RichTexts(
+    texts: texts ?? this.texts,
+  );
 
   static const CONSTRUCTOR = 'richTexts';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

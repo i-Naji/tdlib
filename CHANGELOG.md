@@ -1,3 +1,14 @@
+## 1.5.9
+* Support null safety
+* Add Support for IOS, macOs, Windows and Web.
+* Update tdlib api to **v1.8.0**
+* Change [MethodChannel](https://api.flutter.dev/flutter/services/MethodChannel-class.html) to [ffi](https://docs.flutter.dev/development/platform-integration/c-interop)
+* Add `TdPlugin` class, TDLib Library wrapper.
+* Change TdClient to functions.
+* Now all `TdObject`s are constant.
+* Add `copyWith` method to `TdObject`s.
+* Remove `extra` from `TdFunction`, and add `extra` parameter to `toJson` method.
+
 ## 1.5.0
 * Update tdlib api to **v1.7.0**
 
@@ -29,7 +40,7 @@
 ## 1.0.4
 * Update tdlib api to **v1.6.6**
 * Remove `setLogVerbosityLevel` method.
-* Add [Generator Script](\generator) that generates **tdapi**
+* Add [Generator Script](/generator) that generates **tdapi**
 
 ## 1.0.2
 * Update tdlib api to **v1.5.1**

@@ -1,32 +1,45 @@
 part of '../tdapi.dart';
 
 class BankCardActionOpenUrl extends TdObject {
-  /// Describes an action associated with a bank card number
-  BankCardActionOpenUrl({this.text, this.url});
 
-  /// [text] Action text
-  String text;
+  /// Describes an action associated with a bank card number
+  const BankCardActionOpenUrl({
+    required this.text,
+    required this.url,
+  });
+  
+  /// [text] Action text 
+  final String text;
 
   /// [url] The URL to be opened
-  String url;
-
+  final String url;
+  
   /// Parse from a json
-  BankCardActionOpenUrl.fromJson(Map<String, dynamic> json) {
-    this.text = json['text'];
-    this.url = json['url'];
-  }
-
+  factory BankCardActionOpenUrl.fromJson(Map<String, dynamic> json) => BankCardActionOpenUrl(
+    text: json['text'],
+    url: json['url'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text,
-      "url": this.url,
+      "text": text,
+      "url": url,
     };
   }
+  
+  BankCardActionOpenUrl copyWith({
+    String? text,
+    String? url,
+  }) => BankCardActionOpenUrl(
+    text: text ?? this.text,
+    url: url ?? this.url,
+  );
 
   static const CONSTRUCTOR = 'bankCardActionOpenUrl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

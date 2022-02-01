@@ -1,43 +1,61 @@
 part of '../tdapi.dart';
 
 class Thumbnail extends TdObject {
+
   /// Represents a thumbnail
-  Thumbnail({this.format, this.width, this.height, this.file});
+  const Thumbnail({
+    required this.format,
+    required this.width,
+    required this.height,
+    required this.file,
+  });
+  
+  /// [format] Thumbnail format 
+  final ThumbnailFormat format;
 
-  /// [format] Thumbnail format
-  ThumbnailFormat format;
+  /// [width] Thumbnail width 
+  final int width;
 
-  /// [width] Thumbnail width
-  int width;
-
-  /// [height] Thumbnail height
-  int height;
+  /// [height] Thumbnail height 
+  final int height;
 
   /// [file] The thumbnail
-  File file;
-
+  final File file;
+  
   /// Parse from a json
-  Thumbnail.fromJson(Map<String, dynamic> json) {
-    this.format =
-        ThumbnailFormat.fromJson(json['format'] ?? <String, dynamic>{});
-    this.width = json['width'];
-    this.height = json['height'];
-    this.file = File.fromJson(json['file'] ?? <String, dynamic>{});
-  }
-
+  factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
+    format: ThumbnailFormat.fromJson(json['format']),
+    width: json['width'],
+    height: json['height'],
+    file: File.fromJson(json['file']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "format": this.format == null ? null : this.format.toJson(),
-      "width": this.width,
-      "height": this.height,
-      "file": this.file == null ? null : this.file.toJson(),
+      "format": format.toJson(),
+      "width": width,
+      "height": height,
+      "file": file.toJson(),
     };
   }
+  
+  Thumbnail copyWith({
+    ThumbnailFormat? format,
+    int? width,
+    int? height,
+    File? file,
+  }) => Thumbnail(
+    format: format ?? this.format,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    file: file ?? this.file,
+  );
 
   static const CONSTRUCTOR = 'thumbnail';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

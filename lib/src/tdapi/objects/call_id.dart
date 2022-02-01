@@ -1,31 +1,53 @@
 part of '../tdapi.dart';
 
 class CallId extends TdObject {
+
   /// Contains the call identifier
-  CallId({this.id});
-
+  const CallId({
+    required this.id,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [id] Call identifier
-  int id;
+  final int id;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  CallId.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory CallId.fromJson(Map<String, dynamic> json) => CallId(
+    id: json['id'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
+      "id": id,
     };
   }
+  
+  CallId copyWith({
+    int? id,
+    dynamic extra,
+    int? clientId,
+  }) => CallId(
+    id: id ?? this.id,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'callId';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class GetPassportElement extends TdFunction {
-  /// Returns one of the available Telegram Passport elements
-  GetPassportElement({this.type, this.password});
 
-  /// [type] Telegram Passport element type
-  PassportElementType type;
+  /// Returns one of the available Telegram Passport elements
+  const GetPassportElement({
+    required this.type,
+    required this.password,
+  });
+  
+  /// [type] Telegram Passport element type 
+  final PassportElementType type;
 
   /// [password] Password of the current user
-  String password;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetPassportElement.fromJson(Map<String, dynamic> json);
-
+  final String password;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "type": this.type == null ? null : this.type.toJson(),
-      "password": this.password,
-      "@extra": this.extra,
+      "type": type.toJson(),
+      "password": password,
+      "@extra": extra,
     };
   }
+  
+  GetPassportElement copyWith({
+    PassportElementType? type,
+    String? password,
+  }) => GetPassportElement(
+    type: type ?? this.type,
+    password: password ?? this.password,
+  );
 
   static const CONSTRUCTOR = 'getPassportElement';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

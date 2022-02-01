@@ -1,33 +1,53 @@
 part of '../tdapi.dart';
 
 class Backgrounds extends TdObject {
+
   /// Contains a list of backgrounds
-  Backgrounds({this.backgrounds});
-
+  const Backgrounds({
+    required this.backgrounds,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [backgrounds] A list of backgrounds
-  List<Background> backgrounds;
+  final List<Background> backgrounds;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Backgrounds.fromJson(Map<String, dynamic> json) {
-    this.backgrounds = List<Background>.from((json['backgrounds'] ?? [])
-        .map((item) => Background.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Backgrounds.fromJson(Map<String, dynamic> json) => Backgrounds(
+    backgrounds: List<Background>.from((json['backgrounds'] ?? []).map((item) => Background.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "backgrounds": this.backgrounds.map((i) => i.toJson()).toList(),
+      "backgrounds": backgrounds.map((i) => i.toJson()).toList(),
     };
   }
+  
+  Backgrounds copyWith({
+    List<Background>? backgrounds,
+    dynamic extra,
+    int? clientId,
+  }) => Backgrounds(
+    backgrounds: backgrounds ?? this.backgrounds,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'backgrounds';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

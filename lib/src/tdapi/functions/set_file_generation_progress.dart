@@ -1,38 +1,46 @@
 part of '../tdapi.dart';
 
 class SetFileGenerationProgress extends TdFunction {
-  /// Informs TDLib on a file generation progress
-  SetFileGenerationProgress(
-      {this.generationId, this.expectedSize, this.localPrefixSize});
 
+  /// Informs TDLib on a file generation progress
+  const SetFileGenerationProgress({
+    required this.generationId,
+    required this.expectedSize,
+    required this.localPrefixSize,
+  });
+  
   /// [generationId] The identifier of the generation process
-  int generationId;
+  final int generationId;
 
   /// [expectedSize] Expected size of the generated file, in bytes; 0 if unknown
-  int expectedSize;
+  final int expectedSize;
 
   /// [localPrefixSize] The number of bytes already generated
-  int localPrefixSize;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetFileGenerationProgress.fromJson(Map<String, dynamic> json);
-
+  final int localPrefixSize;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "generation_id": this.generationId,
-      "expected_size": this.expectedSize,
-      "local_prefix_size": this.localPrefixSize,
-      "@extra": this.extra,
+      "generation_id": generationId,
+      "expected_size": expectedSize,
+      "local_prefix_size": localPrefixSize,
+      "@extra": extra,
     };
   }
+  
+  SetFileGenerationProgress copyWith({
+    int? generationId,
+    int? expectedSize,
+    int? localPrefixSize,
+  }) => SetFileGenerationProgress(
+    generationId: generationId ?? this.generationId,
+    expectedSize: expectedSize ?? this.expectedSize,
+    localPrefixSize: localPrefixSize ?? this.localPrefixSize,
+  );
 
   static const CONSTRUCTOR = 'setFileGenerationProgress';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

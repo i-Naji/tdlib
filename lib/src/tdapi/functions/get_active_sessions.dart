@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetActiveSessions extends TdFunction {
+
   /// Returns all active sessions of the current user
-  GetActiveSessions();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetActiveSessions.fromJson(Map<String, dynamic> json);
-
+  const GetActiveSessions();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetActiveSessions copyWith() => const GetActiveSessions();
 
   static const CONSTRUCTOR = 'getActiveSessions';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

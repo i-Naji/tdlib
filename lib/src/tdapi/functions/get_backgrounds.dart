@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetBackgrounds extends TdFunction {
+
   /// Returns backgrounds installed by the user
-  GetBackgrounds({this.forDarkTheme});
-
+  const GetBackgrounds({
+    required this.forDarkTheme,
+  });
+  
   /// [forDarkTheme] True, if the backgrounds must be ordered for dark theme
-  bool forDarkTheme;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetBackgrounds.fromJson(Map<String, dynamic> json);
-
+  final bool forDarkTheme;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "for_dark_theme": this.forDarkTheme,
-      "@extra": this.extra,
+      "for_dark_theme": forDarkTheme,
+      "@extra": extra,
     };
   }
+  
+  GetBackgrounds copyWith({
+    bool? forDarkTheme,
+  }) => GetBackgrounds(
+    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+  );
 
   static const CONSTRUCTOR = 'getBackgrounds';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

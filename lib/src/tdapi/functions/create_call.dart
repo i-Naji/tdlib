@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class CreateCall extends TdFunction {
+
   /// Creates a new call
-  CreateCall({this.userId, this.protocol, this.isVideo});
+  const CreateCall({
+    required this.userId,
+    required this.protocol,
+    required this.isVideo,
+  });
+  
+  /// [userId] Identifier of the user to be called 
+  final int userId;
 
-  /// [userId] Identifier of the user to be called
-  int userId;
-
-  /// [protocol] Description of the call protocols supported by the application
-  CallProtocol protocol;
+  /// [protocol] The call protocols supported by the application 
+  final CallProtocol protocol;
 
   /// [isVideo] True, if a video call needs to be created
-  bool isVideo;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  CreateCall.fromJson(Map<String, dynamic> json);
-
+  final bool isVideo;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "protocol": this.protocol == null ? null : this.protocol.toJson(),
-      "is_video": this.isVideo,
-      "@extra": this.extra,
+      "user_id": userId,
+      "protocol": protocol.toJson(),
+      "is_video": isVideo,
+      "@extra": extra,
     };
   }
+  
+  CreateCall copyWith({
+    int? userId,
+    CallProtocol? protocol,
+    bool? isVideo,
+  }) => CreateCall(
+    userId: userId ?? this.userId,
+    protocol: protocol ?? this.protocol,
+    isVideo: isVideo ?? this.isVideo,
+  );
 
   static const CONSTRUCTOR = 'createCall';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

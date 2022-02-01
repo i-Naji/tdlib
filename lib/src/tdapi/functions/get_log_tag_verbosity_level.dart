@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetLogTagVerbosityLevel extends TdFunction {
+
   /// Returns current verbosity level for a specified TDLib internal log tag. Can be called synchronously
-  GetLogTagVerbosityLevel({this.tag});
-
+  const GetLogTagVerbosityLevel({
+    required this.tag,
+  });
+  
   /// [tag] Logging tag to change verbosity level
-  String tag;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetLogTagVerbosityLevel.fromJson(Map<String, dynamic> json);
-
+  final String tag;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "tag": this.tag,
-      "@extra": this.extra,
+      "tag": tag,
+      "@extra": extra,
     };
   }
+  
+  GetLogTagVerbosityLevel copyWith({
+    String? tag,
+  }) => GetLogTagVerbosityLevel(
+    tag: tag ?? this.tag,
+  );
 
   static const CONSTRUCTOR = 'getLogTagVerbosityLevel';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

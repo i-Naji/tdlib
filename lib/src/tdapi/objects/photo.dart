@@ -1,41 +1,53 @@
 part of '../tdapi.dart';
 
 class Photo extends TdObject {
-  /// Describes a photo
-  Photo({this.hasStickers, this.minithumbnail, this.sizes});
 
+  /// Describes a photo
+  const Photo({
+    required this.hasStickers,
+    this.minithumbnail,
+    required this.sizes,
+  });
+  
   /// [hasStickers] True, if stickers were added to the photo. The list of corresponding sticker sets can be received using getAttachedStickerSets
-  bool hasStickers;
+  final bool hasStickers;
 
   /// [minithumbnail] Photo minithumbnail; may be null
-  Minithumbnail minithumbnail;
+  final Minithumbnail? minithumbnail;
 
   /// [sizes] Available variants of the photo, in different sizes
-  List<PhotoSize> sizes;
-
+  final List<PhotoSize> sizes;
+  
   /// Parse from a json
-  Photo.fromJson(Map<String, dynamic> json) {
-    this.hasStickers = json['has_stickers'];
-    this.minithumbnail =
-        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.sizes = List<PhotoSize>.from((json['sizes'] ?? [])
-        .map((item) => PhotoSize.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-  }
-
+  factory Photo.fromJson(Map<String, dynamic> json) => Photo(
+    hasStickers: json['has_stickers'],
+    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
+    sizes: List<PhotoSize>.from((json['sizes'] ?? []).map((item) => PhotoSize.fromJson(item)).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "has_stickers": this.hasStickers,
-      "minithumbnail":
-          this.minithumbnail == null ? null : this.minithumbnail.toJson(),
-      "sizes": this.sizes.map((i) => i.toJson()).toList(),
+      "has_stickers": hasStickers,
+      "minithumbnail": minithumbnail?.toJson(),
+      "sizes": sizes.map((i) => i.toJson()).toList(),
     };
   }
+  
+  Photo copyWith({
+    bool? hasStickers,
+    Minithumbnail? minithumbnail,
+    List<PhotoSize>? sizes,
+  }) => Photo(
+    hasStickers: hasStickers ?? this.hasStickers,
+    minithumbnail: minithumbnail ?? this.minithumbnail,
+    sizes: sizes ?? this.sizes,
+  );
 
   static const CONSTRUCTOR = 'photo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

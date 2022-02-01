@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class SendPhoneNumberConfirmationCode extends TdFunction {
-  /// Sends phone number confirmation code. Should be called when user presses "https://t.me/confirmphone?phone=*******&hash=**********" or "tg://confirmphone?phone=*******&hash=**********" link
-  SendPhoneNumberConfirmationCode({this.hash, this.phoneNumber, this.settings});
 
-  /// [hash] Value of the "hash" parameter from the link
-  String hash;
+  /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
+  const SendPhoneNumberConfirmationCode({
+    required this.hash,
+    required this.phoneNumber,
+    required this.settings,
+  });
+  
+  /// [hash] Hash value from the link 
+  final String hash;
 
-  /// [phoneNumber] Value of the "phone" parameter from the link
-  String phoneNumber;
+  /// [phoneNumber] Phone number value from the link 
+  final String phoneNumber;
 
-  /// [settings] Settings for the authentication of the user's phone number
-  PhoneNumberAuthenticationSettings settings;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SendPhoneNumberConfirmationCode.fromJson(Map<String, dynamic> json);
-
+  /// [settings] Settings for the authentication of the user's phone number; pass null to use default settings
+  final PhoneNumberAuthenticationSettings settings;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "hash": this.hash,
-      "phone_number": this.phoneNumber,
-      "settings": this.settings == null ? null : this.settings.toJson(),
-      "@extra": this.extra,
+      "hash": hash,
+      "phone_number": phoneNumber,
+      "settings": settings.toJson(),
+      "@extra": extra,
     };
   }
+  
+  SendPhoneNumberConfirmationCode copyWith({
+    String? hash,
+    String? phoneNumber,
+    PhoneNumberAuthenticationSettings? settings,
+  }) => SendPhoneNumberConfirmationCode(
+    hash: hash ?? this.hash,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    settings: settings ?? this.settings,
+  );
 
   static const CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

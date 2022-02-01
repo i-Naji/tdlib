@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class DeleteSavedOrderInfo extends TdFunction {
+
   /// Deletes saved order info
-  DeleteSavedOrderInfo();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DeleteSavedOrderInfo.fromJson(Map<String, dynamic> json);
-
+  const DeleteSavedOrderInfo();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  DeleteSavedOrderInfo copyWith() => const DeleteSavedOrderInfo();
 
   static const CONSTRUCTOR = 'deleteSavedOrderInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

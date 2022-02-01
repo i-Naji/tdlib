@@ -1,29 +1,34 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/material.dart' show ChangeNotifier;
+import 'dart:isolate';
+import 'dart:math' show Random;
+
+import 'package:flutter/foundation.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:tdlib/td_client.dart';
+import 'package:tdlib/tdlib.dart';
 import 'package:tdlib/td_api.dart';
-import 'package:tdlib_example/services/locator.dart';
-import 'dart:math' show Random;
 
-import 'package:tdlib_example/utils/const.dart';
+import './locator.dart';
+import '../utils/const.dart';
 
 int _random() => Random().nextInt(10000000);
 
 class TelegramService extends ChangeNotifier {
-  int _client;
-  StreamController<TdObject> _eventController;
-  StreamSubscription<TdObject> _eventReceiver;
+  late int _client;
+  late StreamController<TdObject> _eventController;
+  late StreamSubscription<TdObject> _eventReceiver;
   Map results = <int, Completer>{};
   Map callbackResults = <int, Future<void>>{};
-  Directory appDocDir;
-  Directory appExtDir;
+  late Directory appDocDir;
+  late Directory appExtDir;
   String lastRouteName;
 
-  TelegramService({this.lastRouteName}) {
+  final ReceivePort _receivePort = ReceivePort();
+  late Isolate _isolate;
+
+  TelegramService({this.lastRouteName = initRoute}) {
     _eventController = StreamController();
     _eventController.stream.listen(_onEvent);
     initClient();
@@ -34,14 +39,12 @@ class TelegramService extends ChangeNotifier {
   /// Pointer 0 mean No client instance.
 
   void initClient() async {
-    if (_client != null) {
-      return;
-    }
+    _client = tdCreate();
 
-    _client = await TdClient.createClient();
     // ignore: unused_local_variable
-    PermissionStatus storagePermission =
-        await Permission.storage.request(); // todo : handel storage permission
+    bool storagePermission = await Permission.storage
+        .request()
+        .isGranted; // todo : handel storage permission
     /*try {
       PermissionStatus storagePermission =
           await SimplePermissions.requestPermission(
@@ -54,22 +57,44 @@ class TelegramService extends ChangeNotifier {
     appExtDir = await getTemporaryDirectory();
 
     //execute(SetLogStream(logStream: LogStreamEmpty()));
-    await execute(SetLogVerbosityLevel(newVerbosityLevel: 1));
-    _eventReceiver = TdClient.clientEvents(_client).listen(_receiver);
+    execute(const SetLogVerbosityLevel(newVerbosityLevel: 1));
+    tdSend(_client, const GetCurrentState());
+    _isolate = await Isolate.spawn(_receive, _receivePort.sendPort,
+        debugName: "isolated receive");
+    _receivePort.listen(_receiver);
   }
 
-  void _receiver(TdObject newEvent) async {
-    if (newEvent != null) {
-      if (newEvent is Updates) {
-        newEvent.updates.forEach((Update event) => _eventController.add(event));
-      } else {
-        _eventController.add(newEvent);
+  static _receive(sendPortToMain) async {
+    TdNativePlugin.registerWith();
+    await TdPlugin.initialize();
+    //var x = _rawClient.td_json_client_create();
+    while (true) {
+      final s = TdPlugin.instance.tdReceive();
+      if (s != null) {
+        sendPortToMain.send(s);
       }
-      await _resolveEvent(newEvent);
     }
   }
 
+  void _receiver(dynamic newEvent) async {
+    final event = convertToObject(newEvent);
+    if (event == null) {
+      return;
+    }
+    if (event is Updates) {
+      for (var event in event.updates) {
+        _eventController.add(event);
+      }
+    } else {
+      _eventController.add(event);
+    }
+    await _resolveEvent(event);
+  }
+
   Future _resolveEvent(event) async {
+    if (event.extra == null) {
+      return;
+    }
     final int extraId = event.extra;
     if (results.containsKey(extraId)) {
       results.remove(extraId).complete(event);
@@ -81,6 +106,8 @@ class TelegramService extends ChangeNotifier {
   void stop() {
     _eventController.close();
     _eventReceiver.cancel();
+    _receivePort.close();
+    _isolate.kill(priority: Isolate.immediate);
   }
 
   void _onEvent(TdObject event) async {
@@ -133,13 +160,13 @@ class TelegramService extends ChangeNotifier {
       case AuthorizationStateWaitEncryptionKey.CONSTRUCTOR:
         if ((authState as AuthorizationStateWaitEncryptionKey).isEncrypted) {
           await send(
-            CheckDatabaseEncryptionKey(
+            const CheckDatabaseEncryptionKey(
               encryptionKey: 'mostrandomencryption',
             ),
           );
         } else {
           await send(
-            SetDatabaseEncryptionKey(
+            const SetDatabaseEncryptionKey(
               newEncryptionKey: 'mostrandomencryption',
             ),
           );
@@ -171,25 +198,26 @@ class TelegramService extends ChangeNotifier {
   }
 
   void destroyClient() async {
-    await TdClient.destroyClient(_client);
+    tdSend(_client, const Close());
   }
 
   /// Sends request to the TDLib client. May be called from any thread.
-  Future<TdObject> send(event, {Future<void> callback}) async {
+  Future<TdObject?> send(event, {Future<void>? callback}) async {
     // ignore: missing_return
     final rndId = _random();
-    event.extra = rndId;
     if (callback != null) {
       callbackResults[rndId] = callback;
       try {
-        await TdClient.clientSend(_client, event);
+        tdSend(_client, event, rndId);
       } catch (e) {
-        print(e);
+        if (kDebugMode) {
+          print(e);
+        }
       }
     } else {
       final completer = Completer<TdObject>();
       results[rndId] = completer;
-      await TdClient.clientSend(_client, event);
+      tdSend(_client, event, rndId);
       return completer.future;
     }
   }
@@ -197,38 +225,39 @@ class TelegramService extends ChangeNotifier {
   /// Synchronously executes TDLib request. May be called from any thread.
   /// Only a few requests can be executed synchronously.
   /// Returned pointer will be deallocated by TDLib during next call to clientReceive or clientExecute in the same thread, so it can't be used after that.
-  Future<TdObject> execute(TdFunction event) async =>
-      await TdClient.clientExecute(_client, event);
+  TdObject execute(TdFunction event) => tdExecute(event)!;
 
   Future setAuthenticationPhoneNumber(
     String phoneNumber, {
-    void Function(TdError) onError,
+    required void Function(TdError) onError,
   }) async {
     final result = await send(
       SetAuthenticationPhoneNumber(
         phoneNumber: phoneNumber,
-        settings: PhoneNumberAuthenticationSettings(
+        settings: const PhoneNumberAuthenticationSettings(
           allowFlashCall: false,
           isCurrentPhoneNumber: false,
           allowSmsRetrieverApi: false,
+          allowMissedCall: true,
+          authenticationTokens: [],
         ),
       ),
     );
-    if (result is TdError && onError != null) {
+    if (result != null && result is TdError) {
       onError(result);
     }
   }
 
   Future checkAuthenticationCode(
     String code, {
-    void Function(TdError) onError,
+    required void Function(TdError) onError,
   }) async {
     final result = await send(
       CheckAuthenticationCode(
         code: code,
       ),
     );
-    if (result is TdError && onError != null) {
+    if (result != null && result is TdError) {
       onError(result);
     }
   }

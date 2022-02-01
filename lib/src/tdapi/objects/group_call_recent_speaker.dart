@@ -1,32 +1,45 @@
 part of '../tdapi.dart';
 
 class GroupCallRecentSpeaker extends TdObject {
-  /// Describes a recently speaking user in a group call
-  GroupCallRecentSpeaker({this.userId, this.isSpeaking});
 
-  /// [userId] User identifier
-  int userId;
+  /// Describes a recently speaking participant in a group call
+  const GroupCallRecentSpeaker({
+    required this.participantId,
+    required this.isSpeaking,
+  });
+  
+  /// [participantId] Group call participant identifier 
+  final MessageSender participantId;
 
   /// [isSpeaking] True, is the user has spoken recently
-  bool isSpeaking;
-
+  final bool isSpeaking;
+  
   /// Parse from a json
-  GroupCallRecentSpeaker.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-    this.isSpeaking = json['is_speaking'];
-  }
-
+  factory GroupCallRecentSpeaker.fromJson(Map<String, dynamic> json) => GroupCallRecentSpeaker(
+    participantId: MessageSender.fromJson(json['participant_id']),
+    isSpeaking: json['is_speaking'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "is_speaking": this.isSpeaking,
+      "participant_id": participantId.toJson(),
+      "is_speaking": isSpeaking,
     };
   }
+  
+  GroupCallRecentSpeaker copyWith({
+    MessageSender? participantId,
+    bool? isSpeaking,
+  }) => GroupCallRecentSpeaker(
+    participantId: participantId ?? this.participantId,
+    isSpeaking: isSpeaking ?? this.isSpeaking,
+  );
 
   static const CONSTRUCTOR = 'groupCallRecentSpeaker';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

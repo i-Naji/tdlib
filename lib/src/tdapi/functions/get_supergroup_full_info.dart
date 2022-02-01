@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetSupergroupFullInfo extends TdFunction {
+
   /// Returns full information about a supergroup or a channel by its identifier, cached for up to 1 minute
-  GetSupergroupFullInfo({this.supergroupId});
-
+  const GetSupergroupFullInfo({
+    required this.supergroupId,
+  });
+  
   /// [supergroupId] Supergroup or channel identifier
-  int supergroupId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetSupergroupFullInfo.fromJson(Map<String, dynamic> json);
-
+  final int supergroupId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "supergroup_id": this.supergroupId,
-      "@extra": this.extra,
+      "supergroup_id": supergroupId,
+      "@extra": extra,
     };
   }
+  
+  GetSupergroupFullInfo copyWith({
+    int? supergroupId,
+  }) => GetSupergroupFullInfo(
+    supergroupId: supergroupId ?? this.supergroupId,
+  );
 
   static const CONSTRUCTOR = 'getSupergroupFullInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,38 +1,61 @@
 part of '../tdapi.dart';
 
 class MessageSenders extends TdObject {
-  /// Represents a list of message senders
-  MessageSenders({this.totalCount, this.senders});
 
-  /// [totalCount] Approximate total count of messages senders found
-  int totalCount;
+  /// Represents a list of message senders
+  const MessageSenders({
+    required this.totalCount,
+    required this.senders,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [totalCount] Approximate total count of messages senders found 
+  final int totalCount;
 
   /// [senders] List of message senders
-  List<MessageSender> senders;
+  final List<MessageSender> senders;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  MessageSenders.fromJson(Map<String, dynamic> json) {
-    this.totalCount = json['total_count'];
-    this.senders = List<MessageSender>.from((json['senders'] ?? [])
-        .map((item) => MessageSender.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory MessageSenders.fromJson(Map<String, dynamic> json) => MessageSenders(
+    totalCount: json['total_count'],
+    senders: List<MessageSender>.from((json['senders'] ?? []).map((item) => MessageSender.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "total_count": this.totalCount,
-      "senders": this.senders.map((i) => i.toJson()).toList(),
+      "total_count": totalCount,
+      "senders": senders.map((i) => i.toJson()).toList(),
     };
   }
+  
+  MessageSenders copyWith({
+    int? totalCount,
+    List<MessageSender>? senders,
+    dynamic extra,
+    int? clientId,
+  }) => MessageSenders(
+    totalCount: totalCount ?? this.totalCount,
+    senders: senders ?? this.senders,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'messageSenders';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

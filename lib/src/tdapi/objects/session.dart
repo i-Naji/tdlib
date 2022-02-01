@@ -1,116 +1,181 @@
 part of '../tdapi.dart';
 
 class Session extends TdObject {
-  /// Contains information about one session in a Telegram application used by the current user. Sessions should be shown to the user in the returned order
-  Session(
-      {this.id,
-      this.isCurrent,
-      this.isPasswordPending,
-      this.apiId,
-      this.applicationName,
-      this.applicationVersion,
-      this.isOfficialApplication,
-      this.deviceModel,
-      this.platform,
-      this.systemVersion,
-      this.logInDate,
-      this.lastActiveDate,
-      this.ip,
-      this.country,
-      this.region});
 
+  /// Contains information about one session in a Telegram application used by the current user. Sessions must be shown to the user in the returned order
+  const Session({
+    required this.id,
+    required this.isCurrent,
+    required this.isPasswordPending,
+    required this.canAcceptSecretChats,
+    required this.canAcceptCalls,
+    required this.apiId,
+    required this.applicationName,
+    required this.applicationVersion,
+    required this.isOfficialApplication,
+    required this.deviceModel,
+    required this.platform,
+    required this.systemVersion,
+    required this.logInDate,
+    required this.lastActiveDate,
+    required this.ip,
+    required this.country,
+    required this.region,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [id] Session identifier
-  int id;
+  final int id;
 
   /// [isCurrent] True, if this session is the current session
-  bool isCurrent;
+  final bool isCurrent;
 
   /// [isPasswordPending] True, if a password is needed to complete authorization of the session
-  bool isPasswordPending;
+  final bool isPasswordPending;
+
+  /// [canAcceptSecretChats] True, if incoming secret chats can be accepted by the session
+  final bool canAcceptSecretChats;
+
+  /// [canAcceptCalls] True, if incoming calls can be accepted by the session
+  final bool canAcceptCalls;
 
   /// [apiId] Telegram API identifier, as provided by the application
-  int apiId;
+  final int apiId;
 
   /// [applicationName] Name of the application, as provided by the application
-  String applicationName;
+  final String applicationName;
 
   /// [applicationVersion] The version of the application, as provided by the application
-  String applicationVersion;
+  final String applicationVersion;
 
   /// [isOfficialApplication] True, if the application is an official application or uses the api_id of an official application
-  bool isOfficialApplication;
+  final bool isOfficialApplication;
 
   /// [deviceModel] Model of the device the application has been run or is running on, as provided by the application
-  String deviceModel;
+  final String deviceModel;
 
   /// [platform] Operating system the application has been run or is running on, as provided by the application
-  String platform;
+  final String platform;
 
   /// [systemVersion] Version of the operating system the application has been run or is running on, as provided by the application
-  String systemVersion;
+  final String systemVersion;
 
   /// [logInDate] Point in time (Unix timestamp) when the user has logged in
-  int logInDate;
+  final int logInDate;
 
   /// [lastActiveDate] Point in time (Unix timestamp) when the session was last used
-  int lastActiveDate;
+  final int lastActiveDate;
 
   /// [ip] IP address from which the session was created, in human-readable format
-  String ip;
+  final String ip;
 
   /// [country] A two-letter country code for the country from which the session was created, based on the IP address
-  String country;
+  final String country;
 
   /// [region] Region code from which the session was created, based on the IP address
-  String region;
+  final String region;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Session.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.isCurrent = json['is_current'];
-    this.isPasswordPending = json['is_password_pending'];
-    this.apiId = json['api_id'];
-    this.applicationName = json['application_name'];
-    this.applicationVersion = json['application_version'];
-    this.isOfficialApplication = json['is_official_application'];
-    this.deviceModel = json['device_model'];
-    this.platform = json['platform'];
-    this.systemVersion = json['system_version'];
-    this.logInDate = json['log_in_date'];
-    this.lastActiveDate = json['last_active_date'];
-    this.ip = json['ip'];
-    this.country = json['country'];
-    this.region = json['region'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Session.fromJson(Map<String, dynamic> json) => Session(
+    id: int.parse(json['id']),
+    isCurrent: json['is_current'],
+    isPasswordPending: json['is_password_pending'],
+    canAcceptSecretChats: json['can_accept_secret_chats'],
+    canAcceptCalls: json['can_accept_calls'],
+    apiId: json['api_id'],
+    applicationName: json['application_name'],
+    applicationVersion: json['application_version'],
+    isOfficialApplication: json['is_official_application'],
+    deviceModel: json['device_model'],
+    platform: json['platform'],
+    systemVersion: json['system_version'],
+    logInDate: json['log_in_date'],
+    lastActiveDate: json['last_active_date'],
+    ip: json['ip'],
+    country: json['country'],
+    region: json['region'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "is_current": this.isCurrent,
-      "is_password_pending": this.isPasswordPending,
-      "api_id": this.apiId,
-      "application_name": this.applicationName,
-      "application_version": this.applicationVersion,
-      "is_official_application": this.isOfficialApplication,
-      "device_model": this.deviceModel,
-      "platform": this.platform,
-      "system_version": this.systemVersion,
-      "log_in_date": this.logInDate,
-      "last_active_date": this.lastActiveDate,
-      "ip": this.ip,
-      "country": this.country,
-      "region": this.region,
+      "id": id,
+      "is_current": isCurrent,
+      "is_password_pending": isPasswordPending,
+      "can_accept_secret_chats": canAcceptSecretChats,
+      "can_accept_calls": canAcceptCalls,
+      "api_id": apiId,
+      "application_name": applicationName,
+      "application_version": applicationVersion,
+      "is_official_application": isOfficialApplication,
+      "device_model": deviceModel,
+      "platform": platform,
+      "system_version": systemVersion,
+      "log_in_date": logInDate,
+      "last_active_date": lastActiveDate,
+      "ip": ip,
+      "country": country,
+      "region": region,
     };
   }
+  
+  Session copyWith({
+    int? id,
+    bool? isCurrent,
+    bool? isPasswordPending,
+    bool? canAcceptSecretChats,
+    bool? canAcceptCalls,
+    int? apiId,
+    String? applicationName,
+    String? applicationVersion,
+    bool? isOfficialApplication,
+    String? deviceModel,
+    String? platform,
+    String? systemVersion,
+    int? logInDate,
+    int? lastActiveDate,
+    String? ip,
+    String? country,
+    String? region,
+    dynamic extra,
+    int? clientId,
+  }) => Session(
+    id: id ?? this.id,
+    isCurrent: isCurrent ?? this.isCurrent,
+    isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+    canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
+    canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
+    apiId: apiId ?? this.apiId,
+    applicationName: applicationName ?? this.applicationName,
+    applicationVersion: applicationVersion ?? this.applicationVersion,
+    isOfficialApplication: isOfficialApplication ?? this.isOfficialApplication,
+    deviceModel: deviceModel ?? this.deviceModel,
+    platform: platform ?? this.platform,
+    systemVersion: systemVersion ?? this.systemVersion,
+    logInDate: logInDate ?? this.logInDate,
+    lastActiveDate: lastActiveDate ?? this.lastActiveDate,
+    ip: ip ?? this.ip,
+    country: country ?? this.country,
+    region: region ?? this.region,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'session';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

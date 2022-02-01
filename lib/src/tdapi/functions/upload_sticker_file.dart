@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class UploadStickerFile extends TdFunction {
-  /// Uploads a PNG image with a sticker; for bots only; returns the uploaded file
-  UploadStickerFile({this.userId, this.pngSticker});
 
-  /// [userId] Sticker file owner
-  int userId;
+  /// Uploads a file with a sticker; returns the uploaded file
+  const UploadStickerFile({
+    required this.userId,
+    required this.sticker,
+  });
+  
+  /// [userId] Sticker file owner; ignored for regular users 
+  final int userId;
 
-  /// [pngSticker] PNG image with the sticker; must be up to 512 KB in size and fit in 512x512 square
-  InputFile pngSticker;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  UploadStickerFile.fromJson(Map<String, dynamic> json);
-
+  /// [sticker] Sticker file to upload
+  final InputSticker sticker;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "png_sticker": this.pngSticker == null ? null : this.pngSticker.toJson(),
-      "@extra": this.extra,
+      "user_id": userId,
+      "sticker": sticker.toJson(),
+      "@extra": extra,
     };
   }
+  
+  UploadStickerFile copyWith({
+    int? userId,
+    InputSticker? sticker,
+  }) => UploadStickerFile(
+    userId: userId ?? this.userId,
+    sticker: sticker ?? this.sticker,
+  );
 
   static const CONSTRUCTOR = 'uploadStickerFile';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

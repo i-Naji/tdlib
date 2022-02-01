@@ -1,41 +1,46 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageText extends TdFunction {
+
   /// Edits the text of an inline text or game message sent via a bot; for bots only
-  EditInlineMessageText(
-      {this.inlineMessageId, this.replyMarkup, this.inputMessageContent});
-
+  const EditInlineMessageText({
+    required this.inlineMessageId,
+    required this.replyMarkup,
+    required this.inputMessageContent,
+  });
+  
   /// [inlineMessageId] Inline message identifier
-  String inlineMessageId;
+  final String inlineMessageId;
 
-  /// [replyMarkup] The new message reply markup
-  ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none
+  final ReplyMarkup replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
-  InputMessageContent inputMessageContent;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  EditInlineMessageText.fromJson(Map<String, dynamic> json);
-
+  /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
+  final InputMessageContent inputMessageContent;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "inline_message_id": this.inlineMessageId,
-      "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent == null
-          ? null
-          : this.inputMessageContent.toJson(),
-      "@extra": this.extra,
+      "inline_message_id": inlineMessageId,
+      "reply_markup": replyMarkup.toJson(),
+      "input_message_content": inputMessageContent.toJson(),
+      "@extra": extra,
     };
   }
+  
+  EditInlineMessageText copyWith({
+    String? inlineMessageId,
+    ReplyMarkup? replyMarkup,
+    InputMessageContent? inputMessageContent,
+  }) => EditInlineMessageText(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   static const CONSTRUCTOR = 'editInlineMessageText';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

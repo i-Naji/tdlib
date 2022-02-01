@@ -1,74 +1,125 @@
 part of '../tdapi.dart';
 
 class PaymentForm extends TdObject {
+
   /// Contains information about an invoice payment form
-  PaymentForm(
-      {this.invoice,
-      this.url,
-      this.paymentsProvider,
-      this.savedOrderInfo,
-      this.savedCredentials,
-      this.canSaveCredentials,
-      this.needPassword});
+  const PaymentForm({
+    required this.id,
+    required this.invoice,
+    required this.url,
+    required this.sellerBotUserId,
+    required this.paymentsProviderUserId,
+    this.paymentsProvider,
+    this.savedOrderInfo,
+    this.savedCredentials,
+    required this.canSaveCredentials,
+    required this.needPassword,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [id] The payment form identifier
+  final int id;
 
   /// [invoice] Full information of the invoice
-  Invoice invoice;
+  final Invoice invoice;
 
   /// [url] Payment form URL
-  String url;
+  final String url;
 
-  /// [paymentsProvider] Contains information about the payment provider, if available, to support it natively without the need for opening the URL; may be null
-  PaymentsProviderStripe paymentsProvider;
+  /// [sellerBotUserId] User identifier of the seller bot
+  final int sellerBotUserId;
+
+  /// [paymentsProviderUserId] User identifier of the payment provider bot
+  final int paymentsProviderUserId;
+
+  /// [paymentsProvider] Information about the payment provider, if available, to support it natively without the need for opening the URL; may be null
+  final PaymentsProviderStripe? paymentsProvider;
 
   /// [savedOrderInfo] Saved server-side order information; may be null
-  OrderInfo savedOrderInfo;
+  final OrderInfo? savedOrderInfo;
 
-  /// [savedCredentials] Contains information about saved card credentials; may be null
-  SavedCredentials savedCredentials;
+  /// [savedCredentials] Information about saved card credentials; may be null
+  final SavedCredentials? savedCredentials;
 
   /// [canSaveCredentials] True, if the user can choose to save credentials
-  bool canSaveCredentials;
+  final bool canSaveCredentials;
 
   /// [needPassword] True, if the user will be able to save credentials protected by a password they set up
-  bool needPassword;
+  final bool needPassword;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  PaymentForm.fromJson(Map<String, dynamic> json) {
-    this.invoice = Invoice.fromJson(json['invoice'] ?? <String, dynamic>{});
-    this.url = json['url'];
-    this.paymentsProvider = PaymentsProviderStripe.fromJson(
-        json['payments_provider'] ?? <String, dynamic>{});
-    this.savedOrderInfo =
-        OrderInfo.fromJson(json['saved_order_info'] ?? <String, dynamic>{});
-    this.savedCredentials = SavedCredentials.fromJson(
-        json['saved_credentials'] ?? <String, dynamic>{});
-    this.canSaveCredentials = json['can_save_credentials'];
-    this.needPassword = json['need_password'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
+    id: int.parse(json['id']),
+    invoice: Invoice.fromJson(json['invoice']),
+    url: json['url'],
+    sellerBotUserId: json['seller_bot_user_id'],
+    paymentsProviderUserId: json['payments_provider_user_id'],
+    paymentsProvider: json['payments_provider'] == null ? null : PaymentsProviderStripe.fromJson(json['payments_provider']),
+    savedOrderInfo: json['saved_order_info'] == null ? null : OrderInfo.fromJson(json['saved_order_info']),
+    savedCredentials: json['saved_credentials'] == null ? null : SavedCredentials.fromJson(json['saved_credentials']),
+    canSaveCredentials: json['can_save_credentials'],
+    needPassword: json['need_password'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "invoice": this.invoice == null ? null : this.invoice.toJson(),
-      "url": this.url,
-      "payments_provider":
-          this.paymentsProvider == null ? null : this.paymentsProvider.toJson(),
-      "saved_order_info":
-          this.savedOrderInfo == null ? null : this.savedOrderInfo.toJson(),
-      "saved_credentials":
-          this.savedCredentials == null ? null : this.savedCredentials.toJson(),
-      "can_save_credentials": this.canSaveCredentials,
-      "need_password": this.needPassword,
+      "id": id,
+      "invoice": invoice.toJson(),
+      "url": url,
+      "seller_bot_user_id": sellerBotUserId,
+      "payments_provider_user_id": paymentsProviderUserId,
+      "payments_provider": paymentsProvider?.toJson(),
+      "saved_order_info": savedOrderInfo?.toJson(),
+      "saved_credentials": savedCredentials?.toJson(),
+      "can_save_credentials": canSaveCredentials,
+      "need_password": needPassword,
     };
   }
+  
+  PaymentForm copyWith({
+    int? id,
+    Invoice? invoice,
+    String? url,
+    int? sellerBotUserId,
+    int? paymentsProviderUserId,
+    PaymentsProviderStripe? paymentsProvider,
+    OrderInfo? savedOrderInfo,
+    SavedCredentials? savedCredentials,
+    bool? canSaveCredentials,
+    bool? needPassword,
+    dynamic extra,
+    int? clientId,
+  }) => PaymentForm(
+    id: id ?? this.id,
+    invoice: invoice ?? this.invoice,
+    url: url ?? this.url,
+    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+    paymentsProviderUserId: paymentsProviderUserId ?? this.paymentsProviderUserId,
+    paymentsProvider: paymentsProvider ?? this.paymentsProvider,
+    savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
+    savedCredentials: savedCredentials ?? this.savedCredentials,
+    canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
+    needPassword: needPassword ?? this.needPassword,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'paymentForm';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

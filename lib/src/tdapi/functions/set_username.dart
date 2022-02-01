@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class SetUsername extends TdFunction {
+
   /// Changes the username of the current user
-  SetUsername({this.username});
-
+  const SetUsername({
+    required this.username,
+  });
+  
   /// [username] The new value of the username. Use an empty string to remove the username
-  String username;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetUsername.fromJson(Map<String, dynamic> json);
-
+  final String username;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "username": this.username,
-      "@extra": this.extra,
+      "username": username,
+      "@extra": extra,
     };
   }
+  
+  SetUsername copyWith({
+    String? username,
+  }) => SetUsername(
+    username: username ?? this.username,
+  );
 
   static const CONSTRUCTOR = 'setUsername';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

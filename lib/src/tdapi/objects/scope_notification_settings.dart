@@ -1,58 +1,85 @@
 part of '../tdapi.dart';
 
 class ScopeNotificationSettings extends TdObject {
-  /// Contains information about notification settings for several chats
-  ScopeNotificationSettings(
-      {this.muteFor,
-      this.sound,
-      this.showPreview,
-      this.disablePinnedMessageNotifications,
-      this.disableMentionNotifications});
 
+  /// Contains information about notification settings for several chats
+  const ScopeNotificationSettings({
+    required this.muteFor,
+    required this.sound,
+    required this.showPreview,
+    required this.disablePinnedMessageNotifications,
+    required this.disableMentionNotifications,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [muteFor] Time left before notifications will be unmuted, in seconds
-  int muteFor;
+  final int muteFor;
 
   /// [sound] The name of an audio file to be used for notification sounds; only applies to iOS applications
-  String sound;
+  final String sound;
 
-  /// [showPreview] True, if message content should be displayed in notifications
-  bool showPreview;
+  /// [showPreview] True, if message content must be displayed in notifications
+  final bool showPreview;
 
   /// [disablePinnedMessageNotifications] True, if notifications for incoming pinned messages will be created as for an ordinary unread message
-  bool disablePinnedMessageNotifications;
+  final bool disablePinnedMessageNotifications;
 
   /// [disableMentionNotifications] True, if notifications for messages with mentions will be created as for an ordinary unread message
-  bool disableMentionNotifications;
+  final bool disableMentionNotifications;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ScopeNotificationSettings.fromJson(Map<String, dynamic> json) {
-    this.muteFor = json['mute_for'];
-    this.sound = json['sound'];
-    this.showPreview = json['show_preview'];
-    this.disablePinnedMessageNotifications =
-        json['disable_pinned_message_notifications'];
-    this.disableMentionNotifications = json['disable_mention_notifications'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ScopeNotificationSettings.fromJson(Map<String, dynamic> json) => ScopeNotificationSettings(
+    muteFor: json['mute_for'],
+    sound: json['sound'],
+    showPreview: json['show_preview'],
+    disablePinnedMessageNotifications: json['disable_pinned_message_notifications'],
+    disableMentionNotifications: json['disable_mention_notifications'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "mute_for": this.muteFor,
-      "sound": this.sound,
-      "show_preview": this.showPreview,
-      "disable_pinned_message_notifications":
-          this.disablePinnedMessageNotifications,
-      "disable_mention_notifications": this.disableMentionNotifications,
+      "mute_for": muteFor,
+      "sound": sound,
+      "show_preview": showPreview,
+      "disable_pinned_message_notifications": disablePinnedMessageNotifications,
+      "disable_mention_notifications": disableMentionNotifications,
     };
   }
+  
+  ScopeNotificationSettings copyWith({
+    int? muteFor,
+    String? sound,
+    bool? showPreview,
+    bool? disablePinnedMessageNotifications,
+    bool? disableMentionNotifications,
+    dynamic extra,
+    int? clientId,
+  }) => ScopeNotificationSettings(
+    muteFor: muteFor ?? this.muteFor,
+    sound: sound ?? this.sound,
+    showPreview: showPreview ?? this.showPreview,
+    disablePinnedMessageNotifications: disablePinnedMessageNotifications ?? this.disablePinnedMessageNotifications,
+    disableMentionNotifications: disableMentionNotifications ?? this.disableMentionNotifications,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'scopeNotificationSettings';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class SetChatDiscussionGroup extends TdFunction {
-  /// Changes the discussion group of a channel chat; requires can_change_info rights in the channel if it is specified
-  SetChatDiscussionGroup({this.chatId, this.discussionChatId});
 
-  /// [chatId] Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup)
-  int chatId;
+  /// Changes the discussion group of a channel chat; requires can_change_info administrator right in the channel if it is specified
+  const SetChatDiscussionGroup({
+    required this.chatId,
+    required this.discussionChatId,
+  });
+  
+  /// [chatId] Identifier of the channel chat. Pass 0 to remove a link from the supergroup passed in the second argument to a linked channel chat (requires can_pin_messages rights in the supergroup) 
+  final int chatId;
 
   /// [discussionChatId] Identifier of a new channel's discussion group. Use 0 to remove the discussion group.. Use the method getSuitableDiscussionChats to find all suitable groups. Basic group chats must be first upgraded to supergroup chats. If new chat members don't have access to old messages in the supergroup, then toggleSupergroupIsAllHistoryAvailable must be used first to change that
-  int discussionChatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetChatDiscussionGroup.fromJson(Map<String, dynamic> json);
-
+  final int discussionChatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "discussion_chat_id": this.discussionChatId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "discussion_chat_id": discussionChatId,
+      "@extra": extra,
     };
   }
+  
+  SetChatDiscussionGroup copyWith({
+    int? chatId,
+    int? discussionChatId,
+  }) => SetChatDiscussionGroup(
+    chatId: chatId ?? this.chatId,
+    discussionChatId: discussionChatId ?? this.discussionChatId,
+  );
 
   static const CONSTRUCTOR = 'setChatDiscussionGroup';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

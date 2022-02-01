@@ -1,33 +1,46 @@
 part of '../tdapi.dart';
 
 class GetPaymentForm extends TdFunction {
-  /// Returns an invoice payment form. This method should be called when the user presses inlineKeyboardButtonBuy
-  GetPaymentForm({this.chatId, this.messageId});
 
+  /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy
+  const GetPaymentForm({
+    required this.chatId,
+    required this.messageId,
+    required this.theme,
+  });
+  
   /// [chatId] Chat identifier of the Invoice message
-  int chatId;
+  final int chatId;
 
   /// [messageId] Message identifier
-  int messageId;
+  final int messageId;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetPaymentForm.fromJson(Map<String, dynamic> json);
-
+  /// [theme] Preferred payment form theme; pass null to use the default theme
+  final PaymentFormTheme theme;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "theme": theme.toJson(),
+      "@extra": extra,
     };
   }
+  
+  GetPaymentForm copyWith({
+    int? chatId,
+    int? messageId,
+    PaymentFormTheme? theme,
+  }) => GetPaymentForm(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    theme: theme ?? this.theme,
+  );
 
   static const CONSTRUCTOR = 'getPaymentForm';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

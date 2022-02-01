@@ -1,32 +1,45 @@
 part of '../tdapi.dart';
 
 class TMeUrl extends TdObject {
-  /// Represents a URL linking to an internal Telegram entity
-  TMeUrl({this.url, this.type});
 
-  /// [url] URL
-  String url;
+  /// Represents a URL linking to an internal Telegram entity
+  const TMeUrl({
+    required this.url,
+    required this.type,
+  });
+  
+  /// [url] URL 
+  final String url;
 
   /// [type] Type of the URL
-  TMeUrlType type;
-
+  final TMeUrlType type;
+  
   /// Parse from a json
-  TMeUrl.fromJson(Map<String, dynamic> json) {
-    this.url = json['url'];
-    this.type = TMeUrlType.fromJson(json['type'] ?? <String, dynamic>{});
-  }
-
+  factory TMeUrl.fromJson(Map<String, dynamic> json) => TMeUrl(
+    url: json['url'],
+    type: TMeUrlType.fromJson(json['type']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "url": this.url,
-      "type": this.type == null ? null : this.type.toJson(),
+      "url": url,
+      "type": type.toJson(),
     };
   }
+  
+  TMeUrl copyWith({
+    String? url,
+    TMeUrlType? type,
+  }) => TMeUrl(
+    url: url ?? this.url,
+    type: type ?? this.type,
+  );
 
   static const CONSTRUCTOR = 'tMeUrl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

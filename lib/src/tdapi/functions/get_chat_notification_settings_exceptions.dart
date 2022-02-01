@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class GetChatNotificationSettingsExceptions extends TdFunction {
-  /// Returns list of chats with non-default notification settings
-  GetChatNotificationSettingsExceptions({this.scope, this.compareSound});
 
-  /// [scope] If specified, only chats from the specified scope will be returned
-  NotificationSettingsScope scope;
+  /// Returns list of chats with non-default notification settings
+  const GetChatNotificationSettingsExceptions({
+    required this.scope,
+    required this.compareSound,
+  });
+  
+  /// [scope] If specified, only chats from the scope will be returned; pass null to return chats from all scopes
+  final NotificationSettingsScope scope;
 
   /// [compareSound] If true, also chats with non-default sound will be returned
-  bool compareSound;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChatNotificationSettingsExceptions.fromJson(Map<String, dynamic> json);
-
+  final bool compareSound;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "scope": this.scope == null ? null : this.scope.toJson(),
-      "compare_sound": this.compareSound,
-      "@extra": this.extra,
+      "scope": scope.toJson(),
+      "compare_sound": compareSound,
+      "@extra": extra,
     };
   }
+  
+  GetChatNotificationSettingsExceptions copyWith({
+    NotificationSettingsScope? scope,
+    bool? compareSound,
+  }) => GetChatNotificationSettingsExceptions(
+    scope: scope ?? this.scope,
+    compareSound: compareSound ?? this.compareSound,
+  );
 
   static const CONSTRUCTOR = 'getChatNotificationSettingsExceptions';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

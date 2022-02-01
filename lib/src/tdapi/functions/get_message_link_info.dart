@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetMessageLinkInfo extends TdFunction {
-  /// Returns information about a public or private message link
-  GetMessageLinkInfo({this.url});
 
-  /// [url] The message link in the format "https://t.me/c/...", or "tg://privatepost?...", or "https://t.me/username/...", or "tg://resolve?..."
-  String url;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetMessageLinkInfo.fromJson(Map<String, dynamic> json);
-
+  /// Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage
+  const GetMessageLinkInfo({
+    required this.url,
+  });
+  
+  /// [url] The message link
+  final String url;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "url": this.url,
-      "@extra": this.extra,
+      "url": url,
+      "@extra": extra,
     };
   }
+  
+  GetMessageLinkInfo copyWith({
+    String? url,
+  }) => GetMessageLinkInfo(
+    url: url ?? this.url,
+  );
 
   static const CONSTRUCTOR = 'getMessageLinkInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

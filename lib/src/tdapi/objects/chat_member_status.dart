@@ -1,18 +1,19 @@
 part of '../tdapi.dart';
 
 class ChatMemberStatus extends TdObject {
-  /// Provides information about the status of a member in a chat
-  ChatMemberStatus();
 
+  /// Provides information about the status of a member in a chat
+  const ChatMemberStatus();
+  
   /// a ChatMemberStatus return type can be :
-  /// * ChatMemberStatusCreator
-  /// * ChatMemberStatusAdministrator
-  /// * ChatMemberStatusMember
-  /// * ChatMemberStatusRestricted
-  /// * ChatMemberStatusLeft
-  /// * ChatMemberStatusBanned
-  factory ChatMemberStatus.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [ChatMemberStatusCreator]
+  /// * [ChatMemberStatusAdministrator]
+  /// * [ChatMemberStatusMember]
+  /// * [ChatMemberStatusRestricted]
+  /// * [ChatMemberStatusLeft]
+  /// * [ChatMemberStatusBanned]
+  factory ChatMemberStatus.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ChatMemberStatusCreator.CONSTRUCTOR:
         return ChatMemberStatusCreator.fromJson(json);
       case ChatMemberStatusAdministrator.CONSTRUCTOR:
@@ -26,251 +27,351 @@ class ChatMemberStatus extends TdObject {
       case ChatMemberStatusBanned.CONSTRUCTOR:
         return ChatMemberStatusBanned.fromJson(json);
       default:
-        return null;
+        return const ChatMemberStatus();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  ChatMemberStatus copyWith() => const ChatMemberStatus();
 
   static const CONSTRUCTOR = 'chatMemberStatus';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatMemberStatusCreator extends ChatMemberStatus {
-  /// The user is the owner of a chat and has all the administrator privileges
-  ChatMemberStatusCreator({this.customTitle, this.isAnonymous, this.isMember});
 
+  /// The user is the owner of the chat and has all the administrator privileges
+  const ChatMemberStatusCreator({
+    required this.customTitle,
+    required this.isAnonymous,
+    required this.isMember,
+  });
+  
   /// [customTitle] A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
-  String customTitle;
+  final String customTitle;
 
   /// [isAnonymous] True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
-  bool isAnonymous;
+  final bool isAnonymous;
 
   /// [isMember] True, if the user is a member of the chat
-  bool isMember;
-
+  final bool isMember;
+  
   /// Parse from a json
-  ChatMemberStatusCreator.fromJson(Map<String, dynamic> json) {
-    this.customTitle = json['custom_title'];
-    this.isAnonymous = json['is_anonymous'];
-    this.isMember = json['is_member'];
-  }
-
+  factory ChatMemberStatusCreator.fromJson(Map<String, dynamic> json) => ChatMemberStatusCreator(
+    customTitle: json['custom_title'],
+    isAnonymous: json['is_anonymous'],
+    isMember: json['is_member'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "custom_title": this.customTitle,
-      "is_anonymous": this.isAnonymous,
-      "is_member": this.isMember,
+      "custom_title": customTitle,
+      "is_anonymous": isAnonymous,
+      "is_member": isMember,
     };
   }
+  
+  @override
+  ChatMemberStatusCreator copyWith({
+    String? customTitle,
+    bool? isAnonymous,
+    bool? isMember,
+  }) => ChatMemberStatusCreator(
+    customTitle: customTitle ?? this.customTitle,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    isMember: isMember ?? this.isMember,
+  );
 
   static const CONSTRUCTOR = 'chatMemberStatusCreator';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatMemberStatusAdministrator extends ChatMemberStatus {
-  /// The user is a member of a chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage voice chats. In supergroups and channels, there are more detailed options for administrator privileges
-  ChatMemberStatusAdministrator(
-      {this.customTitle,
-      this.canBeEdited,
-      this.canChangeInfo,
-      this.canPostMessages,
-      this.canEditMessages,
-      this.canDeleteMessages,
-      this.canInviteUsers,
-      this.canRestrictMembers,
-      this.canPinMessages,
-      this.canPromoteMembers,
-      this.canManageVoiceChats,
-      this.isAnonymous});
 
+  /// The user is a member of the chat and has some additional privileges. In basic groups, administrators can edit and delete messages sent by others, add new members, ban unprivileged members, and manage video chats. In supergroups and channels, there are more detailed options for administrator privileges
+  const ChatMemberStatusAdministrator({
+    required this.customTitle,
+    required this.canBeEdited,
+    required this.canManageChat,
+    required this.canChangeInfo,
+    required this.canPostMessages,
+    required this.canEditMessages,
+    required this.canDeleteMessages,
+    required this.canInviteUsers,
+    required this.canRestrictMembers,
+    required this.canPinMessages,
+    required this.canPromoteMembers,
+    required this.canManageVideoChats,
+    required this.isAnonymous,
+  });
+  
   /// [customTitle] A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
-  String customTitle;
+  final String customTitle;
 
   /// [canBeEdited] True, if the current user can edit the administrator privileges for the called user
-  bool canBeEdited;
+  final bool canBeEdited;
+
+  /// [canManageChat] True, if the administrator can get chat event log, get chat statistics, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+  final bool canManageChat;
 
   /// [canChangeInfo] True, if the administrator can change the chat title, photo, and other settings
-  bool canChangeInfo;
+  final bool canChangeInfo;
 
   /// [canPostMessages] True, if the administrator can create channel posts; applicable to channels only
-  bool canPostMessages;
+  final bool canPostMessages;
 
   /// [canEditMessages] True, if the administrator can edit messages of other users and pin messages; applicable to channels only
-  bool canEditMessages;
+  final bool canEditMessages;
 
   /// [canDeleteMessages] True, if the administrator can delete messages of other users
-  bool canDeleteMessages;
+  final bool canDeleteMessages;
 
   /// [canInviteUsers] True, if the administrator can invite new users to the chat
-  bool canInviteUsers;
+  final bool canInviteUsers;
 
-  /// [canRestrictMembers] True, if the administrator can restrict, ban, or unban chat members
-  bool canRestrictMembers;
+  /// [canRestrictMembers] True, if the administrator can restrict, ban, or unban chat members; always true for channels
+  final bool canRestrictMembers;
 
-  /// [canPinMessages] True, if the administrator can pin messages; applicable to groups only
-  bool canPinMessages;
+  /// [canPinMessages] True, if the administrator can pin messages; applicable to basic groups and supergroups only
+  final bool canPinMessages;
 
   /// [canPromoteMembers] True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them
-  bool canPromoteMembers;
+  final bool canPromoteMembers;
 
-  /// [canManageVoiceChats] True, if the administrator can manage voice chats; applicable to groups only
-  bool canManageVoiceChats;
+  /// [canManageVideoChats] True, if the administrator can manage video chats
+  final bool canManageVideoChats;
 
   /// [isAnonymous] True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
-  bool isAnonymous;
-
+  final bool isAnonymous;
+  
   /// Parse from a json
-  ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json) {
-    this.customTitle = json['custom_title'];
-    this.canBeEdited = json['can_be_edited'];
-    this.canChangeInfo = json['can_change_info'];
-    this.canPostMessages = json['can_post_messages'];
-    this.canEditMessages = json['can_edit_messages'];
-    this.canDeleteMessages = json['can_delete_messages'];
-    this.canInviteUsers = json['can_invite_users'];
-    this.canRestrictMembers = json['can_restrict_members'];
-    this.canPinMessages = json['can_pin_messages'];
-    this.canPromoteMembers = json['can_promote_members'];
-    this.canManageVoiceChats = json['can_manage_voice_chats'];
-    this.isAnonymous = json['is_anonymous'];
-  }
-
+  factory ChatMemberStatusAdministrator.fromJson(Map<String, dynamic> json) => ChatMemberStatusAdministrator(
+    customTitle: json['custom_title'],
+    canBeEdited: json['can_be_edited'],
+    canManageChat: json['can_manage_chat'],
+    canChangeInfo: json['can_change_info'],
+    canPostMessages: json['can_post_messages'],
+    canEditMessages: json['can_edit_messages'],
+    canDeleteMessages: json['can_delete_messages'],
+    canInviteUsers: json['can_invite_users'],
+    canRestrictMembers: json['can_restrict_members'],
+    canPinMessages: json['can_pin_messages'],
+    canPromoteMembers: json['can_promote_members'],
+    canManageVideoChats: json['can_manage_video_chats'],
+    isAnonymous: json['is_anonymous'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "custom_title": this.customTitle,
-      "can_be_edited": this.canBeEdited,
-      "can_change_info": this.canChangeInfo,
-      "can_post_messages": this.canPostMessages,
-      "can_edit_messages": this.canEditMessages,
-      "can_delete_messages": this.canDeleteMessages,
-      "can_invite_users": this.canInviteUsers,
-      "can_restrict_members": this.canRestrictMembers,
-      "can_pin_messages": this.canPinMessages,
-      "can_promote_members": this.canPromoteMembers,
-      "can_manage_voice_chats": this.canManageVoiceChats,
-      "is_anonymous": this.isAnonymous,
+      "custom_title": customTitle,
+      "can_be_edited": canBeEdited,
+      "can_manage_chat": canManageChat,
+      "can_change_info": canChangeInfo,
+      "can_post_messages": canPostMessages,
+      "can_edit_messages": canEditMessages,
+      "can_delete_messages": canDeleteMessages,
+      "can_invite_users": canInviteUsers,
+      "can_restrict_members": canRestrictMembers,
+      "can_pin_messages": canPinMessages,
+      "can_promote_members": canPromoteMembers,
+      "can_manage_video_chats": canManageVideoChats,
+      "is_anonymous": isAnonymous,
     };
   }
+  
+  @override
+  ChatMemberStatusAdministrator copyWith({
+    String? customTitle,
+    bool? canBeEdited,
+    bool? canManageChat,
+    bool? canChangeInfo,
+    bool? canPostMessages,
+    bool? canEditMessages,
+    bool? canDeleteMessages,
+    bool? canInviteUsers,
+    bool? canRestrictMembers,
+    bool? canPinMessages,
+    bool? canPromoteMembers,
+    bool? canManageVideoChats,
+    bool? isAnonymous,
+  }) => ChatMemberStatusAdministrator(
+    customTitle: customTitle ?? this.customTitle,
+    canBeEdited: canBeEdited ?? this.canBeEdited,
+    canManageChat: canManageChat ?? this.canManageChat,
+    canChangeInfo: canChangeInfo ?? this.canChangeInfo,
+    canPostMessages: canPostMessages ?? this.canPostMessages,
+    canEditMessages: canEditMessages ?? this.canEditMessages,
+    canDeleteMessages: canDeleteMessages ?? this.canDeleteMessages,
+    canInviteUsers: canInviteUsers ?? this.canInviteUsers,
+    canRestrictMembers: canRestrictMembers ?? this.canRestrictMembers,
+    canPinMessages: canPinMessages ?? this.canPinMessages,
+    canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
+    canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+  );
 
   static const CONSTRUCTOR = 'chatMemberStatusAdministrator';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatMemberStatusMember extends ChatMemberStatus {
-  /// The user is a member of a chat, without any additional privileges or restrictions
-  ChatMemberStatusMember();
 
+  /// The user is a member of the chat, without any additional privileges or restrictions
+  const ChatMemberStatusMember();
+  
   /// Parse from a json
-  ChatMemberStatusMember.fromJson(Map<String, dynamic> json);
-
+  factory ChatMemberStatusMember.fromJson(Map<String, dynamic> json) => const ChatMemberStatusMember();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
 
   static const CONSTRUCTOR = 'chatMemberStatusMember';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatMemberStatusRestricted extends ChatMemberStatus {
-  /// The user is under certain restrictions in the chat. Not supported in basic groups and channels
-  ChatMemberStatusRestricted(
-      {this.isMember, this.restrictedUntilDate, this.permissions});
 
+  /// The user is under certain restrictions in the chat. Not supported in basic groups and channels
+  const ChatMemberStatusRestricted({
+    required this.isMember,
+    required this.restrictedUntilDate,
+    required this.permissions,
+  });
+  
   /// [isMember] True, if the user is a member of the chat
-  bool isMember;
+  final bool isMember;
 
   /// [restrictedUntilDate] Point in time (Unix timestamp) when restrictions will be lifted from the user; 0 if never. If the user is restricted for more than 366 days or for less than 30 seconds from the current time, the user is considered to be restricted forever
-  int restrictedUntilDate;
+  final int restrictedUntilDate;
 
   /// [permissions] User permissions in the chat
-  ChatPermissions permissions;
-
+  final ChatPermissions permissions;
+  
   /// Parse from a json
-  ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json) {
-    this.isMember = json['is_member'];
-    this.restrictedUntilDate = json['restricted_until_date'];
-    this.permissions =
-        ChatPermissions.fromJson(json['permissions'] ?? <String, dynamic>{});
-  }
-
+  factory ChatMemberStatusRestricted.fromJson(Map<String, dynamic> json) => ChatMemberStatusRestricted(
+    isMember: json['is_member'],
+    restrictedUntilDate: json['restricted_until_date'],
+    permissions: ChatPermissions.fromJson(json['permissions']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "is_member": this.isMember,
-      "restricted_until_date": this.restrictedUntilDate,
-      "permissions":
-          this.permissions == null ? null : this.permissions.toJson(),
+      "is_member": isMember,
+      "restricted_until_date": restrictedUntilDate,
+      "permissions": permissions.toJson(),
     };
   }
+  
+  @override
+  ChatMemberStatusRestricted copyWith({
+    bool? isMember,
+    int? restrictedUntilDate,
+    ChatPermissions? permissions,
+  }) => ChatMemberStatusRestricted(
+    isMember: isMember ?? this.isMember,
+    restrictedUntilDate: restrictedUntilDate ?? this.restrictedUntilDate,
+    permissions: permissions ?? this.permissions,
+  );
 
   static const CONSTRUCTOR = 'chatMemberStatusRestricted';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatMemberStatusLeft extends ChatMemberStatus {
-  /// The user is not a chat member
-  ChatMemberStatusLeft();
 
+  /// The user or the chat is not a chat member
+  const ChatMemberStatusLeft();
+  
   /// Parse from a json
-  ChatMemberStatusLeft.fromJson(Map<String, dynamic> json);
-
+  factory ChatMemberStatusLeft.fromJson(Map<String, dynamic> json) => const ChatMemberStatusLeft();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ChatMemberStatusLeft copyWith() => const ChatMemberStatusLeft();
 
   static const CONSTRUCTOR = 'chatMemberStatusLeft';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class ChatMemberStatusBanned extends ChatMemberStatus {
-  /// The user was banned (and hence is not a member of the chat). Implies the user can't return to the chat or view messages
-  ChatMemberStatusBanned({this.bannedUntilDate});
 
-  /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever
-  int bannedUntilDate;
-
+  /// The user or the chat was banned (and hence is not a member of the chat). Implies the user can't return to the chat, view messages, or be used as a participant identifier to join a video chat of the chat
+  const ChatMemberStatusBanned({
+    required this.bannedUntilDate,
+  });
+  
+  /// [bannedUntilDate] Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Always 0 in basic groups
+  final int bannedUntilDate;
+  
   /// Parse from a json
-  ChatMemberStatusBanned.fromJson(Map<String, dynamic> json) {
-    this.bannedUntilDate = json['banned_until_date'];
-  }
-
+  factory ChatMemberStatusBanned.fromJson(Map<String, dynamic> json) => ChatMemberStatusBanned(
+    bannedUntilDate: json['banned_until_date'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "banned_until_date": this.bannedUntilDate,
+      "banned_until_date": bannedUntilDate,
     };
   }
+  
+  @override
+  ChatMemberStatusBanned copyWith({
+    int? bannedUntilDate,
+  }) => ChatMemberStatusBanned(
+    bannedUntilDate: bannedUntilDate ?? this.bannedUntilDate,
+  );
 
   static const CONSTRUCTOR = 'chatMemberStatusBanned';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

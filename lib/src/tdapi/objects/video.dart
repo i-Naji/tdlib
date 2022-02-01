@@ -1,85 +1,109 @@
 part of '../tdapi.dart';
 
 class Video extends TdObject {
+
   /// Describes a video file
-  Video(
-      {this.duration,
-      this.width,
-      this.height,
-      this.fileName,
-      this.mimeType,
-      this.hasStickers,
-      this.supportsStreaming,
-      this.minithumbnail,
-      this.thumbnail,
-      this.video});
+  const Video({
+    required this.duration,
+    required this.width,
+    required this.height,
+    required this.fileName,
+    required this.mimeType,
+    required this.hasStickers,
+    required this.supportsStreaming,
+    this.minithumbnail,
+    this.thumbnail,
+    required this.video,
+  });
+  
+  /// [duration] Duration of the video, in seconds; as defined by the sender 
+  final int duration;
 
-  /// [duration] Duration of the video, in seconds; as defined by the sender
-  int duration;
-
-  /// [width] Video width; as defined by the sender
-  int width;
+  /// [width] Video width; as defined by the sender 
+  final int width;
 
   /// [height] Video height; as defined by the sender
-  int height;
+  final int height;
 
   /// [fileName] Original name of the file; as defined by the sender
-  String fileName;
+  final String fileName;
 
   /// [mimeType] MIME type of the file; as defined by the sender
-  String mimeType;
+  final String mimeType;
 
   /// [hasStickers] True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets
-  bool hasStickers;
+  final bool hasStickers;
 
-  /// [supportsStreaming] True, if the video should be tried to be streamed
-  bool supportsStreaming;
+  /// [supportsStreaming] True, if the video is supposed to be streamed
+  final bool supportsStreaming;
 
   /// [minithumbnail] Video minithumbnail; may be null
-  Minithumbnail minithumbnail;
+  final Minithumbnail? minithumbnail;
 
   /// [thumbnail] Video thumbnail in JPEG or MPEG4 format; as defined by the sender; may be null
-  Thumbnail thumbnail;
+  final Thumbnail? thumbnail;
 
   /// [video] File containing the video
-  File video;
-
+  final File video;
+  
   /// Parse from a json
-  Video.fromJson(Map<String, dynamic> json) {
-    this.duration = json['duration'];
-    this.width = json['width'];
-    this.height = json['height'];
-    this.fileName = json['file_name'];
-    this.mimeType = json['mime_type'];
-    this.hasStickers = json['has_stickers'];
-    this.supportsStreaming = json['supports_streaming'];
-    this.minithumbnail =
-        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.thumbnail =
-        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.video = File.fromJson(json['video'] ?? <String, dynamic>{});
-  }
-
+  factory Video.fromJson(Map<String, dynamic> json) => Video(
+    duration: json['duration'],
+    width: json['width'],
+    height: json['height'],
+    fileName: json['file_name'],
+    mimeType: json['mime_type'],
+    hasStickers: json['has_stickers'],
+    supportsStreaming: json['supports_streaming'],
+    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    video: File.fromJson(json['video']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "duration": this.duration,
-      "width": this.width,
-      "height": this.height,
-      "file_name": this.fileName,
-      "mime_type": this.mimeType,
-      "has_stickers": this.hasStickers,
-      "supports_streaming": this.supportsStreaming,
-      "minithumbnail":
-          this.minithumbnail == null ? null : this.minithumbnail.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "video": this.video == null ? null : this.video.toJson(),
+      "duration": duration,
+      "width": width,
+      "height": height,
+      "file_name": fileName,
+      "mime_type": mimeType,
+      "has_stickers": hasStickers,
+      "supports_streaming": supportsStreaming,
+      "minithumbnail": minithumbnail?.toJson(),
+      "thumbnail": thumbnail?.toJson(),
+      "video": video.toJson(),
     };
   }
+  
+  Video copyWith({
+    int? duration,
+    int? width,
+    int? height,
+    String? fileName,
+    String? mimeType,
+    bool? hasStickers,
+    bool? supportsStreaming,
+    Minithumbnail? minithumbnail,
+    Thumbnail? thumbnail,
+    File? video,
+  }) => Video(
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    hasStickers: hasStickers ?? this.hasStickers,
+    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+    minithumbnail: minithumbnail ?? this.minithumbnail,
+    thumbnail: thumbnail ?? this.thumbnail,
+    video: video ?? this.video,
+  );
 
   static const CONSTRUCTOR = 'video';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,29 +1,30 @@
 part of '../tdapi.dart';
 
 class InputMessageContent extends TdObject {
-  /// The content of a message to send
-  InputMessageContent();
 
+  /// The content of a message to send
+  const InputMessageContent();
+  
   /// a InputMessageContent return type can be :
-  /// * InputMessageText
-  /// * InputMessageAnimation
-  /// * InputMessageAudio
-  /// * InputMessageDocument
-  /// * InputMessagePhoto
-  /// * InputMessageSticker
-  /// * InputMessageVideo
-  /// * InputMessageVideoNote
-  /// * InputMessageVoiceNote
-  /// * InputMessageLocation
-  /// * InputMessageVenue
-  /// * InputMessageContact
-  /// * InputMessageDice
-  /// * InputMessageGame
-  /// * InputMessageInvoice
-  /// * InputMessagePoll
-  /// * InputMessageForwarded
-  factory InputMessageContent.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [InputMessageText]
+  /// * [InputMessageAnimation]
+  /// * [InputMessageAudio]
+  /// * [InputMessageDocument]
+  /// * [InputMessagePhoto]
+  /// * [InputMessageSticker]
+  /// * [InputMessageVideo]
+  /// * [InputMessageVideoNote]
+  /// * [InputMessageVoiceNote]
+  /// * [InputMessageLocation]
+  /// * [InputMessageVenue]
+  /// * [InputMessageContact]
+  /// * [InputMessageDice]
+  /// * [InputMessageGame]
+  /// * [InputMessageInvoice]
+  /// * [InputMessagePoll]
+  /// * [InputMessageForwarded]
+  factory InputMessageContent.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InputMessageText.CONSTRUCTOR:
         return InputMessageText.fromJson(json);
       case InputMessageAnimation.CONSTRUCTOR:
@@ -59,862 +60,1179 @@ class InputMessageContent extends TdObject {
       case InputMessageForwarded.CONSTRUCTOR:
         return InputMessageForwarded.fromJson(json);
       default:
-        return null;
+        return const InputMessageContent();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  InputMessageContent copyWith() => const InputMessageContent();
 
   static const CONSTRUCTOR = 'inputMessageContent';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageText extends InputMessageContent {
+
   /// A text message
-  InputMessageText({this.text, this.disableWebPagePreview, this.clearDraft});
+  const InputMessageText({
+    required this.text,
+    required this.disableWebPagePreview,
+    required this.clearDraft,
+  });
+  
+  /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  final FormattedText text;
 
-  /// [text] Formatted text to be sent; 1-GetOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
-  FormattedText text;
+  /// [disableWebPagePreview] True, if rich web page previews for URLs in the message text must be disabled
+  final bool disableWebPagePreview;
 
-  /// [disableWebPagePreview] True, if rich web page previews for URLs in the message text should be disabled
-  bool disableWebPagePreview;
-
-  /// [clearDraft] True, if a chat message draft should be deleted
-  bool clearDraft;
-
+  /// [clearDraft] True, if a chat message draft must be deleted
+  final bool clearDraft;
+  
   /// Parse from a json
-  InputMessageText.fromJson(Map<String, dynamic> json) {
-    this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.disableWebPagePreview = json['disable_web_page_preview'];
-    this.clearDraft = json['clear_draft'];
-  }
-
+  factory InputMessageText.fromJson(Map<String, dynamic> json) => InputMessageText(
+    text: FormattedText.fromJson(json['text']),
+    disableWebPagePreview: json['disable_web_page_preview'],
+    clearDraft: json['clear_draft'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "disable_web_page_preview": this.disableWebPagePreview,
-      "clear_draft": this.clearDraft,
+      "text": text.toJson(),
+      "disable_web_page_preview": disableWebPagePreview,
+      "clear_draft": clearDraft,
     };
   }
+  
+  @override
+  InputMessageText copyWith({
+    FormattedText? text,
+    bool? disableWebPagePreview,
+    bool? clearDraft,
+  }) => InputMessageText(
+    text: text ?? this.text,
+    disableWebPagePreview: disableWebPagePreview ?? this.disableWebPagePreview,
+    clearDraft: clearDraft ?? this.clearDraft,
+  );
 
   static const CONSTRUCTOR = 'inputMessageText';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageAnimation extends InputMessageContent {
+
   /// An animation message (GIF-style).
-  InputMessageAnimation(
-      {this.animation,
-      this.thumbnail,
-      this.addedStickerFileIds,
-      this.duration,
-      this.width,
-      this.height,
-      this.caption});
+  const InputMessageAnimation({
+    required this.animation,
+    required this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.duration,
+    required this.width,
+    required this.height,
+    required this.caption,
+  });
+  
+  /// [animation] Animation file to be sent 
+  final InputFile animation;
 
-  /// [animation] Animation file to be sent
-  InputFile animation;
-
-  /// [thumbnail] Animation thumbnail, if available
-  InputThumbnail thumbnail;
+  /// [thumbnail] Animation thumbnail; pass null to skip thumbnail uploading 
+  final InputThumbnail thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the animation, if applicable
-  List<int> addedStickerFileIds;
+  final List<int> addedStickerFileIds;
 
   /// [duration] Duration of the animation, in seconds
-  int duration;
+  final int duration;
 
-  /// [width] Width of the animation; may be replaced by the server
-  int width;
+  /// [width] Width of the animation; may be replaced by the server 
+  final int width;
 
-  /// [height] Height of the animation; may be replaced by the server
-  int height;
+  /// [height] Height of the animation; may be replaced by the server 
+  final int height;
 
-  /// [caption] Animation caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
-
+  /// [caption] Animation caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
+  
   /// Parse from a json
-  InputMessageAnimation.fromJson(Map<String, dynamic> json) {
-    this.animation =
-        InputFile.fromJson(json['animation'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<int>.from(
-        (json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
-    this.duration = json['duration'];
-    this.width = json['width'];
-    this.height = json['height'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
+    animation: InputFile.fromJson(json['animation']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+    duration: json['duration'],
+    width: json['width'],
+    height: json['height'],
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation == null ? null : this.animation.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
-      "duration": this.duration,
-      "width": this.width,
-      "height": this.height,
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "animation": animation.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "duration": duration,
+      "width": width,
+      "height": height,
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  InputMessageAnimation copyWith({
+    InputFile? animation,
+    InputThumbnail? thumbnail,
+    List<int>? addedStickerFileIds,
+    int? duration,
+    int? width,
+    int? height,
+    FormattedText? caption,
+  }) => InputMessageAnimation(
+    animation: animation ?? this.animation,
+    thumbnail: thumbnail ?? this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'inputMessageAnimation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageAudio extends InputMessageContent {
+
   /// An audio message
-  InputMessageAudio(
-      {this.audio,
-      this.albumCoverThumbnail,
-      this.duration,
-      this.title,
-      this.performer,
-      this.caption});
+  const InputMessageAudio({
+    required this.audio,
+    required this.albumCoverThumbnail,
+    required this.duration,
+    required this.title,
+    required this.performer,
+    required this.caption,
+  });
+  
+  /// [audio] Audio file to be sent 
+  final InputFile audio;
 
-  /// [audio] Audio file to be sent
-  InputFile audio;
+  /// [albumCoverThumbnail] Thumbnail of the cover for the album; pass null to skip thumbnail uploading 
+  final InputThumbnail albumCoverThumbnail;
 
-  /// [albumCoverThumbnail] Thumbnail of the cover for the album, if available
-  InputThumbnail albumCoverThumbnail;
-
-  /// [duration] Duration of the audio, in seconds; may be replaced by the server
-  int duration;
+  /// [duration] Duration of the audio, in seconds; may be replaced by the server 
+  final int duration;
 
   /// [title] Title of the audio; 0-64 characters; may be replaced by the server
-  String title;
+  final String title;
 
   /// [performer] Performer of the audio; 0-64 characters, may be replaced by the server
-  String performer;
+  final String performer;
 
-  /// [caption] Audio caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
-
+  /// [caption] Audio caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
+  
   /// Parse from a json
-  InputMessageAudio.fromJson(Map<String, dynamic> json) {
-    this.audio = InputFile.fromJson(json['audio'] ?? <String, dynamic>{});
-    this.albumCoverThumbnail = InputThumbnail.fromJson(
-        json['album_cover_thumbnail'] ?? <String, dynamic>{});
-    this.duration = json['duration'];
-    this.title = json['title'];
-    this.performer = json['performer'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageAudio.fromJson(Map<String, dynamic> json) => InputMessageAudio(
+    audio: InputFile.fromJson(json['audio']),
+    albumCoverThumbnail: InputThumbnail.fromJson(json['album_cover_thumbnail']),
+    duration: json['duration'],
+    title: json['title'],
+    performer: json['performer'],
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio == null ? null : this.audio.toJson(),
-      "album_cover_thumbnail": this.albumCoverThumbnail == null
-          ? null
-          : this.albumCoverThumbnail.toJson(),
-      "duration": this.duration,
-      "title": this.title,
-      "performer": this.performer,
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "audio": audio.toJson(),
+      "album_cover_thumbnail": albumCoverThumbnail.toJson(),
+      "duration": duration,
+      "title": title,
+      "performer": performer,
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  InputMessageAudio copyWith({
+    InputFile? audio,
+    InputThumbnail? albumCoverThumbnail,
+    int? duration,
+    String? title,
+    String? performer,
+    FormattedText? caption,
+  }) => InputMessageAudio(
+    audio: audio ?? this.audio,
+    albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+    duration: duration ?? this.duration,
+    title: title ?? this.title,
+    performer: performer ?? this.performer,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'inputMessageAudio';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageDocument extends InputMessageContent {
+
   /// A document message (general file)
-  InputMessageDocument(
-      {this.document,
-      this.thumbnail,
-      this.disableContentTypeDetection,
-      this.caption});
+  const InputMessageDocument({
+    required this.document,
+    required this.thumbnail,
+    required this.disableContentTypeDetection,
+    required this.caption,
+  });
+  
+  /// [document] Document to be sent 
+  final InputFile document;
 
-  /// [document] Document to be sent
-  InputFile document;
+  /// [thumbnail] Document thumbnail; pass null to skip thumbnail uploading 
+  final InputThumbnail thumbnail;
 
-  /// [thumbnail] Document thumbnail, if available
-  InputThumbnail thumbnail;
+  /// [disableContentTypeDetection] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats 
+  final bool disableContentTypeDetection;
 
-  /// [disableContentTypeDetection] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats
-  bool disableContentTypeDetection;
-
-  /// [caption] Document caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
-
+  /// [caption] Document caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
+  
   /// Parse from a json
-  InputMessageDocument.fromJson(Map<String, dynamic> json) {
-    this.document = InputFile.fromJson(json['document'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.disableContentTypeDetection = json['disable_content_type_detection'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageDocument.fromJson(Map<String, dynamic> json) => InputMessageDocument(
+    document: InputFile.fromJson(json['document']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    disableContentTypeDetection: json['disable_content_type_detection'],
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document == null ? null : this.document.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "disable_content_type_detection": this.disableContentTypeDetection,
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "document": document.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "disable_content_type_detection": disableContentTypeDetection,
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  InputMessageDocument copyWith({
+    InputFile? document,
+    InputThumbnail? thumbnail,
+    bool? disableContentTypeDetection,
+    FormattedText? caption,
+  }) => InputMessageDocument(
+    document: document ?? this.document,
+    thumbnail: thumbnail ?? this.thumbnail,
+    disableContentTypeDetection: disableContentTypeDetection ?? this.disableContentTypeDetection,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'inputMessageDocument';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessagePhoto extends InputMessageContent {
+
   /// A photo message
-  InputMessagePhoto(
-      {this.photo,
-      this.thumbnail,
-      this.addedStickerFileIds,
-      this.width,
-      this.height,
-      this.caption,
-      this.ttl});
+  const InputMessagePhoto({
+    required this.photo,
+    required this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.width,
+    required this.height,
+    required this.caption,
+    required this.ttl,
+  });
+  
+  /// [photo] Photo to send 
+  final InputFile photo;
 
-  /// [photo] Photo to send
-  InputFile photo;
+  /// [thumbnail] Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats 
+  final InputThumbnail thumbnail;
 
-  /// [thumbnail] Photo thumbnail to be sent, this is sent to the other party in secret chats only
-  InputThumbnail thumbnail;
+  /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable 
+  final List<int> addedStickerFileIds;
 
-  /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable
-  List<int> addedStickerFileIds;
+  /// [width] Photo width 
+  final int width;
 
-  /// [width] Photo width
-  int width;
+  /// [height] Photo height 
+  final int height;
 
-  /// [height] Photo height
-  int height;
-
-  /// [caption] Photo caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
+  /// [caption] Photo caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
 
   /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
-  int ttl;
-
+  final int ttl;
+  
   /// Parse from a json
-  InputMessagePhoto.fromJson(Map<String, dynamic> json) {
-    this.photo = InputFile.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<int>.from(
-        (json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
-    this.width = json['width'];
-    this.height = json['height'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.ttl = json['ttl'];
-  }
-
+  factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
+    photo: InputFile.fromJson(json['photo']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+    width: json['width'],
+    height: json['height'],
+    caption: FormattedText.fromJson(json['caption']),
+    ttl: json['ttl'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
-      "width": this.width,
-      "height": this.height,
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "ttl": this.ttl,
+      "photo": photo.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "width": width,
+      "height": height,
+      "caption": caption.toJson(),
+      "ttl": ttl,
     };
   }
+  
+  @override
+  InputMessagePhoto copyWith({
+    InputFile? photo,
+    InputThumbnail? thumbnail,
+    List<int>? addedStickerFileIds,
+    int? width,
+    int? height,
+    FormattedText? caption,
+    int? ttl,
+  }) => InputMessagePhoto(
+    photo: photo ?? this.photo,
+    thumbnail: thumbnail ?? this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    caption: caption ?? this.caption,
+    ttl: ttl ?? this.ttl,
+  );
 
   static const CONSTRUCTOR = 'inputMessagePhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageSticker extends InputMessageContent {
+
   /// A sticker message
-  InputMessageSticker(
-      {this.sticker, this.thumbnail, this.width, this.height, this.emoji});
+  const InputMessageSticker({
+    required this.sticker,
+    required this.thumbnail,
+    required this.width,
+    required this.height,
+    required this.emoji,
+  });
+  
+  /// [sticker] Sticker to be sent 
+  final InputFile sticker;
 
-  /// [sticker] Sticker to be sent
-  InputFile sticker;
+  /// [thumbnail] Sticker thumbnail; pass null to skip thumbnail uploading 
+  final InputThumbnail thumbnail;
 
-  /// [thumbnail] Sticker thumbnail, if available
-  InputThumbnail thumbnail;
+  /// [width] Sticker width 
+  final int width;
 
-  /// [width] Sticker width
-  int width;
-
-  /// [height] Sticker height
-  int height;
+  /// [height] Sticker height 
+  final int height;
 
   /// [emoji] Emoji used to choose the sticker
-  String emoji;
-
+  final String emoji;
+  
   /// Parse from a json
-  InputMessageSticker.fromJson(Map<String, dynamic> json) {
-    this.sticker = InputFile.fromJson(json['sticker'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.width = json['width'];
-    this.height = json['height'];
-    this.emoji = json['emoji'];
-  }
-
+  factory InputMessageSticker.fromJson(Map<String, dynamic> json) => InputMessageSticker(
+    sticker: InputFile.fromJson(json['sticker']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    width: json['width'],
+    height: json['height'],
+    emoji: json['emoji'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker == null ? null : this.sticker.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "width": this.width,
-      "height": this.height,
-      "emoji": this.emoji,
+      "sticker": sticker.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "width": width,
+      "height": height,
+      "emoji": emoji,
     };
   }
+  
+  @override
+  InputMessageSticker copyWith({
+    InputFile? sticker,
+    InputThumbnail? thumbnail,
+    int? width,
+    int? height,
+    String? emoji,
+  }) => InputMessageSticker(
+    sticker: sticker ?? this.sticker,
+    thumbnail: thumbnail ?? this.thumbnail,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    emoji: emoji ?? this.emoji,
+  );
 
   static const CONSTRUCTOR = 'inputMessageSticker';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageVideo extends InputMessageContent {
+
   /// A video message
-  InputMessageVideo(
-      {this.video,
-      this.thumbnail,
-      this.addedStickerFileIds,
-      this.duration,
-      this.width,
-      this.height,
-      this.supportsStreaming,
-      this.caption,
-      this.ttl});
+  const InputMessageVideo({
+    required this.video,
+    required this.thumbnail,
+    required this.addedStickerFileIds,
+    required this.duration,
+    required this.width,
+    required this.height,
+    required this.supportsStreaming,
+    required this.caption,
+    required this.ttl,
+  });
+  
+  /// [video] Video to be sent 
+  final InputFile video;
 
-  /// [video] Video to be sent
-  InputFile video;
-
-  /// [thumbnail] Video thumbnail, if available
-  InputThumbnail thumbnail;
+  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
+  final InputThumbnail thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the video, if applicable
-  List<int> addedStickerFileIds;
+  final List<int> addedStickerFileIds;
 
   /// [duration] Duration of the video, in seconds
-  int duration;
+  final int duration;
 
-  /// [width] Video width
-  int width;
+  /// [width] Video width 
+  final int width;
 
-  /// [height] Video height
-  int height;
+  /// [height] Video height 
+  final int height;
 
-  /// [supportsStreaming] True, if the video should be tried to be streamed
-  bool supportsStreaming;
+  /// [supportsStreaming] True, if the video is supposed to be streamed
+  final bool supportsStreaming;
 
-  /// [caption] Video caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
+  /// [caption] Video caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
 
   /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
-  int ttl;
-
+  final int ttl;
+  
   /// Parse from a json
-  InputMessageVideo.fromJson(Map<String, dynamic> json) {
-    this.video = InputFile.fromJson(json['video'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.addedStickerFileIds = List<int>.from(
-        (json['added_sticker_file_ids'] ?? []).map((item) => item).toList());
-    this.duration = json['duration'];
-    this.width = json['width'];
-    this.height = json['height'];
-    this.supportsStreaming = json['supports_streaming'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.ttl = json['ttl'];
-  }
-
+  factory InputMessageVideo.fromJson(Map<String, dynamic> json) => InputMessageVideo(
+    video: InputFile.fromJson(json['video']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
+    duration: json['duration'],
+    width: json['width'],
+    height: json['height'],
+    supportsStreaming: json['supports_streaming'],
+    caption: FormattedText.fromJson(json['caption']),
+    ttl: json['ttl'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video == null ? null : this.video.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "added_sticker_file_ids": this.addedStickerFileIds.map((i) => i).toList(),
-      "duration": this.duration,
-      "width": this.width,
-      "height": this.height,
-      "supports_streaming": this.supportsStreaming,
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "ttl": this.ttl,
+      "video": video.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
+      "duration": duration,
+      "width": width,
+      "height": height,
+      "supports_streaming": supportsStreaming,
+      "caption": caption.toJson(),
+      "ttl": ttl,
     };
   }
+  
+  @override
+  InputMessageVideo copyWith({
+    InputFile? video,
+    InputThumbnail? thumbnail,
+    List<int>? addedStickerFileIds,
+    int? duration,
+    int? width,
+    int? height,
+    bool? supportsStreaming,
+    FormattedText? caption,
+    int? ttl,
+  }) => InputMessageVideo(
+    video: video ?? this.video,
+    thumbnail: thumbnail ?? this.thumbnail,
+    addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
+    duration: duration ?? this.duration,
+    width: width ?? this.width,
+    height: height ?? this.height,
+    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+    caption: caption ?? this.caption,
+    ttl: ttl ?? this.ttl,
+  );
 
   static const CONSTRUCTOR = 'inputMessageVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageVideoNote extends InputMessageContent {
+
   /// A video note message
-  InputMessageVideoNote(
-      {this.videoNote, this.thumbnail, this.duration, this.length});
+  const InputMessageVideoNote({
+    required this.videoNote,
+    required this.thumbnail,
+    required this.duration,
+    required this.length,
+  });
+  
+  /// [videoNote] Video note to be sent 
+  final InputFile videoNote;
 
-  /// [videoNote] Video note to be sent
-  InputFile videoNote;
+  /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
+  final InputThumbnail thumbnail;
 
-  /// [thumbnail] Video thumbnail, if available
-  InputThumbnail thumbnail;
-
-  /// [duration] Duration of the video, in seconds
-  int duration;
+  /// [duration] Duration of the video, in seconds 
+  final int duration;
 
   /// [length] Video width and height; must be positive and not greater than 640
-  int length;
-
+  final int length;
+  
   /// Parse from a json
-  InputMessageVideoNote.fromJson(Map<String, dynamic> json) {
-    this.videoNote =
-        InputFile.fromJson(json['video_note'] ?? <String, dynamic>{});
-    this.thumbnail =
-        InputThumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.duration = json['duration'];
-    this.length = json['length'];
-  }
-
+  factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) => InputMessageVideoNote(
+    videoNote: InputFile.fromJson(json['video_note']),
+    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    duration: json['duration'],
+    length: json['length'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "video_note": this.videoNote == null ? null : this.videoNote.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "duration": this.duration,
-      "length": this.length,
+      "video_note": videoNote.toJson(),
+      "thumbnail": thumbnail.toJson(),
+      "duration": duration,
+      "length": length,
     };
   }
+  
+  @override
+  InputMessageVideoNote copyWith({
+    InputFile? videoNote,
+    InputThumbnail? thumbnail,
+    int? duration,
+    int? length,
+  }) => InputMessageVideoNote(
+    videoNote: videoNote ?? this.videoNote,
+    thumbnail: thumbnail ?? this.thumbnail,
+    duration: duration ?? this.duration,
+    length: length ?? this.length,
+  );
 
   static const CONSTRUCTOR = 'inputMessageVideoNote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageVoiceNote extends InputMessageContent {
+
   /// A voice note message
-  InputMessageVoiceNote(
-      {this.voiceNote, this.duration, this.waveform, this.caption});
+  const InputMessageVoiceNote({
+    required this.voiceNote,
+    required this.duration,
+    required this.waveform,
+    required this.caption,
+  });
+  
+  /// [voiceNote] Voice note to be sent 
+  final InputFile voiceNote;
 
-  /// [voiceNote] Voice note to be sent
-  InputFile voiceNote;
+  /// [duration] Duration of the voice note, in seconds 
+  final int duration;
 
-  /// [duration] Duration of the voice note, in seconds
-  int duration;
+  /// [waveform] Waveform representation of the voice note, in 5-bit format 
+  final String waveform;
 
-  /// [waveform] Waveform representation of the voice note, in 5-bit format
-  String waveform;
-
-  /// [caption] Voice note caption; 0-GetOption("message_caption_length_max") characters
-  FormattedText caption;
-
+  /// [caption] Voice note caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
+  final FormattedText caption;
+  
   /// Parse from a json
-  InputMessageVoiceNote.fromJson(Map<String, dynamic> json) {
-    this.voiceNote =
-        InputFile.fromJson(json['voice_note'] ?? <String, dynamic>{});
-    this.duration = json['duration'];
-    this.waveform = json['waveform'];
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) => InputMessageVoiceNote(
+    voiceNote: InputFile.fromJson(json['voice_note']),
+    duration: json['duration'],
+    waveform: json['waveform'],
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
-      "duration": this.duration,
-      "waveform": this.waveform,
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "voice_note": voiceNote.toJson(),
+      "duration": duration,
+      "waveform": waveform,
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  InputMessageVoiceNote copyWith({
+    InputFile? voiceNote,
+    int? duration,
+    String? waveform,
+    FormattedText? caption,
+  }) => InputMessageVoiceNote(
+    voiceNote: voiceNote ?? this.voiceNote,
+    duration: duration ?? this.duration,
+    waveform: waveform ?? this.waveform,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'inputMessageVoiceNote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageLocation extends InputMessageContent {
+
   /// A message with a location
-  InputMessageLocation(
-      {this.location,
-      this.livePeriod,
-      this.heading,
-      this.proximityAlertRadius});
+  const InputMessageLocation({
+    required this.location,
+    required this.livePeriod,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
+  
+  /// [location] Location to be sent 
+  final Location location;
 
-  /// [location] Location to be sent
-  Location location;
-
-  /// [livePeriod] Period for which the location can be updated, in seconds; should be between 60 and 86400 for a live location and 0 otherwise
-  int livePeriod;
+  /// [livePeriod] Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  final int livePeriod;
 
   /// [heading] For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
-  int heading;
+  final int heading;
 
   /// [proximityAlertRadius] For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled. Can't be enabled in channels and Saved Messages
-  int proximityAlertRadius;
-
+  final int proximityAlertRadius;
+  
   /// Parse from a json
-  InputMessageLocation.fromJson(Map<String, dynamic> json) {
-    this.location = Location.fromJson(json['location'] ?? <String, dynamic>{});
-    this.livePeriod = json['live_period'];
-    this.heading = json['heading'];
-    this.proximityAlertRadius = json['proximity_alert_radius'];
-  }
-
+  factory InputMessageLocation.fromJson(Map<String, dynamic> json) => InputMessageLocation(
+    location: Location.fromJson(json['location']),
+    livePeriod: json['live_period'],
+    heading: json['heading'],
+    proximityAlertRadius: json['proximity_alert_radius'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location == null ? null : this.location.toJson(),
-      "live_period": this.livePeriod,
-      "heading": this.heading,
-      "proximity_alert_radius": this.proximityAlertRadius,
+      "location": location.toJson(),
+      "live_period": livePeriod,
+      "heading": heading,
+      "proximity_alert_radius": proximityAlertRadius,
     };
   }
+  
+  @override
+  InputMessageLocation copyWith({
+    Location? location,
+    int? livePeriod,
+    int? heading,
+    int? proximityAlertRadius,
+  }) => InputMessageLocation(
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    heading: heading ?? this.heading,
+    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+  );
 
   static const CONSTRUCTOR = 'inputMessageLocation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageVenue extends InputMessageContent {
+
   /// A message with information about a venue
-  InputMessageVenue({this.venue});
-
+  const InputMessageVenue({
+    required this.venue,
+  });
+  
   /// [venue] Venue to send
-  Venue venue;
-
+  final Venue venue;
+  
   /// Parse from a json
-  InputMessageVenue.fromJson(Map<String, dynamic> json) {
-    this.venue = Venue.fromJson(json['venue'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageVenue.fromJson(Map<String, dynamic> json) => InputMessageVenue(
+    venue: Venue.fromJson(json['venue']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "venue": this.venue == null ? null : this.venue.toJson(),
+      "venue": venue.toJson(),
     };
   }
+  
+  @override
+  InputMessageVenue copyWith({
+    Venue? venue,
+  }) => InputMessageVenue(
+    venue: venue ?? this.venue,
+  );
 
   static const CONSTRUCTOR = 'inputMessageVenue';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageContact extends InputMessageContent {
+
   /// A message containing a user contact
-  InputMessageContact({this.contact});
-
+  const InputMessageContact({
+    required this.contact,
+  });
+  
   /// [contact] Contact to send
-  Contact contact;
-
+  final Contact contact;
+  
   /// Parse from a json
-  InputMessageContact.fromJson(Map<String, dynamic> json) {
-    this.contact = Contact.fromJson(json['contact'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageContact.fromJson(Map<String, dynamic> json) => InputMessageContact(
+    contact: Contact.fromJson(json['contact']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "contact": this.contact == null ? null : this.contact.toJson(),
+      "contact": contact.toJson(),
     };
   }
+  
+  @override
+  InputMessageContact copyWith({
+    Contact? contact,
+  }) => InputMessageContact(
+    contact: contact ?? this.contact,
+  );
 
   static const CONSTRUCTOR = 'inputMessageContact';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageDice extends InputMessageContent {
+
   /// A dice message
-  InputMessageDice({this.emoji, this.clearDraft});
+  const InputMessageDice({
+    required this.emoji,
+    required this.clearDraft,
+  });
+  
+  /// [emoji] Emoji on which the dice throw animation is based 
+  final String emoji;
 
-  /// [emoji] Emoji on which the dice throw animation is based
-  String emoji;
-
-  /// [clearDraft] True, if a chat message draft should be deleted
-  bool clearDraft;
-
+  /// [clearDraft] True, if the chat message draft must be deleted
+  final bool clearDraft;
+  
   /// Parse from a json
-  InputMessageDice.fromJson(Map<String, dynamic> json) {
-    this.emoji = json['emoji'];
-    this.clearDraft = json['clear_draft'];
-  }
-
+  factory InputMessageDice.fromJson(Map<String, dynamic> json) => InputMessageDice(
+    emoji: json['emoji'],
+    clearDraft: json['clear_draft'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "emoji": this.emoji,
-      "clear_draft": this.clearDraft,
+      "emoji": emoji,
+      "clear_draft": clearDraft,
     };
   }
+  
+  @override
+  InputMessageDice copyWith({
+    String? emoji,
+    bool? clearDraft,
+  }) => InputMessageDice(
+    emoji: emoji ?? this.emoji,
+    clearDraft: clearDraft ?? this.clearDraft,
+  );
 
   static const CONSTRUCTOR = 'inputMessageDice';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageGame extends InputMessageContent {
-  /// A message with a game; not supported for channels or secret chats
-  InputMessageGame({this.botUserId, this.gameShortName});
 
-  /// [botUserId] User identifier of the bot that owns the game
-  int botUserId;
+  /// A message with a game; not supported for channels or secret chats
+  const InputMessageGame({
+    required this.botUserId,
+    required this.gameShortName,
+  });
+  
+  /// [botUserId] User identifier of the bot that owns the game 
+  final int botUserId;
 
   /// [gameShortName] Short name of the game
-  String gameShortName;
-
+  final String gameShortName;
+  
   /// Parse from a json
-  InputMessageGame.fromJson(Map<String, dynamic> json) {
-    this.botUserId = json['bot_user_id'];
-    this.gameShortName = json['game_short_name'];
-  }
-
+  factory InputMessageGame.fromJson(Map<String, dynamic> json) => InputMessageGame(
+    botUserId: json['bot_user_id'],
+    gameShortName: json['game_short_name'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "bot_user_id": this.botUserId,
-      "game_short_name": this.gameShortName,
+      "bot_user_id": botUserId,
+      "game_short_name": gameShortName,
     };
   }
+  
+  @override
+  InputMessageGame copyWith({
+    int? botUserId,
+    String? gameShortName,
+  }) => InputMessageGame(
+    botUserId: botUserId ?? this.botUserId,
+    gameShortName: gameShortName ?? this.gameShortName,
+  );
 
   static const CONSTRUCTOR = 'inputMessageGame';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessageInvoice extends InputMessageContent {
-  /// A message with an invoice; can be used only by bots and only in private chats
-  InputMessageInvoice(
-      {this.invoice,
-      this.title,
-      this.description,
-      this.photoUrl,
-      this.photoSize,
-      this.photoWidth,
-      this.photoHeight,
-      this.payload,
-      this.providerToken,
-      this.providerData,
-      this.startParameter});
 
-  /// [invoice] Invoice
-  Invoice invoice;
+  /// A message with an invoice; can be used only by bots
+  const InputMessageInvoice({
+    required this.invoice,
+    required this.title,
+    required this.description,
+    required this.photoUrl,
+    required this.photoSize,
+    required this.photoWidth,
+    required this.photoHeight,
+    required this.payload,
+    required this.providerToken,
+    required this.providerData,
+    required this.startParameter,
+  });
+  
+  /// [invoice] Invoice 
+  final Invoice invoice;
 
-  /// [title] Product title; 1-32 characters
-  String title;
+  /// [title] Product title; 1-32 characters 
+  final String title;
 
   /// [description] Product description; 0-255 characters
-  String description;
+  final String description;
 
   /// [photoUrl] Product photo URL; optional
-  String photoUrl;
+  final String photoUrl;
 
-  /// [photoSize] Product photo size
-  int photoSize;
+  /// [photoSize] Product photo size 
+  final int photoSize;
 
-  /// [photoWidth] Product photo width
-  int photoWidth;
+  /// [photoWidth] Product photo width 
+  final int photoWidth;
 
   /// [photoHeight] Product photo height
-  int photoHeight;
+  final int photoHeight;
 
   /// [payload] The invoice payload
-  String payload;
+  final String payload;
 
-  /// [providerToken] Payment provider token
-  String providerToken;
+  /// [providerToken] Payment provider token 
+  final String providerToken;
 
   /// [providerData] JSON-encoded data about the invoice, which will be shared with the payment provider
-  String providerData;
+  final String providerData;
 
-  /// [startParameter] Unique invoice bot start_parameter for the generation of this invoice
-  String startParameter;
-
+  /// [startParameter] Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
+  final String startParameter;
+  
   /// Parse from a json
-  InputMessageInvoice.fromJson(Map<String, dynamic> json) {
-    this.invoice = Invoice.fromJson(json['invoice'] ?? <String, dynamic>{});
-    this.title = json['title'];
-    this.description = json['description'];
-    this.photoUrl = json['photo_url'];
-    this.photoSize = json['photo_size'];
-    this.photoWidth = json['photo_width'];
-    this.photoHeight = json['photo_height'];
-    this.payload = json['payload'];
-    this.providerToken = json['provider_token'];
-    this.providerData = json['provider_data'];
-    this.startParameter = json['start_parameter'];
-  }
-
+  factory InputMessageInvoice.fromJson(Map<String, dynamic> json) => InputMessageInvoice(
+    invoice: Invoice.fromJson(json['invoice']),
+    title: json['title'],
+    description: json['description'],
+    photoUrl: json['photo_url'],
+    photoSize: json['photo_size'],
+    photoWidth: json['photo_width'],
+    photoHeight: json['photo_height'],
+    payload: json['payload'],
+    providerToken: json['provider_token'],
+    providerData: json['provider_data'],
+    startParameter: json['start_parameter'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "invoice": this.invoice == null ? null : this.invoice.toJson(),
-      "title": this.title,
-      "description": this.description,
-      "photo_url": this.photoUrl,
-      "photo_size": this.photoSize,
-      "photo_width": this.photoWidth,
-      "photo_height": this.photoHeight,
-      "payload": this.payload,
-      "provider_token": this.providerToken,
-      "provider_data": this.providerData,
-      "start_parameter": this.startParameter,
+      "invoice": invoice.toJson(),
+      "title": title,
+      "description": description,
+      "photo_url": photoUrl,
+      "photo_size": photoSize,
+      "photo_width": photoWidth,
+      "photo_height": photoHeight,
+      "payload": payload,
+      "provider_token": providerToken,
+      "provider_data": providerData,
+      "start_parameter": startParameter,
     };
   }
+  
+  @override
+  InputMessageInvoice copyWith({
+    Invoice? invoice,
+    String? title,
+    String? description,
+    String? photoUrl,
+    int? photoSize,
+    int? photoWidth,
+    int? photoHeight,
+    String? payload,
+    String? providerToken,
+    String? providerData,
+    String? startParameter,
+  }) => InputMessageInvoice(
+    invoice: invoice ?? this.invoice,
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photoUrl: photoUrl ?? this.photoUrl,
+    photoSize: photoSize ?? this.photoSize,
+    photoWidth: photoWidth ?? this.photoWidth,
+    photoHeight: photoHeight ?? this.photoHeight,
+    payload: payload ?? this.payload,
+    providerToken: providerToken ?? this.providerToken,
+    providerData: providerData ?? this.providerData,
+    startParameter: startParameter ?? this.startParameter,
+  );
 
   static const CONSTRUCTOR = 'inputMessageInvoice';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputMessagePoll extends InputMessageContent {
-  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
-  InputMessagePoll(
-      {this.question,
-      this.options,
-      this.isAnonymous,
-      this.type,
-      this.openPeriod,
-      this.closeDate,
-      this.isClosed});
 
-  /// [question] Poll question, 1-255 characters (up to 300 characters for bots)
-  String question;
+  /// A message with a poll. Polls can't be sent to secret chats. Polls can be sent only to a private chat with a bot
+  const InputMessagePoll({
+    required this.question,
+    required this.options,
+    required this.isAnonymous,
+    required this.type,
+    required this.openPeriod,
+    required this.closeDate,
+    required this.isClosed,
+  });
+  
+  /// [question] Poll question; 1-255 characters (up to 300 characters for bots) 
+  final String question;
 
   /// [options] List of poll answer options, 2-10 strings 1-100 characters each
-  List<String> options;
+  final List<String> options;
 
   /// [isAnonymous] True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
-  bool isAnonymous;
+  final bool isAnonymous;
 
   /// [type] Type of the poll
-  PollType type;
+  final PollType type;
 
   /// [openPeriod] Amount of time the poll will be active after creation, in seconds; for bots only
-  int openPeriod;
+  final int openPeriod;
 
-  /// [closeDate] Point in time (Unix timestamp) when the poll will be automatically closed; for bots only
-  int closeDate;
+  /// [closeDate] Point in time (Unix timestamp) when the poll will automatically be closed; for bots only
+  final int closeDate;
 
   /// [isClosed] True, if the poll needs to be sent already closed; for bots only
-  bool isClosed;
-
+  final bool isClosed;
+  
   /// Parse from a json
-  InputMessagePoll.fromJson(Map<String, dynamic> json) {
-    this.question = json['question'];
-    this.options =
-        List<String>.from((json['options'] ?? []).map((item) => item).toList());
-    this.isAnonymous = json['is_anonymous'];
-    this.type = PollType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.openPeriod = json['open_period'];
-    this.closeDate = json['close_date'];
-    this.isClosed = json['is_closed'];
-  }
-
+  factory InputMessagePoll.fromJson(Map<String, dynamic> json) => InputMessagePoll(
+    question: json['question'],
+    options: List<String>.from((json['options'] ?? []).map((item) => item).toList()),
+    isAnonymous: json['is_anonymous'],
+    type: PollType.fromJson(json['type']),
+    openPeriod: json['open_period'],
+    closeDate: json['close_date'],
+    isClosed: json['is_closed'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "question": this.question,
-      "options": this.options.map((i) => i).toList(),
-      "is_anonymous": this.isAnonymous,
-      "type": this.type == null ? null : this.type.toJson(),
-      "open_period": this.openPeriod,
-      "close_date": this.closeDate,
-      "is_closed": this.isClosed,
+      "question": question,
+      "options": options.map((i) => i).toList(),
+      "is_anonymous": isAnonymous,
+      "type": type.toJson(),
+      "open_period": openPeriod,
+      "close_date": closeDate,
+      "is_closed": isClosed,
     };
   }
+  
+  @override
+  InputMessagePoll copyWith({
+    String? question,
+    List<String>? options,
+    bool? isAnonymous,
+    PollType? type,
+    int? openPeriod,
+    int? closeDate,
+    bool? isClosed,
+  }) => InputMessagePoll(
+    question: question ?? this.question,
+    options: options ?? this.options,
+    isAnonymous: isAnonymous ?? this.isAnonymous,
+    type: type ?? this.type,
+    openPeriod: openPeriod ?? this.openPeriod,
+    closeDate: closeDate ?? this.closeDate,
+    isClosed: isClosed ?? this.isClosed,
+  );
 
   static const CONSTRUCTOR = 'inputMessagePoll';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputMessageForwarded extends InputMessageContent {
-  /// A forwarded message
-  InputMessageForwarded(
-      {this.fromChatId, this.messageId, this.inGameShare, this.copyOptions});
 
-  /// [fromChatId] Identifier for the chat this forwarded message came from
-  int fromChatId;
+class InputMessageForwarded extends InputMessageContent {
+
+  /// A forwarded message
+  const InputMessageForwarded({
+    required this.fromChatId,
+    required this.messageId,
+    required this.inGameShare,
+    required this.copyOptions,
+  });
+  
+  /// [fromChatId] Identifier for the chat this forwarded message came from 
+  final int fromChatId;
 
   /// [messageId] Identifier of the message to forward
-  int messageId;
+  final int messageId;
 
-  /// [inGameShare] True, if a game message should be shared within a launched game; applies only to game messages
-  bool inGameShare;
+  /// [inGameShare] True, if a game message is being shared from a launched game; applies only to game messages
+  final bool inGameShare;
 
-  /// [copyOptions] Options to be used to copy content of the message without a link to the original message
-  MessageCopyOptions copyOptions;
-
+  /// [copyOptions] Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
+  final MessageCopyOptions copyOptions;
+  
   /// Parse from a json
-  InputMessageForwarded.fromJson(Map<String, dynamic> json) {
-    this.fromChatId = json['from_chat_id'];
-    this.messageId = json['message_id'];
-    this.inGameShare = json['in_game_share'];
-    this.copyOptions = MessageCopyOptions.fromJson(
-        json['copy_options'] ?? <String, dynamic>{});
-  }
-
+  factory InputMessageForwarded.fromJson(Map<String, dynamic> json) => InputMessageForwarded(
+    fromChatId: json['from_chat_id'],
+    messageId: json['message_id'],
+    inGameShare: json['in_game_share'],
+    copyOptions: MessageCopyOptions.fromJson(json['copy_options']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "from_chat_id": this.fromChatId,
-      "message_id": this.messageId,
-      "in_game_share": this.inGameShare,
-      "copy_options":
-          this.copyOptions == null ? null : this.copyOptions.toJson(),
+      "from_chat_id": fromChatId,
+      "message_id": messageId,
+      "in_game_share": inGameShare,
+      "copy_options": copyOptions.toJson(),
     };
   }
+  
+  @override
+  InputMessageForwarded copyWith({
+    int? fromChatId,
+    int? messageId,
+    bool? inGameShare,
+    MessageCopyOptions? copyOptions,
+  }) => InputMessageForwarded(
+    fromChatId: fromChatId ?? this.fromChatId,
+    messageId: messageId ?? this.messageId,
+    inGameShare: inGameShare ?? this.inGameShare,
+    copyOptions: copyOptions ?? this.copyOptions,
+  );
 
   static const CONSTRUCTOR = 'inputMessageForwarded';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

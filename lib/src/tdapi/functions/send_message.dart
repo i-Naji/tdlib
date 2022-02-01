@@ -1,58 +1,67 @@
 part of '../tdapi.dart';
 
 class SendMessage extends TdFunction {
-  /// Sends a message. Returns the sent message
-  SendMessage(
-      {this.chatId,
-      this.messageThreadId,
-      this.replyToMessageId,
-      this.options,
-      this.replyMarkup,
-      this.inputMessageContent});
 
+  /// Sends a message. Returns the sent message
+  const SendMessage({
+    required this.chatId,
+    required this.messageThreadId,
+    required this.replyToMessageId,
+    required this.options,
+    required this.replyMarkup,
+    required this.inputMessageContent,
+  });
+  
   /// [chatId] Target chat
-  int chatId;
+  final int chatId;
 
   /// [messageThreadId] If not 0, a message thread identifier in which the message will be sent
-  int messageThreadId;
+  final int messageThreadId;
 
   /// [replyToMessageId] Identifier of the message to reply to or 0
-  int replyToMessageId;
+  final int replyToMessageId;
 
-  /// [options] Options to be used to send the message
-  MessageSendOptions options;
+  /// [options] Options to be used to send the message; pass null to use default options
+  final MessageSendOptions options;
 
-  /// [replyMarkup] Markup for replying to the message; for bots only
-  ReplyMarkup replyMarkup;
+  /// [replyMarkup] Markup for replying to the message; pass null if none; for bots only
+  final ReplyMarkup replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent
-  InputMessageContent inputMessageContent;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SendMessage.fromJson(Map<String, dynamic> json);
-
+  final InputMessageContent inputMessageContent;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_thread_id": this.messageThreadId,
-      "reply_to_message_id": this.replyToMessageId,
-      "options": this.options == null ? null : this.options.toJson(),
-      "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent == null
-          ? null
-          : this.inputMessageContent.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_thread_id": messageThreadId,
+      "reply_to_message_id": replyToMessageId,
+      "options": options.toJson(),
+      "reply_markup": replyMarkup.toJson(),
+      "input_message_content": inputMessageContent.toJson(),
+      "@extra": extra,
     };
   }
+  
+  SendMessage copyWith({
+    int? chatId,
+    int? messageThreadId,
+    int? replyToMessageId,
+    MessageSendOptions? options,
+    ReplyMarkup? replyMarkup,
+    InputMessageContent? inputMessageContent,
+  }) => SendMessage(
+    chatId: chatId ?? this.chatId,
+    messageThreadId: messageThreadId ?? this.messageThreadId,
+    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    options: options ?? this.options,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   static const CONSTRUCTOR = 'sendMessage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

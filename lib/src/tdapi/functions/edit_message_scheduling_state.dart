@@ -1,39 +1,46 @@
 part of '../tdapi.dart';
 
 class EditMessageSchedulingState extends TdFunction {
-  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
-  EditMessageSchedulingState(
-      {this.chatId, this.messageId, this.schedulingState});
 
+  /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
+  const EditMessageSchedulingState({
+    required this.chatId,
+    required this.messageId,
+    required this.schedulingState,
+  });
+  
   /// [chatId] The chat the message belongs to
-  int chatId;
+  final int chatId;
 
   /// [messageId] Identifier of the message
-  int messageId;
+  final int messageId;
 
-  /// [schedulingState] The new message scheduling state. Pass null to send the message immediately
-  MessageSchedulingState schedulingState;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  EditMessageSchedulingState.fromJson(Map<String, dynamic> json);
-
+  /// [schedulingState] The new message scheduling state; pass null to send the message immediately
+  final MessageSchedulingState schedulingState;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "scheduling_state":
-          this.schedulingState == null ? null : this.schedulingState.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "scheduling_state": schedulingState.toJson(),
+      "@extra": extra,
     };
   }
+  
+  EditMessageSchedulingState copyWith({
+    int? chatId,
+    int? messageId,
+    MessageSchedulingState? schedulingState,
+  }) => EditMessageSchedulingState(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    schedulingState: schedulingState ?? this.schedulingState,
+  );
 
   static const CONSTRUCTOR = 'editMessageSchedulingState';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

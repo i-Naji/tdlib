@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class CreatePrivateChat extends TdFunction {
-  /// Returns an existing chat corresponding to a given user
-  CreatePrivateChat({this.userId, this.force});
 
-  /// [userId] User identifier
-  int userId;
+  /// Returns an existing chat corresponding to a given user
+  const CreatePrivateChat({
+    required this.userId,
+    required this.force,
+  });
+  
+  /// [userId] User identifier 
+  final int userId;
 
   /// [force] If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect
-  bool force;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  CreatePrivateChat.fromJson(Map<String, dynamic> json);
-
+  final bool force;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "force": this.force,
-      "@extra": this.extra,
+      "user_id": userId,
+      "force": force,
+      "@extra": extra,
     };
   }
+  
+  CreatePrivateChat copyWith({
+    int? userId,
+    bool? force,
+  }) => CreatePrivateChat(
+    userId: userId ?? this.userId,
+    force: force ?? this.force,
+  );
 
   static const CONSTRUCTOR = 'createPrivateChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

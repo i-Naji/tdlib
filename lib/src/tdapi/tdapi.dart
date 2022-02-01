@@ -2,7 +2,6 @@ import 'dart:convert' show json;
 
 part 'object.dart';
 part 'function.dart';
-part 'convertor.dart';
 
 part 'objects/error.dart';
 part 'objects/ok.dart';
@@ -39,6 +38,7 @@ part 'objects/sticker.dart';
 part 'objects/video.dart';
 part 'objects/video_note.dart';
 part 'objects/voice_note.dart';
+part 'objects/animated_emoji.dart';
 part 'objects/contact.dart';
 part 'objects/location.dart';
 part 'objects/venue.dart';
@@ -48,7 +48,7 @@ part 'objects/profile_photo.dart';
 part 'objects/chat_photo_info.dart';
 part 'objects/user_type.dart';
 part 'objects/bot_command.dart';
-part 'objects/bot_info.dart';
+part 'objects/bot_commands.dart';
 part 'objects/chat_location.dart';
 part 'objects/animated_chat_photo.dart';
 part 'objects/chat_photo.dart';
@@ -65,6 +65,16 @@ part 'objects/chat_member.dart';
 part 'objects/chat_members.dart';
 part 'objects/chat_members_filter.dart';
 part 'objects/supergroup_members_filter.dart';
+part 'objects/chat_invite_link.dart';
+part 'objects/chat_invite_links.dart';
+part 'objects/chat_invite_link_count.dart';
+part 'objects/chat_invite_link_counts.dart';
+part 'objects/chat_invite_link_member.dart';
+part 'objects/chat_invite_link_members.dart';
+part 'objects/chat_invite_link_info.dart';
+part 'objects/chat_join_request.dart';
+part 'objects/chat_join_requests.dart';
+part 'objects/chat_join_requests_info.dart';
 part 'objects/basic_group.dart';
 part 'objects/basic_group_full_info.dart';
 part 'objects/supergroup.dart';
@@ -81,6 +91,11 @@ part 'objects/message_sending_state.dart';
 part 'objects/message.dart';
 part 'objects/messages.dart';
 part 'objects/found_messages.dart';
+part 'objects/message_position.dart';
+part 'objects/message_positions.dart';
+part 'objects/message_calendar_day.dart';
+part 'objects/message_calendar.dart';
+part 'objects/sponsored_message.dart';
 part 'objects/notification_settings_scope.dart';
 part 'objects/chat_notification_settings.dart';
 part 'objects/scope_notification_settings.dart';
@@ -94,12 +109,11 @@ part 'objects/chat_list.dart';
 part 'objects/chat_lists.dart';
 part 'objects/chat_source.dart';
 part 'objects/chat_position.dart';
+part 'objects/video_chat.dart';
 part 'objects/chat.dart';
 part 'objects/chats.dart';
 part 'objects/chat_nearby.dart';
 part 'objects/chats_nearby.dart';
-part 'objects/chat_invite_link.dart';
-part 'objects/chat_invite_link_info.dart';
 part 'objects/public_chat_type.dart';
 part 'objects/chat_action_bar.dart';
 part 'objects/keyboard_button_type.dart';
@@ -132,6 +146,7 @@ part 'objects/shipping_option.dart';
 part 'objects/saved_credentials.dart';
 part 'objects/input_credentials.dart';
 part 'objects/payments_provider_stripe.dart';
+part 'objects/payment_form_theme.dart';
 part 'objects/payment_form.dart';
 part 'objects/validated_order_info.dart';
 part 'objects/payment_result.dart';
@@ -179,12 +194,11 @@ part 'objects/call_server.dart';
 part 'objects/call_id.dart';
 part 'objects/group_call_id.dart';
 part 'objects/call_state.dart';
+part 'objects/group_call_video_quality.dart';
 part 'objects/group_call_recent_speaker.dart';
 part 'objects/group_call.dart';
-part 'objects/group_call_payload_fingerprint.dart';
-part 'objects/group_call_payload.dart';
-part 'objects/group_call_join_response_candidate.dart';
-part 'objects/group_call_join_response.dart';
+part 'objects/group_call_video_source_group.dart';
+part 'objects/group_call_participant_video_info.dart';
 part 'objects/group_call_participant.dart';
 part 'objects/call_problem.dart';
 part 'objects/call.dart';
@@ -217,9 +231,14 @@ part 'objects/background_type.dart';
 part 'objects/background.dart';
 part 'objects/backgrounds.dart';
 part 'objects/input_background.dart';
+part 'objects/theme_settings.dart';
+part 'objects/chat_theme.dart';
 part 'objects/hashtags.dart';
 part 'objects/can_transfer_ownership_result.dart';
 part 'objects/check_chat_username_result.dart';
+part 'objects/check_sticker_set_name_result.dart';
+part 'objects/reset_password_result.dart';
+part 'objects/message_file_type.dart';
 part 'objects/push_message_content.dart';
 part 'objects/notification_type.dart';
 part 'objects/notification_group_type.dart';
@@ -237,6 +256,7 @@ part 'objects/sessions.dart';
 part 'objects/connected_website.dart';
 part 'objects/connected_websites.dart';
 part 'objects/chat_report_reason.dart';
+part 'objects/internal_link_type.dart';
 part 'objects/message_link.dart';
 part 'objects/message_link_info.dart';
 part 'objects/file_part.dart';
@@ -277,6 +297,7 @@ part 'objects/chat_statistics.dart';
 part 'objects/message_statistics.dart';
 part 'objects/point.dart';
 part 'objects/vector_path_command.dart';
+part 'objects/bot_command_scope.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
 part 'objects/log_stream.dart';
@@ -299,6 +320,7 @@ part 'functions/request_qr_code_authentication.dart';
 part 'functions/register_user.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/request_authentication_password_recovery.dart';
+part 'functions/check_authentication_password_recovery_code.dart';
 part 'functions/recover_authentication_password.dart';
 part 'functions/check_authentication_bot_token.dart';
 part 'functions/log_out.dart';
@@ -314,7 +336,10 @@ part 'functions/set_recovery_email_address.dart';
 part 'functions/check_recovery_email_address_code.dart';
 part 'functions/resend_recovery_email_address_code.dart';
 part 'functions/request_password_recovery.dart';
+part 'functions/check_password_recovery_code.dart';
 part 'functions/recover_password.dart';
+part 'functions/reset_password.dart';
+part 'functions/cancel_password_reset.dart';
 part 'functions/create_temporary_password.dart';
 part 'functions/get_temporary_password_state.dart';
 part 'functions/get_me.dart';
@@ -333,8 +358,10 @@ part 'functions/get_chat_pinned_message.dart';
 part 'functions/get_callback_query_message.dart';
 part 'functions/get_messages.dart';
 part 'functions/get_message_thread.dart';
+part 'functions/get_message_viewers.dart';
 part 'functions/get_file.dart';
 part 'functions/get_remote_file.dart';
+part 'functions/load_chats.dart';
 part 'functions/get_chats.dart';
 part 'functions/search_public_chat.dart';
 part 'functions/search_public_chats.dart';
@@ -346,6 +373,7 @@ part 'functions/remove_top_chat.dart';
 part 'functions/add_recently_found_chat.dart';
 part 'functions/remove_recently_found_chat.dart';
 part 'functions/clear_recently_found_chats.dart';
+part 'functions/get_recently_opened_chats.dart';
 part 'functions/check_chat_username.dart';
 part 'functions/get_created_public_chats.dart';
 part 'functions/check_created_public_chats_limit.dart';
@@ -355,32 +383,39 @@ part 'functions/get_groups_in_common.dart';
 part 'functions/get_chat_history.dart';
 part 'functions/get_message_thread_history.dart';
 part 'functions/delete_chat_history.dart';
+part 'functions/delete_chat.dart';
 part 'functions/search_chat_messages.dart';
 part 'functions/search_messages.dart';
 part 'functions/search_secret_messages.dart';
 part 'functions/search_call_messages.dart';
+part 'functions/delete_all_call_messages.dart';
 part 'functions/search_chat_recent_location_messages.dart';
 part 'functions/get_active_live_location_messages.dart';
 part 'functions/get_chat_message_by_date.dart';
+part 'functions/get_chat_sparse_message_positions.dart';
+part 'functions/get_chat_message_calendar.dart';
 part 'functions/get_chat_message_count.dart';
 part 'functions/get_chat_scheduled_messages.dart';
 part 'functions/get_message_public_forwards.dart';
+part 'functions/get_chat_sponsored_message.dart';
 part 'functions/remove_notification.dart';
 part 'functions/remove_notification_group.dart';
 part 'functions/get_message_link.dart';
 part 'functions/get_message_embedding_code.dart';
 part 'functions/get_message_link_info.dart';
+part 'functions/get_chat_available_message_senders.dart';
+part 'functions/set_chat_message_sender.dart';
 part 'functions/send_message.dart';
 part 'functions/send_message_album.dart';
 part 'functions/send_bot_start_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/forward_messages.dart';
 part 'functions/resend_messages.dart';
-part 'functions/send_chat_set_ttl_message.dart';
 part 'functions/send_chat_screenshot_taken_notification.dart';
 part 'functions/add_local_message.dart';
 part 'functions/delete_messages.dart';
-part 'functions/delete_chat_messages_from_user.dart';
+part 'functions/delete_chat_messages_by_sender.dart';
+part 'functions/delete_chat_messages_by_date.dart';
 part 'functions/edit_message_text.dart';
 part 'functions/edit_message_live_location.dart';
 part 'functions/edit_message_media.dart';
@@ -424,6 +459,10 @@ part 'functions/open_chat.dart';
 part 'functions/close_chat.dart';
 part 'functions/view_messages.dart';
 part 'functions/open_message_content.dart';
+part 'functions/click_animated_emoji_message.dart';
+part 'functions/get_internal_link_type.dart';
+part 'functions/get_external_link_info.dart';
+part 'functions/get_external_link.dart';
 part 'functions/read_all_chat_mentions.dart';
 part 'functions/create_private_chat.dart';
 part 'functions/create_basic_group_chat.dart';
@@ -444,9 +483,12 @@ part 'functions/get_recommended_chat_filters.dart';
 part 'functions/get_chat_filter_default_icon_name.dart';
 part 'functions/set_chat_title.dart';
 part 'functions/set_chat_photo.dart';
+part 'functions/set_chat_message_ttl.dart';
 part 'functions/set_chat_permissions.dart';
+part 'functions/set_chat_theme.dart';
 part 'functions/set_chat_draft_message.dart';
 part 'functions/set_chat_notification_settings.dart';
+part 'functions/toggle_chat_has_protected_content.dart';
 part 'functions/toggle_chat_is_marked_as_unread.dart';
 part 'functions/toggle_chat_default_disable_notification.dart';
 part 'functions/set_chat_client_data.dart';
@@ -462,6 +504,7 @@ part 'functions/leave_chat.dart';
 part 'functions/add_chat_member.dart';
 part 'functions/add_chat_members.dart';
 part 'functions/set_chat_member_status.dart';
+part 'functions/ban_chat_member.dart';
 part 'functions/can_transfer_ownership.dart';
 part 'functions/transfer_chat_ownership.dart';
 part 'functions/get_chat_member.dart';
@@ -477,6 +520,7 @@ part 'functions/set_pinned_chats.dart';
 part 'functions/download_file.dart';
 part 'functions/get_file_downloaded_prefix_size.dart';
 part 'functions/cancel_download_file.dart';
+part 'functions/get_suggested_file_name.dart';
 part 'functions/upload_file.dart';
 part 'functions/cancel_upload_file.dart';
 part 'functions/write_generated_file_part.dart';
@@ -484,25 +528,57 @@ part 'functions/set_file_generation_progress.dart';
 part 'functions/finish_file_generation.dart';
 part 'functions/read_file_part.dart';
 part 'functions/delete_file.dart';
-part 'functions/generate_chat_invite_link.dart';
+part 'functions/get_message_file_type.dart';
+part 'functions/get_message_import_confirmation_text.dart';
+part 'functions/import_messages.dart';
+part 'functions/replace_primary_chat_invite_link.dart';
+part 'functions/create_chat_invite_link.dart';
+part 'functions/edit_chat_invite_link.dart';
+part 'functions/get_chat_invite_link.dart';
+part 'functions/get_chat_invite_link_counts.dart';
+part 'functions/get_chat_invite_links.dart';
+part 'functions/get_chat_invite_link_members.dart';
+part 'functions/revoke_chat_invite_link.dart';
+part 'functions/delete_revoked_chat_invite_link.dart';
+part 'functions/delete_all_revoked_chat_invite_links.dart';
 part 'functions/check_chat_invite_link.dart';
 part 'functions/join_chat_by_invite_link.dart';
+part 'functions/get_chat_join_requests.dart';
+part 'functions/process_chat_join_request.dart';
+part 'functions/process_chat_join_requests.dart';
 part 'functions/create_call.dart';
 part 'functions/accept_call.dart';
 part 'functions/send_call_signaling_data.dart';
 part 'functions/discard_call.dart';
 part 'functions/send_call_rating.dart';
 part 'functions/send_call_debug_information.dart';
-part 'functions/create_voice_chat.dart';
+part 'functions/get_video_chat_available_participants.dart';
+part 'functions/set_video_chat_default_participant.dart';
+part 'functions/create_video_chat.dart';
 part 'functions/get_group_call.dart';
+part 'functions/start_scheduled_group_call.dart';
+part 'functions/toggle_group_call_enabled_start_notification.dart';
 part 'functions/join_group_call.dart';
+part 'functions/start_group_call_screen_sharing.dart';
+part 'functions/toggle_group_call_screen_sharing_is_paused.dart';
+part 'functions/end_group_call_screen_sharing.dart';
+part 'functions/set_group_call_title.dart';
 part 'functions/toggle_group_call_mute_new_participants.dart';
 part 'functions/invite_group_call_participants.dart';
+part 'functions/get_group_call_invite_link.dart';
+part 'functions/revoke_group_call_invite_link.dart';
+part 'functions/start_group_call_recording.dart';
+part 'functions/end_group_call_recording.dart';
+part 'functions/toggle_group_call_is_my_video_paused.dart';
+part 'functions/toggle_group_call_is_my_video_enabled.dart';
 part 'functions/set_group_call_participant_is_speaking.dart';
 part 'functions/toggle_group_call_participant_is_muted.dart';
+part 'functions/set_group_call_participant_volume_level.dart';
+part 'functions/toggle_group_call_participant_is_hand_raised.dart';
 part 'functions/load_group_call_participants.dart';
 part 'functions/leave_group_call.dart';
-part 'functions/discard_group_call.dart';
+part 'functions/end_group_call.dart';
+part 'functions/get_group_call_stream_segment.dart';
 part 'functions/toggle_message_sender_is_blocked.dart';
 part 'functions/block_message_sender_from_replies.dart';
 part 'functions/get_blocked_message_senders.dart';
@@ -538,6 +614,7 @@ part 'functions/add_favorite_sticker.dart';
 part 'functions/remove_favorite_sticker.dart';
 part 'functions/get_sticker_emojis.dart';
 part 'functions/search_emojis.dart';
+part 'functions/get_animated_emoji.dart';
 part 'functions/get_emoji_suggestions_url.dart';
 part 'functions/get_saved_animations.dart';
 part 'functions/add_saved_animation.dart';
@@ -557,9 +634,14 @@ part 'functions/change_phone_number.dart';
 part 'functions/resend_change_phone_number_code.dart';
 part 'functions/check_change_phone_number_code.dart';
 part 'functions/set_commands.dart';
+part 'functions/delete_commands.dart';
+part 'functions/get_commands.dart';
 part 'functions/get_active_sessions.dart';
 part 'functions/terminate_session.dart';
 part 'functions/terminate_all_other_sessions.dart';
+part 'functions/toggle_session_can_accept_calls.dart';
+part 'functions/toggle_session_can_accept_secret_chats.dart';
+part 'functions/set_inactive_session_ttl.dart';
 part 'functions/get_connected_websites.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/disconnect_all_websites.dart';
@@ -567,9 +649,9 @@ part 'functions/set_supergroup_username.dart';
 part 'functions/set_supergroup_sticker_set.dart';
 part 'functions/toggle_supergroup_sign_messages.dart';
 part 'functions/toggle_supergroup_is_all_history_available.dart';
+part 'functions/toggle_supergroup_is_broadcast_group.dart';
 part 'functions/report_supergroup_spam.dart';
 part 'functions/get_supergroup_members.dart';
-part 'functions/delete_supergroup.dart';
 part 'functions/close_secret_chat.dart';
 part 'functions/get_chat_event_log.dart';
 part 'functions/get_payment_form.dart';
@@ -608,7 +690,7 @@ part 'functions/get_account_ttl.dart';
 part 'functions/delete_account.dart';
 part 'functions/remove_chat_action_bar.dart';
 part 'functions/report_chat.dart';
-part 'functions/get_chat_statistics_url.dart';
+part 'functions/report_chat_photo.dart';
 part 'functions/get_chat_statistics.dart';
 part 'functions/get_message_statistics.dart';
 part 'functions/get_statistical_graph.dart';
@@ -643,6 +725,8 @@ part 'functions/resend_phone_number_confirmation_code.dart';
 part 'functions/check_phone_number_confirmation_code.dart';
 part 'functions/set_bot_updates_status.dart';
 part 'functions/upload_sticker_file.dart';
+part 'functions/get_suggested_sticker_set_name.dart';
+part 'functions/check_sticker_set_name.dart';
 part 'functions/create_new_sticker_set.dart';
 part 'functions/add_sticker_to_set.dart';
 part 'functions/set_sticker_set_thumbnail.dart';
@@ -656,7 +740,8 @@ part 'functions/set_alarm.dart';
 part 'functions/get_countries.dart';
 part 'functions/get_country_code.dart';
 part 'functions/get_phone_number_info.dart';
-part 'functions/get_invite_text.dart';
+part 'functions/get_phone_number_info_sync.dart';
+part 'functions/get_application_download_link.dart';
 part 'functions/get_deep_link_info.dart';
 part 'functions/get_application_config.dart';
 part 'functions/save_application_log_event.dart';
@@ -690,1135 +775,1050 @@ part 'functions/test_get_difference.dart';
 part 'functions/test_use_update.dart';
 part 'functions/test_return_error.dart';
 
-final Map<String, TdObject Function(Map<String, dynamic>)> allObjects = {
-  'error': (d) => TdError.fromJson(d),
-  'ok': (d) => Ok.fromJson(d),
-  'tdlibParameters': (d) => TdlibParameters.fromJson(d),
-  'authenticationCodeType': (d) => AuthenticationCodeType.fromJson(d),
-  'authenticationCodeTypeTelegramMessage': (d) =>
-      AuthenticationCodeTypeTelegramMessage.fromJson(d),
-  'authenticationCodeTypeSms': (d) => AuthenticationCodeTypeSms.fromJson(d),
-  'authenticationCodeTypeCall': (d) => AuthenticationCodeTypeCall.fromJson(d),
-  'authenticationCodeTypeFlashCall': (d) =>
-      AuthenticationCodeTypeFlashCall.fromJson(d),
-  'authenticationCodeInfo': (d) => AuthenticationCodeInfo.fromJson(d),
-  'emailAddressAuthenticationCodeInfo': (d) =>
-      EmailAddressAuthenticationCodeInfo.fromJson(d),
-  'textEntity': (d) => TextEntity.fromJson(d),
-  'textEntities': (d) => TextEntities.fromJson(d),
-  'formattedText': (d) => FormattedText.fromJson(d),
-  'termsOfService': (d) => TermsOfService.fromJson(d),
-  'authorizationState': (d) => AuthorizationState.fromJson(d),
-  'authorizationStateWaitTdlibParameters': (d) =>
-      AuthorizationStateWaitTdlibParameters.fromJson(d),
-  'authorizationStateWaitEncryptionKey': (d) =>
-      AuthorizationStateWaitEncryptionKey.fromJson(d),
-  'authorizationStateWaitPhoneNumber': (d) =>
-      AuthorizationStateWaitPhoneNumber.fromJson(d),
-  'authorizationStateWaitCode': (d) => AuthorizationStateWaitCode.fromJson(d),
-  'authorizationStateWaitOtherDeviceConfirmation': (d) =>
-      AuthorizationStateWaitOtherDeviceConfirmation.fromJson(d),
-  'authorizationStateWaitRegistration': (d) =>
-      AuthorizationStateWaitRegistration.fromJson(d),
-  'authorizationStateWaitPassword': (d) =>
-      AuthorizationStateWaitPassword.fromJson(d),
-  'authorizationStateReady': (d) => AuthorizationStateReady.fromJson(d),
-  'authorizationStateLoggingOut': (d) =>
-      AuthorizationStateLoggingOut.fromJson(d),
-  'authorizationStateClosing': (d) => AuthorizationStateClosing.fromJson(d),
-  'authorizationStateClosed': (d) => AuthorizationStateClosed.fromJson(d),
-  'passwordState': (d) => PasswordState.fromJson(d),
-  'recoveryEmailAddress': (d) => RecoveryEmailAddress.fromJson(d),
-  'temporaryPasswordState': (d) => TemporaryPasswordState.fromJson(d),
-  'localFile': (d) => LocalFile.fromJson(d),
-  'remoteFile': (d) => RemoteFile.fromJson(d),
-  'file': (d) => File.fromJson(d),
-  'inputFile': (d) => InputFile.fromJson(d),
-  'inputFileId': (d) => InputFileId.fromJson(d),
-  'inputFileRemote': (d) => InputFileRemote.fromJson(d),
-  'inputFileLocal': (d) => InputFileLocal.fromJson(d),
-  'inputFileGenerated': (d) => InputFileGenerated.fromJson(d),
-  'photoSize': (d) => PhotoSize.fromJson(d),
-  'minithumbnail': (d) => Minithumbnail.fromJson(d),
-  'thumbnailFormat': (d) => ThumbnailFormat.fromJson(d),
-  'thumbnailFormatJpeg': (d) => ThumbnailFormatJpeg.fromJson(d),
-  'thumbnailFormatPng': (d) => ThumbnailFormatPng.fromJson(d),
-  'thumbnailFormatWebp': (d) => ThumbnailFormatWebp.fromJson(d),
-  'thumbnailFormatGif': (d) => ThumbnailFormatGif.fromJson(d),
-  'thumbnailFormatTgs': (d) => ThumbnailFormatTgs.fromJson(d),
-  'thumbnailFormatMpeg4': (d) => ThumbnailFormatMpeg4.fromJson(d),
-  'thumbnail': (d) => Thumbnail.fromJson(d),
-  'maskPoint': (d) => MaskPoint.fromJson(d),
-  'maskPointForehead': (d) => MaskPointForehead.fromJson(d),
-  'maskPointEyes': (d) => MaskPointEyes.fromJson(d),
-  'maskPointMouth': (d) => MaskPointMouth.fromJson(d),
-  'maskPointChin': (d) => MaskPointChin.fromJson(d),
-  'maskPosition': (d) => MaskPosition.fromJson(d),
-  'closedVectorPath': (d) => ClosedVectorPath.fromJson(d),
-  'pollOption': (d) => PollOption.fromJson(d),
-  'pollType': (d) => PollType.fromJson(d),
-  'pollTypeRegular': (d) => PollTypeRegular.fromJson(d),
-  'pollTypeQuiz': (d) => PollTypeQuiz.fromJson(d),
-  'animation': (d) => Animation.fromJson(d),
-  'audio': (d) => Audio.fromJson(d),
-  'document': (d) => Document.fromJson(d),
-  'photo': (d) => Photo.fromJson(d),
-  'sticker': (d) => Sticker.fromJson(d),
-  'video': (d) => Video.fromJson(d),
-  'videoNote': (d) => VideoNote.fromJson(d),
-  'voiceNote': (d) => VoiceNote.fromJson(d),
-  'contact': (d) => Contact.fromJson(d),
-  'location': (d) => Location.fromJson(d),
-  'venue': (d) => Venue.fromJson(d),
-  'game': (d) => Game.fromJson(d),
-  'poll': (d) => Poll.fromJson(d),
-  'profilePhoto': (d) => ProfilePhoto.fromJson(d),
-  'chatPhotoInfo': (d) => ChatPhotoInfo.fromJson(d),
-  'userType': (d) => UserType.fromJson(d),
-  'userTypeRegular': (d) => UserTypeRegular.fromJson(d),
-  'userTypeDeleted': (d) => UserTypeDeleted.fromJson(d),
-  'userTypeBot': (d) => UserTypeBot.fromJson(d),
-  'userTypeUnknown': (d) => UserTypeUnknown.fromJson(d),
-  'botCommand': (d) => BotCommand.fromJson(d),
-  'botInfo': (d) => BotInfo.fromJson(d),
-  'chatLocation': (d) => ChatLocation.fromJson(d),
-  'animatedChatPhoto': (d) => AnimatedChatPhoto.fromJson(d),
-  'chatPhoto': (d) => ChatPhoto.fromJson(d),
-  'chatPhotos': (d) => ChatPhotos.fromJson(d),
-  'inputChatPhoto': (d) => InputChatPhoto.fromJson(d),
-  'inputChatPhotoPrevious': (d) => InputChatPhotoPrevious.fromJson(d),
-  'inputChatPhotoStatic': (d) => InputChatPhotoStatic.fromJson(d),
-  'inputChatPhotoAnimation': (d) => InputChatPhotoAnimation.fromJson(d),
-  'user': (d) => User.fromJson(d),
-  'userFullInfo': (d) => UserFullInfo.fromJson(d),
-  'users': (d) => Users.fromJson(d),
-  'chatAdministrator': (d) => ChatAdministrator.fromJson(d),
-  'chatAdministrators': (d) => ChatAdministrators.fromJson(d),
-  'chatPermissions': (d) => ChatPermissions.fromJson(d),
-  'chatMemberStatus': (d) => ChatMemberStatus.fromJson(d),
-  'chatMemberStatusCreator': (d) => ChatMemberStatusCreator.fromJson(d),
-  'chatMemberStatusAdministrator': (d) =>
-      ChatMemberStatusAdministrator.fromJson(d),
-  'chatMemberStatusMember': (d) => ChatMemberStatusMember.fromJson(d),
-  'chatMemberStatusRestricted': (d) => ChatMemberStatusRestricted.fromJson(d),
-  'chatMemberStatusLeft': (d) => ChatMemberStatusLeft.fromJson(d),
-  'chatMemberStatusBanned': (d) => ChatMemberStatusBanned.fromJson(d),
-  'chatMember': (d) => ChatMember.fromJson(d),
-  'chatMembers': (d) => ChatMembers.fromJson(d),
-  'chatMembersFilter': (d) => ChatMembersFilter.fromJson(d),
-  'chatMembersFilterContacts': (d) => ChatMembersFilterContacts.fromJson(d),
-  'chatMembersFilterAdministrators': (d) =>
-      ChatMembersFilterAdministrators.fromJson(d),
-  'chatMembersFilterMembers': (d) => ChatMembersFilterMembers.fromJson(d),
-  'chatMembersFilterMention': (d) => ChatMembersFilterMention.fromJson(d),
-  'chatMembersFilterRestricted': (d) => ChatMembersFilterRestricted.fromJson(d),
-  'chatMembersFilterBanned': (d) => ChatMembersFilterBanned.fromJson(d),
-  'chatMembersFilterBots': (d) => ChatMembersFilterBots.fromJson(d),
-  'supergroupMembersFilter': (d) => SupergroupMembersFilter.fromJson(d),
-  'supergroupMembersFilterRecent': (d) =>
-      SupergroupMembersFilterRecent.fromJson(d),
-  'supergroupMembersFilterContacts': (d) =>
-      SupergroupMembersFilterContacts.fromJson(d),
-  'supergroupMembersFilterAdministrators': (d) =>
-      SupergroupMembersFilterAdministrators.fromJson(d),
-  'supergroupMembersFilterSearch': (d) =>
-      SupergroupMembersFilterSearch.fromJson(d),
-  'supergroupMembersFilterRestricted': (d) =>
-      SupergroupMembersFilterRestricted.fromJson(d),
-  'supergroupMembersFilterBanned': (d) =>
-      SupergroupMembersFilterBanned.fromJson(d),
-  'supergroupMembersFilterMention': (d) =>
-      SupergroupMembersFilterMention.fromJson(d),
-  'supergroupMembersFilterBots': (d) => SupergroupMembersFilterBots.fromJson(d),
-  'basicGroup': (d) => BasicGroup.fromJson(d),
-  'basicGroupFullInfo': (d) => BasicGroupFullInfo.fromJson(d),
-  'supergroup': (d) => Supergroup.fromJson(d),
-  'supergroupFullInfo': (d) => SupergroupFullInfo.fromJson(d),
-  'secretChatState': (d) => SecretChatState.fromJson(d),
-  'secretChatStatePending': (d) => SecretChatStatePending.fromJson(d),
-  'secretChatStateReady': (d) => SecretChatStateReady.fromJson(d),
-  'secretChatStateClosed': (d) => SecretChatStateClosed.fromJson(d),
-  'secretChat': (d) => SecretChat.fromJson(d),
-  'messageSender': (d) => MessageSender.fromJson(d),
-  'messageSenderUser': (d) => MessageSenderUser.fromJson(d),
-  'messageSenderChat': (d) => MessageSenderChat.fromJson(d),
-  'messageSenders': (d) => MessageSenders.fromJson(d),
-  'messageForwardOrigin': (d) => MessageForwardOrigin.fromJson(d),
-  'messageForwardOriginUser': (d) => MessageForwardOriginUser.fromJson(d),
-  'messageForwardOriginChat': (d) => MessageForwardOriginChat.fromJson(d),
-  'messageForwardOriginHiddenUser': (d) =>
-      MessageForwardOriginHiddenUser.fromJson(d),
-  'messageForwardOriginChannel': (d) => MessageForwardOriginChannel.fromJson(d),
-  'messageForwardInfo': (d) => MessageForwardInfo.fromJson(d),
-  'messageReplyInfo': (d) => MessageReplyInfo.fromJson(d),
-  'messageInteractionInfo': (d) => MessageInteractionInfo.fromJson(d),
-  'messageSendingState': (d) => MessageSendingState.fromJson(d),
-  'messageSendingStatePending': (d) => MessageSendingStatePending.fromJson(d),
-  'messageSendingStateFailed': (d) => MessageSendingStateFailed.fromJson(d),
-  'message': (d) => Message.fromJson(d),
-  'messages': (d) => Messages.fromJson(d),
-  'foundMessages': (d) => FoundMessages.fromJson(d),
-  'notificationSettingsScope': (d) => NotificationSettingsScope.fromJson(d),
-  'notificationSettingsScopePrivateChats': (d) =>
-      NotificationSettingsScopePrivateChats.fromJson(d),
-  'notificationSettingsScopeGroupChats': (d) =>
-      NotificationSettingsScopeGroupChats.fromJson(d),
-  'notificationSettingsScopeChannelChats': (d) =>
-      NotificationSettingsScopeChannelChats.fromJson(d),
-  'chatNotificationSettings': (d) => ChatNotificationSettings.fromJson(d),
-  'scopeNotificationSettings': (d) => ScopeNotificationSettings.fromJson(d),
-  'draftMessage': (d) => DraftMessage.fromJson(d),
-  'chatType': (d) => ChatType.fromJson(d),
-  'chatTypePrivate': (d) => ChatTypePrivate.fromJson(d),
-  'chatTypeBasicGroup': (d) => ChatTypeBasicGroup.fromJson(d),
-  'chatTypeSupergroup': (d) => ChatTypeSupergroup.fromJson(d),
-  'chatTypeSecret': (d) => ChatTypeSecret.fromJson(d),
-  'chatFilter': (d) => ChatFilter.fromJson(d),
-  'chatFilterInfo': (d) => ChatFilterInfo.fromJson(d),
-  'recommendedChatFilter': (d) => RecommendedChatFilter.fromJson(d),
-  'recommendedChatFilters': (d) => RecommendedChatFilters.fromJson(d),
-  'chatList': (d) => ChatList.fromJson(d),
-  'chatListMain': (d) => ChatListMain.fromJson(d),
-  'chatListArchive': (d) => ChatListArchive.fromJson(d),
-  'chatListFilter': (d) => ChatListFilter.fromJson(d),
-  'chatLists': (d) => ChatLists.fromJson(d),
-  'chatSource': (d) => ChatSource.fromJson(d),
-  'chatSourceMtprotoProxy': (d) => ChatSourceMtprotoProxy.fromJson(d),
-  'chatSourcePublicServiceAnnouncement': (d) =>
-      ChatSourcePublicServiceAnnouncement.fromJson(d),
-  'chatPosition': (d) => ChatPosition.fromJson(d),
-  'chat': (d) => Chat.fromJson(d),
-  'chats': (d) => Chats.fromJson(d),
-  'chatNearby': (d) => ChatNearby.fromJson(d),
-  'chatsNearby': (d) => ChatsNearby.fromJson(d),
-  'chatInviteLink': (d) => ChatInviteLink.fromJson(d),
-  'chatInviteLinkInfo': (d) => ChatInviteLinkInfo.fromJson(d),
-  'publicChatType': (d) => PublicChatType.fromJson(d),
-  'publicChatTypeHasUsername': (d) => PublicChatTypeHasUsername.fromJson(d),
-  'publicChatTypeIsLocationBased': (d) =>
-      PublicChatTypeIsLocationBased.fromJson(d),
-  'chatActionBar': (d) => ChatActionBar.fromJson(d),
-  'chatActionBarReportSpam': (d) => ChatActionBarReportSpam.fromJson(d),
-  'chatActionBarReportUnrelatedLocation': (d) =>
-      ChatActionBarReportUnrelatedLocation.fromJson(d),
-  'chatActionBarReportAddBlock': (d) => ChatActionBarReportAddBlock.fromJson(d),
-  'chatActionBarAddContact': (d) => ChatActionBarAddContact.fromJson(d),
-  'chatActionBarSharePhoneNumber': (d) =>
-      ChatActionBarSharePhoneNumber.fromJson(d),
-  'keyboardButtonType': (d) => KeyboardButtonType.fromJson(d),
-  'keyboardButtonTypeText': (d) => KeyboardButtonTypeText.fromJson(d),
-  'keyboardButtonTypeRequestPhoneNumber': (d) =>
-      KeyboardButtonTypeRequestPhoneNumber.fromJson(d),
-  'keyboardButtonTypeRequestLocation': (d) =>
-      KeyboardButtonTypeRequestLocation.fromJson(d),
-  'keyboardButtonTypeRequestPoll': (d) =>
-      KeyboardButtonTypeRequestPoll.fromJson(d),
-  'keyboardButton': (d) => KeyboardButton.fromJson(d),
-  'inlineKeyboardButtonType': (d) => InlineKeyboardButtonType.fromJson(d),
-  'inlineKeyboardButtonTypeUrl': (d) => InlineKeyboardButtonTypeUrl.fromJson(d),
-  'inlineKeyboardButtonTypeLoginUrl': (d) =>
-      InlineKeyboardButtonTypeLoginUrl.fromJson(d),
-  'inlineKeyboardButtonTypeCallback': (d) =>
-      InlineKeyboardButtonTypeCallback.fromJson(d),
-  'inlineKeyboardButtonTypeCallbackWithPassword': (d) =>
-      InlineKeyboardButtonTypeCallbackWithPassword.fromJson(d),
-  'inlineKeyboardButtonTypeCallbackGame': (d) =>
-      InlineKeyboardButtonTypeCallbackGame.fromJson(d),
-  'inlineKeyboardButtonTypeSwitchInline': (d) =>
-      InlineKeyboardButtonTypeSwitchInline.fromJson(d),
-  'inlineKeyboardButtonTypeBuy': (d) => InlineKeyboardButtonTypeBuy.fromJson(d),
-  'inlineKeyboardButton': (d) => InlineKeyboardButton.fromJson(d),
-  'replyMarkup': (d) => ReplyMarkup.fromJson(d),
-  'replyMarkupRemoveKeyboard': (d) => ReplyMarkupRemoveKeyboard.fromJson(d),
-  'replyMarkupForceReply': (d) => ReplyMarkupForceReply.fromJson(d),
-  'replyMarkupShowKeyboard': (d) => ReplyMarkupShowKeyboard.fromJson(d),
-  'replyMarkupInlineKeyboard': (d) => ReplyMarkupInlineKeyboard.fromJson(d),
-  'loginUrlInfo': (d) => LoginUrlInfo.fromJson(d),
-  'loginUrlInfoOpen': (d) => LoginUrlInfoOpen.fromJson(d),
-  'loginUrlInfoRequestConfirmation': (d) =>
-      LoginUrlInfoRequestConfirmation.fromJson(d),
-  'messageThreadInfo': (d) => MessageThreadInfo.fromJson(d),
-  'richText': (d) => RichText.fromJson(d),
-  'richTextPlain': (d) => RichTextPlain.fromJson(d),
-  'richTextBold': (d) => RichTextBold.fromJson(d),
-  'richTextItalic': (d) => RichTextItalic.fromJson(d),
-  'richTextUnderline': (d) => RichTextUnderline.fromJson(d),
-  'richTextStrikethrough': (d) => RichTextStrikethrough.fromJson(d),
-  'richTextFixed': (d) => RichTextFixed.fromJson(d),
-  'richTextUrl': (d) => RichTextUrl.fromJson(d),
-  'richTextEmailAddress': (d) => RichTextEmailAddress.fromJson(d),
-  'richTextSubscript': (d) => RichTextSubscript.fromJson(d),
-  'richTextSuperscript': (d) => RichTextSuperscript.fromJson(d),
-  'richTextMarked': (d) => RichTextMarked.fromJson(d),
-  'richTextPhoneNumber': (d) => RichTextPhoneNumber.fromJson(d),
-  'richTextIcon': (d) => RichTextIcon.fromJson(d),
-  'richTextReference': (d) => RichTextReference.fromJson(d),
-  'richTextAnchor': (d) => RichTextAnchor.fromJson(d),
-  'richTextAnchorLink': (d) => RichTextAnchorLink.fromJson(d),
-  'richTexts': (d) => RichTexts.fromJson(d),
-  'pageBlockCaption': (d) => PageBlockCaption.fromJson(d),
-  'pageBlockListItem': (d) => PageBlockListItem.fromJson(d),
-  'pageBlockHorizontalAlignment': (d) =>
-      PageBlockHorizontalAlignment.fromJson(d),
-  'pageBlockHorizontalAlignmentLeft': (d) =>
-      PageBlockHorizontalAlignmentLeft.fromJson(d),
-  'pageBlockHorizontalAlignmentCenter': (d) =>
-      PageBlockHorizontalAlignmentCenter.fromJson(d),
-  'pageBlockHorizontalAlignmentRight': (d) =>
-      PageBlockHorizontalAlignmentRight.fromJson(d),
-  'pageBlockVerticalAlignment': (d) => PageBlockVerticalAlignment.fromJson(d),
-  'pageBlockVerticalAlignmentTop': (d) =>
-      PageBlockVerticalAlignmentTop.fromJson(d),
-  'pageBlockVerticalAlignmentMiddle': (d) =>
-      PageBlockVerticalAlignmentMiddle.fromJson(d),
-  'pageBlockVerticalAlignmentBottom': (d) =>
-      PageBlockVerticalAlignmentBottom.fromJson(d),
-  'pageBlockTableCell': (d) => PageBlockTableCell.fromJson(d),
-  'pageBlockRelatedArticle': (d) => PageBlockRelatedArticle.fromJson(d),
-  'pageBlock': (d) => PageBlock.fromJson(d),
-  'pageBlockTitle': (d) => PageBlockTitle.fromJson(d),
-  'pageBlockSubtitle': (d) => PageBlockSubtitle.fromJson(d),
-  'pageBlockAuthorDate': (d) => PageBlockAuthorDate.fromJson(d),
-  'pageBlockHeader': (d) => PageBlockHeader.fromJson(d),
-  'pageBlockSubheader': (d) => PageBlockSubheader.fromJson(d),
-  'pageBlockKicker': (d) => PageBlockKicker.fromJson(d),
-  'pageBlockParagraph': (d) => PageBlockParagraph.fromJson(d),
-  'pageBlockPreformatted': (d) => PageBlockPreformatted.fromJson(d),
-  'pageBlockFooter': (d) => PageBlockFooter.fromJson(d),
-  'pageBlockDivider': (d) => PageBlockDivider.fromJson(d),
-  'pageBlockAnchor': (d) => PageBlockAnchor.fromJson(d),
-  'pageBlockList': (d) => PageBlockList.fromJson(d),
-  'pageBlockBlockQuote': (d) => PageBlockBlockQuote.fromJson(d),
-  'pageBlockPullQuote': (d) => PageBlockPullQuote.fromJson(d),
-  'pageBlockAnimation': (d) => PageBlockAnimation.fromJson(d),
-  'pageBlockAudio': (d) => PageBlockAudio.fromJson(d),
-  'pageBlockPhoto': (d) => PageBlockPhoto.fromJson(d),
-  'pageBlockVideo': (d) => PageBlockVideo.fromJson(d),
-  'pageBlockVoiceNote': (d) => PageBlockVoiceNote.fromJson(d),
-  'pageBlockCover': (d) => PageBlockCover.fromJson(d),
-  'pageBlockEmbedded': (d) => PageBlockEmbedded.fromJson(d),
-  'pageBlockEmbeddedPost': (d) => PageBlockEmbeddedPost.fromJson(d),
-  'pageBlockCollage': (d) => PageBlockCollage.fromJson(d),
-  'pageBlockSlideshow': (d) => PageBlockSlideshow.fromJson(d),
-  'pageBlockChatLink': (d) => PageBlockChatLink.fromJson(d),
-  'pageBlockTable': (d) => PageBlockTable.fromJson(d),
-  'pageBlockDetails': (d) => PageBlockDetails.fromJson(d),
-  'pageBlockRelatedArticles': (d) => PageBlockRelatedArticles.fromJson(d),
-  'pageBlockMap': (d) => PageBlockMap.fromJson(d),
-  'webPageInstantView': (d) => WebPageInstantView.fromJson(d),
-  'webPage': (d) => WebPage.fromJson(d),
-  'countryInfo': (d) => CountryInfo.fromJson(d),
-  'countries': (d) => Countries.fromJson(d),
-  'phoneNumberInfo': (d) => PhoneNumberInfo.fromJson(d),
-  'bankCardActionOpenUrl': (d) => BankCardActionOpenUrl.fromJson(d),
-  'bankCardInfo': (d) => BankCardInfo.fromJson(d),
-  'address': (d) => Address.fromJson(d),
-  'labeledPricePart': (d) => LabeledPricePart.fromJson(d),
-  'invoice': (d) => Invoice.fromJson(d),
-  'orderInfo': (d) => OrderInfo.fromJson(d),
-  'shippingOption': (d) => ShippingOption.fromJson(d),
-  'savedCredentials': (d) => SavedCredentials.fromJson(d),
-  'inputCredentials': (d) => InputCredentials.fromJson(d),
-  'inputCredentialsSaved': (d) => InputCredentialsSaved.fromJson(d),
-  'inputCredentialsNew': (d) => InputCredentialsNew.fromJson(d),
-  'inputCredentialsAndroidPay': (d) => InputCredentialsAndroidPay.fromJson(d),
-  'inputCredentialsApplePay': (d) => InputCredentialsApplePay.fromJson(d),
-  'paymentsProviderStripe': (d) => PaymentsProviderStripe.fromJson(d),
-  'paymentForm': (d) => PaymentForm.fromJson(d),
-  'validatedOrderInfo': (d) => ValidatedOrderInfo.fromJson(d),
-  'paymentResult': (d) => PaymentResult.fromJson(d),
-  'paymentReceipt': (d) => PaymentReceipt.fromJson(d),
-  'datedFile': (d) => DatedFile.fromJson(d),
-  'passportElementType': (d) => PassportElementType.fromJson(d),
-  'passportElementTypePersonalDetails': (d) =>
-      PassportElementTypePersonalDetails.fromJson(d),
-  'passportElementTypePassport': (d) => PassportElementTypePassport.fromJson(d),
-  'passportElementTypeDriverLicense': (d) =>
-      PassportElementTypeDriverLicense.fromJson(d),
-  'passportElementTypeIdentityCard': (d) =>
-      PassportElementTypeIdentityCard.fromJson(d),
-  'passportElementTypeInternalPassport': (d) =>
-      PassportElementTypeInternalPassport.fromJson(d),
-  'passportElementTypeAddress': (d) => PassportElementTypeAddress.fromJson(d),
-  'passportElementTypeUtilityBill': (d) =>
-      PassportElementTypeUtilityBill.fromJson(d),
-  'passportElementTypeBankStatement': (d) =>
-      PassportElementTypeBankStatement.fromJson(d),
-  'passportElementTypeRentalAgreement': (d) =>
-      PassportElementTypeRentalAgreement.fromJson(d),
-  'passportElementTypePassportRegistration': (d) =>
-      PassportElementTypePassportRegistration.fromJson(d),
-  'passportElementTypeTemporaryRegistration': (d) =>
-      PassportElementTypeTemporaryRegistration.fromJson(d),
-  'passportElementTypePhoneNumber': (d) =>
-      PassportElementTypePhoneNumber.fromJson(d),
-  'passportElementTypeEmailAddress': (d) =>
-      PassportElementTypeEmailAddress.fromJson(d),
-  'date': (d) => Date.fromJson(d),
-  'personalDetails': (d) => PersonalDetails.fromJson(d),
-  'identityDocument': (d) => IdentityDocument.fromJson(d),
-  'inputIdentityDocument': (d) => InputIdentityDocument.fromJson(d),
-  'personalDocument': (d) => PersonalDocument.fromJson(d),
-  'inputPersonalDocument': (d) => InputPersonalDocument.fromJson(d),
-  'passportElement': (d) => PassportElement.fromJson(d),
-  'passportElementPersonalDetails': (d) =>
-      PassportElementPersonalDetails.fromJson(d),
-  'passportElementPassport': (d) => PassportElementPassport.fromJson(d),
-  'passportElementDriverLicense': (d) =>
-      PassportElementDriverLicense.fromJson(d),
-  'passportElementIdentityCard': (d) => PassportElementIdentityCard.fromJson(d),
-  'passportElementInternalPassport': (d) =>
-      PassportElementInternalPassport.fromJson(d),
-  'passportElementAddress': (d) => PassportElementAddress.fromJson(d),
-  'passportElementUtilityBill': (d) => PassportElementUtilityBill.fromJson(d),
-  'passportElementBankStatement': (d) =>
-      PassportElementBankStatement.fromJson(d),
-  'passportElementRentalAgreement': (d) =>
-      PassportElementRentalAgreement.fromJson(d),
-  'passportElementPassportRegistration': (d) =>
-      PassportElementPassportRegistration.fromJson(d),
-  'passportElementTemporaryRegistration': (d) =>
-      PassportElementTemporaryRegistration.fromJson(d),
-  'passportElementPhoneNumber': (d) => PassportElementPhoneNumber.fromJson(d),
-  'passportElementEmailAddress': (d) => PassportElementEmailAddress.fromJson(d),
-  'inputPassportElement': (d) => InputPassportElement.fromJson(d),
-  'inputPassportElementPersonalDetails': (d) =>
-      InputPassportElementPersonalDetails.fromJson(d),
-  'inputPassportElementPassport': (d) =>
-      InputPassportElementPassport.fromJson(d),
-  'inputPassportElementDriverLicense': (d) =>
-      InputPassportElementDriverLicense.fromJson(d),
-  'inputPassportElementIdentityCard': (d) =>
-      InputPassportElementIdentityCard.fromJson(d),
-  'inputPassportElementInternalPassport': (d) =>
-      InputPassportElementInternalPassport.fromJson(d),
-  'inputPassportElementAddress': (d) => InputPassportElementAddress.fromJson(d),
-  'inputPassportElementUtilityBill': (d) =>
-      InputPassportElementUtilityBill.fromJson(d),
-  'inputPassportElementBankStatement': (d) =>
-      InputPassportElementBankStatement.fromJson(d),
-  'inputPassportElementRentalAgreement': (d) =>
-      InputPassportElementRentalAgreement.fromJson(d),
-  'inputPassportElementPassportRegistration': (d) =>
-      InputPassportElementPassportRegistration.fromJson(d),
-  'inputPassportElementTemporaryRegistration': (d) =>
-      InputPassportElementTemporaryRegistration.fromJson(d),
-  'inputPassportElementPhoneNumber': (d) =>
-      InputPassportElementPhoneNumber.fromJson(d),
-  'inputPassportElementEmailAddress': (d) =>
-      InputPassportElementEmailAddress.fromJson(d),
-  'passportElements': (d) => PassportElements.fromJson(d),
-  'passportElementErrorSource': (d) => PassportElementErrorSource.fromJson(d),
-  'passportElementErrorSourceUnspecified': (d) =>
-      PassportElementErrorSourceUnspecified.fromJson(d),
-  'passportElementErrorSourceDataField': (d) =>
-      PassportElementErrorSourceDataField.fromJson(d),
-  'passportElementErrorSourceFrontSide': (d) =>
-      PassportElementErrorSourceFrontSide.fromJson(d),
-  'passportElementErrorSourceReverseSide': (d) =>
-      PassportElementErrorSourceReverseSide.fromJson(d),
-  'passportElementErrorSourceSelfie': (d) =>
-      PassportElementErrorSourceSelfie.fromJson(d),
-  'passportElementErrorSourceTranslationFile': (d) =>
-      PassportElementErrorSourceTranslationFile.fromJson(d),
-  'passportElementErrorSourceTranslationFiles': (d) =>
-      PassportElementErrorSourceTranslationFiles.fromJson(d),
-  'passportElementErrorSourceFile': (d) =>
-      PassportElementErrorSourceFile.fromJson(d),
-  'passportElementErrorSourceFiles': (d) =>
-      PassportElementErrorSourceFiles.fromJson(d),
-  'passportElementError': (d) => PassportElementError.fromJson(d),
-  'passportSuitableElement': (d) => PassportSuitableElement.fromJson(d),
-  'passportRequiredElement': (d) => PassportRequiredElement.fromJson(d),
-  'passportAuthorizationForm': (d) => PassportAuthorizationForm.fromJson(d),
-  'passportElementsWithErrors': (d) => PassportElementsWithErrors.fromJson(d),
-  'encryptedCredentials': (d) => EncryptedCredentials.fromJson(d),
-  'encryptedPassportElement': (d) => EncryptedPassportElement.fromJson(d),
-  'inputPassportElementErrorSource': (d) =>
-      InputPassportElementErrorSource.fromJson(d),
-  'inputPassportElementErrorSourceUnspecified': (d) =>
-      InputPassportElementErrorSourceUnspecified.fromJson(d),
-  'inputPassportElementErrorSourceDataField': (d) =>
-      InputPassportElementErrorSourceDataField.fromJson(d),
-  'inputPassportElementErrorSourceFrontSide': (d) =>
-      InputPassportElementErrorSourceFrontSide.fromJson(d),
-  'inputPassportElementErrorSourceReverseSide': (d) =>
-      InputPassportElementErrorSourceReverseSide.fromJson(d),
-  'inputPassportElementErrorSourceSelfie': (d) =>
-      InputPassportElementErrorSourceSelfie.fromJson(d),
-  'inputPassportElementErrorSourceTranslationFile': (d) =>
-      InputPassportElementErrorSourceTranslationFile.fromJson(d),
-  'inputPassportElementErrorSourceTranslationFiles': (d) =>
-      InputPassportElementErrorSourceTranslationFiles.fromJson(d),
-  'inputPassportElementErrorSourceFile': (d) =>
-      InputPassportElementErrorSourceFile.fromJson(d),
-  'inputPassportElementErrorSourceFiles': (d) =>
-      InputPassportElementErrorSourceFiles.fromJson(d),
-  'inputPassportElementError': (d) => InputPassportElementError.fromJson(d),
-  'messageContent': (d) => MessageContent.fromJson(d),
-  'messageText': (d) => MessageText.fromJson(d),
-  'messageAnimation': (d) => MessageAnimation.fromJson(d),
-  'messageAudio': (d) => MessageAudio.fromJson(d),
-  'messageDocument': (d) => MessageDocument.fromJson(d),
-  'messagePhoto': (d) => MessagePhoto.fromJson(d),
-  'messageExpiredPhoto': (d) => MessageExpiredPhoto.fromJson(d),
-  'messageSticker': (d) => MessageSticker.fromJson(d),
-  'messageVideo': (d) => MessageVideo.fromJson(d),
-  'messageExpiredVideo': (d) => MessageExpiredVideo.fromJson(d),
-  'messageVideoNote': (d) => MessageVideoNote.fromJson(d),
-  'messageVoiceNote': (d) => MessageVoiceNote.fromJson(d),
-  'messageLocation': (d) => MessageLocation.fromJson(d),
-  'messageVenue': (d) => MessageVenue.fromJson(d),
-  'messageContact': (d) => MessageContact.fromJson(d),
-  'messageDice': (d) => MessageDice.fromJson(d),
-  'messageGame': (d) => MessageGame.fromJson(d),
-  'messagePoll': (d) => MessagePoll.fromJson(d),
-  'messageInvoice': (d) => MessageInvoice.fromJson(d),
-  'messageCall': (d) => MessageCall.fromJson(d),
-  'messageVoiceChatStarted': (d) => MessageVoiceChatStarted.fromJson(d),
-  'messageVoiceChatEnded': (d) => MessageVoiceChatEnded.fromJson(d),
-  'messageInviteVoiceChatParticipants': (d) =>
-      MessageInviteVoiceChatParticipants.fromJson(d),
-  'messageBasicGroupChatCreate': (d) => MessageBasicGroupChatCreate.fromJson(d),
-  'messageSupergroupChatCreate': (d) => MessageSupergroupChatCreate.fromJson(d),
-  'messageChatChangeTitle': (d) => MessageChatChangeTitle.fromJson(d),
-  'messageChatChangePhoto': (d) => MessageChatChangePhoto.fromJson(d),
-  'messageChatDeletePhoto': (d) => MessageChatDeletePhoto.fromJson(d),
-  'messageChatAddMembers': (d) => MessageChatAddMembers.fromJson(d),
-  'messageChatJoinByLink': (d) => MessageChatJoinByLink.fromJson(d),
-  'messageChatDeleteMember': (d) => MessageChatDeleteMember.fromJson(d),
-  'messageChatUpgradeTo': (d) => MessageChatUpgradeTo.fromJson(d),
-  'messageChatUpgradeFrom': (d) => MessageChatUpgradeFrom.fromJson(d),
-  'messagePinMessage': (d) => MessagePinMessage.fromJson(d),
-  'messageScreenshotTaken': (d) => MessageScreenshotTaken.fromJson(d),
-  'messageChatSetTtl': (d) => MessageChatSetTtl.fromJson(d),
-  'messageCustomServiceAction': (d) => MessageCustomServiceAction.fromJson(d),
-  'messageGameScore': (d) => MessageGameScore.fromJson(d),
-  'messagePaymentSuccessful': (d) => MessagePaymentSuccessful.fromJson(d),
-  'messagePaymentSuccessfulBot': (d) => MessagePaymentSuccessfulBot.fromJson(d),
-  'messageContactRegistered': (d) => MessageContactRegistered.fromJson(d),
-  'messageWebsiteConnected': (d) => MessageWebsiteConnected.fromJson(d),
-  'messagePassportDataSent': (d) => MessagePassportDataSent.fromJson(d),
-  'messagePassportDataReceived': (d) => MessagePassportDataReceived.fromJson(d),
-  'messageProximityAlertTriggered': (d) =>
-      MessageProximityAlertTriggered.fromJson(d),
-  'messageUnsupported': (d) => MessageUnsupported.fromJson(d),
-  'textEntityType': (d) => TextEntityType.fromJson(d),
-  'textEntityTypeMention': (d) => TextEntityTypeMention.fromJson(d),
-  'textEntityTypeHashtag': (d) => TextEntityTypeHashtag.fromJson(d),
-  'textEntityTypeCashtag': (d) => TextEntityTypeCashtag.fromJson(d),
-  'textEntityTypeBotCommand': (d) => TextEntityTypeBotCommand.fromJson(d),
-  'textEntityTypeUrl': (d) => TextEntityTypeUrl.fromJson(d),
-  'textEntityTypeEmailAddress': (d) => TextEntityTypeEmailAddress.fromJson(d),
-  'textEntityTypePhoneNumber': (d) => TextEntityTypePhoneNumber.fromJson(d),
-  'textEntityTypeBankCardNumber': (d) =>
-      TextEntityTypeBankCardNumber.fromJson(d),
-  'textEntityTypeBold': (d) => TextEntityTypeBold.fromJson(d),
-  'textEntityTypeItalic': (d) => TextEntityTypeItalic.fromJson(d),
-  'textEntityTypeUnderline': (d) => TextEntityTypeUnderline.fromJson(d),
-  'textEntityTypeStrikethrough': (d) => TextEntityTypeStrikethrough.fromJson(d),
-  'textEntityTypeCode': (d) => TextEntityTypeCode.fromJson(d),
-  'textEntityTypePre': (d) => TextEntityTypePre.fromJson(d),
-  'textEntityTypePreCode': (d) => TextEntityTypePreCode.fromJson(d),
-  'textEntityTypeTextUrl': (d) => TextEntityTypeTextUrl.fromJson(d),
-  'textEntityTypeMentionName': (d) => TextEntityTypeMentionName.fromJson(d),
-  'inputThumbnail': (d) => InputThumbnail.fromJson(d),
-  'messageSchedulingState': (d) => MessageSchedulingState.fromJson(d),
-  'messageSchedulingStateSendAtDate': (d) =>
-      MessageSchedulingStateSendAtDate.fromJson(d),
-  'messageSchedulingStateSendWhenOnline': (d) =>
-      MessageSchedulingStateSendWhenOnline.fromJson(d),
-  'messageSendOptions': (d) => MessageSendOptions.fromJson(d),
-  'messageCopyOptions': (d) => MessageCopyOptions.fromJson(d),
-  'inputMessageContent': (d) => InputMessageContent.fromJson(d),
-  'inputMessageText': (d) => InputMessageText.fromJson(d),
-  'inputMessageAnimation': (d) => InputMessageAnimation.fromJson(d),
-  'inputMessageAudio': (d) => InputMessageAudio.fromJson(d),
-  'inputMessageDocument': (d) => InputMessageDocument.fromJson(d),
-  'inputMessagePhoto': (d) => InputMessagePhoto.fromJson(d),
-  'inputMessageSticker': (d) => InputMessageSticker.fromJson(d),
-  'inputMessageVideo': (d) => InputMessageVideo.fromJson(d),
-  'inputMessageVideoNote': (d) => InputMessageVideoNote.fromJson(d),
-  'inputMessageVoiceNote': (d) => InputMessageVoiceNote.fromJson(d),
-  'inputMessageLocation': (d) => InputMessageLocation.fromJson(d),
-  'inputMessageVenue': (d) => InputMessageVenue.fromJson(d),
-  'inputMessageContact': (d) => InputMessageContact.fromJson(d),
-  'inputMessageDice': (d) => InputMessageDice.fromJson(d),
-  'inputMessageGame': (d) => InputMessageGame.fromJson(d),
-  'inputMessageInvoice': (d) => InputMessageInvoice.fromJson(d),
-  'inputMessagePoll': (d) => InputMessagePoll.fromJson(d),
-  'inputMessageForwarded': (d) => InputMessageForwarded.fromJson(d),
-  'searchMessagesFilter': (d) => SearchMessagesFilter.fromJson(d),
-  'searchMessagesFilterEmpty': (d) => SearchMessagesFilterEmpty.fromJson(d),
-  'searchMessagesFilterAnimation': (d) =>
-      SearchMessagesFilterAnimation.fromJson(d),
-  'searchMessagesFilterAudio': (d) => SearchMessagesFilterAudio.fromJson(d),
-  'searchMessagesFilterDocument': (d) =>
-      SearchMessagesFilterDocument.fromJson(d),
-  'searchMessagesFilterPhoto': (d) => SearchMessagesFilterPhoto.fromJson(d),
-  'searchMessagesFilterVideo': (d) => SearchMessagesFilterVideo.fromJson(d),
-  'searchMessagesFilterVoiceNote': (d) =>
-      SearchMessagesFilterVoiceNote.fromJson(d),
-  'searchMessagesFilterPhotoAndVideo': (d) =>
-      SearchMessagesFilterPhotoAndVideo.fromJson(d),
-  'searchMessagesFilterUrl': (d) => SearchMessagesFilterUrl.fromJson(d),
-  'searchMessagesFilterChatPhoto': (d) =>
-      SearchMessagesFilterChatPhoto.fromJson(d),
-  'searchMessagesFilterCall': (d) => SearchMessagesFilterCall.fromJson(d),
-  'searchMessagesFilterMissedCall': (d) =>
-      SearchMessagesFilterMissedCall.fromJson(d),
-  'searchMessagesFilterVideoNote': (d) =>
-      SearchMessagesFilterVideoNote.fromJson(d),
-  'searchMessagesFilterVoiceAndVideoNote': (d) =>
-      SearchMessagesFilterVoiceAndVideoNote.fromJson(d),
-  'searchMessagesFilterMention': (d) => SearchMessagesFilterMention.fromJson(d),
-  'searchMessagesFilterUnreadMention': (d) =>
-      SearchMessagesFilterUnreadMention.fromJson(d),
-  'searchMessagesFilterFailedToSend': (d) =>
-      SearchMessagesFilterFailedToSend.fromJson(d),
-  'searchMessagesFilterPinned': (d) => SearchMessagesFilterPinned.fromJson(d),
-  'chatAction': (d) => ChatAction.fromJson(d),
-  'chatActionTyping': (d) => ChatActionTyping.fromJson(d),
-  'chatActionRecordingVideo': (d) => ChatActionRecordingVideo.fromJson(d),
-  'chatActionUploadingVideo': (d) => ChatActionUploadingVideo.fromJson(d),
-  'chatActionRecordingVoiceNote': (d) =>
-      ChatActionRecordingVoiceNote.fromJson(d),
-  'chatActionUploadingVoiceNote': (d) =>
-      ChatActionUploadingVoiceNote.fromJson(d),
-  'chatActionUploadingPhoto': (d) => ChatActionUploadingPhoto.fromJson(d),
-  'chatActionUploadingDocument': (d) => ChatActionUploadingDocument.fromJson(d),
-  'chatActionChoosingLocation': (d) => ChatActionChoosingLocation.fromJson(d),
-  'chatActionChoosingContact': (d) => ChatActionChoosingContact.fromJson(d),
-  'chatActionStartPlayingGame': (d) => ChatActionStartPlayingGame.fromJson(d),
-  'chatActionRecordingVideoNote': (d) =>
-      ChatActionRecordingVideoNote.fromJson(d),
-  'chatActionUploadingVideoNote': (d) =>
-      ChatActionUploadingVideoNote.fromJson(d),
-  'chatActionCancel': (d) => ChatActionCancel.fromJson(d),
-  'userStatus': (d) => UserStatus.fromJson(d),
-  'userStatusEmpty': (d) => UserStatusEmpty.fromJson(d),
-  'userStatusOnline': (d) => UserStatusOnline.fromJson(d),
-  'userStatusOffline': (d) => UserStatusOffline.fromJson(d),
-  'userStatusRecently': (d) => UserStatusRecently.fromJson(d),
-  'userStatusLastWeek': (d) => UserStatusLastWeek.fromJson(d),
-  'userStatusLastMonth': (d) => UserStatusLastMonth.fromJson(d),
-  'stickers': (d) => Stickers.fromJson(d),
-  'emojis': (d) => Emojis.fromJson(d),
-  'stickerSet': (d) => StickerSet.fromJson(d),
-  'stickerSetInfo': (d) => StickerSetInfo.fromJson(d),
-  'stickerSets': (d) => StickerSets.fromJson(d),
-  'callDiscardReason': (d) => CallDiscardReason.fromJson(d),
-  'callDiscardReasonEmpty': (d) => CallDiscardReasonEmpty.fromJson(d),
-  'callDiscardReasonMissed': (d) => CallDiscardReasonMissed.fromJson(d),
-  'callDiscardReasonDeclined': (d) => CallDiscardReasonDeclined.fromJson(d),
-  'callDiscardReasonDisconnected': (d) =>
-      CallDiscardReasonDisconnected.fromJson(d),
-  'callDiscardReasonHungUp': (d) => CallDiscardReasonHungUp.fromJson(d),
-  'callProtocol': (d) => CallProtocol.fromJson(d),
-  'callServerType': (d) => CallServerType.fromJson(d),
-  'callServerTypeTelegramReflector': (d) =>
-      CallServerTypeTelegramReflector.fromJson(d),
-  'callServerTypeWebrtc': (d) => CallServerTypeWebrtc.fromJson(d),
-  'callServer': (d) => CallServer.fromJson(d),
-  'callId': (d) => CallId.fromJson(d),
-  'groupCallId': (d) => GroupCallId.fromJson(d),
-  'callState': (d) => CallState.fromJson(d),
-  'callStatePending': (d) => CallStatePending.fromJson(d),
-  'callStateExchangingKeys': (d) => CallStateExchangingKeys.fromJson(d),
-  'callStateReady': (d) => CallStateReady.fromJson(d),
-  'callStateHangingUp': (d) => CallStateHangingUp.fromJson(d),
-  'callStateDiscarded': (d) => CallStateDiscarded.fromJson(d),
-  'callStateError': (d) => CallStateError.fromJson(d),
-  'groupCallRecentSpeaker': (d) => GroupCallRecentSpeaker.fromJson(d),
-  'groupCall': (d) => GroupCall.fromJson(d),
-  'groupCallPayloadFingerprint': (d) => GroupCallPayloadFingerprint.fromJson(d),
-  'groupCallPayload': (d) => GroupCallPayload.fromJson(d),
-  'groupCallJoinResponseCandidate': (d) =>
-      GroupCallJoinResponseCandidate.fromJson(d),
-  'groupCallJoinResponse': (d) => GroupCallJoinResponse.fromJson(d),
-  'groupCallParticipant': (d) => GroupCallParticipant.fromJson(d),
-  'callProblem': (d) => CallProblem.fromJson(d),
-  'callProblemEcho': (d) => CallProblemEcho.fromJson(d),
-  'callProblemNoise': (d) => CallProblemNoise.fromJson(d),
-  'callProblemInterruptions': (d) => CallProblemInterruptions.fromJson(d),
-  'callProblemDistortedSpeech': (d) => CallProblemDistortedSpeech.fromJson(d),
-  'callProblemSilentLocal': (d) => CallProblemSilentLocal.fromJson(d),
-  'callProblemSilentRemote': (d) => CallProblemSilentRemote.fromJson(d),
-  'callProblemDropped': (d) => CallProblemDropped.fromJson(d),
-  'callProblemDistortedVideo': (d) => CallProblemDistortedVideo.fromJson(d),
-  'callProblemPixelatedVideo': (d) => CallProblemPixelatedVideo.fromJson(d),
-  'call': (d) => Call.fromJson(d),
-  'phoneNumberAuthenticationSettings': (d) =>
-      PhoneNumberAuthenticationSettings.fromJson(d),
-  'animations': (d) => Animations.fromJson(d),
-  'diceStickers': (d) => DiceStickers.fromJson(d),
-  'diceStickersRegular': (d) => DiceStickersRegular.fromJson(d),
-  'diceStickersSlotMachine': (d) => DiceStickersSlotMachine.fromJson(d),
-  'importedContacts': (d) => ImportedContacts.fromJson(d),
-  'httpUrl': (d) => HttpUrl.fromJson(d),
-  'inputInlineQueryResult': (d) => InputInlineQueryResult.fromJson(d),
-  'inputInlineQueryResultAnimation': (d) =>
-      InputInlineQueryResultAnimation.fromJson(d),
-  'inputInlineQueryResultArticle': (d) =>
-      InputInlineQueryResultArticle.fromJson(d),
-  'inputInlineQueryResultAudio': (d) => InputInlineQueryResultAudio.fromJson(d),
-  'inputInlineQueryResultContact': (d) =>
-      InputInlineQueryResultContact.fromJson(d),
-  'inputInlineQueryResultDocument': (d) =>
-      InputInlineQueryResultDocument.fromJson(d),
-  'inputInlineQueryResultGame': (d) => InputInlineQueryResultGame.fromJson(d),
-  'inputInlineQueryResultLocation': (d) =>
-      InputInlineQueryResultLocation.fromJson(d),
-  'inputInlineQueryResultPhoto': (d) => InputInlineQueryResultPhoto.fromJson(d),
-  'inputInlineQueryResultSticker': (d) =>
-      InputInlineQueryResultSticker.fromJson(d),
-  'inputInlineQueryResultVenue': (d) => InputInlineQueryResultVenue.fromJson(d),
-  'inputInlineQueryResultVideo': (d) => InputInlineQueryResultVideo.fromJson(d),
-  'inputInlineQueryResultVoiceNote': (d) =>
-      InputInlineQueryResultVoiceNote.fromJson(d),
-  'inlineQueryResult': (d) => InlineQueryResult.fromJson(d),
-  'inlineQueryResultArticle': (d) => InlineQueryResultArticle.fromJson(d),
-  'inlineQueryResultContact': (d) => InlineQueryResultContact.fromJson(d),
-  'inlineQueryResultLocation': (d) => InlineQueryResultLocation.fromJson(d),
-  'inlineQueryResultVenue': (d) => InlineQueryResultVenue.fromJson(d),
-  'inlineQueryResultGame': (d) => InlineQueryResultGame.fromJson(d),
-  'inlineQueryResultAnimation': (d) => InlineQueryResultAnimation.fromJson(d),
-  'inlineQueryResultAudio': (d) => InlineQueryResultAudio.fromJson(d),
-  'inlineQueryResultDocument': (d) => InlineQueryResultDocument.fromJson(d),
-  'inlineQueryResultPhoto': (d) => InlineQueryResultPhoto.fromJson(d),
-  'inlineQueryResultSticker': (d) => InlineQueryResultSticker.fromJson(d),
-  'inlineQueryResultVideo': (d) => InlineQueryResultVideo.fromJson(d),
-  'inlineQueryResultVoiceNote': (d) => InlineQueryResultVoiceNote.fromJson(d),
-  'inlineQueryResults': (d) => InlineQueryResults.fromJson(d),
-  'callbackQueryPayload': (d) => CallbackQueryPayload.fromJson(d),
-  'callbackQueryPayloadData': (d) => CallbackQueryPayloadData.fromJson(d),
-  'callbackQueryPayloadDataWithPassword': (d) =>
-      CallbackQueryPayloadDataWithPassword.fromJson(d),
-  'callbackQueryPayloadGame': (d) => CallbackQueryPayloadGame.fromJson(d),
-  'callbackQueryAnswer': (d) => CallbackQueryAnswer.fromJson(d),
-  'customRequestResult': (d) => CustomRequestResult.fromJson(d),
-  'gameHighScore': (d) => GameHighScore.fromJson(d),
-  'gameHighScores': (d) => GameHighScores.fromJson(d),
-  'chatEventAction': (d) => ChatEventAction.fromJson(d),
-  'chatEventMessageEdited': (d) => ChatEventMessageEdited.fromJson(d),
-  'chatEventMessageDeleted': (d) => ChatEventMessageDeleted.fromJson(d),
-  'chatEventPollStopped': (d) => ChatEventPollStopped.fromJson(d),
-  'chatEventMessagePinned': (d) => ChatEventMessagePinned.fromJson(d),
-  'chatEventMessageUnpinned': (d) => ChatEventMessageUnpinned.fromJson(d),
-  'chatEventMemberJoined': (d) => ChatEventMemberJoined.fromJson(d),
-  'chatEventMemberLeft': (d) => ChatEventMemberLeft.fromJson(d),
-  'chatEventMemberInvited': (d) => ChatEventMemberInvited.fromJson(d),
-  'chatEventMemberPromoted': (d) => ChatEventMemberPromoted.fromJson(d),
-  'chatEventMemberRestricted': (d) => ChatEventMemberRestricted.fromJson(d),
-  'chatEventTitleChanged': (d) => ChatEventTitleChanged.fromJson(d),
-  'chatEventPermissionsChanged': (d) => ChatEventPermissionsChanged.fromJson(d),
-  'chatEventDescriptionChanged': (d) => ChatEventDescriptionChanged.fromJson(d),
-  'chatEventUsernameChanged': (d) => ChatEventUsernameChanged.fromJson(d),
-  'chatEventPhotoChanged': (d) => ChatEventPhotoChanged.fromJson(d),
-  'chatEventInvitesToggled': (d) => ChatEventInvitesToggled.fromJson(d),
-  'chatEventLinkedChatChanged': (d) => ChatEventLinkedChatChanged.fromJson(d),
-  'chatEventSlowModeDelayChanged': (d) =>
-      ChatEventSlowModeDelayChanged.fromJson(d),
-  'chatEventSignMessagesToggled': (d) =>
-      ChatEventSignMessagesToggled.fromJson(d),
-  'chatEventStickerSetChanged': (d) => ChatEventStickerSetChanged.fromJson(d),
-  'chatEventLocationChanged': (d) => ChatEventLocationChanged.fromJson(d),
-  'chatEventIsAllHistoryAvailableToggled': (d) =>
-      ChatEventIsAllHistoryAvailableToggled.fromJson(d),
-  'chatEventVoiceChatCreated': (d) => ChatEventVoiceChatCreated.fromJson(d),
-  'chatEventVoiceChatDiscarded': (d) => ChatEventVoiceChatDiscarded.fromJson(d),
-  'chatEventVoiceChatParticipantIsMutedToggled': (d) =>
-      ChatEventVoiceChatParticipantIsMutedToggled.fromJson(d),
-  'chatEventVoiceChatMuteNewParticipantsToggled': (d) =>
-      ChatEventVoiceChatMuteNewParticipantsToggled.fromJson(d),
-  'chatEvent': (d) => ChatEvent.fromJson(d),
-  'chatEvents': (d) => ChatEvents.fromJson(d),
-  'chatEventLogFilters': (d) => ChatEventLogFilters.fromJson(d),
-  'languagePackStringValue': (d) => LanguagePackStringValue.fromJson(d),
-  'languagePackStringValueOrdinary': (d) =>
-      LanguagePackStringValueOrdinary.fromJson(d),
-  'languagePackStringValuePluralized': (d) =>
-      LanguagePackStringValuePluralized.fromJson(d),
-  'languagePackStringValueDeleted': (d) =>
-      LanguagePackStringValueDeleted.fromJson(d),
-  'languagePackString': (d) => LanguagePackString.fromJson(d),
-  'languagePackStrings': (d) => LanguagePackStrings.fromJson(d),
-  'languagePackInfo': (d) => LanguagePackInfo.fromJson(d),
-  'localizationTargetInfo': (d) => LocalizationTargetInfo.fromJson(d),
-  'deviceToken': (d) => DeviceToken.fromJson(d),
-  'deviceTokenFirebaseCloudMessaging': (d) =>
-      DeviceTokenFirebaseCloudMessaging.fromJson(d),
-  'deviceTokenApplePush': (d) => DeviceTokenApplePush.fromJson(d),
-  'deviceTokenApplePushVoIP': (d) => DeviceTokenApplePushVoIP.fromJson(d),
-  'deviceTokenWindowsPush': (d) => DeviceTokenWindowsPush.fromJson(d),
-  'deviceTokenMicrosoftPush': (d) => DeviceTokenMicrosoftPush.fromJson(d),
-  'deviceTokenMicrosoftPushVoIP': (d) =>
-      DeviceTokenMicrosoftPushVoIP.fromJson(d),
-  'deviceTokenWebPush': (d) => DeviceTokenWebPush.fromJson(d),
-  'deviceTokenSimplePush': (d) => DeviceTokenSimplePush.fromJson(d),
-  'deviceTokenUbuntuPush': (d) => DeviceTokenUbuntuPush.fromJson(d),
-  'deviceTokenBlackBerryPush': (d) => DeviceTokenBlackBerryPush.fromJson(d),
-  'deviceTokenTizenPush': (d) => DeviceTokenTizenPush.fromJson(d),
-  'pushReceiverId': (d) => PushReceiverId.fromJson(d),
-  'backgroundFill': (d) => BackgroundFill.fromJson(d),
-  'backgroundFillSolid': (d) => BackgroundFillSolid.fromJson(d),
-  'backgroundFillGradient': (d) => BackgroundFillGradient.fromJson(d),
-  'backgroundType': (d) => BackgroundType.fromJson(d),
-  'backgroundTypeWallpaper': (d) => BackgroundTypeWallpaper.fromJson(d),
-  'backgroundTypePattern': (d) => BackgroundTypePattern.fromJson(d),
-  'backgroundTypeFill': (d) => BackgroundTypeFill.fromJson(d),
-  'background': (d) => Background.fromJson(d),
-  'backgrounds': (d) => Backgrounds.fromJson(d),
-  'inputBackground': (d) => InputBackground.fromJson(d),
-  'inputBackgroundLocal': (d) => InputBackgroundLocal.fromJson(d),
-  'inputBackgroundRemote': (d) => InputBackgroundRemote.fromJson(d),
-  'hashtags': (d) => Hashtags.fromJson(d),
-  'canTransferOwnershipResult': (d) => CanTransferOwnershipResult.fromJson(d),
-  'canTransferOwnershipResultOk': (d) =>
-      CanTransferOwnershipResultOk.fromJson(d),
-  'canTransferOwnershipResultPasswordNeeded': (d) =>
-      CanTransferOwnershipResultPasswordNeeded.fromJson(d),
-  'canTransferOwnershipResultPasswordTooFresh': (d) =>
-      CanTransferOwnershipResultPasswordTooFresh.fromJson(d),
-  'canTransferOwnershipResultSessionTooFresh': (d) =>
-      CanTransferOwnershipResultSessionTooFresh.fromJson(d),
-  'checkChatUsernameResult': (d) => CheckChatUsernameResult.fromJson(d),
-  'checkChatUsernameResultOk': (d) => CheckChatUsernameResultOk.fromJson(d),
-  'checkChatUsernameResultUsernameInvalid': (d) =>
-      CheckChatUsernameResultUsernameInvalid.fromJson(d),
-  'checkChatUsernameResultUsernameOccupied': (d) =>
-      CheckChatUsernameResultUsernameOccupied.fromJson(d),
-  'checkChatUsernameResultPublicChatsTooMuch': (d) =>
-      CheckChatUsernameResultPublicChatsTooMuch.fromJson(d),
-  'checkChatUsernameResultPublicGroupsUnavailable': (d) =>
-      CheckChatUsernameResultPublicGroupsUnavailable.fromJson(d),
-  'pushMessageContent': (d) => PushMessageContent.fromJson(d),
-  'pushMessageContentHidden': (d) => PushMessageContentHidden.fromJson(d),
-  'pushMessageContentAnimation': (d) => PushMessageContentAnimation.fromJson(d),
-  'pushMessageContentAudio': (d) => PushMessageContentAudio.fromJson(d),
-  'pushMessageContentContact': (d) => PushMessageContentContact.fromJson(d),
-  'pushMessageContentContactRegistered': (d) =>
-      PushMessageContentContactRegistered.fromJson(d),
-  'pushMessageContentDocument': (d) => PushMessageContentDocument.fromJson(d),
-  'pushMessageContentGame': (d) => PushMessageContentGame.fromJson(d),
-  'pushMessageContentGameScore': (d) => PushMessageContentGameScore.fromJson(d),
-  'pushMessageContentInvoice': (d) => PushMessageContentInvoice.fromJson(d),
-  'pushMessageContentLocation': (d) => PushMessageContentLocation.fromJson(d),
-  'pushMessageContentPhoto': (d) => PushMessageContentPhoto.fromJson(d),
-  'pushMessageContentPoll': (d) => PushMessageContentPoll.fromJson(d),
-  'pushMessageContentScreenshotTaken': (d) =>
-      PushMessageContentScreenshotTaken.fromJson(d),
-  'pushMessageContentSticker': (d) => PushMessageContentSticker.fromJson(d),
-  'pushMessageContentText': (d) => PushMessageContentText.fromJson(d),
-  'pushMessageContentVideo': (d) => PushMessageContentVideo.fromJson(d),
-  'pushMessageContentVideoNote': (d) => PushMessageContentVideoNote.fromJson(d),
-  'pushMessageContentVoiceNote': (d) => PushMessageContentVoiceNote.fromJson(d),
-  'pushMessageContentBasicGroupChatCreate': (d) =>
-      PushMessageContentBasicGroupChatCreate.fromJson(d),
-  'pushMessageContentChatAddMembers': (d) =>
-      PushMessageContentChatAddMembers.fromJson(d),
-  'pushMessageContentChatChangePhoto': (d) =>
-      PushMessageContentChatChangePhoto.fromJson(d),
-  'pushMessageContentChatChangeTitle': (d) =>
-      PushMessageContentChatChangeTitle.fromJson(d),
-  'pushMessageContentChatDeleteMember': (d) =>
-      PushMessageContentChatDeleteMember.fromJson(d),
-  'pushMessageContentChatJoinByLink': (d) =>
-      PushMessageContentChatJoinByLink.fromJson(d),
-  'pushMessageContentMessageForwards': (d) =>
-      PushMessageContentMessageForwards.fromJson(d),
-  'pushMessageContentMediaAlbum': (d) =>
-      PushMessageContentMediaAlbum.fromJson(d),
-  'notificationType': (d) => NotificationType.fromJson(d),
-  'notificationTypeNewMessage': (d) => NotificationTypeNewMessage.fromJson(d),
-  'notificationTypeNewSecretChat': (d) =>
-      NotificationTypeNewSecretChat.fromJson(d),
-  'notificationTypeNewCall': (d) => NotificationTypeNewCall.fromJson(d),
-  'notificationTypeNewPushMessage': (d) =>
-      NotificationTypeNewPushMessage.fromJson(d),
-  'notificationGroupType': (d) => NotificationGroupType.fromJson(d),
-  'notificationGroupTypeMessages': (d) =>
-      NotificationGroupTypeMessages.fromJson(d),
-  'notificationGroupTypeMentions': (d) =>
-      NotificationGroupTypeMentions.fromJson(d),
-  'notificationGroupTypeSecretChat': (d) =>
-      NotificationGroupTypeSecretChat.fromJson(d),
-  'notificationGroupTypeCalls': (d) => NotificationGroupTypeCalls.fromJson(d),
-  'notification': (d) => Notification.fromJson(d),
-  'notificationGroup': (d) => NotificationGroup.fromJson(d),
-  'optionValue': (d) => OptionValue.fromJson(d),
-  'optionValueBoolean': (d) => OptionValueBoolean.fromJson(d),
-  'optionValueEmpty': (d) => OptionValueEmpty.fromJson(d),
-  'optionValueInteger': (d) => OptionValueInteger.fromJson(d),
-  'optionValueString': (d) => OptionValueString.fromJson(d),
-  'jsonObjectMember': (d) => JsonObjectMember.fromJson(d),
-  'jsonValue': (d) => JsonValue.fromJson(d),
-  'jsonValueNull': (d) => JsonValueNull.fromJson(d),
-  'jsonValueBoolean': (d) => JsonValueBoolean.fromJson(d),
-  'jsonValueNumber': (d) => JsonValueNumber.fromJson(d),
-  'jsonValueString': (d) => JsonValueString.fromJson(d),
-  'jsonValueArray': (d) => JsonValueArray.fromJson(d),
-  'jsonValueObject': (d) => JsonValueObject.fromJson(d),
-  'userPrivacySettingRule': (d) => UserPrivacySettingRule.fromJson(d),
-  'userPrivacySettingRuleAllowAll': (d) =>
-      UserPrivacySettingRuleAllowAll.fromJson(d),
-  'userPrivacySettingRuleAllowContacts': (d) =>
-      UserPrivacySettingRuleAllowContacts.fromJson(d),
-  'userPrivacySettingRuleAllowUsers': (d) =>
-      UserPrivacySettingRuleAllowUsers.fromJson(d),
-  'userPrivacySettingRuleAllowChatMembers': (d) =>
-      UserPrivacySettingRuleAllowChatMembers.fromJson(d),
-  'userPrivacySettingRuleRestrictAll': (d) =>
-      UserPrivacySettingRuleRestrictAll.fromJson(d),
-  'userPrivacySettingRuleRestrictContacts': (d) =>
-      UserPrivacySettingRuleRestrictContacts.fromJson(d),
-  'userPrivacySettingRuleRestrictUsers': (d) =>
-      UserPrivacySettingRuleRestrictUsers.fromJson(d),
-  'userPrivacySettingRuleRestrictChatMembers': (d) =>
-      UserPrivacySettingRuleRestrictChatMembers.fromJson(d),
-  'userPrivacySettingRules': (d) => UserPrivacySettingRules.fromJson(d),
-  'userPrivacySetting': (d) => UserPrivacySetting.fromJson(d),
-  'userPrivacySettingShowStatus': (d) =>
-      UserPrivacySettingShowStatus.fromJson(d),
-  'userPrivacySettingShowProfilePhoto': (d) =>
-      UserPrivacySettingShowProfilePhoto.fromJson(d),
-  'userPrivacySettingShowLinkInForwardedMessages': (d) =>
-      UserPrivacySettingShowLinkInForwardedMessages.fromJson(d),
-  'userPrivacySettingShowPhoneNumber': (d) =>
-      UserPrivacySettingShowPhoneNumber.fromJson(d),
-  'userPrivacySettingAllowChatInvites': (d) =>
-      UserPrivacySettingAllowChatInvites.fromJson(d),
-  'userPrivacySettingAllowCalls': (d) =>
-      UserPrivacySettingAllowCalls.fromJson(d),
-  'userPrivacySettingAllowPeerToPeerCalls': (d) =>
-      UserPrivacySettingAllowPeerToPeerCalls.fromJson(d),
-  'userPrivacySettingAllowFindingByPhoneNumber': (d) =>
-      UserPrivacySettingAllowFindingByPhoneNumber.fromJson(d),
-  'accountTtl': (d) => AccountTtl.fromJson(d),
-  'session': (d) => Session.fromJson(d),
-  'sessions': (d) => Sessions.fromJson(d),
-  'connectedWebsite': (d) => ConnectedWebsite.fromJson(d),
-  'connectedWebsites': (d) => ConnectedWebsites.fromJson(d),
-  'chatReportReason': (d) => ChatReportReason.fromJson(d),
-  'chatReportReasonSpam': (d) => ChatReportReasonSpam.fromJson(d),
-  'chatReportReasonViolence': (d) => ChatReportReasonViolence.fromJson(d),
-  'chatReportReasonPornography': (d) => ChatReportReasonPornography.fromJson(d),
-  'chatReportReasonChildAbuse': (d) => ChatReportReasonChildAbuse.fromJson(d),
-  'chatReportReasonCopyright': (d) => ChatReportReasonCopyright.fromJson(d),
-  'chatReportReasonUnrelatedLocation': (d) =>
-      ChatReportReasonUnrelatedLocation.fromJson(d),
-  'chatReportReasonCustom': (d) => ChatReportReasonCustom.fromJson(d),
-  'messageLink': (d) => MessageLink.fromJson(d),
-  'messageLinkInfo': (d) => MessageLinkInfo.fromJson(d),
-  'filePart': (d) => FilePart.fromJson(d),
-  'fileType': (d) => FileType.fromJson(d),
-  'fileTypeNone': (d) => FileTypeNone.fromJson(d),
-  'fileTypeAnimation': (d) => FileTypeAnimation.fromJson(d),
-  'fileTypeAudio': (d) => FileTypeAudio.fromJson(d),
-  'fileTypeDocument': (d) => FileTypeDocument.fromJson(d),
-  'fileTypePhoto': (d) => FileTypePhoto.fromJson(d),
-  'fileTypeProfilePhoto': (d) => FileTypeProfilePhoto.fromJson(d),
-  'fileTypeSecret': (d) => FileTypeSecret.fromJson(d),
-  'fileTypeSecretThumbnail': (d) => FileTypeSecretThumbnail.fromJson(d),
-  'fileTypeSecure': (d) => FileTypeSecure.fromJson(d),
-  'fileTypeSticker': (d) => FileTypeSticker.fromJson(d),
-  'fileTypeThumbnail': (d) => FileTypeThumbnail.fromJson(d),
-  'fileTypeUnknown': (d) => FileTypeUnknown.fromJson(d),
-  'fileTypeVideo': (d) => FileTypeVideo.fromJson(d),
-  'fileTypeVideoNote': (d) => FileTypeVideoNote.fromJson(d),
-  'fileTypeVoiceNote': (d) => FileTypeVoiceNote.fromJson(d),
-  'fileTypeWallpaper': (d) => FileTypeWallpaper.fromJson(d),
-  'storageStatisticsByFileType': (d) => StorageStatisticsByFileType.fromJson(d),
-  'storageStatisticsByChat': (d) => StorageStatisticsByChat.fromJson(d),
-  'storageStatistics': (d) => StorageStatistics.fromJson(d),
-  'storageStatisticsFast': (d) => StorageStatisticsFast.fromJson(d),
-  'databaseStatistics': (d) => DatabaseStatistics.fromJson(d),
-  'networkType': (d) => NetworkType.fromJson(d),
-  'networkTypeNone': (d) => NetworkTypeNone.fromJson(d),
-  'networkTypeMobile': (d) => NetworkTypeMobile.fromJson(d),
-  'networkTypeMobileRoaming': (d) => NetworkTypeMobileRoaming.fromJson(d),
-  'networkTypeWiFi': (d) => NetworkTypeWiFi.fromJson(d),
-  'networkTypeOther': (d) => NetworkTypeOther.fromJson(d),
-  'networkStatisticsEntry': (d) => NetworkStatisticsEntry.fromJson(d),
-  'networkStatisticsEntryFile': (d) => NetworkStatisticsEntryFile.fromJson(d),
-  'networkStatisticsEntryCall': (d) => NetworkStatisticsEntryCall.fromJson(d),
-  'networkStatistics': (d) => NetworkStatistics.fromJson(d),
-  'autoDownloadSettings': (d) => AutoDownloadSettings.fromJson(d),
-  'autoDownloadSettingsPresets': (d) => AutoDownloadSettingsPresets.fromJson(d),
-  'connectionState': (d) => ConnectionState.fromJson(d),
-  'connectionStateWaitingForNetwork': (d) =>
-      ConnectionStateWaitingForNetwork.fromJson(d),
-  'connectionStateConnectingToProxy': (d) =>
-      ConnectionStateConnectingToProxy.fromJson(d),
-  'connectionStateConnecting': (d) => ConnectionStateConnecting.fromJson(d),
-  'connectionStateUpdating': (d) => ConnectionStateUpdating.fromJson(d),
-  'connectionStateReady': (d) => ConnectionStateReady.fromJson(d),
-  'topChatCategory': (d) => TopChatCategory.fromJson(d),
-  'topChatCategoryUsers': (d) => TopChatCategoryUsers.fromJson(d),
-  'topChatCategoryBots': (d) => TopChatCategoryBots.fromJson(d),
-  'topChatCategoryGroups': (d) => TopChatCategoryGroups.fromJson(d),
-  'topChatCategoryChannels': (d) => TopChatCategoryChannels.fromJson(d),
-  'topChatCategoryInlineBots': (d) => TopChatCategoryInlineBots.fromJson(d),
-  'topChatCategoryCalls': (d) => TopChatCategoryCalls.fromJson(d),
-  'topChatCategoryForwardChats': (d) => TopChatCategoryForwardChats.fromJson(d),
-  'tMeUrlType': (d) => TMeUrlType.fromJson(d),
-  'tMeUrlTypeUser': (d) => TMeUrlTypeUser.fromJson(d),
-  'tMeUrlTypeSupergroup': (d) => TMeUrlTypeSupergroup.fromJson(d),
-  'tMeUrlTypeChatInvite': (d) => TMeUrlTypeChatInvite.fromJson(d),
-  'tMeUrlTypeStickerSet': (d) => TMeUrlTypeStickerSet.fromJson(d),
-  'tMeUrl': (d) => TMeUrl.fromJson(d),
-  'tMeUrls': (d) => TMeUrls.fromJson(d),
-  'suggestedAction': (d) => SuggestedAction.fromJson(d),
-  'suggestedActionEnableArchiveAndMuteNewChats': (d) =>
-      SuggestedActionEnableArchiveAndMuteNewChats.fromJson(d),
-  'suggestedActionCheckPhoneNumber': (d) =>
-      SuggestedActionCheckPhoneNumber.fromJson(d),
-  'count': (d) => Count.fromJson(d),
-  'text': (d) => Text.fromJson(d),
-  'seconds': (d) => Seconds.fromJson(d),
-  'deepLinkInfo': (d) => DeepLinkInfo.fromJson(d),
-  'textParseMode': (d) => TextParseMode.fromJson(d),
-  'textParseModeMarkdown': (d) => TextParseModeMarkdown.fromJson(d),
-  'textParseModeHTML': (d) => TextParseModeHTML.fromJson(d),
-  'proxyType': (d) => ProxyType.fromJson(d),
-  'proxyTypeSocks5': (d) => ProxyTypeSocks5.fromJson(d),
-  'proxyTypeHttp': (d) => ProxyTypeHttp.fromJson(d),
-  'proxyTypeMtproto': (d) => ProxyTypeMtproto.fromJson(d),
-  'proxy': (d) => Proxy.fromJson(d),
-  'proxies': (d) => Proxies.fromJson(d),
-  'inputSticker': (d) => InputSticker.fromJson(d),
-  'inputStickerStatic': (d) => InputStickerStatic.fromJson(d),
-  'inputStickerAnimated': (d) => InputStickerAnimated.fromJson(d),
-  'dateRange': (d) => DateRange.fromJson(d),
-  'statisticalValue': (d) => StatisticalValue.fromJson(d),
-  'statisticalGraph': (d) => StatisticalGraph.fromJson(d),
-  'statisticalGraphData': (d) => StatisticalGraphData.fromJson(d),
-  'statisticalGraphAsync': (d) => StatisticalGraphAsync.fromJson(d),
-  'statisticalGraphError': (d) => StatisticalGraphError.fromJson(d),
-  'chatStatisticsMessageInteractionInfo': (d) =>
-      ChatStatisticsMessageInteractionInfo.fromJson(d),
-  'chatStatisticsMessageSenderInfo': (d) =>
-      ChatStatisticsMessageSenderInfo.fromJson(d),
-  'chatStatisticsAdministratorActionsInfo': (d) =>
-      ChatStatisticsAdministratorActionsInfo.fromJson(d),
-  'chatStatisticsInviterInfo': (d) => ChatStatisticsInviterInfo.fromJson(d),
-  'chatStatistics': (d) => ChatStatistics.fromJson(d),
-  'chatStatisticsSupergroup': (d) => ChatStatisticsSupergroup.fromJson(d),
-  'chatStatisticsChannel': (d) => ChatStatisticsChannel.fromJson(d),
-  'messageStatistics': (d) => MessageStatistics.fromJson(d),
-  'point': (d) => Point.fromJson(d),
-  'vectorPathCommand': (d) => VectorPathCommand.fromJson(d),
-  'vectorPathCommandLine': (d) => VectorPathCommandLine.fromJson(d),
-  'vectorPathCommandCubicBezierCurve': (d) =>
-      VectorPathCommandCubicBezierCurve.fromJson(d),
-  'update': (d) => Update.fromJson(d),
-  'updateAuthorizationState': (d) => UpdateAuthorizationState.fromJson(d),
-  'updateNewMessage': (d) => UpdateNewMessage.fromJson(d),
-  'updateMessageSendAcknowledged': (d) =>
-      UpdateMessageSendAcknowledged.fromJson(d),
-  'updateMessageSendSucceeded': (d) => UpdateMessageSendSucceeded.fromJson(d),
-  'updateMessageSendFailed': (d) => UpdateMessageSendFailed.fromJson(d),
-  'updateMessageContent': (d) => UpdateMessageContent.fromJson(d),
-  'updateMessageEdited': (d) => UpdateMessageEdited.fromJson(d),
-  'updateMessageIsPinned': (d) => UpdateMessageIsPinned.fromJson(d),
-  'updateMessageInteractionInfo': (d) =>
-      UpdateMessageInteractionInfo.fromJson(d),
-  'updateMessageContentOpened': (d) => UpdateMessageContentOpened.fromJson(d),
-  'updateMessageMentionRead': (d) => UpdateMessageMentionRead.fromJson(d),
-  'updateMessageLiveLocationViewed': (d) =>
-      UpdateMessageLiveLocationViewed.fromJson(d),
-  'updateNewChat': (d) => UpdateNewChat.fromJson(d),
-  'updateChatTitle': (d) => UpdateChatTitle.fromJson(d),
-  'updateChatPhoto': (d) => UpdateChatPhoto.fromJson(d),
-  'updateChatPermissions': (d) => UpdateChatPermissions.fromJson(d),
-  'updateChatLastMessage': (d) => UpdateChatLastMessage.fromJson(d),
-  'updateChatPosition': (d) => UpdateChatPosition.fromJson(d),
-  'updateChatIsMarkedAsUnread': (d) => UpdateChatIsMarkedAsUnread.fromJson(d),
-  'updateChatIsBlocked': (d) => UpdateChatIsBlocked.fromJson(d),
-  'updateChatHasScheduledMessages': (d) =>
-      UpdateChatHasScheduledMessages.fromJson(d),
-  'updateChatVoiceChat': (d) => UpdateChatVoiceChat.fromJson(d),
-  'updateChatDefaultDisableNotification': (d) =>
-      UpdateChatDefaultDisableNotification.fromJson(d),
-  'updateChatReadInbox': (d) => UpdateChatReadInbox.fromJson(d),
-  'updateChatReadOutbox': (d) => UpdateChatReadOutbox.fromJson(d),
-  'updateChatUnreadMentionCount': (d) =>
-      UpdateChatUnreadMentionCount.fromJson(d),
-  'updateChatNotificationSettings': (d) =>
-      UpdateChatNotificationSettings.fromJson(d),
-  'updateScopeNotificationSettings': (d) =>
-      UpdateScopeNotificationSettings.fromJson(d),
-  'updateChatActionBar': (d) => UpdateChatActionBar.fromJson(d),
-  'updateChatReplyMarkup': (d) => UpdateChatReplyMarkup.fromJson(d),
-  'updateChatDraftMessage': (d) => UpdateChatDraftMessage.fromJson(d),
-  'updateChatFilters': (d) => UpdateChatFilters.fromJson(d),
-  'updateChatOnlineMemberCount': (d) => UpdateChatOnlineMemberCount.fromJson(d),
-  'updateNotification': (d) => UpdateNotification.fromJson(d),
-  'updateNotificationGroup': (d) => UpdateNotificationGroup.fromJson(d),
-  'updateActiveNotifications': (d) => UpdateActiveNotifications.fromJson(d),
-  'updateHavePendingNotifications': (d) =>
-      UpdateHavePendingNotifications.fromJson(d),
-  'updateDeleteMessages': (d) => UpdateDeleteMessages.fromJson(d),
-  'updateUserChatAction': (d) => UpdateUserChatAction.fromJson(d),
-  'updateUserStatus': (d) => UpdateUserStatus.fromJson(d),
-  'updateUser': (d) => UpdateUser.fromJson(d),
-  'updateBasicGroup': (d) => UpdateBasicGroup.fromJson(d),
-  'updateSupergroup': (d) => UpdateSupergroup.fromJson(d),
-  'updateSecretChat': (d) => UpdateSecretChat.fromJson(d),
-  'updateUserFullInfo': (d) => UpdateUserFullInfo.fromJson(d),
-  'updateBasicGroupFullInfo': (d) => UpdateBasicGroupFullInfo.fromJson(d),
-  'updateSupergroupFullInfo': (d) => UpdateSupergroupFullInfo.fromJson(d),
-  'updateServiceNotification': (d) => UpdateServiceNotification.fromJson(d),
-  'updateFile': (d) => UpdateFile.fromJson(d),
-  'updateFileGenerationStart': (d) => UpdateFileGenerationStart.fromJson(d),
-  'updateFileGenerationStop': (d) => UpdateFileGenerationStop.fromJson(d),
-  'updateCall': (d) => UpdateCall.fromJson(d),
-  'updateGroupCall': (d) => UpdateGroupCall.fromJson(d),
-  'updateGroupCallParticipant': (d) => UpdateGroupCallParticipant.fromJson(d),
-  'updateNewCallSignalingData': (d) => UpdateNewCallSignalingData.fromJson(d),
-  'updateUserPrivacySettingRules': (d) =>
-      UpdateUserPrivacySettingRules.fromJson(d),
-  'updateUnreadMessageCount': (d) => UpdateUnreadMessageCount.fromJson(d),
-  'updateUnreadChatCount': (d) => UpdateUnreadChatCount.fromJson(d),
-  'updateOption': (d) => UpdateOption.fromJson(d),
-  'updateStickerSet': (d) => UpdateStickerSet.fromJson(d),
-  'updateInstalledStickerSets': (d) => UpdateInstalledStickerSets.fromJson(d),
-  'updateTrendingStickerSets': (d) => UpdateTrendingStickerSets.fromJson(d),
-  'updateRecentStickers': (d) => UpdateRecentStickers.fromJson(d),
-  'updateFavoriteStickers': (d) => UpdateFavoriteStickers.fromJson(d),
-  'updateSavedAnimations': (d) => UpdateSavedAnimations.fromJson(d),
-  'updateSelectedBackground': (d) => UpdateSelectedBackground.fromJson(d),
-  'updateLanguagePackStrings': (d) => UpdateLanguagePackStrings.fromJson(d),
-  'updateConnectionState': (d) => UpdateConnectionState.fromJson(d),
-  'updateTermsOfService': (d) => UpdateTermsOfService.fromJson(d),
-  'updateUsersNearby': (d) => UpdateUsersNearby.fromJson(d),
-  'updateDiceEmojis': (d) => UpdateDiceEmojis.fromJson(d),
-  'updateAnimationSearchParameters': (d) =>
-      UpdateAnimationSearchParameters.fromJson(d),
-  'updateSuggestedActions': (d) => UpdateSuggestedActions.fromJson(d),
-  'updateNewInlineQuery': (d) => UpdateNewInlineQuery.fromJson(d),
-  'updateNewChosenInlineResult': (d) => UpdateNewChosenInlineResult.fromJson(d),
-  'updateNewCallbackQuery': (d) => UpdateNewCallbackQuery.fromJson(d),
-  'updateNewInlineCallbackQuery': (d) =>
-      UpdateNewInlineCallbackQuery.fromJson(d),
-  'updateNewShippingQuery': (d) => UpdateNewShippingQuery.fromJson(d),
-  'updateNewPreCheckoutQuery': (d) => UpdateNewPreCheckoutQuery.fromJson(d),
-  'updateNewCustomEvent': (d) => UpdateNewCustomEvent.fromJson(d),
-  'updateNewCustomQuery': (d) => UpdateNewCustomQuery.fromJson(d),
-  'updatePoll': (d) => UpdatePoll.fromJson(d),
-  'updatePollAnswer': (d) => UpdatePollAnswer.fromJson(d),
-  'updates': (d) => Updates.fromJson(d),
-  'logStream': (d) => LogStream.fromJson(d),
-  'logStreamDefault': (d) => LogStreamDefault.fromJson(d),
-  'logStreamFile': (d) => LogStreamFile.fromJson(d),
-  'logStreamEmpty': (d) => LogStreamEmpty.fromJson(d),
-  'logVerbosityLevel': (d) => LogVerbosityLevel.fromJson(d),
-  'logTags': (d) => LogTags.fromJson(d),
-  'testInt': (d) => TestInt.fromJson(d),
-  'testString': (d) => TestString.fromJson(d),
-  'testBytes': (d) => TestBytes.fromJson(d),
-  'testVectorInt': (d) => TestVectorInt.fromJson(d),
-  'testVectorIntObject': (d) => TestVectorIntObject.fromJson(d),
-  'testVectorString': (d) => TestVectorString.fromJson(d),
-  'testVectorStringObject': (d) => TestVectorStringObject.fromJson(d),
-};
+
+TdObject? convertToObject(String? query) {
+  if (query == null) return null;
+  final newJson = json.decode(query);
+  switch (newJson['@type']) {
+    
+    case 'error': return TdError.fromJson(newJson);
+    case 'ok': return Ok.fromJson(newJson);
+    case 'tdlibParameters': return TdlibParameters.fromJson(newJson);
+    case 'authenticationCodeType': return AuthenticationCodeType.fromJson(newJson);
+    case 'authenticationCodeTypeTelegramMessage': return AuthenticationCodeTypeTelegramMessage.fromJson(newJson);
+    case 'authenticationCodeTypeSms': return AuthenticationCodeTypeSms.fromJson(newJson);
+    case 'authenticationCodeTypeCall': return AuthenticationCodeTypeCall.fromJson(newJson);
+    case 'authenticationCodeTypeFlashCall': return AuthenticationCodeTypeFlashCall.fromJson(newJson);
+    case 'authenticationCodeTypeMissedCall': return AuthenticationCodeTypeMissedCall.fromJson(newJson);
+    case 'authenticationCodeInfo': return AuthenticationCodeInfo.fromJson(newJson);
+    case 'emailAddressAuthenticationCodeInfo': return EmailAddressAuthenticationCodeInfo.fromJson(newJson);
+    case 'textEntity': return TextEntity.fromJson(newJson);
+    case 'textEntities': return TextEntities.fromJson(newJson);
+    case 'formattedText': return FormattedText.fromJson(newJson);
+    case 'termsOfService': return TermsOfService.fromJson(newJson);
+    case 'authorizationState': return AuthorizationState.fromJson(newJson);
+    case 'authorizationStateWaitTdlibParameters': return AuthorizationStateWaitTdlibParameters.fromJson(newJson);
+    case 'authorizationStateWaitEncryptionKey': return AuthorizationStateWaitEncryptionKey.fromJson(newJson);
+    case 'authorizationStateWaitPhoneNumber': return AuthorizationStateWaitPhoneNumber.fromJson(newJson);
+    case 'authorizationStateWaitCode': return AuthorizationStateWaitCode.fromJson(newJson);
+    case 'authorizationStateWaitOtherDeviceConfirmation': return AuthorizationStateWaitOtherDeviceConfirmation.fromJson(newJson);
+    case 'authorizationStateWaitRegistration': return AuthorizationStateWaitRegistration.fromJson(newJson);
+    case 'authorizationStateWaitPassword': return AuthorizationStateWaitPassword.fromJson(newJson);
+    case 'authorizationStateReady': return AuthorizationStateReady.fromJson(newJson);
+    case 'authorizationStateLoggingOut': return AuthorizationStateLoggingOut.fromJson(newJson);
+    case 'authorizationStateClosing': return AuthorizationStateClosing.fromJson(newJson);
+    case 'authorizationStateClosed': return AuthorizationStateClosed.fromJson(newJson);
+    case 'passwordState': return PasswordState.fromJson(newJson);
+    case 'recoveryEmailAddress': return RecoveryEmailAddress.fromJson(newJson);
+    case 'temporaryPasswordState': return TemporaryPasswordState.fromJson(newJson);
+    case 'localFile': return LocalFile.fromJson(newJson);
+    case 'remoteFile': return RemoteFile.fromJson(newJson);
+    case 'file': return File.fromJson(newJson);
+    case 'inputFile': return InputFile.fromJson(newJson);
+    case 'inputFileId': return InputFileId.fromJson(newJson);
+    case 'inputFileRemote': return InputFileRemote.fromJson(newJson);
+    case 'inputFileLocal': return InputFileLocal.fromJson(newJson);
+    case 'inputFileGenerated': return InputFileGenerated.fromJson(newJson);
+    case 'photoSize': return PhotoSize.fromJson(newJson);
+    case 'minithumbnail': return Minithumbnail.fromJson(newJson);
+    case 'thumbnailFormat': return ThumbnailFormat.fromJson(newJson);
+    case 'thumbnailFormatJpeg': return ThumbnailFormatJpeg.fromJson(newJson);
+    case 'thumbnailFormatPng': return ThumbnailFormatPng.fromJson(newJson);
+    case 'thumbnailFormatWebp': return ThumbnailFormatWebp.fromJson(newJson);
+    case 'thumbnailFormatGif': return ThumbnailFormatGif.fromJson(newJson);
+    case 'thumbnailFormatTgs': return ThumbnailFormatTgs.fromJson(newJson);
+    case 'thumbnailFormatMpeg4': return ThumbnailFormatMpeg4.fromJson(newJson);
+    case 'thumbnail': return Thumbnail.fromJson(newJson);
+    case 'maskPoint': return MaskPoint.fromJson(newJson);
+    case 'maskPointForehead': return MaskPointForehead.fromJson(newJson);
+    case 'maskPointEyes': return MaskPointEyes.fromJson(newJson);
+    case 'maskPointMouth': return MaskPointMouth.fromJson(newJson);
+    case 'maskPointChin': return MaskPointChin.fromJson(newJson);
+    case 'maskPosition': return MaskPosition.fromJson(newJson);
+    case 'closedVectorPath': return ClosedVectorPath.fromJson(newJson);
+    case 'pollOption': return PollOption.fromJson(newJson);
+    case 'pollType': return PollType.fromJson(newJson);
+    case 'pollTypeRegular': return PollTypeRegular.fromJson(newJson);
+    case 'pollTypeQuiz': return PollTypeQuiz.fromJson(newJson);
+    case 'animation': return Animation.fromJson(newJson);
+    case 'audio': return Audio.fromJson(newJson);
+    case 'document': return Document.fromJson(newJson);
+    case 'photo': return Photo.fromJson(newJson);
+    case 'sticker': return Sticker.fromJson(newJson);
+    case 'video': return Video.fromJson(newJson);
+    case 'videoNote': return VideoNote.fromJson(newJson);
+    case 'voiceNote': return VoiceNote.fromJson(newJson);
+    case 'animatedEmoji': return AnimatedEmoji.fromJson(newJson);
+    case 'contact': return Contact.fromJson(newJson);
+    case 'location': return Location.fromJson(newJson);
+    case 'venue': return Venue.fromJson(newJson);
+    case 'game': return Game.fromJson(newJson);
+    case 'poll': return Poll.fromJson(newJson);
+    case 'profilePhoto': return ProfilePhoto.fromJson(newJson);
+    case 'chatPhotoInfo': return ChatPhotoInfo.fromJson(newJson);
+    case 'userType': return UserType.fromJson(newJson);
+    case 'userTypeRegular': return UserTypeRegular.fromJson(newJson);
+    case 'userTypeDeleted': return UserTypeDeleted.fromJson(newJson);
+    case 'userTypeBot': return UserTypeBot.fromJson(newJson);
+    case 'userTypeUnknown': return UserTypeUnknown.fromJson(newJson);
+    case 'botCommand': return BotCommand.fromJson(newJson);
+    case 'botCommands': return BotCommands.fromJson(newJson);
+    case 'chatLocation': return ChatLocation.fromJson(newJson);
+    case 'animatedChatPhoto': return AnimatedChatPhoto.fromJson(newJson);
+    case 'chatPhoto': return ChatPhoto.fromJson(newJson);
+    case 'chatPhotos': return ChatPhotos.fromJson(newJson);
+    case 'inputChatPhoto': return InputChatPhoto.fromJson(newJson);
+    case 'inputChatPhotoPrevious': return InputChatPhotoPrevious.fromJson(newJson);
+    case 'inputChatPhotoStatic': return InputChatPhotoStatic.fromJson(newJson);
+    case 'inputChatPhotoAnimation': return InputChatPhotoAnimation.fromJson(newJson);
+    case 'user': return User.fromJson(newJson);
+    case 'userFullInfo': return UserFullInfo.fromJson(newJson);
+    case 'users': return Users.fromJson(newJson);
+    case 'chatAdministrator': return ChatAdministrator.fromJson(newJson);
+    case 'chatAdministrators': return ChatAdministrators.fromJson(newJson);
+    case 'chatPermissions': return ChatPermissions.fromJson(newJson);
+    case 'chatMemberStatus': return ChatMemberStatus.fromJson(newJson);
+    case 'chatMemberStatusCreator': return ChatMemberStatusCreator.fromJson(newJson);
+    case 'chatMemberStatusAdministrator': return ChatMemberStatusAdministrator.fromJson(newJson);
+    case 'chatMemberStatusMember': return ChatMemberStatusMember.fromJson(newJson);
+    case 'chatMemberStatusRestricted': return ChatMemberStatusRestricted.fromJson(newJson);
+    case 'chatMemberStatusLeft': return ChatMemberStatusLeft.fromJson(newJson);
+    case 'chatMemberStatusBanned': return ChatMemberStatusBanned.fromJson(newJson);
+    case 'chatMember': return ChatMember.fromJson(newJson);
+    case 'chatMembers': return ChatMembers.fromJson(newJson);
+    case 'chatMembersFilter': return ChatMembersFilter.fromJson(newJson);
+    case 'chatMembersFilterContacts': return ChatMembersFilterContacts.fromJson(newJson);
+    case 'chatMembersFilterAdministrators': return ChatMembersFilterAdministrators.fromJson(newJson);
+    case 'chatMembersFilterMembers': return ChatMembersFilterMembers.fromJson(newJson);
+    case 'chatMembersFilterMention': return ChatMembersFilterMention.fromJson(newJson);
+    case 'chatMembersFilterRestricted': return ChatMembersFilterRestricted.fromJson(newJson);
+    case 'chatMembersFilterBanned': return ChatMembersFilterBanned.fromJson(newJson);
+    case 'chatMembersFilterBots': return ChatMembersFilterBots.fromJson(newJson);
+    case 'supergroupMembersFilter': return SupergroupMembersFilter.fromJson(newJson);
+    case 'supergroupMembersFilterRecent': return SupergroupMembersFilterRecent.fromJson(newJson);
+    case 'supergroupMembersFilterContacts': return SupergroupMembersFilterContacts.fromJson(newJson);
+    case 'supergroupMembersFilterAdministrators': return SupergroupMembersFilterAdministrators.fromJson(newJson);
+    case 'supergroupMembersFilterSearch': return SupergroupMembersFilterSearch.fromJson(newJson);
+    case 'supergroupMembersFilterRestricted': return SupergroupMembersFilterRestricted.fromJson(newJson);
+    case 'supergroupMembersFilterBanned': return SupergroupMembersFilterBanned.fromJson(newJson);
+    case 'supergroupMembersFilterMention': return SupergroupMembersFilterMention.fromJson(newJson);
+    case 'supergroupMembersFilterBots': return SupergroupMembersFilterBots.fromJson(newJson);
+    case 'chatInviteLink': return ChatInviteLink.fromJson(newJson);
+    case 'chatInviteLinks': return ChatInviteLinks.fromJson(newJson);
+    case 'chatInviteLinkCount': return ChatInviteLinkCount.fromJson(newJson);
+    case 'chatInviteLinkCounts': return ChatInviteLinkCounts.fromJson(newJson);
+    case 'chatInviteLinkMember': return ChatInviteLinkMember.fromJson(newJson);
+    case 'chatInviteLinkMembers': return ChatInviteLinkMembers.fromJson(newJson);
+    case 'chatInviteLinkInfo': return ChatInviteLinkInfo.fromJson(newJson);
+    case 'chatJoinRequest': return ChatJoinRequest.fromJson(newJson);
+    case 'chatJoinRequests': return ChatJoinRequests.fromJson(newJson);
+    case 'chatJoinRequestsInfo': return ChatJoinRequestsInfo.fromJson(newJson);
+    case 'basicGroup': return BasicGroup.fromJson(newJson);
+    case 'basicGroupFullInfo': return BasicGroupFullInfo.fromJson(newJson);
+    case 'supergroup': return Supergroup.fromJson(newJson);
+    case 'supergroupFullInfo': return SupergroupFullInfo.fromJson(newJson);
+    case 'secretChatState': return SecretChatState.fromJson(newJson);
+    case 'secretChatStatePending': return SecretChatStatePending.fromJson(newJson);
+    case 'secretChatStateReady': return SecretChatStateReady.fromJson(newJson);
+    case 'secretChatStateClosed': return SecretChatStateClosed.fromJson(newJson);
+    case 'secretChat': return SecretChat.fromJson(newJson);
+    case 'messageSender': return MessageSender.fromJson(newJson);
+    case 'messageSenderUser': return MessageSenderUser.fromJson(newJson);
+    case 'messageSenderChat': return MessageSenderChat.fromJson(newJson);
+    case 'messageSenders': return MessageSenders.fromJson(newJson);
+    case 'messageForwardOrigin': return MessageForwardOrigin.fromJson(newJson);
+    case 'messageForwardOriginUser': return MessageForwardOriginUser.fromJson(newJson);
+    case 'messageForwardOriginChat': return MessageForwardOriginChat.fromJson(newJson);
+    case 'messageForwardOriginHiddenUser': return MessageForwardOriginHiddenUser.fromJson(newJson);
+    case 'messageForwardOriginChannel': return MessageForwardOriginChannel.fromJson(newJson);
+    case 'messageForwardOriginMessageImport': return MessageForwardOriginMessageImport.fromJson(newJson);
+    case 'messageForwardInfo': return MessageForwardInfo.fromJson(newJson);
+    case 'messageReplyInfo': return MessageReplyInfo.fromJson(newJson);
+    case 'messageInteractionInfo': return MessageInteractionInfo.fromJson(newJson);
+    case 'messageSendingState': return MessageSendingState.fromJson(newJson);
+    case 'messageSendingStatePending': return MessageSendingStatePending.fromJson(newJson);
+    case 'messageSendingStateFailed': return MessageSendingStateFailed.fromJson(newJson);
+    case 'message': return Message.fromJson(newJson);
+    case 'messages': return Messages.fromJson(newJson);
+    case 'foundMessages': return FoundMessages.fromJson(newJson);
+    case 'messagePosition': return MessagePosition.fromJson(newJson);
+    case 'messagePositions': return MessagePositions.fromJson(newJson);
+    case 'messageCalendarDay': return MessageCalendarDay.fromJson(newJson);
+    case 'messageCalendar': return MessageCalendar.fromJson(newJson);
+    case 'sponsoredMessage': return SponsoredMessage.fromJson(newJson);
+    case 'notificationSettingsScope': return NotificationSettingsScope.fromJson(newJson);
+    case 'notificationSettingsScopePrivateChats': return NotificationSettingsScopePrivateChats.fromJson(newJson);
+    case 'notificationSettingsScopeGroupChats': return NotificationSettingsScopeGroupChats.fromJson(newJson);
+    case 'notificationSettingsScopeChannelChats': return NotificationSettingsScopeChannelChats.fromJson(newJson);
+    case 'chatNotificationSettings': return ChatNotificationSettings.fromJson(newJson);
+    case 'scopeNotificationSettings': return ScopeNotificationSettings.fromJson(newJson);
+    case 'draftMessage': return DraftMessage.fromJson(newJson);
+    case 'chatType': return ChatType.fromJson(newJson);
+    case 'chatTypePrivate': return ChatTypePrivate.fromJson(newJson);
+    case 'chatTypeBasicGroup': return ChatTypeBasicGroup.fromJson(newJson);
+    case 'chatTypeSupergroup': return ChatTypeSupergroup.fromJson(newJson);
+    case 'chatTypeSecret': return ChatTypeSecret.fromJson(newJson);
+    case 'chatFilter': return ChatFilter.fromJson(newJson);
+    case 'chatFilterInfo': return ChatFilterInfo.fromJson(newJson);
+    case 'recommendedChatFilter': return RecommendedChatFilter.fromJson(newJson);
+    case 'recommendedChatFilters': return RecommendedChatFilters.fromJson(newJson);
+    case 'chatList': return ChatList.fromJson(newJson);
+    case 'chatListMain': return ChatListMain.fromJson(newJson);
+    case 'chatListArchive': return ChatListArchive.fromJson(newJson);
+    case 'chatListFilter': return ChatListFilter.fromJson(newJson);
+    case 'chatLists': return ChatLists.fromJson(newJson);
+    case 'chatSource': return ChatSource.fromJson(newJson);
+    case 'chatSourceMtprotoProxy': return ChatSourceMtprotoProxy.fromJson(newJson);
+    case 'chatSourcePublicServiceAnnouncement': return ChatSourcePublicServiceAnnouncement.fromJson(newJson);
+    case 'chatPosition': return ChatPosition.fromJson(newJson);
+    case 'videoChat': return VideoChat.fromJson(newJson);
+    case 'chat': return Chat.fromJson(newJson);
+    case 'chats': return Chats.fromJson(newJson);
+    case 'chatNearby': return ChatNearby.fromJson(newJson);
+    case 'chatsNearby': return ChatsNearby.fromJson(newJson);
+    case 'publicChatType': return PublicChatType.fromJson(newJson);
+    case 'publicChatTypeHasUsername': return PublicChatTypeHasUsername.fromJson(newJson);
+    case 'publicChatTypeIsLocationBased': return PublicChatTypeIsLocationBased.fromJson(newJson);
+    case 'chatActionBar': return ChatActionBar.fromJson(newJson);
+    case 'chatActionBarReportSpam': return ChatActionBarReportSpam.fromJson(newJson);
+    case 'chatActionBarReportUnrelatedLocation': return ChatActionBarReportUnrelatedLocation.fromJson(newJson);
+    case 'chatActionBarInviteMembers': return ChatActionBarInviteMembers.fromJson(newJson);
+    case 'chatActionBarReportAddBlock': return ChatActionBarReportAddBlock.fromJson(newJson);
+    case 'chatActionBarAddContact': return ChatActionBarAddContact.fromJson(newJson);
+    case 'chatActionBarSharePhoneNumber': return ChatActionBarSharePhoneNumber.fromJson(newJson);
+    case 'chatActionBarJoinRequest': return ChatActionBarJoinRequest.fromJson(newJson);
+    case 'keyboardButtonType': return KeyboardButtonType.fromJson(newJson);
+    case 'keyboardButtonTypeText': return KeyboardButtonTypeText.fromJson(newJson);
+    case 'keyboardButtonTypeRequestPhoneNumber': return KeyboardButtonTypeRequestPhoneNumber.fromJson(newJson);
+    case 'keyboardButtonTypeRequestLocation': return KeyboardButtonTypeRequestLocation.fromJson(newJson);
+    case 'keyboardButtonTypeRequestPoll': return KeyboardButtonTypeRequestPoll.fromJson(newJson);
+    case 'keyboardButton': return KeyboardButton.fromJson(newJson);
+    case 'inlineKeyboardButtonType': return InlineKeyboardButtonType.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeUrl': return InlineKeyboardButtonTypeUrl.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeLoginUrl': return InlineKeyboardButtonTypeLoginUrl.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeCallback': return InlineKeyboardButtonTypeCallback.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeCallbackWithPassword': return InlineKeyboardButtonTypeCallbackWithPassword.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeCallbackGame': return InlineKeyboardButtonTypeCallbackGame.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeSwitchInline': return InlineKeyboardButtonTypeSwitchInline.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeBuy': return InlineKeyboardButtonTypeBuy.fromJson(newJson);
+    case 'inlineKeyboardButtonTypeUser': return InlineKeyboardButtonTypeUser.fromJson(newJson);
+    case 'inlineKeyboardButton': return InlineKeyboardButton.fromJson(newJson);
+    case 'replyMarkup': return ReplyMarkup.fromJson(newJson);
+    case 'replyMarkupRemoveKeyboard': return ReplyMarkupRemoveKeyboard.fromJson(newJson);
+    case 'replyMarkupForceReply': return ReplyMarkupForceReply.fromJson(newJson);
+    case 'replyMarkupShowKeyboard': return ReplyMarkupShowKeyboard.fromJson(newJson);
+    case 'replyMarkupInlineKeyboard': return ReplyMarkupInlineKeyboard.fromJson(newJson);
+    case 'loginUrlInfo': return LoginUrlInfo.fromJson(newJson);
+    case 'loginUrlInfoOpen': return LoginUrlInfoOpen.fromJson(newJson);
+    case 'loginUrlInfoRequestConfirmation': return LoginUrlInfoRequestConfirmation.fromJson(newJson);
+    case 'messageThreadInfo': return MessageThreadInfo.fromJson(newJson);
+    case 'richText': return RichText.fromJson(newJson);
+    case 'richTextPlain': return RichTextPlain.fromJson(newJson);
+    case 'richTextBold': return RichTextBold.fromJson(newJson);
+    case 'richTextItalic': return RichTextItalic.fromJson(newJson);
+    case 'richTextUnderline': return RichTextUnderline.fromJson(newJson);
+    case 'richTextStrikethrough': return RichTextStrikethrough.fromJson(newJson);
+    case 'richTextFixed': return RichTextFixed.fromJson(newJson);
+    case 'richTextUrl': return RichTextUrl.fromJson(newJson);
+    case 'richTextEmailAddress': return RichTextEmailAddress.fromJson(newJson);
+    case 'richTextSubscript': return RichTextSubscript.fromJson(newJson);
+    case 'richTextSuperscript': return RichTextSuperscript.fromJson(newJson);
+    case 'richTextMarked': return RichTextMarked.fromJson(newJson);
+    case 'richTextPhoneNumber': return RichTextPhoneNumber.fromJson(newJson);
+    case 'richTextIcon': return RichTextIcon.fromJson(newJson);
+    case 'richTextReference': return RichTextReference.fromJson(newJson);
+    case 'richTextAnchor': return RichTextAnchor.fromJson(newJson);
+    case 'richTextAnchorLink': return RichTextAnchorLink.fromJson(newJson);
+    case 'richTexts': return RichTexts.fromJson(newJson);
+    case 'pageBlockCaption': return PageBlockCaption.fromJson(newJson);
+    case 'pageBlockListItem': return PageBlockListItem.fromJson(newJson);
+    case 'pageBlockHorizontalAlignment': return PageBlockHorizontalAlignment.fromJson(newJson);
+    case 'pageBlockHorizontalAlignmentLeft': return PageBlockHorizontalAlignmentLeft.fromJson(newJson);
+    case 'pageBlockHorizontalAlignmentCenter': return PageBlockHorizontalAlignmentCenter.fromJson(newJson);
+    case 'pageBlockHorizontalAlignmentRight': return PageBlockHorizontalAlignmentRight.fromJson(newJson);
+    case 'pageBlockVerticalAlignment': return PageBlockVerticalAlignment.fromJson(newJson);
+    case 'pageBlockVerticalAlignmentTop': return PageBlockVerticalAlignmentTop.fromJson(newJson);
+    case 'pageBlockVerticalAlignmentMiddle': return PageBlockVerticalAlignmentMiddle.fromJson(newJson);
+    case 'pageBlockVerticalAlignmentBottom': return PageBlockVerticalAlignmentBottom.fromJson(newJson);
+    case 'pageBlockTableCell': return PageBlockTableCell.fromJson(newJson);
+    case 'pageBlockRelatedArticle': return PageBlockRelatedArticle.fromJson(newJson);
+    case 'pageBlock': return PageBlock.fromJson(newJson);
+    case 'pageBlockTitle': return PageBlockTitle.fromJson(newJson);
+    case 'pageBlockSubtitle': return PageBlockSubtitle.fromJson(newJson);
+    case 'pageBlockAuthorDate': return PageBlockAuthorDate.fromJson(newJson);
+    case 'pageBlockHeader': return PageBlockHeader.fromJson(newJson);
+    case 'pageBlockSubheader': return PageBlockSubheader.fromJson(newJson);
+    case 'pageBlockKicker': return PageBlockKicker.fromJson(newJson);
+    case 'pageBlockParagraph': return PageBlockParagraph.fromJson(newJson);
+    case 'pageBlockPreformatted': return PageBlockPreformatted.fromJson(newJson);
+    case 'pageBlockFooter': return PageBlockFooter.fromJson(newJson);
+    case 'pageBlockDivider': return PageBlockDivider.fromJson(newJson);
+    case 'pageBlockAnchor': return PageBlockAnchor.fromJson(newJson);
+    case 'pageBlockList': return PageBlockList.fromJson(newJson);
+    case 'pageBlockBlockQuote': return PageBlockBlockQuote.fromJson(newJson);
+    case 'pageBlockPullQuote': return PageBlockPullQuote.fromJson(newJson);
+    case 'pageBlockAnimation': return PageBlockAnimation.fromJson(newJson);
+    case 'pageBlockAudio': return PageBlockAudio.fromJson(newJson);
+    case 'pageBlockPhoto': return PageBlockPhoto.fromJson(newJson);
+    case 'pageBlockVideo': return PageBlockVideo.fromJson(newJson);
+    case 'pageBlockVoiceNote': return PageBlockVoiceNote.fromJson(newJson);
+    case 'pageBlockCover': return PageBlockCover.fromJson(newJson);
+    case 'pageBlockEmbedded': return PageBlockEmbedded.fromJson(newJson);
+    case 'pageBlockEmbeddedPost': return PageBlockEmbeddedPost.fromJson(newJson);
+    case 'pageBlockCollage': return PageBlockCollage.fromJson(newJson);
+    case 'pageBlockSlideshow': return PageBlockSlideshow.fromJson(newJson);
+    case 'pageBlockChatLink': return PageBlockChatLink.fromJson(newJson);
+    case 'pageBlockTable': return PageBlockTable.fromJson(newJson);
+    case 'pageBlockDetails': return PageBlockDetails.fromJson(newJson);
+    case 'pageBlockRelatedArticles': return PageBlockRelatedArticles.fromJson(newJson);
+    case 'pageBlockMap': return PageBlockMap.fromJson(newJson);
+    case 'webPageInstantView': return WebPageInstantView.fromJson(newJson);
+    case 'webPage': return WebPage.fromJson(newJson);
+    case 'countryInfo': return CountryInfo.fromJson(newJson);
+    case 'countries': return Countries.fromJson(newJson);
+    case 'phoneNumberInfo': return PhoneNumberInfo.fromJson(newJson);
+    case 'bankCardActionOpenUrl': return BankCardActionOpenUrl.fromJson(newJson);
+    case 'bankCardInfo': return BankCardInfo.fromJson(newJson);
+    case 'address': return Address.fromJson(newJson);
+    case 'labeledPricePart': return LabeledPricePart.fromJson(newJson);
+    case 'invoice': return Invoice.fromJson(newJson);
+    case 'orderInfo': return OrderInfo.fromJson(newJson);
+    case 'shippingOption': return ShippingOption.fromJson(newJson);
+    case 'savedCredentials': return SavedCredentials.fromJson(newJson);
+    case 'inputCredentials': return InputCredentials.fromJson(newJson);
+    case 'inputCredentialsSaved': return InputCredentialsSaved.fromJson(newJson);
+    case 'inputCredentialsNew': return InputCredentialsNew.fromJson(newJson);
+    case 'inputCredentialsApplePay': return InputCredentialsApplePay.fromJson(newJson);
+    case 'inputCredentialsGooglePay': return InputCredentialsGooglePay.fromJson(newJson);
+    case 'paymentsProviderStripe': return PaymentsProviderStripe.fromJson(newJson);
+    case 'paymentFormTheme': return PaymentFormTheme.fromJson(newJson);
+    case 'paymentForm': return PaymentForm.fromJson(newJson);
+    case 'validatedOrderInfo': return ValidatedOrderInfo.fromJson(newJson);
+    case 'paymentResult': return PaymentResult.fromJson(newJson);
+    case 'paymentReceipt': return PaymentReceipt.fromJson(newJson);
+    case 'datedFile': return DatedFile.fromJson(newJson);
+    case 'passportElementType': return PassportElementType.fromJson(newJson);
+    case 'passportElementTypePersonalDetails': return PassportElementTypePersonalDetails.fromJson(newJson);
+    case 'passportElementTypePassport': return PassportElementTypePassport.fromJson(newJson);
+    case 'passportElementTypeDriverLicense': return PassportElementTypeDriverLicense.fromJson(newJson);
+    case 'passportElementTypeIdentityCard': return PassportElementTypeIdentityCard.fromJson(newJson);
+    case 'passportElementTypeInternalPassport': return PassportElementTypeInternalPassport.fromJson(newJson);
+    case 'passportElementTypeAddress': return PassportElementTypeAddress.fromJson(newJson);
+    case 'passportElementTypeUtilityBill': return PassportElementTypeUtilityBill.fromJson(newJson);
+    case 'passportElementTypeBankStatement': return PassportElementTypeBankStatement.fromJson(newJson);
+    case 'passportElementTypeRentalAgreement': return PassportElementTypeRentalAgreement.fromJson(newJson);
+    case 'passportElementTypePassportRegistration': return PassportElementTypePassportRegistration.fromJson(newJson);
+    case 'passportElementTypeTemporaryRegistration': return PassportElementTypeTemporaryRegistration.fromJson(newJson);
+    case 'passportElementTypePhoneNumber': return PassportElementTypePhoneNumber.fromJson(newJson);
+    case 'passportElementTypeEmailAddress': return PassportElementTypeEmailAddress.fromJson(newJson);
+    case 'date': return Date.fromJson(newJson);
+    case 'personalDetails': return PersonalDetails.fromJson(newJson);
+    case 'identityDocument': return IdentityDocument.fromJson(newJson);
+    case 'inputIdentityDocument': return InputIdentityDocument.fromJson(newJson);
+    case 'personalDocument': return PersonalDocument.fromJson(newJson);
+    case 'inputPersonalDocument': return InputPersonalDocument.fromJson(newJson);
+    case 'passportElement': return PassportElement.fromJson(newJson);
+    case 'passportElementPersonalDetails': return PassportElementPersonalDetails.fromJson(newJson);
+    case 'passportElementPassport': return PassportElementPassport.fromJson(newJson);
+    case 'passportElementDriverLicense': return PassportElementDriverLicense.fromJson(newJson);
+    case 'passportElementIdentityCard': return PassportElementIdentityCard.fromJson(newJson);
+    case 'passportElementInternalPassport': return PassportElementInternalPassport.fromJson(newJson);
+    case 'passportElementAddress': return PassportElementAddress.fromJson(newJson);
+    case 'passportElementUtilityBill': return PassportElementUtilityBill.fromJson(newJson);
+    case 'passportElementBankStatement': return PassportElementBankStatement.fromJson(newJson);
+    case 'passportElementRentalAgreement': return PassportElementRentalAgreement.fromJson(newJson);
+    case 'passportElementPassportRegistration': return PassportElementPassportRegistration.fromJson(newJson);
+    case 'passportElementTemporaryRegistration': return PassportElementTemporaryRegistration.fromJson(newJson);
+    case 'passportElementPhoneNumber': return PassportElementPhoneNumber.fromJson(newJson);
+    case 'passportElementEmailAddress': return PassportElementEmailAddress.fromJson(newJson);
+    case 'inputPassportElement': return InputPassportElement.fromJson(newJson);
+    case 'inputPassportElementPersonalDetails': return InputPassportElementPersonalDetails.fromJson(newJson);
+    case 'inputPassportElementPassport': return InputPassportElementPassport.fromJson(newJson);
+    case 'inputPassportElementDriverLicense': return InputPassportElementDriverLicense.fromJson(newJson);
+    case 'inputPassportElementIdentityCard': return InputPassportElementIdentityCard.fromJson(newJson);
+    case 'inputPassportElementInternalPassport': return InputPassportElementInternalPassport.fromJson(newJson);
+    case 'inputPassportElementAddress': return InputPassportElementAddress.fromJson(newJson);
+    case 'inputPassportElementUtilityBill': return InputPassportElementUtilityBill.fromJson(newJson);
+    case 'inputPassportElementBankStatement': return InputPassportElementBankStatement.fromJson(newJson);
+    case 'inputPassportElementRentalAgreement': return InputPassportElementRentalAgreement.fromJson(newJson);
+    case 'inputPassportElementPassportRegistration': return InputPassportElementPassportRegistration.fromJson(newJson);
+    case 'inputPassportElementTemporaryRegistration': return InputPassportElementTemporaryRegistration.fromJson(newJson);
+    case 'inputPassportElementPhoneNumber': return InputPassportElementPhoneNumber.fromJson(newJson);
+    case 'inputPassportElementEmailAddress': return InputPassportElementEmailAddress.fromJson(newJson);
+    case 'passportElements': return PassportElements.fromJson(newJson);
+    case 'passportElementErrorSource': return PassportElementErrorSource.fromJson(newJson);
+    case 'passportElementErrorSourceUnspecified': return PassportElementErrorSourceUnspecified.fromJson(newJson);
+    case 'passportElementErrorSourceDataField': return PassportElementErrorSourceDataField.fromJson(newJson);
+    case 'passportElementErrorSourceFrontSide': return PassportElementErrorSourceFrontSide.fromJson(newJson);
+    case 'passportElementErrorSourceReverseSide': return PassportElementErrorSourceReverseSide.fromJson(newJson);
+    case 'passportElementErrorSourceSelfie': return PassportElementErrorSourceSelfie.fromJson(newJson);
+    case 'passportElementErrorSourceTranslationFile': return PassportElementErrorSourceTranslationFile.fromJson(newJson);
+    case 'passportElementErrorSourceTranslationFiles': return PassportElementErrorSourceTranslationFiles.fromJson(newJson);
+    case 'passportElementErrorSourceFile': return PassportElementErrorSourceFile.fromJson(newJson);
+    case 'passportElementErrorSourceFiles': return PassportElementErrorSourceFiles.fromJson(newJson);
+    case 'passportElementError': return PassportElementError.fromJson(newJson);
+    case 'passportSuitableElement': return PassportSuitableElement.fromJson(newJson);
+    case 'passportRequiredElement': return PassportRequiredElement.fromJson(newJson);
+    case 'passportAuthorizationForm': return PassportAuthorizationForm.fromJson(newJson);
+    case 'passportElementsWithErrors': return PassportElementsWithErrors.fromJson(newJson);
+    case 'encryptedCredentials': return EncryptedCredentials.fromJson(newJson);
+    case 'encryptedPassportElement': return EncryptedPassportElement.fromJson(newJson);
+    case 'inputPassportElementErrorSource': return InputPassportElementErrorSource.fromJson(newJson);
+    case 'inputPassportElementErrorSourceUnspecified': return InputPassportElementErrorSourceUnspecified.fromJson(newJson);
+    case 'inputPassportElementErrorSourceDataField': return InputPassportElementErrorSourceDataField.fromJson(newJson);
+    case 'inputPassportElementErrorSourceFrontSide': return InputPassportElementErrorSourceFrontSide.fromJson(newJson);
+    case 'inputPassportElementErrorSourceReverseSide': return InputPassportElementErrorSourceReverseSide.fromJson(newJson);
+    case 'inputPassportElementErrorSourceSelfie': return InputPassportElementErrorSourceSelfie.fromJson(newJson);
+    case 'inputPassportElementErrorSourceTranslationFile': return InputPassportElementErrorSourceTranslationFile.fromJson(newJson);
+    case 'inputPassportElementErrorSourceTranslationFiles': return InputPassportElementErrorSourceTranslationFiles.fromJson(newJson);
+    case 'inputPassportElementErrorSourceFile': return InputPassportElementErrorSourceFile.fromJson(newJson);
+    case 'inputPassportElementErrorSourceFiles': return InputPassportElementErrorSourceFiles.fromJson(newJson);
+    case 'inputPassportElementError': return InputPassportElementError.fromJson(newJson);
+    case 'messageContent': return MessageContent.fromJson(newJson);
+    case 'messageText': return MessageText.fromJson(newJson);
+    case 'messageAnimation': return MessageAnimation.fromJson(newJson);
+    case 'messageAudio': return MessageAudio.fromJson(newJson);
+    case 'messageDocument': return MessageDocument.fromJson(newJson);
+    case 'messagePhoto': return MessagePhoto.fromJson(newJson);
+    case 'messageExpiredPhoto': return MessageExpiredPhoto.fromJson(newJson);
+    case 'messageSticker': return MessageSticker.fromJson(newJson);
+    case 'messageVideo': return MessageVideo.fromJson(newJson);
+    case 'messageExpiredVideo': return MessageExpiredVideo.fromJson(newJson);
+    case 'messageVideoNote': return MessageVideoNote.fromJson(newJson);
+    case 'messageVoiceNote': return MessageVoiceNote.fromJson(newJson);
+    case 'messageLocation': return MessageLocation.fromJson(newJson);
+    case 'messageVenue': return MessageVenue.fromJson(newJson);
+    case 'messageContact': return MessageContact.fromJson(newJson);
+    case 'messageAnimatedEmoji': return MessageAnimatedEmoji.fromJson(newJson);
+    case 'messageDice': return MessageDice.fromJson(newJson);
+    case 'messageGame': return MessageGame.fromJson(newJson);
+    case 'messagePoll': return MessagePoll.fromJson(newJson);
+    case 'messageInvoice': return MessageInvoice.fromJson(newJson);
+    case 'messageCall': return MessageCall.fromJson(newJson);
+    case 'messageVideoChatScheduled': return MessageVideoChatScheduled.fromJson(newJson);
+    case 'messageVideoChatStarted': return MessageVideoChatStarted.fromJson(newJson);
+    case 'messageVideoChatEnded': return MessageVideoChatEnded.fromJson(newJson);
+    case 'messageInviteVideoChatParticipants': return MessageInviteVideoChatParticipants.fromJson(newJson);
+    case 'messageBasicGroupChatCreate': return MessageBasicGroupChatCreate.fromJson(newJson);
+    case 'messageSupergroupChatCreate': return MessageSupergroupChatCreate.fromJson(newJson);
+    case 'messageChatChangeTitle': return MessageChatChangeTitle.fromJson(newJson);
+    case 'messageChatChangePhoto': return MessageChatChangePhoto.fromJson(newJson);
+    case 'messageChatDeletePhoto': return MessageChatDeletePhoto.fromJson(newJson);
+    case 'messageChatAddMembers': return MessageChatAddMembers.fromJson(newJson);
+    case 'messageChatJoinByLink': return MessageChatJoinByLink.fromJson(newJson);
+    case 'messageChatJoinByRequest': return MessageChatJoinByRequest.fromJson(newJson);
+    case 'messageChatDeleteMember': return MessageChatDeleteMember.fromJson(newJson);
+    case 'messageChatUpgradeTo': return MessageChatUpgradeTo.fromJson(newJson);
+    case 'messageChatUpgradeFrom': return MessageChatUpgradeFrom.fromJson(newJson);
+    case 'messagePinMessage': return MessagePinMessage.fromJson(newJson);
+    case 'messageScreenshotTaken': return MessageScreenshotTaken.fromJson(newJson);
+    case 'messageChatSetTheme': return MessageChatSetTheme.fromJson(newJson);
+    case 'messageChatSetTtl': return MessageChatSetTtl.fromJson(newJson);
+    case 'messageCustomServiceAction': return MessageCustomServiceAction.fromJson(newJson);
+    case 'messageGameScore': return MessageGameScore.fromJson(newJson);
+    case 'messagePaymentSuccessful': return MessagePaymentSuccessful.fromJson(newJson);
+    case 'messagePaymentSuccessfulBot': return MessagePaymentSuccessfulBot.fromJson(newJson);
+    case 'messageContactRegistered': return MessageContactRegistered.fromJson(newJson);
+    case 'messageWebsiteConnected': return MessageWebsiteConnected.fromJson(newJson);
+    case 'messagePassportDataSent': return MessagePassportDataSent.fromJson(newJson);
+    case 'messagePassportDataReceived': return MessagePassportDataReceived.fromJson(newJson);
+    case 'messageProximityAlertTriggered': return MessageProximityAlertTriggered.fromJson(newJson);
+    case 'messageUnsupported': return MessageUnsupported.fromJson(newJson);
+    case 'textEntityType': return TextEntityType.fromJson(newJson);
+    case 'textEntityTypeMention': return TextEntityTypeMention.fromJson(newJson);
+    case 'textEntityTypeHashtag': return TextEntityTypeHashtag.fromJson(newJson);
+    case 'textEntityTypeCashtag': return TextEntityTypeCashtag.fromJson(newJson);
+    case 'textEntityTypeBotCommand': return TextEntityTypeBotCommand.fromJson(newJson);
+    case 'textEntityTypeUrl': return TextEntityTypeUrl.fromJson(newJson);
+    case 'textEntityTypeEmailAddress': return TextEntityTypeEmailAddress.fromJson(newJson);
+    case 'textEntityTypePhoneNumber': return TextEntityTypePhoneNumber.fromJson(newJson);
+    case 'textEntityTypeBankCardNumber': return TextEntityTypeBankCardNumber.fromJson(newJson);
+    case 'textEntityTypeBold': return TextEntityTypeBold.fromJson(newJson);
+    case 'textEntityTypeItalic': return TextEntityTypeItalic.fromJson(newJson);
+    case 'textEntityTypeUnderline': return TextEntityTypeUnderline.fromJson(newJson);
+    case 'textEntityTypeStrikethrough': return TextEntityTypeStrikethrough.fromJson(newJson);
+    case 'textEntityTypeSpoiler': return TextEntityTypeSpoiler.fromJson(newJson);
+    case 'textEntityTypeCode': return TextEntityTypeCode.fromJson(newJson);
+    case 'textEntityTypePre': return TextEntityTypePre.fromJson(newJson);
+    case 'textEntityTypePreCode': return TextEntityTypePreCode.fromJson(newJson);
+    case 'textEntityTypeTextUrl': return TextEntityTypeTextUrl.fromJson(newJson);
+    case 'textEntityTypeMentionName': return TextEntityTypeMentionName.fromJson(newJson);
+    case 'textEntityTypeMediaTimestamp': return TextEntityTypeMediaTimestamp.fromJson(newJson);
+    case 'inputThumbnail': return InputThumbnail.fromJson(newJson);
+    case 'messageSchedulingState': return MessageSchedulingState.fromJson(newJson);
+    case 'messageSchedulingStateSendAtDate': return MessageSchedulingStateSendAtDate.fromJson(newJson);
+    case 'messageSchedulingStateSendWhenOnline': return MessageSchedulingStateSendWhenOnline.fromJson(newJson);
+    case 'messageSendOptions': return MessageSendOptions.fromJson(newJson);
+    case 'messageCopyOptions': return MessageCopyOptions.fromJson(newJson);
+    case 'inputMessageContent': return InputMessageContent.fromJson(newJson);
+    case 'inputMessageText': return InputMessageText.fromJson(newJson);
+    case 'inputMessageAnimation': return InputMessageAnimation.fromJson(newJson);
+    case 'inputMessageAudio': return InputMessageAudio.fromJson(newJson);
+    case 'inputMessageDocument': return InputMessageDocument.fromJson(newJson);
+    case 'inputMessagePhoto': return InputMessagePhoto.fromJson(newJson);
+    case 'inputMessageSticker': return InputMessageSticker.fromJson(newJson);
+    case 'inputMessageVideo': return InputMessageVideo.fromJson(newJson);
+    case 'inputMessageVideoNote': return InputMessageVideoNote.fromJson(newJson);
+    case 'inputMessageVoiceNote': return InputMessageVoiceNote.fromJson(newJson);
+    case 'inputMessageLocation': return InputMessageLocation.fromJson(newJson);
+    case 'inputMessageVenue': return InputMessageVenue.fromJson(newJson);
+    case 'inputMessageContact': return InputMessageContact.fromJson(newJson);
+    case 'inputMessageDice': return InputMessageDice.fromJson(newJson);
+    case 'inputMessageGame': return InputMessageGame.fromJson(newJson);
+    case 'inputMessageInvoice': return InputMessageInvoice.fromJson(newJson);
+    case 'inputMessagePoll': return InputMessagePoll.fromJson(newJson);
+    case 'inputMessageForwarded': return InputMessageForwarded.fromJson(newJson);
+    case 'searchMessagesFilter': return SearchMessagesFilter.fromJson(newJson);
+    case 'searchMessagesFilterEmpty': return SearchMessagesFilterEmpty.fromJson(newJson);
+    case 'searchMessagesFilterAnimation': return SearchMessagesFilterAnimation.fromJson(newJson);
+    case 'searchMessagesFilterAudio': return SearchMessagesFilterAudio.fromJson(newJson);
+    case 'searchMessagesFilterDocument': return SearchMessagesFilterDocument.fromJson(newJson);
+    case 'searchMessagesFilterPhoto': return SearchMessagesFilterPhoto.fromJson(newJson);
+    case 'searchMessagesFilterVideo': return SearchMessagesFilterVideo.fromJson(newJson);
+    case 'searchMessagesFilterVoiceNote': return SearchMessagesFilterVoiceNote.fromJson(newJson);
+    case 'searchMessagesFilterPhotoAndVideo': return SearchMessagesFilterPhotoAndVideo.fromJson(newJson);
+    case 'searchMessagesFilterUrl': return SearchMessagesFilterUrl.fromJson(newJson);
+    case 'searchMessagesFilterChatPhoto': return SearchMessagesFilterChatPhoto.fromJson(newJson);
+    case 'searchMessagesFilterVideoNote': return SearchMessagesFilterVideoNote.fromJson(newJson);
+    case 'searchMessagesFilterVoiceAndVideoNote': return SearchMessagesFilterVoiceAndVideoNote.fromJson(newJson);
+    case 'searchMessagesFilterMention': return SearchMessagesFilterMention.fromJson(newJson);
+    case 'searchMessagesFilterUnreadMention': return SearchMessagesFilterUnreadMention.fromJson(newJson);
+    case 'searchMessagesFilterFailedToSend': return SearchMessagesFilterFailedToSend.fromJson(newJson);
+    case 'searchMessagesFilterPinned': return SearchMessagesFilterPinned.fromJson(newJson);
+    case 'chatAction': return ChatAction.fromJson(newJson);
+    case 'chatActionTyping': return ChatActionTyping.fromJson(newJson);
+    case 'chatActionRecordingVideo': return ChatActionRecordingVideo.fromJson(newJson);
+    case 'chatActionUploadingVideo': return ChatActionUploadingVideo.fromJson(newJson);
+    case 'chatActionRecordingVoiceNote': return ChatActionRecordingVoiceNote.fromJson(newJson);
+    case 'chatActionUploadingVoiceNote': return ChatActionUploadingVoiceNote.fromJson(newJson);
+    case 'chatActionUploadingPhoto': return ChatActionUploadingPhoto.fromJson(newJson);
+    case 'chatActionUploadingDocument': return ChatActionUploadingDocument.fromJson(newJson);
+    case 'chatActionChoosingSticker': return ChatActionChoosingSticker.fromJson(newJson);
+    case 'chatActionChoosingLocation': return ChatActionChoosingLocation.fromJson(newJson);
+    case 'chatActionChoosingContact': return ChatActionChoosingContact.fromJson(newJson);
+    case 'chatActionStartPlayingGame': return ChatActionStartPlayingGame.fromJson(newJson);
+    case 'chatActionRecordingVideoNote': return ChatActionRecordingVideoNote.fromJson(newJson);
+    case 'chatActionUploadingVideoNote': return ChatActionUploadingVideoNote.fromJson(newJson);
+    case 'chatActionWatchingAnimations': return ChatActionWatchingAnimations.fromJson(newJson);
+    case 'chatActionCancel': return ChatActionCancel.fromJson(newJson);
+    case 'userStatus': return UserStatus.fromJson(newJson);
+    case 'userStatusEmpty': return UserStatusEmpty.fromJson(newJson);
+    case 'userStatusOnline': return UserStatusOnline.fromJson(newJson);
+    case 'userStatusOffline': return UserStatusOffline.fromJson(newJson);
+    case 'userStatusRecently': return UserStatusRecently.fromJson(newJson);
+    case 'userStatusLastWeek': return UserStatusLastWeek.fromJson(newJson);
+    case 'userStatusLastMonth': return UserStatusLastMonth.fromJson(newJson);
+    case 'stickers': return Stickers.fromJson(newJson);
+    case 'emojis': return Emojis.fromJson(newJson);
+    case 'stickerSet': return StickerSet.fromJson(newJson);
+    case 'stickerSetInfo': return StickerSetInfo.fromJson(newJson);
+    case 'stickerSets': return StickerSets.fromJson(newJson);
+    case 'callDiscardReason': return CallDiscardReason.fromJson(newJson);
+    case 'callDiscardReasonEmpty': return CallDiscardReasonEmpty.fromJson(newJson);
+    case 'callDiscardReasonMissed': return CallDiscardReasonMissed.fromJson(newJson);
+    case 'callDiscardReasonDeclined': return CallDiscardReasonDeclined.fromJson(newJson);
+    case 'callDiscardReasonDisconnected': return CallDiscardReasonDisconnected.fromJson(newJson);
+    case 'callDiscardReasonHungUp': return CallDiscardReasonHungUp.fromJson(newJson);
+    case 'callProtocol': return CallProtocol.fromJson(newJson);
+    case 'callServerType': return CallServerType.fromJson(newJson);
+    case 'callServerTypeTelegramReflector': return CallServerTypeTelegramReflector.fromJson(newJson);
+    case 'callServerTypeWebrtc': return CallServerTypeWebrtc.fromJson(newJson);
+    case 'callServer': return CallServer.fromJson(newJson);
+    case 'callId': return CallId.fromJson(newJson);
+    case 'groupCallId': return GroupCallId.fromJson(newJson);
+    case 'callState': return CallState.fromJson(newJson);
+    case 'callStatePending': return CallStatePending.fromJson(newJson);
+    case 'callStateExchangingKeys': return CallStateExchangingKeys.fromJson(newJson);
+    case 'callStateReady': return CallStateReady.fromJson(newJson);
+    case 'callStateHangingUp': return CallStateHangingUp.fromJson(newJson);
+    case 'callStateDiscarded': return CallStateDiscarded.fromJson(newJson);
+    case 'callStateError': return CallStateError.fromJson(newJson);
+    case 'groupCallVideoQuality': return GroupCallVideoQuality.fromJson(newJson);
+    case 'groupCallVideoQualityThumbnail': return GroupCallVideoQualityThumbnail.fromJson(newJson);
+    case 'groupCallVideoQualityMedium': return GroupCallVideoQualityMedium.fromJson(newJson);
+    case 'groupCallVideoQualityFull': return GroupCallVideoQualityFull.fromJson(newJson);
+    case 'groupCallRecentSpeaker': return GroupCallRecentSpeaker.fromJson(newJson);
+    case 'groupCall': return GroupCall.fromJson(newJson);
+    case 'groupCallVideoSourceGroup': return GroupCallVideoSourceGroup.fromJson(newJson);
+    case 'groupCallParticipantVideoInfo': return GroupCallParticipantVideoInfo.fromJson(newJson);
+    case 'groupCallParticipant': return GroupCallParticipant.fromJson(newJson);
+    case 'callProblem': return CallProblem.fromJson(newJson);
+    case 'callProblemEcho': return CallProblemEcho.fromJson(newJson);
+    case 'callProblemNoise': return CallProblemNoise.fromJson(newJson);
+    case 'callProblemInterruptions': return CallProblemInterruptions.fromJson(newJson);
+    case 'callProblemDistortedSpeech': return CallProblemDistortedSpeech.fromJson(newJson);
+    case 'callProblemSilentLocal': return CallProblemSilentLocal.fromJson(newJson);
+    case 'callProblemSilentRemote': return CallProblemSilentRemote.fromJson(newJson);
+    case 'callProblemDropped': return CallProblemDropped.fromJson(newJson);
+    case 'callProblemDistortedVideo': return CallProblemDistortedVideo.fromJson(newJson);
+    case 'callProblemPixelatedVideo': return CallProblemPixelatedVideo.fromJson(newJson);
+    case 'call': return Call.fromJson(newJson);
+    case 'phoneNumberAuthenticationSettings': return PhoneNumberAuthenticationSettings.fromJson(newJson);
+    case 'animations': return Animations.fromJson(newJson);
+    case 'diceStickers': return DiceStickers.fromJson(newJson);
+    case 'diceStickersRegular': return DiceStickersRegular.fromJson(newJson);
+    case 'diceStickersSlotMachine': return DiceStickersSlotMachine.fromJson(newJson);
+    case 'importedContacts': return ImportedContacts.fromJson(newJson);
+    case 'httpUrl': return HttpUrl.fromJson(newJson);
+    case 'inputInlineQueryResult': return InputInlineQueryResult.fromJson(newJson);
+    case 'inputInlineQueryResultAnimation': return InputInlineQueryResultAnimation.fromJson(newJson);
+    case 'inputInlineQueryResultArticle': return InputInlineQueryResultArticle.fromJson(newJson);
+    case 'inputInlineQueryResultAudio': return InputInlineQueryResultAudio.fromJson(newJson);
+    case 'inputInlineQueryResultContact': return InputInlineQueryResultContact.fromJson(newJson);
+    case 'inputInlineQueryResultDocument': return InputInlineQueryResultDocument.fromJson(newJson);
+    case 'inputInlineQueryResultGame': return InputInlineQueryResultGame.fromJson(newJson);
+    case 'inputInlineQueryResultLocation': return InputInlineQueryResultLocation.fromJson(newJson);
+    case 'inputInlineQueryResultPhoto': return InputInlineQueryResultPhoto.fromJson(newJson);
+    case 'inputInlineQueryResultSticker': return InputInlineQueryResultSticker.fromJson(newJson);
+    case 'inputInlineQueryResultVenue': return InputInlineQueryResultVenue.fromJson(newJson);
+    case 'inputInlineQueryResultVideo': return InputInlineQueryResultVideo.fromJson(newJson);
+    case 'inputInlineQueryResultVoiceNote': return InputInlineQueryResultVoiceNote.fromJson(newJson);
+    case 'inlineQueryResult': return InlineQueryResult.fromJson(newJson);
+    case 'inlineQueryResultArticle': return InlineQueryResultArticle.fromJson(newJson);
+    case 'inlineQueryResultContact': return InlineQueryResultContact.fromJson(newJson);
+    case 'inlineQueryResultLocation': return InlineQueryResultLocation.fromJson(newJson);
+    case 'inlineQueryResultVenue': return InlineQueryResultVenue.fromJson(newJson);
+    case 'inlineQueryResultGame': return InlineQueryResultGame.fromJson(newJson);
+    case 'inlineQueryResultAnimation': return InlineQueryResultAnimation.fromJson(newJson);
+    case 'inlineQueryResultAudio': return InlineQueryResultAudio.fromJson(newJson);
+    case 'inlineQueryResultDocument': return InlineQueryResultDocument.fromJson(newJson);
+    case 'inlineQueryResultPhoto': return InlineQueryResultPhoto.fromJson(newJson);
+    case 'inlineQueryResultSticker': return InlineQueryResultSticker.fromJson(newJson);
+    case 'inlineQueryResultVideo': return InlineQueryResultVideo.fromJson(newJson);
+    case 'inlineQueryResultVoiceNote': return InlineQueryResultVoiceNote.fromJson(newJson);
+    case 'inlineQueryResults': return InlineQueryResults.fromJson(newJson);
+    case 'callbackQueryPayload': return CallbackQueryPayload.fromJson(newJson);
+    case 'callbackQueryPayloadData': return CallbackQueryPayloadData.fromJson(newJson);
+    case 'callbackQueryPayloadDataWithPassword': return CallbackQueryPayloadDataWithPassword.fromJson(newJson);
+    case 'callbackQueryPayloadGame': return CallbackQueryPayloadGame.fromJson(newJson);
+    case 'callbackQueryAnswer': return CallbackQueryAnswer.fromJson(newJson);
+    case 'customRequestResult': return CustomRequestResult.fromJson(newJson);
+    case 'gameHighScore': return GameHighScore.fromJson(newJson);
+    case 'gameHighScores': return GameHighScores.fromJson(newJson);
+    case 'chatEventAction': return ChatEventAction.fromJson(newJson);
+    case 'chatEventMessageEdited': return ChatEventMessageEdited.fromJson(newJson);
+    case 'chatEventMessageDeleted': return ChatEventMessageDeleted.fromJson(newJson);
+    case 'chatEventPollStopped': return ChatEventPollStopped.fromJson(newJson);
+    case 'chatEventMessagePinned': return ChatEventMessagePinned.fromJson(newJson);
+    case 'chatEventMessageUnpinned': return ChatEventMessageUnpinned.fromJson(newJson);
+    case 'chatEventMemberJoined': return ChatEventMemberJoined.fromJson(newJson);
+    case 'chatEventMemberJoinedByInviteLink': return ChatEventMemberJoinedByInviteLink.fromJson(newJson);
+    case 'chatEventMemberJoinedByRequest': return ChatEventMemberJoinedByRequest.fromJson(newJson);
+    case 'chatEventMemberLeft': return ChatEventMemberLeft.fromJson(newJson);
+    case 'chatEventMemberInvited': return ChatEventMemberInvited.fromJson(newJson);
+    case 'chatEventMemberPromoted': return ChatEventMemberPromoted.fromJson(newJson);
+    case 'chatEventMemberRestricted': return ChatEventMemberRestricted.fromJson(newJson);
+    case 'chatEventTitleChanged': return ChatEventTitleChanged.fromJson(newJson);
+    case 'chatEventPermissionsChanged': return ChatEventPermissionsChanged.fromJson(newJson);
+    case 'chatEventDescriptionChanged': return ChatEventDescriptionChanged.fromJson(newJson);
+    case 'chatEventUsernameChanged': return ChatEventUsernameChanged.fromJson(newJson);
+    case 'chatEventPhotoChanged': return ChatEventPhotoChanged.fromJson(newJson);
+    case 'chatEventInvitesToggled': return ChatEventInvitesToggled.fromJson(newJson);
+    case 'chatEventLinkedChatChanged': return ChatEventLinkedChatChanged.fromJson(newJson);
+    case 'chatEventSlowModeDelayChanged': return ChatEventSlowModeDelayChanged.fromJson(newJson);
+    case 'chatEventMessageTtlChanged': return ChatEventMessageTtlChanged.fromJson(newJson);
+    case 'chatEventSignMessagesToggled': return ChatEventSignMessagesToggled.fromJson(newJson);
+    case 'chatEventHasProtectedContentToggled': return ChatEventHasProtectedContentToggled.fromJson(newJson);
+    case 'chatEventStickerSetChanged': return ChatEventStickerSetChanged.fromJson(newJson);
+    case 'chatEventLocationChanged': return ChatEventLocationChanged.fromJson(newJson);
+    case 'chatEventIsAllHistoryAvailableToggled': return ChatEventIsAllHistoryAvailableToggled.fromJson(newJson);
+    case 'chatEventInviteLinkEdited': return ChatEventInviteLinkEdited.fromJson(newJson);
+    case 'chatEventInviteLinkRevoked': return ChatEventInviteLinkRevoked.fromJson(newJson);
+    case 'chatEventInviteLinkDeleted': return ChatEventInviteLinkDeleted.fromJson(newJson);
+    case 'chatEventVideoChatCreated': return ChatEventVideoChatCreated.fromJson(newJson);
+    case 'chatEventVideoChatEnded': return ChatEventVideoChatEnded.fromJson(newJson);
+    case 'chatEventVideoChatParticipantIsMutedToggled': return ChatEventVideoChatParticipantIsMutedToggled.fromJson(newJson);
+    case 'chatEventVideoChatParticipantVolumeLevelChanged': return ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(newJson);
+    case 'chatEventVideoChatMuteNewParticipantsToggled': return ChatEventVideoChatMuteNewParticipantsToggled.fromJson(newJson);
+    case 'chatEvent': return ChatEvent.fromJson(newJson);
+    case 'chatEvents': return ChatEvents.fromJson(newJson);
+    case 'chatEventLogFilters': return ChatEventLogFilters.fromJson(newJson);
+    case 'languagePackStringValue': return LanguagePackStringValue.fromJson(newJson);
+    case 'languagePackStringValueOrdinary': return LanguagePackStringValueOrdinary.fromJson(newJson);
+    case 'languagePackStringValuePluralized': return LanguagePackStringValuePluralized.fromJson(newJson);
+    case 'languagePackStringValueDeleted': return LanguagePackStringValueDeleted.fromJson(newJson);
+    case 'languagePackString': return LanguagePackString.fromJson(newJson);
+    case 'languagePackStrings': return LanguagePackStrings.fromJson(newJson);
+    case 'languagePackInfo': return LanguagePackInfo.fromJson(newJson);
+    case 'localizationTargetInfo': return LocalizationTargetInfo.fromJson(newJson);
+    case 'deviceToken': return DeviceToken.fromJson(newJson);
+    case 'deviceTokenFirebaseCloudMessaging': return DeviceTokenFirebaseCloudMessaging.fromJson(newJson);
+    case 'deviceTokenApplePush': return DeviceTokenApplePush.fromJson(newJson);
+    case 'deviceTokenApplePushVoIP': return DeviceTokenApplePushVoIP.fromJson(newJson);
+    case 'deviceTokenWindowsPush': return DeviceTokenWindowsPush.fromJson(newJson);
+    case 'deviceTokenMicrosoftPush': return DeviceTokenMicrosoftPush.fromJson(newJson);
+    case 'deviceTokenMicrosoftPushVoIP': return DeviceTokenMicrosoftPushVoIP.fromJson(newJson);
+    case 'deviceTokenWebPush': return DeviceTokenWebPush.fromJson(newJson);
+    case 'deviceTokenSimplePush': return DeviceTokenSimplePush.fromJson(newJson);
+    case 'deviceTokenUbuntuPush': return DeviceTokenUbuntuPush.fromJson(newJson);
+    case 'deviceTokenBlackBerryPush': return DeviceTokenBlackBerryPush.fromJson(newJson);
+    case 'deviceTokenTizenPush': return DeviceTokenTizenPush.fromJson(newJson);
+    case 'pushReceiverId': return PushReceiverId.fromJson(newJson);
+    case 'backgroundFill': return BackgroundFill.fromJson(newJson);
+    case 'backgroundFillSolid': return BackgroundFillSolid.fromJson(newJson);
+    case 'backgroundFillGradient': return BackgroundFillGradient.fromJson(newJson);
+    case 'backgroundFillFreeformGradient': return BackgroundFillFreeformGradient.fromJson(newJson);
+    case 'backgroundType': return BackgroundType.fromJson(newJson);
+    case 'backgroundTypeWallpaper': return BackgroundTypeWallpaper.fromJson(newJson);
+    case 'backgroundTypePattern': return BackgroundTypePattern.fromJson(newJson);
+    case 'backgroundTypeFill': return BackgroundTypeFill.fromJson(newJson);
+    case 'background': return Background.fromJson(newJson);
+    case 'backgrounds': return Backgrounds.fromJson(newJson);
+    case 'inputBackground': return InputBackground.fromJson(newJson);
+    case 'inputBackgroundLocal': return InputBackgroundLocal.fromJson(newJson);
+    case 'inputBackgroundRemote': return InputBackgroundRemote.fromJson(newJson);
+    case 'themeSettings': return ThemeSettings.fromJson(newJson);
+    case 'chatTheme': return ChatTheme.fromJson(newJson);
+    case 'hashtags': return Hashtags.fromJson(newJson);
+    case 'canTransferOwnershipResult': return CanTransferOwnershipResult.fromJson(newJson);
+    case 'canTransferOwnershipResultOk': return CanTransferOwnershipResultOk.fromJson(newJson);
+    case 'canTransferOwnershipResultPasswordNeeded': return CanTransferOwnershipResultPasswordNeeded.fromJson(newJson);
+    case 'canTransferOwnershipResultPasswordTooFresh': return CanTransferOwnershipResultPasswordTooFresh.fromJson(newJson);
+    case 'canTransferOwnershipResultSessionTooFresh': return CanTransferOwnershipResultSessionTooFresh.fromJson(newJson);
+    case 'checkChatUsernameResult': return CheckChatUsernameResult.fromJson(newJson);
+    case 'checkChatUsernameResultOk': return CheckChatUsernameResultOk.fromJson(newJson);
+    case 'checkChatUsernameResultUsernameInvalid': return CheckChatUsernameResultUsernameInvalid.fromJson(newJson);
+    case 'checkChatUsernameResultUsernameOccupied': return CheckChatUsernameResultUsernameOccupied.fromJson(newJson);
+    case 'checkChatUsernameResultPublicChatsTooMuch': return CheckChatUsernameResultPublicChatsTooMuch.fromJson(newJson);
+    case 'checkChatUsernameResultPublicGroupsUnavailable': return CheckChatUsernameResultPublicGroupsUnavailable.fromJson(newJson);
+    case 'checkStickerSetNameResult': return CheckStickerSetNameResult.fromJson(newJson);
+    case 'checkStickerSetNameResultOk': return CheckStickerSetNameResultOk.fromJson(newJson);
+    case 'checkStickerSetNameResultNameInvalid': return CheckStickerSetNameResultNameInvalid.fromJson(newJson);
+    case 'checkStickerSetNameResultNameOccupied': return CheckStickerSetNameResultNameOccupied.fromJson(newJson);
+    case 'resetPasswordResult': return ResetPasswordResult.fromJson(newJson);
+    case 'resetPasswordResultOk': return ResetPasswordResultOk.fromJson(newJson);
+    case 'resetPasswordResultPending': return ResetPasswordResultPending.fromJson(newJson);
+    case 'resetPasswordResultDeclined': return ResetPasswordResultDeclined.fromJson(newJson);
+    case 'messageFileType': return MessageFileType.fromJson(newJson);
+    case 'messageFileTypePrivate': return MessageFileTypePrivate.fromJson(newJson);
+    case 'messageFileTypeGroup': return MessageFileTypeGroup.fromJson(newJson);
+    case 'messageFileTypeUnknown': return MessageFileTypeUnknown.fromJson(newJson);
+    case 'pushMessageContent': return PushMessageContent.fromJson(newJson);
+    case 'pushMessageContentHidden': return PushMessageContentHidden.fromJson(newJson);
+    case 'pushMessageContentAnimation': return PushMessageContentAnimation.fromJson(newJson);
+    case 'pushMessageContentAudio': return PushMessageContentAudio.fromJson(newJson);
+    case 'pushMessageContentContact': return PushMessageContentContact.fromJson(newJson);
+    case 'pushMessageContentContactRegistered': return PushMessageContentContactRegistered.fromJson(newJson);
+    case 'pushMessageContentDocument': return PushMessageContentDocument.fromJson(newJson);
+    case 'pushMessageContentGame': return PushMessageContentGame.fromJson(newJson);
+    case 'pushMessageContentGameScore': return PushMessageContentGameScore.fromJson(newJson);
+    case 'pushMessageContentInvoice': return PushMessageContentInvoice.fromJson(newJson);
+    case 'pushMessageContentLocation': return PushMessageContentLocation.fromJson(newJson);
+    case 'pushMessageContentPhoto': return PushMessageContentPhoto.fromJson(newJson);
+    case 'pushMessageContentPoll': return PushMessageContentPoll.fromJson(newJson);
+    case 'pushMessageContentScreenshotTaken': return PushMessageContentScreenshotTaken.fromJson(newJson);
+    case 'pushMessageContentSticker': return PushMessageContentSticker.fromJson(newJson);
+    case 'pushMessageContentText': return PushMessageContentText.fromJson(newJson);
+    case 'pushMessageContentVideo': return PushMessageContentVideo.fromJson(newJson);
+    case 'pushMessageContentVideoNote': return PushMessageContentVideoNote.fromJson(newJson);
+    case 'pushMessageContentVoiceNote': return PushMessageContentVoiceNote.fromJson(newJson);
+    case 'pushMessageContentBasicGroupChatCreate': return PushMessageContentBasicGroupChatCreate.fromJson(newJson);
+    case 'pushMessageContentChatAddMembers': return PushMessageContentChatAddMembers.fromJson(newJson);
+    case 'pushMessageContentChatChangePhoto': return PushMessageContentChatChangePhoto.fromJson(newJson);
+    case 'pushMessageContentChatChangeTitle': return PushMessageContentChatChangeTitle.fromJson(newJson);
+    case 'pushMessageContentChatSetTheme': return PushMessageContentChatSetTheme.fromJson(newJson);
+    case 'pushMessageContentChatDeleteMember': return PushMessageContentChatDeleteMember.fromJson(newJson);
+    case 'pushMessageContentChatJoinByLink': return PushMessageContentChatJoinByLink.fromJson(newJson);
+    case 'pushMessageContentChatJoinByRequest': return PushMessageContentChatJoinByRequest.fromJson(newJson);
+    case 'pushMessageContentMessageForwards': return PushMessageContentMessageForwards.fromJson(newJson);
+    case 'pushMessageContentMediaAlbum': return PushMessageContentMediaAlbum.fromJson(newJson);
+    case 'notificationType': return NotificationType.fromJson(newJson);
+    case 'notificationTypeNewMessage': return NotificationTypeNewMessage.fromJson(newJson);
+    case 'notificationTypeNewSecretChat': return NotificationTypeNewSecretChat.fromJson(newJson);
+    case 'notificationTypeNewCall': return NotificationTypeNewCall.fromJson(newJson);
+    case 'notificationTypeNewPushMessage': return NotificationTypeNewPushMessage.fromJson(newJson);
+    case 'notificationGroupType': return NotificationGroupType.fromJson(newJson);
+    case 'notificationGroupTypeMessages': return NotificationGroupTypeMessages.fromJson(newJson);
+    case 'notificationGroupTypeMentions': return NotificationGroupTypeMentions.fromJson(newJson);
+    case 'notificationGroupTypeSecretChat': return NotificationGroupTypeSecretChat.fromJson(newJson);
+    case 'notificationGroupTypeCalls': return NotificationGroupTypeCalls.fromJson(newJson);
+    case 'notification': return Notification.fromJson(newJson);
+    case 'notificationGroup': return NotificationGroup.fromJson(newJson);
+    case 'optionValue': return OptionValue.fromJson(newJson);
+    case 'optionValueBoolean': return OptionValueBoolean.fromJson(newJson);
+    case 'optionValueEmpty': return OptionValueEmpty.fromJson(newJson);
+    case 'optionValueInteger': return OptionValueInteger.fromJson(newJson);
+    case 'optionValueString': return OptionValueString.fromJson(newJson);
+    case 'jsonObjectMember': return JsonObjectMember.fromJson(newJson);
+    case 'jsonValue': return JsonValue.fromJson(newJson);
+    case 'jsonValueNull': return JsonValueNull.fromJson(newJson);
+    case 'jsonValueBoolean': return JsonValueBoolean.fromJson(newJson);
+    case 'jsonValueNumber': return JsonValueNumber.fromJson(newJson);
+    case 'jsonValueString': return JsonValueString.fromJson(newJson);
+    case 'jsonValueArray': return JsonValueArray.fromJson(newJson);
+    case 'jsonValueObject': return JsonValueObject.fromJson(newJson);
+    case 'userPrivacySettingRule': return UserPrivacySettingRule.fromJson(newJson);
+    case 'userPrivacySettingRuleAllowAll': return UserPrivacySettingRuleAllowAll.fromJson(newJson);
+    case 'userPrivacySettingRuleAllowContacts': return UserPrivacySettingRuleAllowContacts.fromJson(newJson);
+    case 'userPrivacySettingRuleAllowUsers': return UserPrivacySettingRuleAllowUsers.fromJson(newJson);
+    case 'userPrivacySettingRuleAllowChatMembers': return UserPrivacySettingRuleAllowChatMembers.fromJson(newJson);
+    case 'userPrivacySettingRuleRestrictAll': return UserPrivacySettingRuleRestrictAll.fromJson(newJson);
+    case 'userPrivacySettingRuleRestrictContacts': return UserPrivacySettingRuleRestrictContacts.fromJson(newJson);
+    case 'userPrivacySettingRuleRestrictUsers': return UserPrivacySettingRuleRestrictUsers.fromJson(newJson);
+    case 'userPrivacySettingRuleRestrictChatMembers': return UserPrivacySettingRuleRestrictChatMembers.fromJson(newJson);
+    case 'userPrivacySettingRules': return UserPrivacySettingRules.fromJson(newJson);
+    case 'userPrivacySetting': return UserPrivacySetting.fromJson(newJson);
+    case 'userPrivacySettingShowStatus': return UserPrivacySettingShowStatus.fromJson(newJson);
+    case 'userPrivacySettingShowProfilePhoto': return UserPrivacySettingShowProfilePhoto.fromJson(newJson);
+    case 'userPrivacySettingShowLinkInForwardedMessages': return UserPrivacySettingShowLinkInForwardedMessages.fromJson(newJson);
+    case 'userPrivacySettingShowPhoneNumber': return UserPrivacySettingShowPhoneNumber.fromJson(newJson);
+    case 'userPrivacySettingAllowChatInvites': return UserPrivacySettingAllowChatInvites.fromJson(newJson);
+    case 'userPrivacySettingAllowCalls': return UserPrivacySettingAllowCalls.fromJson(newJson);
+    case 'userPrivacySettingAllowPeerToPeerCalls': return UserPrivacySettingAllowPeerToPeerCalls.fromJson(newJson);
+    case 'userPrivacySettingAllowFindingByPhoneNumber': return UserPrivacySettingAllowFindingByPhoneNumber.fromJson(newJson);
+    case 'accountTtl': return AccountTtl.fromJson(newJson);
+    case 'session': return Session.fromJson(newJson);
+    case 'sessions': return Sessions.fromJson(newJson);
+    case 'connectedWebsite': return ConnectedWebsite.fromJson(newJson);
+    case 'connectedWebsites': return ConnectedWebsites.fromJson(newJson);
+    case 'chatReportReason': return ChatReportReason.fromJson(newJson);
+    case 'chatReportReasonSpam': return ChatReportReasonSpam.fromJson(newJson);
+    case 'chatReportReasonViolence': return ChatReportReasonViolence.fromJson(newJson);
+    case 'chatReportReasonPornography': return ChatReportReasonPornography.fromJson(newJson);
+    case 'chatReportReasonChildAbuse': return ChatReportReasonChildAbuse.fromJson(newJson);
+    case 'chatReportReasonCopyright': return ChatReportReasonCopyright.fromJson(newJson);
+    case 'chatReportReasonUnrelatedLocation': return ChatReportReasonUnrelatedLocation.fromJson(newJson);
+    case 'chatReportReasonFake': return ChatReportReasonFake.fromJson(newJson);
+    case 'chatReportReasonCustom': return ChatReportReasonCustom.fromJson(newJson);
+    case 'internalLinkType': return InternalLinkType.fromJson(newJson);
+    case 'internalLinkTypeActiveSessions': return InternalLinkTypeActiveSessions.fromJson(newJson);
+    case 'internalLinkTypeAuthenticationCode': return InternalLinkTypeAuthenticationCode.fromJson(newJson);
+    case 'internalLinkTypeBackground': return InternalLinkTypeBackground.fromJson(newJson);
+    case 'internalLinkTypeBotStart': return InternalLinkTypeBotStart.fromJson(newJson);
+    case 'internalLinkTypeBotStartInGroup': return InternalLinkTypeBotStartInGroup.fromJson(newJson);
+    case 'internalLinkTypeChangePhoneNumber': return InternalLinkTypeChangePhoneNumber.fromJson(newJson);
+    case 'internalLinkTypeChatInvite': return InternalLinkTypeChatInvite.fromJson(newJson);
+    case 'internalLinkTypeFilterSettings': return InternalLinkTypeFilterSettings.fromJson(newJson);
+    case 'internalLinkTypeGame': return InternalLinkTypeGame.fromJson(newJson);
+    case 'internalLinkTypeLanguagePack': return InternalLinkTypeLanguagePack.fromJson(newJson);
+    case 'internalLinkTypeMessage': return InternalLinkTypeMessage.fromJson(newJson);
+    case 'internalLinkTypeMessageDraft': return InternalLinkTypeMessageDraft.fromJson(newJson);
+    case 'internalLinkTypePassportDataRequest': return InternalLinkTypePassportDataRequest.fromJson(newJson);
+    case 'internalLinkTypePhoneNumberConfirmation': return InternalLinkTypePhoneNumberConfirmation.fromJson(newJson);
+    case 'internalLinkTypeProxy': return InternalLinkTypeProxy.fromJson(newJson);
+    case 'internalLinkTypePublicChat': return InternalLinkTypePublicChat.fromJson(newJson);
+    case 'internalLinkTypeQrCodeAuthentication': return InternalLinkTypeQrCodeAuthentication.fromJson(newJson);
+    case 'internalLinkTypeSettings': return InternalLinkTypeSettings.fromJson(newJson);
+    case 'internalLinkTypeStickerSet': return InternalLinkTypeStickerSet.fromJson(newJson);
+    case 'internalLinkTypeTheme': return InternalLinkTypeTheme.fromJson(newJson);
+    case 'internalLinkTypeThemeSettings': return InternalLinkTypeThemeSettings.fromJson(newJson);
+    case 'internalLinkTypeUnknownDeepLink': return InternalLinkTypeUnknownDeepLink.fromJson(newJson);
+    case 'internalLinkTypeUnsupportedProxy': return InternalLinkTypeUnsupportedProxy.fromJson(newJson);
+    case 'internalLinkTypeVideoChat': return InternalLinkTypeVideoChat.fromJson(newJson);
+    case 'messageLink': return MessageLink.fromJson(newJson);
+    case 'messageLinkInfo': return MessageLinkInfo.fromJson(newJson);
+    case 'filePart': return FilePart.fromJson(newJson);
+    case 'fileType': return FileType.fromJson(newJson);
+    case 'fileTypeNone': return FileTypeNone.fromJson(newJson);
+    case 'fileTypeAnimation': return FileTypeAnimation.fromJson(newJson);
+    case 'fileTypeAudio': return FileTypeAudio.fromJson(newJson);
+    case 'fileTypeDocument': return FileTypeDocument.fromJson(newJson);
+    case 'fileTypePhoto': return FileTypePhoto.fromJson(newJson);
+    case 'fileTypeProfilePhoto': return FileTypeProfilePhoto.fromJson(newJson);
+    case 'fileTypeSecret': return FileTypeSecret.fromJson(newJson);
+    case 'fileTypeSecretThumbnail': return FileTypeSecretThumbnail.fromJson(newJson);
+    case 'fileTypeSecure': return FileTypeSecure.fromJson(newJson);
+    case 'fileTypeSticker': return FileTypeSticker.fromJson(newJson);
+    case 'fileTypeThumbnail': return FileTypeThumbnail.fromJson(newJson);
+    case 'fileTypeUnknown': return FileTypeUnknown.fromJson(newJson);
+    case 'fileTypeVideo': return FileTypeVideo.fromJson(newJson);
+    case 'fileTypeVideoNote': return FileTypeVideoNote.fromJson(newJson);
+    case 'fileTypeVoiceNote': return FileTypeVoiceNote.fromJson(newJson);
+    case 'fileTypeWallpaper': return FileTypeWallpaper.fromJson(newJson);
+    case 'storageStatisticsByFileType': return StorageStatisticsByFileType.fromJson(newJson);
+    case 'storageStatisticsByChat': return StorageStatisticsByChat.fromJson(newJson);
+    case 'storageStatistics': return StorageStatistics.fromJson(newJson);
+    case 'storageStatisticsFast': return StorageStatisticsFast.fromJson(newJson);
+    case 'databaseStatistics': return DatabaseStatistics.fromJson(newJson);
+    case 'networkType': return NetworkType.fromJson(newJson);
+    case 'networkTypeNone': return NetworkTypeNone.fromJson(newJson);
+    case 'networkTypeMobile': return NetworkTypeMobile.fromJson(newJson);
+    case 'networkTypeMobileRoaming': return NetworkTypeMobileRoaming.fromJson(newJson);
+    case 'networkTypeWiFi': return NetworkTypeWiFi.fromJson(newJson);
+    case 'networkTypeOther': return NetworkTypeOther.fromJson(newJson);
+    case 'networkStatisticsEntry': return NetworkStatisticsEntry.fromJson(newJson);
+    case 'networkStatisticsEntryFile': return NetworkStatisticsEntryFile.fromJson(newJson);
+    case 'networkStatisticsEntryCall': return NetworkStatisticsEntryCall.fromJson(newJson);
+    case 'networkStatistics': return NetworkStatistics.fromJson(newJson);
+    case 'autoDownloadSettings': return AutoDownloadSettings.fromJson(newJson);
+    case 'autoDownloadSettingsPresets': return AutoDownloadSettingsPresets.fromJson(newJson);
+    case 'connectionState': return ConnectionState.fromJson(newJson);
+    case 'connectionStateWaitingForNetwork': return ConnectionStateWaitingForNetwork.fromJson(newJson);
+    case 'connectionStateConnectingToProxy': return ConnectionStateConnectingToProxy.fromJson(newJson);
+    case 'connectionStateConnecting': return ConnectionStateConnecting.fromJson(newJson);
+    case 'connectionStateUpdating': return ConnectionStateUpdating.fromJson(newJson);
+    case 'connectionStateReady': return ConnectionStateReady.fromJson(newJson);
+    case 'topChatCategory': return TopChatCategory.fromJson(newJson);
+    case 'topChatCategoryUsers': return TopChatCategoryUsers.fromJson(newJson);
+    case 'topChatCategoryBots': return TopChatCategoryBots.fromJson(newJson);
+    case 'topChatCategoryGroups': return TopChatCategoryGroups.fromJson(newJson);
+    case 'topChatCategoryChannels': return TopChatCategoryChannels.fromJson(newJson);
+    case 'topChatCategoryInlineBots': return TopChatCategoryInlineBots.fromJson(newJson);
+    case 'topChatCategoryCalls': return TopChatCategoryCalls.fromJson(newJson);
+    case 'topChatCategoryForwardChats': return TopChatCategoryForwardChats.fromJson(newJson);
+    case 'tMeUrlType': return TMeUrlType.fromJson(newJson);
+    case 'tMeUrlTypeUser': return TMeUrlTypeUser.fromJson(newJson);
+    case 'tMeUrlTypeSupergroup': return TMeUrlTypeSupergroup.fromJson(newJson);
+    case 'tMeUrlTypeChatInvite': return TMeUrlTypeChatInvite.fromJson(newJson);
+    case 'tMeUrlTypeStickerSet': return TMeUrlTypeStickerSet.fromJson(newJson);
+    case 'tMeUrl': return TMeUrl.fromJson(newJson);
+    case 'tMeUrls': return TMeUrls.fromJson(newJson);
+    case 'suggestedAction': return SuggestedAction.fromJson(newJson);
+    case 'suggestedActionEnableArchiveAndMuteNewChats': return SuggestedActionEnableArchiveAndMuteNewChats.fromJson(newJson);
+    case 'suggestedActionCheckPassword': return SuggestedActionCheckPassword.fromJson(newJson);
+    case 'suggestedActionCheckPhoneNumber': return SuggestedActionCheckPhoneNumber.fromJson(newJson);
+    case 'suggestedActionViewChecksHint': return SuggestedActionViewChecksHint.fromJson(newJson);
+    case 'suggestedActionConvertToBroadcastGroup': return SuggestedActionConvertToBroadcastGroup.fromJson(newJson);
+    case 'suggestedActionSetPassword': return SuggestedActionSetPassword.fromJson(newJson);
+    case 'count': return Count.fromJson(newJson);
+    case 'text': return Text.fromJson(newJson);
+    case 'seconds': return Seconds.fromJson(newJson);
+    case 'deepLinkInfo': return DeepLinkInfo.fromJson(newJson);
+    case 'textParseMode': return TextParseMode.fromJson(newJson);
+    case 'textParseModeMarkdown': return TextParseModeMarkdown.fromJson(newJson);
+    case 'textParseModeHTML': return TextParseModeHTML.fromJson(newJson);
+    case 'proxyType': return ProxyType.fromJson(newJson);
+    case 'proxyTypeSocks5': return ProxyTypeSocks5.fromJson(newJson);
+    case 'proxyTypeHttp': return ProxyTypeHttp.fromJson(newJson);
+    case 'proxyTypeMtproto': return ProxyTypeMtproto.fromJson(newJson);
+    case 'proxy': return Proxy.fromJson(newJson);
+    case 'proxies': return Proxies.fromJson(newJson);
+    case 'inputSticker': return InputSticker.fromJson(newJson);
+    case 'inputStickerStatic': return InputStickerStatic.fromJson(newJson);
+    case 'inputStickerAnimated': return InputStickerAnimated.fromJson(newJson);
+    case 'dateRange': return DateRange.fromJson(newJson);
+    case 'statisticalValue': return StatisticalValue.fromJson(newJson);
+    case 'statisticalGraph': return StatisticalGraph.fromJson(newJson);
+    case 'statisticalGraphData': return StatisticalGraphData.fromJson(newJson);
+    case 'statisticalGraphAsync': return StatisticalGraphAsync.fromJson(newJson);
+    case 'statisticalGraphError': return StatisticalGraphError.fromJson(newJson);
+    case 'chatStatisticsMessageInteractionInfo': return ChatStatisticsMessageInteractionInfo.fromJson(newJson);
+    case 'chatStatisticsMessageSenderInfo': return ChatStatisticsMessageSenderInfo.fromJson(newJson);
+    case 'chatStatisticsAdministratorActionsInfo': return ChatStatisticsAdministratorActionsInfo.fromJson(newJson);
+    case 'chatStatisticsInviterInfo': return ChatStatisticsInviterInfo.fromJson(newJson);
+    case 'chatStatistics': return ChatStatistics.fromJson(newJson);
+    case 'chatStatisticsSupergroup': return ChatStatisticsSupergroup.fromJson(newJson);
+    case 'chatStatisticsChannel': return ChatStatisticsChannel.fromJson(newJson);
+    case 'messageStatistics': return MessageStatistics.fromJson(newJson);
+    case 'point': return Point.fromJson(newJson);
+    case 'vectorPathCommand': return VectorPathCommand.fromJson(newJson);
+    case 'vectorPathCommandLine': return VectorPathCommandLine.fromJson(newJson);
+    case 'vectorPathCommandCubicBezierCurve': return VectorPathCommandCubicBezierCurve.fromJson(newJson);
+    case 'botCommandScope': return BotCommandScope.fromJson(newJson);
+    case 'botCommandScopeDefault': return BotCommandScopeDefault.fromJson(newJson);
+    case 'botCommandScopeAllPrivateChats': return BotCommandScopeAllPrivateChats.fromJson(newJson);
+    case 'botCommandScopeAllGroupChats': return BotCommandScopeAllGroupChats.fromJson(newJson);
+    case 'botCommandScopeAllChatAdministrators': return BotCommandScopeAllChatAdministrators.fromJson(newJson);
+    case 'botCommandScopeChat': return BotCommandScopeChat.fromJson(newJson);
+    case 'botCommandScopeChatAdministrators': return BotCommandScopeChatAdministrators.fromJson(newJson);
+    case 'botCommandScopeChatMember': return BotCommandScopeChatMember.fromJson(newJson);
+    case 'update': return Update.fromJson(newJson);
+    case 'updateAuthorizationState': return UpdateAuthorizationState.fromJson(newJson);
+    case 'updateNewMessage': return UpdateNewMessage.fromJson(newJson);
+    case 'updateMessageSendAcknowledged': return UpdateMessageSendAcknowledged.fromJson(newJson);
+    case 'updateMessageSendSucceeded': return UpdateMessageSendSucceeded.fromJson(newJson);
+    case 'updateMessageSendFailed': return UpdateMessageSendFailed.fromJson(newJson);
+    case 'updateMessageContent': return UpdateMessageContent.fromJson(newJson);
+    case 'updateMessageEdited': return UpdateMessageEdited.fromJson(newJson);
+    case 'updateMessageIsPinned': return UpdateMessageIsPinned.fromJson(newJson);
+    case 'updateMessageInteractionInfo': return UpdateMessageInteractionInfo.fromJson(newJson);
+    case 'updateMessageContentOpened': return UpdateMessageContentOpened.fromJson(newJson);
+    case 'updateMessageMentionRead': return UpdateMessageMentionRead.fromJson(newJson);
+    case 'updateMessageLiveLocationViewed': return UpdateMessageLiveLocationViewed.fromJson(newJson);
+    case 'updateNewChat': return UpdateNewChat.fromJson(newJson);
+    case 'updateChatTitle': return UpdateChatTitle.fromJson(newJson);
+    case 'updateChatPhoto': return UpdateChatPhoto.fromJson(newJson);
+    case 'updateChatPermissions': return UpdateChatPermissions.fromJson(newJson);
+    case 'updateChatLastMessage': return UpdateChatLastMessage.fromJson(newJson);
+    case 'updateChatPosition': return UpdateChatPosition.fromJson(newJson);
+    case 'updateChatReadInbox': return UpdateChatReadInbox.fromJson(newJson);
+    case 'updateChatReadOutbox': return UpdateChatReadOutbox.fromJson(newJson);
+    case 'updateChatActionBar': return UpdateChatActionBar.fromJson(newJson);
+    case 'updateChatDraftMessage': return UpdateChatDraftMessage.fromJson(newJson);
+    case 'updateChatMessageSender': return UpdateChatMessageSender.fromJson(newJson);
+    case 'updateChatMessageTtl': return UpdateChatMessageTtl.fromJson(newJson);
+    case 'updateChatNotificationSettings': return UpdateChatNotificationSettings.fromJson(newJson);
+    case 'updateChatPendingJoinRequests': return UpdateChatPendingJoinRequests.fromJson(newJson);
+    case 'updateChatReplyMarkup': return UpdateChatReplyMarkup.fromJson(newJson);
+    case 'updateChatTheme': return UpdateChatTheme.fromJson(newJson);
+    case 'updateChatUnreadMentionCount': return UpdateChatUnreadMentionCount.fromJson(newJson);
+    case 'updateChatVideoChat': return UpdateChatVideoChat.fromJson(newJson);
+    case 'updateChatDefaultDisableNotification': return UpdateChatDefaultDisableNotification.fromJson(newJson);
+    case 'updateChatHasProtectedContent': return UpdateChatHasProtectedContent.fromJson(newJson);
+    case 'updateChatHasScheduledMessages': return UpdateChatHasScheduledMessages.fromJson(newJson);
+    case 'updateChatIsBlocked': return UpdateChatIsBlocked.fromJson(newJson);
+    case 'updateChatIsMarkedAsUnread': return UpdateChatIsMarkedAsUnread.fromJson(newJson);
+    case 'updateChatFilters': return UpdateChatFilters.fromJson(newJson);
+    case 'updateChatOnlineMemberCount': return UpdateChatOnlineMemberCount.fromJson(newJson);
+    case 'updateScopeNotificationSettings': return UpdateScopeNotificationSettings.fromJson(newJson);
+    case 'updateNotification': return UpdateNotification.fromJson(newJson);
+    case 'updateNotificationGroup': return UpdateNotificationGroup.fromJson(newJson);
+    case 'updateActiveNotifications': return UpdateActiveNotifications.fromJson(newJson);
+    case 'updateHavePendingNotifications': return UpdateHavePendingNotifications.fromJson(newJson);
+    case 'updateDeleteMessages': return UpdateDeleteMessages.fromJson(newJson);
+    case 'updateChatAction': return UpdateChatAction.fromJson(newJson);
+    case 'updateUserStatus': return UpdateUserStatus.fromJson(newJson);
+    case 'updateUser': return UpdateUser.fromJson(newJson);
+    case 'updateBasicGroup': return UpdateBasicGroup.fromJson(newJson);
+    case 'updateSupergroup': return UpdateSupergroup.fromJson(newJson);
+    case 'updateSecretChat': return UpdateSecretChat.fromJson(newJson);
+    case 'updateUserFullInfo': return UpdateUserFullInfo.fromJson(newJson);
+    case 'updateBasicGroupFullInfo': return UpdateBasicGroupFullInfo.fromJson(newJson);
+    case 'updateSupergroupFullInfo': return UpdateSupergroupFullInfo.fromJson(newJson);
+    case 'updateServiceNotification': return UpdateServiceNotification.fromJson(newJson);
+    case 'updateFile': return UpdateFile.fromJson(newJson);
+    case 'updateFileGenerationStart': return UpdateFileGenerationStart.fromJson(newJson);
+    case 'updateFileGenerationStop': return UpdateFileGenerationStop.fromJson(newJson);
+    case 'updateCall': return UpdateCall.fromJson(newJson);
+    case 'updateGroupCall': return UpdateGroupCall.fromJson(newJson);
+    case 'updateGroupCallParticipant': return UpdateGroupCallParticipant.fromJson(newJson);
+    case 'updateNewCallSignalingData': return UpdateNewCallSignalingData.fromJson(newJson);
+    case 'updateUserPrivacySettingRules': return UpdateUserPrivacySettingRules.fromJson(newJson);
+    case 'updateUnreadMessageCount': return UpdateUnreadMessageCount.fromJson(newJson);
+    case 'updateUnreadChatCount': return UpdateUnreadChatCount.fromJson(newJson);
+    case 'updateOption': return UpdateOption.fromJson(newJson);
+    case 'updateStickerSet': return UpdateStickerSet.fromJson(newJson);
+    case 'updateInstalledStickerSets': return UpdateInstalledStickerSets.fromJson(newJson);
+    case 'updateTrendingStickerSets': return UpdateTrendingStickerSets.fromJson(newJson);
+    case 'updateRecentStickers': return UpdateRecentStickers.fromJson(newJson);
+    case 'updateFavoriteStickers': return UpdateFavoriteStickers.fromJson(newJson);
+    case 'updateSavedAnimations': return UpdateSavedAnimations.fromJson(newJson);
+    case 'updateSelectedBackground': return UpdateSelectedBackground.fromJson(newJson);
+    case 'updateChatThemes': return UpdateChatThemes.fromJson(newJson);
+    case 'updateLanguagePackStrings': return UpdateLanguagePackStrings.fromJson(newJson);
+    case 'updateConnectionState': return UpdateConnectionState.fromJson(newJson);
+    case 'updateTermsOfService': return UpdateTermsOfService.fromJson(newJson);
+    case 'updateUsersNearby': return UpdateUsersNearby.fromJson(newJson);
+    case 'updateDiceEmojis': return UpdateDiceEmojis.fromJson(newJson);
+    case 'updateAnimatedEmojiMessageClicked': return UpdateAnimatedEmojiMessageClicked.fromJson(newJson);
+    case 'updateAnimationSearchParameters': return UpdateAnimationSearchParameters.fromJson(newJson);
+    case 'updateSuggestedActions': return UpdateSuggestedActions.fromJson(newJson);
+    case 'updateNewInlineQuery': return UpdateNewInlineQuery.fromJson(newJson);
+    case 'updateNewChosenInlineResult': return UpdateNewChosenInlineResult.fromJson(newJson);
+    case 'updateNewCallbackQuery': return UpdateNewCallbackQuery.fromJson(newJson);
+    case 'updateNewInlineCallbackQuery': return UpdateNewInlineCallbackQuery.fromJson(newJson);
+    case 'updateNewShippingQuery': return UpdateNewShippingQuery.fromJson(newJson);
+    case 'updateNewPreCheckoutQuery': return UpdateNewPreCheckoutQuery.fromJson(newJson);
+    case 'updateNewCustomEvent': return UpdateNewCustomEvent.fromJson(newJson);
+    case 'updateNewCustomQuery': return UpdateNewCustomQuery.fromJson(newJson);
+    case 'updatePoll': return UpdatePoll.fromJson(newJson);
+    case 'updatePollAnswer': return UpdatePollAnswer.fromJson(newJson);
+    case 'updateChatMember': return UpdateChatMember.fromJson(newJson);
+    case 'updateNewChatJoinRequest': return UpdateNewChatJoinRequest.fromJson(newJson);
+    case 'updates': return Updates.fromJson(newJson);
+    case 'logStream': return LogStream.fromJson(newJson);
+    case 'logStreamDefault': return LogStreamDefault.fromJson(newJson);
+    case 'logStreamFile': return LogStreamFile.fromJson(newJson);
+    case 'logStreamEmpty': return LogStreamEmpty.fromJson(newJson);
+    case 'logVerbosityLevel': return LogVerbosityLevel.fromJson(newJson);
+    case 'logTags': return LogTags.fromJson(newJson);
+    case 'testInt': return TestInt.fromJson(newJson);
+    case 'testString': return TestString.fromJson(newJson);
+    case 'testBytes': return TestBytes.fromJson(newJson);
+    case 'testVectorInt': return TestVectorInt.fromJson(newJson);
+    case 'testVectorIntObject': return TestVectorIntObject.fromJson(newJson);
+    case 'testVectorString': return TestVectorString.fromJson(newJson);
+    case 'testVectorStringObject': return TestVectorStringObject.fromJson(newJson);
+    default: return null;
+  }
+}

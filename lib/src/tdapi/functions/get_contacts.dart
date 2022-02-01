@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetContacts extends TdFunction {
+
   /// Returns all user contacts
-  GetContacts();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetContacts.fromJson(Map<String, dynamic> json);
-
+  const GetContacts();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetContacts copyWith() => const GetContacts();
 
   static const CONSTRUCTOR = 'getContacts';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

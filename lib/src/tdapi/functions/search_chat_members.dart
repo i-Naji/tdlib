@@ -1,41 +1,53 @@
 part of '../tdapi.dart';
 
 class SearchChatMembers extends TdFunction {
-  /// Searches for a specified query in the first name, last name and username of the members of a specified chat. Requires administrator rights in channels
-  SearchChatMembers({this.chatId, this.query, this.limit, this.filter});
 
+  /// Searches for a specified query in the first name, last name and username of the members of a specified chat. Requires administrator rights in channels
+  const SearchChatMembers({
+    required this.chatId,
+    required this.query,
+    required this.limit,
+    required this.filter,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
+  final int chatId;
 
   /// [query] Query to search for
-  String query;
+  final String query;
 
-  /// [limit] The maximum number of users to be returned
-  int limit;
+  /// [limit] The maximum number of users to be returned; up to 200
+  final int limit;
 
-  /// [filter] The type of users to return. By default, chatMembersFilterMembers
-  ChatMembersFilter filter;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SearchChatMembers.fromJson(Map<String, dynamic> json);
-
+  /// [filter] The type of users to search for; pass null to search among all chat members
+  final ChatMembersFilter filter;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "query": this.query,
-      "limit": this.limit,
-      "filter": this.filter == null ? null : this.filter.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "query": query,
+      "limit": limit,
+      "filter": filter.toJson(),
+      "@extra": extra,
     };
   }
+  
+  SearchChatMembers copyWith({
+    int? chatId,
+    String? query,
+    int? limit,
+    ChatMembersFilter? filter,
+  }) => SearchChatMembers(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    limit: limit ?? this.limit,
+    filter: filter ?? this.filter,
+  );
 
   static const CONSTRUCTOR = 'searchChatMembers';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

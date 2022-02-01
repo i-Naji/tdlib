@@ -1,48 +1,53 @@
 part of '../tdapi.dart';
 
 class EditMessageText extends TdFunction {
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
-  EditMessageText(
-      {this.chatId,
-      this.messageId,
-      this.replyMarkup,
-      this.inputMessageContent});
 
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+  const EditMessageText({
+    required this.chatId,
+    required this.messageId,
+    required this.replyMarkup,
+    required this.inputMessageContent,
+  });
+  
   /// [chatId] The chat the message belongs to
-  int chatId;
+  final int chatId;
 
   /// [messageId] Identifier of the message
-  int messageId;
+  final int messageId;
 
-  /// [replyMarkup] The new message reply markup; for bots only
-  ReplyMarkup replyMarkup;
+  /// [replyMarkup] The new message reply markup; pass null if none; for bots only
+  final ReplyMarkup replyMarkup;
 
-  /// [inputMessageContent] New text content of the message. Should be of type InputMessageText
-  InputMessageContent inputMessageContent;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  EditMessageText.fromJson(Map<String, dynamic> json);
-
+  /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
+  final InputMessageContent inputMessageContent;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "reply_markup":
-          this.replyMarkup == null ? null : this.replyMarkup.toJson(),
-      "input_message_content": this.inputMessageContent == null
-          ? null
-          : this.inputMessageContent.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "reply_markup": replyMarkup.toJson(),
+      "input_message_content": inputMessageContent.toJson(),
+      "@extra": extra,
     };
   }
+  
+  EditMessageText copyWith({
+    int? chatId,
+    int? messageId,
+    ReplyMarkup? replyMarkup,
+    InputMessageContent? inputMessageContent,
+  }) => EditMessageText(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    replyMarkup: replyMarkup ?? this.replyMarkup,
+    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+  );
 
   static const CONSTRUCTOR = 'editMessageText';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

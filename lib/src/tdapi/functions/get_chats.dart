@@ -1,41 +1,39 @@
 part of '../tdapi.dart';
 
 class GetChats extends TdFunction {
-  /// Returns an ordered list of chats in a chat list. Chats are sorted by the pair (chat.position.order, chat.id) in descending order. (For example, to get a list of chats from the beginning, the offset_order should be equal to a biggest signed 64-bit number 9223372036854775807 == 2. For optimal performance the number of returned chats is chosen by the library
-  GetChats({this.chatList, this.offsetOrder, this.offsetChatId, this.limit});
 
-  /// [chatList] The chat list in which to return chats
-  ChatList chatList;
+  /// Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use loadChats and updates processing instead to maintain chat lists in a consistent state
+  const GetChats({
+    required this.chatList,
+    required this.limit,
+  });
+  
+  /// [chatList] The chat list in which to return chats; pass null to get chats from the main chat list
+  final ChatList chatList;
 
-  /// [offsetOrder] Chat order to return chats from
-  int offsetOrder;
-
-  /// [offsetChatId] Chat identifier to return chats from
-  int offsetChatId;
-
-  /// [limit] The maximum number of chats to be returned. It is possible that fewer chats than the limit are returned even if the end of the list is not reached
-  int limit;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChats.fromJson(Map<String, dynamic> json);
-
+  /// [limit] The maximum number of chats to be returned
+  final int limit;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_list": this.chatList == null ? null : this.chatList.toJson(),
-      "offset_order": this.offsetOrder,
-      "offset_chat_id": this.offsetChatId,
-      "limit": this.limit,
-      "@extra": this.extra,
+      "chat_list": chatList.toJson(),
+      "limit": limit,
+      "@extra": extra,
     };
   }
+  
+  GetChats copyWith({
+    ChatList? chatList,
+    int? limit,
+  }) => GetChats(
+    chatList: chatList ?? this.chatList,
+    limit: limit ?? this.limit,
+  );
 
   static const CONSTRUCTOR = 'getChats';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

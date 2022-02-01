@@ -1,42 +1,61 @@
 part of '../tdapi.dart';
 
 class ChatsNearby extends TdObject {
-  /// Represents a list of chats located nearby
-  ChatsNearby({this.usersNearby, this.supergroupsNearby});
 
-  /// [usersNearby] List of users nearby
-  List<ChatNearby> usersNearby;
+  /// Represents a list of chats located nearby
+  const ChatsNearby({
+    required this.usersNearby,
+    required this.supergroupsNearby,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [usersNearby] List of users nearby 
+  final List<ChatNearby> usersNearby;
 
   /// [supergroupsNearby] List of location-based supergroups nearby
-  List<ChatNearby> supergroupsNearby;
+  final List<ChatNearby> supergroupsNearby;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatsNearby.fromJson(Map<String, dynamic> json) {
-    this.usersNearby = List<ChatNearby>.from((json['users_nearby'] ?? [])
-        .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.supergroupsNearby = List<ChatNearby>.from(
-        (json['supergroups_nearby'] ?? [])
-            .map((item) => ChatNearby.fromJson(item ?? <String, dynamic>{}))
-            .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatsNearby.fromJson(Map<String, dynamic> json) => ChatsNearby(
+    usersNearby: List<ChatNearby>.from((json['users_nearby'] ?? []).map((item) => ChatNearby.fromJson(item)).toList()),
+    supergroupsNearby: List<ChatNearby>.from((json['supergroups_nearby'] ?? []).map((item) => ChatNearby.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "users_nearby": this.usersNearby.map((i) => i.toJson()).toList(),
-      "supergroups_nearby":
-          this.supergroupsNearby.map((i) => i.toJson()).toList(),
+      "users_nearby": usersNearby.map((i) => i.toJson()).toList(),
+      "supergroups_nearby": supergroupsNearby.map((i) => i.toJson()).toList(),
     };
   }
+  
+  ChatsNearby copyWith({
+    List<ChatNearby>? usersNearby,
+    List<ChatNearby>? supergroupsNearby,
+    dynamic extra,
+    int? clientId,
+  }) => ChatsNearby(
+    usersNearby: usersNearby ?? this.usersNearby,
+    supergroupsNearby: supergroupsNearby ?? this.supergroupsNearby,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatsNearby';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,40 +1,61 @@
 part of '../tdapi.dart';
 
 class MessageSendOptions extends TdObject {
-  /// Options to be used when a message is sent
-  MessageSendOptions(
-      {this.disableNotification, this.fromBackground, this.schedulingState});
 
+  /// Options to be used when a message is sent
+  const MessageSendOptions({
+    required this.disableNotification,
+    required this.fromBackground,
+    required this.protectContent,
+    required this.schedulingState,
+  });
+  
   /// [disableNotification] Pass true to disable notification for the message
-  bool disableNotification;
+  final bool disableNotification;
 
   /// [fromBackground] Pass true if the message is sent from the background
-  bool fromBackground;
+  final bool fromBackground;
 
-  /// [schedulingState] Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
-  MessageSchedulingState schedulingState;
+  /// [protectContent] Pass true if the content of the message must be protected from forwarding and saving; for bots only
+  final bool protectContent;
 
+  /// [schedulingState] Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  final MessageSchedulingState schedulingState;
+  
   /// Parse from a json
-  MessageSendOptions.fromJson(Map<String, dynamic> json) {
-    this.disableNotification = json['disable_notification'];
-    this.fromBackground = json['from_background'];
-    this.schedulingState = MessageSchedulingState.fromJson(
-        json['scheduling_state'] ?? <String, dynamic>{});
-  }
-
+  factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
+    disableNotification: json['disable_notification'],
+    fromBackground: json['from_background'],
+    protectContent: json['protect_content'],
+    schedulingState: MessageSchedulingState.fromJson(json['scheduling_state']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "disable_notification": this.disableNotification,
-      "from_background": this.fromBackground,
-      "scheduling_state":
-          this.schedulingState == null ? null : this.schedulingState.toJson(),
+      "disable_notification": disableNotification,
+      "from_background": fromBackground,
+      "protect_content": protectContent,
+      "scheduling_state": schedulingState.toJson(),
     };
   }
+  
+  MessageSendOptions copyWith({
+    bool? disableNotification,
+    bool? fromBackground,
+    bool? protectContent,
+    MessageSchedulingState? schedulingState,
+  }) => MessageSendOptions(
+    disableNotification: disableNotification ?? this.disableNotification,
+    fromBackground: fromBackground ?? this.fromBackground,
+    protectContent: protectContent ?? this.protectContent,
+    schedulingState: schedulingState ?? this.schedulingState,
+  );
 
   static const CONSTRUCTOR = 'messageSendOptions';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

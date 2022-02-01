@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class GetArchivedStickerSets extends TdFunction {
+
   /// Returns a list of archived sticker sets
-  GetArchivedStickerSets({this.isMasks, this.offsetStickerSetId, this.limit});
+  const GetArchivedStickerSets({
+    required this.isMasks,
+    required this.offsetStickerSetId,
+    required this.limit,
+  });
+  
+  /// [isMasks] Pass true to return mask stickers sets; pass false to return ordinary sticker sets 
+  final bool isMasks;
 
-  /// [isMasks] Pass true to return mask stickers sets; pass false to return ordinary sticker sets
-  bool isMasks;
+  /// [offsetStickerSetId] Identifier of the sticker set from which to return the result 
+  final int offsetStickerSetId;
 
-  /// [offsetStickerSetId] Identifier of the sticker set from which to return the result
-  int offsetStickerSetId;
-
-  /// [limit] The maximum number of sticker sets to return
-  int limit;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetArchivedStickerSets.fromJson(Map<String, dynamic> json);
-
+  /// [limit] The maximum number of sticker sets to return; up to 100
+  final int limit;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "is_masks": this.isMasks,
-      "offset_sticker_set_id": this.offsetStickerSetId,
-      "limit": this.limit,
-      "@extra": this.extra,
+      "is_masks": isMasks,
+      "offset_sticker_set_id": offsetStickerSetId,
+      "limit": limit,
+      "@extra": extra,
     };
   }
+  
+  GetArchivedStickerSets copyWith({
+    bool? isMasks,
+    int? offsetStickerSetId,
+    int? limit,
+  }) => GetArchivedStickerSets(
+    isMasks: isMasks ?? this.isMasks,
+    offsetStickerSetId: offsetStickerSetId ?? this.offsetStickerSetId,
+    limit: limit ?? this.limit,
+  );
 
   static const CONSTRUCTOR = 'getArchivedStickerSets';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

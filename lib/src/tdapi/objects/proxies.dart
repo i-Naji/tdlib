@@ -1,33 +1,53 @@
 part of '../tdapi.dart';
 
 class Proxies extends TdObject {
+
   /// Represents a list of proxy servers
-  Proxies({this.proxies});
-
+  const Proxies({
+    required this.proxies,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [proxies] List of proxy servers
-  List<Proxy> proxies;
+  final List<Proxy> proxies;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Proxies.fromJson(Map<String, dynamic> json) {
-    this.proxies = List<Proxy>.from((json['proxies'] ?? [])
-        .map((item) => Proxy.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Proxies.fromJson(Map<String, dynamic> json) => Proxies(
+    proxies: List<Proxy>.from((json['proxies'] ?? []).map((item) => Proxy.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "proxies": this.proxies.map((i) => i.toJson()).toList(),
+      "proxies": proxies.map((i) => i.toJson()).toList(),
     };
   }
+  
+  Proxies copyWith({
+    List<Proxy>? proxies,
+    dynamic extra,
+    int? clientId,
+  }) => Proxies(
+    proxies: proxies ?? this.proxies,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'proxies';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

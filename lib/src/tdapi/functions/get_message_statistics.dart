@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class GetMessageStatistics extends TdFunction {
-  /// Returns detailed statistics about a message. Can be used only if Message.can_get_statistics == true
-  GetMessageStatistics({this.chatId, this.messageId, this.isDark});
 
-  /// [chatId] Chat identifier
-  int chatId;
+  /// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true
+  const GetMessageStatistics({
+    required this.chatId,
+    required this.messageId,
+    required this.isDark,
+  });
+  
+  /// [chatId] Chat identifier 
+  final int chatId;
 
-  /// [messageId] Message identifier
-  int messageId;
+  /// [messageId] Message identifier 
+  final int messageId;
 
   /// [isDark] Pass true if a dark theme is used by the application
-  bool isDark;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetMessageStatistics.fromJson(Map<String, dynamic> json);
-
+  final bool isDark;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "is_dark": this.isDark,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "is_dark": isDark,
+      "@extra": extra,
     };
   }
+  
+  GetMessageStatistics copyWith({
+    int? chatId,
+    int? messageId,
+    bool? isDark,
+  }) => GetMessageStatistics(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    isDark: isDark ?? this.isDark,
+  );
 
   static const CONSTRUCTOR = 'getMessageStatistics';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

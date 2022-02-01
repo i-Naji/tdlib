@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class EditChatFilter extends TdFunction {
-  /// Edits existing chat filter. Returns information about the edited chat filter
-  EditChatFilter({this.chatFilterId, this.filter});
 
-  /// [chatFilterId] Chat filter identifier
-  int chatFilterId;
+  /// Edits existing chat filter. Returns information about the edited chat filter
+  const EditChatFilter({
+    required this.chatFilterId,
+    required this.filter,
+  });
+  
+  /// [chatFilterId] Chat filter identifier 
+  final int chatFilterId;
 
   /// [filter] The edited chat filter
-  ChatFilter filter;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  EditChatFilter.fromJson(Map<String, dynamic> json);
-
+  final ChatFilter filter;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_filter_id": this.chatFilterId,
-      "filter": this.filter == null ? null : this.filter.toJson(),
-      "@extra": this.extra,
+      "chat_filter_id": chatFilterId,
+      "filter": filter.toJson(),
+      "@extra": extra,
     };
   }
+  
+  EditChatFilter copyWith({
+    int? chatFilterId,
+    ChatFilter? filter,
+  }) => EditChatFilter(
+    chatFilterId: chatFilterId ?? this.chatFilterId,
+    filter: filter ?? this.filter,
+  );
 
   static const CONSTRUCTOR = 'editChatFilter';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

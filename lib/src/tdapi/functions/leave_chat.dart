@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class LeaveChat extends TdFunction {
+
   /// Removes the current user from chat members. Private and secret chats can't be left using this method
-  LeaveChat({this.chatId});
-
+  const LeaveChat({
+    required this.chatId,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  LeaveChat.fromJson(Map<String, dynamic> json);
-
+  final int chatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "@extra": extra,
     };
   }
+  
+  LeaveChat copyWith({
+    int? chatId,
+  }) => LeaveChat(
+    chatId: chatId ?? this.chatId,
+  );
 
   static const CONSTRUCTOR = 'leaveChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

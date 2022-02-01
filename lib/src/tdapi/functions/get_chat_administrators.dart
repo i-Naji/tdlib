@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetChatAdministrators extends TdFunction {
+
   /// Returns a list of administrators of the chat with their custom titles
-  GetChatAdministrators({this.chatId});
-
+  const GetChatAdministrators({
+    required this.chatId,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChatAdministrators.fromJson(Map<String, dynamic> json);
-
+  final int chatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "@extra": extra,
     };
   }
+  
+  GetChatAdministrators copyWith({
+    int? chatId,
+  }) => GetChatAdministrators(
+    chatId: chatId ?? this.chatId,
+  );
 
   static const CONSTRUCTOR = 'getChatAdministrators';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

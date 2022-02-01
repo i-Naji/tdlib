@@ -1,46 +1,60 @@
 part of '../tdapi.dart';
 
 class SearchSecretMessages extends TdFunction {
-  /// Searches for messages in secret chats. Returns the results in reverse chronological order. For optimal performance the number of returned messages is chosen by the library
-  SearchSecretMessages(
-      {this.chatId, this.query, this.offset, this.limit, this.filter});
 
+  /// Searches for messages in secret chats. Returns the results in reverse chronological order. For optimal performance, the number of returned messages is chosen by TDLib
+  const SearchSecretMessages({
+    required this.chatId,
+    required this.query,
+    required this.offset,
+    required this.limit,
+    required this.filter,
+  });
+  
   /// [chatId] Identifier of the chat in which to search. Specify 0 to search in all secret chats
-  int chatId;
+  final int chatId;
 
-  /// [query] Query to search for. If empty, searchChatMessages should be used instead
-  String query;
+  /// [query] Query to search for. If empty, searchChatMessages must be used instead
+  final String query;
 
   /// [offset] Offset of the first entry to return as received from the previous request; use empty string to get first chunk of results
-  String offset;
+  final String offset;
 
-  /// [limit] The maximum number of messages to be returned; up to 100. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached
-  int limit;
+  /// [limit] The maximum number of messages to be returned; up to 100. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  final int limit;
 
-  /// [filter] A filter for message content in the search results
-  SearchMessagesFilter filter;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SearchSecretMessages.fromJson(Map<String, dynamic> json);
-
+  /// [filter] Additional filter for messages to search; pass null to search for all messages
+  final SearchMessagesFilter filter;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "query": this.query,
-      "offset": this.offset,
-      "limit": this.limit,
-      "filter": this.filter == null ? null : this.filter.toJson(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "query": query,
+      "offset": offset,
+      "limit": limit,
+      "filter": filter.toJson(),
+      "@extra": extra,
     };
   }
+  
+  SearchSecretMessages copyWith({
+    int? chatId,
+    String? query,
+    String? offset,
+    int? limit,
+    SearchMessagesFilter? filter,
+  }) => SearchSecretMessages(
+    chatId: chatId ?? this.chatId,
+    query: query ?? this.query,
+    offset: offset ?? this.offset,
+    limit: limit ?? this.limit,
+    filter: filter ?? this.filter,
+  );
 
   static const CONSTRUCTOR = 'searchSecretMessages';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

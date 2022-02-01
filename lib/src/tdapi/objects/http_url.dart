@@ -1,31 +1,53 @@
 part of '../tdapi.dart';
 
 class HttpUrl extends TdObject {
+
   /// Contains an HTTP URL
-  HttpUrl({this.url});
-
+  const HttpUrl({
+    required this.url,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [url] The URL
-  String url;
+  final String url;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  HttpUrl.fromJson(Map<String, dynamic> json) {
-    this.url = json['url'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory HttpUrl.fromJson(Map<String, dynamic> json) => HttpUrl(
+    url: json['url'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "url": this.url,
+      "url": url,
     };
   }
+  
+  HttpUrl copyWith({
+    String? url,
+    dynamic extra,
+    int? clientId,
+  }) => HttpUrl(
+    url: url ?? this.url,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'httpUrl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

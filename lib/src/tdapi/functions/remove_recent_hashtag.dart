@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class RemoveRecentHashtag extends TdFunction {
+
   /// Removes a hashtag from the list of recently used hashtags
-  RemoveRecentHashtag({this.hashtag});
-
+  const RemoveRecentHashtag({
+    required this.hashtag,
+  });
+  
   /// [hashtag] Hashtag to delete
-  String hashtag;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  RemoveRecentHashtag.fromJson(Map<String, dynamic> json);
-
+  final String hashtag;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "hashtag": this.hashtag,
-      "@extra": this.extra,
+      "hashtag": hashtag,
+      "@extra": extra,
     };
   }
+  
+  RemoveRecentHashtag copyWith({
+    String? hashtag,
+  }) => RemoveRecentHashtag(
+    hashtag: hashtag ?? this.hashtag,
+  );
 
   static const CONSTRUCTOR = 'removeRecentHashtag';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

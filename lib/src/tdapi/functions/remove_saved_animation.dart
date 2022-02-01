@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class RemoveSavedAnimation extends TdFunction {
+
   /// Removes an animation from the list of saved animations
-  RemoveSavedAnimation({this.animation});
-
+  const RemoveSavedAnimation({
+    required this.animation,
+  });
+  
   /// [animation] Animation file to be removed
-  InputFile animation;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  RemoveSavedAnimation.fromJson(Map<String, dynamic> json);
-
+  final InputFile animation;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation == null ? null : this.animation.toJson(),
-      "@extra": this.extra,
+      "animation": animation.toJson(),
+      "@extra": extra,
     };
   }
+  
+  RemoveSavedAnimation copyWith({
+    InputFile? animation,
+  }) => RemoveSavedAnimation(
+    animation: animation ?? this.animation,
+  );
 
   static const CONSTRUCTOR = 'removeSavedAnimation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

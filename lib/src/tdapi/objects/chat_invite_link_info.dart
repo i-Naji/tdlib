@@ -1,75 +1,125 @@
 part of '../tdapi.dart';
 
 class ChatInviteLinkInfo extends TdObject {
-  /// Contains information about a chat invite link
-  ChatInviteLinkInfo(
-      {this.chatId,
-      this.accessibleFor,
-      this.type,
-      this.title,
-      this.photo,
-      this.memberCount,
-      this.memberUserIds,
-      this.isPublic});
 
+  /// Contains information about a chat invite link
+  const ChatInviteLinkInfo({
+    required this.chatId,
+    required this.accessibleFor,
+    required this.type,
+    required this.title,
+    this.photo,
+    required this.description,
+    required this.memberCount,
+    required this.memberUserIds,
+    required this.createsJoinRequest,
+    required this.isPublic,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
-  int chatId;
+  final int chatId;
 
   /// [accessibleFor] If non-zero, the amount of time for which read access to the chat will remain available, in seconds
-  int accessibleFor;
+  final int accessibleFor;
 
-  /// [type] Contains information about the type of the chat
-  ChatType type;
+  /// [type] Type of the chat
+  final ChatType type;
 
   /// [title] Title of the chat
-  String title;
+  final String title;
 
   /// [photo] Chat photo; may be null
-  ChatPhotoInfo photo;
+  final ChatPhotoInfo? photo;
+
+  /// [description] Chat description
+  final String description;
 
   /// [memberCount] Number of members in the chat
-  int memberCount;
+  final int memberCount;
 
   /// [memberUserIds] User identifiers of some chat members that may be known to the current user
-  List<int> memberUserIds;
+  final List<int> memberUserIds;
+
+  /// [createsJoinRequest] True, if the link only creates join request
+  final bool createsJoinRequest;
 
   /// [isPublic] True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
-  bool isPublic;
+  final bool isPublic;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.accessibleFor = json['accessible_for'];
-    this.type = ChatType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.title = json['title'];
-    this.photo = ChatPhotoInfo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.memberCount = json['member_count'];
-    this.memberUserIds = List<int>.from(
-        (json['member_user_ids'] ?? []).map((item) => item).toList());
-    this.isPublic = json['is_public'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkInfo(
+    chatId: json['chat_id'],
+    accessibleFor: json['accessible_for'],
+    type: ChatType.fromJson(json['type']),
+    title: json['title'],
+    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
+    description: json['description'],
+    memberCount: json['member_count'],
+    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
+    createsJoinRequest: json['creates_join_request'],
+    isPublic: json['is_public'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "accessible_for": this.accessibleFor,
-      "type": this.type == null ? null : this.type.toJson(),
-      "title": this.title,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "member_count": this.memberCount,
-      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
-      "is_public": this.isPublic,
+      "chat_id": chatId,
+      "accessible_for": accessibleFor,
+      "type": type.toJson(),
+      "title": title,
+      "photo": photo?.toJson(),
+      "description": description,
+      "member_count": memberCount,
+      "member_user_ids": memberUserIds.map((i) => i).toList(),
+      "creates_join_request": createsJoinRequest,
+      "is_public": isPublic,
     };
   }
+  
+  ChatInviteLinkInfo copyWith({
+    int? chatId,
+    int? accessibleFor,
+    ChatType? type,
+    String? title,
+    ChatPhotoInfo? photo,
+    String? description,
+    int? memberCount,
+    List<int>? memberUserIds,
+    bool? createsJoinRequest,
+    bool? isPublic,
+    dynamic extra,
+    int? clientId,
+  }) => ChatInviteLinkInfo(
+    chatId: chatId ?? this.chatId,
+    accessibleFor: accessibleFor ?? this.accessibleFor,
+    type: type ?? this.type,
+    title: title ?? this.title,
+    photo: photo ?? this.photo,
+    description: description ?? this.description,
+    memberCount: memberCount ?? this.memberCount,
+    memberUserIds: memberUserIds ?? this.memberUserIds,
+    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+    isPublic: isPublic ?? this.isPublic,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatInviteLinkInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

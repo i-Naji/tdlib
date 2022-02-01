@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class RemoveBackground extends TdFunction {
+
   /// Removes background from the list of installed backgrounds
-  RemoveBackground({this.backgroundId});
-
+  const RemoveBackground({
+    required this.backgroundId,
+  });
+  
   /// [backgroundId] The background identifier
-  int backgroundId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  RemoveBackground.fromJson(Map<String, dynamic> json);
-
+  final int backgroundId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "background_id": this.backgroundId,
-      "@extra": this.extra,
+      "background_id": backgroundId,
+      "@extra": extra,
     };
   }
+  
+  RemoveBackground copyWith({
+    int? backgroundId,
+  }) => RemoveBackground(
+    backgroundId: backgroundId ?? this.backgroundId,
+  );
 
   static const CONSTRUCTOR = 'removeBackground';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetStorageStatisticsFast extends TdFunction {
+
   /// Quickly returns approximate storage usage statistics. Can be called before authorization
-  GetStorageStatisticsFast();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetStorageStatisticsFast.fromJson(Map<String, dynamic> json);
-
+  const GetStorageStatisticsFast();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetStorageStatisticsFast copyWith() => const GetStorageStatisticsFast();
 
   static const CONSTRUCTOR = 'getStorageStatisticsFast';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

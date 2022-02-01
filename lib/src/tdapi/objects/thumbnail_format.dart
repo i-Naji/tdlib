@@ -1,18 +1,19 @@
 part of '../tdapi.dart';
 
 class ThumbnailFormat extends TdObject {
-  /// Describes format of the thumbnail
-  ThumbnailFormat();
 
+  /// Describes format of the thumbnail
+  const ThumbnailFormat();
+  
   /// a ThumbnailFormat return type can be :
-  /// * ThumbnailFormatJpeg
-  /// * ThumbnailFormatPng
-  /// * ThumbnailFormatWebp
-  /// * ThumbnailFormatGif
-  /// * ThumbnailFormatTgs
-  /// * ThumbnailFormatMpeg4
-  factory ThumbnailFormat.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [ThumbnailFormatJpeg]
+  /// * [ThumbnailFormatPng]
+  /// * [ThumbnailFormatWebp]
+  /// * [ThumbnailFormatGif]
+  /// * [ThumbnailFormatTgs]
+  /// * [ThumbnailFormatMpeg4]
+  factory ThumbnailFormat.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ThumbnailFormatJpeg.CONSTRUCTOR:
         return ThumbnailFormatJpeg.fromJson(json);
       case ThumbnailFormatPng.CONSTRUCTOR:
@@ -26,137 +27,171 @@ class ThumbnailFormat extends TdObject {
       case ThumbnailFormatMpeg4.CONSTRUCTOR:
         return ThumbnailFormatMpeg4.fromJson(json);
       default:
-        return null;
+        return const ThumbnailFormat();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  ThumbnailFormat copyWith() => const ThumbnailFormat();
 
   static const CONSTRUCTOR = 'thumbnailFormat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ThumbnailFormatJpeg extends ThumbnailFormat {
+
   /// The thumbnail is in JPEG format
-  ThumbnailFormatJpeg();
-
+  const ThumbnailFormatJpeg();
+  
   /// Parse from a json
-  ThumbnailFormatJpeg.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatJpeg.fromJson(Map<String, dynamic> json) => const ThumbnailFormatJpeg();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatJpeg copyWith() => const ThumbnailFormatJpeg();
 
   static const CONSTRUCTOR = 'thumbnailFormatJpeg';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ThumbnailFormatPng extends ThumbnailFormat {
+
   /// The thumbnail is in PNG format. It will be used only for background patterns
-  ThumbnailFormatPng();
-
+  const ThumbnailFormatPng();
+  
   /// Parse from a json
-  ThumbnailFormatPng.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatPng.fromJson(Map<String, dynamic> json) => const ThumbnailFormatPng();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatPng copyWith() => const ThumbnailFormatPng();
 
   static const CONSTRUCTOR = 'thumbnailFormatPng';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ThumbnailFormatWebp extends ThumbnailFormat {
+
   /// The thumbnail is in WEBP format. It will be used only for some stickers
-  ThumbnailFormatWebp();
-
+  const ThumbnailFormatWebp();
+  
   /// Parse from a json
-  ThumbnailFormatWebp.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatWebp.fromJson(Map<String, dynamic> json) => const ThumbnailFormatWebp();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatWebp copyWith() => const ThumbnailFormatWebp();
 
   static const CONSTRUCTOR = 'thumbnailFormatWebp';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ThumbnailFormatGif extends ThumbnailFormat {
+
   /// The thumbnail is in static GIF format. It will be used only for some bot inline results
-  ThumbnailFormatGif();
-
+  const ThumbnailFormatGif();
+  
   /// Parse from a json
-  ThumbnailFormatGif.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatGif.fromJson(Map<String, dynamic> json) => const ThumbnailFormatGif();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatGif copyWith() => const ThumbnailFormatGif();
 
   static const CONSTRUCTOR = 'thumbnailFormatGif';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ThumbnailFormatTgs extends ThumbnailFormat {
+
   /// The thumbnail is in TGS format. It will be used only for animated sticker sets
-  ThumbnailFormatTgs();
-
+  const ThumbnailFormatTgs();
+  
   /// Parse from a json
-  ThumbnailFormatTgs.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatTgs.fromJson(Map<String, dynamic> json) => const ThumbnailFormatTgs();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatTgs copyWith() => const ThumbnailFormatTgs();
 
   static const CONSTRUCTOR = 'thumbnailFormatTgs';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class ThumbnailFormatMpeg4 extends ThumbnailFormat {
+
   /// The thumbnail is in MPEG4 format. It will be used only for some animations and videos
-  ThumbnailFormatMpeg4();
-
+  const ThumbnailFormatMpeg4();
+  
   /// Parse from a json
-  ThumbnailFormatMpeg4.fromJson(Map<String, dynamic> json);
-
+  factory ThumbnailFormatMpeg4.fromJson(Map<String, dynamic> json) => const ThumbnailFormatMpeg4();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  ThumbnailFormatMpeg4 copyWith() => const ThumbnailFormatMpeg4();
 
   static const CONSTRUCTOR = 'thumbnailFormatMpeg4';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

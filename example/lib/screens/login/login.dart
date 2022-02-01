@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:tdlib/td_api.dart' show TdError;
-import 'package:tdlib_example/services/telegram_service.dart';
-
 import 'package:provider/provider.dart';
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
 
+import 'package:tdlib/td_api.dart' show TdError;
+
+import '../../services/telegram_service.dart';
+
 class LoginScreen extends StatefulWidget {
-  LoginScreen();
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -18,9 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final String title = 'Your Phone';
   final _phoneNumberController = TextEditingController();
   final _countryNameController = TextEditingController();
-  Country _selectedCountry;
+  Country? _selectedCountry;
   bool _canShowButton = false;
-  String _phoneNumberError;
+  String? _phoneNumberError;
   bool _loadingStep = false;
 
   void phoneNumberListener() {
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
         title: Text(title),
       ),
       body: ListView(
-        padding: EdgeInsets.fromLTRB(20, 12, 20, 12),
+        padding: const EdgeInsets.fromLTRB(20, 12, 20, 12),
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(
                 onTap: _openCountryPickerDialog,
                 controller: _countryNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: "Country",
                   border: OutlineInputBorder(),
                 ),
@@ -84,13 +85,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         prefixText: (_selectedCountry != null)
-                            ? '+${_selectedCountry.phoneCode}  '
+                            ? '+${_selectedCountry!.phoneCode}  '
                             : ' +  ',
                         alignLabelWithHint: true,
                         labelText: "Phone",
-                        errorText: _phoneNumberError ?? null,
+                        errorText: _phoneNumberError,
 
-                        errorStyle: TextStyle(
+                        errorStyle: const TextStyle(
                           fontSize: 14.0,
                         ),
                         //contentPadding: EdgeInsets.zero
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   _phoneNumberError == null
                       ? 'We will send a SMS with a confirmation code to your phone number.'
                       : '',
-                  style: TextStyle(color: Colors.grey, fontSize: 15.0),
+                  style: const TextStyle(color: Colors.grey, fontSize: 15.0),
                 ),
               )
             ],
@@ -120,10 +121,10 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () => _nextStep(_phoneNumberController.text),
               tooltip: 'checkphone',
               child: _loadingStep
-                  ? CircularProgressIndicator(
+                  ? const CircularProgressIndicator(
                       backgroundColor: Colors.blue,
                     )
-                  : Icon(Icons.navigate_next),
+                  : const Icon(Icons.navigate_next),
             )
           : null, // This trailing comma makes auto-formatting nicer for build methods.
     );
@@ -135,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     context.read<TelegramService>().setAuthenticationPhoneNumber(
           (_selectedCountry != null)
-              ? '+${_selectedCountry.phoneCode}$value'
+              ? '+${_selectedCountry!.phoneCode}$value'
               : value,
           onError: _handelError,
         );
@@ -153,11 +154,11 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context) => Theme(
           data: Theme.of(context).copyWith(primaryColor: Colors.pink),
           child: CountryPickerDialog(
-            titlePadding: EdgeInsets.all(8.0),
+            titlePadding: const EdgeInsets.all(8.0),
             searchCursorColor: Colors.pinkAccent,
-            searchInputDecoration: InputDecoration(hintText: 'Search...'),
+            searchInputDecoration: const InputDecoration(hintText: 'Search...'),
             isSearchable: true,
-            title: Text('Select your phone code'),
+            title: const Text('Select your phone code'),
             onValuePicked: _onPickCountry,
             itemBuilder: _buildDialogItem,
           ),
@@ -171,12 +172,12 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Widget _buildDialogItem(Country country, {dialog= true}) =>
+  Widget _buildDialogItem(Country country, {dialog = true}) =>
       Row(children: <Widget>[
         CountryPickerUtils.getDefaultFlagImage(country),
-        SizedBox(width: 8.0),
+        const SizedBox(width: 8.0),
         Text("+${country.phoneCode}"),
-        SizedBox(width: 8.0),
+        const SizedBox(width: 8.0),
         Flexible(
           child: Text(country.name),
         )

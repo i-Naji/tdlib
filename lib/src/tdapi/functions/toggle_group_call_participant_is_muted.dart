@@ -1,38 +1,46 @@
 part of '../tdapi.dart';
 
 class ToggleGroupCallParticipantIsMuted extends TdFunction {
-  /// Toggles whether a group call participant is muted, unmuted, or allowed to unmute themself
-  ToggleGroupCallParticipantIsMuted(
-      {this.groupCallId, this.userId, this.isMuted});
 
+  /// Toggles whether a participant of an active group call is muted, unmuted, or allowed to unmute themselves
+  const ToggleGroupCallParticipantIsMuted({
+    required this.groupCallId,
+    required this.participantId,
+    required this.isMuted,
+  });
+  
   /// [groupCallId] Group call identifier
-  int groupCallId;
+  final int groupCallId;
 
-  /// [userId] User identifier
-  int userId;
+  /// [participantId] Participant identifier 
+  final MessageSender participantId;
 
   /// [isMuted] Pass true if the user must be muted and false otherwise
-  bool isMuted;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ToggleGroupCallParticipantIsMuted.fromJson(Map<String, dynamic> json);
-
+  final bool isMuted;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
-      "user_id": this.userId,
-      "is_muted": this.isMuted,
-      "@extra": this.extra,
+      "group_call_id": groupCallId,
+      "participant_id": participantId.toJson(),
+      "is_muted": isMuted,
+      "@extra": extra,
     };
   }
+  
+  ToggleGroupCallParticipantIsMuted copyWith({
+    int? groupCallId,
+    MessageSender? participantId,
+    bool? isMuted,
+  }) => ToggleGroupCallParticipantIsMuted(
+    groupCallId: groupCallId ?? this.groupCallId,
+    participantId: participantId ?? this.participantId,
+    isMuted: isMuted ?? this.isMuted,
+  );
 
   static const CONSTRUCTOR = 'toggleGroupCallParticipantIsMuted';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

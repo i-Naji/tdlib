@@ -1,63 +1,77 @@
 part of '../tdapi.dart';
 
 class IdentityDocument extends TdObject {
+
   /// An identity document
-  IdentityDocument(
-      {this.number,
-      this.expiryDate,
-      this.frontSide,
-      this.reverseSide,
-      this.selfie,
-      this.translation});
+  const IdentityDocument({
+    required this.number,
+    this.expiryDate,
+    required this.frontSide,
+    this.reverseSide,
+    this.selfie,
+    required this.translation,
+  });
+  
+  /// [number] Document number; 1-24 characters 
+  final String number;
 
-  /// [number] Document number; 1-24 characters
-  String number;
-
-  /// [expiryDate] Document expiry date; may be null
-  Date expiryDate;
+  /// [expiryDate] Document expiry date; may be null if not applicable 
+  final Date? expiryDate;
 
   /// [frontSide] Front side of the document
-  DatedFile frontSide;
+  final DatedFile frontSide;
 
-  /// [reverseSide] Reverse side of the document; only for driver license and identity card
-  DatedFile reverseSide;
+  /// [reverseSide] Reverse side of the document; only for driver license and identity card; may be null
+  final DatedFile? reverseSide;
 
-  /// [selfie] Selfie with the document; may be null
-  DatedFile selfie;
+  /// [selfie] Selfie with the document; may be null 
+  final DatedFile? selfie;
 
   /// [translation] List of files containing a certified English translation of the document
-  List<DatedFile> translation;
-
+  final List<DatedFile> translation;
+  
   /// Parse from a json
-  IdentityDocument.fromJson(Map<String, dynamic> json) {
-    this.number = json['number'];
-    this.expiryDate = Date.fromJson(json['expiry_date'] ?? <String, dynamic>{});
-    this.frontSide =
-        DatedFile.fromJson(json['front_side'] ?? <String, dynamic>{});
-    this.reverseSide =
-        DatedFile.fromJson(json['reverse_side'] ?? <String, dynamic>{});
-    this.selfie = DatedFile.fromJson(json['selfie'] ?? <String, dynamic>{});
-    this.translation = List<DatedFile>.from((json['translation'] ?? [])
-        .map((item) => DatedFile.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-  }
-
+  factory IdentityDocument.fromJson(Map<String, dynamic> json) => IdentityDocument(
+    number: json['number'],
+    expiryDate: json['expiry_date'] == null ? null : Date.fromJson(json['expiry_date']),
+    frontSide: DatedFile.fromJson(json['front_side']),
+    reverseSide: json['reverse_side'] == null ? null : DatedFile.fromJson(json['reverse_side']),
+    selfie: json['selfie'] == null ? null : DatedFile.fromJson(json['selfie']),
+    translation: List<DatedFile>.from((json['translation'] ?? []).map((item) => DatedFile.fromJson(item)).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "number": this.number,
-      "expiry_date": this.expiryDate == null ? null : this.expiryDate.toJson(),
-      "front_side": this.frontSide == null ? null : this.frontSide.toJson(),
-      "reverse_side":
-          this.reverseSide == null ? null : this.reverseSide.toJson(),
-      "selfie": this.selfie == null ? null : this.selfie.toJson(),
-      "translation": this.translation.map((i) => i.toJson()).toList(),
+      "number": number,
+      "expiry_date": expiryDate?.toJson(),
+      "front_side": frontSide.toJson(),
+      "reverse_side": reverseSide?.toJson(),
+      "selfie": selfie?.toJson(),
+      "translation": translation.map((i) => i.toJson()).toList(),
     };
   }
+  
+  IdentityDocument copyWith({
+    String? number,
+    Date? expiryDate,
+    DatedFile? frontSide,
+    DatedFile? reverseSide,
+    DatedFile? selfie,
+    List<DatedFile>? translation,
+  }) => IdentityDocument(
+    number: number ?? this.number,
+    expiryDate: expiryDate ?? this.expiryDate,
+    frontSide: frontSide ?? this.frontSide,
+    reverseSide: reverseSide ?? this.reverseSide,
+    selfie: selfie ?? this.selfie,
+    translation: translation ?? this.translation,
+  );
 
   static const CONSTRUCTOR = 'identityDocument';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

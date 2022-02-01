@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class ResendPhoneNumberVerificationCode extends TdFunction {
+
   /// Re-sends the code to verify a phone number to be added to a user's Telegram Passport
-  ResendPhoneNumberVerificationCode();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ResendPhoneNumberVerificationCode.fromJson(Map<String, dynamic> json);
-
+  const ResendPhoneNumberVerificationCode();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  ResendPhoneNumberVerificationCode copyWith() => const ResendPhoneNumberVerificationCode();
 
   static const CONSTRUCTOR = 'resendPhoneNumberVerificationCode';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

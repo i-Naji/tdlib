@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class SearchChatRecentLocationMessages extends TdFunction {
-  /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user
-  SearchChatRecentLocationMessages({this.chatId, this.limit});
 
-  /// [chatId] Chat identifier
-  int chatId;
+  /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user
+  const SearchChatRecentLocationMessages({
+    required this.chatId,
+    required this.limit,
+  });
+  
+  /// [chatId] Chat identifier 
+  final int chatId;
 
   /// [limit] The maximum number of messages to be returned
-  int limit;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SearchChatRecentLocationMessages.fromJson(Map<String, dynamic> json);
-
+  final int limit;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "limit": this.limit,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "limit": limit,
+      "@extra": extra,
     };
   }
+  
+  SearchChatRecentLocationMessages copyWith({
+    int? chatId,
+    int? limit,
+  }) => SearchChatRecentLocationMessages(
+    chatId: chatId ?? this.chatId,
+    limit: limit ?? this.limit,
+  );
 
   static const CONSTRUCTOR = 'searchChatRecentLocationMessages';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

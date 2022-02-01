@@ -1,45 +1,53 @@
 part of '../tdapi.dart';
 
 class PinChatMessage extends TdFunction {
-  /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
-  PinChatMessage(
-      {this.chatId,
-      this.messageId,
-      this.disableNotification,
-      this.onlyForSelf});
 
+  /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
+  const PinChatMessage({
+    required this.chatId,
+    required this.messageId,
+    required this.disableNotification,
+    required this.onlyForSelf,
+  });
+  
   /// [chatId] Identifier of the chat
-  int chatId;
+  final int chatId;
 
   /// [messageId] Identifier of the new pinned message
-  int messageId;
+  final int messageId;
 
-  /// [disableNotification] True, if there should be no notification about the pinned message. Notifications are always disabled in channels and private chats
-  bool disableNotification;
+  /// [disableNotification] True, if there must be no notification about the pinned message. Notifications are always disabled in channels and private chats
+  final bool disableNotification;
 
   /// [onlyForSelf] True, if the message needs to be pinned for one side only; private chats only
-  bool onlyForSelf;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  PinChatMessage.fromJson(Map<String, dynamic> json);
-
+  final bool onlyForSelf;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "disable_notification": this.disableNotification,
-      "only_for_self": this.onlyForSelf,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "disable_notification": disableNotification,
+      "only_for_self": onlyForSelf,
+      "@extra": extra,
     };
   }
+  
+  PinChatMessage copyWith({
+    int? chatId,
+    int? messageId,
+    bool? disableNotification,
+    bool? onlyForSelf,
+  }) => PinChatMessage(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    disableNotification: disableNotification ?? this.disableNotification,
+    onlyForSelf: onlyForSelf ?? this.onlyForSelf,
+  );
 
   static const CONSTRUCTOR = 'pinChatMessage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

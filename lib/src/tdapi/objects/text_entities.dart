@@ -1,33 +1,53 @@
 part of '../tdapi.dart';
 
 class TextEntities extends TdObject {
+
   /// Contains a list of text entities
-  TextEntities({this.entities});
-
+  const TextEntities({
+    required this.entities,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [entities] List of text entities
-  List<TextEntity> entities;
+  final List<TextEntity> entities;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  TextEntities.fromJson(Map<String, dynamic> json) {
-    this.entities = List<TextEntity>.from((json['entities'] ?? [])
-        .map((item) => TextEntity.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory TextEntities.fromJson(Map<String, dynamic> json) => TextEntities(
+    entities: List<TextEntity>.from((json['entities'] ?? []).map((item) => TextEntity.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "entities": this.entities.map((i) => i.toJson()).toList(),
+      "entities": entities.map((i) => i.toJson()).toList(),
     };
   }
+  
+  TextEntities copyWith({
+    List<TextEntity>? entities,
+    dynamic extra,
+    int? clientId,
+  }) => TextEntities(
+    entities: entities ?? this.entities,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'textEntities';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

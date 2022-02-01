@@ -1,57 +1,62 @@
 part of '../tdapi.dart';
 
 class MessageContent extends TdObject {
-  /// Contains the content of a message
-  MessageContent();
 
+  /// Contains the content of a message
+  const MessageContent();
+  
   /// a MessageContent return type can be :
-  /// * MessageText
-  /// * MessageAnimation
-  /// * MessageAudio
-  /// * MessageDocument
-  /// * MessagePhoto
-  /// * MessageExpiredPhoto
-  /// * MessageSticker
-  /// * MessageVideo
-  /// * MessageExpiredVideo
-  /// * MessageVideoNote
-  /// * MessageVoiceNote
-  /// * MessageLocation
-  /// * MessageVenue
-  /// * MessageContact
-  /// * MessageDice
-  /// * MessageGame
-  /// * MessagePoll
-  /// * MessageInvoice
-  /// * MessageCall
-  /// * MessageVoiceChatStarted
-  /// * MessageVoiceChatEnded
-  /// * MessageInviteVoiceChatParticipants
-  /// * MessageBasicGroupChatCreate
-  /// * MessageSupergroupChatCreate
-  /// * MessageChatChangeTitle
-  /// * MessageChatChangePhoto
-  /// * MessageChatDeletePhoto
-  /// * MessageChatAddMembers
-  /// * MessageChatJoinByLink
-  /// * MessageChatDeleteMember
-  /// * MessageChatUpgradeTo
-  /// * MessageChatUpgradeFrom
-  /// * MessagePinMessage
-  /// * MessageScreenshotTaken
-  /// * MessageChatSetTtl
-  /// * MessageCustomServiceAction
-  /// * MessageGameScore
-  /// * MessagePaymentSuccessful
-  /// * MessagePaymentSuccessfulBot
-  /// * MessageContactRegistered
-  /// * MessageWebsiteConnected
-  /// * MessagePassportDataSent
-  /// * MessagePassportDataReceived
-  /// * MessageProximityAlertTriggered
-  /// * MessageUnsupported
-  factory MessageContent.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [MessageText]
+  /// * [MessageAnimation]
+  /// * [MessageAudio]
+  /// * [MessageDocument]
+  /// * [MessagePhoto]
+  /// * [MessageExpiredPhoto]
+  /// * [MessageSticker]
+  /// * [MessageVideo]
+  /// * [MessageExpiredVideo]
+  /// * [MessageVideoNote]
+  /// * [MessageVoiceNote]
+  /// * [MessageLocation]
+  /// * [MessageVenue]
+  /// * [MessageContact]
+  /// * [MessageAnimatedEmoji]
+  /// * [MessageDice]
+  /// * [MessageGame]
+  /// * [MessagePoll]
+  /// * [MessageInvoice]
+  /// * [MessageCall]
+  /// * [MessageVideoChatScheduled]
+  /// * [MessageVideoChatStarted]
+  /// * [MessageVideoChatEnded]
+  /// * [MessageInviteVideoChatParticipants]
+  /// * [MessageBasicGroupChatCreate]
+  /// * [MessageSupergroupChatCreate]
+  /// * [MessageChatChangeTitle]
+  /// * [MessageChatChangePhoto]
+  /// * [MessageChatDeletePhoto]
+  /// * [MessageChatAddMembers]
+  /// * [MessageChatJoinByLink]
+  /// * [MessageChatJoinByRequest]
+  /// * [MessageChatDeleteMember]
+  /// * [MessageChatUpgradeTo]
+  /// * [MessageChatUpgradeFrom]
+  /// * [MessagePinMessage]
+  /// * [MessageScreenshotTaken]
+  /// * [MessageChatSetTheme]
+  /// * [MessageChatSetTtl]
+  /// * [MessageCustomServiceAction]
+  /// * [MessageGameScore]
+  /// * [MessagePaymentSuccessful]
+  /// * [MessagePaymentSuccessfulBot]
+  /// * [MessageContactRegistered]
+  /// * [MessageWebsiteConnected]
+  /// * [MessagePassportDataSent]
+  /// * [MessagePassportDataReceived]
+  /// * [MessageProximityAlertTriggered]
+  /// * [MessageUnsupported]
+  factory MessageContent.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case MessageText.CONSTRUCTOR:
         return MessageText.fromJson(json);
       case MessageAnimation.CONSTRUCTOR:
@@ -80,6 +85,8 @@ class MessageContent extends TdObject {
         return MessageVenue.fromJson(json);
       case MessageContact.CONSTRUCTOR:
         return MessageContact.fromJson(json);
+      case MessageAnimatedEmoji.CONSTRUCTOR:
+        return MessageAnimatedEmoji.fromJson(json);
       case MessageDice.CONSTRUCTOR:
         return MessageDice.fromJson(json);
       case MessageGame.CONSTRUCTOR:
@@ -90,12 +97,14 @@ class MessageContent extends TdObject {
         return MessageInvoice.fromJson(json);
       case MessageCall.CONSTRUCTOR:
         return MessageCall.fromJson(json);
-      case MessageVoiceChatStarted.CONSTRUCTOR:
-        return MessageVoiceChatStarted.fromJson(json);
-      case MessageVoiceChatEnded.CONSTRUCTOR:
-        return MessageVoiceChatEnded.fromJson(json);
-      case MessageInviteVoiceChatParticipants.CONSTRUCTOR:
-        return MessageInviteVoiceChatParticipants.fromJson(json);
+      case MessageVideoChatScheduled.CONSTRUCTOR:
+        return MessageVideoChatScheduled.fromJson(json);
+      case MessageVideoChatStarted.CONSTRUCTOR:
+        return MessageVideoChatStarted.fromJson(json);
+      case MessageVideoChatEnded.CONSTRUCTOR:
+        return MessageVideoChatEnded.fromJson(json);
+      case MessageInviteVideoChatParticipants.CONSTRUCTOR:
+        return MessageInviteVideoChatParticipants.fromJson(json);
       case MessageBasicGroupChatCreate.CONSTRUCTOR:
         return MessageBasicGroupChatCreate.fromJson(json);
       case MessageSupergroupChatCreate.CONSTRUCTOR:
@@ -110,6 +119,8 @@ class MessageContent extends TdObject {
         return MessageChatAddMembers.fromJson(json);
       case MessageChatJoinByLink.CONSTRUCTOR:
         return MessageChatJoinByLink.fromJson(json);
+      case MessageChatJoinByRequest.CONSTRUCTOR:
+        return MessageChatJoinByRequest.fromJson(json);
       case MessageChatDeleteMember.CONSTRUCTOR:
         return MessageChatDeleteMember.fromJson(json);
       case MessageChatUpgradeTo.CONSTRUCTOR:
@@ -120,6 +131,8 @@ class MessageContent extends TdObject {
         return MessagePinMessage.fromJson(json);
       case MessageScreenshotTaken.CONSTRUCTOR:
         return MessageScreenshotTaken.fromJson(json);
+      case MessageChatSetTheme.CONSTRUCTOR:
+        return MessageChatSetTheme.fromJson(json);
       case MessageChatSetTtl.CONSTRUCTOR:
         return MessageChatSetTtl.fromJson(json);
       case MessageCustomServiceAction.CONSTRUCTOR:
@@ -143,1441 +156,2179 @@ class MessageContent extends TdObject {
       case MessageUnsupported.CONSTRUCTOR:
         return MessageUnsupported.fromJson(json);
       default:
-        return null;
+        return const MessageContent();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  MessageContent copyWith() => const MessageContent();
 
   static const CONSTRUCTOR = 'messageContent';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageText extends MessageContent {
-  /// A text message
-  MessageText({this.text, this.webPage});
 
-  /// [text] Text of the message
-  FormattedText text;
+  /// A text message
+  const MessageText({
+    required this.text,
+    this.webPage,
+  });
+  
+  /// [text] Text of the message 
+  final FormattedText text;
 
   /// [webPage] A preview of the web page that's mentioned in the text; may be null
-  WebPage webPage;
-
+  final WebPage? webPage;
+  
   /// Parse from a json
-  MessageText.fromJson(Map<String, dynamic> json) {
-    this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.webPage = WebPage.fromJson(json['web_page'] ?? <String, dynamic>{});
-  }
-
+  factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
+    text: FormattedText.fromJson(json['text']),
+    webPage: json['web_page'] == null ? null : WebPage.fromJson(json['web_page']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "web_page": this.webPage == null ? null : this.webPage.toJson(),
+      "text": text.toJson(),
+      "web_page": webPage?.toJson(),
     };
   }
+  
+  @override
+  MessageText copyWith({
+    FormattedText? text,
+    WebPage? webPage,
+  }) => MessageText(
+    text: text ?? this.text,
+    webPage: webPage ?? this.webPage,
+  );
 
   static const CONSTRUCTOR = 'messageText';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageAnimation extends MessageContent {
+
   /// An animation message (GIF-style).
-  MessageAnimation({this.animation, this.caption, this.isSecret});
+  const MessageAnimation({
+    required this.animation,
+    required this.caption,
+    required this.isSecret,
+  });
+  
+  /// [animation] The animation description 
+  final Animation animation;
 
-  /// [animation] The animation description
-  Animation animation;
-
-  /// [caption] Animation caption
-  FormattedText caption;
+  /// [caption] Animation caption 
+  final FormattedText caption;
 
   /// [isSecret] True, if the animation thumbnail must be blurred and the animation must be shown only while tapped
-  bool isSecret;
-
+  final bool isSecret;
+  
   /// Parse from a json
-  MessageAnimation.fromJson(Map<String, dynamic> json) {
-    this.animation =
-        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.isSecret = json['is_secret'];
-  }
-
+  factory MessageAnimation.fromJson(Map<String, dynamic> json) => MessageAnimation(
+    animation: Animation.fromJson(json['animation']),
+    caption: FormattedText.fromJson(json['caption']),
+    isSecret: json['is_secret'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "animation": this.animation == null ? null : this.animation.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "is_secret": this.isSecret,
+      "animation": animation.toJson(),
+      "caption": caption.toJson(),
+      "is_secret": isSecret,
     };
   }
+  
+  @override
+  MessageAnimation copyWith({
+    Animation? animation,
+    FormattedText? caption,
+    bool? isSecret,
+  }) => MessageAnimation(
+    animation: animation ?? this.animation,
+    caption: caption ?? this.caption,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   static const CONSTRUCTOR = 'messageAnimation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageAudio extends MessageContent {
-  /// An audio message
-  MessageAudio({this.audio, this.caption});
 
-  /// [audio] The audio description
-  Audio audio;
+  /// An audio message
+  const MessageAudio({
+    required this.audio,
+    required this.caption,
+  });
+  
+  /// [audio] The audio description 
+  final Audio audio;
 
   /// [caption] Audio caption
-  FormattedText caption;
-
+  final FormattedText caption;
+  
   /// Parse from a json
-  MessageAudio.fromJson(Map<String, dynamic> json) {
-    this.audio = Audio.fromJson(json['audio'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory MessageAudio.fromJson(Map<String, dynamic> json) => MessageAudio(
+    audio: Audio.fromJson(json['audio']),
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "audio": this.audio == null ? null : this.audio.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "audio": audio.toJson(),
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  MessageAudio copyWith({
+    Audio? audio,
+    FormattedText? caption,
+  }) => MessageAudio(
+    audio: audio ?? this.audio,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'messageAudio';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageDocument extends MessageContent {
-  /// A document message (general file)
-  MessageDocument({this.document, this.caption});
 
-  /// [document] The document description
-  Document document;
+  /// A document message (general file)
+  const MessageDocument({
+    required this.document,
+    required this.caption,
+  });
+  
+  /// [document] The document description 
+  final Document document;
 
   /// [caption] Document caption
-  FormattedText caption;
-
+  final FormattedText caption;
+  
   /// Parse from a json
-  MessageDocument.fromJson(Map<String, dynamic> json) {
-    this.document = Document.fromJson(json['document'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-  }
-
+  factory MessageDocument.fromJson(Map<String, dynamic> json) => MessageDocument(
+    document: Document.fromJson(json['document']),
+    caption: FormattedText.fromJson(json['caption']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "document": this.document == null ? null : this.document.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
+      "document": document.toJson(),
+      "caption": caption.toJson(),
     };
   }
+  
+  @override
+  MessageDocument copyWith({
+    Document? document,
+    FormattedText? caption,
+  }) => MessageDocument(
+    document: document ?? this.document,
+    caption: caption ?? this.caption,
+  );
 
   static const CONSTRUCTOR = 'messageDocument';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePhoto extends MessageContent {
+
   /// A photo message
-  MessagePhoto({this.photo, this.caption, this.isSecret});
+  const MessagePhoto({
+    required this.photo,
+    required this.caption,
+    required this.isSecret,
+  });
+  
+  /// [photo] The photo description 
+  final Photo photo;
 
-  /// [photo] The photo description
-  Photo photo;
-
-  /// [caption] Photo caption
-  FormattedText caption;
+  /// [caption] Photo caption 
+  final FormattedText caption;
 
   /// [isSecret] True, if the photo must be blurred and must be shown only while tapped
-  bool isSecret;
-
+  final bool isSecret;
+  
   /// Parse from a json
-  MessagePhoto.fromJson(Map<String, dynamic> json) {
-    this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.isSecret = json['is_secret'];
-  }
-
+  factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
+    photo: Photo.fromJson(json['photo']),
+    caption: FormattedText.fromJson(json['caption']),
+    isSecret: json['is_secret'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "is_secret": this.isSecret,
+      "photo": photo.toJson(),
+      "caption": caption.toJson(),
+      "is_secret": isSecret,
     };
   }
+  
+  @override
+  MessagePhoto copyWith({
+    Photo? photo,
+    FormattedText? caption,
+    bool? isSecret,
+  }) => MessagePhoto(
+    photo: photo ?? this.photo,
+    caption: caption ?? this.caption,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   static const CONSTRUCTOR = 'messagePhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageExpiredPhoto extends MessageContent {
+
   /// An expired photo message (self-destructed after TTL has elapsed)
-  MessageExpiredPhoto();
-
+  const MessageExpiredPhoto();
+  
   /// Parse from a json
-  MessageExpiredPhoto.fromJson(Map<String, dynamic> json);
-
+  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) => const MessageExpiredPhoto();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
 
   static const CONSTRUCTOR = 'messageExpiredPhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageSticker extends MessageContent {
+
   /// A sticker message
-  MessageSticker({this.sticker});
-
+  const MessageSticker({
+    required this.sticker,
+  });
+  
   /// [sticker] The sticker description
-  Sticker sticker;
-
+  final Sticker sticker;
+  
   /// Parse from a json
-  MessageSticker.fromJson(Map<String, dynamic> json) {
-    this.sticker = Sticker.fromJson(json['sticker'] ?? <String, dynamic>{});
-  }
-
+  factory MessageSticker.fromJson(Map<String, dynamic> json) => MessageSticker(
+    sticker: Sticker.fromJson(json['sticker']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "sticker": this.sticker == null ? null : this.sticker.toJson(),
+      "sticker": sticker.toJson(),
     };
   }
+  
+  @override
+  MessageSticker copyWith({
+    Sticker? sticker,
+  }) => MessageSticker(
+    sticker: sticker ?? this.sticker,
+  );
 
   static const CONSTRUCTOR = 'messageSticker';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageVideo extends MessageContent {
+
   /// A video message
-  MessageVideo({this.video, this.caption, this.isSecret});
+  const MessageVideo({
+    required this.video,
+    required this.caption,
+    required this.isSecret,
+  });
+  
+  /// [video] The video description 
+  final Video video;
 
-  /// [video] The video description
-  Video video;
-
-  /// [caption] Video caption
-  FormattedText caption;
+  /// [caption] Video caption 
+  final FormattedText caption;
 
   /// [isSecret] True, if the video thumbnail must be blurred and the video must be shown only while tapped
-  bool isSecret;
-
+  final bool isSecret;
+  
   /// Parse from a json
-  MessageVideo.fromJson(Map<String, dynamic> json) {
-    this.video = Video.fromJson(json['video'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.isSecret = json['is_secret'];
-  }
-
+  factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
+    video: Video.fromJson(json['video']),
+    caption: FormattedText.fromJson(json['caption']),
+    isSecret: json['is_secret'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "video": this.video == null ? null : this.video.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "is_secret": this.isSecret,
+      "video": video.toJson(),
+      "caption": caption.toJson(),
+      "is_secret": isSecret,
     };
   }
+  
+  @override
+  MessageVideo copyWith({
+    Video? video,
+    FormattedText? caption,
+    bool? isSecret,
+  }) => MessageVideo(
+    video: video ?? this.video,
+    caption: caption ?? this.caption,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   static const CONSTRUCTOR = 'messageVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageExpiredVideo extends MessageContent {
+
   /// An expired video message (self-destructed after TTL has elapsed)
-  MessageExpiredVideo();
-
+  const MessageExpiredVideo();
+  
   /// Parse from a json
-  MessageExpiredVideo.fromJson(Map<String, dynamic> json);
-
+  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) => const MessageExpiredVideo();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageExpiredVideo copyWith() => const MessageExpiredVideo();
 
   static const CONSTRUCTOR = 'messageExpiredVideo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageVideoNote extends MessageContent {
+
   /// A video note message
-  MessageVideoNote({this.videoNote, this.isViewed, this.isSecret});
+  const MessageVideoNote({
+    required this.videoNote,
+    required this.isViewed,
+    required this.isSecret,
+  });
+  
+  /// [videoNote] The video note description 
+  final VideoNote videoNote;
 
-  /// [videoNote] The video note description
-  VideoNote videoNote;
-
-  /// [isViewed] True, if at least one of the recipients has viewed the video note
-  bool isViewed;
+  /// [isViewed] True, if at least one of the recipients has viewed the video note 
+  final bool isViewed;
 
   /// [isSecret] True, if the video note thumbnail must be blurred and the video note must be shown only while tapped
-  bool isSecret;
-
+  final bool isSecret;
+  
   /// Parse from a json
-  MessageVideoNote.fromJson(Map<String, dynamic> json) {
-    this.videoNote =
-        VideoNote.fromJson(json['video_note'] ?? <String, dynamic>{});
-    this.isViewed = json['is_viewed'];
-    this.isSecret = json['is_secret'];
-  }
-
+  factory MessageVideoNote.fromJson(Map<String, dynamic> json) => MessageVideoNote(
+    videoNote: VideoNote.fromJson(json['video_note']),
+    isViewed: json['is_viewed'],
+    isSecret: json['is_secret'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "video_note": this.videoNote == null ? null : this.videoNote.toJson(),
-      "is_viewed": this.isViewed,
-      "is_secret": this.isSecret,
+      "video_note": videoNote.toJson(),
+      "is_viewed": isViewed,
+      "is_secret": isSecret,
     };
   }
+  
+  @override
+  MessageVideoNote copyWith({
+    VideoNote? videoNote,
+    bool? isViewed,
+    bool? isSecret,
+  }) => MessageVideoNote(
+    videoNote: videoNote ?? this.videoNote,
+    isViewed: isViewed ?? this.isViewed,
+    isSecret: isSecret ?? this.isSecret,
+  );
 
   static const CONSTRUCTOR = 'messageVideoNote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageVoiceNote extends MessageContent {
+
   /// A voice note message
-  MessageVoiceNote({this.voiceNote, this.caption, this.isListened});
+  const MessageVoiceNote({
+    required this.voiceNote,
+    required this.caption,
+    required this.isListened,
+  });
+  
+  /// [voiceNote] The voice note description 
+  final VoiceNote voiceNote;
 
-  /// [voiceNote] The voice note description
-  VoiceNote voiceNote;
-
-  /// [caption] Voice note caption
-  FormattedText caption;
+  /// [caption] Voice note caption 
+  final FormattedText caption;
 
   /// [isListened] True, if at least one of the recipients has listened to the voice note
-  bool isListened;
-
+  final bool isListened;
+  
   /// Parse from a json
-  MessageVoiceNote.fromJson(Map<String, dynamic> json) {
-    this.voiceNote =
-        VoiceNote.fromJson(json['voice_note'] ?? <String, dynamic>{});
-    this.caption =
-        FormattedText.fromJson(json['caption'] ?? <String, dynamic>{});
-    this.isListened = json['is_listened'];
-  }
-
+  factory MessageVoiceNote.fromJson(Map<String, dynamic> json) => MessageVoiceNote(
+    voiceNote: VoiceNote.fromJson(json['voice_note']),
+    caption: FormattedText.fromJson(json['caption']),
+    isListened: json['is_listened'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "voice_note": this.voiceNote == null ? null : this.voiceNote.toJson(),
-      "caption": this.caption == null ? null : this.caption.toJson(),
-      "is_listened": this.isListened,
+      "voice_note": voiceNote.toJson(),
+      "caption": caption.toJson(),
+      "is_listened": isListened,
     };
   }
+  
+  @override
+  MessageVoiceNote copyWith({
+    VoiceNote? voiceNote,
+    FormattedText? caption,
+    bool? isListened,
+  }) => MessageVoiceNote(
+    voiceNote: voiceNote ?? this.voiceNote,
+    caption: caption ?? this.caption,
+    isListened: isListened ?? this.isListened,
+  );
 
   static const CONSTRUCTOR = 'messageVoiceNote';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageLocation extends MessageContent {
-  /// A message with a location
-  MessageLocation(
-      {this.location,
-      this.livePeriod,
-      this.expiresIn,
-      this.heading,
-      this.proximityAlertRadius});
 
-  /// [location] The location description
-  Location location;
+  /// A message with a location
+  const MessageLocation({
+    required this.location,
+    required this.livePeriod,
+    required this.expiresIn,
+    required this.heading,
+    required this.proximityAlertRadius,
+  });
+  
+  /// [location] The location description 
+  final Location location;
 
   /// [livePeriod] Time relative to the message send date, for which the location can be updated, in seconds
-  int livePeriod;
+  final int livePeriod;
 
   /// [expiresIn] Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
-  int expiresIn;
+  final int expiresIn;
 
   /// [heading] For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
-  int heading;
+  final int heading;
 
   /// [proximityAlertRadius] For live locations, a maximum distance to another chat member for proximity alerts, in meters (0-100000). 0 if the notification is disabled. Available only for the message sender
-  int proximityAlertRadius;
-
+  final int proximityAlertRadius;
+  
   /// Parse from a json
-  MessageLocation.fromJson(Map<String, dynamic> json) {
-    this.location = Location.fromJson(json['location'] ?? <String, dynamic>{});
-    this.livePeriod = json['live_period'];
-    this.expiresIn = json['expires_in'];
-    this.heading = json['heading'];
-    this.proximityAlertRadius = json['proximity_alert_radius'];
-  }
-
+  factory MessageLocation.fromJson(Map<String, dynamic> json) => MessageLocation(
+    location: Location.fromJson(json['location']),
+    livePeriod: json['live_period'],
+    expiresIn: json['expires_in'],
+    heading: json['heading'],
+    proximityAlertRadius: json['proximity_alert_radius'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "location": this.location == null ? null : this.location.toJson(),
-      "live_period": this.livePeriod,
-      "expires_in": this.expiresIn,
-      "heading": this.heading,
-      "proximity_alert_radius": this.proximityAlertRadius,
+      "location": location.toJson(),
+      "live_period": livePeriod,
+      "expires_in": expiresIn,
+      "heading": heading,
+      "proximity_alert_radius": proximityAlertRadius,
     };
   }
+  
+  @override
+  MessageLocation copyWith({
+    Location? location,
+    int? livePeriod,
+    int? expiresIn,
+    int? heading,
+    int? proximityAlertRadius,
+  }) => MessageLocation(
+    location: location ?? this.location,
+    livePeriod: livePeriod ?? this.livePeriod,
+    expiresIn: expiresIn ?? this.expiresIn,
+    heading: heading ?? this.heading,
+    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+  );
 
   static const CONSTRUCTOR = 'messageLocation';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageVenue extends MessageContent {
+
   /// A message with information about a venue
-  MessageVenue({this.venue});
-
+  const MessageVenue({
+    required this.venue,
+  });
+  
   /// [venue] The venue description
-  Venue venue;
-
+  final Venue venue;
+  
   /// Parse from a json
-  MessageVenue.fromJson(Map<String, dynamic> json) {
-    this.venue = Venue.fromJson(json['venue'] ?? <String, dynamic>{});
-  }
-
+  factory MessageVenue.fromJson(Map<String, dynamic> json) => MessageVenue(
+    venue: Venue.fromJson(json['venue']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "venue": this.venue == null ? null : this.venue.toJson(),
+      "venue": venue.toJson(),
     };
   }
+  
+  @override
+  MessageVenue copyWith({
+    Venue? venue,
+  }) => MessageVenue(
+    venue: venue ?? this.venue,
+  );
 
   static const CONSTRUCTOR = 'messageVenue';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageContact extends MessageContent {
+
   /// A message with a user contact
-  MessageContact({this.contact});
-
+  const MessageContact({
+    required this.contact,
+  });
+  
   /// [contact] The contact description
-  Contact contact;
-
+  final Contact contact;
+  
   /// Parse from a json
-  MessageContact.fromJson(Map<String, dynamic> json) {
-    this.contact = Contact.fromJson(json['contact'] ?? <String, dynamic>{});
-  }
-
+  factory MessageContact.fromJson(Map<String, dynamic> json) => MessageContact(
+    contact: Contact.fromJson(json['contact']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "contact": this.contact == null ? null : this.contact.toJson(),
+      "contact": contact.toJson(),
     };
   }
+  
+  @override
+  MessageContact copyWith({
+    Contact? contact,
+  }) => MessageContact(
+    contact: contact ?? this.contact,
+  );
 
   static const CONSTRUCTOR = 'messageContact';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
+
+class MessageAnimatedEmoji extends MessageContent {
+
+  /// A message with an animated emoji
+  const MessageAnimatedEmoji({
+    required this.animatedEmoji,
+    required this.emoji,
+  });
+  
+  /// [animatedEmoji] The animated emoji 
+  final AnimatedEmoji animatedEmoji;
+
+  /// [emoji] The corresponding emoji
+  final String emoji;
+  
+  /// Parse from a json
+  factory MessageAnimatedEmoji.fromJson(Map<String, dynamic> json) => MessageAnimatedEmoji(
+    animatedEmoji: AnimatedEmoji.fromJson(json['animated_emoji']),
+    emoji: json['emoji'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      "@type": CONSTRUCTOR,
+      "animated_emoji": animatedEmoji.toJson(),
+      "emoji": emoji,
+    };
+  }
+  
+  @override
+  MessageAnimatedEmoji copyWith({
+    AnimatedEmoji? animatedEmoji,
+    String? emoji,
+  }) => MessageAnimatedEmoji(
+    animatedEmoji: animatedEmoji ?? this.animatedEmoji,
+    emoji: emoji ?? this.emoji,
+  );
+
+  static const CONSTRUCTOR = 'messageAnimatedEmoji';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 
 class MessageDice extends MessageContent {
-  /// A dice message. The dice value is randomly generated by the server
-  MessageDice(
-      {this.initialState,
-      this.finalState,
-      this.emoji,
-      this.value,
-      this.successAnimationFrameNumber});
 
+  /// A dice message. The dice value is randomly generated by the server
+  const MessageDice({
+    this.initialState,
+    this.finalState,
+    required this.emoji,
+    required this.value,
+    required this.successAnimationFrameNumber,
+  });
+  
   /// [initialState] The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-  DiceStickers initialState;
+  final DiceStickers? initialState;
 
   /// [finalState] The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
-  DiceStickers finalState;
+  final DiceStickers? finalState;
 
   /// [emoji] Emoji on which the dice throw animation is based
-  String emoji;
+  final String emoji;
 
   /// [value] The dice value. If the value is 0, the dice don't have final state yet
-  int value;
+  final int value;
 
   /// [successAnimationFrameNumber] Number of frame after which a success animation like a shower of confetti needs to be shown on updateMessageSendSucceeded
-  int successAnimationFrameNumber;
-
+  final int successAnimationFrameNumber;
+  
   /// Parse from a json
-  MessageDice.fromJson(Map<String, dynamic> json) {
-    this.initialState =
-        DiceStickers.fromJson(json['initial_state'] ?? <String, dynamic>{});
-    this.finalState =
-        DiceStickers.fromJson(json['final_state'] ?? <String, dynamic>{});
-    this.emoji = json['emoji'];
-    this.value = json['value'];
-    this.successAnimationFrameNumber = json['success_animation_frame_number'];
-  }
-
+  factory MessageDice.fromJson(Map<String, dynamic> json) => MessageDice(
+    initialState: json['initial_state'] == null ? null : DiceStickers.fromJson(json['initial_state']),
+    finalState: json['final_state'] == null ? null : DiceStickers.fromJson(json['final_state']),
+    emoji: json['emoji'],
+    value: json['value'],
+    successAnimationFrameNumber: json['success_animation_frame_number'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "initial_state":
-          this.initialState == null ? null : this.initialState.toJson(),
-      "final_state": this.finalState == null ? null : this.finalState.toJson(),
-      "emoji": this.emoji,
-      "value": this.value,
-      "success_animation_frame_number": this.successAnimationFrameNumber,
+      "initial_state": initialState?.toJson(),
+      "final_state": finalState?.toJson(),
+      "emoji": emoji,
+      "value": value,
+      "success_animation_frame_number": successAnimationFrameNumber,
     };
   }
+  
+  @override
+  MessageDice copyWith({
+    DiceStickers? initialState,
+    DiceStickers? finalState,
+    String? emoji,
+    int? value,
+    int? successAnimationFrameNumber,
+  }) => MessageDice(
+    initialState: initialState ?? this.initialState,
+    finalState: finalState ?? this.finalState,
+    emoji: emoji ?? this.emoji,
+    value: value ?? this.value,
+    successAnimationFrameNumber: successAnimationFrameNumber ?? this.successAnimationFrameNumber,
+  );
 
   static const CONSTRUCTOR = 'messageDice';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageGame extends MessageContent {
+
   /// A message with a game
-  MessageGame({this.game});
-
+  const MessageGame({
+    required this.game,
+  });
+  
   /// [game] The game description
-  Game game;
-
+  final Game game;
+  
   /// Parse from a json
-  MessageGame.fromJson(Map<String, dynamic> json) {
-    this.game = Game.fromJson(json['game'] ?? <String, dynamic>{});
-  }
-
+  factory MessageGame.fromJson(Map<String, dynamic> json) => MessageGame(
+    game: Game.fromJson(json['game']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "game": this.game == null ? null : this.game.toJson(),
+      "game": game.toJson(),
     };
   }
+  
+  @override
+  MessageGame copyWith({
+    Game? game,
+  }) => MessageGame(
+    game: game ?? this.game,
+  );
 
   static const CONSTRUCTOR = 'messageGame';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePoll extends MessageContent {
+
   /// A message with a poll
-  MessagePoll({this.poll});
-
+  const MessagePoll({
+    required this.poll,
+  });
+  
   /// [poll] The poll description
-  Poll poll;
-
+  final Poll poll;
+  
   /// Parse from a json
-  MessagePoll.fromJson(Map<String, dynamic> json) {
-    this.poll = Poll.fromJson(json['poll'] ?? <String, dynamic>{});
-  }
-
+  factory MessagePoll.fromJson(Map<String, dynamic> json) => MessagePoll(
+    poll: Poll.fromJson(json['poll']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "poll": this.poll == null ? null : this.poll.toJson(),
+      "poll": poll.toJson(),
     };
   }
+  
+  @override
+  MessagePoll copyWith({
+    Poll? poll,
+  }) => MessagePoll(
+    poll: poll ?? this.poll,
+  );
 
   static const CONSTRUCTOR = 'messagePoll';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageInvoice extends MessageContent {
+
   /// A message with an invoice from a bot
-  MessageInvoice(
-      {this.title,
-      this.description,
-      this.photo,
-      this.currency,
-      this.totalAmount,
-      this.startParameter,
-      this.isTest,
-      this.needShippingAddress,
-      this.receiptMessageId});
+  const MessageInvoice({
+    required this.title,
+    required this.description,
+    this.photo,
+    required this.currency,
+    required this.totalAmount,
+    required this.startParameter,
+    required this.isTest,
+    required this.needShippingAddress,
+    required this.receiptMessageId,
+  });
+  
+  /// [title] Product title 
+  final String title;
 
-  /// [title] Product title
-  String title;
+  /// [description] Product description 
+  final String description;
 
-  /// [description] Product description
-  String description;
+  /// [photo] Product photo; may be null 
+  final Photo? photo;
 
-  /// [photo] Product photo; may be null
-  Photo photo;
+  /// [currency] Currency for the product price 
+  final String currency;
 
-  /// [currency] Currency for the product price
-  String currency;
-
-  /// [totalAmount] Product total price in the minimal quantity of the currency
-  int totalAmount;
+  /// [totalAmount] Product total price in the smallest units of the currency
+  final int totalAmount;
 
   /// [startParameter] Unique invoice bot start_parameter. To share an invoice use the URL https://t.me/{bot_username}?start={start_parameter}
-  String startParameter;
+  final String startParameter;
 
   /// [isTest] True, if the invoice is a test invoice
-  bool isTest;
+  final bool isTest;
 
-  /// [needShippingAddress] True, if the shipping address should be specified
-  bool needShippingAddress;
+  /// [needShippingAddress] True, if the shipping address must be specified
+  final bool needShippingAddress;
 
   /// [receiptMessageId] The identifier of the message with the receipt, after the product has been purchased
-  int receiptMessageId;
-
+  final int receiptMessageId;
+  
   /// Parse from a json
-  MessageInvoice.fromJson(Map<String, dynamic> json) {
-    this.title = json['title'];
-    this.description = json['description'];
-    this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.currency = json['currency'];
-    this.totalAmount = json['total_amount'];
-    this.startParameter = json['start_parameter'];
-    this.isTest = json['is_test'];
-    this.needShippingAddress = json['need_shipping_address'];
-    this.receiptMessageId = json['receipt_message_id'];
-  }
-
+  factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
+    title: json['title'],
+    description: json['description'],
+    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+    currency: json['currency'],
+    totalAmount: json['total_amount'],
+    startParameter: json['start_parameter'],
+    isTest: json['is_test'],
+    needShippingAddress: json['need_shipping_address'],
+    receiptMessageId: json['receipt_message_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title,
-      "description": this.description,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "currency": this.currency,
-      "total_amount": this.totalAmount,
-      "start_parameter": this.startParameter,
-      "is_test": this.isTest,
-      "need_shipping_address": this.needShippingAddress,
-      "receipt_message_id": this.receiptMessageId,
+      "title": title,
+      "description": description,
+      "photo": photo?.toJson(),
+      "currency": currency,
+      "total_amount": totalAmount,
+      "start_parameter": startParameter,
+      "is_test": isTest,
+      "need_shipping_address": needShippingAddress,
+      "receipt_message_id": receiptMessageId,
     };
   }
+  
+  @override
+  MessageInvoice copyWith({
+    String? title,
+    String? description,
+    Photo? photo,
+    String? currency,
+    int? totalAmount,
+    String? startParameter,
+    bool? isTest,
+    bool? needShippingAddress,
+    int? receiptMessageId,
+  }) => MessageInvoice(
+    title: title ?? this.title,
+    description: description ?? this.description,
+    photo: photo ?? this.photo,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    startParameter: startParameter ?? this.startParameter,
+    isTest: isTest ?? this.isTest,
+    needShippingAddress: needShippingAddress ?? this.needShippingAddress,
+    receiptMessageId: receiptMessageId ?? this.receiptMessageId,
+  );
 
   static const CONSTRUCTOR = 'messageInvoice';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageCall extends MessageContent {
+
   /// A message with information about an ended call
-  MessageCall({this.isVideo, this.discardReason, this.duration});
+  const MessageCall({
+    required this.isVideo,
+    required this.discardReason,
+    required this.duration,
+  });
+  
+  /// [isVideo] True, if the call was a video call 
+  final bool isVideo;
 
-  /// [isVideo] True, if the call was a video call
-  bool isVideo;
-
-  /// [discardReason] Reason why the call was discarded
-  CallDiscardReason discardReason;
+  /// [discardReason] Reason why the call was discarded 
+  final CallDiscardReason discardReason;
 
   /// [duration] Call duration, in seconds
-  int duration;
-
+  final int duration;
+  
   /// Parse from a json
-  MessageCall.fromJson(Map<String, dynamic> json) {
-    this.isVideo = json['is_video'];
-    this.discardReason = CallDiscardReason.fromJson(
-        json['discard_reason'] ?? <String, dynamic>{});
-    this.duration = json['duration'];
-  }
-
+  factory MessageCall.fromJson(Map<String, dynamic> json) => MessageCall(
+    isVideo: json['is_video'],
+    discardReason: CallDiscardReason.fromJson(json['discard_reason']),
+    duration: json['duration'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "is_video": this.isVideo,
-      "discard_reason":
-          this.discardReason == null ? null : this.discardReason.toJson(),
-      "duration": this.duration,
+      "is_video": isVideo,
+      "discard_reason": discardReason.toJson(),
+      "duration": duration,
     };
   }
+  
+  @override
+  MessageCall copyWith({
+    bool? isVideo,
+    CallDiscardReason? discardReason,
+    int? duration,
+  }) => MessageCall(
+    isVideo: isVideo ?? this.isVideo,
+    discardReason: discardReason ?? this.discardReason,
+    duration: duration ?? this.duration,
+  );
 
   static const CONSTRUCTOR = 'messageCall';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class MessageVoiceChatStarted extends MessageContent {
-  /// A newly created voice chat
-  MessageVoiceChatStarted({this.groupCallId});
 
-  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
-  int groupCallId;
+class MessageVideoChatScheduled extends MessageContent {
 
+  /// A new video chat was scheduled
+  const MessageVideoChatScheduled({
+    required this.groupCallId,
+    required this.startDate,
+  });
+  
+  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall 
+  final int groupCallId;
+
+  /// [startDate] Point in time (Unix timestamp) when the group call is supposed to be started by an administrator
+  final int startDate;
+  
   /// Parse from a json
-  MessageVoiceChatStarted.fromJson(Map<String, dynamic> json) {
-    this.groupCallId = json['group_call_id'];
-  }
-
+  factory MessageVideoChatScheduled.fromJson(Map<String, dynamic> json) => MessageVideoChatScheduled(
+    groupCallId: json['group_call_id'],
+    startDate: json['start_date'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
+      "group_call_id": groupCallId,
+      "start_date": startDate,
     };
   }
+  
+  @override
+  MessageVideoChatScheduled copyWith({
+    int? groupCallId,
+    int? startDate,
+  }) => MessageVideoChatScheduled(
+    groupCallId: groupCallId ?? this.groupCallId,
+    startDate: startDate ?? this.startDate,
+  );
 
-  static const CONSTRUCTOR = 'messageVoiceChatStarted';
-
+  static const CONSTRUCTOR = 'messageVideoChatScheduled';
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class MessageVoiceChatEnded extends MessageContent {
-  /// A message with information about an ended voice chat
-  MessageVoiceChatEnded({this.duration});
 
-  /// [duration] Call duration
-  int duration;
+class MessageVideoChatStarted extends MessageContent {
 
+  /// A newly created video chat
+  const MessageVideoChatStarted({
+    required this.groupCallId,
+  });
+  
+  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall
+  final int groupCallId;
+  
   /// Parse from a json
-  MessageVoiceChatEnded.fromJson(Map<String, dynamic> json) {
-    this.duration = json['duration'];
-  }
-
+  factory MessageVideoChatStarted.fromJson(Map<String, dynamic> json) => MessageVideoChatStarted(
+    groupCallId: json['group_call_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "duration": this.duration,
+      "group_call_id": groupCallId,
     };
   }
+  
+  @override
+  MessageVideoChatStarted copyWith({
+    int? groupCallId,
+  }) => MessageVideoChatStarted(
+    groupCallId: groupCallId ?? this.groupCallId,
+  );
 
-  static const CONSTRUCTOR = 'messageVoiceChatEnded';
-
+  static const CONSTRUCTOR = 'messageVideoChatStarted';
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class MessageInviteVoiceChatParticipants extends MessageContent {
-  /// A message with information about an invite to a voice chat
-  MessageInviteVoiceChatParticipants({this.groupCallId, this.userIds});
 
-  /// [groupCallId] Identifier of the voice chat. The voice chat can be received through the method getGroupCall
-  int groupCallId;
+class MessageVideoChatEnded extends MessageContent {
+
+  /// A message with information about an ended video chat
+  const MessageVideoChatEnded({
+    required this.duration,
+  });
+  
+  /// [duration] Call duration, in seconds
+  final int duration;
+  
+  /// Parse from a json
+  factory MessageVideoChatEnded.fromJson(Map<String, dynamic> json) => MessageVideoChatEnded(
+    duration: json['duration'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      "@type": CONSTRUCTOR,
+      "duration": duration,
+    };
+  }
+  
+  @override
+  MessageVideoChatEnded copyWith({
+    int? duration,
+  }) => MessageVideoChatEnded(
+    duration: duration ?? this.duration,
+  );
+
+  static const CONSTRUCTOR = 'messageVideoChatEnded';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+
+class MessageInviteVideoChatParticipants extends MessageContent {
+
+  /// A message with information about an invite to a video chat
+  const MessageInviteVideoChatParticipants({
+    required this.groupCallId,
+    required this.userIds,
+  });
+  
+  /// [groupCallId] Identifier of the video chat. The video chat can be received through the method getGroupCall 
+  final int groupCallId;
 
   /// [userIds] Invited user identifiers
-  List<int> userIds;
-
+  final List<int> userIds;
+  
   /// Parse from a json
-  MessageInviteVoiceChatParticipants.fromJson(Map<String, dynamic> json) {
-    this.groupCallId = json['group_call_id'];
-    this.userIds =
-        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
-  }
-
+  factory MessageInviteVideoChatParticipants.fromJson(Map<String, dynamic> json) => MessageInviteVideoChatParticipants(
+    groupCallId: json['group_call_id'],
+    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
-      "user_ids": this.userIds.map((i) => i).toList(),
+      "group_call_id": groupCallId,
+      "user_ids": userIds.map((i) => i).toList(),
     };
   }
+  
+  @override
+  MessageInviteVideoChatParticipants copyWith({
+    int? groupCallId,
+    List<int>? userIds,
+  }) => MessageInviteVideoChatParticipants(
+    groupCallId: groupCallId ?? this.groupCallId,
+    userIds: userIds ?? this.userIds,
+  );
 
-  static const CONSTRUCTOR = 'messageInviteVoiceChatParticipants';
-
+  static const CONSTRUCTOR = 'messageInviteVideoChatParticipants';
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageBasicGroupChatCreate extends MessageContent {
-  /// A newly created basic group
-  MessageBasicGroupChatCreate({this.title, this.memberUserIds});
 
-  /// [title] Title of the basic group
-  String title;
+  /// A newly created basic group
+  const MessageBasicGroupChatCreate({
+    required this.title,
+    required this.memberUserIds,
+  });
+  
+  /// [title] Title of the basic group 
+  final String title;
 
   /// [memberUserIds] User identifiers of members in the basic group
-  List<int> memberUserIds;
-
+  final List<int> memberUserIds;
+  
   /// Parse from a json
-  MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) {
-    this.title = json['title'];
-    this.memberUserIds = List<int>.from(
-        (json['member_user_ids'] ?? []).map((item) => item).toList());
-  }
-
+  factory MessageBasicGroupChatCreate.fromJson(Map<String, dynamic> json) => MessageBasicGroupChatCreate(
+    title: json['title'],
+    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title,
-      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
+      "title": title,
+      "member_user_ids": memberUserIds.map((i) => i).toList(),
     };
   }
+  
+  @override
+  MessageBasicGroupChatCreate copyWith({
+    String? title,
+    List<int>? memberUserIds,
+  }) => MessageBasicGroupChatCreate(
+    title: title ?? this.title,
+    memberUserIds: memberUserIds ?? this.memberUserIds,
+  );
 
   static const CONSTRUCTOR = 'messageBasicGroupChatCreate';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageSupergroupChatCreate extends MessageContent {
+
   /// A newly created supergroup or channel
-  MessageSupergroupChatCreate({this.title});
-
+  const MessageSupergroupChatCreate({
+    required this.title,
+  });
+  
   /// [title] Title of the supergroup or channel
-  String title;
-
+  final String title;
+  
   /// Parse from a json
-  MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) {
-    this.title = json['title'];
-  }
-
+  factory MessageSupergroupChatCreate.fromJson(Map<String, dynamic> json) => MessageSupergroupChatCreate(
+    title: json['title'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title,
+      "title": title,
     };
   }
+  
+  @override
+  MessageSupergroupChatCreate copyWith({
+    String? title,
+  }) => MessageSupergroupChatCreate(
+    title: title ?? this.title,
+  );
 
   static const CONSTRUCTOR = 'messageSupergroupChatCreate';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatChangeTitle extends MessageContent {
+
   /// An updated chat title
-  MessageChatChangeTitle({this.title});
-
+  const MessageChatChangeTitle({
+    required this.title,
+  });
+  
   /// [title] New chat title
-  String title;
-
+  final String title;
+  
   /// Parse from a json
-  MessageChatChangeTitle.fromJson(Map<String, dynamic> json) {
-    this.title = json['title'];
-  }
-
+  factory MessageChatChangeTitle.fromJson(Map<String, dynamic> json) => MessageChatChangeTitle(
+    title: json['title'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title,
+      "title": title,
     };
   }
+  
+  @override
+  MessageChatChangeTitle copyWith({
+    String? title,
+  }) => MessageChatChangeTitle(
+    title: title ?? this.title,
+  );
 
   static const CONSTRUCTOR = 'messageChatChangeTitle';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatChangePhoto extends MessageContent {
+
   /// An updated chat photo
-  MessageChatChangePhoto({this.photo});
-
+  const MessageChatChangePhoto({
+    required this.photo,
+  });
+  
   /// [photo] New chat photo
-  ChatPhoto photo;
-
+  final ChatPhoto photo;
+  
   /// Parse from a json
-  MessageChatChangePhoto.fromJson(Map<String, dynamic> json) {
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
-  }
-
+  factory MessageChatChangePhoto.fromJson(Map<String, dynamic> json) => MessageChatChangePhoto(
+    photo: ChatPhoto.fromJson(json['photo']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo == null ? null : this.photo.toJson(),
+      "photo": photo.toJson(),
     };
   }
+  
+  @override
+  MessageChatChangePhoto copyWith({
+    ChatPhoto? photo,
+  }) => MessageChatChangePhoto(
+    photo: photo ?? this.photo,
+  );
 
   static const CONSTRUCTOR = 'messageChatChangePhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatDeletePhoto extends MessageContent {
+
   /// A deleted chat photo
-  MessageChatDeletePhoto();
-
+  const MessageChatDeletePhoto();
+  
   /// Parse from a json
-  MessageChatDeletePhoto.fromJson(Map<String, dynamic> json);
-
+  factory MessageChatDeletePhoto.fromJson(Map<String, dynamic> json) => const MessageChatDeletePhoto();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageChatDeletePhoto copyWith() => const MessageChatDeletePhoto();
 
   static const CONSTRUCTOR = 'messageChatDeletePhoto';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatAddMembers extends MessageContent {
+
   /// New chat members were added
-  MessageChatAddMembers({this.memberUserIds});
-
+  const MessageChatAddMembers({
+    required this.memberUserIds,
+  });
+  
   /// [memberUserIds] User identifiers of the new members
-  List<int> memberUserIds;
-
+  final List<int> memberUserIds;
+  
   /// Parse from a json
-  MessageChatAddMembers.fromJson(Map<String, dynamic> json) {
-    this.memberUserIds = List<int>.from(
-        (json['member_user_ids'] ?? []).map((item) => item).toList());
-  }
-
+  factory MessageChatAddMembers.fromJson(Map<String, dynamic> json) => MessageChatAddMembers(
+    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "member_user_ids": this.memberUserIds.map((i) => i).toList(),
+      "member_user_ids": memberUserIds.map((i) => i).toList(),
     };
   }
+  
+  @override
+  MessageChatAddMembers copyWith({
+    List<int>? memberUserIds,
+  }) => MessageChatAddMembers(
+    memberUserIds: memberUserIds ?? this.memberUserIds,
+  );
 
   static const CONSTRUCTOR = 'messageChatAddMembers';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatJoinByLink extends MessageContent {
-  /// A new member joined the chat by invite link
-  MessageChatJoinByLink();
 
+  /// A new member joined the chat via an invite link
+  const MessageChatJoinByLink();
+  
   /// Parse from a json
-  MessageChatJoinByLink.fromJson(Map<String, dynamic> json);
-
+  factory MessageChatJoinByLink.fromJson(Map<String, dynamic> json) => const MessageChatJoinByLink();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageChatJoinByLink copyWith() => const MessageChatJoinByLink();
 
   static const CONSTRUCTOR = 'messageChatJoinByLink';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
+
+class MessageChatJoinByRequest extends MessageContent {
+
+  /// A new member was accepted to the chat by an administrator
+  const MessageChatJoinByRequest();
+  
+  /// Parse from a json
+  factory MessageChatJoinByRequest.fromJson(Map<String, dynamic> json) => const MessageChatJoinByRequest();
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      "@type": CONSTRUCTOR,
+    };
+  }
+  
+  @override
+  MessageChatJoinByRequest copyWith() => const MessageChatJoinByRequest();
+
+  static const CONSTRUCTOR = 'messageChatJoinByRequest';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 
 class MessageChatDeleteMember extends MessageContent {
+
   /// A chat member was deleted
-  MessageChatDeleteMember({this.userId});
-
+  const MessageChatDeleteMember({
+    required this.userId,
+  });
+  
   /// [userId] User identifier of the deleted chat member
-  int userId;
-
+  final int userId;
+  
   /// Parse from a json
-  MessageChatDeleteMember.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-  }
-
+  factory MessageChatDeleteMember.fromJson(Map<String, dynamic> json) => MessageChatDeleteMember(
+    userId: json['user_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
+      "user_id": userId,
     };
   }
+  
+  @override
+  MessageChatDeleteMember copyWith({
+    int? userId,
+  }) => MessageChatDeleteMember(
+    userId: userId ?? this.userId,
+  );
 
   static const CONSTRUCTOR = 'messageChatDeleteMember';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatUpgradeTo extends MessageContent {
+
   /// A basic group was upgraded to a supergroup and was deactivated as the result
-  MessageChatUpgradeTo({this.supergroupId});
-
+  const MessageChatUpgradeTo({
+    required this.supergroupId,
+  });
+  
   /// [supergroupId] Identifier of the supergroup to which the basic group was upgraded
-  int supergroupId;
-
+  final int supergroupId;
+  
   /// Parse from a json
-  MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) {
-    this.supergroupId = json['supergroup_id'];
-  }
-
+  factory MessageChatUpgradeTo.fromJson(Map<String, dynamic> json) => MessageChatUpgradeTo(
+    supergroupId: json['supergroup_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "supergroup_id": this.supergroupId,
+      "supergroup_id": supergroupId,
     };
   }
+  
+  @override
+  MessageChatUpgradeTo copyWith({
+    int? supergroupId,
+  }) => MessageChatUpgradeTo(
+    supergroupId: supergroupId ?? this.supergroupId,
+  );
 
   static const CONSTRUCTOR = 'messageChatUpgradeTo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageChatUpgradeFrom extends MessageContent {
-  /// A supergroup has been created from a basic group
-  MessageChatUpgradeFrom({this.title, this.basicGroupId});
 
-  /// [title] Title of the newly created supergroup
-  String title;
+  /// A supergroup has been created from a basic group
+  const MessageChatUpgradeFrom({
+    required this.title,
+    required this.basicGroupId,
+  });
+  
+  /// [title] Title of the newly created supergroup 
+  final String title;
 
   /// [basicGroupId] The identifier of the original basic group
-  int basicGroupId;
-
+  final int basicGroupId;
+  
   /// Parse from a json
-  MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) {
-    this.title = json['title'];
-    this.basicGroupId = json['basic_group_id'];
-  }
-
+  factory MessageChatUpgradeFrom.fromJson(Map<String, dynamic> json) => MessageChatUpgradeFrom(
+    title: json['title'],
+    basicGroupId: json['basic_group_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "title": this.title,
-      "basic_group_id": this.basicGroupId,
+      "title": title,
+      "basic_group_id": basicGroupId,
     };
   }
+  
+  @override
+  MessageChatUpgradeFrom copyWith({
+    String? title,
+    int? basicGroupId,
+  }) => MessageChatUpgradeFrom(
+    title: title ?? this.title,
+    basicGroupId: basicGroupId ?? this.basicGroupId,
+  );
 
   static const CONSTRUCTOR = 'messageChatUpgradeFrom';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePinMessage extends MessageContent {
+
   /// A message has been pinned
-  MessagePinMessage({this.messageId});
-
+  const MessagePinMessage({
+    required this.messageId,
+  });
+  
   /// [messageId] Identifier of the pinned message, can be an identifier of a deleted message or 0
-  int messageId;
-
+  final int messageId;
+  
   /// Parse from a json
-  MessagePinMessage.fromJson(Map<String, dynamic> json) {
-    this.messageId = json['message_id'];
-  }
-
+  factory MessagePinMessage.fromJson(Map<String, dynamic> json) => MessagePinMessage(
+    messageId: json['message_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "message_id": this.messageId,
+      "message_id": messageId,
     };
   }
+  
+  @override
+  MessagePinMessage copyWith({
+    int? messageId,
+  }) => MessagePinMessage(
+    messageId: messageId ?? this.messageId,
+  );
 
   static const CONSTRUCTOR = 'messagePinMessage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageScreenshotTaken extends MessageContent {
+
   /// A screenshot of a message in the chat has been taken
-  MessageScreenshotTaken();
-
+  const MessageScreenshotTaken();
+  
   /// Parse from a json
-  MessageScreenshotTaken.fromJson(Map<String, dynamic> json);
-
+  factory MessageScreenshotTaken.fromJson(Map<String, dynamic> json) => const MessageScreenshotTaken();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageScreenshotTaken copyWith() => const MessageScreenshotTaken();
 
   static const CONSTRUCTOR = 'messageScreenshotTaken';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
+
+class MessageChatSetTheme extends MessageContent {
+
+  /// A theme in the chat has been changed
+  const MessageChatSetTheme({
+    required this.themeName,
+  });
+  
+  /// [themeName] If non-empty, name of a new theme, set for the chat. Otherwise chat theme was reset to the default one
+  final String themeName;
+  
+  /// Parse from a json
+  factory MessageChatSetTheme.fromJson(Map<String, dynamic> json) => MessageChatSetTheme(
+    themeName: json['theme_name'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      "@type": CONSTRUCTOR,
+      "theme_name": themeName,
+    };
+  }
+  
+  @override
+  MessageChatSetTheme copyWith({
+    String? themeName,
+  }) => MessageChatSetTheme(
+    themeName: themeName ?? this.themeName,
+  );
+
+  static const CONSTRUCTOR = 'messageChatSetTheme';
+  
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 
 class MessageChatSetTtl extends MessageContent {
-  /// The TTL (Time To Live) setting messages in a secret chat has been changed
-  MessageChatSetTtl({this.ttl});
 
-  /// [ttl] New TTL
-  int ttl;
-
+  /// The TTL (Time To Live) setting for messages in the chat has been changed
+  const MessageChatSetTtl({
+    required this.ttl,
+  });
+  
+  /// [ttl] New message TTL
+  final int ttl;
+  
   /// Parse from a json
-  MessageChatSetTtl.fromJson(Map<String, dynamic> json) {
-    this.ttl = json['ttl'];
-  }
-
+  factory MessageChatSetTtl.fromJson(Map<String, dynamic> json) => MessageChatSetTtl(
+    ttl: json['ttl'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "ttl": this.ttl,
+      "ttl": ttl,
     };
   }
+  
+  @override
+  MessageChatSetTtl copyWith({
+    int? ttl,
+  }) => MessageChatSetTtl(
+    ttl: ttl ?? this.ttl,
+  );
 
   static const CONSTRUCTOR = 'messageChatSetTtl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageCustomServiceAction extends MessageContent {
+
   /// A non-standard action has happened in the chat
-  MessageCustomServiceAction({this.text});
-
+  const MessageCustomServiceAction({
+    required this.text,
+  });
+  
   /// [text] Message text to be shown in the chat
-  String text;
-
+  final String text;
+  
   /// Parse from a json
-  MessageCustomServiceAction.fromJson(Map<String, dynamic> json) {
-    this.text = json['text'];
-  }
-
+  factory MessageCustomServiceAction.fromJson(Map<String, dynamic> json) => MessageCustomServiceAction(
+    text: json['text'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text,
+      "text": text,
     };
   }
+  
+  @override
+  MessageCustomServiceAction copyWith({
+    String? text,
+  }) => MessageCustomServiceAction(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'messageCustomServiceAction';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageGameScore extends MessageContent {
+
   /// A new high score was achieved in a game
-  MessageGameScore({this.gameMessageId, this.gameId, this.score});
+  const MessageGameScore({
+    required this.gameMessageId,
+    required this.gameId,
+    required this.score,
+  });
+  
+  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message 
+  final int gameMessageId;
 
-  /// [gameMessageId] Identifier of the message with the game, can be an identifier of a deleted message
-  int gameMessageId;
-
-  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game
-  int gameId;
+  /// [gameId] Identifier of the game; may be different from the games presented in the message with the game 
+  final int gameId;
 
   /// [score] New score
-  int score;
-
+  final int score;
+  
   /// Parse from a json
-  MessageGameScore.fromJson(Map<String, dynamic> json) {
-    this.gameMessageId = json['game_message_id'];
-    this.gameId = int.tryParse(json['game_id'] ?? "");
-    this.score = json['score'];
-  }
-
+  factory MessageGameScore.fromJson(Map<String, dynamic> json) => MessageGameScore(
+    gameMessageId: json['game_message_id'],
+    gameId: int.parse(json['game_id']),
+    score: json['score'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "game_message_id": this.gameMessageId,
-      "game_id": this.gameId,
-      "score": this.score,
+      "game_message_id": gameMessageId,
+      "game_id": gameId,
+      "score": score,
     };
   }
+  
+  @override
+  MessageGameScore copyWith({
+    int? gameMessageId,
+    int? gameId,
+    int? score,
+  }) => MessageGameScore(
+    gameMessageId: gameMessageId ?? this.gameMessageId,
+    gameId: gameId ?? this.gameId,
+    score: score ?? this.score,
+  );
 
   static const CONSTRUCTOR = 'messageGameScore';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePaymentSuccessful extends MessageContent {
+
   /// A payment has been completed
-  MessagePaymentSuccessful(
-      {this.invoiceMessageId, this.currency, this.totalAmount});
+  const MessagePaymentSuccessful({
+    required this.invoiceChatId,
+    required this.invoiceMessageId,
+    required this.currency,
+    required this.totalAmount,
+  });
+  
+  /// [invoiceChatId] Identifier of the chat, containing the corresponding invoice message; 0 if unknown 
+  final int invoiceChatId;
 
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
-  int invoiceMessageId;
+  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message 
+  final int invoiceMessageId;
 
-  /// [currency] Currency for the price of the product
-  String currency;
+  /// [currency] Currency for the price of the product 
+  final String currency;
 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
-  int totalAmount;
-
+  /// [totalAmount] Total price for the product, in the smallest units of the currency
+  final int totalAmount;
+  
   /// Parse from a json
-  MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) {
-    this.invoiceMessageId = json['invoice_message_id'];
-    this.currency = json['currency'];
-    this.totalAmount = json['total_amount'];
-  }
-
+  factory MessagePaymentSuccessful.fromJson(Map<String, dynamic> json) => MessagePaymentSuccessful(
+    invoiceChatId: json['invoice_chat_id'],
+    invoiceMessageId: json['invoice_message_id'],
+    currency: json['currency'],
+    totalAmount: json['total_amount'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "invoice_message_id": this.invoiceMessageId,
-      "currency": this.currency,
-      "total_amount": this.totalAmount,
+      "invoice_chat_id": invoiceChatId,
+      "invoice_message_id": invoiceMessageId,
+      "currency": currency,
+      "total_amount": totalAmount,
     };
   }
+  
+  @override
+  MessagePaymentSuccessful copyWith({
+    int? invoiceChatId,
+    int? invoiceMessageId,
+    String? currency,
+    int? totalAmount,
+  }) => MessagePaymentSuccessful(
+    invoiceChatId: invoiceChatId ?? this.invoiceChatId,
+    invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+  );
 
   static const CONSTRUCTOR = 'messagePaymentSuccessful';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePaymentSuccessfulBot extends MessageContent {
+
   /// A payment has been completed; for bots only
-  MessagePaymentSuccessfulBot(
-      {this.invoiceMessageId,
-      this.currency,
-      this.totalAmount,
-      this.invoicePayload,
-      this.shippingOptionId,
-      this.orderInfo,
-      this.telegramPaymentChargeId,
-      this.providerPaymentChargeId});
-
-  /// [invoiceMessageId] Identifier of the message with the corresponding invoice; can be an identifier of a deleted message
-  int invoiceMessageId;
-
+  const MessagePaymentSuccessfulBot({
+    required this.currency,
+    required this.totalAmount,
+    required this.invoicePayload,
+    required this.shippingOptionId,
+    this.orderInfo,
+    required this.telegramPaymentChargeId,
+    required this.providerPaymentChargeId,
+  });
+  
   /// [currency] Currency for price of the product
-  String currency;
+  final String currency;
 
-  /// [totalAmount] Total price for the product, in the minimal quantity of the currency
-  int totalAmount;
+  /// [totalAmount] Total price for the product, in the smallest units of the currency
+  final int totalAmount;
 
-  /// [invoicePayload] Invoice payload
-  String invoicePayload;
+  /// [invoicePayload] Invoice payload 
+  final String invoicePayload;
 
-  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable
-  String shippingOptionId;
+  /// [shippingOptionId] Identifier of the shipping option chosen by the user; may be empty if not applicable 
+  final String shippingOptionId;
 
   /// [orderInfo] Information about the order; may be null
-  OrderInfo orderInfo;
+  final OrderInfo? orderInfo;
 
   /// [telegramPaymentChargeId] Telegram payment identifier
-  String telegramPaymentChargeId;
+  final String telegramPaymentChargeId;
 
   /// [providerPaymentChargeId] Provider payment identifier
-  String providerPaymentChargeId;
-
+  final String providerPaymentChargeId;
+  
   /// Parse from a json
-  MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) {
-    this.invoiceMessageId = json['invoice_message_id'];
-    this.currency = json['currency'];
-    this.totalAmount = json['total_amount'];
-    this.invoicePayload = json['invoice_payload'];
-    this.shippingOptionId = json['shipping_option_id'];
-    this.orderInfo =
-        OrderInfo.fromJson(json['order_info'] ?? <String, dynamic>{});
-    this.telegramPaymentChargeId = json['telegram_payment_charge_id'];
-    this.providerPaymentChargeId = json['provider_payment_charge_id'];
-  }
-
+  factory MessagePaymentSuccessfulBot.fromJson(Map<String, dynamic> json) => MessagePaymentSuccessfulBot(
+    currency: json['currency'],
+    totalAmount: json['total_amount'],
+    invoicePayload: json['invoice_payload'],
+    shippingOptionId: json['shipping_option_id'],
+    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
+    telegramPaymentChargeId: json['telegram_payment_charge_id'],
+    providerPaymentChargeId: json['provider_payment_charge_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "invoice_message_id": this.invoiceMessageId,
-      "currency": this.currency,
-      "total_amount": this.totalAmount,
-      "invoice_payload": this.invoicePayload,
-      "shipping_option_id": this.shippingOptionId,
-      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
-      "telegram_payment_charge_id": this.telegramPaymentChargeId,
-      "provider_payment_charge_id": this.providerPaymentChargeId,
+      "currency": currency,
+      "total_amount": totalAmount,
+      "invoice_payload": invoicePayload,
+      "shipping_option_id": shippingOptionId,
+      "order_info": orderInfo?.toJson(),
+      "telegram_payment_charge_id": telegramPaymentChargeId,
+      "provider_payment_charge_id": providerPaymentChargeId,
     };
   }
+  
+  @override
+  MessagePaymentSuccessfulBot copyWith({
+    String? currency,
+    int? totalAmount,
+    String? invoicePayload,
+    String? shippingOptionId,
+    OrderInfo? orderInfo,
+    String? telegramPaymentChargeId,
+    String? providerPaymentChargeId,
+  }) => MessagePaymentSuccessfulBot(
+    currency: currency ?? this.currency,
+    totalAmount: totalAmount ?? this.totalAmount,
+    invoicePayload: invoicePayload ?? this.invoicePayload,
+    shippingOptionId: shippingOptionId ?? this.shippingOptionId,
+    orderInfo: orderInfo ?? this.orderInfo,
+    telegramPaymentChargeId: telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+    providerPaymentChargeId: providerPaymentChargeId ?? this.providerPaymentChargeId,
+  );
 
   static const CONSTRUCTOR = 'messagePaymentSuccessfulBot';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageContactRegistered extends MessageContent {
+
   /// A contact has registered with Telegram
-  MessageContactRegistered();
-
+  const MessageContactRegistered();
+  
   /// Parse from a json
-  MessageContactRegistered.fromJson(Map<String, dynamic> json);
-
+  factory MessageContactRegistered.fromJson(Map<String, dynamic> json) => const MessageContactRegistered();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageContactRegistered copyWith() => const MessageContactRegistered();
 
   static const CONSTRUCTOR = 'messageContactRegistered';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageWebsiteConnected extends MessageContent {
+
   /// The current user has connected a website by logging in using Telegram Login Widget on it
-  MessageWebsiteConnected({this.domainName});
-
+  const MessageWebsiteConnected({
+    required this.domainName,
+  });
+  
   /// [domainName] Domain name of the connected website
-  String domainName;
-
+  final String domainName;
+  
   /// Parse from a json
-  MessageWebsiteConnected.fromJson(Map<String, dynamic> json) {
-    this.domainName = json['domain_name'];
-  }
-
+  factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) => MessageWebsiteConnected(
+    domainName: json['domain_name'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "domain_name": this.domainName,
+      "domain_name": domainName,
     };
   }
+  
+  @override
+  MessageWebsiteConnected copyWith({
+    String? domainName,
+  }) => MessageWebsiteConnected(
+    domainName: domainName ?? this.domainName,
+  );
 
   static const CONSTRUCTOR = 'messageWebsiteConnected';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePassportDataSent extends MessageContent {
+
   /// Telegram Passport data has been sent
-  MessagePassportDataSent({this.types});
-
+  const MessagePassportDataSent({
+    required this.types,
+  });
+  
   /// [types] List of Telegram Passport element types sent
-  List<PassportElementType> types;
-
+  final List<PassportElementType> types;
+  
   /// Parse from a json
-  MessagePassportDataSent.fromJson(Map<String, dynamic> json) {
-    this.types = List<PassportElementType>.from((json['types'] ?? [])
-        .map(
-            (item) => PassportElementType.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-  }
-
+  factory MessagePassportDataSent.fromJson(Map<String, dynamic> json) => MessagePassportDataSent(
+    types: List<PassportElementType>.from((json['types'] ?? []).map((item) => PassportElementType.fromJson(item)).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "types": this.types.map((i) => i.toJson()).toList(),
+      "types": types.map((i) => i.toJson()).toList(),
     };
   }
+  
+  @override
+  MessagePassportDataSent copyWith({
+    List<PassportElementType>? types,
+  }) => MessagePassportDataSent(
+    types: types ?? this.types,
+  );
 
   static const CONSTRUCTOR = 'messagePassportDataSent';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessagePassportDataReceived extends MessageContent {
-  /// Telegram Passport data has been received; for bots only
-  MessagePassportDataReceived({this.elements, this.credentials});
 
-  /// [elements] List of received Telegram Passport elements
-  List<EncryptedPassportElement> elements;
+  /// Telegram Passport data has been received; for bots only
+  const MessagePassportDataReceived({
+    required this.elements,
+    required this.credentials,
+  });
+  
+  /// [elements] List of received Telegram Passport elements 
+  final List<EncryptedPassportElement> elements;
 
   /// [credentials] Encrypted data credentials
-  EncryptedCredentials credentials;
-
+  final EncryptedCredentials credentials;
+  
   /// Parse from a json
-  MessagePassportDataReceived.fromJson(Map<String, dynamic> json) {
-    this.elements = List<EncryptedPassportElement>.from((json['elements'] ?? [])
-        .map((item) =>
-            EncryptedPassportElement.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.credentials = EncryptedCredentials.fromJson(
-        json['credentials'] ?? <String, dynamic>{});
-  }
-
+  factory MessagePassportDataReceived.fromJson(Map<String, dynamic> json) => MessagePassportDataReceived(
+    elements: List<EncryptedPassportElement>.from((json['elements'] ?? []).map((item) => EncryptedPassportElement.fromJson(item)).toList()),
+    credentials: EncryptedCredentials.fromJson(json['credentials']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "elements": this.elements.map((i) => i.toJson()).toList(),
-      "credentials":
-          this.credentials == null ? null : this.credentials.toJson(),
+      "elements": elements.map((i) => i.toJson()).toList(),
+      "credentials": credentials.toJson(),
     };
   }
+  
+  @override
+  MessagePassportDataReceived copyWith({
+    List<EncryptedPassportElement>? elements,
+    EncryptedCredentials? credentials,
+  }) => MessagePassportDataReceived(
+    elements: elements ?? this.elements,
+    credentials: credentials ?? this.credentials,
+  );
 
   static const CONSTRUCTOR = 'messagePassportDataReceived';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class MessageProximityAlertTriggered extends MessageContent {
+
   /// A user in the chat came within proximity alert range
-  MessageProximityAlertTriggered({this.traveler, this.watcher, this.distance});
+  const MessageProximityAlertTriggered({
+    required this.travelerId,
+    required this.watcherId,
+    required this.distance,
+  });
+  
+  /// [travelerId] The identifier of a user or chat that triggered the proximity alert 
+  final MessageSender travelerId;
 
-  /// [traveler] The user or chat, which triggered the proximity alert
-  MessageSender traveler;
-
-  /// [watcher] The user or chat, which subscribed for the proximity alert
-  MessageSender watcher;
+  /// [watcherId] The identifier of a user or chat that subscribed for the proximity alert 
+  final MessageSender watcherId;
 
   /// [distance] The distance between the users
-  int distance;
-
+  final int distance;
+  
   /// Parse from a json
-  MessageProximityAlertTriggered.fromJson(Map<String, dynamic> json) {
-    this.traveler =
-        MessageSender.fromJson(json['traveler'] ?? <String, dynamic>{});
-    this.watcher =
-        MessageSender.fromJson(json['watcher'] ?? <String, dynamic>{});
-    this.distance = json['distance'];
-  }
-
+  factory MessageProximityAlertTriggered.fromJson(Map<String, dynamic> json) => MessageProximityAlertTriggered(
+    travelerId: MessageSender.fromJson(json['traveler_id']),
+    watcherId: MessageSender.fromJson(json['watcher_id']),
+    distance: json['distance'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "traveler": this.traveler == null ? null : this.traveler.toJson(),
-      "watcher": this.watcher == null ? null : this.watcher.toJson(),
-      "distance": this.distance,
+      "traveler_id": travelerId.toJson(),
+      "watcher_id": watcherId.toJson(),
+      "distance": distance,
     };
   }
+  
+  @override
+  MessageProximityAlertTriggered copyWith({
+    MessageSender? travelerId,
+    MessageSender? watcherId,
+    int? distance,
+  }) => MessageProximityAlertTriggered(
+    travelerId: travelerId ?? this.travelerId,
+    watcherId: watcherId ?? this.watcherId,
+    distance: distance ?? this.distance,
+  );
 
   static const CONSTRUCTOR = 'messageProximityAlertTriggered';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class MessageUnsupported extends MessageContent {
+
   /// Message content that is not supported in the current TDLib version
-  MessageUnsupported();
-
+  const MessageUnsupported();
+  
   /// Parse from a json
-  MessageUnsupported.fromJson(Map<String, dynamic> json);
-
+  factory MessageUnsupported.fromJson(Map<String, dynamic> json) => const MessageUnsupported();
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  MessageUnsupported copyWith() => const MessageUnsupported();
 
   static const CONSTRUCTOR = 'messageUnsupported';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

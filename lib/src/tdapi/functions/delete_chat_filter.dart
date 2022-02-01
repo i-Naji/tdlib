@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class DeleteChatFilter extends TdFunction {
+
   /// Deletes existing chat filter
-  DeleteChatFilter({this.chatFilterId});
-
+  const DeleteChatFilter({
+    required this.chatFilterId,
+  });
+  
   /// [chatFilterId] Chat filter identifier
-  int chatFilterId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DeleteChatFilter.fromJson(Map<String, dynamic> json);
-
+  final int chatFilterId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_filter_id": this.chatFilterId,
-      "@extra": this.extra,
+      "chat_filter_id": chatFilterId,
+      "@extra": extra,
     };
   }
+  
+  DeleteChatFilter copyWith({
+    int? chatFilterId,
+  }) => DeleteChatFilter(
+    chatFilterId: chatFilterId ?? this.chatFilterId,
+  );
 
   static const CONSTRUCTOR = 'deleteChatFilter';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,25 +1,26 @@
 part of '../tdapi.dart';
 
 class InputPassportElement extends TdObject {
-  /// Contains information about a Telegram Passport element to be saved
-  InputPassportElement();
 
+  /// Contains information about a Telegram Passport element to be saved
+  const InputPassportElement();
+  
   /// a InputPassportElement return type can be :
-  /// * InputPassportElementPersonalDetails
-  /// * InputPassportElementPassport
-  /// * InputPassportElementDriverLicense
-  /// * InputPassportElementIdentityCard
-  /// * InputPassportElementInternalPassport
-  /// * InputPassportElementAddress
-  /// * InputPassportElementUtilityBill
-  /// * InputPassportElementBankStatement
-  /// * InputPassportElementRentalAgreement
-  /// * InputPassportElementPassportRegistration
-  /// * InputPassportElementTemporaryRegistration
-  /// * InputPassportElementPhoneNumber
-  /// * InputPassportElementEmailAddress
-  factory InputPassportElement.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [InputPassportElementPersonalDetails]
+  /// * [InputPassportElementPassport]
+  /// * [InputPassportElementDriverLicense]
+  /// * [InputPassportElementIdentityCard]
+  /// * [InputPassportElementInternalPassport]
+  /// * [InputPassportElementAddress]
+  /// * [InputPassportElementUtilityBill]
+  /// * [InputPassportElementBankStatement]
+  /// * [InputPassportElementRentalAgreement]
+  /// * [InputPassportElementPassportRegistration]
+  /// * [InputPassportElementTemporaryRegistration]
+  /// * [InputPassportElementPhoneNumber]
+  /// * [InputPassportElementEmailAddress]
+  factory InputPassportElement.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InputPassportElementPersonalDetails.CONSTRUCTOR:
         return InputPassportElementPersonalDetails.fromJson(json);
       case InputPassportElementPassport.CONSTRUCTOR:
@@ -47,377 +48,515 @@ class InputPassportElement extends TdObject {
       case InputPassportElementEmailAddress.CONSTRUCTOR:
         return InputPassportElementEmailAddress.fromJson(json);
       default:
-        return null;
+        return const InputPassportElement();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  InputPassportElement copyWith() => const InputPassportElement();
 
   static const CONSTRUCTOR = 'inputPassportElement';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementPersonalDetails extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's personal details
-  InputPassportElementPersonalDetails({this.personalDetails});
-
+  const InputPassportElementPersonalDetails({
+    required this.personalDetails,
+  });
+  
   /// [personalDetails] Personal details of the user
-  PersonalDetails personalDetails;
-
+  final PersonalDetails personalDetails;
+  
   /// Parse from a json
-  InputPassportElementPersonalDetails.fromJson(Map<String, dynamic> json) {
-    this.personalDetails = PersonalDetails.fromJson(
-        json['personal_details'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementPersonalDetails.fromJson(Map<String, dynamic> json) => InputPassportElementPersonalDetails(
+    personalDetails: PersonalDetails.fromJson(json['personal_details']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "personal_details":
-          this.personalDetails == null ? null : this.personalDetails.toJson(),
+      "personal_details": personalDetails.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementPersonalDetails copyWith({
+    PersonalDetails? personalDetails,
+  }) => InputPassportElementPersonalDetails(
+    personalDetails: personalDetails ?? this.personalDetails,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementPersonalDetails';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementPassport extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's passport
-  InputPassportElementPassport({this.passport});
-
+  const InputPassportElementPassport({
+    required this.passport,
+  });
+  
   /// [passport] The passport to be saved
-  InputIdentityDocument passport;
-
+  final InputIdentityDocument passport;
+  
   /// Parse from a json
-  InputPassportElementPassport.fromJson(Map<String, dynamic> json) {
-    this.passport =
-        InputIdentityDocument.fromJson(json['passport'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementPassport.fromJson(Map<String, dynamic> json) => InputPassportElementPassport(
+    passport: InputIdentityDocument.fromJson(json['passport']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "passport": this.passport == null ? null : this.passport.toJson(),
+      "passport": passport.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementPassport copyWith({
+    InputIdentityDocument? passport,
+  }) => InputPassportElementPassport(
+    passport: passport ?? this.passport,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementPassport';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementDriverLicense extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's driver license
-  InputPassportElementDriverLicense({this.driverLicense});
-
+  const InputPassportElementDriverLicense({
+    required this.driverLicense,
+  });
+  
   /// [driverLicense] The driver license to be saved
-  InputIdentityDocument driverLicense;
-
+  final InputIdentityDocument driverLicense;
+  
   /// Parse from a json
-  InputPassportElementDriverLicense.fromJson(Map<String, dynamic> json) {
-    this.driverLicense = InputIdentityDocument.fromJson(
-        json['driver_license'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementDriverLicense.fromJson(Map<String, dynamic> json) => InputPassportElementDriverLicense(
+    driverLicense: InputIdentityDocument.fromJson(json['driver_license']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "driver_license":
-          this.driverLicense == null ? null : this.driverLicense.toJson(),
+      "driver_license": driverLicense.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementDriverLicense copyWith({
+    InputIdentityDocument? driverLicense,
+  }) => InputPassportElementDriverLicense(
+    driverLicense: driverLicense ?? this.driverLicense,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementDriverLicense';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementIdentityCard extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's identity card
-  InputPassportElementIdentityCard({this.identityCard});
-
+  const InputPassportElementIdentityCard({
+    required this.identityCard,
+  });
+  
   /// [identityCard] The identity card to be saved
-  InputIdentityDocument identityCard;
-
+  final InputIdentityDocument identityCard;
+  
   /// Parse from a json
-  InputPassportElementIdentityCard.fromJson(Map<String, dynamic> json) {
-    this.identityCard = InputIdentityDocument.fromJson(
-        json['identity_card'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementIdentityCard.fromJson(Map<String, dynamic> json) => InputPassportElementIdentityCard(
+    identityCard: InputIdentityDocument.fromJson(json['identity_card']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "identity_card":
-          this.identityCard == null ? null : this.identityCard.toJson(),
+      "identity_card": identityCard.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementIdentityCard copyWith({
+    InputIdentityDocument? identityCard,
+  }) => InputPassportElementIdentityCard(
+    identityCard: identityCard ?? this.identityCard,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementIdentityCard';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementInternalPassport extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's internal passport
-  InputPassportElementInternalPassport({this.internalPassport});
-
+  const InputPassportElementInternalPassport({
+    required this.internalPassport,
+  });
+  
   /// [internalPassport] The internal passport to be saved
-  InputIdentityDocument internalPassport;
-
+  final InputIdentityDocument internalPassport;
+  
   /// Parse from a json
-  InputPassportElementInternalPassport.fromJson(Map<String, dynamic> json) {
-    this.internalPassport = InputIdentityDocument.fromJson(
-        json['internal_passport'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementInternalPassport.fromJson(Map<String, dynamic> json) => InputPassportElementInternalPassport(
+    internalPassport: InputIdentityDocument.fromJson(json['internal_passport']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "internal_passport":
-          this.internalPassport == null ? null : this.internalPassport.toJson(),
+      "internal_passport": internalPassport.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementInternalPassport copyWith({
+    InputIdentityDocument? internalPassport,
+  }) => InputPassportElementInternalPassport(
+    internalPassport: internalPassport ?? this.internalPassport,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementInternalPassport';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementAddress extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's address
-  InputPassportElementAddress({this.address});
-
+  const InputPassportElementAddress({
+    required this.address,
+  });
+  
   /// [address] The address to be saved
-  Address address;
-
+  final Address address;
+  
   /// Parse from a json
-  InputPassportElementAddress.fromJson(Map<String, dynamic> json) {
-    this.address = Address.fromJson(json['address'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementAddress.fromJson(Map<String, dynamic> json) => InputPassportElementAddress(
+    address: Address.fromJson(json['address']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "address": this.address == null ? null : this.address.toJson(),
+      "address": address.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementAddress copyWith({
+    Address? address,
+  }) => InputPassportElementAddress(
+    address: address ?? this.address,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementAddress';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementUtilityBill extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's utility bill
-  InputPassportElementUtilityBill({this.utilityBill});
-
+  const InputPassportElementUtilityBill({
+    required this.utilityBill,
+  });
+  
   /// [utilityBill] The utility bill to be saved
-  InputPersonalDocument utilityBill;
-
+  final InputPersonalDocument utilityBill;
+  
   /// Parse from a json
-  InputPassportElementUtilityBill.fromJson(Map<String, dynamic> json) {
-    this.utilityBill = InputPersonalDocument.fromJson(
-        json['utility_bill'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementUtilityBill.fromJson(Map<String, dynamic> json) => InputPassportElementUtilityBill(
+    utilityBill: InputPersonalDocument.fromJson(json['utility_bill']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "utility_bill":
-          this.utilityBill == null ? null : this.utilityBill.toJson(),
+      "utility_bill": utilityBill.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementUtilityBill copyWith({
+    InputPersonalDocument? utilityBill,
+  }) => InputPassportElementUtilityBill(
+    utilityBill: utilityBill ?? this.utilityBill,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementUtilityBill';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementBankStatement extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's bank statement
-  InputPassportElementBankStatement({this.bankStatement});
-
+  const InputPassportElementBankStatement({
+    required this.bankStatement,
+  });
+  
   /// [bankStatement] The bank statement to be saved
-  InputPersonalDocument bankStatement;
-
+  final InputPersonalDocument bankStatement;
+  
   /// Parse from a json
-  InputPassportElementBankStatement.fromJson(Map<String, dynamic> json) {
-    this.bankStatement = InputPersonalDocument.fromJson(
-        json['bank_statement'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementBankStatement.fromJson(Map<String, dynamic> json) => InputPassportElementBankStatement(
+    bankStatement: InputPersonalDocument.fromJson(json['bank_statement']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "bank_statement":
-          this.bankStatement == null ? null : this.bankStatement.toJson(),
+      "bank_statement": bankStatement.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementBankStatement copyWith({
+    InputPersonalDocument? bankStatement,
+  }) => InputPassportElementBankStatement(
+    bankStatement: bankStatement ?? this.bankStatement,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementBankStatement';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementRentalAgreement extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's rental agreement
-  InputPassportElementRentalAgreement({this.rentalAgreement});
-
+  const InputPassportElementRentalAgreement({
+    required this.rentalAgreement,
+  });
+  
   /// [rentalAgreement] The rental agreement to be saved
-  InputPersonalDocument rentalAgreement;
-
+  final InputPersonalDocument rentalAgreement;
+  
   /// Parse from a json
-  InputPassportElementRentalAgreement.fromJson(Map<String, dynamic> json) {
-    this.rentalAgreement = InputPersonalDocument.fromJson(
-        json['rental_agreement'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementRentalAgreement.fromJson(Map<String, dynamic> json) => InputPassportElementRentalAgreement(
+    rentalAgreement: InputPersonalDocument.fromJson(json['rental_agreement']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "rental_agreement":
-          this.rentalAgreement == null ? null : this.rentalAgreement.toJson(),
+      "rental_agreement": rentalAgreement.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementRentalAgreement copyWith({
+    InputPersonalDocument? rentalAgreement,
+  }) => InputPassportElementRentalAgreement(
+    rentalAgreement: rentalAgreement ?? this.rentalAgreement,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementRentalAgreement';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementPassportRegistration extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's passport registration
-  InputPassportElementPassportRegistration({this.passportRegistration});
-
+  const InputPassportElementPassportRegistration({
+    required this.passportRegistration,
+  });
+  
   /// [passportRegistration] The passport registration page to be saved
-  InputPersonalDocument passportRegistration;
-
+  final InputPersonalDocument passportRegistration;
+  
   /// Parse from a json
-  InputPassportElementPassportRegistration.fromJson(Map<String, dynamic> json) {
-    this.passportRegistration = InputPersonalDocument.fromJson(
-        json['passport_registration'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementPassportRegistration.fromJson(Map<String, dynamic> json) => InputPassportElementPassportRegistration(
+    passportRegistration: InputPersonalDocument.fromJson(json['passport_registration']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "passport_registration": this.passportRegistration == null
-          ? null
-          : this.passportRegistration.toJson(),
+      "passport_registration": passportRegistration.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementPassportRegistration copyWith({
+    InputPersonalDocument? passportRegistration,
+  }) => InputPassportElementPassportRegistration(
+    passportRegistration: passportRegistration ?? this.passportRegistration,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementPassportRegistration';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementTemporaryRegistration extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's temporary registration
-  InputPassportElementTemporaryRegistration({this.temporaryRegistration});
-
+  const InputPassportElementTemporaryRegistration({
+    required this.temporaryRegistration,
+  });
+  
   /// [temporaryRegistration] The temporary registration document to be saved
-  InputPersonalDocument temporaryRegistration;
-
+  final InputPersonalDocument temporaryRegistration;
+  
   /// Parse from a json
-  InputPassportElementTemporaryRegistration.fromJson(
-      Map<String, dynamic> json) {
-    this.temporaryRegistration = InputPersonalDocument.fromJson(
-        json['temporary_registration'] ?? <String, dynamic>{});
-  }
-
+  factory InputPassportElementTemporaryRegistration.fromJson(Map<String, dynamic> json) => InputPassportElementTemporaryRegistration(
+    temporaryRegistration: InputPersonalDocument.fromJson(json['temporary_registration']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "temporary_registration": this.temporaryRegistration == null
-          ? null
-          : this.temporaryRegistration.toJson(),
+      "temporary_registration": temporaryRegistration.toJson(),
     };
   }
+  
+  @override
+  InputPassportElementTemporaryRegistration copyWith({
+    InputPersonalDocument? temporaryRegistration,
+  }) => InputPassportElementTemporaryRegistration(
+    temporaryRegistration: temporaryRegistration ?? this.temporaryRegistration,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementTemporaryRegistration';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class InputPassportElementPhoneNumber extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's phone number
-  InputPassportElementPhoneNumber({this.phoneNumber});
-
+  const InputPassportElementPhoneNumber({
+    required this.phoneNumber,
+  });
+  
   /// [phoneNumber] The phone number to be saved
-  String phoneNumber;
-
+  final String phoneNumber;
+  
   /// Parse from a json
-  InputPassportElementPhoneNumber.fromJson(Map<String, dynamic> json) {
-    this.phoneNumber = json['phone_number'];
-  }
-
+  factory InputPassportElementPhoneNumber.fromJson(Map<String, dynamic> json) => InputPassportElementPhoneNumber(
+    phoneNumber: json['phone_number'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "phone_number": this.phoneNumber,
+      "phone_number": phoneNumber,
     };
   }
+  
+  @override
+  InputPassportElementPhoneNumber copyWith({
+    String? phoneNumber,
+  }) => InputPassportElementPhoneNumber(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementPhoneNumber';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class InputPassportElementEmailAddress extends InputPassportElement {
+
   /// A Telegram Passport element to be saved containing the user's email address
-  InputPassportElementEmailAddress({this.emailAddress});
-
+  const InputPassportElementEmailAddress({
+    required this.emailAddress,
+  });
+  
   /// [emailAddress] The email address to be saved
-  String emailAddress;
-
+  final String emailAddress;
+  
   /// Parse from a json
-  InputPassportElementEmailAddress.fromJson(Map<String, dynamic> json) {
-    this.emailAddress = json['email_address'];
-  }
-
+  factory InputPassportElementEmailAddress.fromJson(Map<String, dynamic> json) => InputPassportElementEmailAddress(
+    emailAddress: json['email_address'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "email_address": this.emailAddress,
+      "email_address": emailAddress,
     };
   }
+  
+  @override
+  InputPassportElementEmailAddress copyWith({
+    String? emailAddress,
+  }) => InputPassportElementEmailAddress(
+    emailAddress: emailAddress ?? this.emailAddress,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementEmailAddress';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

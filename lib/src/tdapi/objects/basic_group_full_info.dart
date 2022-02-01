@@ -1,58 +1,93 @@
 part of '../tdapi.dart';
 
 class BasicGroupFullInfo extends TdObject {
+
   /// Contains full information about a basic group
-  BasicGroupFullInfo(
-      {this.photo,
-      this.description,
-      this.creatorUserId,
-      this.members,
-      this.inviteLink});
-
+  const BasicGroupFullInfo({
+    this.photo,
+    required this.description,
+    required this.creatorUserId,
+    required this.members,
+    this.inviteLink,
+    required this.botCommands,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [photo] Chat photo; may be null
-  ChatPhoto photo;
+  final ChatPhoto? photo;
 
-  /// [description] Group description
-  String description;
+  /// [description] Group description. Updated only after the basic group is opened
+  final String description;
 
   /// [creatorUserId] User identifier of the creator of the group; 0 if unknown
-  int creatorUserId;
+  final int creatorUserId;
 
   /// [members] Group members
-  List<ChatMember> members;
+  final List<ChatMember> members;
 
-  /// [inviteLink] Invite link for this group; available only after it has been generated at least once and only for the group creator
-  String inviteLink;
+  /// [inviteLink] Primary invite link for this group; may be null. For chat administrators with can_invite_users right only. Updated only after the basic group is opened
+  final ChatInviteLink? inviteLink;
 
-  /// callback sign
-  dynamic extra;
+  /// [botCommands] List of commands of bots in the group
+  final List<BotCommands> botCommands;
 
-  /// Parse from a json
-  BasicGroupFullInfo.fromJson(Map<String, dynamic> json) {
-    this.photo = ChatPhoto.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.description = json['description'];
-    this.creatorUserId = json['creator_user_id'];
-    this.members = List<ChatMember>.from((json['members'] ?? [])
-        .map((item) => ChatMember.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.inviteLink = json['invite_link'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory BasicGroupFullInfo.fromJson(Map<String, dynamic> json) => BasicGroupFullInfo(
+    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+    description: json['description'],
+    creatorUserId: json['creator_user_id'],
+    members: List<ChatMember>.from((json['members'] ?? []).map((item) => ChatMember.fromJson(item)).toList()),
+    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
+    botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "description": this.description,
-      "creator_user_id": this.creatorUserId,
-      "members": this.members.map((i) => i.toJson()).toList(),
-      "invite_link": this.inviteLink,
+      "photo": photo?.toJson(),
+      "description": description,
+      "creator_user_id": creatorUserId,
+      "members": members.map((i) => i.toJson()).toList(),
+      "invite_link": inviteLink?.toJson(),
+      "bot_commands": botCommands.map((i) => i.toJson()).toList(),
     };
   }
+  
+  BasicGroupFullInfo copyWith({
+    ChatPhoto? photo,
+    String? description,
+    int? creatorUserId,
+    List<ChatMember>? members,
+    ChatInviteLink? inviteLink,
+    List<BotCommands>? botCommands,
+    dynamic extra,
+    int? clientId,
+  }) => BasicGroupFullInfo(
+    photo: photo ?? this.photo,
+    description: description ?? this.description,
+    creatorUserId: creatorUserId ?? this.creatorUserId,
+    members: members ?? this.members,
+    inviteLink: inviteLink ?? this.inviteLink,
+    botCommands: botCommands ?? this.botCommands,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'basicGroupFullInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

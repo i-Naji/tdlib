@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetUser extends TdFunction {
+
   /// Returns information about a user by their identifier. This is an offline request if the current user is not a bot
-  GetUser({this.userId});
-
+  const GetUser({
+    required this.userId,
+  });
+  
   /// [userId] User identifier
-  int userId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetUser.fromJson(Map<String, dynamic> json);
-
+  final int userId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "@extra": this.extra,
+      "user_id": userId,
+      "@extra": extra,
     };
   }
+  
+  GetUser copyWith({
+    int? userId,
+  }) => GetUser(
+    userId: userId ?? this.userId,
+  );
 
   static const CONSTRUCTOR = 'getUser';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

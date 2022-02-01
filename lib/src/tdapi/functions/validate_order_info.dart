@@ -1,42 +1,53 @@
 part of '../tdapi.dart';
 
 class ValidateOrderInfo extends TdFunction {
-  /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
-  ValidateOrderInfo(
-      {this.chatId, this.messageId, this.orderInfo, this.allowSave});
 
+  /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
+  const ValidateOrderInfo({
+    required this.chatId,
+    required this.messageId,
+    required this.orderInfo,
+    required this.allowSave,
+  });
+  
   /// [chatId] Chat identifier of the Invoice message
-  int chatId;
+  final int chatId;
 
   /// [messageId] Message identifier
-  int messageId;
+  final int messageId;
 
-  /// [orderInfo] The order information, provided by the user
-  OrderInfo orderInfo;
+  /// [orderInfo] The order information, provided by the user; pass null if empty
+  final OrderInfo orderInfo;
 
   /// [allowSave] True, if the order information can be saved
-  bool allowSave;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ValidateOrderInfo.fromJson(Map<String, dynamic> json);
-
+  final bool allowSave;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "order_info": this.orderInfo == null ? null : this.orderInfo.toJson(),
-      "allow_save": this.allowSave,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "order_info": orderInfo.toJson(),
+      "allow_save": allowSave,
+      "@extra": extra,
     };
   }
+  
+  ValidateOrderInfo copyWith({
+    int? chatId,
+    int? messageId,
+    OrderInfo? orderInfo,
+    bool? allowSave,
+  }) => ValidateOrderInfo(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    orderInfo: orderInfo ?? this.orderInfo,
+    allowSave: allowSave ?? this.allowSave,
+  );
 
   static const CONSTRUCTOR = 'validateOrderInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

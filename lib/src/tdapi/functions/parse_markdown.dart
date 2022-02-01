@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class ParseMarkdown extends TdFunction {
+
   /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
-  ParseMarkdown({this.text});
-
+  const ParseMarkdown({
+    required this.text,
+  });
+  
   /// [text] The text to parse. For example, "__italic__
-  FormattedText text;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ParseMarkdown.fromJson(Map<String, dynamic> json);
-
+  final FormattedText text;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "@extra": this.extra,
+      "text": text.toJson(),
+      "@extra": extra,
     };
   }
+  
+  ParseMarkdown copyWith({
+    FormattedText? text,
+  }) => ParseMarkdown(
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'parseMarkdown';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

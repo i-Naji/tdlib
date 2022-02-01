@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetLogTags extends TdFunction {
+
   /// Returns list of available TDLib internal log tags, for example,
-  GetLogTags();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetLogTags.fromJson(Map<String, dynamic> json);
-
+  const GetLogTags();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetLogTags copyWith() => const GetLogTags();
 
   static const CONSTRUCTOR = 'getLogTags';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

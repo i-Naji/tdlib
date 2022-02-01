@@ -1,42 +1,61 @@
 part of '../tdapi.dart';
 
 class Notification extends TdObject {
-  /// Contains information about a notification
-  Notification({this.id, this.date, this.isSilent, this.type});
 
-  /// [id] Unique persistent identifier of this notification
-  int id;
+  /// Contains information about a notification
+  const Notification({
+    required this.id,
+    required this.date,
+    required this.isSilent,
+    required this.type,
+  });
+  
+  /// [id] Unique persistent identifier of this notification 
+  final int id;
 
   /// [date] Notification date
-  int date;
+  final int date;
 
   /// [isSilent] True, if the notification was initially silent
-  bool isSilent;
+  final bool isSilent;
 
   /// [type] Notification type
-  NotificationType type;
-
+  final NotificationType type;
+  
   /// Parse from a json
-  Notification.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
-    this.date = json['date'];
-    this.isSilent = json['is_silent'];
-    this.type = NotificationType.fromJson(json['type'] ?? <String, dynamic>{});
-  }
-
+  factory Notification.fromJson(Map<String, dynamic> json) => Notification(
+    id: json['id'],
+    date: json['date'],
+    isSilent: json['is_silent'],
+    type: NotificationType.fromJson(json['type']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "date": this.date,
-      "is_silent": this.isSilent,
-      "type": this.type == null ? null : this.type.toJson(),
+      "id": id,
+      "date": date,
+      "is_silent": isSilent,
+      "type": type.toJson(),
     };
   }
+  
+  Notification copyWith({
+    int? id,
+    int? date,
+    bool? isSilent,
+    NotificationType? type,
+  }) => Notification(
+    id: id ?? this.id,
+    date: date ?? this.date,
+    isSilent: isSilent ?? this.isSilent,
+    type: type ?? this.type,
+  );
 
   static const CONSTRUCTOR = 'notification';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

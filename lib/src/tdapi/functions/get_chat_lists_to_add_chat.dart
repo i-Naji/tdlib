@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetChatListsToAddChat extends TdFunction {
+
   /// Returns chat lists to which the chat can be added. This is an offline request
-  GetChatListsToAddChat({this.chatId});
-
+  const GetChatListsToAddChat({
+    required this.chatId,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChatListsToAddChat.fromJson(Map<String, dynamic> json);
-
+  final int chatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "@extra": extra,
     };
   }
+  
+  GetChatListsToAddChat copyWith({
+    int? chatId,
+  }) => GetChatListsToAddChat(
+    chatId: chatId ?? this.chatId,
+  );
 
   static const CONSTRUCTOR = 'getChatListsToAddChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

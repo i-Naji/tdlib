@@ -1,33 +1,45 @@
 part of '../tdapi.dart';
 
 class InlineKeyboardButton extends TdObject {
-  /// Represents a single button in an inline keyboard
-  InlineKeyboardButton({this.text, this.type});
 
-  /// [text] Text of the button
-  String text;
+  /// Represents a single button in an inline keyboard
+  const InlineKeyboardButton({
+    required this.text,
+    required this.type,
+  });
+  
+  /// [text] Text of the button 
+  final String text;
 
   /// [type] Type of the button
-  InlineKeyboardButtonType type;
-
+  final InlineKeyboardButtonType type;
+  
   /// Parse from a json
-  InlineKeyboardButton.fromJson(Map<String, dynamic> json) {
-    this.text = json['text'];
-    this.type =
-        InlineKeyboardButtonType.fromJson(json['type'] ?? <String, dynamic>{});
-  }
-
+  factory InlineKeyboardButton.fromJson(Map<String, dynamic> json) => InlineKeyboardButton(
+    text: json['text'],
+    type: InlineKeyboardButtonType.fromJson(json['type']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text,
-      "type": this.type == null ? null : this.type.toJson(),
+      "text": text,
+      "type": type.toJson(),
     };
   }
+  
+  InlineKeyboardButton copyWith({
+    String? text,
+    InlineKeyboardButtonType? type,
+  }) => InlineKeyboardButton(
+    text: text ?? this.text,
+    type: type ?? this.type,
+  );
 
   static const CONSTRUCTOR = 'inlineKeyboardButton';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

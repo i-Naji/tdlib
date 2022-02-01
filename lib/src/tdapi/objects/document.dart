@@ -1,55 +1,69 @@
 part of '../tdapi.dart';
 
 class Document extends TdObject {
-  /// Describes a document of any type
-  Document(
-      {this.fileName,
-      this.mimeType,
-      this.minithumbnail,
-      this.thumbnail,
-      this.document});
 
-  /// [fileName] Original name of the file; as defined by the sender
-  String fileName;
+  /// Describes a document of any type
+  const Document({
+    required this.fileName,
+    required this.mimeType,
+    this.minithumbnail,
+    this.thumbnail,
+    required this.document,
+  });
+  
+  /// [fileName] Original name of the file; as defined by the sender 
+  final String fileName;
 
   /// [mimeType] MIME type of the file; as defined by the sender
-  String mimeType;
+  final String mimeType;
 
   /// [minithumbnail] Document minithumbnail; may be null
-  Minithumbnail minithumbnail;
+  final Minithumbnail? minithumbnail;
 
-  /// [thumbnail] Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null
-  Thumbnail thumbnail;
+  /// [thumbnail] Document thumbnail in JPEG or PNG format (PNG will be used only for background patterns); as defined by the sender; may be null 
+  final Thumbnail? thumbnail;
 
   /// [document] File containing the document
-  File document;
-
+  final File document;
+  
   /// Parse from a json
-  Document.fromJson(Map<String, dynamic> json) {
-    this.fileName = json['file_name'];
-    this.mimeType = json['mime_type'];
-    this.minithumbnail =
-        Minithumbnail.fromJson(json['minithumbnail'] ?? <String, dynamic>{});
-    this.thumbnail =
-        Thumbnail.fromJson(json['thumbnail'] ?? <String, dynamic>{});
-    this.document = File.fromJson(json['document'] ?? <String, dynamic>{});
-  }
-
+  factory Document.fromJson(Map<String, dynamic> json) => Document(
+    fileName: json['file_name'],
+    mimeType: json['mime_type'],
+    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
+    document: File.fromJson(json['document']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_name": this.fileName,
-      "mime_type": this.mimeType,
-      "minithumbnail":
-          this.minithumbnail == null ? null : this.minithumbnail.toJson(),
-      "thumbnail": this.thumbnail == null ? null : this.thumbnail.toJson(),
-      "document": this.document == null ? null : this.document.toJson(),
+      "file_name": fileName,
+      "mime_type": mimeType,
+      "minithumbnail": minithumbnail?.toJson(),
+      "thumbnail": thumbnail?.toJson(),
+      "document": document.toJson(),
     };
   }
+  
+  Document copyWith({
+    String? fileName,
+    String? mimeType,
+    Minithumbnail? minithumbnail,
+    Thumbnail? thumbnail,
+    File? document,
+  }) => Document(
+    fileName: fileName ?? this.fileName,
+    mimeType: mimeType ?? this.mimeType,
+    minithumbnail: minithumbnail ?? this.minithumbnail,
+    thumbnail: thumbnail ?? this.thumbnail,
+    document: document ?? this.document,
+  );
 
   static const CONSTRUCTOR = 'document';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

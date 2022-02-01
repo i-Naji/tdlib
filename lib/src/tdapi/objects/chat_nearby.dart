@@ -1,32 +1,45 @@
 part of '../tdapi.dart';
 
 class ChatNearby extends TdObject {
-  /// Describes a chat located nearby
-  ChatNearby({this.chatId, this.distance});
 
-  /// [chatId] Chat identifier
-  int chatId;
+  /// Describes a chat located nearby
+  const ChatNearby({
+    required this.chatId,
+    required this.distance,
+  });
+  
+  /// [chatId] Chat identifier 
+  final int chatId;
 
   /// [distance] Distance to the chat location, in meters
-  int distance;
-
+  final int distance;
+  
   /// Parse from a json
-  ChatNearby.fromJson(Map<String, dynamic> json) {
-    this.chatId = json['chat_id'];
-    this.distance = json['distance'];
-  }
-
+  factory ChatNearby.fromJson(Map<String, dynamic> json) => ChatNearby(
+    chatId: json['chat_id'],
+    distance: json['distance'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "distance": this.distance,
+      "chat_id": chatId,
+      "distance": distance,
     };
   }
+  
+  ChatNearby copyWith({
+    int? chatId,
+    int? distance,
+  }) => ChatNearby(
+    chatId: chatId ?? this.chatId,
+    distance: distance ?? this.distance,
+  );
 
   static const CONSTRUCTOR = 'chatNearby';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

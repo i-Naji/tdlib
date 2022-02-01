@@ -1,9 +1,11 @@
-include: package:pedantic/analysis_options.yaml
+include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
     prefer_single_quotes: false
-    unnecessary_this: false
+    constant_identifier_names: false
+    avoid_function_literals_in_foreach_calls: false
+    always_declare_return_types: true
 
 analyzer:
   # exclude:

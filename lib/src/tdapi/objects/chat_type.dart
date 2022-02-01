@@ -1,16 +1,17 @@
 part of '../tdapi.dart';
 
 class ChatType extends TdObject {
-  /// Describes the type of a chat
-  ChatType();
 
+  /// Describes the type of a chat
+  const ChatType();
+  
   /// a ChatType return type can be :
-  /// * ChatTypePrivate
-  /// * ChatTypeBasicGroup
-  /// * ChatTypeSupergroup
-  /// * ChatTypeSecret
-  factory ChatType.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [ChatTypePrivate]
+  /// * [ChatTypeBasicGroup]
+  /// * [ChatTypeSupergroup]
+  /// * [ChatTypeSecret]
+  factory ChatType.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case ChatTypePrivate.CONSTRUCTOR:
         return ChatTypePrivate.fromJson(json);
       case ChatTypeBasicGroup.CONSTRUCTOR:
@@ -20,131 +21,189 @@ class ChatType extends TdObject {
       case ChatTypeSecret.CONSTRUCTOR:
         return ChatTypeSecret.fromJson(json);
       default:
-        return null;
+        return const ChatType();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  ChatType copyWith() => const ChatType();
 
   static const CONSTRUCTOR = 'chatType';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatTypePrivate extends ChatType {
+
   /// An ordinary chat with a user
-  ChatTypePrivate({this.userId});
-
+  const ChatTypePrivate({
+    required this.userId,
+  });
+  
   /// [userId] User identifier
-  int userId;
-
+  final int userId;
+  
   /// Parse from a json
-  ChatTypePrivate.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-  }
-
+  factory ChatTypePrivate.fromJson(Map<String, dynamic> json) => ChatTypePrivate(
+    userId: json['user_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
+      "user_id": userId,
     };
   }
+  
+  @override
+  ChatTypePrivate copyWith({
+    int? userId,
+  }) => ChatTypePrivate(
+    userId: userId ?? this.userId,
+  );
 
   static const CONSTRUCTOR = 'chatTypePrivate';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatTypeBasicGroup extends ChatType {
-  /// A basic group (i.e., a chat with 0-200 other users)
-  ChatTypeBasicGroup({this.basicGroupId});
 
+  /// A basic group (a chat with 0-200 other users)
+  const ChatTypeBasicGroup({
+    required this.basicGroupId,
+  });
+  
   /// [basicGroupId] Basic group identifier
-  int basicGroupId;
-
+  final int basicGroupId;
+  
   /// Parse from a json
-  ChatTypeBasicGroup.fromJson(Map<String, dynamic> json) {
-    this.basicGroupId = json['basic_group_id'];
-  }
-
+  factory ChatTypeBasicGroup.fromJson(Map<String, dynamic> json) => ChatTypeBasicGroup(
+    basicGroupId: json['basic_group_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "basic_group_id": this.basicGroupId,
+      "basic_group_id": basicGroupId,
     };
   }
+  
+  @override
+  ChatTypeBasicGroup copyWith({
+    int? basicGroupId,
+  }) => ChatTypeBasicGroup(
+    basicGroupId: basicGroupId ?? this.basicGroupId,
+  );
 
   static const CONSTRUCTOR = 'chatTypeBasicGroup';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class ChatTypeSupergroup extends ChatType {
-  /// A supergroup (i.e. a chat with up to GetOption("supergroup_max_size") other users), or channel (with unlimited members)
-  ChatTypeSupergroup({this.supergroupId, this.isChannel});
 
-  /// [supergroupId] Supergroup or channel identifier
-  int supergroupId;
+  /// A supergroup or channel (with unlimited members)
+  const ChatTypeSupergroup({
+    required this.supergroupId,
+    required this.isChannel,
+  });
+  
+  /// [supergroupId] Supergroup or channel identifier 
+  final int supergroupId;
 
   /// [isChannel] True, if the supergroup is a channel
-  bool isChannel;
-
+  final bool isChannel;
+  
   /// Parse from a json
-  ChatTypeSupergroup.fromJson(Map<String, dynamic> json) {
-    this.supergroupId = json['supergroup_id'];
-    this.isChannel = json['is_channel'];
-  }
-
+  factory ChatTypeSupergroup.fromJson(Map<String, dynamic> json) => ChatTypeSupergroup(
+    supergroupId: json['supergroup_id'],
+    isChannel: json['is_channel'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "supergroup_id": this.supergroupId,
-      "is_channel": this.isChannel,
+      "supergroup_id": supergroupId,
+      "is_channel": isChannel,
     };
   }
+  
+  @override
+  ChatTypeSupergroup copyWith({
+    int? supergroupId,
+    bool? isChannel,
+  }) => ChatTypeSupergroup(
+    supergroupId: supergroupId ?? this.supergroupId,
+    isChannel: isChannel ?? this.isChannel,
+  );
 
   static const CONSTRUCTOR = 'chatTypeSupergroup';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class ChatTypeSecret extends ChatType {
-  /// A secret chat with a user
-  ChatTypeSecret({this.secretChatId, this.userId});
 
-  /// [secretChatId] Secret chat identifier
-  int secretChatId;
+class ChatTypeSecret extends ChatType {
+
+  /// A secret chat with a user
+  const ChatTypeSecret({
+    required this.secretChatId,
+    required this.userId,
+  });
+  
+  /// [secretChatId] Secret chat identifier 
+  final int secretChatId;
 
   /// [userId] User identifier of the secret chat peer
-  int userId;
-
+  final int userId;
+  
   /// Parse from a json
-  ChatTypeSecret.fromJson(Map<String, dynamic> json) {
-    this.secretChatId = json['secret_chat_id'];
-    this.userId = json['user_id'];
-  }
-
+  factory ChatTypeSecret.fromJson(Map<String, dynamic> json) => ChatTypeSecret(
+    secretChatId: json['secret_chat_id'],
+    userId: json['user_id'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "secret_chat_id": this.secretChatId,
-      "user_id": this.userId,
+      "secret_chat_id": secretChatId,
+      "user_id": userId,
     };
   }
+  
+  @override
+  ChatTypeSecret copyWith({
+    int? secretChatId,
+    int? userId,
+  }) => ChatTypeSecret(
+    secretChatId: secretChatId ?? this.secretChatId,
+    userId: userId ?? this.userId,
+  );
 
   static const CONSTRUCTOR = 'chatTypeSecret';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

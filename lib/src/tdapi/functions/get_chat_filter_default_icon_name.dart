@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetChatFilterDefaultIconName extends TdFunction {
+
   /// Returns default icon name for a filter. Can be called synchronously
-  GetChatFilterDefaultIconName({this.filter});
-
+  const GetChatFilterDefaultIconName({
+    required this.filter,
+  });
+  
   /// [filter] Chat filter
-  ChatFilter filter;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetChatFilterDefaultIconName.fromJson(Map<String, dynamic> json);
-
+  final ChatFilter filter;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "filter": this.filter == null ? null : this.filter.toJson(),
-      "@extra": this.extra,
+      "filter": filter.toJson(),
+      "@extra": extra,
     };
   }
+  
+  GetChatFilterDefaultIconName copyWith({
+    ChatFilter? filter,
+  }) => GetChatFilterDefaultIconName(
+    filter: filter ?? this.filter,
+  );
 
   static const CONSTRUCTOR = 'getChatFilterDefaultIconName';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

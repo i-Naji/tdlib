@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class DeleteChatReplyMarkup extends TdFunction {
-  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a ForceReply reply markup has been used. UpdateChatReplyMarkup will be sent if the reply markup will be changed
-  DeleteChatReplyMarkup({this.chatId, this.messageId});
 
+  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a ForceReply reply markup has been used. UpdateChatReplyMarkup will be sent if the reply markup is changed
+  const DeleteChatReplyMarkup({
+    required this.chatId,
+    required this.messageId,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
+  final int chatId;
 
   /// [messageId] The message identifier of the used keyboard
-  int messageId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DeleteChatReplyMarkup.fromJson(Map<String, dynamic> json);
-
+  final int messageId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "@extra": extra,
     };
   }
+  
+  DeleteChatReplyMarkup copyWith({
+    int? chatId,
+    int? messageId,
+  }) => DeleteChatReplyMarkup(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+  );
 
   static const CONSTRUCTOR = 'deleteChatReplyMarkup';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

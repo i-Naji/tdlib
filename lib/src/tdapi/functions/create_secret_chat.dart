@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class CreateSecretChat extends TdFunction {
+
   /// Returns an existing chat corresponding to a known secret chat
-  CreateSecretChat({this.secretChatId});
-
+  const CreateSecretChat({
+    required this.secretChatId,
+  });
+  
   /// [secretChatId] Secret chat identifier
-  int secretChatId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  CreateSecretChat.fromJson(Map<String, dynamic> json);
-
+  final int secretChatId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "secret_chat_id": this.secretChatId,
-      "@extra": this.extra,
+      "secret_chat_id": secretChatId,
+      "@extra": extra,
     };
   }
+  
+  CreateSecretChat copyWith({
+    int? secretChatId,
+  }) => CreateSecretChat(
+    secretChatId: secretChatId ?? this.secretChatId,
+  );
 
   static const CONSTRUCTOR = 'createSecretChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

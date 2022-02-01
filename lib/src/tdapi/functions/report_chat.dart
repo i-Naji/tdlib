@@ -1,37 +1,53 @@
 part of '../tdapi.dart';
 
 class ReportChat extends TdFunction {
-  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if this is a private chats with a bot, a private chat with a user sharing their location, a supergroup, or a channel, since other chats can't be checked by moderators
-  ReportChat({this.chatId, this.reason, this.messageIds});
 
+  /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
+  const ReportChat({
+    required this.chatId,
+    required this.messageIds,
+    required this.reason,
+    required this.text,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
+  final int chatId;
 
-  /// [reason] The reason for reporting the chat
-  ChatReportReason reason;
+  /// [messageIds] Identifiers of reported messages, if any 
+  final List<int> messageIds;
 
-  /// [messageIds] Identifiers of reported messages, if any
-  List<int> messageIds;
+  /// [reason] The reason for reporting the chat 
+  final ChatReportReason reason;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ReportChat.fromJson(Map<String, dynamic> json);
-
+  /// [text] Additional report details; 0-1024 characters
+  final String text;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "reason": this.reason == null ? null : this.reason.toJson(),
-      "message_ids": this.messageIds.map((i) => i).toList(),
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_ids": messageIds.map((i) => i).toList(),
+      "reason": reason.toJson(),
+      "text": text,
+      "@extra": extra,
     };
   }
+  
+  ReportChat copyWith({
+    int? chatId,
+    List<int>? messageIds,
+    ChatReportReason? reason,
+    String? text,
+  }) => ReportChat(
+    chatId: chatId ?? this.chatId,
+    messageIds: messageIds ?? this.messageIds,
+    reason: reason ?? this.reason,
+    text: text ?? this.text,
+  );
 
   static const CONSTRUCTOR = 'reportChat';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

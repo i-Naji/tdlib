@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class GetMessageEmbeddingCode extends TdFunction {
-  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
-  GetMessageEmbeddingCode({this.chatId, this.messageId, this.forAlbum});
 
+  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
+  const GetMessageEmbeddingCode({
+    required this.chatId,
+    required this.messageId,
+    required this.forAlbum,
+  });
+  
   /// [chatId] Identifier of the chat to which the message belongs
-  int chatId;
+  final int chatId;
 
   /// [messageId] Identifier of the message
-  int messageId;
+  final int messageId;
 
   /// [forAlbum] Pass true to return an HTML code for embedding of the whole media album
-  bool forAlbum;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetMessageEmbeddingCode.fromJson(Map<String, dynamic> json);
-
+  final bool forAlbum;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "message_id": this.messageId,
-      "for_album": this.forAlbum,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "message_id": messageId,
+      "for_album": forAlbum,
+      "@extra": extra,
     };
   }
+  
+  GetMessageEmbeddingCode copyWith({
+    int? chatId,
+    int? messageId,
+    bool? forAlbum,
+  }) => GetMessageEmbeddingCode(
+    chatId: chatId ?? this.chatId,
+    messageId: messageId ?? this.messageId,
+    forAlbum: forAlbum ?? this.forAlbum,
+  );
 
   static const CONSTRUCTOR = 'getMessageEmbeddingCode';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

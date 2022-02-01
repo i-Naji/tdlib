@@ -1,39 +1,53 @@
 part of '../tdapi.dart';
 
 class DraftMessage extends TdObject {
-  /// Contains information about a message draft
-  DraftMessage({this.replyToMessageId, this.date, this.inputMessageText});
 
+  /// Contains information about a message draft
+  const DraftMessage({
+    required this.replyToMessageId,
+    required this.date,
+    required this.inputMessageText,
+  });
+  
   /// [replyToMessageId] Identifier of the message to reply to; 0 if none
-  int replyToMessageId;
+  final int replyToMessageId;
 
   /// [date] Point in time (Unix timestamp) when the draft was created
-  int date;
+  final int date;
 
-  /// [inputMessageText] Content of the message draft; this should always be of type inputMessageText
-  InputMessageContent inputMessageText;
-
+  /// [inputMessageText] Content of the message draft; must be of the type inputMessageText
+  final InputMessageContent inputMessageText;
+  
   /// Parse from a json
-  DraftMessage.fromJson(Map<String, dynamic> json) {
-    this.replyToMessageId = json['reply_to_message_id'];
-    this.date = json['date'];
-    this.inputMessageText = InputMessageContent.fromJson(
-        json['input_message_text'] ?? <String, dynamic>{});
-  }
-
+  factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
+    replyToMessageId: json['reply_to_message_id'] ?? 0,
+    date: json['date'],
+    inputMessageText: InputMessageContent.fromJson(json['input_message_text']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "reply_to_message_id": this.replyToMessageId,
-      "date": this.date,
-      "input_message_text":
-          this.inputMessageText == null ? null : this.inputMessageText.toJson(),
+      "reply_to_message_id": replyToMessageId,
+      "date": date,
+      "input_message_text": inputMessageText.toJson(),
     };
   }
+  
+  DraftMessage copyWith({
+    int? replyToMessageId,
+    int? date,
+    InputMessageContent? inputMessageText,
+  }) => DraftMessage(
+    replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+    date: date ?? this.date,
+    inputMessageText: inputMessageText ?? this.inputMessageText,
+  );
 
   static const CONSTRUCTOR = 'draftMessage';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

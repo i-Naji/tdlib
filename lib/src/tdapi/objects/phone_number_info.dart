@@ -1,42 +1,69 @@
 part of '../tdapi.dart';
 
 class PhoneNumberInfo extends TdObject {
-  /// Contains information about a phone number
-  PhoneNumberInfo(
-      {this.country, this.countryCallingCode, this.formattedPhoneNumber});
 
+  /// Contains information about a phone number
+  const PhoneNumberInfo({
+    this.country,
+    required this.countryCallingCode,
+    required this.formattedPhoneNumber,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [country] Information about the country to which the phone number belongs; may be null
-  CountryInfo country;
+  final CountryInfo? country;
 
   /// [countryCallingCode] The part of the phone number denoting country calling code or its part
-  String countryCallingCode;
+  final String countryCallingCode;
 
-  /// [formattedPhoneNumber] The phone number without country calling code formatted accordingly to local rules
-  String formattedPhoneNumber;
+  /// [formattedPhoneNumber] The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user
+  final String formattedPhoneNumber;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  PhoneNumberInfo.fromJson(Map<String, dynamic> json) {
-    this.country = CountryInfo.fromJson(json['country'] ?? <String, dynamic>{});
-    this.countryCallingCode = json['country_calling_code'];
-    this.formattedPhoneNumber = json['formatted_phone_number'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory PhoneNumberInfo.fromJson(Map<String, dynamic> json) => PhoneNumberInfo(
+    country: json['country'] == null ? null : CountryInfo.fromJson(json['country']),
+    countryCallingCode: json['country_calling_code'],
+    formattedPhoneNumber: json['formatted_phone_number'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "country": this.country == null ? null : this.country.toJson(),
-      "country_calling_code": this.countryCallingCode,
-      "formatted_phone_number": this.formattedPhoneNumber,
+      "country": country?.toJson(),
+      "country_calling_code": countryCallingCode,
+      "formatted_phone_number": formattedPhoneNumber,
     };
   }
+  
+  PhoneNumberInfo copyWith({
+    CountryInfo? country,
+    String? countryCallingCode,
+    String? formattedPhoneNumber,
+    dynamic extra,
+    int? clientId,
+  }) => PhoneNumberInfo(
+    country: country ?? this.country,
+    countryCallingCode: countryCallingCode ?? this.countryCallingCode,
+    formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'phoneNumberInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

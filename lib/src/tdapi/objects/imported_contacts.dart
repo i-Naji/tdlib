@@ -1,38 +1,61 @@
 part of '../tdapi.dart';
 
 class ImportedContacts extends TdObject {
-  /// Represents the result of an ImportContacts request
-  ImportedContacts({this.userIds, this.importerCount});
 
+  /// Represents the result of an ImportContacts request
+  const ImportedContacts({
+    required this.userIds,
+    required this.importerCount,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [userIds] User identifiers of the imported contacts in the same order as they were specified in the request; 0 if the contact is not yet a registered user
-  List<int> userIds;
+  final List<int> userIds;
 
   /// [importerCount] The number of users that imported the corresponding contact; 0 for already registered users or if unavailable
-  List<int> importerCount;
+  final List<int> importerCount;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ImportedContacts.fromJson(Map<String, dynamic> json) {
-    this.userIds =
-        List<int>.from((json['user_ids'] ?? []).map((item) => item).toList());
-    this.importerCount = List<int>.from(
-        (json['importer_count'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ImportedContacts.fromJson(Map<String, dynamic> json) => ImportedContacts(
+    userIds: List<int>.from((json['user_ids'] ?? []).map((item) => item).toList()),
+    importerCount: List<int>.from((json['importer_count'] ?? []).map((item) => item).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_ids": this.userIds.map((i) => i).toList(),
-      "importer_count": this.importerCount.map((i) => i).toList(),
+      "user_ids": userIds.map((i) => i).toList(),
+      "importer_count": importerCount.map((i) => i).toList(),
     };
   }
+  
+  ImportedContacts copyWith({
+    List<int>? userIds,
+    List<int>? importerCount,
+    dynamic extra,
+    int? clientId,
+  }) => ImportedContacts(
+    userIds: userIds ?? this.userIds,
+    importerCount: importerCount ?? this.importerCount,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'importedContacts';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

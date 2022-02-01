@@ -1,31 +1,53 @@
 part of '../tdapi.dart';
 
 class DatabaseStatistics extends TdObject {
+
   /// Contains database statistics
-  DatabaseStatistics({this.statistics});
-
+  const DatabaseStatistics({
+    required this.statistics,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [statistics] Database statistics in an unspecified human-readable format
-  String statistics;
+  final String statistics;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DatabaseStatistics.fromJson(Map<String, dynamic> json) {
-    this.statistics = json['statistics'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory DatabaseStatistics.fromJson(Map<String, dynamic> json) => DatabaseStatistics(
+    statistics: json['statistics'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "statistics": this.statistics,
+      "statistics": statistics,
     };
   }
+  
+  DatabaseStatistics copyWith({
+    String? statistics,
+    dynamic extra,
+    int? clientId,
+  }) => DatabaseStatistics(
+    statistics: statistics ?? this.statistics,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'databaseStatistics';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,124 +1,181 @@
 part of '../tdapi.dart';
 
 class User extends TdObject {
-  /// Represents a user
-  User(
-      {this.id,
-      this.firstName,
-      this.lastName,
-      this.username,
-      this.phoneNumber,
-      this.status,
-      this.profilePhoto,
-      this.isContact,
-      this.isMutualContact,
-      this.isVerified,
-      this.isSupport,
-      this.restrictionReason,
-      this.isScam,
-      this.haveAccess,
-      this.type,
-      this.languageCode});
 
+  /// Represents a user
+  const User({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.username,
+    required this.phoneNumber,
+    required this.status,
+    this.profilePhoto,
+    required this.isContact,
+    required this.isMutualContact,
+    required this.isVerified,
+    required this.isSupport,
+    required this.restrictionReason,
+    required this.isScam,
+    required this.isFake,
+    required this.haveAccess,
+    required this.type,
+    required this.languageCode,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [id] User identifier
-  int id;
+  final int id;
 
   /// [firstName] First name of the user
-  String firstName;
+  final String firstName;
 
   /// [lastName] Last name of the user
-  String lastName;
+  final String lastName;
 
   /// [username] Username of the user
-  String username;
+  final String username;
 
   /// [phoneNumber] Phone number of the user
-  String phoneNumber;
+  final String phoneNumber;
 
   /// [status] Current online status of the user
-  UserStatus status;
+  final UserStatus status;
 
   /// [profilePhoto] Profile photo of the user; may be null
-  ProfilePhoto profilePhoto;
+  final ProfilePhoto? profilePhoto;
 
   /// [isContact] The user is a contact of the current user
-  bool isContact;
+  final bool isContact;
 
   /// [isMutualContact] The user is a contact of the current user and the current user is a contact of the user
-  bool isMutualContact;
+  final bool isMutualContact;
 
   /// [isVerified] True, if the user is verified
-  bool isVerified;
+  final bool isVerified;
 
   /// [isSupport] True, if the user is Telegram support account
-  bool isSupport;
+  final bool isSupport;
 
   /// [restrictionReason] If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
-  String restrictionReason;
+  final String restrictionReason;
 
   /// [isScam] True, if many users reported this user as a scam
-  bool isScam;
+  final bool isScam;
+
+  /// [isFake] True, if many users reported this user as a fake account
+  final bool isFake;
 
   /// [haveAccess] If false, the user is inaccessible, and the only information known about the user is inside this class. It can't be passed to any method except GetUser
-  bool haveAccess;
+  final bool haveAccess;
 
   /// [type] Type of the user
-  UserType type;
+  final UserType type;
 
   /// [languageCode] IETF language tag of the user's language; only available to bots
-  String languageCode;
+  final String languageCode;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  User.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
-    this.firstName = json['first_name'];
-    this.lastName = json['last_name'];
-    this.username = json['username'];
-    this.phoneNumber = json['phone_number'];
-    this.status = UserStatus.fromJson(json['status'] ?? <String, dynamic>{});
-    this.profilePhoto =
-        ProfilePhoto.fromJson(json['profile_photo'] ?? <String, dynamic>{});
-    this.isContact = json['is_contact'];
-    this.isMutualContact = json['is_mutual_contact'];
-    this.isVerified = json['is_verified'];
-    this.isSupport = json['is_support'];
-    this.restrictionReason = json['restriction_reason'];
-    this.isScam = json['is_scam'];
-    this.haveAccess = json['have_access'];
-    this.type = UserType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.languageCode = json['language_code'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory User.fromJson(Map<String, dynamic> json) => User(
+    id: json['id'],
+    firstName: json['first_name'],
+    lastName: json['last_name'],
+    username: json['username'],
+    phoneNumber: json['phone_number'],
+    status: UserStatus.fromJson(json['status']),
+    profilePhoto: json['profile_photo'] == null ? null : ProfilePhoto.fromJson(json['profile_photo']),
+    isContact: json['is_contact'],
+    isMutualContact: json['is_mutual_contact'],
+    isVerified: json['is_verified'],
+    isSupport: json['is_support'],
+    restrictionReason: json['restriction_reason'],
+    isScam: json['is_scam'],
+    isFake: json['is_fake'],
+    haveAccess: json['have_access'],
+    type: UserType.fromJson(json['type']),
+    languageCode: json['language_code'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "first_name": this.firstName,
-      "last_name": this.lastName,
-      "username": this.username,
-      "phone_number": this.phoneNumber,
-      "status": this.status == null ? null : this.status.toJson(),
-      "profile_photo":
-          this.profilePhoto == null ? null : this.profilePhoto.toJson(),
-      "is_contact": this.isContact,
-      "is_mutual_contact": this.isMutualContact,
-      "is_verified": this.isVerified,
-      "is_support": this.isSupport,
-      "restriction_reason": this.restrictionReason,
-      "is_scam": this.isScam,
-      "have_access": this.haveAccess,
-      "type": this.type == null ? null : this.type.toJson(),
-      "language_code": this.languageCode,
+      "id": id,
+      "first_name": firstName,
+      "last_name": lastName,
+      "username": username,
+      "phone_number": phoneNumber,
+      "status": status.toJson(),
+      "profile_photo": profilePhoto?.toJson(),
+      "is_contact": isContact,
+      "is_mutual_contact": isMutualContact,
+      "is_verified": isVerified,
+      "is_support": isSupport,
+      "restriction_reason": restrictionReason,
+      "is_scam": isScam,
+      "is_fake": isFake,
+      "have_access": haveAccess,
+      "type": type.toJson(),
+      "language_code": languageCode,
     };
   }
+  
+  User copyWith({
+    int? id,
+    String? firstName,
+    String? lastName,
+    String? username,
+    String? phoneNumber,
+    UserStatus? status,
+    ProfilePhoto? profilePhoto,
+    bool? isContact,
+    bool? isMutualContact,
+    bool? isVerified,
+    bool? isSupport,
+    String? restrictionReason,
+    bool? isScam,
+    bool? isFake,
+    bool? haveAccess,
+    UserType? type,
+    String? languageCode,
+    dynamic extra,
+    int? clientId,
+  }) => User(
+    id: id ?? this.id,
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+    username: username ?? this.username,
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    status: status ?? this.status,
+    profilePhoto: profilePhoto ?? this.profilePhoto,
+    isContact: isContact ?? this.isContact,
+    isMutualContact: isMutualContact ?? this.isMutualContact,
+    isVerified: isVerified ?? this.isVerified,
+    isSupport: isSupport ?? this.isSupport,
+    restrictionReason: restrictionReason ?? this.restrictionReason,
+    isScam: isScam ?? this.isScam,
+    isFake: isFake ?? this.isFake,
+    haveAccess: haveAccess ?? this.haveAccess,
+    type: type ?? this.type,
+    languageCode: languageCode ?? this.languageCode,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'user';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

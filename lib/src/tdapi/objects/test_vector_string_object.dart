@@ -1,33 +1,53 @@
 part of '../tdapi.dart';
 
 class TestVectorStringObject extends TdObject {
+
   /// A simple object containing a vector of objects that hold a string; for testing only
-  TestVectorStringObject({this.value});
-
+  const TestVectorStringObject({
+    required this.value,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [value] Vector of objects
-  List<TestString> value;
+  final List<TestString> value;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  TestVectorStringObject.fromJson(Map<String, dynamic> json) {
-    this.value = List<TestString>.from((json['value'] ?? [])
-        .map((item) => TestString.fromJson(item ?? <String, dynamic>{}))
-        .toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory TestVectorStringObject.fromJson(Map<String, dynamic> json) => TestVectorStringObject(
+    value: List<TestString>.from((json['value'] ?? []).map((item) => TestString.fromJson(item)).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "value": this.value.map((i) => i.toJson()).toList(),
+      "value": value.map((i) => i.toJson()).toList(),
     };
   }
+  
+  TestVectorStringObject copyWith({
+    List<TestString>? value,
+    dynamic extra,
+    int? clientId,
+  }) => TestVectorStringObject(
+    value: value ?? this.value,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'testVectorStringObject';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

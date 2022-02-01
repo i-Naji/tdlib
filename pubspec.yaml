@@ -1,21 +1,23 @@
 name: tdlib
-description: Flutter Plugin for TDLib.a complete tdlib-tdjson binding package.
+description: Flutter Plugin for TDLib.A complete tdlib-tdjson binding package.
 version: 1.5.0
 author: Naji <teamnaji@gmail.com>
 homepage: https://github.com/i-Naji/tdlib
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
-  flutter: ^1.10.0
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: "^2.8.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  ffi: ^1.1.2
+  js: ^0.6.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  pedantic: ^1.0.0
+  flutter_lints: ^1.0.4
   
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
@@ -30,8 +32,17 @@ flutter:
     platforms:
       android:
         package: org.naji.td.tdlib
-        pluginClass: TdlibPlugin
-
+        dartPluginClass: TdNativePlugin
+      ios:
+        dartPluginClass: TdNativePlugin
+      windows:
+        dartPluginClass: TdNativePlugin
+      macos:
+        dartPluginClass: TdNativePlugin
+      linux:
+        dartPluginClass: TdNativePlugin
+      web:
+        pluginClass: TdWebPlugin
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

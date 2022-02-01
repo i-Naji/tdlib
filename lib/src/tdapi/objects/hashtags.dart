@@ -1,32 +1,53 @@
 part of '../tdapi.dart';
 
 class Hashtags extends TdObject {
+
   /// Contains a list of hashtags
-  Hashtags({this.hashtags});
-
+  const Hashtags({
+    required this.hashtags,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [hashtags] A list of hashtags
-  List<String> hashtags;
+  final List<String> hashtags;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Hashtags.fromJson(Map<String, dynamic> json) {
-    this.hashtags = List<String>.from(
-        (json['hashtags'] ?? []).map((item) => item).toList());
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Hashtags.fromJson(Map<String, dynamic> json) => Hashtags(
+    hashtags: List<String>.from((json['hashtags'] ?? []).map((item) => item).toList()),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "hashtags": this.hashtags.map((i) => i).toList(),
+      "hashtags": hashtags.map((i) => i).toList(),
     };
   }
+  
+  Hashtags copyWith({
+    List<String>? hashtags,
+    dynamic extra,
+    int? clientId,
+  }) => Hashtags(
+    hashtags: hashtags ?? this.hashtags,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'hashtags';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

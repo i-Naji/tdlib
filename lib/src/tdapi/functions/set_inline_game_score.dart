@@ -1,50 +1,60 @@
 part of '../tdapi.dart';
 
 class SetInlineGameScore extends TdFunction {
+
   /// Updates the game score of the specified user in a game; for bots only
-  SetInlineGameScore(
-      {this.inlineMessageId,
-      this.editMessage,
-      this.userId,
-      this.score,
-      this.force});
+  const SetInlineGameScore({
+    required this.inlineMessageId,
+    required this.editMessage,
+    required this.userId,
+    required this.score,
+    required this.force,
+  });
+  
+  /// [inlineMessageId] Inline message identifier 
+  final String inlineMessageId;
 
-  /// [inlineMessageId] Inline message identifier
-  String inlineMessageId;
+  /// [editMessage] True, if the message needs to be edited 
+  final bool editMessage;
 
-  /// [editMessage] True, if the message should be edited
-  bool editMessage;
-
-  /// [userId] User identifier
-  int userId;
+  /// [userId] User identifier 
+  final int userId;
 
   /// [score] The new score
-  int score;
+  final int score;
 
   /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
-  bool force;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetInlineGameScore.fromJson(Map<String, dynamic> json);
-
+  final bool force;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "inline_message_id": this.inlineMessageId,
-      "edit_message": this.editMessage,
-      "user_id": this.userId,
-      "score": this.score,
-      "force": this.force,
-      "@extra": this.extra,
+      "inline_message_id": inlineMessageId,
+      "edit_message": editMessage,
+      "user_id": userId,
+      "score": score,
+      "force": force,
+      "@extra": extra,
     };
   }
+  
+  SetInlineGameScore copyWith({
+    String? inlineMessageId,
+    bool? editMessage,
+    int? userId,
+    int? score,
+    bool? force,
+  }) => SetInlineGameScore(
+    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+    editMessage: editMessage ?? this.editMessage,
+    userId: userId ?? this.userId,
+    score: score ?? this.score,
+    force: force ?? this.force,
+  );
 
   static const CONSTRUCTOR = 'setInlineGameScore';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

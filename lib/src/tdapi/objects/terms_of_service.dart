@@ -1,37 +1,53 @@
 part of '../tdapi.dart';
 
 class TermsOfService extends TdObject {
+
   /// Contains Telegram terms of service
-  TermsOfService({this.text, this.minUserAge, this.showPopup});
+  const TermsOfService({
+    required this.text,
+    required this.minUserAge,
+    required this.showPopup,
+  });
+  
+  /// [text] Text of the terms of service 
+  final FormattedText text;
 
-  /// [text] Text of the terms of service
-  FormattedText text;
-
-  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if any
-  int minUserAge;
+  /// [minUserAge] The minimum age of a user to be able to accept the terms; 0 if any 
+  final int minUserAge;
 
   /// [showPopup] True, if a blocking popup with terms of service must be shown to the user
-  bool showPopup;
-
+  final bool showPopup;
+  
   /// Parse from a json
-  TermsOfService.fromJson(Map<String, dynamic> json) {
-    this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.minUserAge = json['min_user_age'];
-    this.showPopup = json['show_popup'];
-  }
-
+  factory TermsOfService.fromJson(Map<String, dynamic> json) => TermsOfService(
+    text: FormattedText.fromJson(json['text']),
+    minUserAge: json['min_user_age'],
+    showPopup: json['show_popup'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "text": this.text == null ? null : this.text.toJson(),
-      "min_user_age": this.minUserAge,
-      "show_popup": this.showPopup,
+      "text": text.toJson(),
+      "min_user_age": minUserAge,
+      "show_popup": showPopup,
     };
   }
+  
+  TermsOfService copyWith({
+    FormattedText? text,
+    int? minUserAge,
+    bool? showPopup,
+  }) => TermsOfService(
+    text: text ?? this.text,
+    minUserAge: minUserAge ?? this.minUserAge,
+    showPopup: showPopup ?? this.showPopup,
+  );
 
   static const CONSTRUCTOR = 'termsOfService';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,42 +1,61 @@
 part of '../tdapi.dart';
 
 class ChatPosition extends TdObject {
-  /// Describes a position of a chat in a chat list
-  ChatPosition({this.list, this.order, this.isPinned, this.source});
 
+  /// Describes a position of a chat in a chat list
+  const ChatPosition({
+    required this.list,
+    required this.order,
+    required this.isPinned,
+    this.source,
+  });
+  
   /// [list] The chat list
-  ChatList list;
+  final ChatList list;
 
   /// [order] A parameter used to determine order of the chat in the chat list. Chats must be sorted by the pair (order, chat.id) in descending order
-  int order;
+  final int order;
 
   /// [isPinned] True, if the chat is pinned in the chat list
-  bool isPinned;
+  final bool isPinned;
 
   /// [source] Source of the chat in the chat list; may be null
-  ChatSource source;
-
+  final ChatSource? source;
+  
   /// Parse from a json
-  ChatPosition.fromJson(Map<String, dynamic> json) {
-    this.list = ChatList.fromJson(json['list'] ?? <String, dynamic>{});
-    this.order = int.tryParse(json['order'] ?? "");
-    this.isPinned = json['is_pinned'];
-    this.source = ChatSource.fromJson(json['source'] ?? <String, dynamic>{});
-  }
-
+  factory ChatPosition.fromJson(Map<String, dynamic> json) => ChatPosition(
+    list: ChatList.fromJson(json['list']),
+    order: int.parse(json['order']),
+    isPinned: json['is_pinned'],
+    source: json['source'] == null ? null : ChatSource.fromJson(json['source']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "list": this.list == null ? null : this.list.toJson(),
-      "order": this.order,
-      "is_pinned": this.isPinned,
-      "source": this.source == null ? null : this.source.toJson(),
+      "list": list.toJson(),
+      "order": order,
+      "is_pinned": isPinned,
+      "source": source?.toJson(),
     };
   }
+  
+  ChatPosition copyWith({
+    ChatList? list,
+    int? order,
+    bool? isPinned,
+    ChatSource? source,
+  }) => ChatPosition(
+    list: list ?? this.list,
+    order: order ?? this.order,
+    isPinned: isPinned ?? this.isPinned,
+    source: source ?? this.source,
+  );
 
   static const CONSTRUCTOR = 'chatPosition';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

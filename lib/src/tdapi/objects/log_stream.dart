@@ -1,15 +1,16 @@
 part of '../tdapi.dart';
 
 class LogStream extends TdObject {
-  /// Describes a stream to which TDLib internal log is written
-  LogStream();
 
+  /// Describes a stream to which TDLib internal log is written
+  const LogStream();
+  
   /// a LogStream return type can be :
-  /// * LogStreamDefault
-  /// * LogStreamFile
-  /// * LogStreamEmpty
-  factory LogStream.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [LogStreamDefault]
+  /// * [LogStreamFile]
+  /// * [LogStreamEmpty]
+  factory LogStream.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case LogStreamDefault.CONSTRUCTOR:
         return LogStreamDefault.fromJson(json);
       case LogStreamFile.CONSTRUCTOR:
@@ -17,107 +18,183 @@ class LogStream extends TdObject {
       case LogStreamEmpty.CONSTRUCTOR:
         return LogStreamEmpty.fromJson(json);
       default:
-        return null;
+        return const LogStream();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  LogStream copyWith() => const LogStream();
 
   static const CONSTRUCTOR = 'logStream';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class LogStreamDefault extends LogStream {
+
   /// The log is written to stderr or an OS specific log
-  LogStreamDefault();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  LogStreamDefault.fromJson(Map<String, dynamic> json) {
-    this.extra = json['@extra'];
-  }
-
+  const LogStreamDefault({
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory LogStreamDefault.fromJson(Map<String, dynamic> json) => LogStreamDefault(
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  LogStreamDefault copyWith({
+    dynamic extra,
+    int? clientId,
+  }) => LogStreamDefault(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'logStreamDefault';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
+
 
 class LogStreamFile extends LogStream {
+
   /// The log is written to a file
-  LogStreamFile({this.path, this.maxFileSize, this.redirectStderr});
-
+  const LogStreamFile({
+    required this.path,
+    required this.maxFileSize,
+    required this.redirectStderr,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [path] Path to the file to where the internal TDLib log will be written
-  String path;
+  final String path;
 
-  /// [maxFileSize] The maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated
-  int maxFileSize;
+  /// [maxFileSize] The maximum size of the file to where the internal TDLib log is written before the file will automatically be rotated, in bytes
+  final int maxFileSize;
 
   /// [redirectStderr] Pass true to additionally redirect stderr to the log file. Ignored on Windows
-  bool redirectStderr;
+  final bool redirectStderr;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  LogStreamFile.fromJson(Map<String, dynamic> json) {
-    this.path = json['path'];
-    this.maxFileSize = json['max_file_size'];
-    this.redirectStderr = json['redirect_stderr'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory LogStreamFile.fromJson(Map<String, dynamic> json) => LogStreamFile(
+    path: json['path'],
+    maxFileSize: json['max_file_size'],
+    redirectStderr: json['redirect_stderr'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "path": this.path,
-      "max_file_size": this.maxFileSize,
-      "redirect_stderr": this.redirectStderr,
+      "path": path,
+      "max_file_size": maxFileSize,
+      "redirect_stderr": redirectStderr,
     };
   }
+  
+  @override
+  LogStreamFile copyWith({
+    String? path,
+    int? maxFileSize,
+    bool? redirectStderr,
+    dynamic extra,
+    int? clientId,
+  }) => LogStreamFile(
+    path: path ?? this.path,
+    maxFileSize: maxFileSize ?? this.maxFileSize,
+    redirectStderr: redirectStderr ?? this.redirectStderr,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'logStreamFile';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
+
 class LogStreamEmpty extends LogStream {
+
   /// The log is written nowhere
-  LogStreamEmpty();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  LogStreamEmpty.fromJson(Map<String, dynamic> json) {
-    this.extra = json['@extra'];
-  }
-
+  const LogStreamEmpty({
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory LogStreamEmpty.fromJson(Map<String, dynamic> json) => LogStreamEmpty(
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
+  
+  @override
+  LogStreamEmpty copyWith({
+    dynamic extra,
+    int? clientId,
+  }) => LogStreamEmpty(
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'logStreamEmpty';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

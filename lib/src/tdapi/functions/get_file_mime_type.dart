@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class GetFileMimeType extends TdFunction {
+
   /// Returns the MIME type of a file, guessed by its extension. Returns an empty string on failure. Can be called synchronously
-  GetFileMimeType({this.fileName});
-
+  const GetFileMimeType({
+    required this.fileName,
+  });
+  
   /// [fileName] The name of the file or path to the file
-  String fileName;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetFileMimeType.fromJson(Map<String, dynamic> json);
-
+  final String fileName;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_name": this.fileName,
-      "@extra": this.extra,
+      "file_name": fileName,
+      "@extra": extra,
     };
   }
+  
+  GetFileMimeType copyWith({
+    String? fileName,
+  }) => GetFileMimeType(
+    fileName: fileName ?? this.fileName,
+  );
 
   static const CONSTRUCTOR = 'getFileMimeType';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

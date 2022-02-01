@@ -1,31 +1,53 @@
 part of '../tdapi.dart';
 
 class Count extends TdObject {
+
   /// Contains a counter
-  Count({this.count});
-
+  const Count({
+    required this.count,
+    this.extra,
+    this.clientId,
+  });
+  
   /// [count] Count
-  int count;
+  final int count;
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  Count.fromJson(Map<String, dynamic> json) {
-    this.count = json['count'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory Count.fromJson(Map<String, dynamic> json) => Count(
+    count: json['count'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "count": this.count,
+      "count": count,
     };
   }
+  
+  Count copyWith({
+    int? count,
+    dynamic extra,
+    int? clientId,
+  }) => Count(
+    count: count ?? this.count,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'count';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

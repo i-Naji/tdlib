@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class CheckChatUsername extends TdFunction {
-  /// Checks whether a username can be set for a chat
-  CheckChatUsername({this.chatId, this.username});
 
-  /// [chatId] Chat identifier; should be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if chat is being created
-  int chatId;
+  /// Checks whether a username can be set for a chat
+  const CheckChatUsername({
+    required this.chatId,
+    required this.username,
+  });
+  
+  /// [chatId] Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created 
+  final int chatId;
 
   /// [username] Username to be checked
-  String username;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  CheckChatUsername.fromJson(Map<String, dynamic> json);
-
+  final String username;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "username": this.username,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "username": username,
+      "@extra": extra,
     };
   }
+  
+  CheckChatUsername copyWith({
+    int? chatId,
+    String? username,
+  }) => CheckChatUsername(
+    chatId: chatId ?? this.chatId,
+    username: username ?? this.username,
+  );
 
   static const CONSTRUCTOR = 'checkChatUsername';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

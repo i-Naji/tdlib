@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class DeleteChatHistory extends TdFunction {
-  /// Deletes all messages in the chat. Use Chat.can_be_deleted_only_for_self and Chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat
-  DeleteChatHistory({this.chatId, this.removeFromChatList, this.revoke});
 
+  /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self and chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat
+  const DeleteChatHistory({
+    required this.chatId,
+    required this.removeFromChatList,
+    required this.revoke,
+  });
+  
   /// [chatId] Chat identifier
-  int chatId;
+  final int chatId;
 
-  /// [removeFromChatList] Pass true if the chat should be removed from the chat list
-  bool removeFromChatList;
+  /// [removeFromChatList] Pass true if the chat needs to be removed from the chat list 
+  final bool removeFromChatList;
 
-  /// [revoke] Pass true to try to delete chat history for all users
-  bool revoke;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DeleteChatHistory.fromJson(Map<String, dynamic> json);
-
+  /// [revoke] Pass true to delete chat history for all users
+  final bool revoke;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "chat_id": this.chatId,
-      "remove_from_chat_list": this.removeFromChatList,
-      "revoke": this.revoke,
-      "@extra": this.extra,
+      "chat_id": chatId,
+      "remove_from_chat_list": removeFromChatList,
+      "revoke": revoke,
+      "@extra": extra,
     };
   }
+  
+  DeleteChatHistory copyWith({
+    int? chatId,
+    bool? removeFromChatList,
+    bool? revoke,
+  }) => DeleteChatHistory(
+    chatId: chatId ?? this.chatId,
+    removeFromChatList: removeFromChatList ?? this.removeFromChatList,
+    revoke: revoke ?? this.revoke,
+  );
 
   static const CONSTRUCTOR = 'deleteChatHistory';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

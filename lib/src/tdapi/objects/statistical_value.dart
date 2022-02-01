@@ -1,37 +1,53 @@
 part of '../tdapi.dart';
 
 class StatisticalValue extends TdObject {
+
   /// A value with information about its recent changes
-  StatisticalValue({this.value, this.previousValue, this.growthRatePercentage});
+  const StatisticalValue({
+    required this.value,
+    required this.previousValue,
+    required this.growthRatePercentage,
+  });
+  
+  /// [value] The current value 
+  final double value;
 
-  /// [value] The current value
-  double value;
-
-  /// [previousValue] The value for the previous day
-  double previousValue;
+  /// [previousValue] The value for the previous day 
+  final double previousValue;
 
   /// [growthRatePercentage] The growth rate of the value, as a percentage
-  double growthRatePercentage;
-
+  final double growthRatePercentage;
+  
   /// Parse from a json
-  StatisticalValue.fromJson(Map<String, dynamic> json) {
-    this.value = json['value'];
-    this.previousValue = json['previous_value'];
-    this.growthRatePercentage = json['growth_rate_percentage'];
-  }
-
+  factory StatisticalValue.fromJson(Map<String, dynamic> json) => StatisticalValue(
+    value: json['value'],
+    previousValue: json['previous_value'],
+    growthRatePercentage: json['growth_rate_percentage'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "value": this.value,
-      "previous_value": this.previousValue,
-      "growth_rate_percentage": this.growthRatePercentage,
+      "value": value,
+      "previous_value": previousValue,
+      "growth_rate_percentage": growthRatePercentage,
     };
   }
+  
+  StatisticalValue copyWith({
+    double? value,
+    double? previousValue,
+    double? growthRatePercentage,
+  }) => StatisticalValue(
+    value: value ?? this.value,
+    previousValue: previousValue ?? this.previousValue,
+    growthRatePercentage: growthRatePercentage ?? this.growthRatePercentage,
+  );
 
   static const CONSTRUCTOR = 'statisticalValue';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class SendEmailAddressVerificationCode extends TdFunction {
+
   /// Sends a code to verify an email address to be added to a user's Telegram Passport
-  SendEmailAddressVerificationCode({this.emailAddress});
-
+  const SendEmailAddressVerificationCode({
+    required this.emailAddress,
+  });
+  
   /// [emailAddress] Email address
-  String emailAddress;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SendEmailAddressVerificationCode.fromJson(Map<String, dynamic> json);
-
+  final String emailAddress;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "email_address": this.emailAddress,
-      "@extra": this.extra,
+      "email_address": emailAddress,
+      "@extra": extra,
     };
   }
+  
+  SendEmailAddressVerificationCode copyWith({
+    String? emailAddress,
+  }) => SendEmailAddressVerificationCode(
+    emailAddress: emailAddress ?? this.emailAddress,
+  );
 
   static const CONSTRUCTOR = 'sendEmailAddressVerificationCode';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

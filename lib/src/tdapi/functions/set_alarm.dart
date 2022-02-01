@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class SetAlarm extends TdFunction {
+
   /// Succeeds after a specified amount of time has passed. Can be called before initialization
-  SetAlarm({this.seconds});
-
+  const SetAlarm({
+    required this.seconds,
+  });
+  
   /// [seconds] Number of seconds before the function returns
-  double seconds;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetAlarm.fromJson(Map<String, dynamic> json);
-
+  final double seconds;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "seconds": this.seconds,
-      "@extra": this.extra,
+      "seconds": seconds,
+      "@extra": extra,
     };
   }
+  
+  SetAlarm copyWith({
+    double? seconds,
+  }) => SetAlarm(
+    seconds: seconds ?? this.seconds,
+  );
 
   static const CONSTRUCTOR = 'setAlarm';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

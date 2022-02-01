@@ -1,37 +1,53 @@
 part of '../tdapi.dart';
 
 class EncryptedCredentials extends TdObject {
+
   /// Contains encrypted Telegram Passport data credentials
-  EncryptedCredentials({this.data, this.hash, this.secret});
+  const EncryptedCredentials({
+    required this.data,
+    required this.hash,
+    required this.secret,
+  });
+  
+  /// [data] The encrypted credentials 
+  final String data;
 
-  /// [data] The encrypted credentials
-  String data;
-
-  /// [hash] The decrypted data hash
-  String hash;
+  /// [hash] The decrypted data hash 
+  final String hash;
 
   /// [secret] Secret for data decryption, encrypted with the service's public key
-  String secret;
-
+  final String secret;
+  
   /// Parse from a json
-  EncryptedCredentials.fromJson(Map<String, dynamic> json) {
-    this.data = json['data'];
-    this.hash = json['hash'];
-    this.secret = json['secret'];
-  }
-
+  factory EncryptedCredentials.fromJson(Map<String, dynamic> json) => EncryptedCredentials(
+    data: json['data'],
+    hash: json['hash'],
+    secret: json['secret'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "data": this.data,
-      "hash": this.hash,
-      "secret": this.secret,
+      "data": data,
+      "hash": hash,
+      "secret": secret,
     };
   }
+  
+  EncryptedCredentials copyWith({
+    String? data,
+    String? hash,
+    String? secret,
+  }) => EncryptedCredentials(
+    data: data ?? this.data,
+    hash: hash ?? this.hash,
+    secret: secret ?? this.secret,
+  );
 
   static const CONSTRUCTOR = 'encryptedCredentials';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

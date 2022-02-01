@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetMe extends TdFunction {
+
   /// Returns the current user
-  GetMe();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetMe.fromJson(Map<String, dynamic> json);
-
+  const GetMe();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetMe copyWith() => const GetMe();
 
   static const CONSTRUCTOR = 'getMe';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,49 +1,77 @@
 part of '../tdapi.dart';
 
 class AuthenticationCodeInfo extends TdObject {
+
   /// Information about the authentication code that was sent
-  AuthenticationCodeInfo(
-      {this.phoneNumber, this.type, this.nextType, this.timeout});
+  const AuthenticationCodeInfo({
+    required this.phoneNumber,
+    required this.type,
+    this.nextType,
+    required this.timeout,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [phoneNumber] A phone number that is being authenticated 
+  final String phoneNumber;
 
-  /// [phoneNumber] A phone number that is being authenticated
-  String phoneNumber;
+  /// [type] The way the code was sent to the user 
+  final AuthenticationCodeType type;
 
-  /// [type] Describes the way the code was sent to the user
-  AuthenticationCodeType type;
+  /// [nextType] The way the next code will be sent to the user; may be null 
+  final AuthenticationCodeType? nextType;
 
-  /// [nextType] Describes the way the next code will be sent to the user; may be null
-  AuthenticationCodeType nextType;
+  /// [timeout] Timeout before the code can be re-sent, in seconds
+  final int timeout;
 
-  /// [timeout] Timeout before the code should be re-sent, in seconds
-  int timeout;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) {
-    this.phoneNumber = json['phone_number'];
-    this.type =
-        AuthenticationCodeType.fromJson(json['type'] ?? <String, dynamic>{});
-    this.nextType = AuthenticationCodeType.fromJson(
-        json['next_type'] ?? <String, dynamic>{});
-    this.timeout = json['timeout'];
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory AuthenticationCodeInfo.fromJson(Map<String, dynamic> json) => AuthenticationCodeInfo(
+    phoneNumber: json['phone_number'],
+    type: AuthenticationCodeType.fromJson(json['type']),
+    nextType: json['next_type'] == null ? null : AuthenticationCodeType.fromJson(json['next_type']),
+    timeout: json['timeout'],
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "phone_number": this.phoneNumber,
-      "type": this.type == null ? null : this.type.toJson(),
-      "next_type": this.nextType == null ? null : this.nextType.toJson(),
-      "timeout": this.timeout,
+      "phone_number": phoneNumber,
+      "type": type.toJson(),
+      "next_type": nextType?.toJson(),
+      "timeout": timeout,
     };
   }
+  
+  AuthenticationCodeInfo copyWith({
+    String? phoneNumber,
+    AuthenticationCodeType? type,
+    AuthenticationCodeType? nextType,
+    int? timeout,
+    dynamic extra,
+    int? clientId,
+  }) => AuthenticationCodeInfo(
+    phoneNumber: phoneNumber ?? this.phoneNumber,
+    type: type ?? this.type,
+    nextType: nextType ?? this.nextType,
+    timeout: timeout ?? this.timeout,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'authenticationCodeInfo';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

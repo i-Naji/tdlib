@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class SetName extends TdFunction {
+
   /// Changes the first and last name of the current user
-  SetName({this.firstName, this.lastName});
+  const SetName({
+    required this.firstName,
+    required this.lastName,
+  });
+  
+  /// [firstName] The new value of the first name for the current user; 1-64 characters 
+  final String firstName;
 
-  /// [firstName] The new value of the first name for the user; 1-64 characters
-  String firstName;
-
-  /// [lastName] The new value of the optional last name for the user; 0-64 characters
-  String lastName;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetName.fromJson(Map<String, dynamic> json);
-
+  /// [lastName] The new value of the optional last name for the current user; 0-64 characters
+  final String lastName;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "first_name": this.firstName,
-      "last_name": this.lastName,
-      "@extra": this.extra,
+      "first_name": firstName,
+      "last_name": lastName,
+      "@extra": extra,
     };
   }
+  
+  SetName copyWith({
+    String? firstName,
+    String? lastName,
+  }) => SetName(
+    firstName: firstName ?? this.firstName,
+    lastName: lastName ?? this.lastName,
+  );
 
   static const CONSTRUCTOR = 'setName';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

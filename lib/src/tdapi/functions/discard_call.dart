@@ -1,50 +1,60 @@
 part of '../tdapi.dart';
 
 class DiscardCall extends TdFunction {
+
   /// Discards a call
-  DiscardCall(
-      {this.callId,
-      this.isDisconnected,
-      this.duration,
-      this.isVideo,
-      this.connectionId});
+  const DiscardCall({
+    required this.callId,
+    required this.isDisconnected,
+    required this.duration,
+    required this.isVideo,
+    required this.connectionId,
+  });
+  
+  /// [callId] Call identifier 
+  final int callId;
 
-  /// [callId] Call identifier
-  int callId;
+  /// [isDisconnected] True, if the user was disconnected 
+  final bool isDisconnected;
 
-  /// [isDisconnected] True, if the user was disconnected
-  bool isDisconnected;
+  /// [duration] The call duration, in seconds 
+  final int duration;
 
-  /// [duration] The call duration, in seconds
-  int duration;
-
-  /// [isVideo] True, if the call was a video call
-  bool isVideo;
+  /// [isVideo] True, if the call was a video call 
+  final bool isVideo;
 
   /// [connectionId] Identifier of the connection used during the call
-  int connectionId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  DiscardCall.fromJson(Map<String, dynamic> json);
-
+  final int connectionId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "call_id": this.callId,
-      "is_disconnected": this.isDisconnected,
-      "duration": this.duration,
-      "is_video": this.isVideo,
-      "connection_id": this.connectionId,
-      "@extra": this.extra,
+      "call_id": callId,
+      "is_disconnected": isDisconnected,
+      "duration": duration,
+      "is_video": isVideo,
+      "connection_id": connectionId,
+      "@extra": extra,
     };
   }
+  
+  DiscardCall copyWith({
+    int? callId,
+    bool? isDisconnected,
+    int? duration,
+    bool? isVideo,
+    int? connectionId,
+  }) => DiscardCall(
+    callId: callId ?? this.callId,
+    isDisconnected: isDisconnected ?? this.isDisconnected,
+    duration: duration ?? this.duration,
+    isVideo: isVideo ?? this.isVideo,
+    connectionId: connectionId ?? this.connectionId,
+  );
 
   static const CONSTRUCTOR = 'discardCall';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

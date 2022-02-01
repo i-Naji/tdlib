@@ -1,112 +1,149 @@
 part of '../tdapi.dart';
 
 class TdlibParameters extends TdObject {
-  /// Contains parameters for TDLib initialization
-  TdlibParameters(
-      {this.useTestDc,
-      this.databaseDirectory,
-      this.filesDirectory,
-      this.useFileDatabase,
-      this.useChatInfoDatabase,
-      this.useMessageDatabase,
-      this.useSecretChats,
-      this.apiId,
-      this.apiHash,
-      this.systemLanguageCode,
-      this.deviceModel,
-      this.systemVersion,
-      this.applicationVersion,
-      this.enableStorageOptimizer,
-      this.ignoreFileNames});
 
+  /// Contains parameters for TDLib initialization
+  const TdlibParameters({
+    required this.useTestDc,
+    required this.databaseDirectory,
+    required this.filesDirectory,
+    required this.useFileDatabase,
+    required this.useChatInfoDatabase,
+    required this.useMessageDatabase,
+    required this.useSecretChats,
+    required this.apiId,
+    required this.apiHash,
+    required this.systemLanguageCode,
+    required this.deviceModel,
+    required this.systemVersion,
+    required this.applicationVersion,
+    required this.enableStorageOptimizer,
+    required this.ignoreFileNames,
+  });
+  
   /// [useTestDc] If set to true, the Telegram test environment will be used instead of the production environment
-  bool useTestDc;
+  final bool useTestDc;
 
   /// [databaseDirectory] The path to the directory for the persistent database; if empty, the current working directory will be used
-  String databaseDirectory;
+  final String databaseDirectory;
 
   /// [filesDirectory] The path to the directory for storing files; if empty, database_directory will be used
-  String filesDirectory;
+  final String filesDirectory;
 
   /// [useFileDatabase] If set to true, information about downloaded and uploaded files will be saved between application restarts
-  bool useFileDatabase;
+  final bool useFileDatabase;
 
   /// [useChatInfoDatabase] If set to true, the library will maintain a cache of users, basic groups, supergroups, channels and secret chats. Implies use_file_database
-  bool useChatInfoDatabase;
+  final bool useChatInfoDatabase;
 
   /// [useMessageDatabase] If set to true, the library will maintain a cache of chats and messages. Implies use_chat_info_database
-  bool useMessageDatabase;
+  final bool useMessageDatabase;
 
   /// [useSecretChats] If set to true, support for secret chats will be enabled
-  bool useSecretChats;
+  final bool useSecretChats;
 
   /// [apiId] Application identifier for Telegram API access, which can be obtained at https://my.telegram.org
-  int apiId;
+  final int apiId;
 
   /// [apiHash] Application identifier hash for Telegram API access, which can be obtained at https://my.telegram.org
-  String apiHash;
+  final String apiHash;
 
   /// [systemLanguageCode] IETF language tag of the user's operating system language; must be non-empty
-  String systemLanguageCode;
+  final String systemLanguageCode;
 
   /// [deviceModel] Model of the device the application is being run on; must be non-empty
-  String deviceModel;
+  final String deviceModel;
 
   /// [systemVersion] Version of the operating system the application is being run on. If empty, the version is automatically detected by TDLib
-  String systemVersion;
+  final String systemVersion;
 
   /// [applicationVersion] Application version; must be non-empty
-  String applicationVersion;
+  final String applicationVersion;
 
   /// [enableStorageOptimizer] If set to true, old files will automatically be deleted
-  bool enableStorageOptimizer;
+  final bool enableStorageOptimizer;
 
   /// [ignoreFileNames] If set to true, original file names will be ignored. Otherwise, downloaded files will be saved under names as close as possible to the original name
-  bool ignoreFileNames;
-
+  final bool ignoreFileNames;
+  
   /// Parse from a json
-  TdlibParameters.fromJson(Map<String, dynamic> json) {
-    this.useTestDc = json['use_test_dc'];
-    this.databaseDirectory = json['database_directory'];
-    this.filesDirectory = json['files_directory'];
-    this.useFileDatabase = json['use_file_database'];
-    this.useChatInfoDatabase = json['use_chat_info_database'];
-    this.useMessageDatabase = json['use_message_database'];
-    this.useSecretChats = json['use_secret_chats'];
-    this.apiId = json['api_id'];
-    this.apiHash = json['api_hash'];
-    this.systemLanguageCode = json['system_language_code'];
-    this.deviceModel = json['device_model'];
-    this.systemVersion = json['system_version'];
-    this.applicationVersion = json['application_version'];
-    this.enableStorageOptimizer = json['enable_storage_optimizer'];
-    this.ignoreFileNames = json['ignore_file_names'];
-  }
-
+  factory TdlibParameters.fromJson(Map<String, dynamic> json) => TdlibParameters(
+    useTestDc: json['use_test_dc'],
+    databaseDirectory: json['database_directory'],
+    filesDirectory: json['files_directory'],
+    useFileDatabase: json['use_file_database'],
+    useChatInfoDatabase: json['use_chat_info_database'],
+    useMessageDatabase: json['use_message_database'],
+    useSecretChats: json['use_secret_chats'],
+    apiId: json['api_id'],
+    apiHash: json['api_hash'],
+    systemLanguageCode: json['system_language_code'],
+    deviceModel: json['device_model'],
+    systemVersion: json['system_version'],
+    applicationVersion: json['application_version'],
+    enableStorageOptimizer: json['enable_storage_optimizer'],
+    ignoreFileNames: json['ignore_file_names'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "use_test_dc": this.useTestDc,
-      "database_directory": this.databaseDirectory,
-      "files_directory": this.filesDirectory,
-      "use_file_database": this.useFileDatabase,
-      "use_chat_info_database": this.useChatInfoDatabase,
-      "use_message_database": this.useMessageDatabase,
-      "use_secret_chats": this.useSecretChats,
-      "api_id": this.apiId,
-      "api_hash": this.apiHash,
-      "system_language_code": this.systemLanguageCode,
-      "device_model": this.deviceModel,
-      "system_version": this.systemVersion,
-      "application_version": this.applicationVersion,
-      "enable_storage_optimizer": this.enableStorageOptimizer,
-      "ignore_file_names": this.ignoreFileNames,
+      "use_test_dc": useTestDc,
+      "database_directory": databaseDirectory,
+      "files_directory": filesDirectory,
+      "use_file_database": useFileDatabase,
+      "use_chat_info_database": useChatInfoDatabase,
+      "use_message_database": useMessageDatabase,
+      "use_secret_chats": useSecretChats,
+      "api_id": apiId,
+      "api_hash": apiHash,
+      "system_language_code": systemLanguageCode,
+      "device_model": deviceModel,
+      "system_version": systemVersion,
+      "application_version": applicationVersion,
+      "enable_storage_optimizer": enableStorageOptimizer,
+      "ignore_file_names": ignoreFileNames,
     };
   }
+  
+  TdlibParameters copyWith({
+    bool? useTestDc,
+    String? databaseDirectory,
+    String? filesDirectory,
+    bool? useFileDatabase,
+    bool? useChatInfoDatabase,
+    bool? useMessageDatabase,
+    bool? useSecretChats,
+    int? apiId,
+    String? apiHash,
+    String? systemLanguageCode,
+    String? deviceModel,
+    String? systemVersion,
+    String? applicationVersion,
+    bool? enableStorageOptimizer,
+    bool? ignoreFileNames,
+  }) => TdlibParameters(
+    useTestDc: useTestDc ?? this.useTestDc,
+    databaseDirectory: databaseDirectory ?? this.databaseDirectory,
+    filesDirectory: filesDirectory ?? this.filesDirectory,
+    useFileDatabase: useFileDatabase ?? this.useFileDatabase,
+    useChatInfoDatabase: useChatInfoDatabase ?? this.useChatInfoDatabase,
+    useMessageDatabase: useMessageDatabase ?? this.useMessageDatabase,
+    useSecretChats: useSecretChats ?? this.useSecretChats,
+    apiId: apiId ?? this.apiId,
+    apiHash: apiHash ?? this.apiHash,
+    systemLanguageCode: systemLanguageCode ?? this.systemLanguageCode,
+    deviceModel: deviceModel ?? this.deviceModel,
+    systemVersion: systemVersion ?? this.systemVersion,
+    applicationVersion: applicationVersion ?? this.applicationVersion,
+    enableStorageOptimizer: enableStorageOptimizer ?? this.enableStorageOptimizer,
+    ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
+  );
 
   static const CONSTRUCTOR = 'tdlibParameters';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

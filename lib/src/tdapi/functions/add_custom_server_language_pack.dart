@@ -1,29 +1,32 @@
 part of '../tdapi.dart';
 
 class AddCustomServerLanguagePack extends TdFunction {
+
   /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
-  AddCustomServerLanguagePack({this.languagePackId});
-
+  const AddCustomServerLanguagePack({
+    required this.languagePackId,
+  });
+  
   /// [languagePackId] Identifier of a language pack to be added; may be different from a name that is used in an "https://t.me/setlanguage/" link
-  String languagePackId;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  AddCustomServerLanguagePack.fromJson(Map<String, dynamic> json);
-
+  final String languagePackId;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "language_pack_id": this.languagePackId,
-      "@extra": this.extra,
+      "language_pack_id": languagePackId,
+      "@extra": extra,
     };
   }
+  
+  AddCustomServerLanguagePack copyWith({
+    String? languagePackId,
+  }) => AddCustomServerLanguagePack(
+    languagePackId: languagePackId ?? this.languagePackId,
+  );
 
   static const CONSTRUCTOR = 'addCustomServerLanguagePack';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

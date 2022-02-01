@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetCountries extends TdFunction {
+
   /// Returns information about existing countries. Can be called before authorization
-  GetCountries();
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetCountries.fromJson(Map<String, dynamic> json);
-
+  const GetCountries();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetCountries copyWith() => const GetCountries();
 
   static const CONSTRUCTOR = 'getCountries';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,37 +1,46 @@
 part of '../tdapi.dart';
 
 class SetBackground extends TdFunction {
+
   /// Changes the background selected by the user; adds background to the list of installed backgrounds
-  SetBackground({this.background, this.type, this.forDarkTheme});
+  const SetBackground({
+    required this.background,
+    required this.type,
+    required this.forDarkTheme,
+  });
+  
+  /// [background] The input background to use; pass null to create a new filled backgrounds or to remove the current background
+  final InputBackground background;
 
-  /// [background] The input background to use, null for filled backgrounds
-  InputBackground background;
-
-  /// [type] Background type; null for default background. The method will return error 404 if type is null
-  BackgroundType type;
+  /// [type] Background type; pass null to use the default type of the remote background or to remove the current background
+  final BackgroundType type;
 
   /// [forDarkTheme] True, if the background is chosen for dark theme
-  bool forDarkTheme;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetBackground.fromJson(Map<String, dynamic> json);
-
+  final bool forDarkTheme;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "background": this.background == null ? null : this.background.toJson(),
-      "type": this.type == null ? null : this.type.toJson(),
-      "for_dark_theme": this.forDarkTheme,
-      "@extra": this.extra,
+      "background": background.toJson(),
+      "type": type.toJson(),
+      "for_dark_theme": forDarkTheme,
+      "@extra": extra,
     };
   }
+  
+  SetBackground copyWith({
+    InputBackground? background,
+    BackgroundType? type,
+    bool? forDarkTheme,
+  }) => SetBackground(
+    background: background ?? this.background,
+    type: type ?? this.type,
+    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+  );
 
   static const CONSTRUCTOR = 'setBackground';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

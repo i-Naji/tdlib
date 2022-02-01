@@ -1,25 +1,23 @@
 part of '../tdapi.dart';
 
 class GetActiveLiveLocationMessages extends TdFunction {
-  /// Returns all active live locations that should be updated by the application. The list is persistent across application restarts only if the message database is used
-  GetActiveLiveLocationMessages();
 
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetActiveLiveLocationMessages.fromJson(Map<String, dynamic> json);
-
+  /// Returns all active live locations that need to be updated by the application. The list is persistent across application restarts only if the message database is used
+  const GetActiveLiveLocationMessages();
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "@extra": this.extra,
+      "@extra": extra,
     };
   }
+  
+  GetActiveLiveLocationMessages copyWith() => const GetActiveLiveLocationMessages();
 
   static const CONSTRUCTOR = 'getActiveLiveLocationMessages';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

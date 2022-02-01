@@ -1,33 +1,39 @@
 part of '../tdapi.dart';
 
 class GetBackgroundUrl extends TdFunction {
-  /// Constructs a persistent HTTP URL for a background
-  GetBackgroundUrl({this.name, this.type});
 
-  /// [name] Background name
-  String name;
+  /// Constructs a persistent HTTP URL for a background
+  const GetBackgroundUrl({
+    required this.name,
+    required this.type,
+  });
+  
+  /// [name] Background name 
+  final String name;
 
   /// [type] Background type
-  BackgroundType type;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  GetBackgroundUrl.fromJson(Map<String, dynamic> json);
-
+  final BackgroundType type;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "name": this.name,
-      "type": this.type == null ? null : this.type.toJson(),
-      "@extra": this.extra,
+      "name": name,
+      "type": type.toJson(),
+      "@extra": extra,
     };
   }
+  
+  GetBackgroundUrl copyWith({
+    String? name,
+    BackgroundType? type,
+  }) => GetBackgroundUrl(
+    name: name ?? this.name,
+    type: type ?? this.type,
+  );
 
   static const CONSTRUCTOR = 'getBackgroundUrl';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

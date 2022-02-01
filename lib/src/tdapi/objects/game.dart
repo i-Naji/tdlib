@@ -1,65 +1,85 @@
 part of '../tdapi.dart';
 
 class Game extends TdObject {
+
   /// Describes a game
-  Game(
-      {this.id,
-      this.shortName,
-      this.title,
-      this.text,
-      this.description,
-      this.photo,
-      this.animation});
+  const Game({
+    required this.id,
+    required this.shortName,
+    required this.title,
+    required this.text,
+    required this.description,
+    required this.photo,
+    this.animation,
+  });
+  
+  /// [id] Game game 
+  final int id;
 
-  /// [id] Game game
-  int id;
+  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name} 
+  final String shortName;
 
-  /// [shortName] Game short name. To share a game use the URL https://t.me/{bot_username}?game={game_short_name}
-  String shortName;
-
-  /// [title] Game title
-  String title;
+  /// [title] Game title 
+  final String title;
 
   /// [text] Game text, usually containing scoreboards for a game
-  FormattedText text;
+  final FormattedText text;
 
   /// [description] Game description
-  String description;
+  final String description;
 
-  /// [photo] Game photo
-  Photo photo;
+  /// [photo] Game photo 
+  final Photo photo;
 
   /// [animation] Game animation; may be null
-  Animation animation;
-
+  final Animation? animation;
+  
   /// Parse from a json
-  Game.fromJson(Map<String, dynamic> json) {
-    this.id = int.tryParse(json['id'] ?? "");
-    this.shortName = json['short_name'];
-    this.title = json['title'];
-    this.text = FormattedText.fromJson(json['text'] ?? <String, dynamic>{});
-    this.description = json['description'];
-    this.photo = Photo.fromJson(json['photo'] ?? <String, dynamic>{});
-    this.animation =
-        Animation.fromJson(json['animation'] ?? <String, dynamic>{});
-  }
-
+  factory Game.fromJson(Map<String, dynamic> json) => Game(
+    id: int.parse(json['id']),
+    shortName: json['short_name'],
+    title: json['title'],
+    text: FormattedText.fromJson(json['text']),
+    description: json['description'],
+    photo: Photo.fromJson(json['photo']),
+    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "id": this.id,
-      "short_name": this.shortName,
-      "title": this.title,
-      "text": this.text == null ? null : this.text.toJson(),
-      "description": this.description,
-      "photo": this.photo == null ? null : this.photo.toJson(),
-      "animation": this.animation == null ? null : this.animation.toJson(),
+      "id": id,
+      "short_name": shortName,
+      "title": title,
+      "text": text.toJson(),
+      "description": description,
+      "photo": photo.toJson(),
+      "animation": animation?.toJson(),
     };
   }
+  
+  Game copyWith({
+    int? id,
+    String? shortName,
+    String? title,
+    FormattedText? text,
+    String? description,
+    Photo? photo,
+    Animation? animation,
+  }) => Game(
+    id: id ?? this.id,
+    shortName: shortName ?? this.shortName,
+    title: title ?? this.title,
+    text: text ?? this.text,
+    description: description ?? this.description,
+    photo: photo ?? this.photo,
+    animation: animation ?? this.animation,
+  );
 
   static const CONSTRUCTOR = 'game';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

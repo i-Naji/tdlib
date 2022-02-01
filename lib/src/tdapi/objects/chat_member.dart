@@ -1,57 +1,77 @@
 part of '../tdapi.dart';
 
 class ChatMember extends TdObject {
-  /// A user with information about joining/leaving a chat
-  ChatMember(
-      {this.userId,
-      this.inviterUserId,
-      this.joinedChatDate,
-      this.status,
-      this.botInfo});
 
-  /// [userId] User identifier of the chat member
-  int userId;
+  /// Describes a user or a chat as a member of another chat
+  const ChatMember({
+    required this.memberId,
+    required this.inviterUserId,
+    required this.joinedChatDate,
+    required this.status,
+    this.extra,
+    this.clientId,
+  });
+  
+  /// [memberId] Identifier of the chat member. Currently, other chats can be only Left or Banned. Only supergroups and channels can have other chats as Left or Banned members and these chats must be supergroups or channels
+  final MessageSender memberId;
 
   /// [inviterUserId] Identifier of a user that invited/promoted/banned this member in the chat; 0 if unknown
-  int inviterUserId;
+  final int inviterUserId;
 
   /// [joinedChatDate] Point in time (Unix timestamp) when the user joined the chat
-  int joinedChatDate;
+  final int joinedChatDate;
 
   /// [status] Status of the member in the chat
-  ChatMemberStatus status;
+  final ChatMemberStatus status;
 
-  /// [botInfo] If the user is a bot, information about the bot; may be null. Can be null even for a bot if the bot is not the chat member
-  BotInfo botInfo;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  ChatMember.fromJson(Map<String, dynamic> json) {
-    this.userId = json['user_id'];
-    this.inviterUserId = json['inviter_user_id'];
-    this.joinedChatDate = json['joined_chat_date'];
-    this.status =
-        ChatMemberStatus.fromJson(json['status'] ?? <String, dynamic>{});
-    this.botInfo = BotInfo.fromJson(json['bot_info'] ?? <String, dynamic>{});
-    this.extra = json['@extra'];
-  }
-
+  /// [extra] callback sign
   @override
-  Map<String, dynamic> toJson() {
+  final dynamic extra;
+
+  /// [clientId] client identifier
+  @override
+  final int? clientId;
+  
+  /// Parse from a json
+  factory ChatMember.fromJson(Map<String, dynamic> json) => ChatMember(
+    memberId: MessageSender.fromJson(json['member_id']),
+    inviterUserId: json['inviter_user_id'],
+    joinedChatDate: json['joined_chat_date'],
+    status: ChatMemberStatus.fromJson(json['status']),
+    extra: json['@extra'],
+    clientId: json['@client_id'],
+  );
+  
+  
+  @override
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "user_id": this.userId,
-      "inviter_user_id": this.inviterUserId,
-      "joined_chat_date": this.joinedChatDate,
-      "status": this.status == null ? null : this.status.toJson(),
-      "bot_info": this.botInfo == null ? null : this.botInfo.toJson(),
+      "member_id": memberId.toJson(),
+      "inviter_user_id": inviterUserId,
+      "joined_chat_date": joinedChatDate,
+      "status": status.toJson(),
     };
   }
+  
+  ChatMember copyWith({
+    MessageSender? memberId,
+    int? inviterUserId,
+    int? joinedChatDate,
+    ChatMemberStatus? status,
+    dynamic extra,
+    int? clientId,
+  }) => ChatMember(
+    memberId: memberId ?? this.memberId,
+    inviterUserId: inviterUserId ?? this.inviterUserId,
+    joinedChatDate: joinedChatDate ?? this.joinedChatDate,
+    status: status ?? this.status,
+    extra: extra ?? this.extra,
+    clientId: clientId ?? this.clientId,
+  );
 
   static const CONSTRUCTOR = 'chatMember';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

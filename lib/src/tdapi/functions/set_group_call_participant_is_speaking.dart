@@ -1,38 +1,46 @@
 part of '../tdapi.dart';
 
 class SetGroupCallParticipantIsSpeaking extends TdFunction {
-  /// Informs TDLib that a group call participant speaking state has changed
-  SetGroupCallParticipantIsSpeaking(
-      {this.groupCallId, this.source, this.isSpeaking});
 
+  /// Informs TDLib that speaking state of a participant of an active group has changed
+  const SetGroupCallParticipantIsSpeaking({
+    required this.groupCallId,
+    required this.audioSource,
+    required this.isSpeaking,
+  });
+  
   /// [groupCallId] Group call identifier
-  int groupCallId;
+  final int groupCallId;
 
-  /// [source] Group call participant's synchronization source identifier, or 0 for the current user
-  int source;
+  /// [audioSource] Group call participant's synchronization audio source identifier, or 0 for the current user
+  final int audioSource;
 
   /// [isSpeaking] True, if the user is speaking
-  bool isSpeaking;
-
-  /// callback sign
-  dynamic extra;
-
-  /// Parse from a json
-  SetGroupCallParticipantIsSpeaking.fromJson(Map<String, dynamic> json);
-
+  final bool isSpeaking;
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "group_call_id": this.groupCallId,
-      "source": this.source,
-      "is_speaking": this.isSpeaking,
-      "@extra": this.extra,
+      "group_call_id": groupCallId,
+      "audio_source": audioSource,
+      "is_speaking": isSpeaking,
+      "@extra": extra,
     };
   }
+  
+  SetGroupCallParticipantIsSpeaking copyWith({
+    int? groupCallId,
+    int? audioSource,
+    bool? isSpeaking,
+  }) => SetGroupCallParticipantIsSpeaking(
+    groupCallId: groupCallId ?? this.groupCallId,
+    audioSource: audioSource ?? this.audioSource,
+    isSpeaking: isSpeaking ?? this.isSpeaking,
+  );
 
   static const CONSTRUCTOR = 'setGroupCallParticipantIsSpeaking';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }

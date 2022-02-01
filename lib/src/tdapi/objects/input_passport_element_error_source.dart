@@ -1,21 +1,22 @@
 part of '../tdapi.dart';
 
 class InputPassportElementErrorSource extends TdObject {
-  /// Contains the description of an error in a Telegram Passport element; for bots only
-  InputPassportElementErrorSource();
 
+  /// Contains the description of an error in a Telegram Passport element; for bots only
+  const InputPassportElementErrorSource();
+  
   /// a InputPassportElementErrorSource return type can be :
-  /// * InputPassportElementErrorSourceUnspecified
-  /// * InputPassportElementErrorSourceDataField
-  /// * InputPassportElementErrorSourceFrontSide
-  /// * InputPassportElementErrorSourceReverseSide
-  /// * InputPassportElementErrorSourceSelfie
-  /// * InputPassportElementErrorSourceTranslationFile
-  /// * InputPassportElementErrorSourceTranslationFiles
-  /// * InputPassportElementErrorSourceFile
-  /// * InputPassportElementErrorSourceFiles
-  factory InputPassportElementErrorSource.fromJson(Map<String, dynamic> json) {
-    switch (json["@type"]) {
+  /// * [InputPassportElementErrorSourceUnspecified]
+  /// * [InputPassportElementErrorSourceDataField]
+  /// * [InputPassportElementErrorSourceFrontSide]
+  /// * [InputPassportElementErrorSourceReverseSide]
+  /// * [InputPassportElementErrorSourceSelfie]
+  /// * [InputPassportElementErrorSourceTranslationFile]
+  /// * [InputPassportElementErrorSourceTranslationFiles]
+  /// * [InputPassportElementErrorSourceFile]
+  /// * [InputPassportElementErrorSourceFiles]
+  factory InputPassportElementErrorSource.fromJson(Map<String, dynamic> json)  {
+    switch(json["@type"]) {
       case InputPassportElementErrorSourceUnspecified.CONSTRUCTOR:
         return InputPassportElementErrorSourceUnspecified.fromJson(json);
       case InputPassportElementErrorSourceDataField.CONSTRUCTOR:
@@ -35,271 +36,371 @@ class InputPassportElementErrorSource extends TdObject {
       case InputPassportElementErrorSourceFiles.CONSTRUCTOR:
         return InputPassportElementErrorSourceFiles.fromJson(json);
       default:
-        return null;
+        return const InputPassportElementErrorSource();
     }
   }
-
+  
   @override
-  Map<String, dynamic> toJson() {
-    return {};
+  Map<String, dynamic> toJson([dynamic extra]) {
+    return {
+      
+    };
   }
+  
+  InputPassportElementErrorSource copyWith() => const InputPassportElementErrorSource();
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSource';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceUnspecified
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceUnspecified extends InputPassportElementErrorSource {
+
   /// The element contains an error in an unspecified place. The error will be considered resolved when new data is added
-  InputPassportElementErrorSourceUnspecified({this.elementHash});
-
+  const InputPassportElementErrorSourceUnspecified({
+    required this.elementHash,
+  });
+  
   /// [elementHash] Current hash of the entire element
-  String elementHash;
-
+  final String elementHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceUnspecified.fromJson(
-      Map<String, dynamic> json) {
-    this.elementHash = json['element_hash'];
-  }
-
+  factory InputPassportElementErrorSourceUnspecified.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceUnspecified(
+    elementHash: json['element_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "element_hash": this.elementHash,
+      "element_hash": elementHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceUnspecified copyWith({
+    String? elementHash,
+  }) => InputPassportElementErrorSourceUnspecified(
+    elementHash: elementHash ?? this.elementHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceUnspecified';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceDataField
-    extends InputPassportElementErrorSource {
-  /// A data field contains an error. The error is considered resolved when the field's value changes
-  InputPassportElementErrorSourceDataField({this.fieldName, this.dataHash});
 
-  /// [fieldName] Field name
-  String fieldName;
+class InputPassportElementErrorSourceDataField extends InputPassportElementErrorSource {
+
+  /// A data field contains an error. The error is considered resolved when the field's value changes
+  const InputPassportElementErrorSourceDataField({
+    required this.fieldName,
+    required this.dataHash,
+  });
+  
+  /// [fieldName] Field name 
+  final String fieldName;
 
   /// [dataHash] Current data hash
-  String dataHash;
-
+  final String dataHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceDataField.fromJson(Map<String, dynamic> json) {
-    this.fieldName = json['field_name'];
-    this.dataHash = json['data_hash'];
-  }
-
+  factory InputPassportElementErrorSourceDataField.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceDataField(
+    fieldName: json['field_name'],
+    dataHash: json['data_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "field_name": this.fieldName,
-      "data_hash": this.dataHash,
+      "field_name": fieldName,
+      "data_hash": dataHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceDataField copyWith({
+    String? fieldName,
+    String? dataHash,
+  }) => InputPassportElementErrorSourceDataField(
+    fieldName: fieldName ?? this.fieldName,
+    dataHash: dataHash ?? this.dataHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceDataField';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceFrontSide
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceFrontSide extends InputPassportElementErrorSource {
+
   /// The front side of the document contains an error. The error is considered resolved when the file with the front side of the document changes
-  InputPassportElementErrorSourceFrontSide({this.fileHash});
-
+  const InputPassportElementErrorSourceFrontSide({
+    required this.fileHash,
+  });
+  
   /// [fileHash] Current hash of the file containing the front side
-  String fileHash;
-
+  final String fileHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceFrontSide.fromJson(Map<String, dynamic> json) {
-    this.fileHash = json['file_hash'];
-  }
-
+  factory InputPassportElementErrorSourceFrontSide.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceFrontSide(
+    fileHash: json['file_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hash": this.fileHash,
+      "file_hash": fileHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceFrontSide copyWith({
+    String? fileHash,
+  }) => InputPassportElementErrorSourceFrontSide(
+    fileHash: fileHash ?? this.fileHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceFrontSide';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceReverseSide
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceReverseSide extends InputPassportElementErrorSource {
+
   /// The reverse side of the document contains an error. The error is considered resolved when the file with the reverse side of the document changes
-  InputPassportElementErrorSourceReverseSide({this.fileHash});
-
+  const InputPassportElementErrorSourceReverseSide({
+    required this.fileHash,
+  });
+  
   /// [fileHash] Current hash of the file containing the reverse side
-  String fileHash;
-
+  final String fileHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceReverseSide.fromJson(
-      Map<String, dynamic> json) {
-    this.fileHash = json['file_hash'];
-  }
-
+  factory InputPassportElementErrorSourceReverseSide.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceReverseSide(
+    fileHash: json['file_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hash": this.fileHash,
+      "file_hash": fileHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceReverseSide copyWith({
+    String? fileHash,
+  }) => InputPassportElementErrorSourceReverseSide(
+    fileHash: fileHash ?? this.fileHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceReverseSide';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceSelfie
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceSelfie extends InputPassportElementErrorSource {
+
   /// The selfie contains an error. The error is considered resolved when the file with the selfie changes
-  InputPassportElementErrorSourceSelfie({this.fileHash});
-
+  const InputPassportElementErrorSourceSelfie({
+    required this.fileHash,
+  });
+  
   /// [fileHash] Current hash of the file containing the selfie
-  String fileHash;
-
+  final String fileHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceSelfie.fromJson(Map<String, dynamic> json) {
-    this.fileHash = json['file_hash'];
-  }
-
+  factory InputPassportElementErrorSourceSelfie.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceSelfie(
+    fileHash: json['file_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hash": this.fileHash,
+      "file_hash": fileHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceSelfie copyWith({
+    String? fileHash,
+  }) => InputPassportElementErrorSourceSelfie(
+    fileHash: fileHash ?? this.fileHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceSelfie';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceTranslationFile
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceTranslationFile extends InputPassportElementErrorSource {
+
   /// One of the files containing the translation of the document contains an error. The error is considered resolved when the file with the translation changes
-  InputPassportElementErrorSourceTranslationFile({this.fileHash});
-
+  const InputPassportElementErrorSourceTranslationFile({
+    required this.fileHash,
+  });
+  
   /// [fileHash] Current hash of the file containing the translation
-  String fileHash;
-
+  final String fileHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceTranslationFile.fromJson(
-      Map<String, dynamic> json) {
-    this.fileHash = json['file_hash'];
-  }
-
+  factory InputPassportElementErrorSourceTranslationFile.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceTranslationFile(
+    fileHash: json['file_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hash": this.fileHash,
+      "file_hash": fileHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceTranslationFile copyWith({
+    String? fileHash,
+  }) => InputPassportElementErrorSourceTranslationFile(
+    fileHash: fileHash ?? this.fileHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceTranslationFile';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceTranslationFiles
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceTranslationFiles extends InputPassportElementErrorSource {
+
   /// The translation of the document contains an error. The error is considered resolved when the list of files changes
-  InputPassportElementErrorSourceTranslationFiles({this.fileHashes});
-
+  const InputPassportElementErrorSourceTranslationFiles({
+    required this.fileHashes,
+  });
+  
   /// [fileHashes] Current hashes of all files with the translation
-  List<String> fileHashes;
-
+  final List<String> fileHashes;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceTranslationFiles.fromJson(
-      Map<String, dynamic> json) {
-    this.fileHashes = List<String>.from(
-        (json['file_hashes'] ?? []).map((item) => item).toList());
-  }
-
+  factory InputPassportElementErrorSourceTranslationFiles.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceTranslationFiles(
+    fileHashes: List<String>.from((json['file_hashes'] ?? []).map((item) => item).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hashes": this.fileHashes.map((i) => i).toList(),
+      "file_hashes": fileHashes.map((i) => i).toList(),
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceTranslationFiles copyWith({
+    List<String>? fileHashes,
+  }) => InputPassportElementErrorSourceTranslationFiles(
+    fileHashes: fileHashes ?? this.fileHashes,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceTranslationFiles';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceFile
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceFile extends InputPassportElementErrorSource {
+
   /// The file contains an error. The error is considered resolved when the file changes
-  InputPassportElementErrorSourceFile({this.fileHash});
-
+  const InputPassportElementErrorSourceFile({
+    required this.fileHash,
+  });
+  
   /// [fileHash] Current hash of the file which has the error
-  String fileHash;
-
+  final String fileHash;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceFile.fromJson(Map<String, dynamic> json) {
-    this.fileHash = json['file_hash'];
-  }
-
+  factory InputPassportElementErrorSourceFile.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceFile(
+    fileHash: json['file_hash'],
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hash": this.fileHash,
+      "file_hash": fileHash,
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceFile copyWith({
+    String? fileHash,
+  }) => InputPassportElementErrorSourceFile(
+    fileHash: fileHash ?? this.fileHash,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceFile';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-class InputPassportElementErrorSourceFiles
-    extends InputPassportElementErrorSource {
+
+class InputPassportElementErrorSourceFiles extends InputPassportElementErrorSource {
+
   /// The list of attached files contains an error. The error is considered resolved when the file list changes
-  InputPassportElementErrorSourceFiles({this.fileHashes});
-
+  const InputPassportElementErrorSourceFiles({
+    required this.fileHashes,
+  });
+  
   /// [fileHashes] Current hashes of all attached files
-  List<String> fileHashes;
-
+  final List<String> fileHashes;
+  
   /// Parse from a json
-  InputPassportElementErrorSourceFiles.fromJson(Map<String, dynamic> json) {
-    this.fileHashes = List<String>.from(
-        (json['file_hashes'] ?? []).map((item) => item).toList());
-  }
-
+  factory InputPassportElementErrorSourceFiles.fromJson(Map<String, dynamic> json) => InputPassportElementErrorSourceFiles(
+    fileHashes: List<String>.from((json['file_hashes'] ?? []).map((item) => item).toList()),
+  );
+  
+  
   @override
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_hashes": this.fileHashes.map((i) => i).toList(),
+      "file_hashes": fileHashes.map((i) => i).toList(),
     };
   }
+  
+  @override
+  InputPassportElementErrorSourceFiles copyWith({
+    List<String>? fileHashes,
+  }) => InputPassportElementErrorSourceFiles(
+    fileHashes: fileHashes ?? this.fileHashes,
+  );
 
   static const CONSTRUCTOR = 'inputPassportElementErrorSourceFiles';
-
+  
   @override
   String getConstructor() => CONSTRUCTOR;
 }
