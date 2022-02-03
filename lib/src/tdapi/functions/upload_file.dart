@@ -5,7 +5,7 @@ class UploadFile extends TdFunction {
   /// Asynchronously uploads a file to the cloud without sending it in a message. updateFile will be used to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it will be sent in a message
   const UploadFile({
     required this.file,
-    required this.fileType,
+    this.fileType,
     required this.priority,
   });
   
@@ -13,7 +13,7 @@ class UploadFile extends TdFunction {
   final InputFile file;
 
   /// [fileType] File type; pass null if unknown
-  final FileType fileType;
+  final FileType? fileType;
 
   /// [priority] Priority of the upload (1-32). The higher the priority, the earlier the file will be uploaded. If the priorities of two files are equal, then the first one for which uploadFile was called will be uploaded first
   final int priority;
@@ -23,7 +23,7 @@ class UploadFile extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "file": file.toJson(),
-      "file_type": fileType.toJson(),
+      "file_type": fileType?.toJson(),
       "priority": priority,
       "@extra": extra,
     };

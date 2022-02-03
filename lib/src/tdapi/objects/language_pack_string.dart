@@ -5,19 +5,19 @@ class LanguagePackString extends TdObject {
   /// Represents one language pack string
   const LanguagePackString({
     required this.key,
-    required this.value,
+    this.value,
   });
   
   /// [key] String key 
   final String key;
 
   /// [value] String value; pass null if the string needs to be taken from the built-in English language pack
-  final LanguagePackStringValue value;
+  final LanguagePackStringValue? value;
   
   /// Parse from a json
   factory LanguagePackString.fromJson(Map<String, dynamic> json) => LanguagePackString(
     key: json['key'],
-    value: LanguagePackStringValue.fromJson(json['value']),
+    value: json['value'] == null ? null : LanguagePackStringValue.fromJson(json['value']),
   );
   
   
@@ -26,7 +26,7 @@ class LanguagePackString extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "key": key,
-      "value": value.toJson(),
+      "value": value?.toJson(),
     };
   }
   

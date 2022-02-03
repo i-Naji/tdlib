@@ -6,7 +6,7 @@ class GetPaymentForm extends TdFunction {
   const GetPaymentForm({
     required this.chatId,
     required this.messageId,
-    required this.theme,
+    this.theme,
   });
   
   /// [chatId] Chat identifier of the Invoice message
@@ -16,7 +16,7 @@ class GetPaymentForm extends TdFunction {
   final int messageId;
 
   /// [theme] Preferred payment form theme; pass null to use the default theme
-  final PaymentFormTheme theme;
+  final PaymentFormTheme? theme;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class GetPaymentForm extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "theme": theme.toJson(),
+      "theme": theme?.toJson(),
       "@extra": extra,
     };
   }

@@ -5,21 +5,21 @@ class FinishFileGeneration extends TdFunction {
   /// Finishes the file generation
   const FinishFileGeneration({
     required this.generationId,
-    required this.error,
+    this.error,
   });
   
   /// [generationId] The identifier of the generation process
   final int generationId;
 
   /// [error] If passed, the file generation has failed and must be terminated; pass null if the file generation succeeded
-  final TdError error;
+  final TdError? error;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
       "generation_id": generationId,
-      "error": error.toJson(),
+      "error": error?.toJson(),
       "@extra": extra,
     };
   }

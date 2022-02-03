@@ -78,7 +78,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     required this.videoDuration,
     required this.videoWidth,
     required this.videoHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -110,7 +110,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
   final int videoHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAnimation, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -126,7 +126,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     videoDuration: json['video_duration'],
     videoWidth: json['video_width'],
     videoHeight: json['video_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -144,7 +144,7 @@ class InputInlineQueryResultAnimation extends InputInlineQueryResult {
       "video_duration": videoDuration,
       "video_width": videoWidth,
       "video_height": videoHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -195,7 +195,7 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     required this.thumbnailUrl,
     required this.thumbnailWidth,
     required this.thumbnailHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -224,7 +224,7 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
   final int thumbnailHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -239,7 +239,7 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
     thumbnailUrl: json['thumbnail_url'],
     thumbnailWidth: json['thumbnail_width'],
     thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -256,7 +256,7 @@ class InputInlineQueryResultArticle extends InputInlineQueryResult {
       "thumbnail_url": thumbnailUrl,
       "thumbnail_width": thumbnailWidth,
       "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -302,7 +302,7 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
     required this.performer,
     required this.audioUrl,
     required this.audioDuration,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -322,7 +322,7 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
   final int audioDuration;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageAudio, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -334,7 +334,7 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
     performer: json['performer'],
     audioUrl: json['audio_url'],
     audioDuration: json['audio_duration'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -348,7 +348,7 @@ class InputInlineQueryResultAudio extends InputInlineQueryResult {
       "performer": performer,
       "audio_url": audioUrl,
       "audio_duration": audioDuration,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -388,7 +388,7 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
     required this.thumbnailUrl,
     required this.thumbnailWidth,
     required this.thumbnailHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -408,7 +408,7 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
   final int thumbnailHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -420,7 +420,7 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
     thumbnailUrl: json['thumbnail_url'],
     thumbnailWidth: json['thumbnail_width'],
     thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -434,7 +434,7 @@ class InputInlineQueryResultContact extends InputInlineQueryResult {
       "thumbnail_url": thumbnailUrl,
       "thumbnail_width": thumbnailWidth,
       "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -477,7 +477,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
     required this.thumbnailUrl,
     required this.thumbnailWidth,
     required this.thumbnailHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -506,7 +506,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
   final int thumbnailHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageDocument, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -521,7 +521,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
     thumbnailUrl: json['thumbnail_url'],
     thumbnailWidth: json['thumbnail_width'],
     thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -538,7 +538,7 @@ class InputInlineQueryResultDocument extends InputInlineQueryResult {
       "thumbnail_url": thumbnailUrl,
       "thumbnail_width": thumbnailWidth,
       "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -581,7 +581,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   const InputInlineQueryResultGame({
     required this.id,
     required this.gameShortName,
-    required this.replyMarkup,
+    this.replyMarkup,
   });
   
   /// [id] Unique identifier of the query result 
@@ -591,13 +591,13 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
   final String gameShortName;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
   
   /// Parse from a json
   factory InputInlineQueryResultGame.fromJson(Map<String, dynamic> json) => InputInlineQueryResultGame(
     id: json['id'],
     gameShortName: json['game_short_name'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
   );
   
   
@@ -607,7 +607,7 @@ class InputInlineQueryResultGame extends InputInlineQueryResult {
       "@type": CONSTRUCTOR,
       "id": id,
       "game_short_name": gameShortName,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
     };
   }
   
@@ -640,7 +640,7 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     required this.thumbnailUrl,
     required this.thumbnailWidth,
     required this.thumbnailHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -666,7 +666,7 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
   final int thumbnailHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -680,7 +680,7 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
     thumbnailUrl: json['thumbnail_url'],
     thumbnailWidth: json['thumbnail_width'],
     thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -696,7 +696,7 @@ class InputInlineQueryResultLocation extends InputInlineQueryResult {
       "thumbnail_url": thumbnailUrl,
       "thumbnail_width": thumbnailWidth,
       "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -742,7 +742,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     required this.photoUrl,
     required this.photoWidth,
     required this.photoHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -768,7 +768,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
   final int photoHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessagePhoto, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -782,7 +782,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     photoUrl: json['photo_url'],
     photoWidth: json['photo_width'],
     photoHeight: json['photo_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -798,7 +798,7 @@ class InputInlineQueryResultPhoto extends InputInlineQueryResult {
       "photo_url": photoUrl,
       "photo_width": photoWidth,
       "photo_height": photoHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -842,7 +842,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     required this.stickerUrl,
     required this.stickerWidth,
     required this.stickerHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -862,7 +862,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
   final int stickerHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageSticker, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -874,7 +874,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
     stickerUrl: json['sticker_url'],
     stickerWidth: json['sticker_width'],
     stickerHeight: json['sticker_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -888,7 +888,7 @@ class InputInlineQueryResultSticker extends InputInlineQueryResult {
       "sticker_url": stickerUrl,
       "sticker_width": stickerWidth,
       "sticker_height": stickerHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -928,7 +928,7 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
     required this.thumbnailUrl,
     required this.thumbnailWidth,
     required this.thumbnailHeight,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -948,7 +948,7 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
   final int thumbnailHeight;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -960,7 +960,7 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
     thumbnailUrl: json['thumbnail_url'],
     thumbnailWidth: json['thumbnail_width'],
     thumbnailHeight: json['thumbnail_height'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -974,7 +974,7 @@ class InputInlineQueryResultVenue extends InputInlineQueryResult {
       "thumbnail_url": thumbnailUrl,
       "thumbnail_width": thumbnailWidth,
       "thumbnail_height": thumbnailHeight,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -1018,7 +1018,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
     required this.videoWidth,
     required this.videoHeight,
     required this.videoDuration,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -1050,7 +1050,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
   final int videoDuration;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVideo, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -1066,7 +1066,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
     videoWidth: json['video_width'],
     videoHeight: json['video_height'],
     videoDuration: json['video_duration'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -1084,7 +1084,7 @@ class InputInlineQueryResultVideo extends InputInlineQueryResult {
       "video_width": videoWidth,
       "video_height": videoHeight,
       "video_duration": videoDuration,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }
@@ -1131,7 +1131,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     required this.title,
     required this.voiceNoteUrl,
     required this.voiceNoteDuration,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -1148,7 +1148,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
   final int voiceNoteDuration;
 
   /// [replyMarkup] The message reply markup; pass null if none. Must be of type replyMarkupInlineKeyboard or null
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] The content of the message to be sent. Must be one of the following types: inputMessageText, inputMessageVoiceNote, inputMessageInvoice, inputMessageLocation, inputMessageVenue or inputMessageContact
   final InputMessageContent inputMessageContent;
@@ -1159,7 +1159,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
     title: json['title'],
     voiceNoteUrl: json['voice_note_url'],
     voiceNoteDuration: json['voice_note_duration'],
-    replyMarkup: ReplyMarkup.fromJson(json['reply_markup']),
+    replyMarkup: json['reply_markup'] == null ? null : ReplyMarkup.fromJson(json['reply_markup']),
     inputMessageContent: InputMessageContent.fromJson(json['input_message_content']),
   );
   
@@ -1172,7 +1172,7 @@ class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
       "title": title,
       "voice_note_url": voiceNoteUrl,
       "voice_note_duration": voiceNoteDuration,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
     };
   }

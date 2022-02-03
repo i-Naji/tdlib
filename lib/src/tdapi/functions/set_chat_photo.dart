@@ -5,21 +5,21 @@ class SetChatPhoto extends TdFunction {
   /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
   const SetChatPhoto({
     required this.chatId,
-    required this.photo,
+    this.photo,
   });
   
   /// [chatId] Chat identifier
   final int chatId;
 
   /// [photo] New chat photo; pass null to delete the chat photo
-  final InputChatPhoto photo;
+  final InputChatPhoto? photo;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
-      "photo": photo.toJson(),
+      "photo": photo?.toJson(),
       "@extra": extra,
     };
   }

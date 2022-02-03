@@ -6,7 +6,7 @@ class ValidateOrderInfo extends TdFunction {
   const ValidateOrderInfo({
     required this.chatId,
     required this.messageId,
-    required this.orderInfo,
+    this.orderInfo,
     required this.allowSave,
   });
   
@@ -17,7 +17,7 @@ class ValidateOrderInfo extends TdFunction {
   final int messageId;
 
   /// [orderInfo] The order information, provided by the user; pass null if empty
-  final OrderInfo orderInfo;
+  final OrderInfo? orderInfo;
 
   /// [allowSave] True, if the order information can be saved
   final bool allowSave;
@@ -28,7 +28,7 @@ class ValidateOrderInfo extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "order_info": orderInfo.toJson(),
+      "order_info": orderInfo?.toJson(),
       "allow_save": allowSave,
       "@extra": extra,
     };

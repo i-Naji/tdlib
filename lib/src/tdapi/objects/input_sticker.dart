@@ -41,7 +41,7 @@ class InputStickerStatic extends InputSticker {
   const InputStickerStatic({
     required this.sticker,
     required this.emojis,
-    required this.maskPosition,
+    this.maskPosition,
   });
   
   /// [sticker] PNG image with the sticker; must be up to 512 KB in size and fit in a 512x512 square
@@ -51,13 +51,13 @@ class InputStickerStatic extends InputSticker {
   final String emojis;
 
   /// [maskPosition] For masks, position where the mask is placed; pass null if unspecified
-  final MaskPosition maskPosition;
+  final MaskPosition? maskPosition;
   
   /// Parse from a json
   factory InputStickerStatic.fromJson(Map<String, dynamic> json) => InputStickerStatic(
     sticker: InputFile.fromJson(json['sticker']),
     emojis: json['emojis'],
-    maskPosition: MaskPosition.fromJson(json['mask_position']),
+    maskPosition: json['mask_position'] == null ? null : MaskPosition.fromJson(json['mask_position']),
   );
   
   
@@ -67,7 +67,7 @@ class InputStickerStatic extends InputSticker {
       "@type": CONSTRUCTOR,
       "sticker": sticker.toJson(),
       "emojis": emojis,
-      "mask_position": maskPosition.toJson(),
+      "mask_position": maskPosition?.toJson(),
     };
   }
   

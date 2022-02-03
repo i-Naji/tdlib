@@ -6,7 +6,7 @@ class MessageCopyOptions extends TdObject {
   const MessageCopyOptions({
     required this.sendCopy,
     required this.replaceCaption,
-    required this.newCaption,
+    this.newCaption,
   });
   
   /// [sendCopy] True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local
@@ -16,13 +16,13 @@ class MessageCopyOptions extends TdObject {
   final bool replaceCaption;
 
   /// [newCaption] New message caption; pass null to copy message without caption. Ignored if replace_caption is false
-  final FormattedText newCaption;
+  final FormattedText? newCaption;
   
   /// Parse from a json
   factory MessageCopyOptions.fromJson(Map<String, dynamic> json) => MessageCopyOptions(
     sendCopy: json['send_copy'],
     replaceCaption: json['replace_caption'],
-    newCaption: FormattedText.fromJson(json['new_caption']),
+    newCaption: json['new_caption'] == null ? null : FormattedText.fromJson(json['new_caption']),
   );
   
   
@@ -32,7 +32,7 @@ class MessageCopyOptions extends TdObject {
       "@type": CONSTRUCTOR,
       "send_copy": sendCopy,
       "replace_caption": replaceCaption,
-      "new_caption": newCaption.toJson(),
+      "new_caption": newCaption?.toJson(),
     };
   }
   

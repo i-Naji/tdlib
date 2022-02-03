@@ -6,7 +6,7 @@ class SendChatAction extends TdFunction {
   const SendChatAction({
     required this.chatId,
     required this.messageThreadId,
-    required this.action,
+    this.action,
   });
   
   /// [chatId] Chat identifier 
@@ -16,7 +16,7 @@ class SendChatAction extends TdFunction {
   final int messageThreadId;
 
   /// [action] The action description; pass null to cancel the currently active action
-  final ChatAction action;
+  final ChatAction? action;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class SendChatAction extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
-      "action": action.toJson(),
+      "action": action?.toJson(),
       "@extra": extra,
     };
   }

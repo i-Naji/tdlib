@@ -8,7 +8,7 @@ class GetChatEventLog extends TdFunction {
     required this.query,
     required this.fromEventId,
     required this.limit,
-    required this.filters,
+    this.filters,
     required this.userIds,
   });
   
@@ -25,7 +25,7 @@ class GetChatEventLog extends TdFunction {
   final int limit;
 
   /// [filters] The types of events to return; pass null to get chat events of all types
-  final ChatEventLogFilters filters;
+  final ChatEventLogFilters? filters;
 
   /// [userIds] User identifiers by which to filter events. By default, events relating to all users will be returned
   final List<int> userIds;
@@ -38,7 +38,7 @@ class GetChatEventLog extends TdFunction {
       "query": query,
       "from_event_id": fromEventId,
       "limit": limit,
-      "filters": filters.toJson(),
+      "filters": filters?.toJson(),
       "user_ids": userIds.map((i) => i).toList(),
       "@extra": extra,
     };

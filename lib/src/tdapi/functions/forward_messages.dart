@@ -7,7 +7,7 @@ class ForwardMessages extends TdFunction {
     required this.chatId,
     required this.fromChatId,
     required this.messageIds,
-    required this.options,
+    this.options,
     required this.sendCopy,
     required this.removeCaption,
     required this.onlyPreview,
@@ -23,7 +23,7 @@ class ForwardMessages extends TdFunction {
   final List<int> messageIds;
 
   /// [options] Options to be used to send the messages; pass null to use default options
-  final MessageSendOptions options;
+  final MessageSendOptions? options;
 
   /// [sendCopy] If true, content of the messages will be copied without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local
   final bool sendCopy;
@@ -41,7 +41,7 @@ class ForwardMessages extends TdFunction {
       "chat_id": chatId,
       "from_chat_id": fromChatId,
       "message_ids": messageIds.map((i) => i).toList(),
-      "options": options.toJson(),
+      "options": options?.toJson(),
       "send_copy": sendCopy,
       "remove_caption": removeCaption,
       "only_preview": onlyPreview,

@@ -4,12 +4,12 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
 
   /// Returns list of chats with non-default notification settings
   const GetChatNotificationSettingsExceptions({
-    required this.scope,
+    this.scope,
     required this.compareSound,
   });
   
   /// [scope] If specified, only chats from the scope will be returned; pass null to return chats from all scopes
-  final NotificationSettingsScope scope;
+  final NotificationSettingsScope? scope;
 
   /// [compareSound] If true, also chats with non-default sound will be returned
   final bool compareSound;
@@ -18,7 +18,7 @@ class GetChatNotificationSettingsExceptions extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "scope": scope.toJson(),
+      "scope": scope?.toJson(),
       "compare_sound": compareSound,
       "@extra": extra,
     };

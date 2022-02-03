@@ -39,14 +39,14 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
 
   /// Contains information about the total amount of data that was used to send and receive files
   const NetworkStatisticsEntryFile({
-    required this.fileType,
+    this.fileType,
     required this.networkType,
     required this.sentBytes,
     required this.receivedBytes,
   });
   
   /// [fileType] Type of the file the data is part of; pass null if the data isn't related to files
-  final FileType fileType;
+  final FileType? fileType;
 
   /// [networkType] Type of the network the data was sent through. Call setNetworkType to maintain the actual network type
   final NetworkType networkType;
@@ -59,7 +59,7 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   
   /// Parse from a json
   factory NetworkStatisticsEntryFile.fromJson(Map<String, dynamic> json) => NetworkStatisticsEntryFile(
-    fileType: FileType.fromJson(json['file_type']),
+    fileType: json['file_type'] == null ? null : FileType.fromJson(json['file_type']),
     networkType: NetworkType.fromJson(json['network_type']),
     sentBytes: json['sent_bytes'],
     receivedBytes: json['received_bytes'],
@@ -70,7 +70,7 @@ class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "file_type": fileType.toJson(),
+      "file_type": fileType?.toJson(),
       "network_type": networkType.toJson(),
       "sent_bytes": sentBytes,
       "received_bytes": receivedBytes,

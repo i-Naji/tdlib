@@ -6,7 +6,7 @@ class GetInlineQueryResults extends TdFunction {
   const GetInlineQueryResults({
     required this.botUserId,
     required this.chatId,
-    required this.userLocation,
+    this.userLocation,
     required this.query,
     required this.offset,
   });
@@ -18,7 +18,7 @@ class GetInlineQueryResults extends TdFunction {
   final int chatId;
 
   /// [userLocation] Location of the user; pass null if unknown or the bot doesn't need user's location
-  final Location userLocation;
+  final Location? userLocation;
 
   /// [query] Text of the query
   final String query;
@@ -32,7 +32,7 @@ class GetInlineQueryResults extends TdFunction {
       "@type": CONSTRUCTOR,
       "bot_user_id": botUserId,
       "chat_id": chatId,
-      "user_location": userLocation.toJson(),
+      "user_location": userLocation?.toJson(),
       "query": query,
       "offset": offset,
       "@extra": extra,

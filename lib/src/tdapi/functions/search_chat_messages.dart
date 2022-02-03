@@ -6,11 +6,11 @@ class SearchChatMessages extends TdFunction {
   const SearchChatMessages({
     required this.chatId,
     required this.query,
-    required this.senderId,
+    this.senderId,
     required this.fromMessageId,
     required this.offset,
     required this.limit,
-    required this.filter,
+    this.filter,
     required this.messageThreadId,
   });
   
@@ -21,7 +21,7 @@ class SearchChatMessages extends TdFunction {
   final String query;
 
   /// [senderId] Identifier of the sender of messages to search for; pass null to search for messages from any sender. Not supported in secret chats
-  final MessageSender senderId;
+  final MessageSender? senderId;
 
   /// [fromMessageId] Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
   final int fromMessageId;
@@ -33,7 +33,7 @@ class SearchChatMessages extends TdFunction {
   final int limit;
 
   /// [filter] Additional filter for messages to search; pass null to search for all messages
-  final SearchMessagesFilter filter;
+  final SearchMessagesFilter? filter;
 
   /// [messageThreadId] If not 0, only messages in the specified thread will be returned; supergroups only
   final int messageThreadId;
@@ -44,11 +44,11 @@ class SearchChatMessages extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "query": query,
-      "sender_id": senderId.toJson(),
+      "sender_id": senderId?.toJson(),
       "from_message_id": fromMessageId,
       "offset": offset,
       "limit": limit,
-      "filter": filter.toJson(),
+      "filter": filter?.toJson(),
       "message_thread_id": messageThreadId,
       "@extra": extra,
     };

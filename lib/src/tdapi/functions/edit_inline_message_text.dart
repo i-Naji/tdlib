@@ -5,7 +5,7 @@ class EditInlineMessageText extends TdFunction {
   /// Edits the text of an inline text or game message sent via a bot; for bots only
   const EditInlineMessageText({
     required this.inlineMessageId,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -13,7 +13,7 @@ class EditInlineMessageText extends TdFunction {
   final String inlineMessageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
@@ -23,7 +23,7 @@ class EditInlineMessageText extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": inlineMessageId,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
     };

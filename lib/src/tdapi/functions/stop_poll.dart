@@ -6,7 +6,7 @@ class StopPoll extends TdFunction {
   const StopPoll({
     required this.chatId,
     required this.messageId,
-    required this.replyMarkup,
+    this.replyMarkup,
   });
   
   /// [chatId] Identifier of the chat to which the poll belongs
@@ -16,7 +16,7 @@ class StopPoll extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class StopPoll extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "@extra": extra,
     };
   }

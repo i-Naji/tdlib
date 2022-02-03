@@ -6,7 +6,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   const SendPhoneNumberConfirmationCode({
     required this.hash,
     required this.phoneNumber,
-    required this.settings,
+    this.settings,
   });
   
   /// [hash] Hash value from the link 
@@ -16,7 +16,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
   final String phoneNumber;
 
   /// [settings] Settings for the authentication of the user's phone number; pass null to use default settings
-  final PhoneNumberAuthenticationSettings settings;
+  final PhoneNumberAuthenticationSettings? settings;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class SendPhoneNumberConfirmationCode extends TdFunction {
       "@type": CONSTRUCTOR,
       "hash": hash,
       "phone_number": phoneNumber,
-      "settings": settings.toJson(),
+      "settings": settings?.toJson(),
       "@extra": extra,
     };
   }

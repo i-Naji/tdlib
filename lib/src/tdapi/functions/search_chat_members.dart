@@ -7,7 +7,7 @@ class SearchChatMembers extends TdFunction {
     required this.chatId,
     required this.query,
     required this.limit,
-    required this.filter,
+    this.filter,
   });
   
   /// [chatId] Chat identifier
@@ -20,7 +20,7 @@ class SearchChatMembers extends TdFunction {
   final int limit;
 
   /// [filter] The type of users to search for; pass null to search among all chat members
-  final ChatMembersFilter filter;
+  final ChatMembersFilter? filter;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -29,7 +29,7 @@ class SearchChatMembers extends TdFunction {
       "chat_id": chatId,
       "query": query,
       "limit": limit,
-      "filter": filter.toJson(),
+      "filter": filter?.toJson(),
       "@extra": extra,
     };
   }

@@ -7,7 +7,7 @@ class SendMessageAlbum extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
     required this.replyToMessageId,
-    required this.options,
+    this.options,
     required this.inputMessageContents,
   });
   
@@ -21,7 +21,7 @@ class SendMessageAlbum extends TdFunction {
   final int replyToMessageId;
 
   /// [options] Options to be used to send the messages; pass null to use default options
-  final MessageSendOptions options;
+  final MessageSendOptions? options;
 
   /// [inputMessageContents] Contents of messages to be sent. At most 10 messages can be added to an album
   final List<InputMessageContent> inputMessageContents;
@@ -33,7 +33,7 @@ class SendMessageAlbum extends TdFunction {
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to_message_id": replyToMessageId,
-      "options": options.toJson(),
+      "options": options?.toJson(),
       "input_message_contents": inputMessageContents.map((i) => i.toJson()).toList(),
       "@extra": extra,
     };

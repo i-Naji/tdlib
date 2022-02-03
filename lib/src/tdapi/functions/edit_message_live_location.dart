@@ -6,8 +6,8 @@ class EditMessageLiveLocation extends TdFunction {
   const EditMessageLiveLocation({
     required this.chatId,
     required this.messageId,
-    required this.replyMarkup,
-    required this.location,
+    this.replyMarkup,
+    this.location,
     required this.heading,
     required this.proximityAlertRadius,
   });
@@ -19,10 +19,10 @@ class EditMessageLiveLocation extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [location] New location content of the message; pass null to stop sharing the live location
-  final Location location;
+  final Location? location;
 
   /// [heading] The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
   final int heading;
@@ -36,8 +36,8 @@ class EditMessageLiveLocation extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reply_markup": replyMarkup.toJson(),
-      "location": location.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
+      "location": location?.toJson(),
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
       "@extra": extra,

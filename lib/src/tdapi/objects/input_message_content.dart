@@ -139,19 +139,19 @@ class InputMessageAnimation extends InputMessageContent {
   /// An animation message (GIF-style).
   const InputMessageAnimation({
     required this.animation,
-    required this.thumbnail,
+    this.thumbnail,
     required this.addedStickerFileIds,
     required this.duration,
     required this.width,
     required this.height,
-    required this.caption,
+    this.caption,
   });
   
   /// [animation] Animation file to be sent 
   final InputFile animation;
 
   /// [thumbnail] Animation thumbnail; pass null to skip thumbnail uploading 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the animation, if applicable
   final List<int> addedStickerFileIds;
@@ -166,17 +166,17 @@ class InputMessageAnimation extends InputMessageContent {
   final int height;
 
   /// [caption] Animation caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
   
   /// Parse from a json
   factory InputMessageAnimation.fromJson(Map<String, dynamic> json) => InputMessageAnimation(
     animation: InputFile.fromJson(json['animation']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
     duration: json['duration'],
     width: json['width'],
     height: json['height'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
   );
   
   
@@ -185,12 +185,12 @@ class InputMessageAnimation extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "animation": animation.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "duration": duration,
       "width": width,
       "height": height,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
     };
   }
   
@@ -225,18 +225,18 @@ class InputMessageAudio extends InputMessageContent {
   /// An audio message
   const InputMessageAudio({
     required this.audio,
-    required this.albumCoverThumbnail,
+    this.albumCoverThumbnail,
     required this.duration,
     required this.title,
     required this.performer,
-    required this.caption,
+    this.caption,
   });
   
   /// [audio] Audio file to be sent 
   final InputFile audio;
 
   /// [albumCoverThumbnail] Thumbnail of the cover for the album; pass null to skip thumbnail uploading 
-  final InputThumbnail albumCoverThumbnail;
+  final InputThumbnail? albumCoverThumbnail;
 
   /// [duration] Duration of the audio, in seconds; may be replaced by the server 
   final int duration;
@@ -248,16 +248,16 @@ class InputMessageAudio extends InputMessageContent {
   final String performer;
 
   /// [caption] Audio caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
   
   /// Parse from a json
   factory InputMessageAudio.fromJson(Map<String, dynamic> json) => InputMessageAudio(
     audio: InputFile.fromJson(json['audio']),
-    albumCoverThumbnail: InputThumbnail.fromJson(json['album_cover_thumbnail']),
+    albumCoverThumbnail: json['album_cover_thumbnail'] == null ? null : InputThumbnail.fromJson(json['album_cover_thumbnail']),
     duration: json['duration'],
     title: json['title'],
     performer: json['performer'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
   );
   
   
@@ -266,11 +266,11 @@ class InputMessageAudio extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "audio": audio.toJson(),
-      "album_cover_thumbnail": albumCoverThumbnail.toJson(),
+      "album_cover_thumbnail": albumCoverThumbnail?.toJson(),
       "duration": duration,
       "title": title,
       "performer": performer,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
     };
   }
   
@@ -303,29 +303,29 @@ class InputMessageDocument extends InputMessageContent {
   /// A document message (general file)
   const InputMessageDocument({
     required this.document,
-    required this.thumbnail,
+    this.thumbnail,
     required this.disableContentTypeDetection,
-    required this.caption,
+    this.caption,
   });
   
   /// [document] Document to be sent 
   final InputFile document;
 
   /// [thumbnail] Document thumbnail; pass null to skip thumbnail uploading 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [disableContentTypeDetection] If true, automatic file type detection will be disabled and the document will be always sent as file. Always true for files sent to secret chats 
   final bool disableContentTypeDetection;
 
   /// [caption] Document caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
   
   /// Parse from a json
   factory InputMessageDocument.fromJson(Map<String, dynamic> json) => InputMessageDocument(
     document: InputFile.fromJson(json['document']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     disableContentTypeDetection: json['disable_content_type_detection'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
   );
   
   
@@ -334,9 +334,9 @@ class InputMessageDocument extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "document": document.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "disable_content_type_detection": disableContentTypeDetection,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
     };
   }
   
@@ -365,11 +365,11 @@ class InputMessagePhoto extends InputMessageContent {
   /// A photo message
   const InputMessagePhoto({
     required this.photo,
-    required this.thumbnail,
+    this.thumbnail,
     required this.addedStickerFileIds,
     required this.width,
     required this.height,
-    required this.caption,
+    this.caption,
     required this.ttl,
   });
   
@@ -377,7 +377,7 @@ class InputMessagePhoto extends InputMessageContent {
   final InputFile photo;
 
   /// [thumbnail] Photo thumbnail to be sent; pass null to skip thumbnail uploading. The thumbnail is sent to the other party only in secret chats 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the photo, if applicable 
   final List<int> addedStickerFileIds;
@@ -389,7 +389,7 @@ class InputMessagePhoto extends InputMessageContent {
   final int height;
 
   /// [caption] Photo caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
 
   /// [ttl] Photo TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
   final int ttl;
@@ -397,11 +397,11 @@ class InputMessagePhoto extends InputMessageContent {
   /// Parse from a json
   factory InputMessagePhoto.fromJson(Map<String, dynamic> json) => InputMessagePhoto(
     photo: InputFile.fromJson(json['photo']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
     width: json['width'],
     height: json['height'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
     ttl: json['ttl'],
   );
   
@@ -411,11 +411,11 @@ class InputMessagePhoto extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "photo": photo.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "width": width,
       "height": height,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
       "ttl": ttl,
     };
   }
@@ -451,7 +451,7 @@ class InputMessageSticker extends InputMessageContent {
   /// A sticker message
   const InputMessageSticker({
     required this.sticker,
-    required this.thumbnail,
+    this.thumbnail,
     required this.width,
     required this.height,
     required this.emoji,
@@ -461,7 +461,7 @@ class InputMessageSticker extends InputMessageContent {
   final InputFile sticker;
 
   /// [thumbnail] Sticker thumbnail; pass null to skip thumbnail uploading 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [width] Sticker width 
   final int width;
@@ -475,7 +475,7 @@ class InputMessageSticker extends InputMessageContent {
   /// Parse from a json
   factory InputMessageSticker.fromJson(Map<String, dynamic> json) => InputMessageSticker(
     sticker: InputFile.fromJson(json['sticker']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     width: json['width'],
     height: json['height'],
     emoji: json['emoji'],
@@ -487,7 +487,7 @@ class InputMessageSticker extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "sticker": sticker.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "width": width,
       "height": height,
       "emoji": emoji,
@@ -521,13 +521,13 @@ class InputMessageVideo extends InputMessageContent {
   /// A video message
   const InputMessageVideo({
     required this.video,
-    required this.thumbnail,
+    this.thumbnail,
     required this.addedStickerFileIds,
     required this.duration,
     required this.width,
     required this.height,
     required this.supportsStreaming,
-    required this.caption,
+    this.caption,
     required this.ttl,
   });
   
@@ -535,7 +535,7 @@ class InputMessageVideo extends InputMessageContent {
   final InputFile video;
 
   /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [addedStickerFileIds] File identifiers of the stickers added to the video, if applicable
   final List<int> addedStickerFileIds;
@@ -553,7 +553,7 @@ class InputMessageVideo extends InputMessageContent {
   final bool supportsStreaming;
 
   /// [caption] Video caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
 
   /// [ttl] Video TTL (Time To Live), in seconds (0-60). A non-zero TTL can be specified only in private chats
   final int ttl;
@@ -561,13 +561,13 @@ class InputMessageVideo extends InputMessageContent {
   /// Parse from a json
   factory InputMessageVideo.fromJson(Map<String, dynamic> json) => InputMessageVideo(
     video: InputFile.fromJson(json['video']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     addedStickerFileIds: List<int>.from((json['added_sticker_file_ids'] ?? []).map((item) => item).toList()),
     duration: json['duration'],
     width: json['width'],
     height: json['height'],
     supportsStreaming: json['supports_streaming'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
     ttl: json['ttl'],
   );
   
@@ -577,13 +577,13 @@ class InputMessageVideo extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "video": video.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "added_sticker_file_ids": addedStickerFileIds.map((i) => i).toList(),
       "duration": duration,
       "width": width,
       "height": height,
       "supports_streaming": supportsStreaming,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
       "ttl": ttl,
     };
   }
@@ -623,7 +623,7 @@ class InputMessageVideoNote extends InputMessageContent {
   /// A video note message
   const InputMessageVideoNote({
     required this.videoNote,
-    required this.thumbnail,
+    this.thumbnail,
     required this.duration,
     required this.length,
   });
@@ -632,7 +632,7 @@ class InputMessageVideoNote extends InputMessageContent {
   final InputFile videoNote;
 
   /// [thumbnail] Video thumbnail; pass null to skip thumbnail uploading 
-  final InputThumbnail thumbnail;
+  final InputThumbnail? thumbnail;
 
   /// [duration] Duration of the video, in seconds 
   final int duration;
@@ -643,7 +643,7 @@ class InputMessageVideoNote extends InputMessageContent {
   /// Parse from a json
   factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) => InputMessageVideoNote(
     videoNote: InputFile.fromJson(json['video_note']),
-    thumbnail: InputThumbnail.fromJson(json['thumbnail']),
+    thumbnail: json['thumbnail'] == null ? null : InputThumbnail.fromJson(json['thumbnail']),
     duration: json['duration'],
     length: json['length'],
   );
@@ -654,7 +654,7 @@ class InputMessageVideoNote extends InputMessageContent {
     return {
       "@type": CONSTRUCTOR,
       "video_note": videoNote.toJson(),
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "duration": duration,
       "length": length,
     };
@@ -687,7 +687,7 @@ class InputMessageVoiceNote extends InputMessageContent {
     required this.voiceNote,
     required this.duration,
     required this.waveform,
-    required this.caption,
+    this.caption,
   });
   
   /// [voiceNote] Voice note to be sent 
@@ -700,14 +700,14 @@ class InputMessageVoiceNote extends InputMessageContent {
   final String waveform;
 
   /// [caption] Voice note caption; pass null to use an empty caption; 0-GetOption("message_caption_length_max") characters
-  final FormattedText caption;
+  final FormattedText? caption;
   
   /// Parse from a json
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) => InputMessageVoiceNote(
     voiceNote: InputFile.fromJson(json['voice_note']),
     duration: json['duration'],
     waveform: json['waveform'],
-    caption: FormattedText.fromJson(json['caption']),
+    caption: json['caption'] == null ? null : FormattedText.fromJson(json['caption']),
   );
   
   
@@ -718,7 +718,7 @@ class InputMessageVoiceNote extends InputMessageContent {
       "voice_note": voiceNote.toJson(),
       "duration": duration,
       "waveform": waveform,
-      "caption": caption.toJson(),
+      "caption": caption?.toJson(),
     };
   }
   
@@ -1183,7 +1183,7 @@ class InputMessageForwarded extends InputMessageContent {
     required this.fromChatId,
     required this.messageId,
     required this.inGameShare,
-    required this.copyOptions,
+    this.copyOptions,
   });
   
   /// [fromChatId] Identifier for the chat this forwarded message came from 
@@ -1196,14 +1196,14 @@ class InputMessageForwarded extends InputMessageContent {
   final bool inGameShare;
 
   /// [copyOptions] Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
-  final MessageCopyOptions copyOptions;
+  final MessageCopyOptions? copyOptions;
   
   /// Parse from a json
   factory InputMessageForwarded.fromJson(Map<String, dynamic> json) => InputMessageForwarded(
     fromChatId: json['from_chat_id'],
     messageId: json['message_id'],
     inGameShare: json['in_game_share'],
-    copyOptions: MessageCopyOptions.fromJson(json['copy_options']),
+    copyOptions: json['copy_options'] == null ? null : MessageCopyOptions.fromJson(json['copy_options']),
   );
   
   
@@ -1214,7 +1214,7 @@ class InputMessageForwarded extends InputMessageContent {
       "from_chat_id": fromChatId,
       "message_id": messageId,
       "in_game_share": inGameShare,
-      "copy_options": copyOptions.toJson(),
+      "copy_options": copyOptions?.toJson(),
     };
   }
   

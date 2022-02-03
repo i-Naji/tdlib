@@ -8,7 +8,7 @@ class GetGroupCallStreamSegment extends TdFunction {
     required this.timeOffset,
     required this.scale,
     required this.channelId,
-    required this.videoQuality,
+    this.videoQuality,
   });
   
   /// [groupCallId] Group call identifier
@@ -24,7 +24,7 @@ class GetGroupCallStreamSegment extends TdFunction {
   final int channelId;
 
   /// [videoQuality] Video quality as received from tgcalls; pass null to get the worst available quality
-  final GroupCallVideoQuality videoQuality;
+  final GroupCallVideoQuality? videoQuality;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -34,7 +34,7 @@ class GetGroupCallStreamSegment extends TdFunction {
       "time_offset": timeOffset,
       "scale": scale,
       "channel_id": channelId,
-      "video_quality": videoQuality.toJson(),
+      "video_quality": videoQuality?.toJson(),
       "@extra": extra,
     };
   }

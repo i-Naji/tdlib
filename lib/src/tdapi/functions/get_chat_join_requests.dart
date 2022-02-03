@@ -7,7 +7,7 @@ class GetChatJoinRequests extends TdFunction {
     required this.chatId,
     required this.inviteLink,
     required this.query,
-    required this.offsetRequest,
+    this.offsetRequest,
     required this.limit,
   });
   
@@ -21,7 +21,7 @@ class GetChatJoinRequests extends TdFunction {
   final String query;
 
   /// [offsetRequest] A chat join request from which to return next requests; pass null to get results from the beginning
-  final ChatJoinRequest offsetRequest;
+  final ChatJoinRequest? offsetRequest;
 
   /// [limit] The maximum number of requests to join the chat to return
   final int limit;
@@ -33,7 +33,7 @@ class GetChatJoinRequests extends TdFunction {
       "chat_id": chatId,
       "invite_link": inviteLink,
       "query": query,
-      "offset_request": offsetRequest.toJson(),
+      "offset_request": offsetRequest?.toJson(),
       "limit": limit,
       "@extra": extra,
     };

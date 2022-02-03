@@ -5,8 +5,8 @@ class EditInlineMessageLiveLocation extends TdFunction {
   /// Edits the content of a live location in an inline message sent via a bot; for bots only
   const EditInlineMessageLiveLocation({
     required this.inlineMessageId,
-    required this.replyMarkup,
-    required this.location,
+    this.replyMarkup,
+    this.location,
     required this.heading,
     required this.proximityAlertRadius,
   });
@@ -15,10 +15,10 @@ class EditInlineMessageLiveLocation extends TdFunction {
   final String inlineMessageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [location] New location content of the message; pass null to stop sharing the live location
-  final Location location;
+  final Location? location;
 
   /// [heading] The new direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
   final int heading;
@@ -31,8 +31,8 @@ class EditInlineMessageLiveLocation extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "inline_message_id": inlineMessageId,
-      "reply_markup": replyMarkup.toJson(),
-      "location": location.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
+      "location": location?.toJson(),
       "heading": heading,
       "proximity_alert_radius": proximityAlertRadius,
       "@extra": extra,

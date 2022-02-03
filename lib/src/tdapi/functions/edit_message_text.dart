@@ -6,7 +6,7 @@ class EditMessageText extends TdFunction {
   const EditMessageText({
     required this.chatId,
     required this.messageId,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -17,7 +17,7 @@ class EditMessageText extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
@@ -28,7 +28,7 @@ class EditMessageText extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
     };

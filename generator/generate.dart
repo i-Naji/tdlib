@@ -439,7 +439,7 @@ class TlObjectArg {
     this.argName = argName ?? lowerFirstChar(camelCase(name));
     type = getType(tlType);
     if (type == 'Error') type = 'TdError';
-    optional = description.contains('may be null') &
+    optional = (description.contains('may be null') || description.contains("pass null")) &
         !description
             .contains('List of'); // null list fiedls are just empty listes.
     read = getRead(name, type,

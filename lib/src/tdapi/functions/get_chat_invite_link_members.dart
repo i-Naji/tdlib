@@ -6,7 +6,7 @@ class GetChatInviteLinkMembers extends TdFunction {
   const GetChatInviteLinkMembers({
     required this.chatId,
     required this.inviteLink,
-    required this.offsetMember,
+    this.offsetMember,
     required this.limit,
   });
   
@@ -17,7 +17,7 @@ class GetChatInviteLinkMembers extends TdFunction {
   final String inviteLink;
 
   /// [offsetMember] A chat member from which to return next chat members; pass null to get results from the beginning
-  final ChatInviteLinkMember offsetMember;
+  final ChatInviteLinkMember? offsetMember;
 
   /// [limit] The maximum number of chat members to return; up to 100
   final int limit;
@@ -28,7 +28,7 @@ class GetChatInviteLinkMembers extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "invite_link": inviteLink,
-      "offset_member": offsetMember.toJson(),
+      "offset_member": offsetMember?.toJson(),
       "limit": limit,
       "@extra": extra,
     };

@@ -5,7 +5,7 @@ class JoinGroupCall extends TdFunction {
   /// Joins an active group call. Returns join response payload for tgcalls
   const JoinGroupCall({
     required this.groupCallId,
-    required this.participantId,
+    this.participantId,
     required this.audioSourceId,
     required this.payload,
     required this.isMuted,
@@ -17,7 +17,7 @@ class JoinGroupCall extends TdFunction {
   final int groupCallId;
 
   /// [participantId] Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
-  final MessageSender participantId;
+  final MessageSender? participantId;
 
   /// [audioSourceId] Caller audio channel synchronization source identifier; received from tgcalls
   final int audioSourceId;
@@ -39,7 +39,7 @@ class JoinGroupCall extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "group_call_id": groupCallId,
-      "participant_id": participantId.toJson(),
+      "participant_id": participantId?.toJson(),
       "audio_source_id": audioSourceId,
       "payload": payload,
       "is_muted": isMuted,

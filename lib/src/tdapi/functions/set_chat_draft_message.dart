@@ -6,7 +6,7 @@ class SetChatDraftMessage extends TdFunction {
   const SetChatDraftMessage({
     required this.chatId,
     required this.messageThreadId,
-    required this.draftMessage,
+    this.draftMessage,
   });
   
   /// [chatId] Chat identifier 
@@ -16,7 +16,7 @@ class SetChatDraftMessage extends TdFunction {
   final int messageThreadId;
 
   /// [draftMessage] New draft message; pass null to remove the draft
-  final DraftMessage draftMessage;
+  final DraftMessage? draftMessage;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class SetChatDraftMessage extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
-      "draft_message": draftMessage.toJson(),
+      "draft_message": draftMessage?.toJson(),
       "@extra": extra,
     };
   }

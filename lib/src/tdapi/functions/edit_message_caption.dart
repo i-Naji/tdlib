@@ -6,8 +6,8 @@ class EditMessageCaption extends TdFunction {
   const EditMessageCaption({
     required this.chatId,
     required this.messageId,
-    required this.replyMarkup,
-    required this.caption,
+    this.replyMarkup,
+    this.caption,
   });
   
   /// [chatId] The chat the message belongs to
@@ -17,10 +17,10 @@ class EditMessageCaption extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [caption] New message content caption; 0-GetOption("message_caption_length_max") characters; pass null to remove caption
-  final FormattedText caption;
+  final FormattedText? caption;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -28,8 +28,8 @@ class EditMessageCaption extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reply_markup": replyMarkup.toJson(),
-      "caption": caption.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
+      "caption": caption?.toJson(),
       "@extra": extra,
     };
   }

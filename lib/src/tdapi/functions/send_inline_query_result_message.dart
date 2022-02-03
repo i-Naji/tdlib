@@ -7,7 +7,7 @@ class SendInlineQueryResultMessage extends TdFunction {
     required this.chatId,
     required this.messageThreadId,
     required this.replyToMessageId,
-    required this.options,
+    this.options,
     required this.queryId,
     required this.resultId,
     required this.hideViaBot,
@@ -23,7 +23,7 @@ class SendInlineQueryResultMessage extends TdFunction {
   final int replyToMessageId;
 
   /// [options] Options to be used to send the message; pass null to use default options
-  final MessageSendOptions options;
+  final MessageSendOptions? options;
 
   /// [queryId] Identifier of the inline query
   final int queryId;
@@ -41,7 +41,7 @@ class SendInlineQueryResultMessage extends TdFunction {
       "chat_id": chatId,
       "message_thread_id": messageThreadId,
       "reply_to_message_id": replyToMessageId,
-      "options": options.toJson(),
+      "options": options?.toJson(),
       "query_id": queryId,
       "result_id": resultId,
       "hide_via_bot": hideViaBot,

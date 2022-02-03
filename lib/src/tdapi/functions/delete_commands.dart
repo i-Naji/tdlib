@@ -4,12 +4,12 @@ class DeleteCommands extends TdFunction {
 
   /// Deletes commands supported by the bot for the given user scope and language; for bots only
   const DeleteCommands({
-    required this.scope,
+    this.scope,
     required this.languageCode,
   });
   
   /// [scope] The scope to which the commands are relevant; pass null to delete commands in the default bot command scope
-  final BotCommandScope scope;
+  final BotCommandScope? scope;
 
   /// [languageCode] A two-letter ISO 639-1 country code or an empty string
   final String languageCode;
@@ -18,7 +18,7 @@ class DeleteCommands extends TdFunction {
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
-      "scope": scope.toJson(),
+      "scope": scope?.toJson(),
       "language_code": languageCode,
       "@extra": extra,
     };

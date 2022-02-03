@@ -5,7 +5,7 @@ class GetSupergroupMembers extends TdFunction {
   /// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
   const GetSupergroupMembers({
     required this.supergroupId,
-    required this.filter,
+    this.filter,
     required this.offset,
     required this.limit,
   });
@@ -14,7 +14,7 @@ class GetSupergroupMembers extends TdFunction {
   final int supergroupId;
 
   /// [filter] The type of users to return; pass null to use supergroupMembersFilterRecent
-  final SupergroupMembersFilter filter;
+  final SupergroupMembersFilter? filter;
 
   /// [offset] Number of users to skip 
   final int offset;
@@ -27,7 +27,7 @@ class GetSupergroupMembers extends TdFunction {
     return {
       "@type": CONSTRUCTOR,
       "supergroup_id": supergroupId,
-      "filter": filter.toJson(),
+      "filter": filter?.toJson(),
       "offset": offset,
       "limit": limit,
       "@extra": extra,

@@ -7,7 +7,7 @@ class MessageSendOptions extends TdObject {
     required this.disableNotification,
     required this.fromBackground,
     required this.protectContent,
-    required this.schedulingState,
+    this.schedulingState,
   });
   
   /// [disableNotification] Pass true to disable notification for the message
@@ -20,14 +20,14 @@ class MessageSendOptions extends TdObject {
   final bool protectContent;
 
   /// [schedulingState] Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
-  final MessageSchedulingState schedulingState;
+  final MessageSchedulingState? schedulingState;
   
   /// Parse from a json
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) => MessageSendOptions(
     disableNotification: json['disable_notification'],
     fromBackground: json['from_background'],
     protectContent: json['protect_content'],
-    schedulingState: MessageSchedulingState.fromJson(json['scheduling_state']),
+    schedulingState: json['scheduling_state'] == null ? null : MessageSchedulingState.fromJson(json['scheduling_state']),
   );
   
   
@@ -38,7 +38,7 @@ class MessageSendOptions extends TdObject {
       "disable_notification": disableNotification,
       "from_background": fromBackground,
       "protect_content": protectContent,
-      "scheduling_state": schedulingState.toJson(),
+      "scheduling_state": schedulingState?.toJson(),
     };
   }
   

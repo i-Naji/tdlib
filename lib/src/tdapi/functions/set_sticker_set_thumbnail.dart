@@ -6,7 +6,7 @@ class SetStickerSetThumbnail extends TdFunction {
   const SetStickerSetThumbnail({
     required this.userId,
     required this.name,
-    required this.thumbnail,
+    this.thumbnail,
   });
   
   /// [userId] Sticker set owner
@@ -16,7 +16,7 @@ class SetStickerSetThumbnail extends TdFunction {
   final String name;
 
   /// [thumbnail] Thumbnail to set in PNG or TGS format; pass null to remove the sticker set thumbnail. Animated thumbnail must be set for animated sticker sets and only for them
-  final InputFile thumbnail;
+  final InputFile? thumbnail;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class SetStickerSetThumbnail extends TdFunction {
       "@type": CONSTRUCTOR,
       "user_id": userId,
       "name": name,
-      "thumbnail": thumbnail.toJson(),
+      "thumbnail": thumbnail?.toJson(),
       "@extra": extra,
     };
   }

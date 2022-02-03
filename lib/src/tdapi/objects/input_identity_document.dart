@@ -5,10 +5,10 @@ class InputIdentityDocument extends TdObject {
   /// An identity document to be saved to Telegram Passport
   const InputIdentityDocument({
     required this.number,
-    required this.expiryDate,
+    this.expiryDate,
     required this.frontSide,
-    required this.reverseSide,
-    required this.selfie,
+    this.reverseSide,
+    this.selfie,
     required this.translation,
   });
   
@@ -16,16 +16,16 @@ class InputIdentityDocument extends TdObject {
   final String number;
 
   /// [expiryDate] Document expiry date; pass null if not applicable 
-  final Date expiryDate;
+  final Date? expiryDate;
 
   /// [frontSide] Front side of the document
   final InputFile frontSide;
 
   /// [reverseSide] Reverse side of the document; only for driver license and identity card; pass null otherwise
-  final InputFile reverseSide;
+  final InputFile? reverseSide;
 
   /// [selfie] Selfie with the document; pass null if unavailable 
-  final InputFile selfie;
+  final InputFile? selfie;
 
   /// [translation] List of files containing a certified English translation of the document
   final List<InputFile> translation;
@@ -33,10 +33,10 @@ class InputIdentityDocument extends TdObject {
   /// Parse from a json
   factory InputIdentityDocument.fromJson(Map<String, dynamic> json) => InputIdentityDocument(
     number: json['number'],
-    expiryDate: Date.fromJson(json['expiry_date']),
+    expiryDate: json['expiry_date'] == null ? null : Date.fromJson(json['expiry_date']),
     frontSide: InputFile.fromJson(json['front_side']),
-    reverseSide: InputFile.fromJson(json['reverse_side']),
-    selfie: InputFile.fromJson(json['selfie']),
+    reverseSide: json['reverse_side'] == null ? null : InputFile.fromJson(json['reverse_side']),
+    selfie: json['selfie'] == null ? null : InputFile.fromJson(json['selfie']),
     translation: List<InputFile>.from((json['translation'] ?? []).map((item) => InputFile.fromJson(item)).toList()),
   );
   
@@ -46,10 +46,10 @@ class InputIdentityDocument extends TdObject {
     return {
       "@type": CONSTRUCTOR,
       "number": number,
-      "expiry_date": expiryDate.toJson(),
+      "expiry_date": expiryDate?.toJson(),
       "front_side": frontSide.toJson(),
-      "reverse_side": reverseSide.toJson(),
-      "selfie": selfie.toJson(),
+      "reverse_side": reverseSide?.toJson(),
+      "selfie": selfie?.toJson(),
       "translation": translation.map((i) => i.toJson()).toList(),
     };
   }

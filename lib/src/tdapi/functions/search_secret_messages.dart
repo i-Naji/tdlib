@@ -8,7 +8,7 @@ class SearchSecretMessages extends TdFunction {
     required this.query,
     required this.offset,
     required this.limit,
-    required this.filter,
+    this.filter,
   });
   
   /// [chatId] Identifier of the chat in which to search. Specify 0 to search in all secret chats
@@ -24,7 +24,7 @@ class SearchSecretMessages extends TdFunction {
   final int limit;
 
   /// [filter] Additional filter for messages to search; pass null to search for all messages
-  final SearchMessagesFilter filter;
+  final SearchMessagesFilter? filter;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -34,7 +34,7 @@ class SearchSecretMessages extends TdFunction {
       "query": query,
       "offset": offset,
       "limit": limit,
-      "filter": filter.toJson(),
+      "filter": filter?.toJson(),
       "@extra": extra,
     };
   }

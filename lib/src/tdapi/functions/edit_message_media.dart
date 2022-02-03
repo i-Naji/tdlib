@@ -6,7 +6,7 @@ class EditMessageMedia extends TdFunction {
   const EditMessageMedia({
     required this.chatId,
     required this.messageId,
-    required this.replyMarkup,
+    this.replyMarkup,
     required this.inputMessageContent,
   });
   
@@ -17,7 +17,7 @@ class EditMessageMedia extends TdFunction {
   final int messageId;
 
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
-  final ReplyMarkup replyMarkup;
+  final ReplyMarkup? replyMarkup;
 
   /// [inputMessageContent] New content of the message. Must be one of the following types: inputMessageAnimation, inputMessageAudio, inputMessageDocument, inputMessagePhoto or inputMessageVideo
   final InputMessageContent inputMessageContent;
@@ -28,7 +28,7 @@ class EditMessageMedia extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "reply_markup": replyMarkup.toJson(),
+      "reply_markup": replyMarkup?.toJson(),
       "input_message_content": inputMessageContent.toJson(),
       "@extra": extra,
     };

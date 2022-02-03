@@ -6,7 +6,7 @@ class EditMessageSchedulingState extends TdFunction {
   const EditMessageSchedulingState({
     required this.chatId,
     required this.messageId,
-    required this.schedulingState,
+    this.schedulingState,
   });
   
   /// [chatId] The chat the message belongs to
@@ -16,7 +16,7 @@ class EditMessageSchedulingState extends TdFunction {
   final int messageId;
 
   /// [schedulingState] The new message scheduling state; pass null to send the message immediately
-  final MessageSchedulingState schedulingState;
+  final MessageSchedulingState? schedulingState;
   
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
@@ -24,7 +24,7 @@ class EditMessageSchedulingState extends TdFunction {
       "@type": CONSTRUCTOR,
       "chat_id": chatId,
       "message_id": messageId,
-      "scheduling_state": schedulingState.toJson(),
+      "scheduling_state": schedulingState?.toJson(),
       "@extra": extra,
     };
   }

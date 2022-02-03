@@ -7,7 +7,7 @@ class CreateNewSupergroupChat extends TdFunction {
     required this.title,
     required this.isChannel,
     required this.description,
-    required this.location,
+    this.location,
     required this.forImport,
   });
   
@@ -21,7 +21,7 @@ class CreateNewSupergroupChat extends TdFunction {
   final String description;
 
   /// [location] Chat location if a location-based supergroup is being created; pass null to create an ordinary supergroup chat
-  final ChatLocation location;
+  final ChatLocation? location;
 
   /// [forImport] True, if the supergroup is created for importing messages using importMessage
   final bool forImport;
@@ -33,7 +33,7 @@ class CreateNewSupergroupChat extends TdFunction {
       "title": title,
       "is_channel": isChannel,
       "description": description,
-      "location": location.toJson(),
+      "location": location?.toJson(),
       "for_import": forImport,
       "@extra": extra,
     };
