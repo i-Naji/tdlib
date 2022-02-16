@@ -8,9 +8,9 @@ This plugin is a complete tdlib-tdjson binding package to help you create your o
 ~~See the `example` directory for the complete sample app.~~
 
 ## Installation
-Install the plugin by running the following command from the project root:
+[Install](https://pub.dev/packages/tdlib/versions/1.5.9/install) the plugin by running the following command from the project root:
 ```
-flutter pub add firebase_core
+flutter pub add tdlib
 ```
 ## Initialization
 This plugin contains only **Android** tdlib-tdjson library. In case of other platforms usage you need to manually put the tdjson library in your project

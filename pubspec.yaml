@@ -1,12 +1,11 @@
 name: tdlib
 description: Flutter Plugin for TDLib.A complete tdlib-tdjson binding package.
-version: 1.5.0
-author: Naji <teamnaji@gmail.com>
+version: 1.5.9
 homepage: https://github.com/i-Naji/tdlib
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: "^2.8.0"
+  flutter: ">=2.8.0"
 
 dependencies:
   flutter:
@@ -73,3 +72,9 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
+false_secrets:
+  - /android/src/main/jniLibs/arm64-v8a/libtdjson.so
+  - /android/src/main/jniLibs/armeabi-v7a/libtdjson.so
+  - /android/src/main/jniLibs/x86/libtdjson.so
+  - /android/src/main/jniLibs/x86_64/libtdjson.so
