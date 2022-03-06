@@ -1,17 +1,14 @@
-import 'package:tdlib/src/tdclient/platform_interfaces/td_native_plugin_stub.dart';
-
-
 /// TDLib Library Instance.
 abstract class TdPlugin {
-
   /// TdPlugin instance.
-  static TdPlugin instance = TdNativePlugin();
+  static late TdPlugin instance;
 
   /// constructor
   const TdPlugin();
 
   /// This method loads TDLib library.
-  static Future<void> Function([String? libPath]) initialize = ([libPath]) async {}; // ignore: prefer_function_declarations_over_variables
+  static Future<void> Function([String? libPath]) initialize = (
+      [libPath]) async {}; // ignore: prefer_function_declarations_over_variables
 
   /// Creates a new instance of TDLib.
   /// Returns client id for the created instance of TDLib.
