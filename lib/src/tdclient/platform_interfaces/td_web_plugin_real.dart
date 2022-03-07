@@ -4,10 +4,9 @@ import 'package:js/js_util.dart';
 
 /// TDLib Web Library Instance.
 class TdWebPlugin extends TdPlugin {
-
   const TdWebPlugin();
 
-  static late final TdWebPlatform _platform;
+  static late TdWebPlatform _platform;
 
   // This class is set to be the default [TdPlugin].web instance.
   static void registerWith([dynamic _]) {
@@ -19,7 +18,6 @@ class TdWebPlugin extends TdPlugin {
     await promiseToFuture(_platform.initialize(libPath));
     TdPlugin.instance = const TdWebPlugin();
   }
-
 
   @override
   int tdCreate() => _platform.createClientId();
@@ -48,7 +46,8 @@ class TdWebPlugin extends TdPlugin {
 
   @override
   String? tdJsonClientReceive(int clientId, [double timeout = 0]) {
-    throw UnsupportedError("tdJsonClientReceive is not supported in web platform");
+    throw UnsupportedError(
+        "tdJsonClientReceive is not supported in web platform");
   }
 
   @override
@@ -58,17 +57,19 @@ class TdWebPlugin extends TdPlugin {
 
   @override
   void tdJsonClientDestroy(int clientId) {
-    throw UnsupportedError("tdJsonClientDestroy is not supported in web platform");
+    throw UnsupportedError(
+        "tdJsonClientDestroy is not supported in web platform");
   }
 
   @override
   void removeLogMessageCallback() {
-    throw UnsupportedError("removeLogMessageCallback is not supported in web platform");
+    throw UnsupportedError(
+        "removeLogMessageCallback is not supported in web platform");
   }
 
   @override
   void setLogMessageCallback(int maxVerbosityLevel, callback) {
-    throw UnsupportedError("setLogMessageCallback is not supported in web platform");
+    throw UnsupportedError(
+        "setLogMessageCallback is not supported in web platform");
   }
-
 }
