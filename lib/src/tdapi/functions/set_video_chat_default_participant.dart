@@ -1,19 +1,18 @@
 part of '../tdapi.dart';
 
 class SetVideoChatDefaultParticipant extends TdFunction {
-
   /// Changes default participant identifier, on whose behalf a video chat in the chat will be joined
   const SetVideoChatDefaultParticipant({
     required this.chatId,
     required this.defaultParticipantId,
   });
-  
-  /// [chatId] Chat identifier 
+
+  /// [chatId] Chat identifier
   final int chatId;
 
   /// [defaultParticipantId] Default group call participant identifier to join the video chats
   final MessageSender defaultParticipantId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -23,17 +22,18 @@ class SetVideoChatDefaultParticipant extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetVideoChatDefaultParticipant copyWith({
     int? chatId,
     MessageSender? defaultParticipantId,
-  }) => SetVideoChatDefaultParticipant(
-    chatId: chatId ?? this.chatId,
-    defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
-  );
+  }) =>
+      SetVideoChatDefaultParticipant(
+        chatId: chatId ?? this.chatId,
+        defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
+      );
 
   static const CONSTRUCTOR = 'setVideoChatDefaultParticipant';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

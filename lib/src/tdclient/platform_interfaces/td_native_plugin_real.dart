@@ -11,9 +11,10 @@ class TdNativePlugin extends TdPlugin {
   }
 
   /// This class is set to be the default [TdPlugin].instance.
-  static Future initialize([String? libPath]) async {
-    TdPlugin.instance =
-        TdNativePlugin(ffi.DynamicLibrary.open(libPath ?? 'libtdjson.so'));
+  static Future<void> initialize([String? libPath]) async {
+    TdPlugin.instance = TdNativePlugin((libPath == null)
+        ? ffi.DynamicLibrary.process()
+        : ffi.DynamicLibrary.open(libPath));
   }
 
   final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)

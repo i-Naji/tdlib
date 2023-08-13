@@ -1,15 +1,14 @@
 part of '../tdapi.dart';
 
 class GetTextEntities extends TdFunction {
-
-  /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) contained in the text. Can be called synchronously
+  /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) found in the text. Can be called synchronously
   const GetTextEntities({
     required this.text,
   });
-  
-  /// [text] The text in which to look for entites
+
+  /// [text] The text in which to look for entities
   final String text;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,16 @@ class GetTextEntities extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetTextEntities copyWith({
     String? text,
-  }) => GetTextEntities(
-    text: text ?? this.text,
-  );
+  }) =>
+      GetTextEntities(
+        text: text ?? this.text,
+      );
 
   static const CONSTRUCTOR = 'getTextEntities';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

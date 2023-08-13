@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Background extends TdObject {
-
   /// Describes a chat background
   const Background({
     required this.id,
@@ -13,7 +12,7 @@ class Background extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Unique background identifier
   final int id;
 
@@ -39,20 +38,21 @@ class Background extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory Background.fromJson(Map<String, dynamic> json) => Background(
-    id: int.parse(json['id']),
-    isDefault: json['is_default'],
-    isDark: json['is_dark'],
-    name: json['name'],
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    type: BackgroundType.fromJson(json['type']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: int.parse(json['id']),
+        isDefault: json['is_default'],
+        isDark: json['is_dark'],
+        name: json['name'],
+        document: json['document'] == null
+            ? null
+            : Document.fromJson(json['document']),
+        type: BackgroundType.fromJson(json['type']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +65,7 @@ class Background extends TdObject {
       "type": type.toJson(),
     };
   }
-  
+
   Background copyWith({
     int? id,
     bool? isDefault,
@@ -75,19 +75,20 @@ class Background extends TdObject {
     BackgroundType? type,
     dynamic extra,
     int? clientId,
-  }) => Background(
-    id: id ?? this.id,
-    isDefault: isDefault ?? this.isDefault,
-    isDark: isDark ?? this.isDark,
-    name: name ?? this.name,
-    document: document ?? this.document,
-    type: type ?? this.type,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      Background(
+        id: id ?? this.id,
+        isDefault: isDefault ?? this.isDefault,
+        isDark: isDark ?? this.isDark,
+        name: name ?? this.name,
+        document: document ?? this.document,
+        type: type ?? this.type,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'background';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

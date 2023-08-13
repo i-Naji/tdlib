@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ChatInviteLinkInfo extends TdObject {
-
   /// Contains information about a chat invite link
   const ChatInviteLinkInfo({
     required this.chatId,
@@ -17,7 +16,7 @@ class ChatInviteLinkInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [chatId] Chat identifier of the invite link; 0 if the user has no access to the chat before joining
   final int chatId;
 
@@ -55,24 +54,27 @@ class ChatInviteLinkInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) => ChatInviteLinkInfo(
-    chatId: json['chat_id'],
-    accessibleFor: json['accessible_for'],
-    type: ChatType.fromJson(json['type']),
-    title: json['title'],
-    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
-    description: json['description'],
-    memberCount: json['member_count'],
-    memberUserIds: List<int>.from((json['member_user_ids'] ?? []).map((item) => item).toList()),
-    createsJoinRequest: json['creates_join_request'],
-    isPublic: json['is_public'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory ChatInviteLinkInfo.fromJson(Map<String, dynamic> json) =>
+      ChatInviteLinkInfo(
+        chatId: json['chat_id'],
+        accessibleFor: json['accessible_for'],
+        type: ChatType.fromJson(json['type']),
+        title: json['title'],
+        photo: json['photo'] == null
+            ? null
+            : ChatPhotoInfo.fromJson(json['photo']),
+        description: json['description'],
+        memberCount: json['member_count'],
+        memberUserIds: List<int>.from(
+            (json['member_user_ids'] ?? []).map((item) => item).toList()),
+        createsJoinRequest: json['creates_join_request'],
+        isPublic: json['is_public'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -89,7 +91,7 @@ class ChatInviteLinkInfo extends TdObject {
       "is_public": isPublic,
     };
   }
-  
+
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
@@ -103,23 +105,24 @@ class ChatInviteLinkInfo extends TdObject {
     bool? isPublic,
     dynamic extra,
     int? clientId,
-  }) => ChatInviteLinkInfo(
-    chatId: chatId ?? this.chatId,
-    accessibleFor: accessibleFor ?? this.accessibleFor,
-    type: type ?? this.type,
-    title: title ?? this.title,
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    memberCount: memberCount ?? this.memberCount,
-    memberUserIds: memberUserIds ?? this.memberUserIds,
-    createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
-    isPublic: isPublic ?? this.isPublic,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      ChatInviteLinkInfo(
+        chatId: chatId ?? this.chatId,
+        accessibleFor: accessibleFor ?? this.accessibleFor,
+        type: type ?? this.type,
+        title: title ?? this.title,
+        photo: photo ?? this.photo,
+        description: description ?? this.description,
+        memberCount: memberCount ?? this.memberCount,
+        memberUserIds: memberUserIds ?? this.memberUserIds,
+        createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
+        isPublic: isPublic ?? this.isPublic,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'chatInviteLinkInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

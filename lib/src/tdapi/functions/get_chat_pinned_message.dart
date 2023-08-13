@@ -1,15 +1,14 @@
 part of '../tdapi.dart';
 
 class GetChatPinnedMessage extends TdFunction {
-
   /// Returns information about a newest pinned message in the chat
   const GetChatPinnedMessage({
     required this.chatId,
   });
-  
+
   /// [chatId] Identifier of the chat the message belongs to
   final int chatId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,16 @@ class GetChatPinnedMessage extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetChatPinnedMessage copyWith({
     int? chatId,
-  }) => GetChatPinnedMessage(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      GetChatPinnedMessage(
+        chatId: chatId ?? this.chatId,
+      );
 
   static const CONSTRUCTOR = 'getChatPinnedMessage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

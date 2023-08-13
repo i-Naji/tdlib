@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class LocalFile extends TdObject {
-
   /// Represents a local file
   const LocalFile({
     required this.path,
@@ -13,7 +12,7 @@ class LocalFile extends TdObject {
     required this.downloadedPrefixSize,
     required this.downloadedSize,
   });
-  
+
   /// [path] Local path to the locally available file part; may be empty
   final String path;
 
@@ -37,20 +36,19 @@ class LocalFile extends TdObject {
 
   /// [downloadedSize] Total downloaded file size, in bytes. Can be used only for calculating download progress. The actual file size may be bigger, and some parts of it may contain garbage
   final int downloadedSize;
-  
+
   /// Parse from a json
   factory LocalFile.fromJson(Map<String, dynamic> json) => LocalFile(
-    path: json['path'],
-    canBeDownloaded: json['can_be_downloaded'],
-    canBeDeleted: json['can_be_deleted'],
-    isDownloadingActive: json['is_downloading_active'],
-    isDownloadingCompleted: json['is_downloading_completed'],
-    downloadOffset: json['download_offset'],
-    downloadedPrefixSize: json['downloaded_prefix_size'],
-    downloadedSize: json['downloaded_size'],
-  );
-  
-  
+        path: json['path'],
+        canBeDownloaded: json['can_be_downloaded'],
+        canBeDeleted: json['can_be_deleted'],
+        isDownloadingActive: json['is_downloading_active'],
+        isDownloadingCompleted: json['is_downloading_completed'],
+        downloadOffset: json['download_offset'],
+        downloadedPrefixSize: json['downloaded_prefix_size'],
+        downloadedSize: json['downloaded_size'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +63,7 @@ class LocalFile extends TdObject {
       "downloaded_size": downloadedSize,
     };
   }
-  
+
   LocalFile copyWith({
     String? path,
     bool? canBeDownloaded,
@@ -75,19 +73,21 @@ class LocalFile extends TdObject {
     int? downloadOffset,
     int? downloadedPrefixSize,
     int? downloadedSize,
-  }) => LocalFile(
-    path: path ?? this.path,
-    canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
-    canBeDeleted: canBeDeleted ?? this.canBeDeleted,
-    isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
-    isDownloadingCompleted: isDownloadingCompleted ?? this.isDownloadingCompleted,
-    downloadOffset: downloadOffset ?? this.downloadOffset,
-    downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
-    downloadedSize: downloadedSize ?? this.downloadedSize,
-  );
+  }) =>
+      LocalFile(
+        path: path ?? this.path,
+        canBeDownloaded: canBeDownloaded ?? this.canBeDownloaded,
+        canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+        isDownloadingActive: isDownloadingActive ?? this.isDownloadingActive,
+        isDownloadingCompleted:
+            isDownloadingCompleted ?? this.isDownloadingCompleted,
+        downloadOffset: downloadOffset ?? this.downloadOffset,
+        downloadedPrefixSize: downloadedPrefixSize ?? this.downloadedPrefixSize,
+        downloadedSize: downloadedSize ?? this.downloadedSize,
+      );
 
   static const CONSTRUCTOR = 'localFile';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

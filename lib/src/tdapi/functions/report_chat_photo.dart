@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ReportChatPhoto extends TdFunction {
-
   /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported
   const ReportChatPhoto({
     required this.chatId,
@@ -9,19 +8,19 @@ class ReportChatPhoto extends TdFunction {
     required this.reason,
     required this.text,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [fileId] Identifier of the photo to report. Only full photos from chatPhoto can be reported 
+  /// [fileId] Identifier of the photo to report. Only full photos from chatPhoto can be reported
   final int fileId;
 
-  /// [reason] The reason for reporting the chat photo 
-  final ChatReportReason reason;
+  /// [reason] The reason for reporting the chat photo
+  final ReportReason reason;
 
   /// [text] Additional report details; 0-1024 characters
   final String text;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,22 @@ class ReportChatPhoto extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ReportChatPhoto copyWith({
     int? chatId,
     int? fileId,
-    ChatReportReason? reason,
+    ReportReason? reason,
     String? text,
-  }) => ReportChatPhoto(
-    chatId: chatId ?? this.chatId,
-    fileId: fileId ?? this.fileId,
-    reason: reason ?? this.reason,
-    text: text ?? this.text,
-  );
+  }) =>
+      ReportChatPhoto(
+        chatId: chatId ?? this.chatId,
+        fileId: fileId ?? this.fileId,
+        reason: reason ?? this.reason,
+        text: text ?? this.text,
+      );
 
   static const CONSTRUCTOR = 'reportChatPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

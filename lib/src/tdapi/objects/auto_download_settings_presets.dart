@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class AutoDownloadSettingsPresets extends TdObject {
-
   /// Contains auto-download settings presets for the current user
   const AutoDownloadSettingsPresets({
     required this.low,
@@ -10,7 +9,7 @@ class AutoDownloadSettingsPresets extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [low] Preset with lowest settings; supposed to be used by default when roaming
   final AutoDownloadSettings low;
 
@@ -27,17 +26,17 @@ class AutoDownloadSettingsPresets extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory AutoDownloadSettingsPresets.fromJson(Map<String, dynamic> json) => AutoDownloadSettingsPresets(
-    low: AutoDownloadSettings.fromJson(json['low']),
-    medium: AutoDownloadSettings.fromJson(json['medium']),
-    high: AutoDownloadSettings.fromJson(json['high']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory AutoDownloadSettingsPresets.fromJson(Map<String, dynamic> json) =>
+      AutoDownloadSettingsPresets(
+        low: AutoDownloadSettings.fromJson(json['low']),
+        medium: AutoDownloadSettings.fromJson(json['medium']),
+        high: AutoDownloadSettings.fromJson(json['high']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +46,24 @@ class AutoDownloadSettingsPresets extends TdObject {
       "high": high.toJson(),
     };
   }
-  
+
   AutoDownloadSettingsPresets copyWith({
     AutoDownloadSettings? low,
     AutoDownloadSettings? medium,
     AutoDownloadSettings? high,
     dynamic extra,
     int? clientId,
-  }) => AutoDownloadSettingsPresets(
-    low: low ?? this.low,
-    medium: medium ?? this.medium,
-    high: high ?? this.high,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      AutoDownloadSettingsPresets(
+        low: low ?? this.low,
+        medium: medium ?? this.medium,
+        high: high ?? this.high,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'autoDownloadSettingsPresets';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

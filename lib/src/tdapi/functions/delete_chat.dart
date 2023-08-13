@@ -1,15 +1,14 @@
 part of '../tdapi.dart';
 
 class DeleteChat extends TdFunction {
-
-  /// Deletes a chat along with all messages in the corresponding chat for all chat members; requires owner privileges. For group chats this will release the username and remove all members. Chats with more than 1000 members can't be deleted using this method
+  /// Deletes a chat along with all messages in the corresponding chat for all chat members. For group chats this will release the usernames and remove all members.. Use the field chat.can_be_deleted_for_all_users to find whether the method can be applied to the chat
   const DeleteChat({
     required this.chatId,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,16 @@ class DeleteChat extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   DeleteChat copyWith({
     int? chatId,
-  }) => DeleteChat(
-    chatId: chatId ?? this.chatId,
-  );
+  }) =>
+      DeleteChat(
+        chatId: chatId ?? this.chatId,
+      );
 
   static const CONSTRUCTOR = 'deleteChat';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

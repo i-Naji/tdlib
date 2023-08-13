@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SupergroupFullInfo extends TdObject {
-
   /// Contains full information about a supergroup or channel
   const SupergroupFullInfo({
     this.photo,
@@ -14,11 +13,14 @@ class SupergroupFullInfo extends TdObject {
     required this.slowModeDelay,
     required this.slowModeDelayExpiresIn,
     required this.canGetMembers,
-    required this.canSetUsername,
+    required this.hasHiddenMembers,
+    required this.canHideMembers,
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
+    required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
+    required this.hasAggressiveAntiSpamEnabled,
     required this.stickerSetId,
     this.location,
     this.inviteLink,
@@ -28,8 +30,8 @@ class SupergroupFullInfo extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [photo] Chat photo; may be null
+
+  /// [photo] Chat photo; may be null if empty or unknown. If non-null, then it is the same photo as in chat.photo
   final ChatPhoto? photo;
 
   /// [description] Supergroup or channel description
@@ -56,11 +58,14 @@ class SupergroupFullInfo extends TdObject {
   /// [slowModeDelayExpiresIn] Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
   final double slowModeDelayExpiresIn;
 
-  /// [canGetMembers] True, if members of the chat can be retrieved
+  /// [canGetMembers] True, if members of the chat can be retrieved via getSupergroupMembers or searchChatMembers
   final bool canGetMembers;
 
-  /// [canSetUsername] True, if the chat username can be changed
-  final bool canSetUsername;
+  /// [hasHiddenMembers] True, if non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers
+  final bool hasHiddenMembers;
+
+  /// [canHideMembers] True, if non-administrators and non-bots can be hidden in responses to getSupergroupMembers and searchChatMembers for non-administrators
+  final bool canHideMembers;
 
   /// [canSetStickerSet] True, if the supergroup sticker set can be changed
   final bool canSetStickerSet;
@@ -71,16 +76,22 @@ class SupergroupFullInfo extends TdObject {
   /// [canGetStatistics] True, if the supergroup or channel statistics are available
   final bool canGetStatistics;
 
-  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public or discussion groups and both public and private channels, old messages are always available, so this option affects only private supergroups without a linked chat. The value of this field is only available for chat administrators
+  /// [canToggleAggressiveAntiSpam] True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
+  final bool canToggleAggressiveAntiSpam;
+
+  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   final bool isAllHistoryAvailable;
+
+  /// [hasAggressiveAntiSpamEnabled] True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
+  final bool hasAggressiveAntiSpamEnabled;
 
   /// [stickerSetId] Identifier of the supergroup sticker set; 0 if none
   final int stickerSetId;
 
-  /// [location] Location to which the supergroup is connected; may be null
+  /// [location] Location to which the supergroup is connected; may be null if none
   final ChatLocation? location;
 
-  /// [inviteLink] Primary invite link for this chat; may be null. For chat administrators with can_invite_users right only
+  /// [inviteLink] Primary invite link for the chat; may be null. For chat administrators with can_invite_users right only
   final ChatInviteLink? inviteLink;
 
   /// [botCommands] List of commands of bots in the group
@@ -99,35 +110,44 @@ class SupergroupFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory SupergroupFullInfo.fromJson(Map<String, dynamic> json) => SupergroupFullInfo(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    description: json['description'],
-    memberCount: json['member_count'],
-    administratorCount: json['administrator_count'],
-    restrictedCount: json['restricted_count'],
-    bannedCount: json['banned_count'],
-    linkedChatId: json['linked_chat_id'] ?? 0,
-    slowModeDelay: json['slow_mode_delay'],
-    slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
-    canGetMembers: json['can_get_members'],
-    canSetUsername: json['can_set_username'],
-    canSetStickerSet: json['can_set_sticker_set'],
-    canSetLocation: json['can_set_location'],
-    canGetStatistics: json['can_get_statistics'],
-    isAllHistoryAvailable: json['is_all_history_available'],
-    stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
-    location: json['location'] == null ? null : ChatLocation.fromJson(json['location']),
-    inviteLink: json['invite_link'] == null ? null : ChatInviteLink.fromJson(json['invite_link']),
-    botCommands: List<BotCommands>.from((json['bot_commands'] ?? []).map((item) => BotCommands.fromJson(item)).toList()),
-    upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] ?? 0,
-    upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory SupergroupFullInfo.fromJson(Map<String, dynamic> json) =>
+      SupergroupFullInfo(
+        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+        description: json['description'],
+        memberCount: json['member_count'],
+        administratorCount: json['administrator_count'],
+        restrictedCount: json['restricted_count'],
+        bannedCount: json['banned_count'],
+        linkedChatId: json['linked_chat_id'] ?? 0,
+        slowModeDelay: json['slow_mode_delay'],
+        slowModeDelayExpiresIn: json['slow_mode_delay_expires_in'],
+        canGetMembers: json['can_get_members'],
+        hasHiddenMembers: json['has_hidden_members'],
+        canHideMembers: json['can_hide_members'],
+        canSetStickerSet: json['can_set_sticker_set'],
+        canSetLocation: json['can_set_location'],
+        canGetStatistics: json['can_get_statistics'],
+        canToggleAggressiveAntiSpam: json['can_toggle_aggressive_anti_spam'],
+        isAllHistoryAvailable: json['is_all_history_available'],
+        hasAggressiveAntiSpamEnabled: json['has_aggressive_anti_spam_enabled'],
+        stickerSetId: int.tryParse(json['sticker_set_id'] ?? "") ?? 0,
+        location: json['location'] == null
+            ? null
+            : ChatLocation.fromJson(json['location']),
+        inviteLink: json['invite_link'] == null
+            ? null
+            : ChatInviteLink.fromJson(json['invite_link']),
+        botCommands: List<BotCommands>.from((json['bot_commands'] ?? [])
+            .map((item) => BotCommands.fromJson(item))
+            .toList()),
+        upgradedFromBasicGroupId: json['upgraded_from_basic_group_id'] ?? 0,
+        upgradedFromMaxMessageId: json['upgraded_from_max_message_id'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -142,11 +162,14 @@ class SupergroupFullInfo extends TdObject {
       "slow_mode_delay": slowModeDelay,
       "slow_mode_delay_expires_in": slowModeDelayExpiresIn,
       "can_get_members": canGetMembers,
-      "can_set_username": canSetUsername,
+      "has_hidden_members": hasHiddenMembers,
+      "can_hide_members": canHideMembers,
       "can_set_sticker_set": canSetStickerSet,
       "can_set_location": canSetLocation,
       "can_get_statistics": canGetStatistics,
+      "can_toggle_aggressive_anti_spam": canToggleAggressiveAntiSpam,
       "is_all_history_available": isAllHistoryAvailable,
+      "has_aggressive_anti_spam_enabled": hasAggressiveAntiSpamEnabled,
       "sticker_set_id": stickerSetId,
       "location": location?.toJson(),
       "invite_link": inviteLink?.toJson(),
@@ -155,7 +178,7 @@ class SupergroupFullInfo extends TdObject {
       "upgraded_from_max_message_id": upgradedFromMaxMessageId,
     };
   }
-  
+
   SupergroupFullInfo copyWith({
     ChatPhoto? photo,
     String? description,
@@ -167,11 +190,14 @@ class SupergroupFullInfo extends TdObject {
     int? slowModeDelay,
     double? slowModeDelayExpiresIn,
     bool? canGetMembers,
-    bool? canSetUsername,
+    bool? hasHiddenMembers,
+    bool? canHideMembers,
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
+    bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
+    bool? hasAggressiveAntiSpamEnabled,
     int? stickerSetId,
     ChatLocation? location,
     ChatInviteLink? inviteLink,
@@ -180,34 +206,44 @@ class SupergroupFullInfo extends TdObject {
     int? upgradedFromMaxMessageId,
     dynamic extra,
     int? clientId,
-  }) => SupergroupFullInfo(
-    photo: photo ?? this.photo,
-    description: description ?? this.description,
-    memberCount: memberCount ?? this.memberCount,
-    administratorCount: administratorCount ?? this.administratorCount,
-    restrictedCount: restrictedCount ?? this.restrictedCount,
-    bannedCount: bannedCount ?? this.bannedCount,
-    linkedChatId: linkedChatId ?? this.linkedChatId,
-    slowModeDelay: slowModeDelay ?? this.slowModeDelay,
-    slowModeDelayExpiresIn: slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
-    canGetMembers: canGetMembers ?? this.canGetMembers,
-    canSetUsername: canSetUsername ?? this.canSetUsername,
-    canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
-    canSetLocation: canSetLocation ?? this.canSetLocation,
-    canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-    isAllHistoryAvailable: isAllHistoryAvailable ?? this.isAllHistoryAvailable,
-    stickerSetId: stickerSetId ?? this.stickerSetId,
-    location: location ?? this.location,
-    inviteLink: inviteLink ?? this.inviteLink,
-    botCommands: botCommands ?? this.botCommands,
-    upgradedFromBasicGroupId: upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
-    upgradedFromMaxMessageId: upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      SupergroupFullInfo(
+        photo: photo ?? this.photo,
+        description: description ?? this.description,
+        memberCount: memberCount ?? this.memberCount,
+        administratorCount: administratorCount ?? this.administratorCount,
+        restrictedCount: restrictedCount ?? this.restrictedCount,
+        bannedCount: bannedCount ?? this.bannedCount,
+        linkedChatId: linkedChatId ?? this.linkedChatId,
+        slowModeDelay: slowModeDelay ?? this.slowModeDelay,
+        slowModeDelayExpiresIn:
+            slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
+        canGetMembers: canGetMembers ?? this.canGetMembers,
+        hasHiddenMembers: hasHiddenMembers ?? this.hasHiddenMembers,
+        canHideMembers: canHideMembers ?? this.canHideMembers,
+        canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
+        canSetLocation: canSetLocation ?? this.canSetLocation,
+        canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canToggleAggressiveAntiSpam:
+            canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
+        isAllHistoryAvailable:
+            isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+        hasAggressiveAntiSpamEnabled:
+            hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+        stickerSetId: stickerSetId ?? this.stickerSetId,
+        location: location ?? this.location,
+        inviteLink: inviteLink ?? this.inviteLink,
+        botCommands: botCommands ?? this.botCommands,
+        upgradedFromBasicGroupId:
+            upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
+        upgradedFromMaxMessageId:
+            upgradedFromMaxMessageId ?? this.upgradedFromMaxMessageId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'supergroupFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

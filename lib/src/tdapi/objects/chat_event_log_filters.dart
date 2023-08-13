@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class ChatEventLogFilters extends TdObject {
-
   /// Represents a set of filters used to obtain a chat event log
   const ChatEventLogFilters({
     required this.messageEdits,
@@ -16,8 +15,9 @@ class ChatEventLogFilters extends TdObject {
     required this.settingChanges,
     required this.inviteLinkChanges,
     required this.videoChatChanges,
+    required this.forumChanges,
   });
-  
+
   /// [messageEdits] True, if message edits need to be returned
   final bool messageEdits;
 
@@ -53,24 +53,28 @@ class ChatEventLogFilters extends TdObject {
 
   /// [videoChatChanges] True, if video chat actions need to be returned
   final bool videoChatChanges;
-  
+
+  /// [forumChanges] True, if forum-related actions need to be returned
+  final bool forumChanges;
+
   /// Parse from a json
-  factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) => ChatEventLogFilters(
-    messageEdits: json['message_edits'],
-    messageDeletions: json['message_deletions'],
-    messagePins: json['message_pins'],
-    memberJoins: json['member_joins'],
-    memberLeaves: json['member_leaves'],
-    memberInvites: json['member_invites'],
-    memberPromotions: json['member_promotions'],
-    memberRestrictions: json['member_restrictions'],
-    infoChanges: json['info_changes'],
-    settingChanges: json['setting_changes'],
-    inviteLinkChanges: json['invite_link_changes'],
-    videoChatChanges: json['video_chat_changes'],
-  );
-  
-  
+  factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) =>
+      ChatEventLogFilters(
+        messageEdits: json['message_edits'],
+        messageDeletions: json['message_deletions'],
+        messagePins: json['message_pins'],
+        memberJoins: json['member_joins'],
+        memberLeaves: json['member_leaves'],
+        memberInvites: json['member_invites'],
+        memberPromotions: json['member_promotions'],
+        memberRestrictions: json['member_restrictions'],
+        infoChanges: json['info_changes'],
+        settingChanges: json['setting_changes'],
+        inviteLinkChanges: json['invite_link_changes'],
+        videoChatChanges: json['video_chat_changes'],
+        forumChanges: json['forum_changes'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -87,9 +91,10 @@ class ChatEventLogFilters extends TdObject {
       "setting_changes": settingChanges,
       "invite_link_changes": inviteLinkChanges,
       "video_chat_changes": videoChatChanges,
+      "forum_changes": forumChanges,
     };
   }
-  
+
   ChatEventLogFilters copyWith({
     bool? messageEdits,
     bool? messageDeletions,
@@ -103,23 +108,26 @@ class ChatEventLogFilters extends TdObject {
     bool? settingChanges,
     bool? inviteLinkChanges,
     bool? videoChatChanges,
-  }) => ChatEventLogFilters(
-    messageEdits: messageEdits ?? this.messageEdits,
-    messageDeletions: messageDeletions ?? this.messageDeletions,
-    messagePins: messagePins ?? this.messagePins,
-    memberJoins: memberJoins ?? this.memberJoins,
-    memberLeaves: memberLeaves ?? this.memberLeaves,
-    memberInvites: memberInvites ?? this.memberInvites,
-    memberPromotions: memberPromotions ?? this.memberPromotions,
-    memberRestrictions: memberRestrictions ?? this.memberRestrictions,
-    infoChanges: infoChanges ?? this.infoChanges,
-    settingChanges: settingChanges ?? this.settingChanges,
-    inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
-    videoChatChanges: videoChatChanges ?? this.videoChatChanges,
-  );
+    bool? forumChanges,
+  }) =>
+      ChatEventLogFilters(
+        messageEdits: messageEdits ?? this.messageEdits,
+        messageDeletions: messageDeletions ?? this.messageDeletions,
+        messagePins: messagePins ?? this.messagePins,
+        memberJoins: memberJoins ?? this.memberJoins,
+        memberLeaves: memberLeaves ?? this.memberLeaves,
+        memberInvites: memberInvites ?? this.memberInvites,
+        memberPromotions: memberPromotions ?? this.memberPromotions,
+        memberRestrictions: memberRestrictions ?? this.memberRestrictions,
+        infoChanges: infoChanges ?? this.infoChanges,
+        settingChanges: settingChanges ?? this.settingChanges,
+        inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
+        videoChatChanges: videoChatChanges ?? this.videoChatChanges,
+        forumChanges: forumChanges ?? this.forumChanges,
+      );
 
   static const CONSTRUCTOR = 'chatEventLogFilters';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

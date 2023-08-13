@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GroupCall extends TdObject {
-
   /// Describes a group call
   const GroupCall({
     required this.id,
@@ -9,10 +8,12 @@ class GroupCall extends TdObject {
     required this.scheduledStartDate,
     required this.enabledStartNotification,
     required this.isActive,
+    required this.isRtmpStream,
     required this.isJoined,
     required this.needRejoin,
     required this.canBeManaged,
     required this.participantCount,
+    required this.hasHiddenListeners,
     required this.loadedAllParticipants,
     required this.recentSpeakers,
     required this.isMyVideoEnabled,
@@ -26,7 +27,7 @@ class GroupCall extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [id] Group call identifier
   final int id;
 
@@ -42,6 +43,9 @@ class GroupCall extends TdObject {
   /// [isActive] True, if the call is active
   final bool isActive;
 
+  /// [isRtmpStream] True, if the chat is an RTMP stream instead of an ordinary video chat
+  final bool isRtmpStream;
+
   /// [isJoined] True, if the call is joined
   final bool isJoined;
 
@@ -53,6 +57,9 @@ class GroupCall extends TdObject {
 
   /// [participantCount] Number of participants in the group call
   final int participantCount;
+
+  /// [hasHiddenListeners] True, if group call participants, which are muted, aren't returned in participant list
+  final bool hasHiddenListeners;
 
   /// [loadedAllParticipants] True, if all group call participants are loaded
   final bool loadedAllParticipants;
@@ -91,33 +98,37 @@ class GroupCall extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory GroupCall.fromJson(Map<String, dynamic> json) => GroupCall(
-    id: json['id'],
-    title: json['title'],
-    scheduledStartDate: json['scheduled_start_date'],
-    enabledStartNotification: json['enabled_start_notification'],
-    isActive: json['is_active'],
-    isJoined: json['is_joined'],
-    needRejoin: json['need_rejoin'],
-    canBeManaged: json['can_be_managed'],
-    participantCount: json['participant_count'],
-    loadedAllParticipants: json['loaded_all_participants'],
-    recentSpeakers: List<GroupCallRecentSpeaker>.from((json['recent_speakers'] ?? []).map((item) => GroupCallRecentSpeaker.fromJson(item)).toList()),
-    isMyVideoEnabled: json['is_my_video_enabled'],
-    isMyVideoPaused: json['is_my_video_paused'],
-    canEnableVideo: json['can_enable_video'],
-    muteNewParticipants: json['mute_new_participants'],
-    canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
-    recordDuration: json['record_duration'] ?? 0,
-    isVideoRecorded: json['is_video_recorded'],
-    duration: json['duration'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        id: json['id'],
+        title: json['title'],
+        scheduledStartDate: json['scheduled_start_date'],
+        enabledStartNotification: json['enabled_start_notification'],
+        isActive: json['is_active'],
+        isRtmpStream: json['is_rtmp_stream'],
+        isJoined: json['is_joined'],
+        needRejoin: json['need_rejoin'],
+        canBeManaged: json['can_be_managed'],
+        participantCount: json['participant_count'],
+        hasHiddenListeners: json['has_hidden_listeners'],
+        loadedAllParticipants: json['loaded_all_participants'],
+        recentSpeakers: List<GroupCallRecentSpeaker>.from(
+            (json['recent_speakers'] ?? [])
+                .map((item) => GroupCallRecentSpeaker.fromJson(item))
+                .toList()),
+        isMyVideoEnabled: json['is_my_video_enabled'],
+        isMyVideoPaused: json['is_my_video_paused'],
+        canEnableVideo: json['can_enable_video'],
+        muteNewParticipants: json['mute_new_participants'],
+        canToggleMuteNewParticipants: json['can_toggle_mute_new_participants'],
+        recordDuration: json['record_duration'] ?? 0,
+        isVideoRecorded: json['is_video_recorded'],
+        duration: json['duration'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -127,10 +138,12 @@ class GroupCall extends TdObject {
       "scheduled_start_date": scheduledStartDate,
       "enabled_start_notification": enabledStartNotification,
       "is_active": isActive,
+      "is_rtmp_stream": isRtmpStream,
       "is_joined": isJoined,
       "need_rejoin": needRejoin,
       "can_be_managed": canBeManaged,
       "participant_count": participantCount,
+      "has_hidden_listeners": hasHiddenListeners,
       "loaded_all_participants": loadedAllParticipants,
       "recent_speakers": recentSpeakers.map((i) => i.toJson()).toList(),
       "is_my_video_enabled": isMyVideoEnabled,
@@ -143,17 +156,19 @@ class GroupCall extends TdObject {
       "duration": duration,
     };
   }
-  
+
   GroupCall copyWith({
     int? id,
     String? title,
     int? scheduledStartDate,
     bool? enabledStartNotification,
     bool? isActive,
+    bool? isRtmpStream,
     bool? isJoined,
     bool? needRejoin,
     bool? canBeManaged,
     int? participantCount,
+    bool? hasHiddenListeners,
     bool? loadedAllParticipants,
     List<GroupCallRecentSpeaker>? recentSpeakers,
     bool? isMyVideoEnabled,
@@ -166,32 +181,38 @@ class GroupCall extends TdObject {
     int? duration,
     dynamic extra,
     int? clientId,
-  }) => GroupCall(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
-    enabledStartNotification: enabledStartNotification ?? this.enabledStartNotification,
-    isActive: isActive ?? this.isActive,
-    isJoined: isJoined ?? this.isJoined,
-    needRejoin: needRejoin ?? this.needRejoin,
-    canBeManaged: canBeManaged ?? this.canBeManaged,
-    participantCount: participantCount ?? this.participantCount,
-    loadedAllParticipants: loadedAllParticipants ?? this.loadedAllParticipants,
-    recentSpeakers: recentSpeakers ?? this.recentSpeakers,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-    isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
-    canEnableVideo: canEnableVideo ?? this.canEnableVideo,
-    muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
-    canToggleMuteNewParticipants: canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
-    recordDuration: recordDuration ?? this.recordDuration,
-    isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
-    duration: duration ?? this.duration,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      GroupCall(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
+        enabledStartNotification:
+            enabledStartNotification ?? this.enabledStartNotification,
+        isActive: isActive ?? this.isActive,
+        isRtmpStream: isRtmpStream ?? this.isRtmpStream,
+        isJoined: isJoined ?? this.isJoined,
+        needRejoin: needRejoin ?? this.needRejoin,
+        canBeManaged: canBeManaged ?? this.canBeManaged,
+        participantCount: participantCount ?? this.participantCount,
+        hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,
+        loadedAllParticipants:
+            loadedAllParticipants ?? this.loadedAllParticipants,
+        recentSpeakers: recentSpeakers ?? this.recentSpeakers,
+        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+        isMyVideoPaused: isMyVideoPaused ?? this.isMyVideoPaused,
+        canEnableVideo: canEnableVideo ?? this.canEnableVideo,
+        muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
+        canToggleMuteNewParticipants:
+            canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
+        recordDuration: recordDuration ?? this.recordDuration,
+        isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
+        duration: duration ?? this.duration,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'groupCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

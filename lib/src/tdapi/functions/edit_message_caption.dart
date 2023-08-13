@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class EditMessageCaption extends TdFunction {
-
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   const EditMessageCaption({
     required this.chatId,
@@ -9,7 +8,7 @@ class EditMessageCaption extends TdFunction {
     this.replyMarkup,
     this.caption,
   });
-  
+
   /// [chatId] The chat the message belongs to
   final int chatId;
 
@@ -19,9 +18,9 @@ class EditMessageCaption extends TdFunction {
   /// [replyMarkup] The new message reply markup; pass null if none; for bots only
   final ReplyMarkup? replyMarkup;
 
-  /// [caption] New message content caption; 0-GetOption("message_caption_length_max") characters; pass null to remove caption
+  /// [caption] New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -33,21 +32,22 @@ class EditMessageCaption extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditMessageCaption copyWith({
     int? chatId,
     int? messageId,
     ReplyMarkup? replyMarkup,
     FormattedText? caption,
-  }) => EditMessageCaption(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      EditMessageCaption(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'editMessageCaption';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Call extends TdObject {
-
   /// Describes a call
   const Call({
     required this.id,
@@ -10,32 +9,31 @@ class Call extends TdObject {
     required this.isVideo,
     required this.state,
   });
-  
-  /// [id] Call identifier, not persistent 
+
+  /// [id] Call identifier, not persistent
   final int id;
 
-  /// [userId] Peer user identifier 
+  /// [userId] Peer user identifier
   final int userId;
 
-  /// [isOutgoing] True, if the call is outgoing 
+  /// [isOutgoing] True, if the call is outgoing
   final bool isOutgoing;
 
-  /// [isVideo] True, if the call is a video call 
+  /// [isVideo] True, if the call is a video call
   final bool isVideo;
 
   /// [state] Call state
   final CallState state;
-  
+
   /// Parse from a json
   factory Call.fromJson(Map<String, dynamic> json) => Call(
-    id: json['id'],
-    userId: json['user_id'],
-    isOutgoing: json['is_outgoing'],
-    isVideo: json['is_video'],
-    state: CallState.fromJson(json['state']),
-  );
-  
-  
+        id: json['id'],
+        userId: json['user_id'],
+        isOutgoing: json['is_outgoing'],
+        isVideo: json['is_video'],
+        state: CallState.fromJson(json['state']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +45,24 @@ class Call extends TdObject {
       "state": state.toJson(),
     };
   }
-  
+
   Call copyWith({
     int? id,
     int? userId,
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
-  }) => Call(
-    id: id ?? this.id,
-    userId: userId ?? this.userId,
-    isOutgoing: isOutgoing ?? this.isOutgoing,
-    isVideo: isVideo ?? this.isVideo,
-    state: state ?? this.state,
-  );
+  }) =>
+      Call(
+        id: id ?? this.id,
+        userId: userId ?? this.userId,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
+        isVideo: isVideo ?? this.isVideo,
+        state: state ?? this.state,
+      );
 
   static const CONSTRUCTOR = 'call';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

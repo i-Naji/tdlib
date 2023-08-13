@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Video extends TdObject {
-
   /// Describes a video file
   const Video({
     required this.duration,
@@ -15,11 +14,11 @@ class Video extends TdObject {
     this.thumbnail,
     required this.video,
   });
-  
-  /// [duration] Duration of the video, in seconds; as defined by the sender 
+
+  /// [duration] Duration of the video, in seconds; as defined by the sender
   final int duration;
 
-  /// [width] Video width; as defined by the sender 
+  /// [width] Video width; as defined by the sender
   final int width;
 
   /// [height] Video height; as defined by the sender
@@ -45,22 +44,25 @@ class Video extends TdObject {
 
   /// [video] File containing the video
   final File video;
-  
+
   /// Parse from a json
   factory Video.fromJson(Map<String, dynamic> json) => Video(
-    duration: json['duration'],
-    width: json['width'],
-    height: json['height'],
-    fileName: json['file_name'],
-    mimeType: json['mime_type'],
-    hasStickers: json['has_stickers'],
-    supportsStreaming: json['supports_streaming'],
-    minithumbnail: json['minithumbnail'] == null ? null : Minithumbnail.fromJson(json['minithumbnail']),
-    thumbnail: json['thumbnail'] == null ? null : Thumbnail.fromJson(json['thumbnail']),
-    video: File.fromJson(json['video']),
-  );
-  
-  
+        duration: json['duration'],
+        width: json['width'],
+        height: json['height'],
+        fileName: json['file_name'],
+        mimeType: json['mime_type'],
+        hasStickers: json['has_stickers'],
+        supportsStreaming: json['supports_streaming'],
+        minithumbnail: json['minithumbnail'] == null
+            ? null
+            : Minithumbnail.fromJson(json['minithumbnail']),
+        thumbnail: json['thumbnail'] == null
+            ? null
+            : Thumbnail.fromJson(json['thumbnail']),
+        video: File.fromJson(json['video']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -77,7 +79,7 @@ class Video extends TdObject {
       "video": video.toJson(),
     };
   }
-  
+
   Video copyWith({
     int? duration,
     int? width,
@@ -89,21 +91,22 @@ class Video extends TdObject {
     Minithumbnail? minithumbnail,
     Thumbnail? thumbnail,
     File? video,
-  }) => Video(
-    duration: duration ?? this.duration,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    fileName: fileName ?? this.fileName,
-    mimeType: mimeType ?? this.mimeType,
-    hasStickers: hasStickers ?? this.hasStickers,
-    supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-    minithumbnail: minithumbnail ?? this.minithumbnail,
-    thumbnail: thumbnail ?? this.thumbnail,
-    video: video ?? this.video,
-  );
+  }) =>
+      Video(
+        duration: duration ?? this.duration,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        fileName: fileName ?? this.fileName,
+        mimeType: mimeType ?? this.mimeType,
+        hasStickers: hasStickers ?? this.hasStickers,
+        supportsStreaming: supportsStreaming ?? this.supportsStreaming,
+        minithumbnail: minithumbnail ?? this.minithumbnail,
+        thumbnail: thumbnail ?? this.thumbnail,
+        video: video ?? this.video,
+      );
 
   static const CONSTRUCTOR = 'video';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

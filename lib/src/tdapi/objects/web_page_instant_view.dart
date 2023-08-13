@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class WebPageInstantView extends TdObject {
-
   /// Describes an instant view page for a web page
   const WebPageInstantView({
     required this.pageBlocks,
@@ -13,7 +12,7 @@ class WebPageInstantView extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [pageBlocks] Content of the web page
   final List<PageBlock> pageBlocks;
 
@@ -39,20 +38,22 @@ class WebPageInstantView extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory WebPageInstantView.fromJson(Map<String, dynamic> json) => WebPageInstantView(
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    viewCount: json['view_count'],
-    version: json['version'],
-    isRtl: json['is_rtl'],
-    isFull: json['is_full'],
-    feedbackLink: InternalLinkType.fromJson(json['feedback_link']),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory WebPageInstantView.fromJson(Map<String, dynamic> json) =>
+      WebPageInstantView(
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        viewCount: json['view_count'],
+        version: json['version'],
+        isRtl: json['is_rtl'],
+        isFull: json['is_full'],
+        feedbackLink: InternalLinkType.fromJson(json['feedback_link']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -65,7 +66,7 @@ class WebPageInstantView extends TdObject {
       "feedback_link": feedbackLink.toJson(),
     };
   }
-  
+
   WebPageInstantView copyWith({
     List<PageBlock>? pageBlocks,
     int? viewCount,
@@ -75,19 +76,20 @@ class WebPageInstantView extends TdObject {
     InternalLinkType? feedbackLink,
     dynamic extra,
     int? clientId,
-  }) => WebPageInstantView(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    viewCount: viewCount ?? this.viewCount,
-    version: version ?? this.version,
-    isRtl: isRtl ?? this.isRtl,
-    isFull: isFull ?? this.isFull,
-    feedbackLink: feedbackLink ?? this.feedbackLink,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebPageInstantView(
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        viewCount: viewCount ?? this.viewCount,
+        version: version ?? this.version,
+        isRtl: isRtl ?? this.isRtl,
+        isFull: isFull ?? this.isFull,
+        feedbackLink: feedbackLink ?? this.feedbackLink,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'webPageInstantView';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

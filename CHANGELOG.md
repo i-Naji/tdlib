@@ -1,3 +1,9 @@
+## 1.6.0
+* Update Flutter version
+* Update tdlib api to **1.8.15**
+* Fix web plugin registration
+* Compatible android plugin for Flutter v3
+
 ## 1.5.9
 * Support null safety
 * Add Support for IOS, macOs, Windows and Web.

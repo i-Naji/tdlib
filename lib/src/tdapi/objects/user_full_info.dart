@@ -1,27 +1,35 @@
 part of '../tdapi.dart';
 
 class UserFullInfo extends TdObject {
-
   /// Contains full information about a user
   const UserFullInfo({
+    this.personalPhoto,
     this.photo,
+    this.publicPhoto,
     required this.isBlocked,
     required this.canBeCalled,
     required this.supportsVideoCalls,
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
+    required this.hasRestrictedVoiceAndVideoNoteMessages,
+    required this.hasPinnedStories,
     required this.needPhoneNumberPrivacyException,
-    required this.bio,
-    required this.shareText,
-    required this.description,
+    this.bio,
+    required this.premiumGiftOptions,
     required this.groupInCommonCount,
-    required this.commands,
+    this.botInfo,
     this.extra,
     this.clientId,
   });
-  
-  /// [photo] User profile photo; may be null
+
+  /// [personalPhoto] User profile photo set by the current user for the contact; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown.. If non-null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos
+  final ChatPhoto? personalPhoto;
+
+  /// [photo] User profile photo; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown.. If non-null and personal_photo is null, then it is the same photo as in user.profile_photo and chat.photo
   final ChatPhoto? photo;
+
+  /// [publicPhoto] User profile photo visible if the main photo is hidden by privacy settings; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown.. If non-null and both photo and personal_photo are null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos
+  final ChatPhoto? publicPhoto;
 
   /// [isBlocked] True, if the user is blocked by the current user
   final bool isBlocked;
@@ -38,23 +46,26 @@ class UserFullInfo extends TdObject {
   /// [hasPrivateForwards] True, if the user can't be linked in forwarded messages due to their privacy settings
   final bool hasPrivateForwards;
 
+  /// [hasRestrictedVoiceAndVideoNoteMessages] True, if voice and video notes can't be sent or forwarded to the user
+  final bool hasRestrictedVoiceAndVideoNoteMessages;
+
+  /// [hasPinnedStories] True, if the user has pinned stories
+  final bool hasPinnedStories;
+
   /// [needPhoneNumberPrivacyException] True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
   final bool needPhoneNumberPrivacyException;
 
-  /// [bio] A short user bio
-  final String bio;
+  /// [bio] A short user bio; may be null for bots
+  final FormattedText? bio;
 
-  /// [shareText] For bots, the text that is shown on the bot's profile page and is sent together with the link when users share the bot
-  final String shareText;
-
-  /// [description] For bots, the text shown in the chat with the bot if the chat is empty
-  final String description;
+  /// [premiumGiftOptions] The list of available options for gifting Telegram Premium to the user
+  final List<PremiumPaymentOption> premiumGiftOptions;
 
   /// [groupInCommonCount] Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
-  /// [commands] For bots, list of the bot commands
-  final List<BotCommand> commands;
+  /// [botInfo] For bots, information about the bot; may be null if the user isn't a bot
+  final BotInfo? botInfo;
 
   /// [extra] callback sign
   @override
@@ -63,79 +74,107 @@ class UserFullInfo extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory UserFullInfo.fromJson(Map<String, dynamic> json) => UserFullInfo(
-    photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
-    isBlocked: json['is_blocked'],
-    canBeCalled: json['can_be_called'],
-    supportsVideoCalls: json['supports_video_calls'],
-    hasPrivateCalls: json['has_private_calls'],
-    hasPrivateForwards: json['has_private_forwards'],
-    needPhoneNumberPrivacyException: json['need_phone_number_privacy_exception'],
-    bio: json['bio'],
-    shareText: json['share_text'],
-    description: json['description'],
-    groupInCommonCount: json['group_in_common_count'],
-    commands: List<BotCommand>.from((json['commands'] ?? []).map((item) => BotCommand.fromJson(item)).toList()),
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        personalPhoto: json['personal_photo'] == null
+            ? null
+            : ChatPhoto.fromJson(json['personal_photo']),
+        photo: json['photo'] == null ? null : ChatPhoto.fromJson(json['photo']),
+        publicPhoto: json['public_photo'] == null
+            ? null
+            : ChatPhoto.fromJson(json['public_photo']),
+        isBlocked: json['is_blocked'],
+        canBeCalled: json['can_be_called'],
+        supportsVideoCalls: json['supports_video_calls'],
+        hasPrivateCalls: json['has_private_calls'],
+        hasPrivateForwards: json['has_private_forwards'],
+        hasRestrictedVoiceAndVideoNoteMessages:
+            json['has_restricted_voice_and_video_note_messages'],
+        hasPinnedStories: json['has_pinned_stories'],
+        needPhoneNumberPrivacyException:
+            json['need_phone_number_privacy_exception'],
+        bio: json['bio'] == null ? null : FormattedText.fromJson(json['bio']),
+        premiumGiftOptions: List<PremiumPaymentOption>.from(
+            (json['premium_gift_options'] ?? [])
+                .map((item) => PremiumPaymentOption.fromJson(item))
+                .toList()),
+        groupInCommonCount: json['group_in_common_count'],
+        botInfo: json['bot_info'] == null
+            ? null
+            : BotInfo.fromJson(json['bot_info']),
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
+      "personal_photo": personalPhoto?.toJson(),
       "photo": photo?.toJson(),
+      "public_photo": publicPhoto?.toJson(),
       "is_blocked": isBlocked,
       "can_be_called": canBeCalled,
       "supports_video_calls": supportsVideoCalls,
       "has_private_calls": hasPrivateCalls,
       "has_private_forwards": hasPrivateForwards,
+      "has_restricted_voice_and_video_note_messages":
+          hasRestrictedVoiceAndVideoNoteMessages,
+      "has_pinned_stories": hasPinnedStories,
       "need_phone_number_privacy_exception": needPhoneNumberPrivacyException,
-      "bio": bio,
-      "share_text": shareText,
-      "description": description,
+      "bio": bio?.toJson(),
+      "premium_gift_options":
+          premiumGiftOptions.map((i) => i.toJson()).toList(),
       "group_in_common_count": groupInCommonCount,
-      "commands": commands.map((i) => i.toJson()).toList(),
+      "bot_info": botInfo?.toJson(),
     };
   }
-  
+
   UserFullInfo copyWith({
+    ChatPhoto? personalPhoto,
     ChatPhoto? photo,
+    ChatPhoto? publicPhoto,
     bool? isBlocked,
     bool? canBeCalled,
     bool? supportsVideoCalls,
     bool? hasPrivateCalls,
     bool? hasPrivateForwards,
+    bool? hasRestrictedVoiceAndVideoNoteMessages,
+    bool? hasPinnedStories,
     bool? needPhoneNumberPrivacyException,
-    String? bio,
-    String? shareText,
-    String? description,
+    FormattedText? bio,
+    List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
-    List<BotCommand>? commands,
+    BotInfo? botInfo,
     dynamic extra,
     int? clientId,
-  }) => UserFullInfo(
-    photo: photo ?? this.photo,
-    isBlocked: isBlocked ?? this.isBlocked,
-    canBeCalled: canBeCalled ?? this.canBeCalled,
-    supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
-    hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
-    hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
-    needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ?? this.needPhoneNumberPrivacyException,
-    bio: bio ?? this.bio,
-    shareText: shareText ?? this.shareText,
-    description: description ?? this.description,
-    groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
-    commands: commands ?? this.commands,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      UserFullInfo(
+        personalPhoto: personalPhoto ?? this.personalPhoto,
+        photo: photo ?? this.photo,
+        publicPhoto: publicPhoto ?? this.publicPhoto,
+        isBlocked: isBlocked ?? this.isBlocked,
+        canBeCalled: canBeCalled ?? this.canBeCalled,
+        supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
+        hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,
+        hasPrivateForwards: hasPrivateForwards ?? this.hasPrivateForwards,
+        hasRestrictedVoiceAndVideoNoteMessages:
+            hasRestrictedVoiceAndVideoNoteMessages ??
+                this.hasRestrictedVoiceAndVideoNoteMessages,
+        hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
+            this.needPhoneNumberPrivacyException,
+        bio: bio ?? this.bio,
+        premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
+        groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        botInfo: botInfo ?? this.botInfo,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'userFullInfo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

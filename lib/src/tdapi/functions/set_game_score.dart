@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class SetGameScore extends TdFunction {
-
   /// Updates the game score of the specified user in the game; for bots only
   const SetGameScore({
     required this.chatId,
@@ -11,17 +10,17 @@ class SetGameScore extends TdFunction {
     required this.score,
     required this.force,
   });
-  
-  /// [chatId] The chat to which the message with the game belongs 
+
+  /// [chatId] The chat to which the message with the game belongs
   final int chatId;
 
-  /// [messageId] Identifier of the message 
+  /// [messageId] Identifier of the message
   final int messageId;
 
-  /// [editMessage] True, if the message needs to be edited 
+  /// [editMessage] Pass true to edit the game message to include the current scoreboard
   final bool editMessage;
 
-  /// [userId] User identifier 
+  /// [userId] User identifier
   final int userId;
 
   /// [score] The new score
@@ -29,7 +28,7 @@ class SetGameScore extends TdFunction {
 
   /// [force] Pass true to update the score even if it decreases. If the score is 0, the user will be deleted from the high score table
   final bool force;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -43,7 +42,7 @@ class SetGameScore extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetGameScore copyWith({
     int? chatId,
     int? messageId,
@@ -51,17 +50,18 @@ class SetGameScore extends TdFunction {
     int? userId,
     int? score,
     bool? force,
-  }) => SetGameScore(
-    chatId: chatId ?? this.chatId,
-    messageId: messageId ?? this.messageId,
-    editMessage: editMessage ?? this.editMessage,
-    userId: userId ?? this.userId,
-    score: score ?? this.score,
-    force: force ?? this.force,
-  );
+  }) =>
+      SetGameScore(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        editMessage: editMessage ?? this.editMessage,
+        userId: userId ?? this.userId,
+        score: score ?? this.score,
+        force: force ?? this.force,
+      );
 
   static const CONSTRUCTOR = 'setGameScore';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

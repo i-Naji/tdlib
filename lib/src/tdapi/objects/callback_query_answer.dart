@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class CallbackQueryAnswer extends TdObject {
-
   /// Contains a bot's answer to a callback query
   const CallbackQueryAnswer({
     required this.text,
@@ -10,11 +9,11 @@ class CallbackQueryAnswer extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [text] Text of the answer 
+
+  /// [text] Text of the answer
   final String text;
 
-  /// [showAlert] True, if an alert must be shown to the user instead of a toast notification 
+  /// [showAlert] True, if an alert must be shown to the user instead of a toast notification
   final bool showAlert;
 
   /// [url] URL to be opened
@@ -27,17 +26,17 @@ class CallbackQueryAnswer extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory CallbackQueryAnswer.fromJson(Map<String, dynamic> json) => CallbackQueryAnswer(
-    text: json['text'],
-    showAlert: json['show_alert'],
-    url: json['url'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory CallbackQueryAnswer.fromJson(Map<String, dynamic> json) =>
+      CallbackQueryAnswer(
+        text: json['text'],
+        showAlert: json['show_alert'],
+        url: json['url'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -47,23 +46,24 @@ class CallbackQueryAnswer extends TdObject {
       "url": url,
     };
   }
-  
+
   CallbackQueryAnswer copyWith({
     String? text,
     bool? showAlert,
     String? url,
     dynamic extra,
     int? clientId,
-  }) => CallbackQueryAnswer(
-    text: text ?? this.text,
-    showAlert: showAlert ?? this.showAlert,
-    url: url ?? this.url,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      CallbackQueryAnswer(
+        text: text ?? this.text,
+        showAlert: showAlert ?? this.showAlert,
+        url: url ?? this.url,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'callbackQueryAnswer';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

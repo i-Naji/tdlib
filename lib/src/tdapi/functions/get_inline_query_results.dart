@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class GetInlineQueryResults extends TdFunction {
-
   /// Sends an inline query to a bot and returns its results. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires
   const GetInlineQueryResults({
     required this.botUserId,
@@ -10,8 +9,8 @@ class GetInlineQueryResults extends TdFunction {
     required this.query,
     required this.offset,
   });
-  
-  /// [botUserId] The identifier of the target bot
+
+  /// [botUserId] Identifier of the target bot
   final int botUserId;
 
   /// [chatId] Identifier of the chat where the query was sent
@@ -25,7 +24,7 @@ class GetInlineQueryResults extends TdFunction {
 
   /// [offset] Offset of the first entry to return
   final String offset;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,24 @@ class GetInlineQueryResults extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetInlineQueryResults copyWith({
     int? botUserId,
     int? chatId,
     Location? userLocation,
     String? query,
     String? offset,
-  }) => GetInlineQueryResults(
-    botUserId: botUserId ?? this.botUserId,
-    chatId: chatId ?? this.chatId,
-    userLocation: userLocation ?? this.userLocation,
-    query: query ?? this.query,
-    offset: offset ?? this.offset,
-  );
+  }) =>
+      GetInlineQueryResults(
+        botUserId: botUserId ?? this.botUserId,
+        chatId: chatId ?? this.chatId,
+        userLocation: userLocation ?? this.userLocation,
+        query: query ?? this.query,
+        offset: offset ?? this.offset,
+      );
 
   static const CONSTRUCTOR = 'getInlineQueryResults';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

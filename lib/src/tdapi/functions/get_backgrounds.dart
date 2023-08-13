@@ -1,15 +1,14 @@
 part of '../tdapi.dart';
 
 class GetBackgrounds extends TdFunction {
-
   /// Returns backgrounds installed by the user
   const GetBackgrounds({
     required this.forDarkTheme,
   });
-  
-  /// [forDarkTheme] True, if the backgrounds must be ordered for dark theme
+
+  /// [forDarkTheme] Pass true to order returned backgrounds for a dark theme
   final bool forDarkTheme;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,16 @@ class GetBackgrounds extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetBackgrounds copyWith({
     bool? forDarkTheme,
-  }) => GetBackgrounds(
-    forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-  );
+  }) =>
+      GetBackgrounds(
+        forDarkTheme: forDarkTheme ?? this.forDarkTheme,
+      );
 
   static const CONSTRUCTOR = 'getBackgrounds';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

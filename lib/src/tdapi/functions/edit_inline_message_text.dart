@@ -1,14 +1,13 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageText extends TdFunction {
-
   /// Edits the text of an inline text or game message sent via a bot; for bots only
   const EditInlineMessageText({
     required this.inlineMessageId,
     this.replyMarkup,
     required this.inputMessageContent,
   });
-  
+
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
@@ -17,7 +16,7 @@ class EditInlineMessageText extends TdFunction {
 
   /// [inputMessageContent] New text content of the message. Must be of type inputMessageText
   final InputMessageContent inputMessageContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,20 @@ class EditInlineMessageText extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditInlineMessageText copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     InputMessageContent? inputMessageContent,
-  }) => EditInlineMessageText(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    inputMessageContent: inputMessageContent ?? this.inputMessageContent,
-  );
+  }) =>
+      EditInlineMessageText(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        inputMessageContent: inputMessageContent ?? this.inputMessageContent,
+      );
 
   static const CONSTRUCTOR = 'editInlineMessageText';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

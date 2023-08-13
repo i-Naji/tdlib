@@ -1,14 +1,13 @@
 part of '../tdapi.dart';
 
 class ImportMessages extends TdFunction {
-
   /// Imports messages exported from another app
   const ImportMessages({
     required this.chatId,
     required this.messageFile,
     required this.attachedFiles,
   });
-  
+
   /// [chatId] Identifier of a chat to which the messages will be imported. It must be an identifier of a private chat with a mutual contact or an identifier of a supergroup chat with can_change_info administrator right
   final int chatId;
 
@@ -17,7 +16,7 @@ class ImportMessages extends TdFunction {
 
   /// [attachedFiles] Files used in the imported messages. Only inputFileLocal and inputFileGenerated are supported. The files must not be previously uploaded
   final List<InputFile> attachedFiles;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -28,19 +27,20 @@ class ImportMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ImportMessages copyWith({
     int? chatId,
     InputFile? messageFile,
     List<InputFile>? attachedFiles,
-  }) => ImportMessages(
-    chatId: chatId ?? this.chatId,
-    messageFile: messageFile ?? this.messageFile,
-    attachedFiles: attachedFiles ?? this.attachedFiles,
-  );
+  }) =>
+      ImportMessages(
+        chatId: chatId ?? this.chatId,
+        messageFile: messageFile ?? this.messageFile,
+        attachedFiles: attachedFiles ?? this.attachedFiles,
+      );
 
   static const CONSTRUCTOR = 'importMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

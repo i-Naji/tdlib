@@ -1,14 +1,13 @@
 part of '../tdapi.dart';
 
 class TestBytes extends TdObject {
-
   /// A simple object containing a sequence of bytes; for testing only
   const TestBytes({
     required this.value,
     this.extra,
     this.clientId,
   });
-  
+
   /// [value] Bytes
   final String value;
 
@@ -19,15 +18,14 @@ class TestBytes extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory TestBytes.fromJson(Map<String, dynamic> json) => TestBytes(
-    value: json['value'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        value: json['value'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -35,19 +33,20 @@ class TestBytes extends TdObject {
       "value": value,
     };
   }
-  
+
   TestBytes copyWith({
     String? value,
     dynamic extra,
     int? clientId,
-  }) => TestBytes(
-    value: value ?? this.value,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      TestBytes(
+        value: value ?? this.value,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'testBytes';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

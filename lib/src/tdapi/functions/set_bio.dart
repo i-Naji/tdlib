@@ -1,15 +1,14 @@
 part of '../tdapi.dart';
 
 class SetBio extends TdFunction {
-
   /// Changes the bio of the current user
   const SetBio({
     required this.bio,
   });
-  
-  /// [bio] The new value of the user bio; 0-70 characters without line feeds
+
+  /// [bio] The new value of the user bio; 0-getOption("bio_length_max") characters without line feeds
   final String bio;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -18,15 +17,16 @@ class SetBio extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SetBio copyWith({
     String? bio,
-  }) => SetBio(
-    bio: bio ?? this.bio,
-  );
+  }) =>
+      SetBio(
+        bio: bio ?? this.bio,
+      );
 
   static const CONSTRUCTOR = 'setBio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

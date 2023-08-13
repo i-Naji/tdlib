@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class Thumbnail extends TdObject {
-
   /// Represents a thumbnail
   const Thumbnail({
     required this.format,
@@ -9,28 +8,27 @@ class Thumbnail extends TdObject {
     required this.height,
     required this.file,
   });
-  
-  /// [format] Thumbnail format 
+
+  /// [format] Thumbnail format
   final ThumbnailFormat format;
 
-  /// [width] Thumbnail width 
+  /// [width] Thumbnail width
   final int width;
 
-  /// [height] Thumbnail height 
+  /// [height] Thumbnail height
   final int height;
 
   /// [file] The thumbnail
   final File file;
-  
+
   /// Parse from a json
   factory Thumbnail.fromJson(Map<String, dynamic> json) => Thumbnail(
-    format: ThumbnailFormat.fromJson(json['format']),
-    width: json['width'],
-    height: json['height'],
-    file: File.fromJson(json['file']),
-  );
-  
-  
+        format: ThumbnailFormat.fromJson(json['format']),
+        width: json['width'],
+        height: json['height'],
+        file: File.fromJson(json['file']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +39,22 @@ class Thumbnail extends TdObject {
       "file": file.toJson(),
     };
   }
-  
+
   Thumbnail copyWith({
     ThumbnailFormat? format,
     int? width,
     int? height,
     File? file,
-  }) => Thumbnail(
-    format: format ?? this.format,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    file: file ?? this.file,
-  );
+  }) =>
+      Thumbnail(
+        format: format ?? this.format,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        file: file ?? this.file,
+      );
 
   static const CONSTRUCTOR = 'thumbnail';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

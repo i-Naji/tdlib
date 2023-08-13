@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class JoinGroupCall extends TdFunction {
-
   /// Joins an active group call. Returns join response payload for tgcalls
   const JoinGroupCall({
     required this.groupCallId,
@@ -12,7 +11,7 @@ class JoinGroupCall extends TdFunction {
     required this.isMyVideoEnabled,
     required this.inviteHash,
   });
-  
+
   /// [groupCallId] Group call identifier
   final int groupCallId;
 
@@ -25,15 +24,15 @@ class JoinGroupCall extends TdFunction {
   /// [payload] Group call join payload; received from tgcalls
   final String payload;
 
-  /// [isMuted] True, if the user's microphone is muted
+  /// [isMuted] Pass true to join the call with muted microphone
   final bool isMuted;
 
-  /// [isMyVideoEnabled] True, if the user's video is enabled
+  /// [isMyVideoEnabled] Pass true if the user's video is enabled
   final bool isMyVideoEnabled;
 
   /// [inviteHash] If non-empty, invite hash to be used to join the group call without being muted by administrators
   final String inviteHash;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -48,7 +47,7 @@ class JoinGroupCall extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   JoinGroupCall copyWith({
     int? groupCallId,
     MessageSender? participantId,
@@ -57,18 +56,19 @@ class JoinGroupCall extends TdFunction {
     bool? isMuted,
     bool? isMyVideoEnabled,
     String? inviteHash,
-  }) => JoinGroupCall(
-    groupCallId: groupCallId ?? this.groupCallId,
-    participantId: participantId ?? this.participantId,
-    audioSourceId: audioSourceId ?? this.audioSourceId,
-    payload: payload ?? this.payload,
-    isMuted: isMuted ?? this.isMuted,
-    isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-    inviteHash: inviteHash ?? this.inviteHash,
-  );
+  }) =>
+      JoinGroupCall(
+        groupCallId: groupCallId ?? this.groupCallId,
+        participantId: participantId ?? this.participantId,
+        audioSourceId: audioSourceId ?? this.audioSourceId,
+        payload: payload ?? this.payload,
+        isMuted: isMuted ?? this.isMuted,
+        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
+        inviteHash: inviteHash ?? this.inviteHash,
+      );
 
   static const CONSTRUCTOR = 'joinGroupCall';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

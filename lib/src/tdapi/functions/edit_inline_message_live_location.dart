@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class EditInlineMessageLiveLocation extends TdFunction {
-
   /// Edits the content of a live location in an inline message sent via a bot; for bots only
   const EditInlineMessageLiveLocation({
     required this.inlineMessageId,
@@ -10,7 +9,7 @@ class EditInlineMessageLiveLocation extends TdFunction {
     required this.heading,
     required this.proximityAlertRadius,
   });
-  
+
   /// [inlineMessageId] Inline message identifier
   final String inlineMessageId;
 
@@ -25,7 +24,7 @@ class EditInlineMessageLiveLocation extends TdFunction {
 
   /// [proximityAlertRadius] The new maximum distance for proximity alerts, in meters (0-100000). Pass 0 if the notification is disabled
   final int proximityAlertRadius;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -38,23 +37,24 @@ class EditInlineMessageLiveLocation extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   EditInlineMessageLiveLocation copyWith({
     String? inlineMessageId,
     ReplyMarkup? replyMarkup,
     Location? location,
     int? heading,
     int? proximityAlertRadius,
-  }) => EditInlineMessageLiveLocation(
-    inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-    replyMarkup: replyMarkup ?? this.replyMarkup,
-    location: location ?? this.location,
-    heading: heading ?? this.heading,
-    proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
-  );
+  }) =>
+      EditInlineMessageLiveLocation(
+        inlineMessageId: inlineMessageId ?? this.inlineMessageId,
+        replyMarkup: replyMarkup ?? this.replyMarkup,
+        location: location ?? this.location,
+        heading: heading ?? this.heading,
+        proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
+      );
 
   static const CONSTRUCTOR = 'editInlineMessageLiveLocation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

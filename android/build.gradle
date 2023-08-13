@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.android.tools.build:gradle:7.3.0'
     }
 }
 
@@ -24,16 +24,15 @@ apply plugin: 'com.android.library'
 android {
     compileSdkVersion 31
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         minSdkVersion 16
         ndk {
             abiFilters  'armeabi-v7a','arm64-v8a','x86','x86_64'
         }
     }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
 }

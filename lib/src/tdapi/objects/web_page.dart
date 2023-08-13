@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class WebPage extends TdObject {
-
   /// Describes a web page preview
   const WebPage({
     required this.url,
@@ -24,11 +23,13 @@ class WebPage extends TdObject {
     this.video,
     this.videoNote,
     this.voiceNote,
+    required this.storySenderChatId,
+    required this.storyId,
     required this.instantViewVersion,
     this.extra,
     this.clientId,
   });
-  
+
   /// [url] Original URL of the link
   final String url;
 
@@ -89,7 +90,13 @@ class WebPage extends TdObject {
   /// [voiceNote] Preview of the content as a voice note, if available; may be null
   final VoiceNote? voiceNote;
 
-  /// [instantViewVersion] Version of instant view, available for the web page (currently, can be 1 or 2), 0 if none
+  /// [storySenderChatId] The identifier of the sender of the previewed story; 0 if none
+  final int storySenderChatId;
+
+  /// [storyId] The identifier of the previewed story; 0 if none
+  final int storyId;
+
+  /// [instantViewVersion] Version of web page instant view (currently, can be 1 or 2); 0 if none
   final int instantViewVersion;
 
   /// [extra] callback sign
@@ -99,35 +106,45 @@ class WebPage extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory WebPage.fromJson(Map<String, dynamic> json) => WebPage(
-    url: json['url'],
-    displayUrl: json['display_url'],
-    type: json['type'],
-    siteName: json['site_name'],
-    title: json['title'],
-    description: FormattedText.fromJson(json['description']),
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    embedUrl: json['embed_url'],
-    embedType: json['embed_type'],
-    embedWidth: json['embed_width'],
-    embedHeight: json['embed_height'],
-    duration: json['duration'],
-    author: json['author'],
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
-    audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
-    document: json['document'] == null ? null : Document.fromJson(json['document']),
-    sticker: json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
-    video: json['video'] == null ? null : Video.fromJson(json['video']),
-    videoNote: json['video_note'] == null ? null : VideoNote.fromJson(json['video_note']),
-    voiceNote: json['voice_note'] == null ? null : VoiceNote.fromJson(json['voice_note']),
-    instantViewVersion: json['instant_view_version'] ?? 0,
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        url: json['url'],
+        displayUrl: json['display_url'],
+        type: json['type'],
+        siteName: json['site_name'],
+        title: json['title'],
+        description: FormattedText.fromJson(json['description']),
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        embedUrl: json['embed_url'],
+        embedType: json['embed_type'],
+        embedWidth: json['embed_width'],
+        embedHeight: json['embed_height'],
+        duration: json['duration'],
+        author: json['author'],
+        animation: json['animation'] == null
+            ? null
+            : Animation.fromJson(json['animation']),
+        audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
+        document: json['document'] == null
+            ? null
+            : Document.fromJson(json['document']),
+        sticker:
+            json['sticker'] == null ? null : Sticker.fromJson(json['sticker']),
+        video: json['video'] == null ? null : Video.fromJson(json['video']),
+        videoNote: json['video_note'] == null
+            ? null
+            : VideoNote.fromJson(json['video_note']),
+        voiceNote: json['voice_note'] == null
+            ? null
+            : VoiceNote.fromJson(json['voice_note']),
+        storySenderChatId: json['story_sender_chat_id'] ?? 0,
+        storyId: json['story_id'] ?? 0,
+        instantViewVersion: json['instant_view_version'] ?? 0,
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -152,10 +169,12 @@ class WebPage extends TdObject {
       "video": video?.toJson(),
       "video_note": videoNote?.toJson(),
       "voice_note": voiceNote?.toJson(),
+      "story_sender_chat_id": storySenderChatId,
+      "story_id": storyId,
       "instant_view_version": instantViewVersion,
     };
   }
-  
+
   WebPage copyWith({
     String? url,
     String? displayUrl,
@@ -177,37 +196,42 @@ class WebPage extends TdObject {
     Video? video,
     VideoNote? videoNote,
     VoiceNote? voiceNote,
+    int? storySenderChatId,
+    int? storyId,
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
-  }) => WebPage(
-    url: url ?? this.url,
-    displayUrl: displayUrl ?? this.displayUrl,
-    type: type ?? this.type,
-    siteName: siteName ?? this.siteName,
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    embedUrl: embedUrl ?? this.embedUrl,
-    embedType: embedType ?? this.embedType,
-    embedWidth: embedWidth ?? this.embedWidth,
-    embedHeight: embedHeight ?? this.embedHeight,
-    duration: duration ?? this.duration,
-    author: author ?? this.author,
-    animation: animation ?? this.animation,
-    audio: audio ?? this.audio,
-    document: document ?? this.document,
-    sticker: sticker ?? this.sticker,
-    video: video ?? this.video,
-    videoNote: videoNote ?? this.videoNote,
-    voiceNote: voiceNote ?? this.voiceNote,
-    instantViewVersion: instantViewVersion ?? this.instantViewVersion,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      WebPage(
+        url: url ?? this.url,
+        displayUrl: displayUrl ?? this.displayUrl,
+        type: type ?? this.type,
+        siteName: siteName ?? this.siteName,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        embedUrl: embedUrl ?? this.embedUrl,
+        embedType: embedType ?? this.embedType,
+        embedWidth: embedWidth ?? this.embedWidth,
+        embedHeight: embedHeight ?? this.embedHeight,
+        duration: duration ?? this.duration,
+        author: author ?? this.author,
+        animation: animation ?? this.animation,
+        audio: audio ?? this.audio,
+        document: document ?? this.document,
+        sticker: sticker ?? this.sticker,
+        video: video ?? this.video,
+        videoNote: videoNote ?? this.videoNote,
+        voiceNote: voiceNote ?? this.voiceNote,
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyId: storyId ?? this.storyId,
+        instantViewVersion: instantViewVersion ?? this.instantViewVersion,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'webPage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

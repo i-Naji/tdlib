@@ -1,7 +1,7 @@
 import 'td_plugin.dart';
+
 /// TDLib Native Library Instance.
 class TdNativePlugin extends TdPlugin {
-
   /// This class is set to be the default [TdPlugin] initializer.
   static void registerWith() {}
 

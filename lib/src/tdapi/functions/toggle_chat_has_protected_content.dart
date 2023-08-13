@@ -1,19 +1,18 @@
 part of '../tdapi.dart';
 
 class ToggleChatHasProtectedContent extends TdFunction {
-
   /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges
   const ToggleChatHasProtectedContent({
     required this.chatId,
     required this.hasProtectedContent,
   });
-  
+
   /// [chatId] Chat identifier
   final int chatId;
 
-  /// [hasProtectedContent] True, if chat content can't be saved locally, forwarded, or copied
+  /// [hasProtectedContent] New value of has_protected_content
   final bool hasProtectedContent;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -23,17 +22,18 @@ class ToggleChatHasProtectedContent extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   ToggleChatHasProtectedContent copyWith({
     int? chatId,
     bool? hasProtectedContent,
-  }) => ToggleChatHasProtectedContent(
-    chatId: chatId ?? this.chatId,
-    hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
-  );
+  }) =>
+      ToggleChatHasProtectedContent(
+        chatId: chatId ?? this.chatId,
+        hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
+      );
 
   static const CONSTRUCTOR = 'toggleChatHasProtectedContent';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

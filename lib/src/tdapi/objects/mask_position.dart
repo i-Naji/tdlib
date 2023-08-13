@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class MaskPosition extends TdObject {
-
   /// Position on a photo where a mask is placed
   const MaskPosition({
     required this.point,
@@ -9,7 +8,7 @@ class MaskPosition extends TdObject {
     required this.yShift,
     required this.scale,
   });
-  
+
   /// [point] Part of the face, relative to which the mask is placed
   final MaskPoint point;
 
@@ -21,16 +20,15 @@ class MaskPosition extends TdObject {
 
   /// [scale] Mask scaling coefficient. (For example, 2.0 means a doubled size)
   final double scale;
-  
+
   /// Parse from a json
   factory MaskPosition.fromJson(Map<String, dynamic> json) => MaskPosition(
-    point: MaskPoint.fromJson(json['point']),
-    xShift: json['x_shift'],
-    yShift: json['y_shift'],
-    scale: json['scale'],
-  );
-  
-  
+        point: MaskPoint.fromJson(json['point']),
+        xShift: json['x_shift'],
+        yShift: json['y_shift'],
+        scale: json['scale'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -41,21 +39,22 @@ class MaskPosition extends TdObject {
       "scale": scale,
     };
   }
-  
+
   MaskPosition copyWith({
     MaskPoint? point,
     double? xShift,
     double? yShift,
     double? scale,
-  }) => MaskPosition(
-    point: point ?? this.point,
-    xShift: xShift ?? this.xShift,
-    yShift: yShift ?? this.yShift,
-    scale: scale ?? this.scale,
-  );
+  }) =>
+      MaskPosition(
+        point: point ?? this.point,
+        xShift: xShift ?? this.xShift,
+        yShift: yShift ?? this.yShift,
+        scale: scale ?? this.scale,
+      );
 
   static const CONSTRUCTOR = 'maskPosition';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

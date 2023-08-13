@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_interpolation_to_compose_strings
 import 'dart:io';
 
 const tdApiDir = 'lib/src/tdapi';
@@ -218,7 +219,8 @@ class DartTdDocumentationGenerator {
           fromJsonFields.add('${variable.argName}: ${variable.read},');
           toJsonFields.add('\n      "${variable.name}": ${variable.write},');
           copyWithFields.add('${variable.type}? ${variable.argName},');
-          copyWithReturnFields.add('${variable.argName}: ${variable.argName} ?? this.${variable.argName},');
+          copyWithReturnFields.add(
+              '${variable.argName}: ${variable.argName} ?? this.${variable.argName},');
         });
         if (obj.isFunction) {
           fromJsonFields = [];
@@ -241,7 +243,8 @@ class DartTdDocumentationGenerator {
           }
           if (_objects.any(
               (e) => e.isFunction && e.relevantObjects.contains(obj.name))) {
-            variables.add('/// [extra] callback sign\n  @override\n  final dynamic extra;');
+            variables.add(
+                '/// [extra] callback sign\n  @override\n  final dynamic extra;');
             arguments.add('this.extra');
             fromJsonFields.add('extra: json[\'@extra\'],');
             copyWithFields.add('dynamic extra,');
@@ -273,8 +276,6 @@ class DartTdDocumentationGenerator {
           .replaceAll('DESCRIPTION', obj.description)
           // + (hasFactory
 
-
-
           //     ? ''
           //     : (obj.variables.isNotEmpty
           //         ? '. \n  /// ${obj.variables.map((o) => '[${o.argName}] ${o.description}').join('. \n  /// ')}'
@@ -305,11 +306,17 @@ class DartTdDocumentationGenerator {
                               : obj.isParent
                                   ? ' {\n    ${fromJsonFields.join('\n    ')}\n  }'
                                   : '=> CLASS_NAME(\n    ${fromJsonFields.join('\n    ')}\n  );\n  '))
-      .replaceAll('COPY_FIELDS', copyWithFields.isEmpty ? '' : '{\n    ${copyWithFields.join('\n    ')}\n  }')
-      .replaceAll('COPY_RETUEN', copyWithReturnFields.isEmpty ? 'const CLASS_NAME()' : 'CLASS_NAME(\n    ${copyWithReturnFields.join('\n    ')}\n  )')
-      .replaceAll('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : '')
-      
-      
+          .replaceAll(
+              'COPY_FIELDS',
+              copyWithFields.isEmpty
+                  ? ''
+                  : '{\n    ${copyWithFields.join('\n    ')}\n  }')
+          .replaceAll(
+              'COPY_RETUEN',
+              copyWithReturnFields.isEmpty
+                  ? 'const CLASS_NAME()'
+                  : 'CLASS_NAME(\n    ${copyWithReturnFields.join('\n    ')}\n  )')
+          .replaceAll('COPY_OVERRIDE', obj.hasParent ? '\n  @override' : '')
           .replaceAll('CLASS_NAME', obj.name == 'Error' ? 'TdError' : obj.name)
           .replaceAll('TO_JSON', toJsonFields.join(''))
           .replaceAll('ID', lowerFirstChar(obj.name));
@@ -439,7 +446,8 @@ class TlObjectArg {
     this.argName = argName ?? lowerFirstChar(camelCase(name));
     type = getType(tlType);
     if (type == 'Error') type = 'TdError';
-    optional = (description.contains('may be null') || description.contains("pass null")) &
+    optional = (description.contains('may be null') ||
+            description.contains("pass null")) &
         !description
             .contains('List of'); // null list fiedls are just empty listes.
     read = getRead(name, type,

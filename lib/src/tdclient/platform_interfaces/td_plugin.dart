@@ -1,9 +1,7 @@
 import 'package:tdlib/src/tdclient/platform_interfaces/td_native_plugin_stub.dart';
 
-
 /// TDLib Library Instance.
 abstract class TdPlugin {
-
   /// TdPlugin instance.
   static TdPlugin instance = TdNativePlugin();
 

@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class StorageStatisticsFast extends TdObject {
-
   /// Contains approximate storage usage statistics, excluding files of unknown file type
   const StorageStatisticsFast({
     required this.filesSize,
@@ -12,8 +11,8 @@ class StorageStatisticsFast extends TdObject {
     this.extra,
     this.clientId,
   });
-  
-  /// [filesSize] Approximate total size of files, in bytes 
+
+  /// [filesSize] Approximate total size of files, in bytes
   final int filesSize;
 
   /// [fileCount] Approximate number of files
@@ -22,7 +21,7 @@ class StorageStatisticsFast extends TdObject {
   /// [databaseSize] Size of the database
   final int databaseSize;
 
-  /// [languagePackDatabaseSize] Size of the language pack database 
+  /// [languagePackDatabaseSize] Size of the language pack database
   final int languagePackDatabaseSize;
 
   /// [logSize] Size of the TDLib internal log
@@ -35,19 +34,19 @@ class StorageStatisticsFast extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
-  factory StorageStatisticsFast.fromJson(Map<String, dynamic> json) => StorageStatisticsFast(
-    filesSize: json['files_size'],
-    fileCount: json['file_count'],
-    databaseSize: json['database_size'],
-    languagePackDatabaseSize: json['language_pack_database_size'],
-    logSize: json['log_size'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+  factory StorageStatisticsFast.fromJson(Map<String, dynamic> json) =>
+      StorageStatisticsFast(
+        filesSize: json['files_size'],
+        fileCount: json['file_count'],
+        databaseSize: json['database_size'],
+        languagePackDatabaseSize: json['language_pack_database_size'],
+        logSize: json['log_size'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -59,7 +58,7 @@ class StorageStatisticsFast extends TdObject {
       "log_size": logSize,
     };
   }
-  
+
   StorageStatisticsFast copyWith({
     int? filesSize,
     int? fileCount,
@@ -68,18 +67,20 @@ class StorageStatisticsFast extends TdObject {
     int? logSize,
     dynamic extra,
     int? clientId,
-  }) => StorageStatisticsFast(
-    filesSize: filesSize ?? this.filesSize,
-    fileCount: fileCount ?? this.fileCount,
-    databaseSize: databaseSize ?? this.databaseSize,
-    languagePackDatabaseSize: languagePackDatabaseSize ?? this.languagePackDatabaseSize,
-    logSize: logSize ?? this.logSize,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      StorageStatisticsFast(
+        filesSize: filesSize ?? this.filesSize,
+        fileCount: fileCount ?? this.fileCount,
+        databaseSize: databaseSize ?? this.databaseSize,
+        languagePackDatabaseSize:
+            languagePackDatabaseSize ?? this.languagePackDatabaseSize,
+        logSize: logSize ?? this.logSize,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'storageStatisticsFast';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

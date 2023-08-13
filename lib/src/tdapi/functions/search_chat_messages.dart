@@ -1,8 +1,7 @@
 part of '../tdapi.dart';
 
 class SearchChatMessages extends TdFunction {
-
-  /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query. (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit.. A combination of query, sender_id, filter and message_thread_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
   const SearchChatMessages({
     required this.chatId,
     required this.query,
@@ -13,7 +12,7 @@ class SearchChatMessages extends TdFunction {
     this.filter,
     required this.messageThreadId,
   });
-  
+
   /// [chatId] Identifier of the chat in which to search messages
   final int chatId;
 
@@ -29,7 +28,7 @@ class SearchChatMessages extends TdFunction {
   /// [offset] Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages
   final int offset;
 
-  /// [limit] The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  /// [limit] The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset.. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   final int limit;
 
   /// [filter] Additional filter for messages to search; pass null to search for all messages
@@ -37,7 +36,7 @@ class SearchChatMessages extends TdFunction {
 
   /// [messageThreadId] If not 0, only messages in the specified thread will be returned; supergroups only
   final int messageThreadId;
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -53,7 +52,7 @@ class SearchChatMessages extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   SearchChatMessages copyWith({
     int? chatId,
     String? query,
@@ -63,19 +62,20 @@ class SearchChatMessages extends TdFunction {
     int? limit,
     SearchMessagesFilter? filter,
     int? messageThreadId,
-  }) => SearchChatMessages(
-    chatId: chatId ?? this.chatId,
-    query: query ?? this.query,
-    senderId: senderId ?? this.senderId,
-    fromMessageId: fromMessageId ?? this.fromMessageId,
-    offset: offset ?? this.offset,
-    limit: limit ?? this.limit,
-    filter: filter ?? this.filter,
-    messageThreadId: messageThreadId ?? this.messageThreadId,
-  );
+  }) =>
+      SearchChatMessages(
+        chatId: chatId ?? this.chatId,
+        query: query ?? this.query,
+        senderId: senderId ?? this.senderId,
+        fromMessageId: fromMessageId ?? this.fromMessageId,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
+        filter: filter ?? this.filter,
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
 
   static const CONSTRUCTOR = 'searchChatMessages';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

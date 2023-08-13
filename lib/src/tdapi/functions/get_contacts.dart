@@ -1,11 +1,9 @@
 part of '../tdapi.dart';
 
 class GetContacts extends TdFunction {
-
-  /// Returns all user contacts
+  /// Returns all contacts of the user
   const GetContacts();
-  
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -13,11 +11,11 @@ class GetContacts extends TdFunction {
       "@extra": extra,
     };
   }
-  
+
   GetContacts copyWith() => const GetContacts();
 
   static const CONSTRUCTOR = 'getContacts';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

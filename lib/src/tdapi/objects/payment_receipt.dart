@@ -1,7 +1,6 @@
 part of '../tdapi.dart';
 
 class PaymentReceipt extends TdObject {
-
   /// Contains information about a successful payment
   const PaymentReceipt({
     required this.title,
@@ -9,7 +8,7 @@ class PaymentReceipt extends TdObject {
     this.photo,
     required this.date,
     required this.sellerBotUserId,
-    required this.paymentsProviderUserId,
+    required this.paymentProviderUserId,
     required this.invoice,
     this.orderInfo,
     this.shippingOption,
@@ -18,12 +17,12 @@ class PaymentReceipt extends TdObject {
     this.extra,
     this.clientId,
   });
-  
+
   /// [title] Product title
   final String title;
 
   /// [description] Product description
-  final String description;
+  final FormattedText description;
 
   /// [photo] Product photo; may be null
   final Photo? photo;
@@ -34,8 +33,8 @@ class PaymentReceipt extends TdObject {
   /// [sellerBotUserId] User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// [paymentsProviderUserId] User identifier of the payment provider bot
-  final int paymentsProviderUserId;
+  /// [paymentProviderUserId] User identifier of the payment provider bot
+  final int paymentProviderUserId;
 
   /// [invoice] Information about the invoice
   final Invoice invoice;
@@ -59,35 +58,38 @@ class PaymentReceipt extends TdObject {
   /// [clientId] client identifier
   @override
   final int? clientId;
-  
+
   /// Parse from a json
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-    title: json['title'],
-    description: json['description'],
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    date: json['date'],
-    sellerBotUserId: json['seller_bot_user_id'],
-    paymentsProviderUserId: json['payments_provider_user_id'],
-    invoice: Invoice.fromJson(json['invoice']),
-    orderInfo: json['order_info'] == null ? null : OrderInfo.fromJson(json['order_info']),
-    shippingOption: json['shipping_option'] == null ? null : ShippingOption.fromJson(json['shipping_option']),
-    credentialsTitle: json['credentials_title'],
-    tipAmount: json['tip_amount'],
-    extra: json['@extra'],
-    clientId: json['@client_id'],
-  );
-  
-  
+        title: json['title'],
+        description: FormattedText.fromJson(json['description']),
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        date: json['date'],
+        sellerBotUserId: json['seller_bot_user_id'],
+        paymentProviderUserId: json['payment_provider_user_id'],
+        invoice: Invoice.fromJson(json['invoice']),
+        orderInfo: json['order_info'] == null
+            ? null
+            : OrderInfo.fromJson(json['order_info']),
+        shippingOption: json['shipping_option'] == null
+            ? null
+            : ShippingOption.fromJson(json['shipping_option']),
+        credentialsTitle: json['credentials_title'],
+        tipAmount: json['tip_amount'],
+        extra: json['@extra'],
+        clientId: json['@client_id'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
       "title": title,
-      "description": description,
+      "description": description.toJson(),
       "photo": photo?.toJson(),
       "date": date,
       "seller_bot_user_id": sellerBotUserId,
-      "payments_provider_user_id": paymentsProviderUserId,
+      "payment_provider_user_id": paymentProviderUserId,
       "invoice": invoice.toJson(),
       "order_info": orderInfo?.toJson(),
       "shipping_option": shippingOption?.toJson(),
@@ -95,14 +97,14 @@ class PaymentReceipt extends TdObject {
       "tip_amount": tipAmount,
     };
   }
-  
+
   PaymentReceipt copyWith({
     String? title,
-    String? description,
+    FormattedText? description,
     Photo? photo,
     int? date,
     int? sellerBotUserId,
-    int? paymentsProviderUserId,
+    int? paymentProviderUserId,
     Invoice? invoice,
     OrderInfo? orderInfo,
     ShippingOption? shippingOption,
@@ -110,24 +112,26 @@ class PaymentReceipt extends TdObject {
     int? tipAmount,
     dynamic extra,
     int? clientId,
-  }) => PaymentReceipt(
-    title: title ?? this.title,
-    description: description ?? this.description,
-    photo: photo ?? this.photo,
-    date: date ?? this.date,
-    sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-    paymentsProviderUserId: paymentsProviderUserId ?? this.paymentsProviderUserId,
-    invoice: invoice ?? this.invoice,
-    orderInfo: orderInfo ?? this.orderInfo,
-    shippingOption: shippingOption ?? this.shippingOption,
-    credentialsTitle: credentialsTitle ?? this.credentialsTitle,
-    tipAmount: tipAmount ?? this.tipAmount,
-    extra: extra ?? this.extra,
-    clientId: clientId ?? this.clientId,
-  );
+  }) =>
+      PaymentReceipt(
+        title: title ?? this.title,
+        description: description ?? this.description,
+        photo: photo ?? this.photo,
+        date: date ?? this.date,
+        sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
+        paymentProviderUserId:
+            paymentProviderUserId ?? this.paymentProviderUserId,
+        invoice: invoice ?? this.invoice,
+        orderInfo: orderInfo ?? this.orderInfo,
+        shippingOption: shippingOption ?? this.shippingOption,
+        credentialsTitle: credentialsTitle ?? this.credentialsTitle,
+        tipAmount: tipAmount ?? this.tipAmount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
 
   static const CONSTRUCTOR = 'paymentReceipt';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

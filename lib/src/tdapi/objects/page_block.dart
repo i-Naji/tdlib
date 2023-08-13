@@ -1,10 +1,9 @@
 part of '../tdapi.dart';
 
 class PageBlock extends TdObject {
-
   /// Describes a block of an instant view web page
   const PageBlock();
-  
+
   /// a PageBlock return type can be :
   /// * [PageBlockTitle]
   /// * [PageBlockSubtitle]
@@ -35,8 +34,8 @@ class PageBlock extends TdObject {
   /// * [PageBlockDetails]
   /// * [PageBlockRelatedArticles]
   /// * [PageBlockMap]
-  factory PageBlock.fromJson(Map<String, dynamic> json)  {
-    switch(json["@type"]) {
+  factory PageBlock.fromJson(Map<String, dynamic> json) {
+    switch (json["@type"]) {
       case PageBlockTitle.CONSTRUCTOR:
         return PageBlockTitle.fromJson(json);
       case PageBlockSubtitle.CONSTRUCTOR:
@@ -99,39 +98,34 @@ class PageBlock extends TdObject {
         return const PageBlock();
     }
   }
-  
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
-    return {
-      
-    };
+    return {};
   }
-  
+
   PageBlock copyWith() => const PageBlock();
 
   static const CONSTRUCTOR = 'pageBlock';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockTitle extends PageBlock {
-
   /// The title of a page
   const PageBlockTitle({
     required this.title,
   });
-  
+
   /// [title] Title
   final RichText title;
-  
+
   /// Parse from a json
   factory PageBlockTitle.fromJson(Map<String, dynamic> json) => PageBlockTitle(
-    title: RichText.fromJson(json['title']),
-  );
-  
-  
+        title: RichText.fromJson(json['title']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -139,37 +133,36 @@ class PageBlockTitle extends PageBlock {
       "title": title.toJson(),
     };
   }
-  
+
   @override
   PageBlockTitle copyWith({
     RichText? title,
-  }) => PageBlockTitle(
-    title: title ?? this.title,
-  );
+  }) =>
+      PageBlockTitle(
+        title: title ?? this.title,
+      );
 
   static const CONSTRUCTOR = 'pageBlockTitle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockSubtitle extends PageBlock {
-
   /// The subtitle of a page
   const PageBlockSubtitle({
     required this.subtitle,
   });
-  
+
   /// [subtitle] Subtitle
   final RichText subtitle;
-  
+
   /// Parse from a json
-  factory PageBlockSubtitle.fromJson(Map<String, dynamic> json) => PageBlockSubtitle(
-    subtitle: RichText.fromJson(json['subtitle']),
-  );
-  
-  
+  factory PageBlockSubtitle.fromJson(Map<String, dynamic> json) =>
+      PageBlockSubtitle(
+        subtitle: RichText.fromJson(json['subtitle']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -177,42 +170,41 @@ class PageBlockSubtitle extends PageBlock {
       "subtitle": subtitle.toJson(),
     };
   }
-  
+
   @override
   PageBlockSubtitle copyWith({
     RichText? subtitle,
-  }) => PageBlockSubtitle(
-    subtitle: subtitle ?? this.subtitle,
-  );
+  }) =>
+      PageBlockSubtitle(
+        subtitle: subtitle ?? this.subtitle,
+      );
 
   static const CONSTRUCTOR = 'pageBlockSubtitle';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockAuthorDate extends PageBlock {
-
   /// The author and publishing date of a page
   const PageBlockAuthorDate({
     required this.author,
     required this.publishDate,
   });
-  
-  /// [author] Author 
+
+  /// [author] Author
   final RichText author;
 
   /// [publishDate] Point in time (Unix timestamp) when the article was published; 0 if unknown
   final int publishDate;
-  
+
   /// Parse from a json
-  factory PageBlockAuthorDate.fromJson(Map<String, dynamic> json) => PageBlockAuthorDate(
-    author: RichText.fromJson(json['author']),
-    publishDate: json['publish_date'],
-  );
-  
-  
+  factory PageBlockAuthorDate.fromJson(Map<String, dynamic> json) =>
+      PageBlockAuthorDate(
+        author: RichText.fromJson(json['author']),
+        publishDate: json['publish_date'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -221,39 +213,38 @@ class PageBlockAuthorDate extends PageBlock {
       "publish_date": publishDate,
     };
   }
-  
+
   @override
   PageBlockAuthorDate copyWith({
     RichText? author,
     int? publishDate,
-  }) => PageBlockAuthorDate(
-    author: author ?? this.author,
-    publishDate: publishDate ?? this.publishDate,
-  );
+  }) =>
+      PageBlockAuthorDate(
+        author: author ?? this.author,
+        publishDate: publishDate ?? this.publishDate,
+      );
 
   static const CONSTRUCTOR = 'pageBlockAuthorDate';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockHeader extends PageBlock {
-
   /// A header
   const PageBlockHeader({
     required this.header,
   });
-  
+
   /// [header] Header
   final RichText header;
-  
+
   /// Parse from a json
-  factory PageBlockHeader.fromJson(Map<String, dynamic> json) => PageBlockHeader(
-    header: RichText.fromJson(json['header']),
-  );
-  
-  
+  factory PageBlockHeader.fromJson(Map<String, dynamic> json) =>
+      PageBlockHeader(
+        header: RichText.fromJson(json['header']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -261,37 +252,36 @@ class PageBlockHeader extends PageBlock {
       "header": header.toJson(),
     };
   }
-  
+
   @override
   PageBlockHeader copyWith({
     RichText? header,
-  }) => PageBlockHeader(
-    header: header ?? this.header,
-  );
+  }) =>
+      PageBlockHeader(
+        header: header ?? this.header,
+      );
 
   static const CONSTRUCTOR = 'pageBlockHeader';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockSubheader extends PageBlock {
-
   /// A subheader
   const PageBlockSubheader({
     required this.subheader,
   });
-  
+
   /// [subheader] Subheader
   final RichText subheader;
-  
+
   /// Parse from a json
-  factory PageBlockSubheader.fromJson(Map<String, dynamic> json) => PageBlockSubheader(
-    subheader: RichText.fromJson(json['subheader']),
-  );
-  
-  
+  factory PageBlockSubheader.fromJson(Map<String, dynamic> json) =>
+      PageBlockSubheader(
+        subheader: RichText.fromJson(json['subheader']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -299,37 +289,36 @@ class PageBlockSubheader extends PageBlock {
       "subheader": subheader.toJson(),
     };
   }
-  
+
   @override
   PageBlockSubheader copyWith({
     RichText? subheader,
-  }) => PageBlockSubheader(
-    subheader: subheader ?? this.subheader,
-  );
+  }) =>
+      PageBlockSubheader(
+        subheader: subheader ?? this.subheader,
+      );
 
   static const CONSTRUCTOR = 'pageBlockSubheader';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockKicker extends PageBlock {
-
   /// A kicker
   const PageBlockKicker({
     required this.kicker,
   });
-  
+
   /// [kicker] Kicker
   final RichText kicker;
-  
+
   /// Parse from a json
-  factory PageBlockKicker.fromJson(Map<String, dynamic> json) => PageBlockKicker(
-    kicker: RichText.fromJson(json['kicker']),
-  );
-  
-  
+  factory PageBlockKicker.fromJson(Map<String, dynamic> json) =>
+      PageBlockKicker(
+        kicker: RichText.fromJson(json['kicker']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -337,37 +326,36 @@ class PageBlockKicker extends PageBlock {
       "kicker": kicker.toJson(),
     };
   }
-  
+
   @override
   PageBlockKicker copyWith({
     RichText? kicker,
-  }) => PageBlockKicker(
-    kicker: kicker ?? this.kicker,
-  );
+  }) =>
+      PageBlockKicker(
+        kicker: kicker ?? this.kicker,
+      );
 
   static const CONSTRUCTOR = 'pageBlockKicker';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockParagraph extends PageBlock {
-
   /// A text paragraph
   const PageBlockParagraph({
     required this.text,
   });
-  
+
   /// [text] Paragraph text
   final RichText text;
-  
+
   /// Parse from a json
-  factory PageBlockParagraph.fromJson(Map<String, dynamic> json) => PageBlockParagraph(
-    text: RichText.fromJson(json['text']),
-  );
-  
-  
+  factory PageBlockParagraph.fromJson(Map<String, dynamic> json) =>
+      PageBlockParagraph(
+        text: RichText.fromJson(json['text']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -375,42 +363,41 @@ class PageBlockParagraph extends PageBlock {
       "text": text.toJson(),
     };
   }
-  
+
   @override
   PageBlockParagraph copyWith({
     RichText? text,
-  }) => PageBlockParagraph(
-    text: text ?? this.text,
-  );
+  }) =>
+      PageBlockParagraph(
+        text: text ?? this.text,
+      );
 
   static const CONSTRUCTOR = 'pageBlockParagraph';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockPreformatted extends PageBlock {
-
   /// A preformatted text paragraph
   const PageBlockPreformatted({
     required this.text,
     required this.language,
   });
-  
-  /// [text] Paragraph text 
+
+  /// [text] Paragraph text
   final RichText text;
 
   /// [language] Programming language for which the text needs to be formatted
   final String language;
-  
+
   /// Parse from a json
-  factory PageBlockPreformatted.fromJson(Map<String, dynamic> json) => PageBlockPreformatted(
-    text: RichText.fromJson(json['text']),
-    language: json['language'],
-  );
-  
-  
+  factory PageBlockPreformatted.fromJson(Map<String, dynamic> json) =>
+      PageBlockPreformatted(
+        text: RichText.fromJson(json['text']),
+        language: json['language'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -419,39 +406,38 @@ class PageBlockPreformatted extends PageBlock {
       "language": language,
     };
   }
-  
+
   @override
   PageBlockPreformatted copyWith({
     RichText? text,
     String? language,
-  }) => PageBlockPreformatted(
-    text: text ?? this.text,
-    language: language ?? this.language,
-  );
+  }) =>
+      PageBlockPreformatted(
+        text: text ?? this.text,
+        language: language ?? this.language,
+      );
 
   static const CONSTRUCTOR = 'pageBlockPreformatted';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockFooter extends PageBlock {
-
   /// The footer of a page
   const PageBlockFooter({
     required this.footer,
   });
-  
+
   /// [footer] Footer
   final RichText footer;
-  
+
   /// Parse from a json
-  factory PageBlockFooter.fromJson(Map<String, dynamic> json) => PageBlockFooter(
-    footer: RichText.fromJson(json['footer']),
-  );
-  
-  
+  factory PageBlockFooter.fromJson(Map<String, dynamic> json) =>
+      PageBlockFooter(
+        footer: RichText.fromJson(json['footer']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -459,62 +445,60 @@ class PageBlockFooter extends PageBlock {
       "footer": footer.toJson(),
     };
   }
-  
+
   @override
   PageBlockFooter copyWith({
     RichText? footer,
-  }) => PageBlockFooter(
-    footer: footer ?? this.footer,
-  );
+  }) =>
+      PageBlockFooter(
+        footer: footer ?? this.footer,
+      );
 
   static const CONSTRUCTOR = 'pageBlockFooter';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockDivider extends PageBlock {
-
   /// An empty block separating a page
   const PageBlockDivider();
-  
+
   /// Parse from a json
-  factory PageBlockDivider.fromJson(Map<String, dynamic> json) => const PageBlockDivider();
-  
+  factory PageBlockDivider.fromJson(Map<String, dynamic> json) =>
+      const PageBlockDivider();
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
     };
   }
-  
+
   @override
   PageBlockDivider copyWith() => const PageBlockDivider();
 
   static const CONSTRUCTOR = 'pageBlockDivider';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockAnchor extends PageBlock {
-
   /// An invisible anchor on a page, which can be used in a URL to open the page from the specified anchor
   const PageBlockAnchor({
     required this.name,
   });
-  
+
   /// [name] Name of the anchor
   final String name;
-  
+
   /// Parse from a json
-  factory PageBlockAnchor.fromJson(Map<String, dynamic> json) => PageBlockAnchor(
-    name: json['name'],
-  );
-  
-  
+  factory PageBlockAnchor.fromJson(Map<String, dynamic> json) =>
+      PageBlockAnchor(
+        name: json['name'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -522,37 +506,37 @@ class PageBlockAnchor extends PageBlock {
       "name": name,
     };
   }
-  
+
   @override
   PageBlockAnchor copyWith({
     String? name,
-  }) => PageBlockAnchor(
-    name: name ?? this.name,
-  );
+  }) =>
+      PageBlockAnchor(
+        name: name ?? this.name,
+      );
 
   static const CONSTRUCTOR = 'pageBlockAnchor';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockList extends PageBlock {
-
   /// A list of data blocks
   const PageBlockList({
     required this.items,
   });
-  
+
   /// [items] The items of the list
   final List<PageBlockListItem> items;
-  
+
   /// Parse from a json
   factory PageBlockList.fromJson(Map<String, dynamic> json) => PageBlockList(
-    items: List<PageBlockListItem>.from((json['items'] ?? []).map((item) => PageBlockListItem.fromJson(item)).toList()),
-  );
-  
-  
+        items: List<PageBlockListItem>.from((json['items'] ?? [])
+            .map((item) => PageBlockListItem.fromJson(item))
+            .toList()),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -560,42 +544,41 @@ class PageBlockList extends PageBlock {
       "items": items.map((i) => i.toJson()).toList(),
     };
   }
-  
+
   @override
   PageBlockList copyWith({
     List<PageBlockListItem>? items,
-  }) => PageBlockList(
-    items: items ?? this.items,
-  );
+  }) =>
+      PageBlockList(
+        items: items ?? this.items,
+      );
 
   static const CONSTRUCTOR = 'pageBlockList';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockBlockQuote extends PageBlock {
-
   /// A block quote
   const PageBlockBlockQuote({
     required this.text,
     required this.credit,
   });
-  
-  /// [text] Quote text 
+
+  /// [text] Quote text
   final RichText text;
 
   /// [credit] Quote credit
   final RichText credit;
-  
+
   /// Parse from a json
-  factory PageBlockBlockQuote.fromJson(Map<String, dynamic> json) => PageBlockBlockQuote(
-    text: RichText.fromJson(json['text']),
-    credit: RichText.fromJson(json['credit']),
-  );
-  
-  
+  factory PageBlockBlockQuote.fromJson(Map<String, dynamic> json) =>
+      PageBlockBlockQuote(
+        text: RichText.fromJson(json['text']),
+        credit: RichText.fromJson(json['credit']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -604,44 +587,43 @@ class PageBlockBlockQuote extends PageBlock {
       "credit": credit.toJson(),
     };
   }
-  
+
   @override
   PageBlockBlockQuote copyWith({
     RichText? text,
     RichText? credit,
-  }) => PageBlockBlockQuote(
-    text: text ?? this.text,
-    credit: credit ?? this.credit,
-  );
+  }) =>
+      PageBlockBlockQuote(
+        text: text ?? this.text,
+        credit: credit ?? this.credit,
+      );
 
   static const CONSTRUCTOR = 'pageBlockBlockQuote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockPullQuote extends PageBlock {
-
   /// A pull quote
   const PageBlockPullQuote({
     required this.text,
     required this.credit,
   });
-  
-  /// [text] Quote text 
+
+  /// [text] Quote text
   final RichText text;
 
   /// [credit] Quote credit
   final RichText credit;
-  
+
   /// Parse from a json
-  factory PageBlockPullQuote.fromJson(Map<String, dynamic> json) => PageBlockPullQuote(
-    text: RichText.fromJson(json['text']),
-    credit: RichText.fromJson(json['credit']),
-  );
-  
-  
+  factory PageBlockPullQuote.fromJson(Map<String, dynamic> json) =>
+      PageBlockPullQuote(
+        text: RichText.fromJson(json['text']),
+        credit: RichText.fromJson(json['credit']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -650,49 +632,50 @@ class PageBlockPullQuote extends PageBlock {
       "credit": credit.toJson(),
     };
   }
-  
+
   @override
   PageBlockPullQuote copyWith({
     RichText? text,
     RichText? credit,
-  }) => PageBlockPullQuote(
-    text: text ?? this.text,
-    credit: credit ?? this.credit,
-  );
+  }) =>
+      PageBlockPullQuote(
+        text: text ?? this.text,
+        credit: credit ?? this.credit,
+      );
 
   static const CONSTRUCTOR = 'pageBlockPullQuote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockAnimation extends PageBlock {
-
   /// An animation
   const PageBlockAnimation({
     this.animation,
     required this.caption,
     required this.needAutoplay,
   });
-  
-  /// [animation] Animation file; may be null 
+
+  /// [animation] Animation file; may be null
   final Animation? animation;
 
-  /// [caption] Animation caption 
+  /// [caption] Animation caption
   final PageBlockCaption caption;
 
   /// [needAutoplay] True, if the animation must be played automatically
   final bool needAutoplay;
-  
+
   /// Parse from a json
-  factory PageBlockAnimation.fromJson(Map<String, dynamic> json) => PageBlockAnimation(
-    animation: json['animation'] == null ? null : Animation.fromJson(json['animation']),
-    caption: PageBlockCaption.fromJson(json['caption']),
-    needAutoplay: json['need_autoplay'],
-  );
-  
-  
+  factory PageBlockAnimation.fromJson(Map<String, dynamic> json) =>
+      PageBlockAnimation(
+        animation: json['animation'] == null
+            ? null
+            : Animation.fromJson(json['animation']),
+        caption: PageBlockCaption.fromJson(json['caption']),
+        needAutoplay: json['need_autoplay'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -702,46 +685,44 @@ class PageBlockAnimation extends PageBlock {
       "need_autoplay": needAutoplay,
     };
   }
-  
+
   @override
   PageBlockAnimation copyWith({
     Animation? animation,
     PageBlockCaption? caption,
     bool? needAutoplay,
-  }) => PageBlockAnimation(
-    animation: animation ?? this.animation,
-    caption: caption ?? this.caption,
-    needAutoplay: needAutoplay ?? this.needAutoplay,
-  );
+  }) =>
+      PageBlockAnimation(
+        animation: animation ?? this.animation,
+        caption: caption ?? this.caption,
+        needAutoplay: needAutoplay ?? this.needAutoplay,
+      );
 
   static const CONSTRUCTOR = 'pageBlockAnimation';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockAudio extends PageBlock {
-
   /// An audio file
   const PageBlockAudio({
     this.audio,
     required this.caption,
   });
-  
-  /// [audio] Audio file; may be null 
+
+  /// [audio] Audio file; may be null
   final Audio? audio;
 
   /// [caption] Audio file caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
   factory PageBlockAudio.fromJson(Map<String, dynamic> json) => PageBlockAudio(
-    audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+        audio: json['audio'] == null ? null : Audio.fromJson(json['audio']),
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -750,49 +731,47 @@ class PageBlockAudio extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockAudio copyWith({
     Audio? audio,
     PageBlockCaption? caption,
-  }) => PageBlockAudio(
-    audio: audio ?? this.audio,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockAudio(
+        audio: audio ?? this.audio,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockAudio';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockPhoto extends PageBlock {
-
   /// A photo
   const PageBlockPhoto({
     this.photo,
     required this.caption,
     required this.url,
   });
-  
-  /// [photo] Photo file; may be null 
+
+  /// [photo] Photo file; may be null
   final Photo? photo;
 
-  /// [caption] Photo caption 
+  /// [caption] Photo caption
   final PageBlockCaption caption;
 
   /// [url] URL that needs to be opened when the photo is clicked
   final String url;
-  
+
   /// Parse from a json
   factory PageBlockPhoto.fromJson(Map<String, dynamic> json) => PageBlockPhoto(
-    photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
-    caption: PageBlockCaption.fromJson(json['caption']),
-    url: json['url'],
-  );
-  
-  
+        photo: json['photo'] == null ? null : Photo.fromJson(json['photo']),
+        caption: PageBlockCaption.fromJson(json['caption']),
+        url: json['url'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -802,27 +781,26 @@ class PageBlockPhoto extends PageBlock {
       "url": url,
     };
   }
-  
+
   @override
   PageBlockPhoto copyWith({
     Photo? photo,
     PageBlockCaption? caption,
     String? url,
-  }) => PageBlockPhoto(
-    photo: photo ?? this.photo,
-    caption: caption ?? this.caption,
-    url: url ?? this.url,
-  );
+  }) =>
+      PageBlockPhoto(
+        photo: photo ?? this.photo,
+        caption: caption ?? this.caption,
+        url: url ?? this.url,
+      );
 
   static const CONSTRUCTOR = 'pageBlockPhoto';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockVideo extends PageBlock {
-
   /// A video
   const PageBlockVideo({
     this.video,
@@ -830,28 +808,27 @@ class PageBlockVideo extends PageBlock {
     required this.needAutoplay,
     required this.isLooped,
   });
-  
-  /// [video] Video file; may be null 
+
+  /// [video] Video file; may be null
   final Video? video;
 
-  /// [caption] Video caption 
+  /// [caption] Video caption
   final PageBlockCaption caption;
 
-  /// [needAutoplay] True, if the video must be played automatically 
+  /// [needAutoplay] True, if the video must be played automatically
   final bool needAutoplay;
 
   /// [isLooped] True, if the video must be looped
   final bool isLooped;
-  
+
   /// Parse from a json
   factory PageBlockVideo.fromJson(Map<String, dynamic> json) => PageBlockVideo(
-    video: json['video'] == null ? null : Video.fromJson(json['video']),
-    caption: PageBlockCaption.fromJson(json['caption']),
-    needAutoplay: json['need_autoplay'],
-    isLooped: json['is_looped'],
-  );
-  
-  
+        video: json['video'] == null ? null : Video.fromJson(json['video']),
+        caption: PageBlockCaption.fromJson(json['caption']),
+        needAutoplay: json['need_autoplay'],
+        isLooped: json['is_looped'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -862,48 +839,49 @@ class PageBlockVideo extends PageBlock {
       "is_looped": isLooped,
     };
   }
-  
+
   @override
   PageBlockVideo copyWith({
     Video? video,
     PageBlockCaption? caption,
     bool? needAutoplay,
     bool? isLooped,
-  }) => PageBlockVideo(
-    video: video ?? this.video,
-    caption: caption ?? this.caption,
-    needAutoplay: needAutoplay ?? this.needAutoplay,
-    isLooped: isLooped ?? this.isLooped,
-  );
+  }) =>
+      PageBlockVideo(
+        video: video ?? this.video,
+        caption: caption ?? this.caption,
+        needAutoplay: needAutoplay ?? this.needAutoplay,
+        isLooped: isLooped ?? this.isLooped,
+      );
 
   static const CONSTRUCTOR = 'pageBlockVideo';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockVoiceNote extends PageBlock {
-
   /// A voice note
   const PageBlockVoiceNote({
     this.voiceNote,
     required this.caption,
   });
-  
-  /// [voiceNote] Voice note; may be null 
+
+  /// [voiceNote] Voice note; may be null
   final VoiceNote? voiceNote;
 
   /// [caption] Voice note caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
-  factory PageBlockVoiceNote.fromJson(Map<String, dynamic> json) => PageBlockVoiceNote(
-    voiceNote: json['voice_note'] == null ? null : VoiceNote.fromJson(json['voice_note']),
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+  factory PageBlockVoiceNote.fromJson(Map<String, dynamic> json) =>
+      PageBlockVoiceNote(
+        voiceNote: json['voice_note'] == null
+            ? null
+            : VoiceNote.fromJson(json['voice_note']),
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -912,39 +890,37 @@ class PageBlockVoiceNote extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockVoiceNote copyWith({
     VoiceNote? voiceNote,
     PageBlockCaption? caption,
-  }) => PageBlockVoiceNote(
-    voiceNote: voiceNote ?? this.voiceNote,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockVoiceNote(
+        voiceNote: voiceNote ?? this.voiceNote,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockVoiceNote';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockCover extends PageBlock {
-
   /// A page cover
   const PageBlockCover({
     required this.cover,
   });
-  
+
   /// [cover] Cover
   final PageBlock cover;
-  
+
   /// Parse from a json
   factory PageBlockCover.fromJson(Map<String, dynamic> json) => PageBlockCover(
-    cover: PageBlock.fromJson(json['cover']),
-  );
-  
-  
+        cover: PageBlock.fromJson(json['cover']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -952,23 +928,22 @@ class PageBlockCover extends PageBlock {
       "cover": cover.toJson(),
     };
   }
-  
+
   @override
   PageBlockCover copyWith({
     PageBlock? cover,
-  }) => PageBlockCover(
-    cover: cover ?? this.cover,
-  );
+  }) =>
+      PageBlockCover(
+        cover: cover ?? this.cover,
+      );
 
   static const CONSTRUCTOR = 'pageBlockCover';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockEmbedded extends PageBlock {
-
   /// An embedded web page
   const PageBlockEmbedded({
     required this.url,
@@ -980,44 +955,46 @@ class PageBlockEmbedded extends PageBlock {
     required this.isFullWidth,
     required this.allowScrolling,
   });
-  
-  /// [url] Web page URL, if available 
+
+  /// [url] Web page URL, if available
   final String url;
 
-  /// [html] HTML-markup of the embedded page 
+  /// [html] HTML-markup of the embedded page
   final String html;
 
-  /// [posterPhoto] Poster photo, if available; may be null 
+  /// [posterPhoto] Poster photo, if available; may be null
   final Photo? posterPhoto;
 
-  /// [width] Block width; 0 if unknown 
+  /// [width] Block width; 0 if unknown
   final int width;
 
-  /// [height] Block height; 0 if unknown 
+  /// [height] Block height; 0 if unknown
   final int height;
 
-  /// [caption] Block caption 
+  /// [caption] Block caption
   final PageBlockCaption caption;
 
-  /// [isFullWidth] True, if the block must be full width 
+  /// [isFullWidth] True, if the block must be full width
   final bool isFullWidth;
 
   /// [allowScrolling] True, if scrolling needs to be allowed
   final bool allowScrolling;
-  
+
   /// Parse from a json
-  factory PageBlockEmbedded.fromJson(Map<String, dynamic> json) => PageBlockEmbedded(
-    url: json['url'],
-    html: json['html'],
-    posterPhoto: json['poster_photo'] == null ? null : Photo.fromJson(json['poster_photo']),
-    width: json['width'],
-    height: json['height'],
-    caption: PageBlockCaption.fromJson(json['caption']),
-    isFullWidth: json['is_full_width'],
-    allowScrolling: json['allow_scrolling'],
-  );
-  
-  
+  factory PageBlockEmbedded.fromJson(Map<String, dynamic> json) =>
+      PageBlockEmbedded(
+        url: json['url'],
+        html: json['html'],
+        posterPhoto: json['poster_photo'] == null
+            ? null
+            : Photo.fromJson(json['poster_photo']),
+        width: json['width'],
+        height: json['height'],
+        caption: PageBlockCaption.fromJson(json['caption']),
+        isFullWidth: json['is_full_width'],
+        allowScrolling: json['allow_scrolling'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1032,7 +1009,7 @@ class PageBlockEmbedded extends PageBlock {
       "allow_scrolling": allowScrolling,
     };
   }
-  
+
   @override
   PageBlockEmbedded copyWith({
     String? url,
@@ -1043,26 +1020,25 @@ class PageBlockEmbedded extends PageBlock {
     PageBlockCaption? caption,
     bool? isFullWidth,
     bool? allowScrolling,
-  }) => PageBlockEmbedded(
-    url: url ?? this.url,
-    html: html ?? this.html,
-    posterPhoto: posterPhoto ?? this.posterPhoto,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    caption: caption ?? this.caption,
-    isFullWidth: isFullWidth ?? this.isFullWidth,
-    allowScrolling: allowScrolling ?? this.allowScrolling,
-  );
+  }) =>
+      PageBlockEmbedded(
+        url: url ?? this.url,
+        html: html ?? this.html,
+        posterPhoto: posterPhoto ?? this.posterPhoto,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        caption: caption ?? this.caption,
+        isFullWidth: isFullWidth ?? this.isFullWidth,
+        allowScrolling: allowScrolling ?? this.allowScrolling,
+      );
 
   static const CONSTRUCTOR = 'pageBlockEmbedded';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockEmbeddedPost extends PageBlock {
-
   /// An embedded post
   const PageBlockEmbeddedPost({
     required this.url,
@@ -1072,36 +1048,40 @@ class PageBlockEmbeddedPost extends PageBlock {
     required this.pageBlocks,
     required this.caption,
   });
-  
-  /// [url] Web page URL 
+
+  /// [url] Web page URL
   final String url;
 
-  /// [author] Post author 
+  /// [author] Post author
   final String author;
 
-  /// [authorPhoto] Post author photo; may be null 
+  /// [authorPhoto] Post author photo; may be null
   final Photo? authorPhoto;
 
-  /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown 
+  /// [date] Point in time (Unix timestamp) when the post was created; 0 if unknown
   final int date;
 
-  /// [pageBlocks] Post content 
+  /// [pageBlocks] Post content
   final List<PageBlock> pageBlocks;
 
   /// [caption] Post caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
-  factory PageBlockEmbeddedPost.fromJson(Map<String, dynamic> json) => PageBlockEmbeddedPost(
-    url: json['url'],
-    author: json['author'],
-    authorPhoto: json['author_photo'] == null ? null : Photo.fromJson(json['author_photo']),
-    date: json['date'],
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+  factory PageBlockEmbeddedPost.fromJson(Map<String, dynamic> json) =>
+      PageBlockEmbeddedPost(
+        url: json['url'],
+        author: json['author'],
+        authorPhoto: json['author_photo'] == null
+            ? null
+            : Photo.fromJson(json['author_photo']),
+        date: json['date'],
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1114,7 +1094,7 @@ class PageBlockEmbeddedPost extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockEmbeddedPost copyWith({
     String? url,
@@ -1123,43 +1103,44 @@ class PageBlockEmbeddedPost extends PageBlock {
     int? date,
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) => PageBlockEmbeddedPost(
-    url: url ?? this.url,
-    author: author ?? this.author,
-    authorPhoto: authorPhoto ?? this.authorPhoto,
-    date: date ?? this.date,
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockEmbeddedPost(
+        url: url ?? this.url,
+        author: author ?? this.author,
+        authorPhoto: authorPhoto ?? this.authorPhoto,
+        date: date ?? this.date,
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockEmbeddedPost';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockCollage extends PageBlock {
-
   /// A collage
   const PageBlockCollage({
     required this.pageBlocks,
     required this.caption,
   });
-  
-  /// [pageBlocks] Collage item contents 
+
+  /// [pageBlocks] Collage item contents
   final List<PageBlock> pageBlocks;
 
   /// [caption] Block caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
-  factory PageBlockCollage.fromJson(Map<String, dynamic> json) => PageBlockCollage(
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+  factory PageBlockCollage.fromJson(Map<String, dynamic> json) =>
+      PageBlockCollage(
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1168,44 +1149,45 @@ class PageBlockCollage extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockCollage copyWith({
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) => PageBlockCollage(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockCollage(
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockCollage';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockSlideshow extends PageBlock {
-
   /// A slideshow
   const PageBlockSlideshow({
     required this.pageBlocks,
     required this.caption,
   });
-  
-  /// [pageBlocks] Slideshow item contents 
+
+  /// [pageBlocks] Slideshow item contents
   final List<PageBlock> pageBlocks;
 
   /// [caption] Block caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
-  factory PageBlockSlideshow.fromJson(Map<String, dynamic> json) => PageBlockSlideshow(
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+  factory PageBlockSlideshow.fromJson(Map<String, dynamic> json) =>
+      PageBlockSlideshow(
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1214,49 +1196,50 @@ class PageBlockSlideshow extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockSlideshow copyWith({
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
-  }) => PageBlockSlideshow(
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockSlideshow(
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockSlideshow';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockChatLink extends PageBlock {
-
   /// A link to a chat
   const PageBlockChatLink({
     required this.title,
     this.photo,
     required this.username,
   });
-  
-  /// [title] Chat title 
+
+  /// [title] Chat title
   final String title;
 
-  /// [photo] Chat photo; may be null 
+  /// [photo] Chat photo; may be null
   final ChatPhotoInfo? photo;
 
-  /// [username] Chat username, by which all other information about the chat can be resolved
+  /// [username] Chat username by which all other information about the chat can be resolved
   final String username;
-  
+
   /// Parse from a json
-  factory PageBlockChatLink.fromJson(Map<String, dynamic> json) => PageBlockChatLink(
-    title: json['title'],
-    photo: json['photo'] == null ? null : ChatPhotoInfo.fromJson(json['photo']),
-    username: json['username'],
-  );
-  
-  
+  factory PageBlockChatLink.fromJson(Map<String, dynamic> json) =>
+      PageBlockChatLink(
+        title: json['title'],
+        photo: json['photo'] == null
+            ? null
+            : ChatPhotoInfo.fromJson(json['photo']),
+        username: json['username'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1266,27 +1249,26 @@ class PageBlockChatLink extends PageBlock {
       "username": username,
     };
   }
-  
+
   @override
   PageBlockChatLink copyWith({
     String? title,
     ChatPhotoInfo? photo,
     String? username,
-  }) => PageBlockChatLink(
-    title: title ?? this.title,
-    photo: photo ?? this.photo,
-    username: username ?? this.username,
-  );
+  }) =>
+      PageBlockChatLink(
+        title: title ?? this.title,
+        photo: photo ?? this.photo,
+        username: username ?? this.username,
+      );
 
   static const CONSTRUCTOR = 'pageBlockChatLink';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockTable extends PageBlock {
-
   /// A table
   const PageBlockTable({
     required this.caption,
@@ -1294,28 +1276,31 @@ class PageBlockTable extends PageBlock {
     required this.isBordered,
     required this.isStriped,
   });
-  
-  /// [caption] Table caption 
+
+  /// [caption] Table caption
   final RichText caption;
 
-  /// [cells] Table cells 
+  /// [cells] Table cells
   final List<List<PageBlockTableCell>> cells;
 
-  /// [isBordered] True, if the table is bordered 
+  /// [isBordered] True, if the table is bordered
   final bool isBordered;
 
   /// [isStriped] True, if the table is striped
   final bool isStriped;
-  
+
   /// Parse from a json
   factory PageBlockTable.fromJson(Map<String, dynamic> json) => PageBlockTable(
-    caption: RichText.fromJson(json['caption']),
-    cells: List<List<PageBlockTableCell>>.from((json['cells'] ?? []).map((item) => List<PageBlockTableCell>.from((item ?? []).map((innerItem) => PageBlockTableCell.fromJson(innerItem)).toList())).toList()),
-    isBordered: json['is_bordered'],
-    isStriped: json['is_striped'],
-  );
-  
-  
+        caption: RichText.fromJson(json['caption']),
+        cells: List<List<PageBlockTableCell>>.from((json['cells'] ?? [])
+            .map((item) => List<PageBlockTableCell>.from((item ?? [])
+                .map((innerItem) => PageBlockTableCell.fromJson(innerItem))
+                .toList()))
+            .toList()),
+        isBordered: json['is_bordered'],
+        isStriped: json['is_striped'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1326,53 +1311,54 @@ class PageBlockTable extends PageBlock {
       "is_striped": isStriped,
     };
   }
-  
+
   @override
   PageBlockTable copyWith({
     RichText? caption,
     List<List<PageBlockTableCell>>? cells,
     bool? isBordered,
     bool? isStriped,
-  }) => PageBlockTable(
-    caption: caption ?? this.caption,
-    cells: cells ?? this.cells,
-    isBordered: isBordered ?? this.isBordered,
-    isStriped: isStriped ?? this.isStriped,
-  );
+  }) =>
+      PageBlockTable(
+        caption: caption ?? this.caption,
+        cells: cells ?? this.cells,
+        isBordered: isBordered ?? this.isBordered,
+        isStriped: isStriped ?? this.isStriped,
+      );
 
   static const CONSTRUCTOR = 'pageBlockTable';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockDetails extends PageBlock {
-
   /// A collapsible block
   const PageBlockDetails({
     required this.header,
     required this.pageBlocks,
     required this.isOpen,
   });
-  
-  /// [header] Always visible heading for the block 
+
+  /// [header] Always visible heading for the block
   final RichText header;
 
-  /// [pageBlocks] Block contents 
+  /// [pageBlocks] Block contents
   final List<PageBlock> pageBlocks;
 
   /// [isOpen] True, if the block is open by default
   final bool isOpen;
-  
+
   /// Parse from a json
-  factory PageBlockDetails.fromJson(Map<String, dynamic> json) => PageBlockDetails(
-    header: RichText.fromJson(json['header']),
-    pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? []).map((item) => PageBlock.fromJson(item)).toList()),
-    isOpen: json['is_open'],
-  );
-  
-  
+  factory PageBlockDetails.fromJson(Map<String, dynamic> json) =>
+      PageBlockDetails(
+        header: RichText.fromJson(json['header']),
+        pageBlocks: List<PageBlock>.from((json['page_blocks'] ?? [])
+            .map((item) => PageBlock.fromJson(item))
+            .toList()),
+        isOpen: json['is_open'],
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1382,46 +1368,47 @@ class PageBlockDetails extends PageBlock {
       "is_open": isOpen,
     };
   }
-  
+
   @override
   PageBlockDetails copyWith({
     RichText? header,
     List<PageBlock>? pageBlocks,
     bool? isOpen,
-  }) => PageBlockDetails(
-    header: header ?? this.header,
-    pageBlocks: pageBlocks ?? this.pageBlocks,
-    isOpen: isOpen ?? this.isOpen,
-  );
+  }) =>
+      PageBlockDetails(
+        header: header ?? this.header,
+        pageBlocks: pageBlocks ?? this.pageBlocks,
+        isOpen: isOpen ?? this.isOpen,
+      );
 
   static const CONSTRUCTOR = 'pageBlockDetails';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockRelatedArticles extends PageBlock {
-
   /// Related articles
   const PageBlockRelatedArticles({
     required this.header,
     required this.articles,
   });
-  
-  /// [header] Block header 
+
+  /// [header] Block header
   final RichText header;
 
   /// [articles] List of related articles
   final List<PageBlockRelatedArticle> articles;
-  
+
   /// Parse from a json
-  factory PageBlockRelatedArticles.fromJson(Map<String, dynamic> json) => PageBlockRelatedArticles(
-    header: RichText.fromJson(json['header']),
-    articles: List<PageBlockRelatedArticle>.from((json['articles'] ?? []).map((item) => PageBlockRelatedArticle.fromJson(item)).toList()),
-  );
-  
-  
+  factory PageBlockRelatedArticles.fromJson(Map<String, dynamic> json) =>
+      PageBlockRelatedArticles(
+        header: RichText.fromJson(json['header']),
+        articles: List<PageBlockRelatedArticle>.from((json['articles'] ?? [])
+            .map((item) => PageBlockRelatedArticle.fromJson(item))
+            .toList()),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1430,25 +1417,24 @@ class PageBlockRelatedArticles extends PageBlock {
       "articles": articles.map((i) => i.toJson()).toList(),
     };
   }
-  
+
   @override
   PageBlockRelatedArticles copyWith({
     RichText? header,
     List<PageBlockRelatedArticle>? articles,
-  }) => PageBlockRelatedArticles(
-    header: header ?? this.header,
-    articles: articles ?? this.articles,
-  );
+  }) =>
+      PageBlockRelatedArticles(
+        header: header ?? this.header,
+        articles: articles ?? this.articles,
+      );
 
   static const CONSTRUCTOR = 'pageBlockRelatedArticles';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-
 class PageBlockMap extends PageBlock {
-
   /// A map
   const PageBlockMap({
     required this.location,
@@ -1457,32 +1443,31 @@ class PageBlockMap extends PageBlock {
     required this.height,
     required this.caption,
   });
-  
-  /// [location] Location of the map center 
+
+  /// [location] Location of the map center
   final Location location;
 
-  /// [zoom] Map zoom level 
+  /// [zoom] Map zoom level
   final int zoom;
 
-  /// [width] Map width 
+  /// [width] Map width
   final int width;
 
-  /// [height] Map height 
+  /// [height] Map height
   final int height;
 
   /// [caption] Block caption
   final PageBlockCaption caption;
-  
+
   /// Parse from a json
   factory PageBlockMap.fromJson(Map<String, dynamic> json) => PageBlockMap(
-    location: Location.fromJson(json['location']),
-    zoom: json['zoom'],
-    width: json['width'],
-    height: json['height'],
-    caption: PageBlockCaption.fromJson(json['caption']),
-  );
-  
-  
+        location: Location.fromJson(json['location']),
+        zoom: json['zoom'],
+        width: json['width'],
+        height: json['height'],
+        caption: PageBlockCaption.fromJson(json['caption']),
+      );
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
@@ -1494,7 +1479,7 @@ class PageBlockMap extends PageBlock {
       "caption": caption.toJson(),
     };
   }
-  
+
   @override
   PageBlockMap copyWith({
     Location? location,
@@ -1502,16 +1487,17 @@ class PageBlockMap extends PageBlock {
     int? width,
     int? height,
     PageBlockCaption? caption,
-  }) => PageBlockMap(
-    location: location ?? this.location,
-    zoom: zoom ?? this.zoom,
-    width: width ?? this.width,
-    height: height ?? this.height,
-    caption: caption ?? this.caption,
-  );
+  }) =>
+      PageBlockMap(
+        location: location ?? this.location,
+        zoom: zoom ?? this.zoom,
+        width: width ?? this.width,
+        height: height ?? this.height,
+        caption: caption ?? this.caption,
+      );
 
   static const CONSTRUCTOR = 'pageBlockMap';
-  
+
   @override
   String getConstructor() => CONSTRUCTOR;
 }

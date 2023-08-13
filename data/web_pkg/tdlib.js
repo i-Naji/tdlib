@@ -262,40 +262,6 @@ module.exports = _asyncToGenerator;
 /* 2 */
 /***/ (function(module, exports) {
 
-function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
-
-function _typeof(obj) {
-  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return _typeof2(obj);
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -315,16 +281,50 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass;
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
+
+function _typeof(obj) {
+  if (typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return _typeof2(obj);
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : _typeof2(obj);
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+
+/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "64fd0252ac086d3489b929533cc274bc.wasm";
+module.exports = __webpack_require__.p + "0c8dfa03da09d37cee830d6bac9a262e.wasm";
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "b5dffc7d6e2ecedbd2e349d1e4231900.mem";
+module.exports = __webpack_require__.p + "8f753c8e6457d3cb854fc5e8dd3049a7.mem";
 
 /***/ }),
 /* 7 */
@@ -1074,7 +1074,7 @@ try {
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(2);
+var helpers_typeof = __webpack_require__(4);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
@@ -1086,13 +1086,104 @@ var classCallCheck = __webpack_require__(3);
 var classCallCheck_default = /*#__PURE__*/__webpack_require__.n(classCallCheck);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/createClass.js
-var createClass = __webpack_require__(4);
+var createClass = __webpack_require__(2);
 var createClass_default = /*#__PURE__*/__webpack_require__.n(createClass);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
 var asyncToGenerator = __webpack_require__(1);
 var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
 
+// CONCATENATED MODULE: ./src/logger.js
+
+
+
+var logger_Logger =
+/*#__PURE__*/
+function () {
+  function Logger() {
+    classCallCheck_default()(this, Logger);
+
+    this.setVerbosity('WARNING');
+  }
+
+  createClass_default()(Logger, [{
+    key: "debug",
+    value: function debug() {
+      if (this.checkVerbosity(4)) {
+        var _console;
+
+        (_console = console).log.apply(_console, arguments);
+      }
+    }
+  }, {
+    key: "log",
+    value: function log() {
+      if (this.checkVerbosity(4)) {
+        var _console2;
+
+        (_console2 = console).log.apply(_console2, arguments);
+      }
+    }
+  }, {
+    key: "info",
+    value: function info() {
+      if (this.checkVerbosity(3)) {
+        var _console3;
+
+        (_console3 = console).info.apply(_console3, arguments);
+      }
+    }
+  }, {
+    key: "warn",
+    value: function warn() {
+      if (this.checkVerbosity(2)) {
+        var _console4;
+
+        (_console4 = console).warn.apply(_console4, arguments);
+      }
+    }
+  }, {
+    key: "error",
+    value: function error() {
+      if (this.checkVerbosity(1)) {
+        var _console5;
+
+        (_console5 = console).error.apply(_console5, arguments);
+      }
+    }
+  }, {
+    key: "setVerbosity",
+    value: function setVerbosity(level) {
+      var default_level = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'info';
+
+      if (level === undefined) {
+        level = default_level;
+      }
+
+      if (typeof level === 'string') {
+        level = {
+          ERROR: 1,
+          WARNING: 2,
+          INFO: 3,
+          LOG: 4,
+          DEBUG: 4
+        }[level.toUpperCase()] || 2;
+      }
+
+      this.level = level;
+    }
+  }, {
+    key: "checkVerbosity",
+    value: function checkVerbosity(level) {
+      return this.level >= level;
+    }
+  }]);
+
+  return Logger;
+}();
+
+var log = new logger_Logger();
+/* harmony default export */ var logger = (log);
 // CONCATENATED MODULE: ./src/wasm-utils.js
 
 
@@ -1257,40 +1348,41 @@ function _instantiateAny() {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _context2.prev = 0;
-            _context2.next = 3;
+            console.log("instantiate");
+            _context2.prev = 1;
+            _context2.next = 4;
             return instantiateStreaming(url, importObject);
 
-          case 3:
+          case 4:
             return _context2.abrupt("return", _context2.sent);
 
-          case 6:
-            _context2.prev = 6;
-            _context2.t0 = _context2["catch"](0);
+          case 7:
+            _context2.prev = 7;
+            _context2.t0 = _context2["catch"](1);
             console.log("instantiateStreaming failed", _context2.t0);
 
-          case 9:
-            _context2.prev = 9;
-            _context2.next = 12;
+          case 10:
+            _context2.prev = 10;
+            _context2.next = 13;
             return instantiateCachedURL(version, url, importObject);
 
-          case 12:
+          case 13:
             return _context2.abrupt("return", _context2.sent);
 
-          case 15:
-            _context2.prev = 15;
-            _context2.t1 = _context2["catch"](9);
+          case 16:
+            _context2.prev = 16;
+            _context2.t1 = _context2["catch"](10);
             console.log("instantiateCachedURL failed", _context2.t1);
 
-          case 18:
+          case 19:
             throw new Error("can't instantiate wasm");
 
-          case 19:
+          case 20:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 6], [9, 15]]);
+    }, _callee2, null, [[1, 7], [10, 16]]);
   }));
   return _instantiateAny.apply(this, arguments);
 }
@@ -1311,28 +1403,30 @@ var td_asmjs_js_default = /*#__PURE__*/__webpack_require__.n(td_asmjs_js);
 
 
 
+
 var tdlibVersion = 6;
 
-function loadTdlibWasm(_x) {
+function loadTdlibWasm(_x, _x2) {
   return _loadTdlibWasm.apply(this, arguments);
 }
 
 function _loadTdlibWasm() {
   _loadTdlibWasm = asyncToGenerator_default()(
   /*#__PURE__*/
-  regenerator_default.a.mark(function _callee2(wasmUrl) {
+  regenerator_default.a.mark(function _callee17(onFS, wasmUrl) {
     var td_module, createTdwebModule, td_wasm, module;
-    return regenerator_default.a.wrap(function _callee2$(_context2) {
+    return regenerator_default.a.wrap(function _callee17$(_context17) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context17.prev = _context17.next) {
           case 0:
-            _context2.next = 2;
+            console.log('loadTdlibWasm');
+            _context17.next = 3;
             return Promise.all(/* import() */[__webpack_require__.e(1), __webpack_require__.e(3)]).then(__webpack_require__.t.bind(null, 18, 7));
 
-          case 2:
-            td_module = _context2.sent;
-            createTdwebModule = td_module["default"]; // log.info('got td_wasm.js', td_module, createTdwebModule);
-
+          case 3:
+            td_module = _context17.sent;
+            createTdwebModule = td_module["default"];
+            logger.info('receive td_wasm.js', td_module, createTdwebModule);
             td_wasm = td_wasm_default.a;
 
             if (wasmUrl) {
@@ -1340,12 +1434,15 @@ function _loadTdlibWasm() {
             }
 
             module = createTdwebModule({
-              onRuntimeInitialized: function onRuntimeInitialized() {// log.info('runtime intialized');
+              onRuntimeInitialized: function onRuntimeInitialized() {
+                logger.info('runtime intialized');
+                onFS(module.FS);
               },
               instantiateWasm: function instantiateWasm(imports, successCallback) {
-                // log.info('start instantiateWasm', td_wasm, imports);
+                logger.info('start instantiateWasm', td_wasm, imports);
+
                 var next = function next(instance) {
-                  // log.info('finish instantiateWasm');
+                  logger.info('finish instantiateWasm');
                   successCallback(instance);
                 };
 
@@ -1353,48 +1450,53 @@ function _loadTdlibWasm() {
                 return {};
               },
               ENVIROMENT: 'WORKER'
-            }); // log.info('Wait module');
-
-            _context2.next = 9;
+            });
+            logger.info('Wait module');
+            _context17.next = 12;
             return module;
 
-          case 9:
-            module = _context2.sent;
-            return _context2.abrupt("return", module);
+          case 12:
+            module = _context17.sent;
+            logger.info('Loaded module', module); //onFS(module.FS);
 
-          case 11:
+            return _context17.abrupt("return", module);
+
+          case 15:
           case "end":
-            return _context2.stop();
+            return _context17.stop();
         }
       }
-    }, _callee2);
+    }, _callee17);
   }));
   return _loadTdlibWasm.apply(this, arguments);
 }
 
-function loadTdlibAsmjs() {
+function loadTdlibAsmjs(_x3) {
   return _loadTdlibAsmjs.apply(this, arguments);
 }
 
 function _loadTdlibAsmjs() {
   _loadTdlibAsmjs = asyncToGenerator_default()(
   /*#__PURE__*/
-  regenerator_default.a.mark(function _callee3() {
+  regenerator_default.a.mark(function _callee18(onFS) {
     var createTdwebModule, fromFile, toFile, module;
-    return regenerator_default.a.wrap(function _callee3$(_context3) {
+    return regenerator_default.a.wrap(function _callee18$(_context18) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context18.prev = _context18.next) {
           case 0:
-            _context3.next = 2;
+            console.log('loadTdlibAsmjs');
+            _context18.next = 3;
             return __webpack_require__.e(/* import() */ 2).then(__webpack_require__.t.bind(null, 19, 7));
 
-          case 2:
-            createTdwebModule = _context3.sent["default"];
-            // console.log('got td_asm.js', createTdwebModule);
+          case 3:
+            createTdwebModule = _context18.sent["default"];
+            console.log('Loaded td_asm.js', createTdwebModule);
             fromFile = 'td_asmjs.js.mem';
             toFile = td_asmjs_js_default.a;
             module = createTdwebModule({
-              onRuntimeInitialized: function onRuntimeInitialized() {// console.log('runtime intialized');
+              onRuntimeInitialized: function onRuntimeInitialized() {
+                console.log('runtime intialized');
+                onFS(module.FS);
               },
               locateFile: function locateFile(name) {
                 if (name === fromFile) {
@@ -1404,37 +1506,39 @@ function _loadTdlibAsmjs() {
                 return name;
               },
               ENVIROMENT: 'WORKER'
-            }); // log.info('Wait module');
-
-            _context3.next = 8;
+            });
+            logger.info('Wait module');
+            _context18.next = 11;
             return module;
 
-          case 8:
-            module = _context3.sent;
-            return _context3.abrupt("return", module);
+          case 11:
+            module = _context18.sent;
+            logger.info('Loaded module', module); //onFS(module.FS);
 
-          case 10:
+            return _context18.abrupt("return", module);
+
+          case 14:
           case "end":
-            return _context3.stop();
+            return _context18.stop();
         }
       }
-    }, _callee3);
+    }, _callee18);
   }));
   return _loadTdlibAsmjs.apply(this, arguments);
 }
 
-function loadTdlib(_x2) {
+function loadTdlib(_x4, _x5, _x6) {
   return _loadTdlib.apply(this, arguments);
 }
 
 function _loadTdlib() {
   _loadTdlib = asyncToGenerator_default()(
   /*#__PURE__*/
-  regenerator_default.a.mark(function _callee4(wasmUrl) {
+  regenerator_default.a.mark(function _callee19(mode, onFS, wasmUrl) {
     var wasmSupported;
-    return regenerator_default.a.wrap(function _callee4$(_context4) {
+    return regenerator_default.a.wrap(function _callee19$(_context19) {
       while (1) {
-        switch (_context4.prev = _context4.next) {
+        switch (_context19.prev = _context19.next) {
           case 0:
             wasmSupported = function () {
               try {
@@ -1447,70 +1551,129 @@ function _loadTdlib() {
               return false;
             }();
 
-            if (wasmSupported) {
-              _context4.next = 3;
+            if (!wasmSupported) {
+              if (mode === 'wasm') {
+                logger.error('WebAssembly is not supported, trying to use it anyway');
+              } else {
+                logger.warn('WebAssembly is not supported, trying to use asm.js');
+                mode = 'asmjs';
+              }
+            }
+
+            if (!(mode === 'asmjs')) {
+              _context19.next = 4;
               break;
             }
 
-            return _context4.abrupt("return", loadTdlibAsmjs());
-
-          case 3:
-            return _context4.abrupt("return", loadTdlibWasm(wasmUrl));
+            return _context19.abrupt("return", loadTdlibAsmjs(onFS));
 
           case 4:
+            return _context19.abrupt("return", loadTdlibWasm(onFS, wasmUrl));
+
+          case 5:
           case "end":
-            return _context4.stop();
+            return _context19.stop();
         }
       }
-    }, _callee4);
+    }, _callee19);
   }));
   return _loadTdlib.apply(this, arguments);
 }
 
-var src_TdClient =
+var src_OutboundFileSystem =
 /*#__PURE__*/
 function () {
-  function TdClient() {
-    classCallCheck_default()(this, TdClient);
+  function OutboundFileSystem(root, FS) {
+    classCallCheck_default()(this, OutboundFileSystem);
 
-    this.wasInit = false;
+    this.root = root;
+    this.nextFileId = 0;
+    this.FS = FS;
+    this.files = new Set();
+    FS.mkdir(root);
   }
 
-  createClass_default()(TdClient, [{
-    key: "initialize",
+  createClass_default()(OutboundFileSystem, [{
+    key: "blobToPath",
+    value: function blobToPath(blob, name) {
+      var dir = this.root + '/' + this.nextFileId;
+
+      if (!name) {
+        name = 'blob';
+      }
+
+      this.nextFileId++;
+      this.FS.mkdir(dir);
+      this.FS.mount(this.FS.filesystems.WORKERFS, {
+        blobs: [{
+          name: name,
+          data: blob
+        }]
+      }, dir);
+      var path = dir + '/' + name;
+      this.files.add(path);
+      return path;
+    }
+  }, {
+    key: "forgetPath",
+    value: function forgetPath(path) {
+      if (this.files.has(path)) {
+        this.FS.unmount(path);
+        this.files["delete"](path);
+      }
+    }
+  }]);
+
+  return OutboundFileSystem;
+}();
+
+var src_InboundFileSystem =
+/*#__PURE__*/
+function () {
+  function InboundFileSystem() {
+    classCallCheck_default()(this, InboundFileSystem);
+  }
+
+  createClass_default()(InboundFileSystem, [{
+    key: "load_pids",
     value: function () {
-      var _initialize = asyncToGenerator_default()(
+      var _load_pids = asyncToGenerator_default()(
       /*#__PURE__*/
-      regenerator_default.a.mark(function _callee(libPath) {
+      regenerator_default.a.mark(function _callee() {
+        var keys_start, idb, read, keys, keys_time;
         return regenerator_default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!this.wasInit) {
-                  _context.next = 2;
-                  break;
-                }
+                keys_start = performance.now();
+                logger.debug('InboundFileSystem::create::keys start'); //const keys = await this.store.keys();
 
-                return _context.abrupt("return");
+                _context.next = 4;
+                return this.idb;
 
-              case 2:
-                this.wasInit = true; // log.info('load TdModule');
+              case 4:
+                idb = _context.sent;
+                read = idb.transaction(['keyvaluepairs'], 'readonly').objectStore('keyvaluepairs');
+                _context.next = 8;
+                return new Promise(function (resolve, reject) {
+                  var request = read.getAllKeys();
 
-                _context.next = 5;
-                return loadTdlib(libPath);
+                  request.onsuccess = function () {
+                    return resolve(request.result);
+                  };
 
-              case 5:
-                this.TdModule = _context.sent;
-                //log.info('got TdModule');
-                this.methods = {
-                  tdCreate: this.TdModule.cwrap('td_emscripten_create_client_id', 'number', []),
-                  tdSend: this.TdModule.cwrap('td_emscripten_send', null, ['number', 'string']),
-                  tdExecute: this.TdModule.cwrap('td_emscripten_execute', 'string', ['string']),
-                  tdReceive: this.TdModule.cwrap('td_emscripten_receive', 'string', []),
-                  tdGetTimeout: this.TdModule.cwrap('td_emscripten_get_timeout', 'number', [])
-                };
+                  request.onerror = function () {
+                    return reject(request.error);
+                  };
+                });
 
-              case 7:
+              case 8:
+                keys = _context.sent;
+                keys_time = (performance.now() - keys_start) / 1000;
+                logger.debug('InboundFileSystem::create::keys ' + keys_time + ' ' + keys.length);
+                this.pids = new Set(keys);
+
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -1518,37 +1681,919 @@ function () {
         }, _callee, this);
       }));
 
-      function initialize(_x3) {
-        return _initialize.apply(this, arguments);
+      function load_pids() {
+        return _load_pids.apply(this, arguments);
       }
 
-      return initialize;
+      return load_pids;
     }()
   }, {
-    key: "createClientId",
-    value: function createClientId() {
-      return this.methods.tdCreate();
+    key: "has",
+    value: function has(pid) {
+      if (!this.pids) {
+        return true;
+      }
+
+      return this.pids.has(pid);
     }
   }, {
-    key: "send",
-    value: function send(clientId, query) {
-      this.methods.tdSend(clientId, query);
+    key: "forget",
+    value: function forget(pid) {
+      if (this.pids) {
+        this.pids["delete"](pid);
+      }
     }
   }, {
-    key: "execute",
-    value: function execute(query) {
-      return this.methods.tdExecute(query);
-    }
+    key: "doPersist",
+    value: function () {
+      var _doPersist = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee2(pid, path, arr, resolve, reject, write) {
+        var size;
+        return regenerator_default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.persistCount++;
+                size = arr.length;
+                this.persistSize += size;
+                _context2.prev = 3;
+                _context2.next = 6;
+                return new Promise(function (resolve, reject) {
+                  var request = write.put(new Blob([arr]), pid);
+
+                  request.onsuccess = function () {
+                    return resolve(request.result);
+                  };
+
+                  request.onerror = function () {
+                    return reject(request.error);
+                  };
+                });
+
+              case 6:
+                if (this.pids) {
+                  this.pids.add(pid);
+                }
+
+                this.FS.unlink(path);
+                _context2.next = 13;
+                break;
+
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](3);
+                logger.error('Failed persist ' + path + ' ', _context2.t0);
+
+              case 13:
+                //log.debug('persist.do finish', pid, path, arr.length);
+                this.persistCount--;
+                this.persistSize -= size;
+                resolve();
+                this.tryFinishPersist();
+
+              case 17:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[3, 10]]);
+      }));
+
+      function doPersist(_x7, _x8, _x9, _x10, _x11, _x12) {
+        return _doPersist.apply(this, arguments);
+      }
+
+      return doPersist;
+    }()
   }, {
-    key: "receive",
-    value: function receive() {
-      return this.methods.tdReceive();
-    }
+    key: "flushPersist",
+    value: function () {
+      var _flushPersist = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee3() {
+        var idb, write, q;
+        return regenerator_default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!this.inPersist) {
+                  _context3.next = 2;
+                  break;
+                }
+
+                return _context3.abrupt("return");
+
+              case 2:
+                logger.debug('persist.flush');
+                this.inPersist = true;
+                _context3.next = 6;
+                return this.idb;
+
+              case 6:
+                idb = _context3.sent;
+                this.writeBegin = performance.now();
+                write = idb.transaction(['keyvaluepairs'], 'readwrite').objectStore('keyvaluepairs');
+
+                while (this.pendingI < this.pending.length && this.persistCount < 20 && this.persistSize < 50 << 20) {
+                  q = this.pending[this.pendingI];
+                  this.pending[this.pendingI] = null; // TODO: add to transaction
+
+                  this.doPersist(q.pid, q.path, q.arr, q.resolve, q.reject, write);
+                  this.pendingI++;
+                  this.totalCount++;
+                }
+
+                logger.debug('persist.flush transaction cnt=' + this.persistCount + ', size=' + this.persistSize);
+                this.inPersist = false;
+                this.tryFinishPersist();
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function flushPersist() {
+        return _flushPersist.apply(this, arguments);
+      }
+
+      return flushPersist;
+    }()
   }, {
-    key: "getTimeout",
-    value: function getTimeout() {
-      return this.methods.tdGetTimeout();
-    }
+    key: "tryFinishPersist",
+    value: function () {
+      var _tryFinishPersist = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee4() {
+        return regenerator_default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!this.inPersist) {
+                  _context4.next = 2;
+                  break;
+                }
+
+                return _context4.abrupt("return");
+
+              case 2:
+                if (!(this.persistCount !== 0)) {
+                  _context4.next = 4;
+                  break;
+                }
+
+                return _context4.abrupt("return");
+
+              case 4:
+                logger.debug('persist.finish ' + (performance.now() - this.writeBegin) / 1000);
+
+                if (!(this.pendingI === this.pending.length)) {
+                  _context4.next = 11;
+                  break;
+                }
+
+                this.pending = [];
+                this.pendingHasTimeout = false;
+                this.pendingI = 0;
+                logger.debug('persist.finish done');
+                return _context4.abrupt("return");
+
+              case 11:
+                logger.debug('persist.finish continue');
+                this.flushPersist();
+
+              case 13:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function tryFinishPersist() {
+        return _tryFinishPersist.apply(this, arguments);
+      }
+
+      return tryFinishPersist;
+    }()
+  }, {
+    key: "persist",
+    value: function () {
+      var _persist = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee5(pid, path, arr) {
+        var _this = this;
+
+        return regenerator_default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                if (!this.pendingHasTimeout) {
+                  this.pendingHasTimeout = true;
+                  logger.debug('persist set timeout');
+                  setTimeout(function () {
+                    _this.flushPersist();
+                  }, 1);
+                }
+
+                _context5.next = 3;
+                return new Promise(function (resolve, reject) {
+                  _this.pending.push({
+                    pid: pid,
+                    path: path,
+                    arr: arr,
+                    resolve: resolve,
+                    reject: reject
+                  });
+                });
+
+              case 3:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function persist(_x13, _x14, _x15) {
+        return _persist.apply(this, arguments);
+      }
+
+      return persist;
+    }()
+  }, {
+    key: "unlink",
+    value: function () {
+      var _unlink = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee6(pid) {
+        var idb;
+        return regenerator_default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                logger.debug('Unlink ' + pid);
+                _context6.prev = 1;
+                this.forget(pid); //await this.store.removeItem(pid);
+
+                _context6.next = 5;
+                return this.idb;
+
+              case 5:
+                idb = _context6.sent;
+                _context6.next = 8;
+                return new Promise(function (resolve, reject) {
+                  var write = idb.transaction(['keyvaluepairs'], 'readwrite').objectStore('keyvaluepairs');
+                  var request = write["delete"](pid);
+
+                  request.onsuccess = function () {
+                    return resolve(request.result);
+                  };
+
+                  request.onerror = function () {
+                    return reject(request.error);
+                  };
+                });
+
+              case 8:
+                _context6.next = 13;
+                break;
+
+              case 10:
+                _context6.prev = 10;
+                _context6.t0 = _context6["catch"](1);
+                logger.error('Failed unlink ' + pid + ' ', _context6.t0);
+
+              case 13:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this, [[1, 10]]);
+      }));
+
+      function unlink(_x16) {
+        return _unlink.apply(this, arguments);
+      }
+
+      return unlink;
+    }()
+  }], [{
+    key: "create",
+    value: function () {
+      var _create = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee7(dbName, root, FS_promise) {
+        var start, ifs, FS, create_time;
+        return regenerator_default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                start = performance.now();
+                _context7.prev = 1;
+                ifs = new InboundFileSystem();
+                ifs.pending = [];
+                ifs.pendingHasTimeout = false;
+                ifs.persistCount = 0;
+                ifs.persistSize = 0;
+                ifs.pendingI = 0;
+                ifs.inPersist = false;
+                ifs.totalCount = 0;
+                ifs.root = root; //ifs.store = localforage.createInstance({
+                //name: dbName,
+                //driver: localForageDrivers
+                //});
+
+                logger.debug('IDB name: ' + dbName);
+                ifs.idb = new Promise(function (resolve, reject) {
+                  var request = indexedDB.open(dbName);
+
+                  request.onsuccess = function () {
+                    return resolve(request.result);
+                  };
+
+                  request.onerror = function () {
+                    return reject(request.error);
+                  };
+
+                  request.onupgradeneeded = function () {
+                    request.result.createObjectStore('keyvaluepairs');
+                  };
+                });
+                ifs.load_pids();
+                _context7.next = 16;
+                return FS_promise;
+
+              case 16:
+                FS = _context7.sent;
+                _context7.next = 19;
+                return ifs.idb;
+
+              case 19:
+                ifs.FS = FS;
+                ifs.FS.mkdir(root);
+                create_time = (performance.now() - start) / 1000;
+                logger.debug('InboundFileSystem::create ' + create_time);
+                return _context7.abrupt("return", ifs);
+
+              case 26:
+                _context7.prev = 26;
+                _context7.t0 = _context7["catch"](1);
+                logger.error('Failed to init Inbound FileSystem: ', _context7.t0);
+
+              case 29:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[1, 26]]);
+      }));
+
+      function create(_x17, _x18, _x19) {
+        return _create.apply(this, arguments);
+      }
+
+      return create;
+    }()
+  }]);
+
+  return InboundFileSystem;
+}();
+
+var src_DbFileSystem =
+/*#__PURE__*/
+function () {
+  function DbFileSystem() {
+    classCallCheck_default()(this, DbFileSystem);
+  }
+
+  createClass_default()(DbFileSystem, [{
+    key: "sync",
+    value: function () {
+      var _sync = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee8(force) {
+        var _this2 = this;
+
+        var start;
+        return regenerator_default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                if (!this.readOnly) {
+                  _context8.next = 2;
+                  break;
+                }
+
+                return _context8.abrupt("return");
+
+              case 2:
+                if (!(this.syncActive > 0 && !force)) {
+                  _context8.next = 5;
+                  break;
+                }
+
+                logger.debug('SYNC: skip');
+                return _context8.abrupt("return");
+
+              case 5:
+                this.syncActive++;
+                start = performance.now();
+                _context8.next = 9;
+                return new Promise(function (resolve, reject) {
+                  _this2.FS.syncfs(false, function () {
+                    var syncfs_time = (performance.now() - start) / 1000;
+                    _this2.syncfs_total_time += syncfs_time;
+                    logger.debug('SYNC: ' + syncfs_time);
+                    logger.debug('SYNC total: ' + _this2.syncfs_total_time);
+                    resolve();
+                  });
+                });
+
+              case 9:
+                this.syncActive--;
+
+              case 10:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function sync(_x20) {
+        return _sync.apply(this, arguments);
+      }
+
+      return sync;
+    }()
+  }, {
+    key: "close",
+    value: function () {
+      var _close = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee9() {
+        return regenerator_default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                clearInterval(this.syncfsInterval);
+                _context9.next = 3;
+                return this.sync(true);
+
+              case 3:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      function close() {
+        return _close.apply(this, arguments);
+      }
+
+      return close;
+    }()
+  }, {
+    key: "destroy",
+    value: function () {
+      var _destroy = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee10() {
+        var req;
+        return regenerator_default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                clearInterval(this.syncfsInterval);
+
+                if (!this.readOnly) {
+                  _context10.next = 3;
+                  break;
+                }
+
+                return _context10.abrupt("return");
+
+              case 3:
+                this.FS.unmount(this.root);
+                req = indexedDB.deleteDatabase(this.root);
+                _context10.next = 7;
+                return new Promise(function (resolve, reject) {
+                  req.onsuccess = function (e) {
+                    logger.info('SUCCESS');
+                    resolve(e.result);
+                  };
+
+                  req.onerror = function (e) {
+                    logger.info('ONERROR');
+                    reject(e.error);
+                  };
+
+                  req.onblocked = function (e) {
+                    logger.info('ONBLOCKED');
+                    reject('blocked');
+                  };
+                });
+
+              case 7:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function destroy() {
+        return _destroy.apply(this, arguments);
+      }
+
+      return destroy;
+    }()
+  }], [{
+    key: "create",
+    value: function () {
+      var _create2 = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee11(root, FS_promise) {
+        var readOnly,
+            start,
+            dbfs,
+            FS,
+            rmrf,
+            dirs,
+            root_dir,
+            key,
+            value,
+            i,
+            dir,
+            create_time,
+            _args11 = arguments;
+        return regenerator_default.a.wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                readOnly = _args11.length > 2 && _args11[2] !== undefined ? _args11[2] : false;
+                start = performance.now();
+                _context11.prev = 2;
+                dbfs = new DbFileSystem();
+                dbfs.root = root;
+                _context11.next = 7;
+                return FS_promise;
+
+              case 7:
+                FS = _context11.sent;
+                dbfs.FS = FS;
+                dbfs.syncfs_total_time = 0;
+                dbfs.readOnly = readOnly;
+                dbfs.syncActive = 0;
+                FS.mkdir(root);
+                FS.mount(FS.filesystems.IDBFS, {}, root);
+                _context11.next = 16;
+                return new Promise(function (resolve, reject) {
+                  FS.syncfs(true, function (err) {
+                    resolve();
+                  });
+                });
+
+              case 16:
+                rmrf = function rmrf(path) {
+                  logger.debug('rmrf ', path);
+                  var info;
+
+                  try {
+                    info = FS.lookupPath(path);
+                  } catch (e) {
+                    return;
+                  }
+
+                  logger.debug('rmrf ', path, info);
+
+                  if (info.node.isFolder) {
+                    for (var key in info.node.contents) {
+                      rmrf(info.path + '/' + info.node.contents[key].name);
+                    }
+
+                    logger.debug('rmdir ', path);
+                    FS.rmdir(path);
+                  } else {
+                    logger.debug('unlink ', path);
+                    FS.unlink(path);
+                  }
+                }; //const dirs = ['thumbnails', 'profile_photos', 'secret', 'stickers', 'temp', 'wallpapers', 'secret_thumbnails', 'passport'];
+
+
+                dirs = [];
+                root_dir = FS.lookupPath(root);
+                _context11.t0 = regenerator_default.a.keys(root_dir.node.contents);
+
+              case 20:
+                if ((_context11.t1 = _context11.t0()).done) {
+                  _context11.next = 29;
+                  break;
+                }
+
+                key = _context11.t1.value;
+                value = root_dir.node.contents[key];
+                logger.debug('node ', key, value);
+
+                if (value.isFolder) {
+                  _context11.next = 26;
+                  break;
+                }
+
+                return _context11.abrupt("continue", 20);
+
+              case 26:
+                dirs.push(root_dir.path + '/' + value.name);
+                _context11.next = 20;
+                break;
+
+              case 29:
+                for (i in dirs) {
+                  dir = dirs[i];
+                  rmrf(dir); //FS.mkdir(dir);
+                  //FS.mount(FS.filesystems.MEMFS, {}, dir);
+                }
+
+                dbfs.syncfsInterval = setInterval(function () {
+                  dbfs.sync();
+                }, 5000);
+                create_time = (performance.now() - start) / 1000;
+                logger.debug('DbFileSystem::create ' + create_time);
+                return _context11.abrupt("return", dbfs);
+
+              case 36:
+                _context11.prev = 36;
+                _context11.t2 = _context11["catch"](2);
+                logger.error('Failed to init DbFileSystem: ', _context11.t2);
+
+              case 39:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, null, [[2, 36]]);
+      }));
+
+      function create(_x21, _x22) {
+        return _create2.apply(this, arguments);
+      }
+
+      return create;
+    }()
+  }]);
+
+  return DbFileSystem;
+}();
+
+var src_TdFileSystem =
+/*#__PURE__*/
+function () {
+  function TdFileSystem() {
+    classCallCheck_default()(this, TdFileSystem);
+  }
+
+  createClass_default()(TdFileSystem, [{
+    key: "destroy",
+    value: function () {
+      var _destroy2 = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee12() {
+        return regenerator_default.a.wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return this.dbFileSystem.destroy();
+
+              case 2:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12, this);
+      }));
+
+      function destroy() {
+        return _destroy2.apply(this, arguments);
+      }
+
+      return destroy;
+    }()
+  }], [{
+    key: "init_fs",
+    value: function () {
+      var _init_fs = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee13(prefix, FS_promise) {
+        var FS;
+        return regenerator_default.a.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return FS_promise;
+
+              case 2:
+                FS = _context13.sent;
+                FS.mkdir(prefix);
+                return _context13.abrupt("return", FS);
+
+              case 5:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13);
+      }));
+
+      function init_fs(_x23, _x24) {
+        return _init_fs.apply(this, arguments);
+      }
+
+      return init_fs;
+    }()
+  }, {
+    key: "create",
+    value: function () {
+      var _create3 = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee14(instanceName, FS_promise) {
+        var readOnly,
+            tdfs,
+            prefix,
+            inboundFileSystem,
+            dbFileSystem,
+            FS,
+            _args14 = arguments;
+        return regenerator_default.a.wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                readOnly = _args14.length > 2 && _args14[2] !== undefined ? _args14[2] : false;
+                _context14.prev = 1;
+                tdfs = new TdFileSystem();
+                prefix = '/' + instanceName;
+                tdfs.prefix = prefix;
+                FS_promise = TdFileSystem.init_fs(prefix, FS_promise); //MEMFS. Store to IDB and delete files as soon as possible
+
+                inboundFileSystem = src_InboundFileSystem.create(instanceName, prefix + '/inboundfs', FS_promise); //IDBFS. MEMFS which is flushed to IDB from time to time
+
+                dbFileSystem = src_DbFileSystem.create(prefix + '/dbfs', FS_promise, readOnly);
+                _context14.next = 10;
+                return FS_promise;
+
+              case 10:
+                FS = _context14.sent;
+                tdfs.FS = FS; //WORKERFS. Temporary stores Blobs for outbound files
+
+                tdfs.outboundFileSystem = new src_OutboundFileSystem(prefix + '/outboundfs', tdfs.FS);
+                _context14.next = 15;
+                return inboundFileSystem;
+
+              case 15:
+                tdfs.inboundFileSystem = _context14.sent;
+                _context14.next = 18;
+                return dbFileSystem;
+
+              case 18:
+                tdfs.dbFileSystem = _context14.sent;
+                return _context14.abrupt("return", tdfs);
+
+              case 22:
+                _context14.prev = 22;
+                _context14.t0 = _context14["catch"](1);
+                logger.error('Failed to init TdFileSystem: ', _context14.t0);
+
+              case 25:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, null, [[1, 22]]);
+      }));
+
+      function create(_x25, _x26) {
+        return _create3.apply(this, arguments);
+      }
+
+      return create;
+    }()
+  }]);
+
+  return TdFileSystem;
+}();
+
+var src_TdClient =
+/*#__PURE__*/
+function () {
+  createClass_default()(TdClient, null, [{
+    key: "init_fs",
+    value: function () {
+      var _init_fs2 = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee15(prefix, FS_promise) {
+        var FS;
+        return regenerator_default.a.wrap(function _callee15$(_context15) {
+          while (1) {
+            switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return FS_promise;
+
+              case 2:
+                FS = _context15.sent;
+                FS.mkdir(prefix);
+                return _context15.abrupt("return", FS);
+
+              case 5:
+              case "end":
+                return _context15.stop();
+            }
+          }
+        }, _callee15);
+      }));
+
+      function init_fs(_x27, _x28) {
+        return _init_fs2.apply(this, arguments);
+      }
+
+      return init_fs;
+    }()
+  }]);
+
+  function TdClient() {
+    classCallCheck_default()(this, TdClient);
+
+    this.wasInit = false;
+  }
+
+  createClass_default()(TdClient, [{
+    key: "init",
+    value: function () {
+      var _init = asyncToGenerator_default()(
+      /*#__PURE__*/
+      regenerator_default.a.mark(function _callee16(tdlib_mode) {
+        var _this3 = this;
+
+        var mode, FS_promise, tdfs_promise;
+        return regenerator_default.a.wrap(function _callee16$(_context16) {
+          while (1) {
+            switch (_context16.prev = _context16.next) {
+              case 0:
+                if (!this.wasInit) {
+                  _context16.next = 2;
+                  break;
+                }
+
+                return _context16.abrupt("return");
+
+              case 2:
+                this.wasInit = true;
+                mode = tdlib_mode || 'wasm';
+                FS_promise = new Promise(function (resolve) {
+                  _this3.onFS = resolve;
+                });
+                tdfs_promise = src_TdFileSystem.create('tdlib', FS_promise, false);
+                logger.info('load TdModule');
+                _context16.next = 9;
+                return loadTdlib(mode, this.onFS, false);
+
+              case 9:
+                this.TdModule = _context16.sent;
+                logger.info('loaded TdModule');
+                this.td_create = this.TdModule.cwrap('td_emscripten_create_client_id', 'number', []);
+                this.td_send = this.TdModule.cwrap('td_emscripten_send', null, ['number', 'string']);
+                this.td_execute = this.TdModule.cwrap('td_emscripten_execute', 'string', ['string']);
+                this.td_receive = this.TdModule.cwrap('td_emscripten_receive', 'string', []);
+
+                this.td_set_verbosity = function (verbosity) {
+                  _this3.td_functions.td_execute(JSON.stringify({
+                    '@type': 'setLogVerbosityLevel',
+                    new_verbosity_level: verbosity
+                  }));
+                };
+
+                this.td_get_timeout = this.TdModule.cwrap('td_emscripten_get_timeout', 'number', []);
+
+              case 17:
+              case "end":
+                return _context16.stop();
+            }
+          }
+        }, _callee16, this);
+      }));
+
+      function init(_x29) {
+        return _init.apply(this, arguments);
+      }
+
+      return init;
+    }()
   }]);
 
   return TdClient;
