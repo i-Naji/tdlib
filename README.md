@@ -1,6 +1,6 @@
 # TDLib
 
-#### Flutter [Plugin](https://pub.dev/packages/tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib/td/tree/789b9c0a554d779945db027fd2612909c676345f) v1.8.0
+#### Flutter [Plugin](https://pub.dev/packages/tdlib) for [TDLib (Telegram Database Library)](https://github.com/tdlib/td/tree/8e1a7dbac29cea82292f33d6c11c43e13ffcf658) v1.8.15
 
 Telegram Tdlib is a complete library for creating telegram clients, it also has a simple tdjson ready-to-use library to ease the integration with different programming languages and platforms.<br>
 This plugin is a complete tdlib-tdjson binding package to help you create your own Telegram clients.
