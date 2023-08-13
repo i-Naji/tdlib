@@ -10,8 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ffi: ^1.1.2
-  js: ^0.6.3
+  flutter_web_plugins:
+    sdk: flutter
+  ffi: ^2.1.0
+  js: ^0.6.7
 
 dev_dependencies:
   flutter_test:
@@ -31,6 +33,7 @@ flutter:
     platforms:
       android:
         package: org.naji.td.tdlib
+        pluginClass: TdlibPlugin
         dartPluginClass: TdNativePlugin
       ios:
         dartPluginClass: TdNativePlugin
