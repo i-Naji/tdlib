@@ -1,11 +1,12 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tdlib/td_api.dart' as tdApi;
 import 'package:tdlib/tdlib.dart';
 
 void main() async {
-  final tdlibPath = (Platform.isAndroid || Platform.isLinux || Platform.isWindows) ? 'libtdjson.so' : null;
+  final tdlibPath = kIsWeb ? null : (Platform.isAndroid || Platform.isLinux || Platform.isWindows) ? 'libtdjson.so' : null;
   await TdPlugin.initialize(tdlibPath);
   runApp(const MyApp());
 }
