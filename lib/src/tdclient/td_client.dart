@@ -4,7 +4,6 @@ import 'package:tdlib/src/tdapi/tdapi.dart'
 import 'platform_interfaces/td_plugin.dart';
 export 'platform_interfaces/td_plugin.dart';
 export 'platform_interfaces/td_native_plugin.dart';
-export 'platform_interfaces/td_web_plugin.dart';
 
 part 'td_json_client.dart';
 
