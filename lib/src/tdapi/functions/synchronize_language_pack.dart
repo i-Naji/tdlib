@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class SynchronizeLanguagePack extends TdFunction {
-  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server.. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization
+  /// Fetches the latest versions of all strings from a language pack in the current localization target from the server. This method doesn't need to be called explicitly for the current used/base language packs. Can be called before authorization
   const SynchronizeLanguagePack({
     required this.languagePackId,
   });

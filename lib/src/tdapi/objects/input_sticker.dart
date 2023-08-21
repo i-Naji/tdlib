@@ -9,7 +9,7 @@ class InputSticker extends TdObject {
     required this.keywords,
   });
 
-  /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+  /// [sticker] File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   final InputFile sticker;
 
   /// [emojis] String with 1-20 emoji corresponding to the sticker

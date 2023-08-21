@@ -472,7 +472,7 @@ class UpdateNewMessage extends Update {
 }
 
 class UpdateMessageSendAcknowledged extends Update {
-  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed.. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
+  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
   const UpdateMessageSendAcknowledged({
     required this.chatId,
     required this.messageId,
@@ -2980,7 +2980,7 @@ class UpdateChatFolders extends Update {
 }
 
 class UpdateChatOnlineMemberCount extends Update {
-  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats.. There is no guarantee that it will be sent just after the number of online users has changed
+  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it will be sent just after the number of online users has changed
   const UpdateChatOnlineMemberCount({
     required this.chatId,
     required this.onlineMemberCount,

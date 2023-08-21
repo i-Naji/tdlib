@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class OpenMessageContent extends TdFunction {
-  /// Informs TDLib that the message content has been opened (e.g., the user has opened a photo, video, document, location or venue, or has listened to an audio file or voice note message).. An updateMessageContentOpened update will be generated if something has changed
+  /// Informs TDLib that the message content has been opened (e.g., the user has opened a photo, video, document, location or venue, or has listened to an audio file or voice note message). An updateMessageContentOpened update will be generated if something has changed
   const OpenMessageContent({
     required this.chatId,
     required this.messageId,

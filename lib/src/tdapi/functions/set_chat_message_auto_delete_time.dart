@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class SetChatMessageAutoDeleteTime extends TdFunction {
-  /// Changes the message auto-delete or self-destruct (for secret chats) time in a chat. Requires change_info administrator right in basic groups, supergroups and channels. Message auto-delete time can't be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
+  /// Changes the message auto-delete or self-destruct (for secret chats) time in a chat. Requires change_info administrator right in basic groups, supergroups and channels Message auto-delete time can't be changed in a chat with the current user (Saved Messages) and the chat 777000 (Telegram).
   const SetChatMessageAutoDeleteTime({
     required this.chatId,
     required this.messageAutoDeleteTime,

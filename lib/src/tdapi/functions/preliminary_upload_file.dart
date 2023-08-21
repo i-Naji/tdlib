@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class PreliminaryUploadFile extends TdFunction {
-  /// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. Updates updateFile will be used. to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it will be sent in a message
+  /// Preliminary uploads a file to the cloud before sending it in a message, which can be useful for uploading of being recorded voice and video notes. Updates updateFile will be used to notify about upload progress and successful completion of the upload. The file will not have a persistent remote identifier until it will be sent in a message
   const PreliminaryUploadFile({
     required this.file,
     this.fileType,

@@ -10,7 +10,7 @@ class AddContact extends TdFunction {
   /// [contact] The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored
   final Contact contact;
 
-  /// [sharePhoneNumber] Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed.. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number
+  /// [sharePhoneNumber] Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number
   final bool sharePhoneNumber;
 
   @override

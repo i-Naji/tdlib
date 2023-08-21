@@ -19,7 +19,7 @@ class CreateNewStickerSet extends TdFunction {
   /// [title] Sticker set title; 1-64 characters
   final String title;
 
-  /// [name] Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_
+  /// [name] Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 1-64 characters
   final String name;
 
   /// [stickerFormat] Format of the stickers in the set

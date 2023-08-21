@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class CancelPasswordReset extends TdFunction {
-  /// Cancels reset of 2-step verification password. The method can be called if passwordState.pending_reset_date
+  /// Cancels reset of 2-step verification password. The method can be called if passwordState.pending_reset_date > 0
   const CancelPasswordReset();
 
   @override

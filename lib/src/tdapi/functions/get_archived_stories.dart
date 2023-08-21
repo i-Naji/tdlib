@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class GetArchivedStories extends TdFunction {
-  /// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id).. For optimal performance, the number of returned stories is chosen by TDLib
+  /// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
   const GetArchivedStories({
     required this.fromStoryId,
     required this.limit,
@@ -10,7 +10,7 @@ class GetArchivedStories extends TdFunction {
   /// [fromStoryId] Identifier of the story starting from which stories must be returned; use 0 to get results from the last story
   final int fromStoryId;
 
-  /// [limit] The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
+  /// [limit] The maximum number of stories to be returned For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   final int limit;
 
   @override

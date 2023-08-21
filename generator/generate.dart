@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 import 'dart:io';
 
+import 'src/tl_parser.dart';
+
 const tdApiDir = 'lib/src/tdapi';
 final tdApiFile = File('$tdApiDir/tdapi.dart');
 final functionsDir = Directory("$tdApiDir/functions");
@@ -18,31 +20,17 @@ const builtInTypes = [
 ];
 const dartTypes = ['int', 'double', 'String', 'bool'];
 
-// regex patterns
-final sectionRegx = RegExp(r'---(\w+)---');
-final classRegx = RegExp(r'^//@class (\w+) @description (.*)');
-final docsRegx =
-    RegExp(r'//((-)|@)(description)?([\w -.,:;={}\?\/\(\)"]+)(@?)(.*)?');
-final argsRegx = RegExp(r'(\w+):([\w<>]+)');
-final fieldsRegx = RegExp(r'^(\w+) (.*)?= (\w+);$');
-
 final List<TlObject> _objects = [];
 
 class DartTdDocumentationGenerator {
   String schemePath = 'data/td_api.tl';
-  int skipLines = 13;
   String mainPart = 'part of \'../tdapi.dart\';';
 
   /// Main generating function
   void generate() {
-    // read td_api scheme
-    var schemeData = readFile(schemePath);
+    final schema = parseTlSchema(File(schemePath).readAsStringSync());
 
-    // skip built-in types
-    schemeData = schemeData.sublist(skipLines);
-
-    // extract data
-    dispatchSchemeData(schemeData);
+    collectObjects(schema);
 
     fetchRelevant();
 
@@ -51,94 +39,29 @@ class DartTdDocumentationGenerator {
     writeToFile();
   }
 
-  /// dispatching types and functions from data
-  /// extract variables and descriptions and store.
-  /// [lines] list of scheme lines
-  void dispatchSchemeData(List<String> lines) {
-    var classDescription = '';
-    var variablesDescriptions = <String>[];
-    String? section = 'types';
-    // reading data line by line and analyze them.
-    for (final line in lines) {
-      // check if we are in types section or functions section.
-      if (sectionRegx.hasMatch(line)) {
-        section = sectionRegx.firstMatch(line)!.group(1);
-        continue;
-      }
-
-      // check for class type description line
-      if (classRegx.hasMatch(line)) {
-        final classData = classRegx.firstMatch(line)!;
-        final className = classData.group(1);
-        final classDes = classData.group(2);
-        _objects.add(TlObject(className!, classDes!, 'classes'));
-        continue;
-      }
-
-      // check documentation line.
-      if (docsRegx.hasMatch(line)) {
-        final docData = docsRegx.firstMatch(line)!;
-
-        // if line start with '//-', this line is continuation of last line.
-        final continuation = (docData.group(2) == null) ? false : true;
-
-        // starting with '//@description' determines a description line.
-        final isDescription = docData.group(3) == 'description' ? true : false;
-
-        // rest of information from this line, after description state.
-        final docs = docData.group(4)!.trim();
-
-        // variables description start with '@VARIABLE_NAME', @ is a sign of extra descriptions.
-        final hasExtra = docData.group(5) == '@' ? true : false;
-
-        // rest of information from this line, after sign of extra descriptions.
-        final extraData = docData.group(6);
-
-        if (isDescription) {
-          classDescription = docs;
-        } else if (continuation) {
-          // if this line is continuation of last line, must be added to last variable description or class description
-          // always class description is the first thing that defined. so if there are variables information so class description is finished.
-          if (variablesDescriptions.isNotEmpty) {
-            variablesDescriptions[variablesDescriptions.length - 1] +=
-                '. $docs';
-          } else {
-            classDescription += '. $docs';
-          }
-        } else {
-          variablesDescriptions.add(docs);
-        }
-        if (hasExtra) {
-          // where the '@' is the variables descriptions sign, splitting extra information by this sign separates descriptions.
-          variablesDescriptions.addAll(extraData!.split('@'));
-        }
-        continue;
-      }
-
-      // check for the last line of
-      if (fieldsRegx.hasMatch(line)) {
-        final classData = fieldsRegx.firstMatch(line)!;
-
-        final className = classData.group(1)!;
-        final classArgs = classData.group(2);
-        final classReturnType = classData.group(3);
-        final args = (classArgs == null)
-            ? <String, String>{}
-            // ignore: prefer_for_elements_to_map_fromIterable
-            : Map<String, String>.fromIterable(classArgs.trim().split(' '),
-                key: (var arg) => arg.split(':')[0],
-                value: (var arg) => arg.split(':')[1]);
-
-        // store class data and reset class and variables descriptions.
-        _objects.add(TlObject(
-            upperFirstChar(className), classDescription, section!,
-            variablesDescriptions: variablesDescriptions,
-            argsData: args,
-            returnType: classReturnType!));
-        classDescription = '';
-        variablesDescriptions = [];
-      }
-    }
+  /// Turns the parsed schema into [TlObject]s, in schema order.
+  void collectObjects(TlSchema schema) {
+    final entries = <(int, TlObject)>[
+      for (final c in schema.classes)
+        (c.line, TlObject(c.name, c.description, 'classes')),
+      for (final c in [...schema.types, ...schema.functions])
+        (
+          c.line,
+          TlObject(
+            upperFirstChar(c.name),
+            c.description,
+            c.isFunction ? 'functions' : 'types',
+            variablesDescriptions: [
+              for (final p in c.params)
+                '${p.name == 'description' ? 'param_description' : p.name} '
+                    '${p.description}',
+            ],
+            argsData: {for (final p in c.params) p.name: '${p.type}'},
+            returnType: c.result,
+          ),
+        ),
+    ]..sort((a, b) => a.$1.compareTo(b.$1));
+    _objects.addAll(entries.map((e) => e.$2));
   }
 
   /// find relevant classes like those classes have parent class

@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class DeleteChat extends TdFunction {
-  /// Deletes a chat along with all messages in the corresponding chat for all chat members. For group chats this will release the usernames and remove all members.. Use the field chat.can_be_deleted_for_all_users to find whether the method can be applied to the chat
+  /// Deletes a chat along with all messages in the corresponding chat for all chat members. For group chats this will release the usernames and remove all members. Use the field chat.can_be_deleted_for_all_users to find whether the method can be applied to the chat
   const DeleteChat({
     required this.chatId,
   });

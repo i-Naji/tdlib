@@ -459,7 +459,7 @@ class AuthorizationStateWaitRegistration extends AuthorizationState {
 }
 
 class AuthorizationStateWaitPassword extends AuthorizationState {
-  /// The user has been authorized, but needs to enter a 2-step verification password to start using the application.. Call checkAuthenticationPassword to provide the password, or requestAuthenticationPasswordRecovery to recover the password, or deleteAccount to delete the account after a week
+  /// The user has been authorized, but needs to enter a 2-step verification password to start using the application. Call checkAuthenticationPassword to provide the password, or requestAuthenticationPasswordRecovery to recover the password, or deleteAccount to delete the account after a week
   const AuthorizationStateWaitPassword({
     required this.passwordHint,
     required this.hasRecoveryEmailAddress,
@@ -673,7 +673,7 @@ class AuthorizationStateClosing extends AuthorizationState {
 }
 
 class AuthorizationStateClosed extends AuthorizationState {
-  /// TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to. with error code 500. To continue working, one must create a new instance of the TDLib client
+  /// TDLib client is in its final state. All databases are closed and all resources are released. No other updates will be received after this. All queries will be responded to with error code 500. To continue working, one must create a new instance of the TDLib client
   const AuthorizationStateClosed({
     this.extra,
     this.clientId,

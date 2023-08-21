@@ -79,7 +79,7 @@ class SupergroupFullInfo extends TdObject {
   /// [canToggleAggressiveAntiSpam] True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
-  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available,. so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
+  /// [isAllHistoryAvailable] True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available, so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   final bool isAllHistoryAvailable;
 
   /// [hasAggressiveAntiSpamEnabled] True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators

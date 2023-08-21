@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class Supergroup extends TdObject {
-  /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup:. only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos.. Unlike supergroups, channels can have an unlimited number of subscribers
+  /// Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers
   const Supergroup({
     required this.id,
     this.usernames,
@@ -37,7 +37,7 @@ class Supergroup extends TdObject {
   /// [status] Status of the current user in the supergroup or channel; custom title will always be empty
   final ChatMemberStatus status;
 
-  /// [memberCount] Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received. through searchPublicChats, searchChatsNearby, getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon, getUserPrivacySettingRules, or in chatFolderInviteLinkInfo.missing_chat_ids
+  /// [memberCount] Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through searchPublicChats, searchChatsNearby, getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon, getUserPrivacySettingRules, or in chatFolderInviteLinkInfo.missing_chat_ids
   final int memberCount;
 
   /// [hasLinkedChat] True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel

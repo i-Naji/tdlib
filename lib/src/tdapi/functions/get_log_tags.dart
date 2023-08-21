@@ -1,7 +1,7 @@
 part of '../tdapi.dart';
 
 class GetLogTags extends TdFunction {
-  /// Returns list of available TDLib internal log tags, for example,
+  /// Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
   const GetLogTags();
 
   @override

@@ -14,7 +14,7 @@ class UploadStickerFile extends TdFunction {
   /// [stickerFormat] Sticker format
   final StickerFormat stickerFormat;
 
-  /// [sticker] File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side.. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
+  /// [sticker] File file to upload; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   final InputFile sticker;
 
   @override

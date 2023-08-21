@@ -69,24 +69,52 @@ class VectorPathCommandLine extends VectorPathCommand {
 }
 
 class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
-  /// A cubic B
-  const VectorPathCommandCubicBezierCurve();
+  /// A cubic Bézier curve to a given point
+  const VectorPathCommandCubicBezierCurve({
+    required this.startControlPoint,
+    required this.endControlPoint,
+    required this.endPoint,
+  });
+
+  /// [startControlPoint] The start control point of the curve
+  final Point startControlPoint;
+
+  /// [endControlPoint] The end control point of the curve
+  final Point endControlPoint;
+
+  /// [endPoint] The end point of the curve
+  final Point endPoint;
 
   /// Parse from a json
   factory VectorPathCommandCubicBezierCurve.fromJson(
           Map<String, dynamic> json) =>
-      const VectorPathCommandCubicBezierCurve();
+      VectorPathCommandCubicBezierCurve(
+        startControlPoint: Point.fromJson(json['start_control_point']),
+        endControlPoint: Point.fromJson(json['end_control_point']),
+        endPoint: Point.fromJson(json['end_point']),
+      );
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) {
     return {
       "@type": CONSTRUCTOR,
+      "start_control_point": startControlPoint.toJson(),
+      "end_control_point": endControlPoint.toJson(),
+      "end_point": endPoint.toJson(),
     };
   }
 
   @override
-  VectorPathCommandCubicBezierCurve copyWith() =>
-      const VectorPathCommandCubicBezierCurve();
+  VectorPathCommandCubicBezierCurve copyWith({
+    Point? startControlPoint,
+    Point? endControlPoint,
+    Point? endPoint,
+  }) =>
+      VectorPathCommandCubicBezierCurve(
+        startControlPoint: startControlPoint ?? this.startControlPoint,
+        endControlPoint: endControlPoint ?? this.endControlPoint,
+        endPoint: endPoint ?? this.endPoint,
+      );
 
   static const CONSTRUCTOR = 'vectorPathCommandCubicBezierCurve';
 

@@ -74,7 +74,7 @@ class InputFileId extends InputFile {
 }
 
 class InputFileRemote extends InputFile {
-  /// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib.. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
+  /// A file defined by its remote inputFileRemote. The remote inputFileRemote is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
   const InputFileRemote({
     required this.id,
   });
