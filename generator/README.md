@@ -1,3 +1,14 @@
-For generating All TDLib's Methods and Objects, run : 
-<br>`$ dart generator/generate.dart`<br>
-in <u>root directory of this project</u>.
+# API generator
+
+Generates `lib/src/tdapi/` from TDLib's schema, `data/td_api.tl`.
+
+```console
+dart run generator/generate.dart
+```
+
+- `src/tl_parser.dart` reads the schema: classes, constructors, functions and
+  their documentation.
+- `src/dart_emitter.dart` writes one file per class and function plus
+  `tdapi.dart`.
+
+The output is formatted by `dart format` afterwards.
