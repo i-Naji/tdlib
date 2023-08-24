@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right
 ///
 /// Returns [ChatInviteLink].
-final class ReplacePrimaryChatInviteLink extends TdFunction {
+final class ReplacePrimaryChatInviteLink extends TdFunction<ChatInviteLink> {
   /// Replaces current primary invite link for a chat with a new primary invite link. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right
   const ReplacePrimaryChatInviteLink({
     required this.chatId,

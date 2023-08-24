@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed
 ///
 /// Returns [Ok].
-final class AddChatToList extends TdFunction {
+final class AddChatToList extends TdFunction<Ok> {
   /// Adds a chat to a chat list. A chat can't be simultaneously in Main and Archive chat lists, so it is automatically removed from another one if needed
   const AddChatToList({
     required this.chatId,

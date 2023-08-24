@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
 ///
 /// Returns [ChatMembers].
-final class GetSupergroupMembers extends TdFunction {
+final class GetSupergroupMembers extends TdFunction<ChatMembers> {
   /// Returns information about members or banned users in a supergroup or channel. Can be used only if supergroupFullInfo.can_get_members == true; additionally, administrator privileges may be required for some filters
   const GetSupergroupMembers({
     required this.supergroupId,

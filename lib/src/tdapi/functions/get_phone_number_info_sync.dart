@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a phone number by its prefix synchronously. getCountries must be called at least once after changing localization to the specified language if properly localized country information is expected. Can be called synchronously
 ///
 /// Returns [PhoneNumberInfo].
-final class GetPhoneNumberInfoSync extends TdFunction {
+final class GetPhoneNumberInfoSync extends TdFunction<PhoneNumberInfo> {
   /// Returns information about a phone number by its prefix synchronously. getCountries must be called at least once after changing localization to the specified language if properly localized country information is expected. Can be called synchronously
   const GetPhoneNumberInfoSync({
     required this.languageCode,
@@ -42,4 +42,7 @@ final class GetPhoneNumberInfoSync extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the editable username of a supergroup or channel, requires owner privileges in the supergroup or channel
 ///
 /// Returns [Ok].
-final class SetSupergroupUsername extends TdFunction {
+final class SetSupergroupUsername extends TdFunction<Ok> {
   /// Changes the editable username of a supergroup or channel, requires owner privileges in the supergroup or channel
   const SetSupergroupUsername({
     required this.supergroupId,

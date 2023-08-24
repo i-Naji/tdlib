@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for outgoing messages with content of the type messageDocument in all chats except secret chats. Returns the results in reverse chronological order
 ///
 /// Returns [FoundMessages].
-final class SearchOutgoingDocumentMessages extends TdFunction {
+final class SearchOutgoingDocumentMessages extends TdFunction<FoundMessages> {
   /// Searches for outgoing messages with content of the type messageDocument in all chats except secret chats. Returns the results in reverse chronological order
   const SearchOutgoingDocumentMessages({
     required this.query,

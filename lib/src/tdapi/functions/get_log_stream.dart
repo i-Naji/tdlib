@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
 ///
 /// Returns [LogStream].
-final class GetLogStream extends TdFunction {
+final class GetLogStream extends TdFunction<LogStream> {
   /// Returns information about currently used log stream for internal logging of TDLib. Can be called synchronously
   const GetLogStream();
 
@@ -24,4 +24,7 @@ final class GetLogStream extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

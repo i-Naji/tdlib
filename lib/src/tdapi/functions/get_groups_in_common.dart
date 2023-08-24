@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date
 ///
 /// Returns [Chats].
-final class GetGroupsInCommon extends TdFunction {
+final class GetGroupsInCommon extends TdFunction<Chats> {
   /// Returns a list of common group chats with a given user. Chats are sorted by their type and creation date
   const GetGroupsInCommon({
     required this.userId,

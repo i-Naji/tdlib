@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Constructs a persistent HTTP URL for a background
 ///
 /// Returns [HttpUrl].
-final class GetBackgroundUrl extends TdFunction {
+final class GetBackgroundUrl extends TdFunction<HttpUrl> {
   /// Constructs a persistent HTTP URL for a background
   const GetBackgroundUrl({
     required this.name,

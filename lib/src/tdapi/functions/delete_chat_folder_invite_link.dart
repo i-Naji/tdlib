@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes an invite link for a chat folder
 ///
 /// Returns [Ok].
-final class DeleteChatFolderInviteLink extends TdFunction {
+final class DeleteChatFolderInviteLink extends TdFunction<Ok> {
   /// Deletes an invite link for a chat folder
   const DeleteChatFolderInviteLink({
     required this.chatFolderId,

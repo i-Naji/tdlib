@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a chat folder by an invite link
 ///
 /// Returns [Ok].
-final class AddChatFolderByInviteLink extends TdFunction {
+final class AddChatFolderByInviteLink extends TdFunction<Ok> {
   /// Adds a chat folder by an invite link
   const AddChatFolderByInviteLink({
     required this.inviteLink,

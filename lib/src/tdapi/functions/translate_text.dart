@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Translates a text to the given language. If the current user is a Telegram Premium user, then text formatting is preserved
 ///
 /// Returns [FormattedText].
-final class TranslateText extends TdFunction {
+final class TranslateText extends TdFunction<FormattedText> {
   /// Translates a text to the given language. If the current user is a Telegram Premium user, then text formatting is preserved
   const TranslateText({
     required this.text,

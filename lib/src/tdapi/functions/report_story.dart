@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Reports a story to the Telegram moderators
 ///
 /// Returns [Ok].
-final class ReportStory extends TdFunction {
+final class ReportStory extends TdFunction<Ok> {
   /// Reports a story to the Telegram moderators
   const ReportStory({
     required this.storySenderChatId,

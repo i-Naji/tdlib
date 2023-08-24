@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
 ///
 /// Returns [Ok].
-final class RequestQrCodeAuthentication extends TdFunction {
+final class RequestQrCodeAuthentication extends TdFunction<Ok> {
   /// Requests QR code authentication by scanning a QR code on another logged in device. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
   const RequestQrCodeAuthentication({
     required this.otherUserIds,

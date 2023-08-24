@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a confirmation text to be shown to the user before starting message import
 ///
 /// Returns [Text].
-final class GetMessageImportConfirmationText extends TdFunction {
+final class GetMessageImportConfirmationText extends TdFunction<Text> {
   /// Returns a confirmation text to be shown to the user before starting message import
   const GetMessageImportConfirmationText({
     required this.chatId,

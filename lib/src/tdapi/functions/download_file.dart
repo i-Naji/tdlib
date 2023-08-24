@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Downloads a file from the cloud. Download progress and completion of the download will be notified through updateFile updates
 ///
 /// Returns [File].
-final class DownloadFile extends TdFunction {
+final class DownloadFile extends TdFunction<File> {
   /// Downloads a file from the cloud. Download progress and completion of the download will be notified through updateFile updates
   const DownloadFile({
     required this.fileId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the order of installed sticker sets
 ///
 /// Returns [Ok].
-final class ReorderInstalledStickerSets extends TdFunction {
+final class ReorderInstalledStickerSets extends TdFunction<Ok> {
   /// Changes the order of installed sticker sets
   const ReorderInstalledStickerSets({
     required this.stickerType,

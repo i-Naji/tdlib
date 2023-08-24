@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes saved credentials for all payment provider bots
 ///
 /// Returns [Ok].
-final class DeleteSavedCredentials extends TdFunction {
+final class DeleteSavedCredentials extends TdFunction<Ok> {
   /// Deletes saved credentials for all payment provider bots
   const DeleteSavedCredentials();
 

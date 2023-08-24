@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the draft message in a chat
 ///
 /// Returns [Ok].
-final class SetChatDraftMessage extends TdFunction {
+final class SetChatDraftMessage extends TdFunction<Ok> {
   /// Changes the draft message in a chat
   const SetChatDraftMessage({
     required this.chatId,

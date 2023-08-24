@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes settings for automatic moving of chats to and from the Archive chat lists
 ///
 /// Returns [Ok].
-final class SetArchiveChatListSettings extends TdFunction {
+final class SetArchiveChatListSettings extends TdFunction<Ok> {
   /// Changes settings for automatic moving of chats to and from the Archive chat lists
   const SetArchiveChatListSettings({
     required this.settings,

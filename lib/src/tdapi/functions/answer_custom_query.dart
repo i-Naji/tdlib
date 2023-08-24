@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Answers a custom query; for bots only
 ///
 /// Returns [Ok].
-final class AnswerCustomQuery extends TdFunction {
+final class AnswerCustomQuery extends TdFunction<Ok> {
   /// Answers a custom query; for bots only
   const AnswerCustomQuery({
     required this.customQueryId,

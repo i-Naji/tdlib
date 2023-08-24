@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Process new chats added to a shareable chat folder by its owner
 ///
 /// Returns [Ok].
-final class ProcessChatFolderNewChats extends TdFunction {
+final class ProcessChatFolderNewChats extends TdFunction<Ok> {
   /// Process new chats added to a shareable chat folder by its owner
   const ProcessChatFolderNewChats({
     required this.chatFolderId,

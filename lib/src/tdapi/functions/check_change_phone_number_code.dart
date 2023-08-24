@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the authentication code sent to confirm a new phone number of the user
 ///
 /// Returns [Ok].
-final class CheckChangePhoneNumberCode extends TdFunction {
+final class CheckChangePhoneNumberCode extends TdFunction<Ok> {
   /// Checks the authentication code sent to confirm a new phone number of the user
   const CheckChangePhoneNumberCode({
     required this.code,

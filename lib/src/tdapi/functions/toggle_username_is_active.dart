@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes active state for a username of the current user. The editable username can't be disabled. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached
 ///
 /// Returns [Ok].
-final class ToggleUsernameIsActive extends TdFunction {
+final class ToggleUsernameIsActive extends TdFunction<Ok> {
   /// Changes active state for a username of the current user. The editable username can't be disabled. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached
   const ToggleUsernameIsActive({
     required this.username,

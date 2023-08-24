@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets a sticker set thumbnail; for bots only
 ///
 /// Returns [Ok].
-final class SetStickerSetThumbnail extends TdFunction {
+final class SetStickerSetThumbnail extends TdFunction<Ok> {
   /// Sets a sticker set thumbnail; for bots only
   const SetStickerSetThumbnail({
     required this.userId,

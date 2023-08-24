@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the sticker set of a supergroup; requires can_change_info administrator right
 ///
 /// Returns [Ok].
-final class SetSupergroupStickerSet extends TdFunction {
+final class SetSupergroupStickerSet extends TdFunction<Ok> {
   /// Changes the sticker set of a supergroup; requires can_change_info administrator right
   const SetSupergroupStickerSet({
     required this.supergroupId,

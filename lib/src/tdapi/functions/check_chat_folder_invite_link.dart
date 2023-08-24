@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Checks the validity of an invite link for a chat folder and returns information about the corresponding chat folder
 ///
 /// Returns [ChatFolderInviteLinkInfo].
-final class CheckChatFolderInviteLink extends TdFunction {
+final class CheckChatFolderInviteLink
+    extends TdFunction<ChatFolderInviteLinkInfo> {
   /// Checks the validity of an invite link for a chat folder and returns information about the corresponding chat folder
   const CheckChatFolderInviteLink({
     required this.inviteLink,

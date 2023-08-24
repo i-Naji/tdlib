@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new call
 ///
 /// Returns [CallId].
-final class CreateCall extends TdFunction {
+final class CreateCall extends TdFunction<CallId> {
   /// Creates a new call
   const CreateCall({
     required this.userId,

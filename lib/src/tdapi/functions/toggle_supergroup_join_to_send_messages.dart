@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether joining is mandatory to send messages to a discussion supergroup; requires can_restrict_members administrator right
 ///
 /// Returns [Ok].
-final class ToggleSupergroupJoinToSendMessages extends TdFunction {
+final class ToggleSupergroupJoinToSendMessages extends TdFunction<Ok> {
   /// Toggles whether joining is mandatory to send messages to a discussion supergroup; requires can_restrict_members administrator right
   const ToggleSupergroupJoinToSendMessages({
     required this.supergroupId,

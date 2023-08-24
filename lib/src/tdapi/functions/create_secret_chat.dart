@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an existing chat corresponding to a known secret chat
 ///
 /// Returns [Chat].
-final class CreateSecretChat extends TdFunction {
+final class CreateSecretChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a known secret chat
   const CreateSecretChat({
     required this.secretChatId,

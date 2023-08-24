@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new temporary password for processing payments
 ///
 /// Returns [TemporaryPasswordState].
-final class CreateTemporaryPassword extends TdFunction {
+final class CreateTemporaryPassword extends TdFunction<TemporaryPasswordState> {
   /// Creates a new temporary password for processing payments
   const CreateTemporaryPassword({
     required this.password,

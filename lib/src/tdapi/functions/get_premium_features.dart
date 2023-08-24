@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about features, available to Premium users
 ///
 /// Returns [PremiumFeatures].
-final class GetPremiumFeatures extends TdFunction {
+final class GetPremiumFeatures extends TdFunction<PremiumFeatures> {
   /// Returns information about features, available to Premium users
   const GetPremiumFeatures({
     this.source,

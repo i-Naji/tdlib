@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the squared received number; for testing only. This is an offline method. Can be called before authorization
 ///
 /// Returns [TestInt].
-final class TestSquareInt extends TdFunction {
+final class TestSquareInt extends TdFunction<TestInt> {
   /// Returns the squared received number; for testing only. This is an offline method. Can be called before authorization
   const TestSquareInt({
     required this.x,

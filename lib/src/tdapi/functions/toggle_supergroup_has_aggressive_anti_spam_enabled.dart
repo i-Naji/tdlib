@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Toggles whether aggressive anti-spam checks are enabled in the supergroup. Can be called only if supergroupFullInfo.can_toggle_aggressive_anti_spam == true
 ///
 /// Returns [Ok].
-final class ToggleSupergroupHasAggressiveAntiSpamEnabled extends TdFunction {
+final class ToggleSupergroupHasAggressiveAntiSpamEnabled
+    extends TdFunction<Ok> {
   /// Toggles whether aggressive anti-spam checks are enabled in the supergroup. Can be called only if supergroupFullInfo.can_toggle_aggressive_anti_spam == true
   const ToggleSupergroupHasAggressiveAntiSpamEnabled({
     required this.supergroupId,

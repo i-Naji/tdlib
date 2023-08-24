@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the bio of the current user
 ///
 /// Returns [Ok].
-final class SetBio extends TdFunction {
+final class SetBio extends TdFunction<Ok> {
   /// Changes the bio of the current user
   const SetBio({
     required this.bio,

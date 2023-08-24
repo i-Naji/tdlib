@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing event_id)
 ///
 /// Returns [ChatEvents].
-final class GetChatEventLog extends TdFunction {
+final class GetChatEventLog extends TdFunction<ChatEvents> {
   /// Returns a list of service actions taken by chat members and administrators in the last 48 hours. Available only for supergroups and channels. Requires administrator rights. Returns results in reverse chronological order (i.e., in order of decreasing event_id)
   const GetChatEventLog({
     required this.chatId,

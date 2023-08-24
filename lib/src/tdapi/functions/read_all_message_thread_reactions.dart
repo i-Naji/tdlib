@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Marks all reactions in a forum topic as read
 ///
 /// Returns [Ok].
-final class ReadAllMessageThreadReactions extends TdFunction {
+final class ReadAllMessageThreadReactions extends TdFunction<Ok> {
   /// Marks all reactions in a forum topic as read
   const ReadAllMessageThreadReactions({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in getOption("chat_folder_new_chats_update_period") for the given chat folder
 ///
 /// Returns [Chats].
-final class GetChatFolderNewChats extends TdFunction {
+final class GetChatFolderNewChats extends TdFunction<Chats> {
   /// Returns new chats added to a shareable chat folder by its owner. The method must be called at most once in getOption("chat_folder_new_chats_update_period") for the given chat folder
   const GetChatFolderNewChats({
     required this.chatFolderId,

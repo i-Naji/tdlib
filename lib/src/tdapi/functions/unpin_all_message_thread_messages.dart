@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes all pinned messages from a forum topic; requires can_pin_messages rights in the supergroup
 ///
 /// Returns [Ok].
-final class UnpinAllMessageThreadMessages extends TdFunction {
+final class UnpinAllMessageThreadMessages extends TdFunction<Ok> {
   /// Removes all pinned messages from a forum topic; requires can_pin_messages rights in the supergroup
   const UnpinAllMessageThreadMessages({
     required this.chatId,

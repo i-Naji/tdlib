@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the 2-step verification recovery email address verification code
 ///
 /// Returns [PasswordState].
-final class CheckRecoveryEmailAddressCode extends TdFunction {
+final class CheckRecoveryEmailAddressCode extends TdFunction<PasswordState> {
   /// Checks the 2-step verification recovery email address verification code
   const CheckRecoveryEmailAddressCode({
     required this.code,

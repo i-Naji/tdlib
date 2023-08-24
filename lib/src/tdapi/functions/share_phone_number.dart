@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber
 ///
 /// Returns [Ok].
-final class SharePhoneNumber extends TdFunction {
+final class SharePhoneNumber extends TdFunction<Ok> {
   /// Shares the phone number of the current user with a mutual contact. Supposed to be called when the user clicks on chatActionBarSharePhoneNumber
   const SharePhoneNumber({
     required this.userId,

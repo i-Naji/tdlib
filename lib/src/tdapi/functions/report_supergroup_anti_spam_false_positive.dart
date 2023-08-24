@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from chatEventMessageDeleted with can_report_anti_spam_false_positive == true
 ///
 /// Returns [Ok].
-final class ReportSupergroupAntiSpamFalsePositive extends TdFunction {
+final class ReportSupergroupAntiSpamFalsePositive extends TdFunction<Ok> {
   /// Reports a false deletion of a message by aggressive anti-spam checks; requires administrator rights in the supergroup. Can be called only for messages from chatEventMessageDeleted with can_report_anti_spam_false_positive == true
   const ReportSupergroupAntiSpamFalsePositive({
     required this.supergroupId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds server-provided application changelog as messages to the chat 777000 (Telegram) or as a stories; for official applications only. Returns a 404 error if nothing changed
 ///
 /// Returns [Ok].
-final class AddApplicationChangelog extends TdFunction {
+final class AddApplicationChangelog extends TdFunction<Ok> {
   /// Adds server-provided application changelog as messages to the chat 777000 (Telegram) or as a stories; for official applications only. Returns a 404 error if nothing changed
   const AddApplicationChangelog({
     required this.previousApplicationVersion,

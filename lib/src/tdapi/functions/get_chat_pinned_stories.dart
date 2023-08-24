@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the list of pinned stories posted by the given chat. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
 ///
 /// Returns [Stories].
-final class GetChatPinnedStories extends TdFunction {
+final class GetChatPinnedStories extends TdFunction<Stories> {
   /// Returns the list of pinned stories posted by the given chat. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
   const GetChatPinnedStories({
     required this.chatId,

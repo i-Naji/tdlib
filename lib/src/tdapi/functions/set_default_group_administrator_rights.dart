@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets default administrator rights for adding the bot to basic group and supergroup chats; for bots only
 ///
 /// Returns [Ok].
-final class SetDefaultGroupAdministratorRights extends TdFunction {
+final class SetDefaultGroupAdministratorRights extends TdFunction<Ok> {
   /// Sets default administrator rights for adding the bot to basic group and supergroup chats; for bots only
   const SetDefaultGroupAdministratorRights({
     this.defaultGroupAdministratorRights,

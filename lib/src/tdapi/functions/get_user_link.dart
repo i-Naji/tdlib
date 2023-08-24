@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTTPS link, which can be used to get information about the current user
 ///
 /// Returns [UserLink].
-final class GetUserLink extends TdFunction {
+final class GetUserLink extends TdFunction<UserLink> {
   /// Returns an HTTPS link, which can be used to get information about the current user
   const GetUserLink();
 

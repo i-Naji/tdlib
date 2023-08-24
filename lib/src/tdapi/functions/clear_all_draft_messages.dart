@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears message drafts in all chats
 ///
 /// Returns [Ok].
-final class ClearAllDraftMessages extends TdFunction {
+final class ClearAllDraftMessages extends TdFunction<Ok> {
   /// Clears message drafts in all chats
   const ClearAllDraftMessages({
     required this.excludeSecretChats,

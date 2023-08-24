@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result
 ///
 /// Returns [Messages].
-final class GetMessages extends TdFunction {
+final class GetMessages extends TdFunction<Messages> {
   /// Returns information about messages. If a message is not found, returns null on the corresponding position of the result
   const GetMessages({
     required this.chatId,

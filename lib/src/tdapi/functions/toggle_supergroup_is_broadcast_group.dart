@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
 ///
 /// Returns [Ok].
-final class ToggleSupergroupIsBroadcastGroup extends TdFunction {
+final class ToggleSupergroupIsBroadcastGroup extends TdFunction<Ok> {
   /// Upgrades supergroup to a broadcast group; requires owner privileges in the supergroup
   const ToggleSupergroupIsBroadcastGroup({
     required this.supergroupId,

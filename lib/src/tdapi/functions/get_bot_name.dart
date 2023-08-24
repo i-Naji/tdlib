@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the name of a bot in the given language. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Text].
-final class GetBotName extends TdFunction {
+final class GetBotName extends TdFunction<Text> {
   /// Returns the name of a bot in the given language. Can be called only if userTypeBot.can_be_edited == true
   const GetBotName({
     required this.botUserId,

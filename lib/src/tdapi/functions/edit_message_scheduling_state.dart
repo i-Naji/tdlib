@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
 ///
 /// Returns [Ok].
-final class EditMessageSchedulingState extends TdFunction {
+final class EditMessageSchedulingState extends TdFunction<Ok> {
   /// Edits the time when a scheduled message will be sent. Scheduling state of all messages in the same album or forwarded together with the message will be also changed
   const EditMessageSchedulingState({
     required this.chatId,

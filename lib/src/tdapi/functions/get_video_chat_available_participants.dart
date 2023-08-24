@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined
 ///
 /// Returns [MessageSenders].
-final class GetVideoChatAvailableParticipants extends TdFunction {
+final class GetVideoChatAvailableParticipants
+    extends TdFunction<MessageSenders> {
   /// Returns list of participant identifiers, on whose behalf a video chat in the chat can be joined
   const GetVideoChatAvailableParticipants({
     required this.chatId,

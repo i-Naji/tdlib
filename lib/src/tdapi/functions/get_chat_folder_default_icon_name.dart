@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns default icon name for a folder. Can be called synchronously
 ///
 /// Returns [ChatFolderIcon].
-final class GetChatFolderDefaultIconName extends TdFunction {
+final class GetChatFolderDefaultIconName extends TdFunction<ChatFolderIcon> {
   /// Returns default icon name for a folder. Can be called synchronously
   const GetChatFolderDefaultIconName({
     required this.folder,
@@ -35,4 +35,7 @@ final class GetChatFolderDefaultIconName extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

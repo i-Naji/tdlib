@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether all users directly joining the supergroup need to be approved by supergroup administrators; requires can_restrict_members administrator right
 ///
 /// Returns [Ok].
-final class ToggleSupergroupJoinByRequest extends TdFunction {
+final class ToggleSupergroupJoinByRequest extends TdFunction<Ok> {
   /// Toggles whether all users directly joining the supergroup need to be approved by supergroup administrators; requires can_restrict_members administrator right
   const ToggleSupergroupJoinByRequest({
     required this.supergroupId,

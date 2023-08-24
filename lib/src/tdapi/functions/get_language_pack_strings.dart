@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns strings from a language pack in the current localization target by their keys. Can be called before authorization
 ///
 /// Returns [LanguagePackStrings].
-final class GetLanguagePackStrings extends TdFunction {
+final class GetLanguagePackStrings extends TdFunction<LanguagePackStrings> {
   /// Returns strings from a language pack in the current localization target by their keys. Can be called before authorization
   const GetLanguagePackStrings({
     required this.languagePackId,

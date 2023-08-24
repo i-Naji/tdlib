@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns pending join requests in a chat
 ///
 /// Returns [ChatJoinRequests].
-final class GetChatJoinRequests extends TdFunction {
+final class GetChatJoinRequests extends TdFunction<ChatJoinRequests> {
   /// Returns pending join requests in a chat
   const GetChatJoinRequests({
     required this.chatId,

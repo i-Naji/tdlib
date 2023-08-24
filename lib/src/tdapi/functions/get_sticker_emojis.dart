@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
 ///
 /// Returns [Emojis].
-final class GetStickerEmojis extends TdFunction {
+final class GetStickerEmojis extends TdFunction<Emojis> {
   /// Returns emoji corresponding to a sticker. The list is only for informational purposes, because a sticker is always sent with a fixed emoji from the corresponding Sticker object
   const GetStickerEmojis({
     required this.sticker,

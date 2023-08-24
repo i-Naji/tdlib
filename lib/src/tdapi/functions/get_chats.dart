@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use loadChats and updates processing instead to maintain chat lists in a consistent state
 ///
 /// Returns [Chats].
-final class GetChats extends TdFunction {
+final class GetChats extends TdFunction<Chats> {
   /// Returns an ordered list of chats from the beginning of a chat list. For informational purposes only. Use loadChats and updates processing instead to maintain chat lists in a consistent state
   const GetChats({
     this.chatList,

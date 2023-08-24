@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
 ///
 /// Returns [Chat].
-final class CreateNewSupergroupChat extends TdFunction {
+final class CreateNewSupergroupChat extends TdFunction<Chat> {
   /// Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat
   const CreateNewSupergroupChat({
     required this.title,

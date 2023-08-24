@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets autosave settings for the given scope. The method is guaranteed to work only after at least one call to getAutosaveSettings
 ///
 /// Returns [Ok].
-final class SetAutosaveSettings extends TdFunction {
+final class SetAutosaveSettings extends TdFunction<Ok> {
   /// Sets autosave settings for the given scope. The method is guaranteed to work only after at least one call to getAutosaveSettings
   const SetAutosaveSettings({
     required this.scope,

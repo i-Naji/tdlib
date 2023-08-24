@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes privacy settings of a previously sent story
 ///
 /// Returns [Ok].
-final class SetStoryPrivacySettings extends TdFunction {
+final class SetStoryPrivacySettings extends TdFunction<Ok> {
   /// Changes privacy settings of a previously sent story
   const SetStoryPrivacySettings({
     required this.storyId,

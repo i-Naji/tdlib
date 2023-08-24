@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if message.can_report_reactions
 ///
 /// Returns [Ok].
-final class ReportMessageReactions extends TdFunction {
+final class ReportMessageReactions extends TdFunction<Ok> {
   /// Reports reactions set on a message to the Telegram moderators. Reactions on a message can be reported only if message.can_report_reactions
   const ReportMessageReactions({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns game high scores and some part of the high score table in the range of the specified user; for bots only
 ///
 /// Returns [GameHighScores].
-final class GetInlineGameHighScores extends TdFunction {
+final class GetInlineGameHighScores extends TdFunction<GameHighScores> {
   /// Returns game high scores and some part of the high score table in the range of the specified user; for bots only
   const GetInlineGameHighScores({
     required this.inlineMessageId,

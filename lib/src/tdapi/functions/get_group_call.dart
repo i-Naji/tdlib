@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a group call
 ///
 /// Returns [GroupCall].
-final class GetGroupCall extends TdFunction {
+final class GetGroupCall extends TdFunction<GroupCall> {
   /// Returns information about a group call
   const GetGroupCall({
     required this.groupCallId,

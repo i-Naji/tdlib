@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that a story is opened and is being viewed by the user
 ///
 /// Returns [Ok].
-final class OpenStory extends TdFunction {
+final class OpenStory extends TdFunction<Ok> {
   /// Informs TDLib that a story is opened and is being viewed by the user
   const OpenStory({
     required this.storySenderChatId,

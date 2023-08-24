@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed
 ///
 /// Returns [Ok].
-final class SetChatMemberStatus extends TdFunction {
+final class SetChatMemberStatus extends TdFunction<Ok> {
   /// Changes the status of a chat member, needs appropriate privileges. This function is currently not suitable for transferring chat ownership; use transferChatOwnership instead. Use addChatMember or banChatMember if some additional parameters needs to be passed
   const SetChatMemberStatus({
     required this.chatId,

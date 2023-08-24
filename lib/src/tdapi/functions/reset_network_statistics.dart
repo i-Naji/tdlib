@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Resets all network data usage statistics to zero. Can be called before authorization
 ///
 /// Returns [Ok].
-final class ResetNetworkStatistics extends TdFunction {
+final class ResetNetworkStatistics extends TdFunction<Ok> {
   /// Resets all network data usage statistics to zero. Can be called before authorization
   const ResetNetworkStatistics();
 

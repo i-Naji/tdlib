@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat
 ///
 /// Returns [Ok].
-final class ToggleChatDefaultDisableNotification extends TdFunction {
+final class ToggleChatDefaultDisableNotification extends TdFunction<Ok> {
   /// Changes the value of the default disable_notification parameter, used when a message is sent to a chat
   const ToggleChatDefaultDisableNotification({
     required this.chatId,

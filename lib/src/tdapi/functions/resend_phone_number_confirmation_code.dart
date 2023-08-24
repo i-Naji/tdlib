@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Resends phone number confirmation code
 ///
 /// Returns [AuthenticationCodeInfo].
-final class ResendPhoneNumberConfirmationCode extends TdFunction {
+final class ResendPhoneNumberConfirmationCode
+    extends TdFunction<AuthenticationCodeInfo> {
   /// Resends phone number confirmation code
   const ResendPhoneNumberConfirmationCode();
 

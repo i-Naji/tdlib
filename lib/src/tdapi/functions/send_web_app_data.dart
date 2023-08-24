@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends data received from a keyboardButtonTypeWebApp Web App to a bot
 ///
 /// Returns [Ok].
-final class SendWebAppData extends TdFunction {
+final class SendWebAppData extends TdFunction<Ok> {
   /// Sends data received from a keyboardButtonTypeWebApp Web App to a bot
   const SendWebAppData({
     required this.botUserId,

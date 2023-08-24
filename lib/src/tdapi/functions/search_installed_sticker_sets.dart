@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for installed sticker sets by looking for specified query in their title and name
 ///
 /// Returns [StickerSets].
-final class SearchInstalledStickerSets extends TdFunction {
+final class SearchInstalledStickerSets extends TdFunction<StickerSets> {
   /// Searches for installed sticker sets by looking for specified query in their title and name
   const SearchInstalledStickerSets({
     required this.stickerType,

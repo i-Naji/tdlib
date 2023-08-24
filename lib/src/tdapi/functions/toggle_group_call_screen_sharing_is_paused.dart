@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Pauses or unpauses screen sharing in a joined group call
 ///
 /// Returns [Ok].
-final class ToggleGroupCallScreenSharingIsPaused extends TdFunction {
+final class ToggleGroupCallScreenSharingIsPaused extends TdFunction<Ok> {
   /// Pauses or unpauses screen sharing in a joined group call
   const ToggleGroupCallScreenSharingIsPaused({
     required this.groupCallId,

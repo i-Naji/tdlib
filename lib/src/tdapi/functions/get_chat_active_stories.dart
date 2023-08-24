@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the list of active stories posted by the given chat
 ///
 /// Returns [ChatActiveStories].
-final class GetChatActiveStories extends TdFunction {
+final class GetChatActiveStories extends TdFunction<ChatActiveStories> {
   /// Returns the list of active stories posted by the given chat
   const GetChatActiveStories({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the background selected by the user; adds background to the list of installed backgrounds
 ///
 /// Returns [Background].
-final class SetBackground extends TdFunction {
+final class SetBackground extends TdFunction<Background> {
   /// Changes the background selected by the user; adds background to the list of installed backgrounds
   const SetBackground({
     this.background,

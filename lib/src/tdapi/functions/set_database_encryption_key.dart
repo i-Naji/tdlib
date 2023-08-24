@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the database encryption key. Usually the encryption key is never changed and is stored in some OS keychain
 ///
 /// Returns [Ok].
-final class SetDatabaseEncryptionKey extends TdFunction {
+final class SetDatabaseEncryptionKey extends TdFunction<Ok> {
   /// Changes the database encryption key. Usually the encryption key is never changed and is stored in some OS keychain
   const SetDatabaseEncryptionKey({
     required this.newEncryptionKey,

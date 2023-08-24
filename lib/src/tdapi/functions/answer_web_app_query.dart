@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the result of interaction with a Web App and sends corresponding message on behalf of the user to the chat from which the query originated; for bots only
 ///
 /// Returns [SentWebAppMessage].
-final class AnswerWebAppQuery extends TdFunction {
+final class AnswerWebAppQuery extends TdFunction<SentWebAppMessage> {
   /// Sets the result of interaction with a Web App and sends corresponding message on behalf of the user to the chat from which the query originated; for bots only
   const AnswerWebAppQuery({
     required this.webAppQueryId,

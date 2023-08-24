@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a video chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_video_chats rights
 ///
 /// Returns [GroupCallId].
-final class CreateVideoChat extends TdFunction {
+final class CreateVideoChat extends TdFunction<GroupCallId> {
   /// Creates a video chat (a group call bound to a chat). Available only for basic groups, supergroups and channels; requires can_manage_video_chats rights
   const CreateVideoChat({
     required this.chatId,

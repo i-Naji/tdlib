@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a new story. Returns a temporary story with identifier 0
 ///
 /// Returns [Story].
-final class SendStory extends TdFunction {
+final class SendStory extends TdFunction<Story> {
   /// Sends a new story. Returns a temporary story with identifier 0
   const SendStory({
     required this.content,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns support information for the given user; for Telegram support only
 ///
 /// Returns [UserSupportInfo].
-final class GetUserSupportInfo extends TdFunction {
+final class GetUserSupportInfo extends TdFunction<UserSupportInfo> {
   /// Returns support information for the given user; for Telegram support only
   const GetUserSupportInfo({
     required this.userId,

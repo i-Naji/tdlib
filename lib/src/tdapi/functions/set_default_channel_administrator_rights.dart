@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets default administrator rights for adding the bot to channel chats; for bots only
 ///
 /// Returns [Ok].
-final class SetDefaultChannelAdministratorRights extends TdFunction {
+final class SetDefaultChannelAdministratorRights extends TdFunction<Ok> {
   /// Sets default administrator rights for adding the bot to channel chats; for bots only
   const SetDefaultChannelAdministratorRights({
     this.defaultChannelAdministratorRights,

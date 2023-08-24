@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in
 ///
 /// Returns [Ok].
-final class CheckAuthenticationBotToken extends TdFunction {
+final class CheckAuthenticationBotToken extends TdFunction<Ok> {
   /// Checks the authentication token of a bot; to log in as a bot. Works only when the current authorization state is authorizationStateWaitPhoneNumber. Can be used instead of setAuthenticationPhoneNumber and checkAuthenticationCode to log in
   const CheckAuthenticationBotToken({
     required this.token,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Closes a secret chat, effectively transferring its state to secretChatStateClosed
 ///
 /// Returns [Ok].
-final class CloseSecretChat extends TdFunction {
+final class CloseSecretChat extends TdFunction<Ok> {
   /// Closes a secret chat, effectively transferring its state to secretChatStateClosed
   const CloseSecretChat({
     required this.secretChatId,

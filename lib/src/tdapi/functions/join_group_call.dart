@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Joins an active group call. Returns join response payload for tgcalls
 ///
 /// Returns [Text].
-final class JoinGroupCall extends TdFunction {
+final class JoinGroupCall extends TdFunction<Text> {
   /// Joins an active group call. Returns join response payload for tgcalls
   const JoinGroupCall({
     required this.groupCallId,

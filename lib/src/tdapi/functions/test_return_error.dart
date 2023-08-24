@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously
 ///
 /// Returns [TdError].
-final class TestReturnError extends TdFunction {
+final class TestReturnError extends TdFunction<TdError> {
   /// Returns the specified error and ensures that the Error object is used; for testing only. Can be called synchronously
   const TestReturnError({
     required this.error,
@@ -35,4 +35,7 @@ final class TestReturnError extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

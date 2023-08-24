@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets new log stream for internal logging of TDLib. Can be called synchronously
 ///
 /// Returns [Ok].
-final class SetLogStream extends TdFunction {
+final class SetLogStream extends TdFunction<Ok> {
   /// Sets new log stream for internal logging of TDLib. Can be called synchronously
   const SetLogStream({
     required this.logStream,
@@ -35,4 +35,7 @@ final class SetLogStream extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks whether a username can be set for a chat
 ///
 /// Returns [CheckChatUsernameResult].
-final class CheckChatUsername extends TdFunction {
+final class CheckChatUsername extends TdFunction<CheckChatUsernameResult> {
   /// Checks whether a username can be set for a chat
   const CheckChatUsername({
     required this.chatId,

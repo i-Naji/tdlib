@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the name of a bot. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Ok].
-final class SetBotName extends TdFunction {
+final class SetBotName extends TdFunction<Ok> {
   /// Sets the name of a bot. Can be called only if userTypeBot.can_be_edited == true
   const SetBotName({
     required this.botUserId,

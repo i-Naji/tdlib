@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Disconnects all websites from the current user's Telegram account
 ///
 /// Returns [Ok].
-final class DisconnectAllWebsites extends TdFunction {
+final class DisconnectAllWebsites extends TdFunction<Ok> {
   /// Disconnects all websites from the current user's Telegram account
   const DisconnectAllWebsites();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the text shown on a bot's profile page and sent together with the link when users share the bot in the given language. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Text].
-final class GetBotInfoShortDescription extends TdFunction {
+final class GetBotInfoShortDescription extends TdFunction<Text> {
   /// Returns the text shown on a bot's profile page and sent together with the link when users share the bot in the given language. Can be called only if userTypeBot.can_be_edited == true
   const GetBotInfoShortDescription({
     required this.botUserId,

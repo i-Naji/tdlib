@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Stops the preliminary uploading of a file. Supported only for files uploaded by using preliminaryUploadFile. For other files the behavior is undefined
 ///
 /// Returns [Ok].
-final class CancelPreliminaryUploadFile extends TdFunction {
+final class CancelPreliminaryUploadFile extends TdFunction<Ok> {
   /// Stops the preliminary uploading of a file. Supported only for files uploaded by using preliminaryUploadFile. For other files the behavior is undefined
   const CancelPreliminaryUploadFile({
     required this.fileId,

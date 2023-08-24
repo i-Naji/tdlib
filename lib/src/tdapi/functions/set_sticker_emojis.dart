@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the list of emoji corresponding to a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
 ///
 /// Returns [Ok].
-final class SetStickerEmojis extends TdFunction {
+final class SetStickerEmojis extends TdFunction<Ok> {
   /// Changes the list of emoji corresponding to a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
   const SetStickerEmojis({
     required this.sticker,

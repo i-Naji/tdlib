@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a hashtag from the list of recently used hashtags
 ///
 /// Returns [Ok].
-final class RemoveRecentHashtag extends TdFunction {
+final class RemoveRecentHashtag extends TdFunction<Ok> {
   /// Removes a hashtag from the list of recently used hashtags
   const RemoveRecentHashtag({
     required this.hashtag,

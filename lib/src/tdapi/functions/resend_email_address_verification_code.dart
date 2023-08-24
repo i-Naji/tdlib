@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Resends the code to verify an email address to be added to a user's Telegram Passport
 ///
 /// Returns [EmailAddressAuthenticationCodeInfo].
-final class ResendEmailAddressVerificationCode extends TdFunction {
+final class ResendEmailAddressVerificationCode
+    extends TdFunction<EmailAddressAuthenticationCodeInfo> {
   /// Resends the code to verify an email address to be added to a user's Telegram Passport
   const ResendEmailAddressVerificationCode();
 

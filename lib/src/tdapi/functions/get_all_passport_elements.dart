@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all available Telegram Passport elements
 ///
 /// Returns [PassportElements].
-final class GetAllPassportElements extends TdFunction {
+final class GetAllPassportElements extends TdFunction<PassportElements> {
   /// Returns all available Telegram Passport elements
   const GetAllPassportElements({
     required this.password,

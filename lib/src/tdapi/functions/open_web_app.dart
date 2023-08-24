@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that a Web App is being opened from attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button. For each bot, a confirmation alert about data sent to the bot must be shown once
 ///
 /// Returns [WebAppInfo].
-final class OpenWebApp extends TdFunction {
+final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// Informs TDLib that a Web App is being opened from attachment menu, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an inlineKeyboardButtonTypeWebApp button. For each bot, a confirmation alert about data sent to the bot must be shown once
   const OpenWebApp({
     required this.chatId,

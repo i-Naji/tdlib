@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the text of an inline text or game message sent via a bot; for bots only
 ///
 /// Returns [Ok].
-final class EditInlineMessageText extends TdFunction {
+final class EditInlineMessageText extends TdFunction<Ok> {
   /// Edits the text of an inline text or game message sent via a bot; for bots only
   const EditInlineMessageText({
     required this.inlineMessageId,

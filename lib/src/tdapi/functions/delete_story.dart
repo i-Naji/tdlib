@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes a previously sent story
 ///
 /// Returns [Ok].
-final class DeleteStory extends TdFunction {
+final class DeleteStory extends TdFunction<Ok> {
   /// Deletes a previously sent story
   const DeleteStory({
     required this.storyId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the result of a pre-checkout query; for bots only
 ///
 /// Returns [Ok].
-final class AnswerPreCheckoutQuery extends TdFunction {
+final class AnswerPreCheckoutQuery extends TdFunction<Ok> {
   /// Sets the result of a pre-checkout query; for bots only
   const AnswerPreCheckoutQuery({
     required this.preCheckoutQueryId,

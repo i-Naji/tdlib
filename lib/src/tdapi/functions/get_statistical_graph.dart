@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Loads an asynchronous or a zoomed in statistical graph
 ///
 /// Returns [StatisticalGraph].
-final class GetStatisticalGraph extends TdFunction {
+final class GetStatisticalGraph extends TdFunction<StatisticalGraph> {
   /// Loads an asynchronous or a zoomed in statistical graph
   const GetStatisticalGraph({
     required this.chatId,

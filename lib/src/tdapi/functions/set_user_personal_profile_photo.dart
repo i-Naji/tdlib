@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes a personal profile photo of a contact user
 ///
 /// Returns [Ok].
-final class SetUserPersonalProfilePhoto extends TdFunction {
+final class SetUserPersonalProfilePhoto extends TdFunction<Ok> {
   /// Changes a personal profile photo of a contact user
   const SetUserPersonalProfilePhoto({
     required this.userId,

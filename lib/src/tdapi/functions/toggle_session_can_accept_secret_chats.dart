@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a session can accept incoming secret chats
 ///
 /// Returns [Ok].
-final class ToggleSessionCanAcceptSecretChats extends TdFunction {
+final class ToggleSessionCanAcceptSecretChats extends TdFunction<Ok> {
   /// Toggles whether a session can accept incoming secret chats
   const ToggleSessionCanAcceptSecretChats({
     required this.sessionId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a chat to the list of recently found chats. The chat is added to the beginning of the list. If the chat is already in the list, it will be removed from the list first
 ///
 /// Returns [Ok].
-final class AddRecentlyFoundChat extends TdFunction {
+final class AddRecentlyFoundChat extends TdFunction<Ok> {
   /// Adds a chat to the list of recently found chats. The chat is added to the beginning of the list. If the chat is already in the list, it will be removed from the list first
   const AddRecentlyFoundChat({
     required this.chatId,

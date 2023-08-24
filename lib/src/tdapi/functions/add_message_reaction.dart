@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
 ///
 /// Returns [Ok].
-final class AddMessageReaction extends TdFunction {
+final class AddMessageReaction extends TdFunction<Ok> {
   /// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
   const AddMessageReaction({
     required this.chatId,

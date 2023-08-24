@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an existing chat corresponding to a given user
 ///
 /// Returns [Chat].
-final class CreatePrivateChat extends TdFunction {
+final class CreatePrivateChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a given user
   const CreatePrivateChat({
     required this.userId,

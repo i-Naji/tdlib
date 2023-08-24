@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all active sessions of the current user
 ///
 /// Returns [Sessions].
-final class GetActiveSessions extends TdFunction {
+final class GetActiveSessions extends TdFunction<Sessions> {
   /// Returns all active sessions of the current user
   const GetActiveSessions();
 

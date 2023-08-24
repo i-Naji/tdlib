@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Rates recognized speech in a video note or a voice note message
 ///
 /// Returns [Ok].
-final class RateSpeechRecognition extends TdFunction {
+final class RateSpeechRecognition extends TdFunction<Ok> {
   /// Rates recognized speech in a video note or a voice note message
   const RateSpeechRecognition({
     required this.chatId,

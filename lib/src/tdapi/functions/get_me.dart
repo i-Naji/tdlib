@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the current user
 ///
 /// Returns [User].
-final class GetMe extends TdFunction {
+final class GetMe extends TdFunction<User> {
   /// Returns the current user
   const GetMe();
 

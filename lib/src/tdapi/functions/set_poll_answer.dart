@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the user answer to a poll. A poll in quiz mode can be answered only once
 ///
 /// Returns [Ok].
-final class SetPollAnswer extends TdFunction {
+final class SetPollAnswer extends TdFunction<Ok> {
   /// Changes the user answer to a poll. A poll in quiz mode can be answered only once
   const SetPollAnswer({
     required this.chatId,

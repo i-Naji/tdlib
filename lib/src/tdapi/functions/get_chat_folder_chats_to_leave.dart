@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns identifiers of pinned or always included chats from a chat folder, which are suggested to be left when the chat folder is deleted
 ///
 /// Returns [Chats].
-final class GetChatFolderChatsToLeave extends TdFunction {
+final class GetChatFolderChatsToLeave extends TdFunction<Chats> {
   /// Returns identifiers of pinned or always included chats from a chat folder, which are suggested to be left when the chat folder is deleted
   const GetChatFolderChatsToLeave({
     required this.chatFolderId,

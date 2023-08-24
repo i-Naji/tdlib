@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the email address verification code for Telegram Passport
 ///
 /// Returns [Ok].
-final class CheckEmailAddressVerificationCode extends TdFunction {
+final class CheckEmailAddressVerificationCode extends TdFunction<Ok> {
   /// Checks the email address verification code for Telegram Passport
   const CheckEmailAddressVerificationCode({
     required this.code,

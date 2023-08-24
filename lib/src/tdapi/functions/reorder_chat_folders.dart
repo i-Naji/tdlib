@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the order of chat folders
 ///
 /// Returns [Ok].
-final class ReorderChatFolders extends TdFunction {
+final class ReorderChatFolders extends TdFunction<Ok> {
   /// Changes the order of chat folders
   const ReorderChatFolders({
     required this.chatFolderIds,

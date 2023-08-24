@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns RTMP URL for streaming to the chat; requires creator privileges
 ///
 /// Returns [RtmpUrl].
-final class GetVideoChatRtmpUrl extends TdFunction {
+final class GetVideoChatRtmpUrl extends TdFunction<RtmpUrl> {
   /// Returns RTMP URL for streaming to the chat; requires creator privileges
   const GetVideoChatRtmpUrl({
     required this.chatId,

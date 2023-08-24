@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a reaction from a message. A chosen reaction can always be removed
 ///
 /// Returns [Ok].
-final class RemoveMessageReaction extends TdFunction {
+final class RemoveMessageReaction extends TdFunction<Ok> {
   /// Removes a reaction from a message. A chosen reaction can always be removed
   const RemoveMessageReaction({
     required this.chatId,

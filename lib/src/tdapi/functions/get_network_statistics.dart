@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns network data usage statistics. Can be called before authorization
 ///
 /// Returns [NetworkStatistics].
-final class GetNetworkStatistics extends TdFunction {
+final class GetNetworkStatistics extends TdFunction<NetworkStatistics> {
   /// Returns network data usage statistics. Can be called before authorization
   const GetNetworkStatistics({
     required this.onlyCurrent,

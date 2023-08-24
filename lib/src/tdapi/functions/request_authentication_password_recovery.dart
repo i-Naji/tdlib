@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Requests to send a 2-step verification password recovery code to an email address that was previously set up. Works only when the current authorization state is authorizationStateWaitPassword
 ///
 /// Returns [Ok].
-final class RequestAuthenticationPasswordRecovery extends TdFunction {
+final class RequestAuthenticationPasswordRecovery extends TdFunction<Ok> {
   /// Requests to send a 2-step verification password recovery code to an email address that was previously set up. Works only when the current authorization state is authorizationStateWaitPassword
   const RequestAuthenticationPasswordRecovery();
 

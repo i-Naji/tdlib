@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes active state for a username of a supergroup or channel, requires owner privileges in the supergroup or channel. The editable username can't be disabled. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached
 ///
 /// Returns [Ok].
-final class ToggleSupergroupUsernameIsActive extends TdFunction {
+final class ToggleSupergroupUsernameIsActive extends TdFunction<Ok> {
   /// Changes active state for a username of a supergroup or channel, requires owner privileges in the supergroup or channel. The editable username can't be disabled. May return an error with a message "USERNAMES_ACTIVE_TOO_MUCH" if the maximum number of active usernames has been reached
   const ToggleSupergroupUsernameIsActive({
     required this.supergroupId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Leaves a group call
 ///
 /// Returns [Ok].
-final class LeaveGroupCall extends TdFunction {
+final class LeaveGroupCall extends TdFunction<Ok> {
   /// Leaves a group call
   const LeaveGroupCall({
     required this.groupCallId,

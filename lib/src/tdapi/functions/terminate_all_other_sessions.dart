@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Terminates all other sessions of the current user
 ///
 /// Returns [Ok].
-final class TerminateAllOtherSessions extends TdFunction {
+final class TerminateAllOtherSessions extends TdFunction<Ok> {
   /// Terminates all other sessions of the current user
   const TerminateAllOtherSessions();
 

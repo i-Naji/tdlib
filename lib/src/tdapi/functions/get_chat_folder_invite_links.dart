@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns invite links created by the current user for a shareable chat folder
 ///
 /// Returns [ChatFolderInviteLinks].
-final class GetChatFolderInviteLinks extends TdFunction {
+final class GetChatFolderInviteLinks extends TdFunction<ChatFolderInviteLinks> {
   /// Returns invite links created by the current user for a shareable chat folder
   const GetChatFolderInviteLinks({
     required this.chatFolderId,

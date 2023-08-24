@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if message.can_get_viewers == true
 ///
 /// Returns [MessageViewers].
-final class GetMessageViewers extends TdFunction {
+final class GetMessageViewers extends TdFunction<MessageViewers> {
   /// Returns viewers of a recent outgoing message in a basic group or a supergroup chat. For video notes and voice notes only users, opened content of the message, are returned. The method can be called if message.can_get_viewers == true
   const GetMessageViewers({
     required this.chatId,

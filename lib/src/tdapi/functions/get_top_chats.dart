@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of frequently used chats. Supported only if the chat info database is enabled
 ///
 /// Returns [Chats].
-final class GetTopChats extends TdFunction {
+final class GetTopChats extends TdFunction<Chats> {
   /// Returns a list of frequently used chats. Supported only if the chat info database is enabled
   const GetTopChats({
     required this.category,

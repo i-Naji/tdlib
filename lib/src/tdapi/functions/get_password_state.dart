@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the current state of 2-step verification
 ///
 /// Returns [PasswordState].
-final class GetPasswordState extends TdFunction {
+final class GetPasswordState extends TdFunction<PasswordState> {
   /// Returns the current state of 2-step verification
   const GetPasswordState();
 

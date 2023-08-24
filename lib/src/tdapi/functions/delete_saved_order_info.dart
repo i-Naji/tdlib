@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes saved order information
 ///
 /// Returns [Ok].
-final class DeleteSavedOrderInfo extends TdFunction {
+final class DeleteSavedOrderInfo extends TdFunction<Ok> {
   /// Deletes saved order information
   const DeleteSavedOrderInfo();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Ends screen sharing in a joined group call
 ///
 /// Returns [Ok].
-final class EndGroupCallScreenSharing extends TdFunction {
+final class EndGroupCallScreenSharing extends TdFunction<Ok> {
   /// Ends screen sharing in a joined group call
   const EndGroupCallScreenSharing({
     required this.groupCallId,

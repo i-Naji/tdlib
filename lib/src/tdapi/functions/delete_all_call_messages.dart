@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes all call messages
 ///
 /// Returns [Ok].
-final class DeleteAllCallMessages extends TdFunction {
+final class DeleteAllCallMessages extends TdFunction<Ok> {
   /// Deletes all call messages
   const DeleteAllCallMessages({
     required this.revoke,

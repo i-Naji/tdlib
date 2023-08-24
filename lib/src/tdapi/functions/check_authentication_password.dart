@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the 2-step verification password for correctness. Works only when the current authorization state is authorizationStateWaitPassword
 ///
 /// Returns [Ok].
-final class CheckAuthenticationPassword extends TdFunction {
+final class CheckAuthenticationPassword extends TdFunction<Ok> {
   /// Checks the 2-step verification password for correctness. Works only when the current authorization state is authorizationStateWaitPassword
   const CheckAuthenticationPassword({
     required this.password,

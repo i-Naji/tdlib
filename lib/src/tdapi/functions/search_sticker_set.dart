@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for a sticker set by its name
 ///
 /// Returns [StickerSet].
-final class SearchStickerSet extends TdFunction {
+final class SearchStickerSet extends TdFunction<StickerSet> {
   /// Searches for a sticker set by its name
   const SearchStickerSet({
     required this.name,

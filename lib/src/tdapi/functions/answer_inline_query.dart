@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the result of an inline query; for bots only
 ///
 /// Returns [Ok].
-final class AnswerInlineQuery extends TdFunction {
+final class AnswerInlineQuery extends TdFunction<Ok> {
   /// Sets the result of an inline query; for bots only
   const AnswerInlineQuery({
     required this.inlineQueryId,

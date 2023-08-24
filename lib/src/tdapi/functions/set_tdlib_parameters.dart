@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters
 ///
 /// Returns [Ok].
-final class SetTdlibParameters extends TdFunction {
+final class SetTdlibParameters extends TdFunction<Ok> {
   /// Sets the parameters for TDLib initialization. Works only when the current authorization state is authorizationStateWaitTdlibParameters
   const SetTdlibParameters({
     required this.useTestDc,

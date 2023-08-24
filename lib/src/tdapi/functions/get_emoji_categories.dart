@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns available emojis categories
 ///
 /// Returns [EmojiCategories].
-final class GetEmojiCategories extends TdFunction {
+final class GetEmojiCategories extends TdFunction<EmojiCategories> {
   /// Returns available emojis categories
   const GetEmojiCategories({
     this.type,

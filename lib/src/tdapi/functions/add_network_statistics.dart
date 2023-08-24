@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds the specified data to data usage statistics. Can be called before authorization
 ///
 /// Returns [Ok].
-final class AddNetworkStatistics extends TdFunction {
+final class AddNetworkStatistics extends TdFunction<Ok> {
   /// Adds the specified data to data usage statistics. Can be called before authorization
   const AddNetworkStatistics({
     required this.entry,

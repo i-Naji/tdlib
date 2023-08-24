@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server
 ///
 /// Returns [ForumTopics].
-final class GetForumTopics extends TdFunction {
+final class GetForumTopics extends TdFunction<ForumTopics> {
   /// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server
   const GetForumTopics({
     required this.chatId,

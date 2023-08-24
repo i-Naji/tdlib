@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Installs/uninstalls or activates/archives a sticker set
 ///
 /// Returns [Ok].
-final class ChangeStickerSet extends TdFunction {
+final class ChangeStickerSet extends TdFunction<Ok> {
   /// Installs/uninstalls or activates/archives a sticker set
   const ChangeStickerSet({
     required this.setId,

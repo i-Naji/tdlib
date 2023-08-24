@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the text shown in the chat with a bot if the chat is empty. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Ok].
-final class SetBotInfoDescription extends TdFunction {
+final class SetBotInfoDescription extends TdFunction<Ok> {
   /// Sets the text shown in the chat with a bot if the chat is empty. Can be called only if userTypeBot.can_be_edited == true
   const SetBotInfoDescription({
     required this.botUserId,

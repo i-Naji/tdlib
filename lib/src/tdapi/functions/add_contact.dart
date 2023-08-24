@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a user to the contact list or edits an existing contact by their user identifier
 ///
 /// Returns [Ok].
-final class AddContact extends TdFunction {
+final class AddContact extends TdFunction<Ok> {
   /// Adds a user to the contact list or edits an existing contact by their user identifier
   const AddContact({
     required this.contact,

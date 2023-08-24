@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches a user by a token from the user's link
 ///
 /// Returns [User].
-final class SearchUserByToken extends TdFunction {
+final class SearchUserByToken extends TdFunction<User> {
   /// Searches a user by a token from the user's link
   const SearchUserByToken({
     required this.token,

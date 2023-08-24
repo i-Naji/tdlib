@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
 ///
 /// Returns [Messages].
-final class ForwardMessages extends TdFunction {
+final class ForwardMessages extends TdFunction<Messages> {
   /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   const ForwardMessages({
     required this.chatId,

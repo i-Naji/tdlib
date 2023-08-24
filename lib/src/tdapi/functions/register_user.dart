@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration
 ///
 /// Returns [Ok].
-final class RegisterUser extends TdFunction {
+final class RegisterUser extends TdFunction<Ok> {
   /// Finishes user registration. Works only when the current authorization state is authorizationStateWaitRegistration
   const RegisterUser({
     required this.firstName,

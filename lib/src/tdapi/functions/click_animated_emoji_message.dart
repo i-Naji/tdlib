@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played
 ///
 /// Returns [Sticker].
-final class ClickAnimatedEmojiMessage extends TdFunction {
+final class ClickAnimatedEmojiMessage extends TdFunction<Sticker> {
   /// Informs TDLib that a message with an animated emoji was clicked by the user. Returns a big animated sticker to be played or a 404 error if usual animation needs to be played
   const ClickAnimatedEmojiMessage({
     required this.chatId,

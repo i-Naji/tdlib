@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Marks all mentions in a chat as read
 ///
 /// Returns [Ok].
-final class ReadAllChatMentions extends TdFunction {
+final class ReadAllChatMentions extends TdFunction<Ok> {
   /// Marks all mentions in a chat as read
   const ReadAllChatMentions({
     required this.chatId,

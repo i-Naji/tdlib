@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
 ///
 /// Returns [Ok].
-final class PinChatMessage extends TdFunction {
+final class PinChatMessage extends TdFunction<Ok> {
   /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
   const PinChatMessage({
     required this.chatId,

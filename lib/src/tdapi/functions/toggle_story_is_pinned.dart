@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a story is accessible after expiration
 ///
 /// Returns [Ok].
-final class ToggleStoryIsPinned extends TdFunction {
+final class ToggleStoryIsPinned extends TdFunction<Ok> {
   /// Toggles whether a story is accessible after expiration
   const ToggleStoryIsPinned({
     required this.storyId,

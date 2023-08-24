@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks whether a 2-step verification password recovery code sent to an email address is valid. Works only when the current authorization state is authorizationStateWaitPassword
 ///
 /// Returns [Ok].
-final class CheckAuthenticationPasswordRecoveryCode extends TdFunction {
+final class CheckAuthenticationPasswordRecoveryCode extends TdFunction<Ok> {
   /// Checks whether a 2-step verification password recovery code sent to an email address is valid. Works only when the current authorization state is authorizationStateWaitPassword
   const CheckAuthenticationPasswordRecoveryCode({
     required this.recoveryCode,

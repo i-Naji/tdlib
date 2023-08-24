@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns sponsored messages to be shown in a chat; for channel chats only
 ///
 /// Returns [SponsoredMessages].
-final class GetChatSponsoredMessages extends TdFunction {
+final class GetChatSponsoredMessages extends TdFunction<SponsoredMessages> {
   /// Returns sponsored messages to be shown in a chat; for channel chats only
   const GetChatSponsoredMessages({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that the user viewed detailed information about a Premium feature on the Premium features screen
 ///
 /// Returns [Ok].
-final class ViewPremiumFeature extends TdFunction {
+final class ViewPremiumFeature extends TdFunction<Ok> {
   /// Informs TDLib that the user viewed detailed information about a Premium feature on the Premium features screen
   const ViewPremiumFeature({
     required this.feature,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns full information about a user by their identifier
 ///
 /// Returns [UserFullInfo].
-final class GetUserFullInfo extends TdFunction {
+final class GetUserFullInfo extends TdFunction<UserFullInfo> {
   /// Returns full information about a user by their identifier
   const GetUserFullInfo({
     required this.userId,

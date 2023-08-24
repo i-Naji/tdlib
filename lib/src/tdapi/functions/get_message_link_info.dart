@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage
 ///
 /// Returns [MessageLinkInfo].
-final class GetMessageLinkInfo extends TdFunction {
+final class GetMessageLinkInfo extends TdFunction<MessageLinkInfo> {
   /// Returns information about a public or private message link. Can be called for any internal link of the type internalLinkTypeMessage
   const GetMessageLinkInfo({
     required this.url,

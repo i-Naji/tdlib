@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that the chat is closed by the user. Many useful activities depend on the chat being opened or closed
 ///
 /// Returns [Ok].
-final class CloseChat extends TdFunction {
+final class CloseChat extends TdFunction<Ok> {
   /// Informs TDLib that the chat is closed by the user. Many useful activities depend on the chat being opened or closed
   const CloseChat({
     required this.chatId,

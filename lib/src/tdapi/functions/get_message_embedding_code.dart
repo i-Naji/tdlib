@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
 ///
 /// Returns [Text].
-final class GetMessageEmbeddingCode extends TdFunction {
+final class GetMessageEmbeddingCode extends TdFunction<Text> {
   /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
   const GetMessageEmbeddingCode({
     required this.chatId,

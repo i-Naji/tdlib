@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns reactions added for a message, along with their sender
 ///
 /// Returns [AddedReactions].
-final class GetMessageAddedReactions extends TdFunction {
+final class GetMessageAddedReactions extends TdFunction<AddedReactions> {
   /// Returns reactions added for a message, along with their sender
   const GetMessageAddedReactions({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns backgrounds installed by the user
 ///
 /// Returns [Backgrounds].
-final class GetBackgrounds extends TdFunction {
+final class GetBackgrounds extends TdFunction<Backgrounds> {
   /// Returns backgrounds installed by the user
   const GetBackgrounds({
     required this.forDarkTheme,

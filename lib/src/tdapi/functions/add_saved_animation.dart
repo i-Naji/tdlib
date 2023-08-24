@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Manually adds a new animation to the list of saved animations. The new animation is added to the beginning of the list. If the animation was already in the list, it is removed first. Only non-secret video animations with MIME type "video/mp4" can be added to the list
 ///
 /// Returns [Ok].
-final class AddSavedAnimation extends TdFunction {
+final class AddSavedAnimation extends TdFunction<Ok> {
   /// Manually adds a new animation to the list of saved animations. The new animation is added to the beginning of the list. If the animation was already in the list, it is removed first. Only non-secret video animations with MIME type "video/mp4" can be added to the list
   const AddSavedAnimation({
     required this.animation,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the 2-step verification password for the current user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed
 ///
 /// Returns [PasswordState].
-final class SetPassword extends TdFunction {
+final class SetPassword extends TdFunction<PasswordState> {
   /// Changes the 2-step verification password for the current user. If a new recovery email address is specified, then the change will not be applied until the new recovery email address is confirmed
   const SetPassword({
     required this.oldPassword,

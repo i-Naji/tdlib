@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Ends recording of an active group call. Requires groupCall.can_be_managed group call flag
 ///
 /// Returns [Ok].
-final class EndGroupCallRecording extends TdFunction {
+final class EndGroupCallRecording extends TdFunction<Ok> {
   /// Ends recording of an active group call. Requires groupCall.can_be_managed group call flag
   const EndGroupCallRecording({
     required this.groupCallId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Finishes the file generation
 ///
 /// Returns [Ok].
-final class FinishFileGeneration extends TdFunction {
+final class FinishFileGeneration extends TdFunction<Ok> {
   /// Finishes the file generation
   const FinishFileGeneration({
     required this.generationId,

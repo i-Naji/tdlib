@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the value of an option. (Check the list of available options on https://core.telegram.org/tdlib/options.) Only writable options can be set. Can be called before authorization
 ///
 /// Returns [Ok].
-final class SetOption extends TdFunction {
+final class SetOption extends TdFunction<Ok> {
   /// Sets the value of an option. (Check the list of available options on https://core.telegram.org/tdlib/options.) Only writable options can be set. Can be called before authorization
   const SetOption({
     required this.name,

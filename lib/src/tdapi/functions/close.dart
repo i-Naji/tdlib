@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
 ///
 /// Returns [Ok].
-final class Close extends TdFunction {
+final class Close extends TdFunction<Ok> {
   /// Closes the TDLib instance. All databases will be flushed to disk and properly closed. After the close completes, updateAuthorizationState with authorizationStateClosed will be sent. Can be called before initialization
   const Close();
 

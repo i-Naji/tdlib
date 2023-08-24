@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the background in a specific chat. Supported only in private and secret chats with non-deleted users
 ///
 /// Returns [Ok].
-final class SetChatBackground extends TdFunction {
+final class SetChatBackground extends TdFunction<Ok> {
   /// Changes the background in a specific chat. Supported only in private and secret chats with non-deleted users
   const SetChatBackground({
     required this.chatId,

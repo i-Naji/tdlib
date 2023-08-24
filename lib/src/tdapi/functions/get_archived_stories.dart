@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
 ///
 /// Returns [Stories].
-final class GetArchivedStories extends TdFunction {
+final class GetArchivedStories extends TdFunction<Stories> {
   /// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
   const GetArchivedStories({
     required this.fromStoryId,

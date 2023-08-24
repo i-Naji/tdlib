@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a chat folder by its identifier
 ///
 /// Returns [ChatFolder].
-final class GetChatFolder extends TdFunction {
+final class GetChatFolder extends TdFunction<ChatFolder> {
   /// Returns information about a chat folder by its identifier
   const GetChatFolder({
     required this.chatFolderId,

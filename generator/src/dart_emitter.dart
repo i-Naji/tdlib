@@ -3,7 +3,7 @@
 /// * every abstract type becomes a `sealed class` with a `fromJson` factory
 ///   and an `Undecoded<Type>` subtype for types newer than this API;
 /// * every constructor becomes a `final class`;
-/// * every function becomes `final class X extends TdFunction`;
+/// * every function becomes `final class X extends TdFunction<Result>`;
 /// * JSON values are read leniently (int64 may arrive as a string).
 library;
 
@@ -69,6 +69,7 @@ const _reservedMembers = {
   'runtimeType',
   'toString',
   'noSuchMethod',
+  'canBeCalledSynchronously',
 };
 
 const _primitives = {
@@ -267,7 +268,7 @@ class _Api {
     final name = dartClass(f.name);
     final result = dartClass(f.result);
     return '${_doc(f.description)}///\n/// Returns [$result].\n'
-        'final class $name extends TdFunction {\n'
+        'final class $name extends TdFunction<$result> {\n'
         '${_body(f, name, receivable: false, overrideCopyWith: false)}'
         '}\n';
   }
@@ -374,6 +375,12 @@ class _Api {
       ..writeln()
       ..writeln('  @override')
       ..writeln('  String getConstructor() => CONSTRUCTOR;');
+    if (c.canBeCalledSynchronously) {
+      out
+        ..writeln()
+        ..writeln('  @override')
+        ..writeln('  bool get canBeCalledSynchronously => true;');
+    }
     return out.toString();
   }
 }
@@ -404,8 +411,8 @@ abstract class TdObject {
   Map<String, dynamic> toJson();
 }
 
-/// Base class of every TDLib request.
-abstract class TdFunction {
+/// Base class of every TDLib request. [R] is the type TDLib returns.
+abstract class TdFunction<R extends TdObject> {
   const TdFunction();
 
   /// TDLib function name, e.g. `getMe`.
@@ -413,6 +420,9 @@ abstract class TdFunction {
 
   /// Converts this request to TDLib JSON, tagged with [extra] if given.
   Map<String, dynamic> toJson([dynamic extra]);
+
+  /// Whether TDLib documents this request as callable through `td_execute`.
+  bool get canBeCalledSynchronously => false;
 }
 
 /// A TDLib object of a type this API doesn't know.

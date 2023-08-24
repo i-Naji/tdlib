@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about the next messages of the specified type in the chat split by days. Returns the results in reverse chronological order. Can return partial result for the last returned day. Behavior of this method depends on the value of the option "utc_time_offset"
 ///
 /// Returns [MessageCalendar].
-final class GetChatMessageCalendar extends TdFunction {
+final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// Returns information about the next messages of the specified type in the chat split by days. Returns the results in reverse chronological order. Can return partial result for the last returned day. Behavior of this method depends on the value of the option "utc_time_offset"
   const GetChatMessageCalendar({
     required this.chatId,

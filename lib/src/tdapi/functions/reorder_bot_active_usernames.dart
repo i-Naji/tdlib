@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes order of active usernames of a bot. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Ok].
-final class ReorderBotActiveUsernames extends TdFunction {
+final class ReorderBotActiveUsernames extends TdFunction<Ok> {
   /// Changes order of active usernames of a bot. Can be called only if userTypeBot.can_be_edited == true
   const ReorderBotActiveUsernames({
     required this.botUserId,

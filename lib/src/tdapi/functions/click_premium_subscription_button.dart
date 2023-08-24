@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that the user clicked Premium subscription button on the Premium features screen
 ///
 /// Returns [Ok].
-final class ClickPremiumSubscriptionButton extends TdFunction {
+final class ClickPremiumSubscriptionButton extends TdFunction<Ok> {
   /// Informs TDLib that the user clicked Premium subscription button on the Premium features screen
   const ClickPremiumSubscriptionButton();
 

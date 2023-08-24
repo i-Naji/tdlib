@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
 ///
 /// Returns [AuthenticationCodeInfo].
-final class SendPhoneNumberConfirmationCode extends TdFunction {
+final class SendPhoneNumberConfirmationCode
+    extends TdFunction<AuthenticationCodeInfo> {
   /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
   const SendPhoneNumberConfirmationCode({
     required this.hash,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs server about a purchase through Google Play. For official applications only
 ///
 /// Returns [Ok].
-final class AssignGooglePlayTransaction extends TdFunction {
+final class AssignGooglePlayTransaction extends TdFunction<Ok> {
   /// Informs server about a purchase through Google Play. For official applications only
   const AssignGooglePlayTransaction({
     required this.packageName,

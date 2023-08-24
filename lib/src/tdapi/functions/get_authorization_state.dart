@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
 ///
 /// Returns [AuthorizationState].
-final class GetAuthorizationState extends TdFunction {
+final class GetAuthorizationState extends TdFunction<AuthorizationState> {
   /// Returns the current authorization state; this is an offline request. For informational purposes only. Use updateAuthorizationState instead to maintain the current authorization state. Can be called before initialization
   const GetAuthorizationState();
 

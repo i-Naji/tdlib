@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a phone number by its prefix. Can be called before authorization
 ///
 /// Returns [PhoneNumberInfo].
-final class GetPhoneNumberInfo extends TdFunction {
+final class GetPhoneNumberInfo extends TdFunction<PhoneNumberInfo> {
   /// Returns information about a phone number by its prefix. Can be called before authorization
   const GetPhoneNumberInfo({
     required this.phoneNumberPrefix,

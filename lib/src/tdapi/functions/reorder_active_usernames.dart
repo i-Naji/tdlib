@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes order of active usernames of the current user
 ///
 /// Returns [Ok].
-final class ReorderActiveUsernames extends TdFunction {
+final class ReorderActiveUsernames extends TdFunction<Ok> {
   /// Changes order of active usernames of the current user
   const ReorderActiveUsernames({
     required this.usernames,

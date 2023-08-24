@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a proxy server for network requests. Can be called before authorization
 ///
 /// Returns [Proxy].
-final class AddProxy extends TdFunction {
+final class AddProxy extends TdFunction<Proxy> {
   /// Adds a proxy server for network requests. Can be called before authorization
   const AddProxy({
     required this.server,

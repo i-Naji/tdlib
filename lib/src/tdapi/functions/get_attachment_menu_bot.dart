@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a bot that can be added to attachment menu
 ///
 /// Returns [AttachmentMenuBot].
-final class GetAttachmentMenuBot extends TdFunction {
+final class GetAttachmentMenuBot extends TdFunction<AttachmentMenuBot> {
   /// Returns information about a bot that can be added to attachment menu
   const GetAttachmentMenuBot({
     required this.botUserId,

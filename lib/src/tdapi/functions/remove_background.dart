@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes background from the list of installed backgrounds
 ///
 /// Returns [Ok].
-final class RemoveBackground extends TdFunction {
+final class RemoveBackground extends TdFunction<Ok> {
   /// Removes background from the list of installed backgrounds
   const RemoveBackground({
     required this.backgroundId,

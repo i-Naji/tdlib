@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the marked as unread state of a chat
 ///
 /// Returns [Ok].
-final class ToggleChatIsMarkedAsUnread extends TdFunction {
+final class ToggleChatIsMarkedAsUnread extends TdFunction<Ok> {
   /// Changes the marked as unread state of a chat
   const ToggleChatIsMarkedAsUnread({
     required this.chatId,

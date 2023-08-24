@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for the specified query in the first names, last names and usernames of the known user contacts
 ///
 /// Returns [Users].
-final class SearchContacts extends TdFunction {
+final class SearchContacts extends TdFunction<Users> {
   /// Searches for the specified query in the first names, last names and usernames of the known user contacts
   const SearchContacts({
     required this.query,

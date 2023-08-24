@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of public chats of the specified type, owned by the user
 ///
 /// Returns [Chats].
-final class GetCreatedPublicChats extends TdFunction {
+final class GetCreatedPublicChats extends TdFunction<Chats> {
   /// Returns a list of public chats of the specified type, owned by the user
   const GetCreatedPublicChats({
     required this.type,

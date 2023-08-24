@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns saved animations
 ///
 /// Returns [Animations].
-final class GetSavedAnimations extends TdFunction {
+final class GetSavedAnimations extends TdFunction<Animations> {
   /// Returns saved animations
   const GetSavedAnimations();
 

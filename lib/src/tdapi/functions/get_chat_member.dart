@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a single member of a chat
 ///
 /// Returns [ChatMember].
-final class GetChatMember extends TdFunction {
+final class GetChatMember extends TdFunction<ChatMember> {
   /// Returns information about a single member of a chat
   const GetChatMember({
     required this.chatId,

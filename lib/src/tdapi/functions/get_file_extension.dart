@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. Can be called synchronously
 ///
 /// Returns [Text].
-final class GetFileExtension extends TdFunction {
+final class GetFileExtension extends TdFunction<Text> {
   /// Returns the extension of a file, guessed by its MIME type. Returns an empty string on failure. Can be called synchronously
   const GetFileExtension({
     required this.mimeType,
@@ -35,4 +35,7 @@ final class GetFileExtension extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

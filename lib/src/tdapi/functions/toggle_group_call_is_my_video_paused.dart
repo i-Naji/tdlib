@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether current user's video is paused
 ///
 /// Returns [Ok].
-final class ToggleGroupCallIsMyVideoPaused extends TdFunction {
+final class ToggleGroupCallIsMyVideoPaused extends TdFunction<Ok> {
   /// Toggles whether current user's video is paused
   const ToggleGroupCallIsMyVideoPaused({
     required this.groupCallId,

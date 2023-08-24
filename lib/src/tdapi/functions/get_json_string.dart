@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
 ///
 /// Returns [Text].
-final class GetJsonString extends TdFunction {
+final class GetJsonString extends TdFunction<Text> {
   /// Converts a JsonValue object to corresponding JSON-serialized string. Can be called synchronously
   const GetJsonString({
     required this.jsonValue,
@@ -35,4 +35,7 @@ final class GetJsonString extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

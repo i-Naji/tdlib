@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a newest pinned message in the chat
 ///
 /// Returns [Message].
-final class GetChatPinnedMessage extends TdFunction {
+final class GetChatPinnedMessage extends TdFunction<Message> {
   /// Returns information about a newest pinned message in the chat
   const GetChatPinnedMessage({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a file with a segment of a group call stream in a modified OGG format for audio or MPEG-4 format for video
 ///
 /// Returns [FilePart].
-final class GetGroupCallStreamSegment extends TdFunction {
+final class GetGroupCallStreamSegment extends TdFunction<FilePart> {
   /// Returns a file with a segment of a group call stream in a modified OGG format for audio or MPEG-4 format for video
   const GetGroupCallStreamSegment({
     required this.groupCallId,

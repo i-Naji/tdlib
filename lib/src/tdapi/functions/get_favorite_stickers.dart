@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns favorite stickers
 ///
 /// Returns [Stickers].
-final class GetFavoriteStickers extends TdFunction {
+final class GetFavoriteStickers extends TdFunction<Stickers> {
   /// Returns favorite stickers
   const GetFavoriteStickers();
 

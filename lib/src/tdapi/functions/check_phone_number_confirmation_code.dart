@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks phone number confirmation code
 ///
 /// Returns [Ok].
-final class CheckPhoneNumberConfirmationCode extends TdFunction {
+final class CheckPhoneNumberConfirmationCode extends TdFunction<Ok> {
   /// Checks phone number confirmation code
   const CheckPhoneNumberConfirmationCode({
     required this.code,

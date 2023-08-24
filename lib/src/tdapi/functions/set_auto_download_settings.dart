@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets auto-download settings
 ///
 /// Returns [Ok].
-final class SetAutoDownloadSettings extends TdFunction {
+final class SetAutoDownloadSettings extends TdFunction<Ok> {
   /// Sets auto-download settings
   const SetAutoDownloadSettings({
     required this.settings,

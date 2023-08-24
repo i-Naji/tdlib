@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, updateAuthorizationState with authorizationStateClosed will be sent
 ///
 /// Returns [Ok].
-final class LogOut extends TdFunction {
+final class LogOut extends TdFunction<Ok> {
   /// Closes the TDLib instance after a proper logout. Requires an available network connection. All local data will be destroyed. After the logout completes, updateAuthorizationState with authorizationStateClosed will be sent
   const LogOut();
 

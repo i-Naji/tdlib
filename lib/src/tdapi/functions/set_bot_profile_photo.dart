@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes a profile photo for a bot
 ///
 /// Returns [Ok].
-final class SetBotProfilePhoto extends TdFunction {
+final class SetBotProfilePhoto extends TdFunction<Ok> {
   /// Changes a profile photo for a bot
   const SetBotProfilePhoto({
     required this.botUserId,

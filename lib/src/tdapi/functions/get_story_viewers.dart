@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns viewers of a recent outgoing story. The method can be called if story.can_get_viewers == true. The views are returned in a reverse chronological order (i.e., in order of decreasing view_date) For optimal performance, the number of returned stories is chosen by TDLib
 ///
 /// Returns [MessageViewers].
-final class GetStoryViewers extends TdFunction {
+final class GetStoryViewers extends TdFunction<MessageViewers> {
   /// Returns viewers of a recent outgoing story. The method can be called if story.can_get_viewers == true. The views are returned in a reverse chronological order (i.e., in order of decreasing view_date) For optimal performance, the number of returned stories is chosen by TDLib
   const GetStoryViewers({
     required this.storyId,

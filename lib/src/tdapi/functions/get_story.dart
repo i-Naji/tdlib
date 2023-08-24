@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a story
 ///
 /// Returns [Story].
-final class GetStory extends TdFunction {
+final class GetStory extends TdFunction<Story> {
   /// Returns a story
   const GetStory({
     required this.storySenderChatId,

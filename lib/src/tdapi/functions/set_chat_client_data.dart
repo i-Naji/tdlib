@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes application-specific data associated with a chat
 ///
 /// Returns [Ok].
-final class SetChatClientData extends TdFunction {
+final class SetChatClientData extends TdFunction<Ok> {
   /// Changes application-specific data associated with a chat
   const SetChatClientData({
     required this.chatId,

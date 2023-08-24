@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an existing chat corresponding to a known supergroup or channel
 ///
 /// Returns [Chat].
-final class CreateSupergroupChat extends TdFunction {
+final class CreateSupergroupChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a known supergroup or channel
   const CreateSupergroupChat({
     required this.supergroupId,

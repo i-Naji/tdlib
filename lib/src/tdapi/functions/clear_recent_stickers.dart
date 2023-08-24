@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears the list of recently used stickers
 ///
 /// Returns [Ok].
-final class ClearRecentStickers extends TdFunction {
+final class ClearRecentStickers extends TdFunction<Ok> {
   /// Clears the list of recently used stickers
   const ClearRecentStickers({
     required this.isAttached,

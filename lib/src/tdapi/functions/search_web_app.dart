@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a Web App by its short name. Returns a 404 error if the Web App is not found
 ///
 /// Returns [FoundWebApp].
-final class SearchWebApp extends TdFunction {
+final class SearchWebApp extends TdFunction<FoundWebApp> {
   /// Returns information about a Web App by its short name. Returns a 404 error if the Web App is not found
   const SearchWebApp({
     required this.botUserId,

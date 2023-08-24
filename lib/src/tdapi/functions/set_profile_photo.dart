@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes a profile photo for the current user
 ///
 /// Returns [Ok].
-final class SetProfilePhoto extends TdFunction {
+final class SetProfilePhoto extends TdFunction<Ok> {
   /// Changes a profile photo for the current user
   const SetProfilePhoto({
     required this.photo,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user
 ///
 /// Returns [Messages].
-final class SearchChatRecentLocationMessages extends TdFunction {
+final class SearchChatRecentLocationMessages extends TdFunction<Messages> {
   /// Returns information about the recent locations of chat members that were sent to the chat. Returns up to 1 location message per user
   const SearchChatRecentLocationMessages({
     required this.chatId,

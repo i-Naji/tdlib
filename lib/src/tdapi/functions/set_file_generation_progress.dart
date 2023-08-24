@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib on a file generation progress
 ///
 /// Returns [Ok].
-final class SetFileGenerationProgress extends TdFunction {
+final class SetFileGenerationProgress extends TdFunction<Ok> {
   /// Informs TDLib on a file generation progress
   const SetFileGenerationProgress({
     required this.generationId,

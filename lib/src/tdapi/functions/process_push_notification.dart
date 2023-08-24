@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Handles a push notification. Returns error with code 406 if the push notification is not supported and connection to the server is required to fetch new data. Can be called before authorization
 ///
 /// Returns [Ok].
-final class ProcessPushNotification extends TdFunction {
+final class ProcessPushNotification extends TdFunction<Ok> {
   /// Handles a push notification. Returns error with code 406 if the push notification is not supported and connection to the server is required to fetch new data. Can be called before authorization
   const ProcessPushNotification({
     required this.payload,

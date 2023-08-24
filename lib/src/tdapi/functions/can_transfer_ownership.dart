@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Checks whether the current session can be used to transfer a chat ownership to another user
 ///
 /// Returns [CanTransferOwnershipResult].
-final class CanTransferOwnership extends TdFunction {
+final class CanTransferOwnership
+    extends TdFunction<CanTransferOwnershipResult> {
   /// Checks whether the current session can be used to transfer a chat ownership to another user
   const CanTransferOwnership();
 

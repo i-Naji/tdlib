@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
 ///
 /// Returns [Ok].
-final class AddCustomServerLanguagePack extends TdFunction {
+final class AddCustomServerLanguagePack extends TdFunction<Ok> {
   /// Adds a custom server language pack to the list of installed language packs in current localization target. Can be called before authorization
   const AddCustomServerLanguagePack({
     required this.languagePackId,

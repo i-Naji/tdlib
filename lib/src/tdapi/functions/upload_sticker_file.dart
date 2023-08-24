@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Uploads a file with a sticker; returns the uploaded file
 ///
 /// Returns [File].
-final class UploadStickerFile extends TdFunction {
+final class UploadStickerFile extends TdFunction<File> {
   /// Uploads a file with a sticker; returns the uploaded file
   const UploadStickerFile({
     required this.userId,

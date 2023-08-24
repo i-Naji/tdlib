@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an animated emoji corresponding to a given emoji. Returns a 404 error if the emoji has no animated emoji
 ///
 /// Returns [AnimatedEmoji].
-final class GetAnimatedEmoji extends TdFunction {
+final class GetAnimatedEmoji extends TdFunction<AnimatedEmoji> {
   /// Returns an animated emoji corresponding to a given emoji. Returns a 404 error if the emoji has no animated emoji
   const GetAnimatedEmoji({
     required this.emoji,

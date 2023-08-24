@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed
 ///
 /// Returns [NotificationSound].
-final class AddSavedNotificationSound extends TdFunction {
+final class AddSavedNotificationSound extends TdFunction<NotificationSound> {
   /// Adds a new notification sound to the list of saved notification sounds. The new notification sound is added to the top of the list. If it is already in the list, its position isn't changed
   const AddSavedNotificationSound({
     required this.sound,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits existing chat folder. Returns information about the edited chat folder
 ///
 /// Returns [ChatFolderInfo].
-final class EditChatFolder extends TdFunction {
+final class EditChatFolder extends TdFunction<ChatFolderInfo> {
   /// Edits existing chat folder. Returns information about the edited chat folder
   const EditChatFolder({
     required this.chatFolderId,

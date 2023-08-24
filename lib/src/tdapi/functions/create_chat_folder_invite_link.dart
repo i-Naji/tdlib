@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Creates a new invite link for a chat folder. A link can be created for a chat folder if it has only pinned and included chats
 ///
 /// Returns [ChatFolderInviteLink].
-final class CreateChatFolderInviteLink extends TdFunction {
+final class CreateChatFolderInviteLink
+    extends TdFunction<ChatFolderInviteLink> {
   /// Creates a new invite link for a chat folder. A link can be created for a chat folder if it has only pinned and included chats
   const CreateChatFolderInviteLink({
     required this.chatFolderId,

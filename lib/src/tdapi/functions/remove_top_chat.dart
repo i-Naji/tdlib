@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a chat from the list of frequently used chats. Supported only if the chat info database is enabled
 ///
 /// Returns [Ok].
-final class RemoveTopChat extends TdFunction {
+final class RemoveTopChat extends TdFunction<Ok> {
   /// Removes a chat from the list of frequently used chats. Supported only if the chat info database is enabled
   const RemoveTopChat({
     required this.category,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the caption of an inline message sent via a bot; for bots only
 ///
 /// Returns [Ok].
-final class EditInlineMessageCaption extends TdFunction {
+final class EditInlineMessageCaption extends TdFunction<Ok> {
   /// Edits the caption of an inline message sent via a bot; for bots only
   const EditInlineMessageCaption({
     required this.inlineMessageId,

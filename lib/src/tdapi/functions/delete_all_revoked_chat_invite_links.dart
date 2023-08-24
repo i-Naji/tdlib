@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
 ///
 /// Returns [Ok].
-final class DeleteAllRevokedChatInviteLinks extends TdFunction {
+final class DeleteAllRevokedChatInviteLinks extends TdFunction<Ok> {
   /// Deletes all revoked chat invite links created by a given chat administrator. Requires administrator privileges and can_invite_users right in the chat for own links and owner privileges for other links
   const DeleteAllRevokedChatInviteLinks({
     required this.chatId,

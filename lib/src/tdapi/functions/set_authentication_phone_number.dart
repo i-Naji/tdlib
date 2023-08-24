@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
 ///
 /// Returns [Ok].
-final class SetAuthenticationPhoneNumber extends TdFunction {
+final class SetAuthenticationPhoneNumber extends TdFunction<Ok> {
   /// Sets the phone number of the user and sends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitPhoneNumber, or if there is no pending authentication query and the current authorization state is authorizationStateWaitEmailAddress, authorizationStateWaitEmailCode, authorizationStateWaitCode, authorizationStateWaitRegistration, or authorizationStateWaitPassword
   const SetAuthenticationPhoneNumber({
     required this.phoneNumber,

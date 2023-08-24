@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
-final class EditMessageReplyMarkup extends TdFunction {
+final class EditMessageReplyMarkup extends TdFunction<Message> {
   /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
   const EditMessageReplyMarkup({
     required this.chatId,

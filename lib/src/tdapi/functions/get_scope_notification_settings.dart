@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns the notification settings for chats of a given type
 ///
 /// Returns [ScopeNotificationSettings].
-final class GetScopeNotificationSettings extends TdFunction {
+final class GetScopeNotificationSettings
+    extends TdFunction<ScopeNotificationSettings> {
   /// Returns the notification settings for chats of a given type
   const GetScopeNotificationSettings({
     required this.scope,

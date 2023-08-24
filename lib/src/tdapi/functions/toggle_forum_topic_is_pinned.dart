@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
 ///
 /// Returns [Ok].
-final class ToggleForumTopicIsPinned extends TdFunction {
+final class ToggleForumTopicIsPinned extends TdFunction<Ok> {
   /// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
   const ToggleForumTopicIsPinned({
     required this.chatId,

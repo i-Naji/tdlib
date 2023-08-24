@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns auto-download settings presets for the current user
 ///
 /// Returns [AutoDownloadSettingsPresets].
-final class GetAutoDownloadSettingsPresets extends TdFunction {
+final class GetAutoDownloadSettingsPresets
+    extends TdFunction<AutoDownloadSettingsPresets> {
   /// Returns auto-download settings presets for the current user
   const GetAutoDownloadSettingsPresets();
 

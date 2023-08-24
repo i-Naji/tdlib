@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode
 ///
 /// Returns [Ok].
-final class CheckAuthenticationCode extends TdFunction {
+final class CheckAuthenticationCode extends TdFunction<Ok> {
   /// Checks the authentication code. Works only when the current authorization state is authorizationStateWaitCode
   const CheckAuthenticationCode({
     required this.code,

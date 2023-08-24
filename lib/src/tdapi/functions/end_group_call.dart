@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Ends a group call. Requires groupCall.can_be_managed
 ///
 /// Returns [Ok].
-final class EndGroupCall extends TdFunction {
+final class EndGroupCall extends TdFunction<Ok> {
   /// Ends a group call. Requires groupCall.can_be_managed
   const EndGroupCall({
     required this.groupCallId,

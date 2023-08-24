@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a filled-out payment form to the bot for final verification
 ///
 /// Returns [PaymentResult].
-final class SendPaymentForm extends TdFunction {
+final class SendPaymentForm extends TdFunction<PaymentResult> {
   /// Sends a filled-out payment form to the bot for final verification
   const SendPaymentForm({
     required this.inputInvoice,

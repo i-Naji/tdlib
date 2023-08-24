@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for files in the file download list or recently downloaded files from the list
 ///
 /// Returns [FoundFileDownloads].
-final class SearchFileDownloads extends TdFunction {
+final class SearchFileDownloads extends TdFunction<FoundFileDownloads> {
   /// Searches for files in the file download list or recently downloaded files from the list
   const SearchFileDownloads({
     required this.query,

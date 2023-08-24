@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the profile photos of a user. Personal and public photo aren't returned
 ///
 /// Returns [ChatPhotos].
-final class GetUserProfilePhotos extends TdFunction {
+final class GetUserProfilePhotos extends TdFunction<ChatPhotos> {
   /// Returns the profile photos of a user. Personal and public photo aren't returned
   const GetUserProfilePhotos({
     required this.userId,

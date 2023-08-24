@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium
 ///
 /// Returns [Ok].
-final class ToggleChatIsPinned extends TdFunction {
+final class ToggleChatIsPinned extends TdFunction<Ok> {
   /// Changes the pinned state of a chat. There can be up to getOption("pinned_chat_count_max")/getOption("pinned_archived_chat_count_max") pinned non-secret chats and the same number of secret chats in the main/archive chat list. The limit can be increased with Telegram Premium
   const ToggleChatIsPinned({
     required this.chatList,

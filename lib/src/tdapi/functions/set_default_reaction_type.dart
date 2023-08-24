@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes type of default reaction for the current user
 ///
 /// Returns [Ok].
-final class SetDefaultReactionType extends TdFunction {
+final class SetDefaultReactionType extends TdFunction<Ok> {
   /// Changes type of default reaction for the current user
   const SetDefaultReactionType({
     required this.reactionType,

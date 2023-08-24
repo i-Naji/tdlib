@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Blocks an original sender of a message in the Replies chat
 ///
 /// Returns [Ok].
-final class BlockMessageSenderFromReplies extends TdFunction {
+final class BlockMessageSenderFromReplies extends TdFunction<Ok> {
   /// Blocks an original sender of a message in the Replies chat
   const BlockMessageSenderFromReplies({
     required this.messageId,

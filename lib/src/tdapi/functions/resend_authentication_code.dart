@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Resends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitCode, the next_code_type of the result is not null and the server-specified timeout has passed, or when the current authorization state is authorizationStateWaitEmailCode
 ///
 /// Returns [Ok].
-final class ResendAuthenticationCode extends TdFunction {
+final class ResendAuthenticationCode extends TdFunction<Ok> {
   /// Resends an authentication code to the user. Works only when the current authorization state is authorizationStateWaitCode, the next_code_type of the result is not null and the server-specified timeout has passed, or when the current authorization state is authorizationStateWaitEmailCode
   const ResendAuthenticationCode();
 

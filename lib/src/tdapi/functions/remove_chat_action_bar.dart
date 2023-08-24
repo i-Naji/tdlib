@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a chat action bar without any other action
 ///
 /// Returns [Ok].
-final class RemoveChatActionBar extends TdFunction {
+final class RemoveChatActionBar extends TdFunction<Ok> {
   /// Removes a chat action bar without any other action
   const RemoveChatActionBar({
     required this.chatId,

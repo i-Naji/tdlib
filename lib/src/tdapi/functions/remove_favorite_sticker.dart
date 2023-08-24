@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a sticker from the list of favorite stickers
 ///
 /// Returns [Ok].
-final class RemoveFavoriteSticker extends TdFunction {
+final class RemoveFavoriteSticker extends TdFunction<Ok> {
   /// Removes a sticker from the list of favorite stickers
   const RemoveFavoriteSticker({
     required this.sticker,

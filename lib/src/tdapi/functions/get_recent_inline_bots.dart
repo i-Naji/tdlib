@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns up to 20 recently used inline bots in the order of their last usage
 ///
 /// Returns [Users].
-final class GetRecentInlineBots extends TdFunction {
+final class GetRecentInlineBots extends TdFunction<Users> {
   /// Returns up to 20 recently used inline bots in the order of their last usage
   const GetRecentInlineBots();
 

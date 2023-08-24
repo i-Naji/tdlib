@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a successful payment
 ///
 /// Returns [PaymentReceipt].
-final class GetPaymentReceipt extends TdFunction {
+final class GetPaymentReceipt extends TdFunction<PaymentReceipt> {
   /// Returns information about a successful payment
   const GetPaymentReceipt({
     required this.chatId,

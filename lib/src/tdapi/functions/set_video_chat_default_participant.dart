@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes default participant identifier, on whose behalf a video chat in the chat will be joined
 ///
 /// Returns [Ok].
-final class SetVideoChatDefaultParticipant extends TdFunction {
+final class SetVideoChatDefaultParticipant extends TdFunction<Ok> {
   /// Changes default participant identifier, on whose behalf a video chat in the chat will be joined
   const SetVideoChatDefaultParticipant({
     required this.chatId,

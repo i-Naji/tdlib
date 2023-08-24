@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds or changes a custom local language pack to the current localization target
 ///
 /// Returns [Ok].
-final class SetCustomLanguagePack extends TdFunction {
+final class SetCustomLanguagePack extends TdFunction<Ok> {
   /// Adds or changes a custom local language pack to the current localization target
   const SetCustomLanguagePack({
     required this.info,

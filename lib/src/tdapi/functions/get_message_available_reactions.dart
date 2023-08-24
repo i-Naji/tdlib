@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns reactions, which can be added to a message. The list can change after updateActiveEmojiReactions, updateChatAvailableReactions for the chat, or updateMessageInteractionInfo for the message
 ///
 /// Returns [AvailableReactions].
-final class GetMessageAvailableReactions extends TdFunction {
+final class GetMessageAvailableReactions
+    extends TdFunction<AvailableReactions> {
   /// Returns reactions, which can be added to a message. The list can change after updateActiveEmojiReactions, updateChatAvailableReactions for the chat, or updateMessageInteractionInfo for the message
   const GetMessageAvailableReactions({
     required this.chatId,

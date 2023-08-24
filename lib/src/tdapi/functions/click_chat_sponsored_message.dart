@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that the user opened the sponsored chat via the button, the name, the photo, or a mention in the sponsored message
 ///
 /// Returns [Ok].
-final class ClickChatSponsoredMessage extends TdFunction {
+final class ClickChatSponsoredMessage extends TdFunction<Ok> {
   /// Informs TDLib that the user opened the sponsored chat via the button, the name, the photo, or a mention in the sponsored message
   const ClickChatSponsoredMessage({
     required this.chatId,

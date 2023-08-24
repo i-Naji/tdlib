@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns recommended chat folders for the current user
 ///
 /// Returns [RecommendedChatFolders].
-final class GetRecommendedChatFolders extends TdFunction {
+final class GetRecommendedChatFolders
+    extends TdFunction<RecommendedChatFolders> {
   /// Returns recommended chat folders for the current user
   const GetRecommendedChatFolders();
 

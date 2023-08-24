@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
 ///
 /// Returns [Message].
-final class SendInlineQueryResultMessage extends TdFunction {
+final class SendInlineQueryResultMessage extends TdFunction<Message> {
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
   const SendInlineQueryResultMessage({
     required this.chatId,

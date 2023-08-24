@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes user privacy settings
 ///
 /// Returns [Ok].
-final class SetUserPrivacySettingRules extends TdFunction {
+final class SetUserPrivacySettingRules extends TdFunction<Ok> {
   /// Changes user privacy settings
   const SetUserPrivacySettingRules({
     required this.setting,

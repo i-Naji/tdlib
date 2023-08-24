@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a new sticker to a set; for bots only
 ///
 /// Returns [Ok].
-final class AddStickerToSet extends TdFunction {
+final class AddStickerToSet extends TdFunction<Ok> {
   /// Adds a new sticker to a set; for bots only
   const AddStickerToSet({
     required this.userId,

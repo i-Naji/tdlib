@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Succeeds after a specified amount of time has passed. Can be called before initialization
 ///
 /// Returns [Ok].
-final class SetAlarm extends TdFunction {
+final class SetAlarm extends TdFunction<Ok> {
   /// Succeeds after a specified amount of time has passed. Can be called before initialization
   const SetAlarm({
     required this.seconds,

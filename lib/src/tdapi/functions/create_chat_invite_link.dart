@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat
 ///
 /// Returns [ChatInviteLink].
-final class CreateChatInviteLink extends TdFunction {
+final class CreateChatInviteLink extends TdFunction<ChatInviteLink> {
   /// Creates a new invite link for a chat. Available for basic groups, supergroups, and channels. Requires administrator privileges and can_invite_users right in the chat
   const CreateChatInviteLink({
     required this.chatId,

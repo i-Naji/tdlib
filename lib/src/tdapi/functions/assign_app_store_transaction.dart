@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs server about a purchase through App Store. For official applications only
 ///
 /// Returns [Ok].
-final class AssignAppStoreTransaction extends TdFunction {
+final class AssignAppStoreTransaction extends TdFunction<Ok> {
   /// Informs server about a purchase through App Store. For official applications only
   const AssignAppStoreTransaction({
     required this.receipt,

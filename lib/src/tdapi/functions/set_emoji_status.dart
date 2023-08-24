@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the emoji status of the current user; for Telegram Premium users only
 ///
 /// Returns [Ok].
-final class SetEmojiStatus extends TdFunction {
+final class SetEmojiStatus extends TdFunction<Ok> {
   /// Changes the emoji status of the current user; for Telegram Premium users only
   const SetEmojiStatus({
     this.emojiStatus,

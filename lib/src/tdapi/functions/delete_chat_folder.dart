@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes existing chat folder
 ///
 /// Returns [Ok].
-final class DeleteChatFolder extends TdFunction {
+final class DeleteChatFolder extends TdFunction<Ok> {
   /// Deletes existing chat folder
   const DeleteChatFolder({
     required this.chatFolderId,

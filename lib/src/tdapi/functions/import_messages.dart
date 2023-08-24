@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Imports messages exported from another app
 ///
 /// Returns [Ok].
-final class ImportMessages extends TdFunction {
+final class ImportMessages extends TdFunction<Ok> {
   /// Imports messages exported from another app
   const ImportMessages({
     required this.chatId,

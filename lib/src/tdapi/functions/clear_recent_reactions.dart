@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears the list of recently used reactions
 ///
 /// Returns [Ok].
-final class ClearRecentReactions extends TdFunction {
+final class ClearRecentReactions extends TdFunction<Ok> {
   /// Clears the list of recently used reactions
   const ClearRecentReactions();
 

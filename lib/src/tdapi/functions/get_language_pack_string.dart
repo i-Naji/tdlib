@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
 ///
 /// Returns [LanguagePackStringValue].
-final class GetLanguagePackString extends TdFunction {
+final class GetLanguagePackString extends TdFunction<LanguagePackStringValue> {
   /// Returns a string stored in the local database from the specified localization target and language pack by its key. Returns a 404 error if the string is not found. Can be called synchronously
   const GetLanguagePackString({
     required this.languagePackDatabasePath,
@@ -57,4 +57,7 @@ final class GetLanguagePackString extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

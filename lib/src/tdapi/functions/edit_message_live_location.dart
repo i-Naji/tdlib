@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
-final class EditMessageLiveLocation extends TdFunction {
+final class EditMessageLiveLocation extends TdFunction<Message> {
   /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side
   const EditMessageLiveLocation({
     required this.chatId,

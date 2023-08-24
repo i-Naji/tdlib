@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for stickers from public sticker sets that correspond to any of the given emoji
 ///
 /// Returns [Stickers].
-final class SearchStickers extends TdFunction {
+final class SearchStickers extends TdFunction<Stickers> {
   /// Searches for stickers from public sticker sets that correspond to any of the given emoji
   const SearchStickers({
     required this.stickerType,

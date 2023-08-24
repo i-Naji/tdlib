@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes pause state of all files in the file download list
 ///
 /// Returns [Ok].
-final class ToggleAllDownloadsArePaused extends TdFunction {
+final class ToggleAllDownloadsArePaused extends TdFunction<Ok> {
   /// Changes pause state of all files in the file download list
   const ToggleAllDownloadsArePaused({
     required this.arePaused,

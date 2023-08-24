@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy
 ///
 /// Returns [PaymentForm].
-final class GetPaymentForm extends TdFunction {
+final class GetPaymentForm extends TdFunction<PaymentForm> {
   /// Returns an invoice payment form. This method must be called when the user presses inlineKeyboardButtonBuy
   const GetPaymentForm({
     required this.inputInvoice,

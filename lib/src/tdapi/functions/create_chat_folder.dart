@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates new chat folder. Returns information about the created chat folder. There can be up to getOption("chat_folder_count_max") chat folders, but the limit can be increased with Telegram Premium
 ///
 /// Returns [ChatFolderInfo].
-final class CreateChatFolder extends TdFunction {
+final class CreateChatFolder extends TdFunction<ChatFolderInfo> {
   /// Creates new chat folder. Returns information about the created chat folder. There can be up to getOption("chat_folder_count_max") chat folders, but the limit can be increased with Telegram Premium
   const CreateChatFolder({
     required this.folder,

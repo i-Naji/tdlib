@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that a story is closed by the user
 ///
 /// Returns [Ok].
-final class CloseStory extends TdFunction {
+final class CloseStory extends TdFunction<Ok> {
   /// Informs TDLib that a story is closed by the user
   const CloseStory({
     required this.storySenderChatId,

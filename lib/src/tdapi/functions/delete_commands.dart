@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes commands supported by the bot for the given user scope and language; for bots only
 ///
 /// Returns [Ok].
-final class DeleteCommands extends TdFunction {
+final class DeleteCommands extends TdFunction<Ok> {
   /// Deletes commands supported by the bot for the given user scope and language; for bots only
   const DeleteCommands({
     this.scope,

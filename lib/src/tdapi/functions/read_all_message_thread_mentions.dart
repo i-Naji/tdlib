@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Marks all mentions in a forum topic as read
 ///
 /// Returns [Ok].
-final class ReadAllMessageThreadMentions extends TdFunction {
+final class ReadAllMessageThreadMentions extends TdFunction<Ok> {
   /// Marks all mentions in a forum topic as read
   const ReadAllMessageThreadMentions({
     required this.chatId,

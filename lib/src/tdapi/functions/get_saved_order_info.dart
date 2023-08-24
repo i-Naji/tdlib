@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns saved order information. Returns a 404 error if there is no saved order information
 ///
 /// Returns [OrderInfo].
-final class GetSavedOrderInfo extends TdFunction {
+final class GetSavedOrderInfo extends TdFunction<OrderInfo> {
   /// Returns saved order information. Returns a 404 error if there is no saved order information
   const GetSavedOrderInfo();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears all imported contacts, contact list remains unchanged
 ///
 /// Returns [Ok].
-final class ClearImportedContacts extends TdFunction {
+final class ClearImportedContacts extends TdFunction<Ok> {
   /// Clears all imported contacts, contact list remains unchanged
   const ClearImportedContacts();
 

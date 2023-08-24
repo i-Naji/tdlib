@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends call signaling data
 ///
 /// Returns [Ok].
-final class SendCallSignalingData extends TdFunction {
+final class SendCallSignalingData extends TdFunction<Ok> {
   /// Sends call signaling data
   const SendCallSignalingData({
     required this.callId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns storage usage statistics. Can be called before authorization
 ///
 /// Returns [StorageStatistics].
-final class GetStorageStatistics extends TdFunction {
+final class GetStorageStatistics extends TdFunction<StorageStatistics> {
   /// Returns storage usage statistics. Can be called before authorization
   const GetStorageStatistics({
     required this.chatLimit,

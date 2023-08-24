@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Computes time needed to receive a response from a Telegram server through a proxy. Can be called before authorization
 ///
 /// Returns [Seconds].
-final class PingProxy extends TdFunction {
+final class PingProxy extends TdFunction<Seconds> {
   /// Computes time needed to receive a response from a Telegram server through a proxy. Can be called before authorization
   const PingProxy({
     required this.proxyId,

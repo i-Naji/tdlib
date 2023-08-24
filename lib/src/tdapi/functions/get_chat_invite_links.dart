@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns invite links for a chat created by specified administrator. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
 ///
 /// Returns [ChatInviteLinks].
-final class GetChatInviteLinks extends TdFunction {
+final class GetChatInviteLinks extends TdFunction<ChatInviteLinks> {
   /// Returns invite links for a chat created by specified administrator. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
   const GetChatInviteLinks({
     required this.chatId,

@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns the current privacy settings
 ///
 /// Returns [UserPrivacySettingRules].
-final class GetUserPrivacySettingRules extends TdFunction {
+final class GetUserPrivacySettingRules
+    extends TdFunction<UserPrivacySettingRules> {
   /// Returns the current privacy settings
   const GetUserPrivacySettingRules({
     required this.setting,

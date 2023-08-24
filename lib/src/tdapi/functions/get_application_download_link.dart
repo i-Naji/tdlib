@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the link for downloading official Telegram application to be used when the current user invites friends to Telegram
 ///
 /// Returns [HttpUrl].
-final class GetApplicationDownloadLink extends TdFunction {
+final class GetApplicationDownloadLink extends TdFunction<HttpUrl> {
   /// Returns the link for downloading official Telegram application to be used when the current user invites friends to Telegram
   const GetApplicationDownloadLink();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Starts screen sharing in a joined group call. Returns join response payload for tgcalls
 ///
 /// Returns [Text].
-final class StartGroupCallScreenSharing extends TdFunction {
+final class StartGroupCallScreenSharing extends TdFunction<Text> {
   /// Starts screen sharing in a joined group call. Returns join response payload for tgcalls
   const StartGroupCallScreenSharing({
     required this.groupCallId,

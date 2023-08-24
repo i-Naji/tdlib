@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTTPS or a tg: link with the given type. Can be called before authorization
 ///
 /// Returns [HttpUrl].
-final class GetInternalLink extends TdFunction {
+final class GetInternalLink extends TdFunction<HttpUrl> {
   /// Returns an HTTPS or a tg: link with the given type. Can be called before authorization
   const GetInternalLink({
     required this.type,

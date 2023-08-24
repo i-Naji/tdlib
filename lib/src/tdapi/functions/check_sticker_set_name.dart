@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks whether a name can be used for a new sticker set
 ///
 /// Returns [CheckStickerSetNameResult].
-final class CheckStickerSetName extends TdFunction {
+final class CheckStickerSetName extends TdFunction<CheckStickerSetNameResult> {
   /// Checks whether a name can be used for a new sticker set
   const CheckStickerSetName({
     required this.name,

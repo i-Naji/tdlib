@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Saves application log event on the server. Can be called before authorization
 ///
 /// Returns [Ok].
-final class SaveApplicationLogEvent extends TdFunction {
+final class SaveApplicationLogEvent extends TdFunction<Ok> {
   /// Saves application log event on the server. Can be called before authorization
   const SaveApplicationLogEvent({
     required this.type,

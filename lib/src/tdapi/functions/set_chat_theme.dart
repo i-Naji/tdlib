@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the chat theme. Supported only in private and secret chats
 ///
 /// Returns [Ok].
-final class SetChatTheme extends TdFunction {
+final class SetChatTheme extends TdFunction<Ok> {
   /// Changes the chat theme. Supported only in private and secret chats
   const SetChatTheme({
     required this.chatId,

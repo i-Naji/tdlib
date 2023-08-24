@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a notification about user activity in a chat
 ///
 /// Returns [Ok].
-final class SendChatAction extends TdFunction {
+final class SendChatAction extends TdFunction<Ok> {
   /// Sends a notification about user activity in a chat
   const SendChatAction({
     required this.chatId,

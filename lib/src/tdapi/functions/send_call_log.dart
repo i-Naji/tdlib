@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends log file for a call to Telegram servers
 ///
 /// Returns [Ok].
-final class SendCallLog extends TdFunction {
+final class SendCallLog extends TdFunction<Ok> {
   /// Sends log file for a call to Telegram servers
   const SendCallLog({
     required this.callId,

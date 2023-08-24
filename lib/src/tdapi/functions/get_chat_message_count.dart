@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns approximate number of messages of the specified type in the chat
 ///
 /// Returns [Count].
-final class GetChatMessageCount extends TdFunction {
+final class GetChatMessageCount extends TdFunction<Count> {
   /// Returns approximate number of messages of the specified type in the chat
   const GetChatMessageCount({
     required this.chatId,

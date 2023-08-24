@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all contacts of the user
 ///
 /// Returns [Users].
-final class GetContacts extends TdFunction {
+final class GetContacts extends TdFunction<Users> {
   /// Returns all contacts of the user
   const GetContacts();
 

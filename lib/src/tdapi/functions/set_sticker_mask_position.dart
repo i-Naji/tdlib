@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot
 ///
 /// Returns [Ok].
-final class SetStickerMaskPosition extends TdFunction {
+final class SetStickerMaskPosition extends TdFunction<Ok> {
   /// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot
   const SetStickerMaskPosition({
     required this.sticker,

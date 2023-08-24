@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted
 ///
 /// Returns [StorageStatistics].
-final class OptimizeStorage extends TdFunction {
+final class OptimizeStorage extends TdFunction<StorageStatistics> {
   /// Optimizes storage usage, i.e. deletes some files and returns new storage usage statistics. Secret thumbnails can't be deleted
   const OptimizeStorage({
     required this.size,

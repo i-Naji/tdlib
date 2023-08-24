@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a link for the given invoice; for bots only
 ///
 /// Returns [HttpUrl].
-final class CreateInvoiceLink extends TdFunction {
+final class CreateInvoiceLink extends TdFunction<HttpUrl> {
   /// Creates a link for the given invoice; for bots only
   const CreateInvoiceLink({
     required this.invoice,

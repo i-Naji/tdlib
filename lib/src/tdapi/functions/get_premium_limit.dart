@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a limit, increased for Premium users. Returns a 404 error if the limit is unknown
 ///
 /// Returns [PremiumLimit].
-final class GetPremiumLimit extends TdFunction {
+final class GetPremiumLimit extends TdFunction<PremiumLimit> {
   /// Returns information about a limit, increased for Premium users. Returns a 404 error if the limit is unknown
   const GetPremiumLimit({
     required this.limitType,

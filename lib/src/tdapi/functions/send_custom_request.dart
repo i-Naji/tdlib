@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a custom request; for bots only
 ///
 /// Returns [CustomRequestResult].
-final class SendCustomRequest extends TdFunction {
+final class SendCustomRequest extends TdFunction<CustomRequestResult> {
   /// Sends a custom request; for bots only
   const SendCustomRequest({
     required this.method,

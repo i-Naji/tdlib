@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns localized name of the Telegram support user; for Telegram support only
 ///
 /// Returns [Text].
-final class GetSupportName extends TdFunction {
+final class GetSupportName extends TdFunction<Text> {
   /// Returns localized name of the Telegram support user; for Telegram support only
   const GetSupportName();
 

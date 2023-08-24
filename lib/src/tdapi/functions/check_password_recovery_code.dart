@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks whether a 2-step verification password recovery code sent to an email address is valid
 ///
 /// Returns [Ok].
-final class CheckPasswordRecoveryCode extends TdFunction {
+final class CheckPasswordRecoveryCode extends TdFunction<Ok> {
   /// Checks whether a 2-step verification password recovery code sent to an email address is valid
   const CheckPasswordRecoveryCode({
     required this.recoveryCode,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns full information about a basic group by its identifier
 ///
 /// Returns [BasicGroupFullInfo].
-final class GetBasicGroupFullInfo extends TdFunction {
+final class GetBasicGroupFullInfo extends TdFunction<BasicGroupFullInfo> {
   /// Returns full information about a basic group by its identifier
   const GetBasicGroupFullInfo({
     required this.basicGroupId,

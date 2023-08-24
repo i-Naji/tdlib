@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds an element to the user's Telegram Passport. May return an error with a message "PHONE_VERIFICATION_NEEDED" or "EMAIL_VERIFICATION_NEEDED" if the chosen phone number or the chosen email address must be verified first
 ///
 /// Returns [PassportElement].
-final class SetPassportElement extends TdFunction {
+final class SetPassportElement extends TdFunction<PassportElement> {
   /// Adds an element to the user's Telegram Passport. May return an error with a message "PHONE_VERIFICATION_NEEDED" or "EMAIL_VERIFICATION_NEEDED" if the chosen phone number or the chosen email address must be verified first
   const SetPassportElement({
     required this.element,

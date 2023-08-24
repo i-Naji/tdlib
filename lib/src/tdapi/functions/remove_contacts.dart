@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes users from the contact list
 ///
 /// Returns [Ok].
-final class RemoveContacts extends TdFunction {
+final class RemoveContacts extends TdFunction<Ok> {
   /// Removes users from the contact list
   const RemoveContacts({
     required this.userIds,

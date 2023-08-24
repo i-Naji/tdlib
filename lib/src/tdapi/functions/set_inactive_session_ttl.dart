@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the period of inactivity after which sessions will automatically be terminated
 ///
 /// Returns [Ok].
-final class SetInactiveSessionTtl extends TdFunction {
+final class SetInactiveSessionTtl extends TdFunction<Ok> {
   /// Changes the period of inactivity after which sessions will automatically be terminated
   const SetInactiveSessionTtl({
     required this.inactiveSessionTtlDays,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the list of keywords of a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
 ///
 /// Returns [Ok].
-final class SetStickerKeywords extends TdFunction {
+final class SetStickerKeywords extends TdFunction<Ok> {
   /// Changes the list of keywords of a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
   const SetStickerKeywords({
     required this.sticker,

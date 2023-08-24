@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
 ///
 /// Returns [ValidatedOrderInfo].
-final class ValidateOrderInfo extends TdFunction {
+final class ValidateOrderInfo extends TdFunction<ValidatedOrderInfo> {
   /// Validates the order information provided by a user and returns the available shipping options for a flexible invoice
   const ValidateOrderInfo({
     required this.inputInvoice,

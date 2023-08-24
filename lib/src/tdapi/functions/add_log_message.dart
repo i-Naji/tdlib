@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds a message to TDLib internal log. Can be called synchronously
 ///
 /// Returns [Ok].
-final class AddLogMessage extends TdFunction {
+final class AddLogMessage extends TdFunction<Ok> {
   /// Adds a message to TDLib internal log. Can be called synchronously
   const AddLogMessage({
     required this.verbosityLevel,
@@ -42,4 +42,7 @@ final class AddLogMessage extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

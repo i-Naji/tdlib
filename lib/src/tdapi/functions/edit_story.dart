@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes content and caption of a previously sent story
 ///
 /// Returns [Ok].
-final class EditStory extends TdFunction {
+final class EditStory extends TdFunction<Ok> {
   /// Changes content and caption of a previously sent story
   const EditStory({
     required this.storyId,

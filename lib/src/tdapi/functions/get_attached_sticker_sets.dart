@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets
 ///
 /// Returns [StickerSets].
-final class GetAttachedStickerSets extends TdFunction {
+final class GetAttachedStickerSets extends TdFunction<StickerSets> {
   /// Returns a list of sticker sets attached to a file, including regular, mask, and emoji sticker sets. Currently, only animations, photos, and videos can have attached sticker sets
   const GetAttachedStickerSets({
     required this.fileId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the result of a callback query; for bots only
 ///
 /// Returns [Ok].
-final class AnswerCallbackQuery extends TdFunction {
+final class AnswerCallbackQuery extends TdFunction<Ok> {
   /// Sets the result of a callback query; for bots only
   const AnswerCallbackQuery({
     required this.callbackQueryId,

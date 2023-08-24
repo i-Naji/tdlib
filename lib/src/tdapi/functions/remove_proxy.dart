@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a proxy server. Can be called before authorization
 ///
 /// Returns [Ok].
-final class RemoveProxy extends TdFunction {
+final class RemoveProxy extends TdFunction<Ok> {
   /// Removes a proxy server. Can be called before authorization
   const RemoveProxy({
     required this.proxyId,

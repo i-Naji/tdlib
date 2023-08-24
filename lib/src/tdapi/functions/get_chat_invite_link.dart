@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about an invite link. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
 ///
 /// Returns [ChatInviteLink].
-final class GetChatInviteLink extends TdFunction {
+final class GetChatInviteLink extends TdFunction<ChatInviteLink> {
   /// Returns information about an invite link. Requires administrator privileges and can_invite_users right in the chat to get own links and owner privileges to get other links
   const GetChatInviteLink({
     required this.chatId,

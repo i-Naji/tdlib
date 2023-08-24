@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Enables a proxy. Only one proxy can be enabled at a time. Can be called before authorization
 ///
 /// Returns [Ok].
-final class EnableProxy extends TdFunction {
+final class EnableProxy extends TdFunction<Ok> {
   /// Enables a proxy. Only one proxy can be enabled at a time. Can be called before authorization
   const EnableProxy({
     required this.proxyId,

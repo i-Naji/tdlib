@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a sticker from the list of recently used stickers
 ///
 /// Returns [Ok].
-final class RemoveRecentSticker extends TdFunction {
+final class RemoveRecentSticker extends TdFunction<Ok> {
   /// Removes a sticker from the list of recently used stickers
   const RemoveRecentSticker({
     required this.isAttached,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends an inline query to a bot and returns its results. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires
 ///
 /// Returns [InlineQueryResults].
-final class GetInlineQueryResults extends TdFunction {
+final class GetInlineQueryResults extends TdFunction<InlineQueryResults> {
   /// Sends an inline query to a bot and returns its results. Returns an error with code 502 if the bot fails to answer the query before the query timeout expires
   const GetInlineQueryResults({
     required this.botUserId,

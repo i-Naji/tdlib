@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns identifiers of chats from a chat folder, suitable for adding to a chat folder invite link
 ///
 /// Returns [Chats].
-final class GetChatsForChatFolderInviteLink extends TdFunction {
+final class GetChatsForChatFolderInviteLink extends TdFunction<Chats> {
   /// Returns identifiers of chats from a chat folder, suitable for adding to a chat folder invite link
   const GetChatsForChatFolderInviteLink({
     required this.chatFolderId,

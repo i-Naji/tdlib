@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Handles all pending join requests for a given link in a chat
 ///
 /// Returns [Ok].
-final class ProcessChatJoinRequests extends TdFunction {
+final class ProcessChatJoinRequests extends TdFunction<Ok> {
   /// Handles all pending join requests for a given link in a chat
   const ProcessChatJoinRequests({
     required this.chatId,

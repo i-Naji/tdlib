@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
 ///
 /// Returns [Ok].
-final class ToggleForumTopicIsClosed extends TdFunction {
+final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
   /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
   const ToggleForumTopicIsClosed({
     required this.chatId,

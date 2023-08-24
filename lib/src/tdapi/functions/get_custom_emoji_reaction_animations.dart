@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns TGS stickers with generic animations for custom emoji reactions
 ///
 /// Returns [Stickers].
-final class GetCustomEmojiReactionAnimations extends TdFunction {
+final class GetCustomEmojiReactionAnimations extends TdFunction<Stickers> {
   /// Returns TGS stickers with generic animations for custom emoji reactions
   const GetCustomEmojiReactionAnimations();
 

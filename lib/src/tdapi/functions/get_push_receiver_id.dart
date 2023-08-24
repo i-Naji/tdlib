@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously
 ///
 /// Returns [PushReceiverId].
-final class GetPushReceiverId extends TdFunction {
+final class GetPushReceiverId extends TdFunction<PushReceiverId> {
   /// Returns a globally unique push notification subscription identifier for identification of an account, which has received a push notification. Can be called synchronously
   const GetPushReceiverId({
     required this.payload,
@@ -35,4 +35,7 @@ final class GetPushReceiverId extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Recognizes speech in a video note or a voice note message. The message must be successfully sent and must not be scheduled. May return an error with a message "MSG_VOICE_TOO_LONG" if media duration is too big to be recognized
 ///
 /// Returns [Ok].
-final class RecognizeSpeech extends TdFunction {
+final class RecognizeSpeech extends TdFunction<Ok> {
   /// Recognizes speech in a video note or a voice note message. The message must be successfully sent and must not be scheduled. May return an error with a message "MSG_VOICE_TOO_LONG" if media duration is too big to be recognized
   const RecognizeSpeech({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets menu button for the given user or for all users; for bots only
 ///
 /// Returns [Ok].
-final class SetMenuButton extends TdFunction {
+final class SetMenuButton extends TdFunction<Ok> {
   /// Sets menu button for the given user or for all users; for bots only
   const SetMenuButton({
     required this.userId,

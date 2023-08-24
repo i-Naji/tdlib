@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all close friends of the current user
 ///
 /// Returns [Users].
-final class GetCloseFriends extends TdFunction {
+final class GetCloseFriends extends TdFunction<Users> {
   /// Returns all close friends of the current user
   const GetCloseFriends();
 

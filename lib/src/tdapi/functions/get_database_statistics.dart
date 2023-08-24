@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns database statistics
 ///
 /// Returns [DatabaseStatistics].
-final class GetDatabaseStatistics extends TdFunction {
+final class GetDatabaseStatistics extends TdFunction<DatabaseStatistics> {
   /// Returns database statistics
   const GetDatabaseStatistics();
 

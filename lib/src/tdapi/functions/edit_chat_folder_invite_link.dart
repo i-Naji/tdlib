@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits an invite link for a chat folder
 ///
 /// Returns [ChatFolderInviteLink].
-final class EditChatFolderInviteLink extends TdFunction {
+final class EditChatFolderInviteLink extends TdFunction<ChatFolderInviteLink> {
   /// Edits an invite link for a chat folder
   const EditChatFolderInviteLink({
     required this.chatFolderId,

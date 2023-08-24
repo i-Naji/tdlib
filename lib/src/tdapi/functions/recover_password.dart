@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up
 ///
 /// Returns [PasswordState].
-final class RecoverPassword extends TdFunction {
+final class RecoverPassword extends TdFunction<PasswordState> {
   /// Recovers the 2-step verification password using a recovery code sent to an email address that was previously set up
   const RecoverPassword({
     required this.recoveryCode,

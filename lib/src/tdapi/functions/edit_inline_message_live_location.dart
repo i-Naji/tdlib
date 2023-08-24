@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the content of a live location in an inline message sent via a bot; for bots only
 ///
 /// Returns [Ok].
-final class EditInlineMessageLiveLocation extends TdFunction {
+final class EditInlineMessageLiveLocation extends TdFunction<Ok> {
   /// Edits the content of a live location in an inline message sent via a bot; for bots only
   const EditInlineMessageLiveLocation({
     required this.inlineMessageId,

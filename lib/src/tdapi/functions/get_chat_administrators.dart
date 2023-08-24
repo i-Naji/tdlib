@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of administrators of the chat with their custom titles
 ///
 /// Returns [ChatAdministrators].
-final class GetChatAdministrators extends TdFunction {
+final class GetChatAdministrators extends TdFunction<ChatAdministrators> {
   /// Returns a list of administrators of the chat with their custom titles
   const GetChatAdministrators({
     required this.chatId,

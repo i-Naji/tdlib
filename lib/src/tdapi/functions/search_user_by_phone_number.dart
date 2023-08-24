@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches a user by their phone number. Returns a 404 error if the user can't be found
 ///
 /// Returns [User].
-final class SearchUserByPhoneNumber extends TdFunction {
+final class SearchUserByPhoneNumber extends TdFunction<User> {
   /// Searches a user by their phone number. Returns a 404 error if the user can't be found
   const SearchUserByPhoneNumber({
     required this.phoneNumber,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the editable username of the current user
 ///
 /// Returns [Ok].
-final class SetUsername extends TdFunction {
+final class SetUsername extends TdFunction<Ok> {
   /// Changes the editable username of the current user
   const SetUsername({
     required this.username,

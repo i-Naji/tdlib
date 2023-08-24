@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
 ///
 /// Returns [Ok].
-final class SetChatPhoto extends TdFunction {
+final class SetChatPhoto extends TdFunction<Ok> {
   /// Changes the photo of a chat. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
   const SetChatPhoto({
     required this.chatId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears the list of all autosave settings exceptions. The method is guaranteed to work only after at least one call to getAutosaveSettings
 ///
 /// Returns [Ok].
-final class ClearAutosaveSettingsExceptions extends TdFunction {
+final class ClearAutosaveSettingsExceptions extends TdFunction<Ok> {
   /// Clears the list of all autosave settings exceptions. The method is guaranteed to work only after at least one call to getAutosaveSettings
   const ClearAutosaveSettingsExceptions();
 

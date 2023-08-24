@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Disables all active non-editable usernames of a supergroup or channel, requires owner privileges in the supergroup or channel
 ///
 /// Returns [Ok].
-final class DisableAllSupergroupUsernames extends TdFunction {
+final class DisableAllSupergroupUsernames extends TdFunction<Ok> {
   /// Disables all active non-editable usernames of a supergroup or channel, requires owner privileges in the supergroup or channel
   const DisableAllSupergroupUsernames({
     required this.supergroupId,

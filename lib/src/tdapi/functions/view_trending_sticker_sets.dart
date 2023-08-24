@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs the server that some trending sticker sets have been viewed by the user
 ///
 /// Returns [Ok].
-final class ViewTrendingStickerSets extends TdFunction {
+final class ViewTrendingStickerSets extends TdFunction<Ok> {
   /// Informs the server that some trending sticker sets have been viewed by the user
   const ViewTrendingStickerSets({
     required this.stickerSetIds,

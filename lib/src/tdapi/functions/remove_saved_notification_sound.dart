@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a notification sound from the list of saved notification sounds
 ///
 /// Returns [Ok].
-final class RemoveSavedNotificationSound extends TdFunction {
+final class RemoveSavedNotificationSound extends TdFunction<Ok> {
   /// Removes a notification sound from the list of saved notification sounds
   const RemoveSavedNotificationSound({
     required this.notificationSoundId,

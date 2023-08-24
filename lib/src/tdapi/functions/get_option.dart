@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options "version" and "commit_hash"
 ///
 /// Returns [OptionValue].
-final class GetOption extends TdFunction {
+final class GetOption extends TdFunction<OptionValue> {
   /// Returns the value of an option by its name. (Check the list of available options on https://core.telegram.org/tdlib/options.) Can be called before authorization. Can be called synchronously for options "version" and "commit_hash"
   const GetOption({
     required this.name,
@@ -35,4 +35,7 @@ final class GetOption extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

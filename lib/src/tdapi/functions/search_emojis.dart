@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for emojis by keywords. Supported only if the file database is enabled
 ///
 /// Returns [Emojis].
-final class SearchEmojis extends TdFunction {
+final class SearchEmojis extends TdFunction<Emojis> {
   /// Searches for emojis by keywords. Supported only if the file database is enabled
   const SearchEmojis({
     required this.text,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Starts a scheduled group call
 ///
 /// Returns [Ok].
-final class StartScheduledGroupCall extends TdFunction {
+final class StartScheduledGroupCall extends TdFunction<Ok> {
   /// Starts a scheduled group call
   const StartScheduledGroupCall({
     required this.groupCallId,

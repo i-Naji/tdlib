@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Accepts an incoming call
 ///
 /// Returns [Ok].
-final class AcceptCall extends TdFunction {
+final class AcceptCall extends TdFunction<Ok> {
   /// Accepts an incoming call
   const AcceptCall({
     required this.callId,

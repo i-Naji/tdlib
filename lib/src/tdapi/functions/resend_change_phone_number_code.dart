@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Resends the authentication code sent to confirm a new phone number for the current user. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
 ///
 /// Returns [AuthenticationCodeInfo].
-final class ResendChangePhoneNumberCode extends TdFunction {
+final class ResendChangePhoneNumberCode
+    extends TdFunction<AuthenticationCodeInfo> {
   /// Resends the authentication code sent to confirm a new phone number for the current user. Works only if the previously received authenticationCodeInfo next_code_type was not null and the server-specified timeout has passed
   const ResendChangePhoneNumberCode();
 

@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns file downloaded prefix size from a given offset, in bytes
 ///
 /// Returns [FileDownloadedPrefixSize].
-final class GetFileDownloadedPrefixSize extends TdFunction {
+final class GetFileDownloadedPrefixSize
+    extends TdFunction<FileDownloadedPrefixSize> {
   /// Returns file downloaded prefix size from a given offset, in bytes
   const GetFileDownloadedPrefixSize({
     required this.fileId,

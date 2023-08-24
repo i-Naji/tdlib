@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self and chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat
 ///
 /// Returns [Ok].
-final class DeleteChatHistory extends TdFunction {
+final class DeleteChatHistory extends TdFunction<Ok> {
   /// Deletes all messages in the chat. Use chat.can_be_deleted_only_for_self and chat.can_be_deleted_for_all_users fields to find whether and how the method can be applied to the chat
   const DeleteChatHistory({
     required this.chatId,

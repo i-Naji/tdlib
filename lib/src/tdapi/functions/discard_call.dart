@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Discards a call
 ///
 /// Returns [Ok].
-final class DiscardCall extends TdFunction {
+final class DiscardCall extends TdFunction<Ok> {
   /// Discards a call
   const DiscardCall({
     required this.callId,

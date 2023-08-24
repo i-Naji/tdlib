@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns full information about a supergroup or a channel by its identifier, cached for up to 1 minute
 ///
 /// Returns [SupergroupFullInfo].
-final class GetSupergroupFullInfo extends TdFunction {
+final class GetSupergroupFullInfo extends TdFunction<SupergroupFullInfo> {
   /// Returns full information about a supergroup or a channel by its identifier, cached for up to 1 minute
   const GetSupergroupFullInfo({
     required this.supergroupId,

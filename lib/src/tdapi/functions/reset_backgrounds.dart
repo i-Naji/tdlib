@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Resets list of installed backgrounds to its default value
 ///
 /// Returns [Ok].
-final class ResetBackgrounds extends TdFunction {
+final class ResetBackgrounds extends TdFunction<Ok> {
   /// Resets list of installed backgrounds to its default value
   const ResetBackgrounds();
 

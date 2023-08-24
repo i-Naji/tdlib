@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new secret chat. Returns the newly created chat
 ///
 /// Returns [Chat].
-final class CreateNewSecretChat extends TdFunction {
+final class CreateNewSecretChat extends TdFunction<Chat> {
   /// Creates a new secret chat. Returns the newly created chat
   const CreateNewSecretChat({
     required this.userId,

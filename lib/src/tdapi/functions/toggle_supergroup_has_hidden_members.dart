@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers. Can be called only if supergroupFullInfo.can_hide_members == true
 ///
 /// Returns [Ok].
-final class ToggleSupergroupHasHiddenMembers extends TdFunction {
+final class ToggleSupergroupHasHiddenMembers extends TdFunction<Ok> {
   /// Toggles whether non-administrators can receive only administrators and bots using getSupergroupMembers or searchChatMembers. Can be called only if supergroupFullInfo.can_hide_members == true
   const ToggleSupergroupHasHiddenMembers({
     required this.supergroupId,

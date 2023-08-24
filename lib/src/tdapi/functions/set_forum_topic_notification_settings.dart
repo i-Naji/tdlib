@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the notification settings of a forum topic
 ///
 /// Returns [Ok].
-final class SetForumTopicNotificationSettings extends TdFunction {
+final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
   /// Changes the notification settings of a forum topic
   const SetForumTopicNotificationSettings({
     required this.chatId,

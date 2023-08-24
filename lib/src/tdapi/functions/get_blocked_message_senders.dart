@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns users and chats that were blocked by the current user
 ///
 /// Returns [MessageSenders].
-final class GetBlockedMessageSenders extends TdFunction {
+final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
   /// Returns users and chats that were blocked by the current user
   const GetBlockedMessageSenders({
     required this.offset,

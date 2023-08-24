@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a forum topic
 ///
 /// Returns [ForumTopic].
-final class GetForumTopic extends TdFunction {
+final class GetForumTopic extends TdFunction<ForumTopic> {
   /// Returns information about a forum topic
   const GetForumTopic({
     required this.chatId,

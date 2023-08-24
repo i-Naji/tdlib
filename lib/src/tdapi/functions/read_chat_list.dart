@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Traverse all chats in a chat list and marks all messages in the chats as read
 ///
 /// Returns [Ok].
-final class ReadChatList extends TdFunction {
+final class ReadChatList extends TdFunction<Ok> {
   /// Traverse all chats in a chat list and marks all messages in the chats as read
   const ReadChatList({
     required this.chatList,

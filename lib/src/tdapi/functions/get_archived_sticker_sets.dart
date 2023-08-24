@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of archived sticker sets
 ///
 /// Returns [StickerSets].
-final class GetArchivedStickerSets extends TdFunction {
+final class GetArchivedStickerSets extends TdFunction<StickerSets> {
   /// Returns a list of archived sticker sets
   const GetArchivedStickerSets({
     required this.stickerType,

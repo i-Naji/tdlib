@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns stickers from the installed sticker sets that correspond to any of the given emoji or can be found by sticker-specific keywords. If the query is non-empty, then favorite, recently used or trending stickers may also be returned
 ///
 /// Returns [Stickers].
-final class GetStickers extends TdFunction {
+final class GetStickers extends TdFunction<Stickers> {
   /// Returns stickers from the installed sticker sets that correspond to any of the given emoji or can be found by sticker-specific keywords. If the query is non-empty, then favorite, recently used or trending stickers may also be returned
   const GetStickers({
     required this.stickerType,

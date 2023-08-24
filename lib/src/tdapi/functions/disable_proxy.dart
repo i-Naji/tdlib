@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Disables the currently enabled proxy. Can be called before authorization
 ///
 /// Returns [Ok].
-final class DisableProxy extends TdFunction {
+final class DisableProxy extends TdFunction<Ok> {
   /// Disables the currently enabled proxy. Can be called before authorization
   const DisableProxy();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Stops the downloading of a file. If a file has already been downloaded, does nothing
 ///
 /// Returns [Ok].
-final class CancelDownloadFile extends TdFunction {
+final class CancelDownloadFile extends TdFunction<Ok> {
   /// Stops the downloading of a file. If a file has already been downloaded, does nothing
   const CancelDownloadFile({
     required this.fileId,

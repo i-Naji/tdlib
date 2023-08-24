@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns approximate number of chats in a being created chat folder. Main and archive chat lists must be fully preloaded for this function to work correctly
 ///
 /// Returns [Count].
-final class GetChatFolderChatCount extends TdFunction {
+final class GetChatFolderChatCount extends TdFunction<Count> {
   /// Returns approximate number of chats in a being created chat folder. Main and archive chat lists must be fully preloaded for this function to work correctly
   const GetChatFolderChatCount({
     required this.folder,

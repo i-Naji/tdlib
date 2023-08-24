@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns default emoji statuses
 ///
 /// Returns [EmojiStatuses].
-final class GetDefaultEmojiStatuses extends TdFunction {
+final class GetDefaultEmojiStatuses extends TdFunction<EmojiStatuses> {
   /// Returns default emoji statuses
   const GetDefaultEmojiStatuses();
 

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted
 ///
 /// Returns [Ok].
-final class DeleteChatMessagesByDate extends TdFunction {
+final class DeleteChatMessagesByDate extends TdFunction<Ok> {
   /// Deletes all messages between the specified dates in a chat. Supported only for private chats and basic groups. Messages sent in the last 30 seconds will not be deleted
   const DeleteChatMessagesByDate({
     required this.chatId,

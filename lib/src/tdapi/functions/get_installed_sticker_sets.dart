@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of installed sticker sets
 ///
 /// Returns [StickerSets].
-final class GetInstalledStickerSets extends TdFunction {
+final class GetInstalledStickerSets extends TdFunction<StickerSets> {
   /// Returns a list of installed sticker sets
   const GetInstalledStickerSets({
     required this.stickerType,

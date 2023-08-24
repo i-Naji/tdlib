@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns recent emoji statuses
 ///
 /// Returns [EmojiStatuses].
-final class GetRecentEmojiStatuses extends TdFunction {
+final class GetRecentEmojiStatuses extends TdFunction<EmojiStatuses> {
   /// Returns recent emoji statuses
   const GetRecentEmojiStatuses();
 

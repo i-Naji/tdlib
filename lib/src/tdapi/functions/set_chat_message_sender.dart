@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Selects a message sender to send messages in a chat
 ///
 /// Returns [Ok].
-final class SetChatMessageSender extends TdFunction {
+final class SetChatMessageSender extends TdFunction<Ok> {
   /// Selects a message sender to send messages in a chat
   const SetChatMessageSender({
     required this.chatId,

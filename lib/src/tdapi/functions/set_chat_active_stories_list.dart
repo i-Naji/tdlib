@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes story list in which stories from the chat are shown
 ///
 /// Returns [Ok].
-final class SetChatActiveStoriesList extends TdFunction {
+final class SetChatActiveStoriesList extends TdFunction<Ok> {
   /// Changes story list in which stories from the chat are shown
   const SetChatActiveStoriesList({
     required this.chatId,

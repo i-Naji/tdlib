@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Uses an invite link to add the current user to the chat if possible. May return an error with a message "INVITE_REQUEST_SENT" if only a join request was created
 ///
 /// Returns [Chat].
-final class JoinChatByInviteLink extends TdFunction {
+final class JoinChatByInviteLink extends TdFunction<Chat> {
   /// Uses an invite link to add the current user to the chat if possible. May return an error with a message "INVITE_REQUEST_SENT" if only a join request was created
   const JoinChatByInviteLink({
     required this.inviteLink,

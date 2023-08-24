@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a secret chat by its identifier. This is an offline request
 ///
 /// Returns [SecretChat].
-final class GetSecretChat extends TdFunction {
+final class GetSecretChat extends TdFunction<SecretChat> {
   /// Returns information about a secret chat by its identifier. This is an offline request
   const GetSecretChat({
     required this.secretChatId,

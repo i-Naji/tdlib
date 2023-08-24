@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of recently used stickers
 ///
 /// Returns [Stickers].
-final class GetRecentStickers extends TdFunction {
+final class GetRecentStickers extends TdFunction<Stickers> {
   /// Returns a list of recently used stickers
   const GetRecentStickers({
     required this.isAttached,

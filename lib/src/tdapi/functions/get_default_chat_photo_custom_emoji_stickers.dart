@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns default list of custom emoji stickers for placing on a chat photo
 ///
 /// Returns [Stickers].
-final class GetDefaultChatPhotoCustomEmojiStickers extends TdFunction {
+final class GetDefaultChatPhotoCustomEmojiStickers
+    extends TdFunction<Stickers> {
   /// Returns default list of custom emoji stickers for placing on a chat photo
   const GetDefaultChatPhotoCustomEmojiStickers();
 

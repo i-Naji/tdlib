@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTTPS link to a topic in a forum chat. This is an offline request
 ///
 /// Returns [MessageLink].
-final class GetForumTopicLink extends TdFunction {
+final class GetForumTopicLink extends TdFunction<MessageLink> {
   /// Returns an HTTPS link to a topic in a forum chat. This is an offline request
   const GetForumTopicLink({
     required this.chatId,

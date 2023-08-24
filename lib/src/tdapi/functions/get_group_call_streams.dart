@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about available group call streams
 ///
 /// Returns [GroupCallStreams].
-final class GetGroupCallStreams extends TdFunction {
+final class GetGroupCallStreams extends TdFunction<GroupCallStreams> {
   /// Returns information about available group call streams
   const GetGroupCallStreams({
     required this.groupCallId,

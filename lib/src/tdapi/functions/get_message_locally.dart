@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a message, if it is available without sending network request. This is an offline request
 ///
 /// Returns [Message].
-final class GetMessageLocally extends TdFunction {
+final class GetMessageLocally extends TdFunction<Message> {
   /// Returns information about a message, if it is available without sending network request. This is an offline request
   const GetMessageLocally({
     required this.chatId,

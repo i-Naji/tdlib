@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all active live locations that need to be updated by the application. The list is persistent across application restarts only if the message database is used
 ///
 /// Returns [Messages].
-final class GetActiveLiveLocationMessages extends TdFunction {
+final class GetActiveLiveLocationMessages extends TdFunction<Messages> {
   /// Returns all active live locations that need to be updated by the application. The list is persistent across application restarts only if the message database is used
   const GetActiveLiveLocationMessages();
 

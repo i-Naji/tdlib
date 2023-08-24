@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes the current user from chat members. Private and secret chats can't be left using this method
 ///
 /// Returns [Ok].
-final class LeaveChat extends TdFunction {
+final class LeaveChat extends TdFunction<Ok> {
   /// Removes the current user from chat members. Private and secret chats can't be left using this method
   const LeaveChat({
     required this.chatId,

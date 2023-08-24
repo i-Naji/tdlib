@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes an active notification from notification list. Needs to be called only if the notification is removed by the current user
 ///
 /// Returns [Ok].
-final class RemoveNotification extends TdFunction {
+final class RemoveNotification extends TdFunction<Ok> {
   /// Removes an active notification from notification list. Needs to be called only if the notification is removed by the current user
   const RemoveNotification({
     required this.notificationGroupId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a new sticker set. Returns the newly created sticker set
 ///
 /// Returns [StickerSet].
-final class CreateNewStickerSet extends TdFunction {
+final class CreateNewStickerSet extends TdFunction<StickerSet> {
   /// Creates a new sticker set. Returns the newly created sticker set
   const CreateNewStickerSet({
     required this.userId,

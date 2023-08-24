@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits information about a custom local language pack in the current localization target. Can be called before authorization
 ///
 /// Returns [Ok].
-final class EditCustomLanguagePackInfo extends TdFunction {
+final class EditCustomLanguagePackInfo extends TdFunction<Ok> {
   /// Edits information about a custom local language pack in the current localization target. Can be called before authorization
   const EditCustomLanguagePackInfo({
     required this.info,

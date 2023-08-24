@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes order of active usernames of a supergroup or channel, requires owner privileges in the supergroup or channel
 ///
 /// Returns [Ok].
-final class ReorderSupergroupActiveUsernames extends TdFunction {
+final class ReorderSupergroupActiveUsernames extends TdFunction<Ok> {
   /// Changes order of active usernames of a supergroup or channel, requires owner privileges in the supergroup or channel
   const ReorderSupergroupActiveUsernames({
     required this.supergroupId,

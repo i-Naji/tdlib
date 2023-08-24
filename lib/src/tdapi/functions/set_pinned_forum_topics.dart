@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the order of pinned forum topics
 ///
 /// Returns [Ok].
-final class SetPinnedForumTopics extends TdFunction {
+final class SetPinnedForumTopics extends TdFunction<Ok> {
   /// Changes the order of pinned forum topics
   const SetPinnedForumTopics({
     required this.chatId,

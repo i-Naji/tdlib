@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Reports messages in a supergroup as spam; requires administrator rights in the supergroup
 ///
 /// Returns [Ok].
-final class ReportSupergroupSpam extends TdFunction {
+final class ReportSupergroupSpam extends TdFunction<Ok> {
   /// Reports messages in a supergroup as spam; requires administrator rights in the supergroup
   const ReportSupergroupSpam({
     required this.supergroupId,

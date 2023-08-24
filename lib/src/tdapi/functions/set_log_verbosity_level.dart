@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the verbosity level of the internal logging of TDLib. Can be called synchronously
 ///
 /// Returns [Ok].
-final class SetLogVerbosityLevel extends TdFunction {
+final class SetLogVerbosityLevel extends TdFunction<Ok> {
   /// Sets the verbosity level of the internal logging of TDLib. Can be called synchronously
   const SetLogVerbosityLevel({
     required this.newVerbosityLevel,
@@ -35,4 +35,7 @@ final class SetLogVerbosityLevel extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

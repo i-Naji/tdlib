@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Requests to send a 2-step verification password recovery code to an email address that was previously set up
 ///
 /// Returns [EmailAddressAuthenticationCodeInfo].
-final class RequestPasswordRecovery extends TdFunction {
+final class RequestPasswordRecovery
+    extends TdFunction<EmailAddressAuthenticationCodeInfo> {
   /// Requests to send a 2-step verification password recovery code to an email address that was previously set up
   const RequestPasswordRecovery();
 

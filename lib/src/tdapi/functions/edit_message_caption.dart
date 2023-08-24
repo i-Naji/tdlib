@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
-final class EditMessageCaption extends TdFunction {
+final class EditMessageCaption extends TdFunction<Message> {
   /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   const EditMessageCaption({
     required this.chatId,

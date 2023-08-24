@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns a Telegram Passport authorization form for sharing data with a service
 ///
 /// Returns [PassportAuthorizationForm].
-final class GetPassportAuthorizationForm extends TdFunction {
+final class GetPassportAuthorizationForm
+    extends TdFunction<PassportAuthorizationForm> {
   /// Returns a Telegram Passport authorization form for sharing data with a service
   const GetPassportAuthorizationForm({
     required this.botUserId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets group call title. Requires groupCall.can_be_managed group call flag
 ///
 /// Returns [Ok].
-final class SetGroupCallTitle extends TdFunction {
+final class SetGroupCallTitle extends TdFunction<Ok> {
   /// Sets group call title. Requires groupCall.can_be_managed group call flag
   const SetGroupCallTitle({
     required this.groupCallId,

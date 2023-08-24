@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a bank card
 ///
 /// Returns [BankCardInfo].
-final class GetBankCardInfo extends TdFunction {
+final class GetBankCardInfo extends TdFunction<BankCardInfo> {
   /// Returns information about a bank card
   const GetBankCardInfo({
     required this.bankCardNumber,

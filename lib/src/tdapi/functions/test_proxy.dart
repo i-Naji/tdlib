@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
 ///
 /// Returns [Ok].
-final class TestProxy extends TdFunction {
+final class TestProxy extends TdFunction<Ok> {
   /// Sends a simple network request to the Telegram servers via proxy; for testing only. Can be called before authorization
   const TestProxy({
     required this.server,

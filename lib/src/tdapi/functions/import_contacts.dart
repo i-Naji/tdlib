@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
 ///
 /// Returns [ImportedContacts].
-final class ImportContacts extends TdFunction {
+final class ImportContacts extends TdFunction<ImportedContacts> {
   /// Adds new contacts or edits existing contacts by their phone numbers; contacts' user identifiers are ignored
   const ImportContacts({
     required this.contacts,

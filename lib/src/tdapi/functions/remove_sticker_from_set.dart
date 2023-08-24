@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot
 ///
 /// Returns [Ok].
-final class RemoveStickerFromSet extends TdFunction {
+final class RemoveStickerFromSet extends TdFunction<Ok> {
   /// Removes a sticker from the set to which it belongs; for bots only. The sticker set must have been created by the bot
   const RemoveStickerFromSet({
     required this.sticker,

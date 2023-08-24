@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Hides a suggested action
 ///
 /// Returns [Ok].
-final class HideSuggestedAction extends TdFunction {
+final class HideSuggestedAction extends TdFunction<Ok> {
   /// Hides a suggested action
   const HideSuggestedAction({
     required this.action,

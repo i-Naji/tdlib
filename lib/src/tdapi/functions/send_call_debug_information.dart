@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends debug information for a call to Telegram servers
 ///
 /// Returns [Ok].
-final class SendCallDebugInformation extends TdFunction {
+final class SendCallDebugInformation extends TdFunction<Ok> {
   /// Sends debug information for a call to Telegram servers
   const SendCallDebugInformation({
     required this.callId,

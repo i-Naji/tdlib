@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Updates the game score of the specified user in the game; for bots only
 ///
 /// Returns [Message].
-final class SetGameScore extends TdFunction {
+final class SetGameScore extends TdFunction<Message> {
   /// Updates the game score of the specified user in the game; for bots only
   const SetGameScore({
     required this.chatId,

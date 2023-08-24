@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes a file from the TDLib file cache
 ///
 /// Returns [Ok].
-final class DeleteFile extends TdFunction {
+final class DeleteFile extends TdFunction<Ok> {
   /// Deletes a file from the TDLib file cache
   const DeleteFile({
     required this.fileId,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes messages
 ///
 /// Returns [Ok].
-final class DeleteMessages extends TdFunction {
+final class DeleteMessages extends TdFunction<Ok> {
   /// Deletes messages
   const DeleteMessages({
     required this.chatId,

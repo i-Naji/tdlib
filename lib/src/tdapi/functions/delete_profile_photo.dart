@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes a profile photo
 ///
 /// Returns [Ok].
-final class DeleteProfilePhoto extends TdFunction {
+final class DeleteProfilePhoto extends TdFunction<Ok> {
   /// Deletes a profile photo
   const DeleteProfilePhoto({
     required this.profilePhotoId,

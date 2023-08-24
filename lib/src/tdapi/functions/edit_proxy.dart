@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits an existing proxy server for network requests. Can be called before authorization
 ///
 /// Returns [Proxy].
-final class EditProxy extends TdFunction {
+final class EditProxy extends TdFunction<Proxy> {
   /// Edits an existing proxy server for network requests. Can be called before authorization
   const EditProxy({
     required this.proxyId,

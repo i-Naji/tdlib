@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Resends the login email address verification code
 ///
 /// Returns [EmailAddressAuthenticationCodeInfo].
-final class ResendLoginEmailAddressCode extends TdFunction {
+final class ResendLoginEmailAddressCode
+    extends TdFunction<EmailAddressAuthenticationCodeInfo> {
   /// Resends the login email address verification code
   const ResendLoginEmailAddressCode();
 

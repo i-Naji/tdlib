@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for recently used hashtags by their prefix
 ///
 /// Returns [Hashtags].
-final class SearchHashtags extends TdFunction {
+final class SearchHashtags extends TdFunction<Hashtags> {
   /// Searches for recently used hashtags by their prefix
   const SearchHashtags({
     required this.prefix,

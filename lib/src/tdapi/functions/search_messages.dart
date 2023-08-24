@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
 ///
 /// Returns [FoundMessages].
-final class SearchMessages extends TdFunction {
+final class SearchMessages extends TdFunction<FoundMessages> {
   /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   const SearchMessages({
     this.chatList,

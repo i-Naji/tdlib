@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns menu button set by the bot for the given user; for bots only
 ///
 /// Returns [BotMenuButton].
-final class GetMenuButton extends TdFunction {
+final class GetMenuButton extends TdFunction<BotMenuButton> {
   /// Returns menu button set by the bot for the given user; for bots only
   const GetMenuButton({
     required this.userId,

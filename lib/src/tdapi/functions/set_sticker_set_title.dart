@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets a sticker set title; for bots only
 ///
 /// Returns [Ok].
-final class SetStickerSetTitle extends TdFunction {
+final class SetStickerSetTitle extends TdFunction<Ok> {
   /// Sets a sticker set title; for bots only
   const SetStickerSetTitle({
     required this.name,

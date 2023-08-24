@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported
 ///
 /// Returns [Ok].
-final class ReportChatPhoto extends TdFunction {
+final class ReportChatPhoto extends TdFunction<Ok> {
   /// Reports a chat photo to the Telegram moderators. A chat photo can be reported only if chat.can_be_reported
   const ReportChatPhoto({
     required this.chatId,

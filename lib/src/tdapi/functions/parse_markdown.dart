@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
 ///
 /// Returns [FormattedText].
-final class ParseMarkdown extends TdFunction {
+final class ParseMarkdown extends TdFunction<FormattedText> {
   /// Parses Markdown entities in a human-friendly format, ignoring markup errors. Can be called synchronously
   const ParseMarkdown({
     required this.text,
@@ -35,4 +35,7 @@ final class ParseMarkdown extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib. This is an offline request if only_local is true
 ///
 /// Returns [Messages].
-final class GetChatHistory extends TdFunction {
+final class GetChatHistory extends TdFunction<Messages> {
   /// Returns messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib. This is an offline request if only_local is true
   const GetChatHistory({
     required this.chatId,

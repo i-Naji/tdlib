@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the first and last name of the current user
 ///
 /// Returns [Ok].
-final class SetName extends TdFunction {
+final class SetName extends TdFunction<Ok> {
   /// Changes the first and last name of the current user
   const SetName({
     required this.firstName,

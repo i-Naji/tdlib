@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes an animation from the list of saved animations
 ///
 /// Returns [Ok].
-final class RemoveSavedAnimation extends TdFunction {
+final class RemoveSavedAnimation extends TdFunction<Ok> {
   /// Removes an animation from the list of saved animations
   const RemoveSavedAnimation({
     required this.animation,

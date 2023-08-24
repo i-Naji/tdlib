@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
 ///
 /// Returns [Ok].
-final class SetChatAvailableReactions extends TdFunction {
+final class SetChatAvailableReactions extends TdFunction<Ok> {
   /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
   const SetChatAvailableReactions({
     required this.chatId,

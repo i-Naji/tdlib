@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a group call participant hand is rased
 ///
 /// Returns [Ok].
-final class ToggleGroupCallParticipantIsHandRaised extends TdFunction {
+final class ToggleGroupCallParticipantIsHandRaised extends TdFunction<Ok> {
   /// Toggles whether a group call participant hand is rased
   const ToggleGroupCallParticipantIsHandRaised({
     required this.groupCallId,

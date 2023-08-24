@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot
 ///
 /// Returns [Ok].
-final class SetStickerPositionInSet extends TdFunction {
+final class SetStickerPositionInSet extends TdFunction<Ok> {
   /// Changes the position of a sticker in the set to which it belongs; for bots only. The sticker set must have been created by the bot
   const SetStickerPositionInSet({
     required this.sticker,

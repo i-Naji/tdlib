@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a suggested name for a new sticker set with a given title
 ///
 /// Returns [Text].
-final class GetSuggestedStickerSetName extends TdFunction {
+final class GetSuggestedStickerSetName extends TdFunction<Text> {
   /// Returns a suggested name for a new sticker set with a given title
   const GetSuggestedStickerSetName({
     required this.title,

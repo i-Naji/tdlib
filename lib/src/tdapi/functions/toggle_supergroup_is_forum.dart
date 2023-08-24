@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether the supergroup is a forum; requires owner privileges in the supergroup. Discussion supergroups can't be converted to forums
 ///
 /// Returns [Ok].
-final class ToggleSupergroupIsForum extends TdFunction {
+final class ToggleSupergroupIsForum extends TdFunction<Ok> {
   /// Toggles whether the supergroup is a forum; requires owner privileges in the supergroup. Discussion supergroups can't be converted to forums
   const ToggleSupergroupIsForum({
     required this.supergroupId,

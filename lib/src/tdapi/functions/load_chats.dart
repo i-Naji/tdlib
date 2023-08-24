@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Loads more chats from a chat list. The loaded chats and their positions in the chat list will be sent through updates. Chats are sorted by the pair (chat.position.order, chat.id) in descending order. Returns a 404 error if all chats have been loaded
 ///
 /// Returns [Ok].
-final class LoadChats extends TdFunction {
+final class LoadChats extends TdFunction<Ok> {
   /// Loads more chats from a chat list. The loaded chats and their positions in the chat list will be sent through updates. Chats are sorted by the pair (chat.position.order, chat.id) in descending order. Returns a 404 error if all chats have been loaded
   const LoadChats({
     this.chatList,

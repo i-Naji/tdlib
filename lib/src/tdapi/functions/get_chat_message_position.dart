@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat. Cannot be used in secret chats
 ///
 /// Returns [Count].
-final class GetChatMessagePosition extends TdFunction {
+final class GetChatMessagePosition extends TdFunction<Count> {
   /// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat. Cannot be used in secret chats
   const GetChatMessagePosition({
     required this.chatId,

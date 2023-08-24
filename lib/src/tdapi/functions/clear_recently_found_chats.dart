@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Clears the list of recently found chats
 ///
 /// Returns [Ok].
-final class ClearRecentlyFoundChats extends TdFunction {
+final class ClearRecentlyFoundChats extends TdFunction<Ok> {
   /// Clears the list of recently found chats
   const ClearRecentlyFoundChats();
 

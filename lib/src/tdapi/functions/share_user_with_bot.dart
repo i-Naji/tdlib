@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Shares a user after pressing a keyboardButtonTypeRequestUser button with the bot
 ///
 /// Returns [Ok].
-final class ShareUserWithBot extends TdFunction {
+final class ShareUserWithBot extends TdFunction<Ok> {
   /// Shares a user after pressing a keyboardButtonTypeRequestUser button with the bot
   const ShareUserWithBot({
     required this.chatId,

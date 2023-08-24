@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns application config, provided by the server. Can be called before authorization
 ///
 /// Returns [JsonValue].
-final class GetApplicationConfig extends TdFunction {
+final class GetApplicationConfig extends TdFunction<JsonValue> {
   /// Returns application config, provided by the server. Can be called before authorization
   const GetApplicationConfig();
 

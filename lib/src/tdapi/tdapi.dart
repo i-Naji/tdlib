@@ -1052,8 +1052,8 @@ abstract class TdObject {
   Map<String, dynamic> toJson();
 }
 
-/// Base class of every TDLib request.
-abstract class TdFunction {
+/// Base class of every TDLib request. [R] is the type TDLib returns.
+abstract class TdFunction<R extends TdObject> {
   const TdFunction();
 
   /// TDLib function name, e.g. `getMe`.
@@ -1061,6 +1061,9 @@ abstract class TdFunction {
 
   /// Converts this request to TDLib JSON, tagged with [extra] if given.
   Map<String, dynamic> toJson([dynamic extra]);
+
+  /// Whether TDLib documents this request as callable through `td_execute`.
+  bool get canBeCalledSynchronously => false;
 }
 
 /// A TDLib object of a type this API doesn't know.

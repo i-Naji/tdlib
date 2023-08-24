@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib
 ///
 /// Returns [FoundMessages].
-final class SearchCallMessages extends TdFunction {
+final class SearchCallMessages extends TdFunction<FoundMessages> {
   /// Searches for call messages. Returns the results in reverse chronological order (i.e., in order of decreasing message_id). For optimal performance, the number of returned messages is chosen by TDLib
   const SearchCallMessages({
     required this.offset,

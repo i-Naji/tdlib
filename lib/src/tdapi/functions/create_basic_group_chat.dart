@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an existing chat corresponding to a known basic group
 ///
 /// Returns [Chat].
-final class CreateBasicGroupChat extends TdFunction {
+final class CreateBasicGroupChat extends TdFunction<Chat> {
   /// Returns an existing chat corresponding to a known basic group
   const CreateBasicGroupChat({
     required this.basicGroupId,

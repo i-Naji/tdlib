@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs the server about the number of pending bot updates if they haven't been processed for a long time; for bots only
 ///
 /// Returns [Ok].
-final class SetBotUpdatesStatus extends TdFunction {
+final class SetBotUpdatesStatus extends TdFunction<Ok> {
   /// Informs the server about the number of pending bot updates if they haven't been processed for a long time; for bots only
   const SetBotUpdatesStatus({
     required this.pendingUpdateCount,

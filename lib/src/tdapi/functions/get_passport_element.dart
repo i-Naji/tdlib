@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns one of the available Telegram Passport elements
 ///
 /// Returns [PassportElement].
-final class GetPassportElement extends TdFunction {
+final class GetPassportElement extends TdFunction<PassportElement> {
   /// Returns one of the available Telegram Passport elements
   const GetPassportElement({
     required this.type,

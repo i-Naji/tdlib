@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Confirms QR code authentication on another device. Returns created session on success
 ///
 /// Returns [Session].
-final class ConfirmQrCodeAuthentication extends TdFunction {
+final class ConfirmQrCodeAuthentication extends TdFunction<Session> {
   /// Confirms QR code authentication on another device. Returns created session on success
   const ConfirmQrCodeAuthentication({
     required this.link,

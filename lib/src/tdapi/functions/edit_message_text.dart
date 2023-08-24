@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
-final class EditMessageText extends TdFunction {
+final class EditMessageText extends TdFunction<Message> {
   /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
   const EditMessageText({
     required this.chatId,

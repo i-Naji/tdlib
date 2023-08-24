@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Searches for a background by its name
 ///
 /// Returns [Background].
-final class SearchBackground extends TdFunction {
+final class SearchBackground extends TdFunction<Background> {
   /// Searches for a background by its name
   const SearchBackground({
     required this.name,

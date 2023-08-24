@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded
 ///
 /// Returns [File].
-final class GetMapThumbnailFile extends TdFunction {
+final class GetMapThumbnailFile extends TdFunction<File> {
   /// Returns information about a file with a map thumbnail in PNG format. Only map thumbnail files with size less than 1MB can be downloaded
   const GetMapThumbnailFile({
     required this.location,

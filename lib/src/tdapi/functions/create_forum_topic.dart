@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Creates a topic in a forum supergroup chat; requires can_manage_topics rights in the supergroup
 ///
 /// Returns [ForumTopicInfo].
-final class CreateForumTopic extends TdFunction {
+final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
   /// Creates a topic in a forum supergroup chat; requires can_manage_topics rights in the supergroup
   const CreateForumTopic({
     required this.chatId,

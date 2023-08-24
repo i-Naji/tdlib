@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed
 ///
 /// Returns [Ok].
-final class SetChatNotificationSettings extends TdFunction {
+final class SetChatNotificationSettings extends TdFunction<Ok> {
   /// Changes the notification settings of a chat. Notification settings of a chat with the current user (Saved Messages) can't be changed
   const SetChatNotificationSettings({
     required this.chatId,

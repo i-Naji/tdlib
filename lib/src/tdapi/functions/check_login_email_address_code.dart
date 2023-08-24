@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the login email address authentication
 ///
 /// Returns [Ok].
-final class CheckLoginEmailAddressCode extends TdFunction {
+final class CheckLoginEmailAddressCode extends TdFunction<Ok> {
   /// Checks the login email address authentication
   const CheckLoginEmailAddressCode({
     required this.code,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
 ///
 /// Returns [LogTags].
-final class GetLogTags extends TdFunction {
+final class GetLogTags extends TdFunction<LogTags> {
   /// Returns list of available TDLib internal log tags, for example, ["actor", "binlog", "connections", "notifications", "proxy"]. Can be called synchronously
   const GetLogTags();
 
@@ -24,4 +24,7 @@ final class GetLogTags extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

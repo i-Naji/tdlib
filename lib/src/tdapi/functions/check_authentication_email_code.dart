@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks the authentication of a email address. Works only when the current authorization state is authorizationStateWaitEmailCode
 ///
 /// Returns [Ok].
-final class CheckAuthenticationEmailCode extends TdFunction {
+final class CheckAuthenticationEmailCode extends TdFunction<Ok> {
   /// Checks the authentication of a email address. Works only when the current authorization state is authorizationStateWaitEmailCode
   const CheckAuthenticationEmailCode({
     required this.code,

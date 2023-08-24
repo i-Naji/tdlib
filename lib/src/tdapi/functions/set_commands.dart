@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the list of commands supported by the bot for the given user scope and language; for bots only
 ///
 /// Returns [Ok].
-final class SetCommands extends TdFunction {
+final class SetCommands extends TdFunction<Ok> {
   /// Sets the list of commands supported by the bot for the given user scope and language; for bots only
   const SetCommands({
     this.scope,

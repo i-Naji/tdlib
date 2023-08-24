@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a file; this is an offline request
 ///
 /// Returns [File].
-final class GetFile extends TdFunction {
+final class GetFile extends TdFunction<File> {
   /// Returns information about a file; this is an offline request
   const GetFile({
     required this.fileId,

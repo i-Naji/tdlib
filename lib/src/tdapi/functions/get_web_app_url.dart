@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed
 ///
 /// Returns [HttpUrl].
-final class GetWebAppUrl extends TdFunction {
+final class GetWebAppUrl extends TdFunction<HttpUrl> {
   /// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed
   const GetWebAppUrl({
     required this.botUserId,

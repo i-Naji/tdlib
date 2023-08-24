@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns the text shown in the chat with a bot if the chat is empty in the given language. Can be called only if userTypeBot.can_be_edited == true
 ///
 /// Returns [Text].
-final class GetBotInfoDescription extends TdFunction {
+final class GetBotInfoDescription extends TdFunction<Text> {
   /// Returns the text shown in the chat with a bot if the chat is empty in the given language. Can be called only if userTypeBot.can_be_edited == true
   const GetBotInfoDescription({
     required this.botUserId,

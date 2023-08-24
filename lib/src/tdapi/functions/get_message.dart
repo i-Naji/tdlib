@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a message
 ///
 /// Returns [Message].
-final class GetMessage extends TdFunction {
+final class GetMessage extends TdFunction<Message> {
   /// Returns information about a message
   const GetMessage({
     required this.chatId,

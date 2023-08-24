@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns invite link to a video chat in a public chat
 ///
 /// Returns [HttpUrl].
-final class GetGroupCallInviteLink extends TdFunction {
+final class GetGroupCallInviteLink extends TdFunction<HttpUrl> {
   /// Returns invite link to a video chat in a public chat
   const GetGroupCallInviteLink({
     required this.groupCallId,

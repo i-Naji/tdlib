@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns autosave settings for the current user
 ///
 /// Returns [AutosaveSettings].
-final class GetAutosaveSettings extends TdFunction {
+final class GetAutosaveSettings extends TdFunction<AutosaveSettings> {
   /// Returns autosave settings for the current user
   const GetAutosaveSettings();
 

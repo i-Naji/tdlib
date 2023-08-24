@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a message with the callback button that originated a callback query; for bots only
 ///
 /// Returns [Message].
-final class GetCallbackQueryMessage extends TdFunction {
+final class GetCallbackQueryMessage extends TdFunction<Message> {
   /// Returns information about a message with the callback button that originated a callback query; for bots only
   const GetCallbackQueryMessage({
     required this.chatId,

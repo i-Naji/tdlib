@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a sticker set by its identifier
 ///
 /// Returns [StickerSet].
-final class GetStickerSet extends TdFunction {
+final class GetStickerSet extends TdFunction<StickerSet> {
   /// Returns information about a sticker set by its identifier
   const GetStickerSet({
     required this.setId,

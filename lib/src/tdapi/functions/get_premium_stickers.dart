@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns premium stickers from regular sticker sets
 ///
 /// Returns [Stickers].
-final class GetPremiumStickers extends TdFunction {
+final class GetPremiumStickers extends TdFunction<Stickers> {
   /// Returns premium stickers from regular sticker sets
   const GetPremiumStickers({
     required this.limit,

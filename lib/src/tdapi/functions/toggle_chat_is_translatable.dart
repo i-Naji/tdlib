@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the translatable state of a chat; for Telegram Premium users only
 ///
 /// Returns [Ok].
-final class ToggleChatIsTranslatable extends TdFunction {
+final class ToggleChatIsTranslatable extends TdFunction<Ok> {
   /// Changes the translatable state of a chat; for Telegram Premium users only
   const ToggleChatIsTranslatable({
     required this.chatId,

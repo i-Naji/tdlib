@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a message. Returns the sent message
 ///
 /// Returns [Message].
-final class SendMessage extends TdFunction {
+final class SendMessage extends TdFunction<Message> {
   /// Sends a message. Returns the sent message
   const SendMessage({
     required this.chatId,

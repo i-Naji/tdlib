@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes a Telegram Passport element
 ///
 /// Returns [Ok].
-final class DeletePassportElement extends TdFunction {
+final class DeletePassportElement extends TdFunction<Ok> {
   /// Deletes a Telegram Passport element
   const DeletePassportElement({
     required this.type,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization
 ///
 /// Returns [DeepLinkInfo].
-final class GetDeepLinkInfo extends TdFunction {
+final class GetDeepLinkInfo extends TdFunction<DeepLinkInfo> {
   /// Returns information about a tg:// deep link. Use "tg://need_update_for_some_feature" or "tg:some_unsupported_feature" for testing. Returns a 404 error for unknown links. Can be called before authorization
   const GetDeepLinkInfo({
     required this.link,

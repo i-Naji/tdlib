@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Suggests a profile photo to another regular user with common messages
 ///
 /// Returns [Ok].
-final class SuggestUserProfilePhoto extends TdFunction {
+final class SuggestUserProfilePhoto extends TdFunction<Ok> {
   /// Suggests a profile photo to another regular user with common messages
   const SuggestUserProfilePhoto({
     required this.userId,

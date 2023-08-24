@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns suggested name for saving a file in a given directory
 ///
 /// Returns [Text].
-final class GetSuggestedFileName extends TdFunction {
+final class GetSuggestedFileName extends TdFunction<Text> {
   /// Returns suggested name for saving a file in a given directory
   const GetSuggestedFileName({
     required this.fileId,

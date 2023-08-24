@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns list of chats with non-default notification settings for new messages
 ///
 /// Returns [Chats].
-final class GetChatNotificationSettingsExceptions extends TdFunction {
+final class GetChatNotificationSettingsExceptions extends TdFunction<Chats> {
   /// Returns list of chats with non-default notification settings for new messages
   const GetChatNotificationSettingsExceptions({
     this.scope,

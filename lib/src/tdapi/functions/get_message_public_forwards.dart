@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns forwarded copies of a channel message to different public channels. For optimal performance, the number of returned messages is chosen by TDLib
 ///
 /// Returns [FoundMessages].
-final class GetMessagePublicForwards extends TdFunction {
+final class GetMessagePublicForwards extends TdFunction<FoundMessages> {
   /// Returns forwarded copies of a channel message to different public channels. For optimal performance, the number of returned messages is chosen by TDLib
   const GetMessagePublicForwards({
     required this.chatId,

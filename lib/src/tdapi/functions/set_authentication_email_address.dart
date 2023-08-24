@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the email address of the user and sends an authentication code to the email address. Works only when the current authorization state is authorizationStateWaitEmailAddress
 ///
 /// Returns [Ok].
-final class SetAuthenticationEmailAddress extends TdFunction {
+final class SetAuthenticationEmailAddress extends TdFunction<Ok> {
   /// Sets the email address of the user and sends an authentication code to the email address. Works only when the current authorization state is authorizationStateWaitEmailAddress
   const SetAuthenticationEmailAddress({
     required this.emailAddress,

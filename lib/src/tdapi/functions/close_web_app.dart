@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Informs TDLib that a previously opened Web App was closed
 ///
 /// Returns [Ok].
-final class CloseWebApp extends TdFunction {
+final class CloseWebApp extends TdFunction<Ok> {
   /// Informs TDLib that a previously opened Web App was closed
   const CloseWebApp({
     required this.webAppLaunchId,

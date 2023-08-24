@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns information about a file with messages exported from another application
 ///
 /// Returns [MessageFileType].
-final class GetMessageFileType extends TdFunction {
+final class GetMessageFileType extends TdFunction<MessageFileType> {
   /// Returns information about a file with messages exported from another application
   const GetMessageFileType({
     required this.messageFileHead,

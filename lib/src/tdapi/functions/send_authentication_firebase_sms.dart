@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends Firebase Authentication SMS to the phone number of the user. Works only when the current authorization state is authorizationStateWaitCode and the server returned code of the type authenticationCodeTypeFirebaseAndroid or authenticationCodeTypeFirebaseIos
 ///
 /// Returns [Ok].
-final class SendAuthenticationFirebaseSms extends TdFunction {
+final class SendAuthenticationFirebaseSms extends TdFunction<Ok> {
   /// Sends Firebase Authentication SMS to the phone number of the user. Works only when the current authorization state is authorizationStateWaitCode and the server returned code of the type authenticationCodeTypeFirebaseAndroid or authenticationCodeTypeFirebaseIos
   const SendAuthenticationFirebaseSms({
     required this.token,

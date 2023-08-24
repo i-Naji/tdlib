@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the discussion group of a channel chat; requires can_change_info administrator right in the channel if it is specified
 ///
 /// Returns [Ok].
-final class SetChatDiscussionGroup extends TdFunction {
+final class SetChatDiscussionGroup extends TdFunction<Ok> {
   /// Changes the discussion group of a channel chat; requires can_change_info administrator right in the channel if it is specified
   const SetChatDiscussionGroup({
     required this.chatId,

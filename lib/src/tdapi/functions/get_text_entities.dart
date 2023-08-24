@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) found in the text. Can be called synchronously
 ///
 /// Returns [TextEntities].
-final class GetTextEntities extends TdFunction {
+final class GetTextEntities extends TdFunction<TextEntities> {
   /// Returns all entities (mentions, hashtags, cashtags, bot commands, bank card numbers, URLs, and email addresses) found in the text. Can be called synchronously
   const GetTextEntities({
     required this.text,
@@ -35,4 +35,7 @@ final class GetTextEntities extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

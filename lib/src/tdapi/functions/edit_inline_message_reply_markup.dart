@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Edits the reply markup of an inline message sent via a bot; for bots only
 ///
 /// Returns [Ok].
-final class EditInlineMessageReplyMarkup extends TdFunction {
+final class EditInlineMessageReplyMarkup extends TdFunction<Ok> {
   /// Edits the reply markup of an inline message sent via a bot; for bots only
   const EditInlineMessageReplyMarkup({
     required this.inlineMessageId,

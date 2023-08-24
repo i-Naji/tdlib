@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a user that can be contacted to get support
 ///
 /// Returns [User].
-final class GetSupportUser extends TdFunction {
+final class GetSupportUser extends TdFunction<User> {
   /// Returns a user that can be contacted to get support
   const GetSupportUser();
 

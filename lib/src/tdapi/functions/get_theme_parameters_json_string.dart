@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Converts a themeParameters object to corresponding JSON-serialized string. Can be called synchronously
 ///
 /// Returns [Text].
-final class GetThemeParametersJsonString extends TdFunction {
+final class GetThemeParametersJsonString extends TdFunction<Text> {
   /// Converts a themeParameters object to corresponding JSON-serialized string. Can be called synchronously
   const GetThemeParametersJsonString({
     required this.theme,
@@ -35,4 +35,7 @@ final class GetThemeParametersJsonString extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

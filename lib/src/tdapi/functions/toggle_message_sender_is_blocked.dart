@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the block state of a message sender. Currently, only users and supergroup chats can be blocked
 ///
 /// Returns [Ok].
-final class ToggleMessageSenderIsBlocked extends TdFunction {
+final class ToggleMessageSenderIsBlocked extends TdFunction<Ok> {
   /// Changes the block state of a message sender. Currently, only users and supergroup chats can be blocked
   const ToggleMessageSenderIsBlocked({
     required this.senderId,

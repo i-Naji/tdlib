@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase
 ///
 /// Returns [Ok].
-final class CanPurchasePremium extends TdFunction {
+final class CanPurchasePremium extends TdFunction<Ok> {
   /// Checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase
   const CanPurchasePremium({
     required this.purpose,

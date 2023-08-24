@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns default list of custom emoji stickers for placing on a profile photo
 ///
 /// Returns [Stickers].
-final class GetDefaultProfilePhotoCustomEmojiStickers extends TdFunction {
+final class GetDefaultProfilePhotoCustomEmojiStickers
+    extends TdFunction<Stickers> {
   /// Returns default list of custom emoji stickers for placing on a profile photo
   const GetDefaultProfilePhotoCustomEmojiStickers();
 

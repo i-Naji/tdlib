@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns a list of trending sticker sets. For optimal performance, the number of returned sticker sets is chosen by TDLib
 ///
 /// Returns [TrendingStickerSets].
-final class GetTrendingStickerSets extends TdFunction {
+final class GetTrendingStickerSets extends TdFunction<TrendingStickerSets> {
   /// Returns a list of trending sticker sets. For optimal performance, the number of returned sticker sets is chosen by TDLib
   const GetTrendingStickerSets({
     required this.stickerType,

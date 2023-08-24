@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Removes all files from the file download list
 ///
 /// Returns [Ok].
-final class RemoveAllFilesFromDownloads extends TdFunction {
+final class RemoveAllFilesFromDownloads extends TdFunction<Ok> {
   /// Removes all files from the file download list
   const RemoveAllFilesFromDownloads({
     required this.onlyActive,

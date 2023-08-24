@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization
 ///
 /// Returns [Ok].
-final class DeleteLanguagePack extends TdFunction {
+final class DeleteLanguagePack extends TdFunction<Ok> {
   /// Deletes all information about a language pack in the current localization target. The language pack which is currently in use (including base language pack) or is being synchronized can't be deleted. Can be called before authorization
   const DeleteLanguagePack({
     required this.languagePackId,

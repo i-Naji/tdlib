@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns examples of premium stickers for demonstration purposes
 ///
 /// Returns [Stickers].
-final class GetPremiumStickerExamples extends TdFunction {
+final class GetPremiumStickerExamples extends TdFunction<Stickers> {
   /// Returns examples of premium stickers for demonstration purposes
   const GetPremiumStickerExamples();
 

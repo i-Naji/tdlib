@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sets the result of a shipping query; for bots only
 ///
 /// Returns [Ok].
-final class AnswerShippingQuery extends TdFunction {
+final class AnswerShippingQuery extends TdFunction<Ok> {
   /// Sets the result of a shipping query; for bots only
   const AnswerShippingQuery({
     required this.shippingQueryId,

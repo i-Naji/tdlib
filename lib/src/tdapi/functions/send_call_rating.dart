@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Sends a call rating
 ///
 /// Returns [Ok].
-final class SendCallRating extends TdFunction {
+final class SendCallRating extends TdFunction<Ok> {
   /// Sends a call rating
   const SendCallRating({
     required this.callId,

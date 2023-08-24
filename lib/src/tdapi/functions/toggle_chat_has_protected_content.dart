@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges
 ///
 /// Returns [Ok].
-final class ToggleChatHasProtectedContent extends TdFunction {
+final class ToggleChatHasProtectedContent extends TdFunction<Ok> {
   /// Changes the ability of users to save, forward, or copy chat content. Supported only for basic groups, supergroups and channels. Requires owner privileges
   const ToggleChatHasProtectedContent({
     required this.chatId,

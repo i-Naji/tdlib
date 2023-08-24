@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously
 ///
 /// Returns [FormattedText].
-final class GetMarkdownText extends TdFunction {
+final class GetMarkdownText extends TdFunction<FormattedText> {
   /// Replaces text entities with Markdown formatting in a human-friendly format. Entities that can't be represented in Markdown unambiguously are kept as is. Can be called synchronously
   const GetMarkdownText({
     required this.text,
@@ -35,4 +35,7 @@ final class GetMarkdownText extends TdFunction {
 
   @override
   String getConstructor() => CONSTRUCTOR;
+
+  @override
+  bool get canBeCalledSynchronously => true;
 }

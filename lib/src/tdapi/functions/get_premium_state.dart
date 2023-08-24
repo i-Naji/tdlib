@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns state of Telegram Premium subscription and promotion videos for Premium features
 ///
 /// Returns [PremiumState].
-final class GetPremiumState extends TdFunction {
+final class GetPremiumState extends TdFunction<PremiumState> {
   /// Returns state of Telegram Premium subscription and promotion videos for Premium features
   const GetPremiumState();
 

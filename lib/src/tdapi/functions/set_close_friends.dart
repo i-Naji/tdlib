@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Changes the list of close friends of the current user
 ///
 /// Returns [Ok].
-final class SetCloseFriends extends TdFunction {
+final class SetCloseFriends extends TdFunction<Ok> {
   /// Changes the list of close friends of the current user
   const SetCloseFriends({
     required this.userIds,

@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a session can accept incoming calls
 ///
 /// Returns [Ok].
-final class ToggleSessionCanAcceptCalls extends TdFunction {
+final class ToggleSessionCanAcceptCalls extends TdFunction<Ok> {
   /// Toggles whether a session can accept incoming calls
   const ToggleSessionCanAcceptCalls({
     required this.sessionId,

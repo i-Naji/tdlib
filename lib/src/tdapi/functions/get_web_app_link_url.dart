@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Returns an HTTPS URL of a Web App to open after a link of the type internalLinkTypeWebApp is clicked
 ///
 /// Returns [HttpUrl].
-final class GetWebAppLinkUrl extends TdFunction {
+final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
   /// Returns an HTTPS URL of a Web App to open after a link of the type internalLinkTypeWebApp is clicked
   const GetWebAppLinkUrl({
     required this.chatId,

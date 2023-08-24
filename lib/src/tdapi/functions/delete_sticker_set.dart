@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Deleted a sticker set; for bots only
 ///
 /// Returns [Ok].
-final class DeleteStickerSet extends TdFunction {
+final class DeleteStickerSet extends TdFunction<Ok> {
   /// Deleted a sticker set; for bots only
   const DeleteStickerSet({
     required this.name,

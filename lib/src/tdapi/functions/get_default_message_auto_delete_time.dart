@@ -6,7 +6,8 @@ part of '../tdapi.dart';
 /// Returns default message auto-delete time setting for new chats
 ///
 /// Returns [MessageAutoDeleteTime].
-final class GetDefaultMessageAutoDeleteTime extends TdFunction {
+final class GetDefaultMessageAutoDeleteTime
+    extends TdFunction<MessageAutoDeleteTime> {
   /// Returns default message auto-delete time setting for new chats
   const GetDefaultMessageAutoDeleteTime();
 

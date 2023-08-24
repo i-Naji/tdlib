@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Updates the game score of the specified user in a game; for bots only
 ///
 /// Returns [Ok].
-final class SetInlineGameScore extends TdFunction {
+final class SetInlineGameScore extends TdFunction<Ok> {
   /// Updates the game score of the specified user in a game; for bots only
   const SetInlineGameScore({
     required this.inlineMessageId,

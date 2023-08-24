@@ -6,7 +6,7 @@ part of '../tdapi.dart';
 /// Toggles whether a participant of an active group call is muted, unmuted, or allowed to unmute themselves
 ///
 /// Returns [Ok].
-final class ToggleGroupCallParticipantIsMuted extends TdFunction {
+final class ToggleGroupCallParticipantIsMuted extends TdFunction<Ok> {
   /// Toggles whether a participant of an active group call is muted, unmuted, or allowed to unmute themselves
   const ToggleGroupCallParticipantIsMuted({
     required this.groupCallId,
