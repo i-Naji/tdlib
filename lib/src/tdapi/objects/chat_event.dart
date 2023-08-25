@@ -36,7 +36,7 @@ final class ChatEvent extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'date': date,
         'member_id': memberId.toJson(),
         'action': action.toJson(),

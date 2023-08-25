@@ -10,17 +10,10 @@ sealed class InputChatPhoto extends TdObject {
   const InputChatPhoto();
 
   /// Parses whichever [InputChatPhoto] subtype the JSON describes.
-  factory InputChatPhoto.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputChatPhotoPrevious.CONSTRUCTOR =>
-          InputChatPhotoPrevious.fromJson(json),
-        InputChatPhotoStatic.CONSTRUCTOR => InputChatPhotoStatic.fromJson(json),
-        InputChatPhotoAnimation.CONSTRUCTOR =>
-          InputChatPhotoAnimation.fromJson(json),
-        InputChatPhotoSticker.CONSTRUCTOR =>
-          InputChatPhotoSticker.fromJson(json),
-        _ => UndecodedInputChatPhoto(json),
-      };
+  factory InputChatPhoto.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputChatPhoto ? object : UndecodedInputChatPhoto(json);
+  }
 
   /// Returns a copy of this object.
   InputChatPhoto copyWith();
@@ -68,7 +61,7 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'chat_photo_id': chatPhotoId,
+        'chat_photo_id': chatPhotoId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

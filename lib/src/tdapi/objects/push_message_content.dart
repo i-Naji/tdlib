@@ -10,74 +10,12 @@ sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
   /// Parses whichever [PushMessageContent] subtype the JSON describes.
-  factory PushMessageContent.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PushMessageContentHidden.CONSTRUCTOR =>
-          PushMessageContentHidden.fromJson(json),
-        PushMessageContentAnimation.CONSTRUCTOR =>
-          PushMessageContentAnimation.fromJson(json),
-        PushMessageContentAudio.CONSTRUCTOR =>
-          PushMessageContentAudio.fromJson(json),
-        PushMessageContentContact.CONSTRUCTOR =>
-          PushMessageContentContact.fromJson(json),
-        PushMessageContentContactRegistered.CONSTRUCTOR =>
-          PushMessageContentContactRegistered.fromJson(json),
-        PushMessageContentDocument.CONSTRUCTOR =>
-          PushMessageContentDocument.fromJson(json),
-        PushMessageContentGame.CONSTRUCTOR =>
-          PushMessageContentGame.fromJson(json),
-        PushMessageContentGameScore.CONSTRUCTOR =>
-          PushMessageContentGameScore.fromJson(json),
-        PushMessageContentInvoice.CONSTRUCTOR =>
-          PushMessageContentInvoice.fromJson(json),
-        PushMessageContentLocation.CONSTRUCTOR =>
-          PushMessageContentLocation.fromJson(json),
-        PushMessageContentPhoto.CONSTRUCTOR =>
-          PushMessageContentPhoto.fromJson(json),
-        PushMessageContentPoll.CONSTRUCTOR =>
-          PushMessageContentPoll.fromJson(json),
-        PushMessageContentScreenshotTaken.CONSTRUCTOR =>
-          PushMessageContentScreenshotTaken.fromJson(json),
-        PushMessageContentSticker.CONSTRUCTOR =>
-          PushMessageContentSticker.fromJson(json),
-        PushMessageContentStory.CONSTRUCTOR =>
-          PushMessageContentStory.fromJson(json),
-        PushMessageContentText.CONSTRUCTOR =>
-          PushMessageContentText.fromJson(json),
-        PushMessageContentVideo.CONSTRUCTOR =>
-          PushMessageContentVideo.fromJson(json),
-        PushMessageContentVideoNote.CONSTRUCTOR =>
-          PushMessageContentVideoNote.fromJson(json),
-        PushMessageContentVoiceNote.CONSTRUCTOR =>
-          PushMessageContentVoiceNote.fromJson(json),
-        PushMessageContentBasicGroupChatCreate.CONSTRUCTOR =>
-          PushMessageContentBasicGroupChatCreate.fromJson(json),
-        PushMessageContentChatAddMembers.CONSTRUCTOR =>
-          PushMessageContentChatAddMembers.fromJson(json),
-        PushMessageContentChatChangePhoto.CONSTRUCTOR =>
-          PushMessageContentChatChangePhoto.fromJson(json),
-        PushMessageContentChatChangeTitle.CONSTRUCTOR =>
-          PushMessageContentChatChangeTitle.fromJson(json),
-        PushMessageContentChatSetBackground.CONSTRUCTOR =>
-          PushMessageContentChatSetBackground.fromJson(json),
-        PushMessageContentChatSetTheme.CONSTRUCTOR =>
-          PushMessageContentChatSetTheme.fromJson(json),
-        PushMessageContentChatDeleteMember.CONSTRUCTOR =>
-          PushMessageContentChatDeleteMember.fromJson(json),
-        PushMessageContentChatJoinByLink.CONSTRUCTOR =>
-          PushMessageContentChatJoinByLink.fromJson(json),
-        PushMessageContentChatJoinByRequest.CONSTRUCTOR =>
-          PushMessageContentChatJoinByRequest.fromJson(json),
-        PushMessageContentRecurringPayment.CONSTRUCTOR =>
-          PushMessageContentRecurringPayment.fromJson(json),
-        PushMessageContentSuggestProfilePhoto.CONSTRUCTOR =>
-          PushMessageContentSuggestProfilePhoto.fromJson(json),
-        PushMessageContentMessageForwards.CONSTRUCTOR =>
-          PushMessageContentMessageForwards.fromJson(json),
-        PushMessageContentMediaAlbum.CONSTRUCTOR =>
-          PushMessageContentMediaAlbum.fromJson(json),
-        _ => UndecodedPushMessageContent(json),
-      };
+  factory PushMessageContent.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PushMessageContent
+        ? object
+        : UndecodedPushMessageContent(json);
+  }
 
   /// Returns a copy of this object.
   PushMessageContent copyWith();

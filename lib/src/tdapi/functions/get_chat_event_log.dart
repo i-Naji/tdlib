@@ -40,7 +40,7 @@ final class GetChatEventLog extends TdFunction<ChatEvents> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'query': query,
-        'from_event_id': fromEventId,
+        'from_event_id': fromEventId.toString(),
         'limit': limit,
         'filters': filters?.toJson(),
         'user_ids': userIds,

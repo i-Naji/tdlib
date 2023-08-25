@@ -18,7 +18,7 @@ final class TerminateSession extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'session_id': sessionId,
+        'session_id': sessionId.toString(),
         if (extra != null) '@extra': extra,
       };
 

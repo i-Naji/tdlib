@@ -79,8 +79,8 @@ final class Sticker extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
-        'set_id': setId,
+        'id': id.toString(),
+        'set_id': setId.toString(),
         'width': width,
         'height': height,
         'emoji': emoji,

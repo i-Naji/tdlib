@@ -10,13 +10,10 @@ sealed class LogStream extends TdObject {
   const LogStream();
 
   /// Parses whichever [LogStream] subtype the JSON describes.
-  factory LogStream.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        LogStreamDefault.CONSTRUCTOR => LogStreamDefault.fromJson(json),
-        LogStreamFile.CONSTRUCTOR => LogStreamFile.fromJson(json),
-        LogStreamEmpty.CONSTRUCTOR => LogStreamEmpty.fromJson(json),
-        _ => UndecodedLogStream(json),
-      };
+  factory LogStream.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is LogStream ? object : UndecodedLogStream(json);
+  }
 
   /// Returns a copy of this object.
   LogStream copyWith();

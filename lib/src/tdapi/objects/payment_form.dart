@@ -99,7 +99,7 @@ final class PaymentForm extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'invoice': invoice.toJson(),
         'seller_bot_user_id': sellerBotUserId,
         'payment_provider_user_id': paymentProviderUserId,

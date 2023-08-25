@@ -47,7 +47,7 @@ final class ProfilePhoto extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'small': small.toJson(),
         'big': big.toJson(),
         'minithumbnail': minithumbnail?.toJson(),

@@ -10,17 +10,10 @@ sealed class CallState extends TdObject {
   const CallState();
 
   /// Parses whichever [CallState] subtype the JSON describes.
-  factory CallState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CallStatePending.CONSTRUCTOR => CallStatePending.fromJson(json),
-        CallStateExchangingKeys.CONSTRUCTOR =>
-          CallStateExchangingKeys.fromJson(json),
-        CallStateReady.CONSTRUCTOR => CallStateReady.fromJson(json),
-        CallStateHangingUp.CONSTRUCTOR => CallStateHangingUp.fromJson(json),
-        CallStateDiscarded.CONSTRUCTOR => CallStateDiscarded.fromJson(json),
-        CallStateError.CONSTRUCTOR => CallStateError.fromJson(json),
-        _ => UndecodedCallState(json),
-      };
+  factory CallState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CallState ? object : UndecodedCallState(json);
+  }
 
   /// Returns a copy of this object.
   CallState copyWith();

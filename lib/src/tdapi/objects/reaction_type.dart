@@ -10,13 +10,10 @@ sealed class ReactionType extends TdObject {
   const ReactionType();
 
   /// Parses whichever [ReactionType] subtype the JSON describes.
-  factory ReactionType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ReactionTypeEmoji.CONSTRUCTOR => ReactionTypeEmoji.fromJson(json),
-        ReactionTypeCustomEmoji.CONSTRUCTOR =>
-          ReactionTypeCustomEmoji.fromJson(json),
-        _ => UndecodedReactionType(json),
-      };
+  factory ReactionType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ReactionType ? object : UndecodedReactionType(json);
+  }
 
   /// Returns a copy of this object.
   ReactionType copyWith();
@@ -102,7 +99,7 @@ final class ReactionTypeCustomEmoji extends ReactionType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

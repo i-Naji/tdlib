@@ -10,16 +10,12 @@ sealed class EmailAddressAuthentication extends TdObject {
   const EmailAddressAuthentication();
 
   /// Parses whichever [EmailAddressAuthentication] subtype the JSON describes.
-  factory EmailAddressAuthentication.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        EmailAddressAuthenticationCode.CONSTRUCTOR =>
-          EmailAddressAuthenticationCode.fromJson(json),
-        EmailAddressAuthenticationAppleId.CONSTRUCTOR =>
-          EmailAddressAuthenticationAppleId.fromJson(json),
-        EmailAddressAuthenticationGoogleId.CONSTRUCTOR =>
-          EmailAddressAuthenticationGoogleId.fromJson(json),
-        _ => UndecodedEmailAddressAuthentication(json),
-      };
+  factory EmailAddressAuthentication.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is EmailAddressAuthentication
+        ? object
+        : UndecodedEmailAddressAuthentication(json);
+  }
 
   /// Returns a copy of this object.
   EmailAddressAuthentication copyWith();

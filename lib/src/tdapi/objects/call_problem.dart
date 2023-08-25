@@ -10,25 +10,10 @@ sealed class CallProblem extends TdObject {
   const CallProblem();
 
   /// Parses whichever [CallProblem] subtype the JSON describes.
-  factory CallProblem.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CallProblemEcho.CONSTRUCTOR => CallProblemEcho.fromJson(json),
-        CallProblemNoise.CONSTRUCTOR => CallProblemNoise.fromJson(json),
-        CallProblemInterruptions.CONSTRUCTOR =>
-          CallProblemInterruptions.fromJson(json),
-        CallProblemDistortedSpeech.CONSTRUCTOR =>
-          CallProblemDistortedSpeech.fromJson(json),
-        CallProblemSilentLocal.CONSTRUCTOR =>
-          CallProblemSilentLocal.fromJson(json),
-        CallProblemSilentRemote.CONSTRUCTOR =>
-          CallProblemSilentRemote.fromJson(json),
-        CallProblemDropped.CONSTRUCTOR => CallProblemDropped.fromJson(json),
-        CallProblemDistortedVideo.CONSTRUCTOR =>
-          CallProblemDistortedVideo.fromJson(json),
-        CallProblemPixelatedVideo.CONSTRUCTOR =>
-          CallProblemPixelatedVideo.fromJson(json),
-        _ => UndecodedCallProblem(json),
-      };
+  factory CallProblem.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CallProblem ? object : UndecodedCallProblem(json);
+  }
 
   /// Returns a copy of this object.
   CallProblem copyWith();

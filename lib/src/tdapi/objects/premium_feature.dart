@@ -10,40 +10,10 @@ sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
   /// Parses whichever [PremiumFeature] subtype the JSON describes.
-  factory PremiumFeature.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PremiumFeatureIncreasedLimits.CONSTRUCTOR =>
-          PremiumFeatureIncreasedLimits.fromJson(json),
-        PremiumFeatureIncreasedUploadFileSize.CONSTRUCTOR =>
-          PremiumFeatureIncreasedUploadFileSize.fromJson(json),
-        PremiumFeatureImprovedDownloadSpeed.CONSTRUCTOR =>
-          PremiumFeatureImprovedDownloadSpeed.fromJson(json),
-        PremiumFeatureVoiceRecognition.CONSTRUCTOR =>
-          PremiumFeatureVoiceRecognition.fromJson(json),
-        PremiumFeatureDisabledAds.CONSTRUCTOR =>
-          PremiumFeatureDisabledAds.fromJson(json),
-        PremiumFeatureUniqueReactions.CONSTRUCTOR =>
-          PremiumFeatureUniqueReactions.fromJson(json),
-        PremiumFeatureUniqueStickers.CONSTRUCTOR =>
-          PremiumFeatureUniqueStickers.fromJson(json),
-        PremiumFeatureCustomEmoji.CONSTRUCTOR =>
-          PremiumFeatureCustomEmoji.fromJson(json),
-        PremiumFeatureAdvancedChatManagement.CONSTRUCTOR =>
-          PremiumFeatureAdvancedChatManagement.fromJson(json),
-        PremiumFeatureProfileBadge.CONSTRUCTOR =>
-          PremiumFeatureProfileBadge.fromJson(json),
-        PremiumFeatureEmojiStatus.CONSTRUCTOR =>
-          PremiumFeatureEmojiStatus.fromJson(json),
-        PremiumFeatureAnimatedProfilePhoto.CONSTRUCTOR =>
-          PremiumFeatureAnimatedProfilePhoto.fromJson(json),
-        PremiumFeatureForumTopicIcon.CONSTRUCTOR =>
-          PremiumFeatureForumTopicIcon.fromJson(json),
-        PremiumFeatureAppIcons.CONSTRUCTOR =>
-          PremiumFeatureAppIcons.fromJson(json),
-        PremiumFeatureRealTimeChatTranslation.CONSTRUCTOR =>
-          PremiumFeatureRealTimeChatTranslation.fromJson(json),
-        _ => UndecodedPremiumFeature(json),
-      };
+  factory PremiumFeature.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PremiumFeature ? object : UndecodedPremiumFeature(json);
+  }
 
   /// Returns a copy of this object.
   PremiumFeature copyWith();

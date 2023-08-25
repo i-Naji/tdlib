@@ -10,13 +10,10 @@ sealed class TextParseMode extends TdObject {
   const TextParseMode();
 
   /// Parses whichever [TextParseMode] subtype the JSON describes.
-  factory TextParseMode.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        TextParseModeMarkdown.CONSTRUCTOR =>
-          TextParseModeMarkdown.fromJson(json),
-        TextParseModeHTML.CONSTRUCTOR => TextParseModeHTML.fromJson(json),
-        _ => UndecodedTextParseMode(json),
-      };
+  factory TextParseMode.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is TextParseMode ? object : UndecodedTextParseMode(json);
+  }
 
   /// Returns a copy of this object.
   TextParseMode copyWith();

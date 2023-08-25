@@ -10,14 +10,10 @@ sealed class ChatStatistics extends TdObject {
   const ChatStatistics();
 
   /// Parses whichever [ChatStatistics] subtype the JSON describes.
-  factory ChatStatistics.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatStatisticsSupergroup.CONSTRUCTOR =>
-          ChatStatisticsSupergroup.fromJson(json),
-        ChatStatisticsChannel.CONSTRUCTOR =>
-          ChatStatisticsChannel.fromJson(json),
-        _ => UndecodedChatStatistics(json),
-      };
+  factory ChatStatistics.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatStatistics ? object : UndecodedChatStatistics(json);
+  }
 
   /// Returns a copy of this object.
   ChatStatistics copyWith();

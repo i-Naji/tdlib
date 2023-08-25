@@ -10,14 +10,10 @@ sealed class ChatSource extends TdObject {
   const ChatSource();
 
   /// Parses whichever [ChatSource] subtype the JSON describes.
-  factory ChatSource.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatSourceMtprotoProxy.CONSTRUCTOR =>
-          ChatSourceMtprotoProxy.fromJson(json),
-        ChatSourcePublicServiceAnnouncement.CONSTRUCTOR =>
-          ChatSourcePublicServiceAnnouncement.fromJson(json),
-        _ => UndecodedChatSource(json),
-      };
+  factory ChatSource.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatSource ? object : UndecodedChatSource(json);
+  }
 
   /// Returns a copy of this object.
   ChatSource copyWith();

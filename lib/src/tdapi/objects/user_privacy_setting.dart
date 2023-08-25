@@ -10,31 +10,12 @@ sealed class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
   /// Parses whichever [UserPrivacySetting] subtype the JSON describes.
-  factory UserPrivacySetting.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        UserPrivacySettingShowStatus.CONSTRUCTOR =>
-          UserPrivacySettingShowStatus.fromJson(json),
-        UserPrivacySettingShowProfilePhoto.CONSTRUCTOR =>
-          UserPrivacySettingShowProfilePhoto.fromJson(json),
-        UserPrivacySettingShowLinkInForwardedMessages.CONSTRUCTOR =>
-          UserPrivacySettingShowLinkInForwardedMessages.fromJson(json),
-        UserPrivacySettingShowPhoneNumber.CONSTRUCTOR =>
-          UserPrivacySettingShowPhoneNumber.fromJson(json),
-        UserPrivacySettingShowBio.CONSTRUCTOR =>
-          UserPrivacySettingShowBio.fromJson(json),
-        UserPrivacySettingAllowChatInvites.CONSTRUCTOR =>
-          UserPrivacySettingAllowChatInvites.fromJson(json),
-        UserPrivacySettingAllowCalls.CONSTRUCTOR =>
-          UserPrivacySettingAllowCalls.fromJson(json),
-        UserPrivacySettingAllowPeerToPeerCalls.CONSTRUCTOR =>
-          UserPrivacySettingAllowPeerToPeerCalls.fromJson(json),
-        UserPrivacySettingAllowFindingByPhoneNumber.CONSTRUCTOR =>
-          UserPrivacySettingAllowFindingByPhoneNumber.fromJson(json),
-        UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.CONSTRUCTOR =>
-          UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages.fromJson(
-              json),
-        _ => UndecodedUserPrivacySetting(json),
-      };
+  factory UserPrivacySetting.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is UserPrivacySetting
+        ? object
+        : UndecodedUserPrivacySetting(json);
+  }
 
   /// Returns a copy of this object.
   UserPrivacySetting copyWith();

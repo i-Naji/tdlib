@@ -38,7 +38,7 @@ final class DiscardCall extends TdFunction<Ok> {
         'is_disconnected': isDisconnected,
         'duration': duration,
         'is_video': isVideo,
-        'connection_id': connectionId,
+        'connection_id': connectionId.toString(),
         if (extra != null) '@extra': extra,
       };
 

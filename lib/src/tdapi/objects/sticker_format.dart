@@ -10,13 +10,10 @@ sealed class StickerFormat extends TdObject {
   const StickerFormat();
 
   /// Parses whichever [StickerFormat] subtype the JSON describes.
-  factory StickerFormat.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StickerFormatWebp.CONSTRUCTOR => StickerFormatWebp.fromJson(json),
-        StickerFormatTgs.CONSTRUCTOR => StickerFormatTgs.fromJson(json),
-        StickerFormatWebm.CONSTRUCTOR => StickerFormatWebm.fromJson(json),
-        _ => UndecodedStickerFormat(json),
-      };
+  factory StickerFormat.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StickerFormat ? object : UndecodedStickerFormat(json);
+  }
 
   /// Returns a copy of this object.
   StickerFormat copyWith();

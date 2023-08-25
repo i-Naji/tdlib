@@ -10,23 +10,10 @@ sealed class BotCommandScope extends TdObject {
   const BotCommandScope();
 
   /// Parses whichever [BotCommandScope] subtype the JSON describes.
-  factory BotCommandScope.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        BotCommandScopeDefault.CONSTRUCTOR =>
-          BotCommandScopeDefault.fromJson(json),
-        BotCommandScopeAllPrivateChats.CONSTRUCTOR =>
-          BotCommandScopeAllPrivateChats.fromJson(json),
-        BotCommandScopeAllGroupChats.CONSTRUCTOR =>
-          BotCommandScopeAllGroupChats.fromJson(json),
-        BotCommandScopeAllChatAdministrators.CONSTRUCTOR =>
-          BotCommandScopeAllChatAdministrators.fromJson(json),
-        BotCommandScopeChat.CONSTRUCTOR => BotCommandScopeChat.fromJson(json),
-        BotCommandScopeChatAdministrators.CONSTRUCTOR =>
-          BotCommandScopeChatAdministrators.fromJson(json),
-        BotCommandScopeChatMember.CONSTRUCTOR =>
-          BotCommandScopeChatMember.fromJson(json),
-        _ => UndecodedBotCommandScope(json),
-      };
+  factory BotCommandScope.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is BotCommandScope ? object : UndecodedBotCommandScope(json);
+  }
 
   /// Returns a copy of this object.
   BotCommandScope copyWith();

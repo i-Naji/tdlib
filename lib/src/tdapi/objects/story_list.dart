@@ -10,12 +10,10 @@ sealed class StoryList extends TdObject {
   const StoryList();
 
   /// Parses whichever [StoryList] subtype the JSON describes.
-  factory StoryList.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StoryListMain.CONSTRUCTOR => StoryListMain.fromJson(json),
-        StoryListArchive.CONSTRUCTOR => StoryListArchive.fromJson(json),
-        _ => UndecodedStoryList(json),
-      };
+  factory StoryList.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StoryList ? object : UndecodedStoryList(json);
+  }
 
   /// Returns a copy of this object.
   StoryList copyWith();

@@ -10,14 +10,10 @@ sealed class StickerType extends TdObject {
   const StickerType();
 
   /// Parses whichever [StickerType] subtype the JSON describes.
-  factory StickerType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StickerTypeRegular.CONSTRUCTOR => StickerTypeRegular.fromJson(json),
-        StickerTypeMask.CONSTRUCTOR => StickerTypeMask.fromJson(json),
-        StickerTypeCustomEmoji.CONSTRUCTOR =>
-          StickerTypeCustomEmoji.fromJson(json),
-        _ => UndecodedStickerType(json),
-      };
+  factory StickerType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StickerType ? object : UndecodedStickerType(json);
+  }
 
   /// Returns a copy of this object.
   StickerType copyWith();

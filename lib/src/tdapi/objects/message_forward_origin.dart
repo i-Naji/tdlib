@@ -10,20 +10,12 @@ sealed class MessageForwardOrigin extends TdObject {
   const MessageForwardOrigin();
 
   /// Parses whichever [MessageForwardOrigin] subtype the JSON describes.
-  factory MessageForwardOrigin.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageForwardOriginUser.CONSTRUCTOR =>
-          MessageForwardOriginUser.fromJson(json),
-        MessageForwardOriginChat.CONSTRUCTOR =>
-          MessageForwardOriginChat.fromJson(json),
-        MessageForwardOriginHiddenUser.CONSTRUCTOR =>
-          MessageForwardOriginHiddenUser.fromJson(json),
-        MessageForwardOriginChannel.CONSTRUCTOR =>
-          MessageForwardOriginChannel.fromJson(json),
-        MessageForwardOriginMessageImport.CONSTRUCTOR =>
-          MessageForwardOriginMessageImport.fromJson(json),
-        _ => UndecodedMessageForwardOrigin(json),
-      };
+  factory MessageForwardOrigin.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageForwardOrigin
+        ? object
+        : UndecodedMessageForwardOrigin(json);
+  }
 
   /// Returns a copy of this object.
   MessageForwardOrigin copyWith();

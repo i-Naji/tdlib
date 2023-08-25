@@ -10,12 +10,10 @@ sealed class MessageSender extends TdObject {
   const MessageSender();
 
   /// Parses whichever [MessageSender] subtype the JSON describes.
-  factory MessageSender.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageSenderUser.CONSTRUCTOR => MessageSenderUser.fromJson(json),
-        MessageSenderChat.CONSTRUCTOR => MessageSenderChat.fromJson(json),
-        _ => UndecodedMessageSender(json),
-      };
+  factory MessageSender.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageSender ? object : UndecodedMessageSender(json);
+  }
 
   /// Returns a copy of this object.
   MessageSender copyWith();

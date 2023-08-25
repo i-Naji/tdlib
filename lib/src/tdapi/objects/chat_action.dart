@@ -10,38 +10,10 @@ sealed class ChatAction extends TdObject {
   const ChatAction();
 
   /// Parses whichever [ChatAction] subtype the JSON describes.
-  factory ChatAction.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatActionTyping.CONSTRUCTOR => ChatActionTyping.fromJson(json),
-        ChatActionRecordingVideo.CONSTRUCTOR =>
-          ChatActionRecordingVideo.fromJson(json),
-        ChatActionUploadingVideo.CONSTRUCTOR =>
-          ChatActionUploadingVideo.fromJson(json),
-        ChatActionRecordingVoiceNote.CONSTRUCTOR =>
-          ChatActionRecordingVoiceNote.fromJson(json),
-        ChatActionUploadingVoiceNote.CONSTRUCTOR =>
-          ChatActionUploadingVoiceNote.fromJson(json),
-        ChatActionUploadingPhoto.CONSTRUCTOR =>
-          ChatActionUploadingPhoto.fromJson(json),
-        ChatActionUploadingDocument.CONSTRUCTOR =>
-          ChatActionUploadingDocument.fromJson(json),
-        ChatActionChoosingSticker.CONSTRUCTOR =>
-          ChatActionChoosingSticker.fromJson(json),
-        ChatActionChoosingLocation.CONSTRUCTOR =>
-          ChatActionChoosingLocation.fromJson(json),
-        ChatActionChoosingContact.CONSTRUCTOR =>
-          ChatActionChoosingContact.fromJson(json),
-        ChatActionStartPlayingGame.CONSTRUCTOR =>
-          ChatActionStartPlayingGame.fromJson(json),
-        ChatActionRecordingVideoNote.CONSTRUCTOR =>
-          ChatActionRecordingVideoNote.fromJson(json),
-        ChatActionUploadingVideoNote.CONSTRUCTOR =>
-          ChatActionUploadingVideoNote.fromJson(json),
-        ChatActionWatchingAnimations.CONSTRUCTOR =>
-          ChatActionWatchingAnimations.fromJson(json),
-        ChatActionCancel.CONSTRUCTOR => ChatActionCancel.fromJson(json),
-        _ => UndecodedChatAction(json),
-      };
+  factory ChatAction.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatAction ? object : UndecodedChatAction(json);
+  }
 
   /// Returns a copy of this object.
   ChatAction copyWith();

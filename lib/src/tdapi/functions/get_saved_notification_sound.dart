@@ -18,7 +18,7 @@ final class GetSavedNotificationSound extends TdFunction<NotificationSounds> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'notification_sound_id': notificationSoundId,
+        'notification_sound_id': notificationSoundId.toString(),
         if (extra != null) '@extra': extra,
       };
 

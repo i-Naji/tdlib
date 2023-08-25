@@ -10,14 +10,12 @@ sealed class NetworkStatisticsEntry extends TdObject {
   const NetworkStatisticsEntry();
 
   /// Parses whichever [NetworkStatisticsEntry] subtype the JSON describes.
-  factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        NetworkStatisticsEntryFile.CONSTRUCTOR =>
-          NetworkStatisticsEntryFile.fromJson(json),
-        NetworkStatisticsEntryCall.CONSTRUCTOR =>
-          NetworkStatisticsEntryCall.fromJson(json),
-        _ => UndecodedNetworkStatisticsEntry(json),
-      };
+  factory NetworkStatisticsEntry.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is NetworkStatisticsEntry
+        ? object
+        : UndecodedNetworkStatisticsEntry(json);
+  }
 
   /// Returns a copy of this object.
   NetworkStatisticsEntry copyWith();

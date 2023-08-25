@@ -27,7 +27,7 @@ final class GetArchivedStickerSets extends TdFunction<StickerSets> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'sticker_type': stickerType.toJson(),
-        'offset_sticker_set_id': offsetStickerSetId,
+        'offset_sticker_set_id': offsetStickerSetId.toString(),
         'limit': limit,
         if (extra != null) '@extra': extra,
       };

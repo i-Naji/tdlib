@@ -28,7 +28,7 @@ final class GetCallbackQueryMessage extends TdFunction<Message> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'message_id': messageId,
-        'callback_query_id': callbackQueryId,
+        'callback_query_id': callbackQueryId.toString(),
         if (extra != null) '@extra': extra,
       };
 

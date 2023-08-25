@@ -18,7 +18,7 @@ final class ViewTrendingStickerSets extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'sticker_set_ids': stickerSetIds,
+        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
         if (extra != null) '@extra': extra,
       };
 

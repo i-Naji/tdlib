@@ -10,16 +10,12 @@ sealed class PageBlockVerticalAlignment extends TdObject {
   const PageBlockVerticalAlignment();
 
   /// Parses whichever [PageBlockVerticalAlignment] subtype the JSON describes.
-  factory PageBlockVerticalAlignment.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PageBlockVerticalAlignmentTop.CONSTRUCTOR =>
-          PageBlockVerticalAlignmentTop.fromJson(json),
-        PageBlockVerticalAlignmentMiddle.CONSTRUCTOR =>
-          PageBlockVerticalAlignmentMiddle.fromJson(json),
-        PageBlockVerticalAlignmentBottom.CONSTRUCTOR =>
-          PageBlockVerticalAlignmentBottom.fromJson(json),
-        _ => UndecodedPageBlockVerticalAlignment(json),
-      };
+  factory PageBlockVerticalAlignment.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PageBlockVerticalAlignment
+        ? object
+        : UndecodedPageBlockVerticalAlignment(json);
+  }
 
   /// Returns a copy of this object.
   PageBlockVerticalAlignment copyWith();

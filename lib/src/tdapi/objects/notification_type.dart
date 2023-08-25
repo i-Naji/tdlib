@@ -10,18 +10,12 @@ sealed class NotificationType extends TdObject {
   const NotificationType();
 
   /// Parses whichever [NotificationType] subtype the JSON describes.
-  factory NotificationType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        NotificationTypeNewMessage.CONSTRUCTOR =>
-          NotificationTypeNewMessage.fromJson(json),
-        NotificationTypeNewSecretChat.CONSTRUCTOR =>
-          NotificationTypeNewSecretChat.fromJson(json),
-        NotificationTypeNewCall.CONSTRUCTOR =>
-          NotificationTypeNewCall.fromJson(json),
-        NotificationTypeNewPushMessage.CONSTRUCTOR =>
-          NotificationTypeNewPushMessage.fromJson(json),
-        _ => UndecodedNotificationType(json),
-      };
+  factory NotificationType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is NotificationType
+        ? object
+        : UndecodedNotificationType(json);
+  }
 
   /// Returns a copy of this object.
   NotificationType copyWith();

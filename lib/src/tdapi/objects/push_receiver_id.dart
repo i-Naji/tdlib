@@ -33,7 +33,7 @@ final class PushReceiverId extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

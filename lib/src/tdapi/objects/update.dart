@@ -10,190 +10,10 @@ sealed class Update extends TdObject {
   const Update();
 
   /// Parses whichever [Update] subtype the JSON describes.
-  factory Update.fromJson(Map<String, dynamic> json) => switch (json['@type']) {
-        UpdateAuthorizationState.CONSTRUCTOR =>
-          UpdateAuthorizationState.fromJson(json),
-        UpdateNewMessage.CONSTRUCTOR => UpdateNewMessage.fromJson(json),
-        UpdateMessageSendAcknowledged.CONSTRUCTOR =>
-          UpdateMessageSendAcknowledged.fromJson(json),
-        UpdateMessageSendSucceeded.CONSTRUCTOR =>
-          UpdateMessageSendSucceeded.fromJson(json),
-        UpdateMessageSendFailed.CONSTRUCTOR =>
-          UpdateMessageSendFailed.fromJson(json),
-        UpdateMessageContent.CONSTRUCTOR => UpdateMessageContent.fromJson(json),
-        UpdateMessageEdited.CONSTRUCTOR => UpdateMessageEdited.fromJson(json),
-        UpdateMessageIsPinned.CONSTRUCTOR =>
-          UpdateMessageIsPinned.fromJson(json),
-        UpdateMessageInteractionInfo.CONSTRUCTOR =>
-          UpdateMessageInteractionInfo.fromJson(json),
-        UpdateMessageContentOpened.CONSTRUCTOR =>
-          UpdateMessageContentOpened.fromJson(json),
-        UpdateMessageMentionRead.CONSTRUCTOR =>
-          UpdateMessageMentionRead.fromJson(json),
-        UpdateMessageUnreadReactions.CONSTRUCTOR =>
-          UpdateMessageUnreadReactions.fromJson(json),
-        UpdateMessageLiveLocationViewed.CONSTRUCTOR =>
-          UpdateMessageLiveLocationViewed.fromJson(json),
-        UpdateNewChat.CONSTRUCTOR => UpdateNewChat.fromJson(json),
-        UpdateChatTitle.CONSTRUCTOR => UpdateChatTitle.fromJson(json),
-        UpdateChatPhoto.CONSTRUCTOR => UpdateChatPhoto.fromJson(json),
-        UpdateChatPermissions.CONSTRUCTOR =>
-          UpdateChatPermissions.fromJson(json),
-        UpdateChatLastMessage.CONSTRUCTOR =>
-          UpdateChatLastMessage.fromJson(json),
-        UpdateChatPosition.CONSTRUCTOR => UpdateChatPosition.fromJson(json),
-        UpdateChatReadInbox.CONSTRUCTOR => UpdateChatReadInbox.fromJson(json),
-        UpdateChatReadOutbox.CONSTRUCTOR => UpdateChatReadOutbox.fromJson(json),
-        UpdateChatActionBar.CONSTRUCTOR => UpdateChatActionBar.fromJson(json),
-        UpdateChatAvailableReactions.CONSTRUCTOR =>
-          UpdateChatAvailableReactions.fromJson(json),
-        UpdateChatDraftMessage.CONSTRUCTOR =>
-          UpdateChatDraftMessage.fromJson(json),
-        UpdateChatMessageSender.CONSTRUCTOR =>
-          UpdateChatMessageSender.fromJson(json),
-        UpdateChatMessageAutoDeleteTime.CONSTRUCTOR =>
-          UpdateChatMessageAutoDeleteTime.fromJson(json),
-        UpdateChatNotificationSettings.CONSTRUCTOR =>
-          UpdateChatNotificationSettings.fromJson(json),
-        UpdateChatPendingJoinRequests.CONSTRUCTOR =>
-          UpdateChatPendingJoinRequests.fromJson(json),
-        UpdateChatReplyMarkup.CONSTRUCTOR =>
-          UpdateChatReplyMarkup.fromJson(json),
-        UpdateChatBackground.CONSTRUCTOR => UpdateChatBackground.fromJson(json),
-        UpdateChatTheme.CONSTRUCTOR => UpdateChatTheme.fromJson(json),
-        UpdateChatUnreadMentionCount.CONSTRUCTOR =>
-          UpdateChatUnreadMentionCount.fromJson(json),
-        UpdateChatUnreadReactionCount.CONSTRUCTOR =>
-          UpdateChatUnreadReactionCount.fromJson(json),
-        UpdateChatVideoChat.CONSTRUCTOR => UpdateChatVideoChat.fromJson(json),
-        UpdateChatDefaultDisableNotification.CONSTRUCTOR =>
-          UpdateChatDefaultDisableNotification.fromJson(json),
-        UpdateChatHasProtectedContent.CONSTRUCTOR =>
-          UpdateChatHasProtectedContent.fromJson(json),
-        UpdateChatIsTranslatable.CONSTRUCTOR =>
-          UpdateChatIsTranslatable.fromJson(json),
-        UpdateChatIsMarkedAsUnread.CONSTRUCTOR =>
-          UpdateChatIsMarkedAsUnread.fromJson(json),
-        UpdateChatIsBlocked.CONSTRUCTOR => UpdateChatIsBlocked.fromJson(json),
-        UpdateChatHasScheduledMessages.CONSTRUCTOR =>
-          UpdateChatHasScheduledMessages.fromJson(json),
-        UpdateChatFolders.CONSTRUCTOR => UpdateChatFolders.fromJson(json),
-        UpdateChatOnlineMemberCount.CONSTRUCTOR =>
-          UpdateChatOnlineMemberCount.fromJson(json),
-        UpdateForumTopicInfo.CONSTRUCTOR => UpdateForumTopicInfo.fromJson(json),
-        UpdateScopeNotificationSettings.CONSTRUCTOR =>
-          UpdateScopeNotificationSettings.fromJson(json),
-        UpdateNotification.CONSTRUCTOR => UpdateNotification.fromJson(json),
-        UpdateNotificationGroup.CONSTRUCTOR =>
-          UpdateNotificationGroup.fromJson(json),
-        UpdateActiveNotifications.CONSTRUCTOR =>
-          UpdateActiveNotifications.fromJson(json),
-        UpdateHavePendingNotifications.CONSTRUCTOR =>
-          UpdateHavePendingNotifications.fromJson(json),
-        UpdateDeleteMessages.CONSTRUCTOR => UpdateDeleteMessages.fromJson(json),
-        UpdateChatAction.CONSTRUCTOR => UpdateChatAction.fromJson(json),
-        UpdateUserStatus.CONSTRUCTOR => UpdateUserStatus.fromJson(json),
-        UpdateUser.CONSTRUCTOR => UpdateUser.fromJson(json),
-        UpdateBasicGroup.CONSTRUCTOR => UpdateBasicGroup.fromJson(json),
-        UpdateSupergroup.CONSTRUCTOR => UpdateSupergroup.fromJson(json),
-        UpdateSecretChat.CONSTRUCTOR => UpdateSecretChat.fromJson(json),
-        UpdateUserFullInfo.CONSTRUCTOR => UpdateUserFullInfo.fromJson(json),
-        UpdateBasicGroupFullInfo.CONSTRUCTOR =>
-          UpdateBasicGroupFullInfo.fromJson(json),
-        UpdateSupergroupFullInfo.CONSTRUCTOR =>
-          UpdateSupergroupFullInfo.fromJson(json),
-        UpdateServiceNotification.CONSTRUCTOR =>
-          UpdateServiceNotification.fromJson(json),
-        UpdateFile.CONSTRUCTOR => UpdateFile.fromJson(json),
-        UpdateFileGenerationStart.CONSTRUCTOR =>
-          UpdateFileGenerationStart.fromJson(json),
-        UpdateFileGenerationStop.CONSTRUCTOR =>
-          UpdateFileGenerationStop.fromJson(json),
-        UpdateFileDownloads.CONSTRUCTOR => UpdateFileDownloads.fromJson(json),
-        UpdateFileAddedToDownloads.CONSTRUCTOR =>
-          UpdateFileAddedToDownloads.fromJson(json),
-        UpdateFileDownload.CONSTRUCTOR => UpdateFileDownload.fromJson(json),
-        UpdateFileRemovedFromDownloads.CONSTRUCTOR =>
-          UpdateFileRemovedFromDownloads.fromJson(json),
-        UpdateCall.CONSTRUCTOR => UpdateCall.fromJson(json),
-        UpdateGroupCall.CONSTRUCTOR => UpdateGroupCall.fromJson(json),
-        UpdateGroupCallParticipant.CONSTRUCTOR =>
-          UpdateGroupCallParticipant.fromJson(json),
-        UpdateNewCallSignalingData.CONSTRUCTOR =>
-          UpdateNewCallSignalingData.fromJson(json),
-        UpdateUserPrivacySettingRules.CONSTRUCTOR =>
-          UpdateUserPrivacySettingRules.fromJson(json),
-        UpdateUnreadMessageCount.CONSTRUCTOR =>
-          UpdateUnreadMessageCount.fromJson(json),
-        UpdateUnreadChatCount.CONSTRUCTOR =>
-          UpdateUnreadChatCount.fromJson(json),
-        UpdateStory.CONSTRUCTOR => UpdateStory.fromJson(json),
-        UpdateStoryDeleted.CONSTRUCTOR => UpdateStoryDeleted.fromJson(json),
-        UpdateChatActiveStories.CONSTRUCTOR =>
-          UpdateChatActiveStories.fromJson(json),
-        UpdateStoryListChatCount.CONSTRUCTOR =>
-          UpdateStoryListChatCount.fromJson(json),
-        UpdateOption.CONSTRUCTOR => UpdateOption.fromJson(json),
-        UpdateStickerSet.CONSTRUCTOR => UpdateStickerSet.fromJson(json),
-        UpdateInstalledStickerSets.CONSTRUCTOR =>
-          UpdateInstalledStickerSets.fromJson(json),
-        UpdateTrendingStickerSets.CONSTRUCTOR =>
-          UpdateTrendingStickerSets.fromJson(json),
-        UpdateRecentStickers.CONSTRUCTOR => UpdateRecentStickers.fromJson(json),
-        UpdateFavoriteStickers.CONSTRUCTOR =>
-          UpdateFavoriteStickers.fromJson(json),
-        UpdateSavedAnimations.CONSTRUCTOR =>
-          UpdateSavedAnimations.fromJson(json),
-        UpdateSavedNotificationSounds.CONSTRUCTOR =>
-          UpdateSavedNotificationSounds.fromJson(json),
-        UpdateSelectedBackground.CONSTRUCTOR =>
-          UpdateSelectedBackground.fromJson(json),
-        UpdateChatThemes.CONSTRUCTOR => UpdateChatThemes.fromJson(json),
-        UpdateLanguagePackStrings.CONSTRUCTOR =>
-          UpdateLanguagePackStrings.fromJson(json),
-        UpdateConnectionState.CONSTRUCTOR =>
-          UpdateConnectionState.fromJson(json),
-        UpdateTermsOfService.CONSTRUCTOR => UpdateTermsOfService.fromJson(json),
-        UpdateUsersNearby.CONSTRUCTOR => UpdateUsersNearby.fromJson(json),
-        UpdateAttachmentMenuBots.CONSTRUCTOR =>
-          UpdateAttachmentMenuBots.fromJson(json),
-        UpdateWebAppMessageSent.CONSTRUCTOR =>
-          UpdateWebAppMessageSent.fromJson(json),
-        UpdateActiveEmojiReactions.CONSTRUCTOR =>
-          UpdateActiveEmojiReactions.fromJson(json),
-        UpdateDefaultReactionType.CONSTRUCTOR =>
-          UpdateDefaultReactionType.fromJson(json),
-        UpdateDiceEmojis.CONSTRUCTOR => UpdateDiceEmojis.fromJson(json),
-        UpdateAnimatedEmojiMessageClicked.CONSTRUCTOR =>
-          UpdateAnimatedEmojiMessageClicked.fromJson(json),
-        UpdateAnimationSearchParameters.CONSTRUCTOR =>
-          UpdateAnimationSearchParameters.fromJson(json),
-        UpdateSuggestedActions.CONSTRUCTOR =>
-          UpdateSuggestedActions.fromJson(json),
-        UpdateAddChatMembersPrivacyForbidden.CONSTRUCTOR =>
-          UpdateAddChatMembersPrivacyForbidden.fromJson(json),
-        UpdateAutosaveSettings.CONSTRUCTOR =>
-          UpdateAutosaveSettings.fromJson(json),
-        UpdateNewInlineQuery.CONSTRUCTOR => UpdateNewInlineQuery.fromJson(json),
-        UpdateNewChosenInlineResult.CONSTRUCTOR =>
-          UpdateNewChosenInlineResult.fromJson(json),
-        UpdateNewCallbackQuery.CONSTRUCTOR =>
-          UpdateNewCallbackQuery.fromJson(json),
-        UpdateNewInlineCallbackQuery.CONSTRUCTOR =>
-          UpdateNewInlineCallbackQuery.fromJson(json),
-        UpdateNewShippingQuery.CONSTRUCTOR =>
-          UpdateNewShippingQuery.fromJson(json),
-        UpdateNewPreCheckoutQuery.CONSTRUCTOR =>
-          UpdateNewPreCheckoutQuery.fromJson(json),
-        UpdateNewCustomEvent.CONSTRUCTOR => UpdateNewCustomEvent.fromJson(json),
-        UpdateNewCustomQuery.CONSTRUCTOR => UpdateNewCustomQuery.fromJson(json),
-        UpdatePoll.CONSTRUCTOR => UpdatePoll.fromJson(json),
-        UpdatePollAnswer.CONSTRUCTOR => UpdatePollAnswer.fromJson(json),
-        UpdateChatMember.CONSTRUCTOR => UpdateChatMember.fromJson(json),
-        UpdateNewChatJoinRequest.CONSTRUCTOR =>
-          UpdateNewChatJoinRequest.fromJson(json),
-        _ => UndecodedUpdate(json),
-      };
+  factory Update.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is Update ? object : UndecodedUpdate(json);
+  }
 
   /// Returns a copy of this object.
   Update copyWith();
@@ -3182,7 +3002,7 @@ final class UpdateNotificationGroup extends Update {
         'type': type.toJson(),
         'chat_id': chatId,
         'notification_settings_chat_id': notificationSettingsChatId,
-        'notification_sound_id': notificationSoundId,
+        'notification_sound_id': notificationSoundId.toString(),
         'total_count': totalCount,
         'added_notifications': [for (final e in addedNotifications) e.toJson()],
         'removed_notification_ids': removedNotificationIds,
@@ -4127,7 +3947,7 @@ final class UpdateFileGenerationStart extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
         'original_path': originalPath,
         'destination_path': destinationPath,
         'conversion': conversion,
@@ -4190,7 +4010,7 @@ final class UpdateFileGenerationStop extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.
@@ -5329,7 +5149,7 @@ final class UpdateInstalledStickerSets extends Update {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': stickerSetIds,
+        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
       };
 
   /// Returns a copy with the given fields replaced.
@@ -5619,7 +5439,9 @@ final class UpdateSavedNotificationSounds extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'notification_sound_ids': notificationSoundIds,
+        'notification_sound_ids': [
+          for (final e in notificationSoundIds) e.toString()
+        ],
       };
 
   /// Returns a copy with the given fields replaced.
@@ -6088,7 +5910,7 @@ final class UpdateWebAppMessageSent extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'web_app_launch_id': webAppLaunchId,
+        'web_app_launch_id': webAppLaunchId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.
@@ -6652,7 +6474,7 @@ final class UpdateNewInlineQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'user_location': userLocation?.toJson(),
         'chat_type': chatType?.toJson(),
@@ -6832,11 +6654,11 @@ final class UpdateNewCallbackQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'chat_id': chatId,
         'message_id': messageId,
-        'chat_instance': chatInstance,
+        'chat_instance': chatInstance.toString(),
         'payload': payload.toJson(),
       };
 
@@ -6921,10 +6743,10 @@ final class UpdateNewInlineCallbackQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'inline_message_id': inlineMessageId,
-        'chat_instance': chatInstance,
+        'chat_instance': chatInstance.toString(),
         'payload': payload.toJson(),
       };
 
@@ -7003,7 +6825,7 @@ final class UpdateNewShippingQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'invoice_payload': invoicePayload,
         'shipping_address': shippingAddress.toJson(),
@@ -7096,7 +6918,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'sender_user_id': senderUserId,
         'currency': currency,
         'total_amount': totalAmount,
@@ -7232,7 +7054,7 @@ final class UpdateNewCustomQuery extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'data': data,
         'timeout': timeout,
       };
@@ -7355,7 +7177,7 @@ final class UpdatePollAnswer extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'poll_id': pollId,
+        'poll_id': pollId.toString(),
         'voter_id': voterId.toJson(),
         'option_ids': optionIds,
       };

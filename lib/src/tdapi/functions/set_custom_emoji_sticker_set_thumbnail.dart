@@ -23,7 +23,7 @@ final class SetCustomEmojiStickerSetThumbnail extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'name': name,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         if (extra != null) '@extra': extra,
       };
 

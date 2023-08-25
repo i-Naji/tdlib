@@ -26,7 +26,7 @@ final class AnswerShippingQuery extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'shipping_query_id': shippingQueryId,
+        'shipping_query_id': shippingQueryId.toString(),
         'shipping_options': [for (final e in shippingOptions) e.toJson()],
         'error_message': errorMessage,
         if (extra != null) '@extra': extra,

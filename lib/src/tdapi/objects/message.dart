@@ -260,7 +260,7 @@ final class Message extends TdObject {
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
         'author_signature': authorSignature,
-        'media_album_id': mediaAlbumId,
+        'media_album_id': mediaAlbumId.toString(),
         'restriction_reason': restrictionReason,
         'content': content.toJson(),
         'reply_markup': replyMarkup?.toJson(),

@@ -10,28 +10,10 @@ sealed class MessageSource extends TdObject {
   const MessageSource();
 
   /// Parses whichever [MessageSource] subtype the JSON describes.
-  factory MessageSource.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageSourceChatHistory.CONSTRUCTOR =>
-          MessageSourceChatHistory.fromJson(json),
-        MessageSourceMessageThreadHistory.CONSTRUCTOR =>
-          MessageSourceMessageThreadHistory.fromJson(json),
-        MessageSourceForumTopicHistory.CONSTRUCTOR =>
-          MessageSourceForumTopicHistory.fromJson(json),
-        MessageSourceHistoryPreview.CONSTRUCTOR =>
-          MessageSourceHistoryPreview.fromJson(json),
-        MessageSourceChatList.CONSTRUCTOR =>
-          MessageSourceChatList.fromJson(json),
-        MessageSourceSearch.CONSTRUCTOR => MessageSourceSearch.fromJson(json),
-        MessageSourceChatEventLog.CONSTRUCTOR =>
-          MessageSourceChatEventLog.fromJson(json),
-        MessageSourceNotification.CONSTRUCTOR =>
-          MessageSourceNotification.fromJson(json),
-        MessageSourceScreenshot.CONSTRUCTOR =>
-          MessageSourceScreenshot.fromJson(json),
-        MessageSourceOther.CONSTRUCTOR => MessageSourceOther.fromJson(json),
-        _ => UndecodedMessageSource(json),
-      };
+  factory MessageSource.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageSource ? object : UndecodedMessageSource(json);
+  }
 
   /// Returns a copy of this object.
   MessageSource copyWith();

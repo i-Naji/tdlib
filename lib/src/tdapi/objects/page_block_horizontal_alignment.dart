@@ -10,16 +10,12 @@ sealed class PageBlockHorizontalAlignment extends TdObject {
   const PageBlockHorizontalAlignment();
 
   /// Parses whichever [PageBlockHorizontalAlignment] subtype the JSON describes.
-  factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PageBlockHorizontalAlignmentLeft.CONSTRUCTOR =>
-          PageBlockHorizontalAlignmentLeft.fromJson(json),
-        PageBlockHorizontalAlignmentCenter.CONSTRUCTOR =>
-          PageBlockHorizontalAlignmentCenter.fromJson(json),
-        PageBlockHorizontalAlignmentRight.CONSTRUCTOR =>
-          PageBlockHorizontalAlignmentRight.fromJson(json),
-        _ => UndecodedPageBlockHorizontalAlignment(json),
-      };
+  factory PageBlockHorizontalAlignment.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PageBlockHorizontalAlignment
+        ? object
+        : UndecodedPageBlockHorizontalAlignment(json);
+  }
 
   /// Returns a copy of this object.
   PageBlockHorizontalAlignment copyWith();

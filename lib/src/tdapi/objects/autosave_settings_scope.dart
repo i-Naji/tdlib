@@ -10,18 +10,12 @@ sealed class AutosaveSettingsScope extends TdObject {
   const AutosaveSettingsScope();
 
   /// Parses whichever [AutosaveSettingsScope] subtype the JSON describes.
-  factory AutosaveSettingsScope.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        AutosaveSettingsScopePrivateChats.CONSTRUCTOR =>
-          AutosaveSettingsScopePrivateChats.fromJson(json),
-        AutosaveSettingsScopeGroupChats.CONSTRUCTOR =>
-          AutosaveSettingsScopeGroupChats.fromJson(json),
-        AutosaveSettingsScopeChannelChats.CONSTRUCTOR =>
-          AutosaveSettingsScopeChannelChats.fromJson(json),
-        AutosaveSettingsScopeChat.CONSTRUCTOR =>
-          AutosaveSettingsScopeChat.fromJson(json),
-        _ => UndecodedAutosaveSettingsScope(json),
-      };
+  factory AutosaveSettingsScope.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is AutosaveSettingsScope
+        ? object
+        : UndecodedAutosaveSettingsScope(json);
+  }
 
   /// Returns a copy of this object.
   AutosaveSettingsScope copyWith();

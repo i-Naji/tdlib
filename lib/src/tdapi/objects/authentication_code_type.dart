@@ -10,26 +10,12 @@ sealed class AuthenticationCodeType extends TdObject {
   const AuthenticationCodeType();
 
   /// Parses whichever [AuthenticationCodeType] subtype the JSON describes.
-  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        AuthenticationCodeTypeTelegramMessage.CONSTRUCTOR =>
-          AuthenticationCodeTypeTelegramMessage.fromJson(json),
-        AuthenticationCodeTypeSms.CONSTRUCTOR =>
-          AuthenticationCodeTypeSms.fromJson(json),
-        AuthenticationCodeTypeCall.CONSTRUCTOR =>
-          AuthenticationCodeTypeCall.fromJson(json),
-        AuthenticationCodeTypeFlashCall.CONSTRUCTOR =>
-          AuthenticationCodeTypeFlashCall.fromJson(json),
-        AuthenticationCodeTypeMissedCall.CONSTRUCTOR =>
-          AuthenticationCodeTypeMissedCall.fromJson(json),
-        AuthenticationCodeTypeFragment.CONSTRUCTOR =>
-          AuthenticationCodeTypeFragment.fromJson(json),
-        AuthenticationCodeTypeFirebaseAndroid.CONSTRUCTOR =>
-          AuthenticationCodeTypeFirebaseAndroid.fromJson(json),
-        AuthenticationCodeTypeFirebaseIos.CONSTRUCTOR =>
-          AuthenticationCodeTypeFirebaseIos.fromJson(json),
-        _ => UndecodedAuthenticationCodeType(json),
-      };
+  factory AuthenticationCodeType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is AuthenticationCodeType
+        ? object
+        : UndecodedAuthenticationCodeType(json);
+  }
 
   /// Returns a copy of this object.
   AuthenticationCodeType copyWith();

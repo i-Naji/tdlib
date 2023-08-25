@@ -10,34 +10,12 @@ sealed class InlineQueryResult extends TdObject {
   const InlineQueryResult();
 
   /// Parses whichever [InlineQueryResult] subtype the JSON describes.
-  factory InlineQueryResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InlineQueryResultArticle.CONSTRUCTOR =>
-          InlineQueryResultArticle.fromJson(json),
-        InlineQueryResultContact.CONSTRUCTOR =>
-          InlineQueryResultContact.fromJson(json),
-        InlineQueryResultLocation.CONSTRUCTOR =>
-          InlineQueryResultLocation.fromJson(json),
-        InlineQueryResultVenue.CONSTRUCTOR =>
-          InlineQueryResultVenue.fromJson(json),
-        InlineQueryResultGame.CONSTRUCTOR =>
-          InlineQueryResultGame.fromJson(json),
-        InlineQueryResultAnimation.CONSTRUCTOR =>
-          InlineQueryResultAnimation.fromJson(json),
-        InlineQueryResultAudio.CONSTRUCTOR =>
-          InlineQueryResultAudio.fromJson(json),
-        InlineQueryResultDocument.CONSTRUCTOR =>
-          InlineQueryResultDocument.fromJson(json),
-        InlineQueryResultPhoto.CONSTRUCTOR =>
-          InlineQueryResultPhoto.fromJson(json),
-        InlineQueryResultSticker.CONSTRUCTOR =>
-          InlineQueryResultSticker.fromJson(json),
-        InlineQueryResultVideo.CONSTRUCTOR =>
-          InlineQueryResultVideo.fromJson(json),
-        InlineQueryResultVoiceNote.CONSTRUCTOR =>
-          InlineQueryResultVoiceNote.fromJson(json),
-        _ => UndecodedInlineQueryResult(json),
-      };
+  factory InlineQueryResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InlineQueryResult
+        ? object
+        : UndecodedInlineQueryResult(json);
+  }
 
   /// Returns a copy of this object.
   InlineQueryResult copyWith();

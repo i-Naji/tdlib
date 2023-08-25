@@ -10,12 +10,10 @@ sealed class InputInvoice extends TdObject {
   const InputInvoice();
 
   /// Parses whichever [InputInvoice] subtype the JSON describes.
-  factory InputInvoice.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputInvoiceMessage.CONSTRUCTOR => InputInvoiceMessage.fromJson(json),
-        InputInvoiceName.CONSTRUCTOR => InputInvoiceName.fromJson(json),
-        _ => UndecodedInputInvoice(json),
-      };
+  factory InputInvoice.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputInvoice ? object : UndecodedInputInvoice(json);
+  }
 
   /// Returns a copy of this object.
   InputInvoice copyWith();

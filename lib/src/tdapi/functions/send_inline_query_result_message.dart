@@ -46,7 +46,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
         'message_thread_id': messageThreadId,
         'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
-        'query_id': queryId,
+        'query_id': queryId.toString(),
         'result_id': resultId,
         'hide_via_bot': hideViaBot,
         if (extra != null) '@extra': extra,

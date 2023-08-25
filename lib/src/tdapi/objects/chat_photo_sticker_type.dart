@@ -10,14 +10,12 @@ sealed class ChatPhotoStickerType extends TdObject {
   const ChatPhotoStickerType();
 
   /// Parses whichever [ChatPhotoStickerType] subtype the JSON describes.
-  factory ChatPhotoStickerType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatPhotoStickerTypeRegularOrMask.CONSTRUCTOR =>
-          ChatPhotoStickerTypeRegularOrMask.fromJson(json),
-        ChatPhotoStickerTypeCustomEmoji.CONSTRUCTOR =>
-          ChatPhotoStickerTypeCustomEmoji.fromJson(json),
-        _ => UndecodedChatPhotoStickerType(json),
-      };
+  factory ChatPhotoStickerType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatPhotoStickerType
+        ? object
+        : UndecodedChatPhotoStickerType(json);
+  }
 
   /// Returns a copy of this object.
   ChatPhotoStickerType copyWith();
@@ -71,8 +69,8 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sticker_set_id': stickerSetId,
-        'sticker_id': stickerId,
+        'sticker_set_id': stickerSetId.toString(),
+        'sticker_id': stickerId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.
@@ -112,7 +110,7 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

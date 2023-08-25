@@ -18,7 +18,7 @@ final class DeleteProfilePhoto extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'profile_photo_id': profilePhotoId,
+        'profile_photo_id': profilePhotoId.toString(),
         if (extra != null) '@extra': extra,
       };
 

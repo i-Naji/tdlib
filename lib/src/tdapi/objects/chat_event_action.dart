@@ -10,96 +10,10 @@ sealed class ChatEventAction extends TdObject {
   const ChatEventAction();
 
   /// Parses whichever [ChatEventAction] subtype the JSON describes.
-  factory ChatEventAction.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatEventMessageEdited.CONSTRUCTOR =>
-          ChatEventMessageEdited.fromJson(json),
-        ChatEventMessageDeleted.CONSTRUCTOR =>
-          ChatEventMessageDeleted.fromJson(json),
-        ChatEventMessagePinned.CONSTRUCTOR =>
-          ChatEventMessagePinned.fromJson(json),
-        ChatEventMessageUnpinned.CONSTRUCTOR =>
-          ChatEventMessageUnpinned.fromJson(json),
-        ChatEventPollStopped.CONSTRUCTOR => ChatEventPollStopped.fromJson(json),
-        ChatEventMemberJoined.CONSTRUCTOR =>
-          ChatEventMemberJoined.fromJson(json),
-        ChatEventMemberJoinedByInviteLink.CONSTRUCTOR =>
-          ChatEventMemberJoinedByInviteLink.fromJson(json),
-        ChatEventMemberJoinedByRequest.CONSTRUCTOR =>
-          ChatEventMemberJoinedByRequest.fromJson(json),
-        ChatEventMemberInvited.CONSTRUCTOR =>
-          ChatEventMemberInvited.fromJson(json),
-        ChatEventMemberLeft.CONSTRUCTOR => ChatEventMemberLeft.fromJson(json),
-        ChatEventMemberPromoted.CONSTRUCTOR =>
-          ChatEventMemberPromoted.fromJson(json),
-        ChatEventMemberRestricted.CONSTRUCTOR =>
-          ChatEventMemberRestricted.fromJson(json),
-        ChatEventAvailableReactionsChanged.CONSTRUCTOR =>
-          ChatEventAvailableReactionsChanged.fromJson(json),
-        ChatEventDescriptionChanged.CONSTRUCTOR =>
-          ChatEventDescriptionChanged.fromJson(json),
-        ChatEventLinkedChatChanged.CONSTRUCTOR =>
-          ChatEventLinkedChatChanged.fromJson(json),
-        ChatEventLocationChanged.CONSTRUCTOR =>
-          ChatEventLocationChanged.fromJson(json),
-        ChatEventMessageAutoDeleteTimeChanged.CONSTRUCTOR =>
-          ChatEventMessageAutoDeleteTimeChanged.fromJson(json),
-        ChatEventPermissionsChanged.CONSTRUCTOR =>
-          ChatEventPermissionsChanged.fromJson(json),
-        ChatEventPhotoChanged.CONSTRUCTOR =>
-          ChatEventPhotoChanged.fromJson(json),
-        ChatEventSlowModeDelayChanged.CONSTRUCTOR =>
-          ChatEventSlowModeDelayChanged.fromJson(json),
-        ChatEventStickerSetChanged.CONSTRUCTOR =>
-          ChatEventStickerSetChanged.fromJson(json),
-        ChatEventTitleChanged.CONSTRUCTOR =>
-          ChatEventTitleChanged.fromJson(json),
-        ChatEventUsernameChanged.CONSTRUCTOR =>
-          ChatEventUsernameChanged.fromJson(json),
-        ChatEventActiveUsernamesChanged.CONSTRUCTOR =>
-          ChatEventActiveUsernamesChanged.fromJson(json),
-        ChatEventHasProtectedContentToggled.CONSTRUCTOR =>
-          ChatEventHasProtectedContentToggled.fromJson(json),
-        ChatEventInvitesToggled.CONSTRUCTOR =>
-          ChatEventInvitesToggled.fromJson(json),
-        ChatEventIsAllHistoryAvailableToggled.CONSTRUCTOR =>
-          ChatEventIsAllHistoryAvailableToggled.fromJson(json),
-        ChatEventHasAggressiveAntiSpamEnabledToggled.CONSTRUCTOR =>
-          ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson(json),
-        ChatEventSignMessagesToggled.CONSTRUCTOR =>
-          ChatEventSignMessagesToggled.fromJson(json),
-        ChatEventInviteLinkEdited.CONSTRUCTOR =>
-          ChatEventInviteLinkEdited.fromJson(json),
-        ChatEventInviteLinkRevoked.CONSTRUCTOR =>
-          ChatEventInviteLinkRevoked.fromJson(json),
-        ChatEventInviteLinkDeleted.CONSTRUCTOR =>
-          ChatEventInviteLinkDeleted.fromJson(json),
-        ChatEventVideoChatCreated.CONSTRUCTOR =>
-          ChatEventVideoChatCreated.fromJson(json),
-        ChatEventVideoChatEnded.CONSTRUCTOR =>
-          ChatEventVideoChatEnded.fromJson(json),
-        ChatEventVideoChatMuteNewParticipantsToggled.CONSTRUCTOR =>
-          ChatEventVideoChatMuteNewParticipantsToggled.fromJson(json),
-        ChatEventVideoChatParticipantIsMutedToggled.CONSTRUCTOR =>
-          ChatEventVideoChatParticipantIsMutedToggled.fromJson(json),
-        ChatEventVideoChatParticipantVolumeLevelChanged.CONSTRUCTOR =>
-          ChatEventVideoChatParticipantVolumeLevelChanged.fromJson(json),
-        ChatEventIsForumToggled.CONSTRUCTOR =>
-          ChatEventIsForumToggled.fromJson(json),
-        ChatEventForumTopicCreated.CONSTRUCTOR =>
-          ChatEventForumTopicCreated.fromJson(json),
-        ChatEventForumTopicEdited.CONSTRUCTOR =>
-          ChatEventForumTopicEdited.fromJson(json),
-        ChatEventForumTopicToggleIsClosed.CONSTRUCTOR =>
-          ChatEventForumTopicToggleIsClosed.fromJson(json),
-        ChatEventForumTopicToggleIsHidden.CONSTRUCTOR =>
-          ChatEventForumTopicToggleIsHidden.fromJson(json),
-        ChatEventForumTopicDeleted.CONSTRUCTOR =>
-          ChatEventForumTopicDeleted.fromJson(json),
-        ChatEventForumTopicPinned.CONSTRUCTOR =>
-          ChatEventForumTopicPinned.fromJson(json),
-        _ => UndecodedChatEventAction(json),
-      };
+  factory ChatEventAction.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatEventAction ? object : UndecodedChatEventAction(json);
+  }
 
   /// Returns a copy of this object.
   ChatEventAction copyWith();
@@ -1038,8 +952,8 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'old_sticker_set_id': oldStickerSetId,
-        'new_sticker_set_id': newStickerSetId,
+        'old_sticker_set_id': oldStickerSetId.toString(),
+        'new_sticker_set_id': newStickerSetId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

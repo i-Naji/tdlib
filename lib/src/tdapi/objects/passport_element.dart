@@ -10,36 +10,10 @@ sealed class PassportElement extends TdObject {
   const PassportElement();
 
   /// Parses whichever [PassportElement] subtype the JSON describes.
-  factory PassportElement.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PassportElementPersonalDetails.CONSTRUCTOR =>
-          PassportElementPersonalDetails.fromJson(json),
-        PassportElementPassport.CONSTRUCTOR =>
-          PassportElementPassport.fromJson(json),
-        PassportElementDriverLicense.CONSTRUCTOR =>
-          PassportElementDriverLicense.fromJson(json),
-        PassportElementIdentityCard.CONSTRUCTOR =>
-          PassportElementIdentityCard.fromJson(json),
-        PassportElementInternalPassport.CONSTRUCTOR =>
-          PassportElementInternalPassport.fromJson(json),
-        PassportElementAddress.CONSTRUCTOR =>
-          PassportElementAddress.fromJson(json),
-        PassportElementUtilityBill.CONSTRUCTOR =>
-          PassportElementUtilityBill.fromJson(json),
-        PassportElementBankStatement.CONSTRUCTOR =>
-          PassportElementBankStatement.fromJson(json),
-        PassportElementRentalAgreement.CONSTRUCTOR =>
-          PassportElementRentalAgreement.fromJson(json),
-        PassportElementPassportRegistration.CONSTRUCTOR =>
-          PassportElementPassportRegistration.fromJson(json),
-        PassportElementTemporaryRegistration.CONSTRUCTOR =>
-          PassportElementTemporaryRegistration.fromJson(json),
-        PassportElementPhoneNumber.CONSTRUCTOR =>
-          PassportElementPhoneNumber.fromJson(json),
-        PassportElementEmailAddress.CONSTRUCTOR =>
-          PassportElementEmailAddress.fromJson(json),
-        _ => UndecodedPassportElement(json),
-      };
+  factory PassportElement.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PassportElement ? object : UndecodedPassportElement(json);
+  }
 
   /// Returns a copy of this object.
   PassportElement copyWith();

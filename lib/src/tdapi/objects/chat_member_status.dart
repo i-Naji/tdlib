@@ -10,21 +10,12 @@ sealed class ChatMemberStatus extends TdObject {
   const ChatMemberStatus();
 
   /// Parses whichever [ChatMemberStatus] subtype the JSON describes.
-  factory ChatMemberStatus.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatMemberStatusCreator.CONSTRUCTOR =>
-          ChatMemberStatusCreator.fromJson(json),
-        ChatMemberStatusAdministrator.CONSTRUCTOR =>
-          ChatMemberStatusAdministrator.fromJson(json),
-        ChatMemberStatusMember.CONSTRUCTOR =>
-          ChatMemberStatusMember.fromJson(json),
-        ChatMemberStatusRestricted.CONSTRUCTOR =>
-          ChatMemberStatusRestricted.fromJson(json),
-        ChatMemberStatusLeft.CONSTRUCTOR => ChatMemberStatusLeft.fromJson(json),
-        ChatMemberStatusBanned.CONSTRUCTOR =>
-          ChatMemberStatusBanned.fromJson(json),
-        _ => UndecodedChatMemberStatus(json),
-      };
+  factory ChatMemberStatus.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatMemberStatus
+        ? object
+        : UndecodedChatMemberStatus(json);
+  }
 
   /// Returns a copy of this object.
   ChatMemberStatus copyWith();

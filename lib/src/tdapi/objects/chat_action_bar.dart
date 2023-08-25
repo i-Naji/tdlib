@@ -10,24 +10,10 @@ sealed class ChatActionBar extends TdObject {
   const ChatActionBar();
 
   /// Parses whichever [ChatActionBar] subtype the JSON describes.
-  factory ChatActionBar.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatActionBarReportSpam.CONSTRUCTOR =>
-          ChatActionBarReportSpam.fromJson(json),
-        ChatActionBarReportUnrelatedLocation.CONSTRUCTOR =>
-          ChatActionBarReportUnrelatedLocation.fromJson(json),
-        ChatActionBarInviteMembers.CONSTRUCTOR =>
-          ChatActionBarInviteMembers.fromJson(json),
-        ChatActionBarReportAddBlock.CONSTRUCTOR =>
-          ChatActionBarReportAddBlock.fromJson(json),
-        ChatActionBarAddContact.CONSTRUCTOR =>
-          ChatActionBarAddContact.fromJson(json),
-        ChatActionBarSharePhoneNumber.CONSTRUCTOR =>
-          ChatActionBarSharePhoneNumber.fromJson(json),
-        ChatActionBarJoinRequest.CONSTRUCTOR =>
-          ChatActionBarJoinRequest.fromJson(json),
-        _ => UndecodedChatActionBar(json),
-      };
+  factory ChatActionBar.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatActionBar ? object : UndecodedChatActionBar(json);
+  }
 
   /// Returns a copy of this object.
   ChatActionBar copyWith();

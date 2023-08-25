@@ -10,18 +10,12 @@ sealed class MessageSponsorType extends TdObject {
   const MessageSponsorType();
 
   /// Parses whichever [MessageSponsorType] subtype the JSON describes.
-  factory MessageSponsorType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageSponsorTypeBot.CONSTRUCTOR =>
-          MessageSponsorTypeBot.fromJson(json),
-        MessageSponsorTypePublicChannel.CONSTRUCTOR =>
-          MessageSponsorTypePublicChannel.fromJson(json),
-        MessageSponsorTypePrivateChannel.CONSTRUCTOR =>
-          MessageSponsorTypePrivateChannel.fromJson(json),
-        MessageSponsorTypeWebsite.CONSTRUCTOR =>
-          MessageSponsorTypeWebsite.fromJson(json),
-        _ => UndecodedMessageSponsorType(json),
-      };
+  factory MessageSponsorType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageSponsorType
+        ? object
+        : UndecodedMessageSponsorType(json);
+  }
 
   /// Returns a copy of this object.
   MessageSponsorType copyWith();

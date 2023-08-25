@@ -10,16 +10,12 @@ sealed class SpeechRecognitionResult extends TdObject {
   const SpeechRecognitionResult();
 
   /// Parses whichever [SpeechRecognitionResult] subtype the JSON describes.
-  factory SpeechRecognitionResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SpeechRecognitionResultPending.CONSTRUCTOR =>
-          SpeechRecognitionResultPending.fromJson(json),
-        SpeechRecognitionResultText.CONSTRUCTOR =>
-          SpeechRecognitionResultText.fromJson(json),
-        SpeechRecognitionResultError.CONSTRUCTOR =>
-          SpeechRecognitionResultError.fromJson(json),
-        _ => UndecodedSpeechRecognitionResult(json),
-      };
+  factory SpeechRecognitionResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SpeechRecognitionResult
+        ? object
+        : UndecodedSpeechRecognitionResult(json);
+  }
 
   /// Returns a copy of this object.
   SpeechRecognitionResult copyWith();

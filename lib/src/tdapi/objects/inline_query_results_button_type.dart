@@ -10,14 +10,12 @@ sealed class InlineQueryResultsButtonType extends TdObject {
   const InlineQueryResultsButtonType();
 
   /// Parses whichever [InlineQueryResultsButtonType] subtype the JSON describes.
-  factory InlineQueryResultsButtonType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InlineQueryResultsButtonTypeStartBot.CONSTRUCTOR =>
-          InlineQueryResultsButtonTypeStartBot.fromJson(json),
-        InlineQueryResultsButtonTypeWebApp.CONSTRUCTOR =>
-          InlineQueryResultsButtonTypeWebApp.fromJson(json),
-        _ => UndecodedInlineQueryResultsButtonType(json),
-      };
+  factory InlineQueryResultsButtonType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InlineQueryResultsButtonType
+        ? object
+        : UndecodedInlineQueryResultsButtonType(json);
+  }
 
   /// Returns a copy of this object.
   InlineQueryResultsButtonType copyWith();

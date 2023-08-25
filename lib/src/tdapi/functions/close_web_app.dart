@@ -18,7 +18,7 @@ final class CloseWebApp extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'web_app_launch_id': webAppLaunchId,
+        'web_app_launch_id': webAppLaunchId.toString(),
         if (extra != null) '@extra': extra,
       };
 

@@ -10,34 +10,12 @@ sealed class AuthorizationState extends TdObject {
   const AuthorizationState();
 
   /// Parses whichever [AuthorizationState] subtype the JSON describes.
-  factory AuthorizationState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        AuthorizationStateWaitTdlibParameters.CONSTRUCTOR =>
-          AuthorizationStateWaitTdlibParameters.fromJson(json),
-        AuthorizationStateWaitPhoneNumber.CONSTRUCTOR =>
-          AuthorizationStateWaitPhoneNumber.fromJson(json),
-        AuthorizationStateWaitEmailAddress.CONSTRUCTOR =>
-          AuthorizationStateWaitEmailAddress.fromJson(json),
-        AuthorizationStateWaitEmailCode.CONSTRUCTOR =>
-          AuthorizationStateWaitEmailCode.fromJson(json),
-        AuthorizationStateWaitCode.CONSTRUCTOR =>
-          AuthorizationStateWaitCode.fromJson(json),
-        AuthorizationStateWaitOtherDeviceConfirmation.CONSTRUCTOR =>
-          AuthorizationStateWaitOtherDeviceConfirmation.fromJson(json),
-        AuthorizationStateWaitRegistration.CONSTRUCTOR =>
-          AuthorizationStateWaitRegistration.fromJson(json),
-        AuthorizationStateWaitPassword.CONSTRUCTOR =>
-          AuthorizationStateWaitPassword.fromJson(json),
-        AuthorizationStateReady.CONSTRUCTOR =>
-          AuthorizationStateReady.fromJson(json),
-        AuthorizationStateLoggingOut.CONSTRUCTOR =>
-          AuthorizationStateLoggingOut.fromJson(json),
-        AuthorizationStateClosing.CONSTRUCTOR =>
-          AuthorizationStateClosing.fromJson(json),
-        AuthorizationStateClosed.CONSTRUCTOR =>
-          AuthorizationStateClosed.fromJson(json),
-        _ => UndecodedAuthorizationState(json),
-      };
+  factory AuthorizationState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is AuthorizationState
+        ? object
+        : UndecodedAuthorizationState(json);
+  }
 
   /// Returns a copy of this object.
   AuthorizationState copyWith();

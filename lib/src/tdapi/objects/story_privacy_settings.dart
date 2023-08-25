@@ -10,18 +10,12 @@ sealed class StoryPrivacySettings extends TdObject {
   const StoryPrivacySettings();
 
   /// Parses whichever [StoryPrivacySettings] subtype the JSON describes.
-  factory StoryPrivacySettings.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StoryPrivacySettingsEveryone.CONSTRUCTOR =>
-          StoryPrivacySettingsEveryone.fromJson(json),
-        StoryPrivacySettingsContacts.CONSTRUCTOR =>
-          StoryPrivacySettingsContacts.fromJson(json),
-        StoryPrivacySettingsCloseFriends.CONSTRUCTOR =>
-          StoryPrivacySettingsCloseFriends.fromJson(json),
-        StoryPrivacySettingsSelectedContacts.CONSTRUCTOR =>
-          StoryPrivacySettingsSelectedContacts.fromJson(json),
-        _ => UndecodedStoryPrivacySettings(json),
-      };
+  factory StoryPrivacySettings.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StoryPrivacySettings
+        ? object
+        : UndecodedStoryPrivacySettings(json);
+  }
 
   /// Returns a copy of this object.
   StoryPrivacySettings copyWith();

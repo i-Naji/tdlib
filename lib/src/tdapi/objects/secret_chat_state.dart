@@ -10,15 +10,10 @@ sealed class SecretChatState extends TdObject {
   const SecretChatState();
 
   /// Parses whichever [SecretChatState] subtype the JSON describes.
-  factory SecretChatState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SecretChatStatePending.CONSTRUCTOR =>
-          SecretChatStatePending.fromJson(json),
-        SecretChatStateReady.CONSTRUCTOR => SecretChatStateReady.fromJson(json),
-        SecretChatStateClosed.CONSTRUCTOR =>
-          SecretChatStateClosed.fromJson(json),
-        _ => UndecodedSecretChatState(json),
-      };
+  factory SecretChatState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SecretChatState ? object : UndecodedSecretChatState(json);
+  }
 
   /// Returns a copy of this object.
   SecretChatState copyWith();

@@ -10,28 +10,10 @@ sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
   /// Parses whichever [SuggestedAction] subtype the JSON describes.
-  factory SuggestedAction.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SuggestedActionEnableArchiveAndMuteNewChats.CONSTRUCTOR =>
-          SuggestedActionEnableArchiveAndMuteNewChats.fromJson(json),
-        SuggestedActionCheckPassword.CONSTRUCTOR =>
-          SuggestedActionCheckPassword.fromJson(json),
-        SuggestedActionCheckPhoneNumber.CONSTRUCTOR =>
-          SuggestedActionCheckPhoneNumber.fromJson(json),
-        SuggestedActionViewChecksHint.CONSTRUCTOR =>
-          SuggestedActionViewChecksHint.fromJson(json),
-        SuggestedActionConvertToBroadcastGroup.CONSTRUCTOR =>
-          SuggestedActionConvertToBroadcastGroup.fromJson(json),
-        SuggestedActionSetPassword.CONSTRUCTOR =>
-          SuggestedActionSetPassword.fromJson(json),
-        SuggestedActionUpgradePremium.CONSTRUCTOR =>
-          SuggestedActionUpgradePremium.fromJson(json),
-        SuggestedActionRestorePremium.CONSTRUCTOR =>
-          SuggestedActionRestorePremium.fromJson(json),
-        SuggestedActionSubscribeToAnnualPremium.CONSTRUCTOR =>
-          SuggestedActionSubscribeToAnnualPremium.fromJson(json),
-        _ => UndecodedSuggestedAction(json),
-      };
+  factory SuggestedAction.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SuggestedAction ? object : UndecodedSuggestedAction(json);
+  }
 
   /// Returns a copy of this object.
   SuggestedAction copyWith();

@@ -10,18 +10,12 @@ sealed class CanTransferOwnershipResult extends TdObject {
   const CanTransferOwnershipResult();
 
   /// Parses whichever [CanTransferOwnershipResult] subtype the JSON describes.
-  factory CanTransferOwnershipResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CanTransferOwnershipResultOk.CONSTRUCTOR =>
-          CanTransferOwnershipResultOk.fromJson(json),
-        CanTransferOwnershipResultPasswordNeeded.CONSTRUCTOR =>
-          CanTransferOwnershipResultPasswordNeeded.fromJson(json),
-        CanTransferOwnershipResultPasswordTooFresh.CONSTRUCTOR =>
-          CanTransferOwnershipResultPasswordTooFresh.fromJson(json),
-        CanTransferOwnershipResultSessionTooFresh.CONSTRUCTOR =>
-          CanTransferOwnershipResultSessionTooFresh.fromJson(json),
-        _ => UndecodedCanTransferOwnershipResult(json),
-      };
+  factory CanTransferOwnershipResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CanTransferOwnershipResult
+        ? object
+        : UndecodedCanTransferOwnershipResult(json);
+  }
 
   /// Returns a copy of this object.
   CanTransferOwnershipResult copyWith();

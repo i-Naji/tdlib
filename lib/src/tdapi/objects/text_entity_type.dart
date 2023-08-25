@@ -10,45 +10,10 @@ sealed class TextEntityType extends TdObject {
   const TextEntityType();
 
   /// Parses whichever [TextEntityType] subtype the JSON describes.
-  factory TextEntityType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        TextEntityTypeMention.CONSTRUCTOR =>
-          TextEntityTypeMention.fromJson(json),
-        TextEntityTypeHashtag.CONSTRUCTOR =>
-          TextEntityTypeHashtag.fromJson(json),
-        TextEntityTypeCashtag.CONSTRUCTOR =>
-          TextEntityTypeCashtag.fromJson(json),
-        TextEntityTypeBotCommand.CONSTRUCTOR =>
-          TextEntityTypeBotCommand.fromJson(json),
-        TextEntityTypeUrl.CONSTRUCTOR => TextEntityTypeUrl.fromJson(json),
-        TextEntityTypeEmailAddress.CONSTRUCTOR =>
-          TextEntityTypeEmailAddress.fromJson(json),
-        TextEntityTypePhoneNumber.CONSTRUCTOR =>
-          TextEntityTypePhoneNumber.fromJson(json),
-        TextEntityTypeBankCardNumber.CONSTRUCTOR =>
-          TextEntityTypeBankCardNumber.fromJson(json),
-        TextEntityTypeBold.CONSTRUCTOR => TextEntityTypeBold.fromJson(json),
-        TextEntityTypeItalic.CONSTRUCTOR => TextEntityTypeItalic.fromJson(json),
-        TextEntityTypeUnderline.CONSTRUCTOR =>
-          TextEntityTypeUnderline.fromJson(json),
-        TextEntityTypeStrikethrough.CONSTRUCTOR =>
-          TextEntityTypeStrikethrough.fromJson(json),
-        TextEntityTypeSpoiler.CONSTRUCTOR =>
-          TextEntityTypeSpoiler.fromJson(json),
-        TextEntityTypeCode.CONSTRUCTOR => TextEntityTypeCode.fromJson(json),
-        TextEntityTypePre.CONSTRUCTOR => TextEntityTypePre.fromJson(json),
-        TextEntityTypePreCode.CONSTRUCTOR =>
-          TextEntityTypePreCode.fromJson(json),
-        TextEntityTypeTextUrl.CONSTRUCTOR =>
-          TextEntityTypeTextUrl.fromJson(json),
-        TextEntityTypeMentionName.CONSTRUCTOR =>
-          TextEntityTypeMentionName.fromJson(json),
-        TextEntityTypeCustomEmoji.CONSTRUCTOR =>
-          TextEntityTypeCustomEmoji.fromJson(json),
-        TextEntityTypeMediaTimestamp.CONSTRUCTOR =>
-          TextEntityTypeMediaTimestamp.fromJson(json),
-        _ => UndecodedTextEntityType(json),
-      };
+  factory TextEntityType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is TextEntityType ? object : UndecodedTextEntityType(json);
+  }
 
   /// Returns a copy of this object.
   TextEntityType copyWith();
@@ -586,7 +551,7 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

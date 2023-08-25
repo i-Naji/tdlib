@@ -10,26 +10,12 @@ sealed class SupergroupMembersFilter extends TdObject {
   const SupergroupMembersFilter();
 
   /// Parses whichever [SupergroupMembersFilter] subtype the JSON describes.
-  factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SupergroupMembersFilterRecent.CONSTRUCTOR =>
-          SupergroupMembersFilterRecent.fromJson(json),
-        SupergroupMembersFilterContacts.CONSTRUCTOR =>
-          SupergroupMembersFilterContacts.fromJson(json),
-        SupergroupMembersFilterAdministrators.CONSTRUCTOR =>
-          SupergroupMembersFilterAdministrators.fromJson(json),
-        SupergroupMembersFilterSearch.CONSTRUCTOR =>
-          SupergroupMembersFilterSearch.fromJson(json),
-        SupergroupMembersFilterRestricted.CONSTRUCTOR =>
-          SupergroupMembersFilterRestricted.fromJson(json),
-        SupergroupMembersFilterBanned.CONSTRUCTOR =>
-          SupergroupMembersFilterBanned.fromJson(json),
-        SupergroupMembersFilterMention.CONSTRUCTOR =>
-          SupergroupMembersFilterMention.fromJson(json),
-        SupergroupMembersFilterBots.CONSTRUCTOR =>
-          SupergroupMembersFilterBots.fromJson(json),
-        _ => UndecodedSupergroupMembersFilter(json),
-      };
+  factory SupergroupMembersFilter.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SupergroupMembersFilter
+        ? object
+        : UndecodedSupergroupMembersFilter(json);
+  }
 
   /// Returns a copy of this object.
   SupergroupMembersFilter copyWith();

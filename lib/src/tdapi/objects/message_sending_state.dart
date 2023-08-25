@@ -10,14 +10,12 @@ sealed class MessageSendingState extends TdObject {
   const MessageSendingState();
 
   /// Parses whichever [MessageSendingState] subtype the JSON describes.
-  factory MessageSendingState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageSendingStatePending.CONSTRUCTOR =>
-          MessageSendingStatePending.fromJson(json),
-        MessageSendingStateFailed.CONSTRUCTOR =>
-          MessageSendingStateFailed.fromJson(json),
-        _ => UndecodedMessageSendingState(json),
-      };
+  factory MessageSendingState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageSendingState
+        ? object
+        : UndecodedMessageSendingState(json);
+  }
 
   /// Returns a copy of this object.
   MessageSendingState copyWith();

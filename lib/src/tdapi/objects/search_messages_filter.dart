@@ -10,44 +10,12 @@ sealed class SearchMessagesFilter extends TdObject {
   const SearchMessagesFilter();
 
   /// Parses whichever [SearchMessagesFilter] subtype the JSON describes.
-  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SearchMessagesFilterEmpty.CONSTRUCTOR =>
-          SearchMessagesFilterEmpty.fromJson(json),
-        SearchMessagesFilterAnimation.CONSTRUCTOR =>
-          SearchMessagesFilterAnimation.fromJson(json),
-        SearchMessagesFilterAudio.CONSTRUCTOR =>
-          SearchMessagesFilterAudio.fromJson(json),
-        SearchMessagesFilterDocument.CONSTRUCTOR =>
-          SearchMessagesFilterDocument.fromJson(json),
-        SearchMessagesFilterPhoto.CONSTRUCTOR =>
-          SearchMessagesFilterPhoto.fromJson(json),
-        SearchMessagesFilterVideo.CONSTRUCTOR =>
-          SearchMessagesFilterVideo.fromJson(json),
-        SearchMessagesFilterVoiceNote.CONSTRUCTOR =>
-          SearchMessagesFilterVoiceNote.fromJson(json),
-        SearchMessagesFilterPhotoAndVideo.CONSTRUCTOR =>
-          SearchMessagesFilterPhotoAndVideo.fromJson(json),
-        SearchMessagesFilterUrl.CONSTRUCTOR =>
-          SearchMessagesFilterUrl.fromJson(json),
-        SearchMessagesFilterChatPhoto.CONSTRUCTOR =>
-          SearchMessagesFilterChatPhoto.fromJson(json),
-        SearchMessagesFilterVideoNote.CONSTRUCTOR =>
-          SearchMessagesFilterVideoNote.fromJson(json),
-        SearchMessagesFilterVoiceAndVideoNote.CONSTRUCTOR =>
-          SearchMessagesFilterVoiceAndVideoNote.fromJson(json),
-        SearchMessagesFilterMention.CONSTRUCTOR =>
-          SearchMessagesFilterMention.fromJson(json),
-        SearchMessagesFilterUnreadMention.CONSTRUCTOR =>
-          SearchMessagesFilterUnreadMention.fromJson(json),
-        SearchMessagesFilterUnreadReaction.CONSTRUCTOR =>
-          SearchMessagesFilterUnreadReaction.fromJson(json),
-        SearchMessagesFilterFailedToSend.CONSTRUCTOR =>
-          SearchMessagesFilterFailedToSend.fromJson(json),
-        SearchMessagesFilterPinned.CONSTRUCTOR =>
-          SearchMessagesFilterPinned.fromJson(json),
-        _ => UndecodedSearchMessagesFilter(json),
-      };
+  factory SearchMessagesFilter.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SearchMessagesFilter
+        ? object
+        : UndecodedSearchMessagesFilter(json);
+  }
 
   /// Returns a copy of this object.
   SearchMessagesFilter copyWith();

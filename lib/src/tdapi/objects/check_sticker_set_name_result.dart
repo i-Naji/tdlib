@@ -10,16 +10,12 @@ sealed class CheckStickerSetNameResult extends TdObject {
   const CheckStickerSetNameResult();
 
   /// Parses whichever [CheckStickerSetNameResult] subtype the JSON describes.
-  factory CheckStickerSetNameResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CheckStickerSetNameResultOk.CONSTRUCTOR =>
-          CheckStickerSetNameResultOk.fromJson(json),
-        CheckStickerSetNameResultNameInvalid.CONSTRUCTOR =>
-          CheckStickerSetNameResultNameInvalid.fromJson(json),
-        CheckStickerSetNameResultNameOccupied.CONSTRUCTOR =>
-          CheckStickerSetNameResultNameOccupied.fromJson(json),
-        _ => UndecodedCheckStickerSetNameResult(json),
-      };
+  factory CheckStickerSetNameResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CheckStickerSetNameResult
+        ? object
+        : UndecodedCheckStickerSetNameResult(json);
+  }
 
   /// Returns a copy of this object.
   CheckStickerSetNameResult copyWith();

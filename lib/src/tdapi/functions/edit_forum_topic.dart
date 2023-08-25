@@ -38,7 +38,7 @@ final class EditForumTopic extends TdFunction<Ok> {
         'message_thread_id': messageThreadId,
         'name': name,
         'edit_icon_custom_emoji': editIconCustomEmoji,
-        'icon_custom_emoji_id': iconCustomEmojiId,
+        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
         if (extra != null) '@extra': extra,
       };
 

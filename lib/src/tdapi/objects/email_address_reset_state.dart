@@ -10,14 +10,12 @@ sealed class EmailAddressResetState extends TdObject {
   const EmailAddressResetState();
 
   /// Parses whichever [EmailAddressResetState] subtype the JSON describes.
-  factory EmailAddressResetState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        EmailAddressResetStateAvailable.CONSTRUCTOR =>
-          EmailAddressResetStateAvailable.fromJson(json),
-        EmailAddressResetStatePending.CONSTRUCTOR =>
-          EmailAddressResetStatePending.fromJson(json),
-        _ => UndecodedEmailAddressResetState(json),
-      };
+  factory EmailAddressResetState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is EmailAddressResetState
+        ? object
+        : UndecodedEmailAddressResetState(json);
+  }
 
   /// Returns a copy of this object.
   EmailAddressResetState copyWith();

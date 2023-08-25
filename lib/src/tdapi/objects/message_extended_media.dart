@@ -10,18 +10,12 @@ sealed class MessageExtendedMedia extends TdObject {
   const MessageExtendedMedia();
 
   /// Parses whichever [MessageExtendedMedia] subtype the JSON describes.
-  factory MessageExtendedMedia.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageExtendedMediaPreview.CONSTRUCTOR =>
-          MessageExtendedMediaPreview.fromJson(json),
-        MessageExtendedMediaPhoto.CONSTRUCTOR =>
-          MessageExtendedMediaPhoto.fromJson(json),
-        MessageExtendedMediaVideo.CONSTRUCTOR =>
-          MessageExtendedMediaVideo.fromJson(json),
-        MessageExtendedMediaUnsupported.CONSTRUCTOR =>
-          MessageExtendedMediaUnsupported.fromJson(json),
-        _ => UndecodedMessageExtendedMedia(json),
-      };
+  factory MessageExtendedMedia.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageExtendedMedia
+        ? object
+        : UndecodedMessageExtendedMedia(json);
+  }
 
   /// Returns a copy of this object.
   MessageExtendedMedia copyWith();

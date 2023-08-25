@@ -38,7 +38,7 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'inline_query_id': inlineQueryId,
+        'inline_query_id': inlineQueryId.toString(),
         'is_personal': isPersonal,
         'button': button?.toJson(),
         'results': [for (final e in results) e.toJson()],

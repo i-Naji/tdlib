@@ -118,7 +118,7 @@ final class Session extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'is_current': isCurrent,
         'is_password_pending': isPasswordPending,
         'can_accept_secret_chats': canAcceptSecretChats,

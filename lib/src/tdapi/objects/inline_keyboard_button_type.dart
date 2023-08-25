@@ -10,28 +10,12 @@ sealed class InlineKeyboardButtonType extends TdObject {
   const InlineKeyboardButtonType();
 
   /// Parses whichever [InlineKeyboardButtonType] subtype the JSON describes.
-  factory InlineKeyboardButtonType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InlineKeyboardButtonTypeUrl.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeUrl.fromJson(json),
-        InlineKeyboardButtonTypeLoginUrl.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeLoginUrl.fromJson(json),
-        InlineKeyboardButtonTypeWebApp.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeWebApp.fromJson(json),
-        InlineKeyboardButtonTypeCallback.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeCallback.fromJson(json),
-        InlineKeyboardButtonTypeCallbackWithPassword.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeCallbackWithPassword.fromJson(json),
-        InlineKeyboardButtonTypeCallbackGame.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeCallbackGame.fromJson(json),
-        InlineKeyboardButtonTypeSwitchInline.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeSwitchInline.fromJson(json),
-        InlineKeyboardButtonTypeBuy.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeBuy.fromJson(json),
-        InlineKeyboardButtonTypeUser.CONSTRUCTOR =>
-          InlineKeyboardButtonTypeUser.fromJson(json),
-        _ => UndecodedInlineKeyboardButtonType(json),
-      };
+  factory InlineKeyboardButtonType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InlineKeyboardButtonType
+        ? object
+        : UndecodedInlineKeyboardButtonType(json);
+  }
 
   /// Returns a copy of this object.
   InlineKeyboardButtonType copyWith();

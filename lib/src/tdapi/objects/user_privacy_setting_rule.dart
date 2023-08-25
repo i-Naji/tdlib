@@ -10,26 +10,12 @@ sealed class UserPrivacySettingRule extends TdObject {
   const UserPrivacySettingRule();
 
   /// Parses whichever [UserPrivacySettingRule] subtype the JSON describes.
-  factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        UserPrivacySettingRuleAllowAll.CONSTRUCTOR =>
-          UserPrivacySettingRuleAllowAll.fromJson(json),
-        UserPrivacySettingRuleAllowContacts.CONSTRUCTOR =>
-          UserPrivacySettingRuleAllowContacts.fromJson(json),
-        UserPrivacySettingRuleAllowUsers.CONSTRUCTOR =>
-          UserPrivacySettingRuleAllowUsers.fromJson(json),
-        UserPrivacySettingRuleAllowChatMembers.CONSTRUCTOR =>
-          UserPrivacySettingRuleAllowChatMembers.fromJson(json),
-        UserPrivacySettingRuleRestrictAll.CONSTRUCTOR =>
-          UserPrivacySettingRuleRestrictAll.fromJson(json),
-        UserPrivacySettingRuleRestrictContacts.CONSTRUCTOR =>
-          UserPrivacySettingRuleRestrictContacts.fromJson(json),
-        UserPrivacySettingRuleRestrictUsers.CONSTRUCTOR =>
-          UserPrivacySettingRuleRestrictUsers.fromJson(json),
-        UserPrivacySettingRuleRestrictChatMembers.CONSTRUCTOR =>
-          UserPrivacySettingRuleRestrictChatMembers.fromJson(json),
-        _ => UndecodedUserPrivacySettingRule(json),
-      };
+  factory UserPrivacySettingRule.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is UserPrivacySettingRule
+        ? object
+        : UndecodedUserPrivacySettingRule(json);
+  }
 
   /// Returns a copy of this object.
   UserPrivacySettingRule copyWith();

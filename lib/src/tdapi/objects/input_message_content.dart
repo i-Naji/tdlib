@@ -10,32 +10,12 @@ sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
   /// Parses whichever [InputMessageContent] subtype the JSON describes.
-  factory InputMessageContent.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputMessageText.CONSTRUCTOR => InputMessageText.fromJson(json),
-        InputMessageAnimation.CONSTRUCTOR =>
-          InputMessageAnimation.fromJson(json),
-        InputMessageAudio.CONSTRUCTOR => InputMessageAudio.fromJson(json),
-        InputMessageDocument.CONSTRUCTOR => InputMessageDocument.fromJson(json),
-        InputMessagePhoto.CONSTRUCTOR => InputMessagePhoto.fromJson(json),
-        InputMessageSticker.CONSTRUCTOR => InputMessageSticker.fromJson(json),
-        InputMessageVideo.CONSTRUCTOR => InputMessageVideo.fromJson(json),
-        InputMessageVideoNote.CONSTRUCTOR =>
-          InputMessageVideoNote.fromJson(json),
-        InputMessageVoiceNote.CONSTRUCTOR =>
-          InputMessageVoiceNote.fromJson(json),
-        InputMessageLocation.CONSTRUCTOR => InputMessageLocation.fromJson(json),
-        InputMessageVenue.CONSTRUCTOR => InputMessageVenue.fromJson(json),
-        InputMessageContact.CONSTRUCTOR => InputMessageContact.fromJson(json),
-        InputMessageDice.CONSTRUCTOR => InputMessageDice.fromJson(json),
-        InputMessageGame.CONSTRUCTOR => InputMessageGame.fromJson(json),
-        InputMessageInvoice.CONSTRUCTOR => InputMessageInvoice.fromJson(json),
-        InputMessagePoll.CONSTRUCTOR => InputMessagePoll.fromJson(json),
-        InputMessageStory.CONSTRUCTOR => InputMessageStory.fromJson(json),
-        InputMessageForwarded.CONSTRUCTOR =>
-          InputMessageForwarded.fromJson(json),
-        _ => UndecodedInputMessageContent(json),
-      };
+  factory InputMessageContent.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputMessageContent
+        ? object
+        : UndecodedInputMessageContent(json);
+  }
 
   /// Returns a copy of this object.
   InputMessageContent copyWith();

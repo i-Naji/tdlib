@@ -38,7 +38,7 @@ final class WebAppInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'launch_id': launchId,
+        'launch_id': launchId.toString(),
         'url': url,
       };
 

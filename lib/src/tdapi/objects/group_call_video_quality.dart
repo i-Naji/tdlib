@@ -10,16 +10,12 @@ sealed class GroupCallVideoQuality extends TdObject {
   const GroupCallVideoQuality();
 
   /// Parses whichever [GroupCallVideoQuality] subtype the JSON describes.
-  factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        GroupCallVideoQualityThumbnail.CONSTRUCTOR =>
-          GroupCallVideoQualityThumbnail.fromJson(json),
-        GroupCallVideoQualityMedium.CONSTRUCTOR =>
-          GroupCallVideoQualityMedium.fromJson(json),
-        GroupCallVideoQualityFull.CONSTRUCTOR =>
-          GroupCallVideoQualityFull.fromJson(json),
-        _ => UndecodedGroupCallVideoQuality(json),
-      };
+  factory GroupCallVideoQuality.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is GroupCallVideoQuality
+        ? object
+        : UndecodedGroupCallVideoQuality(json);
+  }
 
   /// Returns a copy of this object.
   GroupCallVideoQuality copyWith();

@@ -10,15 +10,12 @@ sealed class StatisticalGraph extends TdObject {
   const StatisticalGraph();
 
   /// Parses whichever [StatisticalGraph] subtype the JSON describes.
-  factory StatisticalGraph.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StatisticalGraphData.CONSTRUCTOR => StatisticalGraphData.fromJson(json),
-        StatisticalGraphAsync.CONSTRUCTOR =>
-          StatisticalGraphAsync.fromJson(json),
-        StatisticalGraphError.CONSTRUCTOR =>
-          StatisticalGraphError.fromJson(json),
-        _ => UndecodedStatisticalGraph(json),
-      };
+  factory StatisticalGraph.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StatisticalGraph
+        ? object
+        : UndecodedStatisticalGraph(json);
+  }
 
   /// Returns a copy of this object.
   StatisticalGraph copyWith();

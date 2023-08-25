@@ -10,16 +10,10 @@ sealed class JsonValue extends TdObject {
   const JsonValue();
 
   /// Parses whichever [JsonValue] subtype the JSON describes.
-  factory JsonValue.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        JsonValueNull.CONSTRUCTOR => JsonValueNull.fromJson(json),
-        JsonValueBoolean.CONSTRUCTOR => JsonValueBoolean.fromJson(json),
-        JsonValueNumber.CONSTRUCTOR => JsonValueNumber.fromJson(json),
-        JsonValueString.CONSTRUCTOR => JsonValueString.fromJson(json),
-        JsonValueArray.CONSTRUCTOR => JsonValueArray.fromJson(json),
-        JsonValueObject.CONSTRUCTOR => JsonValueObject.fromJson(json),
-        _ => UndecodedJsonValue(json),
-      };
+  factory JsonValue.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is JsonValue ? object : UndecodedJsonValue(json);
+  }
 
   /// Returns a copy of this object.
   JsonValue copyWith();

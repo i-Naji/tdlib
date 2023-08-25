@@ -10,15 +10,10 @@ sealed class MessageFileType extends TdObject {
   const MessageFileType();
 
   /// Parses whichever [MessageFileType] subtype the JSON describes.
-  factory MessageFileType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageFileTypePrivate.CONSTRUCTOR =>
-          MessageFileTypePrivate.fromJson(json),
-        MessageFileTypeGroup.CONSTRUCTOR => MessageFileTypeGroup.fromJson(json),
-        MessageFileTypeUnknown.CONSTRUCTOR =>
-          MessageFileTypeUnknown.fromJson(json),
-        _ => UndecodedMessageFileType(json),
-      };
+  factory MessageFileType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageFileType ? object : UndecodedMessageFileType(json);
+  }
 
   /// Returns a copy of this object.
   MessageFileType copyWith();

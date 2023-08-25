@@ -10,14 +10,12 @@ sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
   /// Parses whichever [StorePaymentPurpose] subtype the JSON describes.
-  factory StorePaymentPurpose.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StorePaymentPurposePremiumSubscription.CONSTRUCTOR =>
-          StorePaymentPurposePremiumSubscription.fromJson(json),
-        StorePaymentPurposeGiftedPremium.CONSTRUCTOR =>
-          StorePaymentPurposeGiftedPremium.fromJson(json),
-        _ => UndecodedStorePaymentPurpose(json),
-      };
+  factory StorePaymentPurpose.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StorePaymentPurpose
+        ? object
+        : UndecodedStorePaymentPurpose(json);
+  }
 
   /// Returns a copy of this object.
   StorePaymentPurpose copyWith();

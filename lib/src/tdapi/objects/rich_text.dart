@@ -10,28 +10,10 @@ sealed class RichText extends TdObject {
   const RichText();
 
   /// Parses whichever [RichText] subtype the JSON describes.
-  factory RichText.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        RichTextPlain.CONSTRUCTOR => RichTextPlain.fromJson(json),
-        RichTextBold.CONSTRUCTOR => RichTextBold.fromJson(json),
-        RichTextItalic.CONSTRUCTOR => RichTextItalic.fromJson(json),
-        RichTextUnderline.CONSTRUCTOR => RichTextUnderline.fromJson(json),
-        RichTextStrikethrough.CONSTRUCTOR =>
-          RichTextStrikethrough.fromJson(json),
-        RichTextFixed.CONSTRUCTOR => RichTextFixed.fromJson(json),
-        RichTextUrl.CONSTRUCTOR => RichTextUrl.fromJson(json),
-        RichTextEmailAddress.CONSTRUCTOR => RichTextEmailAddress.fromJson(json),
-        RichTextSubscript.CONSTRUCTOR => RichTextSubscript.fromJson(json),
-        RichTextSuperscript.CONSTRUCTOR => RichTextSuperscript.fromJson(json),
-        RichTextMarked.CONSTRUCTOR => RichTextMarked.fromJson(json),
-        RichTextPhoneNumber.CONSTRUCTOR => RichTextPhoneNumber.fromJson(json),
-        RichTextIcon.CONSTRUCTOR => RichTextIcon.fromJson(json),
-        RichTextReference.CONSTRUCTOR => RichTextReference.fromJson(json),
-        RichTextAnchor.CONSTRUCTOR => RichTextAnchor.fromJson(json),
-        RichTextAnchorLink.CONSTRUCTOR => RichTextAnchorLink.fromJson(json),
-        RichTexts.CONSTRUCTOR => RichTexts.fromJson(json),
-        _ => UndecodedRichText(json),
-      };
+  factory RichText.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is RichText ? object : UndecodedRichText(json);
+  }
 
   /// Returns a copy of this object.
   RichText copyWith();

@@ -10,21 +10,10 @@ sealed class TopChatCategory extends TdObject {
   const TopChatCategory();
 
   /// Parses whichever [TopChatCategory] subtype the JSON describes.
-  factory TopChatCategory.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        TopChatCategoryUsers.CONSTRUCTOR => TopChatCategoryUsers.fromJson(json),
-        TopChatCategoryBots.CONSTRUCTOR => TopChatCategoryBots.fromJson(json),
-        TopChatCategoryGroups.CONSTRUCTOR =>
-          TopChatCategoryGroups.fromJson(json),
-        TopChatCategoryChannels.CONSTRUCTOR =>
-          TopChatCategoryChannels.fromJson(json),
-        TopChatCategoryInlineBots.CONSTRUCTOR =>
-          TopChatCategoryInlineBots.fromJson(json),
-        TopChatCategoryCalls.CONSTRUCTOR => TopChatCategoryCalls.fromJson(json),
-        TopChatCategoryForwardChats.CONSTRUCTOR =>
-          TopChatCategoryForwardChats.fromJson(json),
-        _ => UndecodedTopChatCategory(json),
-      };
+  factory TopChatCategory.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is TopChatCategory ? object : UndecodedTopChatCategory(json);
+  }
 
   /// Returns a copy of this object.
   TopChatCategory copyWith();

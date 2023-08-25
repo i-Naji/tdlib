@@ -10,24 +10,12 @@ sealed class ChatMembersFilter extends TdObject {
   const ChatMembersFilter();
 
   /// Parses whichever [ChatMembersFilter] subtype the JSON describes.
-  factory ChatMembersFilter.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatMembersFilterContacts.CONSTRUCTOR =>
-          ChatMembersFilterContacts.fromJson(json),
-        ChatMembersFilterAdministrators.CONSTRUCTOR =>
-          ChatMembersFilterAdministrators.fromJson(json),
-        ChatMembersFilterMembers.CONSTRUCTOR =>
-          ChatMembersFilterMembers.fromJson(json),
-        ChatMembersFilterMention.CONSTRUCTOR =>
-          ChatMembersFilterMention.fromJson(json),
-        ChatMembersFilterRestricted.CONSTRUCTOR =>
-          ChatMembersFilterRestricted.fromJson(json),
-        ChatMembersFilterBanned.CONSTRUCTOR =>
-          ChatMembersFilterBanned.fromJson(json),
-        ChatMembersFilterBots.CONSTRUCTOR =>
-          ChatMembersFilterBots.fromJson(json),
-        _ => UndecodedChatMembersFilter(json),
-      };
+  factory ChatMembersFilter.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatMembersFilter
+        ? object
+        : UndecodedChatMembersFilter(json);
+  }
 
   /// Returns a copy of this object.
   ChatMembersFilter copyWith();

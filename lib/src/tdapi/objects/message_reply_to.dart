@@ -10,13 +10,10 @@ sealed class MessageReplyTo extends TdObject {
   const MessageReplyTo();
 
   /// Parses whichever [MessageReplyTo] subtype the JSON describes.
-  factory MessageReplyTo.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageReplyToMessage.CONSTRUCTOR =>
-          MessageReplyToMessage.fromJson(json),
-        MessageReplyToStory.CONSTRUCTOR => MessageReplyToStory.fromJson(json),
-        _ => UndecodedMessageReplyTo(json),
-      };
+  factory MessageReplyTo.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageReplyTo ? object : UndecodedMessageReplyTo(json);
+  }
 
   /// Returns a copy of this object.
   MessageReplyTo copyWith();

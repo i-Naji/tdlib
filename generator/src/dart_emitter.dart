@@ -4,7 +4,8 @@
 ///   and an `Undecoded<Type>` subtype for types newer than this API;
 /// * every constructor becomes a `final class`;
 /// * every function becomes `final class X extends TdFunction<Result>`;
-/// * JSON values are read leniently (int64 may arrive as a string).
+/// * JSON decoding is one `tdObjectFactories` map lookup;
+/// * int64 values are read from strings and written back as strings.
 library;
 
 import 'dart:io';
@@ -47,9 +48,9 @@ void emitDartApi(TlSchema schema, Directory outDir) {
 
   File('${outDir.path}/tdapi.dart').writeAsStringSync(_library(
     parts: parts,
-    cases: [
+    factories: [
       for (final t in schema.types)
-        "    '${t.name}' => ${dartClass(t.name)}.fromJson(map),",
+        "  '${t.name}': ${dartClass(t.name)}.fromJson,",
     ],
   ));
 }
@@ -170,10 +171,11 @@ class _Field {
   static String _write(TlType type, String value, bool nullable, int depth) {
     if (type.isVector) {
       final element = type.element!;
-      if (element.isBuiltIn) return value;
+      if (element.isBuiltIn && element.name != 'int64') return value;
       final v = depth == 0 ? 'e' : 'e$depth';
       return '[for (final $v in $value) ${_write(element, v, false, depth + 1)}]';
     }
+    if (type.name == 'int64') return '$value.toString()';
     if (type.isBuiltIn) return value;
     return nullable ? '$value?.toJson()' : '$value.toJson()';
   }
@@ -213,14 +215,11 @@ class _Api {
       ..writeln('  const $name();')
       ..writeln()
       ..writeln('  /// Parses whichever [$name] subtype the JSON describes.')
-      ..writeln('  factory $name.fromJson(Map<String, dynamic> json) =>')
-      ..writeln("      switch (json['@type']) {")
-      ..write(variants
-          .map((v) => '        ${dartClass(v.name)}.CONSTRUCTOR => '
-              '${dartClass(v.name)}.fromJson(json),\n')
-          .join())
-      ..writeln('        _ => $undecoded(json),')
-      ..writeln('      };')
+      ..writeln('  factory $name.fromJson(Map<String, dynamic> json) {')
+      ..writeln(
+          "    final object = tdObjectFactories[json['@type']]?.call(json);")
+      ..writeln('    return object is $name ? object : $undecoded(json);')
+      ..writeln('  }')
       ..writeln()
       ..writeln('  /// Returns a copy of this object.')
       ..writeln('  $name copyWith();')
@@ -387,7 +386,7 @@ class _Api {
 
 String _library({
   required List<String> parts,
-  required List<String> cases,
+  required List<String> factories,
 }) {
   return '''$_header
 import 'dart:convert' show json;
@@ -445,15 +444,26 @@ final class UndecodedTdObject extends TdObject {
   Map<String, dynamic> toJson() => json;
 }
 
-/// Decodes a TDLib JSON string; null gives null. Unknown types become
+/// Builds a TDLib object from its decoded JSON map.
+typedef TdObjectFactory = TdObject Function(Map<String, dynamic> json);
+
+/// Every concrete TDLib object type, keyed by its "@type".
+final Map<String, TdObjectFactory> tdObjectFactories = {
+${factories.join('\n')}
+};
+
+/// Converts a decoded TDLib JSON map. Unknown types become
 /// [UndecodedTdObject].
+TdObject convertMapToObject(Map<String, dynamic> json) {
+  final factory = tdObjectFactories[json['@type']];
+  return factory != null ? factory(json) : UndecodedTdObject(json);
+}
+
+/// Decodes a TDLib JSON string; null gives null.
 TdObject? convertToObject(String? query) {
   if (query == null) return null;
-  final map = json.decode(query) as Map<String, dynamic>;
-  return switch (map['@type']) {
-${cases.join('\n')}
-    _ => UndecodedTdObject(map),
-  };
+  final decoded = json.decode(query);
+  return decoded is Map<String, dynamic> ? convertMapToObject(decoded) : null;
 }
 
 // JSON readers shared by the generated classes. They accept missing or

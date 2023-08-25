@@ -59,7 +59,7 @@ final class NotificationSound extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'duration': duration,
         'date': date,
         'title': title,

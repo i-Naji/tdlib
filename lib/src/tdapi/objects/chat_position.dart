@@ -37,7 +37,7 @@ final class ChatPosition extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'list': list.toJson(),
-        'order': order,
+        'order': order.toString(),
         'is_pinned': isPinned,
         'source': source?.toJson(),
       };

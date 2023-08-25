@@ -10,31 +10,10 @@ sealed class DeviceToken extends TdObject {
   const DeviceToken();
 
   /// Parses whichever [DeviceToken] subtype the JSON describes.
-  factory DeviceToken.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        DeviceTokenFirebaseCloudMessaging.CONSTRUCTOR =>
-          DeviceTokenFirebaseCloudMessaging.fromJson(json),
-        DeviceTokenApplePush.CONSTRUCTOR => DeviceTokenApplePush.fromJson(json),
-        DeviceTokenApplePushVoIP.CONSTRUCTOR =>
-          DeviceTokenApplePushVoIP.fromJson(json),
-        DeviceTokenWindowsPush.CONSTRUCTOR =>
-          DeviceTokenWindowsPush.fromJson(json),
-        DeviceTokenMicrosoftPush.CONSTRUCTOR =>
-          DeviceTokenMicrosoftPush.fromJson(json),
-        DeviceTokenMicrosoftPushVoIP.CONSTRUCTOR =>
-          DeviceTokenMicrosoftPushVoIP.fromJson(json),
-        DeviceTokenWebPush.CONSTRUCTOR => DeviceTokenWebPush.fromJson(json),
-        DeviceTokenSimplePush.CONSTRUCTOR =>
-          DeviceTokenSimplePush.fromJson(json),
-        DeviceTokenUbuntuPush.CONSTRUCTOR =>
-          DeviceTokenUbuntuPush.fromJson(json),
-        DeviceTokenBlackBerryPush.CONSTRUCTOR =>
-          DeviceTokenBlackBerryPush.fromJson(json),
-        DeviceTokenTizenPush.CONSTRUCTOR => DeviceTokenTizenPush.fromJson(json),
-        DeviceTokenHuaweiPush.CONSTRUCTOR =>
-          DeviceTokenHuaweiPush.fromJson(json),
-        _ => UndecodedDeviceToken(json),
-      };
+  factory DeviceToken.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is DeviceToken ? object : UndecodedDeviceToken(json);
+  }
 
   /// Returns a copy of this object.
   DeviceToken copyWith();

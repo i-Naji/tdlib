@@ -10,17 +10,10 @@ sealed class ThumbnailFormat extends TdObject {
   const ThumbnailFormat();
 
   /// Parses whichever [ThumbnailFormat] subtype the JSON describes.
-  factory ThumbnailFormat.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ThumbnailFormatJpeg.CONSTRUCTOR => ThumbnailFormatJpeg.fromJson(json),
-        ThumbnailFormatGif.CONSTRUCTOR => ThumbnailFormatGif.fromJson(json),
-        ThumbnailFormatMpeg4.CONSTRUCTOR => ThumbnailFormatMpeg4.fromJson(json),
-        ThumbnailFormatPng.CONSTRUCTOR => ThumbnailFormatPng.fromJson(json),
-        ThumbnailFormatTgs.CONSTRUCTOR => ThumbnailFormatTgs.fromJson(json),
-        ThumbnailFormatWebm.CONSTRUCTOR => ThumbnailFormatWebm.fromJson(json),
-        ThumbnailFormatWebp.CONSTRUCTOR => ThumbnailFormatWebp.fromJson(json),
-        _ => UndecodedThumbnailFormat(json),
-      };
+  factory ThumbnailFormat.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ThumbnailFormat ? object : UndecodedThumbnailFormat(json);
+  }
 
   /// Returns a copy of this object.
   ThumbnailFormat copyWith();

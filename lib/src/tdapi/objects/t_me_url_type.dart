@@ -10,14 +10,10 @@ sealed class TMeUrlType extends TdObject {
   const TMeUrlType();
 
   /// Parses whichever [TMeUrlType] subtype the JSON describes.
-  factory TMeUrlType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        TMeUrlTypeUser.CONSTRUCTOR => TMeUrlTypeUser.fromJson(json),
-        TMeUrlTypeSupergroup.CONSTRUCTOR => TMeUrlTypeSupergroup.fromJson(json),
-        TMeUrlTypeChatInvite.CONSTRUCTOR => TMeUrlTypeChatInvite.fromJson(json),
-        TMeUrlTypeStickerSet.CONSTRUCTOR => TMeUrlTypeStickerSet.fromJson(json),
-        _ => UndecodedTMeUrlType(json),
-      };
+  factory TMeUrlType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is TMeUrlType ? object : UndecodedTMeUrlType(json);
+  }
 
   /// Returns a copy of this object.
   TMeUrlType copyWith();
@@ -178,7 +174,7 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sticker_set_id': stickerSetId,
+        'sticker_set_id': stickerSetId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

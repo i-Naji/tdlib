@@ -10,16 +10,12 @@ sealed class LanguagePackStringValue extends TdObject {
   const LanguagePackStringValue();
 
   /// Parses whichever [LanguagePackStringValue] subtype the JSON describes.
-  factory LanguagePackStringValue.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        LanguagePackStringValueOrdinary.CONSTRUCTOR =>
-          LanguagePackStringValueOrdinary.fromJson(json),
-        LanguagePackStringValuePluralized.CONSTRUCTOR =>
-          LanguagePackStringValuePluralized.fromJson(json),
-        LanguagePackStringValueDeleted.CONSTRUCTOR =>
-          LanguagePackStringValueDeleted.fromJson(json),
-        _ => UndecodedLanguagePackStringValue(json),
-      };
+  factory LanguagePackStringValue.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is LanguagePackStringValue
+        ? object
+        : UndecodedLanguagePackStringValue(json);
+  }
 
   /// Returns a copy of this object.
   LanguagePackStringValue copyWith();

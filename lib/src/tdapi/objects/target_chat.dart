@@ -10,14 +10,10 @@ sealed class TargetChat extends TdObject {
   const TargetChat();
 
   /// Parses whichever [TargetChat] subtype the JSON describes.
-  factory TargetChat.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        TargetChatCurrent.CONSTRUCTOR => TargetChatCurrent.fromJson(json),
-        TargetChatChosen.CONSTRUCTOR => TargetChatChosen.fromJson(json),
-        TargetChatInternalLink.CONSTRUCTOR =>
-          TargetChatInternalLink.fromJson(json),
-        _ => UndecodedTargetChat(json),
-      };
+  factory TargetChat.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is TargetChat ? object : UndecodedTargetChat(json);
+  }
 
   /// Returns a copy of this object.
   TargetChat copyWith();

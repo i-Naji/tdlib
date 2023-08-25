@@ -18,7 +18,7 @@ final class GetStickerSet extends TdFunction<StickerSet> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'set_id': setId,
+        'set_id': setId.toString(),
         if (extra != null) '@extra': extra,
       };
 

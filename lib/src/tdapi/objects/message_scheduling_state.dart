@@ -10,14 +10,12 @@ sealed class MessageSchedulingState extends TdObject {
   const MessageSchedulingState();
 
   /// Parses whichever [MessageSchedulingState] subtype the JSON describes.
-  factory MessageSchedulingState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageSchedulingStateSendAtDate.CONSTRUCTOR =>
-          MessageSchedulingStateSendAtDate.fromJson(json),
-        MessageSchedulingStateSendWhenOnline.CONSTRUCTOR =>
-          MessageSchedulingStateSendWhenOnline.fromJson(json),
-        _ => UndecodedMessageSchedulingState(json),
-      };
+  factory MessageSchedulingState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageSchedulingState
+        ? object
+        : UndecodedMessageSchedulingState(json);
+  }
 
   /// Returns a copy of this object.
   MessageSchedulingState copyWith();

@@ -10,15 +10,10 @@ sealed class InputBackground extends TdObject {
   const InputBackground();
 
   /// Parses whichever [InputBackground] subtype the JSON describes.
-  factory InputBackground.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputBackgroundLocal.CONSTRUCTOR => InputBackgroundLocal.fromJson(json),
-        InputBackgroundRemote.CONSTRUCTOR =>
-          InputBackgroundRemote.fromJson(json),
-        InputBackgroundPrevious.CONSTRUCTOR =>
-          InputBackgroundPrevious.fromJson(json),
-        _ => UndecodedInputBackground(json),
-      };
+  factory InputBackground.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputBackground ? object : UndecodedInputBackground(json);
+  }
 
   /// Returns a copy of this object.
   InputBackground copyWith();
@@ -104,7 +99,7 @@ final class InputBackgroundRemote extends InputBackground {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'background_id': backgroundId,
+        'background_id': backgroundId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

@@ -10,18 +10,10 @@ sealed class ReplyMarkup extends TdObject {
   const ReplyMarkup();
 
   /// Parses whichever [ReplyMarkup] subtype the JSON describes.
-  factory ReplyMarkup.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ReplyMarkupRemoveKeyboard.CONSTRUCTOR =>
-          ReplyMarkupRemoveKeyboard.fromJson(json),
-        ReplyMarkupForceReply.CONSTRUCTOR =>
-          ReplyMarkupForceReply.fromJson(json),
-        ReplyMarkupShowKeyboard.CONSTRUCTOR =>
-          ReplyMarkupShowKeyboard.fromJson(json),
-        ReplyMarkupInlineKeyboard.CONSTRUCTOR =>
-          ReplyMarkupInlineKeyboard.fromJson(json),
-        _ => UndecodedReplyMarkup(json),
-      };
+  factory ReplyMarkup.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ReplyMarkup ? object : UndecodedReplyMarkup(json);
+  }
 
   /// Returns a copy of this object.
   ReplyMarkup copyWith();

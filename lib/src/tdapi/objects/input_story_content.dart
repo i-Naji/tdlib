@@ -10,14 +10,12 @@ sealed class InputStoryContent extends TdObject {
   const InputStoryContent();
 
   /// Parses whichever [InputStoryContent] subtype the JSON describes.
-  factory InputStoryContent.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputStoryContentPhoto.CONSTRUCTOR =>
-          InputStoryContentPhoto.fromJson(json),
-        InputStoryContentVideo.CONSTRUCTOR =>
-          InputStoryContentVideo.fromJson(json),
-        _ => UndecodedInputStoryContent(json),
-      };
+  factory InputStoryContent.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputStoryContent
+        ? object
+        : UndecodedInputStoryContent(json);
+  }
 
   /// Returns a copy of this object.
   InputStoryContent copyWith();

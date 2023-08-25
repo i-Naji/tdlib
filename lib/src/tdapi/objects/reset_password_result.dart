@@ -10,16 +10,12 @@ sealed class ResetPasswordResult extends TdObject {
   const ResetPasswordResult();
 
   /// Parses whichever [ResetPasswordResult] subtype the JSON describes.
-  factory ResetPasswordResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ResetPasswordResultOk.CONSTRUCTOR =>
-          ResetPasswordResultOk.fromJson(json),
-        ResetPasswordResultPending.CONSTRUCTOR =>
-          ResetPasswordResultPending.fromJson(json),
-        ResetPasswordResultDeclined.CONSTRUCTOR =>
-          ResetPasswordResultDeclined.fromJson(json),
-        _ => UndecodedResetPasswordResult(json),
-      };
+  factory ResetPasswordResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ResetPasswordResult
+        ? object
+        : UndecodedResetPasswordResult(json);
+  }
 
   /// Returns a copy of this object.
   ResetPasswordResult copyWith();

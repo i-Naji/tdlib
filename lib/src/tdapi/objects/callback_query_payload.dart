@@ -10,16 +10,12 @@ sealed class CallbackQueryPayload extends TdObject {
   const CallbackQueryPayload();
 
   /// Parses whichever [CallbackQueryPayload] subtype the JSON describes.
-  factory CallbackQueryPayload.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CallbackQueryPayloadData.CONSTRUCTOR =>
-          CallbackQueryPayloadData.fromJson(json),
-        CallbackQueryPayloadDataWithPassword.CONSTRUCTOR =>
-          CallbackQueryPayloadDataWithPassword.fromJson(json),
-        CallbackQueryPayloadGame.CONSTRUCTOR =>
-          CallbackQueryPayloadGame.fromJson(json),
-        _ => UndecodedCallbackQueryPayload(json),
-      };
+  factory CallbackQueryPayload.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CallbackQueryPayload
+        ? object
+        : UndecodedCallbackQueryPayload(json);
+  }
 
   /// Returns a copy of this object.
   CallbackQueryPayload copyWith();

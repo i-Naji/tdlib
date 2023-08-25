@@ -10,36 +10,12 @@ sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
   /// Parses whichever [PremiumLimitType] subtype the JSON describes.
-  factory PremiumLimitType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PremiumLimitTypeSupergroupCount.CONSTRUCTOR =>
-          PremiumLimitTypeSupergroupCount.fromJson(json),
-        PremiumLimitTypePinnedChatCount.CONSTRUCTOR =>
-          PremiumLimitTypePinnedChatCount.fromJson(json),
-        PremiumLimitTypeCreatedPublicChatCount.CONSTRUCTOR =>
-          PremiumLimitTypeCreatedPublicChatCount.fromJson(json),
-        PremiumLimitTypeSavedAnimationCount.CONSTRUCTOR =>
-          PremiumLimitTypeSavedAnimationCount.fromJson(json),
-        PremiumLimitTypeFavoriteStickerCount.CONSTRUCTOR =>
-          PremiumLimitTypeFavoriteStickerCount.fromJson(json),
-        PremiumLimitTypeChatFolderCount.CONSTRUCTOR =>
-          PremiumLimitTypeChatFolderCount.fromJson(json),
-        PremiumLimitTypeChatFolderChosenChatCount.CONSTRUCTOR =>
-          PremiumLimitTypeChatFolderChosenChatCount.fromJson(json),
-        PremiumLimitTypePinnedArchivedChatCount.CONSTRUCTOR =>
-          PremiumLimitTypePinnedArchivedChatCount.fromJson(json),
-        PremiumLimitTypeCaptionLength.CONSTRUCTOR =>
-          PremiumLimitTypeCaptionLength.fromJson(json),
-        PremiumLimitTypeBioLength.CONSTRUCTOR =>
-          PremiumLimitTypeBioLength.fromJson(json),
-        PremiumLimitTypeChatFolderInviteLinkCount.CONSTRUCTOR =>
-          PremiumLimitTypeChatFolderInviteLinkCount.fromJson(json),
-        PremiumLimitTypeShareableChatFolderCount.CONSTRUCTOR =>
-          PremiumLimitTypeShareableChatFolderCount.fromJson(json),
-        PremiumLimitTypeActiveStoryCount.CONSTRUCTOR =>
-          PremiumLimitTypeActiveStoryCount.fromJson(json),
-        _ => UndecodedPremiumLimitType(json),
-      };
+  factory PremiumLimitType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PremiumLimitType
+        ? object
+        : UndecodedPremiumLimitType(json);
+  }
 
   /// Returns a copy of this object.
   PremiumLimitType copyWith();

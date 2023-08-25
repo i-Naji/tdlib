@@ -39,7 +39,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'input_invoice': inputInvoice.toJson(),
-        'payment_form_id': paymentFormId,
+        'payment_form_id': paymentFormId.toString(),
         'order_info_id': orderInfoId,
         'shipping_option_id': shippingOptionId,
         'credentials': credentials.toJson(),

@@ -10,87 +10,12 @@ sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
   /// Parses whichever [InternalLinkType] subtype the JSON describes.
-  factory InternalLinkType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InternalLinkTypeActiveSessions.CONSTRUCTOR =>
-          InternalLinkTypeActiveSessions.fromJson(json),
-        InternalLinkTypeAttachmentMenuBot.CONSTRUCTOR =>
-          InternalLinkTypeAttachmentMenuBot.fromJson(json),
-        InternalLinkTypeAuthenticationCode.CONSTRUCTOR =>
-          InternalLinkTypeAuthenticationCode.fromJson(json),
-        InternalLinkTypeBackground.CONSTRUCTOR =>
-          InternalLinkTypeBackground.fromJson(json),
-        InternalLinkTypeBotAddToChannel.CONSTRUCTOR =>
-          InternalLinkTypeBotAddToChannel.fromJson(json),
-        InternalLinkTypeBotStart.CONSTRUCTOR =>
-          InternalLinkTypeBotStart.fromJson(json),
-        InternalLinkTypeBotStartInGroup.CONSTRUCTOR =>
-          InternalLinkTypeBotStartInGroup.fromJson(json),
-        InternalLinkTypeChangePhoneNumber.CONSTRUCTOR =>
-          InternalLinkTypeChangePhoneNumber.fromJson(json),
-        InternalLinkTypeChatFolderInvite.CONSTRUCTOR =>
-          InternalLinkTypeChatFolderInvite.fromJson(json),
-        InternalLinkTypeChatFolderSettings.CONSTRUCTOR =>
-          InternalLinkTypeChatFolderSettings.fromJson(json),
-        InternalLinkTypeChatInvite.CONSTRUCTOR =>
-          InternalLinkTypeChatInvite.fromJson(json),
-        InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.CONSTRUCTOR =>
-          InternalLinkTypeDefaultMessageAutoDeleteTimerSettings.fromJson(json),
-        InternalLinkTypeEditProfileSettings.CONSTRUCTOR =>
-          InternalLinkTypeEditProfileSettings.fromJson(json),
-        InternalLinkTypeGame.CONSTRUCTOR => InternalLinkTypeGame.fromJson(json),
-        InternalLinkTypeInstantView.CONSTRUCTOR =>
-          InternalLinkTypeInstantView.fromJson(json),
-        InternalLinkTypeInvoice.CONSTRUCTOR =>
-          InternalLinkTypeInvoice.fromJson(json),
-        InternalLinkTypeLanguagePack.CONSTRUCTOR =>
-          InternalLinkTypeLanguagePack.fromJson(json),
-        InternalLinkTypeLanguageSettings.CONSTRUCTOR =>
-          InternalLinkTypeLanguageSettings.fromJson(json),
-        InternalLinkTypeMessage.CONSTRUCTOR =>
-          InternalLinkTypeMessage.fromJson(json),
-        InternalLinkTypeMessageDraft.CONSTRUCTOR =>
-          InternalLinkTypeMessageDraft.fromJson(json),
-        InternalLinkTypePassportDataRequest.CONSTRUCTOR =>
-          InternalLinkTypePassportDataRequest.fromJson(json),
-        InternalLinkTypePhoneNumberConfirmation.CONSTRUCTOR =>
-          InternalLinkTypePhoneNumberConfirmation.fromJson(json),
-        InternalLinkTypePremiumFeatures.CONSTRUCTOR =>
-          InternalLinkTypePremiumFeatures.fromJson(json),
-        InternalLinkTypePrivacyAndSecuritySettings.CONSTRUCTOR =>
-          InternalLinkTypePrivacyAndSecuritySettings.fromJson(json),
-        InternalLinkTypeProxy.CONSTRUCTOR =>
-          InternalLinkTypeProxy.fromJson(json),
-        InternalLinkTypePublicChat.CONSTRUCTOR =>
-          InternalLinkTypePublicChat.fromJson(json),
-        InternalLinkTypeQrCodeAuthentication.CONSTRUCTOR =>
-          InternalLinkTypeQrCodeAuthentication.fromJson(json),
-        InternalLinkTypeRestorePurchases.CONSTRUCTOR =>
-          InternalLinkTypeRestorePurchases.fromJson(json),
-        InternalLinkTypeSettings.CONSTRUCTOR =>
-          InternalLinkTypeSettings.fromJson(json),
-        InternalLinkTypeStickerSet.CONSTRUCTOR =>
-          InternalLinkTypeStickerSet.fromJson(json),
-        InternalLinkTypeStory.CONSTRUCTOR =>
-          InternalLinkTypeStory.fromJson(json),
-        InternalLinkTypeTheme.CONSTRUCTOR =>
-          InternalLinkTypeTheme.fromJson(json),
-        InternalLinkTypeThemeSettings.CONSTRUCTOR =>
-          InternalLinkTypeThemeSettings.fromJson(json),
-        InternalLinkTypeUnknownDeepLink.CONSTRUCTOR =>
-          InternalLinkTypeUnknownDeepLink.fromJson(json),
-        InternalLinkTypeUnsupportedProxy.CONSTRUCTOR =>
-          InternalLinkTypeUnsupportedProxy.fromJson(json),
-        InternalLinkTypeUserPhoneNumber.CONSTRUCTOR =>
-          InternalLinkTypeUserPhoneNumber.fromJson(json),
-        InternalLinkTypeUserToken.CONSTRUCTOR =>
-          InternalLinkTypeUserToken.fromJson(json),
-        InternalLinkTypeVideoChat.CONSTRUCTOR =>
-          InternalLinkTypeVideoChat.fromJson(json),
-        InternalLinkTypeWebApp.CONSTRUCTOR =>
-          InternalLinkTypeWebApp.fromJson(json),
-        _ => UndecodedInternalLinkType(json),
-      };
+  factory InternalLinkType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InternalLinkType
+        ? object
+        : UndecodedInternalLinkType(json);
+  }
 
   /// Returns a copy of this object.
   InternalLinkType copyWith();

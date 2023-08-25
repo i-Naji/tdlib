@@ -10,42 +10,10 @@ sealed class PageBlock extends TdObject {
   const PageBlock();
 
   /// Parses whichever [PageBlock] subtype the JSON describes.
-  factory PageBlock.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PageBlockTitle.CONSTRUCTOR => PageBlockTitle.fromJson(json),
-        PageBlockSubtitle.CONSTRUCTOR => PageBlockSubtitle.fromJson(json),
-        PageBlockAuthorDate.CONSTRUCTOR => PageBlockAuthorDate.fromJson(json),
-        PageBlockHeader.CONSTRUCTOR => PageBlockHeader.fromJson(json),
-        PageBlockSubheader.CONSTRUCTOR => PageBlockSubheader.fromJson(json),
-        PageBlockKicker.CONSTRUCTOR => PageBlockKicker.fromJson(json),
-        PageBlockParagraph.CONSTRUCTOR => PageBlockParagraph.fromJson(json),
-        PageBlockPreformatted.CONSTRUCTOR =>
-          PageBlockPreformatted.fromJson(json),
-        PageBlockFooter.CONSTRUCTOR => PageBlockFooter.fromJson(json),
-        PageBlockDivider.CONSTRUCTOR => PageBlockDivider.fromJson(json),
-        PageBlockAnchor.CONSTRUCTOR => PageBlockAnchor.fromJson(json),
-        PageBlockList.CONSTRUCTOR => PageBlockList.fromJson(json),
-        PageBlockBlockQuote.CONSTRUCTOR => PageBlockBlockQuote.fromJson(json),
-        PageBlockPullQuote.CONSTRUCTOR => PageBlockPullQuote.fromJson(json),
-        PageBlockAnimation.CONSTRUCTOR => PageBlockAnimation.fromJson(json),
-        PageBlockAudio.CONSTRUCTOR => PageBlockAudio.fromJson(json),
-        PageBlockPhoto.CONSTRUCTOR => PageBlockPhoto.fromJson(json),
-        PageBlockVideo.CONSTRUCTOR => PageBlockVideo.fromJson(json),
-        PageBlockVoiceNote.CONSTRUCTOR => PageBlockVoiceNote.fromJson(json),
-        PageBlockCover.CONSTRUCTOR => PageBlockCover.fromJson(json),
-        PageBlockEmbedded.CONSTRUCTOR => PageBlockEmbedded.fromJson(json),
-        PageBlockEmbeddedPost.CONSTRUCTOR =>
-          PageBlockEmbeddedPost.fromJson(json),
-        PageBlockCollage.CONSTRUCTOR => PageBlockCollage.fromJson(json),
-        PageBlockSlideshow.CONSTRUCTOR => PageBlockSlideshow.fromJson(json),
-        PageBlockChatLink.CONSTRUCTOR => PageBlockChatLink.fromJson(json),
-        PageBlockTable.CONSTRUCTOR => PageBlockTable.fromJson(json),
-        PageBlockDetails.CONSTRUCTOR => PageBlockDetails.fromJson(json),
-        PageBlockRelatedArticles.CONSTRUCTOR =>
-          PageBlockRelatedArticles.fromJson(json),
-        PageBlockMap.CONSTRUCTOR => PageBlockMap.fromJson(json),
-        _ => UndecodedPageBlock(json),
-      };
+  factory PageBlock.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PageBlock ? object : UndecodedPageBlock(json);
+  }
 
   /// Returns a copy of this object.
   PageBlock copyWith();

@@ -26,7 +26,7 @@ final class EmojiStatus extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         'expiration_date': expirationDate,
       };
 

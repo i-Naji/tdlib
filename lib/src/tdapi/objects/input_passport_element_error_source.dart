@@ -10,28 +10,12 @@ sealed class InputPassportElementErrorSource extends TdObject {
   const InputPassportElementErrorSource();
 
   /// Parses whichever [InputPassportElementErrorSource] subtype the JSON describes.
-  factory InputPassportElementErrorSource.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputPassportElementErrorSourceUnspecified.CONSTRUCTOR =>
-          InputPassportElementErrorSourceUnspecified.fromJson(json),
-        InputPassportElementErrorSourceDataField.CONSTRUCTOR =>
-          InputPassportElementErrorSourceDataField.fromJson(json),
-        InputPassportElementErrorSourceFrontSide.CONSTRUCTOR =>
-          InputPassportElementErrorSourceFrontSide.fromJson(json),
-        InputPassportElementErrorSourceReverseSide.CONSTRUCTOR =>
-          InputPassportElementErrorSourceReverseSide.fromJson(json),
-        InputPassportElementErrorSourceSelfie.CONSTRUCTOR =>
-          InputPassportElementErrorSourceSelfie.fromJson(json),
-        InputPassportElementErrorSourceTranslationFile.CONSTRUCTOR =>
-          InputPassportElementErrorSourceTranslationFile.fromJson(json),
-        InputPassportElementErrorSourceTranslationFiles.CONSTRUCTOR =>
-          InputPassportElementErrorSourceTranslationFiles.fromJson(json),
-        InputPassportElementErrorSourceFile.CONSTRUCTOR =>
-          InputPassportElementErrorSourceFile.fromJson(json),
-        InputPassportElementErrorSourceFiles.CONSTRUCTOR =>
-          InputPassportElementErrorSourceFiles.fromJson(json),
-        _ => UndecodedInputPassportElementErrorSource(json),
-      };
+  factory InputPassportElementErrorSource.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputPassportElementErrorSource
+        ? object
+        : UndecodedInputPassportElementErrorSource(json);
+  }
 
   /// Returns a copy of this object.
   InputPassportElementErrorSource copyWith();

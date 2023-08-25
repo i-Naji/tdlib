@@ -26,7 +26,7 @@ final class SetFileGenerationProgress extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
         'expected_size': expectedSize,
         'local_prefix_size': localPrefixSize,
         if (extra != null) '@extra': extra,

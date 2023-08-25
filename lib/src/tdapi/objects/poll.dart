@@ -68,7 +68,7 @@ final class Poll extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'question': question,
         'options': [for (final e in options) e.toJson()],
         'total_voter_count': totalVoterCount,

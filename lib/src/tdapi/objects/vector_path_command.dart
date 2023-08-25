@@ -10,14 +10,12 @@ sealed class VectorPathCommand extends TdObject {
   const VectorPathCommand();
 
   /// Parses whichever [VectorPathCommand] subtype the JSON describes.
-  factory VectorPathCommand.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        VectorPathCommandLine.CONSTRUCTOR =>
-          VectorPathCommandLine.fromJson(json),
-        VectorPathCommandCubicBezierCurve.CONSTRUCTOR =>
-          VectorPathCommandCubicBezierCurve.fromJson(json),
-        _ => UndecodedVectorPathCommand(json),
-      };
+  factory VectorPathCommand.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is VectorPathCommand
+        ? object
+        : UndecodedVectorPathCommand(json);
+  }
 
   /// Returns a copy of this object.
   VectorPathCommand copyWith();

@@ -10,13 +10,10 @@ sealed class ProxyType extends TdObject {
   const ProxyType();
 
   /// Parses whichever [ProxyType] subtype the JSON describes.
-  factory ProxyType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ProxyTypeSocks5.CONSTRUCTOR => ProxyTypeSocks5.fromJson(json),
-        ProxyTypeHttp.CONSTRUCTOR => ProxyTypeHttp.fromJson(json),
-        ProxyTypeMtproto.CONSTRUCTOR => ProxyTypeMtproto.fromJson(json),
-        _ => UndecodedProxyType(json),
-      };
+  factory ProxyType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ProxyType ? object : UndecodedProxyType(json);
+  }
 
   /// Returns a copy of this object.
   ProxyType copyWith();

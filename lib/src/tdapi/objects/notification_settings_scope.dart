@@ -10,16 +10,12 @@ sealed class NotificationSettingsScope extends TdObject {
   const NotificationSettingsScope();
 
   /// Parses whichever [NotificationSettingsScope] subtype the JSON describes.
-  factory NotificationSettingsScope.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        NotificationSettingsScopePrivateChats.CONSTRUCTOR =>
-          NotificationSettingsScopePrivateChats.fromJson(json),
-        NotificationSettingsScopeGroupChats.CONSTRUCTOR =>
-          NotificationSettingsScopeGroupChats.fromJson(json),
-        NotificationSettingsScopeChannelChats.CONSTRUCTOR =>
-          NotificationSettingsScopeChannelChats.fromJson(json),
-        _ => UndecodedNotificationSettingsScope(json),
-      };
+  factory NotificationSettingsScope.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is NotificationSettingsScope
+        ? object
+        : UndecodedNotificationSettingsScope(json);
+  }
 
   /// Returns a copy of this object.
   NotificationSettingsScope copyWith();

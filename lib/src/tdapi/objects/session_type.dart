@@ -10,27 +10,10 @@ sealed class SessionType extends TdObject {
   const SessionType();
 
   /// Parses whichever [SessionType] subtype the JSON describes.
-  factory SessionType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        SessionTypeAndroid.CONSTRUCTOR => SessionTypeAndroid.fromJson(json),
-        SessionTypeApple.CONSTRUCTOR => SessionTypeApple.fromJson(json),
-        SessionTypeBrave.CONSTRUCTOR => SessionTypeBrave.fromJson(json),
-        SessionTypeChrome.CONSTRUCTOR => SessionTypeChrome.fromJson(json),
-        SessionTypeEdge.CONSTRUCTOR => SessionTypeEdge.fromJson(json),
-        SessionTypeFirefox.CONSTRUCTOR => SessionTypeFirefox.fromJson(json),
-        SessionTypeIpad.CONSTRUCTOR => SessionTypeIpad.fromJson(json),
-        SessionTypeIphone.CONSTRUCTOR => SessionTypeIphone.fromJson(json),
-        SessionTypeLinux.CONSTRUCTOR => SessionTypeLinux.fromJson(json),
-        SessionTypeMac.CONSTRUCTOR => SessionTypeMac.fromJson(json),
-        SessionTypeOpera.CONSTRUCTOR => SessionTypeOpera.fromJson(json),
-        SessionTypeSafari.CONSTRUCTOR => SessionTypeSafari.fromJson(json),
-        SessionTypeUbuntu.CONSTRUCTOR => SessionTypeUbuntu.fromJson(json),
-        SessionTypeUnknown.CONSTRUCTOR => SessionTypeUnknown.fromJson(json),
-        SessionTypeVivaldi.CONSTRUCTOR => SessionTypeVivaldi.fromJson(json),
-        SessionTypeWindows.CONSTRUCTOR => SessionTypeWindows.fromJson(json),
-        SessionTypeXbox.CONSTRUCTOR => SessionTypeXbox.fromJson(json),
-        _ => UndecodedSessionType(json),
-      };
+  factory SessionType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is SessionType ? object : UndecodedSessionType(json);
+  }
 
   /// Returns a copy of this object.
   SessionType copyWith();

@@ -10,22 +10,12 @@ sealed class CheckChatUsernameResult extends TdObject {
   const CheckChatUsernameResult();
 
   /// Parses whichever [CheckChatUsernameResult] subtype the JSON describes.
-  factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CheckChatUsernameResultOk.CONSTRUCTOR =>
-          CheckChatUsernameResultOk.fromJson(json),
-        CheckChatUsernameResultUsernameInvalid.CONSTRUCTOR =>
-          CheckChatUsernameResultUsernameInvalid.fromJson(json),
-        CheckChatUsernameResultUsernameOccupied.CONSTRUCTOR =>
-          CheckChatUsernameResultUsernameOccupied.fromJson(json),
-        CheckChatUsernameResultUsernamePurchasable.CONSTRUCTOR =>
-          CheckChatUsernameResultUsernamePurchasable.fromJson(json),
-        CheckChatUsernameResultPublicChatsTooMany.CONSTRUCTOR =>
-          CheckChatUsernameResultPublicChatsTooMany.fromJson(json),
-        CheckChatUsernameResultPublicGroupsUnavailable.CONSTRUCTOR =>
-          CheckChatUsernameResultPublicGroupsUnavailable.fromJson(json),
-        _ => UndecodedCheckChatUsernameResult(json),
-      };
+  factory CheckChatUsernameResult.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CheckChatUsernameResult
+        ? object
+        : UndecodedCheckChatUsernameResult(json);
+  }
 
   /// Returns a copy of this object.
   CheckChatUsernameResult copyWith();

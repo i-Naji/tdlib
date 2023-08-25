@@ -33,7 +33,7 @@ final class EmojiStatuses extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_ids': customEmojiIds,
+        'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
       };
 
   /// Returns a copy with the given fields replaced.

@@ -26,7 +26,7 @@ final class WriteGeneratedFilePart extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'generation_id': generationId,
+        'generation_id': generationId.toString(),
         'offset': offset,
         'data': data,
         if (extra != null) '@extra': extra,

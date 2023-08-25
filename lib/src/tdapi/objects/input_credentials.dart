@@ -10,17 +10,12 @@ sealed class InputCredentials extends TdObject {
   const InputCredentials();
 
   /// Parses whichever [InputCredentials] subtype the JSON describes.
-  factory InputCredentials.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputCredentialsSaved.CONSTRUCTOR =>
-          InputCredentialsSaved.fromJson(json),
-        InputCredentialsNew.CONSTRUCTOR => InputCredentialsNew.fromJson(json),
-        InputCredentialsApplePay.CONSTRUCTOR =>
-          InputCredentialsApplePay.fromJson(json),
-        InputCredentialsGooglePay.CONSTRUCTOR =>
-          InputCredentialsGooglePay.fromJson(json),
-        _ => UndecodedInputCredentials(json),
-      };
+  factory InputCredentials.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputCredentials
+        ? object
+        : UndecodedInputCredentials(json);
+  }
 
   /// Returns a copy of this object.
   InputCredentials copyWith();

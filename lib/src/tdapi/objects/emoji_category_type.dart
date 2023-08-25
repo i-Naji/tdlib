@@ -10,16 +10,12 @@ sealed class EmojiCategoryType extends TdObject {
   const EmojiCategoryType();
 
   /// Parses whichever [EmojiCategoryType] subtype the JSON describes.
-  factory EmojiCategoryType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        EmojiCategoryTypeDefault.CONSTRUCTOR =>
-          EmojiCategoryTypeDefault.fromJson(json),
-        EmojiCategoryTypeEmojiStatus.CONSTRUCTOR =>
-          EmojiCategoryTypeEmojiStatus.fromJson(json),
-        EmojiCategoryTypeChatPhoto.CONSTRUCTOR =>
-          EmojiCategoryTypeChatPhoto.fromJson(json),
-        _ => UndecodedEmojiCategoryType(json),
-      };
+  factory EmojiCategoryType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is EmojiCategoryType
+        ? object
+        : UndecodedEmojiCategoryType(json);
+  }
 
   /// Returns a copy of this object.
   EmojiCategoryType copyWith();

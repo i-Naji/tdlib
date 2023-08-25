@@ -10,19 +10,10 @@ sealed class ConnectionState extends TdObject {
   const ConnectionState();
 
   /// Parses whichever [ConnectionState] subtype the JSON describes.
-  factory ConnectionState.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ConnectionStateWaitingForNetwork.CONSTRUCTOR =>
-          ConnectionStateWaitingForNetwork.fromJson(json),
-        ConnectionStateConnectingToProxy.CONSTRUCTOR =>
-          ConnectionStateConnectingToProxy.fromJson(json),
-        ConnectionStateConnecting.CONSTRUCTOR =>
-          ConnectionStateConnecting.fromJson(json),
-        ConnectionStateUpdating.CONSTRUCTOR =>
-          ConnectionStateUpdating.fromJson(json),
-        ConnectionStateReady.CONSTRUCTOR => ConnectionStateReady.fromJson(json),
-        _ => UndecodedConnectionState(json),
-      };
+  factory ConnectionState.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ConnectionState ? object : UndecodedConnectionState(json);
+  }
 
   /// Returns a copy of this object.
   ConnectionState copyWith();

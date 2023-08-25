@@ -18,7 +18,7 @@ final class RemoveBackground extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'background_id': backgroundId,
+        'background_id': backgroundId.toString(),
         if (extra != null) '@extra': extra,
       };
 

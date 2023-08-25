@@ -10,14 +10,12 @@ sealed class ChatAvailableReactions extends TdObject {
   const ChatAvailableReactions();
 
   /// Parses whichever [ChatAvailableReactions] subtype the JSON describes.
-  factory ChatAvailableReactions.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatAvailableReactionsAll.CONSTRUCTOR =>
-          ChatAvailableReactionsAll.fromJson(json),
-        ChatAvailableReactionsSome.CONSTRUCTOR =>
-          ChatAvailableReactionsSome.fromJson(json),
-        _ => UndecodedChatAvailableReactions(json),
-      };
+  factory ChatAvailableReactions.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatAvailableReactions
+        ? object
+        : UndecodedChatAvailableReactions(json);
+  }
 
   /// Returns a copy of this object.
   ChatAvailableReactions copyWith();

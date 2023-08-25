@@ -10,15 +10,10 @@ sealed class BackgroundType extends TdObject {
   const BackgroundType();
 
   /// Parses whichever [BackgroundType] subtype the JSON describes.
-  factory BackgroundType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        BackgroundTypeWallpaper.CONSTRUCTOR =>
-          BackgroundTypeWallpaper.fromJson(json),
-        BackgroundTypePattern.CONSTRUCTOR =>
-          BackgroundTypePattern.fromJson(json),
-        BackgroundTypeFill.CONSTRUCTOR => BackgroundTypeFill.fromJson(json),
-        _ => UndecodedBackgroundType(json),
-      };
+  factory BackgroundType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is BackgroundType ? object : UndecodedBackgroundType(json);
+  }
 
   /// Returns a copy of this object.
   BackgroundType copyWith();

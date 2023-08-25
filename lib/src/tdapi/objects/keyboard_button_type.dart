@@ -10,24 +10,12 @@ sealed class KeyboardButtonType extends TdObject {
   const KeyboardButtonType();
 
   /// Parses whichever [KeyboardButtonType] subtype the JSON describes.
-  factory KeyboardButtonType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        KeyboardButtonTypeText.CONSTRUCTOR =>
-          KeyboardButtonTypeText.fromJson(json),
-        KeyboardButtonTypeRequestPhoneNumber.CONSTRUCTOR =>
-          KeyboardButtonTypeRequestPhoneNumber.fromJson(json),
-        KeyboardButtonTypeRequestLocation.CONSTRUCTOR =>
-          KeyboardButtonTypeRequestLocation.fromJson(json),
-        KeyboardButtonTypeRequestPoll.CONSTRUCTOR =>
-          KeyboardButtonTypeRequestPoll.fromJson(json),
-        KeyboardButtonTypeRequestUser.CONSTRUCTOR =>
-          KeyboardButtonTypeRequestUser.fromJson(json),
-        KeyboardButtonTypeRequestChat.CONSTRUCTOR =>
-          KeyboardButtonTypeRequestChat.fromJson(json),
-        KeyboardButtonTypeWebApp.CONSTRUCTOR =>
-          KeyboardButtonTypeWebApp.fromJson(json),
-        _ => UndecodedKeyboardButtonType(json),
-      };
+  factory KeyboardButtonType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is KeyboardButtonType
+        ? object
+        : UndecodedKeyboardButtonType(json);
+  }
 
   /// Returns a copy of this object.
   KeyboardButtonType copyWith();

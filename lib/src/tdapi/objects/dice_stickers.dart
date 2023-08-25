@@ -10,13 +10,10 @@ sealed class DiceStickers extends TdObject {
   const DiceStickers();
 
   /// Parses whichever [DiceStickers] subtype the JSON describes.
-  factory DiceStickers.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        DiceStickersRegular.CONSTRUCTOR => DiceStickersRegular.fromJson(json),
-        DiceStickersSlotMachine.CONSTRUCTOR =>
-          DiceStickersSlotMachine.fromJson(json),
-        _ => UndecodedDiceStickers(json),
-      };
+  factory DiceStickers.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is DiceStickers ? object : UndecodedDiceStickers(json);
+  }
 
   /// Returns a copy of this object.
   DiceStickers copyWith();

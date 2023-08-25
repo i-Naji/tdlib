@@ -10,26 +10,10 @@ sealed class ReportReason extends TdObject {
   const ReportReason();
 
   /// Parses whichever [ReportReason] subtype the JSON describes.
-  factory ReportReason.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ReportReasonSpam.CONSTRUCTOR => ReportReasonSpam.fromJson(json),
-        ReportReasonViolence.CONSTRUCTOR => ReportReasonViolence.fromJson(json),
-        ReportReasonPornography.CONSTRUCTOR =>
-          ReportReasonPornography.fromJson(json),
-        ReportReasonChildAbuse.CONSTRUCTOR =>
-          ReportReasonChildAbuse.fromJson(json),
-        ReportReasonCopyright.CONSTRUCTOR =>
-          ReportReasonCopyright.fromJson(json),
-        ReportReasonUnrelatedLocation.CONSTRUCTOR =>
-          ReportReasonUnrelatedLocation.fromJson(json),
-        ReportReasonFake.CONSTRUCTOR => ReportReasonFake.fromJson(json),
-        ReportReasonIllegalDrugs.CONSTRUCTOR =>
-          ReportReasonIllegalDrugs.fromJson(json),
-        ReportReasonPersonalDetails.CONSTRUCTOR =>
-          ReportReasonPersonalDetails.fromJson(json),
-        ReportReasonCustom.CONSTRUCTOR => ReportReasonCustom.fromJson(json),
-        _ => UndecodedReportReason(json),
-      };
+  factory ReportReason.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ReportReason ? object : UndecodedReportReason(json);
+  }
 
   /// Returns a copy of this object.
   ReportReason copyWith();

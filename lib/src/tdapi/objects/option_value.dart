@@ -10,14 +10,10 @@ sealed class OptionValue extends TdObject {
   const OptionValue();
 
   /// Parses whichever [OptionValue] subtype the JSON describes.
-  factory OptionValue.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        OptionValueBoolean.CONSTRUCTOR => OptionValueBoolean.fromJson(json),
-        OptionValueEmpty.CONSTRUCTOR => OptionValueEmpty.fromJson(json),
-        OptionValueInteger.CONSTRUCTOR => OptionValueInteger.fromJson(json),
-        OptionValueString.CONSTRUCTOR => OptionValueString.fromJson(json),
-        _ => UndecodedOptionValue(json),
-      };
+  factory OptionValue.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is OptionValue ? object : UndecodedOptionValue(json);
+  }
 
   /// Returns a copy of this object.
   OptionValue copyWith();
@@ -177,7 +173,7 @@ final class OptionValueInteger extends OptionValue {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'value': value,
+        'value': value.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

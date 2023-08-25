@@ -26,7 +26,7 @@ final class ChangeStickerSet extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'set_id': setId,
+        'set_id': setId.toString(),
         'is_installed': isInstalled,
         'is_archived': isArchived,
         if (extra != null) '@extra': extra,

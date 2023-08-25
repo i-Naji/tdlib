@@ -10,13 +10,10 @@ sealed class CallServerType extends TdObject {
   const CallServerType();
 
   /// Parses whichever [CallServerType] subtype the JSON describes.
-  factory CallServerType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CallServerTypeTelegramReflector.CONSTRUCTOR =>
-          CallServerTypeTelegramReflector.fromJson(json),
-        CallServerTypeWebrtc.CONSTRUCTOR => CallServerTypeWebrtc.fromJson(json),
-        _ => UndecodedCallServerType(json),
-      };
+  factory CallServerType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CallServerType ? object : UndecodedCallServerType(json);
+  }
 
   /// Returns a copy of this object.
   CallServerType copyWith();

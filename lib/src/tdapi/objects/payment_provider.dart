@@ -10,15 +10,10 @@ sealed class PaymentProvider extends TdObject {
   const PaymentProvider();
 
   /// Parses whichever [PaymentProvider] subtype the JSON describes.
-  factory PaymentProvider.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PaymentProviderSmartGlocal.CONSTRUCTOR =>
-          PaymentProviderSmartGlocal.fromJson(json),
-        PaymentProviderStripe.CONSTRUCTOR =>
-          PaymentProviderStripe.fromJson(json),
-        PaymentProviderOther.CONSTRUCTOR => PaymentProviderOther.fromJson(json),
-        _ => UndecodedPaymentProvider(json),
-      };
+  factory PaymentProvider.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PaymentProvider ? object : UndecodedPaymentProvider(json);
+  }
 
   /// Returns a copy of this object.
   PaymentProvider copyWith();

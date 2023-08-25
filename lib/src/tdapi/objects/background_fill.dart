@@ -10,15 +10,10 @@ sealed class BackgroundFill extends TdObject {
   const BackgroundFill();
 
   /// Parses whichever [BackgroundFill] subtype the JSON describes.
-  factory BackgroundFill.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        BackgroundFillSolid.CONSTRUCTOR => BackgroundFillSolid.fromJson(json),
-        BackgroundFillGradient.CONSTRUCTOR =>
-          BackgroundFillGradient.fromJson(json),
-        BackgroundFillFreeformGradient.CONSTRUCTOR =>
-          BackgroundFillFreeformGradient.fromJson(json),
-        _ => UndecodedBackgroundFill(json),
-      };
+  factory BackgroundFill.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is BackgroundFill ? object : UndecodedBackgroundFill(json);
+  }
 
   /// Returns a copy of this object.
   BackgroundFill copyWith();

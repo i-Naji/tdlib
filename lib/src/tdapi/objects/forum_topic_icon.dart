@@ -27,7 +27,7 @@ final class ForumTopicIcon extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'color': color,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.

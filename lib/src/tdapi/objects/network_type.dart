@@ -10,16 +10,10 @@ sealed class NetworkType extends TdObject {
   const NetworkType();
 
   /// Parses whichever [NetworkType] subtype the JSON describes.
-  factory NetworkType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        NetworkTypeNone.CONSTRUCTOR => NetworkTypeNone.fromJson(json),
-        NetworkTypeMobile.CONSTRUCTOR => NetworkTypeMobile.fromJson(json),
-        NetworkTypeMobileRoaming.CONSTRUCTOR =>
-          NetworkTypeMobileRoaming.fromJson(json),
-        NetworkTypeWiFi.CONSTRUCTOR => NetworkTypeWiFi.fromJson(json),
-        NetworkTypeOther.CONSTRUCTOR => NetworkTypeOther.fromJson(json),
-        _ => UndecodedNetworkType(json),
-      };
+  factory NetworkType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is NetworkType ? object : UndecodedNetworkType(json);
+  }
 
   /// Returns a copy of this object.
   NetworkType copyWith();

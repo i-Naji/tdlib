@@ -10,15 +10,10 @@ sealed class StickerFullType extends TdObject {
   const StickerFullType();
 
   /// Parses whichever [StickerFullType] subtype the JSON describes.
-  factory StickerFullType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StickerFullTypeRegular.CONSTRUCTOR =>
-          StickerFullTypeRegular.fromJson(json),
-        StickerFullTypeMask.CONSTRUCTOR => StickerFullTypeMask.fromJson(json),
-        StickerFullTypeCustomEmoji.CONSTRUCTOR =>
-          StickerFullTypeCustomEmoji.fromJson(json),
-        _ => UndecodedStickerFullType(json),
-      };
+  factory StickerFullType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StickerFullType ? object : UndecodedStickerFullType(json);
+  }
 
   /// Returns a copy of this object.
   StickerFullType copyWith();
@@ -149,7 +144,7 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_id': customEmojiId,
+        'custom_emoji_id': customEmojiId.toString(),
         'needs_repainting': needsRepainting,
       };
 

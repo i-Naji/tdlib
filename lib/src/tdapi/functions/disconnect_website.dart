@@ -18,7 +18,7 @@ final class DisconnectWebsite extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'website_id': websiteId,
+        'website_id': websiteId.toString(),
         if (extra != null) '@extra': extra,
       };
 

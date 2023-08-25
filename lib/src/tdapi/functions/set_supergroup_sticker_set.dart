@@ -23,7 +23,7 @@ final class SetSupergroupStickerSet extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'supergroup_id': supergroupId,
-        'sticker_set_id': stickerSetId,
+        'sticker_set_id': stickerSetId.toString(),
         if (extra != null) '@extra': extra,
       };
 

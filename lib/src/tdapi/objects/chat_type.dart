@@ -10,14 +10,10 @@ sealed class ChatType extends TdObject {
   const ChatType();
 
   /// Parses whichever [ChatType] subtype the JSON describes.
-  factory ChatType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        ChatTypePrivate.CONSTRUCTOR => ChatTypePrivate.fromJson(json),
-        ChatTypeBasicGroup.CONSTRUCTOR => ChatTypeBasicGroup.fromJson(json),
-        ChatTypeSupergroup.CONSTRUCTOR => ChatTypeSupergroup.fromJson(json),
-        ChatTypeSecret.CONSTRUCTOR => ChatTypeSecret.fromJson(json),
-        _ => UndecodedChatType(json),
-      };
+  factory ChatType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatType ? object : UndecodedChatType(json);
+  }
 
   /// Returns a copy of this object.
   ChatType copyWith();

@@ -10,12 +10,10 @@ sealed class PollType extends TdObject {
   const PollType();
 
   /// Parses whichever [PollType] subtype the JSON describes.
-  factory PollType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PollTypeRegular.CONSTRUCTOR => PollTypeRegular.fromJson(json),
-        PollTypeQuiz.CONSTRUCTOR => PollTypeQuiz.fromJson(json),
-        _ => UndecodedPollType(json),
-      };
+  factory PollType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PollType ? object : UndecodedPollType(json);
+  }
 
   /// Returns a copy of this object.
   PollType copyWith();

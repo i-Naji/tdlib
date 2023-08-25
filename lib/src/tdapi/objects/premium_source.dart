@@ -10,16 +10,10 @@ sealed class PremiumSource extends TdObject {
   const PremiumSource();
 
   /// Parses whichever [PremiumSource] subtype the JSON describes.
-  factory PremiumSource.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PremiumSourceLimitExceeded.CONSTRUCTOR =>
-          PremiumSourceLimitExceeded.fromJson(json),
-        PremiumSourceFeature.CONSTRUCTOR => PremiumSourceFeature.fromJson(json),
-        PremiumSourceLink.CONSTRUCTOR => PremiumSourceLink.fromJson(json),
-        PremiumSourceSettings.CONSTRUCTOR =>
-          PremiumSourceSettings.fromJson(json),
-        _ => UndecodedPremiumSource(json),
-      };
+  factory PremiumSource.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PremiumSource ? object : UndecodedPremiumSource(json);
+  }
 
   /// Returns a copy of this object.
   PremiumSource copyWith();

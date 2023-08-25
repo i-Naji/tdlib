@@ -77,11 +77,11 @@ final class ScopeNotificationSettings extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'mute_for': muteFor,
-        'sound_id': soundId,
+        'sound_id': soundId.toString(),
         'show_preview': showPreview,
         'use_default_mute_stories': useDefaultMuteStories,
         'mute_stories': muteStories,
-        'story_sound_id': storySoundId,
+        'story_sound_id': storySoundId.toString(),
         'show_story_sender': showStorySender,
         'disable_pinned_message_notifications':
             disablePinnedMessageNotifications,

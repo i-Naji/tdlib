@@ -10,36 +10,12 @@ sealed class PassportElementType extends TdObject {
   const PassportElementType();
 
   /// Parses whichever [PassportElementType] subtype the JSON describes.
-  factory PassportElementType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PassportElementTypePersonalDetails.CONSTRUCTOR =>
-          PassportElementTypePersonalDetails.fromJson(json),
-        PassportElementTypePassport.CONSTRUCTOR =>
-          PassportElementTypePassport.fromJson(json),
-        PassportElementTypeDriverLicense.CONSTRUCTOR =>
-          PassportElementTypeDriverLicense.fromJson(json),
-        PassportElementTypeIdentityCard.CONSTRUCTOR =>
-          PassportElementTypeIdentityCard.fromJson(json),
-        PassportElementTypeInternalPassport.CONSTRUCTOR =>
-          PassportElementTypeInternalPassport.fromJson(json),
-        PassportElementTypeAddress.CONSTRUCTOR =>
-          PassportElementTypeAddress.fromJson(json),
-        PassportElementTypeUtilityBill.CONSTRUCTOR =>
-          PassportElementTypeUtilityBill.fromJson(json),
-        PassportElementTypeBankStatement.CONSTRUCTOR =>
-          PassportElementTypeBankStatement.fromJson(json),
-        PassportElementTypeRentalAgreement.CONSTRUCTOR =>
-          PassportElementTypeRentalAgreement.fromJson(json),
-        PassportElementTypePassportRegistration.CONSTRUCTOR =>
-          PassportElementTypePassportRegistration.fromJson(json),
-        PassportElementTypeTemporaryRegistration.CONSTRUCTOR =>
-          PassportElementTypeTemporaryRegistration.fromJson(json),
-        PassportElementTypePhoneNumber.CONSTRUCTOR =>
-          PassportElementTypePhoneNumber.fromJson(json),
-        PassportElementTypeEmailAddress.CONSTRUCTOR =>
-          PassportElementTypeEmailAddress.fromJson(json),
-        _ => UndecodedPassportElementType(json),
-      };
+  factory PassportElementType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PassportElementType
+        ? object
+        : UndecodedPassportElementType(json);
+  }
 
   /// Returns a copy of this object.
   PassportElementType copyWith();

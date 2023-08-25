@@ -10,20 +10,12 @@ sealed class CallDiscardReason extends TdObject {
   const CallDiscardReason();
 
   /// Parses whichever [CallDiscardReason] subtype the JSON describes.
-  factory CallDiscardReason.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        CallDiscardReasonEmpty.CONSTRUCTOR =>
-          CallDiscardReasonEmpty.fromJson(json),
-        CallDiscardReasonMissed.CONSTRUCTOR =>
-          CallDiscardReasonMissed.fromJson(json),
-        CallDiscardReasonDeclined.CONSTRUCTOR =>
-          CallDiscardReasonDeclined.fromJson(json),
-        CallDiscardReasonDisconnected.CONSTRUCTOR =>
-          CallDiscardReasonDisconnected.fromJson(json),
-        CallDiscardReasonHungUp.CONSTRUCTOR =>
-          CallDiscardReasonHungUp.fromJson(json),
-        _ => UndecodedCallDiscardReason(json),
-      };
+  factory CallDiscardReason.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is CallDiscardReason
+        ? object
+        : UndecodedCallDiscardReason(json);
+  }
 
   /// Returns a copy of this object.
   CallDiscardReason copyWith();

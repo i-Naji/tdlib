@@ -22,7 +22,7 @@ final class ToggleSessionCanAcceptCalls extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'session_id': sessionId,
+        'session_id': sessionId.toString(),
         'can_accept_calls': canAcceptCalls,
         if (extra != null) '@extra': extra,
       };

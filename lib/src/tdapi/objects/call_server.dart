@@ -41,7 +41,7 @@ final class CallServer extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'id': id,
+        'id': id.toString(),
         'ip_address': ipAddress,
         'ipv6_address': ipv6Address,
         'port': port,

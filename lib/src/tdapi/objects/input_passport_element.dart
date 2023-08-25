@@ -10,36 +10,12 @@ sealed class InputPassportElement extends TdObject {
   const InputPassportElement();
 
   /// Parses whichever [InputPassportElement] subtype the JSON describes.
-  factory InputPassportElement.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputPassportElementPersonalDetails.CONSTRUCTOR =>
-          InputPassportElementPersonalDetails.fromJson(json),
-        InputPassportElementPassport.CONSTRUCTOR =>
-          InputPassportElementPassport.fromJson(json),
-        InputPassportElementDriverLicense.CONSTRUCTOR =>
-          InputPassportElementDriverLicense.fromJson(json),
-        InputPassportElementIdentityCard.CONSTRUCTOR =>
-          InputPassportElementIdentityCard.fromJson(json),
-        InputPassportElementInternalPassport.CONSTRUCTOR =>
-          InputPassportElementInternalPassport.fromJson(json),
-        InputPassportElementAddress.CONSTRUCTOR =>
-          InputPassportElementAddress.fromJson(json),
-        InputPassportElementUtilityBill.CONSTRUCTOR =>
-          InputPassportElementUtilityBill.fromJson(json),
-        InputPassportElementBankStatement.CONSTRUCTOR =>
-          InputPassportElementBankStatement.fromJson(json),
-        InputPassportElementRentalAgreement.CONSTRUCTOR =>
-          InputPassportElementRentalAgreement.fromJson(json),
-        InputPassportElementPassportRegistration.CONSTRUCTOR =>
-          InputPassportElementPassportRegistration.fromJson(json),
-        InputPassportElementTemporaryRegistration.CONSTRUCTOR =>
-          InputPassportElementTemporaryRegistration.fromJson(json),
-        InputPassportElementPhoneNumber.CONSTRUCTOR =>
-          InputPassportElementPhoneNumber.fromJson(json),
-        InputPassportElementEmailAddress.CONSTRUCTOR =>
-          InputPassportElementEmailAddress.fromJson(json),
-        _ => UndecodedInputPassportElement(json),
-      };
+  factory InputPassportElement.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputPassportElement
+        ? object
+        : UndecodedInputPassportElement(json);
+  }
 
   /// Returns a copy of this object.
   InputPassportElement copyWith();

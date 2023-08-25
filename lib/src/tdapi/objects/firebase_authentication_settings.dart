@@ -10,14 +10,12 @@ sealed class FirebaseAuthenticationSettings extends TdObject {
   const FirebaseAuthenticationSettings();
 
   /// Parses whichever [FirebaseAuthenticationSettings] subtype the JSON describes.
-  factory FirebaseAuthenticationSettings.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        FirebaseAuthenticationSettingsAndroid.CONSTRUCTOR =>
-          FirebaseAuthenticationSettingsAndroid.fromJson(json),
-        FirebaseAuthenticationSettingsIos.CONSTRUCTOR =>
-          FirebaseAuthenticationSettingsIos.fromJson(json),
-        _ => UndecodedFirebaseAuthenticationSettings(json),
-      };
+  factory FirebaseAuthenticationSettings.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is FirebaseAuthenticationSettings
+        ? object
+        : UndecodedFirebaseAuthenticationSettings(json);
+  }
 
   /// Returns a copy of this object.
   FirebaseAuthenticationSettings copyWith();

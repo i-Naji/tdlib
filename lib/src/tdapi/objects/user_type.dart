@@ -10,14 +10,10 @@ sealed class UserType extends TdObject {
   const UserType();
 
   /// Parses whichever [UserType] subtype the JSON describes.
-  factory UserType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        UserTypeRegular.CONSTRUCTOR => UserTypeRegular.fromJson(json),
-        UserTypeDeleted.CONSTRUCTOR => UserTypeDeleted.fromJson(json),
-        UserTypeBot.CONSTRUCTOR => UserTypeBot.fromJson(json),
-        UserTypeUnknown.CONSTRUCTOR => UserTypeUnknown.fromJson(json),
-        _ => UndecodedUserType(json),
-      };
+  factory UserType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is UserType ? object : UndecodedUserType(json);
+  }
 
   /// Returns a copy of this object.
   UserType copyWith();

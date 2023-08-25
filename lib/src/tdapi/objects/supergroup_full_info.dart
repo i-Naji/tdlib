@@ -172,7 +172,7 @@ final class SupergroupFullInfo extends TdObject {
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
-        'sticker_set_id': stickerSetId,
+        'sticker_set_id': stickerSetId.toString(),
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),
         'bot_commands': [for (final e in botCommands) e.toJson()],

@@ -10,13 +10,10 @@ sealed class LoginUrlInfo extends TdObject {
   const LoginUrlInfo();
 
   /// Parses whichever [LoginUrlInfo] subtype the JSON describes.
-  factory LoginUrlInfo.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        LoginUrlInfoOpen.CONSTRUCTOR => LoginUrlInfoOpen.fromJson(json),
-        LoginUrlInfoRequestConfirmation.CONSTRUCTOR =>
-          LoginUrlInfoRequestConfirmation.fromJson(json),
-        _ => UndecodedLoginUrlInfo(json),
-      };
+  factory LoginUrlInfo.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is LoginUrlInfo ? object : UndecodedLoginUrlInfo(json);
+  }
 
   /// Returns a copy of this object.
   LoginUrlInfo copyWith();

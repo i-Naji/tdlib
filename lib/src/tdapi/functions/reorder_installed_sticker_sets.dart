@@ -23,7 +23,7 @@ final class ReorderInstalledStickerSets extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'sticker_type': stickerType.toJson(),
-        'sticker_set_ids': stickerSetIds,
+        'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
         if (extra != null) '@extra': extra,
       };
 

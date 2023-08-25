@@ -10,14 +10,10 @@ sealed class MaskPoint extends TdObject {
   const MaskPoint();
 
   /// Parses whichever [MaskPoint] subtype the JSON describes.
-  factory MaskPoint.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MaskPointForehead.CONSTRUCTOR => MaskPointForehead.fromJson(json),
-        MaskPointEyes.CONSTRUCTOR => MaskPointEyes.fromJson(json),
-        MaskPointMouth.CONSTRUCTOR => MaskPointMouth.fromJson(json),
-        MaskPointChin.CONSTRUCTOR => MaskPointChin.fromJson(json),
-        _ => UndecodedMaskPoint(json),
-      };
+  factory MaskPoint.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MaskPoint ? object : UndecodedMaskPoint(json);
+  }
 
   /// Returns a copy of this object.
   MaskPoint copyWith();

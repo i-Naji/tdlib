@@ -10,16 +10,10 @@ sealed class UserStatus extends TdObject {
   const UserStatus();
 
   /// Parses whichever [UserStatus] subtype the JSON describes.
-  factory UserStatus.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        UserStatusEmpty.CONSTRUCTOR => UserStatusEmpty.fromJson(json),
-        UserStatusOnline.CONSTRUCTOR => UserStatusOnline.fromJson(json),
-        UserStatusOffline.CONSTRUCTOR => UserStatusOffline.fromJson(json),
-        UserStatusRecently.CONSTRUCTOR => UserStatusRecently.fromJson(json),
-        UserStatusLastWeek.CONSTRUCTOR => UserStatusLastWeek.fromJson(json),
-        UserStatusLastMonth.CONSTRUCTOR => UserStatusLastMonth.fromJson(json),
-        _ => UndecodedUserStatus(json),
-      };
+  factory UserStatus.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is UserStatus ? object : UndecodedUserStatus(json);
+  }
 
   /// Returns a copy of this object.
   UserStatus copyWith();

@@ -10,14 +10,10 @@ sealed class InputFile extends TdObject {
   const InputFile();
 
   /// Parses whichever [InputFile] subtype the JSON describes.
-  factory InputFile.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        InputFileId.CONSTRUCTOR => InputFileId.fromJson(json),
-        InputFileRemote.CONSTRUCTOR => InputFileRemote.fromJson(json),
-        InputFileLocal.CONSTRUCTOR => InputFileLocal.fromJson(json),
-        InputFileGenerated.CONSTRUCTOR => InputFileGenerated.fromJson(json),
-        _ => UndecodedInputFile(json),
-      };
+  factory InputFile.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is InputFile ? object : UndecodedInputFile(json);
+  }
 
   /// Returns a copy of this object.
   InputFile copyWith();

@@ -22,7 +22,7 @@ final class AnswerPreCheckoutQuery extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'pre_checkout_query_id': preCheckoutQueryId,
+        'pre_checkout_query_id': preCheckoutQueryId.toString(),
         'error_message': errorMessage,
         if (extra != null) '@extra': extra,
       };

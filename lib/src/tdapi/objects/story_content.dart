@@ -10,14 +10,10 @@ sealed class StoryContent extends TdObject {
   const StoryContent();
 
   /// Parses whichever [StoryContent] subtype the JSON describes.
-  factory StoryContent.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        StoryContentPhoto.CONSTRUCTOR => StoryContentPhoto.fromJson(json),
-        StoryContentVideo.CONSTRUCTOR => StoryContentVideo.fromJson(json),
-        StoryContentUnsupported.CONSTRUCTOR =>
-          StoryContentUnsupported.fromJson(json),
-        _ => UndecodedStoryContent(json),
-      };
+  factory StoryContent.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is StoryContent ? object : UndecodedStoryContent(json);
+  }
 
   /// Returns a copy of this object.
   StoryContent copyWith();

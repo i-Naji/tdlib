@@ -10,105 +10,10 @@ sealed class MessageContent extends TdObject {
   const MessageContent();
 
   /// Parses whichever [MessageContent] subtype the JSON describes.
-  factory MessageContent.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        MessageText.CONSTRUCTOR => MessageText.fromJson(json),
-        MessageAnimation.CONSTRUCTOR => MessageAnimation.fromJson(json),
-        MessageAudio.CONSTRUCTOR => MessageAudio.fromJson(json),
-        MessageDocument.CONSTRUCTOR => MessageDocument.fromJson(json),
-        MessagePhoto.CONSTRUCTOR => MessagePhoto.fromJson(json),
-        MessageExpiredPhoto.CONSTRUCTOR => MessageExpiredPhoto.fromJson(json),
-        MessageSticker.CONSTRUCTOR => MessageSticker.fromJson(json),
-        MessageVideo.CONSTRUCTOR => MessageVideo.fromJson(json),
-        MessageExpiredVideo.CONSTRUCTOR => MessageExpiredVideo.fromJson(json),
-        MessageVideoNote.CONSTRUCTOR => MessageVideoNote.fromJson(json),
-        MessageVoiceNote.CONSTRUCTOR => MessageVoiceNote.fromJson(json),
-        MessageLocation.CONSTRUCTOR => MessageLocation.fromJson(json),
-        MessageVenue.CONSTRUCTOR => MessageVenue.fromJson(json),
-        MessageContact.CONSTRUCTOR => MessageContact.fromJson(json),
-        MessageAnimatedEmoji.CONSTRUCTOR => MessageAnimatedEmoji.fromJson(json),
-        MessageDice.CONSTRUCTOR => MessageDice.fromJson(json),
-        MessageGame.CONSTRUCTOR => MessageGame.fromJson(json),
-        MessagePoll.CONSTRUCTOR => MessagePoll.fromJson(json),
-        MessageStory.CONSTRUCTOR => MessageStory.fromJson(json),
-        MessageInvoice.CONSTRUCTOR => MessageInvoice.fromJson(json),
-        MessageCall.CONSTRUCTOR => MessageCall.fromJson(json),
-        MessageVideoChatScheduled.CONSTRUCTOR =>
-          MessageVideoChatScheduled.fromJson(json),
-        MessageVideoChatStarted.CONSTRUCTOR =>
-          MessageVideoChatStarted.fromJson(json),
-        MessageVideoChatEnded.CONSTRUCTOR =>
-          MessageVideoChatEnded.fromJson(json),
-        MessageInviteVideoChatParticipants.CONSTRUCTOR =>
-          MessageInviteVideoChatParticipants.fromJson(json),
-        MessageBasicGroupChatCreate.CONSTRUCTOR =>
-          MessageBasicGroupChatCreate.fromJson(json),
-        MessageSupergroupChatCreate.CONSTRUCTOR =>
-          MessageSupergroupChatCreate.fromJson(json),
-        MessageChatChangeTitle.CONSTRUCTOR =>
-          MessageChatChangeTitle.fromJson(json),
-        MessageChatChangePhoto.CONSTRUCTOR =>
-          MessageChatChangePhoto.fromJson(json),
-        MessageChatDeletePhoto.CONSTRUCTOR =>
-          MessageChatDeletePhoto.fromJson(json),
-        MessageChatAddMembers.CONSTRUCTOR =>
-          MessageChatAddMembers.fromJson(json),
-        MessageChatJoinByLink.CONSTRUCTOR =>
-          MessageChatJoinByLink.fromJson(json),
-        MessageChatJoinByRequest.CONSTRUCTOR =>
-          MessageChatJoinByRequest.fromJson(json),
-        MessageChatDeleteMember.CONSTRUCTOR =>
-          MessageChatDeleteMember.fromJson(json),
-        MessageChatUpgradeTo.CONSTRUCTOR => MessageChatUpgradeTo.fromJson(json),
-        MessageChatUpgradeFrom.CONSTRUCTOR =>
-          MessageChatUpgradeFrom.fromJson(json),
-        MessagePinMessage.CONSTRUCTOR => MessagePinMessage.fromJson(json),
-        MessageScreenshotTaken.CONSTRUCTOR =>
-          MessageScreenshotTaken.fromJson(json),
-        MessageChatSetBackground.CONSTRUCTOR =>
-          MessageChatSetBackground.fromJson(json),
-        MessageChatSetTheme.CONSTRUCTOR => MessageChatSetTheme.fromJson(json),
-        MessageChatSetMessageAutoDeleteTime.CONSTRUCTOR =>
-          MessageChatSetMessageAutoDeleteTime.fromJson(json),
-        MessageForumTopicCreated.CONSTRUCTOR =>
-          MessageForumTopicCreated.fromJson(json),
-        MessageForumTopicEdited.CONSTRUCTOR =>
-          MessageForumTopicEdited.fromJson(json),
-        MessageForumTopicIsClosedToggled.CONSTRUCTOR =>
-          MessageForumTopicIsClosedToggled.fromJson(json),
-        MessageForumTopicIsHiddenToggled.CONSTRUCTOR =>
-          MessageForumTopicIsHiddenToggled.fromJson(json),
-        MessageSuggestProfilePhoto.CONSTRUCTOR =>
-          MessageSuggestProfilePhoto.fromJson(json),
-        MessageCustomServiceAction.CONSTRUCTOR =>
-          MessageCustomServiceAction.fromJson(json),
-        MessageGameScore.CONSTRUCTOR => MessageGameScore.fromJson(json),
-        MessagePaymentSuccessful.CONSTRUCTOR =>
-          MessagePaymentSuccessful.fromJson(json),
-        MessagePaymentSuccessfulBot.CONSTRUCTOR =>
-          MessagePaymentSuccessfulBot.fromJson(json),
-        MessageGiftedPremium.CONSTRUCTOR => MessageGiftedPremium.fromJson(json),
-        MessageContactRegistered.CONSTRUCTOR =>
-          MessageContactRegistered.fromJson(json),
-        MessageUserShared.CONSTRUCTOR => MessageUserShared.fromJson(json),
-        MessageChatShared.CONSTRUCTOR => MessageChatShared.fromJson(json),
-        MessageWebsiteConnected.CONSTRUCTOR =>
-          MessageWebsiteConnected.fromJson(json),
-        MessageBotWriteAccessAllowed.CONSTRUCTOR =>
-          MessageBotWriteAccessAllowed.fromJson(json),
-        MessageWebAppDataSent.CONSTRUCTOR =>
-          MessageWebAppDataSent.fromJson(json),
-        MessageWebAppDataReceived.CONSTRUCTOR =>
-          MessageWebAppDataReceived.fromJson(json),
-        MessagePassportDataSent.CONSTRUCTOR =>
-          MessagePassportDataSent.fromJson(json),
-        MessagePassportDataReceived.CONSTRUCTOR =>
-          MessagePassportDataReceived.fromJson(json),
-        MessageProximityAlertTriggered.CONSTRUCTOR =>
-          MessageProximityAlertTriggered.fromJson(json),
-        MessageUnsupported.CONSTRUCTOR => MessageUnsupported.fromJson(json),
-        _ => UndecodedMessageContent(json),
-      };
+  factory MessageContent.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is MessageContent ? object : UndecodedMessageContent(json);
+  }
 
   /// Returns a copy of this object.
   MessageContent copyWith();
@@ -2051,7 +1956,7 @@ final class MessageForumTopicEdited extends MessageContent {
         '@type': CONSTRUCTOR,
         'name': name,
         'edit_icon_custom_emoji_id': editIconCustomEmojiId,
-        'icon_custom_emoji_id': iconCustomEmojiId,
+        'icon_custom_emoji_id': iconCustomEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced.
@@ -2259,7 +2164,7 @@ final class MessageGameScore extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'game_message_id': gameMessageId,
-        'game_id': gameId,
+        'game_id': gameId.toString(),
         'score': score,
       };
 
@@ -2528,7 +2433,7 @@ final class MessageGiftedPremium extends MessageContent {
         'currency': currency,
         'amount': amount,
         'cryptocurrency': cryptocurrency,
-        'cryptocurrency_amount': cryptocurrencyAmount,
+        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
         'month_count': monthCount,
         'sticker': sticker?.toJson(),
       };

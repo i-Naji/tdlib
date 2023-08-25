@@ -10,14 +10,10 @@ sealed class PublicChatType extends TdObject {
   const PublicChatType();
 
   /// Parses whichever [PublicChatType] subtype the JSON describes.
-  factory PublicChatType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        PublicChatTypeHasUsername.CONSTRUCTOR =>
-          PublicChatTypeHasUsername.fromJson(json),
-        PublicChatTypeIsLocationBased.CONSTRUCTOR =>
-          PublicChatTypeIsLocationBased.fromJson(json),
-        _ => UndecodedPublicChatType(json),
-      };
+  factory PublicChatType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is PublicChatType ? object : UndecodedPublicChatType(json);
+  }
 
   /// Returns a copy of this object.
   PublicChatType copyWith();

@@ -10,31 +10,10 @@ sealed class FileType extends TdObject {
   const FileType();
 
   /// Parses whichever [FileType] subtype the JSON describes.
-  factory FileType.fromJson(Map<String, dynamic> json) =>
-      switch (json['@type']) {
-        FileTypeNone.CONSTRUCTOR => FileTypeNone.fromJson(json),
-        FileTypeAnimation.CONSTRUCTOR => FileTypeAnimation.fromJson(json),
-        FileTypeAudio.CONSTRUCTOR => FileTypeAudio.fromJson(json),
-        FileTypeDocument.CONSTRUCTOR => FileTypeDocument.fromJson(json),
-        FileTypeNotificationSound.CONSTRUCTOR =>
-          FileTypeNotificationSound.fromJson(json),
-        FileTypePhoto.CONSTRUCTOR => FileTypePhoto.fromJson(json),
-        FileTypePhotoStory.CONSTRUCTOR => FileTypePhotoStory.fromJson(json),
-        FileTypeProfilePhoto.CONSTRUCTOR => FileTypeProfilePhoto.fromJson(json),
-        FileTypeSecret.CONSTRUCTOR => FileTypeSecret.fromJson(json),
-        FileTypeSecretThumbnail.CONSTRUCTOR =>
-          FileTypeSecretThumbnail.fromJson(json),
-        FileTypeSecure.CONSTRUCTOR => FileTypeSecure.fromJson(json),
-        FileTypeSticker.CONSTRUCTOR => FileTypeSticker.fromJson(json),
-        FileTypeThumbnail.CONSTRUCTOR => FileTypeThumbnail.fromJson(json),
-        FileTypeUnknown.CONSTRUCTOR => FileTypeUnknown.fromJson(json),
-        FileTypeVideo.CONSTRUCTOR => FileTypeVideo.fromJson(json),
-        FileTypeVideoNote.CONSTRUCTOR => FileTypeVideoNote.fromJson(json),
-        FileTypeVideoStory.CONSTRUCTOR => FileTypeVideoStory.fromJson(json),
-        FileTypeVoiceNote.CONSTRUCTOR => FileTypeVoiceNote.fromJson(json),
-        FileTypeWallpaper.CONSTRUCTOR => FileTypeWallpaper.fromJson(json),
-        _ => UndecodedFileType(json),
-      };
+  factory FileType.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is FileType ? object : UndecodedFileType(json);
+  }
 
   /// Returns a copy of this object.
   FileType copyWith();
