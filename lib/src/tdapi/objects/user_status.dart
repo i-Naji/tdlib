@@ -56,7 +56,8 @@ final class UserStatusEmpty extends UserStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusEmpty copyWith() => const UserStatusEmpty();
 
@@ -89,7 +90,8 @@ final class UserStatusOnline extends UserStatus {
         'expires': expires,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusOnline copyWith({
     int? expires,
@@ -127,7 +129,8 @@ final class UserStatusOffline extends UserStatus {
         'was_online': wasOnline,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusOffline copyWith({
     int? wasOnline,
@@ -157,7 +160,8 @@ final class UserStatusRecently extends UserStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusRecently copyWith() => const UserStatusRecently();
 
@@ -182,7 +186,8 @@ final class UserStatusLastWeek extends UserStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusLastWeek copyWith() => const UserStatusLastWeek();
 
@@ -207,7 +212,8 @@ final class UserStatusLastMonth extends UserStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserStatusLastMonth copyWith() => const UserStatusLastMonth();
 

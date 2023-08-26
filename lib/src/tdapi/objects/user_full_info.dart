@@ -128,11 +128,12 @@ final class UserFullInfo extends TdObject {
         'bot_info': botInfo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   UserFullInfo copyWith({
-    ChatPhoto? personalPhoto,
-    ChatPhoto? photo,
-    ChatPhoto? publicPhoto,
+    ChatPhoto? Function()? personalPhoto,
+    ChatPhoto? Function()? photo,
+    ChatPhoto? Function()? publicPhoto,
     bool? isBlocked,
     bool? canBeCalled,
     bool? supportsVideoCalls,
@@ -141,17 +142,18 @@ final class UserFullInfo extends TdObject {
     bool? hasRestrictedVoiceAndVideoNoteMessages,
     bool? hasPinnedStories,
     bool? needPhoneNumberPrivacyException,
-    FormattedText? bio,
+    FormattedText? Function()? bio,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
-    BotInfo? botInfo,
+    BotInfo? Function()? botInfo,
     dynamic extra,
     int? clientId,
   }) =>
       UserFullInfo(
-        personalPhoto: personalPhoto ?? this.personalPhoto,
-        photo: photo ?? this.photo,
-        publicPhoto: publicPhoto ?? this.publicPhoto,
+        personalPhoto:
+            personalPhoto != null ? personalPhoto() : this.personalPhoto,
+        photo: photo != null ? photo() : this.photo,
+        publicPhoto: publicPhoto != null ? publicPhoto() : this.publicPhoto,
         isBlocked: isBlocked ?? this.isBlocked,
         canBeCalled: canBeCalled ?? this.canBeCalled,
         supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
@@ -163,10 +165,10 @@ final class UserFullInfo extends TdObject {
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
         needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
             this.needPhoneNumberPrivacyException,
-        bio: bio ?? this.bio,
+        bio: bio != null ? bio() : this.bio,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
-        botInfo: botInfo ?? this.botInfo,
+        botInfo: botInfo != null ? botInfo() : this.botInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

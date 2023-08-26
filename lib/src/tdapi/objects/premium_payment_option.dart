@@ -56,14 +56,15 @@ final class PremiumPaymentOption extends TdObject {
         'payment_link': paymentLink?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PremiumPaymentOption copyWith({
     String? currency,
     int? amount,
     int? discountPercentage,
     int? monthCount,
     String? storeProductId,
-    InternalLinkType? paymentLink,
+    InternalLinkType? Function()? paymentLink,
   }) =>
       PremiumPaymentOption(
         currency: currency ?? this.currency,
@@ -71,7 +72,7 @@ final class PremiumPaymentOption extends TdObject {
         discountPercentage: discountPercentage ?? this.discountPercentage,
         monthCount: monthCount ?? this.monthCount,
         storeProductId: storeProductId ?? this.storeProductId,
-        paymentLink: paymentLink ?? this.paymentLink,
+        paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
       );
 
   /// TDLib type name.

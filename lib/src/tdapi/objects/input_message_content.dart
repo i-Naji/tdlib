@@ -78,7 +78,8 @@ final class InputMessageText extends InputMessageContent {
         'clear_draft': clearDraft,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageText copyWith({
     FormattedText? text,
@@ -164,26 +165,27 @@ final class InputMessageAnimation extends InputMessageContent {
         'has_spoiler': hasSpoiler,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageAnimation copyWith({
     InputFile? animation,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     List<int>? addedStickerFileIds,
     int? duration,
     int? width,
     int? height,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
     bool? hasSpoiler,
   }) =>
       InputMessageAnimation(
         animation: animation ?? this.animation,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         duration: duration ?? this.duration,
         width: width ?? this.width,
         height: height ?? this.height,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 
@@ -247,23 +249,26 @@ final class InputMessageAudio extends InputMessageContent {
         'caption': caption?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageAudio copyWith({
     InputFile? audio,
-    InputThumbnail? albumCoverThumbnail,
+    InputThumbnail? Function()? albumCoverThumbnail,
     int? duration,
     String? title,
     String? performer,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
   }) =>
       InputMessageAudio(
         audio: audio ?? this.audio,
-        albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+        albumCoverThumbnail: albumCoverThumbnail != null
+            ? albumCoverThumbnail()
+            : this.albumCoverThumbnail,
         duration: duration ?? this.duration,
         title: title ?? this.title,
         performer: performer ?? this.performer,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
       );
 
   /// TDLib type name.
@@ -314,20 +319,21 @@ final class InputMessageDocument extends InputMessageContent {
         'caption': caption?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageDocument copyWith({
     InputFile? document,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     bool? disableContentTypeDetection,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
   }) =>
       InputMessageDocument(
         document: document ?? this.document,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         disableContentTypeDetection:
             disableContentTypeDetection ?? this.disableContentTypeDetection,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
       );
 
   /// TDLib type name.
@@ -402,25 +408,26 @@ final class InputMessagePhoto extends InputMessageContent {
         'has_spoiler': hasSpoiler,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessagePhoto copyWith({
     InputFile? photo,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     List<int>? addedStickerFileIds,
     int? width,
     int? height,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
     int? selfDestructTime,
     bool? hasSpoiler,
   }) =>
       InputMessagePhoto(
         photo: photo ?? this.photo,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         width: width ?? this.width,
         height: height ?? this.height,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
         selfDestructTime: selfDestructTime ?? this.selfDestructTime,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
@@ -478,18 +485,19 @@ final class InputMessageSticker extends InputMessageContent {
         'emoji': emoji,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageSticker copyWith({
     InputFile? sticker,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     int? width,
     int? height,
     String? emoji,
   }) =>
       InputMessageSticker(
         sticker: sticker ?? this.sticker,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         width: width ?? this.width,
         height: height ?? this.height,
         emoji: emoji ?? this.emoji,
@@ -579,29 +587,30 @@ final class InputMessageVideo extends InputMessageContent {
         'has_spoiler': hasSpoiler,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVideo copyWith({
     InputFile? video,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     List<int>? addedStickerFileIds,
     int? duration,
     int? width,
     int? height,
     bool? supportsStreaming,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
     int? selfDestructTime,
     bool? hasSpoiler,
   }) =>
       InputMessageVideo(
         video: video ?? this.video,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         duration: duration ?? this.duration,
         width: width ?? this.width,
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
         selfDestructTime: selfDestructTime ?? this.selfDestructTime,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
@@ -653,17 +662,18 @@ final class InputMessageVideoNote extends InputMessageContent {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVideoNote copyWith({
     InputFile? videoNote,
-    InputThumbnail? thumbnail,
+    InputThumbnail? Function()? thumbnail,
     int? duration,
     int? length,
   }) =>
       InputMessageVideoNote(
         videoNote: videoNote ?? this.videoNote,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         duration: duration ?? this.duration,
         length: length ?? this.length,
       );
@@ -715,19 +725,20 @@ final class InputMessageVoiceNote extends InputMessageContent {
         'caption': caption?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVoiceNote copyWith({
     InputFile? voiceNote,
     int? duration,
     String? waveform,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
   }) =>
       InputMessageVoiceNote(
         voiceNote: voiceNote ?? this.voiceNote,
         duration: duration ?? this.duration,
         waveform: waveform ?? this.waveform,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
       );
 
   /// TDLib type name.
@@ -777,7 +788,8 @@ final class InputMessageLocation extends InputMessageContent {
         'proximity_alert_radius': proximityAlertRadius,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageLocation copyWith({
     Location? location,
@@ -821,7 +833,8 @@ final class InputMessageVenue extends InputMessageContent {
         'venue': venue.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageVenue copyWith({
     Venue? venue,
@@ -859,7 +872,8 @@ final class InputMessageContact extends InputMessageContent {
         'contact': contact.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageContact copyWith({
     Contact? contact,
@@ -903,7 +917,8 @@ final class InputMessageDice extends InputMessageContent {
         'clear_draft': clearDraft,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageDice copyWith({
     String? emoji,
@@ -949,7 +964,8 @@ final class InputMessageGame extends InputMessageContent {
         'game_short_name': gameShortName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageGame copyWith({
     int? botUserId,
@@ -1056,7 +1072,8 @@ final class InputMessageInvoice extends InputMessageContent {
         'extended_media_content': extendedMediaContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageInvoice copyWith({
     Invoice? invoice,
@@ -1152,7 +1169,8 @@ final class InputMessagePoll extends InputMessageContent {
         'is_closed': isClosed,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessagePoll copyWith({
     String? question,
@@ -1208,7 +1226,8 @@ final class InputMessageStory extends InputMessageContent {
         'story_id': storyId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageStory copyWith({
     int? storySenderChatId,
@@ -1267,19 +1286,20 @@ final class InputMessageForwarded extends InputMessageContent {
         'copy_options': copyOptions?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageForwarded copyWith({
     int? fromChatId,
     int? messageId,
     bool? inGameShare,
-    MessageCopyOptions? copyOptions,
+    MessageCopyOptions? Function()? copyOptions,
   }) =>
       InputMessageForwarded(
         fromChatId: fromChatId ?? this.fromChatId,
         messageId: messageId ?? this.messageId,
         inGameShare: inGameShare ?? this.inGameShare,
-        copyOptions: copyOptions ?? this.copyOptions,
+        copyOptions: copyOptions != null ? copyOptions() : this.copyOptions,
       );
 
   /// TDLib type name.

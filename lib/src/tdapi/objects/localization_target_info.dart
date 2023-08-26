@@ -38,7 +38,8 @@ final class LocalizationTargetInfo extends TdObject {
         'language_packs': [for (final e in languagePacks) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   LocalizationTargetInfo copyWith({
     List<LanguagePackInfo>? languagePacks,
     dynamic extra,

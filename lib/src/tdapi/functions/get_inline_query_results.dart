@@ -42,18 +42,19 @@ final class GetInlineQueryResults extends TdFunction<InlineQueryResults> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetInlineQueryResults copyWith({
     int? botUserId,
     int? chatId,
-    Location? userLocation,
+    Location? Function()? userLocation,
     String? query,
     String? offset,
   }) =>
       GetInlineQueryResults(
         botUserId: botUserId ?? this.botUserId,
         chatId: chatId ?? this.chatId,
-        userLocation: userLocation ?? this.userLocation,
+        userLocation: userLocation != null ? userLocation() : this.userLocation,
         query: query ?? this.query,
         offset: offset ?? this.offset,
       );

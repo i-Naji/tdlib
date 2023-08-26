@@ -77,15 +77,16 @@ final class Audio extends TdObject {
         'audio': audio.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Audio copyWith({
     int? duration,
     String? title,
     String? performer,
     String? fileName,
     String? mimeType,
-    Minithumbnail? albumCoverMinithumbnail,
-    Thumbnail? albumCoverThumbnail,
+    Minithumbnail? Function()? albumCoverMinithumbnail,
+    Thumbnail? Function()? albumCoverThumbnail,
     List<Thumbnail>? externalAlbumCovers,
     File? audio,
   }) =>
@@ -95,9 +96,12 @@ final class Audio extends TdObject {
         performer: performer ?? this.performer,
         fileName: fileName ?? this.fileName,
         mimeType: mimeType ?? this.mimeType,
-        albumCoverMinithumbnail:
-            albumCoverMinithumbnail ?? this.albumCoverMinithumbnail,
-        albumCoverThumbnail: albumCoverThumbnail ?? this.albumCoverThumbnail,
+        albumCoverMinithumbnail: albumCoverMinithumbnail != null
+            ? albumCoverMinithumbnail()
+            : this.albumCoverMinithumbnail,
+        albumCoverThumbnail: albumCoverThumbnail != null
+            ? albumCoverThumbnail()
+            : this.albumCoverThumbnail,
         externalAlbumCovers: externalAlbumCovers ?? this.externalAlbumCovers,
         audio: audio ?? this.audio,
       );

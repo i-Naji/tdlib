@@ -122,7 +122,8 @@ final class Story extends TdObject {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Story copyWith({
     int? id,
     int? senderChatId,
@@ -135,7 +136,7 @@ final class Story extends TdObject {
     bool? canBeReplied,
     bool? canGetViewers,
     bool? hasExpiredViewers,
-    StoryInteractionInfo? interactionInfo,
+    StoryInteractionInfo? Function()? interactionInfo,
     StoryPrivacySettings? privacySettings,
     StoryContent? content,
     FormattedText? caption,
@@ -154,7 +155,8 @@ final class Story extends TdObject {
         canBeReplied: canBeReplied ?? this.canBeReplied,
         canGetViewers: canGetViewers ?? this.canGetViewers,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
-        interactionInfo: interactionInfo ?? this.interactionInfo,
+        interactionInfo:
+            interactionInfo != null ? interactionInfo() : this.interactionInfo,
         privacySettings: privacySettings ?? this.privacySettings,
         content: content ?? this.content,
         caption: caption ?? this.caption,

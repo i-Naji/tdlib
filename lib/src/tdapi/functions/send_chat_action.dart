@@ -32,16 +32,17 @@ final class SendChatAction extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SendChatAction copyWith({
     int? chatId,
     int? messageThreadId,
-    ChatAction? action,
+    ChatAction? Function()? action,
   }) =>
       SendChatAction(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        action: action ?? this.action,
+        action: action != null ? action() : this.action,
       );
 
   /// TDLib type name.

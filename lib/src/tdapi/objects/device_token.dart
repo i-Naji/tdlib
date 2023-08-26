@@ -71,7 +71,8 @@ final class DeviceTokenFirebaseCloudMessaging extends DeviceToken {
         'encrypt': encrypt,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenFirebaseCloudMessaging copyWith({
     String? token,
@@ -117,7 +118,8 @@ final class DeviceTokenApplePush extends DeviceToken {
         'is_app_sandbox': isAppSandbox,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenApplePush copyWith({
     String? deviceToken,
@@ -169,7 +171,8 @@ final class DeviceTokenApplePushVoIP extends DeviceToken {
         'encrypt': encrypt,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenApplePushVoIP copyWith({
     String? deviceToken,
@@ -211,7 +214,8 @@ final class DeviceTokenWindowsPush extends DeviceToken {
         'access_token': accessToken,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenWindowsPush copyWith({
     String? accessToken,
@@ -249,7 +253,8 @@ final class DeviceTokenMicrosoftPush extends DeviceToken {
         'channel_uri': channelUri,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenMicrosoftPush copyWith({
     String? channelUri,
@@ -287,7 +292,8 @@ final class DeviceTokenMicrosoftPushVoIP extends DeviceToken {
         'channel_uri': channelUri,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenMicrosoftPushVoIP copyWith({
     String? channelUri,
@@ -337,7 +343,8 @@ final class DeviceTokenWebPush extends DeviceToken {
         'auth_base64url': authBase64url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenWebPush copyWith({
     String? endpoint,
@@ -379,7 +386,8 @@ final class DeviceTokenSimplePush extends DeviceToken {
         'endpoint': endpoint,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenSimplePush copyWith({
     String? endpoint,
@@ -417,7 +425,8 @@ final class DeviceTokenUbuntuPush extends DeviceToken {
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenUbuntuPush copyWith({
     String? token,
@@ -455,7 +464,8 @@ final class DeviceTokenBlackBerryPush extends DeviceToken {
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenBlackBerryPush copyWith({
     String? token,
@@ -493,7 +503,8 @@ final class DeviceTokenTizenPush extends DeviceToken {
         'reg_id': regId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenTizenPush copyWith({
     String? regId,
@@ -537,7 +548,8 @@ final class DeviceTokenHuaweiPush extends DeviceToken {
         'encrypt': encrypt,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   DeviceTokenHuaweiPush copyWith({
     String? token,

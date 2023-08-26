@@ -181,7 +181,8 @@ final class ChatStatisticsSupergroup extends ChatStatistics {
         'top_inviters': [for (final e in topInviters) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatStatisticsSupergroup copyWith({
     DateRange? period,
@@ -366,7 +367,8 @@ final class ChatStatisticsChannel extends ChatStatistics {
         ],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatStatisticsChannel copyWith({
     DateRange? period,

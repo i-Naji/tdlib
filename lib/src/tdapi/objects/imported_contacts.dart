@@ -43,7 +43,8 @@ final class ImportedContacts extends TdObject {
         'importer_count': importerCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ImportedContacts copyWith({
     List<int>? userIds,
     List<int>? importerCount,

@@ -58,7 +58,8 @@ final class SuggestedActionEnableArchiveAndMuteNewChats
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionEnableArchiveAndMuteNewChats copyWith() =>
       const SuggestedActionEnableArchiveAndMuteNewChats();
@@ -85,7 +86,8 @@ final class SuggestedActionCheckPassword extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionCheckPassword copyWith() =>
       const SuggestedActionCheckPassword();
@@ -111,7 +113,8 @@ final class SuggestedActionCheckPhoneNumber extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionCheckPhoneNumber copyWith() =>
       const SuggestedActionCheckPhoneNumber();
@@ -137,7 +140,8 @@ final class SuggestedActionViewChecksHint extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionViewChecksHint copyWith() =>
       const SuggestedActionViewChecksHint();
@@ -172,7 +176,8 @@ final class SuggestedActionConvertToBroadcastGroup extends SuggestedAction {
         'supergroup_id': supergroupId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionConvertToBroadcastGroup copyWith({
     int? supergroupId,
@@ -210,7 +215,8 @@ final class SuggestedActionSetPassword extends SuggestedAction {
         'authorization_delay': authorizationDelay,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionSetPassword copyWith({
     int? authorizationDelay,
@@ -240,7 +246,8 @@ final class SuggestedActionUpgradePremium extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionUpgradePremium copyWith() =>
       const SuggestedActionUpgradePremium();
@@ -266,7 +273,8 @@ final class SuggestedActionRestorePremium extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionRestorePremium copyWith() =>
       const SuggestedActionRestorePremium();
@@ -293,7 +301,8 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SuggestedActionSubscribeToAnnualPremium copyWith() =>
       const SuggestedActionSubscribeToAnnualPremium();

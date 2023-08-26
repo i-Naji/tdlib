@@ -32,15 +32,16 @@ final class EditInlineMessageMedia extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditInlineMessageMedia copyWith({
     String? inlineMessageId,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       EditInlineMessageMedia(
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 

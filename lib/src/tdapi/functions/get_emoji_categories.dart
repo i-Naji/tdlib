@@ -22,12 +22,13 @@ final class GetEmojiCategories extends TdFunction<EmojiCategories> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetEmojiCategories copyWith({
-    EmojiCategoryType? type,
+    EmojiCategoryType? Function()? type,
   }) =>
       GetEmojiCategories(
-        type: type ?? this.type,
+        type: type != null ? type() : this.type,
       );
 
   /// TDLib type name.

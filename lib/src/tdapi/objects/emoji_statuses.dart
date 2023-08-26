@@ -36,7 +36,8 @@ final class EmojiStatuses extends TdObject {
         'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EmojiStatuses copyWith({
     List<int>? customEmojiIds,
     dynamic extra,

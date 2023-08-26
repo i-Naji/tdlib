@@ -69,24 +69,25 @@ final class MessageThreadInfo extends TdObject {
         'draft_message': draftMessage?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageThreadInfo copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyInfo? replyInfo,
+    MessageReplyInfo? Function()? replyInfo,
     int? unreadMessageCount,
     List<Message>? messages,
-    DraftMessage? draftMessage,
+    DraftMessage? Function()? draftMessage,
     dynamic extra,
     int? clientId,
   }) =>
       MessageThreadInfo(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        replyInfo: replyInfo ?? this.replyInfo,
+        replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
         unreadMessageCount: unreadMessageCount ?? this.unreadMessageCount,
         messages: messages ?? this.messages,
-        draftMessage: draftMessage ?? this.draftMessage,
+        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

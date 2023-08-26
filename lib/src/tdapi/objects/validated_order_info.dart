@@ -44,7 +44,8 @@ final class ValidatedOrderInfo extends TdObject {
         'shipping_options': [for (final e in shippingOptions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ValidatedOrderInfo copyWith({
     String? orderInfoId,
     List<ShippingOption>? shippingOptions,

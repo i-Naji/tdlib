@@ -58,7 +58,8 @@ final class PremiumLimitTypeSupergroupCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeSupergroupCount copyWith() =>
       const PremiumLimitTypeSupergroupCount();
@@ -84,7 +85,8 @@ final class PremiumLimitTypePinnedChatCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypePinnedChatCount copyWith() =>
       const PremiumLimitTypePinnedChatCount();
@@ -111,7 +113,8 @@ final class PremiumLimitTypeCreatedPublicChatCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeCreatedPublicChatCount copyWith() =>
       const PremiumLimitTypeCreatedPublicChatCount();
@@ -138,7 +141,8 @@ final class PremiumLimitTypeSavedAnimationCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeSavedAnimationCount copyWith() =>
       const PremiumLimitTypeSavedAnimationCount();
@@ -165,7 +169,8 @@ final class PremiumLimitTypeFavoriteStickerCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeFavoriteStickerCount copyWith() =>
       const PremiumLimitTypeFavoriteStickerCount();
@@ -191,7 +196,8 @@ final class PremiumLimitTypeChatFolderCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeChatFolderCount copyWith() =>
       const PremiumLimitTypeChatFolderCount();
@@ -218,7 +224,8 @@ final class PremiumLimitTypeChatFolderChosenChatCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeChatFolderChosenChatCount copyWith() =>
       const PremiumLimitTypeChatFolderChosenChatCount();
@@ -245,7 +252,8 @@ final class PremiumLimitTypePinnedArchivedChatCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypePinnedArchivedChatCount copyWith() =>
       const PremiumLimitTypePinnedArchivedChatCount();
@@ -271,7 +279,8 @@ final class PremiumLimitTypeCaptionLength extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeCaptionLength copyWith() =>
       const PremiumLimitTypeCaptionLength();
@@ -297,7 +306,8 @@ final class PremiumLimitTypeBioLength extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeBioLength copyWith() => const PremiumLimitTypeBioLength();
 
@@ -323,7 +333,8 @@ final class PremiumLimitTypeChatFolderInviteLinkCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeChatFolderInviteLinkCount copyWith() =>
       const PremiumLimitTypeChatFolderInviteLinkCount();
@@ -350,7 +361,8 @@ final class PremiumLimitTypeShareableChatFolderCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeShareableChatFolderCount copyWith() =>
       const PremiumLimitTypeShareableChatFolderCount();
@@ -377,7 +389,8 @@ final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumLimitTypeActiveStoryCount copyWith() =>
       const PremiumLimitTypeActiveStoryCount();

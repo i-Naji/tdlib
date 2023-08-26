@@ -52,10 +52,11 @@ final class JoinGroupCall extends TdFunction<Text> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   JoinGroupCall copyWith({
     int? groupCallId,
-    MessageSender? participantId,
+    MessageSender? Function()? participantId,
     int? audioSourceId,
     String? payload,
     bool? isMuted,
@@ -64,7 +65,8 @@ final class JoinGroupCall extends TdFunction<Text> {
   }) =>
       JoinGroupCall(
         groupCallId: groupCallId ?? this.groupCallId,
-        participantId: participantId ?? this.participantId,
+        participantId:
+            participantId != null ? participantId() : this.participantId,
         audioSourceId: audioSourceId ?? this.audioSourceId,
         payload: payload ?? this.payload,
         isMuted: isMuted ?? this.isMuted,

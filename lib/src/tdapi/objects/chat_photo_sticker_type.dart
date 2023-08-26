@@ -73,7 +73,8 @@ final class ChatPhotoStickerTypeRegularOrMask extends ChatPhotoStickerType {
         'sticker_id': stickerId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatPhotoStickerTypeRegularOrMask copyWith({
     int? stickerSetId,
@@ -113,7 +114,8 @@ final class ChatPhotoStickerTypeCustomEmoji extends ChatPhotoStickerType {
         'custom_emoji_id': customEmojiId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatPhotoStickerTypeCustomEmoji copyWith({
     int? customEmojiId,

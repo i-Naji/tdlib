@@ -27,14 +27,15 @@ final class SetBotProfilePhoto extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetBotProfilePhoto copyWith({
     int? botUserId,
-    InputChatPhoto? photo,
+    InputChatPhoto? Function()? photo,
   }) =>
       SetBotProfilePhoto(
         botUserId: botUserId ?? this.botUserId,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
       );
 
   /// TDLib type name.

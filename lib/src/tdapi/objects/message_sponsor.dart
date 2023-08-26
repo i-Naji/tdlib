@@ -36,15 +36,16 @@ final class MessageSponsor extends TdObject {
         'info': info,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageSponsor copyWith({
     MessageSponsorType? type,
-    ChatPhotoInfo? photo,
+    ChatPhotoInfo? Function()? photo,
     String? info,
   }) =>
       MessageSponsor(
         type: type ?? this.type,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         info: info ?? this.info,
       );
 

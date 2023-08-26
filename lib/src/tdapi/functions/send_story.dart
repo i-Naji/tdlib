@@ -47,10 +47,11 @@ final class SendStory extends TdFunction<Story> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SendStory copyWith({
     InputStoryContent? content,
-    FormattedText? caption,
+    FormattedText? Function()? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
     bool? isPinned,
@@ -58,7 +59,7 @@ final class SendStory extends TdFunction<Story> {
   }) =>
       SendStory(
         content: content ?? this.content,
-        caption: caption ?? this.caption,
+        caption: caption != null ? caption() : this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
         isPinned: isPinned ?? this.isPinned,

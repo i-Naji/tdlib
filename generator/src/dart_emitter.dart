@@ -5,15 +5,34 @@
 /// * every constructor becomes a `final class`;
 /// * every function becomes `final class X extends TdFunction<Result>`;
 /// * JSON decoding is one `tdObjectFactories` map lookup;
-/// * int64 values are read from strings and written back as strings.
+/// * int64 values are read from strings and written back as strings;
+/// * nullable fields take `T? Function()?` in `copyWith`, so they can be
+///   cleared.
 library;
 
 import 'dart:io';
 
 import 'tl_parser.dart';
 
+/// TDLib release the schema belongs to, written into the generated code.
+class TdlibInfo {
+  const TdlibInfo({
+    required this.version,
+    required this.commit,
+    this.compatibleCommits = const [],
+  });
+
+  final String version;
+
+  /// TDLib commit the schema was taken from.
+  final String commit;
+
+  /// Commits whose schema matches [commit]'s exactly.
+  final List<String> compatibleCommits;
+}
+
 /// Generates the API for [schema] into [outDir].
-void emitDartApi(TlSchema schema, Directory outDir) {
+void emitDartApi(TlSchema schema, TdlibInfo info, Directory outDir) {
   final api = _Api(schema);
   for (final sub in ['objects', 'functions']) {
     final dir = Directory('${outDir.path}/$sub');
@@ -48,6 +67,7 @@ void emitDartApi(TlSchema schema, Directory outDir) {
 
   File('${outDir.path}/tdapi.dart').writeAsStringSync(_library(
     parts: parts,
+    info: info,
     factories: [
       for (final t in schema.types)
         "  '${t.name}': ${dartClass(t.name)}.fromJson,",
@@ -346,11 +366,17 @@ class _Api {
 
     // copyWith.
     final copyParams = [
-      for (final f in fields) '${_dartType(f.type)}? ${f.name}',
+      for (final f in fields)
+        f.nullable
+            ? '${_dartType(f.type)}? Function()? ${f.name}'
+            : '${_dartType(f.type)}? ${f.name}',
       if (receivable) ...['dynamic extra', 'int? clientId'],
     ];
     final copyArgs = [
-      for (final f in fields) '${f.name}: ${f.name} ?? this.${f.name}',
+      for (final f in fields)
+        f.nullable
+            ? '${f.name}: ${f.name} != null ? ${f.name}() : this.${f.name}'
+            : '${f.name}: ${f.name} ?? this.${f.name}',
       if (receivable) ...[
         'extra: extra ?? this.extra',
         'clientId: clientId ?? this.clientId',
@@ -358,7 +384,10 @@ class _Api {
     ];
     out
       ..writeln()
-      ..writeln('  /// Returns a copy with the given fields replaced.');
+      ..writeln(
+          '  /// Returns a copy with the given fields replaced. For a nullable')
+      ..writeln(
+          '  /// field pass a function, e.g. `field: () => null` to clear it.');
     if (overrideCopyWith) out.writeln('  @override');
     out.writeln(copyParams.isEmpty
         ? '  $name copyWith() => const $name();'
@@ -386,12 +415,26 @@ class _Api {
 
 String _library({
   required List<String> parts,
+  required TdlibInfo info,
   required List<String> factories,
 }) {
+  final commits =
+      info.compatibleCommits.isEmpty ? [info.commit] : info.compatibleCommits;
   return '''$_header
 import 'dart:convert' show json;
 
 ${parts.map((p) => "part '$p';").join('\n')}
+
+/// TDLib version this API was generated for.
+const String tdlibVersion = '${info.version}';
+
+/// TDLib commit whose td_api.tl this API was generated from.
+const String tdlibSchemaCommit = '${info.commit}';
+
+/// TDLib commits whose td_api.tl matches this API exactly.
+const List<String> tdlibCompatibleCommits = [
+${commits.map((c) => "  '$c',").join('\n')}
+];
 
 /// Base class of every TDLib object.
 abstract class TdObject {

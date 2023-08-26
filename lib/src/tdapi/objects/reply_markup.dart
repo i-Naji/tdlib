@@ -64,7 +64,8 @@ final class ReplyMarkupRemoveKeyboard extends ReplyMarkup {
         'is_personal': isPersonal,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReplyMarkupRemoveKeyboard copyWith({
     bool? isPersonal,
@@ -108,7 +109,8 @@ final class ReplyMarkupForceReply extends ReplyMarkup {
         'input_field_placeholder': inputFieldPlaceholder,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReplyMarkupForceReply copyWith({
     bool? isPersonal,
@@ -184,7 +186,8 @@ final class ReplyMarkupShowKeyboard extends ReplyMarkup {
         'input_field_placeholder': inputFieldPlaceholder,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReplyMarkupShowKeyboard copyWith({
     List<List<KeyboardButton>>? rows,
@@ -238,7 +241,8 @@ final class ReplyMarkupInlineKeyboard extends ReplyMarkup {
         ],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReplyMarkupInlineKeyboard copyWith({
     List<List<InlineKeyboardButton>>? rows,

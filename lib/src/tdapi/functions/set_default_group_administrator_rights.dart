@@ -23,13 +23,15 @@ final class SetDefaultGroupAdministratorRights extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetDefaultGroupAdministratorRights copyWith({
-    ChatAdministratorRights? defaultGroupAdministratorRights,
+    ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
   }) =>
       SetDefaultGroupAdministratorRights(
-        defaultGroupAdministratorRights: defaultGroupAdministratorRights ??
-            this.defaultGroupAdministratorRights,
+        defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
+            ? defaultGroupAdministratorRights()
+            : this.defaultGroupAdministratorRights,
       );
 
   /// TDLib type name.

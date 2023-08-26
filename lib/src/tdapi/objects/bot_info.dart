@@ -101,37 +101,48 @@ final class BotInfo extends TdObject {
         'edit_settings_link': editSettingsLink?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   BotInfo copyWith({
     String? shortDescription,
     String? description,
-    Photo? photo,
-    Animation? animation,
-    BotMenuButton? menuButton,
+    Photo? Function()? photo,
+    Animation? Function()? animation,
+    BotMenuButton? Function()? menuButton,
     List<BotCommand>? commands,
-    ChatAdministratorRights? defaultGroupAdministratorRights,
-    ChatAdministratorRights? defaultChannelAdministratorRights,
-    InternalLinkType? editCommandsLink,
-    InternalLinkType? editDescriptionLink,
-    InternalLinkType? editDescriptionMediaLink,
-    InternalLinkType? editSettingsLink,
+    ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
+    ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
+    InternalLinkType? Function()? editCommandsLink,
+    InternalLinkType? Function()? editDescriptionLink,
+    InternalLinkType? Function()? editDescriptionMediaLink,
+    InternalLinkType? Function()? editSettingsLink,
   }) =>
       BotInfo(
         shortDescription: shortDescription ?? this.shortDescription,
         description: description ?? this.description,
-        photo: photo ?? this.photo,
-        animation: animation ?? this.animation,
-        menuButton: menuButton ?? this.menuButton,
+        photo: photo != null ? photo() : this.photo,
+        animation: animation != null ? animation() : this.animation,
+        menuButton: menuButton != null ? menuButton() : this.menuButton,
         commands: commands ?? this.commands,
-        defaultGroupAdministratorRights: defaultGroupAdministratorRights ??
-            this.defaultGroupAdministratorRights,
-        defaultChannelAdministratorRights: defaultChannelAdministratorRights ??
-            this.defaultChannelAdministratorRights,
-        editCommandsLink: editCommandsLink ?? this.editCommandsLink,
-        editDescriptionLink: editDescriptionLink ?? this.editDescriptionLink,
-        editDescriptionMediaLink:
-            editDescriptionMediaLink ?? this.editDescriptionMediaLink,
-        editSettingsLink: editSettingsLink ?? this.editSettingsLink,
+        defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
+            ? defaultGroupAdministratorRights()
+            : this.defaultGroupAdministratorRights,
+        defaultChannelAdministratorRights:
+            defaultChannelAdministratorRights != null
+                ? defaultChannelAdministratorRights()
+                : this.defaultChannelAdministratorRights,
+        editCommandsLink: editCommandsLink != null
+            ? editCommandsLink()
+            : this.editCommandsLink,
+        editDescriptionLink: editDescriptionLink != null
+            ? editDescriptionLink()
+            : this.editDescriptionLink,
+        editDescriptionMediaLink: editDescriptionMediaLink != null
+            ? editDescriptionMediaLink()
+            : this.editDescriptionMediaLink,
+        editSettingsLink: editSettingsLink != null
+            ? editSettingsLink()
+            : this.editSettingsLink,
       );
 
   /// TDLib type name.

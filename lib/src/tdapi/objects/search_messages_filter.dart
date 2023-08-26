@@ -58,7 +58,8 @@ final class SearchMessagesFilterEmpty extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterEmpty copyWith() => const SearchMessagesFilterEmpty();
 
@@ -83,7 +84,8 @@ final class SearchMessagesFilterAnimation extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterAnimation copyWith() =>
       const SearchMessagesFilterAnimation();
@@ -109,7 +111,8 @@ final class SearchMessagesFilterAudio extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterAudio copyWith() => const SearchMessagesFilterAudio();
 
@@ -134,7 +137,8 @@ final class SearchMessagesFilterDocument extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterDocument copyWith() =>
       const SearchMessagesFilterDocument();
@@ -160,7 +164,8 @@ final class SearchMessagesFilterPhoto extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterPhoto copyWith() => const SearchMessagesFilterPhoto();
 
@@ -185,7 +190,8 @@ final class SearchMessagesFilterVideo extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterVideo copyWith() => const SearchMessagesFilterVideo();
 
@@ -210,7 +216,8 @@ final class SearchMessagesFilterVoiceNote extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterVoiceNote copyWith() =>
       const SearchMessagesFilterVoiceNote();
@@ -237,7 +244,8 @@ final class SearchMessagesFilterPhotoAndVideo extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterPhotoAndVideo copyWith() =>
       const SearchMessagesFilterPhotoAndVideo();
@@ -263,7 +271,8 @@ final class SearchMessagesFilterUrl extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterUrl copyWith() => const SearchMessagesFilterUrl();
 
@@ -288,7 +297,8 @@ final class SearchMessagesFilterChatPhoto extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterChatPhoto copyWith() =>
       const SearchMessagesFilterChatPhoto();
@@ -314,7 +324,8 @@ final class SearchMessagesFilterVideoNote extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterVideoNote copyWith() =>
       const SearchMessagesFilterVideoNote();
@@ -341,7 +352,8 @@ final class SearchMessagesFilterVoiceAndVideoNote extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterVoiceAndVideoNote copyWith() =>
       const SearchMessagesFilterVoiceAndVideoNote();
@@ -367,7 +379,8 @@ final class SearchMessagesFilterMention extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterMention copyWith() => const SearchMessagesFilterMention();
 
@@ -393,7 +406,8 @@ final class SearchMessagesFilterUnreadMention extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterUnreadMention copyWith() =>
       const SearchMessagesFilterUnreadMention();
@@ -420,7 +434,8 @@ final class SearchMessagesFilterUnreadReaction extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterUnreadReaction copyWith() =>
       const SearchMessagesFilterUnreadReaction();
@@ -447,7 +462,8 @@ final class SearchMessagesFilterFailedToSend extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterFailedToSend copyWith() =>
       const SearchMessagesFilterFailedToSend();
@@ -473,7 +489,8 @@ final class SearchMessagesFilterPinned extends SearchMessagesFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SearchMessagesFilterPinned copyWith() => const SearchMessagesFilterPinned();
 

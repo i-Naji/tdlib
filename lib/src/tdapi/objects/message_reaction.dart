@@ -44,7 +44,8 @@ final class MessageReaction extends TdObject {
         'recent_sender_ids': [for (final e in recentSenderIds) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageReaction copyWith({
     ReactionType? type,
     int? totalCount,

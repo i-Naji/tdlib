@@ -56,7 +56,8 @@ final class MaskPointForehead extends MaskPoint {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MaskPointForehead copyWith() => const MaskPointForehead();
 
@@ -81,7 +82,8 @@ final class MaskPointEyes extends MaskPoint {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MaskPointEyes copyWith() => const MaskPointEyes();
 
@@ -106,7 +108,8 @@ final class MaskPointMouth extends MaskPoint {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MaskPointMouth copyWith() => const MaskPointMouth();
 
@@ -131,7 +134,8 @@ final class MaskPointChin extends MaskPoint {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MaskPointChin copyWith() => const MaskPointChin();
 

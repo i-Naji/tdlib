@@ -37,16 +37,17 @@ final class GetSupergroupMembers extends TdFunction<ChatMembers> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetSupergroupMembers copyWith({
     int? supergroupId,
-    SupergroupMembersFilter? filter,
+    SupergroupMembersFilter? Function()? filter,
     int? offset,
     int? limit,
   }) =>
       GetSupergroupMembers(
         supergroupId: supergroupId ?? this.supergroupId,
-        filter: filter ?? this.filter,
+        filter: filter != null ? filter() : this.filter,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );

@@ -67,7 +67,8 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
         'send_date': sendDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSchedulingStateSendAtDate copyWith({
     int? sendDate,
@@ -99,7 +100,8 @@ final class MessageSchedulingStateSendWhenOnline
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSchedulingStateSendWhenOnline copyWith() =>
       const MessageSchedulingStateSendWhenOnline();

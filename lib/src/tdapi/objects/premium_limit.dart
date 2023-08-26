@@ -48,7 +48,8 @@ final class PremiumLimit extends TdObject {
         'premium_value': premiumValue,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PremiumLimit copyWith({
     PremiumLimitType? type,
     int? defaultValue,

@@ -58,7 +58,8 @@ final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryPrivacySettingsEveryone copyWith() =>
       const StoryPrivacySettingsEveryone();
@@ -92,7 +93,8 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
         'except_user_ids': exceptUserIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryPrivacySettingsContacts copyWith({
     List<int>? exceptUserIds,
@@ -123,7 +125,8 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryPrivacySettingsCloseFriends copyWith() =>
       const StoryPrivacySettingsCloseFriends();
@@ -158,7 +161,8 @@ final class StoryPrivacySettingsSelectedContacts extends StoryPrivacySettings {
         'user_ids': userIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryPrivacySettingsSelectedContacts copyWith({
     List<int>? userIds,

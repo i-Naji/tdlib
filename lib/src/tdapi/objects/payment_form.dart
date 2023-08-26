@@ -116,7 +116,8 @@ final class PaymentForm extends TdObject {
         'product_photo': productPhoto?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PaymentForm copyWith({
     int? id,
     Invoice? invoice,
@@ -124,13 +125,13 @@ final class PaymentForm extends TdObject {
     int? paymentProviderUserId,
     PaymentProvider? paymentProvider,
     List<PaymentOption>? additionalPaymentOptions,
-    OrderInfo? savedOrderInfo,
+    OrderInfo? Function()? savedOrderInfo,
     List<SavedCredentials>? savedCredentials,
     bool? canSaveCredentials,
     bool? needPassword,
     String? productTitle,
     FormattedText? productDescription,
-    Photo? productPhoto,
+    Photo? Function()? productPhoto,
     dynamic extra,
     int? clientId,
   }) =>
@@ -143,13 +144,14 @@ final class PaymentForm extends TdObject {
         paymentProvider: paymentProvider ?? this.paymentProvider,
         additionalPaymentOptions:
             additionalPaymentOptions ?? this.additionalPaymentOptions,
-        savedOrderInfo: savedOrderInfo ?? this.savedOrderInfo,
+        savedOrderInfo:
+            savedOrderInfo != null ? savedOrderInfo() : this.savedOrderInfo,
         savedCredentials: savedCredentials ?? this.savedCredentials,
         canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
         needPassword: needPassword ?? this.needPassword,
         productTitle: productTitle ?? this.productTitle,
         productDescription: productDescription ?? this.productDescription,
-        productPhoto: productPhoto ?? this.productPhoto,
+        productPhoto: productPhoto != null ? productPhoto() : this.productPhoto,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

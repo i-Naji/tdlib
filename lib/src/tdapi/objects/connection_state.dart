@@ -57,7 +57,8 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ConnectionStateWaitingForNetwork copyWith() =>
       const ConnectionStateWaitingForNetwork();
@@ -84,7 +85,8 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ConnectionStateConnectingToProxy copyWith() =>
       const ConnectionStateConnectingToProxy();
@@ -110,7 +112,8 @@ final class ConnectionStateConnecting extends ConnectionState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ConnectionStateConnecting copyWith() => const ConnectionStateConnecting();
 
@@ -135,7 +138,8 @@ final class ConnectionStateUpdating extends ConnectionState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ConnectionStateUpdating copyWith() => const ConnectionStateUpdating();
 
@@ -160,7 +164,8 @@ final class ConnectionStateReady extends ConnectionState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ConnectionStateReady copyWith() => const ConnectionStateReady();
 

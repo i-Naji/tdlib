@@ -99,12 +99,13 @@ final class StickerSetInfo extends TdObject {
         'covers': [for (final e in covers) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StickerSetInfo copyWith({
     int? id,
     String? title,
     String? name,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
     List<ClosedVectorPath>? thumbnailOutline,
     bool? isInstalled,
     bool? isArchived,
@@ -119,7 +120,7 @@ final class StickerSetInfo extends TdObject {
         id: id ?? this.id,
         title: title ?? this.title,
         name: name ?? this.name,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,

@@ -43,7 +43,8 @@ final class ChatInviteLinkMember extends TdObject {
         'approver_user_id': approverUserId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatInviteLinkMember copyWith({
     int? userId,
     int? joinedChatDate,

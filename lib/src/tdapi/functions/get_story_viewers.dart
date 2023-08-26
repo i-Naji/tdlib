@@ -32,15 +32,16 @@ final class GetStoryViewers extends TdFunction<MessageViewers> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetStoryViewers copyWith({
     int? storyId,
-    MessageViewer? offsetViewer,
+    MessageViewer? Function()? offsetViewer,
     int? limit,
   }) =>
       GetStoryViewers(
         storyId: storyId ?? this.storyId,
-        offsetViewer: offsetViewer ?? this.offsetViewer,
+        offsetViewer: offsetViewer != null ? offsetViewer() : this.offsetViewer,
         limit: limit ?? this.limit,
       );
 

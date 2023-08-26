@@ -56,7 +56,8 @@ final class ChatActionTyping extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionTyping copyWith() => const ChatActionTyping();
 
@@ -81,7 +82,8 @@ final class ChatActionRecordingVideo extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionRecordingVideo copyWith() => const ChatActionRecordingVideo();
 
@@ -114,7 +116,8 @@ final class ChatActionUploadingVideo extends ChatAction {
         'progress': progress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionUploadingVideo copyWith({
     int? progress,
@@ -144,7 +147,8 @@ final class ChatActionRecordingVoiceNote extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionRecordingVoiceNote copyWith() =>
       const ChatActionRecordingVoiceNote();
@@ -178,7 +182,8 @@ final class ChatActionUploadingVoiceNote extends ChatAction {
         'progress': progress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionUploadingVoiceNote copyWith({
     int? progress,
@@ -216,7 +221,8 @@ final class ChatActionUploadingPhoto extends ChatAction {
         'progress': progress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionUploadingPhoto copyWith({
     int? progress,
@@ -254,7 +260,8 @@ final class ChatActionUploadingDocument extends ChatAction {
         'progress': progress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionUploadingDocument copyWith({
     int? progress,
@@ -284,7 +291,8 @@ final class ChatActionChoosingSticker extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionChoosingSticker copyWith() => const ChatActionChoosingSticker();
 
@@ -309,7 +317,8 @@ final class ChatActionChoosingLocation extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionChoosingLocation copyWith() => const ChatActionChoosingLocation();
 
@@ -334,7 +343,8 @@ final class ChatActionChoosingContact extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionChoosingContact copyWith() => const ChatActionChoosingContact();
 
@@ -359,7 +369,8 @@ final class ChatActionStartPlayingGame extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionStartPlayingGame copyWith() => const ChatActionStartPlayingGame();
 
@@ -384,7 +395,8 @@ final class ChatActionRecordingVideoNote extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionRecordingVideoNote copyWith() =>
       const ChatActionRecordingVideoNote();
@@ -418,7 +430,8 @@ final class ChatActionUploadingVideoNote extends ChatAction {
         'progress': progress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionUploadingVideoNote copyWith({
     int? progress,
@@ -456,7 +469,8 @@ final class ChatActionWatchingAnimations extends ChatAction {
         'emoji': emoji,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionWatchingAnimations copyWith({
     String? emoji,
@@ -486,7 +500,8 @@ final class ChatActionCancel extends ChatAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionCancel copyWith() => const ChatActionCancel();
 

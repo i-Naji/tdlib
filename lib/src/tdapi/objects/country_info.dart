@@ -48,7 +48,8 @@ final class CountryInfo extends TdObject {
         'calling_codes': callingCodes,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   CountryInfo copyWith({
     String? countryCode,
     String? name,

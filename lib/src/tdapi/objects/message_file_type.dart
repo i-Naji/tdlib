@@ -76,7 +76,8 @@ final class MessageFileTypePrivate extends MessageFileType {
         'name': name,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageFileTypePrivate copyWith({
     String? name,
@@ -130,7 +131,8 @@ final class MessageFileTypeGroup extends MessageFileType {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageFileTypeGroup copyWith({
     String? title,
@@ -178,7 +180,8 @@ final class MessageFileTypeUnknown extends MessageFileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageFileTypeUnknown copyWith({
     dynamic extra,

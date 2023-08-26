@@ -59,7 +59,8 @@ final class AutosaveSettingsScopePrivateChats extends AutosaveSettingsScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AutosaveSettingsScopePrivateChats copyWith() =>
       const AutosaveSettingsScopePrivateChats();
@@ -85,7 +86,8 @@ final class AutosaveSettingsScopeGroupChats extends AutosaveSettingsScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AutosaveSettingsScopeGroupChats copyWith() =>
       const AutosaveSettingsScopeGroupChats();
@@ -112,7 +114,8 @@ final class AutosaveSettingsScopeChannelChats extends AutosaveSettingsScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AutosaveSettingsScopeChannelChats copyWith() =>
       const AutosaveSettingsScopeChannelChats();
@@ -146,7 +149,8 @@ final class AutosaveSettingsScopeChat extends AutosaveSettingsScope {
         'chat_id': chatId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AutosaveSettingsScopeChat copyWith({
     int? chatId,

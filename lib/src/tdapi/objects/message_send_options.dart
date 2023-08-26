@@ -58,13 +58,14 @@ final class MessageSendOptions extends TdObject {
         'sending_id': sendingId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageSendOptions copyWith({
     bool? disableNotification,
     bool? fromBackground,
     bool? protectContent,
     bool? updateOrderOfInstalledStickerSets,
-    MessageSchedulingState? schedulingState,
+    MessageSchedulingState? Function()? schedulingState,
     int? sendingId,
   }) =>
       MessageSendOptions(
@@ -73,7 +74,8 @@ final class MessageSendOptions extends TdObject {
         protectContent: protectContent ?? this.protectContent,
         updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
             this.updateOrderOfInstalledStickerSets,
-        schedulingState: schedulingState ?? this.schedulingState,
+        schedulingState:
+            schedulingState != null ? schedulingState() : this.schedulingState,
         sendingId: sendingId ?? this.sendingId,
       );
 

@@ -30,7 +30,8 @@ final class ChatBackground extends TdObject {
         'dark_theme_dimming': darkThemeDimming,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatBackground copyWith({
     Background? background,
     int? darkThemeDimming,

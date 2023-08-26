@@ -27,14 +27,15 @@ final class SetOption extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetOption copyWith({
     String? name,
-    OptionValue? value,
+    OptionValue? Function()? value,
   }) =>
       SetOption(
         name: name ?? this.name,
-        value: value ?? this.value,
+        value: value != null ? value() : this.value,
       );
 
   /// TDLib type name.

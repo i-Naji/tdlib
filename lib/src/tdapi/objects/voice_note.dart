@@ -50,20 +50,22 @@ final class VoiceNote extends TdObject {
         'voice': voice.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   VoiceNote copyWith({
     int? duration,
     String? waveform,
     String? mimeType,
-    SpeechRecognitionResult? speechRecognitionResult,
+    SpeechRecognitionResult? Function()? speechRecognitionResult,
     File? voice,
   }) =>
       VoiceNote(
         duration: duration ?? this.duration,
         waveform: waveform ?? this.waveform,
         mimeType: mimeType ?? this.mimeType,
-        speechRecognitionResult:
-            speechRecognitionResult ?? this.speechRecognitionResult,
+        speechRecognitionResult: speechRecognitionResult != null
+            ? speechRecognitionResult()
+            : this.speechRecognitionResult,
         voice: voice ?? this.voice,
       );
 

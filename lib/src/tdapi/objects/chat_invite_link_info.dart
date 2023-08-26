@@ -91,13 +91,14 @@ final class ChatInviteLinkInfo extends TdObject {
         'is_public': isPublic,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
     ChatType? type,
     String? title,
-    ChatPhotoInfo? photo,
+    ChatPhotoInfo? Function()? photo,
     String? description,
     int? memberCount,
     List<int>? memberUserIds,
@@ -111,7 +112,7 @@ final class ChatInviteLinkInfo extends TdObject {
         accessibleFor: accessibleFor ?? this.accessibleFor,
         type: type ?? this.type,
         title: title ?? this.title,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         description: description ?? this.description,
         memberCount: memberCount ?? this.memberCount,
         memberUserIds: memberUserIds ?? this.memberUserIds,

@@ -38,7 +38,8 @@ final class ConnectedWebsites extends TdObject {
         'websites': [for (final e in websites) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ConnectedWebsites copyWith({
     List<ConnectedWebsite>? websites,
     dynamic extra,

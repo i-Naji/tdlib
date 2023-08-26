@@ -73,7 +73,8 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
         'is_upgrade': isUpgrade,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StorePaymentPurposePremiumSubscription copyWith({
     bool? isRestore,
@@ -126,7 +127,8 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
         'amount': amount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StorePaymentPurposeGiftedPremium copyWith({
     int? userId,

@@ -70,7 +70,8 @@ final class ProxyTypeSocks5 extends ProxyType {
         'password': password,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ProxyTypeSocks5 copyWith({
     String? username,
@@ -121,7 +122,8 @@ final class ProxyTypeHttp extends ProxyType {
         'http_only': httpOnly,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ProxyTypeHttp copyWith({
     String? username,
@@ -163,7 +165,8 @@ final class ProxyTypeMtproto extends ProxyType {
         'secret': secret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ProxyTypeMtproto copyWith({
     String? secret,

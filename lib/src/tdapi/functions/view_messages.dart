@@ -37,17 +37,18 @@ final class ViewMessages extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ViewMessages copyWith({
     int? chatId,
     List<int>? messageIds,
-    MessageSource? source,
+    MessageSource? Function()? source,
     bool? forceRead,
   }) =>
       ViewMessages(
         chatId: chatId ?? this.chatId,
         messageIds: messageIds ?? this.messageIds,
-        source: source ?? this.source,
+        source: source != null ? source() : this.source,
         forceRead: forceRead ?? this.forceRead,
       );
 

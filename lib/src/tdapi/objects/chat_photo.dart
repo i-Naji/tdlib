@@ -63,24 +63,27 @@ final class ChatPhoto extends TdObject {
         'sticker': sticker?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatPhoto copyWith({
     int? id,
     int? addedDate,
-    Minithumbnail? minithumbnail,
+    Minithumbnail? Function()? minithumbnail,
     List<PhotoSize>? sizes,
-    AnimatedChatPhoto? animation,
-    AnimatedChatPhoto? smallAnimation,
-    ChatPhotoSticker? sticker,
+    AnimatedChatPhoto? Function()? animation,
+    AnimatedChatPhoto? Function()? smallAnimation,
+    ChatPhotoSticker? Function()? sticker,
   }) =>
       ChatPhoto(
         id: id ?? this.id,
         addedDate: addedDate ?? this.addedDate,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
         sizes: sizes ?? this.sizes,
-        animation: animation ?? this.animation,
-        smallAnimation: smallAnimation ?? this.smallAnimation,
-        sticker: sticker ?? this.sticker,
+        animation: animation != null ? animation() : this.animation,
+        smallAnimation:
+            smallAnimation != null ? smallAnimation() : this.smallAnimation,
+        sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.

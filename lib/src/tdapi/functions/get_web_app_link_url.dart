@@ -52,13 +52,14 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetWebAppLinkUrl copyWith({
     int? chatId,
     int? botUserId,
     String? webAppShortName,
     String? startParameter,
-    ThemeParameters? theme,
+    ThemeParameters? Function()? theme,
     String? applicationName,
     bool? allowWriteAccess,
   }) =>
@@ -67,7 +68,7 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
         botUserId: botUserId ?? this.botUserId,
         webAppShortName: webAppShortName ?? this.webAppShortName,
         startParameter: startParameter ?? this.startParameter,
-        theme: theme ?? this.theme,
+        theme: theme != null ? theme() : this.theme,
         applicationName: applicationName ?? this.applicationName,
         allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
       );

@@ -91,7 +91,8 @@ final class Sticker extends TdObject {
         'sticker': sticker.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Sticker copyWith({
     int? id,
     int? setId,
@@ -101,7 +102,7 @@ final class Sticker extends TdObject {
     StickerFormat? format,
     StickerFullType? fullType,
     List<ClosedVectorPath>? outline,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
     File? sticker,
     dynamic extra,
     int? clientId,
@@ -115,7 +116,7 @@ final class Sticker extends TdObject {
         format: format ?? this.format,
         fullType: fullType ?? this.fullType,
         outline: outline ?? this.outline,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         sticker: sticker ?? this.sticker,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

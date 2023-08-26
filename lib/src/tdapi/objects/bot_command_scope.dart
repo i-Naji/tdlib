@@ -56,7 +56,8 @@ final class BotCommandScopeDefault extends BotCommandScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeDefault copyWith() => const BotCommandScopeDefault();
 
@@ -81,7 +82,8 @@ final class BotCommandScopeAllPrivateChats extends BotCommandScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeAllPrivateChats copyWith() =>
       const BotCommandScopeAllPrivateChats();
@@ -107,7 +109,8 @@ final class BotCommandScopeAllGroupChats extends BotCommandScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeAllGroupChats copyWith() =>
       const BotCommandScopeAllGroupChats();
@@ -134,7 +137,8 @@ final class BotCommandScopeAllChatAdministrators extends BotCommandScope {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeAllChatAdministrators copyWith() =>
       const BotCommandScopeAllChatAdministrators();
@@ -168,7 +172,8 @@ final class BotCommandScopeChat extends BotCommandScope {
         'chat_id': chatId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeChat copyWith({
     int? chatId,
@@ -207,7 +212,8 @@ final class BotCommandScopeChatAdministrators extends BotCommandScope {
         'chat_id': chatId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeChatAdministrators copyWith({
     int? chatId,
@@ -251,7 +257,8 @@ final class BotCommandScopeChatMember extends BotCommandScope {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BotCommandScopeChatMember copyWith({
     int? chatId,

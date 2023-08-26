@@ -56,7 +56,8 @@ final class CallProblemEcho extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemEcho copyWith() => const CallProblemEcho();
 
@@ -81,7 +82,8 @@ final class CallProblemNoise extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemNoise copyWith() => const CallProblemNoise();
 
@@ -106,7 +108,8 @@ final class CallProblemInterruptions extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemInterruptions copyWith() => const CallProblemInterruptions();
 
@@ -131,7 +134,8 @@ final class CallProblemDistortedSpeech extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemDistortedSpeech copyWith() => const CallProblemDistortedSpeech();
 
@@ -156,7 +160,8 @@ final class CallProblemSilentLocal extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemSilentLocal copyWith() => const CallProblemSilentLocal();
 
@@ -181,7 +186,8 @@ final class CallProblemSilentRemote extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemSilentRemote copyWith() => const CallProblemSilentRemote();
 
@@ -206,7 +212,8 @@ final class CallProblemDropped extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemDropped copyWith() => const CallProblemDropped();
 
@@ -231,7 +238,8 @@ final class CallProblemDistortedVideo extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemDistortedVideo copyWith() => const CallProblemDistortedVideo();
 
@@ -256,7 +264,8 @@ final class CallProblemPixelatedVideo extends CallProblem {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallProblemPixelatedVideo copyWith() => const CallProblemPixelatedVideo();
 

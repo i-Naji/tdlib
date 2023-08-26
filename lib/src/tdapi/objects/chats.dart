@@ -42,7 +42,8 @@ final class Chats extends TdObject {
         'chat_ids': chatIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Chats copyWith({
     int? totalCount,
     List<int>? chatIds,

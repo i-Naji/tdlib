@@ -33,7 +33,8 @@ final class PersonalDocument extends TdObject {
         'translation': [for (final e in translation) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PersonalDocument copyWith({
     List<DatedFile>? files,
     List<DatedFile>? translation,

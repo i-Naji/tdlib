@@ -52,24 +52,25 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   OpenWebApp copyWith({
     int? chatId,
     int? botUserId,
     String? url,
-    ThemeParameters? theme,
+    ThemeParameters? Function()? theme,
     String? applicationName,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
+    MessageReplyTo? Function()? replyTo,
   }) =>
       OpenWebApp(
         chatId: chatId ?? this.chatId,
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
-        theme: theme ?? this.theme,
+        theme: theme != null ? theme() : this.theme,
         applicationName: applicationName ?? this.applicationName,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        replyTo: replyTo ?? this.replyTo,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
       );
 
   /// TDLib type name.

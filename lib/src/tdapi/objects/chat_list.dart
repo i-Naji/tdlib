@@ -56,7 +56,8 @@ final class ChatListMain extends ChatList {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatListMain copyWith() => const ChatListMain();
 
@@ -81,7 +82,8 @@ final class ChatListArchive extends ChatList {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatListArchive copyWith() => const ChatListArchive();
 
@@ -113,7 +115,8 @@ final class ChatListFolder extends ChatList {
         'chat_folder_id': chatFolderId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatListFolder copyWith({
     int? chatFolderId,

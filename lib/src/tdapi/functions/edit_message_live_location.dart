@@ -47,20 +47,21 @@ final class EditMessageLiveLocation extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditMessageLiveLocation copyWith({
     int? chatId,
     int? messageId,
-    ReplyMarkup? replyMarkup,
-    Location? location,
+    ReplyMarkup? Function()? replyMarkup,
+    Location? Function()? location,
     int? heading,
     int? proximityAlertRadius,
   }) =>
       EditMessageLiveLocation(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        location: location ?? this.location,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+        location: location != null ? location() : this.location,
         heading: heading ?? this.heading,
         proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
       );

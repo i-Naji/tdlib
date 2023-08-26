@@ -28,14 +28,15 @@ final class SendPhoneNumberVerificationCode
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SendPhoneNumberVerificationCode copyWith({
     String? phoneNumber,
-    PhoneNumberAuthenticationSettings? settings,
+    PhoneNumberAuthenticationSettings? Function()? settings,
   }) =>
       SendPhoneNumberVerificationCode(
         phoneNumber: phoneNumber ?? this.phoneNumber,
-        settings: settings ?? this.settings,
+        settings: settings != null ? settings() : this.settings,
       );
 
   /// TDLib type name.

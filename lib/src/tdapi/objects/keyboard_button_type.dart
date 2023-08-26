@@ -58,7 +58,8 @@ final class KeyboardButtonTypeText extends KeyboardButtonType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeText copyWith() => const KeyboardButtonTypeText();
 
@@ -84,7 +85,8 @@ final class KeyboardButtonTypeRequestPhoneNumber extends KeyboardButtonType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeRequestPhoneNumber copyWith() =>
       const KeyboardButtonTypeRequestPhoneNumber();
@@ -111,7 +113,8 @@ final class KeyboardButtonTypeRequestLocation extends KeyboardButtonType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeRequestLocation copyWith() =>
       const KeyboardButtonTypeRequestLocation();
@@ -151,7 +154,8 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
         'force_quiz': forceQuiz,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeRequestPoll copyWith({
     bool? forceRegular,
@@ -215,7 +219,8 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
         'user_is_premium': userIsPremium,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeRequestUser copyWith({
     int? id,
@@ -319,7 +324,8 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         'bot_is_member': botIsMember,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeRequestChat copyWith({
     int? id,
@@ -329,8 +335,8 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     bool? restrictChatHasUsername,
     bool? chatHasUsername,
     bool? chatIsCreated,
-    ChatAdministratorRights? userAdministratorRights,
-    ChatAdministratorRights? botAdministratorRights,
+    ChatAdministratorRights? Function()? userAdministratorRights,
+    ChatAdministratorRights? Function()? botAdministratorRights,
     bool? botIsMember,
   }) =>
       KeyboardButtonTypeRequestChat(
@@ -342,10 +348,12 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
             restrictChatHasUsername ?? this.restrictChatHasUsername,
         chatHasUsername: chatHasUsername ?? this.chatHasUsername,
         chatIsCreated: chatIsCreated ?? this.chatIsCreated,
-        userAdministratorRights:
-            userAdministratorRights ?? this.userAdministratorRights,
-        botAdministratorRights:
-            botAdministratorRights ?? this.botAdministratorRights,
+        userAdministratorRights: userAdministratorRights != null
+            ? userAdministratorRights()
+            : this.userAdministratorRights,
+        botAdministratorRights: botAdministratorRights != null
+            ? botAdministratorRights()
+            : this.botAdministratorRights,
         botIsMember: botIsMember ?? this.botIsMember,
       );
 
@@ -378,7 +386,8 @@ final class KeyboardButtonTypeWebApp extends KeyboardButtonType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   KeyboardButtonTypeWebApp copyWith({
     String? url,

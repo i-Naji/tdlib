@@ -22,12 +22,13 @@ final class SetEmojiStatus extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetEmojiStatus copyWith({
-    EmojiStatus? emojiStatus,
+    EmojiStatus? Function()? emojiStatus,
   }) =>
       SetEmojiStatus(
-        emojiStatus: emojiStatus ?? this.emojiStatus,
+        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
       );
 
   /// TDLib type name.

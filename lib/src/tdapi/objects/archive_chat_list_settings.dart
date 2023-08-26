@@ -53,7 +53,8 @@ final class ArchiveChatListSettings extends TdObject {
         'keep_chats_from_folders_archived': keepChatsFromFoldersArchived,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ArchiveChatListSettings copyWith({
     bool? archiveAndMuteNewChatsFromUnknownUsers,
     bool? keepUnmutedChatsArchived,

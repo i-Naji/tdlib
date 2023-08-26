@@ -37,7 +37,8 @@ final class StatisticalValue extends TdObject {
         'growth_rate_percentage': growthRatePercentage,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StatisticalValue copyWith({
     double? value,
     double? previousValue,

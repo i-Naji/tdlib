@@ -70,7 +70,8 @@ final class ChatEventMessageEdited extends ChatEventAction {
         'new_message': newMessage.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMessageEdited copyWith({
     Message? oldMessage,
@@ -117,7 +118,8 @@ final class ChatEventMessageDeleted extends ChatEventAction {
         'can_report_anti_spam_false_positive': canReportAntiSpamFalsePositive,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMessageDeleted copyWith({
     Message? message,
@@ -158,7 +160,8 @@ final class ChatEventMessagePinned extends ChatEventAction {
         'message': message.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMessagePinned copyWith({
     Message? message,
@@ -196,7 +199,8 @@ final class ChatEventMessageUnpinned extends ChatEventAction {
         'message': message.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMessageUnpinned copyWith({
     Message? message,
@@ -234,7 +238,8 @@ final class ChatEventPollStopped extends ChatEventAction {
         'message': message.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventPollStopped copyWith({
     Message? message,
@@ -264,7 +269,8 @@ final class ChatEventMemberJoined extends ChatEventAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberJoined copyWith() => const ChatEventMemberJoined();
 
@@ -304,7 +310,8 @@ final class ChatEventMemberJoinedByInviteLink extends ChatEventAction {
         'via_chat_folder_invite_link': viaChatFolderInviteLink,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberJoinedByInviteLink copyWith({
     ChatInviteLink? inviteLink,
@@ -351,15 +358,16 @@ final class ChatEventMemberJoinedByRequest extends ChatEventAction {
         'invite_link': inviteLink?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberJoinedByRequest copyWith({
     int? approverUserId,
-    ChatInviteLink? inviteLink,
+    ChatInviteLink? Function()? inviteLink,
   }) =>
       ChatEventMemberJoinedByRequest(
         approverUserId: approverUserId ?? this.approverUserId,
-        inviteLink: inviteLink ?? this.inviteLink,
+        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
       );
 
   /// TDLib type name.
@@ -397,7 +405,8 @@ final class ChatEventMemberInvited extends ChatEventAction {
         'status': status.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberInvited copyWith({
     int? userId,
@@ -429,7 +438,8 @@ final class ChatEventMemberLeft extends ChatEventAction {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberLeft copyWith() => const ChatEventMemberLeft();
 
@@ -474,7 +484,8 @@ final class ChatEventMemberPromoted extends ChatEventAction {
         'new_status': newStatus.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberPromoted copyWith({
     int? userId,
@@ -528,7 +539,8 @@ final class ChatEventMemberRestricted extends ChatEventAction {
         'new_status': newStatus.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMemberRestricted copyWith({
     MessageSender? memberId,
@@ -579,7 +591,8 @@ final class ChatEventAvailableReactionsChanged extends ChatEventAction {
         'new_available_reactions': newAvailableReactions.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventAvailableReactionsChanged copyWith({
     ChatAvailableReactions? oldAvailableReactions,
@@ -627,7 +640,8 @@ final class ChatEventDescriptionChanged extends ChatEventAction {
         'new_description': newDescription,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventDescriptionChanged copyWith({
     String? oldDescription,
@@ -673,7 +687,8 @@ final class ChatEventLinkedChatChanged extends ChatEventAction {
         'new_linked_chat_id': newLinkedChatId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventLinkedChatChanged copyWith({
     int? oldLinkedChatId,
@@ -719,15 +734,16 @@ final class ChatEventLocationChanged extends ChatEventAction {
         'new_location': newLocation?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventLocationChanged copyWith({
-    ChatLocation? oldLocation,
-    ChatLocation? newLocation,
+    ChatLocation? Function()? oldLocation,
+    ChatLocation? Function()? newLocation,
   }) =>
       ChatEventLocationChanged(
-        oldLocation: oldLocation ?? this.oldLocation,
-        newLocation: newLocation ?? this.newLocation,
+        oldLocation: oldLocation != null ? oldLocation() : this.oldLocation,
+        newLocation: newLocation != null ? newLocation() : this.newLocation,
       );
 
   /// TDLib type name.
@@ -768,7 +784,8 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
         'new_message_auto_delete_time': newMessageAutoDeleteTime,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventMessageAutoDeleteTimeChanged copyWith({
     int? oldMessageAutoDeleteTime,
@@ -818,7 +835,8 @@ final class ChatEventPermissionsChanged extends ChatEventAction {
         'new_permissions': newPermissions.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventPermissionsChanged copyWith({
     ChatPermissions? oldPermissions,
@@ -864,15 +882,16 @@ final class ChatEventPhotoChanged extends ChatEventAction {
         'new_photo': newPhoto?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventPhotoChanged copyWith({
-    ChatPhoto? oldPhoto,
-    ChatPhoto? newPhoto,
+    ChatPhoto? Function()? oldPhoto,
+    ChatPhoto? Function()? newPhoto,
   }) =>
       ChatEventPhotoChanged(
-        oldPhoto: oldPhoto ?? this.oldPhoto,
-        newPhoto: newPhoto ?? this.newPhoto,
+        oldPhoto: oldPhoto != null ? oldPhoto() : this.oldPhoto,
+        newPhoto: newPhoto != null ? newPhoto() : this.newPhoto,
       );
 
   /// TDLib type name.
@@ -910,7 +929,8 @@ final class ChatEventSlowModeDelayChanged extends ChatEventAction {
         'new_slow_mode_delay': newSlowModeDelay,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventSlowModeDelayChanged copyWith({
     int? oldSlowModeDelay,
@@ -956,7 +976,8 @@ final class ChatEventStickerSetChanged extends ChatEventAction {
         'new_sticker_set_id': newStickerSetId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventStickerSetChanged copyWith({
     int? oldStickerSetId,
@@ -1002,7 +1023,8 @@ final class ChatEventTitleChanged extends ChatEventAction {
         'new_title': newTitle,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventTitleChanged copyWith({
     String? oldTitle,
@@ -1048,7 +1070,8 @@ final class ChatEventUsernameChanged extends ChatEventAction {
         'new_username': newUsername,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventUsernameChanged copyWith({
     String? oldUsername,
@@ -1094,7 +1117,8 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
         'new_usernames': newUsernames,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventActiveUsernamesChanged copyWith({
     List<String>? oldUsernames,
@@ -1135,7 +1159,8 @@ final class ChatEventHasProtectedContentToggled extends ChatEventAction {
         'has_protected_content': hasProtectedContent,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventHasProtectedContentToggled copyWith({
     bool? hasProtectedContent,
@@ -1173,7 +1198,8 @@ final class ChatEventInvitesToggled extends ChatEventAction {
         'can_invite_users': canInviteUsers,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventInvitesToggled copyWith({
     bool? canInviteUsers,
@@ -1212,7 +1238,8 @@ final class ChatEventIsAllHistoryAvailableToggled extends ChatEventAction {
         'is_all_history_available': isAllHistoryAvailable,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventIsAllHistoryAvailableToggled copyWith({
     bool? isAllHistoryAvailable,
@@ -1254,7 +1281,8 @@ final class ChatEventHasAggressiveAntiSpamEnabledToggled
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventHasAggressiveAntiSpamEnabledToggled copyWith({
     bool? hasAggressiveAntiSpamEnabled,
@@ -1294,7 +1322,8 @@ final class ChatEventSignMessagesToggled extends ChatEventAction {
         'sign_messages': signMessages,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventSignMessagesToggled copyWith({
     bool? signMessages,
@@ -1340,7 +1369,8 @@ final class ChatEventInviteLinkEdited extends ChatEventAction {
         'new_invite_link': newInviteLink.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventInviteLinkEdited copyWith({
     ChatInviteLink? oldInviteLink,
@@ -1380,7 +1410,8 @@ final class ChatEventInviteLinkRevoked extends ChatEventAction {
         'invite_link': inviteLink.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventInviteLinkRevoked copyWith({
     ChatInviteLink? inviteLink,
@@ -1418,7 +1449,8 @@ final class ChatEventInviteLinkDeleted extends ChatEventAction {
         'invite_link': inviteLink.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventInviteLinkDeleted copyWith({
     ChatInviteLink? inviteLink,
@@ -1456,7 +1488,8 @@ final class ChatEventVideoChatCreated extends ChatEventAction {
         'group_call_id': groupCallId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatCreated copyWith({
     int? groupCallId,
@@ -1494,7 +1527,8 @@ final class ChatEventVideoChatEnded extends ChatEventAction {
         'group_call_id': groupCallId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatEnded copyWith({
     int? groupCallId,
@@ -1534,7 +1568,8 @@ final class ChatEventVideoChatMuteNewParticipantsToggled
         'mute_new_participants': muteNewParticipants,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatMuteNewParticipantsToggled copyWith({
     bool? muteNewParticipants,
@@ -1582,7 +1617,8 @@ final class ChatEventVideoChatParticipantIsMutedToggled
         'is_muted': isMuted,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatParticipantIsMutedToggled copyWith({
     MessageSender? participantId,
@@ -1632,7 +1668,8 @@ final class ChatEventVideoChatParticipantVolumeLevelChanged
         'volume_level': volumeLevel,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventVideoChatParticipantVolumeLevelChanged copyWith({
     MessageSender? participantId,
@@ -1673,7 +1710,8 @@ final class ChatEventIsForumToggled extends ChatEventAction {
         'is_forum': isForum,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventIsForumToggled copyWith({
     bool? isForum,
@@ -1711,7 +1749,8 @@ final class ChatEventForumTopicCreated extends ChatEventAction {
         'topic_info': topicInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicCreated copyWith({
     ForumTopicInfo? topicInfo,
@@ -1757,7 +1796,8 @@ final class ChatEventForumTopicEdited extends ChatEventAction {
         'new_topic_info': newTopicInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicEdited copyWith({
     ForumTopicInfo? oldTopicInfo,
@@ -1798,7 +1838,8 @@ final class ChatEventForumTopicToggleIsClosed extends ChatEventAction {
         'topic_info': topicInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicToggleIsClosed copyWith({
     ForumTopicInfo? topicInfo,
@@ -1837,7 +1878,8 @@ final class ChatEventForumTopicToggleIsHidden extends ChatEventAction {
         'topic_info': topicInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicToggleIsHidden copyWith({
     ForumTopicInfo? topicInfo,
@@ -1875,7 +1917,8 @@ final class ChatEventForumTopicDeleted extends ChatEventAction {
         'topic_info': topicInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicDeleted copyWith({
     ForumTopicInfo? topicInfo,
@@ -1921,15 +1964,16 @@ final class ChatEventForumTopicPinned extends ChatEventAction {
         'new_topic_info': newTopicInfo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatEventForumTopicPinned copyWith({
-    ForumTopicInfo? oldTopicInfo,
-    ForumTopicInfo? newTopicInfo,
+    ForumTopicInfo? Function()? oldTopicInfo,
+    ForumTopicInfo? Function()? newTopicInfo,
   }) =>
       ChatEventForumTopicPinned(
-        oldTopicInfo: oldTopicInfo ?? this.oldTopicInfo,
-        newTopicInfo: newTopicInfo ?? this.newTopicInfo,
+        oldTopicInfo: oldTopicInfo != null ? oldTopicInfo() : this.oldTopicInfo,
+        newTopicInfo: newTopicInfo != null ? newTopicInfo() : this.newTopicInfo,
       );
 
   /// TDLib type name.

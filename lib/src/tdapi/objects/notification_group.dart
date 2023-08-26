@@ -50,7 +50,8 @@ final class NotificationGroup extends TdObject {
         'notifications': [for (final e in notifications) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   NotificationGroup copyWith({
     int? id,
     NotificationGroupType? type,

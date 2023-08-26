@@ -72,7 +72,8 @@ final class CheckChatUsernameResultOk extends CheckChatUsernameResult {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultOk copyWith({
     dynamic extra,
@@ -120,7 +121,8 @@ final class CheckChatUsernameResultUsernameInvalid
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultUsernameInvalid copyWith({
     dynamic extra,
@@ -168,7 +170,8 @@ final class CheckChatUsernameResultUsernameOccupied
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultUsernameOccupied copyWith({
     dynamic extra,
@@ -216,7 +219,8 @@ final class CheckChatUsernameResultUsernamePurchasable
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultUsernamePurchasable copyWith({
     dynamic extra,
@@ -265,7 +269,8 @@ final class CheckChatUsernameResultPublicChatsTooMany
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultPublicChatsTooMany copyWith({
     dynamic extra,
@@ -313,7 +318,8 @@ final class CheckChatUsernameResultPublicGroupsUnavailable
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckChatUsernameResultPublicGroupsUnavailable copyWith({
     dynamic extra,

@@ -37,16 +37,19 @@ final class VideoChat extends TdObject {
         'default_participant_id': defaultParticipantId?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   VideoChat copyWith({
     int? groupCallId,
     bool? hasParticipants,
-    MessageSender? defaultParticipantId,
+    MessageSender? Function()? defaultParticipantId,
   }) =>
       VideoChat(
         groupCallId: groupCallId ?? this.groupCallId,
         hasParticipants: hasParticipants ?? this.hasParticipants,
-        defaultParticipantId: defaultParticipantId ?? this.defaultParticipantId,
+        defaultParticipantId: defaultParticipantId != null
+            ? defaultParticipantId()
+            : this.defaultParticipantId,
       );
 
   /// TDLib type name.

@@ -66,13 +66,14 @@ final class Background extends TdObject {
         'type': type.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Background copyWith({
     int? id,
     bool? isDefault,
     bool? isDark,
     String? name,
-    Document? document,
+    Document? Function()? document,
     BackgroundType? type,
     dynamic extra,
     int? clientId,
@@ -82,7 +83,7 @@ final class Background extends TdObject {
         isDefault: isDefault ?? this.isDefault,
         isDark: isDark ?? this.isDark,
         name: name ?? this.name,
-        document: document ?? this.document,
+        document: document != null ? document() : this.document,
         type: type ?? this.type,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

@@ -60,7 +60,8 @@ final class Game extends TdObject {
         'animation': animation?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Game copyWith({
     int? id,
     String? shortName,
@@ -68,7 +69,7 @@ final class Game extends TdObject {
     FormattedText? text,
     String? description,
     Photo? photo,
-    Animation? animation,
+    Animation? Function()? animation,
   }) =>
       Game(
         id: id ?? this.id,
@@ -77,7 +78,7 @@ final class Game extends TdObject {
         text: text ?? this.text,
         description: description ?? this.description,
         photo: photo ?? this.photo,
-        animation: animation ?? this.animation,
+        animation: animation != null ? animation() : this.animation,
       );
 
   /// TDLib type name.

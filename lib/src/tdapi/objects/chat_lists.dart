@@ -37,7 +37,8 @@ final class ChatLists extends TdObject {
         'chat_lists': [for (final e in chatLists) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatLists copyWith({
     List<ChatList>? chatLists,
     dynamic extra,

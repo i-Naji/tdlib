@@ -37,7 +37,8 @@ final class LogVerbosityLevel extends TdObject {
         'verbosity_level': verbosityLevel,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   LogVerbosityLevel copyWith({
     int? verbosityLevel,
     dynamic extra,

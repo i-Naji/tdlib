@@ -138,10 +138,11 @@ final class Supergroup extends TdObject {
         'is_fake': isFake,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Supergroup copyWith({
     int? id,
-    Usernames? usernames,
+    Usernames? Function()? usernames,
     int? date,
     ChatMemberStatus? status,
     int? memberCount,
@@ -163,7 +164,7 @@ final class Supergroup extends TdObject {
   }) =>
       Supergroup(
         id: id ?? this.id,
-        usernames: usernames ?? this.usernames,
+        usernames: usernames != null ? usernames() : this.usernames,
         date: date ?? this.date,
         status: status ?? this.status,
         memberCount: memberCount ?? this.memberCount,

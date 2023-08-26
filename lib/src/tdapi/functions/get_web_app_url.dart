@@ -37,17 +37,18 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetWebAppUrl copyWith({
     int? botUserId,
     String? url,
-    ThemeParameters? theme,
+    ThemeParameters? Function()? theme,
     String? applicationName,
   }) =>
       GetWebAppUrl(
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
-        theme: theme ?? this.theme,
+        theme: theme != null ? theme() : this.theme,
         applicationName: applicationName ?? this.applicationName,
       );
 

@@ -96,7 +96,8 @@ final class InlineQueryResultArticle extends InlineQueryResult {
         'thumbnail': thumbnail?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultArticle copyWith({
     String? id,
@@ -104,7 +105,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
     bool? hideUrl,
     String? title,
     String? description,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
   }) =>
       InlineQueryResultArticle(
         id: id ?? this.id,
@@ -112,7 +113,7 @@ final class InlineQueryResultArticle extends InlineQueryResult {
         hideUrl: hideUrl ?? this.hideUrl,
         title: title ?? this.title,
         description: description ?? this.description,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
       );
 
   /// TDLib type name.
@@ -156,17 +157,18 @@ final class InlineQueryResultContact extends InlineQueryResult {
         'thumbnail': thumbnail?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultContact copyWith({
     String? id,
     Contact? contact,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
   }) =>
       InlineQueryResultContact(
         id: id ?? this.id,
         contact: contact ?? this.contact,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
       );
 
   /// TDLib type name.
@@ -216,19 +218,20 @@ final class InlineQueryResultLocation extends InlineQueryResult {
         'thumbnail': thumbnail?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultLocation copyWith({
     String? id,
     Location? location,
     String? title,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
   }) =>
       InlineQueryResultLocation(
         id: id ?? this.id,
         location: location ?? this.location,
         title: title ?? this.title,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
       );
 
   /// TDLib type name.
@@ -272,17 +275,18 @@ final class InlineQueryResultVenue extends InlineQueryResult {
         'thumbnail': thumbnail?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultVenue copyWith({
     String? id,
     Venue? venue,
-    Thumbnail? thumbnail,
+    Thumbnail? Function()? thumbnail,
   }) =>
       InlineQueryResultVenue(
         id: id ?? this.id,
         venue: venue ?? this.venue,
-        thumbnail: thumbnail ?? this.thumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
       );
 
   /// TDLib type name.
@@ -320,7 +324,8 @@ final class InlineQueryResultGame extends InlineQueryResult {
         'game': game.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultGame copyWith({
     String? id,
@@ -372,7 +377,8 @@ final class InlineQueryResultAnimation extends InlineQueryResult {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultAnimation copyWith({
     String? id,
@@ -420,7 +426,8 @@ final class InlineQueryResultAudio extends InlineQueryResult {
         'audio': audio.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultAudio copyWith({
     String? id,
@@ -478,7 +485,8 @@ final class InlineQueryResultDocument extends InlineQueryResult {
         'description': description,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultDocument copyWith({
     String? id,
@@ -540,7 +548,8 @@ final class InlineQueryResultPhoto extends InlineQueryResult {
         'description': description,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultPhoto copyWith({
     String? id,
@@ -590,7 +599,8 @@ final class InlineQueryResultSticker extends InlineQueryResult {
         'sticker': sticker.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultSticker copyWith({
     String? id,
@@ -648,7 +658,8 @@ final class InlineQueryResultVideo extends InlineQueryResult {
         'description': description,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultVideo copyWith({
     String? id,
@@ -704,7 +715,8 @@ final class InlineQueryResultVoiceNote extends InlineQueryResult {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultVoiceNote copyWith({
     String? id,

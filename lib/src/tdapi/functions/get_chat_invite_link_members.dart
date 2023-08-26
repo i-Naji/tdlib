@@ -37,17 +37,18 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatInviteLinkMembers copyWith({
     int? chatId,
     String? inviteLink,
-    ChatInviteLinkMember? offsetMember,
+    ChatInviteLinkMember? Function()? offsetMember,
     int? limit,
   }) =>
       GetChatInviteLinkMembers(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,
-        offsetMember: offsetMember ?? this.offsetMember,
+        offsetMember: offsetMember != null ? offsetMember() : this.offsetMember,
         limit: limit ?? this.limit,
       );
 

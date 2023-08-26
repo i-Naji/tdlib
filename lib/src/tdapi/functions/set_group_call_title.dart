@@ -27,7 +27,8 @@ final class SetGroupCallTitle extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetGroupCallTitle copyWith({
     int? groupCallId,
     String? title,

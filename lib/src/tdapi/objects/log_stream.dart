@@ -70,7 +70,8 @@ final class LogStreamDefault extends LogStream {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LogStreamDefault copyWith({
     dynamic extra,
@@ -133,7 +134,8 @@ final class LogStreamFile extends LogStream {
         'redirect_stderr': redirectStderr,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LogStreamFile copyWith({
     String? path,
@@ -184,7 +186,8 @@ final class LogStreamEmpty extends LogStream {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LogStreamEmpty copyWith({
     dynamic extra,

@@ -42,19 +42,21 @@ final class GetChatJoinRequests extends TdFunction<ChatJoinRequests> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatJoinRequests copyWith({
     int? chatId,
     String? inviteLink,
     String? query,
-    ChatJoinRequest? offsetRequest,
+    ChatJoinRequest? Function()? offsetRequest,
     int? limit,
   }) =>
       GetChatJoinRequests(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,
         query: query ?? this.query,
-        offsetRequest: offsetRequest ?? this.offsetRequest,
+        offsetRequest:
+            offsetRequest != null ? offsetRequest() : this.offsetRequest,
         limit: limit ?? this.limit,
       );
 

@@ -38,7 +38,8 @@ final class ChatAdministrators extends TdObject {
         'administrators': [for (final e in administrators) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatAdministrators copyWith({
     List<ChatAdministrator>? administrators,
     dynamic extra,

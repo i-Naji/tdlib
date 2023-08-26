@@ -67,7 +67,8 @@ final class EmailAddressAuthenticationCode extends EmailAddressAuthentication {
         'code': code,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmailAddressAuthenticationCode copyWith({
     String? code,
@@ -107,7 +108,8 @@ final class EmailAddressAuthenticationAppleId
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmailAddressAuthenticationAppleId copyWith({
     String? token,
@@ -147,7 +149,8 @@ final class EmailAddressAuthenticationGoogleId
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmailAddressAuthenticationGoogleId copyWith({
     String? token,

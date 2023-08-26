@@ -43,7 +43,8 @@ final class BankCardInfo extends TdObject {
         'actions': [for (final e in actions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   BankCardInfo copyWith({
     String? title,
     List<BankCardActionOpenUrl>? actions,

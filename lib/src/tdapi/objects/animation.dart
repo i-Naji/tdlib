@@ -73,7 +73,8 @@ final class Animation extends TdObject {
         'animation': animation.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Animation copyWith({
     int? duration,
     int? width,
@@ -81,8 +82,8 @@ final class Animation extends TdObject {
     String? fileName,
     String? mimeType,
     bool? hasStickers,
-    Minithumbnail? minithumbnail,
-    Thumbnail? thumbnail,
+    Minithumbnail? Function()? minithumbnail,
+    Thumbnail? Function()? thumbnail,
     File? animation,
   }) =>
       Animation(
@@ -92,8 +93,9 @@ final class Animation extends TdObject {
         fileName: fileName ?? this.fileName,
         mimeType: mimeType ?? this.mimeType,
         hasStickers: hasStickers ?? this.hasStickers,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         animation: animation ?? this.animation,
       );
 

@@ -44,7 +44,8 @@ final class SponsoredMessages extends TdObject {
         'messages_between': messagesBetween,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SponsoredMessages copyWith({
     List<SponsoredMessage>? messages,
     int? messagesBetween,

@@ -49,19 +49,21 @@ final class Document extends TdObject {
         'document': document.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Document copyWith({
     String? fileName,
     String? mimeType,
-    Minithumbnail? minithumbnail,
-    Thumbnail? thumbnail,
+    Minithumbnail? Function()? minithumbnail,
+    Thumbnail? Function()? thumbnail,
     File? document,
   }) =>
       Document(
         fileName: fileName ?? this.fileName,
         mimeType: mimeType ?? this.mimeType,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         document: document ?? this.document,
       );
 

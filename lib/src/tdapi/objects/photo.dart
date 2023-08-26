@@ -38,15 +38,17 @@ final class Photo extends TdObject {
         'sizes': [for (final e in sizes) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Photo copyWith({
     bool? hasStickers,
-    Minithumbnail? minithumbnail,
+    Minithumbnail? Function()? minithumbnail,
     List<PhotoSize>? sizes,
   }) =>
       Photo(
         hasStickers: hasStickers ?? this.hasStickers,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
         sizes: sizes ?? this.sizes,
       );
 

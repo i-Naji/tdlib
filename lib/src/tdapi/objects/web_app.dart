@@ -48,20 +48,21 @@ final class WebApp extends TdObject {
         'animation': animation?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   WebApp copyWith({
     String? shortName,
     String? title,
     String? description,
     Photo? photo,
-    Animation? animation,
+    Animation? Function()? animation,
   }) =>
       WebApp(
         shortName: shortName ?? this.shortName,
         title: title ?? this.title,
         description: description ?? this.description,
         photo: photo ?? this.photo,
-        animation: animation ?? this.animation,
+        animation: animation != null ? animation() : this.animation,
       );
 
   /// TDLib type name.

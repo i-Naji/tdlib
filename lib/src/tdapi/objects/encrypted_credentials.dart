@@ -37,7 +37,8 @@ final class EncryptedCredentials extends TdObject {
         'secret': secret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EncryptedCredentials copyWith({
     String? data,
     String? hash,

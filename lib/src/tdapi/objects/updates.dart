@@ -37,7 +37,8 @@ final class Updates extends TdObject {
         'updates': [for (final e in updates) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Updates copyWith({
     List<Update>? updates,
     dynamic extra,

@@ -84,16 +84,17 @@ final class NetworkStatisticsEntryFile extends NetworkStatisticsEntry {
         'received_bytes': receivedBytes,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkStatisticsEntryFile copyWith({
-    FileType? fileType,
+    FileType? Function()? fileType,
     NetworkType? networkType,
     int? sentBytes,
     int? receivedBytes,
   }) =>
       NetworkStatisticsEntryFile(
-        fileType: fileType ?? this.fileType,
+        fileType: fileType != null ? fileType() : this.fileType,
         networkType: networkType ?? this.networkType,
         sentBytes: sentBytes ?? this.sentBytes,
         receivedBytes: receivedBytes ?? this.receivedBytes,
@@ -146,7 +147,8 @@ final class NetworkStatisticsEntryCall extends NetworkStatisticsEntry {
         'duration': duration,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkStatisticsEntryCall copyWith({
     NetworkType? networkType,

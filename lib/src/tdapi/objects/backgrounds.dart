@@ -37,7 +37,8 @@ final class Backgrounds extends TdObject {
         'backgrounds': [for (final e in backgrounds) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Backgrounds copyWith({
     List<Background>? backgrounds,
     dynamic extra,

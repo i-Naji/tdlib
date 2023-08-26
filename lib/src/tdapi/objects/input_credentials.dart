@@ -66,7 +66,8 @@ final class InputCredentialsSaved extends InputCredentials {
         'saved_credentials_id': savedCredentialsId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputCredentialsSaved copyWith({
     String? savedCredentialsId,
@@ -110,7 +111,8 @@ final class InputCredentialsNew extends InputCredentials {
         'allow_save': allowSave,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputCredentialsNew copyWith({
     String? data,
@@ -150,7 +152,8 @@ final class InputCredentialsApplePay extends InputCredentials {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputCredentialsApplePay copyWith({
     String? data,
@@ -188,7 +191,8 @@ final class InputCredentialsGooglePay extends InputCredentials {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputCredentialsGooglePay copyWith({
     String? data,

@@ -61,7 +61,8 @@ final class PassportElementErrorSourceUnspecified
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceUnspecified copyWith() =>
       const PassportElementErrorSourceUnspecified();
@@ -97,7 +98,8 @@ final class PassportElementErrorSourceDataField
         'field_name': fieldName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceDataField copyWith({
     String? fieldName,
@@ -129,7 +131,8 @@ final class PassportElementErrorSourceFrontSide
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceFrontSide copyWith() =>
       const PassportElementErrorSourceFrontSide();
@@ -157,7 +160,8 @@ final class PassportElementErrorSourceReverseSide
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceReverseSide copyWith() =>
       const PassportElementErrorSourceReverseSide();
@@ -185,7 +189,8 @@ final class PassportElementErrorSourceSelfie
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceSelfie copyWith() =>
       const PassportElementErrorSourceSelfie();
@@ -221,7 +226,8 @@ final class PassportElementErrorSourceTranslationFile
         'file_index': fileIndex,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceTranslationFile copyWith({
     int? fileIndex,
@@ -253,7 +259,8 @@ final class PassportElementErrorSourceTranslationFiles
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceTranslationFiles copyWith() =>
       const PassportElementErrorSourceTranslationFiles();
@@ -288,7 +295,8 @@ final class PassportElementErrorSourceFile extends PassportElementErrorSource {
         'file_index': fileIndex,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceFile copyWith({
     int? fileIndex,
@@ -318,7 +326,8 @@ final class PassportElementErrorSourceFiles extends PassportElementErrorSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementErrorSourceFiles copyWith() =>
       const PassportElementErrorSourceFiles();

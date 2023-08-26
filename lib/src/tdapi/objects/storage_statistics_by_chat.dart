@@ -44,7 +44,8 @@ final class StorageStatisticsByChat extends TdObject {
         'by_file_type': [for (final e in byFileType) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StorageStatisticsByChat copyWith({
     int? chatId,
     int? size,

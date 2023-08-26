@@ -70,7 +70,8 @@ final class CallServerTypeTelegramReflector extends CallServerType {
         'is_tcp': isTcp,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallServerTypeTelegramReflector copyWith({
     String? peerTag,
@@ -128,7 +129,8 @@ final class CallServerTypeWebrtc extends CallServerType {
         'supports_stun': supportsStun,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallServerTypeWebrtc copyWith({
     String? username,

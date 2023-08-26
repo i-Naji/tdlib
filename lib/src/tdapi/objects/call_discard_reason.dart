@@ -58,7 +58,8 @@ final class CallDiscardReasonEmpty extends CallDiscardReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallDiscardReasonEmpty copyWith() => const CallDiscardReasonEmpty();
 
@@ -83,7 +84,8 @@ final class CallDiscardReasonMissed extends CallDiscardReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallDiscardReasonMissed copyWith() => const CallDiscardReasonMissed();
 
@@ -108,7 +110,8 @@ final class CallDiscardReasonDeclined extends CallDiscardReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallDiscardReasonDeclined copyWith() => const CallDiscardReasonDeclined();
 
@@ -133,7 +136,8 @@ final class CallDiscardReasonDisconnected extends CallDiscardReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallDiscardReasonDisconnected copyWith() =>
       const CallDiscardReasonDisconnected();
@@ -159,7 +163,8 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallDiscardReasonHungUp copyWith() => const CallDiscardReasonHungUp();
 

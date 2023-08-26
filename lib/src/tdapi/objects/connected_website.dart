@@ -73,7 +73,8 @@ final class ConnectedWebsite extends TdObject {
         'location': location,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ConnectedWebsite copyWith({
     int? id,
     String? domainName,

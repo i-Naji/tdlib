@@ -52,12 +52,13 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SendInlineQueryResultMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
-    MessageSendOptions? options,
+    MessageReplyTo? Function()? replyTo,
+    MessageSendOptions? Function()? options,
     int? queryId,
     String? resultId,
     bool? hideViaBot,
@@ -65,8 +66,8 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
       SendInlineQueryResultMessage(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        replyTo: replyTo ?? this.replyTo,
-        options: options ?? this.options,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
+        options: options != null ? options() : this.options,
         queryId: queryId ?? this.queryId,
         resultId: resultId ?? this.resultId,
         hideViaBot: hideViaBot ?? this.hideViaBot,

@@ -52,13 +52,14 @@ final class CreateNewSupergroupChat extends TdFunction<Chat> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   CreateNewSupergroupChat copyWith({
     String? title,
     bool? isForum,
     bool? isChannel,
     String? description,
-    ChatLocation? location,
+    ChatLocation? Function()? location,
     int? messageAutoDeleteTime,
     bool? forImport,
   }) =>
@@ -67,7 +68,7 @@ final class CreateNewSupergroupChat extends TdFunction<Chat> {
         isForum: isForum ?? this.isForum,
         isChannel: isChannel ?? this.isChannel,
         description: description ?? this.description,
-        location: location ?? this.location,
+        location: location != null ? location() : this.location,
         messageAutoDeleteTime:
             messageAutoDeleteTime ?? this.messageAutoDeleteTime,
         forImport: forImport ?? this.forImport,

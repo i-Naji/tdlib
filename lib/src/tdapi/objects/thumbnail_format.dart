@@ -56,7 +56,8 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatJpeg copyWith() => const ThumbnailFormatJpeg();
 
@@ -81,7 +82,8 @@ final class ThumbnailFormatGif extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatGif copyWith() => const ThumbnailFormatGif();
 
@@ -106,7 +108,8 @@ final class ThumbnailFormatMpeg4 extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatMpeg4 copyWith() => const ThumbnailFormatMpeg4();
 
@@ -131,7 +134,8 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatPng copyWith() => const ThumbnailFormatPng();
 
@@ -156,7 +160,8 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatTgs copyWith() => const ThumbnailFormatTgs();
 
@@ -181,7 +186,8 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatWebm copyWith() => const ThumbnailFormatWebm();
 
@@ -206,7 +212,8 @@ final class ThumbnailFormatWebp extends ThumbnailFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ThumbnailFormatWebp copyWith() => const ThumbnailFormatWebp();
 

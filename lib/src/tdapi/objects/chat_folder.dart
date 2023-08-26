@@ -114,10 +114,11 @@ final class ChatFolder extends TdObject {
         'include_channels': includeChannels,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatFolder copyWith({
     String? title,
-    ChatFolderIcon? icon,
+    ChatFolderIcon? Function()? icon,
     bool? isShareable,
     List<int>? pinnedChatIds,
     List<int>? includedChatIds,
@@ -135,7 +136,7 @@ final class ChatFolder extends TdObject {
   }) =>
       ChatFolder(
         title: title ?? this.title,
-        icon: icon ?? this.icon,
+        icon: icon != null ? icon() : this.icon,
         isShareable: isShareable ?? this.isShareable,
         pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
         includedChatIds: includedChatIds ?? this.includedChatIds,

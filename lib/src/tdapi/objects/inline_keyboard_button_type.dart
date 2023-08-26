@@ -66,7 +66,8 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeUrl copyWith({
     String? url,
@@ -117,7 +118,8 @@ final class InlineKeyboardButtonTypeLoginUrl extends InlineKeyboardButtonType {
         'forward_text': forwardText,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeLoginUrl copyWith({
     String? url,
@@ -159,7 +161,8 @@ final class InlineKeyboardButtonTypeWebApp extends InlineKeyboardButtonType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeWebApp copyWith({
     String? url,
@@ -198,7 +201,8 @@ final class InlineKeyboardButtonTypeCallback extends InlineKeyboardButtonType {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeCallback copyWith({
     String? data,
@@ -238,7 +242,8 @@ final class InlineKeyboardButtonTypeCallbackWithPassword
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeCallbackWithPassword copyWith({
     String? data,
@@ -271,7 +276,8 @@ final class InlineKeyboardButtonTypeCallbackGame
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeCallbackGame copyWith() =>
       const InlineKeyboardButtonTypeCallbackGame();
@@ -313,7 +319,8 @@ final class InlineKeyboardButtonTypeSwitchInline
         'target_chat': targetChat.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeSwitchInline copyWith({
     String? query,
@@ -345,7 +352,8 @@ final class InlineKeyboardButtonTypeBuy extends InlineKeyboardButtonType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeBuy copyWith() => const InlineKeyboardButtonTypeBuy();
 
@@ -378,7 +386,8 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineKeyboardButtonTypeUser copyWith({
     int? userId,

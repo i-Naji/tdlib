@@ -43,7 +43,8 @@ final class BotCommands extends TdObject {
         'commands': [for (final e in commands) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   BotCommands copyWith({
     int? botUserId,
     List<BotCommand>? commands,

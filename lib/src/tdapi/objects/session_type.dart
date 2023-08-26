@@ -56,7 +56,8 @@ final class SessionTypeAndroid extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeAndroid copyWith() => const SessionTypeAndroid();
 
@@ -81,7 +82,8 @@ final class SessionTypeApple extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeApple copyWith() => const SessionTypeApple();
 
@@ -106,7 +108,8 @@ final class SessionTypeBrave extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeBrave copyWith() => const SessionTypeBrave();
 
@@ -131,7 +134,8 @@ final class SessionTypeChrome extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeChrome copyWith() => const SessionTypeChrome();
 
@@ -156,7 +160,8 @@ final class SessionTypeEdge extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeEdge copyWith() => const SessionTypeEdge();
 
@@ -181,7 +186,8 @@ final class SessionTypeFirefox extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeFirefox copyWith() => const SessionTypeFirefox();
 
@@ -206,7 +212,8 @@ final class SessionTypeIpad extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeIpad copyWith() => const SessionTypeIpad();
 
@@ -231,7 +238,8 @@ final class SessionTypeIphone extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeIphone copyWith() => const SessionTypeIphone();
 
@@ -256,7 +264,8 @@ final class SessionTypeLinux extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeLinux copyWith() => const SessionTypeLinux();
 
@@ -281,7 +290,8 @@ final class SessionTypeMac extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeMac copyWith() => const SessionTypeMac();
 
@@ -306,7 +316,8 @@ final class SessionTypeOpera extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeOpera copyWith() => const SessionTypeOpera();
 
@@ -331,7 +342,8 @@ final class SessionTypeSafari extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeSafari copyWith() => const SessionTypeSafari();
 
@@ -356,7 +368,8 @@ final class SessionTypeUbuntu extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeUbuntu copyWith() => const SessionTypeUbuntu();
 
@@ -381,7 +394,8 @@ final class SessionTypeUnknown extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeUnknown copyWith() => const SessionTypeUnknown();
 
@@ -406,7 +420,8 @@ final class SessionTypeVivaldi extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeVivaldi copyWith() => const SessionTypeVivaldi();
 
@@ -431,7 +446,8 @@ final class SessionTypeWindows extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeWindows copyWith() => const SessionTypeWindows();
 
@@ -456,7 +472,8 @@ final class SessionTypeXbox extends SessionType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SessionTypeXbox copyWith() => const SessionTypeXbox();
 

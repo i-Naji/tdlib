@@ -64,7 +64,8 @@ final class InputBackgroundLocal extends InputBackground {
         'background': background.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputBackgroundLocal copyWith({
     InputFile? background,
@@ -102,7 +103,8 @@ final class InputBackgroundRemote extends InputBackground {
         'background_id': backgroundId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputBackgroundRemote copyWith({
     int? backgroundId,
@@ -140,7 +142,8 @@ final class InputBackgroundPrevious extends InputBackground {
         'message_id': messageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputBackgroundPrevious copyWith({
     int? messageId,

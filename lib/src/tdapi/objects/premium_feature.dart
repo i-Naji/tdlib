@@ -56,7 +56,8 @@ final class PremiumFeatureIncreasedLimits extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureIncreasedLimits copyWith() =>
       const PremiumFeatureIncreasedLimits();
@@ -83,7 +84,8 @@ final class PremiumFeatureIncreasedUploadFileSize extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureIncreasedUploadFileSize copyWith() =>
       const PremiumFeatureIncreasedUploadFileSize();
@@ -110,7 +112,8 @@ final class PremiumFeatureImprovedDownloadSpeed extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureImprovedDownloadSpeed copyWith() =>
       const PremiumFeatureImprovedDownloadSpeed();
@@ -136,7 +139,8 @@ final class PremiumFeatureVoiceRecognition extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureVoiceRecognition copyWith() =>
       const PremiumFeatureVoiceRecognition();
@@ -162,7 +166,8 @@ final class PremiumFeatureDisabledAds extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureDisabledAds copyWith() => const PremiumFeatureDisabledAds();
 
@@ -187,7 +192,8 @@ final class PremiumFeatureUniqueReactions extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureUniqueReactions copyWith() =>
       const PremiumFeatureUniqueReactions();
@@ -213,7 +219,8 @@ final class PremiumFeatureUniqueStickers extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureUniqueStickers copyWith() =>
       const PremiumFeatureUniqueStickers();
@@ -239,7 +246,8 @@ final class PremiumFeatureCustomEmoji extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureCustomEmoji copyWith() => const PremiumFeatureCustomEmoji();
 
@@ -265,7 +273,8 @@ final class PremiumFeatureAdvancedChatManagement extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureAdvancedChatManagement copyWith() =>
       const PremiumFeatureAdvancedChatManagement();
@@ -291,7 +300,8 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureProfileBadge copyWith() => const PremiumFeatureProfileBadge();
 
@@ -316,7 +326,8 @@ final class PremiumFeatureEmojiStatus extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureEmojiStatus copyWith() => const PremiumFeatureEmojiStatus();
 
@@ -342,7 +353,8 @@ final class PremiumFeatureAnimatedProfilePhoto extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureAnimatedProfilePhoto copyWith() =>
       const PremiumFeatureAnimatedProfilePhoto();
@@ -368,7 +380,8 @@ final class PremiumFeatureForumTopicIcon extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureForumTopicIcon copyWith() =>
       const PremiumFeatureForumTopicIcon();
@@ -394,7 +407,8 @@ final class PremiumFeatureAppIcons extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureAppIcons copyWith() => const PremiumFeatureAppIcons();
 
@@ -420,7 +434,8 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PremiumFeatureRealTimeChatTranslation copyWith() =>
       const PremiumFeatureRealTimeChatTranslation();

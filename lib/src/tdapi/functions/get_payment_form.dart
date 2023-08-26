@@ -27,14 +27,15 @@ final class GetPaymentForm extends TdFunction<PaymentForm> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetPaymentForm copyWith({
     InputInvoice? inputInvoice,
-    ThemeParameters? theme,
+    ThemeParameters? Function()? theme,
   }) =>
       GetPaymentForm(
         inputInvoice: inputInvoice ?? this.inputInvoice,
-        theme: theme ?? this.theme,
+        theme: theme != null ? theme() : this.theme,
       );
 
   /// TDLib type name.

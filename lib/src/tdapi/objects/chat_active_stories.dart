@@ -62,10 +62,11 @@ final class ChatActiveStories extends TdObject {
         'stories': [for (final e in stories) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatActiveStories copyWith({
     int? chatId,
-    StoryList? list,
+    StoryList? Function()? list,
     int? order,
     int? maxReadStoryId,
     List<StoryInfo>? stories,
@@ -74,7 +75,7 @@ final class ChatActiveStories extends TdObject {
   }) =>
       ChatActiveStories(
         chatId: chatId ?? this.chatId,
-        list: list ?? this.list,
+        list: list != null ? list() : this.list,
         order: order ?? this.order,
         maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
         stories: stories ?? this.stories,

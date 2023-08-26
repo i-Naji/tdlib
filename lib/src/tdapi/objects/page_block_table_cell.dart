@@ -57,9 +57,10 @@ final class PageBlockTableCell extends TdObject {
         'valign': valign.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PageBlockTableCell copyWith({
-    RichText? text,
+    RichText? Function()? text,
     bool? isHeader,
     int? colspan,
     int? rowspan,
@@ -67,7 +68,7 @@ final class PageBlockTableCell extends TdObject {
     PageBlockVerticalAlignment? valign,
   }) =>
       PageBlockTableCell(
-        text: text ?? this.text,
+        text: text != null ? text() : this.text,
         isHeader: isHeader ?? this.isHeader,
         colspan: colspan ?? this.colspan,
         rowspan: rowspan ?? this.rowspan,

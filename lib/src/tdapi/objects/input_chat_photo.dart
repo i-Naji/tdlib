@@ -64,7 +64,8 @@ final class InputChatPhotoPrevious extends InputChatPhoto {
         'chat_photo_id': chatPhotoId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputChatPhotoPrevious copyWith({
     int? chatPhotoId,
@@ -102,7 +103,8 @@ final class InputChatPhotoStatic extends InputChatPhoto {
         'photo': photo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputChatPhotoStatic copyWith({
     InputFile? photo,
@@ -146,7 +148,8 @@ final class InputChatPhotoAnimation extends InputChatPhoto {
         'main_frame_timestamp': mainFrameTimestamp,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputChatPhotoAnimation copyWith({
     InputFile? animation,
@@ -186,7 +189,8 @@ final class InputChatPhotoSticker extends InputChatPhoto {
         'sticker': sticker.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputChatPhotoSticker copyWith({
     ChatPhotoSticker? sticker,

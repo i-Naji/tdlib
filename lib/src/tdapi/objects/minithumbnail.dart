@@ -36,7 +36,8 @@ final class Minithumbnail extends TdObject {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Minithumbnail copyWith({
     int? width,
     int? height,

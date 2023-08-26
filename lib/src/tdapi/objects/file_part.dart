@@ -36,7 +36,8 @@ final class FilePart extends TdObject {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   FilePart copyWith({
     String? data,
     dynamic extra,

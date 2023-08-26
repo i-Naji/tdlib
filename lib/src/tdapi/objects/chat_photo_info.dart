@@ -49,18 +49,20 @@ final class ChatPhotoInfo extends TdObject {
         'is_personal': isPersonal,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatPhotoInfo copyWith({
     File? small,
     File? big,
-    Minithumbnail? minithumbnail,
+    Minithumbnail? Function()? minithumbnail,
     bool? hasAnimation,
     bool? isPersonal,
   }) =>
       ChatPhotoInfo(
         small: small ?? this.small,
         big: big ?? this.big,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
         hasAnimation: hasAnimation ?? this.hasAnimation,
         isPersonal: isPersonal ?? this.isPersonal,
       );

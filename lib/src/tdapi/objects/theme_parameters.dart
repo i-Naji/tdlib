@@ -61,7 +61,8 @@ final class ThemeParameters extends TdObject {
         'button_text_color': buttonTextColor,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ThemeParameters copyWith({
     int? backgroundColor,
     int? secondaryBackgroundColor,

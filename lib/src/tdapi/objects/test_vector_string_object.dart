@@ -38,7 +38,8 @@ final class TestVectorStringObject extends TdObject {
         'value': [for (final e in value) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   TestVectorStringObject copyWith({
     List<TestString>? value,
     dynamic extra,

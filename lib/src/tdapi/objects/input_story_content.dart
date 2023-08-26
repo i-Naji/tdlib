@@ -73,7 +73,8 @@ final class InputStoryContentPhoto extends InputStoryContent {
         'added_sticker_file_ids': addedStickerFileIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputStoryContentPhoto copyWith({
     InputFile? photo,
@@ -132,7 +133,8 @@ final class InputStoryContentVideo extends InputStoryContent {
         'is_animation': isAnimation,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputStoryContentVideo copyWith({
     InputFile? video,

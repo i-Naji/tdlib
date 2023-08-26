@@ -64,7 +64,8 @@ final class ChatTypePrivate extends ChatType {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatTypePrivate copyWith({
     int? userId,
@@ -102,7 +103,8 @@ final class ChatTypeBasicGroup extends ChatType {
         'basic_group_id': basicGroupId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatTypeBasicGroup copyWith({
     int? basicGroupId,
@@ -146,7 +148,8 @@ final class ChatTypeSupergroup extends ChatType {
         'is_channel': isChannel,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatTypeSupergroup copyWith({
     int? supergroupId,
@@ -191,7 +194,8 @@ final class ChatTypeSecret extends ChatType {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatTypeSecret copyWith({
     int? secretChatId,

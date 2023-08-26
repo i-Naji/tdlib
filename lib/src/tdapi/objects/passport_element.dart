@@ -77,7 +77,8 @@ final class PassportElementPersonalDetails extends PassportElement {
         'personal_details': personalDetails.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementPersonalDetails copyWith({
     PersonalDetails? personalDetails,
@@ -131,7 +132,8 @@ final class PassportElementPassport extends PassportElement {
         'passport': passport.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementPassport copyWith({
     IdentityDocument? passport,
@@ -186,7 +188,8 @@ final class PassportElementDriverLicense extends PassportElement {
         'driver_license': driverLicense.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementDriverLicense copyWith({
     IdentityDocument? driverLicense,
@@ -241,7 +244,8 @@ final class PassportElementIdentityCard extends PassportElement {
         'identity_card': identityCard.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementIdentityCard copyWith({
     IdentityDocument? identityCard,
@@ -296,7 +300,8 @@ final class PassportElementInternalPassport extends PassportElement {
         'internal_passport': internalPassport.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementInternalPassport copyWith({
     IdentityDocument? internalPassport,
@@ -350,7 +355,8 @@ final class PassportElementAddress extends PassportElement {
         'address': address.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementAddress copyWith({
     Address? address,
@@ -405,7 +411,8 @@ final class PassportElementUtilityBill extends PassportElement {
         'utility_bill': utilityBill.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementUtilityBill copyWith({
     PersonalDocument? utilityBill,
@@ -460,7 +467,8 @@ final class PassportElementBankStatement extends PassportElement {
         'bank_statement': bankStatement.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementBankStatement copyWith({
     PersonalDocument? bankStatement,
@@ -515,7 +523,8 @@ final class PassportElementRentalAgreement extends PassportElement {
         'rental_agreement': rentalAgreement.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementRentalAgreement copyWith({
     PersonalDocument? rentalAgreement,
@@ -571,7 +580,8 @@ final class PassportElementPassportRegistration extends PassportElement {
         'passport_registration': passportRegistration.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementPassportRegistration copyWith({
     PersonalDocument? passportRegistration,
@@ -627,7 +637,8 @@ final class PassportElementTemporaryRegistration extends PassportElement {
         'temporary_registration': temporaryRegistration.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTemporaryRegistration copyWith({
     PersonalDocument? temporaryRegistration,
@@ -682,7 +693,8 @@ final class PassportElementPhoneNumber extends PassportElement {
         'phone_number': phoneNumber,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementPhoneNumber copyWith({
     String? phoneNumber,
@@ -736,7 +748,8 @@ final class PassportElementEmailAddress extends PassportElement {
         'email_address': emailAddress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementEmailAddress copyWith({
     String? emailAddress,

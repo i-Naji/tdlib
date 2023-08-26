@@ -91,20 +91,22 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExtendedMediaPreview copyWith({
     int? width,
     int? height,
     int? duration,
-    Minithumbnail? minithumbnail,
+    Minithumbnail? Function()? minithumbnail,
     FormattedText? caption,
   }) =>
       MessageExtendedMediaPreview(
         width: width ?? this.width,
         height: height ?? this.height,
         duration: duration ?? this.duration,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
         caption: caption ?? this.caption,
       );
 
@@ -143,7 +145,8 @@ final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExtendedMediaPhoto copyWith({
     Photo? photo,
@@ -189,7 +192,8 @@ final class MessageExtendedMediaVideo extends MessageExtendedMedia {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExtendedMediaVideo copyWith({
     Video? video,
@@ -229,7 +233,8 @@ final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExtendedMediaUnsupported copyWith({
     FormattedText? caption,

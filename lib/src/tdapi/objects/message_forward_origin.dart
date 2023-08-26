@@ -66,7 +66,8 @@ final class MessageForwardOriginUser extends MessageForwardOrigin {
         'sender_user_id': senderUserId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForwardOriginUser copyWith({
     int? senderUserId,
@@ -110,7 +111,8 @@ final class MessageForwardOriginChat extends MessageForwardOrigin {
         'author_signature': authorSignature,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForwardOriginChat copyWith({
     int? senderChatId,
@@ -150,7 +152,8 @@ final class MessageForwardOriginHiddenUser extends MessageForwardOrigin {
         'sender_name': senderName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForwardOriginHiddenUser copyWith({
     String? senderName,
@@ -200,7 +203,8 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
         'author_signature': authorSignature,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForwardOriginChannel copyWith({
     int? chatId,
@@ -243,7 +247,8 @@ final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
         'sender_name': senderName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForwardOriginMessageImport copyWith({
     String? senderName,

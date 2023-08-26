@@ -72,7 +72,8 @@ final class InternalLinkTypeActiveSessions extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeActiveSessions copyWith({
     dynamic extra,
@@ -137,7 +138,8 @@ final class InternalLinkTypeAttachmentMenuBot extends InternalLinkType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeAttachmentMenuBot copyWith({
     TargetChat? targetChat,
@@ -196,7 +198,8 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
         'code': code,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeAuthenticationCode copyWith({
     String? code,
@@ -250,7 +253,8 @@ final class InternalLinkTypeBackground extends InternalLinkType {
         'background_name': backgroundName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeBackground copyWith({
     String? backgroundName,
@@ -311,7 +315,8 @@ final class InternalLinkTypeBotAddToChannel extends InternalLinkType {
         'administrator_rights': administratorRights.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeBotAddToChannel copyWith({
     String? botUsername,
@@ -379,7 +384,8 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
         'autostart': autostart,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeBotStart copyWith({
     String? botUsername,
@@ -450,19 +456,22 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
         'administrator_rights': administratorRights?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeBotStartInGroup copyWith({
     String? botUsername,
     String? startParameter,
-    ChatAdministratorRights? administratorRights,
+    ChatAdministratorRights? Function()? administratorRights,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeBotStartInGroup(
         botUsername: botUsername ?? this.botUsername,
         startParameter: startParameter ?? this.startParameter,
-        administratorRights: administratorRights ?? this.administratorRights,
+        administratorRights: administratorRights != null
+            ? administratorRights()
+            : this.administratorRights,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -503,7 +512,8 @@ final class InternalLinkTypeChangePhoneNumber extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeChangePhoneNumber copyWith({
     dynamic extra,
@@ -556,7 +566,8 @@ final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
         'invite_link': inviteLink,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeChatFolderInvite copyWith({
     String? inviteLink,
@@ -605,7 +616,8 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeChatFolderSettings copyWith({
     dynamic extra,
@@ -657,7 +669,8 @@ final class InternalLinkTypeChatInvite extends InternalLinkType {
         'invite_link': inviteLink,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeChatInvite copyWith({
     String? inviteLink,
@@ -707,7 +720,8 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeDefaultMessageAutoDeleteTimerSettings copyWith({
     dynamic extra,
@@ -755,7 +769,8 @@ final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeEditProfileSettings copyWith({
     dynamic extra,
@@ -813,7 +828,8 @@ final class InternalLinkTypeGame extends InternalLinkType {
         'game_short_name': gameShortName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeGame copyWith({
     String? botUsername,
@@ -875,7 +891,8 @@ final class InternalLinkTypeInstantView extends InternalLinkType {
         'fallback_url': fallbackUrl,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeInstantView copyWith({
     String? url,
@@ -931,7 +948,8 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
         'invoice_name': invoiceName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeInvoice copyWith({
     String? invoiceName,
@@ -985,7 +1003,8 @@ final class InternalLinkTypeLanguagePack extends InternalLinkType {
         'language_pack_id': languagePackId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeLanguagePack copyWith({
     String? languagePackId,
@@ -1034,7 +1053,8 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeLanguageSettings copyWith({
     dynamic extra,
@@ -1086,7 +1106,8 @@ final class InternalLinkTypeMessage extends InternalLinkType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeMessage copyWith({
     String? url,
@@ -1146,7 +1167,8 @@ final class InternalLinkTypeMessageDraft extends InternalLinkType {
         'contains_link': containsLink,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeMessageDraft copyWith({
     FormattedText? text,
@@ -1227,7 +1249,8 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
         'callback_url': callbackUrl,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypePassportDataRequest copyWith({
     int? botUserId,
@@ -1296,7 +1319,8 @@ final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
         'phone_number': phoneNumber,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypePhoneNumberConfirmation copyWith({
     String? hash,
@@ -1352,7 +1376,8 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
         'referrer': referrer,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypePremiumFeatures copyWith({
     String? referrer,
@@ -1402,7 +1427,8 @@ final class InternalLinkTypePrivacyAndSecuritySettings
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypePrivacyAndSecuritySettings copyWith({
     dynamic extra,
@@ -1467,7 +1493,8 @@ final class InternalLinkTypeProxy extends InternalLinkType {
         'type': type.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeProxy copyWith({
     String? server,
@@ -1525,7 +1552,8 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
         'chat_username': chatUsername,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypePublicChat copyWith({
     String? chatUsername,
@@ -1574,7 +1602,8 @@ final class InternalLinkTypeQrCodeAuthentication extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeQrCodeAuthentication copyWith({
     dynamic extra,
@@ -1621,7 +1650,8 @@ final class InternalLinkTypeRestorePurchases extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeRestorePurchases copyWith({
     dynamic extra,
@@ -1667,7 +1697,8 @@ final class InternalLinkTypeSettings extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeSettings copyWith({
     dynamic extra,
@@ -1725,7 +1756,8 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
         'expect_custom_emoji': expectCustomEmoji,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeStickerSet copyWith({
     String? stickerSetName,
@@ -1787,7 +1819,8 @@ final class InternalLinkTypeStory extends InternalLinkType {
         'story_id': storyId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeStory copyWith({
     String? storySenderUsername,
@@ -1843,7 +1876,8 @@ final class InternalLinkTypeTheme extends InternalLinkType {
         'theme_name': themeName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeTheme copyWith({
     String? themeName,
@@ -1891,7 +1925,8 @@ final class InternalLinkTypeThemeSettings extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeThemeSettings copyWith({
     dynamic extra,
@@ -1943,7 +1978,8 @@ final class InternalLinkTypeUnknownDeepLink extends InternalLinkType {
         'link': link,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeUnknownDeepLink copyWith({
     String? link,
@@ -1992,7 +2028,8 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeUnsupportedProxy copyWith({
     dynamic extra,
@@ -2044,7 +2081,8 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
         'phone_number': phoneNumber,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeUserPhoneNumber copyWith({
     String? phoneNumber,
@@ -2098,7 +2136,8 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeUserToken copyWith({
     String? token,
@@ -2164,7 +2203,8 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
         'is_live_stream': isLiveStream,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeVideoChat copyWith({
     String? chatUsername,
@@ -2234,7 +2274,8 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         'start_parameter': startParameter,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeWebApp copyWith({
     String? botUsername,

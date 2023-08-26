@@ -69,7 +69,8 @@ final class JsonValueNull extends JsonValue {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueNull copyWith({
     dynamic extra,
@@ -121,7 +122,8 @@ final class JsonValueBoolean extends JsonValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueBoolean copyWith({
     bool? value,
@@ -175,7 +177,8 @@ final class JsonValueNumber extends JsonValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueNumber copyWith({
     double? value,
@@ -229,7 +232,8 @@ final class JsonValueString extends JsonValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueString copyWith({
     String? value,
@@ -283,7 +287,8 @@ final class JsonValueArray extends JsonValue {
         'values': [for (final e in values) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueArray copyWith({
     List<JsonValue>? values,
@@ -338,7 +343,8 @@ final class JsonValueObject extends JsonValue {
         'members': [for (final e in members) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   JsonValueObject copyWith({
     List<JsonObjectMember>? members,

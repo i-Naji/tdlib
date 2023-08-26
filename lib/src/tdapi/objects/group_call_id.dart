@@ -36,7 +36,8 @@ final class GroupCallId extends TdObject {
         'id': id,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallId copyWith({
     int? id,
     dynamic extra,

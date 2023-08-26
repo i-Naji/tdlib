@@ -31,7 +31,8 @@ final class MessageCalendarDay extends TdObject {
         'message': message.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageCalendarDay copyWith({
     int? totalCount,
     Message? message,

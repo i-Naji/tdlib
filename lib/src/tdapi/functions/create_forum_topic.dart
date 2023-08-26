@@ -32,7 +32,8 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   CreateForumTopic copyWith({
     int? chatId,
     String? name,

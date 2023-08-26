@@ -56,7 +56,8 @@ final class TextEntityTypeMention extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeMention copyWith() => const TextEntityTypeMention();
 
@@ -81,7 +82,8 @@ final class TextEntityTypeHashtag extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeHashtag copyWith() => const TextEntityTypeHashtag();
 
@@ -106,7 +108,8 @@ final class TextEntityTypeCashtag extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeCashtag copyWith() => const TextEntityTypeCashtag();
 
@@ -131,7 +134,8 @@ final class TextEntityTypeBotCommand extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeBotCommand copyWith() => const TextEntityTypeBotCommand();
 
@@ -156,7 +160,8 @@ final class TextEntityTypeUrl extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeUrl copyWith() => const TextEntityTypeUrl();
 
@@ -181,7 +186,8 @@ final class TextEntityTypeEmailAddress extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeEmailAddress copyWith() => const TextEntityTypeEmailAddress();
 
@@ -206,7 +212,8 @@ final class TextEntityTypePhoneNumber extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypePhoneNumber copyWith() => const TextEntityTypePhoneNumber();
 
@@ -231,7 +238,8 @@ final class TextEntityTypeBankCardNumber extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeBankCardNumber copyWith() =>
       const TextEntityTypeBankCardNumber();
@@ -257,7 +265,8 @@ final class TextEntityTypeBold extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeBold copyWith() => const TextEntityTypeBold();
 
@@ -282,7 +291,8 @@ final class TextEntityTypeItalic extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeItalic copyWith() => const TextEntityTypeItalic();
 
@@ -307,7 +317,8 @@ final class TextEntityTypeUnderline extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeUnderline copyWith() => const TextEntityTypeUnderline();
 
@@ -332,7 +343,8 @@ final class TextEntityTypeStrikethrough extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeStrikethrough copyWith() => const TextEntityTypeStrikethrough();
 
@@ -357,7 +369,8 @@ final class TextEntityTypeSpoiler extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeSpoiler copyWith() => const TextEntityTypeSpoiler();
 
@@ -382,7 +395,8 @@ final class TextEntityTypeCode extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeCode copyWith() => const TextEntityTypeCode();
 
@@ -407,7 +421,8 @@ final class TextEntityTypePre extends TextEntityType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypePre copyWith() => const TextEntityTypePre();
 
@@ -440,7 +455,8 @@ final class TextEntityTypePreCode extends TextEntityType {
         'language': language,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypePreCode copyWith({
     String? language,
@@ -478,7 +494,8 @@ final class TextEntityTypeTextUrl extends TextEntityType {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeTextUrl copyWith({
     String? url,
@@ -516,7 +533,8 @@ final class TextEntityTypeMentionName extends TextEntityType {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeMentionName copyWith({
     int? userId,
@@ -554,7 +572,8 @@ final class TextEntityTypeCustomEmoji extends TextEntityType {
         'custom_emoji_id': customEmojiId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeCustomEmoji copyWith({
     int? customEmojiId,
@@ -592,7 +611,8 @@ final class TextEntityTypeMediaTimestamp extends TextEntityType {
         'media_timestamp': mediaTimestamp,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextEntityTypeMediaTimestamp copyWith({
     int? mediaTimestamp,

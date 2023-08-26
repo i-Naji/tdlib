@@ -82,7 +82,8 @@ final class LoginUrlInfoOpen extends LoginUrlInfo {
         'skip_confirmation': skipConfirmation,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LoginUrlInfoOpen copyWith({
     String? url,
@@ -156,7 +157,8 @@ final class LoginUrlInfoRequestConfirmation extends LoginUrlInfo {
         'request_write_access': requestWriteAccess,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LoginUrlInfoRequestConfirmation copyWith({
     String? url,

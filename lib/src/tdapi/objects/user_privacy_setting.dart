@@ -58,7 +58,8 @@ final class UserPrivacySettingShowStatus extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingShowStatus copyWith() =>
       const UserPrivacySettingShowStatus();
@@ -85,7 +86,8 @@ final class UserPrivacySettingShowProfilePhoto extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingShowProfilePhoto copyWith() =>
       const UserPrivacySettingShowProfilePhoto();
@@ -113,7 +115,8 @@ final class UserPrivacySettingShowLinkInForwardedMessages
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingShowLinkInForwardedMessages copyWith() =>
       const UserPrivacySettingShowLinkInForwardedMessages();
@@ -141,7 +144,8 @@ final class UserPrivacySettingShowPhoneNumber extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingShowPhoneNumber copyWith() =>
       const UserPrivacySettingShowPhoneNumber();
@@ -167,7 +171,8 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingShowBio copyWith() => const UserPrivacySettingShowBio();
 
@@ -193,7 +198,8 @@ final class UserPrivacySettingAllowChatInvites extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingAllowChatInvites copyWith() =>
       const UserPrivacySettingAllowChatInvites();
@@ -219,7 +225,8 @@ final class UserPrivacySettingAllowCalls extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingAllowCalls copyWith() =>
       const UserPrivacySettingAllowCalls();
@@ -246,7 +253,8 @@ final class UserPrivacySettingAllowPeerToPeerCalls extends UserPrivacySetting {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingAllowPeerToPeerCalls copyWith() =>
       const UserPrivacySettingAllowPeerToPeerCalls();
@@ -274,7 +282,8 @@ final class UserPrivacySettingAllowFindingByPhoneNumber
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingAllowFindingByPhoneNumber copyWith() =>
       const UserPrivacySettingAllowFindingByPhoneNumber();
@@ -303,7 +312,8 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages copyWith() =>
       const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();

@@ -56,7 +56,8 @@ final class TopChatCategoryUsers extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryUsers copyWith() => const TopChatCategoryUsers();
 
@@ -81,7 +82,8 @@ final class TopChatCategoryBots extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryBots copyWith() => const TopChatCategoryBots();
 
@@ -106,7 +108,8 @@ final class TopChatCategoryGroups extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryGroups copyWith() => const TopChatCategoryGroups();
 
@@ -131,7 +134,8 @@ final class TopChatCategoryChannels extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryChannels copyWith() => const TopChatCategoryChannels();
 
@@ -156,7 +160,8 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryInlineBots copyWith() => const TopChatCategoryInlineBots();
 
@@ -181,7 +186,8 @@ final class TopChatCategoryCalls extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryCalls copyWith() => const TopChatCategoryCalls();
 
@@ -206,7 +212,8 @@ final class TopChatCategoryForwardChats extends TopChatCategory {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TopChatCategoryForwardChats copyWith() => const TopChatCategoryForwardChats();
 

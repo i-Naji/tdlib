@@ -42,18 +42,19 @@ final class GetMessageAddedReactions extends TdFunction<AddedReactions> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetMessageAddedReactions copyWith({
     int? chatId,
     int? messageId,
-    ReactionType? reactionType,
+    ReactionType? Function()? reactionType,
     String? offset,
     int? limit,
   }) =>
       GetMessageAddedReactions(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        reactionType: reactionType ?? this.reactionType,
+        reactionType: reactionType != null ? reactionType() : this.reactionType,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );

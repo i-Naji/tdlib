@@ -56,7 +56,8 @@ final class ReportReasonSpam extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonSpam copyWith() => const ReportReasonSpam();
 
@@ -81,7 +82,8 @@ final class ReportReasonViolence extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonViolence copyWith() => const ReportReasonViolence();
 
@@ -106,7 +108,8 @@ final class ReportReasonPornography extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonPornography copyWith() => const ReportReasonPornography();
 
@@ -131,7 +134,8 @@ final class ReportReasonChildAbuse extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonChildAbuse copyWith() => const ReportReasonChildAbuse();
 
@@ -156,7 +160,8 @@ final class ReportReasonCopyright extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonCopyright copyWith() => const ReportReasonCopyright();
 
@@ -181,7 +186,8 @@ final class ReportReasonUnrelatedLocation extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonUnrelatedLocation copyWith() =>
       const ReportReasonUnrelatedLocation();
@@ -207,7 +213,8 @@ final class ReportReasonFake extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonFake copyWith() => const ReportReasonFake();
 
@@ -232,7 +239,8 @@ final class ReportReasonIllegalDrugs extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonIllegalDrugs copyWith() => const ReportReasonIllegalDrugs();
 
@@ -257,7 +265,8 @@ final class ReportReasonPersonalDetails extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonPersonalDetails copyWith() => const ReportReasonPersonalDetails();
 
@@ -282,7 +291,8 @@ final class ReportReasonCustom extends ReportReason {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ReportReasonCustom copyWith() => const ReportReasonCustom();
 

@@ -57,13 +57,14 @@ final class ForwardMessages extends TdFunction<Messages> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ForwardMessages copyWith({
     int? chatId,
     int? messageThreadId,
     int? fromChatId,
     List<int>? messageIds,
-    MessageSendOptions? options,
+    MessageSendOptions? Function()? options,
     bool? sendCopy,
     bool? removeCaption,
     bool? onlyPreview,
@@ -73,7 +74,7 @@ final class ForwardMessages extends TdFunction<Messages> {
         messageThreadId: messageThreadId ?? this.messageThreadId,
         fromChatId: fromChatId ?? this.fromChatId,
         messageIds: messageIds ?? this.messageIds,
-        options: options ?? this.options,
+        options: options != null ? options() : this.options,
         sendCopy: sendCopy ?? this.sendCopy,
         removeCaption: removeCaption ?? this.removeCaption,
         onlyPreview: onlyPreview ?? this.onlyPreview,

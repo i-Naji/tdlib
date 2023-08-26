@@ -37,7 +37,8 @@ final class CreateVideoChat extends TdFunction<GroupCallId> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   CreateVideoChat copyWith({
     int? chatId,
     String? title,

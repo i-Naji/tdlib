@@ -123,7 +123,8 @@ final class ChatNotificationSettings extends TdObject {
         'disable_mention_notifications': disableMentionNotifications,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatNotificationSettings copyWith({
     bool? useDefaultMuteFor,
     int? muteFor,

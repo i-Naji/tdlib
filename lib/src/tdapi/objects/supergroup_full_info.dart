@@ -180,9 +180,10 @@ final class SupergroupFullInfo extends TdObject {
         'upgraded_from_max_message_id': upgradedFromMaxMessageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SupergroupFullInfo copyWith({
-    ChatPhoto? photo,
+    ChatPhoto? Function()? photo,
     String? description,
     int? memberCount,
     int? administratorCount,
@@ -201,8 +202,8 @@ final class SupergroupFullInfo extends TdObject {
     bool? isAllHistoryAvailable,
     bool? hasAggressiveAntiSpamEnabled,
     int? stickerSetId,
-    ChatLocation? location,
-    ChatInviteLink? inviteLink,
+    ChatLocation? Function()? location,
+    ChatInviteLink? Function()? inviteLink,
     List<BotCommands>? botCommands,
     int? upgradedFromBasicGroupId,
     int? upgradedFromMaxMessageId,
@@ -210,7 +211,7 @@ final class SupergroupFullInfo extends TdObject {
     int? clientId,
   }) =>
       SupergroupFullInfo(
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         description: description ?? this.description,
         memberCount: memberCount ?? this.memberCount,
         administratorCount: administratorCount ?? this.administratorCount,
@@ -233,8 +234,8 @@ final class SupergroupFullInfo extends TdObject {
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         stickerSetId: stickerSetId ?? this.stickerSetId,
-        location: location ?? this.location,
-        inviteLink: inviteLink ?? this.inviteLink,
+        location: location != null ? location() : this.location,
+        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         botCommands: botCommands ?? this.botCommands,
         upgradedFromBasicGroupId:
             upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,

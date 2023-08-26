@@ -92,10 +92,11 @@ final class ForumTopic extends TdObject {
         'draft_message': draftMessage?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ForumTopic copyWith({
     ForumTopicInfo? info,
-    Message? lastMessage,
+    Message? Function()? lastMessage,
     bool? isPinned,
     int? unreadCount,
     int? lastReadInboxMessageId,
@@ -103,13 +104,13 @@ final class ForumTopic extends TdObject {
     int? unreadMentionCount,
     int? unreadReactionCount,
     ChatNotificationSettings? notificationSettings,
-    DraftMessage? draftMessage,
+    DraftMessage? Function()? draftMessage,
     dynamic extra,
     int? clientId,
   }) =>
       ForumTopic(
         info: info ?? this.info,
-        lastMessage: lastMessage ?? this.lastMessage,
+        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
         isPinned: isPinned ?? this.isPinned,
         unreadCount: unreadCount ?? this.unreadCount,
         lastReadInboxMessageId:
@@ -119,7 +120,7 @@ final class ForumTopic extends TdObject {
         unreadMentionCount: unreadMentionCount ?? this.unreadMentionCount,
         unreadReactionCount: unreadReactionCount ?? this.unreadReactionCount,
         notificationSettings: notificationSettings ?? this.notificationSettings,
-        draftMessage: draftMessage ?? this.draftMessage,
+        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

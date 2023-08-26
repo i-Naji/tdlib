@@ -73,7 +73,8 @@ final class CheckStickerSetNameResultOk extends CheckStickerSetNameResult {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckStickerSetNameResultOk copyWith({
     dynamic extra,
@@ -121,7 +122,8 @@ final class CheckStickerSetNameResultNameInvalid
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckStickerSetNameResultNameInvalid copyWith({
     dynamic extra,
@@ -169,7 +171,8 @@ final class CheckStickerSetNameResultNameOccupied
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CheckStickerSetNameResultNameOccupied copyWith({
     dynamic extra,

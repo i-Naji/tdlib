@@ -137,7 +137,8 @@ final class AttachmentMenuBot extends TdObject {
         'web_app_placeholder': webAppPlaceholder?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AttachmentMenuBot copyWith({
     int? botUserId,
     bool? supportsSelfChat,
@@ -148,14 +149,14 @@ final class AttachmentMenuBot extends TdObject {
     bool? supportsSettings,
     bool? requestWriteAccess,
     String? name,
-    AttachmentMenuBotColor? nameColor,
-    File? defaultIcon,
-    File? iosStaticIcon,
-    File? iosAnimatedIcon,
-    File? androidIcon,
-    File? macosIcon,
-    AttachmentMenuBotColor? iconColor,
-    File? webAppPlaceholder,
+    AttachmentMenuBotColor? Function()? nameColor,
+    File? Function()? defaultIcon,
+    File? Function()? iosStaticIcon,
+    File? Function()? iosAnimatedIcon,
+    File? Function()? androidIcon,
+    File? Function()? macosIcon,
+    AttachmentMenuBotColor? Function()? iconColor,
+    File? Function()? webAppPlaceholder,
     dynamic extra,
     int? clientId,
   }) =>
@@ -169,14 +170,18 @@ final class AttachmentMenuBot extends TdObject {
         supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
         name: name ?? this.name,
-        nameColor: nameColor ?? this.nameColor,
-        defaultIcon: defaultIcon ?? this.defaultIcon,
-        iosStaticIcon: iosStaticIcon ?? this.iosStaticIcon,
-        iosAnimatedIcon: iosAnimatedIcon ?? this.iosAnimatedIcon,
-        androidIcon: androidIcon ?? this.androidIcon,
-        macosIcon: macosIcon ?? this.macosIcon,
-        iconColor: iconColor ?? this.iconColor,
-        webAppPlaceholder: webAppPlaceholder ?? this.webAppPlaceholder,
+        nameColor: nameColor != null ? nameColor() : this.nameColor,
+        defaultIcon: defaultIcon != null ? defaultIcon() : this.defaultIcon,
+        iosStaticIcon:
+            iosStaticIcon != null ? iosStaticIcon() : this.iosStaticIcon,
+        iosAnimatedIcon:
+            iosAnimatedIcon != null ? iosAnimatedIcon() : this.iosAnimatedIcon,
+        androidIcon: androidIcon != null ? androidIcon() : this.androidIcon,
+        macosIcon: macosIcon != null ? macosIcon() : this.macosIcon,
+        iconColor: iconColor != null ? iconColor() : this.iconColor,
+        webAppPlaceholder: webAppPlaceholder != null
+            ? webAppPlaceholder()
+            : this.webAppPlaceholder,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

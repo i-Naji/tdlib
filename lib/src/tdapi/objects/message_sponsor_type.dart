@@ -72,7 +72,8 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
         'link': link.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSponsorTypeBot copyWith({
     int? botUserId,
@@ -118,15 +119,16 @@ final class MessageSponsorTypePublicChannel extends MessageSponsorType {
         'link': link?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSponsorTypePublicChannel copyWith({
     int? chatId,
-    InternalLinkType? link,
+    InternalLinkType? Function()? link,
   }) =>
       MessageSponsorTypePublicChannel(
         chatId: chatId ?? this.chatId,
-        link: link ?? this.link,
+        link: link != null ? link() : this.link,
       );
 
   /// TDLib type name.
@@ -165,7 +167,8 @@ final class MessageSponsorTypePrivateChannel extends MessageSponsorType {
         'invite_link': inviteLink,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSponsorTypePrivateChannel copyWith({
     String? title,
@@ -211,7 +214,8 @@ final class MessageSponsorTypeWebsite extends MessageSponsorType {
         'name': name,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSponsorTypeWebsite copyWith({
     String? url,

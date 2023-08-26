@@ -56,7 +56,8 @@ final class MessageSourceChatHistory extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceChatHistory copyWith() => const MessageSourceChatHistory();
 
@@ -82,7 +83,8 @@ final class MessageSourceMessageThreadHistory extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceMessageThreadHistory copyWith() =>
       const MessageSourceMessageThreadHistory();
@@ -108,7 +110,8 @@ final class MessageSourceForumTopicHistory extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceForumTopicHistory copyWith() =>
       const MessageSourceForumTopicHistory();
@@ -134,7 +137,8 @@ final class MessageSourceHistoryPreview extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceHistoryPreview copyWith() => const MessageSourceHistoryPreview();
 
@@ -159,7 +163,8 @@ final class MessageSourceChatList extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceChatList copyWith() => const MessageSourceChatList();
 
@@ -184,7 +189,8 @@ final class MessageSourceSearch extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceSearch copyWith() => const MessageSourceSearch();
 
@@ -209,7 +215,8 @@ final class MessageSourceChatEventLog extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceChatEventLog copyWith() => const MessageSourceChatEventLog();
 
@@ -234,7 +241,8 @@ final class MessageSourceNotification extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceNotification copyWith() => const MessageSourceNotification();
 
@@ -259,7 +267,8 @@ final class MessageSourceScreenshot extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceScreenshot copyWith() => const MessageSourceScreenshot();
 
@@ -284,7 +293,8 @@ final class MessageSourceOther extends MessageSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSourceOther copyWith() => const MessageSourceOther();
 

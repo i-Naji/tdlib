@@ -67,12 +67,13 @@ final class MessageLinkInfo extends TdObject {
         'for_album': forAlbum,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
     int? messageThreadId,
-    Message? message,
+    Message? Function()? message,
     int? mediaTimestamp,
     bool? forAlbum,
     dynamic extra,
@@ -82,7 +83,7 @@ final class MessageLinkInfo extends TdObject {
         isPublic: isPublic ?? this.isPublic,
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        message: message ?? this.message,
+        message: message != null ? message() : this.message,
         mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
         forAlbum: forAlbum ?? this.forAlbum,
         extra: extra ?? this.extra,

@@ -69,7 +69,8 @@ final class InputPassportElementErrorSourceUnspecified
         'element_hash': elementHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceUnspecified copyWith({
     String? elementHash,
@@ -116,7 +117,8 @@ final class InputPassportElementErrorSourceDataField
         'data_hash': dataHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceDataField copyWith({
     String? fieldName,
@@ -158,7 +160,8 @@ final class InputPassportElementErrorSourceFrontSide
         'file_hash': fileHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceFrontSide copyWith({
     String? fileHash,
@@ -198,7 +201,8 @@ final class InputPassportElementErrorSourceReverseSide
         'file_hash': fileHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceReverseSide copyWith({
     String? fileHash,
@@ -239,7 +243,8 @@ final class InputPassportElementErrorSourceSelfie
         'file_hash': fileHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceSelfie copyWith({
     String? fileHash,
@@ -279,7 +284,8 @@ final class InputPassportElementErrorSourceTranslationFile
         'file_hash': fileHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceTranslationFile copyWith({
     String? fileHash,
@@ -320,7 +326,8 @@ final class InputPassportElementErrorSourceTranslationFiles
         'file_hashes': fileHashes,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceTranslationFiles copyWith({
     List<String>? fileHashes,
@@ -361,7 +368,8 @@ final class InputPassportElementErrorSourceFile
         'file_hash': fileHash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceFile copyWith({
     String? fileHash,
@@ -401,7 +409,8 @@ final class InputPassportElementErrorSourceFiles
         'file_hashes': fileHashes,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPassportElementErrorSourceFiles copyWith({
     List<String>? fileHashes,

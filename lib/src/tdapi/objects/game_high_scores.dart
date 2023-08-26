@@ -37,7 +37,8 @@ final class GameHighScores extends TdObject {
         'scores': [for (final e in scores) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GameHighScores copyWith({
     List<GameHighScore>? scores,
     dynamic extra,

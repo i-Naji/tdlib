@@ -30,7 +30,8 @@ final class MessageViewer extends TdObject {
         'view_date': viewDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageViewer copyWith({
     int? userId,
     int? viewDate,

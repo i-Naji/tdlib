@@ -44,7 +44,8 @@ final class PremiumStatePaymentOption extends TdObject {
         'last_transaction_id': lastTransactionId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PremiumStatePaymentOption copyWith({
     PremiumPaymentOption? paymentOption,
     bool? isCurrent,

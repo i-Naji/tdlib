@@ -32,16 +32,17 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditInlineMessageCaption copyWith({
     String? inlineMessageId,
-    ReplyMarkup? replyMarkup,
-    FormattedText? caption,
+    ReplyMarkup? Function()? replyMarkup,
+    FormattedText? Function()? caption,
   }) =>
       EditInlineMessageCaption(
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        caption: caption ?? this.caption,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+        caption: caption != null ? caption() : this.caption,
       );
 
   /// TDLib type name.

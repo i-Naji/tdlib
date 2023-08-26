@@ -70,7 +70,8 @@ final class CallStatePending extends CallState {
         'is_received': isReceived,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStatePending copyWith({
     bool? isCreated,
@@ -102,7 +103,8 @@ final class CallStateExchangingKeys extends CallState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStateExchangingKeys copyWith() => const CallStateExchangingKeys();
 
@@ -165,7 +167,8 @@ final class CallStateReady extends CallState {
         'allow_p2p': allowP2p,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStateReady copyWith({
     CallProtocol? protocol,
@@ -205,7 +208,8 @@ final class CallStateHangingUp extends CallState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStateHangingUp copyWith() => const CallStateHangingUp();
 
@@ -256,7 +260,8 @@ final class CallStateDiscarded extends CallState {
         'need_log': needLog,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStateDiscarded copyWith({
     CallDiscardReason? reason,
@@ -299,7 +304,8 @@ final class CallStateError extends CallState {
         'error': error.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallStateError copyWith({
     TdError? error,

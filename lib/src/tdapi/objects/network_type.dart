@@ -56,7 +56,8 @@ final class NetworkTypeNone extends NetworkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkTypeNone copyWith() => const NetworkTypeNone();
 
@@ -81,7 +82,8 @@ final class NetworkTypeMobile extends NetworkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkTypeMobile copyWith() => const NetworkTypeMobile();
 
@@ -106,7 +108,8 @@ final class NetworkTypeMobileRoaming extends NetworkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkTypeMobileRoaming copyWith() => const NetworkTypeMobileRoaming();
 
@@ -131,7 +134,8 @@ final class NetworkTypeWiFi extends NetworkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkTypeWiFi copyWith() => const NetworkTypeWiFi();
 
@@ -156,7 +160,8 @@ final class NetworkTypeOther extends NetworkType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NetworkTypeOther copyWith() => const NetworkTypeOther();
 

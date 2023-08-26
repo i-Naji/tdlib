@@ -52,18 +52,19 @@ final class PremiumFeatures extends TdObject {
         'payment_link': paymentLink?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PremiumFeatures copyWith({
     List<PremiumFeature>? features,
     List<PremiumLimit>? limits,
-    InternalLinkType? paymentLink,
+    InternalLinkType? Function()? paymentLink,
     dynamic extra,
     int? clientId,
   }) =>
       PremiumFeatures(
         features: features ?? this.features,
         limits: limits ?? this.limits,
-        paymentLink: paymentLink ?? this.paymentLink,
+        paymentLink: paymentLink != null ? paymentLink() : this.paymentLink,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

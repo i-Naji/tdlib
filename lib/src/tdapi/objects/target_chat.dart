@@ -56,7 +56,8 @@ final class TargetChatCurrent extends TargetChat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TargetChatCurrent copyWith() => const TargetChatCurrent();
 
@@ -107,7 +108,8 @@ final class TargetChatChosen extends TargetChat {
         'allow_channel_chats': allowChannelChats,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TargetChatChosen copyWith({
     bool? allowUserChats,
@@ -151,7 +153,8 @@ final class TargetChatInternalLink extends TargetChat {
         'link': link.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TargetChatInternalLink copyWith({
     InternalLinkType? link,

@@ -47,11 +47,12 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AnswerInlineQuery copyWith({
     int? inlineQueryId,
     bool? isPersonal,
-    InlineQueryResultsButton? button,
+    InlineQueryResultsButton? Function()? button,
     List<InputInlineQueryResult>? results,
     int? cacheTime,
     String? nextOffset,
@@ -59,7 +60,7 @@ final class AnswerInlineQuery extends TdFunction<Ok> {
       AnswerInlineQuery(
         inlineQueryId: inlineQueryId ?? this.inlineQueryId,
         isPersonal: isPersonal ?? this.isPersonal,
-        button: button ?? this.button,
+        button: button != null ? button() : this.button,
         results: results ?? this.results,
         cacheTime: cacheTime ?? this.cacheTime,
         nextOffset: nextOffset ?? this.nextOffset,

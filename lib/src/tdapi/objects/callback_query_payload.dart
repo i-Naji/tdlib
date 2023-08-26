@@ -66,7 +66,8 @@ final class CallbackQueryPayloadData extends CallbackQueryPayload {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallbackQueryPayloadData copyWith({
     String? data,
@@ -111,7 +112,8 @@ final class CallbackQueryPayloadDataWithPassword extends CallbackQueryPayload {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallbackQueryPayloadDataWithPassword copyWith({
     String? password,
@@ -151,7 +153,8 @@ final class CallbackQueryPayloadGame extends CallbackQueryPayload {
         'game_short_name': gameShortName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CallbackQueryPayloadGame copyWith({
     String? gameShortName,

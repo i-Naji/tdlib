@@ -59,7 +59,8 @@ final class PassportElementTypePersonalDetails extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypePersonalDetails copyWith() =>
       const PassportElementTypePersonalDetails();
@@ -85,7 +86,8 @@ final class PassportElementTypePassport extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypePassport copyWith() => const PassportElementTypePassport();
 
@@ -111,7 +113,8 @@ final class PassportElementTypeDriverLicense extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeDriverLicense copyWith() =>
       const PassportElementTypeDriverLicense();
@@ -137,7 +140,8 @@ final class PassportElementTypeIdentityCard extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeIdentityCard copyWith() =>
       const PassportElementTypeIdentityCard();
@@ -164,7 +168,8 @@ final class PassportElementTypeInternalPassport extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeInternalPassport copyWith() =>
       const PassportElementTypeInternalPassport();
@@ -190,7 +195,8 @@ final class PassportElementTypeAddress extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeAddress copyWith() => const PassportElementTypeAddress();
 
@@ -215,7 +221,8 @@ final class PassportElementTypeUtilityBill extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeUtilityBill copyWith() =>
       const PassportElementTypeUtilityBill();
@@ -242,7 +249,8 @@ final class PassportElementTypeBankStatement extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeBankStatement copyWith() =>
       const PassportElementTypeBankStatement();
@@ -269,7 +277,8 @@ final class PassportElementTypeRentalAgreement extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeRentalAgreement copyWith() =>
       const PassportElementTypeRentalAgreement();
@@ -297,7 +306,8 @@ final class PassportElementTypePassportRegistration
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypePassportRegistration copyWith() =>
       const PassportElementTypePassportRegistration();
@@ -325,7 +335,8 @@ final class PassportElementTypeTemporaryRegistration
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeTemporaryRegistration copyWith() =>
       const PassportElementTypeTemporaryRegistration();
@@ -351,7 +362,8 @@ final class PassportElementTypePhoneNumber extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypePhoneNumber copyWith() =>
       const PassportElementTypePhoneNumber();
@@ -377,7 +389,8 @@ final class PassportElementTypeEmailAddress extends PassportElementType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PassportElementTypeEmailAddress copyWith() =>
       const PassportElementTypeEmailAddress();

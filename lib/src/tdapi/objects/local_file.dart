@@ -66,7 +66,8 @@ final class LocalFile extends TdObject {
         'downloaded_size': downloadedSize,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   LocalFile copyWith({
     String? path,
     bool? canBeDownloaded,

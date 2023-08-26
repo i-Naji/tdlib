@@ -32,7 +32,8 @@ final class GroupCallRecentSpeaker extends TdObject {
         'is_speaking': isSpeaking,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallRecentSpeaker copyWith({
     MessageSender? participantId,
     bool? isSpeaking,

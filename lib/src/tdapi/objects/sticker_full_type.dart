@@ -65,13 +65,16 @@ final class StickerFullTypeRegular extends StickerFullType {
         'premium_animation': premiumAnimation?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFullTypeRegular copyWith({
-    File? premiumAnimation,
+    File? Function()? premiumAnimation,
   }) =>
       StickerFullTypeRegular(
-        premiumAnimation: premiumAnimation ?? this.premiumAnimation,
+        premiumAnimation: premiumAnimation != null
+            ? premiumAnimation()
+            : this.premiumAnimation,
       );
 
   /// TDLib type name.
@@ -104,13 +107,14 @@ final class StickerFullTypeMask extends StickerFullType {
         'mask_position': maskPosition?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFullTypeMask copyWith({
-    MaskPosition? maskPosition,
+    MaskPosition? Function()? maskPosition,
   }) =>
       StickerFullTypeMask(
-        maskPosition: maskPosition ?? this.maskPosition,
+        maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
       );
 
   /// TDLib type name.
@@ -148,7 +152,8 @@ final class StickerFullTypeCustomEmoji extends StickerFullType {
         'needs_repainting': needsRepainting,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFullTypeCustomEmoji copyWith({
     int? customEmojiId,

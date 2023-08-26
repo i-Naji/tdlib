@@ -97,17 +97,18 @@ final class PaymentReceipt extends TdObject {
         'tip_amount': tipAmount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PaymentReceipt copyWith({
     String? title,
     FormattedText? description,
-    Photo? photo,
+    Photo? Function()? photo,
     int? date,
     int? sellerBotUserId,
     int? paymentProviderUserId,
     Invoice? invoice,
-    OrderInfo? orderInfo,
-    ShippingOption? shippingOption,
+    OrderInfo? Function()? orderInfo,
+    ShippingOption? Function()? shippingOption,
     String? credentialsTitle,
     int? tipAmount,
     dynamic extra,
@@ -116,14 +117,15 @@ final class PaymentReceipt extends TdObject {
       PaymentReceipt(
         title: title ?? this.title,
         description: description ?? this.description,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         date: date ?? this.date,
         sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
         paymentProviderUserId:
             paymentProviderUserId ?? this.paymentProviderUserId,
         invoice: invoice ?? this.invoice,
-        orderInfo: orderInfo ?? this.orderInfo,
-        shippingOption: shippingOption ?? this.shippingOption,
+        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
+        shippingOption:
+            shippingOption != null ? shippingOption() : this.shippingOption,
         credentialsTitle: credentialsTitle ?? this.credentialsTitle,
         tipAmount: tipAmount ?? this.tipAmount,
         extra: extra ?? this.extra,

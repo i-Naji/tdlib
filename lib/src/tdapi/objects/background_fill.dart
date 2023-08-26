@@ -64,7 +64,8 @@ final class BackgroundFillSolid extends BackgroundFill {
         'color': color,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundFillSolid copyWith({
     int? color,
@@ -114,7 +115,8 @@ final class BackgroundFillGradient extends BackgroundFill {
         'rotation_angle': rotationAngle,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundFillGradient copyWith({
     int? topColor,
@@ -156,7 +158,8 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
         'colors': colors,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundFillFreeformGradient copyWith({
     List<int>? colors,

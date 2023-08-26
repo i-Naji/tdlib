@@ -22,12 +22,13 @@ final class GetPremiumFeatures extends TdFunction<PremiumFeatures> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetPremiumFeatures copyWith({
-    PremiumSource? source,
+    PremiumSource? Function()? source,
   }) =>
       GetPremiumFeatures(
-        source: source ?? this.source,
+        source: source != null ? source() : this.source,
       );
 
   /// TDLib type name.

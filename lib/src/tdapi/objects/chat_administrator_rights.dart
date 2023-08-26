@@ -91,7 +91,8 @@ final class ChatAdministratorRights extends TdObject {
         'is_anonymous': isAnonymous,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatAdministratorRights copyWith({
     bool? canManageChat,
     bool? canChangeInfo,

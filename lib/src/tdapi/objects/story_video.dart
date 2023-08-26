@@ -73,15 +73,16 @@ final class StoryVideo extends TdObject {
         'video': video.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StoryVideo copyWith({
     double? duration,
     int? width,
     int? height,
     bool? hasStickers,
     bool? isAnimation,
-    Minithumbnail? minithumbnail,
-    Thumbnail? thumbnail,
+    Minithumbnail? Function()? minithumbnail,
+    Thumbnail? Function()? thumbnail,
     int? preloadPrefixSize,
     File? video,
   }) =>
@@ -91,8 +92,9 @@ final class StoryVideo extends TdObject {
         height: height ?? this.height,
         hasStickers: hasStickers ?? this.hasStickers,
         isAnimation: isAnimation ?? this.isAnimation,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
         video: video ?? this.video,
       );

@@ -50,7 +50,8 @@ final class StorageStatistics extends TdObject {
         'by_chat': [for (final e in byChat) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StorageStatistics copyWith({
     int? size,
     int? count,

@@ -84,7 +84,8 @@ final class StatisticalGraphData extends StatisticalGraph {
         'zoom_token': zoomToken,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StatisticalGraphData copyWith({
     String? jsonData,
@@ -140,7 +141,8 @@ final class StatisticalGraphAsync extends StatisticalGraph {
         'token': token,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StatisticalGraphAsync copyWith({
     String? token,
@@ -194,7 +196,8 @@ final class StatisticalGraphError extends StatisticalGraph {
         'error_message': errorMessage,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StatisticalGraphError copyWith({
     String? errorMessage,

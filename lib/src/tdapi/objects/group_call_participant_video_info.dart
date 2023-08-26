@@ -39,7 +39,8 @@ final class GroupCallParticipantVideoInfo extends TdObject {
         'is_paused': isPaused,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallParticipantVideoInfo copyWith({
     List<GroupCallVideoSourceGroup>? sourceGroups,
     String? endpointId,

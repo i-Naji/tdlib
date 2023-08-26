@@ -37,7 +37,8 @@ final class FileDownloadedPrefixSize extends TdObject {
         'size': size,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   FileDownloadedPrefixSize copyWith({
     int? size,
     dynamic extra,

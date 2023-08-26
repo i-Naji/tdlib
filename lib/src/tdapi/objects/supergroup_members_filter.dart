@@ -58,7 +58,8 @@ final class SupergroupMembersFilterRecent extends SupergroupMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterRecent copyWith() =>
       const SupergroupMembersFilterRecent();
@@ -92,7 +93,8 @@ final class SupergroupMembersFilterContacts extends SupergroupMembersFilter {
         'query': query,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterContacts copyWith({
     String? query,
@@ -124,7 +126,8 @@ final class SupergroupMembersFilterAdministrators
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterAdministrators copyWith() =>
       const SupergroupMembersFilterAdministrators();
@@ -158,7 +161,8 @@ final class SupergroupMembersFilterSearch extends SupergroupMembersFilter {
         'query': query,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterSearch copyWith({
     String? query,
@@ -197,7 +201,8 @@ final class SupergroupMembersFilterRestricted extends SupergroupMembersFilter {
         'query': query,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterRestricted copyWith({
     String? query,
@@ -235,7 +240,8 @@ final class SupergroupMembersFilterBanned extends SupergroupMembersFilter {
         'query': query,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterBanned copyWith({
     String? query,
@@ -279,7 +285,8 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
         'message_thread_id': messageThreadId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterMention copyWith({
     String? query,
@@ -311,7 +318,8 @@ final class SupergroupMembersFilterBots extends SupergroupMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SupergroupMembersFilterBots copyWith() => const SupergroupMembersFilterBots();
 

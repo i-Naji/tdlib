@@ -63,7 +63,8 @@ final class PageBlockTitle extends PageBlock {
         'title': title.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockTitle copyWith({
     RichText? title,
@@ -101,7 +102,8 @@ final class PageBlockSubtitle extends PageBlock {
         'subtitle': subtitle.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockSubtitle copyWith({
     RichText? subtitle,
@@ -145,7 +147,8 @@ final class PageBlockAuthorDate extends PageBlock {
         'publish_date': publishDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockAuthorDate copyWith({
     RichText? author,
@@ -185,7 +188,8 @@ final class PageBlockHeader extends PageBlock {
         'header': header.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockHeader copyWith({
     RichText? header,
@@ -223,7 +227,8 @@ final class PageBlockSubheader extends PageBlock {
         'subheader': subheader.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockSubheader copyWith({
     RichText? subheader,
@@ -261,7 +266,8 @@ final class PageBlockKicker extends PageBlock {
         'kicker': kicker.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockKicker copyWith({
     RichText? kicker,
@@ -299,7 +305,8 @@ final class PageBlockParagraph extends PageBlock {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockParagraph copyWith({
     RichText? text,
@@ -343,7 +350,8 @@ final class PageBlockPreformatted extends PageBlock {
         'language': language,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockPreformatted copyWith({
     RichText? text,
@@ -383,7 +391,8 @@ final class PageBlockFooter extends PageBlock {
         'footer': footer.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockFooter copyWith({
     RichText? footer,
@@ -413,7 +422,8 @@ final class PageBlockDivider extends PageBlock {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockDivider copyWith() => const PageBlockDivider();
 
@@ -446,7 +456,8 @@ final class PageBlockAnchor extends PageBlock {
         'name': name,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockAnchor copyWith({
     String? name,
@@ -484,7 +495,8 @@ final class PageBlockList extends PageBlock {
         'items': [for (final e in items) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockList copyWith({
     List<PageBlockListItem>? items,
@@ -528,7 +540,8 @@ final class PageBlockBlockQuote extends PageBlock {
         'credit': credit.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockBlockQuote copyWith({
     RichText? text,
@@ -574,7 +587,8 @@ final class PageBlockPullQuote extends PageBlock {
         'credit': credit.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockPullQuote copyWith({
     RichText? text,
@@ -626,15 +640,16 @@ final class PageBlockAnimation extends PageBlock {
         'need_autoplay': needAutoplay,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockAnimation copyWith({
-    Animation? animation,
+    Animation? Function()? animation,
     PageBlockCaption? caption,
     bool? needAutoplay,
   }) =>
       PageBlockAnimation(
-        animation: animation ?? this.animation,
+        animation: animation != null ? animation() : this.animation,
         caption: caption ?? this.caption,
         needAutoplay: needAutoplay ?? this.needAutoplay,
       );
@@ -673,14 +688,15 @@ final class PageBlockAudio extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockAudio copyWith({
-    Audio? audio,
+    Audio? Function()? audio,
     PageBlockCaption? caption,
   }) =>
       PageBlockAudio(
-        audio: audio ?? this.audio,
+        audio: audio != null ? audio() : this.audio,
         caption: caption ?? this.caption,
       );
 
@@ -724,15 +740,16 @@ final class PageBlockPhoto extends PageBlock {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockPhoto copyWith({
-    Photo? photo,
+    Photo? Function()? photo,
     PageBlockCaption? caption,
     String? url,
   }) =>
       PageBlockPhoto(
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         caption: caption ?? this.caption,
         url: url ?? this.url,
       );
@@ -783,16 +800,17 @@ final class PageBlockVideo extends PageBlock {
         'is_looped': isLooped,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockVideo copyWith({
-    Video? video,
+    Video? Function()? video,
     PageBlockCaption? caption,
     bool? needAutoplay,
     bool? isLooped,
   }) =>
       PageBlockVideo(
-        video: video ?? this.video,
+        video: video != null ? video() : this.video,
         caption: caption ?? this.caption,
         needAutoplay: needAutoplay ?? this.needAutoplay,
         isLooped: isLooped ?? this.isLooped,
@@ -833,14 +851,15 @@ final class PageBlockVoiceNote extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockVoiceNote copyWith({
-    VoiceNote? voiceNote,
+    VoiceNote? Function()? voiceNote,
     PageBlockCaption? caption,
   }) =>
       PageBlockVoiceNote(
-        voiceNote: voiceNote ?? this.voiceNote,
+        voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
         caption: caption ?? this.caption,
       );
 
@@ -872,7 +891,8 @@ final class PageBlockCover extends PageBlock {
         'cover': cover.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockCover copyWith({
     PageBlock? cover,
@@ -952,12 +972,13 @@ final class PageBlockEmbedded extends PageBlock {
         'allow_scrolling': allowScrolling,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockEmbedded copyWith({
     String? url,
     String? html,
-    Photo? posterPhoto,
+    Photo? Function()? posterPhoto,
     int? width,
     int? height,
     PageBlockCaption? caption,
@@ -967,7 +988,7 @@ final class PageBlockEmbedded extends PageBlock {
       PageBlockEmbedded(
         url: url ?? this.url,
         html: html ?? this.html,
-        posterPhoto: posterPhoto ?? this.posterPhoto,
+        posterPhoto: posterPhoto != null ? posterPhoto() : this.posterPhoto,
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption ?? this.caption,
@@ -1035,12 +1056,13 @@ final class PageBlockEmbeddedPost extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockEmbeddedPost copyWith({
     String? url,
     String? author,
-    Photo? authorPhoto,
+    Photo? Function()? authorPhoto,
     int? date,
     List<PageBlock>? pageBlocks,
     PageBlockCaption? caption,
@@ -1048,7 +1070,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
       PageBlockEmbeddedPost(
         url: url ?? this.url,
         author: author ?? this.author,
-        authorPhoto: authorPhoto ?? this.authorPhoto,
+        authorPhoto: authorPhoto != null ? authorPhoto() : this.authorPhoto,
         date: date ?? this.date,
         pageBlocks: pageBlocks ?? this.pageBlocks,
         caption: caption ?? this.caption,
@@ -1090,7 +1112,8 @@ final class PageBlockCollage extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockCollage copyWith({
     List<PageBlock>? pageBlocks,
@@ -1137,7 +1160,8 @@ final class PageBlockSlideshow extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockSlideshow copyWith({
     List<PageBlock>? pageBlocks,
@@ -1189,16 +1213,17 @@ final class PageBlockChatLink extends PageBlock {
         'username': username,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockChatLink copyWith({
     String? title,
-    ChatPhotoInfo? photo,
+    ChatPhotoInfo? Function()? photo,
     String? username,
   }) =>
       PageBlockChatLink(
         title: title ?? this.title,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         username: username ?? this.username,
       );
 
@@ -1253,7 +1278,8 @@ final class PageBlockTable extends PageBlock {
         'is_striped': isStriped,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockTable copyWith({
     RichText? caption,
@@ -1310,7 +1336,8 @@ final class PageBlockDetails extends PageBlock {
         'is_open': isOpen,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockDetails copyWith({
     RichText? header,
@@ -1359,7 +1386,8 @@ final class PageBlockRelatedArticles extends PageBlock {
         'articles': [for (final e in articles) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockRelatedArticles copyWith({
     RichText? header,
@@ -1422,7 +1450,8 @@ final class PageBlockMap extends PageBlock {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockMap copyWith({
     Location? location,

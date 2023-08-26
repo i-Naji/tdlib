@@ -61,7 +61,8 @@ final class PageBlockHorizontalAlignmentLeft
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockHorizontalAlignmentLeft copyWith() =>
       const PageBlockHorizontalAlignmentLeft();
@@ -89,7 +90,8 @@ final class PageBlockHorizontalAlignmentCenter
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockHorizontalAlignmentCenter copyWith() =>
       const PageBlockHorizontalAlignmentCenter();
@@ -117,7 +119,8 @@ final class PageBlockHorizontalAlignmentRight
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockHorizontalAlignmentRight copyWith() =>
       const PageBlockHorizontalAlignmentRight();

@@ -60,22 +60,23 @@ final class AnimatedEmoji extends TdObject {
         'sound': sound?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AnimatedEmoji copyWith({
-    Sticker? sticker,
+    Sticker? Function()? sticker,
     int? stickerWidth,
     int? stickerHeight,
     int? fitzpatrickType,
-    File? sound,
+    File? Function()? sound,
     dynamic extra,
     int? clientId,
   }) =>
       AnimatedEmoji(
-        sticker: sticker ?? this.sticker,
+        sticker: sticker != null ? sticker() : this.sticker,
         stickerWidth: stickerWidth ?? this.stickerWidth,
         stickerHeight: stickerHeight ?? this.stickerHeight,
         fitzpatrickType: fitzpatrickType ?? this.fitzpatrickType,
-        sound: sound ?? this.sound,
+        sound: sound != null ? sound() : this.sound,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

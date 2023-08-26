@@ -30,7 +30,8 @@ final class Ok extends TdObject {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Ok copyWith({
     dynamic extra,
     int? clientId,

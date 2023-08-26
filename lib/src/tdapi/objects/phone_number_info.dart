@@ -55,9 +55,10 @@ final class PhoneNumberInfo extends TdObject {
         'is_anonymous': isAnonymous,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PhoneNumberInfo copyWith({
-    CountryInfo? country,
+    CountryInfo? Function()? country,
     String? countryCallingCode,
     String? formattedPhoneNumber,
     bool? isAnonymous,
@@ -65,7 +66,7 @@ final class PhoneNumberInfo extends TdObject {
     int? clientId,
   }) =>
       PhoneNumberInfo(
-        country: country ?? this.country,
+        country: country != null ? country() : this.country,
         countryCallingCode: countryCallingCode ?? this.countryCallingCode,
         formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
         isAnonymous: isAnonymous ?? this.isAnonymous,

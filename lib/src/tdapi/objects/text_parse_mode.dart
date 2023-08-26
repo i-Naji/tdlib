@@ -64,7 +64,8 @@ final class TextParseModeMarkdown extends TextParseMode {
         'version': version,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextParseModeMarkdown copyWith({
     int? version,
@@ -94,7 +95,8 @@ final class TextParseModeHTML extends TextParseMode {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TextParseModeHTML copyWith() => const TextParseModeHTML();
 

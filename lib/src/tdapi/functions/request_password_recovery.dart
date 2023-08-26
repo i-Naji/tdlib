@@ -17,7 +17,8 @@ final class RequestPasswordRecovery
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   RequestPasswordRecovery copyWith() => const RequestPasswordRecovery();
 
   /// TDLib type name.

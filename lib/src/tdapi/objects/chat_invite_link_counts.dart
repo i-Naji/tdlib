@@ -39,7 +39,8 @@ final class ChatInviteLinkCounts extends TdObject {
         'invite_link_counts': [for (final e in inviteLinkCounts) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatInviteLinkCounts copyWith({
     List<ChatInviteLinkCount>? inviteLinkCounts,
     dynamic extra,

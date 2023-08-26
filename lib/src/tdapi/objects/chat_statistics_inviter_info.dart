@@ -31,7 +31,8 @@ final class ChatStatisticsInviterInfo extends TdObject {
         'added_member_count': addedMemberCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatStatisticsInviterInfo copyWith({
     int? userId,
     int? addedMemberCount,

@@ -73,7 +73,8 @@ final class AutoDownloadSettings extends TdObject {
         'use_less_data_for_calls': useLessDataForCalls,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AutoDownloadSettings copyWith({
     bool? isAutoDownloadEnabled,
     int? maxPhotoFileSize,

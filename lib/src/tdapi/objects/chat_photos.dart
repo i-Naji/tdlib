@@ -43,7 +43,8 @@ final class ChatPhotos extends TdObject {
         'photos': [for (final e in photos) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatPhotos copyWith({
     int? totalCount,
     List<ChatPhoto>? photos,

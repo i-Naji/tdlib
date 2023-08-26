@@ -22,7 +22,8 @@ final class ConfirmQrCodeAuthentication extends TdFunction<Session> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ConfirmQrCodeAuthentication copyWith({
     String? link,
   }) =>

@@ -66,7 +66,8 @@ final class PushMessageContentHidden extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentHidden copyWith({
     bool? isPinned,
@@ -116,15 +117,16 @@ final class PushMessageContentAnimation extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentAnimation copyWith({
-    Animation? animation,
+    Animation? Function()? animation,
     String? caption,
     bool? isPinned,
   }) =>
       PushMessageContentAnimation(
-        animation: animation ?? this.animation,
+        animation: animation != null ? animation() : this.animation,
         caption: caption ?? this.caption,
         isPinned: isPinned ?? this.isPinned,
       );
@@ -164,14 +166,15 @@ final class PushMessageContentAudio extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentAudio copyWith({
-    Audio? audio,
+    Audio? Function()? audio,
     bool? isPinned,
   }) =>
       PushMessageContentAudio(
-        audio: audio ?? this.audio,
+        audio: audio != null ? audio() : this.audio,
         isPinned: isPinned ?? this.isPinned,
       );
 
@@ -210,7 +213,8 @@ final class PushMessageContentContact extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentContact copyWith({
     String? name,
@@ -243,7 +247,8 @@ final class PushMessageContentContactRegistered extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentContactRegistered copyWith() =>
       const PushMessageContentContactRegistered();
@@ -283,14 +288,15 @@ final class PushMessageContentDocument extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentDocument copyWith({
-    Document? document,
+    Document? Function()? document,
     bool? isPinned,
   }) =>
       PushMessageContentDocument(
-        document: document ?? this.document,
+        document: document != null ? document() : this.document,
         isPinned: isPinned ?? this.isPinned,
       );
 
@@ -329,7 +335,8 @@ final class PushMessageContentGame extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentGame copyWith({
     String? title,
@@ -381,7 +388,8 @@ final class PushMessageContentGameScore extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentGameScore copyWith({
     String? title,
@@ -429,7 +437,8 @@ final class PushMessageContentInvoice extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentInvoice copyWith({
     String? price,
@@ -475,7 +484,8 @@ final class PushMessageContentLocation extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentLocation copyWith({
     bool? isLive,
@@ -533,16 +543,17 @@ final class PushMessageContentPhoto extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentPhoto copyWith({
-    Photo? photo,
+    Photo? Function()? photo,
     String? caption,
     bool? isSecret,
     bool? isPinned,
   }) =>
       PushMessageContentPhoto(
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         caption: caption ?? this.caption,
         isSecret: isSecret ?? this.isSecret,
         isPinned: isPinned ?? this.isPinned,
@@ -589,7 +600,8 @@ final class PushMessageContentPoll extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentPoll copyWith({
     String? question,
@@ -624,7 +636,8 @@ final class PushMessageContentScreenshotTaken extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentScreenshotTaken copyWith() =>
       const PushMessageContentScreenshotTaken();
@@ -670,15 +683,16 @@ final class PushMessageContentSticker extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentSticker copyWith({
-    Sticker? sticker,
+    Sticker? Function()? sticker,
     String? emoji,
     bool? isPinned,
   }) =>
       PushMessageContentSticker(
-        sticker: sticker ?? this.sticker,
+        sticker: sticker != null ? sticker() : this.sticker,
         emoji: emoji ?? this.emoji,
         isPinned: isPinned ?? this.isPinned,
       );
@@ -712,7 +726,8 @@ final class PushMessageContentStory extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentStory copyWith({
     bool? isPinned,
@@ -756,7 +771,8 @@ final class PushMessageContentText extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentText copyWith({
     String? text,
@@ -814,16 +830,17 @@ final class PushMessageContentVideo extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentVideo copyWith({
-    Video? video,
+    Video? Function()? video,
     String? caption,
     bool? isSecret,
     bool? isPinned,
   }) =>
       PushMessageContentVideo(
-        video: video ?? this.video,
+        video: video != null ? video() : this.video,
         caption: caption ?? this.caption,
         isSecret: isSecret ?? this.isSecret,
         isPinned: isPinned ?? this.isPinned,
@@ -864,14 +881,15 @@ final class PushMessageContentVideoNote extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentVideoNote copyWith({
-    VideoNote? videoNote,
+    VideoNote? Function()? videoNote,
     bool? isPinned,
   }) =>
       PushMessageContentVideoNote(
-        videoNote: videoNote ?? this.videoNote,
+        videoNote: videoNote != null ? videoNote() : this.videoNote,
         isPinned: isPinned ?? this.isPinned,
       );
 
@@ -910,14 +928,15 @@ final class PushMessageContentVoiceNote extends PushMessageContent {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentVoiceNote copyWith({
-    VoiceNote? voiceNote,
+    VoiceNote? Function()? voiceNote,
     bool? isPinned,
   }) =>
       PushMessageContentVoiceNote(
-        voiceNote: voiceNote ?? this.voiceNote,
+        voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
         isPinned: isPinned ?? this.isPinned,
       );
 
@@ -943,7 +962,8 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentBasicGroupChatCreate copyWith() =>
       const PushMessageContentBasicGroupChatCreate();
@@ -990,7 +1010,8 @@ final class PushMessageContentChatAddMembers extends PushMessageContent {
         'is_returned': isReturned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatAddMembers copyWith({
     String? memberName,
@@ -1025,7 +1046,8 @@ final class PushMessageContentChatChangePhoto extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatChangePhoto copyWith() =>
       const PushMessageContentChatChangePhoto();
@@ -1060,7 +1082,8 @@ final class PushMessageContentChatChangeTitle extends PushMessageContent {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatChangeTitle copyWith({
     String? title,
@@ -1099,7 +1122,8 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
         'is_same': isSame,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatSetBackground copyWith({
     bool? isSame,
@@ -1137,7 +1161,8 @@ final class PushMessageContentChatSetTheme extends PushMessageContent {
         'theme_name': themeName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatSetTheme copyWith({
     String? themeName,
@@ -1188,7 +1213,8 @@ final class PushMessageContentChatDeleteMember extends PushMessageContent {
         'is_left': isLeft,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatDeleteMember copyWith({
     String? memberName,
@@ -1223,7 +1249,8 @@ final class PushMessageContentChatJoinByLink extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatJoinByLink copyWith() =>
       const PushMessageContentChatJoinByLink();
@@ -1250,7 +1277,8 @@ final class PushMessageContentChatJoinByRequest extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatJoinByRequest copyWith() =>
       const PushMessageContentChatJoinByRequest();
@@ -1285,7 +1313,8 @@ final class PushMessageContentRecurringPayment extends PushMessageContent {
         'amount': amount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentRecurringPayment copyWith({
     String? amount,
@@ -1316,7 +1345,8 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentSuggestProfilePhoto copyWith() =>
       const PushMessageContentSuggestProfilePhoto();
@@ -1351,7 +1381,8 @@ final class PushMessageContentMessageForwards extends PushMessageContent {
         'total_count': totalCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentMessageForwards copyWith({
     int? totalCount,
@@ -1413,7 +1444,8 @@ final class PushMessageContentMediaAlbum extends PushMessageContent {
         'has_documents': hasDocuments,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentMediaAlbum copyWith({
     int? totalCount,

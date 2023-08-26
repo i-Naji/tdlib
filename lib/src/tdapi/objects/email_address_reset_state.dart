@@ -66,7 +66,8 @@ final class EmailAddressResetStateAvailable extends EmailAddressResetState {
         'wait_period': waitPeriod,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmailAddressResetStateAvailable copyWith({
     int? waitPeriod,
@@ -104,7 +105,8 @@ final class EmailAddressResetStatePending extends EmailAddressResetState {
         'reset_in': resetIn,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmailAddressResetStatePending copyWith({
     int? resetIn,

@@ -54,7 +54,8 @@ final class Venue extends TdObject {
         'type': type,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Venue copyWith({
     Location? location,
     String? title,

@@ -57,25 +57,26 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SearchChatMessages copyWith({
     int? chatId,
     String? query,
-    MessageSender? senderId,
+    MessageSender? Function()? senderId,
     int? fromMessageId,
     int? offset,
     int? limit,
-    SearchMessagesFilter? filter,
+    SearchMessagesFilter? Function()? filter,
     int? messageThreadId,
   }) =>
       SearchChatMessages(
         chatId: chatId ?? this.chatId,
         query: query ?? this.query,
-        senderId: senderId ?? this.senderId,
+        senderId: senderId != null ? senderId() : this.senderId,
         fromMessageId: fromMessageId ?? this.fromMessageId,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
-        filter: filter ?? this.filter,
+        filter: filter != null ? filter() : this.filter,
         messageThreadId: messageThreadId ?? this.messageThreadId,
       );
 

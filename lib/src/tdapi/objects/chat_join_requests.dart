@@ -44,7 +44,8 @@ final class ChatJoinRequests extends TdObject {
         'requests': [for (final e in requests) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatJoinRequests copyWith({
     int? totalCount,
     List<ChatJoinRequest>? requests,

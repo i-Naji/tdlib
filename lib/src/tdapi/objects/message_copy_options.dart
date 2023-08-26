@@ -37,16 +37,17 @@ final class MessageCopyOptions extends TdObject {
         'new_caption': newCaption?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageCopyOptions copyWith({
     bool? sendCopy,
     bool? replaceCaption,
-    FormattedText? newCaption,
+    FormattedText? Function()? newCaption,
   }) =>
       MessageCopyOptions(
         sendCopy: sendCopy ?? this.sendCopy,
         replaceCaption: replaceCaption ?? this.replaceCaption,
-        newCaption: newCaption ?? this.newCaption,
+        newCaption: newCaption != null ? newCaption() : this.newCaption,
       );
 
   /// TDLib type name.

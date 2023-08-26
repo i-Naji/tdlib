@@ -266,13 +266,14 @@ final class Message extends TdObject {
         'reply_markup': replyMarkup?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   Message copyWith({
     int? id,
     MessageSender? senderId,
     int? chatId,
-    MessageSendingState? sendingState,
-    MessageSchedulingState? schedulingState,
+    MessageSendingState? Function()? sendingState,
+    MessageSchedulingState? Function()? schedulingState,
     bool? isOutgoing,
     bool? isPinned,
     bool? canBeEdited,
@@ -292,10 +293,10 @@ final class Message extends TdObject {
     bool? containsUnreadMention,
     int? date,
     int? editDate,
-    MessageForwardInfo? forwardInfo,
-    MessageInteractionInfo? interactionInfo,
+    MessageForwardInfo? Function()? forwardInfo,
+    MessageInteractionInfo? Function()? interactionInfo,
     List<UnreadReaction>? unreadReactions,
-    MessageReplyTo? replyTo,
+    MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
     int? selfDestructTime,
     double? selfDestructIn,
@@ -305,7 +306,7 @@ final class Message extends TdObject {
     int? mediaAlbumId,
     String? restrictionReason,
     MessageContent? content,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     dynamic extra,
     int? clientId,
   }) =>
@@ -313,8 +314,9 @@ final class Message extends TdObject {
         id: id ?? this.id,
         senderId: senderId ?? this.senderId,
         chatId: chatId ?? this.chatId,
-        sendingState: sendingState ?? this.sendingState,
-        schedulingState: schedulingState ?? this.schedulingState,
+        sendingState: sendingState != null ? sendingState() : this.sendingState,
+        schedulingState:
+            schedulingState != null ? schedulingState() : this.schedulingState,
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isPinned: isPinned ?? this.isPinned,
         canBeEdited: canBeEdited ?? this.canBeEdited,
@@ -338,10 +340,11 @@ final class Message extends TdObject {
             containsUnreadMention ?? this.containsUnreadMention,
         date: date ?? this.date,
         editDate: editDate ?? this.editDate,
-        forwardInfo: forwardInfo ?? this.forwardInfo,
-        interactionInfo: interactionInfo ?? this.interactionInfo,
+        forwardInfo: forwardInfo != null ? forwardInfo() : this.forwardInfo,
+        interactionInfo:
+            interactionInfo != null ? interactionInfo() : this.interactionInfo,
         unreadReactions: unreadReactions ?? this.unreadReactions,
-        replyTo: replyTo ?? this.replyTo,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         selfDestructTime: selfDestructTime ?? this.selfDestructTime,
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
@@ -351,7 +354,7 @@ final class Message extends TdObject {
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         content: content ?? this.content,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

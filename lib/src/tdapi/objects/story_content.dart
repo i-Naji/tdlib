@@ -64,7 +64,8 @@ final class StoryContentPhoto extends StoryContent {
         'photo': photo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryContentPhoto copyWith({
     Photo? photo,
@@ -109,15 +110,18 @@ final class StoryContentVideo extends StoryContent {
         'alternative_video': alternativeVideo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryContentVideo copyWith({
     StoryVideo? video,
-    StoryVideo? alternativeVideo,
+    StoryVideo? Function()? alternativeVideo,
   }) =>
       StoryContentVideo(
         video: video ?? this.video,
-        alternativeVideo: alternativeVideo ?? this.alternativeVideo,
+        alternativeVideo: alternativeVideo != null
+            ? alternativeVideo()
+            : this.alternativeVideo,
       );
 
   /// TDLib type name.
@@ -141,7 +145,8 @@ final class StoryContentUnsupported extends StoryContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryContentUnsupported copyWith() => const StoryContentUnsupported();
 

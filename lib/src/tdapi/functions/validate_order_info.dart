@@ -32,15 +32,16 @@ final class ValidateOrderInfo extends TdFunction<ValidatedOrderInfo> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ValidateOrderInfo copyWith({
     InputInvoice? inputInvoice,
-    OrderInfo? orderInfo,
+    OrderInfo? Function()? orderInfo,
     bool? allowSave,
   }) =>
       ValidateOrderInfo(
         inputInvoice: inputInvoice ?? this.inputInvoice,
-        orderInfo: orderInfo ?? this.orderInfo,
+        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
         allowSave: allowSave ?? this.allowSave,
       );
 

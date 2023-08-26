@@ -44,7 +44,8 @@ final class ChatStatisticsAdministratorActionsInfo extends TdObject {
         'restricted_user_count': restrictedUserCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatStatisticsAdministratorActionsInfo copyWith({
     int? userId,
     int? deletedMessageCount,

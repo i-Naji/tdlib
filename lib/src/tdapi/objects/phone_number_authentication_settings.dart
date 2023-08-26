@@ -60,13 +60,14 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
         'authentication_tokens': authenticationTokens,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PhoneNumberAuthenticationSettings copyWith({
     bool? allowFlashCall,
     bool? allowMissedCall,
     bool? isCurrentPhoneNumber,
     bool? allowSmsRetrieverApi,
-    FirebaseAuthenticationSettings? firebaseAuthenticationSettings,
+    FirebaseAuthenticationSettings? Function()? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
   }) =>
       PhoneNumberAuthenticationSettings(
@@ -74,8 +75,9 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
         allowMissedCall: allowMissedCall ?? this.allowMissedCall,
         isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
         allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
-        firebaseAuthenticationSettings: firebaseAuthenticationSettings ??
-            this.firebaseAuthenticationSettings,
+        firebaseAuthenticationSettings: firebaseAuthenticationSettings != null
+            ? firebaseAuthenticationSettings()
+            : this.firebaseAuthenticationSettings,
         authenticationTokens: authenticationTokens ?? this.authenticationTokens,
       );
 

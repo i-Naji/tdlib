@@ -75,13 +75,14 @@ final class EncryptedPassportElement extends TdObject {
         'hash': hash,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EncryptedPassportElement copyWith({
     PassportElementType? type,
     String? data,
     DatedFile? frontSide,
-    DatedFile? reverseSide,
-    DatedFile? selfie,
+    DatedFile? Function()? reverseSide,
+    DatedFile? Function()? selfie,
     List<DatedFile>? translation,
     List<DatedFile>? files,
     String? value,
@@ -91,8 +92,8 @@ final class EncryptedPassportElement extends TdObject {
         type: type ?? this.type,
         data: data ?? this.data,
         frontSide: frontSide ?? this.frontSide,
-        reverseSide: reverseSide ?? this.reverseSide,
-        selfie: selfie ?? this.selfie,
+        reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
+        selfie: selfie != null ? selfie() : this.selfie,
         translation: translation ?? this.translation,
         files: files ?? this.files,
         value: value ?? this.value,

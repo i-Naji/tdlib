@@ -50,7 +50,8 @@ final class ChatFolderInviteLinkInfo extends TdObject {
         'added_chat_ids': addedChatIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatFolderInviteLinkInfo copyWith({
     ChatFolderInfo? chatFolderInfo,
     List<int>? missingChatIds,

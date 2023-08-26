@@ -43,7 +43,8 @@ final class StickerSets extends TdObject {
         'sets': [for (final e in sets) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StickerSets copyWith({
     int? totalCount,
     List<StickerSetInfo>? sets,

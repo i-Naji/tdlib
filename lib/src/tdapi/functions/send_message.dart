@@ -47,21 +47,22 @@ final class SendMessage extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? replyTo,
-    MessageSendOptions? options,
-    ReplyMarkup? replyMarkup,
+    MessageReplyTo? Function()? replyTo,
+    MessageSendOptions? Function()? options,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       SendMessage(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        replyTo: replyTo ?? this.replyTo,
-        options: options ?? this.options,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
+        options: options != null ? options() : this.options,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 

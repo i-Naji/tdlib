@@ -32,16 +32,17 @@ final class EditMessageReplyMarkup extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditMessageReplyMarkup copyWith({
     int? chatId,
     int? messageId,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
   }) =>
       EditMessageReplyMarkup(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
       );
 
   /// TDLib type name.

@@ -82,28 +82,29 @@ final class BasicGroupFullInfo extends TdObject {
         'bot_commands': [for (final e in botCommands) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   BasicGroupFullInfo copyWith({
-    ChatPhoto? photo,
+    ChatPhoto? Function()? photo,
     String? description,
     int? creatorUserId,
     List<ChatMember>? members,
     bool? canHideMembers,
     bool? canToggleAggressiveAntiSpam,
-    ChatInviteLink? inviteLink,
+    ChatInviteLink? Function()? inviteLink,
     List<BotCommands>? botCommands,
     dynamic extra,
     int? clientId,
   }) =>
       BasicGroupFullInfo(
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         description: description ?? this.description,
         creatorUserId: creatorUserId ?? this.creatorUserId,
         members: members ?? this.members,
         canHideMembers: canHideMembers ?? this.canHideMembers,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
-        inviteLink: inviteLink ?? this.inviteLink,
+        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         botCommands: botCommands ?? this.botCommands,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

@@ -42,18 +42,19 @@ final class ChatPosition extends TdObject {
         'source': source?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatPosition copyWith({
     ChatList? list,
     int? order,
     bool? isPinned,
-    ChatSource? source,
+    ChatSource? Function()? source,
   }) =>
       ChatPosition(
         list: list ?? this.list,
         order: order ?? this.order,
         isPinned: isPinned ?? this.isPinned,
-        source: source ?? this.source,
+        source: source != null ? source() : this.source,
       );
 
   /// TDLib type name.

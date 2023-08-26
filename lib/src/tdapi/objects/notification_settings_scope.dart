@@ -61,7 +61,8 @@ final class NotificationSettingsScopePrivateChats
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationSettingsScopePrivateChats copyWith() =>
       const NotificationSettingsScopePrivateChats();
@@ -89,7 +90,8 @@ final class NotificationSettingsScopeGroupChats
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationSettingsScopeGroupChats copyWith() =>
       const NotificationSettingsScopeGroupChats();
@@ -117,7 +119,8 @@ final class NotificationSettingsScopeChannelChats
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationSettingsScopeChannelChats copyWith() =>
       const NotificationSettingsScopeChannelChats();

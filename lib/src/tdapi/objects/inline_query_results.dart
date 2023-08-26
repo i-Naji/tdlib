@@ -57,10 +57,11 @@ final class InlineQueryResults extends TdObject {
         'next_offset': nextOffset,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   InlineQueryResults copyWith({
     int? inlineQueryId,
-    InlineQueryResultsButton? button,
+    InlineQueryResultsButton? Function()? button,
     List<InlineQueryResult>? results,
     String? nextOffset,
     dynamic extra,
@@ -68,7 +69,7 @@ final class InlineQueryResults extends TdObject {
   }) =>
       InlineQueryResults(
         inlineQueryId: inlineQueryId ?? this.inlineQueryId,
-        button: button ?? this.button,
+        button: button != null ? button() : this.button,
         results: results ?? this.results,
         nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,

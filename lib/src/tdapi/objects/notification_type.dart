@@ -72,7 +72,8 @@ final class NotificationTypeNewMessage extends NotificationType {
         'show_preview': showPreview,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationTypeNewMessage copyWith({
     Message? message,
@@ -104,7 +105,8 @@ final class NotificationTypeNewSecretChat extends NotificationType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationTypeNewSecretChat copyWith() =>
       const NotificationTypeNewSecretChat();
@@ -138,7 +140,8 @@ final class NotificationTypeNewCall extends NotificationType {
         'call_id': callId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationTypeNewCall copyWith({
     int? callId,
@@ -200,7 +203,8 @@ final class NotificationTypeNewPushMessage extends NotificationType {
         'content': content.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationTypeNewPushMessage copyWith({
     int? messageId,

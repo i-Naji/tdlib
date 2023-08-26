@@ -56,7 +56,8 @@ final class StickerFormatWebp extends StickerFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFormatWebp copyWith() => const StickerFormatWebp();
 
@@ -81,7 +82,8 @@ final class StickerFormatTgs extends StickerFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFormatTgs copyWith() => const StickerFormatTgs();
 
@@ -106,7 +108,8 @@ final class StickerFormatWebm extends StickerFormat {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerFormatWebm copyWith() => const StickerFormatWebm();
 

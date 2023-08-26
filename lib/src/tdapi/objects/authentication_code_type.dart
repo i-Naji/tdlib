@@ -68,7 +68,8 @@ final class AuthenticationCodeTypeTelegramMessage
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeTelegramMessage copyWith({
     int? length,
@@ -106,7 +107,8 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeSms copyWith({
     int? length,
@@ -144,7 +146,8 @@ final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeCall copyWith({
     int? length,
@@ -182,7 +185,8 @@ final class AuthenticationCodeTypeFlashCall extends AuthenticationCodeType {
         'pattern': pattern,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeFlashCall copyWith({
     String? pattern,
@@ -227,7 +231,8 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeMissedCall copyWith({
     String? phoneNumberPrefix,
@@ -273,7 +278,8 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeFragment copyWith({
     String? url,
@@ -321,7 +327,8 @@ final class AuthenticationCodeTypeFirebaseAndroid
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
     String? nonce,
@@ -374,7 +381,8 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
         'length': length,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeFirebaseIos copyWith({
     String? receipt,

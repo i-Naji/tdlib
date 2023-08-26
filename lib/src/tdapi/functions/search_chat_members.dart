@@ -37,18 +37,19 @@ final class SearchChatMembers extends TdFunction<ChatMembers> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SearchChatMembers copyWith({
     int? chatId,
     String? query,
     int? limit,
-    ChatMembersFilter? filter,
+    ChatMembersFilter? Function()? filter,
   }) =>
       SearchChatMembers(
         chatId: chatId ?? this.chatId,
         query: query ?? this.query,
         limit: limit ?? this.limit,
-        filter: filter ?? this.filter,
+        filter: filter != null ? filter() : this.filter,
       );
 
   /// TDLib type name.

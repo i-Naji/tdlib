@@ -58,7 +58,8 @@ final class UserPrivacySettingRuleAllowAll extends UserPrivacySettingRule {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleAllowAll copyWith() =>
       const UserPrivacySettingRuleAllowAll();
@@ -85,7 +86,8 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleAllowContacts copyWith() =>
       const UserPrivacySettingRuleAllowContacts();
@@ -120,7 +122,8 @@ final class UserPrivacySettingRuleAllowUsers extends UserPrivacySettingRule {
         'user_ids': userIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleAllowUsers copyWith({
     List<int>? userIds,
@@ -160,7 +163,8 @@ final class UserPrivacySettingRuleAllowChatMembers
         'chat_ids': chatIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleAllowChatMembers copyWith({
     List<int>? chatIds,
@@ -191,7 +195,8 @@ final class UserPrivacySettingRuleRestrictAll extends UserPrivacySettingRule {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleRestrictAll copyWith() =>
       const UserPrivacySettingRuleRestrictAll();
@@ -219,7 +224,8 @@ final class UserPrivacySettingRuleRestrictContacts
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleRestrictContacts copyWith() =>
       const UserPrivacySettingRuleRestrictContacts();
@@ -254,7 +260,8 @@ final class UserPrivacySettingRuleRestrictUsers extends UserPrivacySettingRule {
         'user_ids': userIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleRestrictUsers copyWith({
     List<int>? userIds,
@@ -294,7 +301,8 @@ final class UserPrivacySettingRuleRestrictChatMembers
         'chat_ids': chatIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserPrivacySettingRuleRestrictChatMembers copyWith({
     List<int>? chatIds,

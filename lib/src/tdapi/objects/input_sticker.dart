@@ -43,17 +43,18 @@ final class InputSticker extends TdObject {
         'keywords': keywords,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   InputSticker copyWith({
     InputFile? sticker,
     String? emojis,
-    MaskPosition? maskPosition,
+    MaskPosition? Function()? maskPosition,
     List<String>? keywords,
   }) =>
       InputSticker(
         sticker: sticker ?? this.sticker,
         emojis: emojis ?? this.emojis,
-        maskPosition: maskPosition ?? this.maskPosition,
+        maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
         keywords: keywords ?? this.keywords,
       );
 

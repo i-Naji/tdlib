@@ -127,7 +127,8 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultAnimation copyWith({
     String? id,
@@ -139,7 +140,7 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
     int? videoDuration,
     int? videoWidth,
     int? videoHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultAnimation(
@@ -152,7 +153,7 @@ final class InputInlineQueryResultAnimation extends InputInlineQueryResult {
         videoDuration: videoDuration ?? this.videoDuration,
         videoWidth: videoWidth ?? this.videoWidth,
         videoHeight: videoHeight ?? this.videoHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -240,7 +241,8 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultArticle copyWith({
     String? id,
@@ -251,7 +253,7 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
     String? thumbnailUrl,
     int? thumbnailWidth,
     int? thumbnailHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultArticle(
@@ -263,7 +265,7 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
         thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
         thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -333,7 +335,8 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultAudio copyWith({
     String? id,
@@ -341,7 +344,7 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
     String? performer,
     String? audioUrl,
     int? audioDuration,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultAudio(
@@ -350,7 +353,7 @@ final class InputInlineQueryResultAudio extends InputInlineQueryResult {
         performer: performer ?? this.performer,
         audioUrl: audioUrl ?? this.audioUrl,
         audioDuration: audioDuration ?? this.audioDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -420,7 +423,8 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultContact copyWith({
     String? id,
@@ -428,7 +432,7 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
     String? thumbnailUrl,
     int? thumbnailWidth,
     int? thumbnailHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultContact(
@@ -437,7 +441,7 @@ final class InputInlineQueryResultContact extends InputInlineQueryResult {
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
         thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
         thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -525,7 +529,8 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultDocument copyWith({
     String? id,
@@ -536,7 +541,7 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
     String? thumbnailUrl,
     int? thumbnailWidth,
     int? thumbnailHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultDocument(
@@ -548,7 +553,7 @@ final class InputInlineQueryResultDocument extends InputInlineQueryResult {
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
         thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
         thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -593,17 +598,18 @@ final class InputInlineQueryResultGame extends InputInlineQueryResult {
         'reply_markup': replyMarkup?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultGame copyWith({
     String? id,
     String? gameShortName,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
   }) =>
       InputInlineQueryResultGame(
         id: id ?? this.id,
         gameShortName: gameShortName ?? this.gameShortName,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
       );
 
   /// TDLib type name.
@@ -684,7 +690,8 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultLocation copyWith({
     String? id,
@@ -694,7 +701,7 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
     String? thumbnailUrl,
     int? thumbnailWidth,
     int? thumbnailHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultLocation(
@@ -705,7 +712,7 @@ final class InputInlineQueryResultLocation extends InputInlineQueryResult {
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
         thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
         thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -787,7 +794,8 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultPhoto copyWith({
     String? id,
@@ -797,7 +805,7 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
     String? photoUrl,
     int? photoWidth,
     int? photoHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultPhoto(
@@ -808,7 +816,7 @@ final class InputInlineQueryResultPhoto extends InputInlineQueryResult {
         photoUrl: photoUrl ?? this.photoUrl,
         photoWidth: photoWidth ?? this.photoWidth,
         photoHeight: photoHeight ?? this.photoHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -878,7 +886,8 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultSticker copyWith({
     String? id,
@@ -886,7 +895,7 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
     String? stickerUrl,
     int? stickerWidth,
     int? stickerHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultSticker(
@@ -895,7 +904,7 @@ final class InputInlineQueryResultSticker extends InputInlineQueryResult {
         stickerUrl: stickerUrl ?? this.stickerUrl,
         stickerWidth: stickerWidth ?? this.stickerWidth,
         stickerHeight: stickerHeight ?? this.stickerHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -965,7 +974,8 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultVenue copyWith({
     String? id,
@@ -973,7 +983,7 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
     String? thumbnailUrl,
     int? thumbnailWidth,
     int? thumbnailHeight,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultVenue(
@@ -982,7 +992,7 @@ final class InputInlineQueryResultVenue extends InputInlineQueryResult {
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,
         thumbnailWidth: thumbnailWidth ?? this.thumbnailWidth,
         thumbnailHeight: thumbnailHeight ?? this.thumbnailHeight,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -1076,7 +1086,8 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultVideo copyWith({
     String? id,
@@ -1088,7 +1099,7 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
     int? videoWidth,
     int? videoHeight,
     int? videoDuration,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultVideo(
@@ -1101,7 +1112,7 @@ final class InputInlineQueryResultVideo extends InputInlineQueryResult {
         videoWidth: videoWidth ?? this.videoWidth,
         videoHeight: videoHeight ?? this.videoHeight,
         videoDuration: videoDuration ?? this.videoDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 
@@ -1165,14 +1176,15 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
         'input_message_content': inputMessageContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputInlineQueryResultVoiceNote copyWith({
     String? id,
     String? title,
     String? voiceNoteUrl,
     int? voiceNoteDuration,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       InputInlineQueryResultVoiceNote(
@@ -1180,7 +1192,7 @@ final class InputInlineQueryResultVoiceNote extends InputInlineQueryResult {
         title: title ?? this.title,
         voiceNoteUrl: voiceNoteUrl ?? this.voiceNoteUrl,
         voiceNoteDuration: voiceNoteDuration ?? this.voiceNoteDuration,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 

@@ -78,7 +78,8 @@ final class LanguagePackStringValueOrdinary extends LanguagePackStringValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LanguagePackStringValueOrdinary copyWith({
     String? value,
@@ -163,7 +164,8 @@ final class LanguagePackStringValuePluralized extends LanguagePackStringValue {
         'other_value': otherValue,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LanguagePackStringValuePluralized copyWith({
     String? zeroValue,
@@ -221,7 +223,8 @@ final class LanguagePackStringValueDeleted extends LanguagePackStringValue {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LanguagePackStringValueDeleted copyWith({
     dynamic extra,

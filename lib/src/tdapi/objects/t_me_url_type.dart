@@ -63,7 +63,8 @@ final class TMeUrlTypeUser extends TMeUrlType {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TMeUrlTypeUser copyWith({
     int? userId,
@@ -101,7 +102,8 @@ final class TMeUrlTypeSupergroup extends TMeUrlType {
         'supergroup_id': supergroupId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TMeUrlTypeSupergroup copyWith({
     int? supergroupId,
@@ -139,7 +141,8 @@ final class TMeUrlTypeChatInvite extends TMeUrlType {
         'info': info.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TMeUrlTypeChatInvite copyWith({
     ChatInviteLinkInfo? info,
@@ -177,7 +180,8 @@ final class TMeUrlTypeStickerSet extends TMeUrlType {
         'sticker_set_id': stickerSetId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TMeUrlTypeStickerSet copyWith({
     int? stickerSetId,

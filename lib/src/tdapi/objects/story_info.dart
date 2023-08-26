@@ -36,7 +36,8 @@ final class StoryInfo extends TdObject {
         'is_for_close_friends': isForCloseFriends,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   StoryInfo copyWith({
     int? storyId,
     int? date,

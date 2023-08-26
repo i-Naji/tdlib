@@ -58,7 +58,8 @@ final class ChatMembersFilterContacts extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterContacts copyWith() => const ChatMembersFilterContacts();
 
@@ -83,7 +84,8 @@ final class ChatMembersFilterAdministrators extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterAdministrators copyWith() =>
       const ChatMembersFilterAdministrators();
@@ -109,7 +111,8 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterMembers copyWith() => const ChatMembersFilterMembers();
 
@@ -142,7 +145,8 @@ final class ChatMembersFilterMention extends ChatMembersFilter {
         'message_thread_id': messageThreadId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterMention copyWith({
     int? messageThreadId,
@@ -172,7 +176,8 @@ final class ChatMembersFilterRestricted extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterRestricted copyWith() => const ChatMembersFilterRestricted();
 
@@ -197,7 +202,8 @@ final class ChatMembersFilterBanned extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterBanned copyWith() => const ChatMembersFilterBanned();
 
@@ -222,7 +228,8 @@ final class ChatMembersFilterBots extends ChatMembersFilter {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterBots copyWith() => const ChatMembersFilterBots();
 

@@ -69,7 +69,8 @@ final class InlineQueryResultsButtonTypeStartBot
         'parameter': parameter,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultsButtonTypeStartBot copyWith({
     String? parameter,
@@ -109,7 +110,8 @@ final class InlineQueryResultsButtonTypeWebApp
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InlineQueryResultsButtonTypeWebApp copyWith({
     String? url,

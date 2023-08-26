@@ -76,13 +76,15 @@ final class PasswordState extends TdObject {
         'pending_reset_date': pendingResetDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PasswordState copyWith({
     bool? hasPassword,
     String? passwordHint,
     bool? hasRecoveryEmailAddress,
     bool? hasPassportData,
-    EmailAddressAuthenticationCodeInfo? recoveryEmailAddressCodeInfo,
+    EmailAddressAuthenticationCodeInfo? Function()?
+        recoveryEmailAddressCodeInfo,
     String? loginEmailAddressPattern,
     int? pendingResetDate,
     dynamic extra,
@@ -94,8 +96,9 @@ final class PasswordState extends TdObject {
         hasRecoveryEmailAddress:
             hasRecoveryEmailAddress ?? this.hasRecoveryEmailAddress,
         hasPassportData: hasPassportData ?? this.hasPassportData,
-        recoveryEmailAddressCodeInfo:
-            recoveryEmailAddressCodeInfo ?? this.recoveryEmailAddressCodeInfo,
+        recoveryEmailAddressCodeInfo: recoveryEmailAddressCodeInfo != null
+            ? recoveryEmailAddressCodeInfo()
+            : this.recoveryEmailAddressCodeInfo,
         loginEmailAddressPattern:
             loginEmailAddressPattern ?? this.loginEmailAddressPattern,
         pendingResetDate: pendingResetDate ?? this.pendingResetDate,

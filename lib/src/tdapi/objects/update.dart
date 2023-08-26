@@ -77,7 +77,8 @@ final class UpdateAuthorizationState extends Update {
         'authorization_state': authorizationState.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAuthorizationState copyWith({
     AuthorizationState? authorizationState,
@@ -131,7 +132,8 @@ final class UpdateNewMessage extends Update {
         'message': message.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewMessage copyWith({
     Message? message,
@@ -191,7 +193,8 @@ final class UpdateMessageSendAcknowledged extends Update {
         'message_id': messageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageSendAcknowledged copyWith({
     int? chatId,
@@ -253,7 +256,8 @@ final class UpdateMessageSendSucceeded extends Update {
         'old_message_id': oldMessageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageSendSucceeded copyWith({
     Message? message,
@@ -327,7 +331,8 @@ final class UpdateMessageSendFailed extends Update {
         'error_message': errorMessage,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageSendFailed copyWith({
     Message? message,
@@ -399,7 +404,8 @@ final class UpdateMessageContent extends Update {
         'new_content': newContent.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageContent copyWith({
     int? chatId,
@@ -475,13 +481,14 @@ final class UpdateMessageEdited extends Update {
         'reply_markup': replyMarkup?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageEdited copyWith({
     int? chatId,
     int? messageId,
     int? editDate,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     dynamic extra,
     int? clientId,
   }) =>
@@ -489,7 +496,7 @@ final class UpdateMessageEdited extends Update {
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         editDate: editDate ?? this.editDate,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -547,7 +554,8 @@ final class UpdateMessageIsPinned extends Update {
         'is_pinned': isPinned,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageIsPinned copyWith({
     int? chatId,
@@ -618,19 +626,21 @@ final class UpdateMessageInteractionInfo extends Update {
         'interaction_info': interactionInfo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageInteractionInfo copyWith({
     int? chatId,
     int? messageId,
-    MessageInteractionInfo? interactionInfo,
+    MessageInteractionInfo? Function()? interactionInfo,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateMessageInteractionInfo(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        interactionInfo: interactionInfo ?? this.interactionInfo,
+        interactionInfo:
+            interactionInfo != null ? interactionInfo() : this.interactionInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -682,7 +692,8 @@ final class UpdateMessageContentOpened extends Update {
         'message_id': messageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageContentOpened copyWith({
     int? chatId,
@@ -750,7 +761,8 @@ final class UpdateMessageMentionRead extends Update {
         'unread_mention_count': unreadMentionCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageMentionRead copyWith({
     int? chatId,
@@ -827,7 +839,8 @@ final class UpdateMessageUnreadReactions extends Update {
         'unread_reaction_count': unreadReactionCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageUnreadReactions copyWith({
     int? chatId,
@@ -893,7 +906,8 @@ final class UpdateMessageLiveLocationViewed extends Update {
         'message_id': messageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateMessageLiveLocationViewed copyWith({
     int? chatId,
@@ -948,7 +962,8 @@ final class UpdateNewChat extends Update {
         'chat': chat.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewChat copyWith({
     Chat? chat,
@@ -1008,7 +1023,8 @@ final class UpdateChatTitle extends Update {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatTitle copyWith({
     int? chatId,
@@ -1070,17 +1086,18 @@ final class UpdateChatPhoto extends Update {
         'photo': photo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatPhoto copyWith({
     int? chatId,
-    ChatPhotoInfo? photo,
+    ChatPhotoInfo? Function()? photo,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatPhoto(
         chatId: chatId ?? this.chatId,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -1132,7 +1149,8 @@ final class UpdateChatPermissions extends Update {
         'permissions': permissions.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatPermissions copyWith({
     int? chatId,
@@ -1201,18 +1219,19 @@ final class UpdateChatLastMessage extends Update {
         'positions': [for (final e in positions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatLastMessage copyWith({
     int? chatId,
-    Message? lastMessage,
+    Message? Function()? lastMessage,
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatLastMessage(
         chatId: chatId ?? this.chatId,
-        lastMessage: lastMessage ?? this.lastMessage,
+        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
         positions: positions ?? this.positions,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -1265,7 +1284,8 @@ final class UpdateChatPosition extends Update {
         'position': position.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatPosition copyWith({
     int? chatId,
@@ -1333,7 +1353,8 @@ final class UpdateChatReadInbox extends Update {
         'unread_count': unreadCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatReadInbox copyWith({
     int? chatId,
@@ -1398,7 +1419,8 @@ final class UpdateChatReadOutbox extends Update {
         'last_read_outbox_message_id': lastReadOutboxMessageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatReadOutbox copyWith({
     int? chatId,
@@ -1461,17 +1483,18 @@ final class UpdateChatActionBar extends Update {
         'action_bar': actionBar?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatActionBar copyWith({
     int? chatId,
-    ChatActionBar? actionBar,
+    ChatActionBar? Function()? actionBar,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatActionBar(
         chatId: chatId ?? this.chatId,
-        actionBar: actionBar ?? this.actionBar,
+        actionBar: actionBar != null ? actionBar() : this.actionBar,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -1524,7 +1547,8 @@ final class UpdateChatAvailableReactions extends Update {
         'available_reactions': availableReactions.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatAvailableReactions copyWith({
     int? chatId,
@@ -1594,18 +1618,19 @@ final class UpdateChatDraftMessage extends Update {
         'positions': [for (final e in positions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatDraftMessage copyWith({
     int? chatId,
-    DraftMessage? draftMessage,
+    DraftMessage? Function()? draftMessage,
     List<ChatPosition>? positions,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatDraftMessage(
         chatId: chatId ?? this.chatId,
-        draftMessage: draftMessage ?? this.draftMessage,
+        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
         positions: positions ?? this.positions,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -1659,17 +1684,19 @@ final class UpdateChatMessageSender extends Update {
         'message_sender_id': messageSenderId?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatMessageSender copyWith({
     int? chatId,
-    MessageSender? messageSenderId,
+    MessageSender? Function()? messageSenderId,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatMessageSender(
         chatId: chatId ?? this.chatId,
-        messageSenderId: messageSenderId ?? this.messageSenderId,
+        messageSenderId:
+            messageSenderId != null ? messageSenderId() : this.messageSenderId,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -1721,7 +1748,8 @@ final class UpdateChatMessageAutoDeleteTime extends Update {
         'message_auto_delete_time': messageAutoDeleteTime,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatMessageAutoDeleteTime copyWith({
     int? chatId,
@@ -1785,7 +1813,8 @@ final class UpdateChatNotificationSettings extends Update {
         'notification_settings': notificationSettings.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatNotificationSettings copyWith({
     int? chatId,
@@ -1848,17 +1877,20 @@ final class UpdateChatPendingJoinRequests extends Update {
         'pending_join_requests': pendingJoinRequests?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatPendingJoinRequests copyWith({
     int? chatId,
-    ChatJoinRequestsInfo? pendingJoinRequests,
+    ChatJoinRequestsInfo? Function()? pendingJoinRequests,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatPendingJoinRequests(
         chatId: chatId ?? this.chatId,
-        pendingJoinRequests: pendingJoinRequests ?? this.pendingJoinRequests,
+        pendingJoinRequests: pendingJoinRequests != null
+            ? pendingJoinRequests()
+            : this.pendingJoinRequests,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -1910,7 +1942,8 @@ final class UpdateChatReplyMarkup extends Update {
         'reply_markup_message_id': replyMarkupMessageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatReplyMarkup copyWith({
     int? chatId,
@@ -1972,17 +2005,18 @@ final class UpdateChatBackground extends Update {
         'background': background?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatBackground copyWith({
     int? chatId,
-    ChatBackground? background,
+    ChatBackground? Function()? background,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateChatBackground(
         chatId: chatId ?? this.chatId,
-        background: background ?? this.background,
+        background: background != null ? background() : this.background,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -2034,7 +2068,8 @@ final class UpdateChatTheme extends Update {
         'theme_name': themeName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatTheme copyWith({
     int? chatId,
@@ -2096,7 +2131,8 @@ final class UpdateChatUnreadMentionCount extends Update {
         'unread_mention_count': unreadMentionCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatUnreadMentionCount copyWith({
     int? chatId,
@@ -2158,7 +2194,8 @@ final class UpdateChatUnreadReactionCount extends Update {
         'unread_reaction_count': unreadReactionCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatUnreadReactionCount copyWith({
     int? chatId,
@@ -2220,7 +2257,8 @@ final class UpdateChatVideoChat extends Update {
         'video_chat': videoChat.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatVideoChat copyWith({
     int? chatId,
@@ -2284,7 +2322,8 @@ final class UpdateChatDefaultDisableNotification extends Update {
         'default_disable_notification': defaultDisableNotification,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatDefaultDisableNotification copyWith({
     int? chatId,
@@ -2347,7 +2386,8 @@ final class UpdateChatHasProtectedContent extends Update {
         'has_protected_content': hasProtectedContent,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatHasProtectedContent copyWith({
     int? chatId,
@@ -2409,7 +2449,8 @@ final class UpdateChatIsTranslatable extends Update {
         'is_translatable': isTranslatable,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatIsTranslatable copyWith({
     int? chatId,
@@ -2471,7 +2512,8 @@ final class UpdateChatIsMarkedAsUnread extends Update {
         'is_marked_as_unread': isMarkedAsUnread,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatIsMarkedAsUnread copyWith({
     int? chatId,
@@ -2533,7 +2575,8 @@ final class UpdateChatIsBlocked extends Update {
         'is_blocked': isBlocked,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatIsBlocked copyWith({
     int? chatId,
@@ -2595,7 +2638,8 @@ final class UpdateChatHasScheduledMessages extends Update {
         'has_scheduled_messages': hasScheduledMessages,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatHasScheduledMessages copyWith({
     int? chatId,
@@ -2658,7 +2702,8 @@ final class UpdateChatFolders extends Update {
         'main_chat_list_position': mainChatListPosition,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatFolders copyWith({
     List<ChatFolderInfo>? chatFolders,
@@ -2720,7 +2765,8 @@ final class UpdateChatOnlineMemberCount extends Update {
         'online_member_count': onlineMemberCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatOnlineMemberCount copyWith({
     int? chatId,
@@ -2782,7 +2828,8 @@ final class UpdateForumTopicInfo extends Update {
         'info': info.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateForumTopicInfo copyWith({
     int? chatId,
@@ -2845,7 +2892,8 @@ final class UpdateScopeNotificationSettings extends Update {
         'notification_settings': notificationSettings.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateScopeNotificationSettings copyWith({
     NotificationSettingsScope? scope,
@@ -2907,7 +2955,8 @@ final class UpdateNotification extends Update {
         'notification': notification.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNotification copyWith({
     int? notificationGroupId,
@@ -3008,7 +3057,8 @@ final class UpdateNotificationGroup extends Update {
         'removed_notification_ids': removedNotificationIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNotificationGroup copyWith({
     int? notificationGroupId,
@@ -3079,7 +3129,8 @@ final class UpdateActiveNotifications extends Update {
         'groups': [for (final e in groups) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateActiveNotifications copyWith({
     List<NotificationGroup>? groups,
@@ -3140,7 +3191,8 @@ final class UpdateHavePendingNotifications extends Update {
         'have_unreceived_notifications': haveUnreceivedNotifications,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateHavePendingNotifications copyWith({
     bool? haveDelayedNotifications,
@@ -3216,7 +3268,8 @@ final class UpdateDeleteMessages extends Update {
         'from_cache': fromCache,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateDeleteMessages copyWith({
     int? chatId,
@@ -3294,7 +3347,8 @@ final class UpdateChatAction extends Update {
         'action': action.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatAction copyWith({
     int? chatId,
@@ -3360,7 +3414,8 @@ final class UpdateUserStatus extends Update {
         'status': status.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUserStatus copyWith({
     int? userId,
@@ -3415,7 +3470,8 @@ final class UpdateUser extends Update {
         'user': user.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUser copyWith({
     User? user,
@@ -3469,7 +3525,8 @@ final class UpdateBasicGroup extends Update {
         'basic_group': basicGroup.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateBasicGroup copyWith({
     BasicGroup? basicGroup,
@@ -3523,7 +3580,8 @@ final class UpdateSupergroup extends Update {
         'supergroup': supergroup.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSupergroup copyWith({
     Supergroup? supergroup,
@@ -3577,7 +3635,8 @@ final class UpdateSecretChat extends Update {
         'secret_chat': secretChat.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSecretChat copyWith({
     SecretChat? secretChat,
@@ -3638,7 +3697,8 @@ final class UpdateUserFullInfo extends Update {
         'user_full_info': userFullInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUserFullInfo copyWith({
     int? userId,
@@ -3701,7 +3761,8 @@ final class UpdateBasicGroupFullInfo extends Update {
         'basic_group_full_info': basicGroupFullInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateBasicGroupFullInfo copyWith({
     int? basicGroupId,
@@ -3764,7 +3825,8 @@ final class UpdateSupergroupFullInfo extends Update {
         'supergroup_full_info': supergroupFullInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSupergroupFullInfo copyWith({
     int? supergroupId,
@@ -3826,7 +3888,8 @@ final class UpdateServiceNotification extends Update {
         'content': content.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateServiceNotification copyWith({
     String? type,
@@ -3881,7 +3944,8 @@ final class UpdateFile extends Update {
         'file': file.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFile copyWith({
     File? file,
@@ -3953,7 +4017,8 @@ final class UpdateFileGenerationStart extends Update {
         'conversion': conversion,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileGenerationStart copyWith({
     int? generationId,
@@ -4013,7 +4078,8 @@ final class UpdateFileGenerationStop extends Update {
         'generation_id': generationId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileGenerationStop copyWith({
     int? generationId,
@@ -4079,7 +4145,8 @@ final class UpdateFileDownloads extends Update {
         'downloaded_size': downloadedSize,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileDownloads copyWith({
     int? totalSize,
@@ -4143,7 +4210,8 @@ final class UpdateFileAddedToDownloads extends Update {
         'counts': counts.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileAddedToDownloads copyWith({
     FileDownload? fileDownload,
@@ -4217,7 +4285,8 @@ final class UpdateFileDownload extends Update {
         'counts': counts.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileDownload copyWith({
     int? fileId,
@@ -4283,7 +4352,8 @@ final class UpdateFileRemovedFromDownloads extends Update {
         'counts': counts.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFileRemovedFromDownloads copyWith({
     int? fileId,
@@ -4338,7 +4408,8 @@ final class UpdateCall extends Update {
         'call': call.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateCall copyWith({
     Call? call,
@@ -4392,7 +4463,8 @@ final class UpdateGroupCall extends Update {
         'group_call': groupCall.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateGroupCall copyWith({
     GroupCall? groupCall,
@@ -4453,7 +4525,8 @@ final class UpdateGroupCallParticipant extends Update {
         'participant': participant.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateGroupCallParticipant copyWith({
     int? groupCallId,
@@ -4515,7 +4588,8 @@ final class UpdateNewCallSignalingData extends Update {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewCallSignalingData copyWith({
     int? callId,
@@ -4577,7 +4651,8 @@ final class UpdateUserPrivacySettingRules extends Update {
         'rules': rules.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUserPrivacySettingRules copyWith({
     UserPrivacySetting? setting,
@@ -4645,7 +4720,8 @@ final class UpdateUnreadMessageCount extends Update {
         'unread_unmuted_count': unreadUnmutedCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUnreadMessageCount copyWith({
     ChatList? chatList,
@@ -4734,7 +4810,8 @@ final class UpdateUnreadChatCount extends Update {
         'marked_as_unread_unmuted_count': markedAsUnreadUnmutedCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUnreadChatCount copyWith({
     ChatList? chatList,
@@ -4798,7 +4875,8 @@ final class UpdateStory extends Update {
         'story': story.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateStory copyWith({
     Story? story,
@@ -4858,7 +4936,8 @@ final class UpdateStoryDeleted extends Update {
         'story_id': storyId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateStoryDeleted copyWith({
     int? storySenderChatId,
@@ -4915,7 +4994,8 @@ final class UpdateChatActiveStories extends Update {
         'active_stories': activeStories.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatActiveStories copyWith({
     ChatActiveStories? activeStories,
@@ -4975,7 +5055,8 @@ final class UpdateStoryListChatCount extends Update {
         'chat_count': chatCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateStoryListChatCount copyWith({
     StoryList? storyList,
@@ -5036,7 +5117,8 @@ final class UpdateOption extends Update {
         'value': value.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateOption copyWith({
     String? name,
@@ -5092,7 +5174,8 @@ final class UpdateStickerSet extends Update {
         'sticker_set': stickerSet.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateStickerSet copyWith({
     StickerSet? stickerSet,
@@ -5152,7 +5235,8 @@ final class UpdateInstalledStickerSets extends Update {
         'sticker_set_ids': [for (final e in stickerSetIds) e.toString()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateInstalledStickerSets copyWith({
     StickerType? stickerType,
@@ -5215,7 +5299,8 @@ final class UpdateTrendingStickerSets extends Update {
         'sticker_sets': stickerSets.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateTrendingStickerSets copyWith({
     StickerType? stickerType,
@@ -5277,7 +5362,8 @@ final class UpdateRecentStickers extends Update {
         'sticker_ids': stickerIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateRecentStickers copyWith({
     bool? isAttached,
@@ -5333,7 +5419,8 @@ final class UpdateFavoriteStickers extends Update {
         'sticker_ids': stickerIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateFavoriteStickers copyWith({
     List<int>? stickerIds,
@@ -5387,7 +5474,8 @@ final class UpdateSavedAnimations extends Update {
         'animation_ids': animationIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSavedAnimations copyWith({
     List<int>? animationIds,
@@ -5444,7 +5532,8 @@ final class UpdateSavedNotificationSounds extends Update {
         ],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSavedNotificationSounds copyWith({
     List<int>? notificationSoundIds,
@@ -5504,17 +5593,18 @@ final class UpdateSelectedBackground extends Update {
         'background': background?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSelectedBackground copyWith({
     bool? forDarkTheme,
-    Background? background,
+    Background? Function()? background,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateSelectedBackground(
         forDarkTheme: forDarkTheme ?? this.forDarkTheme,
-        background: background ?? this.background,
+        background: background != null ? background() : this.background,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -5561,7 +5651,8 @@ final class UpdateChatThemes extends Update {
         'chat_themes': [for (final e in chatThemes) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatThemes copyWith({
     List<ChatTheme>? chatThemes,
@@ -5628,7 +5719,8 @@ final class UpdateLanguagePackStrings extends Update {
         'strings': [for (final e in strings) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateLanguagePackStrings copyWith({
     String? localizationTarget,
@@ -5686,7 +5778,8 @@ final class UpdateConnectionState extends Update {
         'state': state.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateConnectionState copyWith({
     ConnectionState? state,
@@ -5747,7 +5840,8 @@ final class UpdateTermsOfService extends Update {
         'terms_of_service': termsOfService.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateTermsOfService copyWith({
     String? termsOfServiceId,
@@ -5804,7 +5898,8 @@ final class UpdateUsersNearby extends Update {
         'users_nearby': [for (final e in usersNearby) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateUsersNearby copyWith({
     List<ChatNearby>? usersNearby,
@@ -5859,7 +5954,8 @@ final class UpdateAttachmentMenuBots extends Update {
         'bots': [for (final e in bots) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAttachmentMenuBots copyWith({
     List<AttachmentMenuBot>? bots,
@@ -5913,7 +6009,8 @@ final class UpdateWebAppMessageSent extends Update {
         'web_app_launch_id': webAppLaunchId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateWebAppMessageSent copyWith({
     int? webAppLaunchId,
@@ -5967,7 +6064,8 @@ final class UpdateActiveEmojiReactions extends Update {
         'emojis': emojis,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateActiveEmojiReactions copyWith({
     List<String>? emojis,
@@ -6021,7 +6119,8 @@ final class UpdateDefaultReactionType extends Update {
         'reaction_type': reactionType.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateDefaultReactionType copyWith({
     ReactionType? reactionType,
@@ -6075,7 +6174,8 @@ final class UpdateDiceEmojis extends Update {
         'emojis': emojis,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateDiceEmojis copyWith({
     List<String>? emojis,
@@ -6142,7 +6242,8 @@ final class UpdateAnimatedEmojiMessageClicked extends Update {
         'sticker': sticker.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAnimatedEmojiMessageClicked copyWith({
     int? chatId,
@@ -6206,7 +6307,8 @@ final class UpdateAnimationSearchParameters extends Update {
         'emojis': emojis,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAnimationSearchParameters copyWith({
     String? provider,
@@ -6270,7 +6372,8 @@ final class UpdateSuggestedActions extends Update {
         'removed_actions': [for (final e in removedActions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateSuggestedActions copyWith({
     List<SuggestedAction>? addedActions,
@@ -6333,7 +6436,8 @@ final class UpdateAddChatMembersPrivacyForbidden extends Update {
         'user_ids': userIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAddChatMembersPrivacyForbidden copyWith({
     int? chatId,
@@ -6396,17 +6500,18 @@ final class UpdateAutosaveSettings extends Update {
         'settings': settings?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateAutosaveSettings copyWith({
     AutosaveSettingsScope? scope,
-    ScopeAutosaveSettings? settings,
+    ScopeAutosaveSettings? Function()? settings,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateAutosaveSettings(
         scope: scope ?? this.scope,
-        settings: settings ?? this.settings,
+        settings: settings != null ? settings() : this.settings,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -6482,13 +6587,14 @@ final class UpdateNewInlineQuery extends Update {
         'offset': offset,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewInlineQuery copyWith({
     int? id,
     int? senderUserId,
-    Location? userLocation,
-    ChatType? chatType,
+    Location? Function()? userLocation,
+    ChatType? Function()? chatType,
     String? query,
     String? offset,
     dynamic extra,
@@ -6497,8 +6603,8 @@ final class UpdateNewInlineQuery extends Update {
       UpdateNewInlineQuery(
         id: id ?? this.id,
         senderUserId: senderUserId ?? this.senderUserId,
-        userLocation: userLocation ?? this.userLocation,
-        chatType: chatType ?? this.chatType,
+        userLocation: userLocation != null ? userLocation() : this.userLocation,
+        chatType: chatType != null ? chatType() : this.chatType,
         query: query ?? this.query,
         offset: offset ?? this.offset,
         extra: extra ?? this.extra,
@@ -6570,11 +6676,12 @@ final class UpdateNewChosenInlineResult extends Update {
         'inline_message_id': inlineMessageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewChosenInlineResult copyWith({
     int? senderUserId,
-    Location? userLocation,
+    Location? Function()? userLocation,
     String? query,
     String? resultId,
     String? inlineMessageId,
@@ -6583,7 +6690,7 @@ final class UpdateNewChosenInlineResult extends Update {
   }) =>
       UpdateNewChosenInlineResult(
         senderUserId: senderUserId ?? this.senderUserId,
-        userLocation: userLocation ?? this.userLocation,
+        userLocation: userLocation != null ? userLocation() : this.userLocation,
         query: query ?? this.query,
         resultId: resultId ?? this.resultId,
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
@@ -6662,7 +6769,8 @@ final class UpdateNewCallbackQuery extends Update {
         'payload': payload.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewCallbackQuery copyWith({
     int? id,
@@ -6750,7 +6858,8 @@ final class UpdateNewInlineCallbackQuery extends Update {
         'payload': payload.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewInlineCallbackQuery copyWith({
     int? id,
@@ -6831,7 +6940,8 @@ final class UpdateNewShippingQuery extends Update {
         'shipping_address': shippingAddress.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewShippingQuery copyWith({
     int? id,
@@ -6927,7 +7037,8 @@ final class UpdateNewPreCheckoutQuery extends Update {
         'order_info': orderInfo?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewPreCheckoutQuery copyWith({
     int? id,
@@ -6936,7 +7047,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
     int? totalAmount,
     String? invoicePayload,
     String? shippingOptionId,
-    OrderInfo? orderInfo,
+    OrderInfo? Function()? orderInfo,
     dynamic extra,
     int? clientId,
   }) =>
@@ -6947,7 +7058,7 @@ final class UpdateNewPreCheckoutQuery extends Update {
         totalAmount: totalAmount ?? this.totalAmount,
         invoicePayload: invoicePayload ?? this.invoicePayload,
         shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        orderInfo: orderInfo ?? this.orderInfo,
+        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -6993,7 +7104,8 @@ final class UpdateNewCustomEvent extends Update {
         'event': event,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewCustomEvent copyWith({
     String? event,
@@ -7059,7 +7171,8 @@ final class UpdateNewCustomQuery extends Update {
         'timeout': timeout,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewCustomQuery copyWith({
     int? id,
@@ -7116,7 +7229,8 @@ final class UpdatePoll extends Update {
         'poll': poll.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdatePoll copyWith({
     Poll? poll,
@@ -7182,7 +7296,8 @@ final class UpdatePollAnswer extends Update {
         'option_ids': optionIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdatePollAnswer copyWith({
     int? pollId,
@@ -7278,13 +7393,14 @@ final class UpdateChatMember extends Update {
         'new_chat_member': newChatMember.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateChatMember copyWith({
     int? chatId,
     int? actorUserId,
     int? date,
-    ChatInviteLink? inviteLink,
+    ChatInviteLink? Function()? inviteLink,
     bool? viaChatFolderInviteLink,
     ChatMember? oldChatMember,
     ChatMember? newChatMember,
@@ -7295,7 +7411,7 @@ final class UpdateChatMember extends Update {
         chatId: chatId ?? this.chatId,
         actorUserId: actorUserId ?? this.actorUserId,
         date: date ?? this.date,
-        inviteLink: inviteLink ?? this.inviteLink,
+        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         viaChatFolderInviteLink:
             viaChatFolderInviteLink ?? this.viaChatFolderInviteLink,
         oldChatMember: oldChatMember ?? this.oldChatMember,
@@ -7363,13 +7479,14 @@ final class UpdateNewChatJoinRequest extends Update {
         'invite_link': inviteLink?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateNewChatJoinRequest copyWith({
     int? chatId,
     ChatJoinRequest? request,
     int? userChatId,
-    ChatInviteLink? inviteLink,
+    ChatInviteLink? Function()? inviteLink,
     dynamic extra,
     int? clientId,
   }) =>
@@ -7377,7 +7494,7 @@ final class UpdateNewChatJoinRequest extends Update {
         chatId: chatId ?? this.chatId,
         request: request ?? this.request,
         userChatId: userChatId ?? this.userChatId,
-        inviteLink: inviteLink ?? this.inviteLink,
+        inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

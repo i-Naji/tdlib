@@ -64,7 +64,8 @@ final class MessageSenderUser extends MessageSender {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSenderUser copyWith({
     int? userId,
@@ -102,7 +103,8 @@ final class MessageSenderChat extends MessageSender {
         'chat_id': chatId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSenderChat copyWith({
     int? chatId,

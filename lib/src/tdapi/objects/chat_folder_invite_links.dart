@@ -38,7 +38,8 @@ final class ChatFolderInviteLinks extends TdObject {
         'invite_links': [for (final e in inviteLinks) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatFolderInviteLinks copyWith({
     List<ChatFolderInviteLink>? inviteLinks,
     dynamic extra,

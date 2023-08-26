@@ -66,7 +66,8 @@ final class VectorPathCommandLine extends VectorPathCommand {
         'end_point': endPoint.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   VectorPathCommandLine copyWith({
     Point? endPoint,
@@ -118,7 +119,8 @@ final class VectorPathCommandCubicBezierCurve extends VectorPathCommand {
         'end_point': endPoint.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   VectorPathCommandCubicBezierCurve copyWith({
     Point? startControlPoint,

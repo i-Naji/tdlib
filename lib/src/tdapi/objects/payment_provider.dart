@@ -64,7 +64,8 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
         'public_token': publicToken,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
@@ -120,7 +121,8 @@ final class PaymentProviderStripe extends PaymentProvider {
         'need_cardholder_name': needCardholderName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PaymentProviderStripe copyWith({
     String? publishableKey,
@@ -164,7 +166,8 @@ final class PaymentProviderOther extends PaymentProvider {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PaymentProviderOther copyWith({
     String? url,

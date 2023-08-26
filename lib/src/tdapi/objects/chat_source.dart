@@ -56,7 +56,8 @@ final class ChatSourceMtprotoProxy extends ChatSource {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatSourceMtprotoProxy copyWith() => const ChatSourceMtprotoProxy();
 
@@ -96,7 +97,8 @@ final class ChatSourcePublicServiceAnnouncement extends ChatSource {
         'text': text,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatSourcePublicServiceAnnouncement copyWith({
     String? type,

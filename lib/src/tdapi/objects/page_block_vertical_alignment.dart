@@ -59,7 +59,8 @@ final class PageBlockVerticalAlignmentTop extends PageBlockVerticalAlignment {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockVerticalAlignmentTop copyWith() =>
       const PageBlockVerticalAlignmentTop();
@@ -87,7 +88,8 @@ final class PageBlockVerticalAlignmentMiddle
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockVerticalAlignmentMiddle copyWith() =>
       const PageBlockVerticalAlignmentMiddle();
@@ -115,7 +117,8 @@ final class PageBlockVerticalAlignmentBottom
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PageBlockVerticalAlignmentBottom copyWith() =>
       const PageBlockVerticalAlignmentBottom();

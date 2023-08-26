@@ -58,7 +58,8 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmojiCategoryTypeDefault copyWith() => const EmojiCategoryTypeDefault();
 
@@ -83,7 +84,8 @@ final class EmojiCategoryTypeEmojiStatus extends EmojiCategoryType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmojiCategoryTypeEmojiStatus copyWith() =>
       const EmojiCategoryTypeEmojiStatus();
@@ -109,7 +111,8 @@ final class EmojiCategoryTypeChatPhoto extends EmojiCategoryType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   EmojiCategoryTypeChatPhoto copyWith() => const EmojiCategoryTypeChatPhoto();
 

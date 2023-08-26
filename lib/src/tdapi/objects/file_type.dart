@@ -56,7 +56,8 @@ final class FileTypeNone extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeNone copyWith() => const FileTypeNone();
 
@@ -81,7 +82,8 @@ final class FileTypeAnimation extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeAnimation copyWith() => const FileTypeAnimation();
 
@@ -106,7 +108,8 @@ final class FileTypeAudio extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeAudio copyWith() => const FileTypeAudio();
 
@@ -131,7 +134,8 @@ final class FileTypeDocument extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeDocument copyWith() => const FileTypeDocument();
 
@@ -156,7 +160,8 @@ final class FileTypeNotificationSound extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeNotificationSound copyWith() => const FileTypeNotificationSound();
 
@@ -181,7 +186,8 @@ final class FileTypePhoto extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypePhoto copyWith() => const FileTypePhoto();
 
@@ -206,7 +212,8 @@ final class FileTypePhotoStory extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypePhotoStory copyWith() => const FileTypePhotoStory();
 
@@ -231,7 +238,8 @@ final class FileTypeProfilePhoto extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeProfilePhoto copyWith() => const FileTypeProfilePhoto();
 
@@ -256,7 +264,8 @@ final class FileTypeSecret extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeSecret copyWith() => const FileTypeSecret();
 
@@ -281,7 +290,8 @@ final class FileTypeSecretThumbnail extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeSecretThumbnail copyWith() => const FileTypeSecretThumbnail();
 
@@ -306,7 +316,8 @@ final class FileTypeSecure extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeSecure copyWith() => const FileTypeSecure();
 
@@ -331,7 +342,8 @@ final class FileTypeSticker extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeSticker copyWith() => const FileTypeSticker();
 
@@ -356,7 +368,8 @@ final class FileTypeThumbnail extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeThumbnail copyWith() => const FileTypeThumbnail();
 
@@ -381,7 +394,8 @@ final class FileTypeUnknown extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeUnknown copyWith() => const FileTypeUnknown();
 
@@ -406,7 +420,8 @@ final class FileTypeVideo extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeVideo copyWith() => const FileTypeVideo();
 
@@ -431,7 +446,8 @@ final class FileTypeVideoNote extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeVideoNote copyWith() => const FileTypeVideoNote();
 
@@ -456,7 +472,8 @@ final class FileTypeVideoStory extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeVideoStory copyWith() => const FileTypeVideoStory();
 
@@ -481,7 +498,8 @@ final class FileTypeVoiceNote extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeVoiceNote copyWith() => const FileTypeVoiceNote();
 
@@ -506,7 +524,8 @@ final class FileTypeWallpaper extends FileType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   FileTypeWallpaper copyWith() => const FileTypeWallpaper();
 

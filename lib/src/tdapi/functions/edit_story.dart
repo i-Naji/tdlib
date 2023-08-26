@@ -32,16 +32,17 @@ final class EditStory extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditStory copyWith({
     int? storyId,
-    InputStoryContent? content,
-    FormattedText? caption,
+    InputStoryContent? Function()? content,
+    FormattedText? Function()? caption,
   }) =>
       EditStory(
         storyId: storyId ?? this.storyId,
-        content: content ?? this.content,
-        caption: caption ?? this.caption,
+        content: content != null ? content() : this.content,
+        caption: caption != null ? caption() : this.caption,
       );
 
   /// TDLib type name.

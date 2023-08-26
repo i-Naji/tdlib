@@ -27,14 +27,15 @@ final class FinishFileGeneration extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   FinishFileGeneration copyWith({
     int? generationId,
-    TdError? error,
+    TdError? Function()? error,
   }) =>
       FinishFileGeneration(
         generationId: generationId ?? this.generationId,
-        error: error ?? this.error,
+        error: error != null ? error() : this.error,
       );
 
   /// TDLib type name.

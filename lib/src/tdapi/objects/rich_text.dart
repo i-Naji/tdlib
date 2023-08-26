@@ -63,7 +63,8 @@ final class RichTextPlain extends RichText {
         'text': text,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextPlain copyWith({
     String? text,
@@ -100,7 +101,8 @@ final class RichTextBold extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextBold copyWith({
     RichText? text,
@@ -137,7 +139,8 @@ final class RichTextItalic extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextItalic copyWith({
     RichText? text,
@@ -175,7 +178,8 @@ final class RichTextUnderline extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextUnderline copyWith({
     RichText? text,
@@ -213,7 +217,8 @@ final class RichTextStrikethrough extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextStrikethrough copyWith({
     RichText? text,
@@ -250,7 +255,8 @@ final class RichTextFixed extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextFixed copyWith({
     RichText? text,
@@ -299,7 +305,8 @@ final class RichTextUrl extends RichText {
         'is_cached': isCached,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextUrl copyWith({
     RichText? text,
@@ -347,7 +354,8 @@ final class RichTextEmailAddress extends RichText {
         'email_address': emailAddress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextEmailAddress copyWith({
     RichText? text,
@@ -387,7 +395,8 @@ final class RichTextSubscript extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextSubscript copyWith({
     RichText? text,
@@ -425,7 +434,8 @@ final class RichTextSuperscript extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextSuperscript copyWith({
     RichText? text,
@@ -462,7 +472,8 @@ final class RichTextMarked extends RichText {
         'text': text.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextMarked copyWith({
     RichText? text,
@@ -506,7 +517,8 @@ final class RichTextPhoneNumber extends RichText {
         'phone_number': phoneNumber,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextPhoneNumber copyWith({
     RichText? text,
@@ -557,7 +569,8 @@ final class RichTextIcon extends RichText {
         'height': height,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextIcon copyWith({
     Document? document,
@@ -611,7 +624,8 @@ final class RichTextReference extends RichText {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextReference copyWith({
     RichText? text,
@@ -652,7 +666,8 @@ final class RichTextAnchor extends RichText {
         'name': name,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextAnchor copyWith({
     String? name,
@@ -702,7 +717,8 @@ final class RichTextAnchorLink extends RichText {
         'url': url,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTextAnchorLink copyWith({
     RichText? text,
@@ -744,7 +760,8 @@ final class RichTexts extends RichText {
         'texts': [for (final e in texts) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   RichTexts copyWith({
     List<RichText>? texts,

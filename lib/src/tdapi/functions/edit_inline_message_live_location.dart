@@ -42,18 +42,19 @@ final class EditInlineMessageLiveLocation extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditInlineMessageLiveLocation copyWith({
     String? inlineMessageId,
-    ReplyMarkup? replyMarkup,
-    Location? location,
+    ReplyMarkup? Function()? replyMarkup,
+    Location? Function()? location,
     int? heading,
     int? proximityAlertRadius,
   }) =>
       EditInlineMessageLiveLocation(
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
-        location: location ?? this.location,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+        location: location != null ? location() : this.location,
         heading: heading ?? this.heading,
         proximityAlertRadius: proximityAlertRadius ?? this.proximityAlertRadius,
       );

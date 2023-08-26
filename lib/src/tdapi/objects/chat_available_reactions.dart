@@ -58,7 +58,8 @@ final class ChatAvailableReactionsAll extends ChatAvailableReactions {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatAvailableReactionsAll copyWith() => const ChatAvailableReactionsAll();
 
@@ -92,7 +93,8 @@ final class ChatAvailableReactionsSome extends ChatAvailableReactions {
         'reactions': [for (final e in reactions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatAvailableReactionsSome copyWith({
     List<ReactionType>? reactions,

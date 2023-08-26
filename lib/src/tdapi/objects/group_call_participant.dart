@@ -134,13 +134,14 @@ final class GroupCallParticipant extends TdObject {
         'order': order,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallParticipant copyWith({
     MessageSender? participantId,
     int? audioSourceId,
     int? screenSharingAudioSourceId,
-    GroupCallParticipantVideoInfo? videoInfo,
-    GroupCallParticipantVideoInfo? screenSharingVideoInfo,
+    GroupCallParticipantVideoInfo? Function()? videoInfo,
+    GroupCallParticipantVideoInfo? Function()? screenSharingVideoInfo,
     String? bio,
     bool? isCurrentUser,
     bool? isSpeaking,
@@ -160,9 +161,10 @@ final class GroupCallParticipant extends TdObject {
         audioSourceId: audioSourceId ?? this.audioSourceId,
         screenSharingAudioSourceId:
             screenSharingAudioSourceId ?? this.screenSharingAudioSourceId,
-        videoInfo: videoInfo ?? this.videoInfo,
-        screenSharingVideoInfo:
-            screenSharingVideoInfo ?? this.screenSharingVideoInfo,
+        videoInfo: videoInfo != null ? videoInfo() : this.videoInfo,
+        screenSharingVideoInfo: screenSharingVideoInfo != null
+            ? screenSharingVideoInfo()
+            : this.screenSharingVideoInfo,
         bio: bio ?? this.bio,
         isCurrentUser: isCurrentUser ?? this.isCurrentUser,
         isSpeaking: isSpeaking ?? this.isSpeaking,

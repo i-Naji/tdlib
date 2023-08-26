@@ -37,7 +37,8 @@ final class ChatInviteLinkCount extends TdObject {
         'revoked_invite_link_count': revokedInviteLinkCount,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatInviteLinkCount copyWith({
     int? userId,
     int? inviteLinkCount,

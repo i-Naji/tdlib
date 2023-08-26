@@ -56,7 +56,8 @@ final class SecretChatStatePending extends SecretChatState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SecretChatStatePending copyWith() => const SecretChatStatePending();
 
@@ -81,7 +82,8 @@ final class SecretChatStateReady extends SecretChatState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SecretChatStateReady copyWith() => const SecretChatStateReady();
 
@@ -106,7 +108,8 @@ final class SecretChatStateClosed extends SecretChatState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SecretChatStateClosed copyWith() => const SecretChatStateClosed();
 

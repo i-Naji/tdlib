@@ -37,7 +37,8 @@ final class AnimatedChatPhoto extends TdObject {
         'main_frame_timestamp': mainFrameTimestamp,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AnimatedChatPhoto copyWith({
     int? length,
     File? file,

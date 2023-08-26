@@ -44,17 +44,18 @@ final class MessageInteractionInfo extends TdObject {
         'reactions': [for (final e in reactions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessageInteractionInfo copyWith({
     int? viewCount,
     int? forwardCount,
-    MessageReplyInfo? replyInfo,
+    MessageReplyInfo? Function()? replyInfo,
     List<MessageReaction>? reactions,
   }) =>
       MessageInteractionInfo(
         viewCount: viewCount ?? this.viewCount,
         forwardCount: forwardCount ?? this.forwardCount,
-        replyInfo: replyInfo ?? this.replyInfo,
+        replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
         reactions: reactions ?? this.reactions,
       );
 

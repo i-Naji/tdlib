@@ -66,7 +66,8 @@ final class SpeechRecognitionResultPending extends SpeechRecognitionResult {
         'partial_text': partialText,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SpeechRecognitionResultPending copyWith({
     String? partialText,
@@ -104,7 +105,8 @@ final class SpeechRecognitionResultText extends SpeechRecognitionResult {
         'text': text,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SpeechRecognitionResultText copyWith({
     String? text,
@@ -142,7 +144,8 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
         'error': error.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   SpeechRecognitionResultError copyWith({
     TdError? error,

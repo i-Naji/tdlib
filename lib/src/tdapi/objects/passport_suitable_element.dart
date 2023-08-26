@@ -43,7 +43,8 @@ final class PassportSuitableElement extends TdObject {
         'is_native_name_required': isNativeNameRequired,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PassportSuitableElement copyWith({
     PassportElementType? type,
     bool? isSelfieRequired,

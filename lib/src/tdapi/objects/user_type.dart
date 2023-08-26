@@ -56,7 +56,8 @@ final class UserTypeRegular extends UserType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserTypeRegular copyWith() => const UserTypeRegular();
 
@@ -81,7 +82,8 @@ final class UserTypeDeleted extends UserType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserTypeDeleted copyWith() => const UserTypeDeleted();
 
@@ -150,7 +152,8 @@ final class UserTypeBot extends UserType {
         'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserTypeBot copyWith({
     bool? canBeEdited,
@@ -195,7 +198,8 @@ final class UserTypeUnknown extends UserType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UserTypeUnknown copyWith() => const UserTypeUnknown();
 

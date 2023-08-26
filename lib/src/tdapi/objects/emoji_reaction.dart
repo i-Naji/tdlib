@@ -96,7 +96,8 @@ final class EmojiReaction extends TdObject {
         'center_animation': centerAnimation?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EmojiReaction copyWith({
     String? emoji,
     String? title,
@@ -106,8 +107,8 @@ final class EmojiReaction extends TdObject {
     Sticker? selectAnimation,
     Sticker? activateAnimation,
     Sticker? effectAnimation,
-    Sticker? aroundAnimation,
-    Sticker? centerAnimation,
+    Sticker? Function()? aroundAnimation,
+    Sticker? Function()? centerAnimation,
     dynamic extra,
     int? clientId,
   }) =>
@@ -120,8 +121,10 @@ final class EmojiReaction extends TdObject {
         selectAnimation: selectAnimation ?? this.selectAnimation,
         activateAnimation: activateAnimation ?? this.activateAnimation,
         effectAnimation: effectAnimation ?? this.effectAnimation,
-        aroundAnimation: aroundAnimation ?? this.aroundAnimation,
-        centerAnimation: centerAnimation ?? this.centerAnimation,
+        aroundAnimation:
+            aroundAnimation != null ? aroundAnimation() : this.aroundAnimation,
+        centerAnimation:
+            centerAnimation != null ? centerAnimation() : this.centerAnimation,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

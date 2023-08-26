@@ -42,18 +42,19 @@ final class AddLocalMessage extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
-    MessageReplyTo? replyTo,
+    MessageReplyTo? Function()? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
   }) =>
       AddLocalMessage(
         chatId: chatId ?? this.chatId,
         senderId: senderId ?? this.senderId,
-        replyTo: replyTo ?? this.replyTo,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
         disableNotification: disableNotification ?? this.disableNotification,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );

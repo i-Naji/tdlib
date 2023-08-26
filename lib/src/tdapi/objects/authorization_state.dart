@@ -73,7 +73,8 @@ final class AuthorizationStateWaitTdlibParameters extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitTdlibParameters copyWith({
     dynamic extra,
@@ -120,7 +121,8 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitPhoneNumber copyWith({
     dynamic extra,
@@ -179,7 +181,8 @@ final class AuthorizationStateWaitEmailAddress extends AuthorizationState {
         'allow_google_id': allowGoogleId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitEmailAddress copyWith({
     bool? allowAppleId,
@@ -255,13 +258,14 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
         'email_address_reset_state': emailAddressResetState?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitEmailCode copyWith({
     bool? allowAppleId,
     bool? allowGoogleId,
     EmailAddressAuthenticationCodeInfo? codeInfo,
-    EmailAddressResetState? emailAddressResetState,
+    EmailAddressResetState? Function()? emailAddressResetState,
     dynamic extra,
     int? clientId,
   }) =>
@@ -269,8 +273,9 @@ final class AuthorizationStateWaitEmailCode extends AuthorizationState {
         allowAppleId: allowAppleId ?? this.allowAppleId,
         allowGoogleId: allowGoogleId ?? this.allowGoogleId,
         codeInfo: codeInfo ?? this.codeInfo,
-        emailAddressResetState:
-            emailAddressResetState ?? this.emailAddressResetState,
+        emailAddressResetState: emailAddressResetState != null
+            ? emailAddressResetState()
+            : this.emailAddressResetState,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -317,7 +322,8 @@ final class AuthorizationStateWaitCode extends AuthorizationState {
         'code_info': codeInfo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitCode copyWith({
     AuthenticationCodeInfo? codeInfo,
@@ -373,7 +379,8 @@ final class AuthorizationStateWaitOtherDeviceConfirmation
         'link': link,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitOtherDeviceConfirmation copyWith({
     String? link,
@@ -430,7 +437,8 @@ final class AuthorizationStateWaitRegistration extends AuthorizationState {
         'terms_of_service': termsOfService.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitRegistration copyWith({
     TermsOfService? termsOfService,
@@ -503,7 +511,8 @@ final class AuthorizationStateWaitPassword extends AuthorizationState {
         'recovery_email_address_pattern': recoveryEmailAddressPattern,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateWaitPassword copyWith({
     String? passwordHint,
@@ -559,7 +568,8 @@ final class AuthorizationStateReady extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateReady copyWith({
     dynamic extra,
@@ -605,7 +615,8 @@ final class AuthorizationStateLoggingOut extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateLoggingOut copyWith({
     dynamic extra,
@@ -651,7 +662,8 @@ final class AuthorizationStateClosing extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateClosing copyWith({
     dynamic extra,
@@ -697,7 +709,8 @@ final class AuthorizationStateClosed extends AuthorizationState {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthorizationStateClosed copyWith({
     dynamic extra,

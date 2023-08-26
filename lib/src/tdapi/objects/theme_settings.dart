@@ -51,17 +51,18 @@ final class ThemeSettings extends TdObject {
         'outgoing_message_accent_color': outgoingMessageAccentColor,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ThemeSettings copyWith({
     int? accentColor,
-    Background? background,
+    Background? Function()? background,
     BackgroundFill? outgoingMessageFill,
     bool? animateOutgoingMessageFill,
     int? outgoingMessageAccentColor,
   }) =>
       ThemeSettings(
         accentColor: accentColor ?? this.accentColor,
-        background: background ?? this.background,
+        background: background != null ? background() : this.background,
         outgoingMessageFill: outgoingMessageFill ?? this.outgoingMessageFill,
         animateOutgoingMessageFill:
             animateOutgoingMessageFill ?? this.animateOutgoingMessageFill,

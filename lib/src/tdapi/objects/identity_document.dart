@@ -56,21 +56,23 @@ final class IdentityDocument extends TdObject {
         'translation': [for (final e in translation) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   IdentityDocument copyWith({
     String? number,
-    Date? expirationDate,
+    Date? Function()? expirationDate,
     DatedFile? frontSide,
-    DatedFile? reverseSide,
-    DatedFile? selfie,
+    DatedFile? Function()? reverseSide,
+    DatedFile? Function()? selfie,
     List<DatedFile>? translation,
   }) =>
       IdentityDocument(
         number: number ?? this.number,
-        expirationDate: expirationDate ?? this.expirationDate,
+        expirationDate:
+            expirationDate != null ? expirationDate() : this.expirationDate,
         frontSide: frontSide ?? this.frontSide,
-        reverseSide: reverseSide ?? this.reverseSide,
-        selfie: selfie ?? this.selfie,
+        reverseSide: reverseSide != null ? reverseSide() : this.reverseSide,
+        selfie: selfie != null ? selfie() : this.selfie,
         translation: translation ?? this.translation,
       );
 

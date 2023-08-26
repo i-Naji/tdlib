@@ -69,15 +69,16 @@ final class MessageText extends MessageContent {
         'web_page': webPage?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageText copyWith({
     FormattedText? text,
-    WebPage? webPage,
+    WebPage? Function()? webPage,
   }) =>
       MessageText(
         text: text ?? this.text,
-        webPage: webPage ?? this.webPage,
+        webPage: webPage != null ? webPage() : this.webPage,
       );
 
   /// TDLib type name.
@@ -127,7 +128,8 @@ final class MessageAnimation extends MessageContent {
         'is_secret': isSecret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageAnimation copyWith({
     Animation? animation,
@@ -176,7 +178,8 @@ final class MessageAudio extends MessageContent {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageAudio copyWith({
     Audio? audio,
@@ -222,7 +225,8 @@ final class MessageDocument extends MessageContent {
         'caption': caption.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageDocument copyWith({
     Document? document,
@@ -279,7 +283,8 @@ final class MessagePhoto extends MessageContent {
         'is_secret': isSecret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePhoto copyWith({
     Photo? photo,
@@ -315,7 +320,8 @@ final class MessageExpiredPhoto extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
 
@@ -353,7 +359,8 @@ final class MessageSticker extends MessageContent {
         'is_premium': isPremium,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSticker copyWith({
     Sticker? sticker,
@@ -410,7 +417,8 @@ final class MessageVideo extends MessageContent {
         'is_secret': isSecret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVideo copyWith({
     Video? video,
@@ -446,7 +454,8 @@ final class MessageExpiredVideo extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageExpiredVideo copyWith() => const MessageExpiredVideo();
 
@@ -491,7 +500,8 @@ final class MessageVideoNote extends MessageContent {
         'is_secret': isSecret,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVideoNote copyWith({
     VideoNote? videoNote,
@@ -545,7 +555,8 @@ final class MessageVoiceNote extends MessageContent {
         'is_listened': isListened,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVoiceNote copyWith({
     VoiceNote? voiceNote,
@@ -611,7 +622,8 @@ final class MessageLocation extends MessageContent {
         'proximity_alert_radius': proximityAlertRadius,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageLocation copyWith({
     Location? location,
@@ -656,7 +668,8 @@ final class MessageVenue extends MessageContent {
         'venue': venue.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVenue copyWith({
     Venue? venue,
@@ -693,7 +706,8 @@ final class MessageContact extends MessageContent {
         'contact': contact.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageContact copyWith({
     Contact? contact,
@@ -738,7 +752,8 @@ final class MessageAnimatedEmoji extends MessageContent {
         'emoji': emoji,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageAnimatedEmoji copyWith({
     AnimatedEmoji? animatedEmoji,
@@ -803,18 +818,19 @@ final class MessageDice extends MessageContent {
         'success_animation_frame_number': successAnimationFrameNumber,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageDice copyWith({
-    DiceStickers? initialState,
-    DiceStickers? finalState,
+    DiceStickers? Function()? initialState,
+    DiceStickers? Function()? finalState,
     String? emoji,
     int? value,
     int? successAnimationFrameNumber,
   }) =>
       MessageDice(
-        initialState: initialState ?? this.initialState,
-        finalState: finalState ?? this.finalState,
+        initialState: initialState != null ? initialState() : this.initialState,
+        finalState: finalState != null ? finalState() : this.finalState,
         emoji: emoji ?? this.emoji,
         value: value ?? this.value,
         successAnimationFrameNumber:
@@ -849,7 +865,8 @@ final class MessageGame extends MessageContent {
         'game': game.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageGame copyWith({
     Game? game,
@@ -886,7 +903,8 @@ final class MessagePoll extends MessageContent {
         'poll': poll.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePoll copyWith({
     Poll? poll,
@@ -935,7 +953,8 @@ final class MessageStory extends MessageContent {
         'via_mention': viaMention,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageStory copyWith({
     int? storySenderChatId,
@@ -1031,31 +1050,33 @@ final class MessageInvoice extends MessageContent {
         'extended_media': extendedMedia?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageInvoice copyWith({
     String? title,
     FormattedText? description,
-    Photo? photo,
+    Photo? Function()? photo,
     String? currency,
     int? totalAmount,
     String? startParameter,
     bool? isTest,
     bool? needShippingAddress,
     int? receiptMessageId,
-    MessageExtendedMedia? extendedMedia,
+    MessageExtendedMedia? Function()? extendedMedia,
   }) =>
       MessageInvoice(
         title: title ?? this.title,
         description: description ?? this.description,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         currency: currency ?? this.currency,
         totalAmount: totalAmount ?? this.totalAmount,
         startParameter: startParameter ?? this.startParameter,
         isTest: isTest ?? this.isTest,
         needShippingAddress: needShippingAddress ?? this.needShippingAddress,
         receiptMessageId: receiptMessageId ?? this.receiptMessageId,
-        extendedMedia: extendedMedia ?? this.extendedMedia,
+        extendedMedia:
+            extendedMedia != null ? extendedMedia() : this.extendedMedia,
       );
 
   /// TDLib type name.
@@ -1099,7 +1120,8 @@ final class MessageCall extends MessageContent {
         'duration': duration,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageCall copyWith({
     bool? isVideo,
@@ -1147,7 +1169,8 @@ final class MessageVideoChatScheduled extends MessageContent {
         'start_date': startDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVideoChatScheduled copyWith({
     int? groupCallId,
@@ -1187,7 +1210,8 @@ final class MessageVideoChatStarted extends MessageContent {
         'group_call_id': groupCallId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVideoChatStarted copyWith({
     int? groupCallId,
@@ -1225,7 +1249,8 @@ final class MessageVideoChatEnded extends MessageContent {
         'duration': duration,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageVideoChatEnded copyWith({
     int? duration,
@@ -1270,7 +1295,8 @@ final class MessageInviteVideoChatParticipants extends MessageContent {
         'user_ids': userIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageInviteVideoChatParticipants copyWith({
     int? groupCallId,
@@ -1316,7 +1342,8 @@ final class MessageBasicGroupChatCreate extends MessageContent {
         'member_user_ids': memberUserIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageBasicGroupChatCreate copyWith({
     String? title,
@@ -1356,7 +1383,8 @@ final class MessageSupergroupChatCreate extends MessageContent {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSupergroupChatCreate copyWith({
     String? title,
@@ -1394,7 +1422,8 @@ final class MessageChatChangeTitle extends MessageContent {
         'title': title,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatChangeTitle copyWith({
     String? title,
@@ -1432,7 +1461,8 @@ final class MessageChatChangePhoto extends MessageContent {
         'photo': photo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatChangePhoto copyWith({
     ChatPhoto? photo,
@@ -1462,7 +1492,8 @@ final class MessageChatDeletePhoto extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatDeletePhoto copyWith() => const MessageChatDeletePhoto();
 
@@ -1495,7 +1526,8 @@ final class MessageChatAddMembers extends MessageContent {
         'member_user_ids': memberUserIds,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatAddMembers copyWith({
     List<int>? memberUserIds,
@@ -1525,7 +1557,8 @@ final class MessageChatJoinByLink extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatJoinByLink copyWith() => const MessageChatJoinByLink();
 
@@ -1550,7 +1583,8 @@ final class MessageChatJoinByRequest extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatJoinByRequest copyWith() => const MessageChatJoinByRequest();
 
@@ -1583,7 +1617,8 @@ final class MessageChatDeleteMember extends MessageContent {
         'user_id': userId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatDeleteMember copyWith({
     int? userId,
@@ -1621,7 +1656,8 @@ final class MessageChatUpgradeTo extends MessageContent {
         'supergroup_id': supergroupId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatUpgradeTo copyWith({
     int? supergroupId,
@@ -1665,7 +1701,8 @@ final class MessageChatUpgradeFrom extends MessageContent {
         'basic_group_id': basicGroupId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatUpgradeFrom copyWith({
     String? title,
@@ -1705,7 +1742,8 @@ final class MessagePinMessage extends MessageContent {
         'message_id': messageId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePinMessage copyWith({
     int? messageId,
@@ -1735,7 +1773,8 @@ final class MessageScreenshotTaken extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageScreenshotTaken copyWith() => const MessageScreenshotTaken();
 
@@ -1774,7 +1813,8 @@ final class MessageChatSetBackground extends MessageContent {
         'background': background.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatSetBackground copyWith({
     int? oldBackgroundMessageId,
@@ -1815,7 +1855,8 @@ final class MessageChatSetTheme extends MessageContent {
         'theme_name': themeName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatSetTheme copyWith({
     String? themeName,
@@ -1860,7 +1901,8 @@ final class MessageChatSetMessageAutoDeleteTime extends MessageContent {
         'from_user_id': fromUserId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatSetMessageAutoDeleteTime copyWith({
     int? messageAutoDeleteTime,
@@ -1907,7 +1949,8 @@ final class MessageForumTopicCreated extends MessageContent {
         'icon': icon.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForumTopicCreated copyWith({
     String? name,
@@ -1959,7 +2002,8 @@ final class MessageForumTopicEdited extends MessageContent {
         'icon_custom_emoji_id': iconCustomEmojiId.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForumTopicEdited copyWith({
     String? name,
@@ -2003,7 +2047,8 @@ final class MessageForumTopicIsClosedToggled extends MessageContent {
         'is_closed': isClosed,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForumTopicIsClosedToggled copyWith({
     bool? isClosed,
@@ -2042,7 +2087,8 @@ final class MessageForumTopicIsHiddenToggled extends MessageContent {
         'is_hidden': isHidden,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageForumTopicIsHiddenToggled copyWith({
     bool? isHidden,
@@ -2080,7 +2126,8 @@ final class MessageSuggestProfilePhoto extends MessageContent {
         'photo': photo.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSuggestProfilePhoto copyWith({
     ChatPhoto? photo,
@@ -2118,7 +2165,8 @@ final class MessageCustomServiceAction extends MessageContent {
         'text': text,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageCustomServiceAction copyWith({
     String? text,
@@ -2168,7 +2216,8 @@ final class MessageGameScore extends MessageContent {
         'score': score,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageGameScore copyWith({
     int? gameMessageId,
@@ -2246,7 +2295,8 @@ final class MessagePaymentSuccessful extends MessageContent {
         'invoice_name': invoiceName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePaymentSuccessful copyWith({
     int? invoiceChatId,
@@ -2346,7 +2396,8 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
         'provider_payment_charge_id': providerPaymentChargeId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePaymentSuccessfulBot copyWith({
     String? currency,
@@ -2355,7 +2406,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
     bool? isFirstRecurring,
     String? invoicePayload,
     String? shippingOptionId,
-    OrderInfo? orderInfo,
+    OrderInfo? Function()? orderInfo,
     String? telegramPaymentChargeId,
     String? providerPaymentChargeId,
   }) =>
@@ -2366,7 +2417,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
         isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
         invoicePayload: invoicePayload ?? this.invoicePayload,
         shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        orderInfo: orderInfo ?? this.orderInfo,
+        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
         telegramPaymentChargeId:
             telegramPaymentChargeId ?? this.telegramPaymentChargeId,
         providerPaymentChargeId:
@@ -2438,7 +2489,8 @@ final class MessageGiftedPremium extends MessageContent {
         'sticker': sticker?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageGiftedPremium copyWith({
     int? gifterUserId,
@@ -2447,7 +2499,7 @@ final class MessageGiftedPremium extends MessageContent {
     String? cryptocurrency,
     int? cryptocurrencyAmount,
     int? monthCount,
-    Sticker? sticker,
+    Sticker? Function()? sticker,
   }) =>
       MessageGiftedPremium(
         gifterUserId: gifterUserId ?? this.gifterUserId,
@@ -2456,7 +2508,7 @@ final class MessageGiftedPremium extends MessageContent {
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
         cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
         monthCount: monthCount ?? this.monthCount,
-        sticker: sticker ?? this.sticker,
+        sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.
@@ -2480,7 +2532,8 @@ final class MessageContactRegistered extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageContactRegistered copyWith() => const MessageContactRegistered();
 
@@ -2519,7 +2572,8 @@ final class MessageUserShared extends MessageContent {
         'button_id': buttonId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageUserShared copyWith({
     int? userId,
@@ -2565,7 +2619,8 @@ final class MessageChatShared extends MessageContent {
         'button_id': buttonId,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatShared copyWith({
     int? chatId,
@@ -2605,7 +2660,8 @@ final class MessageWebsiteConnected extends MessageContent {
         'domain_name': domainName,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageWebsiteConnected copyWith({
     String? domainName,
@@ -2643,13 +2699,14 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
         'web_app': webApp?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageBotWriteAccessAllowed copyWith({
-    WebApp? webApp,
+    WebApp? Function()? webApp,
   }) =>
       MessageBotWriteAccessAllowed(
-        webApp: webApp ?? this.webApp,
+        webApp: webApp != null ? webApp() : this.webApp,
       );
 
   /// TDLib type name.
@@ -2681,7 +2738,8 @@ final class MessageWebAppDataSent extends MessageContent {
         'button_text': buttonText,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageWebAppDataSent copyWith({
     String? buttonText,
@@ -2725,7 +2783,8 @@ final class MessageWebAppDataReceived extends MessageContent {
         'data': data,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageWebAppDataReceived copyWith({
     String? buttonText,
@@ -2766,7 +2825,8 @@ final class MessagePassportDataSent extends MessageContent {
         'types': [for (final e in types) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePassportDataSent copyWith({
     List<PassportElementType>? types,
@@ -2812,7 +2872,8 @@ final class MessagePassportDataReceived extends MessageContent {
         'credentials': credentials.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessagePassportDataReceived copyWith({
     List<EncryptedPassportElement>? elements,
@@ -2864,7 +2925,8 @@ final class MessageProximityAlertTriggered extends MessageContent {
         'distance': distance,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageProximityAlertTriggered copyWith({
     MessageSender? travelerId,
@@ -2898,7 +2960,8 @@ final class MessageUnsupported extends MessageContent {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageUnsupported copyWith() => const MessageUnsupported();
 

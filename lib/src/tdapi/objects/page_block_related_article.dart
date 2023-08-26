@@ -55,12 +55,13 @@ final class PageBlockRelatedArticle extends TdObject {
         'publish_date': publishDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PageBlockRelatedArticle copyWith({
     String? url,
     String? title,
     String? description,
-    Photo? photo,
+    Photo? Function()? photo,
     String? author,
     int? publishDate,
   }) =>
@@ -68,7 +69,7 @@ final class PageBlockRelatedArticle extends TdObject {
         url: url ?? this.url,
         title: title ?? this.title,
         description: description ?? this.description,
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
         author: author ?? this.author,
         publishDate: publishDate ?? this.publishDate,
       );

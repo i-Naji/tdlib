@@ -76,7 +76,8 @@ final class OptionValueBoolean extends OptionValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   OptionValueBoolean copyWith({
     bool? value,
@@ -124,7 +125,8 @@ final class OptionValueEmpty extends OptionValue {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   OptionValueEmpty copyWith({
     dynamic extra,
@@ -176,7 +178,8 @@ final class OptionValueInteger extends OptionValue {
         'value': value.toString(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   OptionValueInteger copyWith({
     int? value,
@@ -230,7 +233,8 @@ final class OptionValueString extends OptionValue {
         'value': value,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   OptionValueString copyWith({
     String? value,

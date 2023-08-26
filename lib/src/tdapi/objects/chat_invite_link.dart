@@ -102,7 +102,8 @@ final class ChatInviteLink extends TdObject {
         'is_revoked': isRevoked,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   ChatInviteLink copyWith({
     String? inviteLink,
     String? name,

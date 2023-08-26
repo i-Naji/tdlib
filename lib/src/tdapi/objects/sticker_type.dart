@@ -56,7 +56,8 @@ final class StickerTypeRegular extends StickerType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerTypeRegular copyWith() => const StickerTypeRegular();
 
@@ -81,7 +82,8 @@ final class StickerTypeMask extends StickerType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerTypeMask copyWith() => const StickerTypeMask();
 
@@ -106,7 +108,8 @@ final class StickerTypeCustomEmoji extends StickerType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StickerTypeCustomEmoji copyWith() => const StickerTypeCustomEmoji();
 

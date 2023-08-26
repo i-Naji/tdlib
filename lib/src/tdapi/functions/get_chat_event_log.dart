@@ -47,13 +47,14 @@ final class GetChatEventLog extends TdFunction<ChatEvents> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatEventLog copyWith({
     int? chatId,
     String? query,
     int? fromEventId,
     int? limit,
-    ChatEventLogFilters? filters,
+    ChatEventLogFilters? Function()? filters,
     List<int>? userIds,
   }) =>
       GetChatEventLog(
@@ -61,7 +62,7 @@ final class GetChatEventLog extends TdFunction<ChatEvents> {
         query: query ?? this.query,
         fromEventId: fromEventId ?? this.fromEventId,
         limit: limit ?? this.limit,
-        filters: filters ?? this.filters,
+        filters: filters != null ? filters() : this.filters,
         userIds: userIds ?? this.userIds,
       );
 

@@ -38,7 +38,8 @@ final class PassportElements extends TdObject {
         'elements': [for (final e in elements) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PassportElements copyWith({
     List<PassportElement>? elements,
     dynamic extra,

@@ -1035,6 +1035,17 @@ part 'objects/web_app_info.dart';
 part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
+/// TDLib version this API was generated for.
+const String tdlibVersion = '1.8.15';
+
+/// TDLib commit whose td_api.tl this API was generated from.
+const String tdlibSchemaCommit = '8e1a7dbac29cea82292f33d6c11c43e13ffcf658';
+
+/// TDLib commits whose td_api.tl matches this API exactly.
+const List<String> tdlibCompatibleCommits = [
+  '8e1a7dbac29cea82292f33d6c11c43e13ffcf658',
+];
+
 /// Base class of every TDLib object.
 abstract class TdObject {
   const TdObject();

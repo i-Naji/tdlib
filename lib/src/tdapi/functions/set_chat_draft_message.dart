@@ -32,16 +32,17 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatDraftMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    DraftMessage? draftMessage,
+    DraftMessage? Function()? draftMessage,
   }) =>
       SetChatDraftMessage(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        draftMessage: draftMessage ?? this.draftMessage,
+        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
       );
 
   /// TDLib type name.

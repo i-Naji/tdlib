@@ -38,7 +38,8 @@ final class GroupCallStreams extends TdObject {
         'streams': [for (final e in streams) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCallStreams copyWith({
     List<GroupCallStream>? streams,
     dynamic extra,

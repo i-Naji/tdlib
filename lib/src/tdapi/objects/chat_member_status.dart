@@ -78,7 +78,8 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
         'is_member': isMember,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusCreator copyWith({
     String? customTitle,
@@ -132,7 +133,8 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
         'rights': rights.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusAdministrator copyWith({
     String? customTitle,
@@ -166,7 +168,8 @@ final class ChatMemberStatusMember extends ChatMemberStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
 
@@ -211,7 +214,8 @@ final class ChatMemberStatusRestricted extends ChatMemberStatus {
         'permissions': permissions.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusRestricted copyWith({
     bool? isMember,
@@ -245,7 +249,8 @@ final class ChatMemberStatusLeft extends ChatMemberStatus {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusLeft copyWith() => const ChatMemberStatusLeft();
 
@@ -278,7 +283,8 @@ final class ChatMemberStatusBanned extends ChatMemberStatus {
         'banned_until_date': bannedUntilDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMemberStatusBanned copyWith({
     int? bannedUntilDate,

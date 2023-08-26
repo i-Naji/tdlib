@@ -64,7 +64,8 @@ final class ChatActionBarReportSpam extends ChatActionBar {
         'can_unarchive': canUnarchive,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarReportSpam copyWith({
     bool? canUnarchive,
@@ -95,7 +96,8 @@ final class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarReportUnrelatedLocation copyWith() =>
       const ChatActionBarReportUnrelatedLocation();
@@ -121,7 +123,8 @@ final class ChatActionBarInviteMembers extends ChatActionBar {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarInviteMembers copyWith() => const ChatActionBarInviteMembers();
 
@@ -160,7 +163,8 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
         'distance': distance,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarReportAddBlock copyWith({
     bool? canUnarchive,
@@ -192,7 +196,8 @@ final class ChatActionBarAddContact extends ChatActionBar {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarAddContact copyWith() => const ChatActionBarAddContact();
 
@@ -217,7 +222,8 @@ final class ChatActionBarSharePhoneNumber extends ChatActionBar {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarSharePhoneNumber copyWith() =>
       const ChatActionBarSharePhoneNumber();
@@ -263,7 +269,8 @@ final class ChatActionBarJoinRequest extends ChatActionBar {
         'request_date': requestDate,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatActionBarJoinRequest copyWith({
     String? title,

@@ -37,7 +37,8 @@ final class RecoveryEmailAddress extends TdObject {
         'recovery_email_address': recoveryEmailAddress,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   RecoveryEmailAddress copyWith({
     String? recoveryEmailAddress,
     dynamic extra,

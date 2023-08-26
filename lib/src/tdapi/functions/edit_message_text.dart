@@ -37,17 +37,18 @@ final class EditMessageText extends TdFunction<Message> {
         if (extra != null) '@extra': extra,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   EditMessageText copyWith({
     int? chatId,
     int? messageId,
-    ReplyMarkup? replyMarkup,
+    ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
       EditMessageText(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        replyMarkup: replyMarkup ?? this.replyMarkup,
+        replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
 

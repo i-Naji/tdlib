@@ -169,16 +169,17 @@ final class User extends TdObject {
         'added_to_attachment_menu': addedToAttachmentMenu,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   User copyWith({
     int? id,
     String? firstName,
     String? lastName,
-    Usernames? usernames,
+    Usernames? Function()? usernames,
     String? phoneNumber,
     UserStatus? status,
-    ProfilePhoto? profilePhoto,
-    EmojiStatus? emojiStatus,
+    ProfilePhoto? Function()? profilePhoto,
+    EmojiStatus? Function()? emojiStatus,
     bool? isContact,
     bool? isMutualContact,
     bool? isCloseFriend,
@@ -201,11 +202,11 @@ final class User extends TdObject {
         id: id ?? this.id,
         firstName: firstName ?? this.firstName,
         lastName: lastName ?? this.lastName,
-        usernames: usernames ?? this.usernames,
+        usernames: usernames != null ? usernames() : this.usernames,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         status: status ?? this.status,
-        profilePhoto: profilePhoto ?? this.profilePhoto,
-        emojiStatus: emojiStatus ?? this.emojiStatus,
+        profilePhoto: profilePhoto != null ? profilePhoto() : this.profilePhoto,
+        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
         isContact: isContact ?? this.isContact,
         isMutualContact: isMutualContact ?? this.isMutualContact,
         isCloseFriend: isCloseFriend ?? this.isCloseFriend,

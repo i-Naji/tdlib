@@ -45,7 +45,8 @@ final class PassportElementsWithErrors extends TdObject {
         'errors': [for (final e in errors) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   PassportElementsWithErrors copyWith({
     List<PassportElement>? elements,
     List<PassportElementError>? errors,

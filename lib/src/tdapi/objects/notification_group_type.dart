@@ -58,7 +58,8 @@ final class NotificationGroupTypeMessages extends NotificationGroupType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationGroupTypeMessages copyWith() =>
       const NotificationGroupTypeMessages();
@@ -84,7 +85,8 @@ final class NotificationGroupTypeMentions extends NotificationGroupType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationGroupTypeMentions copyWith() =>
       const NotificationGroupTypeMentions();
@@ -110,7 +112,8 @@ final class NotificationGroupTypeSecretChat extends NotificationGroupType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationGroupTypeSecretChat copyWith() =>
       const NotificationGroupTypeSecretChat();
@@ -136,7 +139,8 @@ final class NotificationGroupTypeCalls extends NotificationGroupType {
         '@type': CONSTRUCTOR,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   NotificationGroupTypeCalls copyWith() => const NotificationGroupTypeCalls();
 

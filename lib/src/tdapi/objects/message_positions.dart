@@ -44,7 +44,8 @@ final class MessagePositions extends TdObject {
         'positions': [for (final e in positions) e.toJson()],
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   MessagePositions copyWith({
     int? totalCount,
     List<MessagePosition>? positions,

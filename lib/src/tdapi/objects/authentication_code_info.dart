@@ -56,11 +56,12 @@ final class AuthenticationCodeInfo extends TdObject {
         'timeout': timeout,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   AuthenticationCodeInfo copyWith({
     String? phoneNumber,
     AuthenticationCodeType? type,
-    AuthenticationCodeType? nextType,
+    AuthenticationCodeType? Function()? nextType,
     int? timeout,
     dynamic extra,
     int? clientId,
@@ -68,7 +69,7 @@ final class AuthenticationCodeInfo extends TdObject {
       AuthenticationCodeInfo(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         type: type ?? this.type,
-        nextType: nextType ?? this.nextType,
+        nextType: nextType != null ? nextType() : this.nextType,
         timeout: timeout ?? this.timeout,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

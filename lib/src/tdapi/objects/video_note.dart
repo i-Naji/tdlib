@@ -63,24 +63,27 @@ final class VideoNote extends TdObject {
         'video': video.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   VideoNote copyWith({
     int? duration,
     String? waveform,
     int? length,
-    Minithumbnail? minithumbnail,
-    Thumbnail? thumbnail,
-    SpeechRecognitionResult? speechRecognitionResult,
+    Minithumbnail? Function()? minithumbnail,
+    Thumbnail? Function()? thumbnail,
+    SpeechRecognitionResult? Function()? speechRecognitionResult,
     File? video,
   }) =>
       VideoNote(
         duration: duration ?? this.duration,
         waveform: waveform ?? this.waveform,
         length: length ?? this.length,
-        minithumbnail: minithumbnail ?? this.minithumbnail,
-        thumbnail: thumbnail ?? this.thumbnail,
-        speechRecognitionResult:
-            speechRecognitionResult ?? this.speechRecognitionResult,
+        minithumbnail:
+            minithumbnail != null ? minithumbnail() : this.minithumbnail,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+        speechRecognitionResult: speechRecognitionResult != null
+            ? speechRecognitionResult()
+            : this.speechRecognitionResult,
         video: video ?? this.video,
       );
 

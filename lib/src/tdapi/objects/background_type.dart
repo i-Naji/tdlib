@@ -70,7 +70,8 @@ final class BackgroundTypeWallpaper extends BackgroundType {
         'is_moving': isMoving,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundTypeWallpaper copyWith({
     bool? isBlurred,
@@ -128,7 +129,8 @@ final class BackgroundTypePattern extends BackgroundType {
         'is_moving': isMoving,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundTypePattern copyWith({
     BackgroundFill? fill,
@@ -172,7 +174,8 @@ final class BackgroundTypeFill extends BackgroundType {
         'fill': fill.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   BackgroundTypeFill copyWith({
     BackgroundFill? fill,

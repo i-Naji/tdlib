@@ -63,7 +63,8 @@ final class InputFileId extends InputFile {
         'id': id,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputFileId copyWith({
     int? id,
@@ -101,7 +102,8 @@ final class InputFileRemote extends InputFile {
         'id': id,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputFileRemote copyWith({
     String? id,
@@ -138,7 +140,8 @@ final class InputFileLocal extends InputFile {
         'path': path,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputFileLocal copyWith({
     String? path,
@@ -188,7 +191,8 @@ final class InputFileGenerated extends InputFile {
         'expected_size': expectedSize,
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputFileGenerated copyWith({
     String? originalPath,

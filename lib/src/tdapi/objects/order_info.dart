@@ -55,12 +55,13 @@ final class OrderInfo extends TdObject {
         'shipping_address': shippingAddress?.toJson(),
       };
 
-  /// Returns a copy with the given fields replaced.
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
   OrderInfo copyWith({
     String? name,
     String? phoneNumber,
     String? emailAddress,
-    Address? shippingAddress,
+    Address? Function()? shippingAddress,
     dynamic extra,
     int? clientId,
   }) =>
@@ -68,7 +69,8 @@ final class OrderInfo extends TdObject {
         name: name ?? this.name,
         phoneNumber: phoneNumber ?? this.phoneNumber,
         emailAddress: emailAddress ?? this.emailAddress,
-        shippingAddress: shippingAddress ?? this.shippingAddress,
+        shippingAddress:
+            shippingAddress != null ? shippingAddress() : this.shippingAddress,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
