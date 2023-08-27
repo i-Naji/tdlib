@@ -1,3 +1,15 @@
+## 1.8.16
+* Update tdlib to **1.8.16** (`cde095db6`), objects +33/−1/~5, functions +5/−1/~4.
+* Require Dart 3.
+* Rewrite the generator with a real `td_api.tl` parser, fixes cut docs and `VectorPathCommandCubicBezierCurve` fields.
+* Sealed type families and final classes.
+* Decode unknown types to `Undecoded<Family>` instead of empty objects.
+* Typed requests: `GetMe extends TdFunction<User>`.
+* Decode through `tdObjectFactories`, add `convertMapToObject`.
+* Send int64 values as strings, fix lists of int64.
+* **Breaking:** `copyWith` takes a function for nullable fields, `() => null` clears one.
+* Add `tdlibVersion` and `tdlibSchemaCommit`.
+
 ## 1.6.0
 * Update Flutter version
 * Update tdlib api to **1.8.15**

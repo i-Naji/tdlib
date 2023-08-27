@@ -33,7 +33,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   /// Identifier of the inline query
   final int queryId;
 
-  /// Identifier of the inline result
+  /// Identifier of the inline query result
   final String resultId;
 
   /// Pass true to hide the bot, via which the message is sent. Can be used only for bots getOption("animation_search_bot_username"), getOption("photo_search_bot_username"), and getOption("venue_search_bot_username")

@@ -9,9 +9,13 @@ part of '../tdapi.dart';
 final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
   /// Returns users and chats that were blocked by the current user
   const GetBlockedMessageSenders({
+    required this.blockList,
     required this.offset,
     required this.limit,
   });
+
+  /// Block list from which to return users
+  final BlockList blockList;
 
   /// Number of users and chats to skip in the result; must be non-negative
   final int offset;
@@ -22,6 +26,7 @@ final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'block_list': blockList.toJson(),
         'offset': offset,
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -30,10 +35,12 @@ final class GetBlockedMessageSenders extends TdFunction<MessageSenders> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetBlockedMessageSenders copyWith({
+    BlockList? blockList,
     int? offset,
     int? limit,
   }) =>
       GetBlockedMessageSenders(
+        blockList: blockList ?? this.blockList,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );

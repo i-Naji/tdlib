@@ -10,6 +10,7 @@ final class Story extends TdObject {
     required this.id,
     required this.senderChatId,
     required this.date,
+    required this.isBeingSent,
     required this.isBeingEdited,
     required this.isEdited,
     required this.isPinned,
@@ -19,8 +20,10 @@ final class Story extends TdObject {
     required this.canGetViewers,
     required this.hasExpiredViewers,
     this.interactionInfo,
+    this.chosenReactionType,
     required this.privacySettings,
     required this.content,
+    required this.areas,
     required this.caption,
     this.extra,
     this.clientId,
@@ -34,6 +37,9 @@ final class Story extends TdObject {
 
   /// Point in time (Unix timestamp) when the story was published
   final int date;
+
+  /// True, if the story is being sent by the current user
+  final bool isBeingSent;
 
   /// True, if the story is being edited by the current user
   final bool isBeingEdited;
@@ -62,11 +68,17 @@ final class Story extends TdObject {
   /// Information about interactions with the story; may be null if the story isn't owned or there were no interactions
   final StoryInteractionInfo? interactionInfo;
 
+  /// Type of the chosen reaction; may be null if none
+  final ReactionType? chosenReactionType;
+
   /// Privacy rules affecting story visibility; may be approximate for non-owned stories
   final StoryPrivacySettings privacySettings;
 
   /// Content of the story
   final StoryContent content;
+
+  /// Clickable areas to be shown on the story content
+  final List<StoryArea> areas;
 
   /// Caption of the story
   final FormattedText caption;
@@ -84,6 +96,7 @@ final class Story extends TdObject {
         id: _readInt(json['id']),
         senderChatId: _readInt(json['sender_chat_id']),
         date: _readInt(json['date']),
+        isBeingSent: _readBool(json['is_being_sent']),
         isBeingEdited: _readBool(json['is_being_edited']),
         isEdited: _readBool(json['is_edited']),
         isPinned: _readBool(json['is_pinned']),
@@ -94,9 +107,13 @@ final class Story extends TdObject {
         hasExpiredViewers: _readBool(json['has_expired_viewers']),
         interactionInfo: _readOptional(
             json['interaction_info'], StoryInteractionInfo.fromJson),
+        chosenReactionType:
+            _readOptional(json['chosen_reaction_type'], ReactionType.fromJson),
         privacySettings: _readObject(
             json['privacy_settings'], StoryPrivacySettings.fromJson),
         content: _readObject(json['content'], StoryContent.fromJson),
+        areas: _readList<StoryArea>(
+            json['areas'], (e) => _readObject(e, StoryArea.fromJson)),
         caption: _readObject(json['caption'], FormattedText.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -108,6 +125,7 @@ final class Story extends TdObject {
         'id': id,
         'sender_chat_id': senderChatId,
         'date': date,
+        'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
         'is_edited': isEdited,
         'is_pinned': isPinned,
@@ -117,8 +135,10 @@ final class Story extends TdObject {
         'can_get_viewers': canGetViewers,
         'has_expired_viewers': hasExpiredViewers,
         'interaction_info': interactionInfo?.toJson(),
+        'chosen_reaction_type': chosenReactionType?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'content': content.toJson(),
+        'areas': [for (final e in areas) e.toJson()],
         'caption': caption.toJson(),
       };
 
@@ -128,6 +148,7 @@ final class Story extends TdObject {
     int? id,
     int? senderChatId,
     int? date,
+    bool? isBeingSent,
     bool? isBeingEdited,
     bool? isEdited,
     bool? isPinned,
@@ -137,8 +158,10 @@ final class Story extends TdObject {
     bool? canGetViewers,
     bool? hasExpiredViewers,
     StoryInteractionInfo? Function()? interactionInfo,
+    ReactionType? Function()? chosenReactionType,
     StoryPrivacySettings? privacySettings,
     StoryContent? content,
+    List<StoryArea>? areas,
     FormattedText? caption,
     dynamic extra,
     int? clientId,
@@ -147,6 +170,7 @@ final class Story extends TdObject {
         id: id ?? this.id,
         senderChatId: senderChatId ?? this.senderChatId,
         date: date ?? this.date,
+        isBeingSent: isBeingSent ?? this.isBeingSent,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,
         isEdited: isEdited ?? this.isEdited,
         isPinned: isPinned ?? this.isPinned,
@@ -157,8 +181,12 @@ final class Story extends TdObject {
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
         interactionInfo:
             interactionInfo != null ? interactionInfo() : this.interactionInfo,
+        chosenReactionType: chosenReactionType != null
+            ? chosenReactionType()
+            : this.chosenReactionType,
         privacySettings: privacySettings ?? this.privacySettings,
         content: content ?? this.content,
+        areas: areas ?? this.areas,
         caption: caption ?? this.caption,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

@@ -28,7 +28,7 @@ final class GetInlineQueryResults extends TdFunction<InlineQueryResults> {
   /// Text of the query
   final String query;
 
-  /// Offset of the first entry to return
+  /// Offset of the first entry to return; use empty string to get the first chunk of results
   final String offset;
 
   @override

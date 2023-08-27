@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -312,9 +312,9 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A emoji status shown along with the user's name
+/// An emoji status shown along with the user's name
 final class PremiumFeatureEmojiStatus extends PremiumFeature {
-  /// A emoji status shown along with the user's name
+  /// An emoji status shown along with the user's name
   const PremiumFeatureEmojiStatus();
 
   /// Parses a [PremiumFeatureEmojiStatus] from TDLib JSON.
@@ -442,6 +442,33 @@ final class PremiumFeatureRealTimeChatTranslation extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureRealTimeChatTranslation';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Allowed to use many additional features for stories
+final class PremiumFeatureUpgradedStories extends PremiumFeature {
+  /// Allowed to use many additional features for stories
+  const PremiumFeatureUpgradedStories();
+
+  /// Parses a [PremiumFeatureUpgradedStories] from TDLib JSON.
+  factory PremiumFeatureUpgradedStories.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureUpgradedStories();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureUpgradedStories copyWith() =>
+      const PremiumFeatureUpgradedStories();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureUpgradedStories';
 
   @override
   String getConstructor() => CONSTRUCTOR;

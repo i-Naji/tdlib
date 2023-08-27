@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a source from which the Premium features screen is opened
 ///
-/// One of: [PremiumSourceLimitExceeded], [PremiumSourceFeature], [PremiumSourceLink], [PremiumSourceSettings]; or [UndecodedPremiumSource] for a type newer than this API.
+/// One of: [PremiumSourceLimitExceeded], [PremiumSourceFeature], [PremiumSourceStoryFeature], [PremiumSourceLink], [PremiumSourceSettings]; or [UndecodedPremiumSource] for a type newer than this API.
 sealed class PremiumSource extends TdObject {
   const PremiumSource();
 
@@ -115,6 +115,45 @@ final class PremiumSourceFeature extends PremiumSource {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceFeature';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A user tried to use a Premium story feature
+final class PremiumSourceStoryFeature extends PremiumSource {
+  /// A user tried to use a Premium story feature
+  const PremiumSourceStoryFeature({
+    required this.feature,
+  });
+
+  /// The used feature
+  final PremiumStoryFeature feature;
+
+  /// Parses a [PremiumSourceStoryFeature] from TDLib JSON.
+  factory PremiumSourceStoryFeature.fromJson(Map<String, dynamic> json) =>
+      PremiumSourceStoryFeature(
+        feature: _readObject(json['feature'], PremiumStoryFeature.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'feature': feature.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumSourceStoryFeature copyWith({
+    PremiumStoryFeature? feature,
+  }) =>
+      PremiumSourceStoryFeature(
+        feature: feature ?? this.feature,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumSourceStoryFeature';
 
   @override
   String getConstructor() => CONSTRUCTOR;

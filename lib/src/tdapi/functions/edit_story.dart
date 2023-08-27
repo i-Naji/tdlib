@@ -11,6 +11,7 @@ final class EditStory extends TdFunction<Ok> {
   const EditStory({
     required this.storyId,
     this.content,
+    this.areas,
     this.caption,
   });
 
@@ -20,6 +21,9 @@ final class EditStory extends TdFunction<Ok> {
   /// New content of the story; pass null to keep the current content
   final InputStoryContent? content;
 
+  /// New clickable rectangle areas to be shown on the story media; pass null to keep the current areas
+  final InputStoryAreas? areas;
+
   /// New story caption; pass null to keep the current caption
   final FormattedText? caption;
 
@@ -28,6 +32,7 @@ final class EditStory extends TdFunction<Ok> {
         '@type': CONSTRUCTOR,
         'story_id': storyId,
         'content': content?.toJson(),
+        'areas': areas?.toJson(),
         'caption': caption?.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -37,11 +42,13 @@ final class EditStory extends TdFunction<Ok> {
   EditStory copyWith({
     int? storyId,
     InputStoryContent? Function()? content,
+    InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
   }) =>
       EditStory(
         storyId: storyId ?? this.storyId,
         content: content != null ? content() : this.content,
+        areas: areas != null ? areas() : this.areas,
         caption: caption != null ? caption() : this.caption,
       );
 

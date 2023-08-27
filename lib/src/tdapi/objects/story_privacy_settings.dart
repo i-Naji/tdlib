@@ -47,22 +47,34 @@ final class UndecodedStoryPrivacySettings extends StoryPrivacySettings {
 /// The story can be viewed by everyone
 final class StoryPrivacySettingsEveryone extends StoryPrivacySettings {
   /// The story can be viewed by everyone
-  const StoryPrivacySettingsEveryone();
+  const StoryPrivacySettingsEveryone({
+    required this.exceptUserIds,
+  });
+
+  /// Identifiers of the users that can't see the story; always unknown and empty for non-owned stories
+  final List<int> exceptUserIds;
 
   /// Parses a [StoryPrivacySettingsEveryone] from TDLib JSON.
   factory StoryPrivacySettingsEveryone.fromJson(Map<String, dynamic> json) =>
-      const StoryPrivacySettingsEveryone();
+      StoryPrivacySettingsEveryone(
+        exceptUserIds: _readList<int>(json['except_user_ids'], _readInt),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'except_user_ids': exceptUserIds,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryPrivacySettingsEveryone copyWith() =>
-      const StoryPrivacySettingsEveryone();
+  StoryPrivacySettingsEveryone copyWith({
+    List<int>? exceptUserIds,
+  }) =>
+      StoryPrivacySettingsEveryone(
+        exceptUserIds: exceptUserIds ?? this.exceptUserIds,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyPrivacySettingsEveryone';
@@ -78,7 +90,7 @@ final class StoryPrivacySettingsContacts extends StoryPrivacySettings {
     required this.exceptUserIds,
   });
 
-  /// User identifiers of the contacts that can't see the story; always empty for non-owned stories
+  /// User identifiers of the contacts that can't see the story; always unknown and empty for non-owned stories
   final List<int> exceptUserIds;
 
   /// Parses a [StoryPrivacySettingsContacts] from TDLib JSON.
@@ -145,7 +157,7 @@ final class StoryPrivacySettingsSelectedContacts extends StoryPrivacySettings {
     required this.userIds,
   });
 
-  /// Identifiers of the users; always empty for non-owned stories
+  /// Identifiers of the users; always unknown and empty for non-owned stories
   final List<int> userIds;
 
   /// Parses a [StoryPrivacySettingsSelectedContacts] from TDLib JSON.

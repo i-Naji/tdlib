@@ -10,7 +10,7 @@ final class UserFullInfo extends TdObject {
     this.personalPhoto,
     this.photo,
     this.publicPhoto,
-    required this.isBlocked,
+    this.blockList,
     required this.canBeCalled,
     required this.supportsVideoCalls,
     required this.hasPrivateCalls,
@@ -35,8 +35,8 @@ final class UserFullInfo extends TdObject {
   /// User profile photo visible if the main photo is hidden by privacy settings; may be null. If null and user.profile_photo is null, then the photo is empty; otherwise, it is unknown. If non-null and both photo and personal_photo are null, then it is the same photo as in user.profile_photo and chat.photo. This photo isn't returned in the list of user photos
   final ChatPhoto? publicPhoto;
 
-  /// True, if the user is blocked by the current user
-  final bool isBlocked;
+  /// Block list to which the user is added; may be null if none
+  final BlockList? blockList;
 
   /// True, if the user can be called
   final bool canBeCalled;
@@ -85,7 +85,7 @@ final class UserFullInfo extends TdObject {
             _readOptional(json['personal_photo'], ChatPhoto.fromJson),
         photo: _readOptional(json['photo'], ChatPhoto.fromJson),
         publicPhoto: _readOptional(json['public_photo'], ChatPhoto.fromJson),
-        isBlocked: _readBool(json['is_blocked']),
+        blockList: _readOptional(json['block_list'], BlockList.fromJson),
         canBeCalled: _readBool(json['can_be_called']),
         supportsVideoCalls: _readBool(json['supports_video_calls']),
         hasPrivateCalls: _readBool(json['has_private_calls']),
@@ -111,7 +111,7 @@ final class UserFullInfo extends TdObject {
         'personal_photo': personalPhoto?.toJson(),
         'photo': photo?.toJson(),
         'public_photo': publicPhoto?.toJson(),
-        'is_blocked': isBlocked,
+        'block_list': blockList?.toJson(),
         'can_be_called': canBeCalled,
         'supports_video_calls': supportsVideoCalls,
         'has_private_calls': hasPrivateCalls,
@@ -134,7 +134,7 @@ final class UserFullInfo extends TdObject {
     ChatPhoto? Function()? personalPhoto,
     ChatPhoto? Function()? photo,
     ChatPhoto? Function()? publicPhoto,
-    bool? isBlocked,
+    BlockList? Function()? blockList,
     bool? canBeCalled,
     bool? supportsVideoCalls,
     bool? hasPrivateCalls,
@@ -154,7 +154,7 @@ final class UserFullInfo extends TdObject {
             personalPhoto != null ? personalPhoto() : this.personalPhoto,
         photo: photo != null ? photo() : this.photo,
         publicPhoto: publicPhoto != null ? publicPhoto() : this.publicPhoto,
-        isBlocked: isBlocked ?? this.isBlocked,
+        blockList: blockList != null ? blockList() : this.blockList,
         canBeCalled: canBeCalled ?? this.canBeCalled,
         supportsVideoCalls: supportsVideoCalls ?? this.supportsVideoCalls,
         hasPrivateCalls: hasPrivateCalls ?? this.hasPrivateCalls,

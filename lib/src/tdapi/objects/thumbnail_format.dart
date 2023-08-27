@@ -68,9 +68,9 @@ final class ThumbnailFormatJpeg extends ThumbnailFormat {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The thumbnail is in static GIF format. It will be used only for some bot inline results
+/// The thumbnail is in static GIF format. It will be used only for some bot inline query results
 final class ThumbnailFormatGif extends ThumbnailFormat {
-  /// The thumbnail is in static GIF format. It will be used only for some bot inline results
+  /// The thumbnail is in static GIF format. It will be used only for some bot inline query results
   const ThumbnailFormatGif();
 
   /// Parses a [ThumbnailFormatGif] from TDLib JSON.

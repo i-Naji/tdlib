@@ -3,43 +3,43 @@
 
 part of '../tdapi.dart';
 
-/// Changes the block state of a message sender. Currently, only users and supergroup chats can be blocked
+/// Changes the block list of a message sender. Currently, only users and supergroup chats can be blocked
 ///
 /// Returns [Ok].
-final class ToggleMessageSenderIsBlocked extends TdFunction<Ok> {
-  /// Changes the block state of a message sender. Currently, only users and supergroup chats can be blocked
-  const ToggleMessageSenderIsBlocked({
+final class SetMessageSenderBlockList extends TdFunction<Ok> {
+  /// Changes the block list of a message sender. Currently, only users and supergroup chats can be blocked
+  const SetMessageSenderBlockList({
     required this.senderId,
-    required this.isBlocked,
+    this.blockList,
   });
 
   /// Identifier of a message sender to block/unblock
   final MessageSender senderId;
 
-  /// New value of is_blocked
-  final bool isBlocked;
+  /// New block list for the message sender; pass null to unblock the message sender
+  final BlockList? blockList;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'sender_id': senderId.toJson(),
-        'is_blocked': isBlocked,
+        'block_list': blockList?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleMessageSenderIsBlocked copyWith({
+  SetMessageSenderBlockList copyWith({
     MessageSender? senderId,
-    bool? isBlocked,
+    BlockList? Function()? blockList,
   }) =>
-      ToggleMessageSenderIsBlocked(
+      SetMessageSenderBlockList(
         senderId: senderId ?? this.senderId,
-        isBlocked: isBlocked ?? this.isBlocked,
+        blockList: blockList != null ? blockList() : this.blockList,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'toggleMessageSenderIsBlocked';
+  static const String CONSTRUCTOR = 'setMessageSenderBlockList';
 
   @override
   String getConstructor() => CONSTRUCTOR;

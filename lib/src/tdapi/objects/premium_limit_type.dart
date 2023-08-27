@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a limit, increased for Premium users
 ///
-/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
+/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklySentStoryCount], [PremiumLimitTypeMonthlySentStoryCount], [PremiumLimitTypeStoryCaptionLength]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
@@ -397,6 +397,90 @@ final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumLimitTypeActiveStoryCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum number of stories sent per week
+final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
+  /// The maximum number of stories sent per week
+  const PremiumLimitTypeWeeklySentStoryCount();
+
+  /// Parses a [PremiumLimitTypeWeeklySentStoryCount] from TDLib JSON.
+  factory PremiumLimitTypeWeeklySentStoryCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeWeeklySentStoryCount();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeWeeklySentStoryCount copyWith() =>
+      const PremiumLimitTypeWeeklySentStoryCount();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumLimitTypeWeeklySentStoryCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum number of stories sent per month
+final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
+  /// The maximum number of stories sent per month
+  const PremiumLimitTypeMonthlySentStoryCount();
+
+  /// Parses a [PremiumLimitTypeMonthlySentStoryCount] from TDLib JSON.
+  factory PremiumLimitTypeMonthlySentStoryCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeMonthlySentStoryCount();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeMonthlySentStoryCount copyWith() =>
+      const PremiumLimitTypeMonthlySentStoryCount();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumLimitTypeMonthlySentStoryCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum length of captions of sent stories
+final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
+  /// The maximum length of captions of sent stories
+  const PremiumLimitTypeStoryCaptionLength();
+
+  /// Parses a [PremiumLimitTypeStoryCaptionLength] from TDLib JSON.
+  factory PremiumLimitTypeStoryCaptionLength.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeStoryCaptionLength();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeStoryCaptionLength copyWith() =>
+      const PremiumLimitTypeStoryCaptionLength();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumLimitTypeStoryCaptionLength';
 
   @override
   String getConstructor() => CONSTRUCTOR;

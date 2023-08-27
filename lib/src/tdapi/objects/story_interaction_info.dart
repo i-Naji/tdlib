@@ -8,11 +8,15 @@ final class StoryInteractionInfo extends TdObject {
   /// Contains information about interactions with a story
   const StoryInteractionInfo({
     required this.viewCount,
+    required this.reactionCount,
     required this.recentViewerUserIds,
   });
 
   /// Number of times the story was viewed
   final int viewCount;
+
+  /// Number of reactions added to the story
+  final int reactionCount;
 
   /// Identifiers of at most 3 recent viewers of the story
   final List<int> recentViewerUserIds;
@@ -21,6 +25,7 @@ final class StoryInteractionInfo extends TdObject {
   factory StoryInteractionInfo.fromJson(Map<String, dynamic> json) =>
       StoryInteractionInfo(
         viewCount: _readInt(json['view_count']),
+        reactionCount: _readInt(json['reaction_count']),
         recentViewerUserIds:
             _readList<int>(json['recent_viewer_user_ids'], _readInt),
       );
@@ -29,6 +34,7 @@ final class StoryInteractionInfo extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'view_count': viewCount,
+        'reaction_count': reactionCount,
         'recent_viewer_user_ids': recentViewerUserIds,
       };
 
@@ -36,10 +42,12 @@ final class StoryInteractionInfo extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   StoryInteractionInfo copyWith({
     int? viewCount,
+    int? reactionCount,
     List<int>? recentViewerUserIds,
   }) =>
       StoryInteractionInfo(
         viewCount: viewCount ?? this.viewCount,
+        reactionCount: reactionCount ?? this.reactionCount,
         recentViewerUserIds: recentViewerUserIds ?? this.recentViewerUserIds,
       );
 

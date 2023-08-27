@@ -3,13 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Sends a new story. Returns a temporary story with identifier 0
+/// Sends a new story. Returns a temporary story
 ///
 /// Returns [Story].
 final class SendStory extends TdFunction<Story> {
-  /// Sends a new story. Returns a temporary story with identifier 0
+  /// Sends a new story. Returns a temporary story
   const SendStory({
     required this.content,
+    this.areas,
     this.caption,
     required this.privacySettings,
     required this.activePeriod,
@@ -20,13 +21,16 @@ final class SendStory extends TdFunction<Story> {
   /// Content of the story
   final InputStoryContent content;
 
+  /// Clickable rectangle areas to be shown on the story media; pass null if none
+  final InputStoryAreas? areas;
+
   /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
   final FormattedText? caption;
 
   /// The privacy settings for the story
   final StoryPrivacySettings privacySettings;
 
-  /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, 2 * 86400, 3 * 86400, or 7 * 86400 for Telegram Premium users, and 86400 otherwise
+  /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   final int activePeriod;
 
   /// Pass true to keep the story accessible after expiration
@@ -39,6 +43,7 @@ final class SendStory extends TdFunction<Story> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'content': content.toJson(),
+        'areas': areas?.toJson(),
         'caption': caption?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
@@ -51,6 +56,7 @@ final class SendStory extends TdFunction<Story> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendStory copyWith({
     InputStoryContent? content,
+    InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
@@ -59,6 +65,7 @@ final class SendStory extends TdFunction<Story> {
   }) =>
       SendStory(
         content: content ?? this.content,
+        areas: areas != null ? areas() : this.areas,
         caption: caption != null ? caption() : this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,

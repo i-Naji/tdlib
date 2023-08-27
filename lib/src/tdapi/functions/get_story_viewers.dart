@@ -3,31 +3,46 @@
 
 part of '../tdapi.dart';
 
-/// Returns viewers of a recent outgoing story. The method can be called if story.can_get_viewers == true. The views are returned in a reverse chronological order (i.e., in order of decreasing view_date) For optimal performance, the number of returned stories is chosen by TDLib
+/// Returns viewers of a story. The method can be called if story.can_get_viewers == true
 ///
-/// Returns [MessageViewers].
-final class GetStoryViewers extends TdFunction<MessageViewers> {
-  /// Returns viewers of a recent outgoing story. The method can be called if story.can_get_viewers == true. The views are returned in a reverse chronological order (i.e., in order of decreasing view_date) For optimal performance, the number of returned stories is chosen by TDLib
+/// Returns [StoryViewers].
+final class GetStoryViewers extends TdFunction<StoryViewers> {
+  /// Returns viewers of a story. The method can be called if story.can_get_viewers == true
   const GetStoryViewers({
     required this.storyId,
-    this.offsetViewer,
+    required this.query,
+    required this.onlyContacts,
+    required this.preferWithReaction,
+    required this.offset,
     required this.limit,
   });
 
   /// Story identifier
   final int storyId;
 
-  /// A viewer from which to return next viewers; pass null to get results from the beginning
-  final MessageViewer? offsetViewer;
+  /// Query to search for in names and usernames of the viewers; may be empty to get all relevant viewers
+  final String query;
 
-  /// The maximum number of story viewers to return For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
+  /// Pass true to get only contacts; pass false to get all relevant viewers
+  final bool onlyContacts;
+
+  /// Pass true to get viewers with reaction first; pass false to get viewers sorted just by view_date
+  final bool preferWithReaction;
+
+  /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
+  final String offset;
+
+  /// The maximum number of story viewers to return
   final int limit;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'story_id': storyId,
-        'offset_viewer': offsetViewer?.toJson(),
+        'query': query,
+        'only_contacts': onlyContacts,
+        'prefer_with_reaction': preferWithReaction,
+        'offset': offset,
         'limit': limit,
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +51,18 @@ final class GetStoryViewers extends TdFunction<MessageViewers> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetStoryViewers copyWith({
     int? storyId,
-    MessageViewer? Function()? offsetViewer,
+    String? query,
+    bool? onlyContacts,
+    bool? preferWithReaction,
+    String? offset,
     int? limit,
   }) =>
       GetStoryViewers(
         storyId: storyId ?? this.storyId,
-        offsetViewer: offsetViewer != null ? offsetViewer() : this.offsetViewer,
+        query: query ?? this.query,
+        onlyContacts: onlyContacts ?? this.onlyContacts,
+        preferWithReaction: preferWithReaction ?? this.preferWithReaction,
+        offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
 

@@ -15,10 +15,10 @@ final class Chat extends TdObject {
     this.lastMessage,
     required this.positions,
     this.messageSenderId,
+    this.blockList,
     required this.hasProtectedContent,
     required this.isTranslatable,
     required this.isMarkedAsUnread,
-    required this.isBlocked,
     required this.hasScheduledMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -68,6 +68,9 @@ final class Chat extends TdObject {
   /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
   final MessageSender? messageSenderId;
 
+  /// Block list to which the chat is added; may be null if none
+  final BlockList? blockList;
+
   /// True, if chat content can't be saved locally, forwarded, or copied
   final bool hasProtectedContent;
 
@@ -76,9 +79,6 @@ final class Chat extends TdObject {
 
   /// True, if the chat is marked as unread
   final bool isMarkedAsUnread;
-
-  /// True, if the chat is blocked by the current user and private messages from the chat can't be received
-  final bool isBlocked;
 
   /// True, if the chat has scheduled messages
   final bool hasScheduledMessages;
@@ -163,10 +163,10 @@ final class Chat extends TdObject {
             json['positions'], (e) => _readObject(e, ChatPosition.fromJson)),
         messageSenderId:
             _readOptional(json['message_sender_id'], MessageSender.fromJson),
+        blockList: _readOptional(json['block_list'], BlockList.fromJson),
         hasProtectedContent: _readBool(json['has_protected_content']),
         isTranslatable: _readBool(json['is_translatable']),
         isMarkedAsUnread: _readBool(json['is_marked_as_unread']),
-        isBlocked: _readBool(json['is_blocked']),
         hasScheduledMessages: _readBool(json['has_scheduled_messages']),
         canBeDeletedOnlyForSelf:
             _readBool(json['can_be_deleted_only_for_self']),
@@ -210,10 +210,10 @@ final class Chat extends TdObject {
         'last_message': lastMessage?.toJson(),
         'positions': [for (final e in positions) e.toJson()],
         'message_sender_id': messageSenderId?.toJson(),
+        'block_list': blockList?.toJson(),
         'has_protected_content': hasProtectedContent,
         'is_translatable': isTranslatable,
         'is_marked_as_unread': isMarkedAsUnread,
-        'is_blocked': isBlocked,
         'has_scheduled_messages': hasScheduledMessages,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -248,10 +248,10 @@ final class Chat extends TdObject {
     Message? Function()? lastMessage,
     List<ChatPosition>? positions,
     MessageSender? Function()? messageSenderId,
+    BlockList? Function()? blockList,
     bool? hasProtectedContent,
     bool? isTranslatable,
     bool? isMarkedAsUnread,
-    bool? isBlocked,
     bool? hasScheduledMessages,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -286,10 +286,10 @@ final class Chat extends TdObject {
         positions: positions ?? this.positions,
         messageSenderId:
             messageSenderId != null ? messageSenderId() : this.messageSenderId,
+        blockList: blockList != null ? blockList() : this.blockList,
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
         isTranslatable: isTranslatable ?? this.isTranslatable,
         isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
-        isBlocked: isBlocked ?? this.isBlocked,
         hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
