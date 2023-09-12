@@ -25,6 +25,7 @@ part 'functions/add_recently_found_chat.dart';
 part 'functions/add_saved_animation.dart';
 part 'functions/add_saved_notification_sound.dart';
 part 'functions/add_sticker_to_set.dart';
+part 'functions/allow_bot_to_send_messages.dart';
 part 'functions/answer_callback_query.dart';
 part 'functions/answer_custom_query.dart';
 part 'functions/answer_inline_query.dart';
@@ -35,6 +36,7 @@ part 'functions/assign_app_store_transaction.dart';
 part 'functions/assign_google_play_transaction.dart';
 part 'functions/ban_chat_member.dart';
 part 'functions/block_message_sender_from_replies.dart';
+part 'functions/can_bot_send_messages.dart';
 part 'functions/can_purchase_premium.dart';
 part 'functions/can_send_story.dart';
 part 'functions/can_transfer_ownership.dart';
@@ -151,6 +153,7 @@ part 'functions/get_account_ttl.dart';
 part 'functions/get_active_live_location_messages.dart';
 part 'functions/get_active_sessions.dart';
 part 'functions/get_all_passport_elements.dart';
+part 'functions/get_all_sticker_emojis.dart';
 part 'functions/get_animated_emoji.dart';
 part 'functions/get_application_config.dart';
 part 'functions/get_application_download_link.dart';
@@ -460,6 +463,7 @@ part 'functions/search_secret_messages.dart';
 part 'functions/search_sticker_set.dart';
 part 'functions/search_sticker_sets.dart';
 part 'functions/search_stickers.dart';
+part 'functions/search_strings_by_prefix.dart';
 part 'functions/search_user_by_phone_number.dart';
 part 'functions/search_user_by_token.dart';
 part 'functions/search_web_app.dart';
@@ -480,6 +484,7 @@ part 'functions/send_payment_form.dart';
 part 'functions/send_phone_number_confirmation_code.dart';
 part 'functions/send_phone_number_verification_code.dart';
 part 'functions/send_story.dart';
+part 'functions/send_web_app_custom_request.dart';
 part 'functions/send_web_app_data.dart';
 part 'functions/set_account_ttl.dart';
 part 'functions/set_alarm.dart';
@@ -787,6 +792,7 @@ part 'objects/forum_topics.dart';
 part 'objects/found_chat_messages.dart';
 part 'objects/found_file_downloads.dart';
 part 'objects/found_messages.dart';
+part 'objects/found_positions.dart';
 part 'objects/found_web_app.dart';
 part 'objects/game.dart';
 part 'objects/game_high_score.dart';
@@ -1051,14 +1057,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.16';
+const String tdlibVersion = '1.8.17';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'cde095db6c75827fe4bd237039574aad373ad96b';
+const String tdlibSchemaCommit = 'edc528457f109c188a909ffa07ad73539d3cbf02';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'cde095db6c75827fe4bd237039574aad373ad96b',
+  'edc528457f109c188a909ffa07ad73539d3cbf02',
 ];
 
 /// Base class of every TDLib object.
@@ -1783,6 +1789,30 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'emojiCategoryTypeDefault': EmojiCategoryTypeDefault.fromJson,
   'emojiCategoryTypeEmojiStatus': EmojiCategoryTypeEmojiStatus.fromJson,
   'emojiCategoryTypeChatPhoto': EmojiCategoryTypeChatPhoto.fromJson,
+  'storyViewer': StoryViewer.fromJson,
+  'storyViewers': StoryViewers.fromJson,
+  'storyAreaPosition': StoryAreaPosition.fromJson,
+  'storyAreaTypeLocation': StoryAreaTypeLocation.fromJson,
+  'storyAreaTypeVenue': StoryAreaTypeVenue.fromJson,
+  'storyArea': StoryArea.fromJson,
+  'inputStoryAreaTypeLocation': InputStoryAreaTypeLocation.fromJson,
+  'inputStoryAreaTypeFoundVenue': InputStoryAreaTypeFoundVenue.fromJson,
+  'inputStoryAreaTypePreviousVenue': InputStoryAreaTypePreviousVenue.fromJson,
+  'inputStoryArea': InputStoryArea.fromJson,
+  'inputStoryAreas': InputStoryAreas.fromJson,
+  'storyVideo': StoryVideo.fromJson,
+  'storyContentPhoto': StoryContentPhoto.fromJson,
+  'storyContentVideo': StoryContentVideo.fromJson,
+  'storyContentUnsupported': StoryContentUnsupported.fromJson,
+  'inputStoryContentPhoto': InputStoryContentPhoto.fromJson,
+  'inputStoryContentVideo': InputStoryContentVideo.fromJson,
+  'storyListMain': StoryListMain.fromJson,
+  'storyListArchive': StoryListArchive.fromJson,
+  'storyInteractionInfo': StoryInteractionInfo.fromJson,
+  'story': Story.fromJson,
+  'stories': Stories.fromJson,
+  'storyInfo': StoryInfo.fromJson,
+  'chatActiveStories': ChatActiveStories.fromJson,
   'callDiscardReasonEmpty': CallDiscardReasonEmpty.fromJson,
   'callDiscardReasonMissed': CallDiscardReasonMissed.fromJson,
   'callDiscardReasonDeclined': CallDiscardReasonDeclined.fromJson,
@@ -2269,30 +2299,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeWebApp': InternalLinkTypeWebApp.fromJson,
   'messageLink': MessageLink.fromJson,
   'messageLinkInfo': MessageLinkInfo.fromJson,
-  'storyViewer': StoryViewer.fromJson,
-  'storyViewers': StoryViewers.fromJson,
-  'storyAreaPosition': StoryAreaPosition.fromJson,
-  'storyAreaTypeLocation': StoryAreaTypeLocation.fromJson,
-  'storyAreaTypeVenue': StoryAreaTypeVenue.fromJson,
-  'storyArea': StoryArea.fromJson,
-  'inputStoryAreaTypeLocation': InputStoryAreaTypeLocation.fromJson,
-  'inputStoryAreaTypeFoundVenue': InputStoryAreaTypeFoundVenue.fromJson,
-  'inputStoryAreaTypePreviousVenue': InputStoryAreaTypePreviousVenue.fromJson,
-  'inputStoryArea': InputStoryArea.fromJson,
-  'inputStoryAreas': InputStoryAreas.fromJson,
-  'storyVideo': StoryVideo.fromJson,
-  'storyContentPhoto': StoryContentPhoto.fromJson,
-  'storyContentVideo': StoryContentVideo.fromJson,
-  'storyContentUnsupported': StoryContentUnsupported.fromJson,
-  'inputStoryContentPhoto': InputStoryContentPhoto.fromJson,
-  'inputStoryContentVideo': InputStoryContentVideo.fromJson,
-  'storyListMain': StoryListMain.fromJson,
-  'storyListArchive': StoryListArchive.fromJson,
-  'storyInteractionInfo': StoryInteractionInfo.fromJson,
-  'story': Story.fromJson,
-  'stories': Stories.fromJson,
-  'storyInfo': StoryInfo.fromJson,
-  'chatActiveStories': ChatActiveStories.fromJson,
   'blockListMain': BlockListMain.fromJson,
   'blockListStories': BlockListStories.fromJson,
   'filePart': FilePart.fromJson,
@@ -2351,6 +2357,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'topChatCategoryInlineBots': TopChatCategoryInlineBots.fromJson,
   'topChatCategoryCalls': TopChatCategoryCalls.fromJson,
   'topChatCategoryForwardChats': TopChatCategoryForwardChats.fromJson,
+  'foundPositions': FoundPositions.fromJson,
   'tMeUrlTypeUser': TMeUrlTypeUser.fromJson,
   'tMeUrlTypeSupergroup': TMeUrlTypeSupergroup.fromJson,
   'tMeUrlTypeChatInvite': TMeUrlTypeChatInvite.fromJson,

@@ -2682,21 +2682,27 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
   /// The user allowed the bot to send messages
   const MessageBotWriteAccessAllowed({
     this.webApp,
+    required this.byRequest,
   });
 
   /// Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu
   final WebApp? webApp;
 
+  /// True, if user allowed the bot to send messages by an explicit call to allowBotToSendMessages
+  final bool byRequest;
+
   /// Parses a [MessageBotWriteAccessAllowed] from TDLib JSON.
   factory MessageBotWriteAccessAllowed.fromJson(Map<String, dynamic> json) =>
       MessageBotWriteAccessAllowed(
         webApp: _readOptional(json['web_app'], WebApp.fromJson),
+        byRequest: _readBool(json['by_request']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'web_app': webApp?.toJson(),
+        'by_request': byRequest,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2704,9 +2710,11 @@ final class MessageBotWriteAccessAllowed extends MessageContent {
   @override
   MessageBotWriteAccessAllowed copyWith({
     WebApp? Function()? webApp,
+    bool? byRequest,
   }) =>
       MessageBotWriteAccessAllowed(
         webApp: webApp != null ? webApp() : this.webApp,
+        byRequest: byRequest ?? this.byRequest,
       );
 
   /// TDLib type name.

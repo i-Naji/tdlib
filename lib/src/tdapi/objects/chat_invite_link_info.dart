@@ -17,6 +17,9 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.memberUserIds,
     required this.createsJoinRequest,
     required this.isPublic,
+    required this.isVerified,
+    required this.isScam,
+    required this.isFake,
     this.extra,
     this.clientId,
   });
@@ -51,6 +54,15 @@ final class ChatInviteLinkInfo extends TdObject {
   /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   final bool isPublic;
 
+  /// True, if the chat is verified
+  final bool isVerified;
+
+  /// True, if many users reported this chat as a scam
+  final bool isScam;
+
+  /// True, if many users reported this chat as a fake account
+  final bool isFake;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -72,6 +84,9 @@ final class ChatInviteLinkInfo extends TdObject {
         memberUserIds: _readList<int>(json['member_user_ids'], _readInt),
         createsJoinRequest: _readBool(json['creates_join_request']),
         isPublic: _readBool(json['is_public']),
+        isVerified: _readBool(json['is_verified']),
+        isScam: _readBool(json['is_scam']),
+        isFake: _readBool(json['is_fake']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -89,6 +104,9 @@ final class ChatInviteLinkInfo extends TdObject {
         'member_user_ids': memberUserIds,
         'creates_join_request': createsJoinRequest,
         'is_public': isPublic,
+        'is_verified': isVerified,
+        'is_scam': isScam,
+        'is_fake': isFake,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -104,6 +122,9 @@ final class ChatInviteLinkInfo extends TdObject {
     List<int>? memberUserIds,
     bool? createsJoinRequest,
     bool? isPublic,
+    bool? isVerified,
+    bool? isScam,
+    bool? isFake,
     dynamic extra,
     int? clientId,
   }) =>
@@ -118,6 +139,9 @@ final class ChatInviteLinkInfo extends TdObject {
         memberUserIds: memberUserIds ?? this.memberUserIds,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
         isPublic: isPublic ?? this.isPublic,
+        isVerified: isVerified ?? this.isVerified,
+        isScam: isScam ?? this.isScam,
+        isFake: isFake ?? this.isFake,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

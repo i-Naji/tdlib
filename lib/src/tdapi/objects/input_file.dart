@@ -42,9 +42,9 @@ final class UndecodedInputFile extends InputFile {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// A file defined by its unique ID
+/// A file defined by its unique identifier
 final class InputFileId extends InputFile {
-  /// A file defined by its unique ID
+  /// A file defined by its unique identifier
   const InputFileId({
     required this.id,
   });
@@ -80,9 +80,9 @@ final class InputFileId extends InputFile {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A file defined by its remote ID. The remote ID is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
+/// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
 final class InputFileRemote extends InputFile {
-  /// A file defined by its remote ID. The remote ID is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
+  /// A file defined by its remote identifier. The remote identifier is guaranteed to be usable only if the corresponding file is still accessible to the user and known to TDLib. For example, if the file is from a message, then the message must be not deleted and accessible to the user. If the file database is disabled, then the corresponding object with the file must be preloaded by the application
   const InputFileRemote({
     required this.id,
   });

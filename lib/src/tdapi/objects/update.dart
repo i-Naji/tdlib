@@ -3012,10 +3012,10 @@ final class UpdateNotificationGroup extends Update {
   /// Total number of unread notifications in the group, can be bigger than number of active notifications
   final int totalCount;
 
-  /// List of added group notifications, sorted by notification ID
+  /// List of added group notifications, sorted by notification identifier
   final List<Notification> addedNotifications;
 
-  /// Identifiers of removed group notifications, sorted by notification ID
+  /// Identifiers of removed group notifications, sorted by notification identifier
   final List<int> removedNotificationIds;
 
   /// "@extra" of the request this object answers.

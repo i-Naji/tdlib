@@ -8,6 +8,7 @@ final class StoryViewers extends TdObject {
   /// Represents a list of story viewers
   const StoryViewers({
     required this.totalCount,
+    required this.totalReactionCount,
     required this.viewers,
     required this.nextOffset,
     this.extra,
@@ -16,6 +17,9 @@ final class StoryViewers extends TdObject {
 
   /// Approximate total number of story viewers found
   final int totalCount;
+
+  /// Approximate total number of reactions set by found story viewers
+  final int totalReactionCount;
 
   /// List of story viewers
   final List<StoryViewer> viewers;
@@ -34,6 +38,7 @@ final class StoryViewers extends TdObject {
   /// Parses a [StoryViewers] from TDLib JSON.
   factory StoryViewers.fromJson(Map<String, dynamic> json) => StoryViewers(
         totalCount: _readInt(json['total_count']),
+        totalReactionCount: _readInt(json['total_reaction_count']),
         viewers: _readList<StoryViewer>(
             json['viewers'], (e) => _readObject(e, StoryViewer.fromJson)),
         nextOffset: _readString(json['next_offset']),
@@ -45,6 +50,7 @@ final class StoryViewers extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'total_count': totalCount,
+        'total_reaction_count': totalReactionCount,
         'viewers': [for (final e in viewers) e.toJson()],
         'next_offset': nextOffset,
       };
@@ -53,6 +59,7 @@ final class StoryViewers extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   StoryViewers copyWith({
     int? totalCount,
+    int? totalReactionCount,
     List<StoryViewer>? viewers,
     String? nextOffset,
     dynamic extra,
@@ -60,6 +67,7 @@ final class StoryViewers extends TdObject {
   }) =>
       StoryViewers(
         totalCount: totalCount ?? this.totalCount,
+        totalReactionCount: totalReactionCount ?? this.totalReactionCount,
         viewers: viewers ?? this.viewers,
         nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,

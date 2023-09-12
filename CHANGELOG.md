@@ -1,3 +1,6 @@
+## 1.8.17
+* Update tdlib to **1.8.17** (`edc528457`), objects +1/−0/~3, functions +5/−0/~0.
+
 ## 1.8.16
 * Update tdlib to **1.8.16** (`cde095db6`), objects +33/−1/~5, functions +5/−1/~4.
 * Require Dart 3.

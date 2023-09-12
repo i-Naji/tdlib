@@ -13,7 +13,7 @@ final class SetCustomLanguagePack extends TdFunction<Ok> {
     required this.strings,
   });
 
-  /// Information about the language pack. Language pack ID must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
+  /// Information about the language pack. Language pack identifier must start with 'X', consist only of English letters, digits and hyphens, and must not exceed 64 characters. Can be called before authorization
   final LanguagePackInfo info;
 
   /// Strings of the new language pack

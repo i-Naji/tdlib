@@ -10,7 +10,7 @@ final class InputStoryAreas extends TdObject {
     required this.areas,
   });
 
-  /// List of input story areas
+  /// List of 0-10 input story areas
   final List<InputStoryArea> areas;
 
   /// Parses a [InputStoryAreas] from TDLib JSON.

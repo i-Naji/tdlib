@@ -21,7 +21,7 @@ final class EditStory extends TdFunction<Ok> {
   /// New content of the story; pass null to keep the current content
   final InputStoryContent? content;
 
-  /// New clickable rectangle areas to be shown on the story media; pass null to keep the current areas
+  /// New clickable rectangle areas to be shown on the story media; pass null to keep the current areas. Areas can't be edited if story content isn't changed
   final InputStoryAreas? areas;
 
   /// New story caption; pass null to keep the current caption
