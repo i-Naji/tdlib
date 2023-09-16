@@ -19,7 +19,7 @@ final class EditProxy extends TdFunction<Proxy> {
   /// Proxy identifier
   final int proxyId;
 
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port

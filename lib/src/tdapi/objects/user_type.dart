@@ -125,7 +125,7 @@ final class UserTypeBot extends UserType {
   /// True, if the location of the user is expected to be sent with every inline query to this bot
   final bool needLocation;
 
-  /// True, if the bot can be added to attachment menu
+  /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
 
   /// Parses a [UserTypeBot] from TDLib JSON.

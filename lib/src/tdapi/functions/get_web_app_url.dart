@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed
+/// Returns an HTTPS URL of a Web App to open from the side menu, a keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp button, or an internalLinkTypeSideMenuBot link
 ///
 /// Returns [HttpUrl].
 final class GetWebAppUrl extends TdFunction<HttpUrl> {
-  /// Returns an HTTPS URL of a Web App to open after keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button is pressed
+  /// Returns an HTTPS URL of a Web App to open from the side menu, a keyboardButtonTypeWebApp button, an inlineQueryResultsButtonTypeWebApp button, or an internalLinkTypeSideMenuBot link
   const GetWebAppUrl({
     required this.botUserId,
     required this.url,
@@ -18,7 +18,7 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
   /// Identifier of the target bot
   final int botUserId;
 
-  /// The URL from the keyboardButtonTypeWebApp or inlineQueryResultsButtonTypeWebApp button
+  /// The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, an internalLinkTypeSideMenuBot link, or an empty when the bot is opened from the side menu
   final String url;
 
   /// Preferred Web App theme; pass null to use the default theme

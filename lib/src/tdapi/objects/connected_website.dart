@@ -14,7 +14,7 @@ final class ConnectedWebsite extends TdObject {
     required this.platform,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
+    required this.ipAddress,
     required this.location,
   });
 
@@ -40,7 +40,7 @@ final class ConnectedWebsite extends TdObject {
   final int lastActiveDate;
 
   /// IP address from which the user was logged in, in human-readable format
-  final String ip;
+  final String ipAddress;
 
   /// Human-readable description of a country and a region from which the user was logged in, based on the IP address
   final String location;
@@ -55,7 +55,7 @@ final class ConnectedWebsite extends TdObject {
         platform: _readString(json['platform']),
         logInDate: _readInt(json['log_in_date']),
         lastActiveDate: _readInt(json['last_active_date']),
-        ip: _readString(json['ip']),
+        ipAddress: _readString(json['ip_address']),
         location: _readString(json['location']),
       );
 
@@ -69,7 +69,7 @@ final class ConnectedWebsite extends TdObject {
         'platform': platform,
         'log_in_date': logInDate,
         'last_active_date': lastActiveDate,
-        'ip': ip,
+        'ip_address': ipAddress,
         'location': location,
       };
 
@@ -83,7 +83,7 @@ final class ConnectedWebsite extends TdObject {
     String? platform,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
+    String? ipAddress,
     String? location,
   }) =>
       ConnectedWebsite(
@@ -94,7 +94,7 @@ final class ConnectedWebsite extends TdObject {
         platform: platform ?? this.platform,
         logInDate: logInDate ?? this.logInDate,
         lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ip: ip ?? this.ip,
+        ipAddress: ipAddress ?? this.ipAddress,
         location: location ?? this.location,
       );
 

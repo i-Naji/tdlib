@@ -10,6 +10,7 @@ final class Session extends TdObject {
     required this.id,
     required this.isCurrent,
     required this.isPasswordPending,
+    required this.isUnconfirmed,
     required this.canAcceptSecretChats,
     required this.canAcceptCalls,
     required this.type,
@@ -22,9 +23,8 @@ final class Session extends TdObject {
     required this.systemVersion,
     required this.logInDate,
     required this.lastActiveDate,
-    required this.ip,
-    required this.country,
-    required this.region,
+    required this.ipAddress,
+    required this.location,
     this.extra,
     this.clientId,
   });
@@ -37,6 +37,9 @@ final class Session extends TdObject {
 
   /// True, if a 2-step verification password is needed to complete authorization of the session
   final bool isPasswordPending;
+
+  /// True, if the session wasn't confirmed from another session
+  final bool isUnconfirmed;
 
   /// True, if incoming secret chats can be accepted by the session
   final bool canAcceptSecretChats;
@@ -75,13 +78,10 @@ final class Session extends TdObject {
   final int lastActiveDate;
 
   /// IP address from which the session was created, in human-readable format
-  final String ip;
+  final String ipAddress;
 
-  /// A two-letter country code for the country from which the session was created, based on the IP address
-  final String country;
-
-  /// Region code from which the session was created, based on the IP address
-  final String region;
+  /// A human-readable description of the location from which the session was created, based on the IP address
+  final String location;
 
   /// "@extra" of the request this object answers.
   @override
@@ -96,6 +96,7 @@ final class Session extends TdObject {
         id: _readInt(json['id']),
         isCurrent: _readBool(json['is_current']),
         isPasswordPending: _readBool(json['is_password_pending']),
+        isUnconfirmed: _readBool(json['is_unconfirmed']),
         canAcceptSecretChats: _readBool(json['can_accept_secret_chats']),
         canAcceptCalls: _readBool(json['can_accept_calls']),
         type: _readObject(json['type'], SessionType.fromJson),
@@ -108,9 +109,8 @@ final class Session extends TdObject {
         systemVersion: _readString(json['system_version']),
         logInDate: _readInt(json['log_in_date']),
         lastActiveDate: _readInt(json['last_active_date']),
-        ip: _readString(json['ip']),
-        country: _readString(json['country']),
-        region: _readString(json['region']),
+        ipAddress: _readString(json['ip_address']),
+        location: _readString(json['location']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -121,6 +121,7 @@ final class Session extends TdObject {
         'id': id.toString(),
         'is_current': isCurrent,
         'is_password_pending': isPasswordPending,
+        'is_unconfirmed': isUnconfirmed,
         'can_accept_secret_chats': canAcceptSecretChats,
         'can_accept_calls': canAcceptCalls,
         'type': type.toJson(),
@@ -133,9 +134,8 @@ final class Session extends TdObject {
         'system_version': systemVersion,
         'log_in_date': logInDate,
         'last_active_date': lastActiveDate,
-        'ip': ip,
-        'country': country,
-        'region': region,
+        'ip_address': ipAddress,
+        'location': location,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -144,6 +144,7 @@ final class Session extends TdObject {
     int? id,
     bool? isCurrent,
     bool? isPasswordPending,
+    bool? isUnconfirmed,
     bool? canAcceptSecretChats,
     bool? canAcceptCalls,
     SessionType? type,
@@ -156,9 +157,8 @@ final class Session extends TdObject {
     String? systemVersion,
     int? logInDate,
     int? lastActiveDate,
-    String? ip,
-    String? country,
-    String? region,
+    String? ipAddress,
+    String? location,
     dynamic extra,
     int? clientId,
   }) =>
@@ -166,6 +166,7 @@ final class Session extends TdObject {
         id: id ?? this.id,
         isCurrent: isCurrent ?? this.isCurrent,
         isPasswordPending: isPasswordPending ?? this.isPasswordPending,
+        isUnconfirmed: isUnconfirmed ?? this.isUnconfirmed,
         canAcceptSecretChats: canAcceptSecretChats ?? this.canAcceptSecretChats,
         canAcceptCalls: canAcceptCalls ?? this.canAcceptCalls,
         type: type ?? this.type,
@@ -179,9 +180,8 @@ final class Session extends TdObject {
         systemVersion: systemVersion ?? this.systemVersion,
         logInDate: logInDate ?? this.logInDate,
         lastActiveDate: lastActiveDate ?? this.lastActiveDate,
-        ip: ip ?? this.ip,
-        country: country ?? this.country,
-        region: region ?? this.region,
+        ipAddress: ipAddress ?? this.ipAddress,
+        location: location ?? this.location,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

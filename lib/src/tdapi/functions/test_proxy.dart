@@ -16,7 +16,7 @@ final class TestProxy extends TdFunction<Ok> {
     required this.timeout,
   });
 
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port

@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a bot, which can be added to attachment menu
+/// Represents a bot, which can be added to attachment or side menu
 final class AttachmentMenuBot extends TdObject {
-  /// Represents a bot, which can be added to attachment menu
+  /// Represents a bot, which can be added to attachment or side menu
   const AttachmentMenuBot({
     required this.botUserId,
     required this.supportsSelfChat,
@@ -15,20 +15,27 @@ final class AttachmentMenuBot extends TdObject {
     required this.supportsChannelChats,
     required this.supportsSettings,
     required this.requestWriteAccess,
+    required this.isAdded,
+    required this.showInAttachmentMenu,
+    required this.showInSideMenu,
+    required this.showDisclaimerInSideMenu,
     required this.name,
     this.nameColor,
     this.defaultIcon,
     this.iosStaticIcon,
     this.iosAnimatedIcon,
+    this.iosSideMenuIcon,
     this.androidIcon,
+    this.androidSideMenuIcon,
     this.macosIcon,
+    this.macosSideMenuIcon,
     this.iconColor,
     this.webAppPlaceholder,
     this.extra,
     this.clientId,
   });
 
-  /// User identifier of the bot added to attachment menu
+  /// User identifier of the bot
   final int botUserId;
 
   /// True, if the bot supports opening from attachment menu in the chat with the bot
@@ -49,8 +56,20 @@ final class AttachmentMenuBot extends TdObject {
   /// True, if the bot supports "settings_button_pressed" event
   final bool supportsSettings;
 
-  /// True, if the user must be asked for the permission to the bot to send them messages
+  /// True, if the user must be asked for the permission to send messages to the bot
   final bool requestWriteAccess;
+
+  /// True, if the bot was explicitly added by the user. If the bot isn't added then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed
+  final bool isAdded;
+
+  /// True, if the bot must be shown in the attachment menu
+  final bool showInAttachmentMenu;
+
+  /// True, if the bot must be shown in the side menu menu
+  final bool showInSideMenu;
+
+  /// True, if a disclaimer, why the bot is shown in the side menu, is needed
+  final bool showDisclaimerInSideMenu;
 
   /// Name for the bot in attachment menu
   final String name;
@@ -58,20 +77,29 @@ final class AttachmentMenuBot extends TdObject {
   /// Color to highlight selected name of the bot if appropriate; may be null
   final AttachmentMenuBotColor? nameColor;
 
-  /// Default attachment menu icon for the bot in SVG format; may be null
+  /// Default icon for the bot in SVG format; may be null
   final File? defaultIcon;
 
-  /// Attachment menu icon for the bot in SVG format for the official iOS app; may be null
+  /// Icon for the bot in SVG format for the official iOS app; may be null
   final File? iosStaticIcon;
 
-  /// Attachment menu icon for the bot in TGS format for the official iOS app; may be null
+  /// Icon for the bot in TGS format for the official iOS app; may be null
   final File? iosAnimatedIcon;
 
-  /// Attachment menu icon for the bot in TGS format for the official Android app; may be null
+  /// Icon for the bot in PNG format for the official iOS app side menu; may be null
+  final File? iosSideMenuIcon;
+
+  /// Icon for the bot in TGS format for the official Android app; may be null
   final File? androidIcon;
 
-  /// Attachment menu icon for the bot in TGS format for the official native macOS app; may be null
+  /// Icon for the bot in SVG format for the official Android app side menu; may be null
+  final File? androidSideMenuIcon;
+
+  /// Icon for the bot in TGS format for the official native macOS app; may be null
   final File? macosIcon;
+
+  /// Icon for the bot in PNG format for the official macOS app side menu; may be null
+  final File? macosSideMenuIcon;
 
   /// Color to highlight selected icon of the bot if appropriate; may be null
   final AttachmentMenuBotColor? iconColor;
@@ -98,6 +126,11 @@ final class AttachmentMenuBot extends TdObject {
         supportsChannelChats: _readBool(json['supports_channel_chats']),
         supportsSettings: _readBool(json['supports_settings']),
         requestWriteAccess: _readBool(json['request_write_access']),
+        isAdded: _readBool(json['is_added']),
+        showInAttachmentMenu: _readBool(json['show_in_attachment_menu']),
+        showInSideMenu: _readBool(json['show_in_side_menu']),
+        showDisclaimerInSideMenu:
+            _readBool(json['show_disclaimer_in_side_menu']),
         name: _readString(json['name']),
         nameColor:
             _readOptional(json['name_color'], AttachmentMenuBotColor.fromJson),
@@ -105,8 +138,14 @@ final class AttachmentMenuBot extends TdObject {
         iosStaticIcon: _readOptional(json['ios_static_icon'], File.fromJson),
         iosAnimatedIcon:
             _readOptional(json['ios_animated_icon'], File.fromJson),
+        iosSideMenuIcon:
+            _readOptional(json['ios_side_menu_icon'], File.fromJson),
         androidIcon: _readOptional(json['android_icon'], File.fromJson),
+        androidSideMenuIcon:
+            _readOptional(json['android_side_menu_icon'], File.fromJson),
         macosIcon: _readOptional(json['macos_icon'], File.fromJson),
+        macosSideMenuIcon:
+            _readOptional(json['macos_side_menu_icon'], File.fromJson),
         iconColor:
             _readOptional(json['icon_color'], AttachmentMenuBotColor.fromJson),
         webAppPlaceholder:
@@ -126,13 +165,20 @@ final class AttachmentMenuBot extends TdObject {
         'supports_channel_chats': supportsChannelChats,
         'supports_settings': supportsSettings,
         'request_write_access': requestWriteAccess,
+        'is_added': isAdded,
+        'show_in_attachment_menu': showInAttachmentMenu,
+        'show_in_side_menu': showInSideMenu,
+        'show_disclaimer_in_side_menu': showDisclaimerInSideMenu,
         'name': name,
         'name_color': nameColor?.toJson(),
         'default_icon': defaultIcon?.toJson(),
         'ios_static_icon': iosStaticIcon?.toJson(),
         'ios_animated_icon': iosAnimatedIcon?.toJson(),
+        'ios_side_menu_icon': iosSideMenuIcon?.toJson(),
         'android_icon': androidIcon?.toJson(),
+        'android_side_menu_icon': androidSideMenuIcon?.toJson(),
         'macos_icon': macosIcon?.toJson(),
+        'macos_side_menu_icon': macosSideMenuIcon?.toJson(),
         'icon_color': iconColor?.toJson(),
         'web_app_placeholder': webAppPlaceholder?.toJson(),
       };
@@ -148,13 +194,20 @@ final class AttachmentMenuBot extends TdObject {
     bool? supportsChannelChats,
     bool? supportsSettings,
     bool? requestWriteAccess,
+    bool? isAdded,
+    bool? showInAttachmentMenu,
+    bool? showInSideMenu,
+    bool? showDisclaimerInSideMenu,
     String? name,
     AttachmentMenuBotColor? Function()? nameColor,
     File? Function()? defaultIcon,
     File? Function()? iosStaticIcon,
     File? Function()? iosAnimatedIcon,
+    File? Function()? iosSideMenuIcon,
     File? Function()? androidIcon,
+    File? Function()? androidSideMenuIcon,
     File? Function()? macosIcon,
+    File? Function()? macosSideMenuIcon,
     AttachmentMenuBotColor? Function()? iconColor,
     File? Function()? webAppPlaceholder,
     dynamic extra,
@@ -169,6 +222,11 @@ final class AttachmentMenuBot extends TdObject {
         supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
         supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
+        isAdded: isAdded ?? this.isAdded,
+        showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,
+        showInSideMenu: showInSideMenu ?? this.showInSideMenu,
+        showDisclaimerInSideMenu:
+            showDisclaimerInSideMenu ?? this.showDisclaimerInSideMenu,
         name: name ?? this.name,
         nameColor: nameColor != null ? nameColor() : this.nameColor,
         defaultIcon: defaultIcon != null ? defaultIcon() : this.defaultIcon,
@@ -176,8 +234,16 @@ final class AttachmentMenuBot extends TdObject {
             iosStaticIcon != null ? iosStaticIcon() : this.iosStaticIcon,
         iosAnimatedIcon:
             iosAnimatedIcon != null ? iosAnimatedIcon() : this.iosAnimatedIcon,
+        iosSideMenuIcon:
+            iosSideMenuIcon != null ? iosSideMenuIcon() : this.iosSideMenuIcon,
         androidIcon: androidIcon != null ? androidIcon() : this.androidIcon,
+        androidSideMenuIcon: androidSideMenuIcon != null
+            ? androidSideMenuIcon()
+            : this.androidSideMenuIcon,
         macosIcon: macosIcon != null ? macosIcon() : this.macosIcon,
+        macosSideMenuIcon: macosSideMenuIcon != null
+            ? macosSideMenuIcon()
+            : this.macosSideMenuIcon,
         iconColor: iconColor != null ? iconColor() : this.iconColor,
         webAppPlaceholder: webAppPlaceholder != null
             ? webAppPlaceholder()

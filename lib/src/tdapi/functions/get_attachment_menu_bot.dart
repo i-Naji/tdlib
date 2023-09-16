@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a bot that can be added to attachment menu
+/// Returns information about a bot that can be added to attachment or side menu
 ///
 /// Returns [AttachmentMenuBot].
 final class GetAttachmentMenuBot extends TdFunction<AttachmentMenuBot> {
-  /// Returns information about a bot that can be added to attachment menu
+  /// Returns information about a bot that can be added to attachment or side menu
   const GetAttachmentMenuBot({
     required this.botUserId,
   });

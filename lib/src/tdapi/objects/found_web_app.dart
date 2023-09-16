@@ -8,6 +8,7 @@ final class FoundWebApp extends TdObject {
   /// Contains information about a Web App found by its short name
   const FoundWebApp({
     required this.webApp,
+    required this.supportsSettings,
     required this.requestWriteAccess,
     required this.skipConfirmation,
     this.extra,
@@ -16,6 +17,9 @@ final class FoundWebApp extends TdObject {
 
   /// The Web App
   final WebApp webApp;
+
+  /// True, if the app supports "settings_button_pressed" event
+  final bool supportsSettings;
 
   /// True, if the user must be asked for the permission to the bot to send them messages
   final bool requestWriteAccess;
@@ -34,6 +38,7 @@ final class FoundWebApp extends TdObject {
   /// Parses a [FoundWebApp] from TDLib JSON.
   factory FoundWebApp.fromJson(Map<String, dynamic> json) => FoundWebApp(
         webApp: _readObject(json['web_app'], WebApp.fromJson),
+        supportsSettings: _readBool(json['supports_settings']),
         requestWriteAccess: _readBool(json['request_write_access']),
         skipConfirmation: _readBool(json['skip_confirmation']),
         extra: json['@extra'],
@@ -44,6 +49,7 @@ final class FoundWebApp extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'web_app': webApp.toJson(),
+        'supports_settings': supportsSettings,
         'request_write_access': requestWriteAccess,
         'skip_confirmation': skipConfirmation,
       };
@@ -52,6 +58,7 @@ final class FoundWebApp extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   FoundWebApp copyWith({
     WebApp? webApp,
+    bool? supportsSettings,
     bool? requestWriteAccess,
     bool? skipConfirmation,
     dynamic extra,
@@ -59,6 +66,7 @@ final class FoundWebApp extends TdObject {
   }) =>
       FoundWebApp(
         webApp: webApp ?? this.webApp,
+        supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
         skipConfirmation: skipConfirmation ?? this.skipConfirmation,
         extra: extra ?? this.extra,

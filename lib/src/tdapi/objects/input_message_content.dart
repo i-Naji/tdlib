@@ -353,7 +353,7 @@ final class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.hasSpoiler,
   });
 
@@ -375,8 +375,8 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Photo self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
-  final int selfDestructTime;
+  /// Photo self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   /// True, if the photo preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
@@ -391,7 +391,8 @@ final class InputMessagePhoto extends InputMessageContent {
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
-        selfDestructTime: _readInt(json['self_destruct_time']),
+        selfDestructType: _readOptional(
+            json['self_destruct_type'], MessageSelfDestructType.fromJson),
         hasSpoiler: _readBool(json['has_spoiler']),
       );
 
@@ -404,7 +405,7 @@ final class InputMessagePhoto extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
-        'self_destruct_time': selfDestructTime,
+        'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
       };
 
@@ -418,7 +419,7 @@ final class InputMessagePhoto extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? Function()? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) =>
       InputMessagePhoto(
@@ -428,7 +429,9 @@ final class InputMessagePhoto extends InputMessageContent {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption != null ? caption() : this.caption,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType != null
+            ? selfDestructType()
+            : this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 
@@ -522,7 +525,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.hasSpoiler,
   });
 
@@ -550,8 +553,8 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Video self-destruct time, in seconds (0-60). A non-zero self-destruct time can be specified only in private chats
-  final int selfDestructTime;
+  /// Video self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
 
   /// True, if the video preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
@@ -568,7 +571,8 @@ final class InputMessageVideo extends InputMessageContent {
         height: _readInt(json['height']),
         supportsStreaming: _readBool(json['supports_streaming']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
-        selfDestructTime: _readInt(json['self_destruct_time']),
+        selfDestructType: _readOptional(
+            json['self_destruct_type'], MessageSelfDestructType.fromJson),
         hasSpoiler: _readBool(json['has_spoiler']),
       );
 
@@ -583,7 +587,7 @@ final class InputMessageVideo extends InputMessageContent {
         'height': height,
         'supports_streaming': supportsStreaming,
         'caption': caption?.toJson(),
-        'self_destruct_time': selfDestructTime,
+        'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
       };
 
@@ -599,7 +603,7 @@ final class InputMessageVideo extends InputMessageContent {
     int? height,
     bool? supportsStreaming,
     FormattedText? Function()? caption,
-    int? selfDestructTime,
+    MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) =>
       InputMessageVideo(
@@ -611,7 +615,9 @@ final class InputMessageVideo extends InputMessageContent {
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
         caption: caption != null ? caption() : this.caption,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType != null
+            ? selfDestructType()
+            : this.selfDestructType,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 

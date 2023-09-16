@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes privacy settings of a story
 ///
-/// One of: [StoryPrivacySettingsEveryone], [StoryPrivacySettingsContacts], [StoryPrivacySettingsCloseFriends], [StoryPrivacySettingsSelectedContacts]; or [UndecodedStoryPrivacySettings] for a type newer than this API.
+/// One of: [StoryPrivacySettingsEveryone], [StoryPrivacySettingsContacts], [StoryPrivacySettingsCloseFriends], [StoryPrivacySettingsSelectedUsers]; or [UndecodedStoryPrivacySettings] for a type newer than this API.
 sealed class StoryPrivacySettings extends TdObject {
   const StoryPrivacySettings();
 
@@ -151,19 +151,19 @@ final class StoryPrivacySettingsCloseFriends extends StoryPrivacySettings {
 }
 
 /// The story can be viewed by certain specified users
-final class StoryPrivacySettingsSelectedContacts extends StoryPrivacySettings {
+final class StoryPrivacySettingsSelectedUsers extends StoryPrivacySettings {
   /// The story can be viewed by certain specified users
-  const StoryPrivacySettingsSelectedContacts({
+  const StoryPrivacySettingsSelectedUsers({
     required this.userIds,
   });
 
   /// Identifiers of the users; always unknown and empty for non-owned stories
   final List<int> userIds;
 
-  /// Parses a [StoryPrivacySettingsSelectedContacts] from TDLib JSON.
-  factory StoryPrivacySettingsSelectedContacts.fromJson(
+  /// Parses a [StoryPrivacySettingsSelectedUsers] from TDLib JSON.
+  factory StoryPrivacySettingsSelectedUsers.fromJson(
           Map<String, dynamic> json) =>
-      StoryPrivacySettingsSelectedContacts(
+      StoryPrivacySettingsSelectedUsers(
         userIds: _readList<int>(json['user_ids'], _readInt),
       );
 
@@ -176,15 +176,15 @@ final class StoryPrivacySettingsSelectedContacts extends StoryPrivacySettings {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StoryPrivacySettingsSelectedContacts copyWith({
+  StoryPrivacySettingsSelectedUsers copyWith({
     List<int>? userIds,
   }) =>
-      StoryPrivacySettingsSelectedContacts(
+      StoryPrivacySettingsSelectedUsers(
         userIds: userIds ?? this.userIds,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'storyPrivacySettingsSelectedContacts';
+  static const String CONSTRUCTOR = 'storyPrivacySettingsSelectedUsers';
 
   @override
   String getConstructor() => CONSTRUCTOR;

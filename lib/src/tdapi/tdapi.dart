@@ -80,6 +80,7 @@ part 'functions/close_secret_chat.dart';
 part 'functions/close_story.dart';
 part 'functions/close_web_app.dart';
 part 'functions/confirm_qr_code_authentication.dart';
+part 'functions/confirm_session.dart';
 part 'functions/create_basic_group_chat.dart';
 part 'functions/create_call.dart';
 part 'functions/create_chat_folder.dart';
@@ -835,6 +836,7 @@ part 'objects/input_story_areas.dart';
 part 'objects/input_story_content.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/internal_link_type.dart';
+part 'objects/invite_link_chat_type.dart';
 part 'objects/invoice.dart';
 part 'objects/json_object_member.dart';
 part 'objects/json_value.dart';
@@ -873,6 +875,7 @@ part 'objects/message_reaction.dart';
 part 'objects/message_reply_info.dart';
 part 'objects/message_reply_to.dart';
 part 'objects/message_scheduling_state.dart';
+part 'objects/message_self_destruct_type.dart';
 part 'objects/message_send_options.dart';
 part 'objects/message_sender.dart';
 part 'objects/message_senders.dart';
@@ -1030,6 +1033,7 @@ part 'objects/thumbnail.dart';
 part 'objects/thumbnail_format.dart';
 part 'objects/top_chat_category.dart';
 part 'objects/trending_sticker_sets.dart';
+part 'objects/unconfirmed_session.dart';
 part 'objects/unread_reaction.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
@@ -1057,14 +1061,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.17';
+const String tdlibVersion = '1.8.18';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'edc528457f109c188a909ffa07ad73539d3cbf02';
+const String tdlibSchemaCommit = '100ca72b9179366d91089fd929f6c210f697031a';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'edc528457f109c188a909ffa07ad73539d3cbf02',
+  '100ca72b9179366d91089fd929f6c210f697031a',
 ];
 
 /// Base class of every TDLib object.
@@ -1288,6 +1292,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatInviteLinkCounts': ChatInviteLinkCounts.fromJson,
   'chatInviteLinkMember': ChatInviteLinkMember.fromJson,
   'chatInviteLinkMembers': ChatInviteLinkMembers.fromJson,
+  'inviteLinkChatTypeBasicGroup': InviteLinkChatTypeBasicGroup.fromJson,
+  'inviteLinkChatTypeSupergroup': InviteLinkChatTypeSupergroup.fromJson,
+  'inviteLinkChatTypeChannel': InviteLinkChatTypeChannel.fromJson,
   'chatInviteLinkInfo': ChatInviteLinkInfo.fromJson,
   'chatJoinRequest': ChatJoinRequest.fromJson,
   'chatJoinRequests': ChatJoinRequests.fromJson,
@@ -1716,6 +1723,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSchedulingStateSendAtDate': MessageSchedulingStateSendAtDate.fromJson,
   'messageSchedulingStateSendWhenOnline':
       MessageSchedulingStateSendWhenOnline.fromJson,
+  'messageSelfDestructTypeTimer': MessageSelfDestructTypeTimer.fromJson,
+  'messageSelfDestructTypeImmediately':
+      MessageSelfDestructTypeImmediately.fromJson,
   'messageSendOptions': MessageSendOptions.fromJson,
   'messageCopyOptions': MessageCopyOptions.fromJson,
   'inputMessageText': InputMessageText.fromJson,
@@ -2178,8 +2188,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storyPrivacySettingsEveryone': StoryPrivacySettingsEveryone.fromJson,
   'storyPrivacySettingsContacts': StoryPrivacySettingsContacts.fromJson,
   'storyPrivacySettingsCloseFriends': StoryPrivacySettingsCloseFriends.fromJson,
-  'storyPrivacySettingsSelectedContacts':
-      StoryPrivacySettingsSelectedContacts.fromJson,
+  'storyPrivacySettingsSelectedUsers':
+      StoryPrivacySettingsSelectedUsers.fromJson,
   'userPrivacySettingRuleAllowAll': UserPrivacySettingRuleAllowAll.fromJson,
   'userPrivacySettingRuleAllowContacts':
       UserPrivacySettingRuleAllowContacts.fromJson,
@@ -2233,6 +2243,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'sessionTypeXbox': SessionTypeXbox.fromJson,
   'session': Session.fromJson,
   'sessions': Sessions.fromJson,
+  'unconfirmedSession': UnconfirmedSession.fromJson,
   'connectedWebsite': ConnectedWebsite.fromJson,
   'connectedWebsites': ConnectedWebsites.fromJson,
   'reportReasonSpam': ReportReasonSpam.fromJson,
@@ -2287,6 +2298,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       InternalLinkTypeQrCodeAuthentication.fromJson,
   'internalLinkTypeRestorePurchases': InternalLinkTypeRestorePurchases.fromJson,
   'internalLinkTypeSettings': InternalLinkTypeSettings.fromJson,
+  'internalLinkTypeSideMenuBot': InternalLinkTypeSideMenuBot.fromJson,
   'internalLinkTypeStickerSet': InternalLinkTypeStickerSet.fromJson,
   'internalLinkTypeStory': InternalLinkTypeStory.fromJson,
   'internalLinkTypeTheme': InternalLinkTypeTheme.fromJson,
@@ -2511,6 +2523,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateConnectionState': UpdateConnectionState.fromJson,
   'updateTermsOfService': UpdateTermsOfService.fromJson,
   'updateUsersNearby': UpdateUsersNearby.fromJson,
+  'updateUnconfirmedSession': UpdateUnconfirmedSession.fromJson,
   'updateAttachmentMenuBots': UpdateAttachmentMenuBots.fromJson,
   'updateWebAppMessageSent': UpdateWebAppMessageSent.fromJson,
   'updateActiveEmojiReactions': UpdateActiveEmojiReactions.fromJson,

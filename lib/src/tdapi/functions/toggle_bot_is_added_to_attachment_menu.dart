@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds or removes a bot to attachment menu. Bot can be added to attachment menu, only if userTypeBot.can_be_added_to_attachment_menu == true
+/// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true
 ///
 /// Returns [Ok].
 final class ToggleBotIsAddedToAttachmentMenu extends TdFunction<Ok> {
-  /// Adds or removes a bot to attachment menu. Bot can be added to attachment menu, only if userTypeBot.can_be_added_to_attachment_menu == true
+  /// Adds or removes a bot to attachment and side menu. Bot can be added to the menu, only if userTypeBot.can_be_added_to_attachment_menu == true
   const ToggleBotIsAddedToAttachmentMenu({
     required this.botUserId,
     required this.isAdded,

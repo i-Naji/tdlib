@@ -36,7 +36,7 @@ final class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
-    required this.selfDestructTime,
+    this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
@@ -136,13 +136,13 @@ final class Message extends TdObject {
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// The message's self-destruct time, in seconds; 0 if none. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
-  final int selfDestructTime;
+  /// The message's self-destruct type; may be null if none
+  final MessageSelfDestructType? selfDestructType;
 
-  /// Time left before the message self-destruct timer expires, in seconds. If the self-destruct timer isn't started yet, equals to the value of the self_destruct_time field
+  /// Time left before the message self-destruct timer expires, in seconds; 0 if self-desctruction isn't scheduled yet
   final double selfDestructIn;
 
-  /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never. TDLib will send updateDeleteMessages or updateMessageContent once the time expires
+  /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
   /// If non-zero, the user identifier of the bot through which this message was sent
@@ -210,7 +210,8 @@ final class Message extends TdObject {
             (e) => _readObject(e, UnreadReaction.fromJson)),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
-        selfDestructTime: _readInt(json['self_destruct_time']),
+        selfDestructType: _readOptional(
+            json['self_destruct_type'], MessageSelfDestructType.fromJson),
         selfDestructIn: _readDouble(json['self_destruct_in']),
         autoDeleteIn: _readDouble(json['auto_delete_in']),
         viaBotUserId: _readInt(json['via_bot_user_id']),
@@ -255,7 +256,7 @@ final class Message extends TdObject {
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
-        'self_destruct_time': selfDestructTime,
+        'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
@@ -298,7 +299,7 @@ final class Message extends TdObject {
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
-    int? selfDestructTime,
+    MessageSelfDestructType? Function()? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
@@ -346,7 +347,9 @@ final class Message extends TdObject {
         unreadReactions: unreadReactions ?? this.unreadReactions,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        selfDestructTime: selfDestructTime ?? this.selfDestructTime,
+        selfDestructType: selfDestructType != null
+            ? selfDestructType()
+            : this.selfDestructType,
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,

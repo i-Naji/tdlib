@@ -31,7 +31,7 @@ final class ChatInviteLinkInfo extends TdObject {
   final int accessibleFor;
 
   /// Type of the chat
-  final ChatType type;
+  final InviteLinkChatType type;
 
   /// Title of the chat
   final String title;
@@ -76,7 +76,7 @@ final class ChatInviteLinkInfo extends TdObject {
       ChatInviteLinkInfo(
         chatId: _readInt(json['chat_id']),
         accessibleFor: _readInt(json['accessible_for']),
-        type: _readObject(json['type'], ChatType.fromJson),
+        type: _readObject(json['type'], InviteLinkChatType.fromJson),
         title: _readString(json['title']),
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
         description: _readString(json['description']),
@@ -114,7 +114,7 @@ final class ChatInviteLinkInfo extends TdObject {
   ChatInviteLinkInfo copyWith({
     int? chatId,
     int? accessibleFor,
-    ChatType? type,
+    InviteLinkChatType? type,
     String? title,
     ChatPhotoInfo? Function()? photo,
     String? description,

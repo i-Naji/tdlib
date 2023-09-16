@@ -13,7 +13,7 @@ final class CheckChatUsername extends TdFunction<CheckChatUsernameResult> {
     required this.username,
   });
 
-  /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if the chat is being created
+  /// Chat identifier; must be identifier of a supergroup chat, or a channel chat, or a private chat with self, or 0 if the chat is being created
   final int chatId;
 
   /// Username to be checked

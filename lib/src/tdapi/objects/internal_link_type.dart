@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeSideMenuBot], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -1458,7 +1458,7 @@ final class InternalLinkTypeProxy extends InternalLinkType {
     this.clientId,
   });
 
-  /// Proxy server IP address
+  /// Proxy server domain or IP address
   final String server;
 
   /// Proxy server port
@@ -1711,6 +1711,69 @@ final class InternalLinkTypeSettings extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeSettings';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then user needs to confirm adding the bot to side and attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to attachment menu, then use getWebAppUrl with the given URL
+final class InternalLinkTypeSideMenuBot extends InternalLinkType {
+  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then user needs to confirm adding the bot to side and attachment menu. If user confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to attachment menu, then use getWebAppUrl with the given URL
+  const InternalLinkTypeSideMenuBot({
+    required this.botUsername,
+    required this.url,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Username of the bot
+  final String botUsername;
+
+  /// URL to be passed to getWebAppUrl
+  final String url;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeSideMenuBot] from TDLib JSON.
+  factory InternalLinkTypeSideMenuBot.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeSideMenuBot(
+        botUsername: _readString(json['bot_username']),
+        url: _readString(json['url']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'bot_username': botUsername,
+        'url': url,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeSideMenuBot copyWith({
+    String? botUsername,
+    String? url,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeSideMenuBot(
+        botUsername: botUsername ?? this.botUsername,
+        url: url ?? this.url,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeSideMenuBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2228,9 +2291,9 @@ final class InternalLinkTypeVideoChat extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed, then calling getWebAppLinkUrl and opening the returned URL
+/// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a mini-apps disclaimer instead of the dialog, and call toggleBotIsAddedToAttachmentMenu to add the bot to the menu before opening the Web App. If the user confirms, then call getWebAppLinkUrl and open the returned URL as a Web App
 final class InternalLinkTypeWebApp extends InternalLinkType {
-  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed, then calling getWebAppLinkUrl and opening the returned URL
+  /// The link is a link to a Web App. Call searchPublicChat with the given bot username, check that the user is a bot, then call searchWebApp with the received bot and the given web_app_short_name. Process received foundWebApp by showing a confirmation dialog if needed. If the bot can be added to attachment or side menu, but isn't added yet, then show a mini-apps disclaimer instead of the dialog, and call toggleBotIsAddedToAttachmentMenu to add the bot to the menu before opening the Web App. If the user confirms, then call getWebAppLinkUrl and open the returned URL as a Web App
   const InternalLinkTypeWebApp({
     required this.botUsername,
     required this.webAppShortName,
