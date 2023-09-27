@@ -3,15 +3,19 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
+/// Returns the list of all stories posted by the given chat; requires can_edit_stories rights for channel chats. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
 ///
 /// Returns [Stories].
-final class GetArchivedStories extends TdFunction<Stories> {
-  /// Returns the list of all stories of the current user. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
-  const GetArchivedStories({
+final class GetChatArchivedStories extends TdFunction<Stories> {
+  /// Returns the list of all stories posted by the given chat; requires can_edit_stories rights for channel chats. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
+  const GetChatArchivedStories({
+    required this.chatId,
     required this.fromStoryId,
     required this.limit,
   });
+
+  /// Chat identifier
+  final int chatId;
 
   /// Identifier of the story starting from which stories must be returned; use 0 to get results from the last story
   final int fromStoryId;
@@ -22,6 +26,7 @@ final class GetArchivedStories extends TdFunction<Stories> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'chat_id': chatId,
         'from_story_id': fromStoryId,
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -29,17 +34,19 @@ final class GetArchivedStories extends TdFunction<Stories> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetArchivedStories copyWith({
+  GetChatArchivedStories copyWith({
+    int? chatId,
     int? fromStoryId,
     int? limit,
   }) =>
-      GetArchivedStories(
+      GetChatArchivedStories(
+        chatId: chatId ?? this.chatId,
         fromStoryId: fromStoryId ?? this.fromStoryId,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getArchivedStories';
+  static const String CONSTRUCTOR = 'getChatArchivedStories';
 
   @override
   String getConstructor() => CONSTRUCTOR;

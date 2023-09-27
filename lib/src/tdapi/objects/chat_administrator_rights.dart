@@ -18,10 +18,13 @@ final class ChatAdministratorRights extends TdObject {
     required this.canManageTopics,
     required this.canPromoteMembers,
     required this.canManageVideoChats,
+    required this.canPostStories,
+    required this.canEditStories,
+    required this.canDeleteStories,
     required this.isAnonymous,
   });
 
-  /// True, if the administrator can get chat event log, get chat statistics, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+  /// True, if the administrator can get chat event log, get chat statistics, get chat boosts in channels, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
   /// True, if the administrator can change the chat title, photo, and other settings
@@ -54,6 +57,15 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can manage video chats
   final bool canManageVideoChats;
 
+  /// True, if the administrator can create new channel stories, or edit and delete posted stories; applicable to channels only
+  final bool canPostStories;
+
+  /// True, if the administrator can edit stories posted by other users, pin stories and access story archive; applicable to channels only
+  final bool canEditStories;
+
+  /// True, if the administrator can delete stories posted by other users; applicable to channels only
+  final bool canDeleteStories;
+
   /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
 
@@ -71,6 +83,9 @@ final class ChatAdministratorRights extends TdObject {
         canManageTopics: _readBool(json['can_manage_topics']),
         canPromoteMembers: _readBool(json['can_promote_members']),
         canManageVideoChats: _readBool(json['can_manage_video_chats']),
+        canPostStories: _readBool(json['can_post_stories']),
+        canEditStories: _readBool(json['can_edit_stories']),
+        canDeleteStories: _readBool(json['can_delete_stories']),
         isAnonymous: _readBool(json['is_anonymous']),
       );
 
@@ -88,6 +103,9 @@ final class ChatAdministratorRights extends TdObject {
         'can_manage_topics': canManageTopics,
         'can_promote_members': canPromoteMembers,
         'can_manage_video_chats': canManageVideoChats,
+        'can_post_stories': canPostStories,
+        'can_edit_stories': canEditStories,
+        'can_delete_stories': canDeleteStories,
         'is_anonymous': isAnonymous,
       };
 
@@ -105,6 +123,9 @@ final class ChatAdministratorRights extends TdObject {
     bool? canManageTopics,
     bool? canPromoteMembers,
     bool? canManageVideoChats,
+    bool? canPostStories,
+    bool? canEditStories,
+    bool? canDeleteStories,
     bool? isAnonymous,
   }) =>
       ChatAdministratorRights(
@@ -119,6 +140,9 @@ final class ChatAdministratorRights extends TdObject {
         canManageTopics: canManageTopics ?? this.canManageTopics,
         canPromoteMembers: canPromoteMembers ?? this.canPromoteMembers,
         canManageVideoChats: canManageVideoChats ?? this.canManageVideoChats,
+        canPostStories: canPostStories ?? this.canPostStories,
+        canEditStories: canEditStories ?? this.canEditStories,
+        canDeleteStories: canDeleteStories ?? this.canDeleteStories,
         isAnonymous: isAnonymous ?? this.isAnonymous,
       );
 

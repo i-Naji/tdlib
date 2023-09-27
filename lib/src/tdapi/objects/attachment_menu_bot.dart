@@ -59,13 +59,13 @@ final class AttachmentMenuBot extends TdObject {
   /// True, if the user must be asked for the permission to send messages to the bot
   final bool requestWriteAccess;
 
-  /// True, if the bot was explicitly added by the user. If the bot isn't added then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed
+  /// True, if the bot was explicitly added by the user. If the bot isn't added, then on the first bot launch toggleBotIsAddedToAttachmentMenu must be called and the bot must be added or removed
   final bool isAdded;
 
   /// True, if the bot must be shown in the attachment menu
   final bool showInAttachmentMenu;
 
-  /// True, if the bot must be shown in the side menu menu
+  /// True, if the bot must be shown in the side menu
   final bool showInSideMenu;
 
   /// True, if a disclaimer, why the bot is shown in the side menu, is needed

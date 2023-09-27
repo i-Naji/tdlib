@@ -44,9 +44,9 @@ final class UndecodedPremiumStoryFeature extends PremiumStoryFeature {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// User stories are displayed before stories of non-premium contacts
+/// User stories are displayed before stories of non-premium contacts and channels
 final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
-  /// User stories are displayed before stories of non-premium contacts
+  /// User stories are displayed before stories of non-premium contacts and channels
   const PremiumStoryFeaturePriorityOrder();
 
   /// Parses a [PremiumStoryFeaturePriorityOrder] from TDLib JSON.

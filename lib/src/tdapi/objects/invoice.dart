@@ -12,6 +12,7 @@ final class Invoice extends TdObject {
     required this.maxTipAmount,
     required this.suggestedTipAmounts,
     required this.recurringPaymentTermsOfServiceUrl,
+    required this.termsOfServiceUrl,
     required this.isTest,
     required this.needName,
     required this.needPhoneNumber,
@@ -36,6 +37,9 @@ final class Invoice extends TdObject {
 
   /// An HTTP URL with terms of service for recurring payments. If non-empty, the invoice payment will result in recurring payments and the user must accept the terms of service before allowed to pay
   final String recurringPaymentTermsOfServiceUrl;
+
+  /// An HTTP URL with terms of service for non-recurring payments. If non-empty, then the user must accept the terms of service before allowed to pay
+  final String termsOfServiceUrl;
 
   /// True, if the payment is a test payment
   final bool isTest;
@@ -71,6 +75,7 @@ final class Invoice extends TdObject {
             _readList<int>(json['suggested_tip_amounts'], _readInt),
         recurringPaymentTermsOfServiceUrl:
             _readString(json['recurring_payment_terms_of_service_url']),
+        termsOfServiceUrl: _readString(json['terms_of_service_url']),
         isTest: _readBool(json['is_test']),
         needName: _readBool(json['need_name']),
         needPhoneNumber: _readBool(json['need_phone_number']),
@@ -92,6 +97,7 @@ final class Invoice extends TdObject {
         'suggested_tip_amounts': suggestedTipAmounts,
         'recurring_payment_terms_of_service_url':
             recurringPaymentTermsOfServiceUrl,
+        'terms_of_service_url': termsOfServiceUrl,
         'is_test': isTest,
         'need_name': needName,
         'need_phone_number': needPhoneNumber,
@@ -110,6 +116,7 @@ final class Invoice extends TdObject {
     int? maxTipAmount,
     List<int>? suggestedTipAmounts,
     String? recurringPaymentTermsOfServiceUrl,
+    String? termsOfServiceUrl,
     bool? isTest,
     bool? needName,
     bool? needPhoneNumber,
@@ -126,6 +133,7 @@ final class Invoice extends TdObject {
         suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
         recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ??
             this.recurringPaymentTermsOfServiceUrl,
+        termsOfServiceUrl: termsOfServiceUrl ?? this.termsOfServiceUrl,
         isTest: isTest ?? this.isTest,
         needName: needName ?? this.needName,
         needPhoneNumber: needPhoneNumber ?? this.needPhoneNumber,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a clickable rectangle area on a story media
 ///
-/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue]; or [UndecodedStoryAreaType] for a type newer than this API.
+/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {
   const StoryAreaType();
 
@@ -115,6 +115,69 @@ final class StoryAreaTypeVenue extends StoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeVenue';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked
+final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
+  /// An area pointing to a suggested reaction. App needs to show a clickable reaction on the area and call setStoryReaction when the are is clicked
+  const StoryAreaTypeSuggestedReaction({
+    required this.reactionType,
+    required this.totalCount,
+    required this.isDark,
+    required this.isFlipped,
+  });
+
+  /// Type of the reaction
+  final ReactionType reactionType;
+
+  /// Number of times the reaction was added
+  final int totalCount;
+
+  /// True, if reaction has a dark background
+  final bool isDark;
+
+  /// True, if reaction corner is flipped
+  final bool isFlipped;
+
+  /// Parses a [StoryAreaTypeSuggestedReaction] from TDLib JSON.
+  factory StoryAreaTypeSuggestedReaction.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeSuggestedReaction(
+        reactionType: _readObject(json['reaction_type'], ReactionType.fromJson),
+        totalCount: _readInt(json['total_count']),
+        isDark: _readBool(json['is_dark']),
+        isFlipped: _readBool(json['is_flipped']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'reaction_type': reactionType.toJson(),
+        'total_count': totalCount,
+        'is_dark': isDark,
+        'is_flipped': isFlipped,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryAreaTypeSuggestedReaction copyWith({
+    ReactionType? reactionType,
+    int? totalCount,
+    bool? isDark,
+    bool? isFlipped,
+  }) =>
+      StoryAreaTypeSuggestedReaction(
+        reactionType: reactionType ?? this.reactionType,
+        totalCount: totalCount ?? this.totalCount,
+        isDark: isDark ?? this.isDark,
+        isFlipped: isFlipped ?? this.isFlipped,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyAreaTypeSuggestedReaction';
 
   @override
   String getConstructor() => CONSTRUCTOR;

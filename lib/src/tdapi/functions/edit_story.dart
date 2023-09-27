@@ -3,17 +3,21 @@
 
 part of '../tdapi.dart';
 
-/// Changes content and caption of a previously sent story
+/// Changes content and caption of a story. Can be called only if story.can_be_edited == true
 ///
 /// Returns [Ok].
 final class EditStory extends TdFunction<Ok> {
-  /// Changes content and caption of a previously sent story
+  /// Changes content and caption of a story. Can be called only if story.can_be_edited == true
   const EditStory({
+    required this.storySenderChatId,
     required this.storyId,
     this.content,
     this.areas,
     this.caption,
   });
+
+  /// Identifier of the chat that posted the story
+  final int storySenderChatId;
 
   /// Identifier of the story to edit
   final int storyId;
@@ -30,6 +34,7 @@ final class EditStory extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
         'content': content?.toJson(),
         'areas': areas?.toJson(),
@@ -40,12 +45,14 @@ final class EditStory extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   EditStory copyWith({
+    int? storySenderChatId,
     int? storyId,
     InputStoryContent? Function()? content,
     InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
   }) =>
       EditStory(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
         content: content != null ? content() : this.content,
         areas: areas != null ? areas() : this.areas,

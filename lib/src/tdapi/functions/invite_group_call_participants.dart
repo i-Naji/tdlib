@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Invites users to an active group call. Sends a service message of type messageInviteToGroupCall for video chats
+/// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats
 ///
 /// Returns [Ok].
 final class InviteGroupCallParticipants extends TdFunction<Ok> {
-  /// Invites users to an active group call. Sends a service message of type messageInviteToGroupCall for video chats
+  /// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats
   const InviteGroupCallParticipants({
     required this.groupCallId,
     required this.userIds,

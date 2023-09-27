@@ -87,18 +87,14 @@ final class MessageSendingStatePending extends MessageSendingState {
 final class MessageSendingStateFailed extends MessageSendingState {
   /// The message failed to be sent
   const MessageSendingStateFailed({
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
     required this.canRetry,
     required this.needAnotherSender,
     required this.retryAfter,
   });
 
-  /// An error code; 0 if unknown
-  final int errorCode;
-
-  /// Error message
-  final String errorMessage;
+  /// The cause of the message sending failure
+  final TdError error;
 
   /// True, if the message can be re-sent
   final bool canRetry;
@@ -112,8 +108,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// Parses a [MessageSendingStateFailed] from TDLib JSON.
   factory MessageSendingStateFailed.fromJson(Map<String, dynamic> json) =>
       MessageSendingStateFailed(
-        errorCode: _readInt(json['error_code']),
-        errorMessage: _readString(json['error_message']),
+        error: _readObject(json['error'], TdError.fromJson),
         canRetry: _readBool(json['can_retry']),
         needAnotherSender: _readBool(json['need_another_sender']),
         retryAfter: _readDouble(json['retry_after']),
@@ -122,8 +117,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
         'can_retry': canRetry,
         'need_another_sender': needAnotherSender,
         'retry_after': retryAfter,
@@ -133,15 +127,13 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageSendingStateFailed copyWith({
-    int? errorCode,
-    String? errorMessage,
+    TdError? error,
     bool? canRetry,
     bool? needAnotherSender,
     double? retryAfter,
   }) =>
       MessageSendingStateFailed(
-        errorCode: errorCode ?? this.errorCode,
-        errorMessage: errorMessage ?? this.errorMessage,
+        error: error ?? this.error,
         canRetry: canRetry ?? this.canRetry,
         needAnotherSender: needAnotherSender ?? this.needAnotherSender,
         retryAfter: retryAfter ?? this.retryAfter,

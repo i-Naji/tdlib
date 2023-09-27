@@ -25,6 +25,8 @@ final class Supergroup extends TdObject {
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
+    required this.hasActiveStories,
+    required this.hasUnreadActiveStories,
     this.extra,
     this.clientId,
   });
@@ -83,6 +85,12 @@ final class Supergroup extends TdObject {
   /// True, if many users reported this supergroup or channel as a fake account
   final bool isFake;
 
+  /// True, if the channel has non-expired stories available to the current user
+  final bool hasActiveStories;
+
+  /// True, if the channel has unread non-expired stories available to the current user
+  final bool hasUnreadActiveStories;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -111,6 +119,8 @@ final class Supergroup extends TdObject {
         restrictionReason: _readString(json['restriction_reason']),
         isScam: _readBool(json['is_scam']),
         isFake: _readBool(json['is_fake']),
+        hasActiveStories: _readBool(json['has_active_stories']),
+        hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -136,6 +146,8 @@ final class Supergroup extends TdObject {
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,
+        'has_active_stories': hasActiveStories,
+        'has_unread_active_stories': hasUnreadActiveStories,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -159,6 +171,8 @@ final class Supergroup extends TdObject {
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
+    bool? hasActiveStories,
+    bool? hasUnreadActiveStories,
     dynamic extra,
     int? clientId,
   }) =>
@@ -181,6 +195,9 @@ final class Supergroup extends TdObject {
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
         isFake: isFake ?? this.isFake,
+        hasActiveStories: hasActiveStories ?? this.hasActiveStories,
+        hasUnreadActiveStories:
+            hasUnreadActiveStories ?? this.hasUnreadActiveStories,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

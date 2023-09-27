@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents result of checking whether the current user can send a story
+/// Represents result of checking whether the current user can send a story in the specific chat
 ///
-/// One of: [CanSendStoryResultOk], [CanSendStoryResultPremiumNeeded], [CanSendStoryResultActiveStoryLimitExceeded], [CanSendStoryResultWeeklyLimitExceeded], [CanSendStoryResultMonthlyLimitExceeded]; or [UndecodedCanSendStoryResult] for a type newer than this API.
+/// One of: [CanSendStoryResultOk], [CanSendStoryResultPremiumNeeded], [CanSendStoryResultBoostNeeded], [CanSendStoryResultActiveStoryLimitExceeded], [CanSendStoryResultWeeklyLimitExceeded], [CanSendStoryResultMonthlyLimitExceeded]; or [UndecodedCanSendStoryResult] for a type newer than this API.
 sealed class CanSendStoryResult extends TdObject {
   const CanSendStoryResult();
 
@@ -133,6 +133,53 @@ final class CanSendStoryResultPremiumNeeded extends CanSendStoryResult {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendStoryResultPremiumNeeded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The channel chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat
+final class CanSendStoryResultBoostNeeded extends CanSendStoryResult {
+  /// The channel chat must be boosted first by Telegram Premium subscribers to post more stories. Call getChatBoostStatus to get current boost status of the chat
+  const CanSendStoryResultBoostNeeded({
+    this.extra,
+    this.clientId,
+  });
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [CanSendStoryResultBoostNeeded] from TDLib JSON.
+  factory CanSendStoryResultBoostNeeded.fromJson(Map<String, dynamic> json) =>
+      CanSendStoryResultBoostNeeded(
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  CanSendStoryResultBoostNeeded copyWith({
+    dynamic extra,
+    int? clientId,
+  }) =>
+      CanSendStoryResultBoostNeeded(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'canSendStoryResultBoostNeeded';
 
   @override
   String getConstructor() => CONSTRUCTOR;

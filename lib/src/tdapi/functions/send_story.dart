@@ -3,12 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Sends a new story. Returns a temporary story
+/// Sends a new story to a chat; requires can_post_stories rights for channel chats. Returns a temporary story
 ///
 /// Returns [Story].
 final class SendStory extends TdFunction<Story> {
-  /// Sends a new story. Returns a temporary story
+  /// Sends a new story to a chat; requires can_post_stories rights for channel chats. Returns a temporary story
   const SendStory({
+    required this.chatId,
     required this.content,
     this.areas,
     this.caption,
@@ -17,6 +18,9 @@ final class SendStory extends TdFunction<Story> {
     required this.isPinned,
     required this.protectContent,
   });
+
+  /// Identifier of the chat that will post the story
+  final int chatId;
 
   /// Content of the story
   final InputStoryContent content;
@@ -42,6 +46,7 @@ final class SendStory extends TdFunction<Story> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'chat_id': chatId,
         'content': content.toJson(),
         'areas': areas?.toJson(),
         'caption': caption?.toJson(),
@@ -55,6 +60,7 @@ final class SendStory extends TdFunction<Story> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendStory copyWith({
+    int? chatId,
     InputStoryContent? content,
     InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
@@ -64,6 +70,7 @@ final class SendStory extends TdFunction<Story> {
     bool? protectContent,
   }) =>
       SendStory(
+        chatId: chatId ?? this.chatId,
         content: content ?? this.content,
         areas: areas != null ? areas() : this.areas,
         caption: caption != null ? caption() : this.caption,

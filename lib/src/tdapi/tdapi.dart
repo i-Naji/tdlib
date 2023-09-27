@@ -36,6 +36,8 @@ part 'functions/assign_app_store_transaction.dart';
 part 'functions/assign_google_play_transaction.dart';
 part 'functions/ban_chat_member.dart';
 part 'functions/block_message_sender_from_replies.dart';
+part 'functions/boost_chat.dart';
+part 'functions/can_boost_chat.dart';
 part 'functions/can_bot_send_messages.dart';
 part 'functions/can_purchase_premium.dart';
 part 'functions/can_send_story.dart';
@@ -160,7 +162,6 @@ part 'functions/get_application_config.dart';
 part 'functions/get_application_download_link.dart';
 part 'functions/get_archive_chat_list_settings.dart';
 part 'functions/get_archived_sticker_sets.dart';
-part 'functions/get_archived_stories.dart';
 part 'functions/get_attached_sticker_sets.dart';
 part 'functions/get_attachment_menu_bot.dart';
 part 'functions/get_authorization_state.dart';
@@ -180,7 +181,12 @@ part 'functions/get_callback_query_message.dart';
 part 'functions/get_chat.dart';
 part 'functions/get_chat_active_stories.dart';
 part 'functions/get_chat_administrators.dart';
+part 'functions/get_chat_archived_stories.dart';
 part 'functions/get_chat_available_message_senders.dart';
+part 'functions/get_chat_boost_link.dart';
+part 'functions/get_chat_boost_link_info.dart';
+part 'functions/get_chat_boost_status.dart';
+part 'functions/get_chat_boosts.dart';
 part 'functions/get_chat_event_log.dart';
 part 'functions/get_chat_folder.dart';
 part 'functions/get_chat_folder_chat_count.dart';
@@ -209,6 +215,7 @@ part 'functions/get_chat_sponsored_messages.dart';
 part 'functions/get_chat_statistics.dart';
 part 'functions/get_chats.dart';
 part 'functions/get_chats_for_chat_folder_invite_link.dart';
+part 'functions/get_chats_to_send_stories.dart';
 part 'functions/get_close_friends.dart';
 part 'functions/get_commands.dart';
 part 'functions/get_connected_websites.dart';
@@ -687,6 +694,7 @@ part 'objects/call_server_type.dart';
 part 'objects/call_state.dart';
 part 'objects/callback_query_answer.dart';
 part 'objects/callback_query_payload.dart';
+part 'objects/can_boost_chat_result.dart';
 part 'objects/can_send_story_result.dart';
 part 'objects/can_transfer_ownership_result.dart';
 part 'objects/chat.dart';
@@ -698,6 +706,10 @@ part 'objects/chat_administrator_rights.dart';
 part 'objects/chat_administrators.dart';
 part 'objects/chat_available_reactions.dart';
 part 'objects/chat_background.dart';
+part 'objects/chat_boost.dart';
+part 'objects/chat_boost_link.dart';
+part 'objects/chat_boost_link_info.dart';
+part 'objects/chat_boost_status.dart';
 part 'objects/chat_event.dart';
 part 'objects/chat_event_action.dart';
 part 'objects/chat_event_log_filters.dart';
@@ -790,6 +802,7 @@ part 'objects/forum_topic.dart';
 part 'objects/forum_topic_icon.dart';
 part 'objects/forum_topic_info.dart';
 part 'objects/forum_topics.dart';
+part 'objects/found_chat_boosts.dart';
 part 'objects/found_chat_messages.dart';
 part 'objects/found_file_downloads.dart';
 part 'objects/found_messages.dart';
@@ -1061,14 +1074,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.18';
+const String tdlibVersion = '1.8.19';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '100ca72b9179366d91089fd929f6c210f697031a';
+const String tdlibSchemaCommit = '2589c3fd46925f5d57e4ec79233cd1bd0f5d0c09';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '100ca72b9179366d91089fd929f6c210f697031a',
+  '2589c3fd46925f5d57e4ec79233cd1bd0f5d0c09',
 ];
 
 /// Base class of every TDLib object.
@@ -1804,10 +1817,13 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storyAreaPosition': StoryAreaPosition.fromJson,
   'storyAreaTypeLocation': StoryAreaTypeLocation.fromJson,
   'storyAreaTypeVenue': StoryAreaTypeVenue.fromJson,
+  'storyAreaTypeSuggestedReaction': StoryAreaTypeSuggestedReaction.fromJson,
   'storyArea': StoryArea.fromJson,
   'inputStoryAreaTypeLocation': InputStoryAreaTypeLocation.fromJson,
   'inputStoryAreaTypeFoundVenue': InputStoryAreaTypeFoundVenue.fromJson,
   'inputStoryAreaTypePreviousVenue': InputStoryAreaTypePreviousVenue.fromJson,
+  'inputStoryAreaTypeSuggestedReaction':
+      InputStoryAreaTypeSuggestedReaction.fromJson,
   'inputStoryArea': InputStoryArea.fromJson,
   'inputStoryAreas': InputStoryAreas.fromJson,
   'storyVideo': StoryVideo.fromJson,
@@ -1823,6 +1839,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'stories': Stories.fromJson,
   'storyInfo': StoryInfo.fromJson,
   'chatActiveStories': ChatActiveStories.fromJson,
+  'chatBoostStatus': ChatBoostStatus.fromJson,
+  'chatBoost': ChatBoost.fromJson,
+  'foundChatBoosts': FoundChatBoosts.fromJson,
   'callDiscardReasonEmpty': CallDiscardReasonEmpty.fromJson,
   'callDiscardReasonMissed': CallDiscardReasonMissed.fromJson,
   'callDiscardReasonDeclined': CallDiscardReasonDeclined.fromJson,
@@ -2014,6 +2033,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PremiumLimitTypeMonthlySentStoryCount.fromJson,
   'premiumLimitTypeStoryCaptionLength':
       PremiumLimitTypeStoryCaptionLength.fromJson,
+  'premiumLimitTypeStorySuggestedReactionAreaCount':
+      PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson,
   'premiumFeatureIncreasedLimits': PremiumFeatureIncreasedLimits.fromJson,
   'premiumFeatureIncreasedUploadFileSize':
       PremiumFeatureIncreasedUploadFileSize.fromJson,
@@ -2035,6 +2056,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureRealTimeChatTranslation':
       PremiumFeatureRealTimeChatTranslation.fromJson,
   'premiumFeatureUpgradedStories': PremiumFeatureUpgradedStories.fromJson,
+  'premiumFeatureChatBoost': PremiumFeatureChatBoost.fromJson,
   'premiumStoryFeaturePriorityOrder': PremiumStoryFeaturePriorityOrder.fromJson,
   'premiumStoryFeatureStealthMode': PremiumStoryFeatureStealthMode.fromJson,
   'premiumStoryFeaturePermanentViewsHistory':
@@ -2084,12 +2106,20 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'hashtags': Hashtags.fromJson,
   'canSendStoryResultOk': CanSendStoryResultOk.fromJson,
   'canSendStoryResultPremiumNeeded': CanSendStoryResultPremiumNeeded.fromJson,
+  'canSendStoryResultBoostNeeded': CanSendStoryResultBoostNeeded.fromJson,
   'canSendStoryResultActiveStoryLimitExceeded':
       CanSendStoryResultActiveStoryLimitExceeded.fromJson,
   'canSendStoryResultWeeklyLimitExceeded':
       CanSendStoryResultWeeklyLimitExceeded.fromJson,
   'canSendStoryResultMonthlyLimitExceeded':
       CanSendStoryResultMonthlyLimitExceeded.fromJson,
+  'canBoostChatResultOk': CanBoostChatResultOk.fromJson,
+  'canBoostChatResultInvalidChat': CanBoostChatResultInvalidChat.fromJson,
+  'canBoostChatResultAlreadyBoosted': CanBoostChatResultAlreadyBoosted.fromJson,
+  'canBoostChatResultPremiumNeeded': CanBoostChatResultPremiumNeeded.fromJson,
+  'canBoostChatResultPremiumSubscriptionNeeded':
+      CanBoostChatResultPremiumSubscriptionNeeded.fromJson,
+  'canBoostChatResultWaitNeeded': CanBoostChatResultWaitNeeded.fromJson,
   'canTransferOwnershipResultOk': CanTransferOwnershipResultOk.fromJson,
   'canTransferOwnershipResultPasswordNeeded':
       CanTransferOwnershipResultPasswordNeeded.fromJson,
@@ -2270,6 +2300,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeBotStartInGroup': InternalLinkTypeBotStartInGroup.fromJson,
   'internalLinkTypeChangePhoneNumber':
       InternalLinkTypeChangePhoneNumber.fromJson,
+  'internalLinkTypeChatBoost': InternalLinkTypeChatBoost.fromJson,
   'internalLinkTypeChatFolderInvite': InternalLinkTypeChatFolderInvite.fromJson,
   'internalLinkTypeChatFolderSettings':
       InternalLinkTypeChatFolderSettings.fromJson,
@@ -2311,6 +2342,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeWebApp': InternalLinkTypeWebApp.fromJson,
   'messageLink': MessageLink.fromJson,
   'messageLinkInfo': MessageLinkInfo.fromJson,
+  'chatBoostLink': ChatBoostLink.fromJson,
+  'chatBoostLinkInfo': ChatBoostLinkInfo.fromJson,
   'blockListMain': BlockListMain.fromJson,
   'blockListStories': BlockListStories.fromJson,
   'filePart': FilePart.fromJson,

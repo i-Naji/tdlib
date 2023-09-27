@@ -15,8 +15,11 @@ final class Story extends TdObject {
     required this.isEdited,
     required this.isPinned,
     required this.isVisibleOnlyForSelf,
+    required this.canBeDeleted,
+    required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
+    required this.canToggleIsPinned,
     required this.canGetViewers,
     required this.hasExpiredViewers,
     this.interactionInfo,
@@ -53,11 +56,20 @@ final class Story extends TdObject {
   /// True, if the story is visible only for the current user
   final bool isVisibleOnlyForSelf;
 
+  /// True, if the story can be deleted
+  final bool canBeDeleted;
+
+  /// True, if the story can be edited
+  final bool canBeEdited;
+
   /// True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden
   final bool canBeForwarded;
 
   /// True, if the story can be replied in the chat with the story sender
   final bool canBeReplied;
+
+  /// True, if the story's is_pinned value can be changed
+  final bool canToggleIsPinned;
 
   /// True, if users viewed the story can be received through getStoryViewers
   final bool canGetViewers;
@@ -101,8 +113,11 @@ final class Story extends TdObject {
         isEdited: _readBool(json['is_edited']),
         isPinned: _readBool(json['is_pinned']),
         isVisibleOnlyForSelf: _readBool(json['is_visible_only_for_self']),
+        canBeDeleted: _readBool(json['can_be_deleted']),
+        canBeEdited: _readBool(json['can_be_edited']),
         canBeForwarded: _readBool(json['can_be_forwarded']),
         canBeReplied: _readBool(json['can_be_replied']),
+        canToggleIsPinned: _readBool(json['can_toggle_is_pinned']),
         canGetViewers: _readBool(json['can_get_viewers']),
         hasExpiredViewers: _readBool(json['has_expired_viewers']),
         interactionInfo: _readOptional(
@@ -130,8 +145,11 @@ final class Story extends TdObject {
         'is_edited': isEdited,
         'is_pinned': isPinned,
         'is_visible_only_for_self': isVisibleOnlyForSelf,
+        'can_be_deleted': canBeDeleted,
+        'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied': canBeReplied,
+        'can_toggle_is_pinned': canToggleIsPinned,
         'can_get_viewers': canGetViewers,
         'has_expired_viewers': hasExpiredViewers,
         'interaction_info': interactionInfo?.toJson(),
@@ -153,8 +171,11 @@ final class Story extends TdObject {
     bool? isEdited,
     bool? isPinned,
     bool? isVisibleOnlyForSelf,
+    bool? canBeDeleted,
+    bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeReplied,
+    bool? canToggleIsPinned,
     bool? canGetViewers,
     bool? hasExpiredViewers,
     StoryInteractionInfo? Function()? interactionInfo,
@@ -175,8 +196,11 @@ final class Story extends TdObject {
         isEdited: isEdited ?? this.isEdited,
         isPinned: isPinned ?? this.isPinned,
         isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
+        canBeDeleted: canBeDeleted ?? this.canBeDeleted,
+        canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeReplied: canBeReplied ?? this.canBeReplied,
+        canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
         canGetViewers: canGetViewers ?? this.canGetViewers,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
         interactionInfo:

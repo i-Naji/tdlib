@@ -3,22 +3,33 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether the current user can send a story
+/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats
 ///
 /// Returns [CanSendStoryResult].
 final class CanSendStory extends TdFunction<CanSendStoryResult> {
-  /// Checks whether the current user can send a story
-  const CanSendStory();
+  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats
+  const CanSendStory({
+    required this.chatId,
+  });
+
+  /// Chat identifier
+  final int chatId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'chat_id': chatId,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanSendStory copyWith() => const CanSendStory();
+  CanSendStory copyWith({
+    int? chatId,
+  }) =>
+      CanSendStory(
+        chatId: chatId ?? this.chatId,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendStory';

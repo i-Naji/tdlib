@@ -36,7 +36,7 @@ final class CreateNewSupergroupChat extends TdFunction<Chat> {
   /// Message auto-delete time value, in seconds; must be from 0 up to 365 * 86400 and be divisible by 86400. If 0, then messages aren't deleted automatically
   final int messageAutoDeleteTime;
 
-  /// Pass true to create a supergroup for importing messages using importMessage
+  /// Pass true to create a supergroup for importing messages using importMessages
   final bool forImport;
 
   @override

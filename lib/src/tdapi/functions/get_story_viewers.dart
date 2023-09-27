@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns viewers of a story. The method can be called if story.can_get_viewers == true
+/// Returns viewers of a story. The method can be called only for stories posted on behalf of the current user
 ///
 /// Returns [StoryViewers].
 final class GetStoryViewers extends TdFunction<StoryViewers> {
-  /// Returns viewers of a story. The method can be called if story.can_get_viewers == true
+  /// Returns viewers of a story. The method can be called only for stories posted on behalf of the current user
   const GetStoryViewers({
     required this.storyId,
     required this.query,

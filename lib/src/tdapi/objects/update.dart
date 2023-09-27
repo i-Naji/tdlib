@@ -285,8 +285,7 @@ final class UpdateMessageSendFailed extends Update {
   const UpdateMessageSendFailed({
     required this.message,
     required this.oldMessageId,
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
     this.extra,
     this.clientId,
   });
@@ -297,11 +296,8 @@ final class UpdateMessageSendFailed extends Update {
   /// The previous temporary message identifier
   final int oldMessageId;
 
-  /// An error code
-  final int errorCode;
-
-  /// Error message
-  final String errorMessage;
+  /// The cause of the message sending failure
+  final TdError error;
 
   /// "@extra" of the request this object answers.
   @override
@@ -316,8 +312,7 @@ final class UpdateMessageSendFailed extends Update {
       UpdateMessageSendFailed(
         message: _readObject(json['message'], Message.fromJson),
         oldMessageId: _readInt(json['old_message_id']),
-        errorCode: _readInt(json['error_code']),
-        errorMessage: _readString(json['error_message']),
+        error: _readObject(json['error'], TdError.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -327,8 +322,7 @@ final class UpdateMessageSendFailed extends Update {
         '@type': CONSTRUCTOR,
         'message': message.toJson(),
         'old_message_id': oldMessageId,
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -337,16 +331,14 @@ final class UpdateMessageSendFailed extends Update {
   UpdateMessageSendFailed copyWith({
     Message? message,
     int? oldMessageId,
-    int? errorCode,
-    String? errorMessage,
+    TdError? error,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateMessageSendFailed(
         message: message ?? this.message,
         oldMessageId: oldMessageId ?? this.oldMessageId,
-        errorCode: errorCode ?? this.errorCode,
-        errorMessage: errorMessage ?? this.errorMessage,
+        error: error ?? this.error,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -5027,9 +5019,8 @@ final class UpdateStorySendFailed extends Update {
   /// A story failed to send. If the story sending is canceled, then updateStoryDeleted will be received instead of this update
   const UpdateStorySendFailed({
     required this.story,
-    this.error,
-    required this.errorCode,
-    required this.errorMessage,
+    required this.error,
+    this.errorType,
     this.extra,
     this.clientId,
   });
@@ -5037,14 +5028,11 @@ final class UpdateStorySendFailed extends Update {
   /// The failed to send story
   final Story story;
 
-  /// The cause of the failure; may be null if unknown
-  final CanSendStoryResult? error;
+  /// The cause of the story sending failure
+  final TdError error;
 
-  /// An error code
-  final int errorCode;
-
-  /// Error message
-  final String errorMessage;
+  /// Type of the error; may be null if unknown
+  final CanSendStoryResult? errorType;
 
   /// "@extra" of the request this object answers.
   @override
@@ -5058,9 +5046,9 @@ final class UpdateStorySendFailed extends Update {
   factory UpdateStorySendFailed.fromJson(Map<String, dynamic> json) =>
       UpdateStorySendFailed(
         story: _readObject(json['story'], Story.fromJson),
-        error: _readOptional(json['error'], CanSendStoryResult.fromJson),
-        errorCode: _readInt(json['error_code']),
-        errorMessage: _readString(json['error_message']),
+        error: _readObject(json['error'], TdError.fromJson),
+        errorType:
+            _readOptional(json['error_type'], CanSendStoryResult.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -5069,9 +5057,8 @@ final class UpdateStorySendFailed extends Update {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'story': story.toJson(),
-        'error': error?.toJson(),
-        'error_code': errorCode,
-        'error_message': errorMessage,
+        'error': error.toJson(),
+        'error_type': errorType?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -5079,17 +5066,15 @@ final class UpdateStorySendFailed extends Update {
   @override
   UpdateStorySendFailed copyWith({
     Story? story,
-    CanSendStoryResult? Function()? error,
-    int? errorCode,
-    String? errorMessage,
+    TdError? error,
+    CanSendStoryResult? Function()? errorType,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateStorySendFailed(
         story: story ?? this.story,
-        error: error != null ? error() : this.error,
-        errorCode: errorCode ?? this.errorCode,
-        errorMessage: errorMessage ?? this.errorMessage,
+        error: error ?? this.error,
+        errorType: errorType != null ? errorType() : this.errorType,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

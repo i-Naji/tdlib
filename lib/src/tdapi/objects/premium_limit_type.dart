@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a limit, increased for Premium users
 ///
-/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklySentStoryCount], [PremiumLimitTypeMonthlySentStoryCount], [PremiumLimitTypeStoryCaptionLength]; or [UndecodedPremiumLimitType] for a type newer than this API.
+/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklySentStoryCount], [PremiumLimitTypeMonthlySentStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
@@ -481,6 +481,36 @@ final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumLimitTypeStoryCaptionLength';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The maximum number of suggested reaction areas on a story
+final class PremiumLimitTypeStorySuggestedReactionAreaCount
+    extends PremiumLimitType {
+  /// The maximum number of suggested reaction areas on a story
+  const PremiumLimitTypeStorySuggestedReactionAreaCount();
+
+  /// Parses a [PremiumLimitTypeStorySuggestedReactionAreaCount] from TDLib JSON.
+  factory PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson(
+          Map<String, dynamic> json) =>
+      const PremiumLimitTypeStorySuggestedReactionAreaCount();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumLimitTypeStorySuggestedReactionAreaCount copyWith() =>
+      const PremiumLimitTypeStorySuggestedReactionAreaCount();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'premiumLimitTypeStorySuggestedReactionAreaCount';
 
   @override
   String getConstructor() => CONSTRUCTOR;

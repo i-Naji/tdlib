@@ -3,15 +3,19 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a story is accessible after expiration
+/// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_pinned == true
 ///
 /// Returns [Ok].
 final class ToggleStoryIsPinned extends TdFunction<Ok> {
-  /// Toggles whether a story is accessible after expiration
+  /// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_pinned == true
   const ToggleStoryIsPinned({
+    required this.storySenderChatId,
     required this.storyId,
     required this.isPinned,
   });
+
+  /// Identifier of the chat that posted the story
+  final int storySenderChatId;
 
   /// Identifier of the story
   final int storyId;
@@ -22,6 +26,7 @@ final class ToggleStoryIsPinned extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
         'is_pinned': isPinned,
         if (extra != null) '@extra': extra,
@@ -30,10 +35,12 @@ final class ToggleStoryIsPinned extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleStoryIsPinned copyWith({
+    int? storySenderChatId,
     int? storyId,
     bool? isPinned,
   }) =>
       ToggleStoryIsPinned(
+        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
         isPinned: isPinned ?? this.isPinned,
       );

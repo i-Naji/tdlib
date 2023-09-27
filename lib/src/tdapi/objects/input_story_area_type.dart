@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a clickable rectangle area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -172,6 +172,62 @@ final class InputStoryAreaTypePreviousVenue extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypePreviousVenue';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a suggested reaction
+final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
+  /// An area pointing to a suggested reaction
+  const InputStoryAreaTypeSuggestedReaction({
+    required this.reactionType,
+    required this.isDark,
+    required this.isFlipped,
+  });
+
+  /// Type of the reaction
+  final ReactionType reactionType;
+
+  /// True, if reaction has a dark background
+  final bool isDark;
+
+  /// True, if reaction corner is flipped
+  final bool isFlipped;
+
+  /// Parses a [InputStoryAreaTypeSuggestedReaction] from TDLib JSON.
+  factory InputStoryAreaTypeSuggestedReaction.fromJson(
+          Map<String, dynamic> json) =>
+      InputStoryAreaTypeSuggestedReaction(
+        reactionType: _readObject(json['reaction_type'], ReactionType.fromJson),
+        isDark: _readBool(json['is_dark']),
+        isFlipped: _readBool(json['is_flipped']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'reaction_type': reactionType.toJson(),
+        'is_dark': isDark,
+        'is_flipped': isFlipped,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputStoryAreaTypeSuggestedReaction copyWith({
+    ReactionType? reactionType,
+    bool? isDark,
+    bool? isFlipped,
+  }) =>
+      InputStoryAreaTypeSuggestedReaction(
+        reactionType: reactionType ?? this.reactionType,
+        isDark: isDark ?? this.isDark,
+        isFlipped: isFlipped ?? this.isFlipped,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputStoryAreaTypeSuggestedReaction';
 
   @override
   String getConstructor() => CONSTRUCTOR;
