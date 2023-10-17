@@ -32,6 +32,7 @@ final class Message extends TdObject {
     required this.date,
     required this.editDate,
     this.forwardInfo,
+    this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
     this.replyTo,
@@ -124,6 +125,9 @@ final class Message extends TdObject {
   /// Information about the initial message sender; may be null if none or unknown
   final MessageForwardInfo? forwardInfo;
 
+  /// Information about the initial message for messages created with importMessages; may be null if the message isn't imported
+  final MessageImportInfo? importInfo;
+
   /// Information about interactions with the message; may be null if none
   final MessageInteractionInfo? interactionInfo;
 
@@ -204,6 +208,8 @@ final class Message extends TdObject {
         editDate: _readInt(json['edit_date']),
         forwardInfo:
             _readOptional(json['forward_info'], MessageForwardInfo.fromJson),
+        importInfo:
+            _readOptional(json['import_info'], MessageImportInfo.fromJson),
         interactionInfo: _readOptional(
             json['interaction_info'], MessageInteractionInfo.fromJson),
         unreadReactions: _readList<UnreadReaction>(json['unread_reactions'],
@@ -252,6 +258,7 @@ final class Message extends TdObject {
         'date': date,
         'edit_date': editDate,
         'forward_info': forwardInfo?.toJson(),
+        'import_info': importInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
         'reply_to': replyTo?.toJson(),
@@ -295,6 +302,7 @@ final class Message extends TdObject {
     int? date,
     int? editDate,
     MessageForwardInfo? Function()? forwardInfo,
+    MessageImportInfo? Function()? importInfo,
     MessageInteractionInfo? Function()? interactionInfo,
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? Function()? replyTo,
@@ -342,6 +350,7 @@ final class Message extends TdObject {
         date: date ?? this.date,
         editDate: editDate ?? this.editDate,
         forwardInfo: forwardInfo != null ? forwardInfo() : this.forwardInfo,
+        importInfo: importInfo != null ? importInfo() : this.importInfo,
         interactionInfo:
             interactionInfo != null ? interactionInfo() : this.interactionInfo,
         unreadReactions: unreadReactions ?? this.unreadReactions,

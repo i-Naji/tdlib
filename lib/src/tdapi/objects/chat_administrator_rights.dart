@@ -24,13 +24,13 @@ final class ChatAdministratorRights extends TdObject {
     required this.isAnonymous,
   });
 
-  /// True, if the administrator can get chat event log, get chat statistics, get chat boosts in channels, get message statistics in channels, get channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+  /// True, if the administrator can get chat event log, get chat boosts in channels, get channel members, report supergroup spam messages, see anonymous administrators in supergroups and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
   /// True, if the administrator can change the chat title, photo, and other settings
   final bool canChangeInfo;
 
-  /// True, if the administrator can create channel posts; applicable to channels only
+  /// True, if the administrator can create channel posts or view channel statistics; applicable to channels only
   final bool canPostMessages;
 
   /// True, if the administrator can edit messages of other users and pin messages; applicable to channels only
@@ -42,7 +42,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can invite new users to the chat
   final bool canInviteUsers;
 
-  /// True, if the administrator can restrict, ban, or unban chat members; always true for channels
+  /// True, if the administrator can restrict, ban, or unban chat members or view supergroup statistics; always true for channels
   final bool canRestrictMembers;
 
   /// True, if the administrator can pin messages; applicable to basic groups and supergroups only

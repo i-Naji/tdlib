@@ -684,6 +684,7 @@ part 'objects/bot_command_scope.dart';
 part 'objects/bot_commands.dart';
 part 'objects/bot_info.dart';
 part 'objects/bot_menu_button.dart';
+part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/call.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_id.dart';
@@ -879,6 +880,7 @@ part 'objects/message_extended_media.dart';
 part 'objects/message_file_type.dart';
 part 'objects/message_forward_info.dart';
 part 'objects/message_forward_origin.dart';
+part 'objects/message_import_info.dart';
 part 'objects/message_interaction_info.dart';
 part 'objects/message_link.dart';
 part 'objects/message_link_info.dart';
@@ -1074,14 +1076,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.19';
+const String tdlibVersion = '1.8.20';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '2589c3fd46925f5d57e4ec79233cd1bd0f5d0c09';
+const String tdlibSchemaCommit = '4ed0b23c9c99868ab4d2d28e8ff244687f7b3144';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '2589c3fd46925f5d57e4ec79233cd1bd0f5d0c09',
+  '4ed0b23c9c99868ab4d2d28e8ff244687f7b3144',
 ];
 
 /// Base class of every TDLib object.
@@ -1331,11 +1333,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageForwardOriginChat': MessageForwardOriginChat.fromJson,
   'messageForwardOriginHiddenUser': MessageForwardOriginHiddenUser.fromJson,
   'messageForwardOriginChannel': MessageForwardOriginChannel.fromJson,
-  'messageForwardOriginMessageImport':
-      MessageForwardOriginMessageImport.fromJson,
   'reactionTypeEmoji': ReactionTypeEmoji.fromJson,
   'reactionTypeCustomEmoji': ReactionTypeCustomEmoji.fromJson,
   'messageForwardInfo': MessageForwardInfo.fromJson,
+  'messageImportInfo': MessageImportInfo.fromJson,
   'messageReplyInfo': MessageReplyInfo.fromJson,
   'messageReaction': MessageReaction.fromJson,
   'messageInteractionInfo': MessageInteractionInfo.fromJson,
@@ -1704,7 +1705,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageContactRegistered': MessageContactRegistered.fromJson,
   'messageUserShared': MessageUserShared.fromJson,
   'messageChatShared': MessageChatShared.fromJson,
-  'messageWebsiteConnected': MessageWebsiteConnected.fromJson,
   'messageBotWriteAccessAllowed': MessageBotWriteAccessAllowed.fromJson,
   'messageWebAppDataSent': MessageWebAppDataSent.fromJson,
   'messageWebAppDataReceived': MessageWebAppDataReceived.fromJson,
@@ -1901,6 +1901,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'attachmentMenuBotColor': AttachmentMenuBotColor.fromJson,
   'attachmentMenuBot': AttachmentMenuBot.fromJson,
   'sentWebAppMessage': SentWebAppMessage.fromJson,
+  'botWriteAccessAllowReasonConnectedWebsite':
+      BotWriteAccessAllowReasonConnectedWebsite.fromJson,
+  'botWriteAccessAllowReasonAddedToAttachmentMenu':
+      BotWriteAccessAllowReasonAddedToAttachmentMenu.fromJson,
+  'botWriteAccessAllowReasonLaunchedWebApp':
+      BotWriteAccessAllowReasonLaunchedWebApp.fromJson,
+  'botWriteAccessAllowReasonAcceptedRequest':
+      BotWriteAccessAllowReasonAcceptedRequest.fromJson,
   'httpUrl': HttpUrl.fromJson,
   'userLink': UserLink.fromJson,
   'inputInlineQueryResultAnimation': InputInlineQueryResultAnimation.fromJson,

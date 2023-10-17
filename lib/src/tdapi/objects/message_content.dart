@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageWebsiteConnected], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -2638,83 +2638,36 @@ final class MessageChatShared extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The current user has connected a website by logging in using Telegram Login Widget on it
-final class MessageWebsiteConnected extends MessageContent {
-  /// The current user has connected a website by logging in using Telegram Login Widget on it
-  const MessageWebsiteConnected({
-    required this.domainName,
-  });
-
-  /// Domain name of the connected website
-  final String domainName;
-
-  /// Parses a [MessageWebsiteConnected] from TDLib JSON.
-  factory MessageWebsiteConnected.fromJson(Map<String, dynamic> json) =>
-      MessageWebsiteConnected(
-        domainName: _readString(json['domain_name']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'domain_name': domainName,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  MessageWebsiteConnected copyWith({
-    String? domainName,
-  }) =>
-      MessageWebsiteConnected(
-        domainName: domainName ?? this.domainName,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageWebsiteConnected';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
 /// The user allowed the bot to send messages
 final class MessageBotWriteAccessAllowed extends MessageContent {
   /// The user allowed the bot to send messages
   const MessageBotWriteAccessAllowed({
-    this.webApp,
-    required this.byRequest,
+    required this.reason,
   });
 
-  /// Information about the Web App, which requested the access; may be null if none or the Web App was opened from the attachment menu
-  final WebApp? webApp;
-
-  /// True, if user allowed the bot to send messages by an explicit call to allowBotToSendMessages
-  final bool byRequest;
+  /// The reason why the bot was allowed to write messages
+  final BotWriteAccessAllowReason reason;
 
   /// Parses a [MessageBotWriteAccessAllowed] from TDLib JSON.
   factory MessageBotWriteAccessAllowed.fromJson(Map<String, dynamic> json) =>
       MessageBotWriteAccessAllowed(
-        webApp: _readOptional(json['web_app'], WebApp.fromJson),
-        byRequest: _readBool(json['by_request']),
+        reason: _readObject(json['reason'], BotWriteAccessAllowReason.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'web_app': webApp?.toJson(),
-        'by_request': byRequest,
+        'reason': reason.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageBotWriteAccessAllowed copyWith({
-    WebApp? Function()? webApp,
-    bool? byRequest,
+    BotWriteAccessAllowReason? reason,
   }) =>
       MessageBotWriteAccessAllowed(
-        webApp: webApp != null ? webApp() : this.webApp,
-        byRequest: byRequest ?? this.byRequest,
+        reason: reason ?? this.reason,
       );
 
   /// TDLib type name.

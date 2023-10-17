@@ -9,6 +9,7 @@ final class AddedReaction extends TdObject {
   const AddedReaction({
     required this.type,
     required this.senderId,
+    required this.isOutgoing,
     required this.date,
   });
 
@@ -18,6 +19,9 @@ final class AddedReaction extends TdObject {
   /// Identifier of the chat member, applied the reaction
   final MessageSender senderId;
 
+  /// True, if the reaction was added by the current user
+  final bool isOutgoing;
+
   /// Point in time (Unix timestamp) when the reaction was added
   final int date;
 
@@ -25,6 +29,7 @@ final class AddedReaction extends TdObject {
   factory AddedReaction.fromJson(Map<String, dynamic> json) => AddedReaction(
         type: _readObject(json['type'], ReactionType.fromJson),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        isOutgoing: _readBool(json['is_outgoing']),
         date: _readInt(json['date']),
       );
 
@@ -33,6 +38,7 @@ final class AddedReaction extends TdObject {
         '@type': CONSTRUCTOR,
         'type': type.toJson(),
         'sender_id': senderId.toJson(),
+        'is_outgoing': isOutgoing,
         'date': date,
       };
 
@@ -41,11 +47,13 @@ final class AddedReaction extends TdObject {
   AddedReaction copyWith({
     ReactionType? type,
     MessageSender? senderId,
+    bool? isOutgoing,
     int? date,
   }) =>
       AddedReaction(
         type: type ?? this.type,
         senderId: senderId ?? this.senderId,
+        isOutgoing: isOutgoing ?? this.isOutgoing,
         date: date ?? this.date,
       );
 

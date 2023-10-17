@@ -10,6 +10,7 @@ final class MessageReaction extends TdObject {
     required this.type,
     required this.totalCount,
     required this.isChosen,
+    required this.usedSenderId,
     required this.recentSenderIds,
   });
 
@@ -22,6 +23,9 @@ final class MessageReaction extends TdObject {
   /// True, if the reaction is chosen by the current user
   final bool isChosen;
 
+  /// Identifier of the message sender used by the current user to add the reaction; null if unknown or the reaction isn't chosen
+  final MessageSender usedSenderId;
+
   /// Identifiers of at most 3 recent message senders, added the reaction; available in private, basic group and supergroup chats
   final List<MessageSender> recentSenderIds;
 
@@ -31,6 +35,8 @@ final class MessageReaction extends TdObject {
         type: _readObject(json['type'], ReactionType.fromJson),
         totalCount: _readInt(json['total_count']),
         isChosen: _readBool(json['is_chosen']),
+        usedSenderId:
+            _readObject(json['used_sender_id'], MessageSender.fromJson),
         recentSenderIds: _readList<MessageSender>(json['recent_sender_ids'],
             (e) => _readObject(e, MessageSender.fromJson)),
       );
@@ -41,6 +47,7 @@ final class MessageReaction extends TdObject {
         'type': type.toJson(),
         'total_count': totalCount,
         'is_chosen': isChosen,
+        'used_sender_id': usedSenderId.toJson(),
         'recent_sender_ids': [for (final e in recentSenderIds) e.toJson()],
       };
 
@@ -50,12 +57,14 @@ final class MessageReaction extends TdObject {
     ReactionType? type,
     int? totalCount,
     bool? isChosen,
+    MessageSender? usedSenderId,
     List<MessageSender>? recentSenderIds,
   }) =>
       MessageReaction(
         type: type ?? this.type,
         totalCount: totalCount ?? this.totalCount,
         isChosen: isChosen ?? this.isChosen,
+        usedSenderId: usedSenderId ?? this.usedSenderId,
         recentSenderIds: recentSenderIds ?? this.recentSenderIds,
       );
 

@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about a link to boost a a chat
+/// Contains information about a link to boost a chat
 final class ChatBoostLinkInfo extends TdObject {
-  /// Contains information about a link to boost a a chat
+  /// Contains information about a link to boost a chat
   const ChatBoostLinkInfo({
     required this.isPublic,
     required this.chatId,

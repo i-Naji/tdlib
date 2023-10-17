@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains information about the origin of a forwarded message
 ///
-/// One of: [MessageForwardOriginUser], [MessageForwardOriginChat], [MessageForwardOriginHiddenUser], [MessageForwardOriginChannel], [MessageForwardOriginMessageImport]; or [UndecodedMessageForwardOrigin] for a type newer than this API.
+/// One of: [MessageForwardOriginUser], [MessageForwardOriginChat], [MessageForwardOriginHiddenUser], [MessageForwardOriginChannel]; or [UndecodedMessageForwardOrigin] for a type newer than this API.
 sealed class MessageForwardOrigin extends TdObject {
   const MessageForwardOrigin();
 
@@ -219,46 +219,6 @@ final class MessageForwardOriginChannel extends MessageForwardOrigin {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageForwardOriginChannel';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The message was imported from an exported message history
-final class MessageForwardOriginMessageImport extends MessageForwardOrigin {
-  /// The message was imported from an exported message history
-  const MessageForwardOriginMessageImport({
-    required this.senderName,
-  });
-
-  /// Name of the sender
-  final String senderName;
-
-  /// Parses a [MessageForwardOriginMessageImport] from TDLib JSON.
-  factory MessageForwardOriginMessageImport.fromJson(
-          Map<String, dynamic> json) =>
-      MessageForwardOriginMessageImport(
-        senderName: _readString(json['sender_name']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'sender_name': senderName,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  MessageForwardOriginMessageImport copyWith({
-    String? senderName,
-  }) =>
-      MessageForwardOriginMessageImport(
-        senderName: senderName ?? this.senderName,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageForwardOriginMessageImport';
 
   @override
   String getConstructor() => CONSTRUCTOR;

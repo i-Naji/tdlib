@@ -230,7 +230,7 @@ final class CallStateDiscarded extends CallState {
     required this.needLog,
   });
 
-  /// The reason, why the call has ended
+  /// The reason why the call has ended
   final CallDiscardReason reason;
 
   /// True, if the call rating must be sent to the server

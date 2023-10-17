@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class ChatBoostStatus extends TdObject {
   /// Describes current boost status of a chat
   const ChatBoostStatus({
+    required this.boostUrl,
     required this.isBoosted,
     required this.level,
     required this.boostCount,
@@ -17,6 +18,9 @@ final class ChatBoostStatus extends TdObject {
     this.extra,
     this.clientId,
   });
+
+  /// An HTTP URL, which can be used to boost the chat
+  final String boostUrl;
 
   /// True, if the current user has already boosted the chat
   final bool isBoosted;
@@ -50,6 +54,7 @@ final class ChatBoostStatus extends TdObject {
   /// Parses a [ChatBoostStatus] from TDLib JSON.
   factory ChatBoostStatus.fromJson(Map<String, dynamic> json) =>
       ChatBoostStatus(
+        boostUrl: _readString(json['boost_url']),
         isBoosted: _readBool(json['is_boosted']),
         level: _readInt(json['level']),
         boostCount: _readInt(json['boost_count']),
@@ -64,6 +69,7 @@ final class ChatBoostStatus extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'boost_url': boostUrl,
         'is_boosted': isBoosted,
         'level': level,
         'boost_count': boostCount,
@@ -76,6 +82,7 @@ final class ChatBoostStatus extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatBoostStatus copyWith({
+    String? boostUrl,
     bool? isBoosted,
     int? level,
     int? boostCount,
@@ -87,6 +94,7 @@ final class ChatBoostStatus extends TdObject {
     int? clientId,
   }) =>
       ChatBoostStatus(
+        boostUrl: boostUrl ?? this.boostUrl,
         isBoosted: isBoosted ?? this.isBoosted,
         level: level ?? this.level,
         boostCount: boostCount ?? this.boostCount,
