@@ -2,11 +2,15 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:tdlib/td_api.dart' as tdApi;
+import 'package:tdlib/td_api.dart' as td;
 import 'package:tdlib/tdlib.dart';
 
 void main() async {
-  final tdlibPath = kIsWeb ? null : (Platform.isAndroid || Platform.isLinux || Platform.isWindows) ? 'libtdjson.so' : null;
+  final tdlibPath = kIsWeb
+      ? null
+      : (Platform.isAndroid || Platform.isLinux || Platform.isWindows)
+          ? 'libtdjson.so'
+          : null;
   await TdPlugin.initialize(tdlibPath);
   runApp(const MyApp());
 }
@@ -71,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      if (_clientId > 0) tdSend(_clientId, const tdApi.Close());
+      if (_clientId > 0) tdSend(_clientId, const td.Close());
       _clientId = tdCreate();
     });
   }
