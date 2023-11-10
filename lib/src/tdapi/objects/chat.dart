@@ -11,6 +11,8 @@ final class Chat extends TdObject {
     required this.type,
     required this.title,
     this.photo,
+    required this.accentColorId,
+    required this.backgroundCustomEmojiId,
     required this.permissions,
     this.lastMessage,
     required this.positions,
@@ -55,6 +57,12 @@ final class Chat extends TdObject {
 
   /// Chat photo; may be null
   final ChatPhotoInfo? photo;
+
+  /// Identifier of the accent color for message sender name, and backgrounds of chat photo, reply header, and link preview
+  final int accentColorId;
+
+  /// Identifier of a custom emoji to be shown on the reply header background in replies to messages sent by the chat; 0 if none
+  final int backgroundCustomEmojiId;
 
   /// Actions that non-administrator chat members are allowed to take in the chat
   final ChatPermissions permissions;
@@ -157,6 +165,8 @@ final class Chat extends TdObject {
         type: _readObject(json['type'], ChatType.fromJson),
         title: _readString(json['title']),
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
+        accentColorId: _readInt(json['accent_color_id']),
+        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
         permissions: _readObject(json['permissions'], ChatPermissions.fromJson),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
         positions: _readList<ChatPosition>(
@@ -206,6 +216,8 @@ final class Chat extends TdObject {
         'type': type.toJson(),
         'title': title,
         'photo': photo?.toJson(),
+        'accent_color_id': accentColorId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
         'permissions': permissions.toJson(),
         'last_message': lastMessage?.toJson(),
         'positions': [for (final e in positions) e.toJson()],
@@ -244,6 +256,8 @@ final class Chat extends TdObject {
     ChatType? type,
     String? title,
     ChatPhotoInfo? Function()? photo,
+    int? accentColorId,
+    int? backgroundCustomEmojiId,
     ChatPermissions? permissions,
     Message? Function()? lastMessage,
     List<ChatPosition>? positions,
@@ -281,6 +295,9 @@ final class Chat extends TdObject {
         type: type ?? this.type,
         title: title ?? this.title,
         photo: photo != null ? photo() : this.photo,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
         permissions: permissions ?? this.permissions,
         lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
         positions: positions ?? this.positions,

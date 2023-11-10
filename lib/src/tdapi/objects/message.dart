@@ -16,6 +16,7 @@ final class Message extends TdObject {
     required this.isPinned,
     required this.canBeEdited,
     required this.canBeForwarded,
+    required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -76,6 +77,9 @@ final class Message extends TdObject {
 
   /// True, if the message can be forwarded
   final bool canBeForwarded;
+
+  /// True, if the message can be replied in another chat
+  final bool canBeRepliedInAnotherChat;
 
   /// True, if content of the message can be saved locally or copied
   final bool canBeSaved;
@@ -143,7 +147,7 @@ final class Message extends TdObject {
   /// The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
 
-  /// Time left before the message self-destruct timer expires, in seconds; 0 if self-desctruction isn't scheduled yet
+  /// Time left before the message self-destruct timer expires, in seconds; 0 if self-destruction isn't scheduled yet
   final double selfDestructIn;
 
   /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
@@ -188,6 +192,8 @@ final class Message extends TdObject {
         isPinned: _readBool(json['is_pinned']),
         canBeEdited: _readBool(json['can_be_edited']),
         canBeForwarded: _readBool(json['can_be_forwarded']),
+        canBeRepliedInAnotherChat:
+            _readBool(json['can_be_replied_in_another_chat']),
         canBeSaved: _readBool(json['can_be_saved']),
         canBeDeletedOnlyForSelf:
             _readBool(json['can_be_deleted_only_for_self']),
@@ -242,6 +248,7 @@ final class Message extends TdObject {
         'is_pinned': isPinned,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
+        'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
         'can_be_saved': canBeSaved,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -286,6 +293,7 @@ final class Message extends TdObject {
     bool? isPinned,
     bool? canBeEdited,
     bool? canBeForwarded,
+    bool? canBeRepliedInAnotherChat,
     bool? canBeSaved,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -330,6 +338,8 @@ final class Message extends TdObject {
         isPinned: isPinned ?? this.isPinned,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
+        canBeRepliedInAnotherChat:
+            canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
         canBeSaved: canBeSaved ?? this.canBeSaved,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,

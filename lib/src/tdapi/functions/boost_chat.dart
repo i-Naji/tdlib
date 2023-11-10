@@ -3,22 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Boosts a chat
+/// Boosts a chat and returns the list of available chat boost slots for the current user after the boost
 ///
-/// Returns [Ok].
-final class BoostChat extends TdFunction<Ok> {
-  /// Boosts a chat
+/// Returns [ChatBoostSlots].
+final class BoostChat extends TdFunction<ChatBoostSlots> {
+  /// Boosts a chat and returns the list of available chat boost slots for the current user after the boost
   const BoostChat({
     required this.chatId,
+    required this.slotIds,
   });
 
   /// Identifier of the chat
   final int chatId;
 
+  /// Identifiers of boost slots of the current user from which to apply boosts to the chat
+  final List<int> slotIds;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'slot_ids': slotIds,
         if (extra != null) '@extra': extra,
       };
 
@@ -26,9 +31,11 @@ final class BoostChat extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   BoostChat copyWith({
     int? chatId,
+    List<int>? slotIds,
   }) =>
       BoostChat(
         chatId: chatId ?? this.chatId,
+        slotIds: slotIds ?? this.slotIds,
       );
 
   /// TDLib type name.

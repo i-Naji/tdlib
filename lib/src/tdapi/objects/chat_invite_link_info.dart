@@ -12,6 +12,7 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.type,
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
@@ -38,6 +39,9 @@ final class ChatInviteLinkInfo extends TdObject {
 
   /// Chat photo; may be null
   final ChatPhotoInfo? photo;
+
+  /// Identifier of the accent color for chat title and background of chat photo
+  final int accentColorId;
 
   /// Chat description
   final String description;
@@ -79,6 +83,7 @@ final class ChatInviteLinkInfo extends TdObject {
         type: _readObject(json['type'], InviteLinkChatType.fromJson),
         title: _readString(json['title']),
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
+        accentColorId: _readInt(json['accent_color_id']),
         description: _readString(json['description']),
         memberCount: _readInt(json['member_count']),
         memberUserIds: _readList<int>(json['member_user_ids'], _readInt),
@@ -99,6 +104,7 @@ final class ChatInviteLinkInfo extends TdObject {
         'type': type.toJson(),
         'title': title,
         'photo': photo?.toJson(),
+        'accent_color_id': accentColorId,
         'description': description,
         'member_count': memberCount,
         'member_user_ids': memberUserIds,
@@ -117,6 +123,7 @@ final class ChatInviteLinkInfo extends TdObject {
     InviteLinkChatType? type,
     String? title,
     ChatPhotoInfo? Function()? photo,
+    int? accentColorId,
     String? description,
     int? memberCount,
     List<int>? memberUserIds,
@@ -134,6 +141,7 @@ final class ChatInviteLinkInfo extends TdObject {
         type: type ?? this.type,
         title: title ?? this.title,
         photo: photo != null ? photo() : this.photo,
+        accentColorId: accentColorId ?? this.accentColorId,
         description: description ?? this.description,
         memberCount: memberCount ?? this.memberCount,
         memberUserIds: memberUserIds ?? this.memberUserIds,

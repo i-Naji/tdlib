@@ -9,7 +9,13 @@ final class ThemeParameters extends TdObject {
   const ThemeParameters({
     required this.backgroundColor,
     required this.secondaryBackgroundColor,
+    required this.headerBackgroundColor,
+    required this.sectionBackgroundColor,
     required this.textColor,
+    required this.accentTextColor,
+    required this.sectionHeaderTextColor,
+    required this.subtitleTextColor,
+    required this.destructiveTextColor,
     required this.hintColor,
     required this.linkColor,
     required this.buttonColor,
@@ -22,8 +28,26 @@ final class ThemeParameters extends TdObject {
   /// A secondary color for the background in the RGB24 format
   final int secondaryBackgroundColor;
 
+  /// A color of the header background in the RGB24 format
+  final int headerBackgroundColor;
+
+  /// A color of the section background in the RGB24 format
+  final int sectionBackgroundColor;
+
   /// A color of text in the RGB24 format
   final int textColor;
+
+  /// An accent color of the text in the RGB24 format
+  final int accentTextColor;
+
+  /// A color of text on the section headers in the RGB24 format
+  final int sectionHeaderTextColor;
+
+  /// A color of the subtitle text in the RGB24 format
+  final int subtitleTextColor;
+
+  /// A color of the text for destructive actions in the RGB24 format
+  final int destructiveTextColor;
 
   /// A color of hints in the RGB24 format
   final int hintColor;
@@ -42,7 +66,13 @@ final class ThemeParameters extends TdObject {
       ThemeParameters(
         backgroundColor: _readInt(json['background_color']),
         secondaryBackgroundColor: _readInt(json['secondary_background_color']),
+        headerBackgroundColor: _readInt(json['header_background_color']),
+        sectionBackgroundColor: _readInt(json['section_background_color']),
         textColor: _readInt(json['text_color']),
+        accentTextColor: _readInt(json['accent_text_color']),
+        sectionHeaderTextColor: _readInt(json['section_header_text_color']),
+        subtitleTextColor: _readInt(json['subtitle_text_color']),
+        destructiveTextColor: _readInt(json['destructive_text_color']),
         hintColor: _readInt(json['hint_color']),
         linkColor: _readInt(json['link_color']),
         buttonColor: _readInt(json['button_color']),
@@ -54,7 +84,13 @@ final class ThemeParameters extends TdObject {
         '@type': CONSTRUCTOR,
         'background_color': backgroundColor,
         'secondary_background_color': secondaryBackgroundColor,
+        'header_background_color': headerBackgroundColor,
+        'section_background_color': sectionBackgroundColor,
         'text_color': textColor,
+        'accent_text_color': accentTextColor,
+        'section_header_text_color': sectionHeaderTextColor,
+        'subtitle_text_color': subtitleTextColor,
+        'destructive_text_color': destructiveTextColor,
         'hint_color': hintColor,
         'link_color': linkColor,
         'button_color': buttonColor,
@@ -66,7 +102,13 @@ final class ThemeParameters extends TdObject {
   ThemeParameters copyWith({
     int? backgroundColor,
     int? secondaryBackgroundColor,
+    int? headerBackgroundColor,
+    int? sectionBackgroundColor,
     int? textColor,
+    int? accentTextColor,
+    int? sectionHeaderTextColor,
+    int? subtitleTextColor,
+    int? destructiveTextColor,
     int? hintColor,
     int? linkColor,
     int? buttonColor,
@@ -76,7 +118,16 @@ final class ThemeParameters extends TdObject {
         backgroundColor: backgroundColor ?? this.backgroundColor,
         secondaryBackgroundColor:
             secondaryBackgroundColor ?? this.secondaryBackgroundColor,
+        headerBackgroundColor:
+            headerBackgroundColor ?? this.headerBackgroundColor,
+        sectionBackgroundColor:
+            sectionBackgroundColor ?? this.sectionBackgroundColor,
         textColor: textColor ?? this.textColor,
+        accentTextColor: accentTextColor ?? this.accentTextColor,
+        sectionHeaderTextColor:
+            sectionHeaderTextColor ?? this.sectionHeaderTextColor,
+        subtitleTextColor: subtitleTextColor ?? this.subtitleTextColor,
+        destructiveTextColor: destructiveTextColor ?? this.destructiveTextColor,
         hintColor: hintColor ?? this.hintColor,
         linkColor: linkColor ?? this.linkColor,
         buttonColor: buttonColor ?? this.buttonColor,

@@ -23,8 +23,8 @@ final class SendMessage extends TdFunction<Message> {
   /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Options to be used to send the message; pass null to use default options
   final MessageSendOptions? options;
@@ -52,7 +52,7 @@ final class SendMessage extends TdFunction<Message> {
   SendMessage copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? Function()? replyTo,
+    InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,

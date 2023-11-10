@@ -16,7 +16,6 @@ final class ForwardMessages extends TdFunction<Messages> {
     this.options,
     required this.sendCopy,
     required this.removeCaption,
-    required this.onlyPreview,
   });
 
   /// Identifier of the chat to which to forward messages
@@ -28,7 +27,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Identifier of the chat from which to forward messages
   final int fromChatId;
 
-  /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously
+  /// Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously. A message can be forwarded only if message.can_be_forwarded
   final List<int> messageIds;
 
   /// Options to be used to send the messages; pass null to use default options
@@ -40,9 +39,6 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Pass true to remove media captions of message copies. Ignored if send_copy is false
   final bool removeCaption;
 
-  /// Pass true to get fake messages instead of actually forwarding them
-  final bool onlyPreview;
-
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -53,7 +49,6 @@ final class ForwardMessages extends TdFunction<Messages> {
         'options': options?.toJson(),
         'send_copy': sendCopy,
         'remove_caption': removeCaption,
-        'only_preview': onlyPreview,
         if (extra != null) '@extra': extra,
       };
 
@@ -67,7 +62,6 @@ final class ForwardMessages extends TdFunction<Messages> {
     MessageSendOptions? Function()? options,
     bool? sendCopy,
     bool? removeCaption,
-    bool? onlyPreview,
   }) =>
       ForwardMessages(
         chatId: chatId ?? this.chatId,
@@ -77,7 +71,6 @@ final class ForwardMessages extends TdFunction<Messages> {
         options: options != null ? options() : this.options,
         sendCopy: sendCopy ?? this.sendCopy,
         removeCaption: removeCaption ?? this.removeCaption,
-        onlyPreview: onlyPreview ?? this.onlyPreview,
       );
 
   /// TDLib type name.

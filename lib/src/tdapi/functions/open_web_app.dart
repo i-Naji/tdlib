@@ -36,8 +36,8 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// If not 0, a message thread identifier in which the message will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story for the message sent by the Web App; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied in the message sent by the Web App; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -61,7 +61,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     ThemeParameters? Function()? theme,
     String? applicationName,
     int? messageThreadId,
-    MessageReplyTo? Function()? replyTo,
+    InputMessageReplyTo? Function()? replyTo,
   }) =>
       OpenWebApp(
         chatId: chatId ?? this.chatId,

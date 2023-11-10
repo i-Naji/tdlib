@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a part of the text which must be formatted differently
 ///
-/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp]; or [UndecodedTextEntityType] for a type newer than this API.
+/// One of: [TextEntityTypeMention], [TextEntityTypeHashtag], [TextEntityTypeCashtag], [TextEntityTypeBotCommand], [TextEntityTypeUrl], [TextEntityTypeEmailAddress], [TextEntityTypePhoneNumber], [TextEntityTypeBankCardNumber], [TextEntityTypeBold], [TextEntityTypeItalic], [TextEntityTypeUnderline], [TextEntityTypeStrikethrough], [TextEntityTypeSpoiler], [TextEntityTypeCode], [TextEntityTypePre], [TextEntityTypePreCode], [TextEntityTypeBlockQuote], [TextEntityTypeTextUrl], [TextEntityTypeMentionName], [TextEntityTypeCustomEmoji], [TextEntityTypeMediaTimestamp]; or [UndecodedTextEntityType] for a type newer than this API.
 sealed class TextEntityType extends TdObject {
   const TextEntityType();
 
@@ -467,6 +467,32 @@ final class TextEntityTypePreCode extends TextEntityType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'textEntityTypePreCode';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Text that must be formatted as if inside a blockquote HTML tag
+final class TextEntityTypeBlockQuote extends TextEntityType {
+  /// Text that must be formatted as if inside a blockquote HTML tag
+  const TextEntityTypeBlockQuote();
+
+  /// Parses a [TextEntityTypeBlockQuote] from TDLib JSON.
+  factory TextEntityTypeBlockQuote.fromJson(Map<String, dynamic> json) =>
+      const TextEntityTypeBlockQuote();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TextEntityTypeBlockQuote copyWith() => const TextEntityTypeBlockQuote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'textEntityTypeBlockQuote';
 
   @override
   String getConstructor() => CONSTRUCTOR;

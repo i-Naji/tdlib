@@ -3,22 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Returns a web page preview by the text of the message. Do not call this function too often. Returns a 404 error if the web page has no preview
+/// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview
 ///
 /// Returns [WebPage].
 final class GetWebPagePreview extends TdFunction<WebPage> {
-  /// Returns a web page preview by the text of the message. Do not call this function too often. Returns a 404 error if the web page has no preview
+  /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview
   const GetWebPagePreview({
     required this.text,
+    this.linkPreviewOptions,
   });
 
   /// Message text with formatting
   final FormattedText text;
 
+  /// Options to be used for generation of the link preview; pass null to use default link preview options
+  final LinkPreviewOptions? linkPreviewOptions;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'text': text.toJson(),
+        'link_preview_options': linkPreviewOptions?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -26,9 +31,13 @@ final class GetWebPagePreview extends TdFunction<WebPage> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetWebPagePreview copyWith({
     FormattedText? text,
+    LinkPreviewOptions? Function()? linkPreviewOptions,
   }) =>
       GetWebPagePreview(
         text: text ?? this.text,
+        linkPreviewOptions: linkPreviewOptions != null
+            ? linkPreviewOptions()
+            : this.linkPreviewOptions,
       );
 
   /// TDLib type name.

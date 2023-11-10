@@ -11,6 +11,7 @@ final class ResendMessages extends TdFunction<Messages> {
   const ResendMessages({
     required this.chatId,
     required this.messageIds,
+    this.quote,
   });
 
   /// Identifier of the chat to send messages
@@ -19,11 +20,15 @@ final class ResendMessages extends TdFunction<Messages> {
   /// Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order
   final List<int> messageIds;
 
+  /// New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false
+  final FormattedText? quote;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'message_ids': messageIds,
+        'quote': quote?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -32,10 +37,12 @@ final class ResendMessages extends TdFunction<Messages> {
   ResendMessages copyWith({
     int? chatId,
     List<int>? messageIds,
+    FormattedText? Function()? quote,
   }) =>
       ResendMessages(
         chatId: chatId ?? this.chatId,
         messageIds: messageIds ?? this.messageIds,
+        quote: quote != null ? quote() : this.quote,
       );
 
   /// TDLib type name.

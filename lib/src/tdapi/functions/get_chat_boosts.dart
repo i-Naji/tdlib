@@ -3,19 +3,23 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of boosts applied to a chat. The user must be an administrator in the channel chat to get the list of boosts
+/// Returns list of boosts applied to a chat; requires administrator rights in the channel chat
 ///
 /// Returns [FoundChatBoosts].
 final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
-  /// Returns list of boosts applied to a chat. The user must be an administrator in the channel chat to get the list of boosts
+  /// Returns list of boosts applied to a chat; requires administrator rights in the channel chat
   const GetChatBoosts({
     required this.chatId,
+    required this.onlyGiftCodes,
     required this.offset,
     required this.limit,
   });
 
   /// Identifier of the chat
   final int chatId;
+
+  /// Pass true to receive only boosts received from gift codes and giveaways created by the chat
+  final bool onlyGiftCodes;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -27,6 +31,7 @@ final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'only_gift_codes': onlyGiftCodes,
         'offset': offset,
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -36,11 +41,13 @@ final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatBoosts copyWith({
     int? chatId,
+    bool? onlyGiftCodes,
     String? offset,
     int? limit,
   }) =>
       GetChatBoosts(
         chatId: chatId ?? this.chatId,
+        onlyGiftCodes: onlyGiftCodes ?? this.onlyGiftCodes,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );

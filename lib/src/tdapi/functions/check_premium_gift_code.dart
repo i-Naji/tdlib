@@ -3,36 +3,36 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether the current user can boost a chat
+/// Return information about a Telegram Premium gift code
 ///
-/// Returns [CanBoostChatResult].
-final class CanBoostChat extends TdFunction<CanBoostChatResult> {
-  /// Checks whether the current user can boost a chat
-  const CanBoostChat({
-    required this.chatId,
+/// Returns [PremiumGiftCodeInfo].
+final class CheckPremiumGiftCode extends TdFunction<PremiumGiftCodeInfo> {
+  /// Return information about a Telegram Premium gift code
+  const CheckPremiumGiftCode({
+    required this.code,
   });
 
-  /// Identifier of the chat
-  final int chatId;
+  /// The code to check
+  final String code;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'chat_id': chatId,
+        'code': code,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanBoostChat copyWith({
-    int? chatId,
+  CheckPremiumGiftCode copyWith({
+    String? code,
   }) =>
-      CanBoostChat(
-        chatId: chatId ?? this.chatId,
+      CheckPremiumGiftCode(
+        code: code ?? this.code,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'canBoostChat';
+  static const String CONSTRUCTOR = 'checkPremiumGiftCode';
 
   @override
   String getConstructor() => CONSTRUCTOR;

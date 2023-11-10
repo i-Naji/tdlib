@@ -14,6 +14,8 @@ final class User extends TdObject {
     required this.phoneNumber,
     required this.status,
     this.profilePhoto,
+    required this.accentColorId,
+    required this.backgroundCustomEmojiId,
     this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
@@ -54,6 +56,12 @@ final class User extends TdObject {
 
   /// Profile photo of the user; may be null
   final ProfilePhoto? profilePhoto;
+
+  /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview
+  final int accentColorId;
+
+  /// Identifier of a custom emoji to be shown on the reply header background; 0 if none. For Telegram Premium users only
+  final int backgroundCustomEmojiId;
 
   /// Emoji status to be shown instead of the default Telegram Premium badge; may be null. For Telegram Premium users only
   final EmojiStatus? emojiStatus;
@@ -121,6 +129,8 @@ final class User extends TdObject {
         status: _readObject(json['status'], UserStatus.fromJson),
         profilePhoto:
             _readOptional(json['profile_photo'], ProfilePhoto.fromJson),
+        accentColorId: _readInt(json['accent_color_id']),
+        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
         emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
         isContact: _readBool(json['is_contact']),
         isMutualContact: _readBool(json['is_mutual_contact']),
@@ -151,6 +161,8 @@ final class User extends TdObject {
         'phone_number': phoneNumber,
         'status': status.toJson(),
         'profile_photo': profilePhoto?.toJson(),
+        'accent_color_id': accentColorId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
         'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
@@ -179,6 +191,8 @@ final class User extends TdObject {
     String? phoneNumber,
     UserStatus? status,
     ProfilePhoto? Function()? profilePhoto,
+    int? accentColorId,
+    int? backgroundCustomEmojiId,
     EmojiStatus? Function()? emojiStatus,
     bool? isContact,
     bool? isMutualContact,
@@ -206,6 +220,9 @@ final class User extends TdObject {
         phoneNumber: phoneNumber ?? this.phoneNumber,
         status: status ?? this.status,
         profilePhoto: profilePhoto != null ? profilePhoto() : this.profilePhoto,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
         emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
         isContact: isContact ?? this.isContact,
         isMutualContact: isMutualContact ?? this.isMutualContact,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentPremiumGiveaway], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -616,6 +616,102 @@ final class PushMessageContentPoll extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentPoll';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a Telegram Premium gift code created for the user
+final class PushMessageContentPremiumGiftCode extends PushMessageContent {
+  /// A message with a Telegram Premium gift code created for the user
+  const PushMessageContentPremiumGiftCode({
+    required this.monthCount,
+  });
+
+  /// Number of month the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// Parses a [PushMessageContentPremiumGiftCode] from TDLib JSON.
+  factory PushMessageContentPremiumGiftCode.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentPremiumGiftCode(
+        monthCount: _readInt(json['month_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'month_count': monthCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentPremiumGiftCode copyWith({
+    int? monthCount,
+  }) =>
+      PushMessageContentPremiumGiftCode(
+        monthCount: monthCount ?? this.monthCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentPremiumGiftCode';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a Telegram Premium giveaway
+final class PushMessageContentPremiumGiveaway extends PushMessageContent {
+  /// A message with a Telegram Premium giveaway
+  const PushMessageContentPremiumGiveaway({
+    required this.winnerCount,
+    required this.monthCount,
+    required this.isPinned,
+  });
+
+  /// Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
+  final int winnerCount;
+
+  /// Number of month the Telegram Premium subscription will be active after code activation; 0 for pinned message
+  final int monthCount;
+
+  /// True, if the message is a pinned message with the specified content
+  final bool isPinned;
+
+  /// Parses a [PushMessageContentPremiumGiveaway] from TDLib JSON.
+  factory PushMessageContentPremiumGiveaway.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentPremiumGiveaway(
+        winnerCount: _readInt(json['winner_count']),
+        monthCount: _readInt(json['month_count']),
+        isPinned: _readBool(json['is_pinned']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'winner_count': winnerCount,
+        'month_count': monthCount,
+        'is_pinned': isPinned,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentPremiumGiveaway copyWith({
+    int? winnerCount,
+    int? monthCount,
+    bool? isPinned,
+  }) =>
+      PushMessageContentPremiumGiveaway(
+        winnerCount: winnerCount ?? this.winnerCount,
+        monthCount: monthCount ?? this.monthCount,
+        isPinned: isPinned ?? this.isPinned,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentPremiumGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

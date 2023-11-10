@@ -13,7 +13,6 @@ final class AttachmentMenuBot extends TdObject {
     required this.supportsBotChats,
     required this.supportsGroupChats,
     required this.supportsChannelChats,
-    required this.supportsSettings,
     required this.requestWriteAccess,
     required this.isAdded,
     required this.showInAttachmentMenu,
@@ -52,9 +51,6 @@ final class AttachmentMenuBot extends TdObject {
 
   /// True, if the bot supports opening from attachment menu in channel chats
   final bool supportsChannelChats;
-
-  /// True, if the bot supports "settings_button_pressed" event
-  final bool supportsSettings;
 
   /// True, if the user must be asked for the permission to send messages to the bot
   final bool requestWriteAccess;
@@ -124,7 +120,6 @@ final class AttachmentMenuBot extends TdObject {
         supportsBotChats: _readBool(json['supports_bot_chats']),
         supportsGroupChats: _readBool(json['supports_group_chats']),
         supportsChannelChats: _readBool(json['supports_channel_chats']),
-        supportsSettings: _readBool(json['supports_settings']),
         requestWriteAccess: _readBool(json['request_write_access']),
         isAdded: _readBool(json['is_added']),
         showInAttachmentMenu: _readBool(json['show_in_attachment_menu']),
@@ -163,7 +158,6 @@ final class AttachmentMenuBot extends TdObject {
         'supports_bot_chats': supportsBotChats,
         'supports_group_chats': supportsGroupChats,
         'supports_channel_chats': supportsChannelChats,
-        'supports_settings': supportsSettings,
         'request_write_access': requestWriteAccess,
         'is_added': isAdded,
         'show_in_attachment_menu': showInAttachmentMenu,
@@ -192,7 +186,6 @@ final class AttachmentMenuBot extends TdObject {
     bool? supportsBotChats,
     bool? supportsGroupChats,
     bool? supportsChannelChats,
-    bool? supportsSettings,
     bool? requestWriteAccess,
     bool? isAdded,
     bool? showInAttachmentMenu,
@@ -220,7 +213,6 @@ final class AttachmentMenuBot extends TdObject {
         supportsBotChats: supportsBotChats ?? this.supportsBotChats,
         supportsGroupChats: supportsGroupChats ?? this.supportsGroupChats,
         supportsChannelChats: supportsChannelChats ?? this.supportsChannelChats,
-        supportsSettings: supportsSettings ?? this.supportsSettings,
         requestWriteAccess: requestWriteAccess ?? this.requestWriteAccess,
         isAdded: isAdded ?? this.isAdded,
         showInAttachmentMenu: showInAttachmentMenu ?? this.showInAttachmentMenu,

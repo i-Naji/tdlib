@@ -13,6 +13,7 @@ final class MessageSendOptions extends TdObject {
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.sendingId,
+    required this.onlyPreview,
   });
 
   /// Pass true to disable notification for the message
@@ -33,6 +34,9 @@ final class MessageSendOptions extends TdObject {
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
 
+  /// Pass true to get a fake message instead of actually sending them
+  final bool onlyPreview;
+
   /// Parses a [MessageSendOptions] from TDLib JSON.
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) =>
       MessageSendOptions(
@@ -44,6 +48,7 @@ final class MessageSendOptions extends TdObject {
         schedulingState: _readOptional(
             json['scheduling_state'], MessageSchedulingState.fromJson),
         sendingId: _readInt(json['sending_id']),
+        onlyPreview: _readBool(json['only_preview']),
       );
 
   @override
@@ -56,6 +61,7 @@ final class MessageSendOptions extends TdObject {
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
         'sending_id': sendingId,
+        'only_preview': onlyPreview,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -67,6 +73,7 @@ final class MessageSendOptions extends TdObject {
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? Function()? schedulingState,
     int? sendingId,
+    bool? onlyPreview,
   }) =>
       MessageSendOptions(
         disableNotification: disableNotification ?? this.disableNotification,
@@ -77,6 +84,7 @@ final class MessageSendOptions extends TdObject {
         schedulingState:
             schedulingState != null ? schedulingState() : this.schedulingState,
         sendingId: sendingId ?? this.sendingId,
+        onlyPreview: onlyPreview ?? this.onlyPreview,
       );
 
   /// TDLib type name.

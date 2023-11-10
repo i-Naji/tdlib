@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateSelectedBackground], [UpdateChatThemes], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColor], [UpdateChatBackgroundCustomEmoji], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateSelectedBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -1101,6 +1101,133 @@ final class UpdateChatPhoto extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A chat accent color has changed
+final class UpdateChatAccentColor extends Update {
+  /// A chat accent color has changed
+  const UpdateChatAccentColor({
+    required this.chatId,
+    required this.accentColorId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// The new chat accent color identifier
+  final int accentColorId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatAccentColor] from TDLib JSON.
+  factory UpdateChatAccentColor.fromJson(Map<String, dynamic> json) =>
+      UpdateChatAccentColor(
+        chatId: _readInt(json['chat_id']),
+        accentColorId: _readInt(json['accent_color_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'accent_color_id': accentColorId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatAccentColor copyWith({
+    int? chatId,
+    int? accentColorId,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateChatAccentColor(
+        chatId: chatId ?? this.chatId,
+        accentColorId: accentColorId ?? this.accentColorId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatAccentColor';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A chat's custom emoji for reply background has changed
+final class UpdateChatBackgroundCustomEmoji extends Update {
+  /// A chat's custom emoji for reply background has changed
+  const UpdateChatBackgroundCustomEmoji({
+    required this.chatId,
+    required this.backgroundCustomEmojiId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// The new tdentifier of a custom emoji to be shown on the reply header background
+  final int backgroundCustomEmojiId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatBackgroundCustomEmoji] from TDLib JSON.
+  factory UpdateChatBackgroundCustomEmoji.fromJson(Map<String, dynamic> json) =>
+      UpdateChatBackgroundCustomEmoji(
+        chatId: _readInt(json['chat_id']),
+        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatBackgroundCustomEmoji copyWith({
+    int? chatId,
+    int? backgroundCustomEmojiId,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateChatBackgroundCustomEmoji(
+        chatId: chatId ?? this.chatId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatBackgroundCustomEmoji';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// Chat permissions was changed
 final class UpdateChatPermissions extends Update {
   /// Chat permissions was changed
@@ -1164,9 +1291,9 @@ final class UpdateChatPermissions extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case
+/// The last message of a chat was changed
 final class UpdateChatLastMessage extends Update {
-  /// The last message of a chat was changed. If last_message is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case
+  /// The last message of a chat was changed
   const UpdateChatLastMessage({
     required this.chatId,
     this.lastMessage,
@@ -1178,7 +1305,7 @@ final class UpdateChatLastMessage extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// The new last message in the chat; may be null
+  /// The new last message in the chat; may be null if the last message became unknown. While the last message is unknown, new messages can be added to the chat without corresponding updateNewMessage update
   final Message? lastMessage;
 
   /// The new chat positions in the chat lists
@@ -5862,6 +5989,72 @@ final class UpdateChatThemes extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The list of supported accent colors has changed
+final class UpdateAccentColors extends Update {
+  /// The list of supported accent colors has changed
+  const UpdateAccentColors({
+    required this.colors,
+    required this.availableAccentColorIds,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme
+  final List<AccentColor> colors;
+
+  /// The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order
+  final List<int> availableAccentColorIds;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateAccentColors] from TDLib JSON.
+  factory UpdateAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateAccentColors(
+        colors: _readList<AccentColor>(
+            json['colors'], (e) => _readObject(e, AccentColor.fromJson)),
+        availableAccentColorIds:
+            _readList<int>(json['available_accent_color_ids'], _readInt),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'colors': [for (final e in colors) e.toJson()],
+        'available_accent_color_ids': availableAccentColorIds,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateAccentColors copyWith({
+    List<AccentColor>? colors,
+    List<int>? availableAccentColorIds,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateAccentColors(
+        colors: colors ?? this.colors,
+        availableAccentColorIds:
+            availableAccentColorIds ?? this.availableAccentColorIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateAccentColors';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// Some language pack strings have been updated
 final class UpdateLanguagePackStrings extends Update {
   /// Some language pack strings have been updated
@@ -7746,6 +7939,69 @@ final class UpdateNewChatJoinRequest extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateNewChatJoinRequest';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A chat boost has changed; for bots only
+final class UpdateChatBoost extends Update {
+  /// A chat boost has changed; for bots only
+  const UpdateChatBoost({
+    required this.chatId,
+    required this.boost,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// New information about the boost
+  final ChatBoost boost;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatBoost] from TDLib JSON.
+  factory UpdateChatBoost.fromJson(Map<String, dynamic> json) =>
+      UpdateChatBoost(
+        chatId: _readInt(json['chat_id']),
+        boost: _readObject(json['boost'], ChatBoost.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'boost': boost.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatBoost copyWith({
+    int? chatId,
+    ChatBoost? boost,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateChatBoost(
+        chatId: chatId ?? this.chatId,
+        boost: boost ?? this.boost,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatBoost';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -17,6 +17,7 @@ final class StickerSetInfo extends TdObject {
     required this.isOfficial,
     required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
     required this.isViewed,
     required this.size,
     required this.covers,
@@ -52,6 +53,9 @@ final class StickerSetInfo extends TdObject {
   /// Type of the stickers in the set
   final StickerType stickerType;
 
+  /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
+
   /// True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -75,6 +79,7 @@ final class StickerSetInfo extends TdObject {
         stickerFormat:
             _readObject(json['sticker_format'], StickerFormat.fromJson),
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
+        needsRepainting: _readBool(json['needs_repainting']),
         isViewed: _readBool(json['is_viewed']),
         size: _readInt(json['size']),
         covers: _readList<Sticker>(
@@ -94,6 +99,7 @@ final class StickerSetInfo extends TdObject {
         'is_official': isOfficial,
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
+        'needs_repainting': needsRepainting,
         'is_viewed': isViewed,
         'size': size,
         'covers': [for (final e in covers) e.toJson()],
@@ -112,6 +118,7 @@ final class StickerSetInfo extends TdObject {
     bool? isOfficial,
     StickerFormat? stickerFormat,
     StickerType? stickerType,
+    bool? needsRepainting,
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
@@ -127,6 +134,7 @@ final class StickerSetInfo extends TdObject {
         isOfficial: isOfficial ?? this.isOfficial,
         stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
         isViewed: isViewed ?? this.isViewed,
         size: size ?? this.size,
         covers: covers ?? this.covers,

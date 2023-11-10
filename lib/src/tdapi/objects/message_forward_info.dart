@@ -14,8 +14,8 @@ final class MessageForwardInfo extends TdObject {
     required this.fromMessageId,
   });
 
-  /// Origin of a forwarded message
-  final MessageForwardOrigin origin;
+  /// Origin of the forwarded message
+  final MessageOrigin origin;
 
   /// Point in time (Unix timestamp) when the message was originally sent
   final int date;
@@ -32,7 +32,7 @@ final class MessageForwardInfo extends TdObject {
   /// Parses a [MessageForwardInfo] from TDLib JSON.
   factory MessageForwardInfo.fromJson(Map<String, dynamic> json) =>
       MessageForwardInfo(
-        origin: _readObject(json['origin'], MessageForwardOrigin.fromJson),
+        origin: _readObject(json['origin'], MessageOrigin.fromJson),
         date: _readInt(json['date']),
         publicServiceAnnouncementType:
             _readString(json['public_service_announcement_type']),
@@ -53,7 +53,7 @@ final class MessageForwardInfo extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageForwardInfo copyWith({
-    MessageForwardOrigin? origin,
+    MessageOrigin? origin,
     int? date,
     String? publicServiceAnnouncementType,
     int? fromChatId,

@@ -49,15 +49,15 @@ final class InputMessageText extends InputMessageContent {
   /// A text message
   const InputMessageText({
     required this.text,
-    required this.disableWebPagePreview,
+    this.linkPreviewOptions,
     required this.clearDraft,
   });
 
-  /// Formatted text to be sent; 1-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
-  /// True, if rich web page previews for URLs in the message text must be disabled
-  final bool disableWebPagePreview;
+  /// Options to be used for generation of a link preview; pass null to use default link preview options
+  final LinkPreviewOptions? linkPreviewOptions;
 
   /// True, if a chat message draft must be deleted
   final bool clearDraft;
@@ -66,7 +66,8 @@ final class InputMessageText extends InputMessageContent {
   factory InputMessageText.fromJson(Map<String, dynamic> json) =>
       InputMessageText(
         text: _readObject(json['text'], FormattedText.fromJson),
-        disableWebPagePreview: _readBool(json['disable_web_page_preview']),
+        linkPreviewOptions: _readOptional(
+            json['link_preview_options'], LinkPreviewOptions.fromJson),
         clearDraft: _readBool(json['clear_draft']),
       );
 
@@ -74,7 +75,7 @@ final class InputMessageText extends InputMessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'text': text.toJson(),
-        'disable_web_page_preview': disableWebPagePreview,
+        'link_preview_options': linkPreviewOptions?.toJson(),
         'clear_draft': clearDraft,
       };
 
@@ -83,13 +84,14 @@ final class InputMessageText extends InputMessageContent {
   @override
   InputMessageText copyWith({
     FormattedText? text,
-    bool? disableWebPagePreview,
+    LinkPreviewOptions? Function()? linkPreviewOptions,
     bool? clearDraft,
   }) =>
       InputMessageText(
         text: text ?? this.text,
-        disableWebPagePreview:
-            disableWebPagePreview ?? this.disableWebPagePreview,
+        linkPreviewOptions: linkPreviewOptions != null
+            ? linkPreviewOptions()
+            : this.linkPreviewOptions,
         clearDraft: clearDraft ?? this.clearDraft,
       );
 
@@ -1264,7 +1266,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// Identifier of the message to forward
+  /// Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
   final int messageId;
 
   /// True, if a game message is being shared from a launched game; applies only to game messages

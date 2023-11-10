@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a web page preview
+/// Describes a link preview
 final class WebPage extends TdObject {
-  /// Describes a web page preview
+  /// Describes a link preview
   const WebPage({
     required this.url,
     required this.displayUrl,
@@ -20,6 +20,10 @@ final class WebPage extends TdObject {
     required this.embedHeight,
     required this.duration,
     required this.author,
+    required this.hasLargeMedia,
+    required this.showLargeMedia,
+    required this.skipConfirmation,
+    required this.showAboveText,
     this.animation,
     this.audio,
     this.document,
@@ -72,6 +76,18 @@ final class WebPage extends TdObject {
 
   /// Author of the content
   final String author;
+
+  /// True, if the preview has large media and its appearance can be changed
+  final bool hasLargeMedia;
+
+  /// True, if large media preview must be shown
+  final bool showLargeMedia;
+
+  /// True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear
+  final bool skipConfirmation;
+
+  /// True, if the link preview must be shown above message text; otherwise, the link preview must be shown below the message text
+  final bool showAboveText;
 
   /// Preview of the content as an animation, if available; may be null
   final Animation? animation;
@@ -126,6 +142,10 @@ final class WebPage extends TdObject {
         embedHeight: _readInt(json['embed_height']),
         duration: _readInt(json['duration']),
         author: _readString(json['author']),
+        hasLargeMedia: _readBool(json['has_large_media']),
+        showLargeMedia: _readBool(json['show_large_media']),
+        skipConfirmation: _readBool(json['skip_confirmation']),
+        showAboveText: _readBool(json['show_above_text']),
         animation: _readOptional(json['animation'], Animation.fromJson),
         audio: _readOptional(json['audio'], Audio.fromJson),
         document: _readOptional(json['document'], Document.fromJson),
@@ -156,6 +176,10 @@ final class WebPage extends TdObject {
         'embed_height': embedHeight,
         'duration': duration,
         'author': author,
+        'has_large_media': hasLargeMedia,
+        'show_large_media': showLargeMedia,
+        'skip_confirmation': skipConfirmation,
+        'show_above_text': showAboveText,
         'animation': animation?.toJson(),
         'audio': audio?.toJson(),
         'document': document?.toJson(),
@@ -184,6 +208,10 @@ final class WebPage extends TdObject {
     int? embedHeight,
     int? duration,
     String? author,
+    bool? hasLargeMedia,
+    bool? showLargeMedia,
+    bool? skipConfirmation,
+    bool? showAboveText,
     Animation? Function()? animation,
     Audio? Function()? audio,
     Document? Function()? document,
@@ -211,6 +239,10 @@ final class WebPage extends TdObject {
         embedHeight: embedHeight ?? this.embedHeight,
         duration: duration ?? this.duration,
         author: author ?? this.author,
+        hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
+        showLargeMedia: showLargeMedia ?? this.showLargeMedia,
+        skipConfirmation: skipConfirmation ?? this.skipConfirmation,
+        showAboveText: showAboveText ?? this.showAboveText,
         animation: animation != null ? animation() : this.animation,
         audio: audio != null ? audio() : this.audio,
         document: document != null ? document() : this.document,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a chat event
 ///
-/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventAvailableReactionsChanged], [ChatEventDescriptionChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
+/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventAvailableReactionsChanged], [ChatEventDescriptionChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventAccentColorChanged], [ChatEventBackgroundCustomEmojiChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
 sealed class ChatEventAction extends TdObject {
   const ChatEventAction();
 
@@ -1131,6 +1131,105 @@ final class ChatEventActiveUsernamesChanged extends ChatEventAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventActiveUsernamesChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The chat accent color was changed
+final class ChatEventAccentColorChanged extends ChatEventAction {
+  /// The chat accent color was changed
+  const ChatEventAccentColorChanged({
+    required this.oldAccentColorId,
+    required this.newAccentColorId,
+  });
+
+  /// Previous identifier of chat accent color
+  final int oldAccentColorId;
+
+  /// New identifier of chat accent color
+  final int newAccentColorId;
+
+  /// Parses a [ChatEventAccentColorChanged] from TDLib JSON.
+  factory ChatEventAccentColorChanged.fromJson(Map<String, dynamic> json) =>
+      ChatEventAccentColorChanged(
+        oldAccentColorId: _readInt(json['old_accent_color_id']),
+        newAccentColorId: _readInt(json['new_accent_color_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'old_accent_color_id': oldAccentColorId,
+        'new_accent_color_id': newAccentColorId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatEventAccentColorChanged copyWith({
+    int? oldAccentColorId,
+    int? newAccentColorId,
+  }) =>
+      ChatEventAccentColorChanged(
+        oldAccentColorId: oldAccentColorId ?? this.oldAccentColorId,
+        newAccentColorId: newAccentColorId ?? this.newAccentColorId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatEventAccentColorChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The chat's custom emoji for reply background was changed
+final class ChatEventBackgroundCustomEmojiChanged extends ChatEventAction {
+  /// The chat's custom emoji for reply background was changed
+  const ChatEventBackgroundCustomEmojiChanged({
+    required this.oldBackgroundCustomEmojiId,
+    required this.newBackgroundCustomEmojiId,
+  });
+
+  /// Previous identifier of the custom emoji; 0 if none
+  final int oldBackgroundCustomEmojiId;
+
+  /// New identifier of the custom emoji; 0 if none
+  final int newBackgroundCustomEmojiId;
+
+  /// Parses a [ChatEventBackgroundCustomEmojiChanged] from TDLib JSON.
+  factory ChatEventBackgroundCustomEmojiChanged.fromJson(
+          Map<String, dynamic> json) =>
+      ChatEventBackgroundCustomEmojiChanged(
+        oldBackgroundCustomEmojiId:
+            _readInt(json['old_background_custom_emoji_id']),
+        newBackgroundCustomEmojiId:
+            _readInt(json['new_background_custom_emoji_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'old_background_custom_emoji_id': oldBackgroundCustomEmojiId.toString(),
+        'new_background_custom_emoji_id': newBackgroundCustomEmojiId.toString(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatEventBackgroundCustomEmojiChanged copyWith({
+    int? oldBackgroundCustomEmojiId,
+    int? newBackgroundCustomEmojiId,
+  }) =>
+      ChatEventBackgroundCustomEmojiChanged(
+        oldBackgroundCustomEmojiId:
+            oldBackgroundCustomEmojiId ?? this.oldBackgroundCustomEmojiId,
+        newBackgroundCustomEmojiId:
+            newBackgroundCustomEmojiId ?? this.newBackgroundCustomEmojiId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatEventBackgroundCustomEmojiChanged';
 
   @override
   String getConstructor() => CONSTRUCTOR;

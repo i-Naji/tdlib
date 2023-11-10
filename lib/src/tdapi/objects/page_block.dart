@@ -1185,6 +1185,7 @@ final class PageBlockChatLink extends PageBlock {
   const PageBlockChatLink({
     required this.title,
     this.photo,
+    required this.accentColorId,
     required this.username,
   });
 
@@ -1194,6 +1195,9 @@ final class PageBlockChatLink extends PageBlock {
   /// Chat photo; may be null
   final ChatPhotoInfo? photo;
 
+  /// Identifier of the accent color for chat title and background of chat photo
+  final int accentColorId;
+
   /// Chat username by which all other information about the chat can be resolved
   final String username;
 
@@ -1202,6 +1206,7 @@ final class PageBlockChatLink extends PageBlock {
       PageBlockChatLink(
         title: _readString(json['title']),
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
+        accentColorId: _readInt(json['accent_color_id']),
         username: _readString(json['username']),
       );
 
@@ -1210,6 +1215,7 @@ final class PageBlockChatLink extends PageBlock {
         '@type': CONSTRUCTOR,
         'title': title,
         'photo': photo?.toJson(),
+        'accent_color_id': accentColorId,
         'username': username,
       };
 
@@ -1219,11 +1225,13 @@ final class PageBlockChatLink extends PageBlock {
   PageBlockChatLink copyWith({
     String? title,
     ChatPhotoInfo? Function()? photo,
+    int? accentColorId,
     String? username,
   }) =>
       PageBlockChatLink(
         title: title ?? this.title,
         photo: photo != null ? photo() : this.photo,
+        accentColorId: accentColorId ?? this.accentColorId,
         username: username ?? this.username,
       );
 

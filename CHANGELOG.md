@@ -1,3 +1,9 @@
+## 1.8.21
+* Update tdlib to **1.8.21** (`3870c29b1`), objects +45/−10/~20, functions +11/−1/~10.
+* Add `TdRuntime` (`package:tdlib/td_runtime.dart`): one receive isolate for all clients, typed `invoke`, update streams.
+* Remove `EventSubject`, it never worked.
+* Add `TdLifecycle` (`package:tdlib/td_lifecycle.dart`), requires Flutter 3.13.
+
 ## 1.8.20
 * Update tdlib to **1.8.20** (`4ed0b23c9`), objects +5/−2/~5, functions +0/−0/~0.
 

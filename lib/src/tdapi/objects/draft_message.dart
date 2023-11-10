@@ -7,13 +7,13 @@ part of '../tdapi.dart';
 final class DraftMessage extends TdObject {
   /// Contains information about a message draft
   const DraftMessage({
-    required this.replyToMessageId,
+    this.replyTo,
     required this.date,
     required this.inputMessageText,
   });
 
-  /// Identifier of the replied message; 0 if none
-  final int replyToMessageId;
+  /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Point in time (Unix timestamp) when the draft was created
   final int date;
@@ -23,7 +23,7 @@ final class DraftMessage extends TdObject {
 
   /// Parses a [DraftMessage] from TDLib JSON.
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
-        replyToMessageId: _readInt(json['reply_to_message_id']),
+        replyTo: _readOptional(json['reply_to'], InputMessageReplyTo.fromJson),
         date: _readInt(json['date']),
         inputMessageText: _readObject(
             json['input_message_text'], InputMessageContent.fromJson),
@@ -32,7 +32,7 @@ final class DraftMessage extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'reply_to_message_id': replyToMessageId,
+        'reply_to': replyTo?.toJson(),
         'date': date,
         'input_message_text': inputMessageText.toJson(),
       };
@@ -40,12 +40,12 @@ final class DraftMessage extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DraftMessage copyWith({
-    int? replyToMessageId,
+    InputMessageReplyTo? Function()? replyTo,
     int? date,
     InputMessageContent? inputMessageText,
   }) =>
       DraftMessage(
-        replyToMessageId: replyToMessageId ?? this.replyToMessageId,
+        replyTo: replyTo != null ? replyTo() : this.replyTo,
         date: date ?? this.date,
         inputMessageText: inputMessageText ?? this.inputMessageText,
       );

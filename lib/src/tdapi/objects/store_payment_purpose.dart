@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of an in-store payment
 ///
-/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
+/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
 sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
@@ -44,9 +44,9 @@ final class UndecodedStorePaymentPurpose extends StorePaymentPurpose {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The user subscribed to Telegram Premium
+/// The user subscribing to Telegram Premium
 final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
-  /// The user subscribed to Telegram Premium
+  /// The user subscribing to Telegram Premium
   const StorePaymentPurposePremiumSubscription({
     required this.isRestore,
     required this.isUpgrade,
@@ -92,16 +92,16 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user gifted Telegram Premium to another user
+/// The user gifting Telegram Premium to another user
 final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
-  /// The user gifted Telegram Premium to another user
+  /// The user gifting Telegram Premium to another user
   const StorePaymentPurposeGiftedPremium({
     required this.userId,
     required this.currency,
     required this.amount,
   });
 
-  /// Identifier of the user for which Premium was gifted
+  /// Identifier of the user to which Premium was gifted
   final int userId;
 
   /// ISO 4217 currency code of the payment currency
@@ -143,6 +143,127 @@ final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposeGiftedPremium';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user creating Telegram Premium gift codes for other users
+final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
+  /// The user creating Telegram Premium gift codes for other users
+  const StorePaymentPurposePremiumGiftCodes({
+    required this.boostedChatId,
+    required this.currency,
+    required this.amount,
+    required this.userIds,
+  });
+
+  /// Identifier of the channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
+  final int boostedChatId;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Identifiers of the users which can activate the gift codes
+  final List<int> userIds;
+
+  /// Parses a [StorePaymentPurposePremiumGiftCodes] from TDLib JSON.
+  factory StorePaymentPurposePremiumGiftCodes.fromJson(
+          Map<String, dynamic> json) =>
+      StorePaymentPurposePremiumGiftCodes(
+        boostedChatId: _readInt(json['boosted_chat_id']),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        userIds: _readList<int>(json['user_ids'], _readInt),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'boosted_chat_id': boostedChatId,
+        'currency': currency,
+        'amount': amount,
+        'user_ids': userIds,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StorePaymentPurposePremiumGiftCodes copyWith({
+    int? boostedChatId,
+    String? currency,
+    int? amount,
+    List<int>? userIds,
+  }) =>
+      StorePaymentPurposePremiumGiftCodes(
+        boostedChatId: boostedChatId ?? this.boostedChatId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        userIds: userIds ?? this.userIds,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiftCodes';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
+  /// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+  const StorePaymentPurposePremiumGiveaway({
+    required this.parameters,
+    required this.currency,
+    required this.amount,
+  });
+
+  /// Giveaway parameters
+  final PremiumGiveawayParameters parameters;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Parses a [StorePaymentPurposePremiumGiveaway] from TDLib JSON.
+  factory StorePaymentPurposePremiumGiveaway.fromJson(
+          Map<String, dynamic> json) =>
+      StorePaymentPurposePremiumGiveaway(
+        parameters:
+            _readObject(json['parameters'], PremiumGiveawayParameters.fromJson),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'parameters': parameters.toJson(),
+        'currency': currency,
+        'amount': amount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StorePaymentPurposePremiumGiveaway copyWith({
+    PremiumGiveawayParameters? parameters,
+    String? currency,
+    int? amount,
+  }) =>
+      StorePaymentPurposePremiumGiveaway(
+        parameters: parameters ?? this.parameters,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -42,25 +42,50 @@ final class UndecodedMessageReplyTo extends MessageReplyTo {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Describes a replied message
+/// Describes a message replied by a given message
 final class MessageReplyToMessage extends MessageReplyTo {
-  /// Describes a replied message
+  /// Describes a message replied by a given message
   const MessageReplyToMessage({
     required this.chatId,
     required this.messageId,
+    this.quote,
+    required this.isQuoteManual,
+    this.origin,
+    required this.originSendDate,
+    this.content,
   });
 
-  /// The identifier of the chat to which the replied message belongs; ignored for outgoing replies. For example, messages in the Replies chat are replies to messages in different chats
+  /// The identifier of the chat to which the message belongs; may be 0 if the replied message is in unknown chat
   final int chatId;
 
-  /// The identifier of the replied message
+  /// The identifier of the message; may be 0 if the replied message is in unknown chat
   final int messageId;
+
+  /// Manually or automatically chosen quote from the replied message; may be null if none. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the quote
+  final FormattedText? quote;
+
+  /// True, if the quote was manually chosen by the message sender
+  final bool isQuoteManual;
+
+  /// Information about origin of the message if the message was replied from another chat; may be null for messages from the same chat
+  final MessageOrigin? origin;
+
+  /// Point in time (Unix timestamp) when the message was sent if the message was replied from another chat; 0 for messages from the same chat
+  final int originSendDate;
+
+  /// Media content of the message if the message was replied from another chat; may be null for messages from the same chat and messages without media. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation, messagePhoto, messagePoll, messagePremiumGiveaway, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo, messageVideoNote, or messageVoiceNote
+  final MessageContent? content;
 
   /// Parses a [MessageReplyToMessage] from TDLib JSON.
   factory MessageReplyToMessage.fromJson(Map<String, dynamic> json) =>
       MessageReplyToMessage(
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
+        quote: _readOptional(json['quote'], FormattedText.fromJson),
+        isQuoteManual: _readBool(json['is_quote_manual']),
+        origin: _readOptional(json['origin'], MessageOrigin.fromJson),
+        originSendDate: _readInt(json['origin_send_date']),
+        content: _readOptional(json['content'], MessageContent.fromJson),
       );
 
   @override
@@ -68,6 +93,11 @@ final class MessageReplyToMessage extends MessageReplyTo {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'message_id': messageId,
+        'quote': quote?.toJson(),
+        'is_quote_manual': isQuoteManual,
+        'origin': origin?.toJson(),
+        'origin_send_date': originSendDate,
+        'content': content?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -76,10 +106,20 @@ final class MessageReplyToMessage extends MessageReplyTo {
   MessageReplyToMessage copyWith({
     int? chatId,
     int? messageId,
+    FormattedText? Function()? quote,
+    bool? isQuoteManual,
+    MessageOrigin? Function()? origin,
+    int? originSendDate,
+    MessageContent? Function()? content,
   }) =>
       MessageReplyToMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
+        quote: quote != null ? quote() : this.quote,
+        isQuoteManual: isQuoteManual ?? this.isQuoteManual,
+        origin: origin != null ? origin() : this.origin,
+        originSendDate: originSendDate ?? this.originSendDate,
+        content: content != null ? content() : this.content,
       );
 
   /// TDLib type name.
@@ -89,18 +129,18 @@ final class MessageReplyToMessage extends MessageReplyTo {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes a replied story
+/// Describes a story replied by a given message
 final class MessageReplyToStory extends MessageReplyTo {
-  /// Describes a replied story
+  /// Describes a story replied by a given message
   const MessageReplyToStory({
     required this.storySenderChatId,
     required this.storyId,
   });
 
-  /// The identifier of the sender of the replied story. Currently, stories can be replied only in the sender's chat
+  /// The identifier of the sender of the story
   final int storySenderChatId;
 
-  /// The identifier of the replied story
+  /// The identifier of the story
   final int storyId;
 
   /// Parses a [MessageReplyToStory] from TDLib JSON.

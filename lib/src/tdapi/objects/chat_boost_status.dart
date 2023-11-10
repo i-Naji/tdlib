@@ -8,13 +8,15 @@ final class ChatBoostStatus extends TdObject {
   /// Describes current boost status of a chat
   const ChatBoostStatus({
     required this.boostUrl,
-    required this.isBoosted,
+    required this.appliedSlotIds,
     required this.level,
+    required this.giftCodeBoostCount,
     required this.boostCount,
     required this.currentLevelBoostCount,
     required this.nextLevelBoostCount,
     required this.premiumMemberCount,
     required this.premiumMemberPercentage,
+    required this.prepaidGiveaways,
     this.extra,
     this.clientId,
   });
@@ -22,13 +24,16 @@ final class ChatBoostStatus extends TdObject {
   /// An HTTP URL, which can be used to boost the chat
   final String boostUrl;
 
-  /// True, if the current user has already boosted the chat
-  final bool isBoosted;
+  /// Identifiers of boost slots of the current user applied to the chat
+  final List<int> appliedSlotIds;
 
   /// Current boost level of the chat
   final int level;
 
-  /// The number of times the chat was boosted
+  /// The number of boosts received by the chat from created Telegram Premium gift codes and giveaways; always 0 if the current user isn't an administrator in the chat
+  final int giftCodeBoostCount;
+
+  /// The number of boosts received by the chat
   final int boostCount;
 
   /// The number of boosts added to reach the current level
@@ -43,6 +48,9 @@ final class ChatBoostStatus extends TdObject {
   /// A percentage of Telegram Premium subscribers joined the chat; always 0 if the current user isn't an administrator in the chat
   final double premiumMemberPercentage;
 
+  /// The list of prepaid giveaways available for the chat; only for chat administrators
+  final List<PrepaidPremiumGiveaway> prepaidGiveaways;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -55,13 +63,17 @@ final class ChatBoostStatus extends TdObject {
   factory ChatBoostStatus.fromJson(Map<String, dynamic> json) =>
       ChatBoostStatus(
         boostUrl: _readString(json['boost_url']),
-        isBoosted: _readBool(json['is_boosted']),
+        appliedSlotIds: _readList<int>(json['applied_slot_ids'], _readInt),
         level: _readInt(json['level']),
+        giftCodeBoostCount: _readInt(json['gift_code_boost_count']),
         boostCount: _readInt(json['boost_count']),
         currentLevelBoostCount: _readInt(json['current_level_boost_count']),
         nextLevelBoostCount: _readInt(json['next_level_boost_count']),
         premiumMemberCount: _readInt(json['premium_member_count']),
         premiumMemberPercentage: _readDouble(json['premium_member_percentage']),
+        prepaidGiveaways: _readList<PrepaidPremiumGiveaway>(
+            json['prepaid_giveaways'],
+            (e) => _readObject(e, PrepaidPremiumGiveaway.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -70,33 +82,38 @@ final class ChatBoostStatus extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'boost_url': boostUrl,
-        'is_boosted': isBoosted,
+        'applied_slot_ids': appliedSlotIds,
         'level': level,
+        'gift_code_boost_count': giftCodeBoostCount,
         'boost_count': boostCount,
         'current_level_boost_count': currentLevelBoostCount,
         'next_level_boost_count': nextLevelBoostCount,
         'premium_member_count': premiumMemberCount,
         'premium_member_percentage': premiumMemberPercentage,
+        'prepaid_giveaways': [for (final e in prepaidGiveaways) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatBoostStatus copyWith({
     String? boostUrl,
-    bool? isBoosted,
+    List<int>? appliedSlotIds,
     int? level,
+    int? giftCodeBoostCount,
     int? boostCount,
     int? currentLevelBoostCount,
     int? nextLevelBoostCount,
     int? premiumMemberCount,
     double? premiumMemberPercentage,
+    List<PrepaidPremiumGiveaway>? prepaidGiveaways,
     dynamic extra,
     int? clientId,
   }) =>
       ChatBoostStatus(
         boostUrl: boostUrl ?? this.boostUrl,
-        isBoosted: isBoosted ?? this.isBoosted,
+        appliedSlotIds: appliedSlotIds ?? this.appliedSlotIds,
         level: level ?? this.level,
+        giftCodeBoostCount: giftCodeBoostCount ?? this.giftCodeBoostCount,
         boostCount: boostCount ?? this.boostCount,
         currentLevelBoostCount:
             currentLevelBoostCount ?? this.currentLevelBoostCount,
@@ -104,6 +121,7 @@ final class ChatBoostStatus extends TdObject {
         premiumMemberCount: premiumMemberCount ?? this.premiumMemberCount,
         premiumMemberPercentage:
             premiumMemberPercentage ?? this.premiumMemberPercentage,
+        prepaidGiveaways: prepaidGiveaways ?? this.prepaidGiveaways,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

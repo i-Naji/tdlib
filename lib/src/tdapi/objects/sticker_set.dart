@@ -17,6 +17,7 @@ final class StickerSet extends TdObject {
     required this.isOfficial,
     required this.stickerFormat,
     required this.stickerType,
+    required this.needsRepainting,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -54,6 +55,9 @@ final class StickerSet extends TdObject {
   /// Type of the stickers in the set
   final StickerType stickerType;
 
+  /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
+  final bool needsRepainting;
+
   /// True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -85,6 +89,7 @@ final class StickerSet extends TdObject {
         stickerFormat:
             _readObject(json['sticker_format'], StickerFormat.fromJson),
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
+        needsRepainting: _readBool(json['needs_repainting']),
         isViewed: _readBool(json['is_viewed']),
         stickers: _readList<Sticker>(
             json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
@@ -107,6 +112,7 @@ final class StickerSet extends TdObject {
         'is_official': isOfficial,
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
+        'needs_repainting': needsRepainting,
         'is_viewed': isViewed,
         'stickers': [for (final e in stickers) e.toJson()],
         'emojis': [for (final e in emojis) e.toJson()],
@@ -125,6 +131,7 @@ final class StickerSet extends TdObject {
     bool? isOfficial,
     StickerFormat? stickerFormat,
     StickerType? stickerType,
+    bool? needsRepainting,
     bool? isViewed,
     List<Sticker>? stickers,
     List<Emojis>? emojis,
@@ -142,6 +149,7 @@ final class StickerSet extends TdObject {
         isOfficial: isOfficial ?? this.isOfficial,
         stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
+        needsRepainting: needsRepainting ?? this.needsRepainting,
         isViewed: isViewed ?? this.isViewed,
         stickers: stickers ?? this.stickers,
         emojis: emojis ?? this.emojis,

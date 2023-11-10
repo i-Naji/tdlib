@@ -14,7 +14,6 @@ final class SendMessageAlbum extends TdFunction<Messages> {
     this.replyTo,
     this.options,
     required this.inputMessageContents,
-    required this.onlyPreview,
   });
 
   /// Target chat
@@ -23,17 +22,14 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   /// If not 0, a message thread identifier in which the messages will be sent
   final int messageThreadId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Options to be used to send the messages; pass null to use default options
   final MessageSendOptions? options;
 
   /// Contents of messages to be sent. At most 10 messages can be added to an album
   final List<InputMessageContent> inputMessageContents;
-
-  /// Pass true to get fake messages instead of actually sending them
-  final bool onlyPreview;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -45,7 +41,6 @@ final class SendMessageAlbum extends TdFunction<Messages> {
         'input_message_contents': [
           for (final e in inputMessageContents) e.toJson()
         ],
-        'only_preview': onlyPreview,
         if (extra != null) '@extra': extra,
       };
 
@@ -54,10 +49,9 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   SendMessageAlbum copyWith({
     int? chatId,
     int? messageThreadId,
-    MessageReplyTo? Function()? replyTo,
+    InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     List<InputMessageContent>? inputMessageContents,
-    bool? onlyPreview,
   }) =>
       SendMessageAlbum(
         chatId: chatId ?? this.chatId,
@@ -65,7 +59,6 @@ final class SendMessageAlbum extends TdFunction<Messages> {
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         options: options != null ? options() : this.options,
         inputMessageContents: inputMessageContents ?? this.inputMessageContents,
-        onlyPreview: onlyPreview ?? this.onlyPreview,
       );
 
   /// TDLib type name.

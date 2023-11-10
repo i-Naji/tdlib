@@ -23,7 +23,7 @@ final class ChatPermissions extends TdObject {
     required this.canManageTopics,
   });
 
-  /// True, if the user can send text messages, contacts, invoices, locations, and venues
+  /// True, if the user can send text messages, contacts, giveaways, invoices, locations, and venues
   final bool canSendBasicMessages;
 
   /// True, if the user can send music files

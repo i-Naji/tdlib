@@ -3,41 +3,65 @@
 
 part of '../tdapi.dart';
 
-/// Describes a boost of a chat
+/// Describes a boost applied to a chat
 final class ChatBoost extends TdObject {
-  /// Describes a boost of a chat
+  /// Describes a boost applied to a chat
   const ChatBoost({
-    required this.userId,
+    required this.id,
+    required this.count,
+    required this.source,
+    required this.startDate,
     required this.expirationDate,
   });
 
-  /// Identifier of a user that boosted the chat
-  final int userId;
+  /// Unique identifier of the boost
+  final String id;
 
-  /// Point in time (Unix timestamp) when the boost will automatically expire if the user will not prolongate their Telegram Premium subscription
+  /// The number of identical boosts applied
+  final int count;
+
+  /// Source of the boost
+  final ChatBoostSource source;
+
+  /// Point in time (Unix timestamp) when the chat was boosted
+  final int startDate;
+
+  /// Point in time (Unix timestamp) when the boost will expire
   final int expirationDate;
 
   /// Parses a [ChatBoost] from TDLib JSON.
   factory ChatBoost.fromJson(Map<String, dynamic> json) => ChatBoost(
-        userId: _readInt(json['user_id']),
+        id: _readString(json['id']),
+        count: _readInt(json['count']),
+        source: _readObject(json['source'], ChatBoostSource.fromJson),
+        startDate: _readInt(json['start_date']),
         expirationDate: _readInt(json['expiration_date']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'user_id': userId,
+        'id': id,
+        'count': count,
+        'source': source.toJson(),
+        'start_date': startDate,
         'expiration_date': expirationDate,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatBoost copyWith({
-    int? userId,
+    String? id,
+    int? count,
+    ChatBoostSource? source,
+    int? startDate,
     int? expirationDate,
   }) =>
       ChatBoost(
-        userId: userId ?? this.userId,
+        id: id ?? this.id,
+        count: count ?? this.count,
+        source: source ?? this.source,
+        startDate: startDate ?? this.startDate,
         expirationDate: expirationDate ?? this.expirationDate,
       );
 

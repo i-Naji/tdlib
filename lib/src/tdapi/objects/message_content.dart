@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -48,18 +48,24 @@ final class MessageText extends MessageContent {
   const MessageText({
     required this.text,
     this.webPage,
+    this.linkPreviewOptions,
   });
 
   /// Text of the message
   final FormattedText text;
 
-  /// A preview of the web page that's mentioned in the text; may be null
+  /// A link preview attached to the message; may be null
   final WebPage? webPage;
+
+  /// Options which was used for generation of the link preview; may be null if default options were used
+  final LinkPreviewOptions? linkPreviewOptions;
 
   /// Parses a [MessageText] from TDLib JSON.
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
         text: _readObject(json['text'], FormattedText.fromJson),
         webPage: _readOptional(json['web_page'], WebPage.fromJson),
+        linkPreviewOptions: _readOptional(
+            json['link_preview_options'], LinkPreviewOptions.fromJson),
       );
 
   @override
@@ -67,6 +73,7 @@ final class MessageText extends MessageContent {
         '@type': CONSTRUCTOR,
         'text': text.toJson(),
         'web_page': webPage?.toJson(),
+        'link_preview_options': linkPreviewOptions?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -75,10 +82,14 @@ final class MessageText extends MessageContent {
   MessageText copyWith({
     FormattedText? text,
     WebPage? Function()? webPage,
+    LinkPreviewOptions? Function()? linkPreviewOptions,
   }) =>
       MessageText(
         text: text ?? this.text,
         webPage: webPage != null ? webPage() : this.webPage,
+        linkPreviewOptions: linkPreviewOptions != null
+            ? linkPreviewOptions()
+            : this.linkPreviewOptions,
       );
 
   /// TDLib type name.
@@ -2513,6 +2524,176 @@ final class MessageGiftedPremium extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiftedPremium';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Telegram Premium gift code was created for the user
+final class MessagePremiumGiftCode extends MessageContent {
+  /// A Telegram Premium gift code was created for the user
+  const MessagePremiumGiftCode({
+    required this.creatorId,
+    required this.isFromGiveaway,
+    required this.isUnclaimed,
+    required this.monthCount,
+    this.sticker,
+    required this.code,
+  });
+
+  /// Identifier of a chat or a user that created the gift code
+  final MessageSender creatorId;
+
+  /// True, if the gift code was created for a giveaway
+  final bool isFromGiveaway;
+
+  /// True, if the winner for the corresponding Telegram Premium subscription wasn't chosen
+  final bool isUnclaimed;
+
+  /// Number of month the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// The gift code
+  final String code;
+
+  /// Parses a [MessagePremiumGiftCode] from TDLib JSON.
+  factory MessagePremiumGiftCode.fromJson(Map<String, dynamic> json) =>
+      MessagePremiumGiftCode(
+        creatorId: _readObject(json['creator_id'], MessageSender.fromJson),
+        isFromGiveaway: _readBool(json['is_from_giveaway']),
+        isUnclaimed: _readBool(json['is_unclaimed']),
+        monthCount: _readInt(json['month_count']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+        code: _readString(json['code']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'creator_id': creatorId.toJson(),
+        'is_from_giveaway': isFromGiveaway,
+        'is_unclaimed': isUnclaimed,
+        'month_count': monthCount,
+        'sticker': sticker?.toJson(),
+        'code': code,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePremiumGiftCode copyWith({
+    MessageSender? creatorId,
+    bool? isFromGiveaway,
+    bool? isUnclaimed,
+    int? monthCount,
+    Sticker? Function()? sticker,
+    String? code,
+  }) =>
+      MessagePremiumGiftCode(
+        creatorId: creatorId ?? this.creatorId,
+        isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
+        isUnclaimed: isUnclaimed ?? this.isUnclaimed,
+        monthCount: monthCount ?? this.monthCount,
+        sticker: sticker != null ? sticker() : this.sticker,
+        code: code ?? this.code,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePremiumGiftCode';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Telegram Premium giveaway was created for the chat
+final class MessagePremiumGiveawayCreated extends MessageContent {
+  /// A Telegram Premium giveaway was created for the chat
+  const MessagePremiumGiveawayCreated();
+
+  /// Parses a [MessagePremiumGiveawayCreated] from TDLib JSON.
+  factory MessagePremiumGiveawayCreated.fromJson(Map<String, dynamic> json) =>
+      const MessagePremiumGiveawayCreated();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePremiumGiveawayCreated copyWith() =>
+      const MessagePremiumGiveawayCreated();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePremiumGiveawayCreated';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Telegram Premium giveaway
+final class MessagePremiumGiveaway extends MessageContent {
+  /// A Telegram Premium giveaway
+  const MessagePremiumGiveaway({
+    required this.parameters,
+    required this.winnerCount,
+    required this.monthCount,
+    this.sticker,
+  });
+
+  /// Giveaway parameters
+  final PremiumGiveawayParameters parameters;
+
+  /// Number of users which will receive Telegram Premium subscription gift codes
+  final int winnerCount;
+
+  /// Number of month the Telegram Premium subscription will be active after code activation
+  final int monthCount;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parses a [MessagePremiumGiveaway] from TDLib JSON.
+  factory MessagePremiumGiveaway.fromJson(Map<String, dynamic> json) =>
+      MessagePremiumGiveaway(
+        parameters:
+            _readObject(json['parameters'], PremiumGiveawayParameters.fromJson),
+        winnerCount: _readInt(json['winner_count']),
+        monthCount: _readInt(json['month_count']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'parameters': parameters.toJson(),
+        'winner_count': winnerCount,
+        'month_count': monthCount,
+        'sticker': sticker?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePremiumGiveaway copyWith({
+    PremiumGiveawayParameters? parameters,
+    int? winnerCount,
+    int? monthCount,
+    Sticker? Function()? sticker,
+  }) =>
+      MessagePremiumGiveaway(
+        parameters: parameters ?? this.parameters,
+        winnerCount: winnerCount ?? this.winnerCount,
+        monthCount: monthCount ?? this.monthCount,
+        sticker: sticker != null ? sticker() : this.sticker,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePremiumGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

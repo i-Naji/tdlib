@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an invoice to process
 ///
-/// One of: [InputInvoiceMessage], [InputInvoiceName]; or [UndecodedInputInvoice] for a type newer than this API.
+/// One of: [InputInvoiceMessage], [InputInvoiceName], [InputInvoiceTelegram]; or [UndecodedInputInvoice] for a type newer than this API.
 sealed class InputInvoice extends TdObject {
   const InputInvoice();
 
@@ -123,6 +123,45 @@ final class InputInvoiceName extends InputInvoice {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputInvoiceName';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An invoice for a payment toward Telegram; must not be used in the in-store apps
+final class InputInvoiceTelegram extends InputInvoice {
+  /// An invoice for a payment toward Telegram; must not be used in the in-store apps
+  const InputInvoiceTelegram({
+    required this.purpose,
+  });
+
+  /// Transaction purpose
+  final TelegramPaymentPurpose purpose;
+
+  /// Parses a [InputInvoiceTelegram] from TDLib JSON.
+  factory InputInvoiceTelegram.fromJson(Map<String, dynamic> json) =>
+      InputInvoiceTelegram(
+        purpose: _readObject(json['purpose'], TelegramPaymentPurpose.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'purpose': purpose.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputInvoiceTelegram copyWith({
+    TelegramPaymentPurpose? purpose,
+  }) =>
+      InputInvoiceTelegram(
+        purpose: purpose ?? this.purpose,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputInvoiceTelegram';
 
   @override
   String getConstructor() => CONSTRUCTOR;

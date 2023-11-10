@@ -22,8 +22,8 @@ final class AddLocalMessage extends TdFunction<Message> {
   /// Identifier of the sender of the message
   final MessageSender senderId;
 
-  /// Identifier of the replied message or story; pass null if none
-  final MessageReplyTo? replyTo;
+  /// Information about the message or story to be replied; pass null if none
+  final InputMessageReplyTo? replyTo;
 
   /// Pass true to disable notification for the message
   final bool disableNotification;
@@ -47,7 +47,7 @@ final class AddLocalMessage extends TdFunction<Message> {
   AddLocalMessage copyWith({
     int? chatId,
     MessageSender? senderId,
-    MessageReplyTo? Function()? replyTo,
+    InputMessageReplyTo? Function()? replyTo,
     bool? disableNotification,
     InputMessageContent? inputMessageContent,
   }) =>
