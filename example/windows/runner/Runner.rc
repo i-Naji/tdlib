@@ -89,11 +89,11 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "org.naji.td.tdlib_example" "\0"
+            VALUE "CompanyName", "org.naji.td" "\0"
             VALUE "FileDescription", "tdlib_example" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "tdlib_example" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 org.naji.td.tdlib_example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 org.naji.td. All rights reserved." "\0"
             VALUE "OriginalFilename", "tdlib_example.exe" "\0"
             VALUE "ProductName", "tdlib_example" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
