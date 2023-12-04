@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessageContactRegistered], [MessageUserShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -57,7 +57,7 @@ final class MessageText extends MessageContent {
   /// A link preview attached to the message; may be null
   final WebPage? webPage;
 
-  /// Options which was used for generation of the link preview; may be null if default options were used
+  /// Options which were used for generation of the link preview; may be null if default options were used
   final LinkPreviewOptions? linkPreviewOptions;
 
   /// Parses a [MessageText] from TDLib JSON.
@@ -1802,6 +1802,7 @@ final class MessageChatSetBackground extends MessageContent {
   const MessageChatSetBackground({
     required this.oldBackgroundMessageId,
     required this.background,
+    required this.onlyForSelf,
   });
 
   /// Identifier of the message with a previously set same background; 0 if none. Can be an identifier of a deleted message
@@ -1810,11 +1811,15 @@ final class MessageChatSetBackground extends MessageContent {
   /// The new background
   final ChatBackground background;
 
+  /// True, if the background was set only for self
+  final bool onlyForSelf;
+
   /// Parses a [MessageChatSetBackground] from TDLib JSON.
   factory MessageChatSetBackground.fromJson(Map<String, dynamic> json) =>
       MessageChatSetBackground(
         oldBackgroundMessageId: _readInt(json['old_background_message_id']),
         background: _readObject(json['background'], ChatBackground.fromJson),
+        onlyForSelf: _readBool(json['only_for_self']),
       );
 
   @override
@@ -1822,6 +1827,7 @@ final class MessageChatSetBackground extends MessageContent {
         '@type': CONSTRUCTOR,
         'old_background_message_id': oldBackgroundMessageId,
         'background': background.toJson(),
+        'only_for_self': onlyForSelf,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1830,11 +1836,13 @@ final class MessageChatSetBackground extends MessageContent {
   MessageChatSetBackground copyWith({
     int? oldBackgroundMessageId,
     ChatBackground? background,
+    bool? onlyForSelf,
   }) =>
       MessageChatSetBackground(
         oldBackgroundMessageId:
             oldBackgroundMessageId ?? this.oldBackgroundMessageId,
         background: background ?? this.background,
+        onlyForSelf: onlyForSelf ?? this.onlyForSelf,
       );
 
   /// TDLib type name.
@@ -2694,6 +2702,61 @@ final class MessagePremiumGiveaway extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePremiumGiveaway';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A Telegram Premium giveaway has been completed for the chat
+final class MessagePremiumGiveawayCompleted extends MessageContent {
+  /// A Telegram Premium giveaway has been completed for the chat
+  const MessagePremiumGiveawayCompleted({
+    required this.giveawayMessageId,
+    required this.winnerCount,
+    required this.unclaimedPrizeCount,
+  });
+
+  /// Identifier of the message with the giveaway, can be an identifier of a deleted message
+  final int giveawayMessageId;
+
+  /// Number of winners in the giveaway
+  final int winnerCount;
+
+  /// Number of undistributed prizes
+  final int unclaimedPrizeCount;
+
+  /// Parses a [MessagePremiumGiveawayCompleted] from TDLib JSON.
+  factory MessagePremiumGiveawayCompleted.fromJson(Map<String, dynamic> json) =>
+      MessagePremiumGiveawayCompleted(
+        giveawayMessageId: _readInt(json['giveaway_message_id']),
+        winnerCount: _readInt(json['winner_count']),
+        unclaimedPrizeCount: _readInt(json['unclaimed_prize_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'giveaway_message_id': giveawayMessageId,
+        'winner_count': winnerCount,
+        'unclaimed_prize_count': unclaimedPrizeCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePremiumGiveawayCompleted copyWith({
+    int? giveawayMessageId,
+    int? winnerCount,
+    int? unclaimedPrizeCount,
+  }) =>
+      MessagePremiumGiveawayCompleted(
+        giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
+        winnerCount: winnerCount ?? this.winnerCount,
+        unclaimedPrizeCount: unclaimedPrizeCount ?? this.unclaimedPrizeCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePremiumGiveawayCompleted';
 
   @override
   String getConstructor() => CONSTRUCTOR;

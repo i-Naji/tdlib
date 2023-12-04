@@ -146,7 +146,7 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
   /// If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
   final bool canUnarchive;
 
-  /// If non-negative, the current user was found by the peer through searchChatsNearby and this is the distance between the users
+  /// If non-negative, the current user was found by the other user through searchChatsNearby and this is the distance between the users
   final int distance;
 
   /// Parses a [ChatActionBarReportAddBlock] from TDLib JSON.

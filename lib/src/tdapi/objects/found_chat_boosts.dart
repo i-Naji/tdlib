@@ -20,7 +20,7 @@ final class FoundChatBoosts extends TdObject {
   /// List of boosts
   final List<ChatBoost> boosts;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// "@extra" of the request this object answers.

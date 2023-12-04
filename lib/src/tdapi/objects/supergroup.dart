@@ -43,7 +43,7 @@ final class Supergroup extends TdObject {
   /// Status of the current user in the supergroup or channel; custom title will always be empty
   final ChatMemberStatus status;
 
-  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through searchPublicChats, searchChatsNearby, getInactiveSupergroupChats, getSuitableDiscussionChats, getGroupsInCommon, getUserPrivacySettingRules, or in chatFolderInviteLinkInfo.missing_chat_ids
+  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getSuitableDiscussionChats, getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or for public chats in which where sent messages and posted stories from storyPublicForwards, or for public chats in which where sent messages from getMessagePublicForwards response
   final int memberCount;
 
   /// True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel
@@ -70,7 +70,7 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is a broadcast group, i.e. only administrators can send messages and there is no limit on the number of members
   final bool isBroadcastGroup;
 
-  /// True, if the supergroup must be shown as a forum by default
+  /// True, if the supergroup is a forum with topics
   final bool isForum;
 
   /// True, if the supergroup or channel is verified

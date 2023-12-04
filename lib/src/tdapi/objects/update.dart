@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColor], [UpdateChatBackgroundCustomEmoji], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateSelectedBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColor], [UpdateChatBackgroundCustomEmoji], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateSelectedBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -153,9 +153,9 @@ final class UpdateNewMessage extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
+/// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
 final class UpdateMessageSendAcknowledged extends Update {
-  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully or even that the send message request will be processed. This update will be sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
+  /// A request to send a message has reached the Telegram server. This doesn't mean that the message will be sent successfully. This update is sent only if the option "use_quick_ack" is set to true. This update may be sent multiple times for the same message
   const UpdateMessageSendAcknowledged({
     required this.chatId,
     required this.messageId,
@@ -1177,7 +1177,7 @@ final class UpdateChatBackgroundCustomEmoji extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// The new tdentifier of a custom emoji to be shown on the reply header background
+  /// The new identifier of a custom emoji to be shown on the reply header background; 0 if none
   final int backgroundCustomEmojiId;
 
   /// "@extra" of the request this object answers.
@@ -1228,9 +1228,9 @@ final class UpdateChatBackgroundCustomEmoji extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Chat permissions was changed
+/// Chat permissions were changed
 final class UpdateChatPermissions extends Update {
-  /// Chat permissions was changed
+  /// Chat permissions were changed
   const UpdateChatPermissions({
     required this.chatId,
     required this.permissions,
@@ -2654,6 +2654,69 @@ final class UpdateChatIsMarkedAsUnread extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A chat default appearance has changed
+final class UpdateChatViewAsTopics extends Update {
+  /// A chat default appearance has changed
+  const UpdateChatViewAsTopics({
+    required this.chatId,
+    required this.viewAsTopics,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// New value of view_as_topics
+  final bool viewAsTopics;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatViewAsTopics] from TDLib JSON.
+  factory UpdateChatViewAsTopics.fromJson(Map<String, dynamic> json) =>
+      UpdateChatViewAsTopics(
+        chatId: _readInt(json['chat_id']),
+        viewAsTopics: _readBool(json['view_as_topics']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'view_as_topics': viewAsTopics,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatViewAsTopics copyWith({
+    int? chatId,
+    bool? viewAsTopics,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateChatViewAsTopics(
+        chatId: chatId ?? this.chatId,
+        viewAsTopics: viewAsTopics ?? this.viewAsTopics,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatViewAsTopics';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A chat was blocked or unblocked
 final class UpdateChatBlockList extends Update {
   /// A chat was blocked or unblocked
@@ -2844,9 +2907,9 @@ final class UpdateChatFolders extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it will be sent just after the number of online users has changed
+/// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it is sent just after the number of online users has changed
 final class UpdateChatOnlineMemberCount extends Update {
-  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it will be sent just after the number of online users has changed
+  /// The number of online group members has changed. This update with non-zero number of online group members is sent only for currently opened chats. There is no guarantee that it is sent just after the number of online users has changed
   const UpdateChatOnlineMemberCount({
     required this.chatId,
     required this.onlineMemberCount,
@@ -3213,9 +3276,9 @@ final class UpdateNotificationGroup extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
+/// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
 final class UpdateActiveNotifications extends Update {
-  /// Contains active notifications that was shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
+  /// Contains active notifications that were shown on previous application launches. This update is sent only if the message database is used. In that case it comes once before any updateNotification and updateNotificationGroup update
   const UpdateActiveNotifications({
     required this.groups,
     this.extra,
@@ -5812,9 +5875,9 @@ final class UpdateSavedAnimations extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The list of saved notifications sounds was updated. This update may not be sent until information about a notification sound was requested for the first time
+/// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time
 final class UpdateSavedNotificationSounds extends Update {
-  /// The list of saved notifications sounds was updated. This update may not be sent until information about a notification sound was requested for the first time
+  /// The list of saved notification sounds was updated. This update may not be sent until information about a notification sound was requested for the first time
   const UpdateSavedNotificationSounds({
     required this.notificationSoundIds,
     this.extra,
@@ -6050,6 +6113,72 @@ final class UpdateAccentColors extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAccentColors';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The list of supported accent colors for user profiles has changed
+final class UpdateProfileAccentColors extends Update {
+  /// The list of supported accent colors for user profiles has changed
+  const UpdateProfileAccentColors({
+    required this.colors,
+    required this.availableAccentColorIds,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Information about supported colors
+  final List<ProfileAccentColor> colors;
+
+  /// The list of accent color identifiers, which can be set through setProfileAccentColor. The colors must be shown in the specififed order
+  final List<int> availableAccentColorIds;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateProfileAccentColors] from TDLib JSON.
+  factory UpdateProfileAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateProfileAccentColors(
+        colors: _readList<ProfileAccentColor>(
+            json['colors'], (e) => _readObject(e, ProfileAccentColor.fromJson)),
+        availableAccentColorIds:
+            _readList<int>(json['available_accent_color_ids'], _readInt),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'colors': [for (final e in colors) e.toJson()],
+        'available_accent_color_ids': availableAccentColorIds,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateProfileAccentColors copyWith({
+    List<ProfileAccentColor>? colors,
+    List<int>? availableAccentColorIds,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateProfileAccentColors(
+        colors: colors ?? this.colors,
+        availableAccentColorIds:
+            availableAccentColorIds ?? this.availableAccentColorIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateProfileAccentColors';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -6573,6 +6702,85 @@ final class UpdateDefaultReactionType extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDefaultReactionType';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The parameters of speech recognition without Telegram Premium subscription has changed
+final class UpdateSpeechRecognitionTrial extends Update {
+  /// The parameters of speech recognition without Telegram Premium subscription has changed
+  const UpdateSpeechRecognitionTrial({
+    required this.maxMediaDuration,
+    required this.weeklyCount,
+    required this.leftCount,
+    required this.nextResetDate,
+    this.extra,
+    this.clientId,
+  });
+
+  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  final int maxMediaDuration;
+
+  /// The total number of allowed speech recognitions per week; 0 if none
+  final int weeklyCount;
+
+  /// Number of left speech recognition attempts this week
+  final int leftCount;
+
+  /// Point in time (Unix timestamp) when the weekly number of tries will reset; 0 if unknown
+  final int nextResetDate;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateSpeechRecognitionTrial] from TDLib JSON.
+  factory UpdateSpeechRecognitionTrial.fromJson(Map<String, dynamic> json) =>
+      UpdateSpeechRecognitionTrial(
+        maxMediaDuration: _readInt(json['max_media_duration']),
+        weeklyCount: _readInt(json['weekly_count']),
+        leftCount: _readInt(json['left_count']),
+        nextResetDate: _readInt(json['next_reset_date']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'max_media_duration': maxMediaDuration,
+        'weekly_count': weeklyCount,
+        'left_count': leftCount,
+        'next_reset_date': nextResetDate,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateSpeechRecognitionTrial copyWith({
+    int? maxMediaDuration,
+    int? weeklyCount,
+    int? leftCount,
+    int? nextResetDate,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateSpeechRecognitionTrial(
+        maxMediaDuration: maxMediaDuration ?? this.maxMediaDuration,
+        weeklyCount: weeklyCount ?? this.weeklyCount,
+        leftCount: leftCount ?? this.leftCount,
+        nextResetDate: nextResetDate ?? this.nextResetDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateSpeechRecognitionTrial';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -7780,7 +7988,7 @@ final class UpdateChatMember extends Update {
   /// Identifier of the user, changing the rights
   final int actorUserId;
 
-  /// Point in time (Unix timestamp) when the user rights was changed
+  /// Point in time (Unix timestamp) when the user rights were changed
   final int date;
 
   /// If user has joined the chat using an invite link, the invite link; may be null

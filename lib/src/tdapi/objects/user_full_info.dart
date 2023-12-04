@@ -18,6 +18,7 @@ final class UserFullInfo extends TdObject {
     required this.hasRestrictedVoiceAndVideoNoteMessages,
     required this.hasPinnedStories,
     required this.needPhoneNumberPrivacyException,
+    required this.setChatBackground,
     this.bio,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
@@ -59,6 +60,9 @@ final class UserFullInfo extends TdObject {
   /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
   final bool needPhoneNumberPrivacyException;
 
+  /// True, if the user set chat background for both chat users and it wasn't reverted yet
+  final bool setChatBackground;
+
   /// A short user bio; may be null for bots
   final FormattedText? bio;
 
@@ -95,6 +99,7 @@ final class UserFullInfo extends TdObject {
         hasPinnedStories: _readBool(json['has_pinned_stories']),
         needPhoneNumberPrivacyException:
             _readBool(json['need_phone_number_privacy_exception']),
+        setChatBackground: _readBool(json['set_chat_background']),
         bio: _readOptional(json['bio'], FormattedText.fromJson),
         premiumGiftOptions: _readList<PremiumPaymentOption>(
             json['premium_gift_options'],
@@ -120,6 +125,7 @@ final class UserFullInfo extends TdObject {
             hasRestrictedVoiceAndVideoNoteMessages,
         'has_pinned_stories': hasPinnedStories,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
+        'set_chat_background': setChatBackground,
         'bio': bio?.toJson(),
         'premium_gift_options': [
           for (final e in premiumGiftOptions) e.toJson()
@@ -142,6 +148,7 @@ final class UserFullInfo extends TdObject {
     bool? hasRestrictedVoiceAndVideoNoteMessages,
     bool? hasPinnedStories,
     bool? needPhoneNumberPrivacyException,
+    bool? setChatBackground,
     FormattedText? Function()? bio,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
@@ -165,6 +172,7 @@ final class UserFullInfo extends TdObject {
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
         needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
             this.needPhoneNumberPrivacyException,
+        setChatBackground: setChatBackground ?? this.setChatBackground,
         bio: bio != null ? bio() : this.bio,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,

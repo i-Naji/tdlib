@@ -8,12 +8,16 @@ final class MessageStatistics extends TdObject {
   /// A detailed statistics about a message
   const MessageStatistics({
     required this.messageInteractionGraph,
+    required this.messageReactionGraph,
     this.extra,
     this.clientId,
   });
 
   /// A graph containing number of message views and shares
   final StatisticalGraph messageInteractionGraph;
+
+  /// A graph containing number of message reactions
+  final StatisticalGraph messageReactionGraph;
 
   /// "@extra" of the request this object answers.
   @override
@@ -28,6 +32,8 @@ final class MessageStatistics extends TdObject {
       MessageStatistics(
         messageInteractionGraph: _readObject(
             json['message_interaction_graph'], StatisticalGraph.fromJson),
+        messageReactionGraph: _readObject(
+            json['message_reaction_graph'], StatisticalGraph.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -36,18 +42,21 @@ final class MessageStatistics extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'message_interaction_graph': messageInteractionGraph.toJson(),
+        'message_reaction_graph': messageReactionGraph.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageStatistics copyWith({
     StatisticalGraph? messageInteractionGraph,
+    StatisticalGraph? messageReactionGraph,
     dynamic extra,
     int? clientId,
   }) =>
       MessageStatistics(
         messageInteractionGraph:
             messageInteractionGraph ?? this.messageInteractionGraph,
+        messageReactionGraph: messageReactionGraph ?? this.messageReactionGraph,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

@@ -805,9 +805,9 @@ final class ChatEventMessageAutoDeleteTimeChanged extends ChatEventAction {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The chat permissions was changed
+/// The chat permissions were changed
 final class ChatEventPermissionsChanged extends ChatEventAction {
-  /// The chat permissions was changed
+  /// The chat permissions were changed
   const ChatEventPermissionsChanged({
     required this.oldPermissions,
     required this.newPermissions,

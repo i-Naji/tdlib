@@ -49,7 +49,6 @@ final class MessageReplyToMessage extends MessageReplyTo {
     required this.chatId,
     required this.messageId,
     this.quote,
-    required this.isQuoteManual,
     this.origin,
     required this.originSendDate,
     this.content,
@@ -61,19 +60,16 @@ final class MessageReplyToMessage extends MessageReplyTo {
   /// The identifier of the message; may be 0 if the replied message is in unknown chat
   final int messageId;
 
-  /// Manually or automatically chosen quote from the replied message; may be null if none. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the quote
-  final FormattedText? quote;
+  /// Chosen quote from the replied message; may be null if none
+  final TextQuote? quote;
 
-  /// True, if the quote was manually chosen by the message sender
-  final bool isQuoteManual;
-
-  /// Information about origin of the message if the message was replied from another chat; may be null for messages from the same chat
+  /// Information about origin of the message if the message was from another chat or topic; may be null for messages from the same chat
   final MessageOrigin? origin;
 
-  /// Point in time (Unix timestamp) when the message was sent if the message was replied from another chat; 0 for messages from the same chat
+  /// Point in time (Unix timestamp) when the message was sent if the message was from another chat or topic; 0 for messages from the same chat
   final int originSendDate;
 
-  /// Media content of the message if the message was replied from another chat; may be null for messages from the same chat and messages without media. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation, messagePhoto, messagePoll, messagePremiumGiveaway, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo, messageVideoNote, or messageVoiceNote
+  /// Media content of the message if the message was from another chat or topic; may be null for messages from the same chat and messages without media. Can be only one of the following types: messageAnimation, messageAudio, messageContact, messageDice, messageDocument, messageGame, messageInvoice, messageLocation, messagePhoto, messagePoll, messagePremiumGiveaway, messageSticker, messageStory, messageText (for link preview), messageVenue, messageVideo, messageVideoNote, or messageVoiceNote
   final MessageContent? content;
 
   /// Parses a [MessageReplyToMessage] from TDLib JSON.
@@ -81,8 +77,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
       MessageReplyToMessage(
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
-        quote: _readOptional(json['quote'], FormattedText.fromJson),
-        isQuoteManual: _readBool(json['is_quote_manual']),
+        quote: _readOptional(json['quote'], TextQuote.fromJson),
         origin: _readOptional(json['origin'], MessageOrigin.fromJson),
         originSendDate: _readInt(json['origin_send_date']),
         content: _readOptional(json['content'], MessageContent.fromJson),
@@ -94,7 +89,6 @@ final class MessageReplyToMessage extends MessageReplyTo {
         'chat_id': chatId,
         'message_id': messageId,
         'quote': quote?.toJson(),
-        'is_quote_manual': isQuoteManual,
         'origin': origin?.toJson(),
         'origin_send_date': originSendDate,
         'content': content?.toJson(),
@@ -106,8 +100,7 @@ final class MessageReplyToMessage extends MessageReplyTo {
   MessageReplyToMessage copyWith({
     int? chatId,
     int? messageId,
-    FormattedText? Function()? quote,
-    bool? isQuoteManual,
+    TextQuote? Function()? quote,
     MessageOrigin? Function()? origin,
     int? originSendDate,
     MessageContent? Function()? content,
@@ -116,7 +109,6 @@ final class MessageReplyToMessage extends MessageReplyTo {
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         quote: quote != null ? quote() : this.quote,
-        isQuoteManual: isQuoteManual ?? this.isQuoteManual,
         origin: origin != null ? origin() : this.origin,
         originSendDate: originSendDate ?? this.originSendDate,
         content: content != null ? content() : this.content,

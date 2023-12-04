@@ -11,6 +11,7 @@ final class SponsoredMessage extends TdObject {
     required this.isRecommended,
     required this.content,
     required this.sponsor,
+    required this.buttonText,
     required this.additionalInfo,
   });
 
@@ -26,6 +27,9 @@ final class SponsoredMessage extends TdObject {
   /// Information about the sponsor of the message
   final MessageSponsor sponsor;
 
+  /// If non-empty, text for the message action button
+  final String buttonText;
+
   /// If non-empty, additional information about the sponsored message to be shown along with the message
   final String additionalInfo;
 
@@ -36,6 +40,7 @@ final class SponsoredMessage extends TdObject {
         isRecommended: _readBool(json['is_recommended']),
         content: _readObject(json['content'], MessageContent.fromJson),
         sponsor: _readObject(json['sponsor'], MessageSponsor.fromJson),
+        buttonText: _readString(json['button_text']),
         additionalInfo: _readString(json['additional_info']),
       );
 
@@ -46,6 +51,7 @@ final class SponsoredMessage extends TdObject {
         'is_recommended': isRecommended,
         'content': content.toJson(),
         'sponsor': sponsor.toJson(),
+        'button_text': buttonText,
         'additional_info': additionalInfo,
       };
 
@@ -56,6 +62,7 @@ final class SponsoredMessage extends TdObject {
     bool? isRecommended,
     MessageContent? content,
     MessageSponsor? sponsor,
+    String? buttonText,
     String? additionalInfo,
   }) =>
       SponsoredMessage(
@@ -63,6 +70,7 @@ final class SponsoredMessage extends TdObject {
         isRecommended: isRecommended ?? this.isRecommended,
         content: content ?? this.content,
         sponsor: sponsor ?? this.sponsor,
+        buttonText: buttonText ?? this.buttonText,
         additionalInfo: additionalInfo ?? this.additionalInfo,
       );
 

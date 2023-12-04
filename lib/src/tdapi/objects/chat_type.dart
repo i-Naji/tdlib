@@ -178,7 +178,7 @@ final class ChatTypeSecret extends ChatType {
   /// Secret chat identifier
   final int secretChatId;
 
-  /// User identifier of the secret chat peer
+  /// User identifier of the other user in the secret chat
   final int userId;
 
   /// Parses a [ChatTypeSecret] from TDLib JSON.

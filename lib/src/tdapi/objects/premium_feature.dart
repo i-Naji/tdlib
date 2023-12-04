@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -500,9 +500,9 @@ final class PremiumFeatureChatBoost extends PremiumFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to choose accent color
+/// The ability to choose accent color for replies and user profile
 final class PremiumFeatureAccentColor extends PremiumFeature {
-  /// The ability to choose accent color
+  /// The ability to choose accent color for replies and user profile
   const PremiumFeatureAccentColor();
 
   /// Parses a [PremiumFeatureAccentColor] from TDLib JSON.
@@ -521,6 +521,33 @@ final class PremiumFeatureAccentColor extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureAccentColor';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to set private chat background for both users
+final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
+  /// The ability to set private chat background for both users
+  const PremiumFeatureBackgroundForBoth();
+
+  /// Parses a [PremiumFeatureBackgroundForBoth] from TDLib JSON.
+  factory PremiumFeatureBackgroundForBoth.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureBackgroundForBoth();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureBackgroundForBoth copyWith() =>
+      const PremiumFeatureBackgroundForBoth();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureBackgroundForBoth';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -42,9 +42,9 @@ final class UndecodedConnectionState extends ConnectionState {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Currently waiting for the network to become available. Use setNetworkType to change the available network type
+/// Waiting for the network to become available. Use setNetworkType to change the available network type
 final class ConnectionStateWaitingForNetwork extends ConnectionState {
-  /// Currently waiting for the network to become available. Use setNetworkType to change the available network type
+  /// Waiting for the network to become available. Use setNetworkType to change the available network type
   const ConnectionStateWaitingForNetwork();
 
   /// Parses a [ConnectionStateWaitingForNetwork] from TDLib JSON.
@@ -70,9 +70,9 @@ final class ConnectionStateWaitingForNetwork extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Currently establishing a connection with a proxy server
+/// Establishing a connection with a proxy server
 final class ConnectionStateConnectingToProxy extends ConnectionState {
-  /// Currently establishing a connection with a proxy server
+  /// Establishing a connection with a proxy server
   const ConnectionStateConnectingToProxy();
 
   /// Parses a [ConnectionStateConnectingToProxy] from TDLib JSON.
@@ -98,9 +98,9 @@ final class ConnectionStateConnectingToProxy extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Currently establishing a connection to the Telegram servers
+/// Establishing a connection to the Telegram servers
 final class ConnectionStateConnecting extends ConnectionState {
-  /// Currently establishing a connection to the Telegram servers
+  /// Establishing a connection to the Telegram servers
   const ConnectionStateConnecting();
 
   /// Parses a [ConnectionStateConnecting] from TDLib JSON.
@@ -124,9 +124,9 @@ final class ConnectionStateConnecting extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Downloading data received while the application was offline
+/// Downloading data supposed to be received while the application was offline
 final class ConnectionStateUpdating extends ConnectionState {
-  /// Downloading data received while the application was offline
+  /// Downloading data supposed to be received while the application was offline
   const ConnectionStateUpdating();
 
   /// Parses a [ConnectionStateUpdating] from TDLib JSON.

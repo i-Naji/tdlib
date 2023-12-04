@@ -77,10 +77,10 @@ final class WebPage extends TdObject {
   /// Author of the content
   final String author;
 
-  /// True, if the preview has large media and its appearance can be changed
+  /// True, if size of media in the preview can be changed
   final bool hasLargeMedia;
 
-  /// True, if large media preview must be shown
+  /// True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos
   final bool showLargeMedia;
 
   /// True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear

@@ -1,3 +1,6 @@
+## 1.8.22
+* Update tdlib to **1.8.22** (`24893faf7`), objects +22/−1/~10, functions +7/−0/~4.
+
 ## 1.8.21
 * Update tdlib to **1.8.21** (`3870c29b1`), objects +45/−10/~20, functions +11/−1/~10.
 * Add `TdRuntime` (`package:tdlib/td_runtime.dart`): one receive isolate for all clients, typed `invoke`, update streams.

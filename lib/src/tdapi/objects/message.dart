@@ -78,7 +78,7 @@ final class Message extends TdObject {
   /// True, if the message can be forwarded
   final bool canBeForwarded;
 
-  /// True, if the message can be replied in another chat
+  /// True, if the message can be replied in another chat or topic
   final bool canBeRepliedInAnotherChat;
 
   /// True, if content of the message can be saved locally or copied

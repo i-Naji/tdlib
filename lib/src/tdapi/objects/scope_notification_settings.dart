@@ -29,10 +29,10 @@ final class ScopeNotificationSettings extends TdObject {
   /// True, if message content must be displayed in notifications
   final bool showPreview;
 
-  /// If true, mute_stories is ignored and story notifications are received only for the first 5 chats from topChatCategoryUsers
+  /// If true, story notifications are received only for the first 5 chats from topChatCategoryUsers regardless of the value of mute_stories
   final bool useDefaultMuteStories;
 
-  /// True, if story notifications are disabled for the chat
+  /// True, if story notifications are disabled
   final bool muteStories;
 
   /// Identifier of the notification sound to be played for stories; 0 if sound is disabled

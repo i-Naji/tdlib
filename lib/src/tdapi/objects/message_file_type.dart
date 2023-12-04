@@ -42,9 +42,9 @@ final class UndecodedMessageFileType extends MessageFileType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The messages was exported from a private chat
+/// The messages were exported from a private chat
 final class MessageFileTypePrivate extends MessageFileType {
-  /// The messages was exported from a private chat
+  /// The messages were exported from a private chat
   const MessageFileTypePrivate({
     required this.name,
     this.extra,
@@ -97,9 +97,9 @@ final class MessageFileTypePrivate extends MessageFileType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The messages was exported from a group chat
+/// The messages were exported from a group chat
 final class MessageFileTypeGroup extends MessageFileType {
-  /// The messages was exported from a group chat
+  /// The messages were exported from a group chat
   const MessageFileTypeGroup({
     required this.title,
     this.extra,
@@ -152,9 +152,9 @@ final class MessageFileTypeGroup extends MessageFileType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The messages was exported from a chat of unknown type
+/// The messages were exported from a chat of unknown type
 final class MessageFileTypeUnknown extends MessageFileType {
-  /// The messages was exported from a chat of unknown type
+  /// The messages were exported from a chat of unknown type
   const MessageFileTypeUnknown({
     this.extra,
     this.clientId,

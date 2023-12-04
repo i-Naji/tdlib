@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether the current user will receive a notification when the group call will start; scheduled group calls only
+/// Toggles whether the current user will receive a notification when the group call starts; scheduled group calls only
 ///
 /// Returns [Ok].
 final class ToggleGroupCallEnabledStartNotification extends TdFunction<Ok> {
-  /// Toggles whether the current user will receive a notification when the group call will start; scheduled group calls only
+  /// Toggles whether the current user will receive a notification when the group call starts; scheduled group calls only
   const ToggleGroupCallEnabledStartNotification({
     required this.groupCallId,
     required this.enabledStartNotification,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a message sponsor
 ///
-/// One of: [MessageSponsorTypeBot], [MessageSponsorTypePublicChannel], [MessageSponsorTypePrivateChannel], [MessageSponsorTypeWebsite]; or [UndecodedMessageSponsorType] for a type newer than this API.
+/// One of: [MessageSponsorTypeBot], [MessageSponsorTypeWebApp], [MessageSponsorTypePublicChannel], [MessageSponsorTypePrivateChannel], [MessageSponsorTypeWebsite]; or [UndecodedMessageSponsorType] for a type newer than this API.
 sealed class MessageSponsorType extends TdObject {
   const MessageSponsorType();
 
@@ -86,6 +86,53 @@ final class MessageSponsorTypeBot extends MessageSponsorType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSponsorTypeBot';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The sponsor is a web app
+final class MessageSponsorTypeWebApp extends MessageSponsorType {
+  /// The sponsor is a web app
+  const MessageSponsorTypeWebApp({
+    required this.webAppTitle,
+    required this.link,
+  });
+
+  /// Web App title
+  final String webAppTitle;
+
+  /// An internal link to be opened when the sponsored message is clicked
+  final InternalLinkType link;
+
+  /// Parses a [MessageSponsorTypeWebApp] from TDLib JSON.
+  factory MessageSponsorTypeWebApp.fromJson(Map<String, dynamic> json) =>
+      MessageSponsorTypeWebApp(
+        webAppTitle: _readString(json['web_app_title']),
+        link: _readObject(json['link'], InternalLinkType.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'web_app_title': webAppTitle,
+        'link': link.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSponsorTypeWebApp copyWith({
+    String? webAppTitle,
+    InternalLinkType? link,
+  }) =>
+      MessageSponsorTypeWebApp(
+        webAppTitle: webAppTitle ?? this.webAppTitle,
+        link: link ?? this.link,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSponsorTypeWebApp';
 
   @override
   String getConstructor() => CONSTRUCTOR;

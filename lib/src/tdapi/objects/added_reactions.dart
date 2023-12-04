@@ -20,7 +20,7 @@ final class AddedReactions extends TdObject {
   /// The list of added reactions
   final List<AddedReaction> reactions;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// "@extra" of the request this object answers.

@@ -129,7 +129,7 @@ final class SpeechRecognitionResultError extends SpeechRecognitionResult {
     required this.error,
   });
 
-  /// Recognition error
+  /// Recognition error. An error with a message "MSG_VOICE_TOO_LONG" is returned when media duration is too big to be recognized
   final TdError error;
 
   /// Parses a [SpeechRecognitionResultError] from TDLib JSON.

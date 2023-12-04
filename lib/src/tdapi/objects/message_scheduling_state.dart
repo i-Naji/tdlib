@@ -84,10 +84,10 @@ final class MessageSchedulingStateSendAtDate extends MessageSchedulingState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known
+/// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known
 final class MessageSchedulingStateSendWhenOnline
     extends MessageSchedulingState {
-  /// The message will be sent when the peer will be online. Applicable to private chats only and when the exact online status of the peer is known
+  /// The message will be sent when the other user is online. Applicable to private chats only and when the exact online status of the other user is known
   const MessageSchedulingStateSendWhenOnline();
 
   /// Parses a [MessageSchedulingStateSendWhenOnline] from TDLib JSON.

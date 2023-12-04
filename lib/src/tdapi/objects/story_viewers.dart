@@ -24,7 +24,7 @@ final class StoryViewers extends TdObject {
   /// List of story viewers
   final List<StoryViewer> viewers;
 
-  /// The offset for the next request. If empty, there are no more results
+  /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
 
   /// "@extra" of the request this object answers.

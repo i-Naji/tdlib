@@ -104,6 +104,7 @@ part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
 part 'functions/delete_chat.dart';
+part 'functions/delete_chat_background.dart';
 part 'functions/delete_chat_folder.dart';
 part 'functions/delete_chat_folder_invite_link.dart';
 part 'functions/delete_chat_history.dart';
@@ -212,6 +213,8 @@ part 'functions/get_chat_notification_settings_exceptions.dart';
 part 'functions/get_chat_pinned_message.dart';
 part 'functions/get_chat_pinned_stories.dart';
 part 'functions/get_chat_scheduled_messages.dart';
+part 'functions/get_chat_similar_chat_count.dart';
+part 'functions/get_chat_similar_chats.dart';
 part 'functions/get_chat_sparse_message_positions.dart';
 part 'functions/get_chat_sponsored_messages.dart';
 part 'functions/get_chat_statistics.dart';
@@ -339,6 +342,8 @@ part 'functions/get_storage_statistics_fast.dart';
 part 'functions/get_story.dart';
 part 'functions/get_story_available_reactions.dart';
 part 'functions/get_story_notification_settings_exceptions.dart';
+part 'functions/get_story_public_forwards.dart';
+part 'functions/get_story_statistics.dart';
 part 'functions/get_story_viewers.dart';
 part 'functions/get_suggested_file_name.dart';
 part 'functions/get_suggested_sticker_set_name.dart';
@@ -570,6 +575,7 @@ part 'functions/set_password.dart';
 part 'functions/set_pinned_chats.dart';
 part 'functions/set_pinned_forum_topics.dart';
 part 'functions/set_poll_answer.dart';
+part 'functions/set_profile_accent_color.dart';
 part 'functions/set_profile_photo.dart';
 part 'functions/set_recovery_email_address.dart';
 part 'functions/set_scope_notification_settings.dart';
@@ -621,6 +627,7 @@ part 'functions/toggle_chat_has_protected_content.dart';
 part 'functions/toggle_chat_is_marked_as_unread.dart';
 part 'functions/toggle_chat_is_pinned.dart';
 part 'functions/toggle_chat_is_translatable.dart';
+part 'functions/toggle_chat_view_as_topics.dart';
 part 'functions/toggle_download_is_paused.dart';
 part 'functions/toggle_forum_topic_is_closed.dart';
 part 'functions/toggle_forum_topic_is_pinned.dart';
@@ -765,9 +772,10 @@ part 'objects/chat_position.dart';
 part 'objects/chat_source.dart';
 part 'objects/chat_statistics.dart';
 part 'objects/chat_statistics_administrator_actions_info.dart';
+part 'objects/chat_statistics_interaction_info.dart';
 part 'objects/chat_statistics_inviter_info.dart';
-part 'objects/chat_statistics_message_interaction_info.dart';
 part 'objects/chat_statistics_message_sender_info.dart';
+part 'objects/chat_statistics_object_type.dart';
 part 'objects/chat_theme.dart';
 part 'objects/chat_type.dart';
 part 'objects/chats.dart';
@@ -863,6 +871,7 @@ part 'objects/input_story_area.dart';
 part 'objects/input_story_area_type.dart';
 part 'objects/input_story_areas.dart';
 part 'objects/input_story_content.dart';
+part 'objects/input_text_quote.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/internal_link_type.dart';
 part 'objects/invite_link_chat_type.dart';
@@ -982,6 +991,8 @@ part 'objects/premium_state.dart';
 part 'objects/premium_state_payment_option.dart';
 part 'objects/premium_story_feature.dart';
 part 'objects/prepaid_premium_giveaway.dart';
+part 'objects/profile_accent_color.dart';
+part 'objects/profile_accent_colors.dart';
 part 'objects/profile_photo.dart';
 part 'objects/proxies.dart';
 part 'objects/proxy.dart';
@@ -1035,10 +1046,16 @@ part 'objects/story_area.dart';
 part 'objects/story_area_position.dart';
 part 'objects/story_area_type.dart';
 part 'objects/story_content.dart';
+part 'objects/story_full_id.dart';
 part 'objects/story_info.dart';
 part 'objects/story_interaction_info.dart';
 part 'objects/story_list.dart';
+part 'objects/story_origin.dart';
 part 'objects/story_privacy_settings.dart';
+part 'objects/story_public_forward.dart';
+part 'objects/story_public_forwards.dart';
+part 'objects/story_repost_info.dart';
+part 'objects/story_statistics.dart';
 part 'objects/story_video.dart';
 part 'objects/story_viewer.dart';
 part 'objects/story_viewers.dart';
@@ -1066,6 +1083,7 @@ part 'objects/text_entities.dart';
 part 'objects/text_entity.dart';
 part 'objects/text_entity_type.dart';
 part 'objects/text_parse_mode.dart';
+part 'objects/text_quote.dart';
 part 'objects/theme_parameters.dart';
 part 'objects/theme_settings.dart';
 part 'objects/thumbnail.dart';
@@ -1100,14 +1118,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.21';
+const String tdlibVersion = '1.8.22';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '3870c29b158b75ca5e48e0eebd6b5c3a7994a000';
+const String tdlibSchemaCommit = '24893faf75d84b2b885f3f7aeb9d5a3c056fa7be';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '3870c29b158b75ca5e48e0eebd6b5c3a7994a000',
+  '24893faf75d84b2b885f3f7aeb9d5a3c056fa7be',
 ];
 
 /// Base class of every TDLib object.
@@ -1307,6 +1325,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumGiveawayInfoOngoing': PremiumGiveawayInfoOngoing.fromJson,
   'premiumGiveawayInfoCompleted': PremiumGiveawayInfoCompleted.fromJson,
   'accentColor': AccentColor.fromJson,
+  'profileAccentColors': ProfileAccentColors.fromJson,
+  'profileAccentColor': ProfileAccentColor.fromJson,
   'emojiStatus': EmojiStatus.fromJson,
   'emojiStatuses': EmojiStatuses.fromJson,
   'usernames': Usernames.fromJson,
@@ -1383,6 +1403,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'unreadReaction': UnreadReaction.fromJson,
   'messageSendingStatePending': MessageSendingStatePending.fromJson,
   'messageSendingStateFailed': MessageSendingStateFailed.fromJson,
+  'textQuote': TextQuote.fromJson,
+  'inputTextQuote': InputTextQuote.fromJson,
   'messageReplyToMessage': MessageReplyToMessage.fromJson,
   'messageReplyToStory': MessageReplyToStory.fromJson,
   'inputMessageReplyToMessage': InputMessageReplyToMessage.fromJson,
@@ -1407,6 +1429,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSourceScreenshot': MessageSourceScreenshot.fromJson,
   'messageSourceOther': MessageSourceOther.fromJson,
   'messageSponsorTypeBot': MessageSponsorTypeBot.fromJson,
+  'messageSponsorTypeWebApp': MessageSponsorTypeWebApp.fromJson,
   'messageSponsorTypePublicChannel': MessageSponsorTypePublicChannel.fromJson,
   'messageSponsorTypePrivateChannel': MessageSponsorTypePrivateChannel.fromJson,
   'messageSponsorTypeWebsite': MessageSponsorTypeWebsite.fromJson,
@@ -1750,6 +1773,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messagePremiumGiftCode': MessagePremiumGiftCode.fromJson,
   'messagePremiumGiveawayCreated': MessagePremiumGiveawayCreated.fromJson,
   'messagePremiumGiveaway': MessagePremiumGiveaway.fromJson,
+  'messagePremiumGiveawayCompleted': MessagePremiumGiveawayCompleted.fromJson,
   'messageContactRegistered': MessageContactRegistered.fromJson,
   'messageUserShared': MessageUserShared.fromJson,
   'messageChatShared': MessageChatShared.fromJson,
@@ -1883,11 +1907,18 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputStoryContentVideo': InputStoryContentVideo.fromJson,
   'storyListMain': StoryListMain.fromJson,
   'storyListArchive': StoryListArchive.fromJson,
+  'storyOriginPublicStory': StoryOriginPublicStory.fromJson,
+  'storyOriginHiddenUser': StoryOriginHiddenUser.fromJson,
+  'storyRepostInfo': StoryRepostInfo.fromJson,
   'storyInteractionInfo': StoryInteractionInfo.fromJson,
   'story': Story.fromJson,
   'stories': Stories.fromJson,
+  'storyFullId': StoryFullId.fromJson,
   'storyInfo': StoryInfo.fromJson,
   'chatActiveStories': ChatActiveStories.fromJson,
+  'storyPublicForwardMessage': StoryPublicForwardMessage.fromJson,
+  'storyPublicForwardStory': StoryPublicForwardStory.fromJson,
+  'storyPublicForwards': StoryPublicForwards.fromJson,
   'chatBoostSourceGiftCode': ChatBoostSourceGiftCode.fromJson,
   'chatBoostSourceGiveaway': ChatBoostSourceGiveaway.fromJson,
   'chatBoostSourcePremium': ChatBoostSourcePremium.fromJson,
@@ -2101,6 +2132,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PremiumLimitTypeStoryCaptionLength.fromJson,
   'premiumLimitTypeStorySuggestedReactionAreaCount':
       PremiumLimitTypeStorySuggestedReactionAreaCount.fromJson,
+  'premiumLimitTypeSimilarChatCount': PremiumLimitTypeSimilarChatCount.fromJson,
   'premiumFeatureIncreasedLimits': PremiumFeatureIncreasedLimits.fromJson,
   'premiumFeatureIncreasedUploadFileSize':
       PremiumFeatureIncreasedUploadFileSize.fromJson,
@@ -2124,6 +2156,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureUpgradedStories': PremiumFeatureUpgradedStories.fromJson,
   'premiumFeatureChatBoost': PremiumFeatureChatBoost.fromJson,
   'premiumFeatureAccentColor': PremiumFeatureAccentColor.fromJson,
+  'premiumFeatureBackgroundForBoth': PremiumFeatureBackgroundForBoth.fromJson,
   'premiumStoryFeaturePriorityOrder': PremiumStoryFeaturePriorityOrder.fromJson,
   'premiumStoryFeatureStealthMode': PremiumStoryFeatureStealthMode.fromJson,
   'premiumStoryFeaturePermanentViewsHistory':
@@ -2513,8 +2546,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'statisticalGraphData': StatisticalGraphData.fromJson,
   'statisticalGraphAsync': StatisticalGraphAsync.fromJson,
   'statisticalGraphError': StatisticalGraphError.fromJson,
-  'chatStatisticsMessageInteractionInfo':
-      ChatStatisticsMessageInteractionInfo.fromJson,
+  'chatStatisticsObjectTypeMessage': ChatStatisticsObjectTypeMessage.fromJson,
+  'chatStatisticsObjectTypeStory': ChatStatisticsObjectTypeStory.fromJson,
+  'chatStatisticsInteractionInfo': ChatStatisticsInteractionInfo.fromJson,
   'chatStatisticsMessageSenderInfo': ChatStatisticsMessageSenderInfo.fromJson,
   'chatStatisticsAdministratorActionsInfo':
       ChatStatisticsAdministratorActionsInfo.fromJson,
@@ -2522,6 +2556,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatStatisticsSupergroup': ChatStatisticsSupergroup.fromJson,
   'chatStatisticsChannel': ChatStatisticsChannel.fromJson,
   'messageStatistics': MessageStatistics.fromJson,
+  'storyStatistics': StoryStatistics.fromJson,
   'point': Point.fromJson,
   'vectorPathCommandLine': VectorPathCommandLine.fromJson,
   'vectorPathCommandCubicBezierCurve':
@@ -2576,6 +2611,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatHasProtectedContent': UpdateChatHasProtectedContent.fromJson,
   'updateChatIsTranslatable': UpdateChatIsTranslatable.fromJson,
   'updateChatIsMarkedAsUnread': UpdateChatIsMarkedAsUnread.fromJson,
+  'updateChatViewAsTopics': UpdateChatViewAsTopics.fromJson,
   'updateChatBlockList': UpdateChatBlockList.fromJson,
   'updateChatHasScheduledMessages': UpdateChatHasScheduledMessages.fromJson,
   'updateChatFolders': UpdateChatFolders.fromJson,
@@ -2629,6 +2665,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateSelectedBackground': UpdateSelectedBackground.fromJson,
   'updateChatThemes': UpdateChatThemes.fromJson,
   'updateAccentColors': UpdateAccentColors.fromJson,
+  'updateProfileAccentColors': UpdateProfileAccentColors.fromJson,
   'updateLanguagePackStrings': UpdateLanguagePackStrings.fromJson,
   'updateConnectionState': UpdateConnectionState.fromJson,
   'updateTermsOfService': UpdateTermsOfService.fromJson,
@@ -2638,6 +2675,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateWebAppMessageSent': UpdateWebAppMessageSent.fromJson,
   'updateActiveEmojiReactions': UpdateActiveEmojiReactions.fromJson,
   'updateDefaultReactionType': UpdateDefaultReactionType.fromJson,
+  'updateSpeechRecognitionTrial': UpdateSpeechRecognitionTrial.fromJson,
   'updateDiceEmojis': UpdateDiceEmojis.fromJson,
   'updateAnimatedEmojiMessageClicked':
       UpdateAnimatedEmojiMessageClicked.fromJson,

@@ -15,6 +15,7 @@ final class SendStory extends TdFunction<Story> {
     this.caption,
     required this.privacySettings,
     required this.activePeriod,
+    required this.fromStoryFullId,
     required this.isPinned,
     required this.protectContent,
   });
@@ -37,6 +38,9 @@ final class SendStory extends TdFunction<Story> {
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   final int activePeriod;
 
+  /// Full identifier of the original story, which content was used to create the story
+  final StoryFullId fromStoryFullId;
+
   /// Pass true to keep the story accessible after expiration
   final bool isPinned;
 
@@ -52,6 +56,7 @@ final class SendStory extends TdFunction<Story> {
         'caption': caption?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
+        'from_story_full_id': fromStoryFullId.toJson(),
         'is_pinned': isPinned,
         'protect_content': protectContent,
         if (extra != null) '@extra': extra,
@@ -66,6 +71,7 @@ final class SendStory extends TdFunction<Story> {
     FormattedText? Function()? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
+    StoryFullId? fromStoryFullId,
     bool? isPinned,
     bool? protectContent,
   }) =>
@@ -76,6 +82,7 @@ final class SendStory extends TdFunction<Story> {
         caption: caption != null ? caption() : this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
+        fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
         isPinned: isPinned ?? this.isPinned,
         protectContent: protectContent ?? this.protectContent,
       );

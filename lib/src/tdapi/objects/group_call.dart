@@ -41,7 +41,7 @@ final class GroupCall extends TdObject {
   /// Point in time (Unix timestamp) when the group call is supposed to be started by an administrator; 0 if it is already active or was ended
   final int scheduledStartDate;
 
-  /// True, if the group call is scheduled and the current user will receive a notification when the group call will start
+  /// True, if the group call is scheduled and the current user will receive a notification when the group call starts
   final bool enabledStartNotification;
 
   /// True, if the call is active

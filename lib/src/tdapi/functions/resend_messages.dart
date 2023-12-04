@@ -21,7 +21,7 @@ final class ResendMessages extends TdFunction<Messages> {
   final List<int> messageIds;
 
   /// New manually chosen quote from the message to be replied; pass null if none. Ignored if more than one message is re-sent, or if messageSendingStateFailed.need_another_reply_quote == false
-  final FormattedText? quote;
+  final InputTextQuote? quote;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -37,7 +37,7 @@ final class ResendMessages extends TdFunction<Messages> {
   ResendMessages copyWith({
     int? chatId,
     List<int>? messageIds,
-    FormattedText? Function()? quote,
+    InputTextQuote? Function()? quote,
   }) =>
       ResendMessages(
         chatId: chatId ?? this.chatId,

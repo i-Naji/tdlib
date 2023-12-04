@@ -16,6 +16,8 @@ final class User extends TdObject {
     this.profilePhoto,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
     this.emojiStatus,
     required this.isContact,
     required this.isMutualContact,
@@ -57,11 +59,17 @@ final class User extends TdObject {
   /// Profile photo of the user; may be null
   final ProfilePhoto? profilePhoto;
 
-  /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview
+  /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview. For Telegram Premium users only
   final int accentColorId;
 
   /// Identifier of a custom emoji to be shown on the reply header background; 0 if none. For Telegram Premium users only
   final int backgroundCustomEmojiId;
+
+  /// Identifier of the accent color for the user's profile; -1 if none. For Telegram Premium users only
+  final int profileAccentColorId;
+
+  /// Identifier of a custom emoji to be shown on the background of the user's profile; 0 if none. For Telegram Premium users only
+  final int profileBackgroundCustomEmojiId;
 
   /// Emoji status to be shown instead of the default Telegram Premium badge; may be null. For Telegram Premium users only
   final EmojiStatus? emojiStatus;
@@ -131,6 +139,9 @@ final class User extends TdObject {
             _readOptional(json['profile_photo'], ProfilePhoto.fromJson),
         accentColorId: _readInt(json['accent_color_id']),
         backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        profileAccentColorId: _readInt(json['profile_accent_color_id']),
+        profileBackgroundCustomEmojiId:
+            _readInt(json['profile_background_custom_emoji_id']),
         emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
         isContact: _readBool(json['is_contact']),
         isMutualContact: _readBool(json['is_mutual_contact']),
@@ -163,6 +174,9 @@ final class User extends TdObject {
         'profile_photo': profilePhoto?.toJson(),
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'profile_accent_color_id': profileAccentColorId,
+        'profile_background_custom_emoji_id':
+            profileBackgroundCustomEmojiId.toString(),
         'emoji_status': emojiStatus?.toJson(),
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
@@ -193,6 +207,8 @@ final class User extends TdObject {
     ProfilePhoto? Function()? profilePhoto,
     int? accentColorId,
     int? backgroundCustomEmojiId,
+    int? profileAccentColorId,
+    int? profileBackgroundCustomEmojiId,
     EmojiStatus? Function()? emojiStatus,
     bool? isContact,
     bool? isMutualContact,
@@ -223,6 +239,9 @@ final class User extends TdObject {
         accentColorId: accentColorId ?? this.accentColorId,
         backgroundCustomEmojiId:
             backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
         emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
         isContact: isContact ?? this.isContact,
         isMutualContact: isMutualContact ?? this.isMutualContact,

@@ -21,6 +21,7 @@ final class Chat extends TdObject {
     required this.hasProtectedContent,
     required this.isTranslatable,
     required this.isMarkedAsUnread,
+    required this.viewAsTopics,
     required this.hasScheduledMessages,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -87,6 +88,9 @@ final class Chat extends TdObject {
 
   /// True, if the chat is marked as unread
   final bool isMarkedAsUnread;
+
+  /// True, if the chat is a forum supergroup that must be shown in the "View as topics" mode
+  final bool viewAsTopics;
 
   /// True, if the chat has scheduled messages
   final bool hasScheduledMessages;
@@ -177,6 +181,7 @@ final class Chat extends TdObject {
         hasProtectedContent: _readBool(json['has_protected_content']),
         isTranslatable: _readBool(json['is_translatable']),
         isMarkedAsUnread: _readBool(json['is_marked_as_unread']),
+        viewAsTopics: _readBool(json['view_as_topics']),
         hasScheduledMessages: _readBool(json['has_scheduled_messages']),
         canBeDeletedOnlyForSelf:
             _readBool(json['can_be_deleted_only_for_self']),
@@ -226,6 +231,7 @@ final class Chat extends TdObject {
         'has_protected_content': hasProtectedContent,
         'is_translatable': isTranslatable,
         'is_marked_as_unread': isMarkedAsUnread,
+        'view_as_topics': viewAsTopics,
         'has_scheduled_messages': hasScheduledMessages,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -266,6 +272,7 @@ final class Chat extends TdObject {
     bool? hasProtectedContent,
     bool? isTranslatable,
     bool? isMarkedAsUnread,
+    bool? viewAsTopics,
     bool? hasScheduledMessages,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -307,6 +314,7 @@ final class Chat extends TdObject {
         hasProtectedContent: hasProtectedContent ?? this.hasProtectedContent,
         isTranslatable: isTranslatable ?? this.isTranslatable,
         isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
+        viewAsTopics: viewAsTopics ?? this.viewAsTopics,
         hasScheduledMessages: hasScheduledMessages ?? this.hasScheduledMessages,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
