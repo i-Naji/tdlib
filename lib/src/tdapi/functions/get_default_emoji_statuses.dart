@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns default emoji statuses
+/// Returns default emoji statuses for self status
 ///
 /// Returns [EmojiStatuses].
 final class GetDefaultEmojiStatuses extends TdFunction<EmojiStatuses> {
-  /// Returns default emoji statuses
+  /// Returns default emoji statuses for self status
   const GetDefaultEmojiStatuses();
 
   @override

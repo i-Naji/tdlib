@@ -68,7 +68,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
   /// Identifiers of the users which can activate the gift codes
   final List<int> userIds;
 
-  /// Number of month the Telegram Premium subscription will be active for the users
+  /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
 
   /// Parses a [TelegramPaymentPurposePremiumGiftCodes] from TDLib JSON.
@@ -141,7 +141,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   /// Number of users which will be able to activate the gift codes
   final int winnerCount;
 
-  /// Number of month the Telegram Premium subscription will be active for the users
+  /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
 
   /// Parses a [TelegramPaymentPurposePremiumGiveaway] from TDLib JSON.

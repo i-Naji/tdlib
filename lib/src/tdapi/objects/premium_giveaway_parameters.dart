@@ -11,7 +11,9 @@ final class PremiumGiveawayParameters extends TdObject {
     required this.additionalChatIds,
     required this.winnersSelectionDate,
     required this.onlyNewMembers,
+    required this.hasPublicWinners,
     required this.countryCodes,
+    required this.prizeDescription,
   });
 
   /// Identifier of the channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription
@@ -23,11 +25,17 @@ final class PremiumGiveawayParameters extends TdObject {
   /// Point in time (Unix timestamp) when the giveaway is expected to be performed; must be 60-getOption("giveaway_duration_max") seconds in the future in scheduled giveaways
   final int winnersSelectionDate;
 
-  /// True, if only new subscribers of the chats will be eligible for the giveaway
+  /// True, if only new members of the chats will be eligible for the giveaway
   final bool onlyNewMembers;
+
+  /// True, if the list of winners of the giveaway will be available to everyone
+  final bool hasPublicWinners;
 
   /// The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway. There can be up to getOption("giveaway_country_count_max") chosen countries. Users with phone number that was bought on Fragment can participate in any giveaway and the country code "FT" must not be specified in the list
   final List<String> countryCodes;
+
+  /// Additional description of the giveaway prize; 0-128 characters
+  final String prizeDescription;
 
   /// Parses a [PremiumGiveawayParameters] from TDLib JSON.
   factory PremiumGiveawayParameters.fromJson(Map<String, dynamic> json) =>
@@ -37,7 +45,9 @@ final class PremiumGiveawayParameters extends TdObject {
             _readList<int>(json['additional_chat_ids'], _readInt),
         winnersSelectionDate: _readInt(json['winners_selection_date']),
         onlyNewMembers: _readBool(json['only_new_members']),
+        hasPublicWinners: _readBool(json['has_public_winners']),
         countryCodes: _readList<String>(json['country_codes'], _readString),
+        prizeDescription: _readString(json['prize_description']),
       );
 
   @override
@@ -47,7 +57,9 @@ final class PremiumGiveawayParameters extends TdObject {
         'additional_chat_ids': additionalChatIds,
         'winners_selection_date': winnersSelectionDate,
         'only_new_members': onlyNewMembers,
+        'has_public_winners': hasPublicWinners,
         'country_codes': countryCodes,
+        'prize_description': prizeDescription,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -57,14 +69,18 @@ final class PremiumGiveawayParameters extends TdObject {
     List<int>? additionalChatIds,
     int? winnersSelectionDate,
     bool? onlyNewMembers,
+    bool? hasPublicWinners,
     List<String>? countryCodes,
+    String? prizeDescription,
   }) =>
       PremiumGiveawayParameters(
         boostedChatId: boostedChatId ?? this.boostedChatId,
         additionalChatIds: additionalChatIds ?? this.additionalChatIds,
         winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
         onlyNewMembers: onlyNewMembers ?? this.onlyNewMembers,
+        hasPublicWinners: hasPublicWinners ?? this.hasPublicWinners,
         countryCodes: countryCodes ?? this.countryCodes,
+        prizeDescription: prizeDescription ?? this.prizeDescription,
       );
 
   /// TDLib type name.

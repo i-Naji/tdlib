@@ -16,7 +16,7 @@ final class GetPremiumGiveawayInfo extends TdFunction<PremiumGiveawayInfo> {
   /// Identifier of the channel chat which started the giveaway
   final int chatId;
 
-  /// Identifier of the giveaway message in the chat
+  /// Identifier of the giveaway or a giveaway winners message in the chat
   final int messageId;
 
   @override

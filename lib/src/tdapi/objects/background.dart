@@ -29,7 +29,7 @@ final class Background extends TdObject {
   /// Unique background name
   final String name;
 
-  /// Document with the background; may be null. Null only for filled backgrounds
+  /// Document with the background; may be null. Null only for filled and chat theme backgrounds
   final Document? document;
 
   /// Type of the background

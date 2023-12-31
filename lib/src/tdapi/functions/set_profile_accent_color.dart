@@ -16,7 +16,7 @@ final class SetProfileAccentColor extends TdFunction<Ok> {
   /// Identifier of the accent color to use for profile; pass -1 if none
   final int profileAccentColorId;
 
-  /// Identifier of a custom emoji to be shown in the on the user's profile photo background; 0 if none
+  /// Identifier of a custom emoji to be shown on the user's profile photo background; 0 if none
   final int profileBackgroundCustomEmojiId;
 
   @override

@@ -6,9 +6,9 @@ part of '../tdapi.dart';
 /// Removes background from the list of installed backgrounds
 ///
 /// Returns [Ok].
-final class RemoveBackground extends TdFunction<Ok> {
+final class RemoveInstalledBackground extends TdFunction<Ok> {
   /// Removes background from the list of installed backgrounds
-  const RemoveBackground({
+  const RemoveInstalledBackground({
     required this.backgroundId,
   });
 
@@ -24,15 +24,15 @@ final class RemoveBackground extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  RemoveBackground copyWith({
+  RemoveInstalledBackground copyWith({
     int? backgroundId,
   }) =>
-      RemoveBackground(
+      RemoveInstalledBackground(
         backgroundId: backgroundId ?? this.backgroundId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'removeBackground';
+  static const String CONSTRUCTOR = 'removeInstalledBackground';
 
   @override
   String getConstructor() => CONSTRUCTOR;

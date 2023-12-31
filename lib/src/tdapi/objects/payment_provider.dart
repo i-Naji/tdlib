@@ -47,21 +47,27 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   /// Smart Glocal payment provider
   const PaymentProviderSmartGlocal({
     required this.publicToken,
+    required this.tokenizeUrl,
   });
 
   /// Public payment token
   final String publicToken;
 
+  /// URL for sending card tokenization requests
+  final String tokenizeUrl;
+
   /// Parses a [PaymentProviderSmartGlocal] from TDLib JSON.
   factory PaymentProviderSmartGlocal.fromJson(Map<String, dynamic> json) =>
       PaymentProviderSmartGlocal(
         publicToken: _readString(json['public_token']),
+        tokenizeUrl: _readString(json['tokenize_url']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'public_token': publicToken,
+        'tokenize_url': tokenizeUrl,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -69,9 +75,11 @@ final class PaymentProviderSmartGlocal extends PaymentProvider {
   @override
   PaymentProviderSmartGlocal copyWith({
     String? publicToken,
+    String? tokenizeUrl,
   }) =>
       PaymentProviderSmartGlocal(
         publicToken: publicToken ?? this.publicToken,
+        tokenizeUrl: tokenizeUrl ?? this.tokenizeUrl,
       );
 
   /// TDLib type name.

@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 
 /// Returns forwards of a story as a message to public chats and reposts by public channels. Can be used only if the story is posted on behalf of the current user or story.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib
 ///
-/// Returns [StoryPublicForwards].
-final class GetStoryPublicForwards extends TdFunction<StoryPublicForwards> {
+/// Returns [PublicForwards].
+final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
   /// Returns forwards of a story as a message to public chats and reposts by public channels. Can be used only if the story is posted on behalf of the current user or story.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib
   const GetStoryPublicForwards({
     required this.storySenderChatId,

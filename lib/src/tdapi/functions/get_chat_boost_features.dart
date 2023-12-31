@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Resets list of installed backgrounds to its default value
+/// Returns list of features available on the first 10 chat boost levels; this is an offline request
 ///
-/// Returns [Ok].
-final class ResetBackgrounds extends TdFunction<Ok> {
-  /// Resets list of installed backgrounds to its default value
-  const ResetBackgrounds();
+/// Returns [ChatBoostFeatures].
+final class GetChatBoostFeatures extends TdFunction<ChatBoostFeatures> {
+  /// Returns list of features available on the first 10 chat boost levels; this is an offline request
+  const GetChatBoostFeatures();
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -18,10 +18,10 @@ final class ResetBackgrounds extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ResetBackgrounds copyWith() => const ResetBackgrounds();
+  GetChatBoostFeatures copyWith() => const GetChatBoostFeatures();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'resetBackgrounds';
+  static const String CONSTRUCTOR = 'getChatBoostFeatures';
 
   @override
   String getConstructor() => CONSTRUCTOR;

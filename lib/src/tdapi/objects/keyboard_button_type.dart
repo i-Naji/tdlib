@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a keyboard button type
 ///
-/// One of: [KeyboardButtonTypeText], [KeyboardButtonTypeRequestPhoneNumber], [KeyboardButtonTypeRequestLocation], [KeyboardButtonTypeRequestPoll], [KeyboardButtonTypeRequestUser], [KeyboardButtonTypeRequestChat], [KeyboardButtonTypeWebApp]; or [UndecodedKeyboardButtonType] for a type newer than this API.
+/// One of: [KeyboardButtonTypeText], [KeyboardButtonTypeRequestPhoneNumber], [KeyboardButtonTypeRequestLocation], [KeyboardButtonTypeRequestPoll], [KeyboardButtonTypeRequestUsers], [KeyboardButtonTypeRequestChat], [KeyboardButtonTypeWebApp]; or [UndecodedKeyboardButtonType] for a type newer than this API.
 sealed class KeyboardButtonType extends TdObject {
   const KeyboardButtonType();
 
@@ -173,40 +173,45 @@ final class KeyboardButtonTypeRequestPoll extends KeyboardButtonType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A button that requests a user to be shared by the current user; available only in private chats. Use the method shareUserWithBot to complete the request
-final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
-  /// A button that requests a user to be shared by the current user; available only in private chats. Use the method shareUserWithBot to complete the request
-  const KeyboardButtonTypeRequestUser({
+/// A button that requests users to be shared by the current user; available only in private chats. Use the method shareUsersWithBot to complete the request
+final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
+  /// A button that requests users to be shared by the current user; available only in private chats. Use the method shareUsersWithBot to complete the request
+  const KeyboardButtonTypeRequestUsers({
     required this.id,
     required this.restrictUserIsBot,
     required this.userIsBot,
     required this.restrictUserIsPremium,
     required this.userIsPremium,
+    required this.maxQuantity,
   });
 
   /// Unique button identifier
   final int id;
 
-  /// True, if the shared user must or must not be a bot
+  /// True, if the shared users must or must not be bots
   final bool restrictUserIsBot;
 
-  /// True, if the shared user must be a bot; otherwise, the shared user must no be a bot. Ignored if restrict_user_is_bot is false
+  /// True, if the shared users must be bots; otherwise, the shared users must not be bots. Ignored if restrict_user_is_bot is false
   final bool userIsBot;
 
-  /// True, if the shared user must or must not be a Telegram Premium user
+  /// True, if the shared users must or must not be Telegram Premium users
   final bool restrictUserIsPremium;
 
-  /// True, if the shared user must be a Telegram Premium user; otherwise, the shared user must no be a Telegram Premium user. Ignored if restrict_user_is_premium is false
+  /// True, if the shared users must be Telegram Premium users; otherwise, the shared users must not be Telegram Premium users. Ignored if restrict_user_is_premium is false
   final bool userIsPremium;
 
-  /// Parses a [KeyboardButtonTypeRequestUser] from TDLib JSON.
-  factory KeyboardButtonTypeRequestUser.fromJson(Map<String, dynamic> json) =>
-      KeyboardButtonTypeRequestUser(
+  /// The maximum number of users to share
+  final int maxQuantity;
+
+  /// Parses a [KeyboardButtonTypeRequestUsers] from TDLib JSON.
+  factory KeyboardButtonTypeRequestUsers.fromJson(Map<String, dynamic> json) =>
+      KeyboardButtonTypeRequestUsers(
         id: _readInt(json['id']),
         restrictUserIsBot: _readBool(json['restrict_user_is_bot']),
         userIsBot: _readBool(json['user_is_bot']),
         restrictUserIsPremium: _readBool(json['restrict_user_is_premium']),
         userIsPremium: _readBool(json['user_is_premium']),
+        maxQuantity: _readInt(json['max_quantity']),
       );
 
   @override
@@ -217,29 +222,32 @@ final class KeyboardButtonTypeRequestUser extends KeyboardButtonType {
         'user_is_bot': userIsBot,
         'restrict_user_is_premium': restrictUserIsPremium,
         'user_is_premium': userIsPremium,
+        'max_quantity': maxQuantity,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  KeyboardButtonTypeRequestUser copyWith({
+  KeyboardButtonTypeRequestUsers copyWith({
     int? id,
     bool? restrictUserIsBot,
     bool? userIsBot,
     bool? restrictUserIsPremium,
     bool? userIsPremium,
+    int? maxQuantity,
   }) =>
-      KeyboardButtonTypeRequestUser(
+      KeyboardButtonTypeRequestUsers(
         id: id ?? this.id,
         restrictUserIsBot: restrictUserIsBot ?? this.restrictUserIsBot,
         userIsBot: userIsBot ?? this.userIsBot,
         restrictUserIsPremium:
             restrictUserIsPremium ?? this.restrictUserIsPremium,
         userIsPremium: userIsPremium ?? this.userIsPremium,
+        maxQuantity: maxQuantity ?? this.maxQuantity,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestUser';
+  static const String CONSTRUCTOR = 'keyboardButtonTypeRequestUsers';
 
   @override
   String getConstructor() => CONSTRUCTOR;

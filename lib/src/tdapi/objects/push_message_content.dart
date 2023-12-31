@@ -628,7 +628,7 @@ final class PushMessageContentPremiumGiftCode extends PushMessageContent {
     required this.monthCount,
   });
 
-  /// Number of month the Telegram Premium subscription will be active after code activation
+  /// Number of months the Telegram Premium subscription will be active after code activation
   final int monthCount;
 
   /// Parses a [PushMessageContentPremiumGiftCode] from TDLib JSON.
@@ -673,7 +673,7 @@ final class PushMessageContentPremiumGiveaway extends PushMessageContent {
   /// Number of users which will receive Telegram Premium subscription gift codes; 0 for pinned message
   final int winnerCount;
 
-  /// Number of month the Telegram Premium subscription will be active after code activation; 0 for pinned message
+  /// Number of months the Telegram Premium subscription will be active after code activation; 0 for pinned message
   final int monthCount;
 
   /// True, if the message is a pinned message with the specified content

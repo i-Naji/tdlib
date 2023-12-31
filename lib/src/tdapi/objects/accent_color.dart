@@ -11,6 +11,7 @@ final class AccentColor extends TdObject {
     required this.builtInAccentColorId,
     required this.lightThemeColors,
     required this.darkThemeColors,
+    required this.minChatBoostLevel,
   });
 
   /// Accent color identifier
@@ -25,12 +26,16 @@ final class AccentColor extends TdObject {
   /// The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in dark themes
   final List<int> darkThemeColors;
 
+  /// The minimum chat boost level required to use the color
+  final int minChatBoostLevel;
+
   /// Parses a [AccentColor] from TDLib JSON.
   factory AccentColor.fromJson(Map<String, dynamic> json) => AccentColor(
         id: _readInt(json['id']),
         builtInAccentColorId: _readInt(json['built_in_accent_color_id']),
         lightThemeColors: _readList<int>(json['light_theme_colors'], _readInt),
         darkThemeColors: _readList<int>(json['dark_theme_colors'], _readInt),
+        minChatBoostLevel: _readInt(json['min_chat_boost_level']),
       );
 
   @override
@@ -40,6 +45,7 @@ final class AccentColor extends TdObject {
         'built_in_accent_color_id': builtInAccentColorId,
         'light_theme_colors': lightThemeColors,
         'dark_theme_colors': darkThemeColors,
+        'min_chat_boost_level': minChatBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -49,12 +55,14 @@ final class AccentColor extends TdObject {
     int? builtInAccentColorId,
     List<int>? lightThemeColors,
     List<int>? darkThemeColors,
+    int? minChatBoostLevel,
   }) =>
       AccentColor(
         id: id ?? this.id,
         builtInAccentColorId: builtInAccentColorId ?? this.builtInAccentColorId,
         lightThemeColors: lightThemeColors ?? this.lightThemeColors,
         darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+        minChatBoostLevel: minChatBoostLevel ?? this.minChatBoostLevel,
       );
 
   /// TDLib type name.

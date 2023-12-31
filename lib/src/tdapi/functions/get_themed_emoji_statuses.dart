@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list
+/// Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list for self status
 ///
 /// Returns [EmojiStatuses].
 final class GetThemedEmojiStatuses extends TdFunction<EmojiStatuses> {
-  /// Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list
+  /// Returns up to 8 emoji statuses, which must be shown right after the default Premium Badge in the emoji status list for self status
   const GetThemedEmojiStatuses();
 
   @override

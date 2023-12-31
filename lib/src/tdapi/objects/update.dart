@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColor], [UpdateChatBackgroundCustomEmoji], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateSelectedBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -1101,12 +1101,15 @@ final class UpdateChatPhoto extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A chat accent color has changed
-final class UpdateChatAccentColor extends Update {
-  /// A chat accent color has changed
-  const UpdateChatAccentColor({
+/// Chat accent colors have changed
+final class UpdateChatAccentColors extends Update {
+  /// Chat accent colors have changed
+  const UpdateChatAccentColors({
     required this.chatId,
     required this.accentColorId,
+    required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
     this.extra,
     this.clientId,
   });
@@ -1117,6 +1120,15 @@ final class UpdateChatAccentColor extends Update {
   /// The new chat accent color identifier
   final int accentColorId;
 
+  /// The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
+  final int backgroundCustomEmojiId;
+
+  /// The new chat profile accent color identifier; -1 if none
+  final int profileAccentColorId;
+
+  /// The new identifier of a custom emoji to be shown on the profile background; 0 if none
+  final int profileBackgroundCustomEmojiId;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -1125,11 +1137,15 @@ final class UpdateChatAccentColor extends Update {
   @override
   final int? clientId;
 
-  /// Parses a [UpdateChatAccentColor] from TDLib JSON.
-  factory UpdateChatAccentColor.fromJson(Map<String, dynamic> json) =>
-      UpdateChatAccentColor(
+  /// Parses a [UpdateChatAccentColors] from TDLib JSON.
+  factory UpdateChatAccentColors.fromJson(Map<String, dynamic> json) =>
+      UpdateChatAccentColors(
         chatId: _readInt(json['chat_id']),
         accentColorId: _readInt(json['accent_color_id']),
+        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        profileAccentColorId: _readInt(json['profile_accent_color_id']),
+        profileBackgroundCustomEmojiId:
+            _readInt(json['profile_background_custom_emoji_id']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -1139,90 +1155,38 @@ final class UpdateChatAccentColor extends Update {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'accent_color_id': accentColorId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'profile_accent_color_id': profileAccentColorId,
+        'profile_background_custom_emoji_id':
+            profileBackgroundCustomEmojiId.toString(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateChatAccentColor copyWith({
+  UpdateChatAccentColors copyWith({
     int? chatId,
     int? accentColorId,
+    int? backgroundCustomEmojiId,
+    int? profileAccentColorId,
+    int? profileBackgroundCustomEmojiId,
     dynamic extra,
     int? clientId,
   }) =>
-      UpdateChatAccentColor(
+      UpdateChatAccentColors(
         chatId: chatId ?? this.chatId,
         accentColorId: accentColorId ?? this.accentColorId,
-        extra: extra ?? this.extra,
-        clientId: clientId ?? this.clientId,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'updateChatAccentColor';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// A chat's custom emoji for reply background has changed
-final class UpdateChatBackgroundCustomEmoji extends Update {
-  /// A chat's custom emoji for reply background has changed
-  const UpdateChatBackgroundCustomEmoji({
-    required this.chatId,
-    required this.backgroundCustomEmojiId,
-    this.extra,
-    this.clientId,
-  });
-
-  /// Chat identifier
-  final int chatId;
-
-  /// The new identifier of a custom emoji to be shown on the reply header background; 0 if none
-  final int backgroundCustomEmojiId;
-
-  /// "@extra" of the request this object answers.
-  @override
-  final dynamic extra;
-
-  /// Identifier of the TDLib client that sent this object.
-  @override
-  final int? clientId;
-
-  /// Parses a [UpdateChatBackgroundCustomEmoji] from TDLib JSON.
-  factory UpdateChatBackgroundCustomEmoji.fromJson(Map<String, dynamic> json) =>
-      UpdateChatBackgroundCustomEmoji(
-        chatId: _readInt(json['chat_id']),
-        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
-        extra: json['@extra'],
-        clientId: _readClientId(json['@client_id']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'chat_id': chatId,
-        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  UpdateChatBackgroundCustomEmoji copyWith({
-    int? chatId,
-    int? backgroundCustomEmojiId,
-    dynamic extra,
-    int? clientId,
-  }) =>
-      UpdateChatBackgroundCustomEmoji(
-        chatId: chatId ?? this.chatId,
         backgroundCustomEmojiId:
             backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'updateChatBackgroundCustomEmoji';
+  static const String CONSTRUCTOR = 'updateChatAccentColors';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1757,6 +1721,69 @@ final class UpdateChatDraftMessage extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatDraftMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Chat emoji status has changed
+final class UpdateChatEmojiStatus extends Update {
+  /// Chat emoji status has changed
+  const UpdateChatEmojiStatus({
+    required this.chatId,
+    this.emojiStatus,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// The new chat emoji status; may be null
+  final EmojiStatus? emojiStatus;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateChatEmojiStatus] from TDLib JSON.
+  factory UpdateChatEmojiStatus.fromJson(Map<String, dynamic> json) =>
+      UpdateChatEmojiStatus(
+        chatId: _readInt(json['chat_id']),
+        emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'emoji_status': emojiStatus?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateChatEmojiStatus copyWith({
+    int? chatId,
+    EmojiStatus? Function()? emojiStatus,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateChatEmojiStatus(
+        chatId: chatId ?? this.chatId,
+        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateChatEmojiStatus';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -5933,20 +5960,20 @@ final class UpdateSavedNotificationSounds extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The selected background has changed
-final class UpdateSelectedBackground extends Update {
-  /// The selected background has changed
-  const UpdateSelectedBackground({
+/// The default background has changed
+final class UpdateDefaultBackground extends Update {
+  /// The default background has changed
+  const UpdateDefaultBackground({
     required this.forDarkTheme,
     this.background,
     this.extra,
     this.clientId,
   });
 
-  /// True, if background for dark theme has changed
+  /// True, if default background for dark theme has changed
   final bool forDarkTheme;
 
-  /// The new selected background; may be null
+  /// The new default background; may be null
   final Background? background;
 
   /// "@extra" of the request this object answers.
@@ -5957,9 +5984,9 @@ final class UpdateSelectedBackground extends Update {
   @override
   final int? clientId;
 
-  /// Parses a [UpdateSelectedBackground] from TDLib JSON.
-  factory UpdateSelectedBackground.fromJson(Map<String, dynamic> json) =>
-      UpdateSelectedBackground(
+  /// Parses a [UpdateDefaultBackground] from TDLib JSON.
+  factory UpdateDefaultBackground.fromJson(Map<String, dynamic> json) =>
+      UpdateDefaultBackground(
         forDarkTheme: _readBool(json['for_dark_theme']),
         background: _readOptional(json['background'], Background.fromJson),
         extra: json['@extra'],
@@ -5976,13 +6003,13 @@ final class UpdateSelectedBackground extends Update {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UpdateSelectedBackground copyWith({
+  UpdateDefaultBackground copyWith({
     bool? forDarkTheme,
     Background? Function()? background,
     dynamic extra,
     int? clientId,
   }) =>
-      UpdateSelectedBackground(
+      UpdateDefaultBackground(
         forDarkTheme: forDarkTheme ?? this.forDarkTheme,
         background: background != null ? background() : this.background,
         extra: extra ?? this.extra,
@@ -5990,7 +6017,7 @@ final class UpdateSelectedBackground extends Update {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'updateSelectedBackground';
+  static const String CONSTRUCTOR = 'updateDefaultBackground';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -6131,7 +6158,7 @@ final class UpdateProfileAccentColors extends Update {
   /// Information about supported colors
   final List<ProfileAccentColor> colors;
 
-  /// The list of accent color identifiers, which can be set through setProfileAccentColor. The colors must be shown in the specififed order
+  /// The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order
   final List<int> availableAccentColorIds;
 
   /// "@extra" of the request this object answers.
@@ -8210,6 +8237,183 @@ final class UpdateChatBoost extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatBoost';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// User changed its reactions on a message with public reactions; for bots only
+final class UpdateMessageReaction extends Update {
+  /// User changed its reactions on a message with public reactions; for bots only
+  const UpdateMessageReaction({
+    required this.chatId,
+    required this.messageId,
+    required this.actorId,
+    required this.date,
+    required this.oldReactionTypes,
+    required this.newReactionTypes,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// Message identifier
+  final int messageId;
+
+  /// Identifier of the user or chat that changed reactions
+  final MessageSender actorId;
+
+  /// Point in time (Unix timestamp) when the reactions were changed
+  final int date;
+
+  /// Old list of chosen reactions
+  final List<ReactionType> oldReactionTypes;
+
+  /// New list of chosen reactions
+  final List<ReactionType> newReactionTypes;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateMessageReaction] from TDLib JSON.
+  factory UpdateMessageReaction.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageReaction(
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+        actorId: _readObject(json['actor_id'], MessageSender.fromJson),
+        date: _readInt(json['date']),
+        oldReactionTypes: _readList<ReactionType>(json['old_reaction_types'],
+            (e) => _readObject(e, ReactionType.fromJson)),
+        newReactionTypes: _readList<ReactionType>(json['new_reaction_types'],
+            (e) => _readObject(e, ReactionType.fromJson)),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'message_id': messageId,
+        'actor_id': actorId.toJson(),
+        'date': date,
+        'old_reaction_types': [for (final e in oldReactionTypes) e.toJson()],
+        'new_reaction_types': [for (final e in newReactionTypes) e.toJson()],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateMessageReaction copyWith({
+    int? chatId,
+    int? messageId,
+    MessageSender? actorId,
+    int? date,
+    List<ReactionType>? oldReactionTypes,
+    List<ReactionType>? newReactionTypes,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateMessageReaction(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        actorId: actorId ?? this.actorId,
+        date: date ?? this.date,
+        oldReactionTypes: oldReactionTypes ?? this.oldReactionTypes,
+        newReactionTypes: newReactionTypes ?? this.newReactionTypes,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateMessageReaction';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Reactions added to a message with anonymous reactions have changed; for bots only
+final class UpdateMessageReactions extends Update {
+  /// Reactions added to a message with anonymous reactions have changed; for bots only
+  const UpdateMessageReactions({
+    required this.chatId,
+    required this.messageId,
+    required this.date,
+    required this.reactions,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// Message identifier
+  final int messageId;
+
+  /// Point in time (Unix timestamp) when the reactions were changed
+  final int date;
+
+  /// The list of reactions added to the message
+  final List<MessageReaction> reactions;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateMessageReactions] from TDLib JSON.
+  factory UpdateMessageReactions.fromJson(Map<String, dynamic> json) =>
+      UpdateMessageReactions(
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+        date: _readInt(json['date']),
+        reactions: _readList<MessageReaction>(
+            json['reactions'], (e) => _readObject(e, MessageReaction.fromJson)),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'message_id': messageId,
+        'date': date,
+        'reactions': [for (final e in reactions) e.toJson()],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateMessageReactions copyWith({
+    int? chatId,
+    int? messageId,
+    int? date,
+    List<MessageReaction>? reactions,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateMessageReactions(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+        date: date ?? this.date,
+        reactions: reactions ?? this.reactions,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateMessageReactions';
 
   @override
   String getConstructor() => CONSTRUCTOR;

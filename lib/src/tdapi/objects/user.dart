@@ -62,7 +62,7 @@ final class User extends TdObject {
   /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview. For Telegram Premium users only
   final int accentColorId;
 
-  /// Identifier of a custom emoji to be shown on the reply header background; 0 if none. For Telegram Premium users only
+  /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. For Telegram Premium users only
   final int backgroundCustomEmojiId;
 
   /// Identifier of the accent color for the user's profile; -1 if none. For Telegram Premium users only

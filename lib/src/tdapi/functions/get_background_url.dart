@@ -16,7 +16,7 @@ final class GetBackgroundUrl extends TdFunction<HttpUrl> {
   /// Background name
   final String name;
 
-  /// Background type
+  /// Background type; backgroundTypeChatTheme isn't supported
   final BackgroundType type;
 
   @override

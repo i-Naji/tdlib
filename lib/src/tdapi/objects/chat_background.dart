@@ -14,7 +14,7 @@ final class ChatBackground extends TdObject {
   /// The background
   final Background background;
 
-  /// Dimming of the background in dark themes, as a percentage; 0-100
+  /// Dimming of the background in dark themes, as a percentage; 0-100. Applied only to Wallpaper and Fill types of background
   final int darkThemeDimming;
 
   /// Parses a [ChatBackground] from TDLib JSON.

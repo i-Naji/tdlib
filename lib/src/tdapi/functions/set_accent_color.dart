@@ -16,7 +16,7 @@ final class SetAccentColor extends TdFunction<Ok> {
   /// Identifier of the accent color to use
   final int accentColorId;
 
-  /// Identifier of a custom emoji to be shown on the reply header background; 0 if none
+  /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
   final int backgroundCustomEmojiId;
 
   @override

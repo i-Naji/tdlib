@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Shares a user after pressing a keyboardButtonTypeRequestUser button with the bot
+/// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
 ///
 /// Returns [Ok].
-final class ShareUserWithBot extends TdFunction<Ok> {
-  /// Shares a user after pressing a keyboardButtonTypeRequestUser button with the bot
-  const ShareUserWithBot({
+final class ShareUsersWithBot extends TdFunction<Ok> {
+  /// Shares users after pressing a keyboardButtonTypeRequestUsers button with the bot
+  const ShareUsersWithBot({
     required this.chatId,
     required this.messageId,
     required this.buttonId,
-    required this.sharedUserId,
+    required this.sharedUserIds,
     required this.onlyCheck,
   });
 
@@ -25,10 +25,10 @@ final class ShareUserWithBot extends TdFunction<Ok> {
   /// Identifier of the button
   final int buttonId;
 
-  /// Identifier of the shared user
-  final int sharedUserId;
+  /// Identifiers of the shared users
+  final List<int> sharedUserIds;
 
-  /// Pass true to check that the user can be shared by the button instead of actually sharing them
+  /// Pass true to check that the users can be shared by the button instead of actually sharing them
   final bool onlyCheck;
 
   @override
@@ -37,30 +37,30 @@ final class ShareUserWithBot extends TdFunction<Ok> {
         'chat_id': chatId,
         'message_id': messageId,
         'button_id': buttonId,
-        'shared_user_id': sharedUserId,
+        'shared_user_ids': sharedUserIds,
         'only_check': onlyCheck,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ShareUserWithBot copyWith({
+  ShareUsersWithBot copyWith({
     int? chatId,
     int? messageId,
     int? buttonId,
-    int? sharedUserId,
+    List<int>? sharedUserIds,
     bool? onlyCheck,
   }) =>
-      ShareUserWithBot(
+      ShareUsersWithBot(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         buttonId: buttonId ?? this.buttonId,
-        sharedUserId: sharedUserId ?? this.sharedUserId,
+        sharedUserIds: sharedUserIds ?? this.sharedUserIds,
         onlyCheck: onlyCheck ?? this.onlyCheck,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'shareUserWithBot';
+  static const String CONSTRUCTOR = 'shareUsersWithBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;

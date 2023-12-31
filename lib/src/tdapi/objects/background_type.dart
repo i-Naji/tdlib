@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes the type of a background
 ///
-/// One of: [BackgroundTypeWallpaper], [BackgroundTypePattern], [BackgroundTypeFill]; or [UndecodedBackgroundType] for a type newer than this API.
+/// One of: [BackgroundTypeWallpaper], [BackgroundTypePattern], [BackgroundTypeFill], [BackgroundTypeChatTheme]; or [UndecodedBackgroundType] for a type newer than this API.
 sealed class BackgroundType extends TdObject {
   const BackgroundType();
 
@@ -186,6 +186,45 @@ final class BackgroundTypeFill extends BackgroundType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'backgroundTypeFill';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A background from a chat theme; can be used only as a chat background in channels
+final class BackgroundTypeChatTheme extends BackgroundType {
+  /// A background from a chat theme; can be used only as a chat background in channels
+  const BackgroundTypeChatTheme({
+    required this.themeName,
+  });
+
+  /// Name of the chat theme
+  final String themeName;
+
+  /// Parses a [BackgroundTypeChatTheme] from TDLib JSON.
+  factory BackgroundTypeChatTheme.fromJson(Map<String, dynamic> json) =>
+      BackgroundTypeChatTheme(
+        themeName: _readString(json['theme_name']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'theme_name': themeName,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  BackgroundTypeChatTheme copyWith({
+    String? themeName,
+  }) =>
+      BackgroundTypeChatTheme(
+        themeName: themeName ?? this.themeName,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'backgroundTypeChatTheme';
 
   @override
   String getConstructor() => CONSTRUCTOR;

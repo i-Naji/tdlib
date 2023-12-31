@@ -12,6 +12,7 @@ final class Supergroup extends TdObject {
     required this.date,
     required this.status,
     required this.memberCount,
+    required this.boostLevel,
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
@@ -43,8 +44,11 @@ final class Supergroup extends TdObject {
   /// Status of the current user in the supergroup or channel; custom title will always be empty
   final ChatMemberStatus status;
 
-  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getSuitableDiscussionChats, getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or for public chats in which where sent messages and posted stories from storyPublicForwards, or for public chats in which where sent messages from getMessagePublicForwards response
+  /// Number of members in the supergroup or channel; 0 if unknown. Currently, it is guaranteed to be known only if the supergroup or channel was received through getChatSimilarChats, getChatsToSendStories, getCreatedPublicChats, getGroupsInCommon, getInactiveSupergroupChats, getSuitableDiscussionChats, getUserPrivacySettingRules, getVideoChatAvailableParticipants, searchChatsNearby, searchPublicChats, or in chatFolderInviteLinkInfo.missing_chat_ids, or for public chats in which where sent messages and posted stories from publicForwards, or for public chats in which where sent messages from getMessagePublicForwards response
   final int memberCount;
+
+  /// Approximate boost level for the chat
+  final int boostLevel;
 
   /// True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel
   final bool hasLinkedChat;
@@ -106,6 +110,7 @@ final class Supergroup extends TdObject {
         date: _readInt(json['date']),
         status: _readObject(json['status'], ChatMemberStatus.fromJson),
         memberCount: _readInt(json['member_count']),
+        boostLevel: _readInt(json['boost_level']),
         hasLinkedChat: _readBool(json['has_linked_chat']),
         hasLocation: _readBool(json['has_location']),
         signMessages: _readBool(json['sign_messages']),
@@ -133,6 +138,7 @@ final class Supergroup extends TdObject {
         'date': date,
         'status': status.toJson(),
         'member_count': memberCount,
+        'boost_level': boostLevel,
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,
@@ -158,6 +164,7 @@ final class Supergroup extends TdObject {
     int? date,
     ChatMemberStatus? status,
     int? memberCount,
+    int? boostLevel,
     bool? hasLinkedChat,
     bool? hasLocation,
     bool? signMessages,
@@ -182,6 +189,7 @@ final class Supergroup extends TdObject {
         date: date ?? this.date,
         status: status ?? this.status,
         memberCount: memberCount ?? this.memberCount,
+        boostLevel: boostLevel ?? this.boostLevel,
         hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
         hasLocation: hasLocation ?? this.hasLocation,
         signMessages: signMessages ?? this.signMessages,

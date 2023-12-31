@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a clickable rectangle area on a story media
 ///
-/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction]; or [UndecodedStoryAreaType] for a type newer than this API.
+/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {
   const StoryAreaType();
 
@@ -178,6 +178,53 @@ final class StoryAreaTypeSuggestedReaction extends StoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeSuggestedReaction';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a message
+final class StoryAreaTypeMessage extends StoryAreaType {
+  /// An area pointing to a message
+  const StoryAreaTypeMessage({
+    required this.chatId,
+    required this.messageId,
+  });
+
+  /// Identifier of the chat with the message
+  final int chatId;
+
+  /// Identifier of the message
+  final int messageId;
+
+  /// Parses a [StoryAreaTypeMessage] from TDLib JSON.
+  factory StoryAreaTypeMessage.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeMessage(
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'message_id': messageId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryAreaTypeMessage copyWith({
+    int? chatId,
+    int? messageId,
+  }) =>
+      StoryAreaTypeMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyAreaTypeMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -21,7 +21,7 @@ final class Story extends TdObject {
     required this.canBeReplied,
     required this.canToggleIsPinned,
     required this.canGetStatistics,
-    required this.canGetViewers,
+    required this.canGetInteractions,
     required this.hasExpiredViewers,
     this.repostInfo,
     this.interactionInfo,
@@ -76,8 +76,8 @@ final class Story extends TdObject {
   /// True, if the story statistics are available through getStoryStatistics
   final bool canGetStatistics;
 
-  /// True, if users viewed the story can be received through getStoryViewers
-  final bool canGetViewers;
+  /// True, if interactions with the story can be received through getStoryInteractions
+  final bool canGetInteractions;
 
   /// True, if users viewed the story can't be received, because the story has expired more than getOption("story_viewers_expiration_delay") seconds ago
   final bool hasExpiredViewers;
@@ -127,7 +127,7 @@ final class Story extends TdObject {
         canBeReplied: _readBool(json['can_be_replied']),
         canToggleIsPinned: _readBool(json['can_toggle_is_pinned']),
         canGetStatistics: _readBool(json['can_get_statistics']),
-        canGetViewers: _readBool(json['can_get_viewers']),
+        canGetInteractions: _readBool(json['can_get_interactions']),
         hasExpiredViewers: _readBool(json['has_expired_viewers']),
         repostInfo:
             _readOptional(json['repost_info'], StoryRepostInfo.fromJson),
@@ -162,7 +162,7 @@ final class Story extends TdObject {
         'can_be_replied': canBeReplied,
         'can_toggle_is_pinned': canToggleIsPinned,
         'can_get_statistics': canGetStatistics,
-        'can_get_viewers': canGetViewers,
+        'can_get_interactions': canGetInteractions,
         'has_expired_viewers': hasExpiredViewers,
         'repost_info': repostInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
@@ -190,7 +190,7 @@ final class Story extends TdObject {
     bool? canBeReplied,
     bool? canToggleIsPinned,
     bool? canGetStatistics,
-    bool? canGetViewers,
+    bool? canGetInteractions,
     bool? hasExpiredViewers,
     StoryRepostInfo? Function()? repostInfo,
     StoryInteractionInfo? Function()? interactionInfo,
@@ -217,7 +217,7 @@ final class Story extends TdObject {
         canBeReplied: canBeReplied ?? this.canBeReplied,
         canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-        canGetViewers: canGetViewers ?? this.canGetViewers,
+        canGetInteractions: canGetInteractions ?? this.canGetInteractions,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,
         repostInfo: repostInfo != null ? repostInfo() : this.repostInfo,
         interactionInfo:

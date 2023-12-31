@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -309,6 +309,34 @@ final class SuggestedActionSubscribeToAnnualPremium extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionSubscribeToAnnualPremium';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to gift Telegram Premium to friends for Christmas
+final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
+  /// Suggests the user to gift Telegram Premium to friends for Christmas
+  const SuggestedActionGiftPremiumForChristmas();
+
+  /// Parses a [SuggestedActionGiftPremiumForChristmas] from TDLib JSON.
+  factory SuggestedActionGiftPremiumForChristmas.fromJson(
+          Map<String, dynamic> json) =>
+      const SuggestedActionGiftPremiumForChristmas();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionGiftPremiumForChristmas copyWith() =>
+      const SuggestedActionGiftPremiumForChristmas();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionGiftPremiumForChristmas';
 
   @override
   String getConstructor() => CONSTRUCTOR;

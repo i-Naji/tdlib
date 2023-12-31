@@ -18,6 +18,7 @@ final class StickerSet extends TdObject {
     required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.stickers,
     required this.emojis,
@@ -58,6 +59,9 @@ final class StickerSet extends TdObject {
   /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
   final bool needsRepainting;
 
+  /// True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
+
   /// True for already viewed trending sticker sets
   final bool isViewed;
 
@@ -90,6 +94,8 @@ final class StickerSet extends TdObject {
             _readObject(json['sticker_format'], StickerFormat.fromJson),
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
         needsRepainting: _readBool(json['needs_repainting']),
+        isAllowedAsChatEmojiStatus:
+            _readBool(json['is_allowed_as_chat_emoji_status']),
         isViewed: _readBool(json['is_viewed']),
         stickers: _readList<Sticker>(
             json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
@@ -113,6 +119,7 @@ final class StickerSet extends TdObject {
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
+        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
         'is_viewed': isViewed,
         'stickers': [for (final e in stickers) e.toJson()],
         'emojis': [for (final e in emojis) e.toJson()],
@@ -132,6 +139,7 @@ final class StickerSet extends TdObject {
     StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
+    bool? isAllowedAsChatEmojiStatus,
     bool? isViewed,
     List<Sticker>? stickers,
     List<Emojis>? emojis,
@@ -150,6 +158,8 @@ final class StickerSet extends TdObject {
         stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
+        isAllowedAsChatEmojiStatus:
+            isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
         isViewed: isViewed ?? this.isViewed,
         stickers: stickers ?? this.stickers,
         emojis: emojis ?? this.emojis,

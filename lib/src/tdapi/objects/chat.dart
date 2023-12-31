@@ -13,6 +13,8 @@ final class Chat extends TdObject {
     this.photo,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    required this.profileAccentColorId,
+    required this.profileBackgroundCustomEmojiId,
     required this.permissions,
     this.lastMessage,
     required this.positions,
@@ -35,6 +37,7 @@ final class Chat extends TdObject {
     required this.notificationSettings,
     required this.availableReactions,
     required this.messageAutoDeleteTime,
+    this.emojiStatus,
     this.background,
     required this.themeName,
     this.actionBar,
@@ -62,8 +65,14 @@ final class Chat extends TdObject {
   /// Identifier of the accent color for message sender name, and backgrounds of chat photo, reply header, and link preview
   final int accentColorId;
 
-  /// Identifier of a custom emoji to be shown on the reply header background in replies to messages sent by the chat; 0 if none
+  /// Identifier of a custom emoji to be shown on the reply header and link preview background for messages sent by the chat; 0 if none
   final int backgroundCustomEmojiId;
+
+  /// Identifier of the profile accent color for the chat's profile; -1 if none
+  final int profileAccentColorId;
+
+  /// Identifier of a custom emoji to be shown on the background of the chat's profile; 0 if none
+  final int profileBackgroundCustomEmojiId;
 
   /// Actions that non-administrator chat members are allowed to take in the chat
   final ChatPermissions permissions;
@@ -131,6 +140,9 @@ final class Chat extends TdObject {
   /// Current message auto-delete or self-destruct timer setting for the chat, in seconds; 0 if disabled. Self-destruct timer in secret chats starts after the message or its content is viewed. Auto-delete timer in other chats starts from the send date
   final int messageAutoDeleteTime;
 
+  /// Emoji status to be shown along with chat title; may be null
+  final EmojiStatus? emojiStatus;
+
   /// Background set for the chat; may be null if none
   final ChatBackground? background;
 
@@ -171,6 +183,9 @@ final class Chat extends TdObject {
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
         accentColorId: _readInt(json['accent_color_id']),
         backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        profileAccentColorId: _readInt(json['profile_accent_color_id']),
+        profileBackgroundCustomEmojiId:
+            _readInt(json['profile_background_custom_emoji_id']),
         permissions: _readObject(json['permissions'], ChatPermissions.fromJson),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
         positions: _readList<ChatPosition>(
@@ -200,6 +215,7 @@ final class Chat extends TdObject {
         availableReactions: _readObject(
             json['available_reactions'], ChatAvailableReactions.fromJson),
         messageAutoDeleteTime: _readInt(json['message_auto_delete_time']),
+        emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
         background: _readOptional(json['background'], ChatBackground.fromJson),
         themeName: _readString(json['theme_name']),
         actionBar: _readOptional(json['action_bar'], ChatActionBar.fromJson),
@@ -223,6 +239,9 @@ final class Chat extends TdObject {
         'photo': photo?.toJson(),
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'profile_accent_color_id': profileAccentColorId,
+        'profile_background_custom_emoji_id':
+            profileBackgroundCustomEmojiId.toString(),
         'permissions': permissions.toJson(),
         'last_message': lastMessage?.toJson(),
         'positions': [for (final e in positions) e.toJson()],
@@ -245,6 +264,7 @@ final class Chat extends TdObject {
         'notification_settings': notificationSettings.toJson(),
         'available_reactions': availableReactions.toJson(),
         'message_auto_delete_time': messageAutoDeleteTime,
+        'emoji_status': emojiStatus?.toJson(),
         'background': background?.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
@@ -264,6 +284,8 @@ final class Chat extends TdObject {
     ChatPhotoInfo? Function()? photo,
     int? accentColorId,
     int? backgroundCustomEmojiId,
+    int? profileAccentColorId,
+    int? profileBackgroundCustomEmojiId,
     ChatPermissions? permissions,
     Message? Function()? lastMessage,
     List<ChatPosition>? positions,
@@ -286,6 +308,7 @@ final class Chat extends TdObject {
     ChatNotificationSettings? notificationSettings,
     ChatAvailableReactions? availableReactions,
     int? messageAutoDeleteTime,
+    EmojiStatus? Function()? emojiStatus,
     ChatBackground? Function()? background,
     String? themeName,
     ChatActionBar? Function()? actionBar,
@@ -305,6 +328,9 @@ final class Chat extends TdObject {
         accentColorId: accentColorId ?? this.accentColorId,
         backgroundCustomEmojiId:
             backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
+        profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
+            this.profileBackgroundCustomEmojiId,
         permissions: permissions ?? this.permissions,
         lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
         positions: positions ?? this.positions,
@@ -334,6 +360,7 @@ final class Chat extends TdObject {
         availableReactions: availableReactions ?? this.availableReactions,
         messageAutoDeleteTime:
             messageAutoDeleteTime ?? this.messageAutoDeleteTime,
+        emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
         background: background != null ? background() : this.background,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar != null ? actionBar() : this.actionBar,

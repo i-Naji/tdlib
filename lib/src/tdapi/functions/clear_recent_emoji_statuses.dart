@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Clears the list of recently used emoji statuses
+/// Clears the list of recently used emoji statuses for self status
 ///
 /// Returns [Ok].
 final class ClearRecentEmojiStatuses extends TdFunction<Ok> {
-  /// Clears the list of recently used emoji statuses
+  /// Clears the list of recently used emoji statuses for self status
   const ClearRecentEmojiStatuses();
 
   @override

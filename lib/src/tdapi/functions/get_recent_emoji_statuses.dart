@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns recent emoji statuses
+/// Returns recent emoji statuses for self status
 ///
 /// Returns [EmojiStatuses].
 final class GetRecentEmojiStatuses extends TdFunction<EmojiStatuses> {
-  /// Returns recent emoji statuses
+  /// Returns recent emoji statuses for self status
   const GetRecentEmojiStatuses();
 
   @override

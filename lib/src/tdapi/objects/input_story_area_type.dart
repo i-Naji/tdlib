@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of a clickable rectangle area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -228,6 +228,53 @@ final class InputStoryAreaTypeSuggestedReaction extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeSuggestedReaction';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a message
+final class InputStoryAreaTypeMessage extends InputStoryAreaType {
+  /// An area pointing to a message
+  const InputStoryAreaTypeMessage({
+    required this.chatId,
+    required this.messageId,
+  });
+
+  /// Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
+  final int chatId;
+
+  /// Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  final int messageId;
+
+  /// Parses a [InputStoryAreaTypeMessage] from TDLib JSON.
+  factory InputStoryAreaTypeMessage.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeMessage(
+        chatId: _readInt(json['chat_id']),
+        messageId: _readInt(json['message_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'message_id': messageId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputStoryAreaTypeMessage copyWith({
+    int? chatId,
+    int? messageId,
+  }) =>
+      InputStoryAreaTypeMessage(
+        chatId: chatId ?? this.chatId,
+        messageId: messageId ?? this.messageId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputStoryAreaTypeMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

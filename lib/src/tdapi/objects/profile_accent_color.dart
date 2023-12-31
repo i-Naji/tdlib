@@ -10,16 +10,20 @@ final class ProfileAccentColor extends TdObject {
     required this.id,
     required this.lightThemeColors,
     required this.darkThemeColors,
+    required this.minChatBoostLevel,
   });
 
   /// Profile accent color identifier
   final int id;
 
-  /// The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in light themes
+  /// Accent colors expected to be used in light themes
   final ProfileAccentColors lightThemeColors;
 
-  /// The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in dark themes
+  /// Accent colors expected to be used in dark themes
   final ProfileAccentColors darkThemeColors;
+
+  /// The minimum chat boost level required to use the color
+  final int minChatBoostLevel;
 
   /// Parses a [ProfileAccentColor] from TDLib JSON.
   factory ProfileAccentColor.fromJson(Map<String, dynamic> json) =>
@@ -29,6 +33,7 @@ final class ProfileAccentColor extends TdObject {
             json['light_theme_colors'], ProfileAccentColors.fromJson),
         darkThemeColors: _readObject(
             json['dark_theme_colors'], ProfileAccentColors.fromJson),
+        minChatBoostLevel: _readInt(json['min_chat_boost_level']),
       );
 
   @override
@@ -37,6 +42,7 @@ final class ProfileAccentColor extends TdObject {
         'id': id,
         'light_theme_colors': lightThemeColors.toJson(),
         'dark_theme_colors': darkThemeColors.toJson(),
+        'min_chat_boost_level': minChatBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -45,11 +51,13 @@ final class ProfileAccentColor extends TdObject {
     int? id,
     ProfileAccentColors? lightThemeColors,
     ProfileAccentColors? darkThemeColors,
+    int? minChatBoostLevel,
   }) =>
       ProfileAccentColor(
         id: id ?? this.id,
         lightThemeColors: lightThemeColors ?? this.lightThemeColors,
         darkThemeColors: darkThemeColors ?? this.darkThemeColors,
+        minChatBoostLevel: minChatBoostLevel ?? this.minChatBoostLevel,
       );
 
   /// TDLib type name.

@@ -18,6 +18,7 @@ final class StickerSetInfo extends TdObject {
     required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
+    required this.isAllowedAsChatEmojiStatus,
     required this.isViewed,
     required this.size,
     required this.covers,
@@ -32,7 +33,7 @@ final class StickerSetInfo extends TdObject {
   /// Name of the sticker set
   final String name;
 
-  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null
+  /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   final Thumbnail? thumbnail;
 
   /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
@@ -55,6 +56,9 @@ final class StickerSetInfo extends TdObject {
 
   /// True, if stickers in the sticker set are custom emoji that must be repainted; for custom emoji sticker sets only
   final bool needsRepainting;
+
+  /// True, if stickers in the sticker set are custom emoji that can be used as chat emoji status; for custom emoji sticker sets only
+  final bool isAllowedAsChatEmojiStatus;
 
   /// True for already viewed trending sticker sets
   final bool isViewed;
@@ -80,6 +84,8 @@ final class StickerSetInfo extends TdObject {
             _readObject(json['sticker_format'], StickerFormat.fromJson),
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
         needsRepainting: _readBool(json['needs_repainting']),
+        isAllowedAsChatEmojiStatus:
+            _readBool(json['is_allowed_as_chat_emoji_status']),
         isViewed: _readBool(json['is_viewed']),
         size: _readInt(json['size']),
         covers: _readList<Sticker>(
@@ -100,6 +106,7 @@ final class StickerSetInfo extends TdObject {
         'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
+        'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
         'is_viewed': isViewed,
         'size': size,
         'covers': [for (final e in covers) e.toJson()],
@@ -119,6 +126,7 @@ final class StickerSetInfo extends TdObject {
     StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
+    bool? isAllowedAsChatEmojiStatus,
     bool? isViewed,
     int? size,
     List<Sticker>? covers,
@@ -135,6 +143,8 @@ final class StickerSetInfo extends TdObject {
         stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
+        isAllowedAsChatEmojiStatus:
+            isAllowedAsChatEmojiStatus ?? this.isAllowedAsChatEmojiStatus,
         isViewed: isViewed ?? this.isViewed,
         size: size ?? this.size,
         covers: covers ?? this.covers,

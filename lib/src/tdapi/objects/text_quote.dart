@@ -15,7 +15,7 @@ final class TextQuote extends TdObject {
   /// Text of the quote. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities can be present in the text
   final FormattedText text;
 
-  /// Approximate quote position in the original message in UTF-16 code units
+  /// Approximate quote position in the original message in UTF-16 code units as specified by the message sender
   final int position;
 
   /// True, if the quote was manually chosen by the message sender

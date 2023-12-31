@@ -3,26 +3,22 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of story viewers
-final class StoryViewers extends TdObject {
-  /// Represents a list of story viewers
-  const StoryViewers({
+/// Represents a list of public forwards and reposts as a story of a message or a story
+final class PublicForwards extends TdObject {
+  /// Represents a list of public forwards and reposts as a story of a message or a story
+  const PublicForwards({
     required this.totalCount,
-    required this.totalReactionCount,
-    required this.viewers,
+    required this.forwards,
     required this.nextOffset,
     this.extra,
     this.clientId,
   });
 
-  /// Approximate total number of story viewers found
+  /// Approximate total number of messages and stories found
   final int totalCount;
 
-  /// Approximate total number of reactions set by found story viewers
-  final int totalReactionCount;
-
-  /// List of story viewers
-  final List<StoryViewer> viewers;
+  /// List of found public forwards and reposts
+  final List<PublicForward> forwards;
 
   /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
@@ -35,12 +31,11 @@ final class StoryViewers extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [StoryViewers] from TDLib JSON.
-  factory StoryViewers.fromJson(Map<String, dynamic> json) => StoryViewers(
+  /// Parses a [PublicForwards] from TDLib JSON.
+  factory PublicForwards.fromJson(Map<String, dynamic> json) => PublicForwards(
         totalCount: _readInt(json['total_count']),
-        totalReactionCount: _readInt(json['total_reaction_count']),
-        viewers: _readList<StoryViewer>(
-            json['viewers'], (e) => _readObject(e, StoryViewer.fromJson)),
+        forwards: _readList<PublicForward>(
+            json['forwards'], (e) => _readObject(e, PublicForward.fromJson)),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -50,32 +45,29 @@ final class StoryViewers extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'total_count': totalCount,
-        'total_reaction_count': totalReactionCount,
-        'viewers': [for (final e in viewers) e.toJson()],
+        'forwards': [for (final e in forwards) e.toJson()],
         'next_offset': nextOffset,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StoryViewers copyWith({
+  PublicForwards copyWith({
     int? totalCount,
-    int? totalReactionCount,
-    List<StoryViewer>? viewers,
+    List<PublicForward>? forwards,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) =>
-      StoryViewers(
+      PublicForwards(
         totalCount: totalCount ?? this.totalCount,
-        totalReactionCount: totalReactionCount ?? this.totalReactionCount,
-        viewers: viewers ?? this.viewers,
+        forwards: forwards ?? this.forwards,
         nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'storyViewers';
+  static const String CONSTRUCTOR = 'publicForwards';
 
   @override
   String getConstructor() => CONSTRUCTOR;

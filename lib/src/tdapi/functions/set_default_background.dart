@@ -3,24 +3,24 @@
 
 part of '../tdapi.dart';
 
-/// Changes the background selected by the user; adds background to the list of installed backgrounds
+/// Sets default background for chats; adds the background to the list of installed backgrounds
 ///
 /// Returns [Background].
-final class SetBackground extends TdFunction<Background> {
-  /// Changes the background selected by the user; adds background to the list of installed backgrounds
-  const SetBackground({
+final class SetDefaultBackground extends TdFunction<Background> {
+  /// Sets default background for chats; adds the background to the list of installed backgrounds
+  const SetDefaultBackground({
     this.background,
     this.type,
     required this.forDarkTheme,
   });
 
-  /// The input background to use; pass null to create a new filled background or to remove the current background
+  /// The input background to use; pass null to create a new filled background
   final InputBackground? background;
 
-  /// Background type; pass null to use the default type of the remote background or to remove the current background
+  /// Background type; pass null to use the default type of the remote background; backgroundTypeChatTheme isn't supported
   final BackgroundType? type;
 
-  /// Pass true if the background is changed for a dark theme
+  /// Pass true if the background is set for a dark theme
   final bool forDarkTheme;
 
   @override
@@ -34,19 +34,19 @@ final class SetBackground extends TdFunction<Background> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetBackground copyWith({
+  SetDefaultBackground copyWith({
     InputBackground? Function()? background,
     BackgroundType? Function()? type,
     bool? forDarkTheme,
   }) =>
-      SetBackground(
+      SetDefaultBackground(
         background: background != null ? background() : this.background,
         type: type != null ? type() : this.type,
         forDarkTheme: forDarkTheme ?? this.forDarkTheme,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'setBackground';
+  static const String CONSTRUCTOR = 'setDefaultBackground';
 
   @override
   String getConstructor() => CONSTRUCTOR;
