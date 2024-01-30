@@ -42,9 +42,9 @@ final class UndecodedUserStatus extends UserStatus {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The user status was never changed
+/// The user's status has never been changed
 final class UserStatusEmpty extends UserStatus {
-  /// The user status was never changed
+  /// The user's status has never been changed
   const UserStatusEmpty();
 
   /// Parses a [UserStatusEmpty] from TDLib JSON.
@@ -149,21 +149,34 @@ final class UserStatusOffline extends UserStatus {
 /// The user was online recently
 final class UserStatusRecently extends UserStatus {
   /// The user was online recently
-  const UserStatusRecently();
+  const UserStatusRecently({
+    required this.byMyPrivacySettings,
+  });
+
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
 
   /// Parses a [UserStatusRecently] from TDLib JSON.
   factory UserStatusRecently.fromJson(Map<String, dynamic> json) =>
-      const UserStatusRecently();
+      UserStatusRecently(
+        byMyPrivacySettings: _readBool(json['by_my_privacy_settings']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'by_my_privacy_settings': byMyPrivacySettings,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusRecently copyWith() => const UserStatusRecently();
+  UserStatusRecently copyWith({
+    bool? byMyPrivacySettings,
+  }) =>
+      UserStatusRecently(
+        byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userStatusRecently';
@@ -175,21 +188,34 @@ final class UserStatusRecently extends UserStatus {
 /// The user is offline, but was online last week
 final class UserStatusLastWeek extends UserStatus {
   /// The user is offline, but was online last week
-  const UserStatusLastWeek();
+  const UserStatusLastWeek({
+    required this.byMyPrivacySettings,
+  });
+
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
 
   /// Parses a [UserStatusLastWeek] from TDLib JSON.
   factory UserStatusLastWeek.fromJson(Map<String, dynamic> json) =>
-      const UserStatusLastWeek();
+      UserStatusLastWeek(
+        byMyPrivacySettings: _readBool(json['by_my_privacy_settings']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'by_my_privacy_settings': byMyPrivacySettings,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusLastWeek copyWith() => const UserStatusLastWeek();
+  UserStatusLastWeek copyWith({
+    bool? byMyPrivacySettings,
+  }) =>
+      UserStatusLastWeek(
+        byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userStatusLastWeek';
@@ -201,21 +227,34 @@ final class UserStatusLastWeek extends UserStatus {
 /// The user is offline, but was online last month
 final class UserStatusLastMonth extends UserStatus {
   /// The user is offline, but was online last month
-  const UserStatusLastMonth();
+  const UserStatusLastMonth({
+    required this.byMyPrivacySettings,
+  });
+
+  /// Exact user's status is hidden because the current user enabled userPrivacySettingShowStatus privacy setting for the user and has no Telegram Premium
+  final bool byMyPrivacySettings;
 
   /// Parses a [UserStatusLastMonth] from TDLib JSON.
   factory UserStatusLastMonth.fromJson(Map<String, dynamic> json) =>
-      const UserStatusLastMonth();
+      UserStatusLastMonth(
+        byMyPrivacySettings: _readBool(json['by_my_privacy_settings']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'by_my_privacy_settings': byMyPrivacySettings,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  UserStatusLastMonth copyWith() => const UserStatusLastMonth();
+  UserStatusLastMonth copyWith({
+    bool? byMyPrivacySettings,
+  }) =>
+      UserStatusLastMonth(
+        byMyPrivacySettings: byMyPrivacySettings ?? this.byMyPrivacySettings,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userStatusLastMonth';

@@ -23,6 +23,7 @@ final class Message extends TdObject {
     required this.canGetAddedReactions,
     required this.canGetStatistics,
     required this.canGetMessageThread,
+    required this.canGetReadDate,
     required this.canGetViewers,
     required this.canGetMediaTimestampLinks,
     required this.canReportReactions,
@@ -38,6 +39,7 @@ final class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
+    this.savedMessagesTopic,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
@@ -99,6 +101,9 @@ final class Message extends TdObject {
   /// True, if information about the message thread is available through getMessageThread and getMessageThreadHistory
   final bool canGetMessageThread;
 
+  /// True, if read date of the message can be received through getMessageReadDate
+  final bool canGetReadDate;
+
   /// True, if chat members already viewed the message can be received through getMessageViewers
   final bool canGetViewers;
 
@@ -143,6 +148,9 @@ final class Message extends TdObject {
 
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
+
+  /// Information about topic of the message in the Saved Messages chat; may be null for messages not from Saved Messages
+  final SavedMessagesTopic? savedMessagesTopic;
 
   /// The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
@@ -202,6 +210,7 @@ final class Message extends TdObject {
         canGetAddedReactions: _readBool(json['can_get_added_reactions']),
         canGetStatistics: _readBool(json['can_get_statistics']),
         canGetMessageThread: _readBool(json['can_get_message_thread']),
+        canGetReadDate: _readBool(json['can_get_read_date']),
         canGetViewers: _readBool(json['can_get_viewers']),
         canGetMediaTimestampLinks:
             _readBool(json['can_get_media_timestamp_links']),
@@ -222,6 +231,8 @@ final class Message extends TdObject {
             (e) => _readObject(e, UnreadReaction.fromJson)),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
+        savedMessagesTopic: _readOptional(
+            json['saved_messages_topic'], SavedMessagesTopic.fromJson),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
         selfDestructIn: _readDouble(json['self_destruct_in']),
@@ -255,6 +266,7 @@ final class Message extends TdObject {
         'can_get_added_reactions': canGetAddedReactions,
         'can_get_statistics': canGetStatistics,
         'can_get_message_thread': canGetMessageThread,
+        'can_get_read_date': canGetReadDate,
         'can_get_viewers': canGetViewers,
         'can_get_media_timestamp_links': canGetMediaTimestampLinks,
         'can_report_reactions': canReportReactions,
@@ -270,6 +282,7 @@ final class Message extends TdObject {
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
+        'saved_messages_topic': savedMessagesTopic?.toJson(),
         'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
@@ -300,6 +313,7 @@ final class Message extends TdObject {
     bool? canGetAddedReactions,
     bool? canGetStatistics,
     bool? canGetMessageThread,
+    bool? canGetReadDate,
     bool? canGetViewers,
     bool? canGetMediaTimestampLinks,
     bool? canReportReactions,
@@ -315,6 +329,7 @@ final class Message extends TdObject {
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
+    SavedMessagesTopic? Function()? savedMessagesTopic,
     MessageSelfDestructType? Function()? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
@@ -348,6 +363,7 @@ final class Message extends TdObject {
         canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
+        canGetReadDate: canGetReadDate ?? this.canGetReadDate,
         canGetViewers: canGetViewers ?? this.canGetViewers,
         canGetMediaTimestampLinks:
             canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
@@ -366,6 +382,9 @@ final class Message extends TdObject {
         unreadReactions: unreadReactions ?? this.unreadReactions,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
+        savedMessagesTopic: savedMessagesTopic != null
+            ? savedMessagesTopic()
+            : this.savedMessagesTopic,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
             : this.selfDestructType,

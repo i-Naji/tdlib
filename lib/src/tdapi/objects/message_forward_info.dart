@@ -9,9 +9,8 @@ final class MessageForwardInfo extends TdObject {
   const MessageForwardInfo({
     required this.origin,
     required this.date,
+    this.source,
     required this.publicServiceAnnouncementType,
-    required this.fromChatId,
-    required this.fromMessageId,
   });
 
   /// Origin of the forwarded message
@@ -20,24 +19,20 @@ final class MessageForwardInfo extends TdObject {
   /// Point in time (Unix timestamp) when the message was originally sent
   final int date;
 
+  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown
+  final ForwardSource? source;
+
   /// The type of a public service announcement for the forwarded message
   final String publicServiceAnnouncementType;
-
-  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the chat from which the message was forwarded last time; 0 if unknown
-  final int fromChatId;
-
-  /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, the identifier of the original message from which the new message was forwarded last time; 0 if unknown
-  final int fromMessageId;
 
   /// Parses a [MessageForwardInfo] from TDLib JSON.
   factory MessageForwardInfo.fromJson(Map<String, dynamic> json) =>
       MessageForwardInfo(
         origin: _readObject(json['origin'], MessageOrigin.fromJson),
         date: _readInt(json['date']),
+        source: _readOptional(json['source'], ForwardSource.fromJson),
         publicServiceAnnouncementType:
             _readString(json['public_service_announcement_type']),
-        fromChatId: _readInt(json['from_chat_id']),
-        fromMessageId: _readInt(json['from_message_id']),
       );
 
   @override
@@ -45,9 +40,8 @@ final class MessageForwardInfo extends TdObject {
         '@type': CONSTRUCTOR,
         'origin': origin.toJson(),
         'date': date,
+        'source': source?.toJson(),
         'public_service_announcement_type': publicServiceAnnouncementType,
-        'from_chat_id': fromChatId,
-        'from_message_id': fromMessageId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -55,17 +49,15 @@ final class MessageForwardInfo extends TdObject {
   MessageForwardInfo copyWith({
     MessageOrigin? origin,
     int? date,
+    ForwardSource? Function()? source,
     String? publicServiceAnnouncementType,
-    int? fromChatId,
-    int? fromMessageId,
   }) =>
       MessageForwardInfo(
         origin: origin ?? this.origin,
         date: date ?? this.date,
+        source: source != null ? source() : this.source,
         publicServiceAnnouncementType:
             publicServiceAnnouncementType ?? this.publicServiceAnnouncementType,
-        fromChatId: fromChatId ?? this.fromChatId,
-        fromMessageId: fromMessageId ?? this.fromMessageId,
       );
 
   /// TDLib type name.

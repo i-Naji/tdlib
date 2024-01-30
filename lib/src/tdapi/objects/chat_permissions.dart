@@ -20,7 +20,7 @@ final class ChatPermissions extends TdObject {
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
-    required this.canManageTopics,
+    required this.canCreateTopics,
   });
 
   /// True, if the user can send text messages, contacts, giveaways, giveaway winners, invoices, locations, and venues
@@ -62,8 +62,8 @@ final class ChatPermissions extends TdObject {
   /// True, if the user can pin messages
   final bool canPinMessages;
 
-  /// True, if the user can manage topics
-  final bool canManageTopics;
+  /// True, if the user can create topics
+  final bool canCreateTopics;
 
   /// Parses a [ChatPermissions] from TDLib JSON.
   factory ChatPermissions.fromJson(Map<String, dynamic> json) =>
@@ -81,7 +81,7 @@ final class ChatPermissions extends TdObject {
         canChangeInfo: _readBool(json['can_change_info']),
         canInviteUsers: _readBool(json['can_invite_users']),
         canPinMessages: _readBool(json['can_pin_messages']),
-        canManageTopics: _readBool(json['can_manage_topics']),
+        canCreateTopics: _readBool(json['can_create_topics']),
       );
 
   @override
@@ -100,7 +100,7 @@ final class ChatPermissions extends TdObject {
         'can_change_info': canChangeInfo,
         'can_invite_users': canInviteUsers,
         'can_pin_messages': canPinMessages,
-        'can_manage_topics': canManageTopics,
+        'can_create_topics': canCreateTopics,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -119,7 +119,7 @@ final class ChatPermissions extends TdObject {
     bool? canChangeInfo,
     bool? canInviteUsers,
     bool? canPinMessages,
-    bool? canManageTopics,
+    bool? canCreateTopics,
   }) =>
       ChatPermissions(
         canSendBasicMessages: canSendBasicMessages ?? this.canSendBasicMessages,
@@ -136,7 +136,7 @@ final class ChatPermissions extends TdObject {
         canChangeInfo: canChangeInfo ?? this.canChangeInfo,
         canInviteUsers: canInviteUsers ?? this.canInviteUsers,
         canPinMessages: canPinMessages ?? this.canPinMessages,
-        canManageTopics: canManageTopics ?? this.canManageTopics,
+        canCreateTopics: canCreateTopics ?? this.canCreateTopics,
       );
 
   /// TDLib type name.

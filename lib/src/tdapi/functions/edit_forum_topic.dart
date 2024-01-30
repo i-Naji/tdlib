@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
+/// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic
 ///
 /// Returns [Ok].
 final class EditForumTopic extends TdFunction<Ok> {
-  /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
+  /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics right in the supergroup unless the user is creator of the topic
   const EditForumTopic({
     required this.chatId,
     required this.messageThreadId,

@@ -30,6 +30,7 @@ final class User extends TdObject {
     required this.isFake,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
+    required this.restrictsNewChats,
     required this.haveAccess,
     required this.type,
     required this.languageCode,
@@ -107,6 +108,9 @@ final class User extends TdObject {
   /// True, if the user has unread non-expired stories available to the current user
   final bool hasUnreadActiveStories;
 
+  /// True, if the user may restrict new chats with non-contacts. Use canSendMessageToUser to check whether the current user can message the user or try to create a chat with them
+  final bool restrictsNewChats;
+
   /// If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method
   final bool haveAccess;
 
@@ -154,6 +158,7 @@ final class User extends TdObject {
         isFake: _readBool(json['is_fake']),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
+        restrictsNewChats: _readBool(json['restricts_new_chats']),
         haveAccess: _readBool(json['have_access']),
         type: _readObject(json['type'], UserType.fromJson),
         languageCode: _readString(json['language_code']),
@@ -189,6 +194,7 @@ final class User extends TdObject {
         'is_fake': isFake,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
+        'restricts_new_chats': restrictsNewChats,
         'have_access': haveAccess,
         'type': type.toJson(),
         'language_code': languageCode,
@@ -221,6 +227,7 @@ final class User extends TdObject {
     bool? isFake,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
+    bool? restrictsNewChats,
     bool? haveAccess,
     UserType? type,
     String? languageCode,
@@ -255,6 +262,7 @@ final class User extends TdObject {
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,
+        restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
         haveAccess: haveAccess ?? this.haveAccess,
         type: type ?? this.type,
         languageCode: languageCode ?? this.languageCode,

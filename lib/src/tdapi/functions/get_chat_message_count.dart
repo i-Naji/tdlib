@@ -11,6 +11,7 @@ final class GetChatMessageCount extends TdFunction<Count> {
   const GetChatMessageCount({
     required this.chatId,
     required this.filter,
+    this.savedMessagesTopic,
     required this.returnLocal,
   });
 
@@ -20,6 +21,9 @@ final class GetChatMessageCount extends TdFunction<Count> {
   /// Filter for message content; searchMessagesFilterEmpty is unsupported in this function
   final SearchMessagesFilter filter;
 
+  /// If not null, only messages in the specified Saved Messages topic will be counted; pass null to count all messages, or for chats other than Saved Messages
+  final SavedMessagesTopic? savedMessagesTopic;
+
   /// Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
 
@@ -28,6 +32,7 @@ final class GetChatMessageCount extends TdFunction<Count> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'filter': filter.toJson(),
+        'saved_messages_topic': savedMessagesTopic?.toJson(),
         'return_local': returnLocal,
         if (extra != null) '@extra': extra,
       };
@@ -37,11 +42,15 @@ final class GetChatMessageCount extends TdFunction<Count> {
   GetChatMessageCount copyWith({
     int? chatId,
     SearchMessagesFilter? filter,
+    SavedMessagesTopic? Function()? savedMessagesTopic,
     bool? returnLocal,
   }) =>
       GetChatMessageCount(
         chatId: chatId ?? this.chatId,
         filter: filter ?? this.filter,
+        savedMessagesTopic: savedMessagesTopic != null
+            ? savedMessagesTopic()
+            : this.savedMessagesTopic,
         returnLocal: returnLocal ?? this.returnLocal,
       );
 

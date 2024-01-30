@@ -8,12 +8,32 @@ final class ChatBoostFeatures extends TdObject {
   /// Contains a list of features available on the first chat boost levels
   const ChatBoostFeatures({
     required this.features,
+    required this.minProfileBackgroundCustomEmojiBoostLevel,
+    required this.minBackgroundCustomEmojiBoostLevel,
+    required this.minEmojiStatusBoostLevel,
+    required this.minChatThemeBackgroundBoostLevel,
+    required this.minCustomBackgroundBoostLevel,
     this.extra,
     this.clientId,
   });
 
   /// The list of features
   final List<ChatBoostLevelFeatures> features;
+
+  /// The minimum boost level required to set custom emoji for profile background
+  final int minProfileBackgroundCustomEmojiBoostLevel;
+
+  /// The minimum boost level required to set custom emoji for reply header and link preview background
+  final int minBackgroundCustomEmojiBoostLevel;
+
+  /// The minimum boost level required to set emoji status
+  final int minEmojiStatusBoostLevel;
+
+  /// The minimum boost level required to set a chat theme background as chat background
+  final int minChatThemeBackgroundBoostLevel;
+
+  /// The minimum boost level required to set custom chat background
+  final int minCustomBackgroundBoostLevel;
 
   /// "@extra" of the request this object answers.
   @override
@@ -28,6 +48,16 @@ final class ChatBoostFeatures extends TdObject {
       ChatBoostFeatures(
         features: _readList<ChatBoostLevelFeatures>(json['features'],
             (e) => _readObject(e, ChatBoostLevelFeatures.fromJson)),
+        minProfileBackgroundCustomEmojiBoostLevel:
+            _readInt(json['min_profile_background_custom_emoji_boost_level']),
+        minBackgroundCustomEmojiBoostLevel:
+            _readInt(json['min_background_custom_emoji_boost_level']),
+        minEmojiStatusBoostLevel:
+            _readInt(json['min_emoji_status_boost_level']),
+        minChatThemeBackgroundBoostLevel:
+            _readInt(json['min_chat_theme_background_boost_level']),
+        minCustomBackgroundBoostLevel:
+            _readInt(json['min_custom_background_boost_level']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -36,17 +66,42 @@ final class ChatBoostFeatures extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'features': [for (final e in features) e.toJson()],
+        'min_profile_background_custom_emoji_boost_level':
+            minProfileBackgroundCustomEmojiBoostLevel,
+        'min_background_custom_emoji_boost_level':
+            minBackgroundCustomEmojiBoostLevel,
+        'min_emoji_status_boost_level': minEmojiStatusBoostLevel,
+        'min_chat_theme_background_boost_level':
+            minChatThemeBackgroundBoostLevel,
+        'min_custom_background_boost_level': minCustomBackgroundBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatBoostFeatures copyWith({
     List<ChatBoostLevelFeatures>? features,
+    int? minProfileBackgroundCustomEmojiBoostLevel,
+    int? minBackgroundCustomEmojiBoostLevel,
+    int? minEmojiStatusBoostLevel,
+    int? minChatThemeBackgroundBoostLevel,
+    int? minCustomBackgroundBoostLevel,
     dynamic extra,
     int? clientId,
   }) =>
       ChatBoostFeatures(
         features: features ?? this.features,
+        minProfileBackgroundCustomEmojiBoostLevel:
+            minProfileBackgroundCustomEmojiBoostLevel ??
+                this.minProfileBackgroundCustomEmojiBoostLevel,
+        minBackgroundCustomEmojiBoostLevel:
+            minBackgroundCustomEmojiBoostLevel ??
+                this.minBackgroundCustomEmojiBoostLevel,
+        minEmojiStatusBoostLevel:
+            minEmojiStatusBoostLevel ?? this.minEmojiStatusBoostLevel,
+        minChatThemeBackgroundBoostLevel: minChatThemeBackgroundBoostLevel ??
+            this.minChatThemeBackgroundBoostLevel,
+        minCustomBackgroundBoostLevel:
+            minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

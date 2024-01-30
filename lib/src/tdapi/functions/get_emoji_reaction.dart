@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a emoji reaction. Returns a 404 error if the reaction is not found
+/// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found
 ///
 /// Returns [EmojiReaction].
 final class GetEmojiReaction extends TdFunction<EmojiReaction> {
-  /// Returns information about a emoji reaction. Returns a 404 error if the reaction is not found
+  /// Returns information about an emoji reaction. Returns a 404 error if the reaction is not found
   const GetEmojiReaction({
     required this.emoji,
   });

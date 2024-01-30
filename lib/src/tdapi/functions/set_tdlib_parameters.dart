@@ -23,8 +23,6 @@ final class SetTdlibParameters extends TdFunction<Ok> {
     required this.deviceModel,
     required this.systemVersion,
     required this.applicationVersion,
-    required this.enableStorageOptimizer,
-    required this.ignoreFileNames,
   });
 
   /// Pass true to use Telegram test environment instead of the production environment
@@ -69,12 +67,6 @@ final class SetTdlibParameters extends TdFunction<Ok> {
   /// Application version; must be non-empty
   final String applicationVersion;
 
-  /// Pass true to automatically delete old files in background
-  final bool enableStorageOptimizer;
-
-  /// Pass true to ignore original file names for downloaded files. Otherwise, downloaded files are saved under names as close as possible to the original name
-  final bool ignoreFileNames;
-
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -92,8 +84,6 @@ final class SetTdlibParameters extends TdFunction<Ok> {
         'device_model': deviceModel,
         'system_version': systemVersion,
         'application_version': applicationVersion,
-        'enable_storage_optimizer': enableStorageOptimizer,
-        'ignore_file_names': ignoreFileNames,
         if (extra != null) '@extra': extra,
       };
 
@@ -114,8 +104,6 @@ final class SetTdlibParameters extends TdFunction<Ok> {
     String? deviceModel,
     String? systemVersion,
     String? applicationVersion,
-    bool? enableStorageOptimizer,
-    bool? ignoreFileNames,
   }) =>
       SetTdlibParameters(
         useTestDc: useTestDc ?? this.useTestDc,
@@ -133,9 +121,6 @@ final class SetTdlibParameters extends TdFunction<Ok> {
         deviceModel: deviceModel ?? this.deviceModel,
         systemVersion: systemVersion ?? this.systemVersion,
         applicationVersion: applicationVersion ?? this.applicationVersion,
-        enableStorageOptimizer:
-            enableStorageOptimizer ?? this.enableStorageOptimizer,
-        ignoreFileNames: ignoreFileNames ?? this.ignoreFileNames,
       );
 
   /// TDLib type name.

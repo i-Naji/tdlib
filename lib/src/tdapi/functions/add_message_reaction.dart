@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
+/// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
 ///
 /// Returns [Ok].
 final class AddMessageReaction extends TdFunction<Ok> {
-  /// Adds a reaction to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
+  /// Adds a reaction or a tag to a message. Use getMessageAvailableReactions to receive the list of available reactions for the message
   const AddMessageReaction({
     required this.chatId,
     required this.messageId,
@@ -28,7 +28,7 @@ final class AddMessageReaction extends TdFunction<Ok> {
   /// Pass true if the reaction is added with a big animation
   final bool isBig;
 
-  /// Pass true if the reaction needs to be added to recent reactions
+  /// Pass true if the reaction needs to be added to recent reactions; tags are never added to the list of recent reactions
   final bool updateRecentReactions;
 
   @override

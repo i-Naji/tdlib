@@ -16,7 +16,7 @@ final class StoryInteraction extends TdObject {
   /// Identifier of the user or chat that made the interaction
   final MessageSender actorId;
 
-  /// Approximate point in time (Unix timestamp) when the interaction happenned
+  /// Approximate point in time (Unix timestamp) when the interaction happened
   final int interactionDate;
 
   /// Block list to which the actor is added; may be null if none or for chat stories

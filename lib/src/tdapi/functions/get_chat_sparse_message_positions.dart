@@ -13,6 +13,7 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
     required this.filter,
     required this.fromMessageId,
     required this.limit,
+    this.savedMessagesTopic,
   });
 
   /// Identifier of the chat in which to return information about message positions
@@ -27,6 +28,9 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
   /// The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
   final int limit;
 
+  /// If not null, only messages in the specified Saved Messages topic will be considered; pass null to consider all messages, or for chats other than Saved Messages
+  final SavedMessagesTopic? savedMessagesTopic;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -34,6 +38,7 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
         'limit': limit,
+        'saved_messages_topic': savedMessagesTopic?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -44,12 +49,16 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
     SearchMessagesFilter? filter,
     int? fromMessageId,
     int? limit,
+    SavedMessagesTopic? Function()? savedMessagesTopic,
   }) =>
       GetChatSparseMessagePositions(
         chatId: chatId ?? this.chatId,
         filter: filter ?? this.filter,
         fromMessageId: fromMessageId ?? this.fromMessageId,
         limit: limit ?? this.limit,
+        savedMessagesTopic: savedMessagesTopic != null
+            ? savedMessagesTopic()
+            : this.savedMessagesTopic,
       );
 
   /// TDLib type name.

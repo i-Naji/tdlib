@@ -638,6 +638,7 @@ final class InputMessageVideoNote extends InputMessageContent {
     this.thumbnail,
     required this.duration,
     required this.length,
+    this.selfDestructType,
   });
 
   /// Video note to be sent
@@ -652,6 +653,9 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Video width and height; must be positive and not greater than 640
   final int length;
 
+  /// Video note self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
+
   /// Parses a [InputMessageVideoNote] from TDLib JSON.
   factory InputMessageVideoNote.fromJson(Map<String, dynamic> json) =>
       InputMessageVideoNote(
@@ -659,6 +663,8 @@ final class InputMessageVideoNote extends InputMessageContent {
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
         duration: _readInt(json['duration']),
         length: _readInt(json['length']),
+        selfDestructType: _readOptional(
+            json['self_destruct_type'], MessageSelfDestructType.fromJson),
       );
 
   @override
@@ -668,6 +674,7 @@ final class InputMessageVideoNote extends InputMessageContent {
         'thumbnail': thumbnail?.toJson(),
         'duration': duration,
         'length': length,
+        'self_destruct_type': selfDestructType?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -678,12 +685,16 @@ final class InputMessageVideoNote extends InputMessageContent {
     InputThumbnail? Function()? thumbnail,
     int? duration,
     int? length,
+    MessageSelfDestructType? Function()? selfDestructType,
   }) =>
       InputMessageVideoNote(
         videoNote: videoNote ?? this.videoNote,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         duration: duration ?? this.duration,
         length: length ?? this.length,
+        selfDestructType: selfDestructType != null
+            ? selfDestructType()
+            : this.selfDestructType,
       );
 
   /// TDLib type name.
@@ -701,6 +712,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
     required this.duration,
     required this.waveform,
     this.caption,
+    this.selfDestructType,
   });
 
   /// Voice note to be sent
@@ -715,6 +727,9 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// Voice note self-destruct type; pass null if none; private chats only
+  final MessageSelfDestructType? selfDestructType;
+
   /// Parses a [InputMessageVoiceNote] from TDLib JSON.
   factory InputMessageVoiceNote.fromJson(Map<String, dynamic> json) =>
       InputMessageVoiceNote(
@@ -722,6 +737,8 @@ final class InputMessageVoiceNote extends InputMessageContent {
         duration: _readInt(json['duration']),
         waveform: _readString(json['waveform']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
+        selfDestructType: _readOptional(
+            json['self_destruct_type'], MessageSelfDestructType.fromJson),
       );
 
   @override
@@ -731,6 +748,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
         'duration': duration,
         'waveform': waveform,
         'caption': caption?.toJson(),
+        'self_destruct_type': selfDestructType?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -741,12 +759,16 @@ final class InputMessageVoiceNote extends InputMessageContent {
     int? duration,
     String? waveform,
     FormattedText? Function()? caption,
+    MessageSelfDestructType? Function()? selfDestructType,
   }) =>
       InputMessageVoiceNote(
         voiceNote: voiceNote ?? this.voiceNote,
         duration: duration ?? this.duration,
         waveform: waveform ?? this.waveform,
         caption: caption != null ? caption() : this.caption,
+        selfDestructType: selfDestructType != null
+            ? selfDestructType()
+            : this.selfDestructType,
       );
 
   /// TDLib type name.

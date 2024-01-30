@@ -17,6 +17,7 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
     required this.limit,
     this.filter,
     required this.messageThreadId,
+    this.savedMessagesTopic,
   });
 
   /// Identifier of the chat in which to search messages
@@ -31,7 +32,7 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
   /// Identifier of the message starting from which history must be fetched; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// Specify 0 to get results from exactly the from_message_id or a negative offset to get the specified message and some newer messages
+  /// Specify 0 to get results from exactly the message from_message_id or a negative offset to get the specified message and some newer messages
   final int offset;
 
   /// The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than -offset. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
@@ -42,6 +43,9 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
 
   /// If not 0, only messages in the specified thread will be returned; supergroups only
   final int messageThreadId;
+
+  /// If not null, only messages in the specified Saved Messages topic will be returned; pass null to return all messages, or for chats other than Saved Messages
+  final SavedMessagesTopic? savedMessagesTopic;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -54,6 +58,7 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
         'limit': limit,
         'filter': filter?.toJson(),
         'message_thread_id': messageThreadId,
+        'saved_messages_topic': savedMessagesTopic?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -68,6 +73,7 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
     int? limit,
     SearchMessagesFilter? Function()? filter,
     int? messageThreadId,
+    SavedMessagesTopic? Function()? savedMessagesTopic,
   }) =>
       SearchChatMessages(
         chatId: chatId ?? this.chatId,
@@ -78,6 +84,9 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
         limit: limit ?? this.limit,
         filter: filter != null ? filter() : this.filter,
         messageThreadId: messageThreadId ?? this.messageThreadId,
+        savedMessagesTopic: savedMessagesTopic != null
+            ? savedMessagesTopic()
+            : this.savedMessagesTopic,
       );
 
   /// TDLib type name.

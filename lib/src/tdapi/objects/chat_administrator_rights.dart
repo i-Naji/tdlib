@@ -48,7 +48,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can pin messages; applicable to basic groups and supergroups only
   final bool canPinMessages;
 
-  /// True, if the administrator can manage topics; applicable to forum supergroups only
+  /// True, if the administrator can create, rename, close, reopen, hide, and unhide forum topics; applicable to forum supergroups only
   final bool canManageTopics;
 
   /// True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that were directly or indirectly promoted by them

@@ -44,9 +44,9 @@ final class UndecodedInternalLinkType extends InternalLinkType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The link is a link to the active sessions section of the application. Use getActiveSessions to handle the link
+/// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user
 final class InternalLinkTypeActiveSessions extends InternalLinkType {
-  /// The link is a link to the active sessions section of the application. Use getActiveSessions to handle the link
+  /// The link is a link to the Devices section of the application. Use getActiveSessions to get the list of active sessions and show them to the user
   const InternalLinkTypeActiveSessions({
     this.extra,
     this.clientId,
@@ -219,9 +219,9 @@ final class InternalLinkTypeAuthenticationCode extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a background. Call searchBackground with the given background name to process the link
+/// The link is a link to a background. Call searchBackground with the given background name to process the link If background is found and the user wants to apply it, then call setDefaultBackground
 final class InternalLinkTypeBackground extends InternalLinkType {
-  /// The link is a link to a background. Call searchBackground with the given background name to process the link
+  /// The link is a link to a background. Call searchBackground with the given background name to process the link If background is found and the user wants to apply it, then call setDefaultBackground
   const InternalLinkTypeBackground({
     required this.backgroundName,
     this.extra,
@@ -586,9 +586,9 @@ final class InternalLinkTypeChatBoost extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link
+/// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat folder, then call addChatFolderByInviteLink
 final class InternalLinkTypeChatFolderInvite extends InternalLinkType {
-  /// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link
+  /// The link is an invite link to a chat folder. Call checkChatFolderInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat folder, then call addChatFolderByInviteLink
   const InternalLinkTypeChatFolderInvite({
     required this.inviteLink,
     this.extra,
@@ -690,9 +690,9 @@ final class InternalLinkTypeChatFolderSettings extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link
+/// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat, then call joinChatByInviteLink
 final class InternalLinkTypeChatInvite extends InternalLinkType {
-  /// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link
+  /// The link is a chat invite link. Call checkChatInviteLink with the given invite link to process the link. If the link is valid and the user wants to join the chat, then call joinChatByInviteLink
   const InternalLinkTypeChatInvite({
     required this.inviteLink,
     this.extra,
@@ -906,9 +906,9 @@ final class InternalLinkTypeGame extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link
+/// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link. If Instant View is found, then show it, otherwise, open the fallback URL in an external browser
 final class InternalLinkTypeInstantView extends InternalLinkType {
-  /// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link
+  /// The link must be opened in an Instant View. Call getWebPageInstantView with the given URL to process the link. If Instant View is found, then show it, otherwise, open the fallback URL in an external browser
   const InternalLinkTypeInstantView({
     required this.url,
     required this.fallbackUrl,
@@ -1024,9 +1024,9 @@ final class InternalLinkTypeInvoice extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link
+/// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link. If the language pack is found and the user wants to apply it, then call setOption for the option "language_pack_id"
 final class InternalLinkTypeLanguagePack extends InternalLinkType {
-  /// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link
+  /// The link is a link to a language pack. Call getLanguagePackInfo with the given language pack identifier to process the link. If the language pack is found and the user wants to apply it, then call setOption for the option "language_pack_id"
   const InternalLinkTypeLanguagePack({
     required this.languagePackId,
     this.extra,
@@ -1127,9 +1127,9 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link
+/// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link, and then open received forum topic or chat and show the message there
 final class InternalLinkTypeMessage extends InternalLinkType {
-  /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link
+  /// The link is a link to a Telegram message or a forum topic. Call getMessageLinkInfo with the given URL to process the link, and then open received forum topic or chat and show the message there
   const InternalLinkTypeMessage({
     required this.url,
     this.extra,
@@ -1333,9 +1333,9 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link
+/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it
 final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
-  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link
+  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it
   const InternalLinkTypePhoneNumberConfirmation({
     required this.hash,
     required this.phoneNumber,
@@ -1452,9 +1452,9 @@ final class InternalLinkTypePremiumFeatures extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to the screen for gifting Telegram Premium subscriptions to friends
+/// The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram payments or in-store purchases
 final class InternalLinkTypePremiumGift extends InternalLinkType {
-  /// The link is a link to the screen for gifting Telegram Premium subscriptions to friends
+  /// The link is a link to the screen for gifting Telegram Premium subscriptions to friends via inputInvoiceTelegram payments or in-store purchases
   const InternalLinkTypePremiumGift({
     required this.referrer,
     this.extra,
@@ -1683,9 +1683,9 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link
+/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself
 final class InternalLinkTypePublicChat extends InternalLinkType {
-  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link
+  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself
   const InternalLinkTypePublicChat({
     required this.chatUsername,
     this.extra,
@@ -1881,9 +1881,9 @@ final class InternalLinkTypeSettings extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to side menu, then use getWebAppUrl with the given URL
+/// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App
 final class InternalLinkTypeSideMenuBot extends InternalLinkType {
-  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to side menu, then use getWebAppUrl with the given URL
+  /// The link is a link to a bot, which can be installed to the side menu. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to attachment menu. Then, use getAttachmentMenuBot to receive information about the bot. If the bot isn't added to side menu, then show a disclaimer about Mini Apps being a third-party apps, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu. If the user accept the terms and confirms adding, then use toggleBotIsAddedToAttachmentMenu to add the bot. If the bot is added to side menu, then use getWebAppUrl with the given URL and open the returned URL as a Web App
   const InternalLinkTypeSideMenuBot({
     required this.botUsername,
     required this.url,
@@ -1944,9 +1944,9 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set
+/// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set. If the sticker set is found and the user wants to add it, then call changeStickerSet
 final class InternalLinkTypeStickerSet extends InternalLinkType {
-  /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set
+  /// The link is a link to a sticker set. Call searchStickerSet with the given sticker set name to process the link and show the sticker set. If the sticker set is found and the user wants to add it, then call changeStickerSet
   const InternalLinkTypeStickerSet({
     required this.stickerSetName,
     required this.expectCustomEmoji,
@@ -2007,9 +2007,9 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier
+/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
 final class InternalLinkTypeStory extends InternalLinkType {
-  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier
+  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
   const InternalLinkTypeStory({
     required this.storySenderUsername,
     required this.storyId,
@@ -2275,9 +2275,9 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link
+/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat
 final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
-  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link
+  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat
   const InternalLinkTypeUserPhoneNumber({
     required this.phoneNumber,
     this.extra,
@@ -2330,9 +2330,9 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link
+/// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link. If the user is found, then call createPrivateChat and open the chat
 final class InternalLinkTypeUserToken extends InternalLinkType {
-  /// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link
+  /// The link is a link to a user by a temporary token. Call searchUserByToken with the given token to process the link. If the user is found, then call createPrivateChat and open the chat
   const InternalLinkTypeUserToken({
     required this.token,
     this.extra,

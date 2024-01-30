@@ -3,22 +3,18 @@
 
 part of '../tdapi.dart';
 
-/// Searches for emojis by keywords. Supported only if the file database is enabled
+/// Searches for emojis by keywords. Supported only if the file database is enabled. Order of results is unspecified
 ///
-/// Returns [Emojis].
-final class SearchEmojis extends TdFunction<Emojis> {
-  /// Searches for emojis by keywords. Supported only if the file database is enabled
+/// Returns [EmojiKeywords].
+final class SearchEmojis extends TdFunction<EmojiKeywords> {
+  /// Searches for emojis by keywords. Supported only if the file database is enabled. Order of results is unspecified
   const SearchEmojis({
     required this.text,
-    required this.exactMatch,
     required this.inputLanguageCodes,
   });
 
   /// Text to search for
   final String text;
-
-  /// Pass true if only emojis, which exactly match the text, needs to be returned
-  final bool exactMatch;
 
   /// List of possible IETF language tags of the user's input language; may be empty if unknown
   final List<String> inputLanguageCodes;
@@ -27,7 +23,6 @@ final class SearchEmojis extends TdFunction<Emojis> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'text': text,
-        'exact_match': exactMatch,
         'input_language_codes': inputLanguageCodes,
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +31,10 @@ final class SearchEmojis extends TdFunction<Emojis> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchEmojis copyWith({
     String? text,
-    bool? exactMatch,
     List<String>? inputLanguageCodes,
   }) =>
       SearchEmojis(
         text: text ?? this.text,
-        exactMatch: exactMatch ?? this.exactMatch,
         inputLanguageCodes: inputLanguageCodes ?? this.inputLanguageCodes,
       );
 

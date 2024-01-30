@@ -11,6 +11,8 @@ final class AvailableReactions extends TdObject {
     required this.recentReactions,
     required this.popularReactions,
     required this.allowCustomEmoji,
+    required this.areTags,
+    this.unavailabilityReason,
     this.extra,
     this.clientId,
   });
@@ -26,6 +28,12 @@ final class AvailableReactions extends TdObject {
 
   /// True, if any custom emoji reaction can be added by Telegram Premium subscribers
   final bool allowCustomEmoji;
+
+  /// True, if the reactions will be tags and the message can be found by them; currently, always false
+  final bool areTags;
+
+  /// The reason why the current user can't add reactions to the message, despite some other users can; may be null if none
+  final ReactionUnavailabilityReason? unavailabilityReason;
 
   /// "@extra" of the request this object answers.
   @override
@@ -46,6 +54,9 @@ final class AvailableReactions extends TdObject {
             json['popular_reactions'],
             (e) => _readObject(e, AvailableReaction.fromJson)),
         allowCustomEmoji: _readBool(json['allow_custom_emoji']),
+        areTags: _readBool(json['are_tags']),
+        unavailabilityReason: _readOptional(json['unavailability_reason'],
+            ReactionUnavailabilityReason.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -57,6 +68,8 @@ final class AvailableReactions extends TdObject {
         'recent_reactions': [for (final e in recentReactions) e.toJson()],
         'popular_reactions': [for (final e in popularReactions) e.toJson()],
         'allow_custom_emoji': allowCustomEmoji,
+        'are_tags': areTags,
+        'unavailability_reason': unavailabilityReason?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -66,6 +79,8 @@ final class AvailableReactions extends TdObject {
     List<AvailableReaction>? recentReactions,
     List<AvailableReaction>? popularReactions,
     bool? allowCustomEmoji,
+    bool? areTags,
+    ReactionUnavailabilityReason? Function()? unavailabilityReason,
     dynamic extra,
     int? clientId,
   }) =>
@@ -74,6 +89,10 @@ final class AvailableReactions extends TdObject {
         recentReactions: recentReactions ?? this.recentReactions,
         popularReactions: popularReactions ?? this.popularReactions,
         allowCustomEmoji: allowCustomEmoji ?? this.allowCustomEmoji,
+        areTags: areTags ?? this.areTags,
+        unavailabilityReason: unavailabilityReason != null
+            ? unavailabilityReason()
+            : this.unavailabilityReason,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

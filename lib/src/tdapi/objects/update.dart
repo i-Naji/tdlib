@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdatePinnedSavedMessagesTopics], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSavedMessagesTags], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -2992,6 +2992,53 @@ final class UpdateChatOnlineMemberCount extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatOnlineMemberCount';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The list of pinned Saved Messages topics has changed. The app can call getPinnedSavedMessagesTopics to get the new list
+final class UpdatePinnedSavedMessagesTopics extends Update {
+  /// The list of pinned Saved Messages topics has changed. The app can call getPinnedSavedMessagesTopics to get the new list
+  const UpdatePinnedSavedMessagesTopics({
+    this.extra,
+    this.clientId,
+  });
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdatePinnedSavedMessagesTopics] from TDLib JSON.
+  factory UpdatePinnedSavedMessagesTopics.fromJson(Map<String, dynamic> json) =>
+      UpdatePinnedSavedMessagesTopics(
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdatePinnedSavedMessagesTopics copyWith({
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdatePinnedSavedMessagesTopics(
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updatePinnedSavedMessagesTopics';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -6729,6 +6776,61 @@ final class UpdateDefaultReactionType extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateDefaultReactionType';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Used Saved Messages tags have changed
+final class UpdateSavedMessagesTags extends Update {
+  /// Used Saved Messages tags have changed
+  const UpdateSavedMessagesTags({
+    required this.tags,
+    this.extra,
+    this.clientId,
+  });
+
+  /// The new used tags
+  final SavedMessagesTags tags;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateSavedMessagesTags] from TDLib JSON.
+  factory UpdateSavedMessagesTags.fromJson(Map<String, dynamic> json) =>
+      UpdateSavedMessagesTags(
+        tags: _readObject(json['tags'], SavedMessagesTags.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'tags': tags.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateSavedMessagesTags copyWith({
+    SavedMessagesTags? tags,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateSavedMessagesTags(
+        tags: tags ?? this.tags,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateSavedMessagesTags';
 
   @override
   String getConstructor() => CONSTRUCTOR;

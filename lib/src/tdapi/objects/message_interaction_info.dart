@@ -10,7 +10,7 @@ final class MessageInteractionInfo extends TdObject {
     required this.viewCount,
     required this.forwardCount,
     this.replyInfo,
-    required this.reactions,
+    this.reactions,
   });
 
   /// Number of times the message was viewed
@@ -22,8 +22,8 @@ final class MessageInteractionInfo extends TdObject {
   /// Information about direct or indirect replies to the message; may be null. Currently, available only in channels with a discussion supergroup and discussion supergroups for messages, which are not replies itself
   final MessageReplyInfo? replyInfo;
 
-  /// The list of reactions added to the message
-  final List<MessageReaction> reactions;
+  /// The list of reactions or tags added to the message; may be null
+  final MessageReactions? reactions;
 
   /// Parses a [MessageInteractionInfo] from TDLib JSON.
   factory MessageInteractionInfo.fromJson(Map<String, dynamic> json) =>
@@ -31,8 +31,7 @@ final class MessageInteractionInfo extends TdObject {
         viewCount: _readInt(json['view_count']),
         forwardCount: _readInt(json['forward_count']),
         replyInfo: _readOptional(json['reply_info'], MessageReplyInfo.fromJson),
-        reactions: _readList<MessageReaction>(
-            json['reactions'], (e) => _readObject(e, MessageReaction.fromJson)),
+        reactions: _readOptional(json['reactions'], MessageReactions.fromJson),
       );
 
   @override
@@ -41,7 +40,7 @@ final class MessageInteractionInfo extends TdObject {
         'view_count': viewCount,
         'forward_count': forwardCount,
         'reply_info': replyInfo?.toJson(),
-        'reactions': [for (final e in reactions) e.toJson()],
+        'reactions': reactions?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -50,13 +49,13 @@ final class MessageInteractionInfo extends TdObject {
     int? viewCount,
     int? forwardCount,
     MessageReplyInfo? Function()? replyInfo,
-    List<MessageReaction>? reactions,
+    MessageReactions? Function()? reactions,
   }) =>
       MessageInteractionInfo(
         viewCount: viewCount ?? this.viewCount,
         forwardCount: forwardCount ?? this.forwardCount,
         replyInfo: replyInfo != null ? replyInfo() : this.replyInfo,
-        reactions: reactions ?? this.reactions,
+        reactions: reactions != null ? reactions() : this.reactions,
       );
 
   /// TDLib type name.

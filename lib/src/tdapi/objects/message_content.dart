@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageExpiredPhoto], [MessageSticker], [MessageVideo], [MessageExpiredVideo], [MessageVideoNote], [MessageVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -317,32 +317,6 @@ final class MessagePhoto extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A self-destructed photo message
-final class MessageExpiredPhoto extends MessageContent {
-  /// A self-destructed photo message
-  const MessageExpiredPhoto();
-
-  /// Parses a [MessageExpiredPhoto] from TDLib JSON.
-  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) =>
-      const MessageExpiredPhoto();
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExpiredPhoto';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
 /// A sticker message
 final class MessageSticker extends MessageContent {
   /// A sticker message
@@ -446,32 +420,6 @@ final class MessageVideo extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVideo';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// A self-destructed video message
-final class MessageExpiredVideo extends MessageContent {
-  /// A self-destructed video message
-  const MessageExpiredVideo();
-
-  /// Parses a [MessageExpiredVideo] from TDLib JSON.
-  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) =>
-      const MessageExpiredVideo();
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  MessageExpiredVideo copyWith() => const MessageExpiredVideo();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExpiredVideo';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -582,6 +530,110 @@ final class MessageVoiceNote extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageVoiceNote';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A self-destructed photo message
+final class MessageExpiredPhoto extends MessageContent {
+  /// A self-destructed photo message
+  const MessageExpiredPhoto();
+
+  /// Parses a [MessageExpiredPhoto] from TDLib JSON.
+  factory MessageExpiredPhoto.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredPhoto();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageExpiredPhoto copyWith() => const MessageExpiredPhoto();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageExpiredPhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A self-destructed video message
+final class MessageExpiredVideo extends MessageContent {
+  /// A self-destructed video message
+  const MessageExpiredVideo();
+
+  /// Parses a [MessageExpiredVideo] from TDLib JSON.
+  factory MessageExpiredVideo.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredVideo();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageExpiredVideo copyWith() => const MessageExpiredVideo();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageExpiredVideo';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A self-destructed video note message
+final class MessageExpiredVideoNote extends MessageContent {
+  /// A self-destructed video note message
+  const MessageExpiredVideoNote();
+
+  /// Parses a [MessageExpiredVideoNote] from TDLib JSON.
+  factory MessageExpiredVideoNote.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredVideoNote();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageExpiredVideoNote copyWith() => const MessageExpiredVideoNote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageExpiredVideoNote';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A self-destructed voice note message
+final class MessageExpiredVoiceNote extends MessageContent {
+  /// A self-destructed voice note message
+  const MessageExpiredVoiceNote();
+
+  /// Parses a [MessageExpiredVoiceNote] from TDLib JSON.
+  factory MessageExpiredVoiceNote.fromJson(Map<String, dynamic> json) =>
+      const MessageExpiredVoiceNote();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageExpiredVoiceNote copyWith() => const MessageExpiredVoiceNote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageExpiredVoiceNote';
 
   @override
   String getConstructor() => CONSTRUCTOR;

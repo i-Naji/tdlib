@@ -12,6 +12,7 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
     required this.chatId,
     required this.filter,
     required this.fromMessageId,
+    this.savedMessagesTopic,
   });
 
   /// Identifier of the chat in which to return information about messages
@@ -23,12 +24,16 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// The message identifier from which to return information about messages; use 0 to get results from the last message
   final int fromMessageId;
 
+  /// If not null, only messages in the specified Saved Messages topic will be considered; pass null to consider all messages, or for chats other than Saved Messages
+  final SavedMessagesTopic? savedMessagesTopic;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
+        'saved_messages_topic': savedMessagesTopic?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -38,11 +43,15 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
     int? chatId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
+    SavedMessagesTopic? Function()? savedMessagesTopic,
   }) =>
       GetChatMessageCalendar(
         chatId: chatId ?? this.chatId,
         filter: filter ?? this.filter,
         fromMessageId: fromMessageId ?? this.fromMessageId,
+        savedMessagesTopic: savedMessagesTopic != null
+            ? savedMessagesTopic()
+            : this.savedMessagesTopic,
       );
 
   /// TDLib type name.

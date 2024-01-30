@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about a emoji reaction
+/// Contains information about an emoji reaction
 final class EmojiReaction extends TdObject {
-  /// Contains information about a emoji reaction
+  /// Contains information about an emoji reaction
   const EmojiReaction({
     required this.emoji,
     required this.title,
