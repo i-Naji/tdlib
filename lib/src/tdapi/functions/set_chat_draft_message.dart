@@ -17,10 +17,10 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the draft was changed
+  /// If not 0, the message thread identifier in which the draft was changed
   final int messageThreadId;
 
-  /// New draft message; pass null to remove the draft
+  /// New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored
   final DraftMessage? draftMessage;
 
   @override

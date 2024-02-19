@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Launches a prepaid Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+/// Launches a prepaid Telegram Premium giveaway
 ///
 /// Returns [Ok].
 final class LaunchPrepaidPremiumGiveaway extends TdFunction<Ok> {
-  /// Launches a prepaid Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+  /// Launches a prepaid Telegram Premium giveaway
   const LaunchPrepaidPremiumGiveaway({
     required this.giveawayId,
     required this.parameters,

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
+/// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right
 ///
 /// Returns [Ok].
 final class SetChatAvailableReactions extends TdFunction<Ok> {
-  /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
+  /// Changes reactions, available in a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right
   const SetChatAvailableReactions({
     required this.chatId,
     required this.availableReactions,
@@ -16,7 +16,7 @@ final class SetChatAvailableReactions extends TdFunction<Ok> {
   /// Identifier of the chat
   final int chatId;
 
-  /// Reactions available in the chat. All explicitly specified emoji reactions must be active. Up to the chat's boost level custom emoji reactions can be explicitly specified
+  /// Reactions available in the chat. All explicitly specified emoji reactions must be active. In channel chats up to the chat's boost level custom emoji reactions can be explicitly specified
   final ChatAvailableReactions availableReactions;
 
   @override

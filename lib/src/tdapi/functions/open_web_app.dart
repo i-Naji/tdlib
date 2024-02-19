@@ -33,7 +33,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// Short name of the application; 0-64 English letters, digits, and underscores
   final String applicationName;
 
-  /// If not 0, a message thread identifier in which the message will be sent
+  /// If not 0, the message thread identifier in which the message will be sent
   final int messageThreadId;
 
   /// Information about the message or story to be replied in the message sent by the Web App; pass null if none

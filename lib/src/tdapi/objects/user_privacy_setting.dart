@@ -296,10 +296,10 @@ final class UserPrivacySettingAllowFindingByPhoneNumber
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A privacy setting for managing whether the user can receive voice and video messages in private chats
+/// A privacy setting for managing whether the user can receive voice and video messages in private chats; for Telegram Premium users only
 final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
     extends UserPrivacySetting {
-  /// A privacy setting for managing whether the user can receive voice and video messages in private chats
+  /// A privacy setting for managing whether the user can receive voice and video messages in private chats; for Telegram Premium users only
   const UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages();
 
   /// Parses a [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages] from TDLib JSON.

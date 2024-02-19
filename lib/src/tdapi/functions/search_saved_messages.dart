@@ -9,12 +9,16 @@ part of '../tdapi.dart';
 final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
   /// Searches for messages tagged by the given reaction and with the given words in the Saved Messages chat; for Telegram Premium users only. Returns the results in reverse chronological order, i.e. in order of decreasing message_id For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   const SearchSavedMessages({
+    required this.savedMessagesTopicId,
     this.tag,
     required this.query,
     required this.fromMessageId,
     required this.offset,
     required this.limit,
   });
+
+  /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages
+  final int savedMessagesTopicId;
 
   /// Tag to search for; pass null to return all suitable messages
   final ReactionType? tag;
@@ -34,6 +38,7 @@ final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'saved_messages_topic_id': savedMessagesTopicId,
         'tag': tag?.toJson(),
         'query': query,
         'from_message_id': fromMessageId,
@@ -45,6 +50,7 @@ final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchSavedMessages copyWith({
+    int? savedMessagesTopicId,
     ReactionType? Function()? tag,
     String? query,
     int? fromMessageId,
@@ -52,6 +58,7 @@ final class SearchSavedMessages extends TdFunction<FoundChatMessages> {
     int? limit,
   }) =>
       SearchSavedMessages(
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         tag: tag != null ? tag() : this.tag,
         query: query ?? this.query,
         fromMessageId: fromMessageId ?? this.fromMessageId,

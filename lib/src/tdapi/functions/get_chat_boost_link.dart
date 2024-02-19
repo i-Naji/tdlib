@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTTPS link to boost the specified channel chat
+/// Returns an HTTPS link to boost the specified supergroup or channel chat
 ///
 /// Returns [ChatBoostLink].
 final class GetChatBoostLink extends TdFunction<ChatBoostLink> {
-  /// Returns an HTTPS link to boost the specified channel chat
+  /// Returns an HTTPS link to boost the specified supergroup or channel chat
   const GetChatBoostLink({
     required this.chatId,
   });

@@ -56,7 +56,7 @@ final class InputMessageText extends InputMessageContent {
   /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
-  /// Options to be used for generation of a link preview; pass null to use default link preview options
+  /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
   final LinkPreviewOptions? linkPreviewOptions;
 
   /// True, if a chat message draft must be deleted
@@ -644,7 +644,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Video note to be sent
   final InputFile videoNote;
 
-  /// Video thumbnail; pass null to skip thumbnail uploading
+  /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
   /// Duration of the video, in seconds
@@ -653,7 +653,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Video width and height; must be positive and not greater than 640
   final int length;
 
-  /// Video note self-destruct type; pass null if none; private chats only
+  /// Video note self-destruct type; may be null if none; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
 
   /// Parses a [InputMessageVideoNote] from TDLib JSON.
@@ -724,10 +724,10 @@ final class InputMessageVoiceNote extends InputMessageContent {
   /// Waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// Voice note caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  /// Voice note caption; may be null if empty; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Voice note self-destruct type; pass null if none; private chats only
+  /// Voice note self-destruct type; may be null if none; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
 
   /// Parses a [InputMessageVoiceNote] from TDLib JSON.

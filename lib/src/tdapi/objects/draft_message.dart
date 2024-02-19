@@ -18,7 +18,7 @@ final class DraftMessage extends TdObject {
   /// Point in time (Unix timestamp) when the draft was created
   final int date;
 
-  /// Content of the message draft; must be of the type inputMessageText
+  /// Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
 
   /// Parses a [DraftMessage] from TDLib JSON.

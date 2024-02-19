@@ -158,7 +158,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     required this.userIds,
   });
 
-  /// Identifier of the channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
   final int boostedChatId;
 
   /// ISO 4217 currency code of the payment currency
@@ -212,9 +212,9 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+/// The user creating a Telegram Premium giveaway
 final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
-  /// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+  /// The user creating a Telegram Premium giveaway
   const StorePaymentPurposePremiumGiveaway({
     required this.parameters,
     required this.currency,

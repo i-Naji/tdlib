@@ -9,26 +9,26 @@ part of '../tdapi.dart';
 final class DeleteSavedMessagesTopicHistory extends TdFunction<Ok> {
   /// Deletes all messages in a Saved Messages topic
   const DeleteSavedMessagesTopicHistory({
-    required this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
   });
 
-  /// Saved Messages topic which messages will be deleted
-  final SavedMessagesTopic savedMessagesTopic;
+  /// Identifier of Saved Messages topic which messages will be deleted
+  final int savedMessagesTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'saved_messages_topic': savedMessagesTopic.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteSavedMessagesTopicHistory copyWith({
-    SavedMessagesTopic? savedMessagesTopic,
+    int? savedMessagesTopicId,
   }) =>
       DeleteSavedMessagesTopicHistory(
-        savedMessagesTopic: savedMessagesTopic ?? this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );
 
   /// TDLib type name.

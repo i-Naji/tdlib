@@ -98,7 +98,7 @@ final class Chat extends TdObject {
   /// True, if the chat is marked as unread
   final bool isMarkedAsUnread;
 
-  /// True, if the chat is a forum supergroup that must be shown in the "View as topics" mode
+  /// True, if the chat is a forum supergroup that must be shown in the "View as topics" mode, or Saved Messages chat that must be shown in the "View as chats"
   final bool viewAsTopics;
 
   /// True, if the chat has scheduled messages

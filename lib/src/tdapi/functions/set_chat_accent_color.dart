@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes accent color and background custom emoji of a chat. Requires can_change_info administrator right
+/// Changes accent color and background custom emoji of a channel chat. Requires can_change_info administrator right
 ///
 /// Returns [Ok].
 final class SetChatAccentColor extends TdFunction<Ok> {
-  /// Changes accent color and background custom emoji of a chat. Requires can_change_info administrator right
+  /// Changes accent color and background custom emoji of a channel chat. Requires can_change_info administrator right
   const SetChatAccentColor({
     required this.chatId,
     required this.accentColorId,
@@ -17,7 +17,7 @@ final class SetChatAccentColor extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// Identifier of the accent color to use. The chat must have at least accentColor.min_chat_boost_level boost level to pass the corresponding color
+  /// Identifier of the accent color to use. The chat must have at least accentColor.min_channel_chat_boost_level boost level to pass the corresponding color
   final int accentColorId;
 
   /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. Use chatBoostLevelFeatures.can_set_background_custom_emoji to check whether a custom emoji can be set

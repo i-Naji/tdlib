@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats
+/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
 ///
 /// Returns [CanSendStoryResult].
 final class CanSendStory extends TdFunction<CanSendStoryResult> {
-  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories rights for channel chats
+  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
   const CanSendStory({
     required this.chatId,
   });

@@ -9,6 +9,7 @@ final class Story extends TdObject {
   const Story({
     required this.id,
     required this.senderChatId,
+    this.senderId,
     required this.date,
     required this.isBeingSent,
     required this.isBeingEdited,
@@ -39,6 +40,9 @@ final class Story extends TdObject {
 
   /// Identifier of the chat that posted the story
   final int senderChatId;
+
+  /// Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id
+  final MessageSender? senderId;
 
   /// Point in time (Unix timestamp) when the story was published
   final int date;
@@ -115,6 +119,7 @@ final class Story extends TdObject {
   factory Story.fromJson(Map<String, dynamic> json) => Story(
         id: _readInt(json['id']),
         senderChatId: _readInt(json['sender_chat_id']),
+        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
         date: _readInt(json['date']),
         isBeingSent: _readBool(json['is_being_sent']),
         isBeingEdited: _readBool(json['is_being_edited']),
@@ -150,6 +155,7 @@ final class Story extends TdObject {
         '@type': CONSTRUCTOR,
         'id': id,
         'sender_chat_id': senderChatId,
+        'sender_id': senderId?.toJson(),
         'date': date,
         'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
@@ -178,6 +184,7 @@ final class Story extends TdObject {
   Story copyWith({
     int? id,
     int? senderChatId,
+    MessageSender? Function()? senderId,
     int? date,
     bool? isBeingSent,
     bool? isBeingEdited,
@@ -205,6 +212,7 @@ final class Story extends TdObject {
       Story(
         id: id ?? this.id,
         senderChatId: senderChatId ?? this.senderChatId,
+        senderId: senderId != null ? senderId() : this.senderId,
         date: date ?? this.date,
         isBeingSent: isBeingSent ?? this.isBeingSent,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,

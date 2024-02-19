@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Replaces the current RTMP URL for streaming to the chat; requires creator privileges
+/// Replaces the current RTMP URL for streaming to the chat; requires owner privileges
 ///
 /// Returns [RtmpUrl].
 final class ReplaceVideoChatRtmpUrl extends TdFunction<RtmpUrl> {
-  /// Replaces the current RTMP URL for streaming to the chat; requires creator privileges
+  /// Replaces the current RTMP URL for streaming to the chat; requires owner privileges
   const ReplaceVideoChatRtmpUrl({
     required this.chatId,
   });

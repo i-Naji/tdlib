@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members rights
+/// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members right
 ///
 /// Returns [Ok].
 final class SetChatSlowModeDelay extends TdFunction<Ok> {
-  /// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members rights
+  /// Changes the slow mode delay of a chat. Available only for supergroups; requires can_restrict_members right
   const SetChatSlowModeDelay({
     required this.chatId,
     required this.slowModeDelay,

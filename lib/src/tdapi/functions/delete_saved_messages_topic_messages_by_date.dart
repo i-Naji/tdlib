@@ -9,13 +9,13 @@ part of '../tdapi.dart';
 final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction<Ok> {
   /// Deletes all messages between the specified dates in a Saved Messages topic. Messages sent in the last 30 seconds will not be deleted
   const DeleteSavedMessagesTopicMessagesByDate({
-    required this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
     required this.minDate,
     required this.maxDate,
   });
 
-  /// Saved Messages topic which messages will be deleted
-  final SavedMessagesTopic savedMessagesTopic;
+  /// Identifier of Saved Messages topic which messages will be deleted
+  final int savedMessagesTopicId;
 
   /// The minimum date of the messages to delete
   final int minDate;
@@ -26,7 +26,7 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'saved_messages_topic': savedMessagesTopic.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         'min_date': minDate,
         'max_date': maxDate,
         if (extra != null) '@extra': extra,
@@ -35,12 +35,12 @@ final class DeleteSavedMessagesTopicMessagesByDate extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteSavedMessagesTopicMessagesByDate copyWith({
-    SavedMessagesTopic? savedMessagesTopic,
+    int? savedMessagesTopicId,
     int? minDate,
     int? maxDate,
   }) =>
       DeleteSavedMessagesTopicMessagesByDate(
-        savedMessagesTopic: savedMessagesTopic ?? this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         minDate: minDate ?? this.minDate,
         maxDate: maxDate ?? this.maxDate,
       );

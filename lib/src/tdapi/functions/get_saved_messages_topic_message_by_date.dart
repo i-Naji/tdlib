@@ -9,12 +9,12 @@ part of '../tdapi.dart';
 final class GetSavedMessagesTopicMessageByDate extends TdFunction<Message> {
   /// Returns the last message sent in a Saved Messages topic no later than the specified date
   const GetSavedMessagesTopicMessageByDate({
-    required this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
     required this.date,
   });
 
-  /// Saved Messages topic which message will be returned
-  final SavedMessagesTopic savedMessagesTopic;
+  /// Identifier of Saved Messages topic which message will be returned
+  final int savedMessagesTopicId;
 
   /// Point in time (Unix timestamp) relative to which to search for messages
   final int date;
@@ -22,7 +22,7 @@ final class GetSavedMessagesTopicMessageByDate extends TdFunction<Message> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'saved_messages_topic': savedMessagesTopic.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         'date': date,
         if (extra != null) '@extra': extra,
       };
@@ -30,11 +30,11 @@ final class GetSavedMessagesTopicMessageByDate extends TdFunction<Message> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetSavedMessagesTopicMessageByDate copyWith({
-    SavedMessagesTopic? savedMessagesTopic,
+    int? savedMessagesTopicId,
     int? date,
   }) =>
       GetSavedMessagesTopicMessageByDate(
-        savedMessagesTopic: savedMessagesTopic ?? this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         date: date ?? this.date,
       );
 

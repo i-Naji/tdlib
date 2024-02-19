@@ -13,7 +13,7 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
     required this.filter,
     required this.fromMessageId,
     required this.limit,
-    this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
   });
 
   /// Identifier of the chat in which to return information about message positions
@@ -28,8 +28,8 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
   /// The expected number of message positions to be returned; 50-2000. A smaller number of positions can be returned, if there are not enough appropriate messages
   final int limit;
 
-  /// If not null, only messages in the specified Saved Messages topic will be considered; pass null to consider all messages, or for chats other than Saved Messages
-  final SavedMessagesTopic? savedMessagesTopic;
+  /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+  final int savedMessagesTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -38,7 +38,7 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
         'limit': limit,
-        'saved_messages_topic': savedMessagesTopic?.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -49,16 +49,14 @@ final class GetChatSparseMessagePositions extends TdFunction<MessagePositions> {
     SearchMessagesFilter? filter,
     int? fromMessageId,
     int? limit,
-    SavedMessagesTopic? Function()? savedMessagesTopic,
+    int? savedMessagesTopicId,
   }) =>
       GetChatSparseMessagePositions(
         chatId: chatId ?? this.chatId,
         filter: filter ?? this.filter,
         fromMessageId: fromMessageId ?? this.fromMessageId,
         limit: limit ?? this.limit,
-        savedMessagesTopic: savedMessagesTopic != null
-            ? savedMessagesTopic()
-            : this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );
 
   /// TDLib type name.

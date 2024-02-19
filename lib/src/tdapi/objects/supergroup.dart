@@ -89,10 +89,10 @@ final class Supergroup extends TdObject {
   /// True, if many users reported this supergroup or channel as a fake account
   final bool isFake;
 
-  /// True, if the channel has non-expired stories available to the current user
+  /// True, if the supergroup or channel has non-expired stories available to the current user
   final bool hasActiveStories;
 
-  /// True, if the channel has unread non-expired stories available to the current user
+  /// True, if the supergroup or channel has unread non-expired stories available to the current user
   final bool hasUnreadActiveStories;
 
   /// "@extra" of the request this object answers.

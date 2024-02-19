@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes chosen reaction on a story
+/// Changes chosen reaction on a story that has already been sent
 ///
 /// Returns [Ok].
 final class SetStoryReaction extends TdFunction<Ok> {
-  /// Changes chosen reaction on a story
+  /// Changes chosen reaction on a story that has already been sent
   const SetStoryReaction({
     required this.storySenderChatId,
     required this.storyId,

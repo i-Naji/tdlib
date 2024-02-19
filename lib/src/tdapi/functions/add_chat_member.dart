@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds a new member to a chat. Members can't be added to private or secret chats
+/// Adds a new member to a chat; requires can_invite_users member right. Members can't be added to private or secret chats
 ///
 /// Returns [Ok].
 final class AddChatMember extends TdFunction<Ok> {
-  /// Adds a new member to a chat. Members can't be added to private or secret chats
+  /// Adds a new member to a chat; requires can_invite_users member right. Members can't be added to private or secret chats
   const AddChatMember({
     required this.chatId,
     required this.userId,

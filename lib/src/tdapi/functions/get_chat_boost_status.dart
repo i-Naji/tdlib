@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Returns the current boost status for a channel chat
+/// Returns the current boost status for a supergroup or a channel chat
 ///
 /// Returns [ChatBoostStatus].
 final class GetChatBoostStatus extends TdFunction<ChatBoostStatus> {
-  /// Returns the current boost status for a channel chat
+  /// Returns the current boost status for a supergroup or a channel chat
   const GetChatBoostStatus({
     required this.chatId,
   });
 
-  /// Identifier of the channel chat
+  /// Identifier of the chat
   final int chatId;
 
   @override

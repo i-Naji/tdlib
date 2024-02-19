@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -548,6 +548,86 @@ final class PremiumFeatureBackgroundForBoth extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureBackgroundForBoth';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to use tags in Saved Messages
+final class PremiumFeatureSavedMessagesTags extends PremiumFeature {
+  /// The ability to use tags in Saved Messages
+  const PremiumFeatureSavedMessagesTags();
+
+  /// Parses a [PremiumFeatureSavedMessagesTags] from TDLib JSON.
+  factory PremiumFeatureSavedMessagesTags.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureSavedMessagesTags();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureSavedMessagesTags copyWith() =>
+      const PremiumFeatureSavedMessagesTags();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureSavedMessagesTags';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to disallow incoming voice and video note messages in private chats using setUserPrivacySettingRules with userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages and to restrict incoming messages from non-contacts using setNewChatPrivacySettings
+final class PremiumFeatureMessagePrivacy extends PremiumFeature {
+  /// The ability to disallow incoming voice and video note messages in private chats using setUserPrivacySettingRules with userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages and to restrict incoming messages from non-contacts using setNewChatPrivacySettings
+  const PremiumFeatureMessagePrivacy();
+
+  /// Parses a [PremiumFeatureMessagePrivacy] from TDLib JSON.
+  factory PremiumFeatureMessagePrivacy.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureMessagePrivacy();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureMessagePrivacy copyWith() =>
+      const PremiumFeatureMessagePrivacy();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureMessagePrivacy';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user
+final class PremiumFeatureLastSeenTimes extends PremiumFeature {
+  /// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user
+  const PremiumFeatureLastSeenTimes();
+
+  /// Parses a [PremiumFeatureLastSeenTimes] from TDLib JSON.
+  factory PremiumFeatureLastSeenTimes.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureLastSeenTimes();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureLastSeenTimes copyWith() => const PremiumFeatureLastSeenTimes();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureLastSeenTimes';
 
   @override
   String getConstructor() => CONSTRUCTOR;

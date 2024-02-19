@@ -9,14 +9,14 @@ part of '../tdapi.dart';
 final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
   /// Returns messages in a Saved Messages topic. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
   const GetSavedMessagesTopicHistory({
-    required this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
     required this.fromMessageId,
     required this.offset,
     required this.limit,
   });
 
-  /// Saved Messages topic which messages will be fetched
-  final SavedMessagesTopic savedMessagesTopic;
+  /// Identifier of Saved Messages topic which messages will be fetched
+  final int savedMessagesTopicId;
 
   /// Identifier of the message starting from which messages must be fetched; use 0 to get results from the last message
   final int fromMessageId;
@@ -30,7 +30,7 @@ final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'saved_messages_topic': savedMessagesTopic.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         'from_message_id': fromMessageId,
         'offset': offset,
         'limit': limit,
@@ -40,13 +40,13 @@ final class GetSavedMessagesTopicHistory extends TdFunction<Messages> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetSavedMessagesTopicHistory copyWith({
-    SavedMessagesTopic? savedMessagesTopic,
+    int? savedMessagesTopicId,
     int? fromMessageId,
     int? offset,
     int? limit,
   }) =>
       GetSavedMessagesTopicHistory(
-        savedMessagesTopic: savedMessagesTopic ?? this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         fromMessageId: fromMessageId ?? this.fromMessageId,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

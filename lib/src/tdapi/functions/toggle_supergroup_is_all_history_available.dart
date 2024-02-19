@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right
+/// Toggles whether the message history of a supergroup is available to new members; requires can_change_info member right
 ///
 /// Returns [Ok].
 final class ToggleSupergroupIsAllHistoryAvailable extends TdFunction<Ok> {
-  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info administrator right
+  /// Toggles whether the message history of a supergroup is available to new members; requires can_change_info member right
   const ToggleSupergroupIsAllHistoryAvailable({
     required this.supergroupId,
     required this.isAllHistoryAvailable,

@@ -10,7 +10,8 @@ final class ProfileAccentColor extends TdObject {
     required this.id,
     required this.lightThemeColors,
     required this.darkThemeColors,
-    required this.minChatBoostLevel,
+    required this.minSupergroupChatBoostLevel,
+    required this.minChannelChatBoostLevel,
   });
 
   /// Profile accent color identifier
@@ -22,8 +23,11 @@ final class ProfileAccentColor extends TdObject {
   /// Accent colors expected to be used in dark themes
   final ProfileAccentColors darkThemeColors;
 
-  /// The minimum chat boost level required to use the color
-  final int minChatBoostLevel;
+  /// The minimum chat boost level required to use the color in a supergroup chat
+  final int minSupergroupChatBoostLevel;
+
+  /// The minimum chat boost level required to use the color in a channel chat
+  final int minChannelChatBoostLevel;
 
   /// Parses a [ProfileAccentColor] from TDLib JSON.
   factory ProfileAccentColor.fromJson(Map<String, dynamic> json) =>
@@ -33,7 +37,10 @@ final class ProfileAccentColor extends TdObject {
             json['light_theme_colors'], ProfileAccentColors.fromJson),
         darkThemeColors: _readObject(
             json['dark_theme_colors'], ProfileAccentColors.fromJson),
-        minChatBoostLevel: _readInt(json['min_chat_boost_level']),
+        minSupergroupChatBoostLevel:
+            _readInt(json['min_supergroup_chat_boost_level']),
+        minChannelChatBoostLevel:
+            _readInt(json['min_channel_chat_boost_level']),
       );
 
   @override
@@ -42,7 +49,8 @@ final class ProfileAccentColor extends TdObject {
         'id': id,
         'light_theme_colors': lightThemeColors.toJson(),
         'dark_theme_colors': darkThemeColors.toJson(),
-        'min_chat_boost_level': minChatBoostLevel,
+        'min_supergroup_chat_boost_level': minSupergroupChatBoostLevel,
+        'min_channel_chat_boost_level': minChannelChatBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -51,13 +59,17 @@ final class ProfileAccentColor extends TdObject {
     int? id,
     ProfileAccentColors? lightThemeColors,
     ProfileAccentColors? darkThemeColors,
-    int? minChatBoostLevel,
+    int? minSupergroupChatBoostLevel,
+    int? minChannelChatBoostLevel,
   }) =>
       ProfileAccentColor(
         id: id ?? this.id,
         lightThemeColors: lightThemeColors ?? this.lightThemeColors,
         darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-        minChatBoostLevel: minChatBoostLevel ?? this.minChatBoostLevel,
+        minSupergroupChatBoostLevel:
+            minSupergroupChatBoostLevel ?? this.minSupergroupChatBoostLevel,
+        minChannelChatBoostLevel:
+            minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
       );
 
   /// TDLib type name.

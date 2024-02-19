@@ -56,7 +56,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
     required this.monthCount,
   });
 
-  /// Identifier of the channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
   final int boostedChatId;
 
   /// ISO 4217 currency code of the payment currency
@@ -117,10 +117,10 @@ final class TelegramPaymentPurposePremiumGiftCodes
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+/// The user creating a Telegram Premium giveaway
 final class TelegramPaymentPurposePremiumGiveaway
     extends TelegramPaymentPurpose {
-  /// The user creating a Telegram Premium giveaway for subscribers of channel chats; requires can_post_messages rights in the channels
+  /// The user creating a Telegram Premium giveaway
   const TelegramPaymentPurposePremiumGiveaway({
     required this.parameters,
     required this.currency,

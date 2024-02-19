@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
+/// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info member right
 ///
 /// Returns [Ok].
 final class SetChatTitle extends TdFunction<Ok> {
-  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info administrator right
+  /// Changes the chat title. Supported only for basic groups, supergroups and channels. Requires can_change_info member right
   const SetChatTitle({
     required this.chatId,
     required this.title,

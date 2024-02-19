@@ -13,6 +13,8 @@ final class ChatBoostFeatures extends TdObject {
     required this.minEmojiStatusBoostLevel,
     required this.minChatThemeBackgroundBoostLevel,
     required this.minCustomBackgroundBoostLevel,
+    required this.minCustomEmojiStickerSetBoostLevel,
+    required this.minSpeechRecognitionBoostLevel,
     this.extra,
     this.clientId,
   });
@@ -23,7 +25,7 @@ final class ChatBoostFeatures extends TdObject {
   /// The minimum boost level required to set custom emoji for profile background
   final int minProfileBackgroundCustomEmojiBoostLevel;
 
-  /// The minimum boost level required to set custom emoji for reply header and link preview background
+  /// The minimum boost level required to set custom emoji for reply header and link preview background; for channel chats only
   final int minBackgroundCustomEmojiBoostLevel;
 
   /// The minimum boost level required to set emoji status
@@ -34,6 +36,12 @@ final class ChatBoostFeatures extends TdObject {
 
   /// The minimum boost level required to set custom chat background
   final int minCustomBackgroundBoostLevel;
+
+  /// The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only
+  final int minCustomEmojiStickerSetBoostLevel;
+
+  /// The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only
+  final int minSpeechRecognitionBoostLevel;
 
   /// "@extra" of the request this object answers.
   @override
@@ -58,6 +66,10 @@ final class ChatBoostFeatures extends TdObject {
             _readInt(json['min_chat_theme_background_boost_level']),
         minCustomBackgroundBoostLevel:
             _readInt(json['min_custom_background_boost_level']),
+        minCustomEmojiStickerSetBoostLevel:
+            _readInt(json['min_custom_emoji_sticker_set_boost_level']),
+        minSpeechRecognitionBoostLevel:
+            _readInt(json['min_speech_recognition_boost_level']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -74,6 +86,9 @@ final class ChatBoostFeatures extends TdObject {
         'min_chat_theme_background_boost_level':
             minChatThemeBackgroundBoostLevel,
         'min_custom_background_boost_level': minCustomBackgroundBoostLevel,
+        'min_custom_emoji_sticker_set_boost_level':
+            minCustomEmojiStickerSetBoostLevel,
+        'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -85,6 +100,8 @@ final class ChatBoostFeatures extends TdObject {
     int? minEmojiStatusBoostLevel,
     int? minChatThemeBackgroundBoostLevel,
     int? minCustomBackgroundBoostLevel,
+    int? minCustomEmojiStickerSetBoostLevel,
+    int? minSpeechRecognitionBoostLevel,
     dynamic extra,
     int? clientId,
   }) =>
@@ -102,6 +119,11 @@ final class ChatBoostFeatures extends TdObject {
             this.minChatThemeBackgroundBoostLevel,
         minCustomBackgroundBoostLevel:
             minCustomBackgroundBoostLevel ?? this.minCustomBackgroundBoostLevel,
+        minCustomEmojiStickerSetBoostLevel:
+            minCustomEmojiStickerSetBoostLevel ??
+                this.minCustomEmojiStickerSetBoostLevel,
+        minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
+            this.minSpeechRecognitionBoostLevel,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

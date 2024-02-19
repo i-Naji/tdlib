@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a story feature available to Premium users
 ///
-/// One of: [PremiumStoryFeaturePriorityOrder], [PremiumStoryFeatureStealthMode], [PremiumStoryFeaturePermanentViewsHistory], [PremiumStoryFeatureCustomExpirationDuration], [PremiumStoryFeatureSaveStories], [PremiumStoryFeatureLinksAndFormatting]; or [UndecodedPremiumStoryFeature] for a type newer than this API.
+/// One of: [PremiumStoryFeaturePriorityOrder], [PremiumStoryFeatureStealthMode], [PremiumStoryFeaturePermanentViewsHistory], [PremiumStoryFeatureCustomExpirationDuration], [PremiumStoryFeatureSaveStories], [PremiumStoryFeatureLinksAndFormatting], [PremiumStoryFeatureVideoQuality]; or [UndecodedPremiumStoryFeature] for a type newer than this API.
 sealed class PremiumStoryFeature extends TdObject {
   const PremiumStoryFeature();
 
@@ -44,9 +44,9 @@ final class UndecodedPremiumStoryFeature extends PremiumStoryFeature {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// User stories are displayed before stories of non-premium contacts and channels
+/// Stories of the current user are displayed before stories of non-Premium contacts, supergroups, and channels
 final class PremiumStoryFeaturePriorityOrder extends PremiumStoryFeature {
-  /// User stories are displayed before stories of non-premium contacts and channels
+  /// Stories of the current user are displayed before stories of non-Premium contacts, supergroups, and channels
   const PremiumStoryFeaturePriorityOrder();
 
   /// Parses a [PremiumStoryFeaturePriorityOrder] from TDLib JSON.
@@ -208,6 +208,33 @@ final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumStoryFeatureLinksAndFormatting';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to choose better quality for viewed stories
+final class PremiumStoryFeatureVideoQuality extends PremiumStoryFeature {
+  /// The ability to choose better quality for viewed stories
+  const PremiumStoryFeatureVideoQuality();
+
+  /// Parses a [PremiumStoryFeatureVideoQuality] from TDLib JSON.
+  factory PremiumStoryFeatureVideoQuality.fromJson(Map<String, dynamic> json) =>
+      const PremiumStoryFeatureVideoQuality();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumStoryFeatureVideoQuality copyWith() =>
+      const PremiumStoryFeatureVideoQuality();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumStoryFeatureVideoQuality';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -13,7 +13,7 @@ final class GetPremiumGiftCodePaymentOptions
     required this.boostedChatId,
   });
 
-  /// Identifier of the channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by receivers of the gift codes and which is administered by the user; 0 if none
   final int boostedChatId;
 
   @override

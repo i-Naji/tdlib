@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
+/// Pins a message in a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel
 ///
 /// Returns [Ok].
 final class PinChatMessage extends TdFunction<Ok> {
-  /// Pins a message in a chat; requires can_pin_messages rights or can_edit_messages rights in the channel
+  /// Pins a message in a chat; requires can_pin_messages member right if the chat is a basic group or supergroup, or can_edit_messages administrator right if the chat is a channel
   const PinChatMessage({
     required this.chatId,
     required this.messageId,

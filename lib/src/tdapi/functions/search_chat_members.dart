@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels
+/// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel
 ///
 /// Returns [ChatMembers].
 final class SearchChatMembers extends TdFunction<ChatMembers> {
-  /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights in channels
+  /// Searches for a specified query in the first name, last name and usernames of the members of a specified chat. Requires administrator rights if the chat is a channel
   const SearchChatMembers({
     required this.chatId,
     required this.query,

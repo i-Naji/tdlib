@@ -19,7 +19,7 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   /// Target chat
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the messages will be sent
+  /// If not 0, the message thread identifier in which the messages will be sent
   final int messageThreadId;
 
   /// Information about the message or story to be replied; pass null if none

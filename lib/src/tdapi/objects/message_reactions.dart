@@ -14,7 +14,7 @@ final class MessageReactions extends TdObject {
   /// List of added reactions
   final List<MessageReaction> reactions;
 
-  /// True, if the reactions are tags and Telegram Premium users can filter messages by them; currently, always false
+  /// True, if the reactions are tags and Telegram Premium users can filter messages by them
   final bool areTags;
 
   /// Parses a [MessageReactions] from TDLib JSON.

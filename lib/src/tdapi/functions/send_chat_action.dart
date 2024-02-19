@@ -17,7 +17,7 @@ final class SendChatAction extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the action was performed
+  /// If not 0, the message thread identifier in which the action was performed
   final int messageThreadId;
 
   /// The action description; pass null to cancel the currently active action

@@ -3,19 +3,15 @@
 
 part of '../tdapi.dart';
 
-/// Changes privacy settings of a story. Can be called only if story.can_be_edited == true
+/// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_be_edited == true
 ///
 /// Returns [Ok].
 final class SetStoryPrivacySettings extends TdFunction<Ok> {
-  /// Changes privacy settings of a story. Can be called only if story.can_be_edited == true
+  /// Changes privacy settings of a story. The method can be called only for stories posted on behalf of the current user and if story.can_be_edited == true
   const SetStoryPrivacySettings({
-    required this.storySenderChatId,
     required this.storyId,
     required this.privacySettings,
   });
-
-  /// Identifier of the chat that posted the story
-  final int storySenderChatId;
 
   /// Identifier of the story
   final int storyId;
@@ -26,7 +22,6 @@ final class SetStoryPrivacySettings extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
         'privacy_settings': privacySettings.toJson(),
         if (extra != null) '@extra': extra,
@@ -35,12 +30,10 @@ final class SetStoryPrivacySettings extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetStoryPrivacySettings copyWith({
-    int? storySenderChatId,
     int? storyId,
     StoryPrivacySettings? privacySettings,
   }) =>
       SetStoryPrivacySettings(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
         privacySettings: privacySettings ?? this.privacySettings,
       );

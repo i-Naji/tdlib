@@ -26,7 +26,10 @@ final class SupergroupFullInfo extends TdObject {
     required this.isAllHistoryAvailable,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
+    required this.myBoostCount,
+    required this.unrestrictBoostCount,
     required this.stickerSetId,
+    required this.customEmojiStickerSetId,
     this.location,
     this.inviteLink,
     required this.botCommands,
@@ -90,11 +93,20 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
-  /// True, if the channel has pinned stories
+  /// True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
 
-  /// Identifier of the supergroup sticker set; 0 if none
+  /// Number of times the current user boosted the supergroup or channel
+  final int myBoostCount;
+
+  /// Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified
+  final int unrestrictBoostCount;
+
+  /// Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none
   final int stickerSetId;
+
+  /// Identifier of the custom emoji sticker set that can be used in the supergroup without Telegram Premium subscription; 0 if none
+  final int customEmojiStickerSetId;
 
   /// Location to which the supergroup is connected; may be null if none
   final ChatLocation? location;
@@ -143,7 +155,10 @@ final class SupergroupFullInfo extends TdObject {
         hasAggressiveAntiSpamEnabled:
             _readBool(json['has_aggressive_anti_spam_enabled']),
         hasPinnedStories: _readBool(json['has_pinned_stories']),
+        myBoostCount: _readInt(json['my_boost_count']),
+        unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
         stickerSetId: _readInt(json['sticker_set_id']),
+        customEmojiStickerSetId: _readInt(json['custom_emoji_sticker_set_id']),
         location: _readOptional(json['location'], ChatLocation.fromJson),
         inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
         botCommands: _readList<BotCommands>(
@@ -178,7 +193,10 @@ final class SupergroupFullInfo extends TdObject {
         'is_all_history_available': isAllHistoryAvailable,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
         'has_pinned_stories': hasPinnedStories,
+        'my_boost_count': myBoostCount,
+        'unrestrict_boost_count': unrestrictBoostCount,
         'sticker_set_id': stickerSetId.toString(),
+        'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),
         'bot_commands': [for (final e in botCommands) e.toJson()],
@@ -208,7 +226,10 @@ final class SupergroupFullInfo extends TdObject {
     bool? isAllHistoryAvailable,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPinnedStories,
+    int? myBoostCount,
+    int? unrestrictBoostCount,
     int? stickerSetId,
+    int? customEmojiStickerSetId,
     ChatLocation? Function()? location,
     ChatInviteLink? Function()? inviteLink,
     List<BotCommands>? botCommands,
@@ -241,7 +262,11 @@ final class SupergroupFullInfo extends TdObject {
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        myBoostCount: myBoostCount ?? this.myBoostCount,
+        unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
         stickerSetId: stickerSetId ?? this.stickerSetId,
+        customEmojiStickerSetId:
+            customEmojiStickerSetId ?? this.customEmojiStickerSetId,
         location: location != null ? location() : this.location,
         inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         botCommands: botCommands ?? this.botCommands,

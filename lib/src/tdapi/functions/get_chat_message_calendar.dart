@@ -12,7 +12,7 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
     required this.chatId,
     required this.filter,
     required this.fromMessageId,
-    this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
   });
 
   /// Identifier of the chat in which to return information about messages
@@ -24,8 +24,8 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// The message identifier from which to return information about messages; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// If not null, only messages in the specified Saved Messages topic will be considered; pass null to consider all messages, or for chats other than Saved Messages
-  final SavedMessagesTopic? savedMessagesTopic;
+  /// If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
+  final int savedMessagesTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -33,7 +33,7 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
         'chat_id': chatId,
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
-        'saved_messages_topic': savedMessagesTopic?.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -43,15 +43,13 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
     int? chatId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
-    SavedMessagesTopic? Function()? savedMessagesTopic,
+    int? savedMessagesTopicId,
   }) =>
       GetChatMessageCalendar(
         chatId: chatId ?? this.chatId,
         filter: filter ?? this.filter,
         fromMessageId: fromMessageId ?? this.fromMessageId,
-        savedMessagesTopic: savedMessagesTopic != null
-            ? savedMessagesTopic()
-            : this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );
 
   /// TDLib type name.

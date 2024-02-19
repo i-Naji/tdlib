@@ -18,6 +18,8 @@ final class ChatBoostLevelFeatures extends TdObject {
     required this.canSetEmojiStatus,
     required this.chatThemeBackgroundCount,
     required this.canSetCustomBackground,
+    required this.canSetCustomEmojiStickerSet,
+    required this.canRecognizeSpeech,
     this.extra,
     this.clientId,
   });
@@ -55,6 +57,12 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// True, if custom background can be set in the chat for all users
   final bool canSetCustomBackground;
 
+  /// True, if custom emoji sticker set can be set for the chat
+  final bool canSetCustomEmojiStickerSet;
+
+  /// True, if speech recognition can be used for video note and voice note messages by all users
+  final bool canRecognizeSpeech;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -79,6 +87,9 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetEmojiStatus: _readBool(json['can_set_emoji_status']),
         chatThemeBackgroundCount: _readInt(json['chat_theme_background_count']),
         canSetCustomBackground: _readBool(json['can_set_custom_background']),
+        canSetCustomEmojiStickerSet:
+            _readBool(json['can_set_custom_emoji_sticker_set']),
+        canRecognizeSpeech: _readBool(json['can_recognize_speech']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -98,6 +109,8 @@ final class ChatBoostLevelFeatures extends TdObject {
         'can_set_emoji_status': canSetEmojiStatus,
         'chat_theme_background_count': chatThemeBackgroundCount,
         'can_set_custom_background': canSetCustomBackground,
+        'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
+        'can_recognize_speech': canRecognizeSpeech,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -114,6 +127,8 @@ final class ChatBoostLevelFeatures extends TdObject {
     bool? canSetEmojiStatus,
     int? chatThemeBackgroundCount,
     bool? canSetCustomBackground,
+    bool? canSetCustomEmojiStickerSet,
+    bool? canRecognizeSpeech,
     dynamic extra,
     int? clientId,
   }) =>
@@ -136,6 +151,9 @@ final class ChatBoostLevelFeatures extends TdObject {
             chatThemeBackgroundCount ?? this.chatThemeBackgroundCount,
         canSetCustomBackground:
             canSetCustomBackground ?? this.canSetCustomBackground,
+        canSetCustomEmojiStickerSet:
+            canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
+        canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

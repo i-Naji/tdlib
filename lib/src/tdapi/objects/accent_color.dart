@@ -11,7 +11,7 @@ final class AccentColor extends TdObject {
     required this.builtInAccentColorId,
     required this.lightThemeColors,
     required this.darkThemeColors,
-    required this.minChatBoostLevel,
+    required this.minChannelChatBoostLevel,
   });
 
   /// Accent color identifier
@@ -26,8 +26,8 @@ final class AccentColor extends TdObject {
   /// The list of 1-3 colors in RGB format, describing the accent color, as expected to be shown in dark themes
   final List<int> darkThemeColors;
 
-  /// The minimum chat boost level required to use the color
-  final int minChatBoostLevel;
+  /// The minimum chat boost level required to use the color in a channel chat
+  final int minChannelChatBoostLevel;
 
   /// Parses a [AccentColor] from TDLib JSON.
   factory AccentColor.fromJson(Map<String, dynamic> json) => AccentColor(
@@ -35,7 +35,8 @@ final class AccentColor extends TdObject {
         builtInAccentColorId: _readInt(json['built_in_accent_color_id']),
         lightThemeColors: _readList<int>(json['light_theme_colors'], _readInt),
         darkThemeColors: _readList<int>(json['dark_theme_colors'], _readInt),
-        minChatBoostLevel: _readInt(json['min_chat_boost_level']),
+        minChannelChatBoostLevel:
+            _readInt(json['min_channel_chat_boost_level']),
       );
 
   @override
@@ -45,7 +46,7 @@ final class AccentColor extends TdObject {
         'built_in_accent_color_id': builtInAccentColorId,
         'light_theme_colors': lightThemeColors,
         'dark_theme_colors': darkThemeColors,
-        'min_chat_boost_level': minChatBoostLevel,
+        'min_channel_chat_boost_level': minChannelChatBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -55,14 +56,15 @@ final class AccentColor extends TdObject {
     int? builtInAccentColorId,
     List<int>? lightThemeColors,
     List<int>? darkThemeColors,
-    int? minChatBoostLevel,
+    int? minChannelChatBoostLevel,
   }) =>
       AccentColor(
         id: id ?? this.id,
         builtInAccentColorId: builtInAccentColorId ?? this.builtInAccentColorId,
         lightThemeColors: lightThemeColors ?? this.lightThemeColors,
         darkThemeColors: darkThemeColors ?? this.darkThemeColors,
-        minChatBoostLevel: minChatBoostLevel ?? this.minChatBoostLevel,
+        minChannelChatBoostLevel:
+            minChannelChatBoostLevel ?? this.minChannelChatBoostLevel,
       );
 
   /// TDLib type name.

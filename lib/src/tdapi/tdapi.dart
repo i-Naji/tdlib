@@ -319,7 +319,6 @@ part 'functions/get_payment_form.dart';
 part 'functions/get_payment_receipt.dart';
 part 'functions/get_phone_number_info.dart';
 part 'functions/get_phone_number_info_sync.dart';
-part 'functions/get_pinned_saved_messages_topics.dart';
 part 'functions/get_poll_voters.dart';
 part 'functions/get_preferred_country_language.dart';
 part 'functions/get_premium_features.dart';
@@ -346,7 +345,6 @@ part 'functions/get_saved_animations.dart';
 part 'functions/get_saved_messages_tags.dart';
 part 'functions/get_saved_messages_topic_history.dart';
 part 'functions/get_saved_messages_topic_message_by_date.dart';
-part 'functions/get_saved_messages_topics.dart';
 part 'functions/get_saved_notification_sound.dart';
 part 'functions/get_saved_notification_sounds.dart';
 part 'functions/get_saved_order_info.dart';
@@ -405,6 +403,7 @@ part 'functions/leave_group_call.dart';
 part 'functions/load_active_stories.dart';
 part 'functions/load_chats.dart';
 part 'functions/load_group_call_participants.dart';
+part 'functions/load_saved_messages_topics.dart';
 part 'functions/log_out.dart';
 part 'functions/open_chat.dart';
 part 'functions/open_chat_similar_chat.dart';
@@ -616,7 +615,9 @@ part 'functions/set_sticker_set_thumbnail.dart';
 part 'functions/set_sticker_set_title.dart';
 part 'functions/set_story_privacy_settings.dart';
 part 'functions/set_story_reaction.dart';
+part 'functions/set_supergroup_custom_emoji_sticker_set.dart';
 part 'functions/set_supergroup_sticker_set.dart';
+part 'functions/set_supergroup_unrestrict_boost_count.dart';
 part 'functions/set_supergroup_username.dart';
 part 'functions/set_tdlib_parameters.dart';
 part 'functions/set_user_personal_profile_photo.dart';
@@ -866,8 +867,6 @@ part 'objects/found_file_downloads.dart';
 part 'objects/found_messages.dart';
 part 'objects/found_position.dart';
 part 'objects/found_positions.dart';
-part 'objects/found_saved_messages_topic.dart';
-part 'objects/found_saved_messages_topics.dart';
 part 'objects/found_web_app.dart';
 part 'objects/game.dart';
 part 'objects/game_high_score.dart';
@@ -1059,6 +1058,7 @@ part 'objects/saved_credentials.dart';
 part 'objects/saved_messages_tag.dart';
 part 'objects/saved_messages_tags.dart';
 part 'objects/saved_messages_topic.dart';
+part 'objects/saved_messages_topic_type.dart';
 part 'objects/scope_autosave_settings.dart';
 part 'objects/scope_notification_settings.dart';
 part 'objects/search_messages_filter.dart';
@@ -1165,14 +1165,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.24';
+const String tdlibVersion = '1.8.25';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'c5c55092dd61b9eb15d6bbfd0f02c04c593450e7';
+const String tdlibSchemaCommit = 'd93a99e3351db82573d765ce4f5e84714c277518';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'c5c55092dd61b9eb15d6bbfd0f02c04c593450e7',
+  'd93a99e3351db82573d765ce4f5e84714c277518',
 ];
 
 /// Base class of every TDLib object.
@@ -1576,11 +1576,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'foundWebApp': FoundWebApp.fromJson,
   'webAppInfo': WebAppInfo.fromJson,
   'messageThreadInfo': MessageThreadInfo.fromJson,
-  'savedMessagesTopicMyNotes': SavedMessagesTopicMyNotes.fromJson,
-  'savedMessagesTopicAuthorHidden': SavedMessagesTopicAuthorHidden.fromJson,
-  'savedMessagesTopicSavedFromChat': SavedMessagesTopicSavedFromChat.fromJson,
-  'foundSavedMessagesTopic': FoundSavedMessagesTopic.fromJson,
-  'foundSavedMessagesTopics': FoundSavedMessagesTopics.fromJson,
+  'savedMessagesTopicTypeMyNotes': SavedMessagesTopicTypeMyNotes.fromJson,
+  'savedMessagesTopicTypeAuthorHidden':
+      SavedMessagesTopicTypeAuthorHidden.fromJson,
+  'savedMessagesTopicTypeSavedFromChat':
+      SavedMessagesTopicTypeSavedFromChat.fromJson,
+  'savedMessagesTopic': SavedMessagesTopic.fromJson,
   'forumTopicIcon': ForumTopicIcon.fromJson,
   'forumTopicInfo': ForumTopicInfo.fromJson,
   'forumTopic': ForumTopic.fromJson,
@@ -1825,6 +1826,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageChatSetTheme': MessageChatSetTheme.fromJson,
   'messageChatSetMessageAutoDeleteTime':
       MessageChatSetMessageAutoDeleteTime.fromJson,
+  'messageChatBoost': MessageChatBoost.fromJson,
   'messageForumTopicCreated': MessageForumTopicCreated.fromJson,
   'messageForumTopicEdited': MessageForumTopicEdited.fromJson,
   'messageForumTopicIsClosedToggled': MessageForumTopicIsClosedToggled.fromJson,
@@ -2140,6 +2142,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatEventPhotoChanged': ChatEventPhotoChanged.fromJson,
   'chatEventSlowModeDelayChanged': ChatEventSlowModeDelayChanged.fromJson,
   'chatEventStickerSetChanged': ChatEventStickerSetChanged.fromJson,
+  'chatEventCustomEmojiStickerSetChanged':
+      ChatEventCustomEmojiStickerSetChanged.fromJson,
   'chatEventTitleChanged': ChatEventTitleChanged.fromJson,
   'chatEventUsernameChanged': ChatEventUsernameChanged.fromJson,
   'chatEventActiveUsernamesChanged': ChatEventActiveUsernamesChanged.fromJson,
@@ -2240,6 +2244,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureChatBoost': PremiumFeatureChatBoost.fromJson,
   'premiumFeatureAccentColor': PremiumFeatureAccentColor.fromJson,
   'premiumFeatureBackgroundForBoth': PremiumFeatureBackgroundForBoth.fromJson,
+  'premiumFeatureSavedMessagesTags': PremiumFeatureSavedMessagesTags.fromJson,
+  'premiumFeatureMessagePrivacy': PremiumFeatureMessagePrivacy.fromJson,
+  'premiumFeatureLastSeenTimes': PremiumFeatureLastSeenTimes.fromJson,
   'premiumStoryFeaturePriorityOrder': PremiumStoryFeaturePriorityOrder.fromJson,
   'premiumStoryFeatureStealthMode': PremiumStoryFeatureStealthMode.fromJson,
   'premiumStoryFeaturePermanentViewsHistory':
@@ -2249,6 +2256,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumStoryFeatureSaveStories': PremiumStoryFeatureSaveStories.fromJson,
   'premiumStoryFeatureLinksAndFormatting':
       PremiumStoryFeatureLinksAndFormatting.fromJson,
+  'premiumStoryFeatureVideoQuality': PremiumStoryFeatureVideoQuality.fromJson,
   'premiumLimit': PremiumLimit.fromJson,
   'premiumFeatures': PremiumFeatures.fromJson,
   'premiumSourceLimitExceeded': PremiumSourceLimitExceeded.fromJson,
@@ -2710,7 +2718,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatHasScheduledMessages': UpdateChatHasScheduledMessages.fromJson,
   'updateChatFolders': UpdateChatFolders.fromJson,
   'updateChatOnlineMemberCount': UpdateChatOnlineMemberCount.fromJson,
-  'updatePinnedSavedMessagesTopics': UpdatePinnedSavedMessagesTopics.fromJson,
+  'updateSavedMessagesTopic': UpdateSavedMessagesTopic.fromJson,
+  'updateSavedMessagesTopicCount': UpdateSavedMessagesTopicCount.fromJson,
   'updateForumTopicInfo': UpdateForumTopicInfo.fromJson,
   'updateScopeNotificationSettings': UpdateScopeNotificationSettings.fromJson,
   'updateNotification': UpdateNotification.fromJson,

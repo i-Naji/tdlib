@@ -21,7 +21,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Identifier of the chat to which to forward messages
   final int chatId;
 
-  /// If not 0, a message thread identifier in which the message will be sent; for forum threads only
+  /// If not 0, the message thread identifier in which the message will be sent; for forum threads only
   final int messageThreadId;
 
   /// Identifier of the chat from which to forward messages

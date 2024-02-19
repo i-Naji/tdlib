@@ -10,8 +10,12 @@ final class GetChatBoostLevelFeatures
     extends TdFunction<ChatBoostLevelFeatures> {
   /// Returns list of features available on the specific chat boost level; this is an offline request
   const GetChatBoostLevelFeatures({
+    required this.isChannel,
     required this.level,
   });
+
+  /// Pass true to get the list of features for channels; pass false to get the list of features for supergroups
+  final bool isChannel;
 
   /// Chat boost level
   final int level;
@@ -19,6 +23,7 @@ final class GetChatBoostLevelFeatures
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'is_channel': isChannel,
         'level': level,
         if (extra != null) '@extra': extra,
       };
@@ -26,9 +31,11 @@ final class GetChatBoostLevelFeatures
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatBoostLevelFeatures copyWith({
+    bool? isChannel,
     int? level,
   }) =>
       GetChatBoostLevelFeatures(
+        isChannel: isChannel ?? this.isChannel,
         level: level ?? this.level,
       );
 

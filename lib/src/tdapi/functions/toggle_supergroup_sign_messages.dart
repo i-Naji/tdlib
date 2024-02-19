@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right
+/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right
 ///
 /// Returns [Ok].
 final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
-  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info administrator right
+  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right
   const ToggleSupergroupSignMessages({
     required this.supergroupId,
     required this.signMessages,

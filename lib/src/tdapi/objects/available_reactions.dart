@@ -29,7 +29,7 @@ final class AvailableReactions extends TdObject {
   /// True, if any custom emoji reaction can be added by Telegram Premium subscribers
   final bool allowCustomEmoji;
 
-  /// True, if the reactions will be tags and the message can be found by them; currently, always false
+  /// True, if the reactions will be tags and the message can be found by them
   final bool areTags;
 
   /// The reason why the current user can't add reactions to the message, despite some other users can; may be null if none

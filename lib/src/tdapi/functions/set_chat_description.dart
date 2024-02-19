@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
+/// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right
 ///
 /// Returns [Ok].
 final class SetChatDescription extends TdFunction<Ok> {
-  /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info administrator right
+  /// Changes information about a chat. Available for basic groups, supergroups, and channels. Requires can_change_info member right
   const SetChatDescription({
     required this.chatId,
     required this.description,

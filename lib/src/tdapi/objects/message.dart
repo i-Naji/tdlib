@@ -39,11 +39,12 @@ final class Message extends TdObject {
     required this.unreadReactions,
     this.replyTo,
     required this.messageThreadId,
-    this.savedMessagesTopic,
+    required this.savedMessagesTopicId,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
     required this.restrictionReason,
@@ -149,8 +150,8 @@ final class Message extends TdObject {
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// Information about topic of the message in the Saved Messages chat; may be null for messages not from Saved Messages
-  final SavedMessagesTopic? savedMessagesTopic;
+  /// Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages
+  final int savedMessagesTopicId;
 
   /// The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
@@ -163,6 +164,9 @@ final class Message extends TdObject {
 
   /// If non-zero, the user identifier of the bot through which this message was sent
   final int viaBotUserId;
+
+  /// Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
+  final int senderBoostCount;
 
   /// For channel posts and anonymous group messages, optional author signature
   final String authorSignature;
@@ -231,13 +235,13 @@ final class Message extends TdObject {
             (e) => _readObject(e, UnreadReaction.fromJson)),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
-        savedMessagesTopic: _readOptional(
-            json['saved_messages_topic'], SavedMessagesTopic.fromJson),
+        savedMessagesTopicId: _readInt(json['saved_messages_topic_id']),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
         selfDestructIn: _readDouble(json['self_destruct_in']),
         autoDeleteIn: _readDouble(json['auto_delete_in']),
         viaBotUserId: _readInt(json['via_bot_user_id']),
+        senderBoostCount: _readInt(json['sender_boost_count']),
         authorSignature: _readString(json['author_signature']),
         mediaAlbumId: _readInt(json['media_album_id']),
         restrictionReason: _readString(json['restriction_reason']),
@@ -282,11 +286,12 @@ final class Message extends TdObject {
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
-        'saved_messages_topic': savedMessagesTopic?.toJson(),
+        'saved_messages_topic_id': savedMessagesTopicId,
         'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
+        'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
         'restriction_reason': restrictionReason,
@@ -329,11 +334,12 @@ final class Message extends TdObject {
     List<UnreadReaction>? unreadReactions,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
-    SavedMessagesTopic? Function()? savedMessagesTopic,
+    int? savedMessagesTopicId,
     MessageSelfDestructType? Function()? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
     String? restrictionReason,
@@ -382,15 +388,14 @@ final class Message extends TdObject {
         unreadReactions: unreadReactions ?? this.unreadReactions,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        savedMessagesTopic: savedMessagesTopic != null
-            ? savedMessagesTopic()
-            : this.savedMessagesTopic,
+        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
             : this.selfDestructType,
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+        senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
         restrictionReason: restrictionReason ?? this.restrictionReason,

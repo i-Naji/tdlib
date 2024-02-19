@@ -4,133 +4,79 @@
 part of '../tdapi.dart';
 
 /// Contains information about a Saved Messages topic
-///
-/// One of: [SavedMessagesTopicMyNotes], [SavedMessagesTopicAuthorHidden], [SavedMessagesTopicSavedFromChat]; or [UndecodedSavedMessagesTopic] for a type newer than this API.
-sealed class SavedMessagesTopic extends TdObject {
-  const SavedMessagesTopic();
-
-  /// Parses whichever [SavedMessagesTopic] subtype the JSON describes.
-  factory SavedMessagesTopic.fromJson(Map<String, dynamic> json) {
-    final object = tdObjectFactories[json['@type']]?.call(json);
-    return object is SavedMessagesTopic
-        ? object
-        : UndecodedSavedMessagesTopic(json);
-  }
-
-  /// Returns a copy of this object.
-  SavedMessagesTopic copyWith();
-}
-
-/// A [SavedMessagesTopic] this API can't decode (sent by a newer TDLib).
-final class UndecodedSavedMessagesTopic extends SavedMessagesTopic {
-  const UndecodedSavedMessagesTopic(this.json);
-
-  /// The raw TDLib JSON object.
-  final Map<String, dynamic> json;
-
-  @override
-  dynamic get extra => json['@extra'];
-
-  @override
-  int? get clientId => _readClientId(json['@client_id']);
-
-  @override
-  Map<String, dynamic> toJson() => json;
-
-  @override
-  UndecodedSavedMessagesTopic copyWith() => this;
-
-  @override
-  String getConstructor() => _readString(json['@type']);
-}
-
-/// Topic containing messages sent by the current user of forwarded from an unknown chat
-final class SavedMessagesTopicMyNotes extends SavedMessagesTopic {
-  /// Topic containing messages sent by the current user of forwarded from an unknown chat
-  const SavedMessagesTopicMyNotes();
-
-  /// Parses a [SavedMessagesTopicMyNotes] from TDLib JSON.
-  factory SavedMessagesTopicMyNotes.fromJson(Map<String, dynamic> json) =>
-      const SavedMessagesTopicMyNotes();
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SavedMessagesTopicMyNotes copyWith() => const SavedMessagesTopicMyNotes();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'savedMessagesTopicMyNotes';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// Topic containing messages forwarded from a user with hidden privacy
-final class SavedMessagesTopicAuthorHidden extends SavedMessagesTopic {
-  /// Topic containing messages forwarded from a user with hidden privacy
-  const SavedMessagesTopicAuthorHidden();
-
-  /// Parses a [SavedMessagesTopicAuthorHidden] from TDLib JSON.
-  factory SavedMessagesTopicAuthorHidden.fromJson(Map<String, dynamic> json) =>
-      const SavedMessagesTopicAuthorHidden();
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SavedMessagesTopicAuthorHidden copyWith() =>
-      const SavedMessagesTopicAuthorHidden();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'savedMessagesTopicAuthorHidden';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// Topic containing messages forwarded from a specific chat
-final class SavedMessagesTopicSavedFromChat extends SavedMessagesTopic {
-  /// Topic containing messages forwarded from a specific chat
-  const SavedMessagesTopicSavedFromChat({
-    required this.chatId,
+final class SavedMessagesTopic extends TdObject {
+  /// Contains information about a Saved Messages topic
+  const SavedMessagesTopic({
+    required this.id,
+    required this.type,
+    required this.isPinned,
+    required this.order,
+    this.lastMessage,
+    this.draftMessage,
   });
 
-  /// Identifier of the chat
-  final int chatId;
+  /// Unique topic identifier
+  final int id;
 
-  /// Parses a [SavedMessagesTopicSavedFromChat] from TDLib JSON.
-  factory SavedMessagesTopicSavedFromChat.fromJson(Map<String, dynamic> json) =>
-      SavedMessagesTopicSavedFromChat(
-        chatId: _readInt(json['chat_id']),
+  /// Type of the topic
+  final SavedMessagesTopicType type;
+
+  /// True, if the topic is pinned
+  final bool isPinned;
+
+  /// A parameter used to determine order of the topic in the topic list. Topics must be sorted by the order in descending order
+  final int order;
+
+  /// Last message in the topic; may be null if none or unknown
+  final Message? lastMessage;
+
+  /// A draft of a message in the topic; may be null if none
+  final DraftMessage? draftMessage;
+
+  /// Parses a [SavedMessagesTopic] from TDLib JSON.
+  factory SavedMessagesTopic.fromJson(Map<String, dynamic> json) =>
+      SavedMessagesTopic(
+        id: _readInt(json['id']),
+        type: _readObject(json['type'], SavedMessagesTopicType.fromJson),
+        isPinned: _readBool(json['is_pinned']),
+        order: _readInt(json['order']),
+        lastMessage: _readOptional(json['last_message'], Message.fromJson),
+        draftMessage:
+            _readOptional(json['draft_message'], DraftMessage.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'chat_id': chatId,
+        'id': id,
+        'type': type.toJson(),
+        'is_pinned': isPinned,
+        'order': order.toString(),
+        'last_message': lastMessage?.toJson(),
+        'draft_message': draftMessage?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  SavedMessagesTopicSavedFromChat copyWith({
-    int? chatId,
+  SavedMessagesTopic copyWith({
+    int? id,
+    SavedMessagesTopicType? type,
+    bool? isPinned,
+    int? order,
+    Message? Function()? lastMessage,
+    DraftMessage? Function()? draftMessage,
   }) =>
-      SavedMessagesTopicSavedFromChat(
-        chatId: chatId ?? this.chatId,
+      SavedMessagesTopic(
+        id: id ?? this.id,
+        type: type ?? this.type,
+        isPinned: isPinned ?? this.isPinned,
+        order: order ?? this.order,
+        lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+        draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'savedMessagesTopicSavedFromChat';
+  static const String CONSTRUCTOR = 'savedMessagesTopic';
 
   @override
   String getConstructor() => CONSTRUCTOR;

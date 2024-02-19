@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a tag used in Saved Messages
+/// Represents a tag used in Saved Messages or a Saved Messages topic
 final class SavedMessagesTag extends TdObject {
-  /// Represents a tag used in Saved Messages
+  /// Represents a tag used in Saved Messages or a Saved Messages topic
   const SavedMessagesTag({
     required this.tag,
     required this.label,
@@ -15,7 +15,7 @@ final class SavedMessagesTag extends TdObject {
   /// The tag
   final ReactionType tag;
 
-  /// Label of the tag; 0-12 characters
+  /// Label of the tag; 0-12 characters. Always empty if the tag is returned for a Saved Messages topic
   final String label;
 
   /// Number of times the tag was used; may be 0 if the tag has non-empty label

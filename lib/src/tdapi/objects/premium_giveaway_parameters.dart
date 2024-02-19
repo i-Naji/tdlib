@@ -16,10 +16,10 @@ final class PremiumGiveawayParameters extends TdObject {
     required this.prizeDescription,
   });
 
-  /// Identifier of the channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup
   final int boostedChatId;
 
-  /// Identifiers of other channel chats that must be subscribed by the users to be eligible for the giveaway. There can be up to getOption("giveaway_additional_chat_count_max") additional chats
+  /// Identifiers of other supergroup or channel chats that must be subscribed by the users to be eligible for the giveaway. There can be up to getOption("giveaway_additional_chat_count_max") additional chats
   final List<int> additionalChatIds;
 
   /// Point in time (Unix timestamp) when the giveaway is expected to be performed; must be 60-getOption("giveaway_duration_max") seconds in the future in scheduled giveaways

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the view_as_topics setting of a forum chat
+/// Changes the view_as_topics setting of a forum chat or Saved Messages
 ///
 /// Returns [Ok].
 final class ToggleChatViewAsTopics extends TdFunction<Ok> {
-  /// Changes the view_as_topics setting of a forum chat
+  /// Changes the view_as_topics setting of a forum chat or Saved Messages
   const ToggleChatViewAsTopics({
     required this.chatId,
     required this.viewAsTopics,
