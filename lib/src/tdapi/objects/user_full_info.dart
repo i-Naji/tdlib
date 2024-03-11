@@ -22,6 +22,7 @@ final class UserFullInfo extends TdObject {
     this.bio,
     required this.premiumGiftOptions,
     required this.groupInCommonCount,
+    this.businessInfo,
     this.botInfo,
     this.extra,
     this.clientId,
@@ -72,6 +73,9 @@ final class UserFullInfo extends TdObject {
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
+  /// Information about business settings for Telegram Business accounts; may be null if none
+  final BusinessInfo? businessInfo;
+
   /// For bots, information about the bot; may be null if the user isn't a bot
   final BotInfo? botInfo;
 
@@ -105,6 +109,8 @@ final class UserFullInfo extends TdObject {
             json['premium_gift_options'],
             (e) => _readObject(e, PremiumPaymentOption.fromJson)),
         groupInCommonCount: _readInt(json['group_in_common_count']),
+        businessInfo:
+            _readOptional(json['business_info'], BusinessInfo.fromJson),
         botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -131,6 +137,7 @@ final class UserFullInfo extends TdObject {
           for (final e in premiumGiftOptions) e.toJson()
         ],
         'group_in_common_count': groupInCommonCount,
+        'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
       };
 
@@ -152,6 +159,7 @@ final class UserFullInfo extends TdObject {
     FormattedText? Function()? bio,
     List<PremiumPaymentOption>? premiumGiftOptions,
     int? groupInCommonCount,
+    BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
     dynamic extra,
     int? clientId,
@@ -176,6 +184,7 @@ final class UserFullInfo extends TdObject {
         bio: bio != null ? bio() : this.bio,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
         botInfo: botInfo != null ? botInfo() : this.botInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

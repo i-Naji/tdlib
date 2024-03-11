@@ -18,6 +18,7 @@ final class Chat extends TdObject {
     required this.permissions,
     this.lastMessage,
     required this.positions,
+    required this.chatLists,
     this.messageSenderId,
     this.blockList,
     required this.hasProtectedContent,
@@ -82,6 +83,9 @@ final class Chat extends TdObject {
 
   /// Positions of the chat in chat lists
   final List<ChatPosition> positions;
+
+  /// Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list
+  final List<ChatList> chatLists;
 
   /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender
   final MessageSender? messageSenderId;
@@ -190,6 +194,8 @@ final class Chat extends TdObject {
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
         positions: _readList<ChatPosition>(
             json['positions'], (e) => _readObject(e, ChatPosition.fromJson)),
+        chatLists: _readList<ChatList>(
+            json['chat_lists'], (e) => _readObject(e, ChatList.fromJson)),
         messageSenderId:
             _readOptional(json['message_sender_id'], MessageSender.fromJson),
         blockList: _readOptional(json['block_list'], BlockList.fromJson),
@@ -245,6 +251,7 @@ final class Chat extends TdObject {
         'permissions': permissions.toJson(),
         'last_message': lastMessage?.toJson(),
         'positions': [for (final e in positions) e.toJson()],
+        'chat_lists': [for (final e in chatLists) e.toJson()],
         'message_sender_id': messageSenderId?.toJson(),
         'block_list': blockList?.toJson(),
         'has_protected_content': hasProtectedContent,
@@ -289,6 +296,7 @@ final class Chat extends TdObject {
     ChatPermissions? permissions,
     Message? Function()? lastMessage,
     List<ChatPosition>? positions,
+    List<ChatList>? chatLists,
     MessageSender? Function()? messageSenderId,
     BlockList? Function()? blockList,
     bool? hasProtectedContent,
@@ -334,6 +342,7 @@ final class Chat extends TdObject {
         permissions: permissions ?? this.permissions,
         lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
         positions: positions ?? this.positions,
+        chatLists: chatLists ?? this.chatLists,
         messageSenderId:
             messageSenderId != null ? messageSenderId() : this.messageSenderId,
         blockList: blockList != null ? blockList() : this.blockList,

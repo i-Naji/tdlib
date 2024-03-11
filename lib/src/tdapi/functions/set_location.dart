@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer
+/// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer. Must not be called if the user has a business location
 ///
 /// Returns [Ok].
 final class SetLocation extends TdFunction<Ok> {
-  /// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer
+  /// Changes the location of the current user. Needs to be called if getOption("is_location_visible") is true and location changes for more than 1 kilometer. Must not be called if the user has a business location
   const SetLocation({
     required this.location,
   });

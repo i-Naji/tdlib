@@ -10,6 +10,7 @@ final class ChatFolderInfo extends TdObject {
     required this.id,
     required this.title,
     required this.icon,
+    required this.colorId,
     required this.isShareable,
     required this.hasMyInviteLinks,
     this.extra,
@@ -24,6 +25,9 @@ final class ChatFolderInfo extends TdObject {
 
   /// The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
+
+  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  final int colorId;
 
   /// True, if at least one link has been created for the folder
   final bool isShareable;
@@ -44,6 +48,7 @@ final class ChatFolderInfo extends TdObject {
         id: _readInt(json['id']),
         title: _readString(json['title']),
         icon: _readObject(json['icon'], ChatFolderIcon.fromJson),
+        colorId: _readInt(json['color_id']),
         isShareable: _readBool(json['is_shareable']),
         hasMyInviteLinks: _readBool(json['has_my_invite_links']),
         extra: json['@extra'],
@@ -56,6 +61,7 @@ final class ChatFolderInfo extends TdObject {
         'id': id,
         'title': title,
         'icon': icon.toJson(),
+        'color_id': colorId,
         'is_shareable': isShareable,
         'has_my_invite_links': hasMyInviteLinks,
       };
@@ -66,6 +72,7 @@ final class ChatFolderInfo extends TdObject {
     int? id,
     String? title,
     ChatFolderIcon? icon,
+    int? colorId,
     bool? isShareable,
     bool? hasMyInviteLinks,
     dynamic extra,
@@ -75,6 +82,7 @@ final class ChatFolderInfo extends TdObject {
         id: id ?? this.id,
         title: title ?? this.title,
         icon: icon ?? this.icon,
+        colorId: colorId ?? this.colorId,
         isShareable: isShareable ?? this.isShareable,
         hasMyInviteLinks: hasMyInviteLinks ?? this.hasMyInviteLinks,
         extra: extra ?? this.extra,

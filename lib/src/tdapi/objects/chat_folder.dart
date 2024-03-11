@@ -9,6 +9,7 @@ final class ChatFolder extends TdObject {
   const ChatFolder({
     required this.title,
     this.icon,
+    required this.colorId,
     required this.isShareable,
     required this.pinnedChatIds,
     required this.includedChatIds,
@@ -30,6 +31,9 @@ final class ChatFolder extends TdObject {
 
   /// The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
   final ChatFolderIcon? icon;
+
+  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled
+  final int colorId;
 
   /// True, if at least one link has been created for the folder
   final bool isShareable;
@@ -79,6 +83,7 @@ final class ChatFolder extends TdObject {
   factory ChatFolder.fromJson(Map<String, dynamic> json) => ChatFolder(
         title: _readString(json['title']),
         icon: _readOptional(json['icon'], ChatFolderIcon.fromJson),
+        colorId: _readInt(json['color_id']),
         isShareable: _readBool(json['is_shareable']),
         pinnedChatIds: _readList<int>(json['pinned_chat_ids'], _readInt),
         includedChatIds: _readList<int>(json['included_chat_ids'], _readInt),
@@ -100,6 +105,7 @@ final class ChatFolder extends TdObject {
         '@type': CONSTRUCTOR,
         'title': title,
         'icon': icon?.toJson(),
+        'color_id': colorId,
         'is_shareable': isShareable,
         'pinned_chat_ids': pinnedChatIds,
         'included_chat_ids': includedChatIds,
@@ -119,6 +125,7 @@ final class ChatFolder extends TdObject {
   ChatFolder copyWith({
     String? title,
     ChatFolderIcon? Function()? icon,
+    int? colorId,
     bool? isShareable,
     List<int>? pinnedChatIds,
     List<int>? includedChatIds,
@@ -137,6 +144,7 @@ final class ChatFolder extends TdObject {
       ChatFolder(
         title: title ?? this.title,
         icon: icon != null ? icon() : this.icon,
+        colorId: colorId ?? this.colorId,
         isShareable: isShareable ?? this.isShareable,
         pinnedChatIds: pinnedChatIds ?? this.pinnedChatIds,
         includedChatIds: includedChatIds ?? this.includedChatIds,
