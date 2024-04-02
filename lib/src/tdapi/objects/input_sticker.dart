@@ -8,6 +8,7 @@ final class InputSticker extends TdObject {
   /// A sticker to be added to a sticker set
   const InputSticker({
     required this.sticker,
+    required this.format,
     required this.emojis,
     this.maskPosition,
     required this.keywords,
@@ -15,6 +16,9 @@ final class InputSticker extends TdObject {
 
   /// File with the sticker; must fit in a 512x512 square. For WEBP stickers the file must be in WEBP or PNG format, which will be converted to WEBP server-side. See https://core.telegram.org/animated_stickers#technical-requirements for technical requirements
   final InputFile sticker;
+
+  /// Format of the sticker
+  final StickerFormat format;
 
   /// String with 1-20 emoji corresponding to the sticker
   final String emojis;
@@ -28,6 +32,7 @@ final class InputSticker extends TdObject {
   /// Parses a [InputSticker] from TDLib JSON.
   factory InputSticker.fromJson(Map<String, dynamic> json) => InputSticker(
         sticker: _readObject(json['sticker'], InputFile.fromJson),
+        format: _readObject(json['format'], StickerFormat.fromJson),
         emojis: _readString(json['emojis']),
         maskPosition:
             _readOptional(json['mask_position'], MaskPosition.fromJson),
@@ -38,6 +43,7 @@ final class InputSticker extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'sticker': sticker.toJson(),
+        'format': format.toJson(),
         'emojis': emojis,
         'mask_position': maskPosition?.toJson(),
         'keywords': keywords,
@@ -47,12 +53,14 @@ final class InputSticker extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   InputSticker copyWith({
     InputFile? sticker,
+    StickerFormat? format,
     String? emojis,
     MaskPosition? Function()? maskPosition,
     List<String>? keywords,
   }) =>
       InputSticker(
         sticker: sticker ?? this.sticker,
+        format: format ?? this.format,
         emojis: emojis ?? this.emojis,
         maskPosition: maskPosition != null ? maskPosition() : this.maskPosition,
         keywords: keywords ?? this.keywords,

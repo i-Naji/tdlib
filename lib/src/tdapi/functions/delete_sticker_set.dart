@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Deleted a sticker set; for bots only
+/// Completely deletes a sticker set
 ///
 /// Returns [Ok].
 final class DeleteStickerSet extends TdFunction<Ok> {
-  /// Deleted a sticker set; for bots only
+  /// Completely deletes a sticker set
   const DeleteStickerSet({
     required this.name,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   @override

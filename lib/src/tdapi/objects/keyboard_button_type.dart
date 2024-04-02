@@ -183,6 +183,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     required this.restrictUserIsPremium,
     required this.userIsPremium,
     required this.maxQuantity,
+    required this.requestName,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// Unique button identifier
@@ -203,6 +206,15 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
   /// The maximum number of users to share
   final int maxQuantity;
 
+  /// Pass true to request name of the users; bots only
+  final bool requestName;
+
+  /// Pass true to request username of the users; bots only
+  final bool requestUsername;
+
+  /// Pass true to request photo of the users; bots only
+  final bool requestPhoto;
+
   /// Parses a [KeyboardButtonTypeRequestUsers] from TDLib JSON.
   factory KeyboardButtonTypeRequestUsers.fromJson(Map<String, dynamic> json) =>
       KeyboardButtonTypeRequestUsers(
@@ -212,6 +224,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
         restrictUserIsPremium: _readBool(json['restrict_user_is_premium']),
         userIsPremium: _readBool(json['user_is_premium']),
         maxQuantity: _readInt(json['max_quantity']),
+        requestName: _readBool(json['request_name']),
+        requestUsername: _readBool(json['request_username']),
+        requestPhoto: _readBool(json['request_photo']),
       );
 
   @override
@@ -223,6 +238,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
         'restrict_user_is_premium': restrictUserIsPremium,
         'user_is_premium': userIsPremium,
         'max_quantity': maxQuantity,
+        'request_name': requestName,
+        'request_username': requestUsername,
+        'request_photo': requestPhoto,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -235,6 +253,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
     bool? restrictUserIsPremium,
     bool? userIsPremium,
     int? maxQuantity,
+    bool? requestName,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestUsers(
         id: id ?? this.id,
@@ -244,6 +265,9 @@ final class KeyboardButtonTypeRequestUsers extends KeyboardButtonType {
             restrictUserIsPremium ?? this.restrictUserIsPremium,
         userIsPremium: userIsPremium ?? this.userIsPremium,
         maxQuantity: maxQuantity ?? this.maxQuantity,
+        requestName: requestName ?? this.requestName,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 
   /// TDLib type name.
@@ -267,6 +291,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     this.userAdministratorRights,
     this.botAdministratorRights,
     required this.botIsMember,
+    required this.requestTitle,
+    required this.requestUsername,
+    required this.requestPhoto,
   });
 
   /// Unique button identifier
@@ -299,6 +326,15 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
   /// True, if the bot must be a member of the chat; for basic group and supergroup chats only
   final bool botIsMember;
 
+  /// Pass true to request title of the chat; bots only
+  final bool requestTitle;
+
+  /// Pass true to request username of the chat; bots only
+  final bool requestUsername;
+
+  /// Pass true to request photo of the chat; bots only
+  final bool requestPhoto;
+
   /// Parses a [KeyboardButtonTypeRequestChat] from TDLib JSON.
   factory KeyboardButtonTypeRequestChat.fromJson(Map<String, dynamic> json) =>
       KeyboardButtonTypeRequestChat(
@@ -315,6 +351,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         botAdministratorRights: _readOptional(
             json['bot_administrator_rights'], ChatAdministratorRights.fromJson),
         botIsMember: _readBool(json['bot_is_member']),
+        requestTitle: _readBool(json['request_title']),
+        requestUsername: _readBool(json['request_username']),
+        requestPhoto: _readBool(json['request_photo']),
       );
 
   @override
@@ -330,6 +369,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
         'user_administrator_rights': userAdministratorRights?.toJson(),
         'bot_administrator_rights': botAdministratorRights?.toJson(),
         'bot_is_member': botIsMember,
+        'request_title': requestTitle,
+        'request_username': requestUsername,
+        'request_photo': requestPhoto,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -346,6 +388,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
     ChatAdministratorRights? Function()? userAdministratorRights,
     ChatAdministratorRights? Function()? botAdministratorRights,
     bool? botIsMember,
+    bool? requestTitle,
+    bool? requestUsername,
+    bool? requestPhoto,
   }) =>
       KeyboardButtonTypeRequestChat(
         id: id ?? this.id,
@@ -363,6 +408,9 @@ final class KeyboardButtonTypeRequestChat extends KeyboardButtonType {
             ? botAdministratorRights()
             : this.botAdministratorRights,
         botIsMember: botIsMember ?? this.botIsMember,
+        requestTitle: requestTitle ?? this.requestTitle,
+        requestUsername: requestUsername ?? this.requestUsername,
+        requestPhoto: requestPhoto ?? this.requestPhoto,
       );
 
   /// TDLib type name.

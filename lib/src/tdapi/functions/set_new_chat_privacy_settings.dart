@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes privacy settings for new chat creation; for Telegram Premium users only
+/// Changes privacy settings for new chat creation; can be used only if getOption("can_set_new_chat_privacy_settings")
 ///
 /// Returns [Ok].
 final class SetNewChatPrivacySettings extends TdFunction<Ok> {
-  /// Changes privacy settings for new chat creation; for Telegram Premium users only
+  /// Changes privacy settings for new chat creation; can be used only if getOption("can_set_new_chat_privacy_settings")
   const SetNewChatPrivacySettings({
     required this.settings,
   });

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes available user privacy settings
 ///
-/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
+/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
 sealed class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
@@ -178,6 +178,33 @@ final class UserPrivacySettingShowBio extends UserPrivacySetting {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingShowBio';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A privacy setting for managing whether the user's birthdate is visible
+final class UserPrivacySettingShowBirthdate extends UserPrivacySetting {
+  /// A privacy setting for managing whether the user's birthdate is visible
+  const UserPrivacySettingShowBirthdate();
+
+  /// Parses a [UserPrivacySettingShowBirthdate] from TDLib JSON.
+  factory UserPrivacySettingShowBirthdate.fromJson(Map<String, dynamic> json) =>
+      const UserPrivacySettingShowBirthdate();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingShowBirthdate copyWith() =>
+      const UserPrivacySettingShowBirthdate();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingShowBirthdate';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -179,7 +179,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.8.26"
+    version: "1.8.27"
   term_glyph:
     dependency: transitive
     description:

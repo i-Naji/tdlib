@@ -18,7 +18,7 @@ final class Usernames extends TdObject {
   /// List of currently disabled usernames; the username can be activated with toggleUsernameIsActive, toggleBotUsernameIsActive, or toggleSupergroupUsernameIsActive
   final List<String> disabledUsernames;
 
-  /// The active username, which can be changed with setUsername or setSupergroupUsername
+  /// The active username, which can be changed with setUsername or setSupergroupUsername. Information about other active usernames can be received using getCollectibleItemInfo
   final String editableUsername;
 
   /// Parses a [Usernames] from TDLib JSON.

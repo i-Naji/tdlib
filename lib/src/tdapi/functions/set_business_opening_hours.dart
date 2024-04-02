@@ -12,7 +12,7 @@ final class SetBusinessOpeningHours extends TdFunction<Ok> {
     this.openingHours,
   });
 
-  /// The new opening hours of the business; pass null to remove the opening hours
+  /// The new opening hours of the business; pass null to remove the opening hours; up to 28 time intervals can be specified
   final BusinessOpeningHours? openingHours;
 
   @override

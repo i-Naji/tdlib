@@ -1258,7 +1258,7 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
     this.clientId,
   });
 
-  /// User identifier of the service's bot
+  /// User identifier of the service's bot; the corresponding user may be unknown yet
   final int botUserId;
 
   /// Telegram Passport element types requested by the service

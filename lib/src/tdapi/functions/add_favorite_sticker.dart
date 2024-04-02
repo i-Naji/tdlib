@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set or in WEBP format can be added to this list. Emoji stickers can't be added to favorite stickers
+/// Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set or in WEBP or WEBM format can be added to this list. Emoji stickers can't be added to favorite stickers
 ///
 /// Returns [Ok].
 final class AddFavoriteSticker extends TdFunction<Ok> {
-  /// Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set or in WEBP format can be added to this list. Emoji stickers can't be added to favorite stickers
+  /// Adds a new sticker to the list of favorite stickers. The new sticker is added to the top of the list. If the sticker was already in the list, it is removed from the list first. Only stickers belonging to a sticker set or in WEBP or WEBM format can be added to this list. Emoji stickers can't be added to favorite stickers
   const AddFavoriteSticker({
     required this.sticker,
   });

@@ -29,7 +29,7 @@ final class SendStory extends TdFunction<Story> {
   /// Clickable rectangle areas to be shown on the story media; pass null if none
   final InputStoryAreas? areas;
 
-  /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters
+  /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption")
   final FormattedText? caption;
 
   /// The privacy settings for the story; ignored for stories sent to supergroup and channel chats

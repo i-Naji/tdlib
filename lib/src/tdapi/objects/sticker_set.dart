@@ -12,10 +12,10 @@ final class StickerSet extends TdObject {
     required this.name,
     this.thumbnail,
     required this.thumbnailOutline,
+    required this.isOwned,
     required this.isInstalled,
     required this.isArchived,
     required this.isOfficial,
-    required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
     required this.isAllowedAsChatEmojiStatus,
@@ -41,6 +41,9 @@ final class StickerSet extends TdObject {
   /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
   final List<ClosedVectorPath> thumbnailOutline;
 
+  /// True, if the sticker set is owned by the current user
+  final bool isOwned;
+
   /// True, if the sticker set has been installed by the current user
   final bool isInstalled;
 
@@ -49,9 +52,6 @@ final class StickerSet extends TdObject {
 
   /// True, if the sticker set is official
   final bool isOfficial;
-
-  /// Format of the stickers in the set
-  final StickerFormat stickerFormat;
 
   /// Type of the stickers in the set
   final StickerType stickerType;
@@ -87,11 +87,10 @@ final class StickerSet extends TdObject {
         thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
         thumbnailOutline: _readList<ClosedVectorPath>(json['thumbnail_outline'],
             (e) => _readObject(e, ClosedVectorPath.fromJson)),
+        isOwned: _readBool(json['is_owned']),
         isInstalled: _readBool(json['is_installed']),
         isArchived: _readBool(json['is_archived']),
         isOfficial: _readBool(json['is_official']),
-        stickerFormat:
-            _readObject(json['sticker_format'], StickerFormat.fromJson),
         stickerType: _readObject(json['sticker_type'], StickerType.fromJson),
         needsRepainting: _readBool(json['needs_repainting']),
         isAllowedAsChatEmojiStatus:
@@ -113,10 +112,10 @@ final class StickerSet extends TdObject {
         'name': name,
         'thumbnail': thumbnail?.toJson(),
         'thumbnail_outline': [for (final e in thumbnailOutline) e.toJson()],
+        'is_owned': isOwned,
         'is_installed': isInstalled,
         'is_archived': isArchived,
         'is_official': isOfficial,
-        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
         'is_allowed_as_chat_emoji_status': isAllowedAsChatEmojiStatus,
@@ -133,10 +132,10 @@ final class StickerSet extends TdObject {
     String? name,
     Thumbnail? Function()? thumbnail,
     List<ClosedVectorPath>? thumbnailOutline,
+    bool? isOwned,
     bool? isInstalled,
     bool? isArchived,
     bool? isOfficial,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     bool? isAllowedAsChatEmojiStatus,
@@ -152,10 +151,10 @@ final class StickerSet extends TdObject {
         name: name ?? this.name,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        isOwned: isOwned ?? this.isOwned,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,
         isOfficial: isOfficial ?? this.isOfficial,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         isAllowedAsChatEmojiStatus:

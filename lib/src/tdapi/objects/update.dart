@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSavedMessagesTags], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageLiveLocationViewed], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateScopeNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStorySendSucceeded], [UpdateStorySendFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateTermsOfService], [UpdateUsersNearby], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateDefaultReactionType], [UpdateSavedMessagesTags], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateContactCloseBirthdays], [UpdateAddChatMembersPrivacyForbidden], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -7283,7 +7283,7 @@ final class UpdateSpeechRecognitionTrial extends Update {
     this.clientId,
   });
 
-  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription
+  /// The maximum allowed duration of media for speech recognition without Telegram Premium subscription, in seconds
   final int maxMediaDuration;
 
   /// The total number of allowed speech recognitions per week; 0 if none
@@ -7605,6 +7605,65 @@ final class UpdateSuggestedActions extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The list of contacts that had birthdays recently or will have birthday soon has changed
+final class UpdateContactCloseBirthdays extends Update {
+  /// The list of contacts that had birthdays recently or will have birthday soon has changed
+  const UpdateContactCloseBirthdays({
+    required this.closeBirthdayUsers,
+    this.extra,
+    this.clientId,
+  });
+
+  /// List of contact users with close birthday
+  final List<CloseBirthdayUser> closeBirthdayUsers;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateContactCloseBirthdays] from TDLib JSON.
+  factory UpdateContactCloseBirthdays.fromJson(Map<String, dynamic> json) =>
+      UpdateContactCloseBirthdays(
+        closeBirthdayUsers: _readList<CloseBirthdayUser>(
+            json['close_birthday_users'],
+            (e) => _readObject(e, CloseBirthdayUser.fromJson)),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'close_birthday_users': [
+          for (final e in closeBirthdayUsers) e.toJson()
+        ],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateContactCloseBirthdays copyWith({
+    List<CloseBirthdayUser>? closeBirthdayUsers,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateContactCloseBirthdays(
+        closeBirthdayUsers: closeBirthdayUsers ?? this.closeBirthdayUsers,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateContactCloseBirthdays';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// Adding users to a chat has failed because of their privacy settings. An invite link can be shared with the users if appropriate
 final class UpdateAddChatMembersPrivacyForbidden extends Update {
   /// Adding users to a chat has failed because of their privacy settings. An invite link can be shared with the users if appropriate
@@ -7728,6 +7787,259 @@ final class UpdateAutosaveSettings extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateAutosaveSettings';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A business connection has changed; for bots only
+final class UpdateBusinessConnection extends Update {
+  /// A business connection has changed; for bots only
+  const UpdateBusinessConnection({
+    required this.connection,
+    this.extra,
+    this.clientId,
+  });
+
+  /// New data about the connection
+  final BusinessConnection connection;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateBusinessConnection] from TDLib JSON.
+  factory UpdateBusinessConnection.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessConnection(
+        connection:
+            _readObject(json['connection'], BusinessConnection.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'connection': connection.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateBusinessConnection copyWith({
+    BusinessConnection? connection,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessConnection(
+        connection: connection ?? this.connection,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateBusinessConnection';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new message was added to a business account; for bots only
+final class UpdateNewBusinessMessage extends Update {
+  /// A new message was added to a business account; for bots only
+  const UpdateNewBusinessMessage({
+    required this.connectionId,
+    required this.message,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// The new message
+  final BusinessMessage message;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateNewBusinessMessage] from TDLib JSON.
+  factory UpdateNewBusinessMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateNewBusinessMessage(
+        connectionId: _readString(json['connection_id']),
+        message: _readObject(json['message'], BusinessMessage.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'connection_id': connectionId,
+        'message': message.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateNewBusinessMessage copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateNewBusinessMessage(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateNewBusinessMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message in a business account was edited; for bots only
+final class UpdateBusinessMessageEdited extends Update {
+  /// A message in a business account was edited; for bots only
+  const UpdateBusinessMessageEdited({
+    required this.connectionId,
+    required this.message,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// The edited message
+  final BusinessMessage message;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateBusinessMessageEdited] from TDLib JSON.
+  factory UpdateBusinessMessageEdited.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessMessageEdited(
+        connectionId: _readString(json['connection_id']),
+        message: _readObject(json['message'], BusinessMessage.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'connection_id': connectionId,
+        'message': message.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateBusinessMessageEdited copyWith({
+    String? connectionId,
+    BusinessMessage? message,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessMessageEdited(
+        connectionId: connectionId ?? this.connectionId,
+        message: message ?? this.message,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateBusinessMessageEdited';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Messages in a business account were deleted; for bots only
+final class UpdateBusinessMessagesDeleted extends Update {
+  /// Messages in a business account were deleted; for bots only
+  const UpdateBusinessMessagesDeleted({
+    required this.connectionId,
+    required this.chatId,
+    required this.messageIds,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Unique identifier of the business connection
+  final String connectionId;
+
+  /// Identifier of a chat in the business account in which messages were deleted
+  final int chatId;
+
+  /// Unique message identifiers of the deleted messages
+  final List<int> messageIds;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateBusinessMessagesDeleted] from TDLib JSON.
+  factory UpdateBusinessMessagesDeleted.fromJson(Map<String, dynamic> json) =>
+      UpdateBusinessMessagesDeleted(
+        connectionId: _readString(json['connection_id']),
+        chatId: _readInt(json['chat_id']),
+        messageIds: _readList<int>(json['message_ids'], _readInt),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'connection_id': connectionId,
+        'chat_id': chatId,
+        'message_ids': messageIds,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateBusinessMessagesDeleted copyWith({
+    String? connectionId,
+    int? chatId,
+    List<int>? messageIds,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateBusinessMessagesDeleted(
+        connectionId: connectionId ?? this.connectionId,
+        chatId: chatId ?? this.chatId,
+        messageIds: messageIds ?? this.messageIds,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateBusinessMessagesDeleted';
 
   @override
   String getConstructor() => CONSTRUCTOR;

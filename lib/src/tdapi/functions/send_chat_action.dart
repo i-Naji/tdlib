@@ -11,6 +11,7 @@ final class SendChatAction extends TdFunction<Ok> {
   const SendChatAction({
     required this.chatId,
     required this.messageThreadId,
+    required this.businessConnectionId,
     this.action,
   });
 
@@ -20,6 +21,9 @@ final class SendChatAction extends TdFunction<Ok> {
   /// If not 0, the message thread identifier in which the action was performed
   final int messageThreadId;
 
+  /// Unique identifier of business connection on behalf of which to send the request; for bots only
+  final String businessConnectionId;
+
   /// The action description; pass null to cancel the currently active action
   final ChatAction? action;
 
@@ -28,6 +32,7 @@ final class SendChatAction extends TdFunction<Ok> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'message_thread_id': messageThreadId,
+        'business_connection_id': businessConnectionId,
         'action': action?.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -37,11 +42,13 @@ final class SendChatAction extends TdFunction<Ok> {
   SendChatAction copyWith({
     int? chatId,
     int? messageThreadId,
+    String? businessConnectionId,
     ChatAction? Function()? action,
   }) =>
       SendChatAction(
         chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         action: action != null ? action() : this.action,
       );
 

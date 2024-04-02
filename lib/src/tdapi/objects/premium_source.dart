@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a source from which the Premium features screen is opened
 ///
-/// One of: [PremiumSourceLimitExceeded], [PremiumSourceFeature], [PremiumSourceStoryFeature], [PremiumSourceLink], [PremiumSourceSettings]; or [UndecodedPremiumSource] for a type newer than this API.
+/// One of: [PremiumSourceLimitExceeded], [PremiumSourceFeature], [PremiumSourceBusinessFeature], [PremiumSourceStoryFeature], [PremiumSourceLink], [PremiumSourceSettings]; or [UndecodedPremiumSource] for a type newer than this API.
 sealed class PremiumSource extends TdObject {
   const PremiumSource();
 
@@ -115,6 +115,45 @@ final class PremiumSourceFeature extends PremiumSource {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumSourceFeature';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A user tried to use a Business feature
+final class PremiumSourceBusinessFeature extends PremiumSource {
+  /// A user tried to use a Business feature
+  const PremiumSourceBusinessFeature({
+    this.feature,
+  });
+
+  /// The used feature; pass null if none specific feature was used
+  final BusinessFeature? feature;
+
+  /// Parses a [PremiumSourceBusinessFeature] from TDLib JSON.
+  factory PremiumSourceBusinessFeature.fromJson(Map<String, dynamic> json) =>
+      PremiumSourceBusinessFeature(
+        feature: _readOptional(json['feature'], BusinessFeature.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'feature': feature?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumSourceBusinessFeature copyWith({
+    BusinessFeature? Function()? feature,
+  }) =>
+      PremiumSourceBusinessFeature(
+        feature: feature != null ? feature() : this.feature,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumSourceBusinessFeature';
 
   @override
   String getConstructor() => CONSTRUCTOR;

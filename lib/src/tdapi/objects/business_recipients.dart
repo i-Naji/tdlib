@@ -8,6 +8,7 @@ final class BusinessRecipients extends TdObject {
   /// Describes private chats chosen for automatic interaction with a business
   const BusinessRecipients({
     required this.chatIds,
+    required this.excludedChatIds,
     required this.selectExistingChats,
     required this.selectNewChats,
     required this.selectContacts,
@@ -17,6 +18,9 @@ final class BusinessRecipients extends TdObject {
 
   /// Identifiers of selected private chats
   final List<int> chatIds;
+
+  /// Identifiers of private chats that are always excluded; for businessConnectedBot only
+  final List<int> excludedChatIds;
 
   /// True, if all existing private chats are selected
   final bool selectExistingChats;
@@ -37,6 +41,7 @@ final class BusinessRecipients extends TdObject {
   factory BusinessRecipients.fromJson(Map<String, dynamic> json) =>
       BusinessRecipients(
         chatIds: _readList<int>(json['chat_ids'], _readInt),
+        excludedChatIds: _readList<int>(json['excluded_chat_ids'], _readInt),
         selectExistingChats: _readBool(json['select_existing_chats']),
         selectNewChats: _readBool(json['select_new_chats']),
         selectContacts: _readBool(json['select_contacts']),
@@ -48,6 +53,7 @@ final class BusinessRecipients extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_ids': chatIds,
+        'excluded_chat_ids': excludedChatIds,
         'select_existing_chats': selectExistingChats,
         'select_new_chats': selectNewChats,
         'select_contacts': selectContacts,
@@ -59,6 +65,7 @@ final class BusinessRecipients extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   BusinessRecipients copyWith({
     List<int>? chatIds,
+    List<int>? excludedChatIds,
     bool? selectExistingChats,
     bool? selectNewChats,
     bool? selectContacts,
@@ -67,6 +74,7 @@ final class BusinessRecipients extends TdObject {
   }) =>
       BusinessRecipients(
         chatIds: chatIds ?? this.chatIds,
+        excludedChatIds: excludedChatIds ?? this.excludedChatIds,
         selectExistingChats: selectExistingChats ?? this.selectExistingChats,
         selectNewChats: selectNewChats ?? this.selectNewChats,
         selectContacts: selectContacts ?? this.selectContacts,

@@ -647,7 +647,7 @@ final class InputMessageVideoNote extends InputMessageContent {
   /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
 
-  /// Duration of the video, in seconds
+  /// Duration of the video, in seconds; 0-60
   final int duration;
 
   /// Video width and height; must be positive and not greater than 640

@@ -31,7 +31,7 @@ final class PremiumGiveawayParameters extends TdObject {
   /// True, if the list of winners of the giveaway will be available to everyone
   final bool hasPublicWinners;
 
-  /// The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway. There can be up to getOption("giveaway_country_count_max") chosen countries. Users with phone number that was bought on Fragment can participate in any giveaway and the country code "FT" must not be specified in the list
+  /// The list of two-letter ISO 3166-1 alpha-2 codes of countries, users from which will be eligible for the giveaway. If empty, then all users can participate in the giveaway. There can be up to getOption("giveaway_country_count_max") chosen countries. Users with phone number that was bought at https://fragment.com can participate in any giveaway and the country code "FT" must not be specified in the list
   final List<String> countryCodes;
 
   /// Additional description of the giveaway prize; 0-128 characters

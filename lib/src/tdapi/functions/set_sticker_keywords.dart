@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the list of keywords of a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
+/// Changes the list of keywords of a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
 ///
 /// Returns [Ok].
 final class SetStickerKeywords extends TdFunction<Ok> {
-  /// Changes the list of keywords of a sticker; for bots only. The sticker must belong to a regular or custom emoji sticker set created by the bot
+  /// Changes the list of keywords of a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
   const SetStickerKeywords({
     required this.sticker,
     required this.keywords,

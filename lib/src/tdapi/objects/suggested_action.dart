@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -337,6 +337,32 @@ final class SuggestedActionGiftPremiumForChristmas extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionGiftPremiumForChristmas';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to set birthdate
+final class SuggestedActionSetBirthdate extends SuggestedAction {
+  /// Suggests the user to set birthdate
+  const SuggestedActionSetBirthdate();
+
+  /// Parses a [SuggestedActionSetBirthdate] from TDLib JSON.
+  factory SuggestedActionSetBirthdate.fromJson(Map<String, dynamic> json) =>
+      const SuggestedActionSetBirthdate();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionSetBirthdate copyWith() => const SuggestedActionSetBirthdate();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionSetBirthdate';
 
   @override
   String getConstructor() => CONSTRUCTOR;

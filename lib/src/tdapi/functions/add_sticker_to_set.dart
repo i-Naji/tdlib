@@ -3,21 +3,21 @@
 
 part of '../tdapi.dart';
 
-/// Adds a new sticker to a set; for bots only
+/// Adds a new sticker to a set
 ///
 /// Returns [Ok].
 final class AddStickerToSet extends TdFunction<Ok> {
-  /// Adds a new sticker to a set; for bots only
+  /// Adds a new sticker to a set
   const AddStickerToSet({
     required this.userId,
     required this.name,
     required this.sticker,
   });
 
-  /// Sticker set owner
+  /// Sticker set owner; ignored for regular users
   final int userId;
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user, and contain less than 200 stickers for custom emoji sticker sets and less than 120 otherwise
   final String name;
 
   /// Sticker to add to the set

@@ -12,7 +12,6 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
     required this.userId,
     required this.title,
     required this.name,
-    required this.stickerFormat,
     required this.stickerType,
     required this.needsRepainting,
     required this.stickers,
@@ -25,11 +24,8 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
   /// Sticker set title; 1-64 characters
   final String title;
 
-  /// Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 1-64 characters
+  /// Sticker set name. Can contain only English letters, digits and underscores. Must end with *"_by_<bot username>"* (*<bot_username>* is case insensitive) for bots; 0-64 characters. If empty, then the name returned by getSuggestedStickerSetName will be used automatically
   final String name;
-
-  /// Format of the stickers in the set
-  final StickerFormat stickerFormat;
 
   /// Type of the stickers in the set
   final StickerType stickerType;
@@ -37,7 +33,7 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
   /// Pass true if stickers in the sticker set must be repainted; for custom emoji sticker sets only
   final bool needsRepainting;
 
-  /// List of stickers to be added to the set; must be non-empty. All stickers must have the same format. For TGS stickers, uploadStickerFile must be used before the sticker is shown
+  /// List of stickers to be added to the set; 1-200 stickers for custom emoji sticker sets, and 1-120 stickers otherwise. For TGS stickers, uploadStickerFile must be used before the sticker is shown
   final List<InputSticker> stickers;
 
   /// Source of the sticker set; may be empty if unknown
@@ -49,7 +45,6 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
         'user_id': userId,
         'title': title,
         'name': name,
-        'sticker_format': stickerFormat.toJson(),
         'sticker_type': stickerType.toJson(),
         'needs_repainting': needsRepainting,
         'stickers': [for (final e in stickers) e.toJson()],
@@ -63,7 +58,6 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
     int? userId,
     String? title,
     String? name,
-    StickerFormat? stickerFormat,
     StickerType? stickerType,
     bool? needsRepainting,
     List<InputSticker>? stickers,
@@ -73,7 +67,6 @@ final class CreateNewStickerSet extends TdFunction<StickerSet> {
         userId: userId ?? this.userId,
         title: title ?? this.title,
         name: name ?? this.name,
-        stickerFormat: stickerFormat ?? this.stickerFormat,
         stickerType: stickerType ?? this.stickerType,
         needsRepainting: needsRepainting ?? this.needsRepainting,
         stickers: stickers ?? this.stickers,

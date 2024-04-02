@@ -146,9 +146,9 @@ final class ThumbnailFormatPng extends ThumbnailFormat {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The thumbnail is in TGS format. It will be used only for TGS sticker sets
+/// The thumbnail is in TGS format. It will be used only for sticker sets
 final class ThumbnailFormatTgs extends ThumbnailFormat {
-  /// The thumbnail is in TGS format. It will be used only for TGS sticker sets
+  /// The thumbnail is in TGS format. It will be used only for sticker sets
   const ThumbnailFormatTgs();
 
   /// Parses a [ThumbnailFormatTgs] from TDLib JSON.
@@ -172,9 +172,9 @@ final class ThumbnailFormatTgs extends ThumbnailFormat {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The thumbnail is in WEBM format. It will be used only for WEBM sticker sets
+/// The thumbnail is in WEBM format. It will be used only for sticker sets
 final class ThumbnailFormatWebm extends ThumbnailFormat {
-  /// The thumbnail is in WEBM format. It will be used only for WEBM sticker sets
+  /// The thumbnail is in WEBM format. It will be used only for sticker sets
   const ThumbnailFormatWebm();
 
   /// Parses a [ThumbnailFormatWebm] from TDLib JSON.
@@ -198,9 +198,9 @@ final class ThumbnailFormatWebm extends ThumbnailFormat {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The thumbnail is in WEBP format. It will be used only for some stickers
+/// The thumbnail is in WEBP format. It will be used only for some stickers and sticker sets
 final class ThumbnailFormatWebp extends ThumbnailFormat {
-  /// The thumbnail is in WEBP format. It will be used only for some stickers
+  /// The thumbnail is in WEBP format. It will be used only for some stickers and sticker sets
   const ThumbnailFormatWebp();
 
   /// Parses a [ThumbnailFormatWebp] from TDLib JSON.

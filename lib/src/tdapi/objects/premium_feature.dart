@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Premium users
 ///
-/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes]; or [UndecodedPremiumFeature] for a type newer than this API.
+/// One of: [PremiumFeatureIncreasedLimits], [PremiumFeatureIncreasedUploadFileSize], [PremiumFeatureImprovedDownloadSpeed], [PremiumFeatureVoiceRecognition], [PremiumFeatureDisabledAds], [PremiumFeatureUniqueReactions], [PremiumFeatureUniqueStickers], [PremiumFeatureCustomEmoji], [PremiumFeatureAdvancedChatManagement], [PremiumFeatureProfileBadge], [PremiumFeatureEmojiStatus], [PremiumFeatureAnimatedProfilePhoto], [PremiumFeatureForumTopicIcon], [PremiumFeatureAppIcons], [PremiumFeatureRealTimeChatTranslation], [PremiumFeatureUpgradedStories], [PremiumFeatureChatBoost], [PremiumFeatureAccentColor], [PremiumFeatureBackgroundForBoth], [PremiumFeatureSavedMessagesTags], [PremiumFeatureMessagePrivacy], [PremiumFeatureLastSeenTimes], [PremiumFeatureBusiness]; or [UndecodedPremiumFeature] for a type newer than this API.
 sealed class PremiumFeature extends TdObject {
   const PremiumFeature();
 
@@ -312,9 +312,9 @@ final class PremiumFeatureProfileBadge extends PremiumFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An emoji status shown along with the user's name
+/// The ability to show an emoji status along with the user's name
 final class PremiumFeatureEmojiStatus extends PremiumFeature {
-  /// An emoji status shown along with the user's name
+  /// The ability to show an emoji status along with the user's name
   const PremiumFeatureEmojiStatus();
 
   /// Parses a [PremiumFeatureEmojiStatus] from TDLib JSON.
@@ -628,6 +628,32 @@ final class PremiumFeatureLastSeenTimes extends PremiumFeature {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'premiumFeatureLastSeenTimes';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The ability to use Business features
+final class PremiumFeatureBusiness extends PremiumFeature {
+  /// The ability to use Business features
+  const PremiumFeatureBusiness();
+
+  /// Parses a [PremiumFeatureBusiness] from TDLib JSON.
+  factory PremiumFeatureBusiness.fromJson(Map<String, dynamic> json) =>
+      const PremiumFeatureBusiness();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PremiumFeatureBusiness copyWith() => const PremiumFeatureBusiness();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'premiumFeatureBusiness';
 
   @override
   String getConstructor() => CONSTRUCTOR;

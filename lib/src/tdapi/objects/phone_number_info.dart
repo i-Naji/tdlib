@@ -24,7 +24,7 @@ final class PhoneNumberInfo extends TdObject {
   /// The phone number without country calling code formatted accordingly to local rules. Expected digits are returned as '-', but even more digits might be entered by the user
   final String formattedPhoneNumber;
 
-  /// True, if the phone number was bought on Fragment and isn't tied to a SIM card
+  /// True, if the phone number was bought at https://fragment.com and isn't tied to a SIM card. Information about the phone number can be received using getCollectibleItemInfo
   final bool isAnonymous;
 
   /// "@extra" of the request this object answers.

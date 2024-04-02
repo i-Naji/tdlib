@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Sets a sticker set title; for bots only
+/// Sets a sticker set title
 ///
 /// Returns [Ok].
 final class SetStickerSetTitle extends TdFunction<Ok> {
-  /// Sets a sticker set title; for bots only
+  /// Sets a sticker set title
   const SetStickerSetTitle({
     required this.name,
     required this.title,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// New sticker set title

@@ -14,6 +14,7 @@ final class Message extends TdObject {
     this.schedulingState,
     required this.isOutgoing,
     required this.isPinned,
+    required this.isFromOffline,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeRepliedInAnotherChat,
@@ -44,6 +45,7 @@ final class Message extends TdObject {
     required this.selfDestructIn,
     required this.autoDeleteIn,
     required this.viaBotUserId,
+    required this.senderBusinessBotUserId,
     required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
@@ -74,6 +76,9 @@ final class Message extends TdObject {
 
   /// True, if the message is pinned
   final bool isPinned;
+
+  /// True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message
+  final bool isFromOffline;
 
   /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
   final bool canBeEdited;
@@ -162,8 +167,11 @@ final class Message extends TdObject {
   /// Time left before the message will be automatically deleted by message_auto_delete_time setting of the chat, in seconds; 0 if never
   final double autoDeleteIn;
 
-  /// If non-zero, the user identifier of the bot through which this message was sent
+  /// If non-zero, the user identifier of the inline bot through which this message was sent
   final int viaBotUserId;
+
+  /// If non-zero, the user identifier of the business bot that sent this message
+  final int senderBusinessBotUserId;
 
   /// Number of times the sender of the message boosted the supergroup at the time the message was sent; 0 if none or unknown. For messages sent by the current user, supergroupFullInfo.my_boost_count must be used instead
   final int senderBoostCount;
@@ -202,6 +210,7 @@ final class Message extends TdObject {
             json['scheduling_state'], MessageSchedulingState.fromJson),
         isOutgoing: _readBool(json['is_outgoing']),
         isPinned: _readBool(json['is_pinned']),
+        isFromOffline: _readBool(json['is_from_offline']),
         canBeEdited: _readBool(json['can_be_edited']),
         canBeForwarded: _readBool(json['can_be_forwarded']),
         canBeRepliedInAnotherChat:
@@ -241,6 +250,7 @@ final class Message extends TdObject {
         selfDestructIn: _readDouble(json['self_destruct_in']),
         autoDeleteIn: _readDouble(json['auto_delete_in']),
         viaBotUserId: _readInt(json['via_bot_user_id']),
+        senderBusinessBotUserId: _readInt(json['sender_business_bot_user_id']),
         senderBoostCount: _readInt(json['sender_boost_count']),
         authorSignature: _readString(json['author_signature']),
         mediaAlbumId: _readInt(json['media_album_id']),
@@ -261,6 +271,7 @@ final class Message extends TdObject {
         'scheduling_state': schedulingState?.toJson(),
         'is_outgoing': isOutgoing,
         'is_pinned': isPinned,
+        'is_from_offline': isFromOffline,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
@@ -291,6 +302,7 @@ final class Message extends TdObject {
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
         'via_bot_user_id': viaBotUserId,
+        'sender_business_bot_user_id': senderBusinessBotUserId,
         'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
@@ -309,6 +321,7 @@ final class Message extends TdObject {
     MessageSchedulingState? Function()? schedulingState,
     bool? isOutgoing,
     bool? isPinned,
+    bool? isFromOffline,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeRepliedInAnotherChat,
@@ -339,6 +352,7 @@ final class Message extends TdObject {
     double? selfDestructIn,
     double? autoDeleteIn,
     int? viaBotUserId,
+    int? senderBusinessBotUserId,
     int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
@@ -357,6 +371,7 @@ final class Message extends TdObject {
             schedulingState != null ? schedulingState() : this.schedulingState,
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isPinned: isPinned ?? this.isPinned,
+        isFromOffline: isFromOffline ?? this.isFromOffline,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeRepliedInAnotherChat:
@@ -395,6 +410,8 @@ final class Message extends TdObject {
         selfDestructIn: selfDestructIn ?? this.selfDestructIn,
         autoDeleteIn: autoDeleteIn ?? this.autoDeleteIn,
         viaBotUserId: viaBotUserId ?? this.viaBotUserId,
+        senderBusinessBotUserId:
+            senderBusinessBotUserId ?? this.senderBusinessBotUserId,
         senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,

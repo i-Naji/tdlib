@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot
+/// Changes the mask position of a mask sticker. The sticker must belong to a mask sticker set that is owned by the current user
 ///
 /// Returns [Ok].
 final class SetStickerMaskPosition extends TdFunction<Ok> {
-  /// Changes the mask position of a mask sticker; for bots only. The sticker must belong to a mask sticker set created by the bot
+  /// Changes the mask position of a mask sticker. The sticker must belong to a mask sticker set that is owned by the current user
   const SetStickerMaskPosition({
     required this.sticker,
     this.maskPosition,

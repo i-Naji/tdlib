@@ -10,6 +10,7 @@ final class PremiumState extends TdObject {
     required this.state,
     required this.paymentOptions,
     required this.animations,
+    required this.businessAnimations,
     this.extra,
     this.clientId,
   });
@@ -22,6 +23,9 @@ final class PremiumState extends TdObject {
 
   /// The list of available promotion animations for Premium features
   final List<PremiumFeaturePromotionAnimation> animations;
+
+  /// The list of available promotion animations for Business features
+  final List<BusinessFeaturePromotionAnimation> businessAnimations;
 
   /// "@extra" of the request this object answers.
   @override
@@ -40,6 +44,9 @@ final class PremiumState extends TdObject {
         animations: _readList<PremiumFeaturePromotionAnimation>(
             json['animations'],
             (e) => _readObject(e, PremiumFeaturePromotionAnimation.fromJson)),
+        businessAnimations: _readList<BusinessFeaturePromotionAnimation>(
+            json['business_animations'],
+            (e) => _readObject(e, BusinessFeaturePromotionAnimation.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -50,6 +57,7 @@ final class PremiumState extends TdObject {
         'state': state.toJson(),
         'payment_options': [for (final e in paymentOptions) e.toJson()],
         'animations': [for (final e in animations) e.toJson()],
+        'business_animations': [for (final e in businessAnimations) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -58,6 +66,7 @@ final class PremiumState extends TdObject {
     FormattedText? state,
     List<PremiumStatePaymentOption>? paymentOptions,
     List<PremiumFeaturePromotionAnimation>? animations,
+    List<BusinessFeaturePromotionAnimation>? businessAnimations,
     dynamic extra,
     int? clientId,
   }) =>
@@ -65,6 +74,7 @@ final class PremiumState extends TdObject {
         state: state ?? this.state,
         paymentOptions: paymentOptions ?? this.paymentOptions,
         animations: animations ?? this.animations,
+        businessAnimations: businessAnimations ?? this.businessAnimations,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

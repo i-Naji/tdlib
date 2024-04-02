@@ -187,6 +187,8 @@ part 'functions/get_bot_info_description.dart';
 part 'functions/get_bot_info_short_description.dart';
 part 'functions/get_bot_name.dart';
 part 'functions/get_business_connected_bot.dart';
+part 'functions/get_business_connection.dart';
+part 'functions/get_business_features.dart';
 part 'functions/get_callback_query_answer.dart';
 part 'functions/get_callback_query_message.dart';
 part 'functions/get_chat.dart';
@@ -233,6 +235,7 @@ part 'functions/get_chats.dart';
 part 'functions/get_chats_for_chat_folder_invite_link.dart';
 part 'functions/get_chats_to_send_stories.dart';
 part 'functions/get_close_friends.dart';
+part 'functions/get_collectible_item_info.dart';
 part 'functions/get_commands.dart';
 part 'functions/get_connected_websites.dart';
 part 'functions/get_contacts.dart';
@@ -316,6 +319,7 @@ part 'functions/get_messages.dart';
 part 'functions/get_network_statistics.dart';
 part 'functions/get_new_chat_privacy_settings.dart';
 part 'functions/get_option.dart';
+part 'functions/get_owned_sticker_sets.dart';
 part 'functions/get_passport_authorization_form.dart';
 part 'functions/get_passport_authorization_form_available_elements.dart';
 part 'functions/get_passport_element.dart';
@@ -370,6 +374,7 @@ part 'functions/get_story_statistics.dart';
 part 'functions/get_suggested_file_name.dart';
 part 'functions/get_suggested_sticker_set_name.dart';
 part 'functions/get_suitable_discussion_chats.dart';
+part 'functions/get_suitable_personal_chats.dart';
 part 'functions/get_supergroup.dart';
 part 'functions/get_supergroup_full_info.dart';
 part 'functions/get_supergroup_members.dart';
@@ -464,9 +469,11 @@ part 'functions/reorder_installed_sticker_sets.dart';
 part 'functions/reorder_quick_reply_shortcuts.dart';
 part 'functions/reorder_supergroup_active_usernames.dart';
 part 'functions/replace_primary_chat_invite_link.dart';
+part 'functions/replace_sticker_in_set.dart';
 part 'functions/replace_video_chat_rtmp_url.dart';
 part 'functions/report_chat.dart';
 part 'functions/report_chat_photo.dart';
+part 'functions/report_chat_sponsored_message.dart';
 part 'functions/report_message_reactions.dart';
 part 'functions/report_story.dart';
 part 'functions/report_supergroup_anti_spam_false_positive.dart';
@@ -520,6 +527,8 @@ part 'functions/search_user_by_token.dart';
 part 'functions/search_web_app.dart';
 part 'functions/send_authentication_firebase_sms.dart';
 part 'functions/send_bot_start_message.dart';
+part 'functions/send_business_message.dart';
+part 'functions/send_business_message_album.dart';
 part 'functions/send_call_debug_information.dart';
 part 'functions/send_call_log.dart';
 part 'functions/send_call_rating.dart';
@@ -547,6 +556,7 @@ part 'functions/set_authentication_phone_number.dart';
 part 'functions/set_auto_download_settings.dart';
 part 'functions/set_autosave_settings.dart';
 part 'functions/set_bio.dart';
+part 'functions/set_birthdate.dart';
 part 'functions/set_bot_info_description.dart';
 part 'functions/set_bot_info_short_description.dart';
 part 'functions/set_bot_name.dart';
@@ -555,6 +565,7 @@ part 'functions/set_bot_updates_status.dart';
 part 'functions/set_business_away_message_settings.dart';
 part 'functions/set_business_connected_bot.dart';
 part 'functions/set_business_greeting_message_settings.dart';
+part 'functions/set_business_intro.dart';
 part 'functions/set_business_location.dart';
 part 'functions/set_business_opening_hours.dart';
 part 'functions/set_chat_accent_color.dart';
@@ -612,6 +623,7 @@ part 'functions/set_option.dart';
 part 'functions/set_passport_element.dart';
 part 'functions/set_passport_element_errors.dart';
 part 'functions/set_password.dart';
+part 'functions/set_personal_chat.dart';
 part 'functions/set_pinned_chats.dart';
 part 'functions/set_pinned_forum_topics.dart';
 part 'functions/set_pinned_saved_messages_topics.dart';
@@ -744,6 +756,7 @@ part 'objects/bank_card_action_open_url.dart';
 part 'objects/bank_card_info.dart';
 part 'objects/basic_group.dart';
 part 'objects/basic_group_full_info.dart';
+part 'objects/birthdate.dart';
 part 'objects/block_list.dart';
 part 'objects/bot_command.dart';
 part 'objects/bot_command_scope.dart';
@@ -754,9 +767,16 @@ part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
 part 'objects/business_away_message_settings.dart';
 part 'objects/business_connected_bot.dart';
+part 'objects/business_connection.dart';
+part 'objects/business_feature.dart';
+part 'objects/business_feature_promotion_animation.dart';
+part 'objects/business_features.dart';
 part 'objects/business_greeting_message_settings.dart';
 part 'objects/business_info.dart';
+part 'objects/business_intro.dart';
 part 'objects/business_location.dart';
+part 'objects/business_message.dart';
+part 'objects/business_messages.dart';
 part 'objects/business_opening_hours.dart';
 part 'objects/business_opening_hours_interval.dart';
 part 'objects/business_recipients.dart';
@@ -842,7 +862,10 @@ part 'objects/chats.dart';
 part 'objects/chats_nearby.dart';
 part 'objects/check_chat_username_result.dart';
 part 'objects/check_sticker_set_name_result.dart';
+part 'objects/close_birthday_user.dart';
 part 'objects/closed_vector_path.dart';
+part 'objects/collectible_item_info.dart';
+part 'objects/collectible_item_type.dart';
 part 'objects/connected_website.dart';
 part 'objects/connected_websites.dart';
 part 'objects/connection_state.dart';
@@ -917,6 +940,7 @@ part 'objects/inline_query_results.dart';
 part 'objects/inline_query_results_button.dart';
 part 'objects/inline_query_results_button_type.dart';
 part 'objects/input_background.dart';
+part 'objects/input_business_intro.dart';
 part 'objects/input_chat_photo.dart';
 part 'objects/input_credentials.dart';
 part 'objects/input_file.dart';
@@ -1078,6 +1102,8 @@ part 'objects/recommended_chat_folders.dart';
 part 'objects/recovery_email_address.dart';
 part 'objects/remote_file.dart';
 part 'objects/reply_markup.dart';
+part 'objects/report_chat_sponsored_message_option.dart';
+part 'objects/report_chat_sponsored_message_result.dart';
 part 'objects/report_reason.dart';
 part 'objects/reset_password_result.dart';
 part 'objects/rich_text.dart';
@@ -1097,6 +1123,8 @@ part 'objects/sent_web_app_message.dart';
 part 'objects/session.dart';
 part 'objects/session_type.dart';
 part 'objects/sessions.dart';
+part 'objects/shared_chat.dart';
+part 'objects/shared_user.dart';
 part 'objects/shipping_option.dart';
 part 'objects/speech_recognition_result.dart';
 part 'objects/sponsored_message.dart';
@@ -1195,14 +1223,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.26';
+const String tdlibVersion = '1.8.27';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'b3b63bbdc14dc377d2de6b78e5844fec1564f95d';
+const String tdlibSchemaCommit = 'efc6bd553b61dea0ae8c0436695e8d2539bf03f9';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'b3b63bbdc14dc377d2de6b78e5844fec1564f95d',
+  'efc6bd553b61dea0ae8c0436695e8d2539bf03f9',
 ];
 
 /// Base class of every TDLib object.
@@ -1371,6 +1399,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'botCommands': BotCommands.fromJson,
   'botMenuButton': BotMenuButton.fromJson,
   'chatLocation': ChatLocation.fromJson,
+  'birthdate': Birthdate.fromJson,
+  'closeBirthdayUser': CloseBirthdayUser.fromJson,
   'businessAwayMessageScheduleAlways':
       BusinessAwayMessageScheduleAlways.fromJson,
   'businessAwayMessageScheduleOutsideOfOpeningHours':
@@ -1382,6 +1412,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'businessAwayMessageSettings': BusinessAwayMessageSettings.fromJson,
   'businessGreetingMessageSettings': BusinessGreetingMessageSettings.fromJson,
   'businessConnectedBot': BusinessConnectedBot.fromJson,
+  'businessIntro': BusinessIntro.fromJson,
+  'inputBusinessIntro': InputBusinessIntro.fromJson,
   'businessOpeningHoursInterval': BusinessOpeningHoursInterval.fromJson,
   'businessOpeningHours': BusinessOpeningHours.fromJson,
   'businessInfo': BusinessInfo.fromJson,
@@ -1517,6 +1549,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messagePositions': MessagePositions.fromJson,
   'messageCalendarDay': MessageCalendarDay.fromJson,
   'messageCalendar': MessageCalendar.fromJson,
+  'businessMessage': BusinessMessage.fromJson,
+  'businessMessages': BusinessMessages.fromJson,
   'messageSourceChatHistory': MessageSourceChatHistory.fromJson,
   'messageSourceMessageThreadHistory':
       MessageSourceMessageThreadHistory.fromJson,
@@ -1536,6 +1570,17 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSponsor': MessageSponsor.fromJson,
   'sponsoredMessage': SponsoredMessage.fromJson,
   'sponsoredMessages': SponsoredMessages.fromJson,
+  'reportChatSponsoredMessageOption': ReportChatSponsoredMessageOption.fromJson,
+  'reportChatSponsoredMessageResultOk':
+      ReportChatSponsoredMessageResultOk.fromJson,
+  'reportChatSponsoredMessageResultFailed':
+      ReportChatSponsoredMessageResultFailed.fromJson,
+  'reportChatSponsoredMessageResultOptionRequired':
+      ReportChatSponsoredMessageResultOptionRequired.fromJson,
+  'reportChatSponsoredMessageResultAdsHidden':
+      ReportChatSponsoredMessageResultAdsHidden.fromJson,
+  'reportChatSponsoredMessageResultPremiumRequired':
+      ReportChatSponsoredMessageResultPremiumRequired.fromJson,
   'fileDownload': FileDownload.fromJson,
   'downloadedFileCounts': DownloadedFileCounts.fromJson,
   'foundFileDownloads': FoundFileDownloads.fromJson,
@@ -1631,6 +1676,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'forumTopic': ForumTopic.fromJson,
   'forumTopics': ForumTopics.fromJson,
   'linkPreviewOptions': LinkPreviewOptions.fromJson,
+  'sharedUser': SharedUser.fromJson,
+  'sharedChat': SharedChat.fromJson,
   'richTextPlain': RichTextPlain.fromJson,
   'richTextBold': RichTextBold.fromJson,
   'richTextItalic': RichTextItalic.fromJson,
@@ -1694,6 +1741,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'countryInfo': CountryInfo.fromJson,
   'countries': Countries.fromJson,
   'phoneNumberInfo': PhoneNumberInfo.fromJson,
+  'collectibleItemTypeUsername': CollectibleItemTypeUsername.fromJson,
+  'collectibleItemTypePhoneNumber': CollectibleItemTypePhoneNumber.fromJson,
+  'collectibleItemInfo': CollectibleItemInfo.fromJson,
   'bankCardActionOpenUrl': BankCardActionOpenUrl.fromJson,
   'bankCardInfo': BankCardInfo.fromJson,
   'address': Address.fromJson,
@@ -2111,6 +2161,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'speechRecognitionResultPending': SpeechRecognitionResultPending.fromJson,
   'speechRecognitionResultText': SpeechRecognitionResultText.fromJson,
   'speechRecognitionResultError': SpeechRecognitionResultError.fromJson,
+  'businessConnection': BusinessConnection.fromJson,
   'attachmentMenuBotColor': AttachmentMenuBotColor.fromJson,
   'attachmentMenuBot': AttachmentMenuBot.fromJson,
   'sentWebAppMessage': SentWebAppMessage.fromJson,
@@ -2293,6 +2344,18 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureSavedMessagesTags': PremiumFeatureSavedMessagesTags.fromJson,
   'premiumFeatureMessagePrivacy': PremiumFeatureMessagePrivacy.fromJson,
   'premiumFeatureLastSeenTimes': PremiumFeatureLastSeenTimes.fromJson,
+  'premiumFeatureBusiness': PremiumFeatureBusiness.fromJson,
+  'businessFeatureLocation': BusinessFeatureLocation.fromJson,
+  'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
+  'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
+  'businessFeatureGreetingMessage': BusinessFeatureGreetingMessage.fromJson,
+  'businessFeatureAwayMessage': BusinessFeatureAwayMessage.fromJson,
+  'businessFeatureAccountLinks': BusinessFeatureAccountLinks.fromJson,
+  'businessFeatureIntro': BusinessFeatureIntro.fromJson,
+  'businessFeatureBots': BusinessFeatureBots.fromJson,
+  'businessFeatureEmojiStatus': BusinessFeatureEmojiStatus.fromJson,
+  'businessFeatureChatFolderTags': BusinessFeatureChatFolderTags.fromJson,
+  'businessFeatureUpgradedStories': BusinessFeatureUpgradedStories.fromJson,
   'premiumStoryFeaturePriorityOrder': PremiumStoryFeaturePriorityOrder.fromJson,
   'premiumStoryFeatureStealthMode': PremiumStoryFeatureStealthMode.fromJson,
   'premiumStoryFeaturePermanentViewsHistory':
@@ -2305,12 +2368,16 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumStoryFeatureVideoQuality': PremiumStoryFeatureVideoQuality.fromJson,
   'premiumLimit': PremiumLimit.fromJson,
   'premiumFeatures': PremiumFeatures.fromJson,
+  'businessFeatures': BusinessFeatures.fromJson,
   'premiumSourceLimitExceeded': PremiumSourceLimitExceeded.fromJson,
   'premiumSourceFeature': PremiumSourceFeature.fromJson,
+  'premiumSourceBusinessFeature': PremiumSourceBusinessFeature.fromJson,
   'premiumSourceStoryFeature': PremiumSourceStoryFeature.fromJson,
   'premiumSourceLink': PremiumSourceLink.fromJson,
   'premiumSourceSettings': PremiumSourceSettings.fromJson,
   'premiumFeaturePromotionAnimation': PremiumFeaturePromotionAnimation.fromJson,
+  'businessFeaturePromotionAnimation':
+      BusinessFeaturePromotionAnimation.fromJson,
   'premiumState': PremiumState.fromJson,
   'storePaymentPurposePremiumSubscription':
       StorePaymentPurposePremiumSubscription.fromJson,
@@ -2468,6 +2535,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'userPrivacySettingRuleAllowAll': UserPrivacySettingRuleAllowAll.fromJson,
   'userPrivacySettingRuleAllowContacts':
       UserPrivacySettingRuleAllowContacts.fromJson,
+  'userPrivacySettingRuleAllowPremiumUsers':
+      UserPrivacySettingRuleAllowPremiumUsers.fromJson,
   'userPrivacySettingRuleAllowUsers': UserPrivacySettingRuleAllowUsers.fromJson,
   'userPrivacySettingRuleAllowChatMembers':
       UserPrivacySettingRuleAllowChatMembers.fromJson,
@@ -2488,6 +2557,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'userPrivacySettingShowPhoneNumber':
       UserPrivacySettingShowPhoneNumber.fromJson,
   'userPrivacySettingShowBio': UserPrivacySettingShowBio.fromJson,
+  'userPrivacySettingShowBirthdate': UserPrivacySettingShowBirthdate.fromJson,
   'userPrivacySettingAllowChatInvites':
       UserPrivacySettingAllowChatInvites.fromJson,
   'userPrivacySettingAllowCalls': UserPrivacySettingAllowCalls.fromJson,
@@ -2678,6 +2748,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SuggestedActionSubscribeToAnnualPremium.fromJson,
   'suggestedActionGiftPremiumForChristmas':
       SuggestedActionGiftPremiumForChristmas.fromJson,
+  'suggestedActionSetBirthdate': SuggestedActionSetBirthdate.fromJson,
   'count': Count.fromJson,
   'text': Text.fromJson,
   'seconds': Seconds.fromJson,
@@ -2840,9 +2911,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       UpdateAnimatedEmojiMessageClicked.fromJson,
   'updateAnimationSearchParameters': UpdateAnimationSearchParameters.fromJson,
   'updateSuggestedActions': UpdateSuggestedActions.fromJson,
+  'updateContactCloseBirthdays': UpdateContactCloseBirthdays.fromJson,
   'updateAddChatMembersPrivacyForbidden':
       UpdateAddChatMembersPrivacyForbidden.fromJson,
   'updateAutosaveSettings': UpdateAutosaveSettings.fromJson,
+  'updateBusinessConnection': UpdateBusinessConnection.fromJson,
+  'updateNewBusinessMessage': UpdateNewBusinessMessage.fromJson,
+  'updateBusinessMessageEdited': UpdateBusinessMessageEdited.fromJson,
+  'updateBusinessMessagesDeleted': UpdateBusinessMessagesDeleted.fromJson,
   'updateNewInlineQuery': UpdateNewInlineQuery.fromJson,
   'updateNewChosenInlineResult': UpdateNewChosenInlineResult.fromJson,
   'updateNewCallbackQuery': UpdateNewCallbackQuery.fromJson,

@@ -3036,12 +3036,12 @@ final class MessageContactRegistered extends MessageContent {
 final class MessageUsersShared extends MessageContent {
   /// The current user shared users, which were requested by the bot
   const MessageUsersShared({
-    required this.userIds,
+    required this.users,
     required this.buttonId,
   });
 
-  /// Identifier of the shared users
-  final List<int> userIds;
+  /// The shared users
+  final List<SharedUser> users;
 
   /// Identifier of the keyboard button with the request
   final int buttonId;
@@ -3049,14 +3049,15 @@ final class MessageUsersShared extends MessageContent {
   /// Parses a [MessageUsersShared] from TDLib JSON.
   factory MessageUsersShared.fromJson(Map<String, dynamic> json) =>
       MessageUsersShared(
-        userIds: _readList<int>(json['user_ids'], _readInt),
+        users: _readList<SharedUser>(
+            json['users'], (e) => _readObject(e, SharedUser.fromJson)),
         buttonId: _readInt(json['button_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'user_ids': userIds,
+        'users': [for (final e in users) e.toJson()],
         'button_id': buttonId,
       };
 
@@ -3064,11 +3065,11 @@ final class MessageUsersShared extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageUsersShared copyWith({
-    List<int>? userIds,
+    List<SharedUser>? users,
     int? buttonId,
   }) =>
       MessageUsersShared(
-        userIds: userIds ?? this.userIds,
+        users: users ?? this.users,
         buttonId: buttonId ?? this.buttonId,
       );
 
@@ -3083,12 +3084,12 @@ final class MessageUsersShared extends MessageContent {
 final class MessageChatShared extends MessageContent {
   /// The current user shared a chat, which was requested by the bot
   const MessageChatShared({
-    required this.chatId,
+    required this.chat,
     required this.buttonId,
   });
 
-  /// Identifier of the shared chat
-  final int chatId;
+  /// The shared chat
+  final SharedChat chat;
 
   /// Identifier of the keyboard button with the request
   final int buttonId;
@@ -3096,14 +3097,14 @@ final class MessageChatShared extends MessageContent {
   /// Parses a [MessageChatShared] from TDLib JSON.
   factory MessageChatShared.fromJson(Map<String, dynamic> json) =>
       MessageChatShared(
-        chatId: _readInt(json['chat_id']),
+        chat: _readObject(json['chat'], SharedChat.fromJson),
         buttonId: _readInt(json['button_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'chat_id': chatId,
+        'chat': chat.toJson(),
         'button_id': buttonId,
       };
 
@@ -3111,11 +3112,11 @@ final class MessageChatShared extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatShared copyWith({
-    int? chatId,
+    SharedChat? chat,
     int? buttonId,
   }) =>
       MessageChatShared(
-        chatId: chatId ?? this.chatId,
+        chat: chat ?? this.chat,
         buttonId: buttonId ?? this.buttonId,
       );
 

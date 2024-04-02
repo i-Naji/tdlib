@@ -104,6 +104,7 @@ final class UserTypeBot extends UserType {
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
+    required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
   });
 
@@ -125,6 +126,9 @@ final class UserTypeBot extends UserType {
   /// True, if the location of the user is expected to be sent with every inline query to this bot
   final bool needLocation;
 
+  /// True, if the bot supports connection to Telegram Business accounts
+  final bool canConnectToBusiness;
+
   /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
 
@@ -136,6 +140,7 @@ final class UserTypeBot extends UserType {
         isInline: _readBool(json['is_inline']),
         inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
         needLocation: _readBool(json['need_location']),
+        canConnectToBusiness: _readBool(json['can_connect_to_business']),
         canBeAddedToAttachmentMenu:
             _readBool(json['can_be_added_to_attachment_menu']),
       );
@@ -149,6 +154,7 @@ final class UserTypeBot extends UserType {
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
+        'can_connect_to_business': canConnectToBusiness,
         'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
       };
 
@@ -162,6 +168,7 @@ final class UserTypeBot extends UserType {
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
+    bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
   }) =>
       UserTypeBot(
@@ -173,6 +180,7 @@ final class UserTypeBot extends UserType {
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
         needLocation: needLocation ?? this.needLocation,
+        canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
         canBeAddedToAttachmentMenu:
             canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
       );

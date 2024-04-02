@@ -11,6 +11,7 @@ final class BusinessInfo extends TdObject {
     this.openingHours,
     this.greetingMessageSettings,
     this.awayMessageSettings,
+    this.intro,
   });
 
   /// Location of the business; may be null if none
@@ -25,6 +26,9 @@ final class BusinessInfo extends TdObject {
   /// The away message; may be null if none or the Business account is not of the current user
   final BusinessAwayMessageSettings? awayMessageSettings;
 
+  /// Information about intro of the business; may be null if none
+  final BusinessIntro? intro;
+
   /// Parses a [BusinessInfo] from TDLib JSON.
   factory BusinessInfo.fromJson(Map<String, dynamic> json) => BusinessInfo(
         location: _readOptional(json['location'], BusinessLocation.fromJson),
@@ -35,6 +39,7 @@ final class BusinessInfo extends TdObject {
             BusinessGreetingMessageSettings.fromJson),
         awayMessageSettings: _readOptional(json['away_message_settings'],
             BusinessAwayMessageSettings.fromJson),
+        intro: _readOptional(json['intro'], BusinessIntro.fromJson),
       );
 
   @override
@@ -44,6 +49,7 @@ final class BusinessInfo extends TdObject {
         'opening_hours': openingHours?.toJson(),
         'greeting_message_settings': greetingMessageSettings?.toJson(),
         'away_message_settings': awayMessageSettings?.toJson(),
+        'intro': intro?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -53,6 +59,7 @@ final class BusinessInfo extends TdObject {
     BusinessOpeningHours? Function()? openingHours,
     BusinessGreetingMessageSettings? Function()? greetingMessageSettings,
     BusinessAwayMessageSettings? Function()? awayMessageSettings,
+    BusinessIntro? Function()? intro,
   }) =>
       BusinessInfo(
         location: location != null ? location() : this.location,
@@ -63,6 +70,7 @@ final class BusinessInfo extends TdObject {
         awayMessageSettings: awayMessageSettings != null
             ? awayMessageSettings()
             : this.awayMessageSettings,
+        intro: intro != null ? intro() : this.intro,
       );
 
   /// TDLib type name.

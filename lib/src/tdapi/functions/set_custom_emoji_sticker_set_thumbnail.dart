@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Sets a custom emoji sticker set thumbnail; for bots only
+/// Sets a custom emoji sticker set thumbnail
 ///
 /// Returns [Ok].
 final class SetCustomEmojiStickerSetThumbnail extends TdFunction<Ok> {
-  /// Sets a custom emoji sticker set thumbnail; for bots only
+  /// Sets a custom emoji sticker set thumbnail
   const SetCustomEmojiStickerSetThumbnail({
     required this.name,
     required this.customEmojiId,
   });
 
-  /// Sticker set name
+  /// Sticker set name. The sticker set must be owned by the current user
   final String name;
 
   /// Identifier of the custom emoji from the sticker set, which will be set as sticker set thumbnail; pass 0 to remove the sticker set thumbnail

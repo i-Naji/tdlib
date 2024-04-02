@@ -61,7 +61,7 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// Media height; 0 if unknown
   final int height;
 
-  /// Media duration; 0 if unknown
+  /// Media duration, in seconds; 0 if unknown
   final int duration;
 
   /// Media minithumbnail; may be null

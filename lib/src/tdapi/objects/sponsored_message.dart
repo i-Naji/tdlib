@@ -9,6 +9,7 @@ final class SponsoredMessage extends TdObject {
   const SponsoredMessage({
     required this.messageId,
     required this.isRecommended,
+    required this.canBeReported,
     required this.content,
     required this.sponsor,
     required this.buttonText,
@@ -20,6 +21,9 @@ final class SponsoredMessage extends TdObject {
 
   /// True, if the message needs to be labeled as "recommended" instead of "sponsored"
   final bool isRecommended;
+
+  /// True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage
+  final bool canBeReported;
 
   /// Content of the message. Currently, can be only of the type messageText
   final MessageContent content;
@@ -38,6 +42,7 @@ final class SponsoredMessage extends TdObject {
       SponsoredMessage(
         messageId: _readInt(json['message_id']),
         isRecommended: _readBool(json['is_recommended']),
+        canBeReported: _readBool(json['can_be_reported']),
         content: _readObject(json['content'], MessageContent.fromJson),
         sponsor: _readObject(json['sponsor'], MessageSponsor.fromJson),
         buttonText: _readString(json['button_text']),
@@ -49,6 +54,7 @@ final class SponsoredMessage extends TdObject {
         '@type': CONSTRUCTOR,
         'message_id': messageId,
         'is_recommended': isRecommended,
+        'can_be_reported': canBeReported,
         'content': content.toJson(),
         'sponsor': sponsor.toJson(),
         'button_text': buttonText,
@@ -60,6 +66,7 @@ final class SponsoredMessage extends TdObject {
   SponsoredMessage copyWith({
     int? messageId,
     bool? isRecommended,
+    bool? canBeReported,
     MessageContent? content,
     MessageSponsor? sponsor,
     String? buttonText,
@@ -68,6 +75,7 @@ final class SponsoredMessage extends TdObject {
       SponsoredMessage(
         messageId: messageId ?? this.messageId,
         isRecommended: isRecommended ?? this.isRecommended,
+        canBeReported: canBeReported ?? this.canBeReported,
         content: content ?? this.content,
         sponsor: sponsor ?? this.sponsor,
         buttonText: buttonText ?? this.buttonText,

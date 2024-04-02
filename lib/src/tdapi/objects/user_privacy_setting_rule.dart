@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a single rule for managing user privacy settings
 ///
-/// One of: [UserPrivacySettingRuleAllowAll], [UserPrivacySettingRuleAllowContacts], [UserPrivacySettingRuleAllowUsers], [UserPrivacySettingRuleAllowChatMembers], [UserPrivacySettingRuleRestrictAll], [UserPrivacySettingRuleRestrictContacts], [UserPrivacySettingRuleRestrictUsers], [UserPrivacySettingRuleRestrictChatMembers]; or [UndecodedUserPrivacySettingRule] for a type newer than this API.
+/// One of: [UserPrivacySettingRuleAllowAll], [UserPrivacySettingRuleAllowContacts], [UserPrivacySettingRuleAllowPremiumUsers], [UserPrivacySettingRuleAllowUsers], [UserPrivacySettingRuleAllowChatMembers], [UserPrivacySettingRuleRestrictAll], [UserPrivacySettingRuleRestrictContacts], [UserPrivacySettingRuleRestrictUsers], [UserPrivacySettingRuleRestrictChatMembers]; or [UndecodedUserPrivacySettingRule] for a type newer than this API.
 sealed class UserPrivacySettingRule extends TdObject {
   const UserPrivacySettingRule();
 
@@ -94,6 +94,35 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rule to allow all Premium Users to do something; currently, allowed only for userPrivacySettingAllowChatInvites
+final class UserPrivacySettingRuleAllowPremiumUsers
+    extends UserPrivacySettingRule {
+  /// A rule to allow all Premium Users to do something; currently, allowed only for userPrivacySettingAllowChatInvites
+  const UserPrivacySettingRuleAllowPremiumUsers();
+
+  /// Parses a [UserPrivacySettingRuleAllowPremiumUsers] from TDLib JSON.
+  factory UserPrivacySettingRuleAllowPremiumUsers.fromJson(
+          Map<String, dynamic> json) =>
+      const UserPrivacySettingRuleAllowPremiumUsers();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingRuleAllowPremiumUsers copyWith() =>
+      const UserPrivacySettingRuleAllowPremiumUsers();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowPremiumUsers';
 
   @override
   String getConstructor() => CONSTRUCTOR;

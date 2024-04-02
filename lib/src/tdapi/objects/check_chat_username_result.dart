@@ -189,10 +189,10 @@ final class CheckChatUsernameResultUsernameOccupied
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The username can be purchased at fragment.com
+/// The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo
 final class CheckChatUsernameResultUsernamePurchasable
     extends CheckChatUsernameResult {
-  /// The username can be purchased at fragment.com
+  /// The username can be purchased at https://fragment.com. Information about the username can be received using getCollectibleItemInfo
   const CheckChatUsernameResultUsernamePurchasable({
     this.extra,
     this.clientId,
