@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of an emoji category
+/// Describes type of emoji category
 ///
 /// One of: [EmojiCategoryTypeDefault], [EmojiCategoryTypeEmojiStatus], [EmojiCategoryTypeChatPhoto]; or [UndecodedEmojiCategoryType] for a type newer than this API.
 sealed class EmojiCategoryType extends TdObject {

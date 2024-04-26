@@ -3,13 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Resends phone number confirmation code
+/// Returns business chat links created for the current account
 ///
-/// Returns [AuthenticationCodeInfo].
-final class ResendPhoneNumberConfirmationCode
-    extends TdFunction<AuthenticationCodeInfo> {
-  /// Resends phone number confirmation code
-  const ResendPhoneNumberConfirmationCode();
+/// Returns [BusinessChatLinks].
+final class GetBusinessChatLinks extends TdFunction<BusinessChatLinks> {
+  /// Returns business chat links created for the current account
+  const GetBusinessChatLinks();
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -19,11 +18,10 @@ final class ResendPhoneNumberConfirmationCode
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ResendPhoneNumberConfirmationCode copyWith() =>
-      const ResendPhoneNumberConfirmationCode();
+  GetBusinessChatLinks copyWith() => const GetBusinessChatLinks();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'resendPhoneNumberConfirmationCode';
+  static const String CONSTRUCTOR = 'getBusinessChatLinks';
 
   @override
   String getConstructor() => CONSTRUCTOR;

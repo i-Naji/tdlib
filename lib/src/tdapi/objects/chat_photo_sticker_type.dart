@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a sticker, which was used to create a chat photo
+/// Describes type of sticker, which was used to create a chat photo
 ///
 /// One of: [ChatPhotoStickerTypeRegularOrMask], [ChatPhotoStickerTypeCustomEmoji]; or [UndecodedChatPhotoStickerType] for a type newer than this API.
 sealed class ChatPhotoStickerType extends TdObject {

@@ -15,6 +15,7 @@ final class ChatBoostFeatures extends TdObject {
     required this.minCustomBackgroundBoostLevel,
     required this.minCustomEmojiStickerSetBoostLevel,
     required this.minSpeechRecognitionBoostLevel,
+    required this.minSponsoredMessageDisableBoostLevel,
     this.extra,
     this.clientId,
   });
@@ -43,6 +44,9 @@ final class ChatBoostFeatures extends TdObject {
   /// The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only
   final int minSpeechRecognitionBoostLevel;
 
+  /// The minimum boost level allowing to disable sponsored messages in the chat; for channel chats only
+  final int minSponsoredMessageDisableBoostLevel;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -70,6 +74,8 @@ final class ChatBoostFeatures extends TdObject {
             _readInt(json['min_custom_emoji_sticker_set_boost_level']),
         minSpeechRecognitionBoostLevel:
             _readInt(json['min_speech_recognition_boost_level']),
+        minSponsoredMessageDisableBoostLevel:
+            _readInt(json['min_sponsored_message_disable_boost_level']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -89,6 +95,8 @@ final class ChatBoostFeatures extends TdObject {
         'min_custom_emoji_sticker_set_boost_level':
             minCustomEmojiStickerSetBoostLevel,
         'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
+        'min_sponsored_message_disable_boost_level':
+            minSponsoredMessageDisableBoostLevel,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -102,6 +110,7 @@ final class ChatBoostFeatures extends TdObject {
     int? minCustomBackgroundBoostLevel,
     int? minCustomEmojiStickerSetBoostLevel,
     int? minSpeechRecognitionBoostLevel,
+    int? minSponsoredMessageDisableBoostLevel,
     dynamic extra,
     int? clientId,
   }) =>
@@ -124,6 +133,9 @@ final class ChatBoostFeatures extends TdObject {
                 this.minCustomEmojiStickerSetBoostLevel,
         minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
             this.minSpeechRecognitionBoostLevel,
+        minSponsoredMessageDisableBoostLevel:
+            minSponsoredMessageDisableBoostLevel ??
+                this.minSponsoredMessageDisableBoostLevel,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

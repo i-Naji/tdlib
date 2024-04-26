@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a poll
+/// Describes the type of poll
 ///
 /// One of: [PollTypeRegular], [PollTypeQuiz]; or [UndecodedPollType] for a type newer than this API.
 sealed class PollType extends TdObject {

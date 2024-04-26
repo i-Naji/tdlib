@@ -20,6 +20,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     required this.canSetCustomBackground,
     required this.canSetCustomEmojiStickerSet,
     required this.canRecognizeSpeech,
+    required this.canDisableSponsoredMessages,
     this.extra,
     this.clientId,
   });
@@ -63,6 +64,9 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// True, if speech recognition can be used for video note and voice note messages by all users
   final bool canRecognizeSpeech;
 
+  /// True, if sponsored messages can be disabled in the chat
+  final bool canDisableSponsoredMessages;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -90,6 +94,8 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetCustomEmojiStickerSet:
             _readBool(json['can_set_custom_emoji_sticker_set']),
         canRecognizeSpeech: _readBool(json['can_recognize_speech']),
+        canDisableSponsoredMessages:
+            _readBool(json['can_disable_sponsored_messages']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -111,6 +117,7 @@ final class ChatBoostLevelFeatures extends TdObject {
         'can_set_custom_background': canSetCustomBackground,
         'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
         'can_recognize_speech': canRecognizeSpeech,
+        'can_disable_sponsored_messages': canDisableSponsoredMessages,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -129,6 +136,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     bool? canSetCustomBackground,
     bool? canSetCustomEmojiStickerSet,
     bool? canRecognizeSpeech,
+    bool? canDisableSponsoredMessages,
     dynamic extra,
     int? clientId,
   }) =>
@@ -154,6 +162,8 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetCustomEmojiStickerSet:
             canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
         canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
+        canDisableSponsoredMessages:
+            canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

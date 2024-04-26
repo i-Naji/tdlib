@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents the type of a user. The following types are possible: regular users, deleted users and bots
+/// Represents the type of user. The following types are possible: regular users, deleted users and bots
 ///
 /// One of: [UserTypeRegular], [UserTypeDeleted], [UserTypeBot], [UserTypeUnknown]; or [UndecodedUserType] for a type newer than this API.
 sealed class UserType extends TdObject {

@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Checks the authentication code sent to confirm a new phone number of the user
+/// Check the authentication code and completes the request for which the code was sent if appropriate
 ///
 /// Returns [Ok].
-final class CheckChangePhoneNumberCode extends TdFunction<Ok> {
-  /// Checks the authentication code sent to confirm a new phone number of the user
-  const CheckChangePhoneNumberCode({
+final class CheckPhoneNumberCode extends TdFunction<Ok> {
+  /// Check the authentication code and completes the request for which the code was sent if appropriate
+  const CheckPhoneNumberCode({
     required this.code,
   });
 
@@ -24,15 +24,15 @@ final class CheckChangePhoneNumberCode extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckChangePhoneNumberCode copyWith({
+  CheckPhoneNumberCode copyWith({
     String? code,
   }) =>
-      CheckChangePhoneNumberCode(
+      CheckPhoneNumberCode(
         code: code ?? this.code,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'checkChangePhoneNumberCode';
+  static const String CONSTRUCTOR = 'checkPhoneNumberCode';
 
   @override
   String getConstructor() => CONSTRUCTOR;

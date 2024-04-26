@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a message sponsor
+/// Describes type of message sponsor
 ///
 /// One of: [MessageSponsorTypeBot], [MessageSponsorTypeWebApp], [MessageSponsorTypePublicChannel], [MessageSponsorTypePrivateChannel], [MessageSponsorTypeWebsite]; or [UndecodedMessageSponsorType] for a type newer than this API.
 sealed class MessageSponsorType extends TdObject {

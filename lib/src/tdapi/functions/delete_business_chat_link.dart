@@ -3,36 +3,36 @@
 
 part of '../tdapi.dart';
 
-/// Checks phone number confirmation code
+/// Deletes a business chat link of the current account
 ///
 /// Returns [Ok].
-final class CheckPhoneNumberConfirmationCode extends TdFunction<Ok> {
-  /// Checks phone number confirmation code
-  const CheckPhoneNumberConfirmationCode({
-    required this.code,
+final class DeleteBusinessChatLink extends TdFunction<Ok> {
+  /// Deletes a business chat link of the current account
+  const DeleteBusinessChatLink({
+    required this.link,
   });
 
-  /// Confirmation code to check
-  final String code;
+  /// The link to delete
+  final String link;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'code': code,
+        'link': link,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CheckPhoneNumberConfirmationCode copyWith({
-    String? code,
+  DeleteBusinessChatLink copyWith({
+    String? link,
   }) =>
-      CheckPhoneNumberConfirmationCode(
-        code: code ?? this.code,
+      DeleteBusinessChatLink(
+        link: link ?? this.link,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'checkPhoneNumberConfirmationCode';
+  static const String CONSTRUCTOR = 'deleteBusinessChatLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

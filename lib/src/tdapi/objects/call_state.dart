@@ -125,6 +125,7 @@ final class CallStateReady extends CallState {
     required this.encryptionKey,
     required this.emojis,
     required this.allowP2p,
+    required this.customParameters,
   });
 
   /// Call protocols supported by the other call participant
@@ -145,6 +146,9 @@ final class CallStateReady extends CallState {
   /// True, if peer-to-peer connection is allowed by users privacy settings
   final bool allowP2p;
 
+  /// Custom JSON-encoded call parameters to be passed to tgcalls
+  final String customParameters;
+
   /// Parses a [CallStateReady] from TDLib JSON.
   factory CallStateReady.fromJson(Map<String, dynamic> json) => CallStateReady(
         protocol: _readObject(json['protocol'], CallProtocol.fromJson),
@@ -154,6 +158,7 @@ final class CallStateReady extends CallState {
         encryptionKey: _readString(json['encryption_key']),
         emojis: _readList<String>(json['emojis'], _readString),
         allowP2p: _readBool(json['allow_p2p']),
+        customParameters: _readString(json['custom_parameters']),
       );
 
   @override
@@ -165,6 +170,7 @@ final class CallStateReady extends CallState {
         'encryption_key': encryptionKey,
         'emojis': emojis,
         'allow_p2p': allowP2p,
+        'custom_parameters': customParameters,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -177,6 +183,7 @@ final class CallStateReady extends CallState {
     String? encryptionKey,
     List<String>? emojis,
     bool? allowP2p,
+    String? customParameters,
   }) =>
       CallStateReady(
         protocol: protocol ?? this.protocol,
@@ -185,6 +192,7 @@ final class CallStateReady extends CallState {
         encryptionKey: encryptionKey ?? this.encryptionKey,
         emojis: emojis ?? this.emojis,
         allowP2p: allowP2p ?? this.allowP2p,
+        customParameters: customParameters ?? this.customParameters,
       );
 
   /// TDLib type name.

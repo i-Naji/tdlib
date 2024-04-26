@@ -19,6 +19,8 @@ part 'functions/add_log_message.dart';
 part 'functions/add_message_reaction.dart';
 part 'functions/add_network_statistics.dart';
 part 'functions/add_proxy.dart';
+part 'functions/add_quick_reply_shortcut_inline_query_result_message.dart';
+part 'functions/add_quick_reply_shortcut_message.dart';
 part 'functions/add_recent_sticker.dart';
 part 'functions/add_recently_found_chat.dart';
 part 'functions/add_saved_animation.dart';
@@ -47,14 +49,12 @@ part 'functions/cancel_password_reset.dart';
 part 'functions/cancel_preliminary_upload_file.dart';
 part 'functions/cancel_recovery_email_address_verification.dart';
 part 'functions/change_imported_contacts.dart';
-part 'functions/change_phone_number.dart';
 part 'functions/change_sticker_set.dart';
 part 'functions/check_authentication_bot_token.dart';
 part 'functions/check_authentication_code.dart';
 part 'functions/check_authentication_email_code.dart';
 part 'functions/check_authentication_password.dart';
 part 'functions/check_authentication_password_recovery_code.dart';
-part 'functions/check_change_phone_number_code.dart';
 part 'functions/check_chat_folder_invite_link.dart';
 part 'functions/check_chat_invite_link.dart';
 part 'functions/check_chat_username.dart';
@@ -62,8 +62,7 @@ part 'functions/check_created_public_chats_limit.dart';
 part 'functions/check_email_address_verification_code.dart';
 part 'functions/check_login_email_address_code.dart';
 part 'functions/check_password_recovery_code.dart';
-part 'functions/check_phone_number_confirmation_code.dart';
-part 'functions/check_phone_number_verification_code.dart';
+part 'functions/check_phone_number_code.dart';
 part 'functions/check_premium_gift_code.dart';
 part 'functions/check_quick_reply_shortcut_name.dart';
 part 'functions/check_recovery_email_address_code.dart';
@@ -87,6 +86,7 @@ part 'functions/close_web_app.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
 part 'functions/create_basic_group_chat.dart';
+part 'functions/create_business_chat_link.dart';
 part 'functions/create_call.dart';
 part 'functions/create_chat_folder.dart';
 part 'functions/create_chat_folder_invite_link.dart';
@@ -105,6 +105,7 @@ part 'functions/create_video_chat.dart';
 part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
+part 'functions/delete_business_chat_link.dart';
 part 'functions/delete_business_connected_bot.dart';
 part 'functions/delete_chat.dart';
 part 'functions/delete_chat_background.dart';
@@ -138,6 +139,7 @@ part 'functions/discard_call.dart';
 part 'functions/disconnect_all_websites.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/download_file.dart';
+part 'functions/edit_business_chat_link.dart';
 part 'functions/edit_chat_folder.dart';
 part 'functions/edit_chat_folder_invite_link.dart';
 part 'functions/edit_chat_invite_link.dart';
@@ -155,6 +157,7 @@ part 'functions/edit_message_reply_markup.dart';
 part 'functions/edit_message_scheduling_state.dart';
 part 'functions/edit_message_text.dart';
 part 'functions/edit_proxy.dart';
+part 'functions/edit_quick_reply_message.dart';
 part 'functions/edit_story.dart';
 part 'functions/enable_proxy.dart';
 part 'functions/end_group_call.dart';
@@ -186,6 +189,8 @@ part 'functions/get_blocked_message_senders.dart';
 part 'functions/get_bot_info_description.dart';
 part 'functions/get_bot_info_short_description.dart';
 part 'functions/get_bot_name.dart';
+part 'functions/get_business_chat_link_info.dart';
+part 'functions/get_business_chat_links.dart';
 part 'functions/get_business_connected_bot.dart';
 part 'functions/get_business_connection.dart';
 part 'functions/get_business_features.dart';
@@ -224,6 +229,9 @@ part 'functions/get_chat_message_position.dart';
 part 'functions/get_chat_notification_settings_exceptions.dart';
 part 'functions/get_chat_pinned_message.dart';
 part 'functions/get_chat_pinned_stories.dart';
+part 'functions/get_chat_revenue_statistics.dart';
+part 'functions/get_chat_revenue_transactions.dart';
+part 'functions/get_chat_revenue_withdrawal_url.dart';
 part 'functions/get_chat_scheduled_messages.dart';
 part 'functions/get_chat_similar_chat_count.dart';
 part 'functions/get_chat_similar_chats.dart';
@@ -270,6 +278,7 @@ part 'functions/get_forum_topic_default_icons.dart';
 part 'functions/get_forum_topic_link.dart';
 part 'functions/get_forum_topics.dart';
 part 'functions/get_game_high_scores.dart';
+part 'functions/get_greeting_stickers.dart';
 part 'functions/get_group_call.dart';
 part 'functions/get_group_call_invite_link.dart';
 part 'functions/get_group_call_stream_segment.dart';
@@ -440,12 +449,14 @@ part 'functions/read_all_message_thread_mentions.dart';
 part 'functions/read_all_message_thread_reactions.dart';
 part 'functions/read_chat_list.dart';
 part 'functions/read_file_part.dart';
+part 'functions/readd_quick_reply_shortcut_messages.dart';
 part 'functions/recognize_speech.dart';
 part 'functions/recover_authentication_password.dart';
 part 'functions/recover_password.dart';
 part 'functions/register_device.dart';
 part 'functions/register_user.dart';
 part 'functions/remove_all_files_from_downloads.dart';
+part 'functions/remove_business_connected_bot_from_chat.dart';
 part 'functions/remove_chat_action_bar.dart';
 part 'functions/remove_contacts.dart';
 part 'functions/remove_favorite_sticker.dart';
@@ -482,12 +493,10 @@ part 'functions/request_authentication_password_recovery.dart';
 part 'functions/request_password_recovery.dart';
 part 'functions/request_qr_code_authentication.dart';
 part 'functions/resend_authentication_code.dart';
-part 'functions/resend_change_phone_number_code.dart';
 part 'functions/resend_email_address_verification_code.dart';
 part 'functions/resend_login_email_address_code.dart';
 part 'functions/resend_messages.dart';
-part 'functions/resend_phone_number_confirmation_code.dart';
-part 'functions/resend_phone_number_verification_code.dart';
+part 'functions/resend_phone_number_code.dart';
 part 'functions/resend_recovery_email_address_code.dart';
 part 'functions/reset_all_notification_settings.dart';
 part 'functions/reset_authentication_email_address.dart';
@@ -541,8 +550,8 @@ part 'functions/send_message.dart';
 part 'functions/send_message_album.dart';
 part 'functions/send_passport_authorization_form.dart';
 part 'functions/send_payment_form.dart';
-part 'functions/send_phone_number_confirmation_code.dart';
-part 'functions/send_phone_number_verification_code.dart';
+part 'functions/send_phone_number_code.dart';
+part 'functions/send_phone_number_firebase_sms.dart';
 part 'functions/send_quick_reply_shortcut_messages.dart';
 part 'functions/send_story.dart';
 part 'functions/send_web_app_custom_request.dart';
@@ -565,9 +574,9 @@ part 'functions/set_bot_updates_status.dart';
 part 'functions/set_business_away_message_settings.dart';
 part 'functions/set_business_connected_bot.dart';
 part 'functions/set_business_greeting_message_settings.dart';
-part 'functions/set_business_intro.dart';
 part 'functions/set_business_location.dart';
 part 'functions/set_business_opening_hours.dart';
+part 'functions/set_business_start_page.dart';
 part 'functions/set_chat_accent_color.dart';
 part 'functions/set_chat_active_stories_list.dart';
 part 'functions/set_chat_available_reactions.dart';
@@ -680,6 +689,7 @@ part 'functions/test_use_update.dart';
 part 'functions/toggle_all_downloads_are_paused.dart';
 part 'functions/toggle_bot_is_added_to_attachment_menu.dart';
 part 'functions/toggle_bot_username_is_active.dart';
+part 'functions/toggle_business_connected_bot_chat_is_paused.dart';
 part 'functions/toggle_chat_default_disable_notification.dart';
 part 'functions/toggle_chat_folder_tags.dart';
 part 'functions/toggle_chat_has_protected_content.dart';
@@ -702,6 +712,7 @@ part 'functions/toggle_saved_messages_topic_is_pinned.dart';
 part 'functions/toggle_session_can_accept_calls.dart';
 part 'functions/toggle_session_can_accept_secret_chats.dart';
 part 'functions/toggle_story_is_pinned.dart';
+part 'functions/toggle_supergroup_can_have_sponsored_messages.dart';
 part 'functions/toggle_supergroup_has_aggressive_anti_spam_enabled.dart';
 part 'functions/toggle_supergroup_has_hidden_members.dart';
 part 'functions/toggle_supergroup_is_all_history_available.dart';
@@ -766,6 +777,10 @@ part 'objects/bot_menu_button.dart';
 part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
 part 'objects/business_away_message_settings.dart';
+part 'objects/business_bot_manage_bar.dart';
+part 'objects/business_chat_link.dart';
+part 'objects/business_chat_link_info.dart';
+part 'objects/business_chat_links.dart';
 part 'objects/business_connected_bot.dart';
 part 'objects/business_connection.dart';
 part 'objects/business_feature.dart';
@@ -773,13 +788,13 @@ part 'objects/business_feature_promotion_animation.dart';
 part 'objects/business_features.dart';
 part 'objects/business_greeting_message_settings.dart';
 part 'objects/business_info.dart';
-part 'objects/business_intro.dart';
 part 'objects/business_location.dart';
 part 'objects/business_message.dart';
 part 'objects/business_messages.dart';
 part 'objects/business_opening_hours.dart';
 part 'objects/business_opening_hours_interval.dart';
 part 'objects/business_recipients.dart';
+part 'objects/business_start_page.dart';
 part 'objects/call.dart';
 part 'objects/call_discard_reason.dart';
 part 'objects/call_id.dart';
@@ -849,6 +864,11 @@ part 'objects/chat_photo_sticker.dart';
 part 'objects/chat_photo_sticker_type.dart';
 part 'objects/chat_photos.dart';
 part 'objects/chat_position.dart';
+part 'objects/chat_revenue_statistics.dart';
+part 'objects/chat_revenue_transaction.dart';
+part 'objects/chat_revenue_transaction_type.dart';
+part 'objects/chat_revenue_transactions.dart';
+part 'objects/chat_revenue_withdrawal_state.dart';
 part 'objects/chat_source.dart';
 part 'objects/chat_statistics.dart';
 part 'objects/chat_statistics_administrator_actions_info.dart';
@@ -873,6 +893,7 @@ part 'objects/contact.dart';
 part 'objects/count.dart';
 part 'objects/countries.dart';
 part 'objects/country_info.dart';
+part 'objects/created_basic_group_chat.dart';
 part 'objects/custom_request_result.dart';
 part 'objects/database_statistics.dart';
 part 'objects/date.dart';
@@ -898,6 +919,8 @@ part 'objects/emoji_statuses.dart';
 part 'objects/emojis.dart';
 part 'objects/encrypted_credentials.dart';
 part 'objects/encrypted_passport_element.dart';
+part 'objects/failed_to_add_member.dart';
+part 'objects/failed_to_add_members.dart';
 part 'objects/file.dart';
 part 'objects/file_download.dart';
 part 'objects/file_downloaded_prefix_size.dart';
@@ -940,7 +963,8 @@ part 'objects/inline_query_results.dart';
 part 'objects/inline_query_results_button.dart';
 part 'objects/inline_query_results_button_type.dart';
 part 'objects/input_background.dart';
-part 'objects/input_business_intro.dart';
+part 'objects/input_business_chat_link.dart';
+part 'objects/input_business_start_page.dart';
 part 'objects/input_chat_photo.dart';
 part 'objects/input_credentials.dart';
 part 'objects/input_file.dart';
@@ -1057,6 +1081,7 @@ part 'objects/payment_result.dart';
 part 'objects/personal_details.dart';
 part 'objects/personal_document.dart';
 part 'objects/phone_number_authentication_settings.dart';
+part 'objects/phone_number_code_type.dart';
 part 'objects/phone_number_info.dart';
 part 'objects/photo.dart';
 part 'objects/photo_size.dart';
@@ -1093,6 +1118,7 @@ part 'objects/public_forwards.dart';
 part 'objects/push_message_content.dart';
 part 'objects/push_receiver_id.dart';
 part 'objects/quick_reply_message.dart';
+part 'objects/quick_reply_messages.dart';
 part 'objects/quick_reply_shortcut.dart';
 part 'objects/reaction_type.dart';
 part 'objects/reaction_unavailability_reason.dart';
@@ -1223,14 +1249,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.27';
+const String tdlibVersion = '1.8.28';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'efc6bd553b61dea0ae8c0436695e8d2539bf03f9';
+const String tdlibSchemaCommit = '38d31da77a72619cf7ec5d479338a48274cc7446';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'efc6bd553b61dea0ae8c0436695e8d2539bf03f9',
+  '38d31da77a72619cf7ec5d479338a48274cc7446',
 ];
 
 /// Base class of every TDLib object.
@@ -1412,11 +1438,15 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'businessAwayMessageSettings': BusinessAwayMessageSettings.fromJson,
   'businessGreetingMessageSettings': BusinessGreetingMessageSettings.fromJson,
   'businessConnectedBot': BusinessConnectedBot.fromJson,
-  'businessIntro': BusinessIntro.fromJson,
-  'inputBusinessIntro': InputBusinessIntro.fromJson,
+  'businessStartPage': BusinessStartPage.fromJson,
+  'inputBusinessStartPage': InputBusinessStartPage.fromJson,
   'businessOpeningHoursInterval': BusinessOpeningHoursInterval.fromJson,
   'businessOpeningHours': BusinessOpeningHours.fromJson,
   'businessInfo': BusinessInfo.fromJson,
+  'businessChatLink': BusinessChatLink.fromJson,
+  'businessChatLinks': BusinessChatLinks.fromJson,
+  'inputBusinessChatLink': InputBusinessChatLink.fromJson,
+  'businessChatLinkInfo': BusinessChatLinkInfo.fromJson,
   'chatPhotoStickerTypeRegularOrMask':
       ChatPhotoStickerTypeRegularOrMask.fromJson,
   'chatPhotoStickerTypeCustomEmoji': ChatPhotoStickerTypeCustomEmoji.fromJson,
@@ -1618,9 +1648,13 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatAvailableReactionsSome': ChatAvailableReactionsSome.fromJson,
   'savedMessagesTag': SavedMessagesTag.fromJson,
   'savedMessagesTags': SavedMessagesTags.fromJson,
+  'businessBotManageBar': BusinessBotManageBar.fromJson,
   'videoChat': VideoChat.fromJson,
   'chat': Chat.fromJson,
   'chats': Chats.fromJson,
+  'failedToAddMember': FailedToAddMember.fromJson,
+  'failedToAddMembers': FailedToAddMembers.fromJson,
+  'createdBasicGroupChat': CreatedBasicGroupChat.fromJson,
   'chatNearby': ChatNearby.fromJson,
   'chatsNearby': ChatsNearby.fromJson,
   'publicChatTypeHasUsername': PublicChatTypeHasUsername.fromJson,
@@ -2086,6 +2120,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storyInteraction': StoryInteraction.fromJson,
   'storyInteractions': StoryInteractions.fromJson,
   'quickReplyMessage': QuickReplyMessage.fromJson,
+  'quickReplyMessages': QuickReplyMessages.fromJson,
   'quickReplyShortcut': QuickReplyShortcut.fromJson,
   'publicForwardMessage': PublicForwardMessage.fromJson,
   'publicForwardStory': PublicForwardStory.fromJson,
@@ -2351,7 +2386,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'businessFeatureGreetingMessage': BusinessFeatureGreetingMessage.fromJson,
   'businessFeatureAwayMessage': BusinessFeatureAwayMessage.fromJson,
   'businessFeatureAccountLinks': BusinessFeatureAccountLinks.fromJson,
-  'businessFeatureIntro': BusinessFeatureIntro.fromJson,
+  'businessFeatureStartPage': BusinessFeatureStartPage.fromJson,
   'businessFeatureBots': BusinessFeatureBots.fromJson,
   'businessFeatureEmojiStatus': BusinessFeatureEmojiStatus.fromJson,
   'businessFeatureChatFolderTags': BusinessFeatureChatFolderTags.fromJson,
@@ -2620,6 +2655,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeBotAddToChannel': InternalLinkTypeBotAddToChannel.fromJson,
   'internalLinkTypeBotStart': InternalLinkTypeBotStart.fromJson,
   'internalLinkTypeBotStartInGroup': InternalLinkTypeBotStartInGroup.fromJson,
+  'internalLinkTypeBusinessChat': InternalLinkTypeBusinessChat.fromJson,
   'internalLinkTypeChangePhoneNumber':
       InternalLinkTypeChangePhoneNumber.fromJson,
   'internalLinkTypeChatBoost': InternalLinkTypeChatBoost.fromJson,
@@ -2776,8 +2812,21 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatStatisticsInviterInfo': ChatStatisticsInviterInfo.fromJson,
   'chatStatisticsSupergroup': ChatStatisticsSupergroup.fromJson,
   'chatStatisticsChannel': ChatStatisticsChannel.fromJson,
+  'chatRevenueStatistics': ChatRevenueStatistics.fromJson,
   'messageStatistics': MessageStatistics.fromJson,
   'storyStatistics': StoryStatistics.fromJson,
+  'chatRevenueWithdrawalStatePending':
+      ChatRevenueWithdrawalStatePending.fromJson,
+  'chatRevenueWithdrawalStateCompleted':
+      ChatRevenueWithdrawalStateCompleted.fromJson,
+  'chatRevenueWithdrawalStateFailed': ChatRevenueWithdrawalStateFailed.fromJson,
+  'chatRevenueTransactionTypeEarnings':
+      ChatRevenueTransactionTypeEarnings.fromJson,
+  'chatRevenueTransactionTypeWithdrawal':
+      ChatRevenueTransactionTypeWithdrawal.fromJson,
+  'chatRevenueTransactionTypeRefund': ChatRevenueTransactionTypeRefund.fromJson,
+  'chatRevenueTransaction': ChatRevenueTransaction.fromJson,
+  'chatRevenueTransactions': ChatRevenueTransactions.fromJson,
   'point': Point.fromJson,
   'vectorPathCommandLine': VectorPathCommandLine.fromJson,
   'vectorPathCommandCubicBezierCurve':
@@ -2791,6 +2840,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'botCommandScopeChatAdministrators':
       BotCommandScopeChatAdministrators.fromJson,
   'botCommandScopeChatMember': BotCommandScopeChatMember.fromJson,
+  'phoneNumberCodeTypeChange': PhoneNumberCodeTypeChange.fromJson,
+  'phoneNumberCodeTypeVerify': PhoneNumberCodeTypeVerify.fromJson,
+  'phoneNumberCodeTypeConfirmOwnership':
+      PhoneNumberCodeTypeConfirmOwnership.fromJson,
   'updateAuthorizationState': UpdateAuthorizationState.fromJson,
   'updateNewMessage': UpdateNewMessage.fromJson,
   'updateMessageSendAcknowledged': UpdateMessageSendAcknowledged.fromJson,
@@ -2816,6 +2869,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateChatReadInbox': UpdateChatReadInbox.fromJson,
   'updateChatReadOutbox': UpdateChatReadOutbox.fromJson,
   'updateChatActionBar': UpdateChatActionBar.fromJson,
+  'updateChatBusinessBotManageBar': UpdateChatBusinessBotManageBar.fromJson,
   'updateChatAvailableReactions': UpdateChatAvailableReactions.fromJson,
   'updateChatDraftMessage': UpdateChatDraftMessage.fromJson,
   'updateChatEmojiStatus': UpdateChatEmojiStatus.fromJson,
@@ -2911,9 +2965,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       UpdateAnimatedEmojiMessageClicked.fromJson,
   'updateAnimationSearchParameters': UpdateAnimationSearchParameters.fromJson,
   'updateSuggestedActions': UpdateSuggestedActions.fromJson,
+  'updateSpeedLimitNotification': UpdateSpeedLimitNotification.fromJson,
   'updateContactCloseBirthdays': UpdateContactCloseBirthdays.fromJson,
-  'updateAddChatMembersPrivacyForbidden':
-      UpdateAddChatMembersPrivacyForbidden.fromJson,
   'updateAutosaveSettings': UpdateAutosaveSettings.fromJson,
   'updateBusinessConnection': UpdateBusinessConnection.fromJson,
   'updateNewBusinessMessage': UpdateNewBusinessMessage.fromJson,

@@ -3,27 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Describes settings for a business account intro to set
-final class InputBusinessIntro extends TdObject {
-  /// Describes settings for a business account intro to set
-  const InputBusinessIntro({
+/// Describes settings for a business account start page to set
+final class InputBusinessStartPage extends TdObject {
+  /// Describes settings for a business account start page to set
+  const InputBusinessStartPage({
     required this.title,
     required this.message,
     this.sticker,
   });
 
-  /// Title text of the intro; 0-getOption("business_intro_title_length_max") characters
+  /// Title text of the start page; 0-getOption("business_start_page_title_length_max") characters
   final String title;
 
-  /// Message text of the intro; 0-getOption("business_intro_message_length_max") characters
+  /// Message text of the start page; 0-getOption("business_start_page_message_length_max") characters
   final String message;
 
-  /// Greeting sticker of the intro; pass null if none. The sticker must belong to a sticker set and must not be a custom emoji
+  /// Greeting sticker of the start page; pass null if none. The sticker must belong to a sticker set and must not be a custom emoji
   final InputFile? sticker;
 
-  /// Parses a [InputBusinessIntro] from TDLib JSON.
-  factory InputBusinessIntro.fromJson(Map<String, dynamic> json) =>
-      InputBusinessIntro(
+  /// Parses a [InputBusinessStartPage] from TDLib JSON.
+  factory InputBusinessStartPage.fromJson(Map<String, dynamic> json) =>
+      InputBusinessStartPage(
         title: _readString(json['title']),
         message: _readString(json['message']),
         sticker: _readOptional(json['sticker'], InputFile.fromJson),
@@ -39,19 +39,19 @@ final class InputBusinessIntro extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InputBusinessIntro copyWith({
+  InputBusinessStartPage copyWith({
     String? title,
     String? message,
     InputFile? Function()? sticker,
   }) =>
-      InputBusinessIntro(
+      InputBusinessStartPage(
         title: title ?? this.title,
         message: message ?? this.message,
         sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'inputBusinessIntro';
+  static const String CONSTRUCTOR = 'inputBusinessStartPage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

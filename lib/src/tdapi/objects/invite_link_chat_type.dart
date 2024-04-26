@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a chat to which points an invite link
+/// Describes the type of chat to which points an invite link
 ///
 /// One of: [InviteLinkChatTypeBasicGroup], [InviteLinkChatTypeSupergroup], [InviteLinkChatTypeChannel]; or [UndecodedInviteLinkChatType] for a type newer than this API.
 sealed class InviteLinkChatType extends TdObject {

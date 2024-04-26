@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a chat
+/// Describes the type of chat
 ///
 /// One of: [ChatTypePrivate], [ChatTypeBasicGroup], [ChatTypeSupergroup], [ChatTypeSecret]; or [UndecodedChatType] for a type newer than this API.
 sealed class ChatType extends TdObject {

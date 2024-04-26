@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a feature available to Business user accounts
 ///
-/// One of: [BusinessFeatureLocation], [BusinessFeatureOpeningHours], [BusinessFeatureQuickReplies], [BusinessFeatureGreetingMessage], [BusinessFeatureAwayMessage], [BusinessFeatureAccountLinks], [BusinessFeatureIntro], [BusinessFeatureBots], [BusinessFeatureEmojiStatus], [BusinessFeatureChatFolderTags], [BusinessFeatureUpgradedStories]; or [UndecodedBusinessFeature] for a type newer than this API.
+/// One of: [BusinessFeatureLocation], [BusinessFeatureOpeningHours], [BusinessFeatureQuickReplies], [BusinessFeatureGreetingMessage], [BusinessFeatureAwayMessage], [BusinessFeatureAccountLinks], [BusinessFeatureStartPage], [BusinessFeatureBots], [BusinessFeatureEmojiStatus], [BusinessFeatureChatFolderTags], [BusinessFeatureUpgradedStories]; or [UndecodedBusinessFeature] for a type newer than this API.
 sealed class BusinessFeature extends TdObject {
   const BusinessFeature();
 
@@ -199,14 +199,14 @@ final class BusinessFeatureAccountLinks extends BusinessFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to customize intro
-final class BusinessFeatureIntro extends BusinessFeature {
-  /// The ability to customize intro
-  const BusinessFeatureIntro();
+/// The ability to customize start page
+final class BusinessFeatureStartPage extends BusinessFeature {
+  /// The ability to customize start page
+  const BusinessFeatureStartPage();
 
-  /// Parses a [BusinessFeatureIntro] from TDLib JSON.
-  factory BusinessFeatureIntro.fromJson(Map<String, dynamic> json) =>
-      const BusinessFeatureIntro();
+  /// Parses a [BusinessFeatureStartPage] from TDLib JSON.
+  factory BusinessFeatureStartPage.fromJson(Map<String, dynamic> json) =>
+      const BusinessFeatureStartPage();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -216,10 +216,10 @@ final class BusinessFeatureIntro extends BusinessFeature {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  BusinessFeatureIntro copyWith() => const BusinessFeatureIntro();
+  BusinessFeatureStartPage copyWith() => const BusinessFeatureStartPage();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'businessFeatureIntro';
+  static const String CONSTRUCTOR = 'businessFeatureStartPage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

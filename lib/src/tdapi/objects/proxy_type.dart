@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a proxy server
+/// Describes the type of proxy server
 ///
 /// One of: [ProxyTypeSocks5], [ProxyTypeHttp], [ProxyTypeMtproto]; or [UndecodedProxyType] for a type newer than this API.
 sealed class ProxyType extends TdObject {

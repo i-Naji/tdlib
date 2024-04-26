@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents the type of a file
+/// Represents the type of file
 ///
 /// One of: [FileTypeNone], [FileTypeAnimation], [FileTypeAudio], [FileTypeDocument], [FileTypeNotificationSound], [FileTypePhoto], [FileTypePhotoStory], [FileTypeProfilePhoto], [FileTypeSecret], [FileTypeSecretThumbnail], [FileTypeSecure], [FileTypeSticker], [FileTypeThumbnail], [FileTypeUnknown], [FileTypeVideo], [FileTypeVideoNote], [FileTypeVideoStory], [FileTypeVoiceNote], [FileTypeWallpaper]; or [UndecodedFileType] for a type newer than this API.
 sealed class FileType extends TdObject {

@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a Saved Messages topic
+/// Describes type of Saved Messages topic
 ///
 /// One of: [SavedMessagesTopicTypeMyNotes], [SavedMessagesTopicTypeAuthorHidden], [SavedMessagesTopicTypeSavedFromChat]; or [UndecodedSavedMessagesTopicType] for a type newer than this API.
 sealed class SavedMessagesTopicType extends TdObject {

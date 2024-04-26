@@ -42,6 +42,7 @@ final class Chat extends TdObject {
     this.background,
     required this.themeName,
     this.actionBar,
+    this.businessBotManageBar,
     required this.videoChat,
     this.pendingJoinRequests,
     required this.replyMarkupMessageId,
@@ -156,6 +157,9 @@ final class Chat extends TdObject {
   /// Information about actions which must be possible to do through the chat action bar; may be null if none
   final ChatActionBar? actionBar;
 
+  /// Information about bar for managing a business bot in the chat; may be null if none
+  final BusinessBotManageBar? businessBotManageBar;
+
   /// Information about video chat of the chat
   final VideoChat videoChat;
 
@@ -225,6 +229,8 @@ final class Chat extends TdObject {
         background: _readOptional(json['background'], ChatBackground.fromJson),
         themeName: _readString(json['theme_name']),
         actionBar: _readOptional(json['action_bar'], ChatActionBar.fromJson),
+        businessBotManageBar: _readOptional(
+            json['business_bot_manage_bar'], BusinessBotManageBar.fromJson),
         videoChat: _readObject(json['video_chat'], VideoChat.fromJson),
         pendingJoinRequests: _readOptional(
             json['pending_join_requests'], ChatJoinRequestsInfo.fromJson),
@@ -275,6 +281,7 @@ final class Chat extends TdObject {
         'background': background?.toJson(),
         'theme_name': themeName,
         'action_bar': actionBar?.toJson(),
+        'business_bot_manage_bar': businessBotManageBar?.toJson(),
         'video_chat': videoChat.toJson(),
         'pending_join_requests': pendingJoinRequests?.toJson(),
         'reply_markup_message_id': replyMarkupMessageId,
@@ -320,6 +327,7 @@ final class Chat extends TdObject {
     ChatBackground? Function()? background,
     String? themeName,
     ChatActionBar? Function()? actionBar,
+    BusinessBotManageBar? Function()? businessBotManageBar,
     VideoChat? videoChat,
     ChatJoinRequestsInfo? Function()? pendingJoinRequests,
     int? replyMarkupMessageId,
@@ -373,6 +381,9 @@ final class Chat extends TdObject {
         background: background != null ? background() : this.background,
         themeName: themeName ?? this.themeName,
         actionBar: actionBar != null ? actionBar() : this.actionBar,
+        businessBotManageBar: businessBotManageBar != null
+            ? businessBotManageBar()
+            : this.businessBotManageBar,
         videoChat: videoChat ?? this.videoChat,
         pendingJoinRequests: pendingJoinRequests != null
             ? pendingJoinRequests()

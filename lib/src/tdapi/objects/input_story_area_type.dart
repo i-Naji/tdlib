@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a clickable rectangle area on a story media to be added
+/// Describes type of clickable rectangle area on a story media to be added
 ///
 /// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {

@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents the type of a network
+/// Represents the type of network
 ///
 /// One of: [NetworkTypeNone], [NetworkTypeMobile], [NetworkTypeMobileRoaming], [NetworkTypeWiFi], [NetworkTypeOther]; or [UndecodedNetworkType] for a type newer than this API.
 sealed class NetworkType extends TdObject {

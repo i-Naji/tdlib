@@ -11,7 +11,7 @@ final class BusinessInfo extends TdObject {
     this.openingHours,
     this.greetingMessageSettings,
     this.awayMessageSettings,
-    this.intro,
+    this.startPage,
   });
 
   /// Location of the business; may be null if none
@@ -26,8 +26,8 @@ final class BusinessInfo extends TdObject {
   /// The away message; may be null if none or the Business account is not of the current user
   final BusinessAwayMessageSettings? awayMessageSettings;
 
-  /// Information about intro of the business; may be null if none
-  final BusinessIntro? intro;
+  /// Information about start page of the account; may be null if none
+  final BusinessStartPage? startPage;
 
   /// Parses a [BusinessInfo] from TDLib JSON.
   factory BusinessInfo.fromJson(Map<String, dynamic> json) => BusinessInfo(
@@ -39,7 +39,8 @@ final class BusinessInfo extends TdObject {
             BusinessGreetingMessageSettings.fromJson),
         awayMessageSettings: _readOptional(json['away_message_settings'],
             BusinessAwayMessageSettings.fromJson),
-        intro: _readOptional(json['intro'], BusinessIntro.fromJson),
+        startPage:
+            _readOptional(json['start_page'], BusinessStartPage.fromJson),
       );
 
   @override
@@ -49,7 +50,7 @@ final class BusinessInfo extends TdObject {
         'opening_hours': openingHours?.toJson(),
         'greeting_message_settings': greetingMessageSettings?.toJson(),
         'away_message_settings': awayMessageSettings?.toJson(),
-        'intro': intro?.toJson(),
+        'start_page': startPage?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -59,7 +60,7 @@ final class BusinessInfo extends TdObject {
     BusinessOpeningHours? Function()? openingHours,
     BusinessGreetingMessageSettings? Function()? greetingMessageSettings,
     BusinessAwayMessageSettings? Function()? awayMessageSettings,
-    BusinessIntro? Function()? intro,
+    BusinessStartPage? Function()? startPage,
   }) =>
       BusinessInfo(
         location: location != null ? location() : this.location,
@@ -70,7 +71,7 @@ final class BusinessInfo extends TdObject {
         awayMessageSettings: awayMessageSettings != null
             ? awayMessageSettings()
             : this.awayMessageSettings,
-        intro: intro != null ? intro() : this.intro,
+        startPage: startPage != null ? startPage() : this.startPage,
       );
 
   /// TDLib type name.

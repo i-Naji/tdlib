@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a URL linking to an internal Telegram entity
+/// Describes the type of URL linking to an internal Telegram entity
 ///
 /// One of: [TMeUrlTypeUser], [TMeUrlTypeSupergroup], [TMeUrlTypeChatInvite], [TMeUrlTypeStickerSet]; or [UndecodedTMeUrlType] for a type newer than this API.
 sealed class TMeUrlType extends TdObject {

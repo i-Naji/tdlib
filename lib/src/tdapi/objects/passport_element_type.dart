@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Contains the type of a Telegram Passport element
+/// Contains the type of Telegram Passport element
 ///
 /// One of: [PassportElementTypePersonalDetails], [PassportElementTypePassport], [PassportElementTypeDriverLicense], [PassportElementTypeIdentityCard], [PassportElementTypeInternalPassport], [PassportElementTypeAddress], [PassportElementTypeUtilityBill], [PassportElementTypeBankStatement], [PassportElementTypeRentalAgreement], [PassportElementTypePassportRegistration], [PassportElementTypeTemporaryRegistration], [PassportElementTypePhoneNumber], [PassportElementTypeEmailAddress]; or [UndecodedPassportElementType] for a type newer than this API.
 sealed class PassportElementType extends TdObject {

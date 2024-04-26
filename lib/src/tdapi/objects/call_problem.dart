@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the exact type of a problem with a call
+/// Describes the exact type of problem with a call
 ///
 /// One of: [CallProblemEcho], [CallProblemNoise], [CallProblemInterruptions], [CallProblemDistortedSpeech], [CallProblemSilentLocal], [CallProblemSilentRemote], [CallProblemDropped], [CallProblemDistortedVideo], [CallProblemPixelatedVideo]; or [UndecodedCallProblem] for a type newer than this API.
 sealed class CallProblem extends TdObject {

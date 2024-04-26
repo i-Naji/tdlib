@@ -3,26 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Describes settings for a business account intro
-final class BusinessIntro extends TdObject {
-  /// Describes settings for a business account intro
-  const BusinessIntro({
+/// Describes settings for a business account start page
+final class BusinessStartPage extends TdObject {
+  /// Describes settings for a business account start page
+  const BusinessStartPage({
     required this.title,
     required this.message,
     this.sticker,
   });
 
-  /// Title text of the intro
+  /// Title text of the start page
   final String title;
 
-  /// Message text of the intro
+  /// Message text of the start page
   final String message;
 
-  /// Greeting sticker of the intro; may be null if none
+  /// Greeting sticker of the start page; may be null if none
   final Sticker? sticker;
 
-  /// Parses a [BusinessIntro] from TDLib JSON.
-  factory BusinessIntro.fromJson(Map<String, dynamic> json) => BusinessIntro(
+  /// Parses a [BusinessStartPage] from TDLib JSON.
+  factory BusinessStartPage.fromJson(Map<String, dynamic> json) =>
+      BusinessStartPage(
         title: _readString(json['title']),
         message: _readString(json['message']),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
@@ -38,19 +39,19 @@ final class BusinessIntro extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  BusinessIntro copyWith({
+  BusinessStartPage copyWith({
     String? title,
     String? message,
     Sticker? Function()? sticker,
   }) =>
-      BusinessIntro(
+      BusinessStartPage(
         title: title ?? this.title,
         message: message ?? this.message,
         sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'businessIntro';
+  static const String CONSTRUCTOR = 'businessStartPage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

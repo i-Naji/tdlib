@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a type of a block list
+/// Describes a type of block list
 ///
 /// One of: [BlockListMain], [BlockListStories]; or [UndecodedBlockList] for a type newer than this API.
 sealed class BlockList extends TdObject {

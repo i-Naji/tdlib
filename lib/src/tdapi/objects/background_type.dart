@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a background
+/// Describes the type of background
 ///
 /// One of: [BackgroundTypeWallpaper], [BackgroundTypePattern], [BackgroundTypeFill], [BackgroundTypeChatTheme]; or [UndecodedBackgroundType] for a type newer than this API.
 sealed class BackgroundType extends TdObject {

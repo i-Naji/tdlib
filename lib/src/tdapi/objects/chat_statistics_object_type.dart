@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of an object, for which statistics are provided
+/// Describes type of object, for which statistics are provided
 ///
 /// One of: [ChatStatisticsObjectTypeMessage], [ChatStatisticsObjectTypeStory]; or [UndecodedChatStatisticsObjectType] for a type newer than this API.
 sealed class ChatStatisticsObjectType extends TdObject {

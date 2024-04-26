@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a limit, increased for Premium users
+/// Describes type of limit, increased for Premium users
 ///
 /// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklySentStoryCount], [PremiumLimitTypeMonthlySentStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {

@@ -24,7 +24,7 @@ final class GetSupergroupMembers extends TdFunction<ChatMembers> {
   /// Number of users to skip
   final int offset;
 
-  /// The maximum number of users be returned; up to 200
+  /// The maximum number of users to be returned; up to 200
   final int limit;
 
   @override

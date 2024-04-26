@@ -15,6 +15,8 @@ final class QuickReplyMessage extends TdObject {
     required this.mediaAlbumId,
     required this.content,
     this.replyMarkup,
+    this.extra,
+    this.clientId,
   });
 
   /// Unique message identifier among all quick replies
@@ -26,13 +28,13 @@ final class QuickReplyMessage extends TdObject {
   /// True, if the message can be edited
   final bool canBeEdited;
 
-  /// Information about the identifier of the quick reply message to which the message replies
+  /// The identifier of the quick reply message to which the message replies; 0 if none
   final int replyToMessageId;
 
   /// If non-zero, the user identifier of the bot through which this message was sent
   final int viaBotUserId;
 
-  /// Unique identifier of an album this message belongs to. Only audios, documents, photos and videos can be grouped together in albums
+  /// Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums
   final int mediaAlbumId;
 
   /// Content of the message
@@ -40,6 +42,14 @@ final class QuickReplyMessage extends TdObject {
 
   /// Inline keyboard reply markup for the message; may be null if none
   final ReplyMarkup? replyMarkup;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
 
   /// Parses a [QuickReplyMessage] from TDLib JSON.
   factory QuickReplyMessage.fromJson(Map<String, dynamic> json) =>
@@ -53,6 +63,8 @@ final class QuickReplyMessage extends TdObject {
         mediaAlbumId: _readInt(json['media_album_id']),
         content: _readObject(json['content'], MessageContent.fromJson),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -79,6 +91,8 @@ final class QuickReplyMessage extends TdObject {
     int? mediaAlbumId,
     MessageContent? content,
     ReplyMarkup? Function()? replyMarkup,
+    dynamic extra,
+    int? clientId,
   }) =>
       QuickReplyMessage(
         id: id ?? this.id,
@@ -89,6 +103,8 @@ final class QuickReplyMessage extends TdObject {
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
         content: content ?? this.content,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.

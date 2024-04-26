@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents a type of a button in results of inline query
+/// Represents a type of button in results of inline query
 ///
 /// One of: [InlineQueryResultsButtonTypeStartBot], [InlineQueryResultsButtonTypeWebApp]; or [UndecodedInlineQueryResultsButtonType] for a type newer than this API.
 sealed class InlineQueryResultsButtonType extends TdObject {

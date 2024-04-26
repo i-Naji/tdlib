@@ -3,51 +3,50 @@
 
 part of '../tdapi.dart';
 
-/// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
+/// Sends a code to the specified phone number. Aborts previous phone number verification if there was one. On success, returns information about the sent code
 ///
 /// Returns [AuthenticationCodeInfo].
-final class SendPhoneNumberConfirmationCode
-    extends TdFunction<AuthenticationCodeInfo> {
-  /// Sends phone number confirmation code to handle links of the type internalLinkTypePhoneNumberConfirmation
-  const SendPhoneNumberConfirmationCode({
-    required this.hash,
+final class SendPhoneNumberCode extends TdFunction<AuthenticationCodeInfo> {
+  /// Sends a code to the specified phone number. Aborts previous phone number verification if there was one. On success, returns information about the sent code
+  const SendPhoneNumberCode({
     required this.phoneNumber,
     this.settings,
+    required this.type,
   });
 
-  /// Hash value from the link
-  final String hash;
-
-  /// Phone number value from the link
+  /// The phone number, in international format
   final String phoneNumber;
 
   /// Settings for the authentication of the user's phone number; pass null to use default settings
   final PhoneNumberAuthenticationSettings? settings;
 
+  /// Type of the request for which the code is sent
+  final PhoneNumberCodeType type;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'hash': hash,
         'phone_number': phoneNumber,
         'settings': settings?.toJson(),
+        'type': type.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendPhoneNumberConfirmationCode copyWith({
-    String? hash,
+  SendPhoneNumberCode copyWith({
     String? phoneNumber,
     PhoneNumberAuthenticationSettings? Function()? settings,
+    PhoneNumberCodeType? type,
   }) =>
-      SendPhoneNumberConfirmationCode(
-        hash: hash ?? this.hash,
+      SendPhoneNumberCode(
         phoneNumber: phoneNumber ?? this.phoneNumber,
         settings: settings != null ? settings() : this.settings,
+        type: type ?? this.type,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'sendPhoneNumberConfirmationCode';
+  static const String CONSTRUCTOR = 'sendPhoneNumberCode';
 
   @override
   String getConstructor() => CONSTRUCTOR;

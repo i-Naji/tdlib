@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Informs TDLib that a chat was opened from the list of similar chats. The method is independent from openChat and closeChat methods
+/// Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods
 ///
 /// Returns [Ok].
 final class OpenChatSimilarChat extends TdFunction<Ok> {
-  /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent from openChat and closeChat methods
+  /// Informs TDLib that a chat was opened from the list of similar chats. The method is independent of openChat and closeChat methods
   const OpenChatSimilarChat({
     required this.chatId,
     required this.openedChatId,

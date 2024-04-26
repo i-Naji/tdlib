@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents the type of a session
+/// Represents the type of session
 ///
 /// One of: [SessionTypeAndroid], [SessionTypeApple], [SessionTypeBrave], [SessionTypeChrome], [SessionTypeEdge], [SessionTypeFirefox], [SessionTypeIpad], [SessionTypeIphone], [SessionTypeLinux], [SessionTypeMac], [SessionTypeOpera], [SessionTypeSafari], [SessionTypeUbuntu], [SessionTypeUnknown], [SessionTypeVivaldi], [SessionTypeWindows], [SessionTypeXbox]; or [UndecodedSessionType] for a type newer than this API.
 sealed class SessionType extends TdObject {

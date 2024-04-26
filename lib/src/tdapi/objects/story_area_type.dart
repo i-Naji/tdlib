@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a clickable rectangle area on a story media
+/// Describes type of clickable rectangle area on a story media
 ///
 /// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {

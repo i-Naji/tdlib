@@ -1329,9 +1329,9 @@ final class MessageVideoChatEnded extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with information about an invite to a video chat
+/// A message with information about an invitation to a video chat
 final class MessageInviteVideoChatParticipants extends MessageContent {
-  /// A message with information about an invite to a video chat
+  /// A message with information about an invitation to a video chat
   const MessageInviteVideoChatParticipants({
     required this.groupCallId,
     required this.userIds,

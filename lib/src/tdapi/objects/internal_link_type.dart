@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeSideMenuBot], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeSideMenuBot], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -478,6 +478,61 @@ final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeBotStartInGroup';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a business chat. Use getBusinessChatLinkInfo with the provided link name to get information about the link, then open received private chat and replace chat draft with the provided text
+final class InternalLinkTypeBusinessChat extends InternalLinkType {
+  /// The link is a link to a business chat. Use getBusinessChatLinkInfo with the provided link name to get information about the link, then open received private chat and replace chat draft with the provided text
+  const InternalLinkTypeBusinessChat({
+    required this.linkName,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Name of the link
+  final String linkName;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeBusinessChat] from TDLib JSON.
+  factory InternalLinkTypeBusinessChat.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeBusinessChat(
+        linkName: _readString(json['link_name']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'link_name': linkName,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeBusinessChat copyWith({
+    String? linkName,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeBusinessChat(
+        linkName: linkName ?? this.linkName,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeBusinessChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1333,9 +1388,9 @@ final class InternalLinkTypePassportDataRequest extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it
+/// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberCode with the given phone number and with phoneNumberCodeTypeConfirmOwnership with the given hash to process the link. If succeeded, call checkPhoneNumberCode to check entered by the user code, or resendPhoneNumberCode to resend it
 final class InternalLinkTypePhoneNumberConfirmation extends InternalLinkType {
-  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberConfirmationCode with the given hash and phone number to process the link. If succeeded, call checkPhoneNumberConfirmationCode to check entered by the user code, or resendPhoneNumberConfirmationCode to resend it
+  /// The link can be used to confirm ownership of a phone number to prevent account deletion. Call sendPhoneNumberCode with the given phone number and with phoneNumberCodeTypeConfirmOwnership with the given hash to process the link. If succeeded, call checkPhoneNumberCode to check entered by the user code, or resendPhoneNumberCode to resend it
   const InternalLinkTypePhoneNumberConfirmation({
     required this.hash,
     required this.phoneNumber,
@@ -1683,17 +1738,21 @@ final class InternalLinkTypeProxy extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself
+/// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself. If draft text isn't empty and the chat is a private chat, then put the draft text in the input field
 final class InternalLinkTypePublicChat extends InternalLinkType {
-  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself
+  /// The link is a link to a chat by its username. Call searchPublicChat with the given chat username to process the link If the chat is found, open its profile information screen or the chat itself. If draft text isn't empty and the chat is a private chat, then put the draft text in the input field
   const InternalLinkTypePublicChat({
     required this.chatUsername,
+    required this.draftText,
     this.extra,
     this.clientId,
   });
 
   /// Username of the chat
   final String chatUsername;
+
+  /// Draft text for message to send in the chat
+  final String draftText;
 
   /// "@extra" of the request this object answers.
   @override
@@ -1707,6 +1766,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   factory InternalLinkTypePublicChat.fromJson(Map<String, dynamic> json) =>
       InternalLinkTypePublicChat(
         chatUsername: _readString(json['chat_username']),
+        draftText: _readString(json['draft_text']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -1715,6 +1775,7 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_username': chatUsername,
+        'draft_text': draftText,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1722,11 +1783,13 @@ final class InternalLinkTypePublicChat extends InternalLinkType {
   @override
   InternalLinkTypePublicChat copyWith({
     String? chatUsername,
+    String? draftText,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypePublicChat(
         chatUsername: chatUsername ?? this.chatUsername,
+        draftText: draftText ?? this.draftText,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -2275,17 +2338,21 @@ final class InternalLinkTypeUnsupportedProxy extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat
+/// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat. If draft text isn't empty, then put the draft text in the input field
 final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
-  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat
+  /// The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link. If the user is found, then call createPrivateChat and open the chat. If draft text isn't empty, then put the draft text in the input field
   const InternalLinkTypeUserPhoneNumber({
     required this.phoneNumber,
+    required this.draftText,
     this.extra,
     this.clientId,
   });
 
   /// Phone number of the user
   final String phoneNumber;
+
+  /// Draft text for message to send in the chat
+  final String draftText;
 
   /// "@extra" of the request this object answers.
   @override
@@ -2299,6 +2366,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   factory InternalLinkTypeUserPhoneNumber.fromJson(Map<String, dynamic> json) =>
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: _readString(json['phone_number']),
+        draftText: _readString(json['draft_text']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -2307,6 +2375,7 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'phone_number': phoneNumber,
+        'draft_text': draftText,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2314,11 +2383,13 @@ final class InternalLinkTypeUserPhoneNumber extends InternalLinkType {
   @override
   InternalLinkTypeUserPhoneNumber copyWith({
     String? phoneNumber,
+    String? draftText,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeUserPhoneNumber(
         phoneNumber: phoneNumber ?? this.phoneNumber,
+        draftText: draftText ?? this.draftText,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

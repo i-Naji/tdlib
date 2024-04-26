@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of a sticker
+/// Describes type of sticker
 ///
 /// One of: [StickerTypeRegular], [StickerTypeMask], [StickerTypeCustomEmoji]; or [UndecodedStickerType] for a type newer than this API.
 sealed class StickerType extends TdObject {

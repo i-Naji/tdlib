@@ -22,8 +22,10 @@ final class SupergroupFullInfo extends TdObject {
     required this.canSetStickerSet,
     required this.canSetLocation,
     required this.canGetStatistics,
+    required this.canGetRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
+    required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPinnedStories,
     required this.myBoostCount,
@@ -84,11 +86,17 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if the supergroup or channel statistics are available
   final bool canGetStatistics;
 
+  /// True, if the supergroup or channel revenue statistics are available
+  final bool canGetRevenueStatistics;
+
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
   /// True, if new chat members will have access to old messages. In public, discussion, of forum groups and all channels, old messages are always available, so this option affects only private non-forum supergroups without a linked chat. The value of this field is only available to chat administrators
   final bool isAllHistoryAvailable;
+
+  /// True, if the chat can have sponsored messages. The value of this field is only available to the owner of the chat
+  final bool canHaveSponsoredMessages;
 
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
@@ -149,9 +157,12 @@ final class SupergroupFullInfo extends TdObject {
         canSetStickerSet: _readBool(json['can_set_sticker_set']),
         canSetLocation: _readBool(json['can_set_location']),
         canGetStatistics: _readBool(json['can_get_statistics']),
+        canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
         canToggleAggressiveAntiSpam:
             _readBool(json['can_toggle_aggressive_anti_spam']),
         isAllHistoryAvailable: _readBool(json['is_all_history_available']),
+        canHaveSponsoredMessages:
+            _readBool(json['can_have_sponsored_messages']),
         hasAggressiveAntiSpamEnabled:
             _readBool(json['has_aggressive_anti_spam_enabled']),
         hasPinnedStories: _readBool(json['has_pinned_stories']),
@@ -189,8 +200,10 @@ final class SupergroupFullInfo extends TdObject {
         'can_set_sticker_set': canSetStickerSet,
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,
+        'can_get_revenue_statistics': canGetRevenueStatistics,
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
+        'can_have_sponsored_messages': canHaveSponsoredMessages,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
         'has_pinned_stories': hasPinnedStories,
         'my_boost_count': myBoostCount,
@@ -222,8 +235,10 @@ final class SupergroupFullInfo extends TdObject {
     bool? canSetStickerSet,
     bool? canSetLocation,
     bool? canGetStatistics,
+    bool? canGetRevenueStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
+    bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPinnedStories,
     int? myBoostCount,
@@ -255,10 +270,14 @@ final class SupergroupFullInfo extends TdObject {
         canSetStickerSet: canSetStickerSet ?? this.canSetStickerSet,
         canSetLocation: canSetLocation ?? this.canSetLocation,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetRevenueStatistics:
+            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
             isAllHistoryAvailable ?? this.isAllHistoryAvailable,
+        canHaveSponsoredMessages:
+            canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,

@@ -22,7 +22,7 @@ final class MessageForwardInfo extends TdObject {
   /// For messages forwarded to the chat with the current user (Saved Messages), to the Replies bot chat, or to the channel's discussion group, information about the source message from which the message was forwarded last time; may be null for other forwards or if unknown
   final ForwardSource? source;
 
-  /// The type of a public service announcement for the forwarded message
+  /// The type of public service announcement for the forwarded message
   final String publicServiceAnnouncementType;
 
   /// Parses a [MessageForwardInfo] from TDLib JSON.

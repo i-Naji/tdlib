@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat
+/// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns information about the newly created chat
 ///
-/// Returns [Chat].
-final class CreateNewBasicGroupChat extends TdFunction<Chat> {
-  /// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat
+/// Returns [CreatedBasicGroupChat].
+final class CreateNewBasicGroupChat extends TdFunction<CreatedBasicGroupChat> {
+  /// Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns information about the newly created chat
   const CreateNewBasicGroupChat({
     required this.userIds,
     required this.title,

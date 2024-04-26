@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of an inline keyboard button
+/// Describes the type of inline keyboard button
 ///
 /// One of: [InlineKeyboardButtonTypeUrl], [InlineKeyboardButtonTypeLoginUrl], [InlineKeyboardButtonTypeWebApp], [InlineKeyboardButtonTypeCallback], [InlineKeyboardButtonTypeCallbackWithPassword], [InlineKeyboardButtonTypeCallbackGame], [InlineKeyboardButtonTypeSwitchInline], [InlineKeyboardButtonTypeBuy], [InlineKeyboardButtonTypeUser]; or [UndecodedInlineKeyboardButtonType] for a type newer than this API.
 sealed class InlineKeyboardButtonType extends TdObject {

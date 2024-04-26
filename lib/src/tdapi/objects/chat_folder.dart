@@ -32,7 +32,7 @@ final class ChatFolder extends TdObject {
   /// The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
   final ChatFolderIcon? icon;
 
-  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is didabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription
+  /// The identifier of the chosen color for the chat folder icon; from -1 to 6. If -1, then color is disabled. Can't be changed if folder tags are disabled or the current user doesn't have Telegram Premium subscription
   final int colorId;
 
   /// True, if at least one link has been created for the folder

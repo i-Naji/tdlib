@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes the type of a call server
+/// Describes the type of call server
 ///
 /// One of: [CallServerTypeTelegramReflector], [CallServerTypeWebrtc]; or [UndecodedCallServerType] for a type newer than this API.
 sealed class CallServerType extends TdObject {
