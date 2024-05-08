@@ -14,13 +14,13 @@ final class Story extends TdObject {
     required this.isBeingSent,
     required this.isBeingEdited,
     required this.isEdited,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.isVisibleOnlyForSelf,
     required this.canBeDeleted,
     required this.canBeEdited,
     required this.canBeForwarded,
     required this.canBeReplied,
-    required this.canToggleIsPinned,
+    required this.canToggleIsPostedToChatPage,
     required this.canGetStatistics,
     required this.canGetInteractions,
     required this.hasExpiredViewers,
@@ -57,7 +57,7 @@ final class Story extends TdObject {
   final bool isEdited;
 
   /// True, if the story is saved in the sender's profile and will be available there after expiration
-  final bool isPinned;
+  final bool isPostedToChatPage;
 
   /// True, if the story is visible only for the current user
   final bool isVisibleOnlyForSelf;
@@ -74,8 +74,8 @@ final class Story extends TdObject {
   /// True, if the story can be replied in the chat with the story sender
   final bool canBeReplied;
 
-  /// True, if the story's is_pinned value can be changed
-  final bool canToggleIsPinned;
+  /// True, if the story's is_posted_to_chat_page value can be changed
+  final bool canToggleIsPostedToChatPage;
 
   /// True, if the story statistics are available through getStoryStatistics
   final bool canGetStatistics;
@@ -124,13 +124,14 @@ final class Story extends TdObject {
         isBeingSent: _readBool(json['is_being_sent']),
         isBeingEdited: _readBool(json['is_being_edited']),
         isEdited: _readBool(json['is_edited']),
-        isPinned: _readBool(json['is_pinned']),
+        isPostedToChatPage: _readBool(json['is_posted_to_chat_page']),
         isVisibleOnlyForSelf: _readBool(json['is_visible_only_for_self']),
         canBeDeleted: _readBool(json['can_be_deleted']),
         canBeEdited: _readBool(json['can_be_edited']),
         canBeForwarded: _readBool(json['can_be_forwarded']),
         canBeReplied: _readBool(json['can_be_replied']),
-        canToggleIsPinned: _readBool(json['can_toggle_is_pinned']),
+        canToggleIsPostedToChatPage:
+            _readBool(json['can_toggle_is_posted_to_chat_page']),
         canGetStatistics: _readBool(json['can_get_statistics']),
         canGetInteractions: _readBool(json['can_get_interactions']),
         hasExpiredViewers: _readBool(json['has_expired_viewers']),
@@ -160,13 +161,13 @@ final class Story extends TdObject {
         'is_being_sent': isBeingSent,
         'is_being_edited': isBeingEdited,
         'is_edited': isEdited,
-        'is_pinned': isPinned,
+        'is_posted_to_chat_page': isPostedToChatPage,
         'is_visible_only_for_self': isVisibleOnlyForSelf,
         'can_be_deleted': canBeDeleted,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
         'can_be_replied': canBeReplied,
-        'can_toggle_is_pinned': canToggleIsPinned,
+        'can_toggle_is_posted_to_chat_page': canToggleIsPostedToChatPage,
         'can_get_statistics': canGetStatistics,
         'can_get_interactions': canGetInteractions,
         'has_expired_viewers': hasExpiredViewers,
@@ -189,13 +190,13 @@ final class Story extends TdObject {
     bool? isBeingSent,
     bool? isBeingEdited,
     bool? isEdited,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? isVisibleOnlyForSelf,
     bool? canBeDeleted,
     bool? canBeEdited,
     bool? canBeForwarded,
     bool? canBeReplied,
-    bool? canToggleIsPinned,
+    bool? canToggleIsPostedToChatPage,
     bool? canGetStatistics,
     bool? canGetInteractions,
     bool? hasExpiredViewers,
@@ -217,13 +218,14 @@ final class Story extends TdObject {
         isBeingSent: isBeingSent ?? this.isBeingSent,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,
         isEdited: isEdited ?? this.isEdited,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
         canBeDeleted: canBeDeleted ?? this.canBeDeleted,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
         canBeReplied: canBeReplied ?? this.canBeReplied,
-        canToggleIsPinned: canToggleIsPinned ?? this.canToggleIsPinned,
+        canToggleIsPostedToChatPage:
+            canToggleIsPostedToChatPage ?? this.canToggleIsPostedToChatPage,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetInteractions: canGetInteractions ?? this.canGetInteractions,
         hasExpiredViewers: hasExpiredViewers ?? this.hasExpiredViewers,

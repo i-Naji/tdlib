@@ -33,6 +33,7 @@ final class WebPage extends TdObject {
     this.voiceNote,
     required this.storySenderChatId,
     required this.storyId,
+    required this.stickers,
     required this.instantViewVersion,
     this.extra,
     this.clientId,
@@ -116,6 +117,9 @@ final class WebPage extends TdObject {
   /// The identifier of the previewed story; 0 if none
   final int storyId;
 
+  /// Up to 4 stickers from the sticker set available via the link
+  final List<Sticker> stickers;
+
   /// Version of web page instant view (currently, can be 1 or 2); 0 if none
   final int instantViewVersion;
 
@@ -155,6 +159,8 @@ final class WebPage extends TdObject {
         voiceNote: _readOptional(json['voice_note'], VoiceNote.fromJson),
         storySenderChatId: _readInt(json['story_sender_chat_id']),
         storyId: _readInt(json['story_id']),
+        stickers: _readList<Sticker>(
+            json['stickers'], (e) => _readObject(e, Sticker.fromJson)),
         instantViewVersion: _readInt(json['instant_view_version']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -189,6 +195,7 @@ final class WebPage extends TdObject {
         'voice_note': voiceNote?.toJson(),
         'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
+        'stickers': [for (final e in stickers) e.toJson()],
         'instant_view_version': instantViewVersion,
       };
 
@@ -221,6 +228,7 @@ final class WebPage extends TdObject {
     VoiceNote? Function()? voiceNote,
     int? storySenderChatId,
     int? storyId,
+    List<Sticker>? stickers,
     int? instantViewVersion,
     dynamic extra,
     int? clientId,
@@ -252,6 +260,7 @@ final class WebPage extends TdObject {
         voiceNote: voiceNote != null ? voiceNote() : this.voiceNote,
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
+        stickers: stickers ?? this.stickers,
         instantViewVersion: instantViewVersion ?? this.instantViewVersion,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

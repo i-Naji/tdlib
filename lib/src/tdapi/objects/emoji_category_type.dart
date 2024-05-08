@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of emoji category
 ///
-/// One of: [EmojiCategoryTypeDefault], [EmojiCategoryTypeEmojiStatus], [EmojiCategoryTypeChatPhoto]; or [UndecodedEmojiCategoryType] for a type newer than this API.
+/// One of: [EmojiCategoryTypeDefault], [EmojiCategoryTypeRegularStickers], [EmojiCategoryTypeEmojiStatus], [EmojiCategoryTypeChatPhoto]; or [UndecodedEmojiCategoryType] for a type newer than this API.
 sealed class EmojiCategoryType extends TdObject {
   const EmojiCategoryType();
 
@@ -44,9 +44,9 @@ final class UndecodedEmojiCategoryType extends EmojiCategoryType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The category must be used by default
+/// The category must be used by default (e.g., for custom emoji or animation search)
 final class EmojiCategoryTypeDefault extends EmojiCategoryType {
-  /// The category must be used by default
+  /// The category must be used by default (e.g., for custom emoji or animation search)
   const EmojiCategoryTypeDefault();
 
   /// Parses a [EmojiCategoryTypeDefault] from TDLib JSON.
@@ -65,6 +65,34 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'emojiCategoryTypeDefault';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The category must be used by default for regular sticker selection. It may contain greeting emoji category and Premium stickers
+final class EmojiCategoryTypeRegularStickers extends EmojiCategoryType {
+  /// The category must be used by default for regular sticker selection. It may contain greeting emoji category and Premium stickers
+  const EmojiCategoryTypeRegularStickers();
+
+  /// Parses a [EmojiCategoryTypeRegularStickers] from TDLib JSON.
+  factory EmojiCategoryTypeRegularStickers.fromJson(
+          Map<String, dynamic> json) =>
+      const EmojiCategoryTypeRegularStickers();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  EmojiCategoryTypeRegularStickers copyWith() =>
+      const EmojiCategoryTypeRegularStickers();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'emojiCategoryTypeRegularStickers';
 
   @override
   String getConstructor() => CONSTRUCTOR;

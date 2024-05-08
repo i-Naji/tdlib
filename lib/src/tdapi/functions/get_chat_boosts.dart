@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of boosts applied to a chat; requires administrator rights in the chat
+/// Returns the list of boosts applied to a chat; requires administrator rights in the chat
 ///
 /// Returns [FoundChatBoosts].
 final class GetChatBoosts extends TdFunction<FoundChatBoosts> {
-  /// Returns list of boosts applied to a chat; requires administrator rights in the chat
+  /// Returns the list of boosts applied to a chat; requires administrator rights in the chat
   const GetChatBoosts({
     required this.chatId,
     required this.onlyGiftCodes,

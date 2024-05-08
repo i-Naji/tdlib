@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of chats with non-default notification settings for stories
+/// Returns the list of chats with non-default notification settings for stories
 ///
 /// Returns [Chats].
 final class GetStoryNotificationSettingsExceptions extends TdFunction<Chats> {
-  /// Returns list of chats with non-default notification settings for stories
+  /// Returns the list of chats with non-default notification settings for stories
   const GetStoryNotificationSettingsExceptions();
 
   @override

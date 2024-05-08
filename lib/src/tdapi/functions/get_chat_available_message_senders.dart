@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of message sender identifiers, which can be used to send messages in a chat
+/// Returns the list of message sender identifiers, which can be used to send messages in a chat
 ///
 /// Returns [ChatMessageSenders].
 final class GetChatAvailableMessageSenders
     extends TdFunction<ChatMessageSenders> {
-  /// Returns list of message sender identifiers, which can be used to send messages in a chat
+  /// Returns the list of message sender identifiers, which can be used to send messages in a chat
   const GetChatAvailableMessageSenders({
     required this.chatId,
   });

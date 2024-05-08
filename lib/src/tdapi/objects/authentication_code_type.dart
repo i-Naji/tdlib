@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Provides information about the method by which an authentication code is delivered to the user
 ///
-/// One of: [AuthenticationCodeTypeTelegramMessage], [AuthenticationCodeTypeSms], [AuthenticationCodeTypeCall], [AuthenticationCodeTypeFlashCall], [AuthenticationCodeTypeMissedCall], [AuthenticationCodeTypeFragment], [AuthenticationCodeTypeFirebaseAndroid], [AuthenticationCodeTypeFirebaseIos]; or [UndecodedAuthenticationCodeType] for a type newer than this API.
+/// One of: [AuthenticationCodeTypeTelegramMessage], [AuthenticationCodeTypeSms], [AuthenticationCodeTypeSmsWord], [AuthenticationCodeTypeSmsPhrase], [AuthenticationCodeTypeCall], [AuthenticationCodeTypeFlashCall], [AuthenticationCodeTypeMissedCall], [AuthenticationCodeTypeFragment], [AuthenticationCodeTypeFirebaseAndroid], [AuthenticationCodeTypeFirebaseIos]; or [UndecodedAuthenticationCodeType] for a type newer than this API.
 sealed class AuthenticationCodeType extends TdObject {
   const AuthenticationCodeType();
 
@@ -44,10 +44,10 @@ final class UndecodedAuthenticationCodeType extends AuthenticationCodeType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// An authentication code is delivered via a private Telegram message, which can be viewed from another active session
+/// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session
 final class AuthenticationCodeTypeTelegramMessage
     extends AuthenticationCodeType {
-  /// An authentication code is delivered via a private Telegram message, which can be viewed from another active session
+  /// A digit-only authentication code is delivered via a private Telegram message, which can be viewed from another active session
   const AuthenticationCodeTypeTelegramMessage({
     required this.length,
   });
@@ -85,9 +85,9 @@ final class AuthenticationCodeTypeTelegramMessage
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An authentication code is delivered via an SMS message to the specified phone number; applications may not receive this type of code
+/// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
 final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
-  /// An authentication code is delivered via an SMS message to the specified phone number; applications may not receive this type of code
+  /// A digit-only authentication code is delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
   const AuthenticationCodeTypeSms({
     required this.length,
   });
@@ -124,9 +124,87 @@ final class AuthenticationCodeTypeSms extends AuthenticationCodeType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An authentication code is delivered via a phone call to the specified phone number
+/// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
+final class AuthenticationCodeTypeSmsWord extends AuthenticationCodeType {
+  /// An authentication code is a word delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
+  const AuthenticationCodeTypeSmsWord({
+    required this.firstLetter,
+  });
+
+  /// The first letters of the word if known
+  final String firstLetter;
+
+  /// Parses a [AuthenticationCodeTypeSmsWord] from TDLib JSON.
+  factory AuthenticationCodeTypeSmsWord.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: _readString(json['first_letter']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'first_letter': firstLetter,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  AuthenticationCodeTypeSmsWord copyWith({
+    String? firstLetter,
+  }) =>
+      AuthenticationCodeTypeSmsWord(
+        firstLetter: firstLetter ?? this.firstLetter,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'authenticationCodeTypeSmsWord';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
+final class AuthenticationCodeTypeSmsPhrase extends AuthenticationCodeType {
+  /// An authentication code is a phrase from multiple words delivered via an SMS message to the specified phone number; non-official applications may not receive this type of code
+  const AuthenticationCodeTypeSmsPhrase({
+    required this.firstWord,
+  });
+
+  /// The first word of the phrase if known
+  final String firstWord;
+
+  /// Parses a [AuthenticationCodeTypeSmsPhrase] from TDLib JSON.
+  factory AuthenticationCodeTypeSmsPhrase.fromJson(Map<String, dynamic> json) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: _readString(json['first_word']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'first_word': firstWord,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  AuthenticationCodeTypeSmsPhrase copyWith({
+    String? firstWord,
+  }) =>
+      AuthenticationCodeTypeSmsPhrase(
+        firstWord: firstWord ?? this.firstWord,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'authenticationCodeTypeSmsPhrase';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A digit-only authentication code is delivered via a phone call to the specified phone number
 final class AuthenticationCodeTypeCall extends AuthenticationCodeType {
-  /// An authentication code is delivered via a phone call to the specified phone number
+  /// A digit-only authentication code is delivered via a phone call to the specified phone number
   const AuthenticationCodeTypeCall({
     required this.length,
   });
@@ -250,9 +328,9 @@ final class AuthenticationCodeTypeMissedCall extends AuthenticationCodeType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
+/// A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
 final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
-  /// An authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
+  /// A digit-only authentication code is delivered to https://fragment.com. The user must be logged in there via a wallet owning the phone number's NFT
   const AuthenticationCodeTypeFragment({
     required this.url,
     required this.length,
@@ -297,10 +375,10 @@ final class AuthenticationCodeTypeFragment extends AuthenticationCodeType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An authentication code is delivered via Firebase Authentication to the official Android application
+/// A digit-only authentication code is delivered via Firebase Authentication to the official Android application
 final class AuthenticationCodeTypeFirebaseAndroid
     extends AuthenticationCodeType {
-  /// An authentication code is delivered via Firebase Authentication to the official Android application
+  /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application
   const AuthenticationCodeTypeFirebaseAndroid({
     required this.nonce,
     required this.length,
@@ -346,9 +424,9 @@ final class AuthenticationCodeTypeFirebaseAndroid
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An authentication code is delivered via Firebase Authentication to the official iOS application
+/// A digit-only authentication code is delivered via Firebase Authentication to the official iOS application
 final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
-  /// An authentication code is delivered via Firebase Authentication to the official iOS application
+  /// A digit-only authentication code is delivered via Firebase Authentication to the official iOS application
   const AuthenticationCodeTypeFirebaseIos({
     required this.receipt,
     required this.pushTimeout,

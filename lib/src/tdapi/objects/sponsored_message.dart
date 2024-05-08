@@ -12,7 +12,10 @@ final class SponsoredMessage extends TdObject {
     required this.canBeReported,
     required this.content,
     required this.sponsor,
+    required this.title,
     required this.buttonText,
+    required this.accentColorId,
+    required this.backgroundCustomEmojiId,
     required this.additionalInfo,
   });
 
@@ -31,8 +34,17 @@ final class SponsoredMessage extends TdObject {
   /// Information about the sponsor of the message
   final MessageSponsor sponsor;
 
-  /// If non-empty, text for the message action button
+  /// Title of the sponsored message
+  final String title;
+
+  /// Text for the message action button
   final String buttonText;
+
+  /// Identifier of the accent color for title, button text and message background
+  final int accentColorId;
+
+  /// Identifier of a custom emoji to be shown on the message background; 0 if none
+  final int backgroundCustomEmojiId;
 
   /// If non-empty, additional information about the sponsored message to be shown along with the message
   final String additionalInfo;
@@ -45,7 +57,10 @@ final class SponsoredMessage extends TdObject {
         canBeReported: _readBool(json['can_be_reported']),
         content: _readObject(json['content'], MessageContent.fromJson),
         sponsor: _readObject(json['sponsor'], MessageSponsor.fromJson),
+        title: _readString(json['title']),
         buttonText: _readString(json['button_text']),
+        accentColorId: _readInt(json['accent_color_id']),
+        backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
         additionalInfo: _readString(json['additional_info']),
       );
 
@@ -57,7 +72,10 @@ final class SponsoredMessage extends TdObject {
         'can_be_reported': canBeReported,
         'content': content.toJson(),
         'sponsor': sponsor.toJson(),
+        'title': title,
         'button_text': buttonText,
+        'accent_color_id': accentColorId,
+        'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
         'additional_info': additionalInfo,
       };
 
@@ -69,7 +87,10 @@ final class SponsoredMessage extends TdObject {
     bool? canBeReported,
     MessageContent? content,
     MessageSponsor? sponsor,
+    String? title,
     String? buttonText,
+    int? accentColorId,
+    int? backgroundCustomEmojiId,
     String? additionalInfo,
   }) =>
       SponsoredMessage(
@@ -78,7 +99,11 @@ final class SponsoredMessage extends TdObject {
         canBeReported: canBeReported ?? this.canBeReported,
         content: content ?? this.content,
         sponsor: sponsor ?? this.sponsor,
+        title: title ?? this.title,
         buttonText: buttonText ?? this.buttonText,
+        accentColorId: accentColorId ?? this.accentColorId,
+        backgroundCustomEmojiId:
+            backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
         additionalInfo: additionalInfo ?? this.additionalInfo,
       );
 

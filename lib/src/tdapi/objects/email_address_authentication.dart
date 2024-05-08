@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Contains authentication data for a email address
+/// Contains authentication data for an email address
 ///
 /// One of: [EmailAddressAuthenticationCode], [EmailAddressAuthenticationAppleId], [EmailAddressAuthenticationGoogleId]; or [UndecodedEmailAddressAuthentication] for a type newer than this API.
 sealed class EmailAddressAuthentication extends TdObject {

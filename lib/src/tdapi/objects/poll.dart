@@ -22,8 +22,8 @@ final class Poll extends TdObject {
   /// Unique poll identifier
   final int id;
 
-  /// Poll question; 1-300 characters
-  final String question;
+  /// Poll question; 1-300 characters. Only custom emoji entities are allowed
+  final FormattedText question;
 
   /// List of poll answer options
   final List<PollOption> options;
@@ -52,7 +52,7 @@ final class Poll extends TdObject {
   /// Parses a [Poll] from TDLib JSON.
   factory Poll.fromJson(Map<String, dynamic> json) => Poll(
         id: _readInt(json['id']),
-        question: _readString(json['question']),
+        question: _readObject(json['question'], FormattedText.fromJson),
         options: _readList<PollOption>(
             json['options'], (e) => _readObject(e, PollOption.fromJson)),
         totalVoterCount: _readInt(json['total_voter_count']),
@@ -69,7 +69,7 @@ final class Poll extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
-        'question': question,
+        'question': question.toJson(),
         'options': [for (final e in options) e.toJson()],
         'total_voter_count': totalVoterCount,
         'recent_voter_ids': [for (final e in recentVoterIds) e.toJson()],
@@ -84,7 +84,7 @@ final class Poll extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   Poll copyWith({
     int? id,
-    String? question,
+    FormattedText? question,
     List<PollOption>? options,
     int? totalVoterCount,
     List<MessageSender>? recentVoterIds,

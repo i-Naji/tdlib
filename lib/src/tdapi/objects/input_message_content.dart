@@ -715,7 +715,7 @@ final class InputMessageVoiceNote extends InputMessageContent {
     this.selfDestructType,
   });
 
-  /// Voice note to be sent
+  /// Voice note to be sent. The voice note must be encoded with the Opus codec and stored inside an OGG container with a single audio channel, or be in MP3 or M4A format as regular audio
   final InputFile voiceNote;
 
   /// Duration of the voice note, in seconds
@@ -791,7 +791,7 @@ final class InputMessageLocation extends InputMessageContent {
   /// Location to be sent
   final Location location;
 
-  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a live location and 0 otherwise
+  /// Period for which the location can be updated, in seconds; must be between 60 and 86400 for a temporary live location, 0x7FFFFFFF for permanent live location, and 0 otherwise
   final int livePeriod;
 
   /// For live locations, a direction in which the location moves, in degrees; 1-360. Pass 0 if unknown
@@ -1154,11 +1154,11 @@ final class InputMessagePoll extends InputMessageContent {
     required this.isClosed,
   });
 
-  /// Poll question; 1-255 characters (up to 300 characters for bots)
-  final String question;
+  /// Poll question; 1-255 characters (up to 300 characters for bots). Only custom emoji entities are allowed to be added and only by Premium users
+  final FormattedText question;
 
-  /// List of poll answer options, 2-10 strings 1-100 characters each
-  final List<String> options;
+  /// List of poll answer options, 2-10 strings 1-100 characters each. Only custom emoji entities are allowed to be added and only by Premium users
+  final List<FormattedText> options;
 
   /// True, if the poll voters are anonymous. Non-anonymous polls can't be sent or forwarded to channels
   final bool isAnonymous;
@@ -1178,8 +1178,9 @@ final class InputMessagePoll extends InputMessageContent {
   /// Parses a [InputMessagePoll] from TDLib JSON.
   factory InputMessagePoll.fromJson(Map<String, dynamic> json) =>
       InputMessagePoll(
-        question: _readString(json['question']),
-        options: _readList<String>(json['options'], _readString),
+        question: _readObject(json['question'], FormattedText.fromJson),
+        options: _readList<FormattedText>(
+            json['options'], (e) => _readObject(e, FormattedText.fromJson)),
         isAnonymous: _readBool(json['is_anonymous']),
         type: _readObject(json['type'], PollType.fromJson),
         openPeriod: _readInt(json['open_period']),
@@ -1190,8 +1191,8 @@ final class InputMessagePoll extends InputMessageContent {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'question': question,
-        'options': options,
+        'question': question.toJson(),
+        'options': [for (final e in options) e.toJson()],
         'is_anonymous': isAnonymous,
         'type': type.toJson(),
         'open_period': openPeriod,
@@ -1203,8 +1204,8 @@ final class InputMessagePoll extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessagePoll copyWith({
-    String? question,
-    List<String>? options,
+    FormattedText? question,
+    List<FormattedText>? options,
     bool? isAnonymous,
     PollType? type,
     int? openPeriod,

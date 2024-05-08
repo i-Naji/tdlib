@@ -9,6 +9,7 @@ final class Stories extends TdObject {
   const Stories({
     required this.totalCount,
     required this.stories,
+    required this.pinnedStoryIds,
     this.extra,
     this.clientId,
   });
@@ -18,6 +19,9 @@ final class Stories extends TdObject {
 
   /// The list of stories
   final List<Story> stories;
+
+  /// Identifiers of the pinned stories; returned only in getChatPostedToChatPageStories with from_story_id == 0
+  final List<int> pinnedStoryIds;
 
   /// "@extra" of the request this object answers.
   @override
@@ -32,6 +36,7 @@ final class Stories extends TdObject {
         totalCount: _readInt(json['total_count']),
         stories: _readList<Story>(
             json['stories'], (e) => _readObject(e, Story.fromJson)),
+        pinnedStoryIds: _readList<int>(json['pinned_story_ids'], _readInt),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -41,6 +46,7 @@ final class Stories extends TdObject {
         '@type': CONSTRUCTOR,
         'total_count': totalCount,
         'stories': [for (final e in stories) e.toJson()],
+        'pinned_story_ids': pinnedStoryIds,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -48,12 +54,14 @@ final class Stories extends TdObject {
   Stories copyWith({
     int? totalCount,
     List<Story>? stories,
+    List<int>? pinnedStoryIds,
     dynamic extra,
     int? clientId,
   }) =>
       Stories(
         totalCount: totalCount ?? this.totalCount,
         stories: stories ?? this.stories,
+        pinnedStoryIds: pinnedStoryIds ?? this.pinnedStoryIds,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

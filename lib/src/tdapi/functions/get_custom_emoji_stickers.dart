@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned
+/// Returns the list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned
 ///
 /// Returns [Stickers].
 final class GetCustomEmojiStickers extends TdFunction<Stickers> {
-  /// Returns list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned
+  /// Returns the list of custom emoji stickers by their identifiers. Stickers are returned in arbitrary order. Only found stickers are returned
   const GetCustomEmojiStickers({
     required this.customEmojiIds,
   });

@@ -14,8 +14,8 @@ final class PollOption extends TdObject {
     required this.isBeingChosen,
   });
 
-  /// Option text; 1-100 characters
-  final String text;
+  /// Option text; 1-100 characters. Only custom emoji entities are allowed
+  final FormattedText text;
 
   /// Number of voters for this option, available only for closed or voted polls
   final int voterCount;
@@ -31,7 +31,7 @@ final class PollOption extends TdObject {
 
   /// Parses a [PollOption] from TDLib JSON.
   factory PollOption.fromJson(Map<String, dynamic> json) => PollOption(
-        text: _readString(json['text']),
+        text: _readObject(json['text'], FormattedText.fromJson),
         voterCount: _readInt(json['voter_count']),
         votePercentage: _readInt(json['vote_percentage']),
         isChosen: _readBool(json['is_chosen']),
@@ -41,7 +41,7 @@ final class PollOption extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'text': text,
+        'text': text.toJson(),
         'voter_count': voterCount,
         'vote_percentage': votePercentage,
         'is_chosen': isChosen,
@@ -51,7 +51,7 @@ final class PollOption extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PollOption copyWith({
-    String? text,
+    FormattedText? text,
     int? voterCount,
     int? votePercentage,
     bool? isChosen,

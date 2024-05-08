@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes reset state of a email address
+/// Describes reset state of an email address
 ///
 /// One of: [EmailAddressResetStateAvailable], [EmailAddressResetStatePending]; or [UndecodedEmailAddressResetState] for a type newer than this API.
 sealed class EmailAddressResetState extends TdObject {

@@ -16,7 +16,8 @@ final class UserFullInfo extends TdObject {
     required this.hasPrivateCalls,
     required this.hasPrivateForwards,
     required this.hasRestrictedVoiceAndVideoNoteMessages,
-    required this.hasPinnedStories,
+    required this.hasPostedToProfileStories,
+    required this.hasSponsoredMessagesEnabled,
     required this.needPhoneNumberPrivacyException,
     required this.setChatBackground,
     this.bio,
@@ -57,8 +58,11 @@ final class UserFullInfo extends TdObject {
   /// True, if voice and video notes can't be sent or forwarded to the user
   final bool hasRestrictedVoiceAndVideoNoteMessages;
 
-  /// True, if the user has pinned stories
-  final bool hasPinnedStories;
+  /// True, if the user has posted to profile stories
+  final bool hasPostedToProfileStories;
+
+  /// True, if the user always enabled sponsored messages; known only for the current user
+  final bool hasSponsoredMessagesEnabled;
 
   /// True, if the current user needs to explicitly allow to share their phone number with the user when the method addContact is used
   final bool needPhoneNumberPrivacyException;
@@ -108,7 +112,10 @@ final class UserFullInfo extends TdObject {
         hasPrivateForwards: _readBool(json['has_private_forwards']),
         hasRestrictedVoiceAndVideoNoteMessages:
             _readBool(json['has_restricted_voice_and_video_note_messages']),
-        hasPinnedStories: _readBool(json['has_pinned_stories']),
+        hasPostedToProfileStories:
+            _readBool(json['has_posted_to_profile_stories']),
+        hasSponsoredMessagesEnabled:
+            _readBool(json['has_sponsored_messages_enabled']),
         needPhoneNumberPrivacyException:
             _readBool(json['need_phone_number_privacy_exception']),
         setChatBackground: _readBool(json['set_chat_background']),
@@ -139,7 +146,8 @@ final class UserFullInfo extends TdObject {
         'has_private_forwards': hasPrivateForwards,
         'has_restricted_voice_and_video_note_messages':
             hasRestrictedVoiceAndVideoNoteMessages,
-        'has_pinned_stories': hasPinnedStories,
+        'has_posted_to_profile_stories': hasPostedToProfileStories,
+        'has_sponsored_messages_enabled': hasSponsoredMessagesEnabled,
         'need_phone_number_privacy_exception': needPhoneNumberPrivacyException,
         'set_chat_background': setChatBackground,
         'bio': bio?.toJson(),
@@ -165,7 +173,8 @@ final class UserFullInfo extends TdObject {
     bool? hasPrivateCalls,
     bool? hasPrivateForwards,
     bool? hasRestrictedVoiceAndVideoNoteMessages,
-    bool? hasPinnedStories,
+    bool? hasPostedToProfileStories,
+    bool? hasSponsoredMessagesEnabled,
     bool? needPhoneNumberPrivacyException,
     bool? setChatBackground,
     FormattedText? Function()? bio,
@@ -191,7 +200,10 @@ final class UserFullInfo extends TdObject {
         hasRestrictedVoiceAndVideoNoteMessages:
             hasRestrictedVoiceAndVideoNoteMessages ??
                 this.hasRestrictedVoiceAndVideoNoteMessages,
-        hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        hasPostedToProfileStories:
+            hasPostedToProfileStories ?? this.hasPostedToProfileStories,
+        hasSponsoredMessagesEnabled:
+            hasSponsoredMessagesEnabled ?? this.hasSponsoredMessagesEnabled,
         needPhoneNumberPrivacyException: needPhoneNumberPrivacyException ??
             this.needPhoneNumberPrivacyException,
         setChatBackground: setChatBackground ?? this.setChatBackground,

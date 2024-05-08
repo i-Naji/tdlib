@@ -7,31 +7,31 @@ part of '../tdapi.dart';
 final class MessageSponsor extends TdObject {
   /// Information about the sponsor of a message
   const MessageSponsor({
-    required this.type,
+    required this.url,
     this.photo,
     required this.info,
   });
 
-  /// Type of the sponsor
-  final MessageSponsorType type;
+  /// URL of the sponsor to be opened when the message is clicked
+  final String url;
 
   /// Photo of the sponsor; may be null if must not be shown
-  final ChatPhotoInfo? photo;
+  final Photo? photo;
 
   /// Additional optional information about the sponsor to be shown along with the message
   final String info;
 
   /// Parses a [MessageSponsor] from TDLib JSON.
   factory MessageSponsor.fromJson(Map<String, dynamic> json) => MessageSponsor(
-        type: _readObject(json['type'], MessageSponsorType.fromJson),
-        photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
+        url: _readString(json['url']),
+        photo: _readOptional(json['photo'], Photo.fromJson),
         info: _readString(json['info']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'type': type.toJson(),
+        'url': url,
         'photo': photo?.toJson(),
         'info': info,
       };
@@ -39,12 +39,12 @@ final class MessageSponsor extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageSponsor copyWith({
-    MessageSponsorType? type,
-    ChatPhotoInfo? Function()? photo,
+    String? url,
+    Photo? Function()? photo,
     String? info,
   }) =>
       MessageSponsor(
-        type: type ?? this.type,
+        url: url ?? this.url,
         photo: photo != null ? photo() : this.photo,
         info: info ?? this.info,
       );

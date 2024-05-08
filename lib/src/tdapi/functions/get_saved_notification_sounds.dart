@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used
+/// Returns the list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used
 ///
 /// Returns [NotificationSounds].
 final class GetSavedNotificationSounds extends TdFunction<NotificationSounds> {
-  /// Returns list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used
+  /// Returns the list of saved notification sounds. If a sound isn't in the list, then default sound needs to be used
   const GetSavedNotificationSounds();
 
   @override

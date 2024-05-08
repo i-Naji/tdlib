@@ -1,6 +1,6 @@
 name: tdlib
 description: Flutter Plugin for TDLib.A complete tdlib-tdjson binding package.
-version: 1.8.28
+version: 1.8.29
 homepage: https://github.com/i-Naji/tdlib
 
 environment:

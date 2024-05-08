@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of features available for different chat boost levels; this is an offline request
+/// Returns the list of features available for different chat boost levels; this is an offline request
 ///
 /// Returns [ChatBoostFeatures].
 final class GetChatBoostFeatures extends TdFunction<ChatBoostFeatures> {
-  /// Returns list of features available for different chat boost levels; this is an offline request
+  /// Returns the list of features available for different chat boost levels; this is an offline request
   const GetChatBoostFeatures({
     required this.isChannel,
   });

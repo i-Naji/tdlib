@@ -9,10 +9,7 @@ final class ChatRevenueStatistics extends TdObject {
   const ChatRevenueStatistics({
     required this.revenueByHourGraph,
     required this.revenueGraph,
-    required this.cryptocurrency,
-    required this.cryptocurrencyTotalAmount,
-    required this.cryptocurrencyBalanceAmount,
-    required this.cryptocurrencyAvailableAmount,
+    required this.revenueAmount,
     required this.usdRate,
     this.extra,
     this.clientId,
@@ -24,19 +21,10 @@ final class ChatRevenueStatistics extends TdObject {
   /// A graph containing amount of revenue
   final StatisticalGraph revenueGraph;
 
-  /// Cryptocurrency in which revenue is calculated
-  final String cryptocurrency;
+  /// Amount of earned revenue
+  final ChatRevenueAmount revenueAmount;
 
-  /// Total amount of the cryptocurrency earned, in the smallest units of the cryptocurrency
-  final int cryptocurrencyTotalAmount;
-
-  /// Amount of the cryptocurrency that isn't withdrawn yet, in the smallest units of the cryptocurrency
-  final int cryptocurrencyBalanceAmount;
-
-  /// Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency
-  final int cryptocurrencyAvailableAmount;
-
-  /// Current conversion rate of the cryptocurrency to USD
+  /// Current conversion rate of the cryptocurrency in which revenue is calculated to USD
   final double usdRate;
 
   /// "@extra" of the request this object answers.
@@ -54,13 +42,8 @@ final class ChatRevenueStatistics extends TdObject {
             json['revenue_by_hour_graph'], StatisticalGraph.fromJson),
         revenueGraph:
             _readObject(json['revenue_graph'], StatisticalGraph.fromJson),
-        cryptocurrency: _readString(json['cryptocurrency']),
-        cryptocurrencyTotalAmount:
-            _readInt(json['cryptocurrency_total_amount']),
-        cryptocurrencyBalanceAmount:
-            _readInt(json['cryptocurrency_balance_amount']),
-        cryptocurrencyAvailableAmount:
-            _readInt(json['cryptocurrency_available_amount']),
+        revenueAmount:
+            _readObject(json['revenue_amount'], ChatRevenueAmount.fromJson),
         usdRate: _readDouble(json['usd_rate']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -71,11 +54,7 @@ final class ChatRevenueStatistics extends TdObject {
         '@type': CONSTRUCTOR,
         'revenue_by_hour_graph': revenueByHourGraph.toJson(),
         'revenue_graph': revenueGraph.toJson(),
-        'cryptocurrency': cryptocurrency,
-        'cryptocurrency_total_amount': cryptocurrencyTotalAmount.toString(),
-        'cryptocurrency_balance_amount': cryptocurrencyBalanceAmount.toString(),
-        'cryptocurrency_available_amount':
-            cryptocurrencyAvailableAmount.toString(),
+        'revenue_amount': revenueAmount.toJson(),
         'usd_rate': usdRate,
       };
 
@@ -84,10 +63,7 @@ final class ChatRevenueStatistics extends TdObject {
   ChatRevenueStatistics copyWith({
     StatisticalGraph? revenueByHourGraph,
     StatisticalGraph? revenueGraph,
-    String? cryptocurrency,
-    int? cryptocurrencyTotalAmount,
-    int? cryptocurrencyBalanceAmount,
-    int? cryptocurrencyAvailableAmount,
+    ChatRevenueAmount? revenueAmount,
     double? usdRate,
     dynamic extra,
     int? clientId,
@@ -95,13 +71,7 @@ final class ChatRevenueStatistics extends TdObject {
       ChatRevenueStatistics(
         revenueByHourGraph: revenueByHourGraph ?? this.revenueByHourGraph,
         revenueGraph: revenueGraph ?? this.revenueGraph,
-        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
-        cryptocurrencyTotalAmount:
-            cryptocurrencyTotalAmount ?? this.cryptocurrencyTotalAmount,
-        cryptocurrencyBalanceAmount:
-            cryptocurrencyBalanceAmount ?? this.cryptocurrencyBalanceAmount,
-        cryptocurrencyAvailableAmount:
-            cryptocurrencyAvailableAmount ?? this.cryptocurrencyAvailableAmount,
+        revenueAmount: revenueAmount ?? this.revenueAmount,
         usdRate: usdRate ?? this.usdRate,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

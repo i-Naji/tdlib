@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a voice note. The voice note must be encoded with the Opus codec, and stored inside an OGG container. Voice notes can have only a single audio channel
+/// Describes a voice note
 final class VoiceNote extends TdObject {
-  /// Describes a voice note. The voice note must be encoded with the Opus codec, and stored inside an OGG container. Voice notes can have only a single audio channel
+  /// Describes a voice note
   const VoiceNote({
     required this.duration,
     required this.waveform,
@@ -20,7 +20,7 @@ final class VoiceNote extends TdObject {
   /// A waveform representation of the voice note in 5-bit format
   final String waveform;
 
-  /// MIME type of the file; as defined by the sender
+  /// MIME type of the file; as defined by the sender. Usually, one of "audio/ogg" for Opus in an OGG container, "audio/mpeg" for an MP3 audio, or "audio/mp4" for an M4A audio
   final String mimeType;
 
   /// Result of speech recognition in the voice note; may be null

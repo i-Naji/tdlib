@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of pinned stories posted by the given chat. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
+/// Returns the list of stories that posted by the given chat to its chat page. If from_story_id == 0, then pinned stories are returned first. Then, stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
 ///
 /// Returns [Stories].
-final class GetChatPinnedStories extends TdFunction<Stories> {
-  /// Returns the list of pinned stories posted by the given chat. The stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
-  const GetChatPinnedStories({
+final class GetChatPostedToChatPageStories extends TdFunction<Stories> {
+  /// Returns the list of stories that posted by the given chat to its chat page. If from_story_id == 0, then pinned stories are returned first. Then, stories are returned in a reverse chronological order (i.e., in order of decreasing story_id). For optimal performance, the number of returned stories is chosen by TDLib
+  const GetChatPostedToChatPageStories({
     required this.chatId,
     required this.fromStoryId,
     required this.limit,
@@ -17,7 +17,7 @@ final class GetChatPinnedStories extends TdFunction<Stories> {
   /// Chat identifier
   final int chatId;
 
-  /// Identifier of the story starting from which stories must be returned; use 0 to get results from the last story
+  /// Identifier of the story starting from which stories must be returned; use 0 to get results from pinned and the newest story
   final int fromStoryId;
 
   /// The maximum number of stories to be returned For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
@@ -34,19 +34,19 @@ final class GetChatPinnedStories extends TdFunction<Stories> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatPinnedStories copyWith({
+  GetChatPostedToChatPageStories copyWith({
     int? chatId,
     int? fromStoryId,
     int? limit,
   }) =>
-      GetChatPinnedStories(
+      GetChatPostedToChatPageStories(
         chatId: chatId ?? this.chatId,
         fromStoryId: fromStoryId ?? this.fromStoryId,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getChatPinnedStories';
+  static const String CONSTRUCTOR = 'getChatPostedToChatPageStories';
 
   @override
   String getConstructor() => CONSTRUCTOR;

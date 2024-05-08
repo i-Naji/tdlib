@@ -9,6 +9,9 @@ final class BusinessInfo extends TdObject {
   const BusinessInfo({
     this.location,
     this.openingHours,
+    this.localOpeningHours,
+    required this.nextOpenIn,
+    required this.nextCloseIn,
     this.greetingMessageSettings,
     this.awayMessageSettings,
     this.startPage,
@@ -19,6 +22,15 @@ final class BusinessInfo extends TdObject {
 
   /// Opening hours of the business; may be null if none. The hours are guaranteed to be valid and has already been split by week days
   final BusinessOpeningHours? openingHours;
+
+  /// Opening hours of the business in the local time; may be null if none. The hours are guaranteed to be valid and has already been split by week days. Local time zone identifier will be empty. An updateUserFullInfo update is not triggered when value of this field changes
+  final BusinessOpeningHours? localOpeningHours;
+
+  /// Time left before the business will open the next time, in seconds; 0 if unknown. An updateUserFullInfo update is not triggered when value of this field changes
+  final int nextOpenIn;
+
+  /// Time left before the business will close the next time, in seconds; 0 if unknown. An updateUserFullInfo update is not triggered when value of this field changes
+  final int nextCloseIn;
 
   /// The greeting message; may be null if none or the Business account is not of the current user
   final BusinessGreetingMessageSettings? greetingMessageSettings;
@@ -34,6 +46,10 @@ final class BusinessInfo extends TdObject {
         location: _readOptional(json['location'], BusinessLocation.fromJson),
         openingHours:
             _readOptional(json['opening_hours'], BusinessOpeningHours.fromJson),
+        localOpeningHours: _readOptional(
+            json['local_opening_hours'], BusinessOpeningHours.fromJson),
+        nextOpenIn: _readInt(json['next_open_in']),
+        nextCloseIn: _readInt(json['next_close_in']),
         greetingMessageSettings: _readOptional(
             json['greeting_message_settings'],
             BusinessGreetingMessageSettings.fromJson),
@@ -48,6 +64,9 @@ final class BusinessInfo extends TdObject {
         '@type': CONSTRUCTOR,
         'location': location?.toJson(),
         'opening_hours': openingHours?.toJson(),
+        'local_opening_hours': localOpeningHours?.toJson(),
+        'next_open_in': nextOpenIn,
+        'next_close_in': nextCloseIn,
         'greeting_message_settings': greetingMessageSettings?.toJson(),
         'away_message_settings': awayMessageSettings?.toJson(),
         'start_page': startPage?.toJson(),
@@ -58,6 +77,9 @@ final class BusinessInfo extends TdObject {
   BusinessInfo copyWith({
     BusinessLocation? Function()? location,
     BusinessOpeningHours? Function()? openingHours,
+    BusinessOpeningHours? Function()? localOpeningHours,
+    int? nextOpenIn,
+    int? nextCloseIn,
     BusinessGreetingMessageSettings? Function()? greetingMessageSettings,
     BusinessAwayMessageSettings? Function()? awayMessageSettings,
     BusinessStartPage? Function()? startPage,
@@ -65,6 +87,11 @@ final class BusinessInfo extends TdObject {
       BusinessInfo(
         location: location != null ? location() : this.location,
         openingHours: openingHours != null ? openingHours() : this.openingHours,
+        localOpeningHours: localOpeningHours != null
+            ? localOpeningHours()
+            : this.localOpeningHours,
+        nextOpenIn: nextOpenIn ?? this.nextOpenIn,
+        nextCloseIn: nextCloseIn ?? this.nextCloseIn,
         greetingMessageSettings: greetingMessageSettings != null
             ? greetingMessageSettings()
             : this.greetingMessageSettings,

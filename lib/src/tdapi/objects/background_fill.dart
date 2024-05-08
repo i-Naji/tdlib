@@ -143,7 +143,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
     required this.colors,
   });
 
-  /// A list of 3 or 4 colors of the freeform gradients in the RGB24 format
+  /// A list of 3 or 4 colors of the freeform gradient in the RGB24 format
   final List<int> colors;
 
   /// Parses a [BackgroundFillFreeformGradient] from TDLib JSON.

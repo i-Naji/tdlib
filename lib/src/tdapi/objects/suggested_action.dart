@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionExtendPremium]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -363,6 +363,47 @@ final class SuggestedActionSetBirthdate extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionSetBirthdate';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to extend their expiring Telegram Premium subscription
+final class SuggestedActionExtendPremium extends SuggestedAction {
+  /// Suggests the user to extend their expiring Telegram Premium subscription
+  const SuggestedActionExtendPremium({
+    required this.managePremiumSubscriptionUrl,
+  });
+
+  /// A URL for managing Telegram Premium subscription
+  final String managePremiumSubscriptionUrl;
+
+  /// Parses a [SuggestedActionExtendPremium] from TDLib JSON.
+  factory SuggestedActionExtendPremium.fromJson(Map<String, dynamic> json) =>
+      SuggestedActionExtendPremium(
+        managePremiumSubscriptionUrl:
+            _readString(json['manage_premium_subscription_url']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'manage_premium_subscription_url': managePremiumSubscriptionUrl,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionExtendPremium copyWith({
+    String? managePremiumSubscriptionUrl,
+  }) =>
+      SuggestedActionExtendPremium(
+        managePremiumSubscriptionUrl:
+            managePremiumSubscriptionUrl ?? this.managePremiumSubscriptionUrl,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionExtendPremium';
 
   @override
   String getConstructor() => CONSTRUCTOR;

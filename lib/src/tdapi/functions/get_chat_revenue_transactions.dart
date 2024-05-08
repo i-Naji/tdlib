@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of revenue transactions for a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
+/// Returns the list of revenue transactions for a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
 ///
 /// Returns [ChatRevenueTransactions].
 final class GetChatRevenueTransactions
     extends TdFunction<ChatRevenueTransactions> {
-  /// Returns list of revenue transactions for a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
+  /// Returns the list of revenue transactions for a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
   const GetChatRevenueTransactions({
     required this.chatId,
     required this.offset,

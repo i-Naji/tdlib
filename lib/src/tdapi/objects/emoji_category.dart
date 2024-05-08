@@ -3,13 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of similar emoji to search for in getStickers and searchStickers
+/// Describes an emoji category
 final class EmojiCategory extends TdObject {
-  /// Contains a list of similar emoji to search for in getStickers and searchStickers
+  /// Describes an emoji category
   const EmojiCategory({
     required this.name,
     required this.icon,
-    required this.emojis,
+    required this.source,
+    required this.isGreeting,
   });
 
   /// Name of the category
@@ -18,14 +19,18 @@ final class EmojiCategory extends TdObject {
   /// Custom emoji sticker, which represents icon of the category
   final Sticker icon;
 
-  /// List of emojis in the category
-  final List<String> emojis;
+  /// Source of stickers for the emoji category
+  final EmojiCategorySource source;
+
+  /// True, if the category must be shown first when choosing a sticker for the start page
+  final bool isGreeting;
 
   /// Parses a [EmojiCategory] from TDLib JSON.
   factory EmojiCategory.fromJson(Map<String, dynamic> json) => EmojiCategory(
         name: _readString(json['name']),
         icon: _readObject(json['icon'], Sticker.fromJson),
-        emojis: _readList<String>(json['emojis'], _readString),
+        source: _readObject(json['source'], EmojiCategorySource.fromJson),
+        isGreeting: _readBool(json['is_greeting']),
       );
 
   @override
@@ -33,7 +38,8 @@ final class EmojiCategory extends TdObject {
         '@type': CONSTRUCTOR,
         'name': name,
         'icon': icon.toJson(),
-        'emojis': emojis,
+        'source': source.toJson(),
+        'is_greeting': isGreeting,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -41,12 +47,14 @@ final class EmojiCategory extends TdObject {
   EmojiCategory copyWith({
     String? name,
     Sticker? icon,
-    List<String>? emojis,
+    EmojiCategorySource? source,
+    bool? isGreeting,
   }) =>
       EmojiCategory(
         name: name ?? this.name,
         icon: icon ?? this.icon,
-        emojis: emojis ?? this.emojis,
+        source: source ?? this.source,
+        isGreeting: isGreeting ?? this.isGreeting,
       );
 
   /// TDLib type name.

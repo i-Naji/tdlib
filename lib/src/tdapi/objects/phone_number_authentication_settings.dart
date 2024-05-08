@@ -10,6 +10,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
     required this.allowFlashCall,
     required this.allowMissedCall,
     required this.isCurrentPhoneNumber,
+    required this.hasUnknownPhoneNumber,
     required this.allowSmsRetrieverApi,
     this.firebaseAuthenticationSettings,
     required this.authenticationTokens,
@@ -23,6 +24,9 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
 
   /// Pass true if the authenticated phone number is used on the current device
   final bool isCurrentPhoneNumber;
+
+  /// Pass true if there is a SIM card in the current device, but it is not possible to check whether phone number matches
+  final bool hasUnknownPhoneNumber;
 
   /// For official applications only. True, if the application can use Android SMS Retriever API (requires Google Play Services >= 10.2) to automatically receive the authentication code from the SMS. See https://developers.google.com/identity/sms-retriever/ for more details
   final bool allowSmsRetrieverApi;
@@ -40,6 +44,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
         allowFlashCall: _readBool(json['allow_flash_call']),
         allowMissedCall: _readBool(json['allow_missed_call']),
         isCurrentPhoneNumber: _readBool(json['is_current_phone_number']),
+        hasUnknownPhoneNumber: _readBool(json['has_unknown_phone_number']),
         allowSmsRetrieverApi: _readBool(json['allow_sms_retriever_api']),
         firebaseAuthenticationSettings: _readOptional(
             json['firebase_authentication_settings'],
@@ -54,6 +59,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
         'allow_flash_call': allowFlashCall,
         'allow_missed_call': allowMissedCall,
         'is_current_phone_number': isCurrentPhoneNumber,
+        'has_unknown_phone_number': hasUnknownPhoneNumber,
         'allow_sms_retriever_api': allowSmsRetrieverApi,
         'firebase_authentication_settings':
             firebaseAuthenticationSettings?.toJson(),
@@ -66,6 +72,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
     bool? allowFlashCall,
     bool? allowMissedCall,
     bool? isCurrentPhoneNumber,
+    bool? hasUnknownPhoneNumber,
     bool? allowSmsRetrieverApi,
     FirebaseAuthenticationSettings? Function()? firebaseAuthenticationSettings,
     List<String>? authenticationTokens,
@@ -74,6 +81,8 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
         allowFlashCall: allowFlashCall ?? this.allowFlashCall,
         allowMissedCall: allowMissedCall ?? this.allowMissedCall,
         isCurrentPhoneNumber: isCurrentPhoneNumber ?? this.isCurrentPhoneNumber,
+        hasUnknownPhoneNumber:
+            hasUnknownPhoneNumber ?? this.hasUnknownPhoneNumber,
         allowSmsRetrieverApi: allowSmsRetrieverApi ?? this.allowSmsRetrieverApi,
         firebaseAuthenticationSettings: firebaseAuthenticationSettings != null
             ? firebaseAuthenticationSettings()

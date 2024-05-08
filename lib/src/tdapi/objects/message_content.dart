@@ -653,10 +653,10 @@ final class MessageLocation extends MessageContent {
   /// The location description
   final Location location;
 
-  /// Time relative to the message send date, for which the location can be updated, in seconds
+  /// Time relative to the message send date, for which the location can be updated, in seconds; if 0x7FFFFFFF, then location can be updated forever
   final int livePeriod;
 
-  /// Left time for which the location can be updated, in seconds. updateMessageContent is not sent when this field changes
+  /// Left time for which the location can be updated, in seconds. If 0, then the location can't be updated anymore. The update updateMessageContent is not sent when this field changes
   final int expiresIn;
 
   /// For live locations, a direction in which the location moves, in degrees; 1-360. If 0 the direction is unknown
@@ -845,10 +845,10 @@ final class MessageDice extends MessageContent {
     required this.successAnimationFrameNumber,
   });
 
-  /// The animated stickers with the initial dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// The animated stickers with the initial dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
   final DiceStickers? initialState;
 
-  /// The animated stickers with the final dice animation; may be null if unknown. updateMessageContent will be sent when the sticker became known
+  /// The animated stickers with the final dice animation; may be null if unknown. The update updateMessageContent will be sent when the sticker became known
   final DiceStickers? finalState;
 
   /// Emoji on which the dice throw animation is based

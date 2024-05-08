@@ -16,7 +16,7 @@ final class SendStory extends TdFunction<Story> {
     required this.privacySettings,
     required this.activePeriod,
     required this.fromStoryFullId,
-    required this.isPinned,
+    required this.isPostedToChatPage,
     required this.protectContent,
   });
 
@@ -42,7 +42,7 @@ final class SendStory extends TdFunction<Story> {
   final StoryFullId fromStoryFullId;
 
   /// Pass true to keep the story accessible after expiration
-  final bool isPinned;
+  final bool isPostedToChatPage;
 
   /// Pass true if the content of the story must be protected from forwarding and screenshotting
   final bool protectContent;
@@ -57,7 +57,7 @@ final class SendStory extends TdFunction<Story> {
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
         'from_story_full_id': fromStoryFullId.toJson(),
-        'is_pinned': isPinned,
+        'is_posted_to_chat_page': isPostedToChatPage,
         'protect_content': protectContent,
         if (extra != null) '@extra': extra,
       };
@@ -72,7 +72,7 @@ final class SendStory extends TdFunction<Story> {
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
     StoryFullId? fromStoryFullId,
-    bool? isPinned,
+    bool? isPostedToChatPage,
     bool? protectContent,
   }) =>
       SendStory(
@@ -83,7 +83,7 @@ final class SendStory extends TdFunction<Story> {
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
         fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         protectContent: protectContent ?? this.protectContent,
       );
 

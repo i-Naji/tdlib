@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns list of commands supported by the bot for the given user scope and language; for bots only
+/// Returns the list of commands supported by the bot for the given user scope and language; for bots only
 ///
 /// Returns [BotCommands].
 final class GetCommands extends TdFunction<BotCommands> {
-  /// Returns list of commands supported by the bot for the given user scope and language; for bots only
+  /// Returns the list of commands supported by the bot for the given user scope and language; for bots only
   const GetCommands({
     this.scope,
     required this.languageCode,

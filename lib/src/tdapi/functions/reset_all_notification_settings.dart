@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Resets all notification settings to their default values. By default, all chats are unmuted and message previews are shown
+/// Resets all chat and scope notification settings to their default values. By default, all chats are unmuted and message previews are shown
 ///
 /// Returns [Ok].
 final class ResetAllNotificationSettings extends TdFunction<Ok> {
-  /// Resets all notification settings to their default values. By default, all chats are unmuted and message previews are shown
+  /// Resets all chat and scope notification settings to their default values. By default, all chats are unmuted and message previews are shown
   const ResetAllNotificationSettings();
 
   @override

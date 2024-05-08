@@ -3,15 +3,15 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_pinned == true
+/// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_posted_to_chat_page == true
 ///
 /// Returns [Ok].
-final class ToggleStoryIsPinned extends TdFunction<Ok> {
-  /// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_pinned == true
-  const ToggleStoryIsPinned({
+final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
+  /// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_posted_to_chat_page == true
+  const ToggleStoryIsPostedToChatPage({
     required this.storySenderChatId,
     required this.storyId,
-    required this.isPinned,
+    required this.isPostedToChatPage,
   });
 
   /// Identifier of the chat that posted the story
@@ -21,32 +21,32 @@ final class ToggleStoryIsPinned extends TdFunction<Ok> {
   final int storyId;
 
   /// Pass true to make the story accessible after expiration; pass false to make it private
-  final bool isPinned;
+  final bool isPostedToChatPage;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
-        'is_pinned': isPinned,
+        'is_posted_to_chat_page': isPostedToChatPage,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleStoryIsPinned copyWith({
+  ToggleStoryIsPostedToChatPage copyWith({
     int? storySenderChatId,
     int? storyId,
-    bool? isPinned,
+    bool? isPostedToChatPage,
   }) =>
-      ToggleStoryIsPinned(
+      ToggleStoryIsPostedToChatPage(
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
-        isPinned: isPinned ?? this.isPinned,
+        isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'toggleStoryIsPinned';
+  static const String CONSTRUCTOR = 'toggleStoryIsPostedToChatPage';
 
   @override
   String getConstructor() => CONSTRUCTOR;
