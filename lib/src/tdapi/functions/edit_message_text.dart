@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+/// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
 ///
 /// Returns [Message].
 final class EditMessageText extends TdFunction<Message> {
-  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side
+  /// Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
   const EditMessageText({
     required this.chatId,
     required this.messageId,

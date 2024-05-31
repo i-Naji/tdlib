@@ -53,7 +53,7 @@ final class InputMessageText extends InputMessageContent {
     required this.clearDraft,
   });
 
-  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
+  /// Formatted text to be sent; 0-getOption("message_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, CustomEmoji, BlockQuote, ExpandableBlockQuote, Code, Pre, PreCode, TextUrl and MentionName entities are allowed to be specified manually
   final FormattedText text;
 
   /// Options to be used for generation of a link preview; may be null if none; pass null to use default link preview options
@@ -113,6 +113,7 @@ final class InputMessageAnimation extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
   });
 
@@ -137,6 +138,9 @@ final class InputMessageAnimation extends InputMessageContent {
   /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
   /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
   final bool hasSpoiler;
 
@@ -151,6 +155,7 @@ final class InputMessageAnimation extends InputMessageContent {
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
       );
 
@@ -164,6 +169,7 @@ final class InputMessageAnimation extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
       };
 
@@ -178,6 +184,7 @@ final class InputMessageAnimation extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
   }) =>
       InputMessageAnimation(
@@ -188,6 +195,8 @@ final class InputMessageAnimation extends InputMessageContent {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
       );
 
@@ -355,6 +364,7 @@ final class InputMessagePhoto extends InputMessageContent {
     required this.width,
     required this.height,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
@@ -377,6 +387,9 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
   /// Photo self-destruct type; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
 
@@ -393,6 +406,7 @@ final class InputMessagePhoto extends InputMessageContent {
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
         hasSpoiler: _readBool(json['has_spoiler']),
@@ -407,6 +421,7 @@ final class InputMessagePhoto extends InputMessageContent {
         'width': width,
         'height': height,
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
       };
@@ -421,6 +436,7 @@ final class InputMessagePhoto extends InputMessageContent {
     int? width,
     int? height,
     FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) =>
@@ -431,6 +447,8 @@ final class InputMessagePhoto extends InputMessageContent {
         width: width ?? this.width,
         height: height ?? this.height,
         caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
             : this.selfDestructType,
@@ -527,6 +545,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.height,
     required this.supportsStreaming,
     this.caption,
+    required this.showCaptionAboveMedia,
     this.selfDestructType,
     required this.hasSpoiler,
   });
@@ -555,6 +574,9 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
   /// Video self-destruct type; pass null if none; private chats only
   final MessageSelfDestructType? selfDestructType;
 
@@ -573,6 +595,7 @@ final class InputMessageVideo extends InputMessageContent {
         height: _readInt(json['height']),
         supportsStreaming: _readBool(json['supports_streaming']),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
         hasSpoiler: _readBool(json['has_spoiler']),
@@ -589,6 +612,7 @@ final class InputMessageVideo extends InputMessageContent {
         'height': height,
         'supports_streaming': supportsStreaming,
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'self_destruct_type': selfDestructType?.toJson(),
         'has_spoiler': hasSpoiler,
       };
@@ -605,6 +629,7 @@ final class InputMessageVideo extends InputMessageContent {
     int? height,
     bool? supportsStreaming,
     FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
     MessageSelfDestructType? Function()? selfDestructType,
     bool? hasSpoiler,
   }) =>
@@ -617,6 +642,8 @@ final class InputMessageVideo extends InputMessageContent {
         height: height ?? this.height,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
         caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
             : this.selfDestructType,
@@ -1055,7 +1082,7 @@ final class InputMessageInvoice extends InputMessageContent {
   /// The invoice payload
   final String payload;
 
-  /// Payment provider token
+  /// Payment provider token; may be empty for payments in Telegram Stars
   final String providerToken;
 
   /// JSON-encoded data about the invoice, which will be shared with the payment provider

@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase
+/// Checks whether an in-store purchase is possible. Must be called before any in-store purchase
 ///
 /// Returns [Ok].
-final class CanPurchasePremium extends TdFunction<Ok> {
-  /// Checks whether Telegram Premium purchase is possible. Must be called before in-store Premium purchase
-  const CanPurchasePremium({
+final class CanPurchaseFromStore extends TdFunction<Ok> {
+  /// Checks whether an in-store purchase is possible. Must be called before any in-store purchase
+  const CanPurchaseFromStore({
     required this.purpose,
   });
 
@@ -24,15 +24,15 @@ final class CanPurchasePremium extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanPurchasePremium copyWith({
+  CanPurchaseFromStore copyWith({
     StorePaymentPurpose? purpose,
   }) =>
-      CanPurchasePremium(
+      CanPurchaseFromStore(
         purpose: purpose ?? this.purpose,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'canPurchasePremium';
+  static const String CONSTRUCTOR = 'canPurchaseFromStore';
 
   @override
   String getConstructor() => CONSTRUCTOR;

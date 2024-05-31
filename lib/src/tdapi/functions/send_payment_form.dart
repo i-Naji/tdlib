@@ -13,7 +13,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
     required this.paymentFormId,
     required this.orderInfoId,
     required this.shippingOptionId,
-    required this.credentials,
+    this.credentials,
     required this.tipAmount,
   });
 
@@ -29,8 +29,8 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
   /// Identifier of a chosen shipping option, if applicable
   final String shippingOptionId;
 
-  /// The credentials chosen by user for payment
-  final InputCredentials credentials;
+  /// The credentials chosen by user for payment; pass null for a payment in Telegram stars
+  final InputCredentials? credentials;
 
   /// Chosen by the user amount of tip in the smallest units of the currency
   final int tipAmount;
@@ -42,7 +42,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
         'payment_form_id': paymentFormId.toString(),
         'order_info_id': orderInfoId,
         'shipping_option_id': shippingOptionId,
-        'credentials': credentials.toJson(),
+        'credentials': credentials?.toJson(),
         'tip_amount': tipAmount,
         if (extra != null) '@extra': extra,
       };
@@ -54,7 +54,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
     int? paymentFormId,
     String? orderInfoId,
     String? shippingOptionId,
-    InputCredentials? credentials,
+    InputCredentials? Function()? credentials,
     int? tipAmount,
   }) =>
       SendPaymentForm(
@@ -62,7 +62,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
         paymentFormId: paymentFormId ?? this.paymentFormId,
         orderInfoId: orderInfoId ?? this.orderInfoId,
         shippingOptionId: shippingOptionId ?? this.shippingOptionId,
-        credentials: credentials ?? this.credentials,
+        credentials: credentials != null ? credentials() : this.credentials,
         tipAmount: tipAmount ?? this.tipAmount,
       );
 

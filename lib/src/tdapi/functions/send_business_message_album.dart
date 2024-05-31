@@ -14,6 +14,7 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
     this.replyTo,
     required this.disableNotification,
     required this.protectContent,
+    required this.effectId,
     required this.inputMessageContents,
   });
 
@@ -32,7 +33,10 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
   /// Pass true if the content of the message must be protected from forwarding and saving
   final bool protectContent;
 
-  /// Contents of messages to be sent. At most 10 messages can be added to an album
+  /// Identifier of the effect to apply to the message
+  final int effectId;
+
+  /// Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
 
   @override
@@ -43,6 +47,7 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
         'reply_to': replyTo?.toJson(),
         'disable_notification': disableNotification,
         'protect_content': protectContent,
+        'effect_id': effectId.toString(),
         'input_message_contents': [
           for (final e in inputMessageContents) e.toJson()
         ],
@@ -57,6 +62,7 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
     InputMessageReplyTo? Function()? replyTo,
     bool? disableNotification,
     bool? protectContent,
+    int? effectId,
     List<InputMessageContent>? inputMessageContents,
   }) =>
       SendBusinessMessageAlbum(
@@ -65,6 +71,7 @@ final class SendBusinessMessageAlbum extends TdFunction<BusinessMessages> {
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         disableNotification: disableNotification ?? this.disableNotification,
         protectContent: protectContent ?? this.protectContent,
+        effectId: effectId ?? this.effectId,
         inputMessageContents: inputMessageContents ?? this.inputMessageContents,
       );
 

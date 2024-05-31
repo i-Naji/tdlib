@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of an in-store payment
 ///
-/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
+/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
 sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
@@ -264,6 +264,61 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiveaway';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user buying Telegram stars
+final class StorePaymentPurposeStars extends StorePaymentPurpose {
+  /// The user buying Telegram stars
+  const StorePaymentPurposeStars({
+    required this.currency,
+    required this.amount,
+    required this.starCount,
+  });
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Number of bought stars
+  final int starCount;
+
+  /// Parses a [StorePaymentPurposeStars] from TDLib JSON.
+  factory StorePaymentPurposeStars.fromJson(Map<String, dynamic> json) =>
+      StorePaymentPurposeStars(
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'currency': currency,
+        'amount': amount,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StorePaymentPurposeStars copyWith({
+    String? currency,
+    int? amount,
+    int? starCount,
+  }) =>
+      StorePaymentPurposeStars(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storePaymentPurposeStars';
 
   @override
   String getConstructor() => CONSTRUCTOR;

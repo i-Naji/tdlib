@@ -7,29 +7,16 @@ part of '../tdapi.dart';
 final class PaymentReceipt extends TdObject {
   /// Contains information about a successful payment
   const PaymentReceipt({
-    required this.title,
-    required this.description,
-    this.photo,
+    required this.productInfo,
     required this.date,
     required this.sellerBotUserId,
-    required this.paymentProviderUserId,
-    required this.invoice,
-    this.orderInfo,
-    this.shippingOption,
-    required this.credentialsTitle,
-    required this.tipAmount,
+    required this.type,
     this.extra,
     this.clientId,
   });
 
-  /// Product title
-  final String title;
-
-  /// Product description
-  final FormattedText description;
-
-  /// Product photo; may be null
-  final Photo? photo;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// Point in time (Unix timestamp) when the payment was made
   final int date;
@@ -37,23 +24,8 @@ final class PaymentReceipt extends TdObject {
   /// User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// User identifier of the payment provider bot
-  final int paymentProviderUserId;
-
-  /// Information about the invoice
-  final Invoice invoice;
-
-  /// Order information; may be null
-  final OrderInfo? orderInfo;
-
-  /// Chosen shipping option; may be null
-  final ShippingOption? shippingOption;
-
-  /// Title of the saved credentials chosen by the buyer
-  final String credentialsTitle;
-
-  /// The amount of tip chosen by the buyer in the smallest units of the currency
-  final int tipAmount;
+  /// Type of the payment receipt
+  final PaymentReceiptType type;
 
   /// "@extra" of the request this object answers.
   @override
@@ -65,18 +37,10 @@ final class PaymentReceipt extends TdObject {
 
   /// Parses a [PaymentReceipt] from TDLib JSON.
   factory PaymentReceipt.fromJson(Map<String, dynamic> json) => PaymentReceipt(
-        title: _readString(json['title']),
-        description: _readObject(json['description'], FormattedText.fromJson),
-        photo: _readOptional(json['photo'], Photo.fromJson),
+        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
         date: _readInt(json['date']),
         sellerBotUserId: _readInt(json['seller_bot_user_id']),
-        paymentProviderUserId: _readInt(json['payment_provider_user_id']),
-        invoice: _readObject(json['invoice'], Invoice.fromJson),
-        orderInfo: _readOptional(json['order_info'], OrderInfo.fromJson),
-        shippingOption:
-            _readOptional(json['shipping_option'], ShippingOption.fromJson),
-        credentialsTitle: _readString(json['credentials_title']),
-        tipAmount: _readInt(json['tip_amount']),
+        type: _readObject(json['type'], PaymentReceiptType.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -84,50 +48,27 @@ final class PaymentReceipt extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'title': title,
-        'description': description.toJson(),
-        'photo': photo?.toJson(),
+        'product_info': productInfo.toJson(),
         'date': date,
         'seller_bot_user_id': sellerBotUserId,
-        'payment_provider_user_id': paymentProviderUserId,
-        'invoice': invoice.toJson(),
-        'order_info': orderInfo?.toJson(),
-        'shipping_option': shippingOption?.toJson(),
-        'credentials_title': credentialsTitle,
-        'tip_amount': tipAmount,
+        'type': type.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PaymentReceipt copyWith({
-    String? title,
-    FormattedText? description,
-    Photo? Function()? photo,
+    ProductInfo? productInfo,
     int? date,
     int? sellerBotUserId,
-    int? paymentProviderUserId,
-    Invoice? invoice,
-    OrderInfo? Function()? orderInfo,
-    ShippingOption? Function()? shippingOption,
-    String? credentialsTitle,
-    int? tipAmount,
+    PaymentReceiptType? type,
     dynamic extra,
     int? clientId,
   }) =>
       PaymentReceipt(
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo != null ? photo() : this.photo,
+        productInfo: productInfo ?? this.productInfo,
         date: date ?? this.date,
         sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        invoice: invoice ?? this.invoice,
-        orderInfo: orderInfo != null ? orderInfo() : this.orderInfo,
-        shippingOption:
-            shippingOption != null ? shippingOption() : this.shippingOption,
-        credentialsTitle: credentialsTitle ?? this.credentialsTitle,
-        tipAmount: tipAmount ?? this.tipAmount,
+        type: type ?? this.type,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

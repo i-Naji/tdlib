@@ -38,6 +38,7 @@ final class Message extends TdObject {
     this.importInfo,
     this.interactionInfo,
     required this.unreadReactions,
+    this.factCheck,
     this.replyTo,
     required this.messageThreadId,
     required this.savedMessagesTopicId,
@@ -49,6 +50,7 @@ final class Message extends TdObject {
     required this.senderBoostCount,
     required this.authorSignature,
     required this.mediaAlbumId,
+    required this.effectId,
     required this.restrictionReason,
     required this.content,
     this.replyMarkup,
@@ -149,6 +151,9 @@ final class Message extends TdObject {
   /// Information about unread reactions added to the message
   final List<UnreadReaction> unreadReactions;
 
+  /// Information about fact-check added to the message; may be null if none
+  final FactCheck? factCheck;
+
   /// Information about the message or the story this message is replying to; may be null if none
   final MessageReplyTo? replyTo;
 
@@ -181,6 +186,9 @@ final class Message extends TdObject {
 
   /// Unique identifier of an album this message belongs to; 0 if none. Only audios, documents, photos and videos can be grouped together in albums
   final int mediaAlbumId;
+
+  /// Unique identifier of the effect added to the message; 0 if none
+  final int effectId;
 
   /// If non-empty, contains a human-readable description of the reason why access to this message must be restricted
   final String restrictionReason;
@@ -242,6 +250,7 @@ final class Message extends TdObject {
             json['interaction_info'], MessageInteractionInfo.fromJson),
         unreadReactions: _readList<UnreadReaction>(json['unread_reactions'],
             (e) => _readObject(e, UnreadReaction.fromJson)),
+        factCheck: _readOptional(json['fact_check'], FactCheck.fromJson),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
         savedMessagesTopicId: _readInt(json['saved_messages_topic_id']),
@@ -254,6 +263,7 @@ final class Message extends TdObject {
         senderBoostCount: _readInt(json['sender_boost_count']),
         authorSignature: _readString(json['author_signature']),
         mediaAlbumId: _readInt(json['media_album_id']),
+        effectId: _readInt(json['effect_id']),
         restrictionReason: _readString(json['restriction_reason']),
         content: _readObject(json['content'], MessageContent.fromJson),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
@@ -295,6 +305,7 @@ final class Message extends TdObject {
         'import_info': importInfo?.toJson(),
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
+        'fact_check': factCheck?.toJson(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
         'saved_messages_topic_id': savedMessagesTopicId,
@@ -306,6 +317,7 @@ final class Message extends TdObject {
         'sender_boost_count': senderBoostCount,
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
+        'effect_id': effectId.toString(),
         'restriction_reason': restrictionReason,
         'content': content.toJson(),
         'reply_markup': replyMarkup?.toJson(),
@@ -345,6 +357,7 @@ final class Message extends TdObject {
     MessageImportInfo? Function()? importInfo,
     MessageInteractionInfo? Function()? interactionInfo,
     List<UnreadReaction>? unreadReactions,
+    FactCheck? Function()? factCheck,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
     int? savedMessagesTopicId,
@@ -356,6 +369,7 @@ final class Message extends TdObject {
     int? senderBoostCount,
     String? authorSignature,
     int? mediaAlbumId,
+    int? effectId,
     String? restrictionReason,
     MessageContent? content,
     ReplyMarkup? Function()? replyMarkup,
@@ -401,6 +415,7 @@ final class Message extends TdObject {
         interactionInfo:
             interactionInfo != null ? interactionInfo() : this.interactionInfo,
         unreadReactions: unreadReactions ?? this.unreadReactions,
+        factCheck: factCheck != null ? factCheck() : this.factCheck,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
@@ -415,6 +430,7 @@ final class Message extends TdObject {
         senderBoostCount: senderBoostCount ?? this.senderBoostCount,
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
+        effectId: effectId ?? this.effectId,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         content: content ?? this.content,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,

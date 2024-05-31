@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
+/// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
 ///
 /// Returns [Message].
 final class EditMessageReplyMarkup extends TdFunction<Message> {
-  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side
+  /// Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
   const EditMessageReplyMarkup({
     required this.chatId,
     required this.messageId,

@@ -12,6 +12,7 @@ final class MessageSendOptions extends TdObject {
     required this.protectContent,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
+    required this.effectId,
     required this.sendingId,
     required this.onlyPreview,
   });
@@ -31,6 +32,9 @@ final class MessageSendOptions extends TdObject {
   /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
+  /// Identifier of the effect to apply to the message; applicable only to sendMessage and sendMessageAlbum in private chats
+  final int effectId;
+
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates
   final int sendingId;
 
@@ -47,6 +51,7 @@ final class MessageSendOptions extends TdObject {
             _readBool(json['update_order_of_installed_sticker_sets']),
         schedulingState: _readOptional(
             json['scheduling_state'], MessageSchedulingState.fromJson),
+        effectId: _readInt(json['effect_id']),
         sendingId: _readInt(json['sending_id']),
         onlyPreview: _readBool(json['only_preview']),
       );
@@ -60,6 +65,7 @@ final class MessageSendOptions extends TdObject {
         'update_order_of_installed_sticker_sets':
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
+        'effect_id': effectId.toString(),
         'sending_id': sendingId,
         'only_preview': onlyPreview,
       };
@@ -72,6 +78,7 @@ final class MessageSendOptions extends TdObject {
     bool? protectContent,
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? Function()? schedulingState,
+    int? effectId,
     int? sendingId,
     bool? onlyPreview,
   }) =>
@@ -83,6 +90,7 @@ final class MessageSendOptions extends TdObject {
             this.updateOrderOfInstalledStickerSets,
         schedulingState:
             schedulingState != null ? schedulingState() : this.schedulingState,
+        effectId: effectId ?? this.effectId,
         sendingId: sendingId ?? this.sendingId,
         onlyPreview: onlyPreview ?? this.onlyPreview,
       );

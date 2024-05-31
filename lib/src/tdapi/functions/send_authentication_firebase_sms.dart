@@ -12,7 +12,7 @@ final class SendAuthenticationFirebaseSms extends TdFunction<Ok> {
     required this.token,
   });
 
-  /// SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application
+  /// Play Integrity API or SafetyNet Attestation API token for the Android application, or secret from push notification for the iOS application
   final String token;
 
   @override

@@ -70,9 +70,9 @@ final class EmojiCategoryTypeDefault extends EmojiCategoryType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The category must be used by default for regular sticker selection. It may contain greeting emoji category and Premium stickers
+/// The category must be used by default for regular sticker selection. It may contain greeting emoji category and premium stickers
 final class EmojiCategoryTypeRegularStickers extends EmojiCategoryType {
-  /// The category must be used by default for regular sticker selection. It may contain greeting emoji category and Premium stickers
+  /// The category must be used by default for regular sticker selection. It may contain greeting emoji category and premium stickers
   const EmojiCategoryTypeRegularStickers();
 
   /// Parses a [EmojiCategoryTypeRegularStickers] from TDLib JSON.

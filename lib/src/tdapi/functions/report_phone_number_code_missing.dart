@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Reports that authentication code wasn't delivered via SMS to the specified phone number; for official mobile apps only
+/// Reports that authentication code wasn't delivered via SMS to the specified phone number; for official mobile applications only
 ///
 /// Returns [Ok].
 final class ReportPhoneNumberCodeMissing extends TdFunction<Ok> {
-  /// Reports that authentication code wasn't delivered via SMS to the specified phone number; for official mobile apps only
+  /// Reports that authentication code wasn't delivered via SMS to the specified phone number; for official mobile applications only
   const ReportPhoneNumberCodeMissing({
     required this.mobileNetworkCode,
   });

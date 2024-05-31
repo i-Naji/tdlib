@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a type of public chats
+/// Describes type of public chat
 ///
 /// One of: [PublicChatTypeHasUsername], [PublicChatTypeIsLocationBased]; or [UndecodedPublicChatType] for a type newer than this API.
 sealed class PublicChatType extends TdObject {

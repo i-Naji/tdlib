@@ -44,9 +44,9 @@ final class UndecodedPhoneNumberCodeType extends PhoneNumberCodeType {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Checks ownership of a new phone number to change the user's authentication phone number; for official Android and iOS applications only.
+/// Checks ownership of a new phone number to change the user's authentication phone number; for official Android and iOS applications only
 final class PhoneNumberCodeTypeChange extends PhoneNumberCodeType {
-  /// Checks ownership of a new phone number to change the user's authentication phone number; for official Android and iOS applications only.
+  /// Checks ownership of a new phone number to change the user's authentication phone number; for official Android and iOS applications only
   const PhoneNumberCodeTypeChange();
 
   /// Parses a [PhoneNumberCodeTypeChange] from TDLib JSON.

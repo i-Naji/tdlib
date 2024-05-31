@@ -105,6 +105,7 @@ final class MessageAnimation extends MessageContent {
   const MessageAnimation({
     required this.animation,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -114,6 +115,9 @@ final class MessageAnimation extends MessageContent {
 
   /// Animation caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
+  final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -126,6 +130,7 @@ final class MessageAnimation extends MessageContent {
       MessageAnimation(
         animation: _readObject(json['animation'], Animation.fromJson),
         caption: _readObject(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
         isSecret: _readBool(json['is_secret']),
       );
@@ -135,6 +140,7 @@ final class MessageAnimation extends MessageContent {
         '@type': CONSTRUCTOR,
         'animation': animation.toJson(),
         'caption': caption.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
         'is_secret': isSecret,
       };
@@ -145,12 +151,15 @@ final class MessageAnimation extends MessageContent {
   MessageAnimation copyWith({
     Animation? animation,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageAnimation(
         animation: animation ?? this.animation,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -261,6 +270,7 @@ final class MessagePhoto extends MessageContent {
   const MessagePhoto({
     required this.photo,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -270,6 +280,9 @@ final class MessagePhoto extends MessageContent {
 
   /// Photo caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
+  final bool showCaptionAboveMedia;
 
   /// True, if the photo preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -281,6 +294,7 @@ final class MessagePhoto extends MessageContent {
   factory MessagePhoto.fromJson(Map<String, dynamic> json) => MessagePhoto(
         photo: _readObject(json['photo'], Photo.fromJson),
         caption: _readObject(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
         isSecret: _readBool(json['is_secret']),
       );
@@ -290,6 +304,7 @@ final class MessagePhoto extends MessageContent {
         '@type': CONSTRUCTOR,
         'photo': photo.toJson(),
         'caption': caption.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
         'is_secret': isSecret,
       };
@@ -300,12 +315,15 @@ final class MessagePhoto extends MessageContent {
   MessagePhoto copyWith({
     Photo? photo,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessagePhoto(
         photo: photo ?? this.photo,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -369,6 +387,7 @@ final class MessageVideo extends MessageContent {
   const MessageVideo({
     required this.video,
     required this.caption,
+    required this.showCaptionAboveMedia,
     required this.hasSpoiler,
     required this.isSecret,
   });
@@ -378,6 +397,9 @@ final class MessageVideo extends MessageContent {
 
   /// Video caption
   final FormattedText caption;
+
+  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video
+  final bool showCaptionAboveMedia;
 
   /// True, if the video preview must be covered by a spoiler animation
   final bool hasSpoiler;
@@ -389,6 +411,7 @@ final class MessageVideo extends MessageContent {
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
         video: _readObject(json['video'], Video.fromJson),
         caption: _readObject(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
         isSecret: _readBool(json['is_secret']),
       );
@@ -398,6 +421,7 @@ final class MessageVideo extends MessageContent {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
         'caption': caption.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
         'is_secret': isSecret,
       };
@@ -408,12 +432,15 @@ final class MessageVideo extends MessageContent {
   MessageVideo copyWith({
     Video? video,
     FormattedText? caption,
+    bool? showCaptionAboveMedia,
     bool? hasSpoiler,
     bool? isSecret,
   }) =>
       MessageVideo(
         video: video ?? this.video,
         caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
         hasSpoiler: hasSpoiler ?? this.hasSpoiler,
         isSecret: isSecret ?? this.isSecret,
       );
@@ -1041,9 +1068,7 @@ final class MessageStory extends MessageContent {
 final class MessageInvoice extends MessageContent {
   /// A message with an invoice from a bot. Use getInternalLink with internalLinkTypeBotStart to share the invoice
   const MessageInvoice({
-    required this.title,
-    required this.description,
-    this.photo,
+    required this.productInfo,
     required this.currency,
     required this.totalAmount,
     required this.startParameter,
@@ -1053,14 +1078,8 @@ final class MessageInvoice extends MessageContent {
     this.extendedMedia,
   });
 
-  /// Product title
-  final String title;
-
-  /// Product description
-  final FormattedText description;
-
-  /// Product photo; may be null
-  final Photo? photo;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// Currency for the product price
   final String currency;
@@ -1085,9 +1104,7 @@ final class MessageInvoice extends MessageContent {
 
   /// Parses a [MessageInvoice] from TDLib JSON.
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
-        title: _readString(json['title']),
-        description: _readObject(json['description'], FormattedText.fromJson),
-        photo: _readOptional(json['photo'], Photo.fromJson),
+        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
         currency: _readString(json['currency']),
         totalAmount: _readInt(json['total_amount']),
         startParameter: _readString(json['start_parameter']),
@@ -1101,9 +1118,7 @@ final class MessageInvoice extends MessageContent {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'title': title,
-        'description': description.toJson(),
-        'photo': photo?.toJson(),
+        'product_info': productInfo.toJson(),
         'currency': currency,
         'total_amount': totalAmount,
         'start_parameter': startParameter,
@@ -1117,9 +1132,7 @@ final class MessageInvoice extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageInvoice copyWith({
-    String? title,
-    FormattedText? description,
-    Photo? Function()? photo,
+    ProductInfo? productInfo,
     String? currency,
     int? totalAmount,
     String? startParameter,
@@ -1129,9 +1142,7 @@ final class MessageInvoice extends MessageContent {
     MessageExtendedMedia? Function()? extendedMedia,
   }) =>
       MessageInvoice(
-        title: title ?? this.title,
-        description: description ?? this.description,
-        photo: photo != null ? photo() : this.photo,
+        productInfo: productInfo ?? this.productInfo,
         currency: currency ?? this.currency,
         totalAmount: totalAmount ?? this.totalAmount,
         startParameter: startParameter ?? this.startParameter,

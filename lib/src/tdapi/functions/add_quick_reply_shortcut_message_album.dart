@@ -21,7 +21,7 @@ final class AddQuickReplyShortcutMessageAlbum
   /// Identifier of a quick reply message in the same shortcut to be replied; pass 0 if none
   final int replyToMessageId;
 
-  /// Contents of messages to be sent. At most 10 messages can be added to an album
+  /// Contents of messages to be sent. At most 10 messages can be added to an album. All messages must have the same value of show_caption_above_media
   final List<InputMessageContent> inputMessageContents;
 
   @override

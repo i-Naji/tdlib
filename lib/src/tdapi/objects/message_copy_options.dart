@@ -10,6 +10,7 @@ final class MessageCopyOptions extends TdObject {
     required this.sendCopy,
     required this.replaceCaption,
     this.newCaption,
+    required this.newShowCaptionAboveMedia,
   });
 
   /// True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local
@@ -21,12 +22,17 @@ final class MessageCopyOptions extends TdObject {
   /// New message caption; pass null to copy message without caption. Ignored if replace_caption is false
   final FormattedText? newCaption;
 
+  /// True, if new caption must be shown above the animation; otherwise, new caption must be shown below the animation; not supported in secret chats. Ignored if replace_caption is false
+  final bool newShowCaptionAboveMedia;
+
   /// Parses a [MessageCopyOptions] from TDLib JSON.
   factory MessageCopyOptions.fromJson(Map<String, dynamic> json) =>
       MessageCopyOptions(
         sendCopy: _readBool(json['send_copy']),
         replaceCaption: _readBool(json['replace_caption']),
         newCaption: _readOptional(json['new_caption'], FormattedText.fromJson),
+        newShowCaptionAboveMedia:
+            _readBool(json['new_show_caption_above_media']),
       );
 
   @override
@@ -35,6 +41,7 @@ final class MessageCopyOptions extends TdObject {
         'send_copy': sendCopy,
         'replace_caption': replaceCaption,
         'new_caption': newCaption?.toJson(),
+        'new_show_caption_above_media': newShowCaptionAboveMedia,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -43,11 +50,14 @@ final class MessageCopyOptions extends TdObject {
     bool? sendCopy,
     bool? replaceCaption,
     FormattedText? Function()? newCaption,
+    bool? newShowCaptionAboveMedia,
   }) =>
       MessageCopyOptions(
         sendCopy: sendCopy ?? this.sendCopy,
         replaceCaption: replaceCaption ?? this.replaceCaption,
         newCaption: newCaption != null ? newCaption() : this.newCaption,
+        newShowCaptionAboveMedia:
+            newShowCaptionAboveMedia ?? this.newShowCaptionAboveMedia,
       );
 
   /// TDLib type name.

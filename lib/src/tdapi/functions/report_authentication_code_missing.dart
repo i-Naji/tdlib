@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Reports that authentication code wasn't delivered via SMS; for official mobile apps only. Works only when the current authorization state is authorizationStateWaitCode
+/// Reports that authentication code wasn't delivered via SMS; for official mobile applications only. Works only when the current authorization state is authorizationStateWaitCode
 ///
 /// Returns [Ok].
 final class ReportAuthenticationCodeMissing extends TdFunction<Ok> {
-  /// Reports that authentication code wasn't delivered via SMS; for official mobile apps only. Works only when the current authorization state is authorizationStateWaitCode
+  /// Reports that authentication code wasn't delivered via SMS; for official mobile applications only. Works only when the current authorization state is authorizationStateWaitCode
   const ReportAuthenticationCodeMissing({
     required this.mobileNetworkCode,
   });

@@ -3,16 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Edits the message content caption. Returns the edited message after the edit is completed on the server side
+/// Edits the message content caption. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
 ///
 /// Returns [Message].
 final class EditMessageCaption extends TdFunction<Message> {
-  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
+  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
   const EditMessageCaption({
     required this.chatId,
     required this.messageId,
     this.replyMarkup,
     this.caption,
+    required this.showCaptionAboveMedia,
   });
 
   /// The chat the message belongs to
@@ -27,6 +28,9 @@ final class EditMessageCaption extends TdFunction<Message> {
   /// New message content caption; 0-getOption("message_caption_length_max") characters; pass null to remove caption
   final FormattedText? caption;
 
+  /// Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages
+  final bool showCaptionAboveMedia;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -34,6 +38,7 @@ final class EditMessageCaption extends TdFunction<Message> {
         'message_id': messageId,
         'reply_markup': replyMarkup?.toJson(),
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         if (extra != null) '@extra': extra,
       };
 
@@ -44,12 +49,15 @@ final class EditMessageCaption extends TdFunction<Message> {
     int? messageId,
     ReplyMarkup? Function()? replyMarkup,
     FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
   }) =>
       EditMessageCaption(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
       );
 
   /// TDLib type name.

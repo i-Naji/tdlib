@@ -83,9 +83,9 @@ final class EmojiCategorySourceSearch extends EmojiCategorySource {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The category contains Premium stickers that must be found by getPremiumStickers
+/// The category contains premium stickers that must be found by getPremiumStickers
 final class EmojiCategorySourcePremium extends EmojiCategorySource {
-  /// The category contains Premium stickers that must be found by getPremiumStickers
+  /// The category contains premium stickers that must be found by getPremiumStickers
   const EmojiCategorySourcePremium();
 
   /// Parses a [EmojiCategorySourcePremium] from TDLib JSON.

@@ -12,6 +12,7 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
     required this.inlineMessageId,
     this.replyMarkup,
     this.caption,
+    required this.showCaptionAboveMedia,
   });
 
   /// Inline message identifier
@@ -23,12 +24,16 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
   /// New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
+  /// Pass true to show the caption above the media; otherwise, caption will be shown below the media. Can be true only for animation, photo, and video messages
+  final bool showCaptionAboveMedia;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'inline_message_id': inlineMessageId,
         'reply_markup': replyMarkup?.toJson(),
         'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
         if (extra != null) '@extra': extra,
       };
 
@@ -38,11 +43,14 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
     String? inlineMessageId,
     ReplyMarkup? Function()? replyMarkup,
     FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
   }) =>
       EditInlineMessageCaption(
         inlineMessageId: inlineMessageId ?? this.inlineMessageId,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
       );
 
   /// TDLib type name.

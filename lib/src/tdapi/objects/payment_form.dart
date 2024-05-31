@@ -8,18 +8,9 @@ final class PaymentForm extends TdObject {
   /// Contains information about an invoice payment form
   const PaymentForm({
     required this.id,
-    required this.invoice,
+    required this.type,
     required this.sellerBotUserId,
-    required this.paymentProviderUserId,
-    required this.paymentProvider,
-    required this.additionalPaymentOptions,
-    this.savedOrderInfo,
-    required this.savedCredentials,
-    required this.canSaveCredentials,
-    required this.needPassword,
-    required this.productTitle,
-    required this.productDescription,
-    this.productPhoto,
+    required this.productInfo,
     this.extra,
     this.clientId,
   });
@@ -27,41 +18,14 @@ final class PaymentForm extends TdObject {
   /// The payment form identifier
   final int id;
 
-  /// Full information about the invoice
-  final Invoice invoice;
+  /// Type of the payment form
+  final PaymentFormType type;
 
   /// User identifier of the seller bot
   final int sellerBotUserId;
 
-  /// User identifier of the payment provider bot
-  final int paymentProviderUserId;
-
-  /// Information about the payment provider
-  final PaymentProvider paymentProvider;
-
-  /// The list of additional payment options
-  final List<PaymentOption> additionalPaymentOptions;
-
-  /// Saved server-side order information; may be null
-  final OrderInfo? savedOrderInfo;
-
-  /// The list of saved payment credentials
-  final List<SavedCredentials> savedCredentials;
-
-  /// True, if the user can choose to save credentials
-  final bool canSaveCredentials;
-
-  /// True, if the user will be able to save credentials, if sets up a 2-step verification password
-  final bool needPassword;
-
-  /// Product title
-  final String productTitle;
-
-  /// Product description
-  final FormattedText productDescription;
-
-  /// Product photo; may be null
-  final Photo? productPhoto;
+  /// Information about the product
+  final ProductInfo productInfo;
 
   /// "@extra" of the request this object answers.
   @override
@@ -74,24 +38,9 @@ final class PaymentForm extends TdObject {
   /// Parses a [PaymentForm] from TDLib JSON.
   factory PaymentForm.fromJson(Map<String, dynamic> json) => PaymentForm(
         id: _readInt(json['id']),
-        invoice: _readObject(json['invoice'], Invoice.fromJson),
+        type: _readObject(json['type'], PaymentFormType.fromJson),
         sellerBotUserId: _readInt(json['seller_bot_user_id']),
-        paymentProviderUserId: _readInt(json['payment_provider_user_id']),
-        paymentProvider:
-            _readObject(json['payment_provider'], PaymentProvider.fromJson),
-        additionalPaymentOptions: _readList<PaymentOption>(
-            json['additional_payment_options'],
-            (e) => _readObject(e, PaymentOption.fromJson)),
-        savedOrderInfo:
-            _readOptional(json['saved_order_info'], OrderInfo.fromJson),
-        savedCredentials: _readList<SavedCredentials>(json['saved_credentials'],
-            (e) => _readObject(e, SavedCredentials.fromJson)),
-        canSaveCredentials: _readBool(json['can_save_credentials']),
-        needPassword: _readBool(json['need_password']),
-        productTitle: _readString(json['product_title']),
-        productDescription:
-            _readObject(json['product_description'], FormattedText.fromJson),
-        productPhoto: _readOptional(json['product_photo'], Photo.fromJson),
+        productInfo: _readObject(json['product_info'], ProductInfo.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -100,58 +49,26 @@ final class PaymentForm extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
-        'invoice': invoice.toJson(),
+        'type': type.toJson(),
         'seller_bot_user_id': sellerBotUserId,
-        'payment_provider_user_id': paymentProviderUserId,
-        'payment_provider': paymentProvider.toJson(),
-        'additional_payment_options': [
-          for (final e in additionalPaymentOptions) e.toJson()
-        ],
-        'saved_order_info': savedOrderInfo?.toJson(),
-        'saved_credentials': [for (final e in savedCredentials) e.toJson()],
-        'can_save_credentials': canSaveCredentials,
-        'need_password': needPassword,
-        'product_title': productTitle,
-        'product_description': productDescription.toJson(),
-        'product_photo': productPhoto?.toJson(),
+        'product_info': productInfo.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   PaymentForm copyWith({
     int? id,
-    Invoice? invoice,
+    PaymentFormType? type,
     int? sellerBotUserId,
-    int? paymentProviderUserId,
-    PaymentProvider? paymentProvider,
-    List<PaymentOption>? additionalPaymentOptions,
-    OrderInfo? Function()? savedOrderInfo,
-    List<SavedCredentials>? savedCredentials,
-    bool? canSaveCredentials,
-    bool? needPassword,
-    String? productTitle,
-    FormattedText? productDescription,
-    Photo? Function()? productPhoto,
+    ProductInfo? productInfo,
     dynamic extra,
     int? clientId,
   }) =>
       PaymentForm(
         id: id ?? this.id,
-        invoice: invoice ?? this.invoice,
+        type: type ?? this.type,
         sellerBotUserId: sellerBotUserId ?? this.sellerBotUserId,
-        paymentProviderUserId:
-            paymentProviderUserId ?? this.paymentProviderUserId,
-        paymentProvider: paymentProvider ?? this.paymentProvider,
-        additionalPaymentOptions:
-            additionalPaymentOptions ?? this.additionalPaymentOptions,
-        savedOrderInfo:
-            savedOrderInfo != null ? savedOrderInfo() : this.savedOrderInfo,
-        savedCredentials: savedCredentials ?? this.savedCredentials,
-        canSaveCredentials: canSaveCredentials ?? this.canSaveCredentials,
-        needPassword: needPassword ?? this.needPassword,
-        productTitle: productTitle ?? this.productTitle,
-        productDescription: productDescription ?? this.productDescription,
-        productPhoto: productPhoto != null ? productPhoto() : this.productPhoto,
+        productInfo: productInfo ?? this.productInfo,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

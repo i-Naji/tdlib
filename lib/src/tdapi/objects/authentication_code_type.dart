@@ -380,11 +380,15 @@ final class AuthenticationCodeTypeFirebaseAndroid
     extends AuthenticationCodeType {
   /// A digit-only authentication code is delivered via Firebase Authentication to the official Android application
   const AuthenticationCodeTypeFirebaseAndroid({
+    required this.usePlayIntegrity,
     required this.nonce,
     required this.length,
   });
 
-  /// Nonce to pass to the SafetyNet Attestation API
+  /// True, if Play Integrity API must be used for device verification. Otherwise, SafetyNet Attestation API must be used
+  final bool usePlayIntegrity;
+
+  /// Nonce to pass to the Play Integrity API or the SafetyNet Attestation API
   final String nonce;
 
   /// Length of the code
@@ -394,6 +398,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
   factory AuthenticationCodeTypeFirebaseAndroid.fromJson(
           Map<String, dynamic> json) =>
       AuthenticationCodeTypeFirebaseAndroid(
+        usePlayIntegrity: _readBool(json['use_play_integrity']),
         nonce: _readString(json['nonce']),
         length: _readInt(json['length']),
       );
@@ -401,6 +406,7 @@ final class AuthenticationCodeTypeFirebaseAndroid
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'use_play_integrity': usePlayIntegrity,
         'nonce': nonce,
         'length': length,
       };
@@ -409,10 +415,12 @@ final class AuthenticationCodeTypeFirebaseAndroid
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   AuthenticationCodeTypeFirebaseAndroid copyWith({
+    bool? usePlayIntegrity,
     String? nonce,
     int? length,
   }) =>
       AuthenticationCodeTypeFirebaseAndroid(
+        usePlayIntegrity: usePlayIntegrity ?? this.usePlayIntegrity,
         nonce: nonce ?? this.nonce,
         length: length ?? this.length,
       );

@@ -14,6 +14,7 @@ final class SendBusinessMessage extends TdFunction<BusinessMessage> {
     this.replyTo,
     required this.disableNotification,
     required this.protectContent,
+    required this.effectId,
     this.replyMarkup,
     required this.inputMessageContent,
   });
@@ -33,6 +34,9 @@ final class SendBusinessMessage extends TdFunction<BusinessMessage> {
   /// Pass true if the content of the message must be protected from forwarding and saving
   final bool protectContent;
 
+  /// Identifier of the effect to apply to the message
+  final int effectId;
+
   /// Markup for replying to the message; pass null if none
   final ReplyMarkup? replyMarkup;
 
@@ -47,6 +51,7 @@ final class SendBusinessMessage extends TdFunction<BusinessMessage> {
         'reply_to': replyTo?.toJson(),
         'disable_notification': disableNotification,
         'protect_content': protectContent,
+        'effect_id': effectId.toString(),
         'reply_markup': replyMarkup?.toJson(),
         'input_message_content': inputMessageContent.toJson(),
         if (extra != null) '@extra': extra,
@@ -60,6 +65,7 @@ final class SendBusinessMessage extends TdFunction<BusinessMessage> {
     InputMessageReplyTo? Function()? replyTo,
     bool? disableNotification,
     bool? protectContent,
+    int? effectId,
     ReplyMarkup? Function()? replyMarkup,
     InputMessageContent? inputMessageContent,
   }) =>
@@ -69,6 +75,7 @@ final class SendBusinessMessage extends TdFunction<BusinessMessage> {
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         disableNotification: disableNotification ?? this.disableNotification,
         protectContent: protectContent ?? this.protectContent,
+        effectId: effectId ?? this.effectId,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,
         inputMessageContent: inputMessageContent ?? this.inputMessageContent,
       );
