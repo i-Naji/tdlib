@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the list of emoji corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
+/// Changes the list of emojis corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
 ///
 /// Returns [Ok].
 final class SetStickerEmojis extends TdFunction<Ok> {
-  /// Changes the list of emoji corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
+  /// Changes the list of emojis corresponding to a sticker. The sticker must belong to a regular or custom emoji sticker set that is owned by the current user
   const SetStickerEmojis({
     required this.sticker,
     required this.emojis,

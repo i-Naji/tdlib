@@ -1,3 +1,6 @@
+## 1.8.31
+* Update tdlib to **1.8.31** (`8f19c751d`), objects +19/−9/~7, functions +15/−4/~1.
+
 ## 1.8.30
 * Update tdlib to **1.8.30** (`fab354add`), objects +30/−0/~14, functions +11/−1/~7.
 

@@ -3,39 +3,53 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of Telegram star transactions for the current user
+/// Returns the list of Telegram star transactions for the specified owner
 ///
 /// Returns [StarTransactions].
 final class GetStarTransactions extends TdFunction<StarTransactions> {
-  /// Returns the list of Telegram star transactions for the current user
+  /// Returns the list of Telegram star transactions for the specified owner
   const GetStarTransactions({
-    required this.offset,
+    required this.ownerId,
     this.direction,
+    required this.offset,
+    required this.limit,
   });
 
-  /// Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results
-  final String offset;
+  /// Identifier of the owner of the Telegram stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true
+  final MessageSender ownerId;
 
   /// Direction of the transactions to receive; pass null to get all transactions
   final StarTransactionDirection? direction;
 
+  /// Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results
+  final String offset;
+
+  /// The maximum number of transactions to return
+  final int limit;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'offset': offset,
+        'owner_id': ownerId.toJson(),
         'direction': direction?.toJson(),
+        'offset': offset,
+        'limit': limit,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetStarTransactions copyWith({
-    String? offset,
+    MessageSender? ownerId,
     StarTransactionDirection? Function()? direction,
+    String? offset,
+    int? limit,
   }) =>
       GetStarTransactions(
-        offset: offset ?? this.offset,
+        ownerId: ownerId ?? this.ownerId,
         direction: direction != null ? direction() : this.direction,
+        offset: offset ?? this.offset,
+        limit: limit ?? this.limit,
       );
 
   /// TDLib type name.

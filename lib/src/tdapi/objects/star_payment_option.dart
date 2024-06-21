@@ -20,7 +20,7 @@ final class StarPaymentOption extends TdObject {
   /// The amount to pay, in the smallest units of the currency
   final int amount;
 
-  /// Number of stars that will be purchased
+  /// Number of Telegram stars that will be purchased
   final int starCount;
 
   /// Identifier of the store product associated with the option; may be empty if none

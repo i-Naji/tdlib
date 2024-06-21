@@ -32,7 +32,7 @@ final class MessageSendOptions extends TdObject {
   /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
-  /// Identifier of the effect to apply to the message; applicable only to sendMessage and sendMessageAlbum in private chats
+  /// Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats
   final int effectId;
 
   /// Non-persistent identifier, which will be returned back in messageSendingStatePending object and can be used to match sent messages and corresponding updateNewMessage updates

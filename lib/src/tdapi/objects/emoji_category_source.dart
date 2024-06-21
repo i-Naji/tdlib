@@ -51,7 +51,7 @@ final class EmojiCategorySourceSearch extends EmojiCategorySource {
     required this.emojis,
   });
 
-  /// List of emojis for search for
+  /// List of emojis to search for
   final List<String> emojis;
 
   /// Parses a [EmojiCategorySourceSearch] from TDLib JSON.

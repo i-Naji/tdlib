@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of emoji with their keywords
+/// Represents a list of emojis with their keywords
 final class EmojiKeywords extends TdObject {
-  /// Represents a list of emoji with their keywords
+  /// Represents a list of emojis with their keywords
   const EmojiKeywords({
     required this.emojiKeywords,
     this.extra,
     this.clientId,
   });
 
-  /// List of emoji with their keywords
+  /// List of emojis with their keywords
   final List<EmojiKeyword> emojiKeywords;
 
   /// "@extra" of the request this object answers.

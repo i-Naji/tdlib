@@ -185,9 +185,9 @@ final class PremiumStoryFeatureSaveStories extends PremiumStoryFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to use links and formatting in story caption
+/// The ability to use links and formatting in story caption, and use inputStoryAreaTypeLink areas
 final class PremiumStoryFeatureLinksAndFormatting extends PremiumStoryFeature {
-  /// The ability to use links and formatting in story caption
+  /// The ability to use links and formatting in story caption, and use inputStoryAreaTypeLink areas
   const PremiumStoryFeatureLinksAndFormatting();
 
   /// Parses a [PremiumStoryFeatureLinksAndFormatting] from TDLib JSON.

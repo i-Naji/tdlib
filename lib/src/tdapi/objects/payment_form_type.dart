@@ -154,7 +154,7 @@ final class PaymentFormTypeStars extends PaymentFormType {
     required this.starCount,
   });
 
-  /// Number of stars that will be paid
+  /// Number of Telegram stars that will be paid
   final int starCount;
 
   /// Parses a [PaymentFormTypeStars] from TDLib JSON.

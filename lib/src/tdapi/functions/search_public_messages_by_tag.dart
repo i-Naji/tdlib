@@ -3,19 +3,19 @@
 
 part of '../tdapi.dart';
 
-/// Searches for public channel posts with the given hashtag. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+/// Searches for public channel posts containing the given hashtag or cashtag. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
 ///
 /// Returns [FoundMessages].
-final class SearchPublicHashtagMessages extends TdFunction<FoundMessages> {
-  /// Searches for public channel posts with the given hashtag. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
-  const SearchPublicHashtagMessages({
-    required this.hashtag,
+final class SearchPublicMessagesByTag extends TdFunction<FoundMessages> {
+  /// Searches for public channel posts containing the given hashtag or cashtag. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
+  const SearchPublicMessagesByTag({
+    required this.tag,
     required this.offset,
     required this.limit,
   });
 
-  /// Hashtag to search for
-  final String hashtag;
+  /// Hashtag or cashtag to search for
+  final String tag;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -26,7 +26,7 @@ final class SearchPublicHashtagMessages extends TdFunction<FoundMessages> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'hashtag': hashtag,
+        'tag': tag,
         'offset': offset,
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -34,19 +34,19 @@ final class SearchPublicHashtagMessages extends TdFunction<FoundMessages> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SearchPublicHashtagMessages copyWith({
-    String? hashtag,
+  SearchPublicMessagesByTag copyWith({
+    String? tag,
     String? offset,
     int? limit,
   }) =>
-      SearchPublicHashtagMessages(
-        hashtag: hashtag ?? this.hashtag,
+      SearchPublicMessagesByTag(
+        tag: tag ?? this.tag,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'searchPublicHashtagMessages';
+  static const String CONSTRUCTOR = 'searchPublicMessagesByTag';
 
   @override
   String getConstructor() => CONSTRUCTOR;

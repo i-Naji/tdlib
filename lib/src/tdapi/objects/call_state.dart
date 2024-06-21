@@ -140,7 +140,7 @@ final class CallStateReady extends CallState {
   /// Call encryption key
   final String encryptionKey;
 
-  /// Encryption key emojis fingerprint
+  /// Encryption key fingerprint represented as 4 emoji
   final List<String> emojis;
 
   /// True, if peer-to-peer connection is allowed by users privacy settings

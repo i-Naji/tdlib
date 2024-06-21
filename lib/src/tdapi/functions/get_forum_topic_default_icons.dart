@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of custom emojis, which can be used as forum topic icon by all users
+/// Returns the list of custom emoji, which can be used as forum topic icon by all users
 ///
 /// Returns [Stickers].
 final class GetForumTopicDefaultIcons extends TdFunction<Stickers> {
-  /// Returns the list of custom emojis, which can be used as forum topic icon by all users
+  /// Returns the list of custom emoji, which can be used as forum topic icon by all users
   const GetForumTopicDefaultIcons();
 
   @override

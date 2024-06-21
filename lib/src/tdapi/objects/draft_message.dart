@@ -10,6 +10,7 @@ final class DraftMessage extends TdObject {
     this.replyTo,
     required this.date,
     required this.inputMessageText,
+    required this.effectId,
   });
 
   /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
@@ -21,12 +22,16 @@ final class DraftMessage extends TdObject {
   /// Content of the message draft; must be of the type inputMessageText, inputMessageVideoNote, or inputMessageVoiceNote
   final InputMessageContent inputMessageText;
 
+  /// Identifier of the effect to apply to the message when it is sent; 0 if none
+  final int effectId;
+
   /// Parses a [DraftMessage] from TDLib JSON.
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
         replyTo: _readOptional(json['reply_to'], InputMessageReplyTo.fromJson),
         date: _readInt(json['date']),
         inputMessageText: _readObject(
             json['input_message_text'], InputMessageContent.fromJson),
+        effectId: _readInt(json['effect_id']),
       );
 
   @override
@@ -35,6 +40,7 @@ final class DraftMessage extends TdObject {
         'reply_to': replyTo?.toJson(),
         'date': date,
         'input_message_text': inputMessageText.toJson(),
+        'effect_id': effectId.toString(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -43,11 +49,13 @@ final class DraftMessage extends TdObject {
     InputMessageReplyTo? Function()? replyTo,
     int? date,
     InputMessageContent? inputMessageText,
+    int? effectId,
   }) =>
       DraftMessage(
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         date: date ?? this.date,
         inputMessageText: inputMessageText ?? this.inputMessageText,
+        effectId: effectId ?? this.effectId,
       );
 
   /// TDLib type name.

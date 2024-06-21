@@ -134,7 +134,7 @@ final class PaymentReceiptTypeStars extends PaymentReceiptType {
     required this.transactionId,
   });
 
-  /// Number of stars that were paid
+  /// Number of Telegram stars that were paid
   final int starCount;
 
   /// Unique identifier of the transaction that can be used to dispute it

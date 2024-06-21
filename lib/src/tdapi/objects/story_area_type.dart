@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of clickable rectangle area on a story media
 ///
-/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage]; or [UndecodedStoryAreaType] for a type newer than this API.
+/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage], [StoryAreaTypeLink]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {
   const StoryAreaType();
 
@@ -47,21 +47,27 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   /// An area pointing to a location
   const StoryAreaTypeLocation({
     required this.location,
+    this.address,
   });
 
   /// The location
   final Location location;
 
+  /// Address of the location; may be null if unknown
+  final LocationAddress? address;
+
   /// Parses a [StoryAreaTypeLocation] from TDLib JSON.
   factory StoryAreaTypeLocation.fromJson(Map<String, dynamic> json) =>
       StoryAreaTypeLocation(
         location: _readObject(json['location'], Location.fromJson),
+        address: _readOptional(json['address'], LocationAddress.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'location': location.toJson(),
+        'address': address?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -69,9 +75,11 @@ final class StoryAreaTypeLocation extends StoryAreaType {
   @override
   StoryAreaTypeLocation copyWith({
     Location? location,
+    LocationAddress? Function()? address,
   }) =>
       StoryAreaTypeLocation(
         location: location ?? this.location,
+        address: address != null ? address() : this.address,
       );
 
   /// TDLib type name.
@@ -225,6 +233,45 @@ final class StoryAreaTypeMessage extends StoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a HTTP or tg:// link
+final class StoryAreaTypeLink extends StoryAreaType {
+  /// An area pointing to a HTTP or tg:// link
+  const StoryAreaTypeLink({
+    required this.url,
+  });
+
+  /// HTTP or tg:// URL to be opened when the area is clicked
+  final String url;
+
+  /// Parses a [StoryAreaTypeLink] from TDLib JSON.
+  factory StoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeLink(
+        url: _readString(json['url']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'url': url,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryAreaTypeLink copyWith({
+    String? url,
+  }) =>
+      StoryAreaTypeLink(
+        url: url ?? this.url,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyAreaTypeLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -111,7 +111,7 @@ final class ChatRevenueTransactionTypeWithdrawal
   final String provider;
 
   /// State of the withdrawal
-  final ChatRevenueWithdrawalState state;
+  final RevenueWithdrawalState state;
 
   /// Parses a [ChatRevenueTransactionTypeWithdrawal] from TDLib JSON.
   factory ChatRevenueTransactionTypeWithdrawal.fromJson(
@@ -119,7 +119,7 @@ final class ChatRevenueTransactionTypeWithdrawal
       ChatRevenueTransactionTypeWithdrawal(
         withdrawalDate: _readInt(json['withdrawal_date']),
         provider: _readString(json['provider']),
-        state: _readObject(json['state'], ChatRevenueWithdrawalState.fromJson),
+        state: _readObject(json['state'], RevenueWithdrawalState.fromJson),
       );
 
   @override
@@ -136,7 +136,7 @@ final class ChatRevenueTransactionTypeWithdrawal
   ChatRevenueTransactionTypeWithdrawal copyWith({
     int? withdrawalDate,
     String? provider,
-    ChatRevenueWithdrawalState? state,
+    RevenueWithdrawalState? state,
   }) =>
       ChatRevenueTransactionTypeWithdrawal(
         withdrawalDate: withdrawalDate ?? this.withdrawalDate,

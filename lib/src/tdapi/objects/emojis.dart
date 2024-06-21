@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of emoji
+/// Represents a list of emojis
 final class Emojis extends TdObject {
-  /// Represents a list of emoji
+  /// Represents a list of emojis
   const Emojis({
     required this.emojis,
     this.extra,

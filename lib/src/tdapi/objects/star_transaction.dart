@@ -11,7 +11,7 @@ final class StarTransaction extends TdObject {
     required this.starCount,
     required this.isRefund,
     required this.date,
-    required this.source,
+    required this.partner,
   });
 
   /// Unique identifier of the transaction
@@ -26,8 +26,8 @@ final class StarTransaction extends TdObject {
   /// Point in time (Unix timestamp) when the transaction was completed
   final int date;
 
-  /// Source of the transaction, or its recipient for outgoing transactions
-  final StarTransactionSource source;
+  /// Source of the incoming transaction, or its recipient for outgoing transactions
+  final StarTransactionPartner partner;
 
   /// Parses a [StarTransaction] from TDLib JSON.
   factory StarTransaction.fromJson(Map<String, dynamic> json) =>
@@ -36,7 +36,7 @@ final class StarTransaction extends TdObject {
         starCount: _readInt(json['star_count']),
         isRefund: _readBool(json['is_refund']),
         date: _readInt(json['date']),
-        source: _readObject(json['source'], StarTransactionSource.fromJson),
+        partner: _readObject(json['partner'], StarTransactionPartner.fromJson),
       );
 
   @override
@@ -46,7 +46,7 @@ final class StarTransaction extends TdObject {
         'star_count': starCount,
         'is_refund': isRefund,
         'date': date,
-        'source': source.toJson(),
+        'partner': partner.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -56,14 +56,14 @@ final class StarTransaction extends TdObject {
     int? starCount,
     bool? isRefund,
     int? date,
-    StarTransactionSource? source,
+    StarTransactionPartner? partner,
   }) =>
       StarTransaction(
         id: id ?? this.id,
         starCount: starCount ?? this.starCount,
         isRefund: isRefund ?? this.isRefund,
         date: date ?? this.date,
-        source: source ?? this.source,
+        partner: partner ?? this.partner,
       );
 
   /// TDLib type name.

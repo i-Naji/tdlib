@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of clickable rectangle area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -49,21 +49,27 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   /// An area pointing to a location
   const InputStoryAreaTypeLocation({
     required this.location,
+    this.address,
   });
 
   /// The location
   final Location location;
 
+  /// Address of the location; pass null if unknown
+  final LocationAddress? address;
+
   /// Parses a [InputStoryAreaTypeLocation] from TDLib JSON.
   factory InputStoryAreaTypeLocation.fromJson(Map<String, dynamic> json) =>
       InputStoryAreaTypeLocation(
         location: _readObject(json['location'], Location.fromJson),
+        address: _readOptional(json['address'], LocationAddress.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'location': location.toJson(),
+        'address': address?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -71,9 +77,11 @@ final class InputStoryAreaTypeLocation extends InputStoryAreaType {
   @override
   InputStoryAreaTypeLocation copyWith({
     Location? location,
+    LocationAddress? Function()? address,
   }) =>
       InputStoryAreaTypeLocation(
         location: location ?? this.location,
+        address: address != null ? address() : this.address,
       );
 
   /// TDLib type name.
@@ -275,6 +283,45 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area pointing to a HTTP or tg:// link
+final class InputStoryAreaTypeLink extends InputStoryAreaType {
+  /// An area pointing to a HTTP or tg:// link
+  const InputStoryAreaTypeLink({
+    required this.url,
+  });
+
+  /// HTTP or tg:// URL to be opened when the area is clicked
+  final String url;
+
+  /// Parses a [InputStoryAreaTypeLink] from TDLib JSON.
+  factory InputStoryAreaTypeLink.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeLink(
+        url: _readString(json['url']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'url': url,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputStoryAreaTypeLink copyWith({
+    String? url,
+  }) =>
+      InputStoryAreaTypeLink(
+        url: url ?? this.url,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputStoryAreaTypeLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

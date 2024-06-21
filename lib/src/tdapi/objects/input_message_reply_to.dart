@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains information about the message or the story to be replied
 ///
-/// One of: [InputMessageReplyToMessage], [InputMessageReplyToStory]; or [UndecodedInputMessageReplyTo] for a type newer than this API.
+/// One of: [InputMessageReplyToMessage], [InputMessageReplyToExternalMessage], [InputMessageReplyToStory]; or [UndecodedInputMessageReplyTo] for a type newer than this API.
 sealed class InputMessageReplyTo extends TdObject {
   const InputMessageReplyTo();
 
@@ -44,19 +44,15 @@ final class UndecodedInputMessageReplyTo extends InputMessageReplyTo {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// Describes a message to be replied
+/// Describes a message to be replied in the same chat and forum topic
 final class InputMessageReplyToMessage extends InputMessageReplyTo {
-  /// Describes a message to be replied
+  /// Describes a message to be replied in the same chat and forum topic
   const InputMessageReplyToMessage({
-    required this.chatId,
     required this.messageId,
     this.quote,
   });
 
-  /// The identifier of the chat to which the message to be replied belongs; pass 0 if the message to be replied is in the same chat. Must always be 0 for replies in secret chats. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
-  final int chatId;
-
-  /// The identifier of the message to be replied in the same or the specified chat
+  /// The identifier of the message to be replied in the same chat and forum topic
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
@@ -65,6 +61,58 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Parses a [InputMessageReplyToMessage] from TDLib JSON.
   factory InputMessageReplyToMessage.fromJson(Map<String, dynamic> json) =>
       InputMessageReplyToMessage(
+        messageId: _readInt(json['message_id']),
+        quote: _readOptional(json['quote'], InputTextQuote.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'message_id': messageId,
+        'quote': quote?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageReplyToMessage copyWith({
+    int? messageId,
+    InputTextQuote? Function()? quote,
+  }) =>
+      InputMessageReplyToMessage(
+        messageId: messageId ?? this.messageId,
+        quote: quote != null ? quote() : this.quote,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageReplyToMessage';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats
+final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
+  /// Describes a message to be replied that is from a different chat or a forum topic; not supported in secret chats
+  const InputMessageReplyToExternalMessage({
+    required this.chatId,
+    required this.messageId,
+    this.quote,
+  });
+
+  /// The identifier of the chat to which the message to be replied belongs
+  final int chatId;
+
+  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  final int messageId;
+
+  /// Quote from the message to be replied; pass null if none
+  final InputTextQuote? quote;
+
+  /// Parses a [InputMessageReplyToExternalMessage] from TDLib JSON.
+  factory InputMessageReplyToExternalMessage.fromJson(
+          Map<String, dynamic> json) =>
+      InputMessageReplyToExternalMessage(
         chatId: _readInt(json['chat_id']),
         messageId: _readInt(json['message_id']),
         quote: _readOptional(json['quote'], InputTextQuote.fromJson),
@@ -81,19 +129,19 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  InputMessageReplyToMessage copyWith({
+  InputMessageReplyToExternalMessage copyWith({
     int? chatId,
     int? messageId,
     InputTextQuote? Function()? quote,
   }) =>
-      InputMessageReplyToMessage(
+      InputMessageReplyToExternalMessage(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         quote: quote != null ? quote() : this.quote,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'inputMessageReplyToMessage';
+  static const String CONSTRUCTOR = 'inputMessageReplyToExternalMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -3,43 +3,43 @@
 
 part of '../tdapi.dart';
 
-/// Returns recently searched for hashtags by their prefix
+/// Returns recently searched for hashtags or cashtags by their prefix
 ///
 /// Returns [Hashtags].
-final class GetSearchedForHashtags extends TdFunction<Hashtags> {
-  /// Returns recently searched for hashtags by their prefix
-  const GetSearchedForHashtags({
-    required this.prefix,
+final class GetSearchedForTags extends TdFunction<Hashtags> {
+  /// Returns recently searched for hashtags or cashtags by their prefix
+  const GetSearchedForTags({
+    required this.tagPrefix,
     required this.limit,
   });
 
-  /// Prefix of hashtags to return
-  final String prefix;
+  /// Prefix of hashtags or cashtags to return
+  final String tagPrefix;
 
-  /// The maximum number of hashtags to be returned
+  /// The maximum number of items to be returned
   final int limit;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'prefix': prefix,
+        'tag_prefix': tagPrefix,
         'limit': limit,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetSearchedForHashtags copyWith({
-    String? prefix,
+  GetSearchedForTags copyWith({
+    String? tagPrefix,
     int? limit,
   }) =>
-      GetSearchedForHashtags(
-        prefix: prefix ?? this.prefix,
+      GetSearchedForTags(
+        tagPrefix: tagPrefix ?? this.tagPrefix,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getSearchedForHashtags';
+  static const String CONSTRUCTOR = 'getSearchedForTags';
 
   @override
   String getConstructor() => CONSTRUCTOR;

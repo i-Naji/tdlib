@@ -53,7 +53,7 @@ final class ChatMemberStatusCreator extends ChatMemberStatus {
     required this.isMember,
   });
 
-  /// A custom title of the owner; 0-16 characters without emojis; applicable to supergroups only
+  /// A custom title of the owner; 0-16 characters without emoji; applicable to supergroups only
   final String customTitle;
 
   /// True, if the creator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
@@ -108,7 +108,7 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
     required this.rights,
   });
 
-  /// A custom title of the administrator; 0-16 characters without emojis; applicable to supergroups only
+  /// A custom title of the administrator; 0-16 characters without emoji; applicable to supergroups only
   final String customTitle;
 
   /// True, if the current user can edit the administrator privileges for the called user

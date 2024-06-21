@@ -12,6 +12,7 @@ final class StoryAreaPosition extends TdObject {
     required this.widthPercentage,
     required this.heightPercentage,
     required this.rotationAngle,
+    required this.cornerRadiusPercentage,
   });
 
   /// The abscissa of the rectangle's center, as a percentage of the media width
@@ -29,6 +30,9 @@ final class StoryAreaPosition extends TdObject {
   /// Clockwise rotation angle of the rectangle, in degrees; 0-360
   final double rotationAngle;
 
+  /// The radius of the rectangle corner rounding, as a percentage of the media width
+  final double cornerRadiusPercentage;
+
   /// Parses a [StoryAreaPosition] from TDLib JSON.
   factory StoryAreaPosition.fromJson(Map<String, dynamic> json) =>
       StoryAreaPosition(
@@ -37,6 +41,7 @@ final class StoryAreaPosition extends TdObject {
         widthPercentage: _readDouble(json['width_percentage']),
         heightPercentage: _readDouble(json['height_percentage']),
         rotationAngle: _readDouble(json['rotation_angle']),
+        cornerRadiusPercentage: _readDouble(json['corner_radius_percentage']),
       );
 
   @override
@@ -47,6 +52,7 @@ final class StoryAreaPosition extends TdObject {
         'width_percentage': widthPercentage,
         'height_percentage': heightPercentage,
         'rotation_angle': rotationAngle,
+        'corner_radius_percentage': cornerRadiusPercentage,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -57,6 +63,7 @@ final class StoryAreaPosition extends TdObject {
     double? widthPercentage,
     double? heightPercentage,
     double? rotationAngle,
+    double? cornerRadiusPercentage,
   }) =>
       StoryAreaPosition(
         xPercentage: xPercentage ?? this.xPercentage,
@@ -64,6 +71,8 @@ final class StoryAreaPosition extends TdObject {
         widthPercentage: widthPercentage ?? this.widthPercentage,
         heightPercentage: heightPercentage ?? this.heightPercentage,
         rotationAngle: rotationAngle ?? this.rotationAngle,
+        cornerRadiusPercentage:
+            cornerRadiusPercentage ?? this.cornerRadiusPercentage,
       );
 
   /// TDLib type name.

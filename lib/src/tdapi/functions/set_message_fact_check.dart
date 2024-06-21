@@ -17,7 +17,7 @@ final class SetMessageFactCheck extends TdFunction<Ok> {
   /// The channel chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. The message must be one of the following types: messageAnimation, messageAudio, messageDocument, messagePhoto, messageText, messageVideo
   final int messageId;
 
   /// New text of the fact-check; 0-getOption("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with https://t.me/ links are supported
