@@ -27,6 +27,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.isAllHistoryAvailable,
     required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
+    required this.hasPaidMediaAllowed,
     required this.hasPinnedStories,
     required this.myBoostCount,
     required this.unrestrictBoostCount,
@@ -101,6 +102,9 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if aggressive anti-spam checks are enabled in the supergroup. The value of this field is only available to chat administrators
   final bool hasAggressiveAntiSpamEnabled;
 
+  /// True, if paid media can be sent and forwarded to the channel chat; for channels only
+  final bool hasPaidMediaAllowed;
+
   /// True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
 
@@ -165,6 +169,7 @@ final class SupergroupFullInfo extends TdObject {
             _readBool(json['can_have_sponsored_messages']),
         hasAggressiveAntiSpamEnabled:
             _readBool(json['has_aggressive_anti_spam_enabled']),
+        hasPaidMediaAllowed: _readBool(json['has_paid_media_allowed']),
         hasPinnedStories: _readBool(json['has_pinned_stories']),
         myBoostCount: _readInt(json['my_boost_count']),
         unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
@@ -205,6 +210,7 @@ final class SupergroupFullInfo extends TdObject {
         'is_all_history_available': isAllHistoryAvailable,
         'can_have_sponsored_messages': canHaveSponsoredMessages,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
+        'has_paid_media_allowed': hasPaidMediaAllowed,
         'has_pinned_stories': hasPinnedStories,
         'my_boost_count': myBoostCount,
         'unrestrict_boost_count': unrestrictBoostCount,
@@ -240,6 +246,7 @@ final class SupergroupFullInfo extends TdObject {
     bool? isAllHistoryAvailable,
     bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
+    bool? hasPaidMediaAllowed,
     bool? hasPinnedStories,
     int? myBoostCount,
     int? unrestrictBoostCount,
@@ -280,6 +287,7 @@ final class SupergroupFullInfo extends TdObject {
             canHaveSponsoredMessages ?? this.canHaveSponsoredMessages,
         hasAggressiveAntiSpamEnabled:
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
+        hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
         myBoostCount: myBoostCount ?? this.myBoostCount,
         unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,

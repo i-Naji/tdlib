@@ -102,7 +102,7 @@ final class BackgroundTypePattern extends BackgroundType {
   /// Fill of the background
   final BackgroundFill fill;
 
-  /// Intensity of the pattern when it is shown above the filled background; 0-100.
+  /// Intensity of the pattern when it is shown above the filled background; 0-100
   final int intensity;
 
   /// True, if the background fill must be applied only to the pattern itself. All other pixels are black in this case. For dark themes only

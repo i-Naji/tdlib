@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -116,7 +116,7 @@ final class MessageAnimation extends MessageContent {
   /// Animation caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation
+  /// True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation
   final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation
@@ -264,6 +264,71 @@ final class MessageDocument extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A message with paid media
+final class MessagePaidMedia extends MessageContent {
+  /// A message with paid media
+  const MessagePaidMedia({
+    required this.starCount,
+    required this.media,
+    required this.caption,
+    required this.showCaptionAboveMedia,
+  });
+
+  /// Number of stars needed to buy access to the media in the message
+  final int starCount;
+
+  /// Information about the media
+  final List<PaidMedia> media;
+
+  /// Media caption
+  final FormattedText caption;
+
+  /// True, if the caption must be shown above the media; otherwise, the caption must be shown below the media
+  final bool showCaptionAboveMedia;
+
+  /// Parses a [MessagePaidMedia] from TDLib JSON.
+  factory MessagePaidMedia.fromJson(Map<String, dynamic> json) =>
+      MessagePaidMedia(
+        starCount: _readInt(json['star_count']),
+        media: _readList<PaidMedia>(
+            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
+        caption: _readObject(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'star_count': starCount,
+        'media': [for (final e in media) e.toJson()],
+        'caption': caption.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePaidMedia copyWith({
+    int? starCount,
+    List<PaidMedia>? media,
+    FormattedText? caption,
+    bool? showCaptionAboveMedia,
+  }) =>
+      MessagePaidMedia(
+        starCount: starCount ?? this.starCount,
+        media: media ?? this.media,
+        caption: caption ?? this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePaidMedia';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A photo message
 final class MessagePhoto extends MessageContent {
   /// A photo message
@@ -281,7 +346,7 @@ final class MessagePhoto extends MessageContent {
   /// Photo caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo
+  /// True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo
   final bool showCaptionAboveMedia;
 
   /// True, if the photo preview must be covered by a spoiler animation
@@ -398,7 +463,7 @@ final class MessageVideo extends MessageContent {
   /// Video caption
   final FormattedText caption;
 
-  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video
   final bool showCaptionAboveMedia;
 
   /// True, if the video preview must be covered by a spoiler animation
@@ -1075,7 +1140,8 @@ final class MessageInvoice extends MessageContent {
     required this.isTest,
     required this.needShippingAddress,
     required this.receiptMessageId,
-    this.extendedMedia,
+    this.paidMedia,
+    this.paidMediaCaption,
   });
 
   /// Information about the product
@@ -1099,8 +1165,11 @@ final class MessageInvoice extends MessageContent {
   /// The identifier of the message with the receipt, after the product has been purchased
   final int receiptMessageId;
 
-  /// Extended media attached to the invoice; may be null
-  final MessageExtendedMedia? extendedMedia;
+  /// Extended media attached to the invoice; may be null if none
+  final PaidMedia? paidMedia;
+
+  /// Extended media caption; may be null if none
+  final FormattedText? paidMediaCaption;
 
   /// Parses a [MessageInvoice] from TDLib JSON.
   factory MessageInvoice.fromJson(Map<String, dynamic> json) => MessageInvoice(
@@ -1111,8 +1180,9 @@ final class MessageInvoice extends MessageContent {
         isTest: _readBool(json['is_test']),
         needShippingAddress: _readBool(json['need_shipping_address']),
         receiptMessageId: _readInt(json['receipt_message_id']),
-        extendedMedia: _readOptional(
-            json['extended_media'], MessageExtendedMedia.fromJson),
+        paidMedia: _readOptional(json['paid_media'], PaidMedia.fromJson),
+        paidMediaCaption:
+            _readOptional(json['paid_media_caption'], FormattedText.fromJson),
       );
 
   @override
@@ -1125,7 +1195,8 @@ final class MessageInvoice extends MessageContent {
         'is_test': isTest,
         'need_shipping_address': needShippingAddress,
         'receipt_message_id': receiptMessageId,
-        'extended_media': extendedMedia?.toJson(),
+        'paid_media': paidMedia?.toJson(),
+        'paid_media_caption': paidMediaCaption?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1139,7 +1210,8 @@ final class MessageInvoice extends MessageContent {
     bool? isTest,
     bool? needShippingAddress,
     int? receiptMessageId,
-    MessageExtendedMedia? Function()? extendedMedia,
+    PaidMedia? Function()? paidMedia,
+    FormattedText? Function()? paidMediaCaption,
   }) =>
       MessageInvoice(
         productInfo: productInfo ?? this.productInfo,
@@ -1149,8 +1221,10 @@ final class MessageInvoice extends MessageContent {
         isTest: isTest ?? this.isTest,
         needShippingAddress: needShippingAddress ?? this.needShippingAddress,
         receiptMessageId: receiptMessageId ?? this.receiptMessageId,
-        extendedMedia:
-            extendedMedia != null ? extendedMedia() : this.extendedMedia,
+        paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
+        paidMediaCaption: paidMediaCaption != null
+            ? paidMediaCaption()
+            : this.paidMediaCaption,
       );
 
   /// TDLib type name.
@@ -2750,9 +2824,9 @@ final class MessagePremiumGiftCode extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A Telegram Premium giveaway was created for the chat
+/// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway
 final class MessagePremiumGiveawayCreated extends MessageContent {
-  /// A Telegram Premium giveaway was created for the chat
+  /// A Telegram Premium giveaway was created for the chat. Use telegramPaymentPurposePremiumGiveaway or storePaymentPurposePremiumGiveaway to create a giveaway
   const MessagePremiumGiveawayCreated();
 
   /// Parses a [MessagePremiumGiveawayCreated] from TDLib JSON.

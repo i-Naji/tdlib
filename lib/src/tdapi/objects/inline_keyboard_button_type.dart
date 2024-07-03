@@ -51,7 +51,7 @@ final class InlineKeyboardButtonTypeUrl extends InlineKeyboardButtonType {
     required this.url,
   });
 
-  /// HTTP or tg:// URL to open
+  /// HTTP or tg:// URL to open. If the link is of the type internalLinkTypeWebApp, then the button must be marked as a Web App button
   final String url;
 
   /// Parses a [InlineKeyboardButtonTypeUrl] from TDLib JSON.

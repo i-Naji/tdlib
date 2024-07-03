@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// The content of a message to send
 ///
-/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStory], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
+/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStory], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
 sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
@@ -138,7 +138,7 @@ final class InputMessageAnimation extends InputMessageContent {
   /// Animation caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the animation; otherwise, caption must be shown below the animation; not supported in secret chats
+  /// True, if the caption must be shown above the animation; otherwise, the caption must be shown below the animation; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// True, if the animation preview must be covered by a spoiler animation; not supported in secret chats
@@ -354,6 +354,71 @@ final class InputMessageDocument extends InputMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed
+final class InputMessagePaidMedia extends InputMessageContent {
+  /// A message with paid media; can be used only in channel chats with supergroupFullInfo.has_paid_media_allowed
+  const InputMessagePaidMedia({
+    required this.starCount,
+    required this.paidMedia,
+    this.caption,
+    required this.showCaptionAboveMedia,
+  });
+
+  /// The number of stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
+  final int starCount;
+
+  /// The content of the paid media
+  final List<InputPaidMedia> paidMedia;
+
+  /// Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? caption;
+
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
+  final bool showCaptionAboveMedia;
+
+  /// Parses a [InputMessagePaidMedia] from TDLib JSON.
+  factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) =>
+      InputMessagePaidMedia(
+        starCount: _readInt(json['star_count']),
+        paidMedia: _readList<InputPaidMedia>(
+            json['paid_media'], (e) => _readObject(e, InputPaidMedia.fromJson)),
+        caption: _readOptional(json['caption'], FormattedText.fromJson),
+        showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'star_count': starCount,
+        'paid_media': [for (final e in paidMedia) e.toJson()],
+        'caption': caption?.toJson(),
+        'show_caption_above_media': showCaptionAboveMedia,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessagePaidMedia copyWith({
+    int? starCount,
+    List<InputPaidMedia>? paidMedia,
+    FormattedText? Function()? caption,
+    bool? showCaptionAboveMedia,
+  }) =>
+      InputMessagePaidMedia(
+        starCount: starCount ?? this.starCount,
+        paidMedia: paidMedia ?? this.paidMedia,
+        caption: caption != null ? caption() : this.caption,
+        showCaptionAboveMedia:
+            showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessagePaidMedia';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A photo message
 final class InputMessagePhoto extends InputMessageContent {
   /// A photo message
@@ -387,7 +452,7 @@ final class InputMessagePhoto extends InputMessageContent {
   /// Photo caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the photo; otherwise, caption must be shown below the photo; not supported in secret chats
+  /// True, if the caption must be shown above the photo; otherwise, the caption must be shown below the photo; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// Photo self-destruct type; pass null if none; private chats only
@@ -574,7 +639,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if caption must be shown above the video; otherwise, caption must be shown below the video; not supported in secret chats
+  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// Video self-destruct type; pass null if none; private chats only
@@ -1055,7 +1120,8 @@ final class InputMessageInvoice extends InputMessageContent {
     required this.providerToken,
     required this.providerData,
     required this.startParameter,
-    required this.extendedMediaContent,
+    this.paidMedia,
+    this.paidMediaCaption,
   });
 
   /// Invoice
@@ -1091,8 +1157,11 @@ final class InputMessageInvoice extends InputMessageContent {
   /// Unique invoice bot deep link parameter for the generation of this invoice. If empty, it would be possible to pay directly from forwards of the invoice message
   final String startParameter;
 
-  /// The content of extended media attached to the invoice. The content of the message to be sent. Must be one of the following types: inputMessagePhoto, inputMessageVideo
-  final InputMessageContent extendedMediaContent;
+  /// The content of paid media attached to the invoice; pass null if none
+  final InputPaidMedia? paidMedia;
+
+  /// Paid media caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
+  final FormattedText? paidMediaCaption;
 
   /// Parses a [InputMessageInvoice] from TDLib JSON.
   factory InputMessageInvoice.fromJson(Map<String, dynamic> json) =>
@@ -1108,8 +1177,9 @@ final class InputMessageInvoice extends InputMessageContent {
         providerToken: _readString(json['provider_token']),
         providerData: _readString(json['provider_data']),
         startParameter: _readString(json['start_parameter']),
-        extendedMediaContent: _readObject(
-            json['extended_media_content'], InputMessageContent.fromJson),
+        paidMedia: _readOptional(json['paid_media'], InputPaidMedia.fromJson),
+        paidMediaCaption:
+            _readOptional(json['paid_media_caption'], FormattedText.fromJson),
       );
 
   @override
@@ -1126,7 +1196,8 @@ final class InputMessageInvoice extends InputMessageContent {
         'provider_token': providerToken,
         'provider_data': providerData,
         'start_parameter': startParameter,
-        'extended_media_content': extendedMediaContent.toJson(),
+        'paid_media': paidMedia?.toJson(),
+        'paid_media_caption': paidMediaCaption?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1144,7 +1215,8 @@ final class InputMessageInvoice extends InputMessageContent {
     String? providerToken,
     String? providerData,
     String? startParameter,
-    InputMessageContent? extendedMediaContent,
+    InputPaidMedia? Function()? paidMedia,
+    FormattedText? Function()? paidMediaCaption,
   }) =>
       InputMessageInvoice(
         invoice: invoice ?? this.invoice,
@@ -1158,7 +1230,10 @@ final class InputMessageInvoice extends InputMessageContent {
         providerToken: providerToken ?? this.providerToken,
         providerData: providerData ?? this.providerData,
         startParameter: startParameter ?? this.startParameter,
-        extendedMediaContent: extendedMediaContent ?? this.extendedMediaContent,
+        paidMedia: paidMedia != null ? paidMedia() : this.paidMedia,
+        paidMediaCaption: paidMediaCaption != null
+            ? paidMediaCaption()
+            : this.paidMediaCaption,
       );
 
   /// TDLib type name.

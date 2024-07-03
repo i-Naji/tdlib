@@ -378,6 +378,7 @@ part 'functions/get_saved_order_info.dart';
 part 'functions/get_scope_notification_settings.dart';
 part 'functions/get_searched_for_tags.dart';
 part 'functions/get_secret_chat.dart';
+part 'functions/get_star_ad_account_url.dart';
 part 'functions/get_star_payment_options.dart';
 part 'functions/get_star_revenue_statistics.dart';
 part 'functions/get_star_transactions.dart';
@@ -958,6 +959,7 @@ part 'objects/file_downloaded_prefix_size.dart';
 part 'objects/file_part.dart';
 part 'objects/file_type.dart';
 part 'objects/firebase_authentication_settings.dart';
+part 'objects/firebase_device_verification_parameters.dart';
 part 'objects/formatted_text.dart';
 part 'objects/forum_topic.dart';
 part 'objects/forum_topic_icon.dart';
@@ -1005,6 +1007,8 @@ part 'objects/input_inline_query_result.dart';
 part 'objects/input_invoice.dart';
 part 'objects/input_message_content.dart';
 part 'objects/input_message_reply_to.dart';
+part 'objects/input_paid_media.dart';
+part 'objects/input_paid_media_type.dart';
 part 'objects/input_passport_element.dart';
 part 'objects/input_passport_element_error.dart';
 part 'objects/input_passport_element_error_source.dart';
@@ -1047,7 +1051,6 @@ part 'objects/message_content.dart';
 part 'objects/message_copy_options.dart';
 part 'objects/message_effect.dart';
 part 'objects/message_effect_type.dart';
-part 'objects/message_extended_media.dart';
 part 'objects/message_file_type.dart';
 part 'objects/message_forward_info.dart';
 part 'objects/message_import_info.dart';
@@ -1097,6 +1100,7 @@ part 'objects/page_block_list_item.dart';
 part 'objects/page_block_related_article.dart';
 part 'objects/page_block_table_cell.dart';
 part 'objects/page_block_vertical_alignment.dart';
+part 'objects/paid_media.dart';
 part 'objects/passport_authorization_form.dart';
 part 'objects/passport_element.dart';
 part 'objects/passport_element_error.dart';
@@ -1298,14 +1302,14 @@ part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.31';
+const String tdlibVersion = '1.8.32';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '8f19c751dc296cedb9a921badb7a02a8c0cb1aeb';
+const String tdlibSchemaCommit = '35cfcf5d15981b99e8f31a2195641f035dd516c3';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '8f19c751dc296cedb9a921badb7a02a8c0cb1aeb',
+  '35cfcf5d15981b99e8f31a2195641f035dd516c3',
 ];
 
 /// Base class of every TDLib object.
@@ -1410,6 +1414,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'authorizationStateLoggingOut': AuthorizationStateLoggingOut.fromJson,
   'authorizationStateClosing': AuthorizationStateClosing.fromJson,
   'authorizationStateClosed': AuthorizationStateClosed.fromJson,
+  'firebaseDeviceVerificationParametersSafetyNet':
+      FirebaseDeviceVerificationParametersSafetyNet.fromJson,
+  'firebaseDeviceVerificationParametersPlayIntegrity':
+      FirebaseDeviceVerificationParametersPlayIntegrity.fromJson,
   'passwordState': PasswordState.fromJson,
   'recoveryEmailAddress': RecoveryEmailAddress.fromJson,
   'temporaryPasswordState': TemporaryPasswordState.fromJson,
@@ -1525,7 +1533,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionPartnerAppStore': StarTransactionPartnerAppStore.fromJson,
   'starTransactionPartnerGooglePlay': StarTransactionPartnerGooglePlay.fromJson,
   'starTransactionPartnerFragment': StarTransactionPartnerFragment.fromJson,
-  'starTransactionPartnerUser': StarTransactionPartnerUser.fromJson,
+  'starTransactionPartnerTelegramAds':
+      StarTransactionPartnerTelegramAds.fromJson,
+  'starTransactionPartnerBot': StarTransactionPartnerBot.fromJson,
   'starTransactionPartnerChannel': StarTransactionPartnerChannel.fromJson,
   'starTransactionPartnerUnsupported':
       StarTransactionPartnerUnsupported.fromJson,
@@ -1879,10 +1889,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputInvoiceMessage': InputInvoiceMessage.fromJson,
   'inputInvoiceName': InputInvoiceName.fromJson,
   'inputInvoiceTelegram': InputInvoiceTelegram.fromJson,
-  'messageExtendedMediaPreview': MessageExtendedMediaPreview.fromJson,
-  'messageExtendedMediaPhoto': MessageExtendedMediaPhoto.fromJson,
-  'messageExtendedMediaVideo': MessageExtendedMediaVideo.fromJson,
-  'messageExtendedMediaUnsupported': MessageExtendedMediaUnsupported.fromJson,
+  'paidMediaPreview': PaidMediaPreview.fromJson,
+  'paidMediaPhoto': PaidMediaPhoto.fromJson,
+  'paidMediaVideo': PaidMediaVideo.fromJson,
+  'paidMediaUnsupported': PaidMediaUnsupported.fromJson,
   'premiumGiveawayParameters': PremiumGiveawayParameters.fromJson,
   'datedFile': DatedFile.fromJson,
   'passportElementTypePersonalDetails':
@@ -1990,6 +2000,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageAnimation': MessageAnimation.fromJson,
   'messageAudio': MessageAudio.fromJson,
   'messageDocument': MessageDocument.fromJson,
+  'messagePaidMedia': MessagePaidMedia.fromJson,
   'messagePhoto': MessagePhoto.fromJson,
   'messageSticker': MessageSticker.fromJson,
   'messageVideo': MessageVideo.fromJson,
@@ -2081,6 +2092,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'textEntityTypeCustomEmoji': TextEntityTypeCustomEmoji.fromJson,
   'textEntityTypeMediaTimestamp': TextEntityTypeMediaTimestamp.fromJson,
   'inputThumbnail': InputThumbnail.fromJson,
+  'inputPaidMediaTypePhoto': InputPaidMediaTypePhoto.fromJson,
+  'inputPaidMediaTypeVideo': InputPaidMediaTypeVideo.fromJson,
+  'inputPaidMedia': InputPaidMedia.fromJson,
   'messageSchedulingStateSendAtDate': MessageSchedulingStateSendAtDate.fromJson,
   'messageSchedulingStateSendWhenOnline':
       MessageSchedulingStateSendWhenOnline.fromJson,
@@ -2093,6 +2107,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageAnimation': InputMessageAnimation.fromJson,
   'inputMessageAudio': InputMessageAudio.fromJson,
   'inputMessageDocument': InputMessageDocument.fromJson,
+  'inputMessagePaidMedia': InputMessagePaidMedia.fromJson,
   'inputMessagePhoto': InputMessagePhoto.fromJson,
   'inputMessageSticker': InputMessageSticker.fromJson,
   'inputMessageVideo': InputMessageVideo.fromJson,
@@ -2468,6 +2483,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureMessagePrivacy': PremiumFeatureMessagePrivacy.fromJson,
   'premiumFeatureLastSeenTimes': PremiumFeatureLastSeenTimes.fromJson,
   'premiumFeatureBusiness': PremiumFeatureBusiness.fromJson,
+  'premiumFeatureMessageEffects': PremiumFeatureMessageEffects.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -2593,6 +2609,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pushMessageContentGameScore': PushMessageContentGameScore.fromJson,
   'pushMessageContentInvoice': PushMessageContentInvoice.fromJson,
   'pushMessageContentLocation': PushMessageContentLocation.fromJson,
+  'pushMessageContentPaidMedia': PushMessageContentPaidMedia.fromJson,
   'pushMessageContentPhoto': PushMessageContentPhoto.fromJson,
   'pushMessageContentPoll': PushMessageContentPoll.fromJson,
   'pushMessageContentPremiumGiftCode':

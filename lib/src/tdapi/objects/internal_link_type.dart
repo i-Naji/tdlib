@@ -409,9 +409,9 @@ final class InternalLinkTypeBotStart extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat.
+/// The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat
 final class InternalLinkTypeBotStartInGroup extends InternalLinkType {
-  /// The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat.
+  /// The link is a link to a Telegram bot, which is supposed to be added to a group chat. Call searchPublicChat with the given bot username, check that the user is a bot and can be added to groups, ask the current user to select a basic group or a supergroup chat to add the bot to, taking into account that bots can be added to a public supergroup only by administrators of the supergroup. If administrator rights are provided by the link, call getChatMember to receive the current bot rights in the chat and if the bot already is an administrator, check that the current user can edit its administrator rights, combine received rights with the requested administrator rights, show confirmation box to the user, and call setChatMemberStatus with the chosen chat and confirmed administrator rights. Before call to setChatMemberStatus it may be required to upgrade the chosen basic group chat to a supergroup chat. Then, if start_parameter isn't empty, call sendBotStartMessage with the given start parameter and the chosen chat; otherwise, just send /start message with bot's username added to the chat
   const InternalLinkTypeBotStartInGroup({
     required this.botUsername,
     required this.startParameter,
@@ -1950,6 +1950,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   const InternalLinkTypeSideMenuBot({
     required this.botUsername,
     required this.url,
+    required this.isCompact,
     this.extra,
     this.clientId,
   });
@@ -1959,6 +1960,9 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
 
   /// URL to be passed to getWebAppUrl
   final String url;
+
+  /// True, if the Web App must be opened in a compact mode instead of a full-size mode
+  final bool isCompact;
 
   /// "@extra" of the request this object answers.
   @override
@@ -1973,6 +1977,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
       InternalLinkTypeSideMenuBot(
         botUsername: _readString(json['bot_username']),
         url: _readString(json['url']),
+        isCompact: _readBool(json['is_compact']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -1982,6 +1987,7 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
         '@type': CONSTRUCTOR,
         'bot_username': botUsername,
         'url': url,
+        'is_compact': isCompact,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1990,12 +1996,14 @@ final class InternalLinkTypeSideMenuBot extends InternalLinkType {
   InternalLinkTypeSideMenuBot copyWith({
     String? botUsername,
     String? url,
+    bool? isCompact,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeSideMenuBot(
         botUsername: botUsername ?? this.botUsername,
         url: url ?? this.url,
+        isCompact: isCompact ?? this.isCompact,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -2534,6 +2542,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     required this.botUsername,
     required this.webAppShortName,
     required this.startParameter,
+    required this.isCompact,
     this.extra,
     this.clientId,
   });
@@ -2546,6 +2555,9 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
 
   /// Start parameter to be passed to getWebAppLinkUrl
   final String startParameter;
+
+  /// True, if the Web App must be opened in a compact mode instead of a full-size mode
+  final bool isCompact;
 
   /// "@extra" of the request this object answers.
   @override
@@ -2561,6 +2573,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: _readString(json['bot_username']),
         webAppShortName: _readString(json['web_app_short_name']),
         startParameter: _readString(json['start_parameter']),
+        isCompact: _readBool(json['is_compact']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -2571,6 +2584,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         'bot_username': botUsername,
         'web_app_short_name': webAppShortName,
         'start_parameter': startParameter,
+        'is_compact': isCompact,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2580,6 +2594,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     String? botUsername,
     String? webAppShortName,
     String? startParameter,
+    bool? isCompact,
     dynamic extra,
     int? clientId,
   }) =>
@@ -2587,6 +2602,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: botUsername ?? this.botUsername,
         webAppShortName: webAppShortName ?? this.webAppShortName,
         startParameter: startParameter ?? this.startParameter,
+        isCompact: isCompact ?? this.isCompact,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

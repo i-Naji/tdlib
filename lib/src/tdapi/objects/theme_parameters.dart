@@ -11,6 +11,7 @@ final class ThemeParameters extends TdObject {
     required this.secondaryBackgroundColor,
     required this.headerBackgroundColor,
     required this.sectionBackgroundColor,
+    required this.sectionSeparatorColor,
     required this.textColor,
     required this.accentTextColor,
     required this.sectionHeaderTextColor,
@@ -33,6 +34,9 @@ final class ThemeParameters extends TdObject {
 
   /// A color of the section background in the RGB24 format
   final int sectionBackgroundColor;
+
+  /// A color of the section separator in the RGB24 format
+  final int sectionSeparatorColor;
 
   /// A color of text in the RGB24 format
   final int textColor;
@@ -68,6 +72,7 @@ final class ThemeParameters extends TdObject {
         secondaryBackgroundColor: _readInt(json['secondary_background_color']),
         headerBackgroundColor: _readInt(json['header_background_color']),
         sectionBackgroundColor: _readInt(json['section_background_color']),
+        sectionSeparatorColor: _readInt(json['section_separator_color']),
         textColor: _readInt(json['text_color']),
         accentTextColor: _readInt(json['accent_text_color']),
         sectionHeaderTextColor: _readInt(json['section_header_text_color']),
@@ -86,6 +91,7 @@ final class ThemeParameters extends TdObject {
         'secondary_background_color': secondaryBackgroundColor,
         'header_background_color': headerBackgroundColor,
         'section_background_color': sectionBackgroundColor,
+        'section_separator_color': sectionSeparatorColor,
         'text_color': textColor,
         'accent_text_color': accentTextColor,
         'section_header_text_color': sectionHeaderTextColor,
@@ -104,6 +110,7 @@ final class ThemeParameters extends TdObject {
     int? secondaryBackgroundColor,
     int? headerBackgroundColor,
     int? sectionBackgroundColor,
+    int? sectionSeparatorColor,
     int? textColor,
     int? accentTextColor,
     int? sectionHeaderTextColor,
@@ -122,6 +129,8 @@ final class ThemeParameters extends TdObject {
             headerBackgroundColor ?? this.headerBackgroundColor,
         sectionBackgroundColor:
             sectionBackgroundColor ?? this.sectionBackgroundColor,
+        sectionSeparatorColor:
+            sectionSeparatorColor ?? this.sectionSeparatorColor,
         textColor: textColor ?? this.textColor,
         accentTextColor: accentTextColor ?? this.accentTextColor,
         sectionHeaderTextColor:

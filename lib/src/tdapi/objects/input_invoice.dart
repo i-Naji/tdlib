@@ -42,9 +42,9 @@ final class UndecodedInputInvoice extends InputInvoice {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// An invoice from a message of the type messageInvoice
+/// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia
 final class InputInvoiceMessage extends InputInvoice {
-  /// An invoice from a message of the type messageInvoice
+  /// An invoice from a message of the type messageInvoice or paid media purchase from messagePaidMedia
   const InputInvoiceMessage({
     required this.chatId,
     required this.messageId,

@@ -5258,6 +5258,7 @@ final class UpdateApplicationVerificationRequired extends Update {
   const UpdateApplicationVerificationRequired({
     required this.verificationId,
     required this.nonce,
+    required this.cloudProjectNumber,
     this.extra,
     this.clientId,
   });
@@ -5265,8 +5266,11 @@ final class UpdateApplicationVerificationRequired extends Update {
   /// Unique identifier for the verification process
   final int verificationId;
 
-  /// Unique nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android, or a unique string to compare with verify_nonce field from a push notification for iOS
+  /// Unique base64url-encoded nonce for the classic Play Integrity verification (https://developer.android.com/google/play/integrity/classic) for Android, or a unique string to compare with verify_nonce field from a push notification for iOS
   final String nonce;
+
+  /// Cloud project number to pass to the Play Integrity API on Android
+  final int cloudProjectNumber;
 
   /// "@extra" of the request this object answers.
   @override
@@ -5282,6 +5286,7 @@ final class UpdateApplicationVerificationRequired extends Update {
       UpdateApplicationVerificationRequired(
         verificationId: _readInt(json['verification_id']),
         nonce: _readString(json['nonce']),
+        cloudProjectNumber: _readInt(json['cloud_project_number']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -5291,6 +5296,7 @@ final class UpdateApplicationVerificationRequired extends Update {
         '@type': CONSTRUCTOR,
         'verification_id': verificationId,
         'nonce': nonce,
+        'cloud_project_number': cloudProjectNumber.toString(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -5299,12 +5305,14 @@ final class UpdateApplicationVerificationRequired extends Update {
   UpdateApplicationVerificationRequired copyWith({
     int? verificationId,
     String? nonce,
+    int? cloudProjectNumber,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateApplicationVerificationRequired(
         verificationId: verificationId ?? this.verificationId,
         nonce: nonce ?? this.nonce,
+        cloudProjectNumber: cloudProjectNumber ?? this.cloudProjectNumber,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

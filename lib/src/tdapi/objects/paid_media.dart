@@ -3,27 +3,25 @@
 
 part of '../tdapi.dart';
 
-/// Describes a media, which is attached to an invoice
+/// Describes a paid media
 ///
-/// One of: [MessageExtendedMediaPreview], [MessageExtendedMediaPhoto], [MessageExtendedMediaVideo], [MessageExtendedMediaUnsupported]; or [UndecodedMessageExtendedMedia] for a type newer than this API.
-sealed class MessageExtendedMedia extends TdObject {
-  const MessageExtendedMedia();
+/// One of: [PaidMediaPreview], [PaidMediaPhoto], [PaidMediaVideo], [PaidMediaUnsupported]; or [UndecodedPaidMedia] for a type newer than this API.
+sealed class PaidMedia extends TdObject {
+  const PaidMedia();
 
-  /// Parses whichever [MessageExtendedMedia] subtype the JSON describes.
-  factory MessageExtendedMedia.fromJson(Map<String, dynamic> json) {
+  /// Parses whichever [PaidMedia] subtype the JSON describes.
+  factory PaidMedia.fromJson(Map<String, dynamic> json) {
     final object = tdObjectFactories[json['@type']]?.call(json);
-    return object is MessageExtendedMedia
-        ? object
-        : UndecodedMessageExtendedMedia(json);
+    return object is PaidMedia ? object : UndecodedPaidMedia(json);
   }
 
   /// Returns a copy of this object.
-  MessageExtendedMedia copyWith();
+  PaidMedia copyWith();
 }
 
-/// A [MessageExtendedMedia] this API can't decode (sent by a newer TDLib).
-final class UndecodedMessageExtendedMedia extends MessageExtendedMedia {
-  const UndecodedMessageExtendedMedia(this.json);
+/// A [PaidMedia] this API can't decode (sent by a newer TDLib).
+final class UndecodedPaidMedia extends PaidMedia {
+  const UndecodedPaidMedia(this.json);
 
   /// The raw TDLib JSON object.
   final Map<String, dynamic> json;
@@ -38,21 +36,20 @@ final class UndecodedMessageExtendedMedia extends MessageExtendedMedia {
   Map<String, dynamic> toJson() => json;
 
   @override
-  UndecodedMessageExtendedMedia copyWith() => this;
+  UndecodedPaidMedia copyWith() => this;
 
   @override
   String getConstructor() => _readString(json['@type']);
 }
 
 /// The media is hidden until the invoice is paid
-final class MessageExtendedMediaPreview extends MessageExtendedMedia {
+final class PaidMediaPreview extends PaidMedia {
   /// The media is hidden until the invoice is paid
-  const MessageExtendedMediaPreview({
+  const PaidMediaPreview({
     required this.width,
     required this.height,
     required this.duration,
     this.minithumbnail,
-    required this.caption,
   });
 
   /// Media width; 0 if unknown
@@ -67,18 +64,14 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
   /// Media minithumbnail; may be null
   final Minithumbnail? minithumbnail;
 
-  /// Media caption
-  final FormattedText caption;
-
-  /// Parses a [MessageExtendedMediaPreview] from TDLib JSON.
-  factory MessageExtendedMediaPreview.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaPreview(
+  /// Parses a [PaidMediaPreview] from TDLib JSON.
+  factory PaidMediaPreview.fromJson(Map<String, dynamic> json) =>
+      PaidMediaPreview(
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         duration: _readInt(json['duration']),
         minithumbnail:
             _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
       );
 
   @override
@@ -88,163 +81,129 @@ final class MessageExtendedMediaPreview extends MessageExtendedMedia {
         'height': height,
         'duration': duration,
         'minithumbnail': minithumbnail?.toJson(),
-        'caption': caption.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageExtendedMediaPreview copyWith({
+  PaidMediaPreview copyWith({
     int? width,
     int? height,
     int? duration,
     Minithumbnail? Function()? minithumbnail,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaPreview(
+      PaidMediaPreview(
         width: width ?? this.width,
         height: height ?? this.height,
         duration: duration ?? this.duration,
         minithumbnail:
             minithumbnail != null ? minithumbnail() : this.minithumbnail,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExtendedMediaPreview';
+  static const String CONSTRUCTOR = 'paidMediaPreview';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The media is a photo
-final class MessageExtendedMediaPhoto extends MessageExtendedMedia {
+final class PaidMediaPhoto extends PaidMedia {
   /// The media is a photo
-  const MessageExtendedMediaPhoto({
+  const PaidMediaPhoto({
     required this.photo,
-    required this.caption,
   });
 
   /// The photo
   final Photo photo;
 
-  /// Photo caption
-  final FormattedText caption;
-
-  /// Parses a [MessageExtendedMediaPhoto] from TDLib JSON.
-  factory MessageExtendedMediaPhoto.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaPhoto(
+  /// Parses a [PaidMediaPhoto] from TDLib JSON.
+  factory PaidMediaPhoto.fromJson(Map<String, dynamic> json) => PaidMediaPhoto(
         photo: _readObject(json['photo'], Photo.fromJson),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'photo': photo.toJson(),
-        'caption': caption.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageExtendedMediaPhoto copyWith({
+  PaidMediaPhoto copyWith({
     Photo? photo,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaPhoto(
+      PaidMediaPhoto(
         photo: photo ?? this.photo,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExtendedMediaPhoto';
+  static const String CONSTRUCTOR = 'paidMediaPhoto';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The media is a video
-final class MessageExtendedMediaVideo extends MessageExtendedMedia {
+final class PaidMediaVideo extends PaidMedia {
   /// The media is a video
-  const MessageExtendedMediaVideo({
+  const PaidMediaVideo({
     required this.video,
-    required this.caption,
   });
 
   /// The video
   final Video video;
 
-  /// Photo caption
-  final FormattedText caption;
-
-  /// Parses a [MessageExtendedMediaVideo] from TDLib JSON.
-  factory MessageExtendedMediaVideo.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaVideo(
+  /// Parses a [PaidMediaVideo] from TDLib JSON.
+  factory PaidMediaVideo.fromJson(Map<String, dynamic> json) => PaidMediaVideo(
         video: _readObject(json['video'], Video.fromJson),
-        caption: _readObject(json['caption'], FormattedText.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
-        'caption': caption.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageExtendedMediaVideo copyWith({
+  PaidMediaVideo copyWith({
     Video? video,
-    FormattedText? caption,
   }) =>
-      MessageExtendedMediaVideo(
+      PaidMediaVideo(
         video: video ?? this.video,
-        caption: caption ?? this.caption,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExtendedMediaVideo';
+  static const String CONSTRUCTOR = 'paidMediaVideo';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The media is unsupported
-final class MessageExtendedMediaUnsupported extends MessageExtendedMedia {
+final class PaidMediaUnsupported extends PaidMedia {
   /// The media is unsupported
-  const MessageExtendedMediaUnsupported({
-    required this.caption,
-  });
+  const PaidMediaUnsupported();
 
-  /// Media caption
-  final FormattedText caption;
-
-  /// Parses a [MessageExtendedMediaUnsupported] from TDLib JSON.
-  factory MessageExtendedMediaUnsupported.fromJson(Map<String, dynamic> json) =>
-      MessageExtendedMediaUnsupported(
-        caption: _readObject(json['caption'], FormattedText.fromJson),
-      );
+  /// Parses a [PaidMediaUnsupported] from TDLib JSON.
+  factory PaidMediaUnsupported.fromJson(Map<String, dynamic> json) =>
+      const PaidMediaUnsupported();
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'caption': caption.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  MessageExtendedMediaUnsupported copyWith({
-    FormattedText? caption,
-  }) =>
-      MessageExtendedMediaUnsupported(
-        caption: caption ?? this.caption,
-      );
+  PaidMediaUnsupported copyWith() => const PaidMediaUnsupported();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageExtendedMediaUnsupported';
+  static const String CONSTRUCTOR = 'paidMediaUnsupported';
 
   @override
   String getConstructor() => CONSTRUCTOR;

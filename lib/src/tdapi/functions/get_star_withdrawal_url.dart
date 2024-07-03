@@ -3,18 +3,18 @@
 
 part of '../tdapi.dart';
 
-/// Returns URL for Telegram star withdrawal
+/// Returns a URL for Telegram star withdrawal
 ///
 /// Returns [HttpUrl].
 final class GetStarWithdrawalUrl extends TdFunction<HttpUrl> {
-  /// Returns URL for Telegram star withdrawal
+  /// Returns a URL for Telegram star withdrawal
   const GetStarWithdrawalUrl({
     required this.ownerId,
     required this.starCount,
     required this.password,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_revenue_statistics == true
+  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of an owned channel chat
   final MessageSender ownerId;
 
   /// The number of Telegram stars to withdraw. Must be at least getOption("star_withdrawal_count_min")

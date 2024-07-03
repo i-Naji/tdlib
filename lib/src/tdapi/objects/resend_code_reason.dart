@@ -77,7 +77,7 @@ final class ResendCodeReasonVerificationFailed extends ResendCodeReason {
     required this.errorMessage,
   });
 
-  /// Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, APNS_INIT_FAILED, etc.
+  /// Cause of the verification failure, for example, PLAY_SERVICES_NOT_AVAILABLE, APNS_RECEIVE_TIMEOUT, or APNS_INIT_FAILED
   final String errorMessage;
 
   /// Parses a [ResendCodeReasonVerificationFailed] from TDLib JSON.

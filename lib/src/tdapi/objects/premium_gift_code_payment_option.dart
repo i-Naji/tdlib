@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option for creating Telegram Premium gift codes
+/// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments
 final class PremiumGiftCodePaymentOption extends TdObject {
-  /// Describes an option for creating Telegram Premium gift codes
+  /// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments
   const PremiumGiftCodePaymentOption({
     required this.currency,
     required this.amount,

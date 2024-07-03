@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes source or recipient of a transaction with Telegram stars
 ///
-/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerUser], [StarTransactionPartnerChannel], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
+/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerChannel], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
 sealed class StarTransactionPartner extends TdObject {
   const StarTransactionPartner();
 
@@ -167,48 +167,84 @@ final class StarTransactionPartnerFragment extends StarTransactionPartner {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transaction with another user
-final class StarTransactionPartnerUser extends StarTransactionPartner {
-  /// The transaction is a transaction with another user
-  const StarTransactionPartnerUser({
-    required this.userId,
-    this.productInfo,
-  });
+/// The transaction is a transaction with Telegram Ad platform
+final class StarTransactionPartnerTelegramAds extends StarTransactionPartner {
+  /// The transaction is a transaction with Telegram Ad platform
+  const StarTransactionPartnerTelegramAds();
 
-  /// Identifier of the user
-  final int userId;
-
-  /// Information about the bought product; may be null if none
-  final ProductInfo? productInfo;
-
-  /// Parses a [StarTransactionPartnerUser] from TDLib JSON.
-  factory StarTransactionPartnerUser.fromJson(Map<String, dynamic> json) =>
-      StarTransactionPartnerUser(
-        userId: _readInt(json['user_id']),
-        productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
-      );
+  /// Parses a [StarTransactionPartnerTelegramAds] from TDLib JSON.
+  factory StarTransactionPartnerTelegramAds.fromJson(
+          Map<String, dynamic> json) =>
+      const StarTransactionPartnerTelegramAds();
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'product_info': productInfo?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionPartnerUser copyWith({
-    int? userId,
+  StarTransactionPartnerTelegramAds copyWith() =>
+      const StarTransactionPartnerTelegramAds();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionPartnerTelegramAds';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a transaction with a bot
+final class StarTransactionPartnerBot extends StarTransactionPartner {
+  /// The transaction is a transaction with a bot
+  const StarTransactionPartnerBot({
+    required this.botUserId,
+    this.productInfo,
+    required this.invoicePayload,
+  });
+
+  /// Identifier of the bot
+  final int botUserId;
+
+  /// Information about the bought product; may be null if not applicable
+  final ProductInfo? productInfo;
+
+  /// Invoice payload; for bots only
+  final String invoicePayload;
+
+  /// Parses a [StarTransactionPartnerBot] from TDLib JSON.
+  factory StarTransactionPartnerBot.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerBot(
+        botUserId: _readInt(json['bot_user_id']),
+        productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
+        invoicePayload: _readString(json['invoice_payload']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'bot_user_id': botUserId,
+        'product_info': productInfo?.toJson(),
+        'invoice_payload': invoicePayload,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionPartnerBot copyWith({
+    int? botUserId,
     ProductInfo? Function()? productInfo,
+    String? invoicePayload,
   }) =>
-      StarTransactionPartnerUser(
-        userId: userId ?? this.userId,
+      StarTransactionPartnerBot(
+        botUserId: botUserId ?? this.botUserId,
         productInfo: productInfo != null ? productInfo() : this.productInfo,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'starTransactionPartnerUser';
+  static const String CONSTRUCTOR = 'starTransactionPartnerBot';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -219,21 +255,34 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   /// The transaction is a transaction with a channel chat
   const StarTransactionPartnerChannel({
     required this.chatId,
+    required this.paidMediaMessageId,
+    required this.media,
   });
 
   /// Identifier of the chat
   final int chatId;
 
+  /// Identifier of the corresponding message with paid media; can be an identifier of a deleted message
+  final int paidMediaMessageId;
+
+  /// Information about the bought media
+  final List<PaidMedia> media;
+
   /// Parses a [StarTransactionPartnerChannel] from TDLib JSON.
   factory StarTransactionPartnerChannel.fromJson(Map<String, dynamic> json) =>
       StarTransactionPartnerChannel(
         chatId: _readInt(json['chat_id']),
+        paidMediaMessageId: _readInt(json['paid_media_message_id']),
+        media: _readList<PaidMedia>(
+            json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'paid_media_message_id': paidMediaMessageId,
+        'media': [for (final e in media) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -241,9 +290,13 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   @override
   StarTransactionPartnerChannel copyWith({
     int? chatId,
+    int? paidMediaMessageId,
+    List<PaidMedia>? media,
   }) =>
       StarTransactionPartnerChannel(
         chatId: chatId ?? this.chatId,
+        paidMediaMessageId: paidMediaMessageId ?? this.paidMediaMessageId,
+        media: media ?? this.media,
       );
 
   /// TDLib type name.
