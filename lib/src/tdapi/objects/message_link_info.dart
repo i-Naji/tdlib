@@ -29,7 +29,7 @@ final class MessageLinkInfo extends TdObject {
   /// If found, the linked message; may be null
   final Message? message;
 
-  /// Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its web page preview
+  /// Timestamp from which the video/audio/video note/voice note/story playing must start, in seconds; 0 if not specified. The media can be in the message content or in its link preview
   final int mediaTimestamp;
 
   /// True, if the whole media album to which the message belongs is linked

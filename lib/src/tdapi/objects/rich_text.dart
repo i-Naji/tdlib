@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a text object inside an instant-view web page
+/// Describes a formatted text object
 ///
 /// One of: [RichTextPlain], [RichTextBold], [RichTextItalic], [RichTextUnderline], [RichTextStrikethrough], [RichTextFixed], [RichTextUrl], [RichTextEmailAddress], [RichTextSubscript], [RichTextSuperscript], [RichTextMarked], [RichTextPhoneNumber], [RichTextIcon], [RichTextReference], [RichTextAnchor], [RichTextAnchorLink], [RichTexts]; or [UndecodedRichText] for a type newer than this API.
 sealed class RichText extends TdObject {
@@ -590,9 +590,9 @@ final class RichTextIcon extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A reference to a richTexts object on the same web page
+/// A reference to a richTexts object on the same page
 final class RichTextReference extends RichText {
-  /// A reference to a richTexts object on the same web page
+  /// A reference to a richTexts object on the same page
   const RichTextReference({
     required this.text,
     required this.anchorName,
@@ -683,9 +683,9 @@ final class RichTextAnchor extends RichText {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A link to an anchor on the same web page
+/// A link to an anchor on the same page
 final class RichTextAnchorLink extends RichText {
-  /// A link to an anchor on the same web page
+  /// A link to an anchor on the same page
   const RichTextAnchorLink({
     required this.text,
     required this.anchorName,

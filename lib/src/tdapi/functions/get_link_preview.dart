@@ -5,10 +5,10 @@ part of '../tdapi.dart';
 
 /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview
 ///
-/// Returns [WebPage].
-final class GetWebPagePreview extends TdFunction<WebPage> {
+/// Returns [LinkPreview].
+final class GetLinkPreview extends TdFunction<LinkPreview> {
   /// Returns a link preview by the text of a message. Do not call this function too often. Returns a 404 error if the text has no link preview
-  const GetWebPagePreview({
+  const GetLinkPreview({
     required this.text,
     this.linkPreviewOptions,
   });
@@ -29,11 +29,11 @@ final class GetWebPagePreview extends TdFunction<WebPage> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetWebPagePreview copyWith({
+  GetLinkPreview copyWith({
     FormattedText? text,
     LinkPreviewOptions? Function()? linkPreviewOptions,
   }) =>
-      GetWebPagePreview(
+      GetLinkPreview(
         text: text ?? this.text,
         linkPreviewOptions: linkPreviewOptions != null
             ? linkPreviewOptions()
@@ -41,7 +41,7 @@ final class GetWebPagePreview extends TdFunction<WebPage> {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getWebPagePreview';
+  static const String CONSTRUCTOR = 'getLinkPreview';
 
   @override
   String getConstructor() => CONSTRUCTOR;

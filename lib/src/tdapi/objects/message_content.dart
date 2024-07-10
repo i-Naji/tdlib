@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -47,7 +47,7 @@ final class MessageText extends MessageContent {
   /// A text message
   const MessageText({
     required this.text,
-    this.webPage,
+    this.linkPreview,
     this.linkPreviewOptions,
   });
 
@@ -55,7 +55,7 @@ final class MessageText extends MessageContent {
   final FormattedText text;
 
   /// A link preview attached to the message; may be null
-  final WebPage? webPage;
+  final LinkPreview? linkPreview;
 
   /// Options which were used for generation of the link preview; may be null if default options were used
   final LinkPreviewOptions? linkPreviewOptions;
@@ -63,7 +63,7 @@ final class MessageText extends MessageContent {
   /// Parses a [MessageText] from TDLib JSON.
   factory MessageText.fromJson(Map<String, dynamic> json) => MessageText(
         text: _readObject(json['text'], FormattedText.fromJson),
-        webPage: _readOptional(json['web_page'], WebPage.fromJson),
+        linkPreview: _readOptional(json['link_preview'], LinkPreview.fromJson),
         linkPreviewOptions: _readOptional(
             json['link_preview_options'], LinkPreviewOptions.fromJson),
       );
@@ -72,7 +72,7 @@ final class MessageText extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'text': text.toJson(),
-        'web_page': webPage?.toJson(),
+        'link_preview': linkPreview?.toJson(),
         'link_preview_options': linkPreviewOptions?.toJson(),
       };
 
@@ -81,12 +81,12 @@ final class MessageText extends MessageContent {
   @override
   MessageText copyWith({
     FormattedText? text,
-    WebPage? Function()? webPage,
+    LinkPreview? Function()? linkPreview,
     LinkPreviewOptions? Function()? linkPreviewOptions,
   }) =>
       MessageText(
         text: text ?? this.text,
-        webPage: webPage != null ? webPage() : this.webPage,
+        linkPreview: linkPreview != null ? linkPreview() : this.linkPreview,
         linkPreviewOptions: linkPreviewOptions != null
             ? linkPreviewOptions()
             : this.linkPreviewOptions,
@@ -2621,6 +2621,89 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaymentSuccessfulBot';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A payment has been refunded
+final class MessagePaymentRefunded extends MessageContent {
+  /// A payment has been refunded
+  const MessagePaymentRefunded({
+    required this.ownerId,
+    required this.currency,
+    required this.totalAmount,
+    required this.invoicePayload,
+    required this.telegramPaymentChargeId,
+    required this.providerPaymentChargeId,
+  });
+
+  /// Identifier of the previous owner of the Telegram stars that refunds them
+  final MessageSender ownerId;
+
+  /// Currency for the price of the product
+  final String currency;
+
+  /// Total price for the product, in the smallest units of the currency
+  final int totalAmount;
+
+  /// Invoice payload; only for bots
+  final String invoicePayload;
+
+  /// Telegram payment identifier
+  final String telegramPaymentChargeId;
+
+  /// Provider payment identifier
+  final String providerPaymentChargeId;
+
+  /// Parses a [MessagePaymentRefunded] from TDLib JSON.
+  factory MessagePaymentRefunded.fromJson(Map<String, dynamic> json) =>
+      MessagePaymentRefunded(
+        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
+        currency: _readString(json['currency']),
+        totalAmount: _readInt(json['total_amount']),
+        invoicePayload: _readString(json['invoice_payload']),
+        telegramPaymentChargeId:
+            _readString(json['telegram_payment_charge_id']),
+        providerPaymentChargeId:
+            _readString(json['provider_payment_charge_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'owner_id': ownerId.toJson(),
+        'currency': currency,
+        'total_amount': totalAmount,
+        'invoice_payload': invoicePayload,
+        'telegram_payment_charge_id': telegramPaymentChargeId,
+        'provider_payment_charge_id': providerPaymentChargeId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePaymentRefunded copyWith({
+    MessageSender? ownerId,
+    String? currency,
+    int? totalAmount,
+    String? invoicePayload,
+    String? telegramPaymentChargeId,
+    String? providerPaymentChargeId,
+  }) =>
+      MessagePaymentRefunded(
+        ownerId: ownerId ?? this.ownerId,
+        currency: currency ?? this.currency,
+        totalAmount: totalAmount ?? this.totalAmount,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+        telegramPaymentChargeId:
+            telegramPaymentChargeId ?? this.telegramPaymentChargeId,
+        providerPaymentChargeId:
+            providerPaymentChargeId ?? this.providerPaymentChargeId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePaymentRefunded';
 
   @override
   String getConstructor() => CONSTRUCTOR;

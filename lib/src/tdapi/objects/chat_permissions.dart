@@ -16,7 +16,7 @@ final class ChatPermissions extends TdObject {
     required this.canSendVoiceNotes,
     required this.canSendPolls,
     required this.canSendOtherMessages,
-    required this.canAddWebPagePreviews,
+    required this.canAddLinkPreviews,
     required this.canChangeInfo,
     required this.canInviteUsers,
     required this.canPinMessages,
@@ -50,8 +50,8 @@ final class ChatPermissions extends TdObject {
   /// True, if the user can send animations, games, stickers, and dice and use inline bots
   final bool canSendOtherMessages;
 
-  /// True, if the user may add a web page preview to their messages
-  final bool canAddWebPagePreviews;
+  /// True, if the user may add a link preview to their messages
+  final bool canAddLinkPreviews;
 
   /// True, if the user can change the chat title, photo, and other settings
   final bool canChangeInfo;
@@ -77,7 +77,7 @@ final class ChatPermissions extends TdObject {
         canSendVoiceNotes: _readBool(json['can_send_voice_notes']),
         canSendPolls: _readBool(json['can_send_polls']),
         canSendOtherMessages: _readBool(json['can_send_other_messages']),
-        canAddWebPagePreviews: _readBool(json['can_add_web_page_previews']),
+        canAddLinkPreviews: _readBool(json['can_add_link_previews']),
         canChangeInfo: _readBool(json['can_change_info']),
         canInviteUsers: _readBool(json['can_invite_users']),
         canPinMessages: _readBool(json['can_pin_messages']),
@@ -96,7 +96,7 @@ final class ChatPermissions extends TdObject {
         'can_send_voice_notes': canSendVoiceNotes,
         'can_send_polls': canSendPolls,
         'can_send_other_messages': canSendOtherMessages,
-        'can_add_web_page_previews': canAddWebPagePreviews,
+        'can_add_link_previews': canAddLinkPreviews,
         'can_change_info': canChangeInfo,
         'can_invite_users': canInviteUsers,
         'can_pin_messages': canPinMessages,
@@ -115,7 +115,7 @@ final class ChatPermissions extends TdObject {
     bool? canSendVoiceNotes,
     bool? canSendPolls,
     bool? canSendOtherMessages,
-    bool? canAddWebPagePreviews,
+    bool? canAddLinkPreviews,
     bool? canChangeInfo,
     bool? canInviteUsers,
     bool? canPinMessages,
@@ -131,8 +131,7 @@ final class ChatPermissions extends TdObject {
         canSendVoiceNotes: canSendVoiceNotes ?? this.canSendVoiceNotes,
         canSendPolls: canSendPolls ?? this.canSendPolls,
         canSendOtherMessages: canSendOtherMessages ?? this.canSendOtherMessages,
-        canAddWebPagePreviews:
-            canAddWebPagePreviews ?? this.canAddWebPagePreviews,
+        canAddLinkPreviews: canAddLinkPreviews ?? this.canAddLinkPreviews,
         canChangeInfo: canChangeInfo ?? this.canChangeInfo,
         canInviteUsers: canInviteUsers ?? this.canInviteUsers,
         canPinMessages: canPinMessages ?? this.canPinMessages,

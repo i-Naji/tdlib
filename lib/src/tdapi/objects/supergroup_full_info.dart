@@ -23,6 +23,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.canSetLocation,
     required this.canGetStatistics,
     required this.canGetRevenueStatistics,
+    required this.canGetStarRevenueStatistics,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.canHaveSponsoredMessages,
@@ -89,6 +90,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// True, if the supergroup or channel revenue statistics are available
   final bool canGetRevenueStatistics;
+
+  /// True, if the supergroup or channel Telegram Star revenue statistics are available
+  final bool canGetStarRevenueStatistics;
 
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
@@ -162,6 +166,8 @@ final class SupergroupFullInfo extends TdObject {
         canSetLocation: _readBool(json['can_set_location']),
         canGetStatistics: _readBool(json['can_get_statistics']),
         canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
+        canGetStarRevenueStatistics:
+            _readBool(json['can_get_star_revenue_statistics']),
         canToggleAggressiveAntiSpam:
             _readBool(json['can_toggle_aggressive_anti_spam']),
         isAllHistoryAvailable: _readBool(json['is_all_history_available']),
@@ -206,6 +212,7 @@ final class SupergroupFullInfo extends TdObject {
         'can_set_location': canSetLocation,
         'can_get_statistics': canGetStatistics,
         'can_get_revenue_statistics': canGetRevenueStatistics,
+        'can_get_star_revenue_statistics': canGetStarRevenueStatistics,
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
         'can_have_sponsored_messages': canHaveSponsoredMessages,
@@ -242,6 +249,7 @@ final class SupergroupFullInfo extends TdObject {
     bool? canSetLocation,
     bool? canGetStatistics,
     bool? canGetRevenueStatistics,
+    bool? canGetStarRevenueStatistics,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
     bool? canHaveSponsoredMessages,
@@ -279,6 +287,8 @@ final class SupergroupFullInfo extends TdObject {
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
         canGetRevenueStatistics:
             canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+        canGetStarRevenueStatistics:
+            canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:

@@ -115,7 +115,7 @@ final class Message extends TdObject {
   /// True, if chat members already viewed the message can be received through getMessageViewers
   final bool canGetViewers;
 
-  /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or web page description through getMessageLink
+  /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or link preview description through getMessageLink
   final bool canGetMediaTimestampLinks;
 
   /// True, if reactions on the message can be reported through reportMessageReactions

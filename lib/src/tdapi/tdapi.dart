@@ -305,6 +305,7 @@ part 'functions/get_keyword_emojis.dart';
 part 'functions/get_language_pack_info.dart';
 part 'functions/get_language_pack_string.dart';
 part 'functions/get_language_pack_strings.dart';
+part 'functions/get_link_preview.dart';
 part 'functions/get_localization_target_info.dart';
 part 'functions/get_log_stream.dart';
 part 'functions/get_log_tag_verbosity_level.dart';
@@ -424,7 +425,6 @@ part 'functions/get_video_chat_rtmp_url.dart';
 part 'functions/get_web_app_link_url.dart';
 part 'functions/get_web_app_url.dart';
 part 'functions/get_web_page_instant_view.dart';
-part 'functions/get_web_page_preview.dart';
 part 'functions/hide_contact_close_birthdays.dart';
 part 'functions/hide_suggested_action.dart';
 part 'functions/import_contacts.dart';
@@ -1032,7 +1032,10 @@ part 'objects/language_pack_info.dart';
 part 'objects/language_pack_string.dart';
 part 'objects/language_pack_string_value.dart';
 part 'objects/language_pack_strings.dart';
+part 'objects/link_preview.dart';
+part 'objects/link_preview_album_media.dart';
 part 'objects/link_preview_options.dart';
+part 'objects/link_preview_type.dart';
 part 'objects/local_file.dart';
 part 'objects/localization_target_info.dart';
 part 'objects/location.dart';
@@ -1298,18 +1301,17 @@ part 'objects/video_note.dart';
 part 'objects/voice_note.dart';
 part 'objects/web_app.dart';
 part 'objects/web_app_info.dart';
-part 'objects/web_page.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.32';
+const String tdlibVersion = '1.8.33';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '35cfcf5d15981b99e8f31a2195641f035dd516c3';
+const String tdlibSchemaCommit = 'cb164927417f22811c74cd8678ed4a5ab7cb80ba';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '35cfcf5d15981b99e8f31a2195641f035dd516c3',
+  'cb164927417f22811c74cd8678ed4a5ab7cb80ba',
 ];
 
 /// Base class of every TDLib object.
@@ -1794,6 +1796,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewOptions': LinkPreviewOptions.fromJson,
   'sharedUser': SharedUser.fromJson,
   'sharedChat': SharedChat.fromJson,
+  'themeSettings': ThemeSettings.fromJson,
   'richTextPlain': RichTextPlain.fromJson,
   'richTextBold': RichTextBold.fromJson,
   'richTextItalic': RichTextItalic.fromJson,
@@ -1853,7 +1856,40 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pageBlockRelatedArticles': PageBlockRelatedArticles.fromJson,
   'pageBlockMap': PageBlockMap.fromJson,
   'webPageInstantView': WebPageInstantView.fromJson,
-  'webPage': WebPage.fromJson,
+  'linkPreviewAlbumMediaPhoto': LinkPreviewAlbumMediaPhoto.fromJson,
+  'linkPreviewAlbumMediaVideo': LinkPreviewAlbumMediaVideo.fromJson,
+  'linkPreviewTypeAlbum': LinkPreviewTypeAlbum.fromJson,
+  'linkPreviewTypeAnimation': LinkPreviewTypeAnimation.fromJson,
+  'linkPreviewTypeApp': LinkPreviewTypeApp.fromJson,
+  'linkPreviewTypeArticle': LinkPreviewTypeArticle.fromJson,
+  'linkPreviewTypeAudio': LinkPreviewTypeAudio.fromJson,
+  'linkPreviewTypeBackground': LinkPreviewTypeBackground.fromJson,
+  'linkPreviewTypeChannelBoost': LinkPreviewTypeChannelBoost.fromJson,
+  'linkPreviewTypeChat': LinkPreviewTypeChat.fromJson,
+  'linkPreviewTypeDocument': LinkPreviewTypeDocument.fromJson,
+  'linkPreviewTypeEmbeddedAudioPlayer':
+      LinkPreviewTypeEmbeddedAudioPlayer.fromJson,
+  'linkPreviewTypeEmbeddedVideoPlayer':
+      LinkPreviewTypeEmbeddedVideoPlayer.fromJson,
+  'linkPreviewTypeInvoice': LinkPreviewTypeInvoice.fromJson,
+  'linkPreviewTypeMessage': LinkPreviewTypeMessage.fromJson,
+  'linkPreviewTypePhoto': LinkPreviewTypePhoto.fromJson,
+  'linkPreviewTypePremiumGiftCode': LinkPreviewTypePremiumGiftCode.fromJson,
+  'linkPreviewTypeShareableChatFolder':
+      LinkPreviewTypeShareableChatFolder.fromJson,
+  'linkPreviewTypeSticker': LinkPreviewTypeSticker.fromJson,
+  'linkPreviewTypeStickerSet': LinkPreviewTypeStickerSet.fromJson,
+  'linkPreviewTypeStory': LinkPreviewTypeStory.fromJson,
+  'linkPreviewTypeSupergroupBoost': LinkPreviewTypeSupergroupBoost.fromJson,
+  'linkPreviewTypeTheme': LinkPreviewTypeTheme.fromJson,
+  'linkPreviewTypeUnsupported': LinkPreviewTypeUnsupported.fromJson,
+  'linkPreviewTypeUser': LinkPreviewTypeUser.fromJson,
+  'linkPreviewTypeVideo': LinkPreviewTypeVideo.fromJson,
+  'linkPreviewTypeVideoChat': LinkPreviewTypeVideoChat.fromJson,
+  'linkPreviewTypeVideoNote': LinkPreviewTypeVideoNote.fromJson,
+  'linkPreviewTypeVoiceNote': LinkPreviewTypeVoiceNote.fromJson,
+  'linkPreviewTypeWebApp': LinkPreviewTypeWebApp.fromJson,
+  'linkPreview': LinkPreview.fromJson,
   'countryInfo': CountryInfo.fromJson,
   'countries': Countries.fromJson,
   'phoneNumberInfo': PhoneNumberInfo.fromJson,
@@ -2052,6 +2088,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGameScore': MessageGameScore.fromJson,
   'messagePaymentSuccessful': MessagePaymentSuccessful.fromJson,
   'messagePaymentSuccessfulBot': MessagePaymentSuccessfulBot.fromJson,
+  'messagePaymentRefunded': MessagePaymentRefunded.fromJson,
   'messageGiftedPremium': MessageGiftedPremium.fromJson,
   'messagePremiumGiftCode': MessagePremiumGiftCode.fromJson,
   'messagePremiumGiveawayCreated': MessagePremiumGiveawayCreated.fromJson,
@@ -2555,7 +2592,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputBackgroundLocal': InputBackgroundLocal.fromJson,
   'inputBackgroundRemote': InputBackgroundRemote.fromJson,
   'inputBackgroundPrevious': InputBackgroundPrevious.fromJson,
-  'themeSettings': ThemeSettings.fromJson,
   'chatTheme': ChatTheme.fromJson,
   'timeZone': TimeZone.fromJson,
   'timeZones': TimeZones.fromJson,

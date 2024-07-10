@@ -17,7 +17,7 @@ final class WebPageInstantView extends TdObject {
     this.clientId,
   });
 
-  /// Content of the web page
+  /// Content of the instant view page
   final List<PageBlock> pageBlocks;
 
   /// Number of the instant view views; 0 if unknown
@@ -29,7 +29,7 @@ final class WebPageInstantView extends TdObject {
   /// True, if the instant view must be shown from right to left
   final bool isRtl;
 
-  /// True, if the instant view contains the full page. A network request might be needed to get the full web page instant view
+  /// True, if the instant view contains the full page. A network request might be needed to get the full instant view
   final bool isFull;
 
   /// An internal link to be opened to leave feedback about the instant view

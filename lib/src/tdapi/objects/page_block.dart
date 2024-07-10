@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes a block of an instant view web page
+/// Describes a block of an instant view for a web page
 ///
 /// One of: [PageBlockTitle], [PageBlockSubtitle], [PageBlockAuthorDate], [PageBlockHeader], [PageBlockSubheader], [PageBlockKicker], [PageBlockParagraph], [PageBlockPreformatted], [PageBlockFooter], [PageBlockDivider], [PageBlockAnchor], [PageBlockList], [PageBlockBlockQuote], [PageBlockPullQuote], [PageBlockAnimation], [PageBlockAudio], [PageBlockPhoto], [PageBlockVideo], [PageBlockVoiceNote], [PageBlockCover], [PageBlockEmbedded], [PageBlockEmbeddedPost], [PageBlockCollage], [PageBlockSlideshow], [PageBlockChatLink], [PageBlockTable], [PageBlockDetails], [PageBlockRelatedArticles], [PageBlockMap]; or [UndecodedPageBlock] for a type newer than this API.
 sealed class PageBlock extends TdObject {
@@ -922,7 +922,7 @@ final class PageBlockEmbedded extends PageBlock {
     required this.allowScrolling,
   });
 
-  /// Web page URL, if available
+  /// URL of the embedded page, if available
   final String url;
 
   /// HTML-markup of the embedded page
@@ -1015,7 +1015,7 @@ final class PageBlockEmbeddedPost extends PageBlock {
     required this.caption,
   });
 
-  /// Web page URL
+  /// URL of the embedded post
   final String url;
 
   /// Post author

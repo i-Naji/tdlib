@@ -2141,9 +2141,9 @@ final class InternalLinkTypeStory extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a theme. TDLib has no theme support yet
+/// The link is a link to a cloud theme. TDLib has no theme support yet
 final class InternalLinkTypeTheme extends InternalLinkType {
-  /// The link is a link to a theme. TDLib has no theme support yet
+  /// The link is a link to a cloud theme. TDLib has no theme support yet
   const InternalLinkTypeTheme({
     required this.themeName,
     this.extra,

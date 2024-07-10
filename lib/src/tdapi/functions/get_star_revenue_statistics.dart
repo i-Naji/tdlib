@@ -13,7 +13,7 @@ final class GetStarRevenueStatistics extends TdFunction<StarRevenueStatistics> {
     required this.isDark,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of an owned channel chat
+  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
 
   /// Pass true if a dark theme is used by the application
