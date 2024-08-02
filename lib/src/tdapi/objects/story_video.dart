@@ -15,6 +15,7 @@ final class StoryVideo extends TdObject {
     this.minithumbnail,
     this.thumbnail,
     required this.preloadPrefixSize,
+    required this.coverFrameTimestamp,
     required this.video,
   });
 
@@ -42,6 +43,9 @@ final class StoryVideo extends TdObject {
   /// Size of file prefix, which is supposed to be preloaded, in bytes
   final int preloadPrefixSize;
 
+  /// Timestamp of the frame used as video thumbnail
+  final double coverFrameTimestamp;
+
   /// File containing the video
   final File video;
 
@@ -56,6 +60,7 @@ final class StoryVideo extends TdObject {
             _readOptional(json['minithumbnail'], Minithumbnail.fromJson),
         thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
         preloadPrefixSize: _readInt(json['preload_prefix_size']),
+        coverFrameTimestamp: _readDouble(json['cover_frame_timestamp']),
         video: _readObject(json['video'], File.fromJson),
       );
 
@@ -70,6 +75,7 @@ final class StoryVideo extends TdObject {
         'minithumbnail': minithumbnail?.toJson(),
         'thumbnail': thumbnail?.toJson(),
         'preload_prefix_size': preloadPrefixSize,
+        'cover_frame_timestamp': coverFrameTimestamp,
         'video': video.toJson(),
       };
 
@@ -84,6 +90,7 @@ final class StoryVideo extends TdObject {
     Minithumbnail? Function()? minithumbnail,
     Thumbnail? Function()? thumbnail,
     int? preloadPrefixSize,
+    double? coverFrameTimestamp,
     File? video,
   }) =>
       StoryVideo(
@@ -96,6 +103,7 @@ final class StoryVideo extends TdObject {
             minithumbnail != null ? minithumbnail() : this.minithumbnail,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         preloadPrefixSize: preloadPrefixSize ?? this.preloadPrefixSize,
+        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
         video: video ?? this.video,
       );
 

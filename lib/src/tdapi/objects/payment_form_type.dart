@@ -147,14 +147,14 @@ final class PaymentFormTypeRegular extends PaymentFormType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The payment form is for a payment in Telegram stars
+/// The payment form is for a payment in Telegram Stars
 final class PaymentFormTypeStars extends PaymentFormType {
-  /// The payment form is for a payment in Telegram stars
+  /// The payment form is for a payment in Telegram Stars
   const PaymentFormTypeStars({
     required this.starCount,
   });
 
-  /// Number of Telegram stars that will be paid
+  /// Number of Telegram Stars that will be paid
   final int starCount;
 
   /// Parses a [PaymentFormTypeStars] from TDLib JSON.

@@ -15,6 +15,7 @@ final class LinkPreview extends TdObject {
     required this.type,
     required this.hasLargeMedia,
     required this.showLargeMedia,
+    required this.showMediaAboveDescription,
     required this.skipConfirmation,
     required this.showAboveText,
     required this.instantViewVersion,
@@ -46,6 +47,9 @@ final class LinkPreview extends TdObject {
   /// True, if large media preview must be shown; otherwise, the media preview must be shown small and only the first frame must be shown for videos
   final bool showLargeMedia;
 
+  /// True, if media must be shown above link preview description; otherwise, the media must be shown below the description
+  final bool showMediaAboveDescription;
+
   /// True, if there is no need to show an ordinary open URL confirmation, when opening the URL from the preview, because the URL is shown in the message text in clear
   final bool skipConfirmation;
 
@@ -73,6 +77,8 @@ final class LinkPreview extends TdObject {
         type: _readObject(json['type'], LinkPreviewType.fromJson),
         hasLargeMedia: _readBool(json['has_large_media']),
         showLargeMedia: _readBool(json['show_large_media']),
+        showMediaAboveDescription:
+            _readBool(json['show_media_above_description']),
         skipConfirmation: _readBool(json['skip_confirmation']),
         showAboveText: _readBool(json['show_above_text']),
         instantViewVersion: _readInt(json['instant_view_version']),
@@ -91,6 +97,7 @@ final class LinkPreview extends TdObject {
         'type': type.toJson(),
         'has_large_media': hasLargeMedia,
         'show_large_media': showLargeMedia,
+        'show_media_above_description': showMediaAboveDescription,
         'skip_confirmation': skipConfirmation,
         'show_above_text': showAboveText,
         'instant_view_version': instantViewVersion,
@@ -107,6 +114,7 @@ final class LinkPreview extends TdObject {
     LinkPreviewType? type,
     bool? hasLargeMedia,
     bool? showLargeMedia,
+    bool? showMediaAboveDescription,
     bool? skipConfirmation,
     bool? showAboveText,
     int? instantViewVersion,
@@ -122,6 +130,8 @@ final class LinkPreview extends TdObject {
         type: type ?? this.type,
         hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
         showLargeMedia: showLargeMedia ?? this.showLargeMedia,
+        showMediaAboveDescription:
+            showMediaAboveDescription ?? this.showMediaAboveDescription,
         skipConfirmation: skipConfirmation ?? this.skipConfirmation,
         showAboveText: showAboveText ?? this.showAboveText,
         instantViewVersion: instantViewVersion ?? this.instantViewVersion,

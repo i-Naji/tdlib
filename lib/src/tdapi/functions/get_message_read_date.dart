@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns read date of a recent outgoing message in a private chat. The method can be called if message.can_get_read_date == true and the message is read
+/// Returns read date of a recent outgoing message in a private chat. The method can be called if messageProperties.can_get_read_date == true
 ///
 /// Returns [MessageReadDate].
 final class GetMessageReadDate extends TdFunction<MessageReadDate> {
-  /// Returns read date of a recent outgoing message in a private chat. The method can be called if message.can_get_read_date == true and the message is read
+  /// Returns read date of a recent outgoing message in a private chat. The method can be called if messageProperties.can_get_read_date == true
   const GetMessageReadDate({
     required this.chatId,
     required this.messageId,

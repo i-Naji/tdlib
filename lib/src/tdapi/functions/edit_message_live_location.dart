@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
+/// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
 final class EditMessageLiveLocation extends TdFunction<Message> {
-  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
+  /// Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side
   const EditMessageLiveLocation({
     required this.chatId,
     required this.messageId,
@@ -21,7 +21,7 @@ final class EditMessageLiveLocation extends TdFunction<Message> {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only

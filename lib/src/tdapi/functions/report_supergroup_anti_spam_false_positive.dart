@@ -16,7 +16,7 @@ final class ReportSupergroupAntiSpamFalsePositive extends TdFunction<Ok> {
   /// Supergroup identifier
   final int supergroupId;
 
-  /// Identifier of the erroneously deleted message
+  /// Identifier of the erroneously deleted message from chatEventMessageDeleted
   final int messageId;
 
   @override

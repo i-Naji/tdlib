@@ -15,19 +15,7 @@ final class Message extends TdObject {
     required this.isOutgoing,
     required this.isPinned,
     required this.isFromOffline,
-    required this.canBeEdited,
-    required this.canBeForwarded,
-    required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
-    required this.canBeDeletedOnlyForSelf,
-    required this.canBeDeletedForAllUsers,
-    required this.canGetAddedReactions,
-    required this.canGetStatistics,
-    required this.canGetMessageThread,
-    required this.canGetReadDate,
-    required this.canGetViewers,
-    required this.canGetMediaTimestampLinks,
-    required this.canReportReactions,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
     required this.isTopicMessage,
@@ -82,44 +70,8 @@ final class Message extends TdObject {
   /// True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message
   final bool isFromOffline;
 
-  /// True, if the message can be edited. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message by the application
-  final bool canBeEdited;
-
-  /// True, if the message can be forwarded
-  final bool canBeForwarded;
-
-  /// True, if the message can be replied in another chat or topic
-  final bool canBeRepliedInAnotherChat;
-
   /// True, if content of the message can be saved locally or copied
   final bool canBeSaved;
-
-  /// True, if the message can be deleted only for the current user while other users will continue to see it
-  final bool canBeDeletedOnlyForSelf;
-
-  /// True, if the message can be deleted for all users
-  final bool canBeDeletedForAllUsers;
-
-  /// True, if the list of added reactions is available through getMessageAddedReactions
-  final bool canGetAddedReactions;
-
-  /// True, if the message statistics are available through getMessageStatistics
-  final bool canGetStatistics;
-
-  /// True, if information about the message thread is available through getMessageThread and getMessageThreadHistory
-  final bool canGetMessageThread;
-
-  /// True, if read date of the message can be received through getMessageReadDate
-  final bool canGetReadDate;
-
-  /// True, if chat members already viewed the message can be received through getMessageViewers
-  final bool canGetViewers;
-
-  /// True, if media timestamp links can be generated for media timestamp entities in the message text, caption or link preview description through getMessageLink
-  final bool canGetMediaTimestampLinks;
-
-  /// True, if reactions on the message can be reported through reportMessageReactions
-  final bool canReportReactions;
 
   /// True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message
   final bool hasTimestampedMedia;
@@ -219,23 +171,7 @@ final class Message extends TdObject {
         isOutgoing: _readBool(json['is_outgoing']),
         isPinned: _readBool(json['is_pinned']),
         isFromOffline: _readBool(json['is_from_offline']),
-        canBeEdited: _readBool(json['can_be_edited']),
-        canBeForwarded: _readBool(json['can_be_forwarded']),
-        canBeRepliedInAnotherChat:
-            _readBool(json['can_be_replied_in_another_chat']),
         canBeSaved: _readBool(json['can_be_saved']),
-        canBeDeletedOnlyForSelf:
-            _readBool(json['can_be_deleted_only_for_self']),
-        canBeDeletedForAllUsers:
-            _readBool(json['can_be_deleted_for_all_users']),
-        canGetAddedReactions: _readBool(json['can_get_added_reactions']),
-        canGetStatistics: _readBool(json['can_get_statistics']),
-        canGetMessageThread: _readBool(json['can_get_message_thread']),
-        canGetReadDate: _readBool(json['can_get_read_date']),
-        canGetViewers: _readBool(json['can_get_viewers']),
-        canGetMediaTimestampLinks:
-            _readBool(json['can_get_media_timestamp_links']),
-        canReportReactions: _readBool(json['can_report_reactions']),
         hasTimestampedMedia: _readBool(json['has_timestamped_media']),
         isChannelPost: _readBool(json['is_channel_post']),
         isTopicMessage: _readBool(json['is_topic_message']),
@@ -282,19 +218,7 @@ final class Message extends TdObject {
         'is_outgoing': isOutgoing,
         'is_pinned': isPinned,
         'is_from_offline': isFromOffline,
-        'can_be_edited': canBeEdited,
-        'can_be_forwarded': canBeForwarded,
-        'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
         'can_be_saved': canBeSaved,
-        'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
-        'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
-        'can_get_added_reactions': canGetAddedReactions,
-        'can_get_statistics': canGetStatistics,
-        'can_get_message_thread': canGetMessageThread,
-        'can_get_read_date': canGetReadDate,
-        'can_get_viewers': canGetViewers,
-        'can_get_media_timestamp_links': canGetMediaTimestampLinks,
-        'can_report_reactions': canReportReactions,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
         'is_topic_message': isTopicMessage,
@@ -334,19 +258,7 @@ final class Message extends TdObject {
     bool? isOutgoing,
     bool? isPinned,
     bool? isFromOffline,
-    bool? canBeEdited,
-    bool? canBeForwarded,
-    bool? canBeRepliedInAnotherChat,
     bool? canBeSaved,
-    bool? canBeDeletedOnlyForSelf,
-    bool? canBeDeletedForAllUsers,
-    bool? canGetAddedReactions,
-    bool? canGetStatistics,
-    bool? canGetMessageThread,
-    bool? canGetReadDate,
-    bool? canGetViewers,
-    bool? canGetMediaTimestampLinks,
-    bool? canReportReactions,
     bool? hasTimestampedMedia,
     bool? isChannelPost,
     bool? isTopicMessage,
@@ -386,23 +298,7 @@ final class Message extends TdObject {
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isPinned: isPinned ?? this.isPinned,
         isFromOffline: isFromOffline ?? this.isFromOffline,
-        canBeEdited: canBeEdited ?? this.canBeEdited,
-        canBeForwarded: canBeForwarded ?? this.canBeForwarded,
-        canBeRepliedInAnotherChat:
-            canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
         canBeSaved: canBeSaved ?? this.canBeSaved,
-        canBeDeletedOnlyForSelf:
-            canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
-        canBeDeletedForAllUsers:
-            canBeDeletedForAllUsers ?? this.canBeDeletedForAllUsers,
-        canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
-        canGetStatistics: canGetStatistics ?? this.canGetStatistics,
-        canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
-        canGetReadDate: canGetReadDate ?? this.canGetReadDate,
-        canGetViewers: canGetViewers ?? this.canGetViewers,
-        canGetMediaTimestampLinks:
-            canGetMediaTimestampLinks ?? this.canGetMediaTimestampLinks,
-        canReportReactions: canReportReactions ?? this.canReportReactions,
         hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
         isChannelPost: isChannelPost ?? this.isChannelPost,
         isTopicMessage: isTopicMessage ?? this.isTopicMessage,

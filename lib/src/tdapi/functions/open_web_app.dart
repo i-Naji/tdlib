@@ -30,7 +30,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// Preferred Web App theme; pass null to use the default theme
   final ThemeParameters? theme;
 
-  /// Short name of the application; 0-64 English letters, digits, and underscores
+  /// Short name of the current application; 0-64 English letters, digits, and underscores
   final String applicationName;
 
   /// If not 0, the message thread identifier in which the message will be sent

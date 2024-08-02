@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the fact-check of a message. Can be only used if getOption("can_edit_fact_check") == true
+/// Changes the fact-check of a message. Can be only used if messageProperties.can_set_fact_check == true
 ///
 /// Returns [Ok].
 final class SetMessageFactCheck extends TdFunction<Ok> {
-  /// Changes the fact-check of a message. Can be only used if getOption("can_edit_fact_check") == true
+  /// Changes the fact-check of a message. Can be only used if messageProperties.can_set_fact_check == true
   const SetMessageFactCheck({
     required this.chatId,
     required this.messageId,
@@ -17,7 +17,7 @@ final class SetMessageFactCheck extends TdFunction<Ok> {
   /// The channel chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message. The message must be one of the following types: messageAnimation, messageAudio, messageDocument, messagePhoto, messageText, messageVideo
+  /// Identifier of the message
   final int messageId;
 
   /// New text of the fact-check; 0-getOption("fact_check_length_max") characters; pass null to remove it. Only Bold, Italic, and TextUrl entities with https://t.me/ links are supported

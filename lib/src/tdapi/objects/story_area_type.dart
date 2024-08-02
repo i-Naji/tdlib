@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of clickable rectangle area on a story media
+/// Describes type of clickable area on a story media
 ///
-/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage], [StoryAreaTypeLink]; or [UndecodedStoryAreaType] for a type newer than this API.
+/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage], [StoryAreaTypeLink], [StoryAreaTypeWeather]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {
   const StoryAreaType();
 
@@ -272,6 +272,61 @@ final class StoryAreaTypeLink extends StoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeLink';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area with information about weather
+final class StoryAreaTypeWeather extends StoryAreaType {
+  /// An area with information about weather
+  const StoryAreaTypeWeather({
+    required this.temperature,
+    required this.emoji,
+    required this.backgroundColor,
+  });
+
+  /// Temperature, in degree Celsius
+  final double temperature;
+
+  /// Emoji representing the weather
+  final String emoji;
+
+  /// A color of the area background in the ARGB format
+  final int backgroundColor;
+
+  /// Parses a [StoryAreaTypeWeather] from TDLib JSON.
+  factory StoryAreaTypeWeather.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeWeather(
+        temperature: _readDouble(json['temperature']),
+        emoji: _readString(json['emoji']),
+        backgroundColor: _readInt(json['background_color']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'temperature': temperature,
+        'emoji': emoji,
+        'background_color': backgroundColor,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryAreaTypeWeather copyWith({
+    double? temperature,
+    String? emoji,
+    int? backgroundColor,
+  }) =>
+      StoryAreaTypeWeather(
+        temperature: temperature ?? this.temperature,
+        emoji: emoji ?? this.emoji,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyAreaTypeWeather';
 
   @override
   String getConstructor() => CONSTRUCTOR;

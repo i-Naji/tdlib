@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Returns detailed Telegram star revenue statistics
+/// Returns detailed Telegram Star revenue statistics
 ///
 /// Returns [StarRevenueStatistics].
 final class GetStarRevenueStatistics extends TdFunction<StarRevenueStatistics> {
-  /// Returns detailed Telegram star revenue statistics
+  /// Returns detailed Telegram Star revenue statistics
   const GetStarRevenueStatistics({
     required this.ownerId,
     required this.isDark,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
+  /// Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
 
   /// Pass true if a dark theme is used by the application

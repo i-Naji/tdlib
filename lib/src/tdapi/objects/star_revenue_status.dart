@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about Telegram stars earned by a bot or a chat
+/// Contains information about Telegram Stars earned by a bot or a chat
 final class StarRevenueStatus extends TdObject {
-  /// Contains information about Telegram stars earned by a bot or a chat
+  /// Contains information about Telegram Stars earned by a bot or a chat
   const StarRevenueStatus({
     required this.totalCount,
     required this.currentCount,
@@ -14,16 +14,16 @@ final class StarRevenueStatus extends TdObject {
     required this.nextWithdrawalIn,
   });
 
-  /// Total number of the stars earned
+  /// Total number of Telegram Stars earned
   final int totalCount;
 
-  /// The number of Telegram stars that aren't withdrawn yet
+  /// The number of Telegram Stars that aren't withdrawn yet
   final int currentCount;
 
-  /// The number of Telegram stars that are available for withdrawal
+  /// The number of Telegram Stars that are available for withdrawal
   final int availableCount;
 
-  /// True, if Telegram stars can be withdrawn now or later
+  /// True, if Telegram Stars can be withdrawn now or later
   final bool withdrawalEnabled;
 
   /// Time left before the next withdrawal can be started, in seconds; 0 if withdrawal can be started now

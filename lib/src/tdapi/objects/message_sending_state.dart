@@ -98,7 +98,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// The cause of the message sending failure
   final TdError error;
 
-  /// True, if the message can be re-sent
+  /// True, if the message can be re-sent using resendMessages or readdQuickReplyShortcutMessages
   final bool canRetry;
 
   /// True, if the message can be re-sent only on behalf of a different sender

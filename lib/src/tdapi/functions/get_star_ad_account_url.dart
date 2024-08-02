@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Returns a URL for a Telegram Ad platform account that can be used to set up advertisements for the chat paid in the owned Telegram stars
+/// Returns a URL for a Telegram Ad platform account that can be used to set up advertisements for the chat paid in the owned Telegram Stars
 ///
 /// Returns [HttpUrl].
 final class GetStarAdAccountUrl extends TdFunction<HttpUrl> {
-  /// Returns a URL for a Telegram Ad platform account that can be used to set up advertisements for the chat paid in the owned Telegram stars
+  /// Returns a URL for a Telegram Ad platform account that can be used to set up advertisements for the chat paid in the owned Telegram Stars
   const GetStarAdAccountUrl({
     required this.ownerId,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be identifier of an owned bot, or identifier of an owned channel chat
+  /// Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat
   final MessageSender ownerId;
 
   @override

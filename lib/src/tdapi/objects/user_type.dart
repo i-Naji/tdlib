@@ -101,11 +101,13 @@ final class UserTypeBot extends UserType {
     required this.canBeEdited,
     required this.canJoinGroups,
     required this.canReadAllGroupMessages,
+    required this.hasMainWebApp,
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
     required this.canConnectToBusiness,
     required this.canBeAddedToAttachmentMenu,
+    required this.activeUserCount,
   });
 
   /// True, if the bot is owned by the current user and can be edited using the methods toggleBotUsernameIsActive, reorderBotActiveUsernames, setBotProfilePhoto, setBotName, setBotInfoDescription, and setBotInfoShortDescription
@@ -116,6 +118,9 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot can read all messages in basic group or supergroup chats and not just those addressed to the bot. In private and channel chats a bot can always read all messages
   final bool canReadAllGroupMessages;
+
+  /// True, if the bot has the main Web App
+  final bool hasMainWebApp;
 
   /// True, if the bot supports inline queries
   final bool isInline;
@@ -132,17 +137,22 @@ final class UserTypeBot extends UserType {
   /// True, if the bot can be added to attachment or side menu
   final bool canBeAddedToAttachmentMenu;
 
+  /// The number of recently active users of the bot
+  final int activeUserCount;
+
   /// Parses a [UserTypeBot] from TDLib JSON.
   factory UserTypeBot.fromJson(Map<String, dynamic> json) => UserTypeBot(
         canBeEdited: _readBool(json['can_be_edited']),
         canJoinGroups: _readBool(json['can_join_groups']),
         canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
+        hasMainWebApp: _readBool(json['has_main_web_app']),
         isInline: _readBool(json['is_inline']),
         inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
         needLocation: _readBool(json['need_location']),
         canConnectToBusiness: _readBool(json['can_connect_to_business']),
         canBeAddedToAttachmentMenu:
             _readBool(json['can_be_added_to_attachment_menu']),
+        activeUserCount: _readInt(json['active_user_count']),
       );
 
   @override
@@ -151,11 +161,13 @@ final class UserTypeBot extends UserType {
         'can_be_edited': canBeEdited,
         'can_join_groups': canJoinGroups,
         'can_read_all_group_messages': canReadAllGroupMessages,
+        'has_main_web_app': hasMainWebApp,
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
         'can_connect_to_business': canConnectToBusiness,
         'can_be_added_to_attachment_menu': canBeAddedToAttachmentMenu,
+        'active_user_count': activeUserCount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -165,17 +177,20 @@ final class UserTypeBot extends UserType {
     bool? canBeEdited,
     bool? canJoinGroups,
     bool? canReadAllGroupMessages,
+    bool? hasMainWebApp,
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
     bool? canConnectToBusiness,
     bool? canBeAddedToAttachmentMenu,
+    int? activeUserCount,
   }) =>
       UserTypeBot(
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canJoinGroups: canJoinGroups ?? this.canJoinGroups,
         canReadAllGroupMessages:
             canReadAllGroupMessages ?? this.canReadAllGroupMessages,
+        hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
         isInline: isInline ?? this.isInline,
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,
@@ -183,6 +198,7 @@ final class UserTypeBot extends UserType {
         canConnectToBusiness: canConnectToBusiness ?? this.canConnectToBusiness,
         canBeAddedToAttachmentMenu:
             canBeAddedToAttachmentMenu ?? this.canBeAddedToAttachmentMenu,
+        activeUserCount: activeUserCount ?? this.activeUserCount,
       );
 
   /// TDLib type name.

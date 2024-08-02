@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a transaction changing the amount of owned Telegram stars
+/// Represents a transaction changing the amount of owned Telegram Stars
 final class StarTransaction extends TdObject {
-  /// Represents a transaction changing the amount of owned Telegram stars
+  /// Represents a transaction changing the amount of owned Telegram Stars
   const StarTransaction({
     required this.id,
     required this.starCount,
@@ -17,7 +17,7 @@ final class StarTransaction extends TdObject {
   /// Unique identifier of the transaction
   final String id;
 
-  /// The amount of added owned Telegram stars; negative for outgoing transactions
+  /// The amount of added owned Telegram Stars; negative for outgoing transactions
   final int starCount;
 
   /// True, if the transaction is a refund of a previous transaction

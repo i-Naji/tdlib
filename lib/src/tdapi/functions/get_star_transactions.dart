@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of Telegram star transactions for the specified owner
+/// Returns the list of Telegram Star transactions for the specified owner
 ///
 /// Returns [StarTransactions].
 final class GetStarTransactions extends TdFunction<StarTransactions> {
-  /// Returns the list of Telegram star transactions for the specified owner
+  /// Returns the list of Telegram Star transactions for the specified owner
   const GetStarTransactions({
     required this.ownerId,
     this.direction,
@@ -15,7 +15,7 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
     required this.limit,
   });
 
-  /// Identifier of the owner of the Telegram stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
+  /// Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
 
   /// Direction of the transactions to receive; pass null to get all transactions

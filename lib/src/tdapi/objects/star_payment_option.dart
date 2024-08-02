@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option for buying Telegram stars. Use telegramPaymentPurposeStars for out-of-store payments
+/// Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments
 final class StarPaymentOption extends TdObject {
-  /// Describes an option for buying Telegram stars. Use telegramPaymentPurposeStars for out-of-store payments
+  /// Describes an option for buying Telegram Stars. Use telegramPaymentPurposeStars for out-of-store payments
   const StarPaymentOption({
     required this.currency,
     required this.amount,
@@ -20,7 +20,7 @@ final class StarPaymentOption extends TdObject {
   /// The amount to pay, in the smallest units of the currency
   final int amount;
 
-  /// Number of Telegram stars that will be purchased
+  /// Number of Telegram Stars that will be purchased
   final int starCount;
 
   /// Identifier of the store product associated with the option; may be empty if none

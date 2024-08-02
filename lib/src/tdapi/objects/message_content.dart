@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessagePremiumGiveawayCreated], [MessagePremiumGiveaway], [MessagePremiumGiveawayCompleted], [MessagePremiumGiveawayWinners], [MessageGiftedStars], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -274,7 +274,7 @@ final class MessagePaidMedia extends MessageContent {
     required this.showCaptionAboveMedia,
   });
 
-  /// Number of stars needed to buy access to the media in the message
+  /// Number of Telegram Stars needed to buy access to the media in the message
   final int starCount;
 
   /// Information about the media
@@ -2638,7 +2638,7 @@ final class MessagePaymentRefunded extends MessageContent {
     required this.providerPaymentChargeId,
   });
 
-  /// Identifier of the previous owner of the Telegram stars that refunds them
+  /// Identifier of the previous owner of the Telegram Stars that refunds them
   final MessageSender ownerId;
 
   /// Currency for the price of the product
@@ -2709,11 +2709,12 @@ final class MessagePaymentRefunded extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Telegram Premium was gifted to the user
+/// Telegram Premium was gifted to a user
 final class MessageGiftedPremium extends MessageContent {
-  /// Telegram Premium was gifted to the user
+  /// Telegram Premium was gifted to a user
   const MessageGiftedPremium({
     required this.gifterUserId,
+    required this.receiverUserId,
     required this.currency,
     required this.amount,
     required this.cryptocurrency,
@@ -2722,8 +2723,11 @@ final class MessageGiftedPremium extends MessageContent {
     this.sticker,
   });
 
-  /// The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous
+  /// The identifier of a user that gifted Telegram Premium; 0 if the gift was anonymous or is outgoing
   final int gifterUserId;
+
+  /// The identifier of a user that received Telegram Premium; 0 if the gift is incoming
+  final int receiverUserId;
 
   /// Currency for the paid amount
   final String currency;
@@ -2747,6 +2751,7 @@ final class MessageGiftedPremium extends MessageContent {
   factory MessageGiftedPremium.fromJson(Map<String, dynamic> json) =>
       MessageGiftedPremium(
         gifterUserId: _readInt(json['gifter_user_id']),
+        receiverUserId: _readInt(json['receiver_user_id']),
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         cryptocurrency: _readString(json['cryptocurrency']),
@@ -2759,6 +2764,7 @@ final class MessageGiftedPremium extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gifter_user_id': gifterUserId,
+        'receiver_user_id': receiverUserId,
         'currency': currency,
         'amount': amount,
         'cryptocurrency': cryptocurrency,
@@ -2772,6 +2778,7 @@ final class MessageGiftedPremium extends MessageContent {
   @override
   MessageGiftedPremium copyWith({
     int? gifterUserId,
+    int? receiverUserId,
     String? currency,
     int? amount,
     String? cryptocurrency,
@@ -2781,6 +2788,7 @@ final class MessageGiftedPremium extends MessageContent {
   }) =>
       MessageGiftedPremium(
         gifterUserId: gifterUserId ?? this.gifterUserId,
+        receiverUserId: receiverUserId ?? this.receiverUserId,
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
@@ -3169,6 +3177,109 @@ final class MessagePremiumGiveawayWinners extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePremiumGiveawayWinners';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Telegram Stars were gifted to a user
+final class MessageGiftedStars extends MessageContent {
+  /// Telegram Stars were gifted to a user
+  const MessageGiftedStars({
+    required this.gifterUserId,
+    required this.receiverUserId,
+    required this.currency,
+    required this.amount,
+    required this.cryptocurrency,
+    required this.cryptocurrencyAmount,
+    required this.starCount,
+    required this.transactionId,
+    this.sticker,
+  });
+
+  /// The identifier of a user that gifted Telegram Stars; 0 if the gift was anonymous or is outgoing
+  final int gifterUserId;
+
+  /// The identifier of a user that received Telegram Stars; 0 if the gift is incoming
+  final int receiverUserId;
+
+  /// Currency for the paid amount
+  final String currency;
+
+  /// The paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Cryptocurrency used to pay for the gift; may be empty if none
+  final String cryptocurrency;
+
+  /// The paid amount, in the smallest units of the cryptocurrency; 0 if none
+  final int cryptocurrencyAmount;
+
+  /// Number of Telegram Stars that were gifted
+  final int starCount;
+
+  /// Identifier of the transaction for Telegram Stars purchase; for receiver only
+  final String transactionId;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parses a [MessageGiftedStars] from TDLib JSON.
+  factory MessageGiftedStars.fromJson(Map<String, dynamic> json) =>
+      MessageGiftedStars(
+        gifterUserId: _readInt(json['gifter_user_id']),
+        receiverUserId: _readInt(json['receiver_user_id']),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        cryptocurrency: _readString(json['cryptocurrency']),
+        cryptocurrencyAmount: _readInt(json['cryptocurrency_amount']),
+        starCount: _readInt(json['star_count']),
+        transactionId: _readString(json['transaction_id']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gifter_user_id': gifterUserId,
+        'receiver_user_id': receiverUserId,
+        'currency': currency,
+        'amount': amount,
+        'cryptocurrency': cryptocurrency,
+        'cryptocurrency_amount': cryptocurrencyAmount.toString(),
+        'star_count': starCount,
+        'transaction_id': transactionId,
+        'sticker': sticker?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageGiftedStars copyWith({
+    int? gifterUserId,
+    int? receiverUserId,
+    String? currency,
+    int? amount,
+    String? cryptocurrency,
+    int? cryptocurrencyAmount,
+    int? starCount,
+    String? transactionId,
+    Sticker? Function()? sticker,
+  }) =>
+      MessageGiftedStars(
+        gifterUserId: gifterUserId ?? this.gifterUserId,
+        receiverUserId: receiverUserId ?? this.receiverUserId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        cryptocurrency: cryptocurrency ?? this.cryptocurrency,
+        cryptocurrencyAmount: cryptocurrencyAmount ?? this.cryptocurrencyAmount,
+        starCount: starCount ?? this.starCount,
+        transactionId: transactionId ?? this.transactionId,
+        sticker: sticker != null ? sticker() : this.sticker,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageGiftedStars';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -12,7 +12,7 @@ final class CanSendStory extends TdFunction<CanSendStoryResult> {
     required this.chatId,
   });
 
-  /// Chat identifier
+  /// Chat identifier. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   final int chatId;
 
   @override

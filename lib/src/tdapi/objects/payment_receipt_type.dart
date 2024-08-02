@@ -126,15 +126,15 @@ final class PaymentReceiptTypeRegular extends PaymentReceiptType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The payment was done using Telegram stars
+/// The payment was done using Telegram Stars
 final class PaymentReceiptTypeStars extends PaymentReceiptType {
-  /// The payment was done using Telegram stars
+  /// The payment was done using Telegram Stars
   const PaymentReceiptTypeStars({
     required this.starCount,
     required this.transactionId,
   });
 
-  /// Number of Telegram stars that were paid
+  /// Number of Telegram Stars that were paid
   final int starCount;
 
   /// Unique identifier of the transaction that can be used to dispute it

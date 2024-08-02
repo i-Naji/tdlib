@@ -17,7 +17,7 @@ final class GetCallbackQueryAnswer extends TdFunction<CallbackQueryAnswer> {
   /// Identifier of the chat with the message
   final int chatId;
 
-  /// Identifier of the message from which the query originated
+  /// Identifier of the message from which the query originated. The message must not be scheduled
   final int messageId;
 
   /// Query payload

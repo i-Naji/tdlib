@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns available options for Telegram stars purchase
+/// Returns available options for Telegram Stars purchase
 ///
 /// Returns [StarPaymentOptions].
 final class GetStarPaymentOptions extends TdFunction<StarPaymentOptions> {
-  /// Returns available options for Telegram stars purchase
+  /// Returns available options for Telegram Stars purchase
   const GetStarPaymentOptions();
 
   @override

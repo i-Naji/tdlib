@@ -7603,16 +7603,16 @@ final class UpdateSavedMessagesTags extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The number of Telegram stars owned by the current user has changed
+/// The number of Telegram Stars owned by the current user has changed
 final class UpdateOwnedStarCount extends Update {
-  /// The number of Telegram stars owned by the current user has changed
+  /// The number of Telegram Stars owned by the current user has changed
   const UpdateOwnedStarCount({
     required this.starCount,
     this.extra,
     this.clientId,
   });
 
-  /// The new number of Telegram stars owned
+  /// The new number of Telegram Stars owned
   final int starCount;
 
   /// "@extra" of the request this object answers.
@@ -7722,9 +7722,9 @@ final class UpdateChatRevenueAmount extends Update {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The Telegram star revenue earned by a bot or a chat has changed. If star transactions screen of the chat is opened, then getStarTransactions may be called to fetch new transactions
+/// The Telegram Star revenue earned by a bot or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions
 final class UpdateStarRevenueStatus extends Update {
-  /// The Telegram star revenue earned by a bot or a chat has changed. If star transactions screen of the chat is opened, then getStarTransactions may be called to fetch new transactions
+  /// The Telegram Star revenue earned by a bot or a chat has changed. If Telegram Star transaction screen of the chat is opened, then getStarTransactions may be called to fetch new transactions
   const UpdateStarRevenueStatus({
     required this.ownerId,
     required this.status,
@@ -7732,10 +7732,10 @@ final class UpdateStarRevenueStatus extends Update {
     this.clientId,
   });
 
-  /// Identifier of the owner of the Telegram stars
+  /// Identifier of the owner of the Telegram Stars
   final MessageSender ownerId;
 
-  /// New Telegram star revenue status
+  /// New Telegram Star revenue status
   final StarRevenueStatus status;
 
   /// "@extra" of the request this object answers.

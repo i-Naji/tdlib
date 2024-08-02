@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
+/// Returns an HTML code for embedding the message. Available only if messageProperties.can_get_embedding_code
 ///
 /// Returns [Text].
 final class GetMessageEmbeddingCode extends TdFunction<Text> {
-  /// Returns an HTML code for embedding the message. Available only for messages in supergroups and channels with a username
+  /// Returns an HTML code for embedding the message. Available only if messageProperties.can_get_embedding_code
   const GetMessageEmbeddingCode({
     required this.chatId,
     required this.messageId,

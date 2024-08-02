@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of options for buying Telegram stars
+/// Contains a list of options for buying Telegram Stars
 final class StarPaymentOptions extends TdObject {
-  /// Contains a list of options for buying Telegram stars
+  /// Contains a list of options for buying Telegram Stars
   const StarPaymentOptions({
     required this.options,
     this.extra,

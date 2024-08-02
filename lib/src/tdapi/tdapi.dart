@@ -6,6 +6,7 @@ import 'dart:convert' show json;
 part 'functions/accept_call.dart';
 part 'functions/accept_terms_of_service.dart';
 part 'functions/activate_story_stealth_mode.dart';
+part 'functions/add_bot_media_preview.dart';
 part 'functions/add_chat_folder_by_invite_link.dart';
 part 'functions/add_chat_member.dart';
 part 'functions/add_chat_members.dart';
@@ -107,6 +108,7 @@ part 'functions/create_video_chat.dart';
 part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
+part 'functions/delete_bot_media_previews.dart';
 part 'functions/delete_business_chat_link.dart';
 part 'functions/delete_business_connected_bot.dart';
 part 'functions/delete_chat.dart';
@@ -141,6 +143,7 @@ part 'functions/discard_call.dart';
 part 'functions/disconnect_all_websites.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/download_file.dart';
+part 'functions/edit_bot_media_preview.dart';
 part 'functions/edit_business_chat_link.dart';
 part 'functions/edit_business_message_caption.dart';
 part 'functions/edit_business_message_live_location.dart';
@@ -166,6 +169,7 @@ part 'functions/edit_message_text.dart';
 part 'functions/edit_proxy.dart';
 part 'functions/edit_quick_reply_message.dart';
 part 'functions/edit_story.dart';
+part 'functions/edit_story_cover.dart';
 part 'functions/enable_proxy.dart';
 part 'functions/end_group_call.dart';
 part 'functions/end_group_call_recording.dart';
@@ -195,6 +199,8 @@ part 'functions/get_basic_group_full_info.dart';
 part 'functions/get_blocked_message_senders.dart';
 part 'functions/get_bot_info_description.dart';
 part 'functions/get_bot_info_short_description.dart';
+part 'functions/get_bot_media_preview_info.dart';
+part 'functions/get_bot_media_previews.dart';
 part 'functions/get_bot_name.dart';
 part 'functions/get_business_chat_link_info.dart';
 part 'functions/get_business_chat_links.dart';
@@ -259,6 +265,7 @@ part 'functions/get_country_code.dart';
 part 'functions/get_country_flag_emoji.dart';
 part 'functions/get_created_public_chats.dart';
 part 'functions/get_current_state.dart';
+part 'functions/get_current_weather.dart';
 part 'functions/get_custom_emoji_reaction_animations.dart';
 part 'functions/get_custom_emoji_stickers.dart';
 part 'functions/get_database_statistics.dart';
@@ -313,6 +320,7 @@ part 'functions/get_log_tags.dart';
 part 'functions/get_log_verbosity_level.dart';
 part 'functions/get_login_url.dart';
 part 'functions/get_login_url_info.dart';
+part 'functions/get_main_web_app.dart';
 part 'functions/get_map_thumbnail_file.dart';
 part 'functions/get_markdown_text.dart';
 part 'functions/get_me.dart';
@@ -327,6 +335,7 @@ part 'functions/get_message_import_confirmation_text.dart';
 part 'functions/get_message_link.dart';
 part 'functions/get_message_link_info.dart';
 part 'functions/get_message_locally.dart';
+part 'functions/get_message_properties.dart';
 part 'functions/get_message_public_forwards.dart';
 part 'functions/get_message_read_date.dart';
 part 'functions/get_message_statistics.dart';
@@ -347,6 +356,7 @@ part 'functions/get_payment_receipt.dart';
 part 'functions/get_phone_number_info.dart';
 part 'functions/get_phone_number_info_sync.dart';
 part 'functions/get_poll_voters.dart';
+part 'functions/get_popular_web_app_bots.dart';
 part 'functions/get_preferred_country_language.dart';
 part 'functions/get_premium_features.dart';
 part 'functions/get_premium_gift_code_payment_options.dart';
@@ -380,6 +390,7 @@ part 'functions/get_scope_notification_settings.dart';
 part 'functions/get_searched_for_tags.dart';
 part 'functions/get_secret_chat.dart';
 part 'functions/get_star_ad_account_url.dart';
+part 'functions/get_star_gift_payment_options.dart';
 part 'functions/get_star_payment_options.dart';
 part 'functions/get_star_revenue_statistics.dart';
 part 'functions/get_star_transactions.dart';
@@ -493,6 +504,7 @@ part 'functions/remove_sticker_from_set.dart';
 part 'functions/remove_top_chat.dart';
 part 'functions/reorder_active_usernames.dart';
 part 'functions/reorder_bot_active_usernames.dart';
+part 'functions/reorder_bot_media_previews.dart';
 part 'functions/reorder_chat_folders.dart';
 part 'functions/reorder_installed_sticker_sets.dart';
 part 'functions/reorder_quick_reply_shortcuts.dart';
@@ -600,6 +612,7 @@ part 'functions/set_business_away_message_settings.dart';
 part 'functions/set_business_connected_bot.dart';
 part 'functions/set_business_greeting_message_settings.dart';
 part 'functions/set_business_location.dart';
+part 'functions/set_business_message_is_pinned.dart';
 part 'functions/set_business_opening_hours.dart';
 part 'functions/set_business_start_page.dart';
 part 'functions/set_chat_accent_color.dart';
@@ -803,6 +816,9 @@ part 'objects/bot_command.dart';
 part 'objects/bot_command_scope.dart';
 part 'objects/bot_commands.dart';
 part 'objects/bot_info.dart';
+part 'objects/bot_media_preview.dart';
+part 'objects/bot_media_preview_info.dart';
+part 'objects/bot_media_previews.dart';
 part 'objects/bot_menu_button.dart';
 part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
@@ -924,6 +940,7 @@ part 'objects/count.dart';
 part 'objects/countries.dart';
 part 'objects/country_info.dart';
 part 'objects/created_basic_group_chat.dart';
+part 'objects/current_weather.dart';
 part 'objects/custom_request_result.dart';
 part 'objects/database_statistics.dart';
 part 'objects/date.dart';
@@ -973,6 +990,7 @@ part 'objects/found_messages.dart';
 part 'objects/found_position.dart';
 part 'objects/found_positions.dart';
 part 'objects/found_stories.dart';
+part 'objects/found_users.dart';
 part 'objects/found_web_app.dart';
 part 'objects/game.dart';
 part 'objects/game_high_score.dart';
@@ -1044,6 +1062,7 @@ part 'objects/log_stream.dart';
 part 'objects/log_tags.dart';
 part 'objects/log_verbosity_level.dart';
 part 'objects/login_url_info.dart';
+part 'objects/main_web_app.dart';
 part 'objects/mask_point.dart';
 part 'objects/mask_position.dart';
 part 'objects/message.dart';
@@ -1063,6 +1082,7 @@ part 'objects/message_link_info.dart';
 part 'objects/message_origin.dart';
 part 'objects/message_position.dart';
 part 'objects/message_positions.dart';
+part 'objects/message_properties.dart';
 part 'objects/message_reaction.dart';
 part 'objects/message_reactions.dart';
 part 'objects/message_read_date.dart';
@@ -1304,14 +1324,14 @@ part 'objects/web_app_info.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.33';
+const String tdlibVersion = '1.8.34';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'cb164927417f22811c74cd8678ed4a5ab7cb80ba';
+const String tdlibSchemaCommit = '1fa2a372a88c26369dcac2ce476166531df74a77';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'cb164927417f22811c74cd8678ed4a5ab7cb80ba',
+  '1fa2a372a88c26369dcac2ce476166531df74a77',
 ];
 
 /// Base class of every TDLib object.
@@ -1539,6 +1559,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       StarTransactionPartnerTelegramAds.fromJson,
   'starTransactionPartnerBot': StarTransactionPartnerBot.fromJson,
   'starTransactionPartnerChannel': StarTransactionPartnerChannel.fromJson,
+  'starTransactionPartnerUser': StarTransactionPartnerUser.fromJson,
   'starTransactionPartnerUnsupported':
       StarTransactionPartnerUnsupported.fromJson,
   'starTransaction': StarTransaction.fromJson,
@@ -1565,6 +1586,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'botInfo': BotInfo.fromJson,
   'userFullInfo': UserFullInfo.fromJson,
   'users': Users.fromJson,
+  'foundUsers': FoundUsers.fromJson,
   'chatAdministrator': ChatAdministrator.fromJson,
   'chatAdministrators': ChatAdministrators.fromJson,
   'chatMemberStatusCreator': ChatMemberStatusCreator.fromJson,
@@ -1782,6 +1804,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'loginUrlInfoRequestConfirmation': LoginUrlInfoRequestConfirmation.fromJson,
   'foundWebApp': FoundWebApp.fromJson,
   'webAppInfo': WebAppInfo.fromJson,
+  'mainWebApp': MainWebApp.fromJson,
   'messageThreadInfo': MessageThreadInfo.fromJson,
   'savedMessagesTopicTypeMyNotes': SavedMessagesTopicTypeMyNotes.fromJson,
   'savedMessagesTopicTypeAuthorHidden':
@@ -1867,6 +1890,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewTypeChannelBoost': LinkPreviewTypeChannelBoost.fromJson,
   'linkPreviewTypeChat': LinkPreviewTypeChat.fromJson,
   'linkPreviewTypeDocument': LinkPreviewTypeDocument.fromJson,
+  'linkPreviewTypeEmbeddedAnimationPlayer':
+      LinkPreviewTypeEmbeddedAnimationPlayer.fromJson,
   'linkPreviewTypeEmbeddedAudioPlayer':
       LinkPreviewTypeEmbeddedAudioPlayer.fromJson,
   'linkPreviewTypeEmbeddedVideoPlayer':
@@ -2095,6 +2120,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messagePremiumGiveaway': MessagePremiumGiveaway.fromJson,
   'messagePremiumGiveawayCompleted': MessagePremiumGiveawayCompleted.fromJson,
   'messagePremiumGiveawayWinners': MessagePremiumGiveawayWinners.fromJson,
+  'messageGiftedStars': MessageGiftedStars.fromJson,
   'messageContactRegistered': MessageContactRegistered.fromJson,
   'messageUsersShared': MessageUsersShared.fromJson,
   'messageChatShared': MessageChatShared.fromJson,
@@ -2159,6 +2185,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessagePoll': InputMessagePoll.fromJson,
   'inputMessageStory': InputMessageStory.fromJson,
   'inputMessageForwarded': InputMessageForwarded.fromJson,
+  'messageProperties': MessageProperties.fromJson,
   'searchMessagesFilterEmpty': SearchMessagesFilterEmpty.fromJson,
   'searchMessagesFilterAnimation': SearchMessagesFilterAnimation.fromJson,
   'searchMessagesFilterAudio': SearchMessagesFilterAudio.fromJson,
@@ -2217,12 +2244,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'emojiCategoryTypeRegularStickers': EmojiCategoryTypeRegularStickers.fromJson,
   'emojiCategoryTypeEmojiStatus': EmojiCategoryTypeEmojiStatus.fromJson,
   'emojiCategoryTypeChatPhoto': EmojiCategoryTypeChatPhoto.fromJson,
+  'currentWeather': CurrentWeather.fromJson,
   'storyAreaPosition': StoryAreaPosition.fromJson,
   'storyAreaTypeLocation': StoryAreaTypeLocation.fromJson,
   'storyAreaTypeVenue': StoryAreaTypeVenue.fromJson,
   'storyAreaTypeSuggestedReaction': StoryAreaTypeSuggestedReaction.fromJson,
   'storyAreaTypeMessage': StoryAreaTypeMessage.fromJson,
   'storyAreaTypeLink': StoryAreaTypeLink.fromJson,
+  'storyAreaTypeWeather': StoryAreaTypeWeather.fromJson,
   'storyArea': StoryArea.fromJson,
   'inputStoryAreaTypeLocation': InputStoryAreaTypeLocation.fromJson,
   'inputStoryAreaTypeFoundVenue': InputStoryAreaTypeFoundVenue.fromJson,
@@ -2231,6 +2260,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       InputStoryAreaTypeSuggestedReaction.fromJson,
   'inputStoryAreaTypeMessage': InputStoryAreaTypeMessage.fromJson,
   'inputStoryAreaTypeLink': InputStoryAreaTypeLink.fromJson,
+  'inputStoryAreaTypeWeather': InputStoryAreaTypeWeather.fromJson,
   'inputStoryArea': InputStoryArea.fromJson,
   'inputStoryAreas': InputStoryAreas.fromJson,
   'storyVideo': StoryVideo.fromJson,
@@ -2262,6 +2292,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'publicForwardMessage': PublicForwardMessage.fromJson,
   'publicForwardStory': PublicForwardStory.fromJson,
   'publicForwards': PublicForwards.fromJson,
+  'botMediaPreview': BotMediaPreview.fromJson,
+  'botMediaPreviews': BotMediaPreviews.fromJson,
+  'botMediaPreviewInfo': BotMediaPreviewInfo.fromJson,
   'chatBoostLevelFeatures': ChatBoostLevelFeatures.fromJson,
   'chatBoostFeatures': ChatBoostFeatures.fromJson,
   'chatBoostSourceGiftCode': ChatBoostSourceGiftCode.fromJson,
@@ -2563,11 +2596,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storePaymentPurposePremiumGiveaway':
       StorePaymentPurposePremiumGiveaway.fromJson,
   'storePaymentPurposeStars': StorePaymentPurposeStars.fromJson,
+  'storePaymentPurposeGiftedStars': StorePaymentPurposeGiftedStars.fromJson,
   'telegramPaymentPurposePremiumGiftCodes':
       TelegramPaymentPurposePremiumGiftCodes.fromJson,
   'telegramPaymentPurposePremiumGiveaway':
       TelegramPaymentPurposePremiumGiveaway.fromJson,
   'telegramPaymentPurposeStars': TelegramPaymentPurposeStars.fromJson,
+  'telegramPaymentPurposeGiftedStars':
+      TelegramPaymentPurposeGiftedStars.fromJson,
   'deviceTokenFirebaseCloudMessaging':
       DeviceTokenFirebaseCloudMessaging.fromJson,
   'deviceTokenApplePush': DeviceTokenApplePush.fromJson,
@@ -2815,6 +2851,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeInvoice': InternalLinkTypeInvoice.fromJson,
   'internalLinkTypeLanguagePack': InternalLinkTypeLanguagePack.fromJson,
   'internalLinkTypeLanguageSettings': InternalLinkTypeLanguageSettings.fromJson,
+  'internalLinkTypeMainWebApp': InternalLinkTypeMainWebApp.fromJson,
   'internalLinkTypeMessage': InternalLinkTypeMessage.fromJson,
   'internalLinkTypeMessageDraft': InternalLinkTypeMessageDraft.fromJson,
   'internalLinkTypePassportDataRequest':
@@ -2832,7 +2869,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       InternalLinkTypeQrCodeAuthentication.fromJson,
   'internalLinkTypeRestorePurchases': InternalLinkTypeRestorePurchases.fromJson,
   'internalLinkTypeSettings': InternalLinkTypeSettings.fromJson,
-  'internalLinkTypeSideMenuBot': InternalLinkTypeSideMenuBot.fromJson,
   'internalLinkTypeStickerSet': InternalLinkTypeStickerSet.fromJson,
   'internalLinkTypeStory': InternalLinkTypeStory.fromJson,
   'internalLinkTypeTheme': InternalLinkTypeTheme.fromJson,
@@ -2903,6 +2939,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'topChatCategoryGroups': TopChatCategoryGroups.fromJson,
   'topChatCategoryChannels': TopChatCategoryChannels.fromJson,
   'topChatCategoryInlineBots': TopChatCategoryInlineBots.fromJson,
+  'topChatCategoryWebAppBots': TopChatCategoryWebAppBots.fromJson,
   'topChatCategoryCalls': TopChatCategoryCalls.fromJson,
   'topChatCategoryForwardChats': TopChatCategoryForwardChats.fromJson,
   'foundPosition': FoundPosition.fromJson,

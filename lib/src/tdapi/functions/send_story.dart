@@ -15,12 +15,12 @@ final class SendStory extends TdFunction<Story> {
     this.caption,
     required this.privacySettings,
     required this.activePeriod,
-    required this.fromStoryFullId,
+    this.fromStoryFullId,
     required this.isPostedToChatPage,
     required this.protectContent,
   });
 
-  /// Identifier of the chat that will post the story
+  /// Identifier of the chat that will post the story. Pass Saved Messages chat identifier when posting a story on behalf of the current user
   final int chatId;
 
   /// Content of the story
@@ -38,8 +38,8 @@ final class SendStory extends TdFunction<Story> {
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   final int activePeriod;
 
-  /// Full identifier of the original story, which content was used to create the story
-  final StoryFullId fromStoryFullId;
+  /// Full identifier of the original story, which content was used to create the story; pass null if the story isn't repost of another story
+  final StoryFullId? fromStoryFullId;
 
   /// Pass true to keep the story accessible after expiration
   final bool isPostedToChatPage;
@@ -56,7 +56,7 @@ final class SendStory extends TdFunction<Story> {
         'caption': caption?.toJson(),
         'privacy_settings': privacySettings.toJson(),
         'active_period': activePeriod,
-        'from_story_full_id': fromStoryFullId.toJson(),
+        'from_story_full_id': fromStoryFullId?.toJson(),
         'is_posted_to_chat_page': isPostedToChatPage,
         'protect_content': protectContent,
         if (extra != null) '@extra': extra,
@@ -71,7 +71,7 @@ final class SendStory extends TdFunction<Story> {
     FormattedText? Function()? caption,
     StoryPrivacySettings? privacySettings,
     int? activePeriod,
-    StoryFullId? fromStoryFullId,
+    StoryFullId? Function()? fromStoryFullId,
     bool? isPostedToChatPage,
     bool? protectContent,
   }) =>
@@ -82,7 +82,8 @@ final class SendStory extends TdFunction<Story> {
         caption: caption != null ? caption() : this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
         activePeriod: activePeriod ?? this.activePeriod,
-        fromStoryFullId: fromStoryFullId ?? this.fromStoryFullId,
+        fromStoryFullId:
+            fromStoryFullId != null ? fromStoryFullId() : this.fromStoryFullId,
         isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         protectContent: protectContent ?? this.protectContent,
       );

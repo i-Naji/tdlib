@@ -17,7 +17,7 @@ final class EditMessageSchedulingState extends TdFunction<Ok> {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_edit_scheduling_state to check whether the message is suitable
   final int messageId;
 
   /// The new message scheduling state; pass null to send the message immediately

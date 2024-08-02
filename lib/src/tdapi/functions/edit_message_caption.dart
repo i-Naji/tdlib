@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the message content caption. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
+/// Edits the message content caption. Returns the edited message after the edit is completed on the server side
 ///
 /// Returns [Message].
 final class EditMessageCaption extends TdFunction<Message> {
-  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side. Can be used only if message.can_be_edited == true
+  /// Edits the message content caption. Returns the edited message after the edit is completed on the server side
   const EditMessageCaption({
     required this.chatId,
     required this.messageId,
@@ -19,7 +19,7 @@ final class EditMessageCaption extends TdFunction<Message> {
   /// The chat the message belongs to
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_be_edited to check whether the message can be edited
   final int messageId;
 
   /// The new message reply markup; pass null if none; for bots only

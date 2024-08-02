@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes type of clickable rectangle area on a story media to be added
+/// Describes type of clickable area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink], [InputStoryAreaTypeWeather]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -252,7 +252,7 @@ final class InputStoryAreaTypeMessage extends InputStoryAreaType {
   /// Identifier of the chat with the message. Currently, the chat must be a supergroup or a channel chat
   final int chatId;
 
-  /// Identifier of the message. Only successfully sent non-scheduled messages can be specified
+  /// Identifier of the message. Use messageProperties.can_be_shared_in_story to check whether the message is suitable
   final int messageId;
 
   /// Parses a [InputStoryAreaTypeMessage] from TDLib JSON.
@@ -322,6 +322,61 @@ final class InputStoryAreaTypeLink extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeLink';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area with information about weather
+final class InputStoryAreaTypeWeather extends InputStoryAreaType {
+  /// An area with information about weather
+  const InputStoryAreaTypeWeather({
+    required this.temperature,
+    required this.emoji,
+    required this.backgroundColor,
+  });
+
+  /// Temperature, in degree Celsius
+  final double temperature;
+
+  /// Emoji representing the weather
+  final String emoji;
+
+  /// A color of the area background in the ARGB format
+  final int backgroundColor;
+
+  /// Parses a [InputStoryAreaTypeWeather] from TDLib JSON.
+  factory InputStoryAreaTypeWeather.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeWeather(
+        temperature: _readDouble(json['temperature']),
+        emoji: _readString(json['emoji']),
+        backgroundColor: _readInt(json['background_color']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'temperature': temperature,
+        'emoji': emoji,
+        'background_color': backgroundColor,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputStoryAreaTypeWeather copyWith({
+    double? temperature,
+    String? emoji,
+    int? backgroundColor,
+  }) =>
+      InputStoryAreaTypeWeather(
+        temperature: temperature ?? this.temperature,
+        emoji: emoji ?? this.emoji,
+        backgroundColor: backgroundColor ?? this.backgroundColor,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputStoryAreaTypeWeather';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -52,7 +52,7 @@ final class InputMessageReplyToMessage extends InputMessageReplyTo {
     this.quote,
   });
 
-  /// The identifier of the message to be replied in the same chat and forum topic
+  /// The identifier of the message to be replied in the same chat and forum topic. A message can be replied in the same chat and forum topic only if messageProperties.can_be_replied
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none. Must always be null for replies in secret chats
@@ -103,7 +103,7 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
   /// The identifier of the chat to which the message to be replied belongs
   final int chatId;
 
-  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or topic only if message.can_be_replied_in_another_chat
+  /// The identifier of the message to be replied in the specified chat. A message can be replied in another chat or forum topic only if messageProperties.can_be_replied_in_another_chat
   final int messageId;
 
   /// Quote from the message to be replied; pass null if none

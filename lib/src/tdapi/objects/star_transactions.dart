@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of Telegram star transactions
+/// Represents a list of Telegram Star transactions
 final class StarTransactions extends TdObject {
-  /// Represents a list of Telegram star transactions
+  /// Represents a list of Telegram Star transactions
   const StarTransactions({
     required this.starCount,
     required this.transactions,
@@ -14,10 +14,10 @@ final class StarTransactions extends TdObject {
     this.clientId,
   });
 
-  /// The amount of owned Telegram stars
+  /// The amount of owned Telegram Stars
   final int starCount;
 
-  /// List of transactions with Telegram stars
+  /// List of transactions with Telegram Stars
   final List<StarTransaction> transactions;
 
   /// The offset for the next request. If empty, then there are no more results

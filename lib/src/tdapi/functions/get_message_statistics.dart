@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true
+/// Returns detailed statistics about a message. Can be used only if messageProperties.can_get_statistics == true
 ///
 /// Returns [MessageStatistics].
 final class GetMessageStatistics extends TdFunction<MessageStatistics> {
-  /// Returns detailed statistics about a message. Can be used only if message.can_get_statistics == true
+  /// Returns detailed statistics about a message. Can be used only if messageProperties.can_get_statistics == true
   const GetMessageStatistics({
     required this.chatId,
     required this.messageId,

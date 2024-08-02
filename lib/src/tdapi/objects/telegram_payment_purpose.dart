@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of a payment toward Telegram
 ///
-/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
+/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
 sealed class TelegramPaymentPurpose extends TdObject {
   const TelegramPaymentPurpose();
 
@@ -191,9 +191,9 @@ final class TelegramPaymentPurposePremiumGiveaway
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user buying Telegram stars
+/// The user buying Telegram Stars
 final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
-  /// The user buying Telegram stars
+  /// The user buying Telegram Stars
   const TelegramPaymentPurposeStars({
     required this.currency,
     required this.amount,
@@ -206,7 +206,7 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
   /// Paid amount, in the smallest units of the currency
   final int amount;
 
-  /// Number of bought stars
+  /// Number of bought Telegram Stars
   final int starCount;
 
   /// Parses a [TelegramPaymentPurposeStars] from TDLib JSON.
@@ -241,6 +241,70 @@ final class TelegramPaymentPurposeStars extends TelegramPaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user buying Telegram Stars for other users
+final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
+  /// The user buying Telegram Stars for other users
+  const TelegramPaymentPurposeGiftedStars({
+    required this.userId,
+    required this.currency,
+    required this.amount,
+    required this.starCount,
+  });
+
+  /// Identifier of the user to which Telegram Stars are gifted
+  final int userId;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Number of bought Telegram Stars
+  final int starCount;
+
+  /// Parses a [TelegramPaymentPurposeGiftedStars] from TDLib JSON.
+  factory TelegramPaymentPurposeGiftedStars.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposeGiftedStars(
+        userId: _readInt(json['user_id']),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'currency': currency,
+        'amount': amount,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TelegramPaymentPurposeGiftedStars copyWith({
+    int? userId,
+    String? currency,
+    int? amount,
+    int? starCount,
+  }) =>
+      TelegramPaymentPurposeGiftedStars(
+        userId: userId ?? this.userId,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'telegramPaymentPurposeGiftedStars';
 
   @override
   String getConstructor() => CONSTRUCTOR;

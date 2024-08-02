@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+/// Returns all scheduled messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
 ///
 /// Returns [Messages].
 final class GetChatScheduledMessages extends TdFunction<Messages> {
-  /// Returns all scheduled messages in a chat. The messages are returned in a reverse chronological order (i.e., in order of decreasing message_id)
+  /// Returns all scheduled messages in a chat. The messages are returned in reverse chronological order (i.e., in order of decreasing message_id)
   const GetChatScheduledMessages({
     required this.chatId,
   });

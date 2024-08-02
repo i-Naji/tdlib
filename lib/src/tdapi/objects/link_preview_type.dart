@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -482,17 +482,103 @@ final class LinkPreviewTypeDocument extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The link is a link to an animation player
+final class LinkPreviewTypeEmbeddedAnimationPlayer extends LinkPreviewType {
+  /// The link is a link to an animation player
+  const LinkPreviewTypeEmbeddedAnimationPlayer({
+    required this.url,
+    this.thumbnail,
+    required this.duration,
+    required this.author,
+    required this.width,
+    required this.height,
+  });
+
+  /// URL of the external animation player
+  final String url;
+
+  /// Thumbnail of the animation; may be null if unknown
+  final Photo? thumbnail;
+
+  /// Duration of the animation, in seconds
+  final int duration;
+
+  /// Author of the animation
+  final String author;
+
+  /// Expected width of the embedded player
+  final int width;
+
+  /// Expected height of the embedded player
+  final int height;
+
+  /// Parses a [LinkPreviewTypeEmbeddedAnimationPlayer] from TDLib JSON.
+  factory LinkPreviewTypeEmbeddedAnimationPlayer.fromJson(
+          Map<String, dynamic> json) =>
+      LinkPreviewTypeEmbeddedAnimationPlayer(
+        url: _readString(json['url']),
+        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
+        duration: _readInt(json['duration']),
+        author: _readString(json['author']),
+        width: _readInt(json['width']),
+        height: _readInt(json['height']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'url': url,
+        'thumbnail': thumbnail?.toJson(),
+        'duration': duration,
+        'author': author,
+        'width': width,
+        'height': height,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeEmbeddedAnimationPlayer copyWith({
+    String? url,
+    Photo? Function()? thumbnail,
+    int? duration,
+    String? author,
+    int? width,
+    int? height,
+  }) =>
+      LinkPreviewTypeEmbeddedAnimationPlayer(
+        url: url ?? this.url,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+        duration: duration ?? this.duration,
+        author: author ?? this.author,
+        width: width ?? this.width,
+        height: height ?? this.height,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeEmbeddedAnimationPlayer';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The link is a link to an audio player
 final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   /// The link is a link to an audio player
   const LinkPreviewTypeEmbeddedAudioPlayer({
     required this.url,
+    this.thumbnail,
     required this.duration,
     required this.author,
+    required this.width,
+    required this.height,
   });
 
   /// URL of the external audio player
   final String url;
+
+  /// Thumbnail of the audio; may be null if unknown
+  final Photo? thumbnail;
 
   /// Duration of the audio, in seconds
   final int duration;
@@ -500,21 +586,33 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   /// Author of the audio
   final String author;
 
+  /// Expected width of the embedded player
+  final int width;
+
+  /// Expected height of the embedded player
+  final int height;
+
   /// Parses a [LinkPreviewTypeEmbeddedAudioPlayer] from TDLib JSON.
   factory LinkPreviewTypeEmbeddedAudioPlayer.fromJson(
           Map<String, dynamic> json) =>
       LinkPreviewTypeEmbeddedAudioPlayer(
         url: _readString(json['url']),
+        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
         duration: _readInt(json['duration']),
         author: _readString(json['author']),
+        width: _readInt(json['width']),
+        height: _readInt(json['height']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'url': url,
+        'thumbnail': thumbnail?.toJson(),
         'duration': duration,
         'author': author,
+        'width': width,
+        'height': height,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -522,13 +620,19 @@ final class LinkPreviewTypeEmbeddedAudioPlayer extends LinkPreviewType {
   @override
   LinkPreviewTypeEmbeddedAudioPlayer copyWith({
     String? url,
+    Photo? Function()? thumbnail,
     int? duration,
     String? author,
+    int? width,
+    int? height,
   }) =>
       LinkPreviewTypeEmbeddedAudioPlayer(
         url: url ?? this.url,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         duration: duration ?? this.duration,
         author: author ?? this.author,
+        width: width ?? this.width,
+        height: height ?? this.height,
       );
 
   /// TDLib type name.
@@ -543,6 +647,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   /// The link is a link to a video player
   const LinkPreviewTypeEmbeddedVideoPlayer({
     required this.url,
+    this.thumbnail,
     required this.duration,
     required this.author,
     required this.width,
@@ -552,16 +657,19 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   /// URL of the external video player
   final String url;
 
+  /// Thumbnail of the video; may be null if unknown
+  final Photo? thumbnail;
+
   /// Duration of the video, in seconds
   final int duration;
 
   /// Author of the video
   final String author;
 
-  /// Expected width of the preview
+  /// Expected width of the embedded player
   final int width;
 
-  /// Expected height of the preview
+  /// Expected height of the embedded player
   final int height;
 
   /// Parses a [LinkPreviewTypeEmbeddedVideoPlayer] from TDLib JSON.
@@ -569,6 +677,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
           Map<String, dynamic> json) =>
       LinkPreviewTypeEmbeddedVideoPlayer(
         url: _readString(json['url']),
+        thumbnail: _readOptional(json['thumbnail'], Photo.fromJson),
         duration: _readInt(json['duration']),
         author: _readString(json['author']),
         width: _readInt(json['width']),
@@ -579,6 +688,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'url': url,
+        'thumbnail': thumbnail?.toJson(),
         'duration': duration,
         'author': author,
         'width': width,
@@ -590,6 +700,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   @override
   LinkPreviewTypeEmbeddedVideoPlayer copyWith({
     String? url,
+    Photo? Function()? thumbnail,
     int? duration,
     String? author,
     int? width,
@@ -597,6 +708,7 @@ final class LinkPreviewTypeEmbeddedVideoPlayer extends LinkPreviewType {
   }) =>
       LinkPreviewTypeEmbeddedVideoPlayer(
         url: url ?? this.url,
+        thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         duration: duration ?? this.duration,
         author: author ?? this.author,
         width: width ?? this.width,

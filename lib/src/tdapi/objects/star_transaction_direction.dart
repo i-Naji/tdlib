@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Describes direction of a transaction with Telegram stars
+/// Describes direction of a transaction with Telegram Stars
 ///
 /// One of: [StarTransactionDirectionIncoming], [StarTransactionDirectionOutgoing]; or [UndecodedStarTransactionDirection] for a type newer than this API.
 sealed class StarTransactionDirection extends TdObject {
@@ -44,9 +44,9 @@ final class UndecodedStarTransactionDirection extends StarTransactionDirection {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The transaction is incoming and increases the number of owned Telegram stars
+/// The transaction is incoming and increases the number of owned Telegram Stars
 final class StarTransactionDirectionIncoming extends StarTransactionDirection {
-  /// The transaction is incoming and increases the number of owned Telegram stars
+  /// The transaction is incoming and increases the number of owned Telegram Stars
   const StarTransactionDirectionIncoming();
 
   /// Parses a [StarTransactionDirectionIncoming] from TDLib JSON.
@@ -72,9 +72,9 @@ final class StarTransactionDirectionIncoming extends StarTransactionDirection {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is outgoing and decreases the number of owned Telegram stars
+/// The transaction is outgoing and decreases the number of owned Telegram Stars
 final class StarTransactionDirectionOutgoing extends StarTransactionDirection {
-  /// The transaction is outgoing and decreases the number of owned Telegram stars
+  /// The transaction is outgoing and decreases the number of owned Telegram Stars
   const StarTransactionDirectionOutgoing();
 
   /// Parses a [StarTransactionDirectionOutgoing] from TDLib JSON.

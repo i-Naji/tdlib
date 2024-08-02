@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes source or recipient of a transaction with Telegram stars
+/// Describes source or recipient of a transaction with Telegram Stars
 ///
-/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerChannel], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
+/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerChannel], [StarTransactionPartnerUser], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
 sealed class StarTransactionPartner extends TdObject {
   const StarTransactionPartner();
 
@@ -199,13 +199,13 @@ final class StarTransactionPartnerTelegramAds extends StarTransactionPartner {
 final class StarTransactionPartnerBot extends StarTransactionPartner {
   /// The transaction is a transaction with a bot
   const StarTransactionPartnerBot({
-    required this.botUserId,
+    required this.userId,
     this.productInfo,
     required this.invoicePayload,
   });
 
-  /// Identifier of the bot
-  final int botUserId;
+  /// Identifier of the bot for the user, or the user for the bot
+  final int userId;
 
   /// Information about the bought product; may be null if not applicable
   final ProductInfo? productInfo;
@@ -216,7 +216,7 @@ final class StarTransactionPartnerBot extends StarTransactionPartner {
   /// Parses a [StarTransactionPartnerBot] from TDLib JSON.
   factory StarTransactionPartnerBot.fromJson(Map<String, dynamic> json) =>
       StarTransactionPartnerBot(
-        botUserId: _readInt(json['bot_user_id']),
+        userId: _readInt(json['user_id']),
         productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
         invoicePayload: _readString(json['invoice_payload']),
       );
@@ -224,7 +224,7 @@ final class StarTransactionPartnerBot extends StarTransactionPartner {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'bot_user_id': botUserId,
+        'user_id': userId,
         'product_info': productInfo?.toJson(),
         'invoice_payload': invoicePayload,
       };
@@ -233,12 +233,12 @@ final class StarTransactionPartnerBot extends StarTransactionPartner {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StarTransactionPartnerBot copyWith({
-    int? botUserId,
+    int? userId,
     ProductInfo? Function()? productInfo,
     String? invoicePayload,
   }) =>
       StarTransactionPartnerBot(
-        botUserId: botUserId ?? this.botUserId,
+        userId: userId ?? this.userId,
         productInfo: productInfo != null ? productInfo() : this.productInfo,
         invoicePayload: invoicePayload ?? this.invoicePayload,
       );
@@ -301,6 +301,53 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionPartnerChannel';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a gift of Telegram Stars from another user
+final class StarTransactionPartnerUser extends StarTransactionPartner {
+  /// The transaction is a gift of Telegram Stars from another user
+  const StarTransactionPartnerUser({
+    required this.userId,
+    this.sticker,
+  });
+
+  /// Identifier of the user; 0 if the gift was anonymous
+  final int userId;
+
+  /// A sticker to be shown in the transaction information; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parses a [StarTransactionPartnerUser] from TDLib JSON.
+  factory StarTransactionPartnerUser.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerUser(
+        userId: _readInt(json['user_id']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'sticker': sticker?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionPartnerUser copyWith({
+    int? userId,
+    Sticker? Function()? sticker,
+  }) =>
+      StarTransactionPartnerUser(
+        userId: userId ?? this.userId,
+        sticker: sticker != null ? sticker() : this.sticker,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionPartnerUser';
 
   @override
   String getConstructor() => CONSTRUCTOR;

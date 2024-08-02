@@ -17,7 +17,7 @@ final class GetLoginUrlInfo extends TdFunction<LoginUrlInfo> {
   /// Chat identifier of the message with the button
   final int chatId;
 
-  /// Message identifier of the message with the button
+  /// Message identifier of the message with the button. The message must not be scheduled
   final int messageId;
 
   /// Button identifier

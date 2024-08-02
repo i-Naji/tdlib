@@ -364,7 +364,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
     required this.showCaptionAboveMedia,
   });
 
-  /// The number of stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
+  /// The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
   final int starCount;
 
   /// The content of the paid media
@@ -1391,7 +1391,7 @@ final class InputMessageForwarded extends InputMessageContent {
   /// Identifier for the chat this forwarded message came from
   final int fromChatId;
 
-  /// Identifier of the message to forward. A message can be forwarded only if message.can_be_forwarded
+  /// Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded
   final int messageId;
 
   /// True, if a game message is being shared from a launched game; applies only to game messages

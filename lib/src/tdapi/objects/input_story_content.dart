@@ -99,6 +99,7 @@ final class InputStoryContentVideo extends InputStoryContent {
     required this.video,
     required this.addedStickerFileIds,
     required this.duration,
+    required this.coverFrameTimestamp,
     required this.isAnimation,
   });
 
@@ -111,6 +112,9 @@ final class InputStoryContentVideo extends InputStoryContent {
   /// Precise duration of the video, in seconds; 0-60
   final double duration;
 
+  /// Timestamp of the frame, which will be used as video thumbnail
+  final double coverFrameTimestamp;
+
   /// True, if the video has no sound
   final bool isAnimation;
 
@@ -121,6 +125,7 @@ final class InputStoryContentVideo extends InputStoryContent {
         addedStickerFileIds:
             _readList<int>(json['added_sticker_file_ids'], _readInt),
         duration: _readDouble(json['duration']),
+        coverFrameTimestamp: _readDouble(json['cover_frame_timestamp']),
         isAnimation: _readBool(json['is_animation']),
       );
 
@@ -130,6 +135,7 @@ final class InputStoryContentVideo extends InputStoryContent {
         'video': video.toJson(),
         'added_sticker_file_ids': addedStickerFileIds,
         'duration': duration,
+        'cover_frame_timestamp': coverFrameTimestamp,
         'is_animation': isAnimation,
       };
 
@@ -140,12 +146,14 @@ final class InputStoryContentVideo extends InputStoryContent {
     InputFile? video,
     List<int>? addedStickerFileIds,
     double? duration,
+    double? coverFrameTimestamp,
     bool? isAnimation,
   }) =>
       InputStoryContentVideo(
         video: video ?? this.video,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         duration: duration ?? this.duration,
+        coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
         isAnimation: isAnimation ?? this.isAnimation,
       );
 

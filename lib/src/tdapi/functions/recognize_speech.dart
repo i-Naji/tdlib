@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Recognizes speech in a video note or a voice note message. The message must be successfully sent, must not be scheduled, and must be from a non-secret chat
+/// Recognizes speech in a video note or a voice note message
 ///
 /// Returns [Ok].
 final class RecognizeSpeech extends TdFunction<Ok> {
-  /// Recognizes speech in a video note or a voice note message. The message must be successfully sent, must not be scheduled, and must be from a non-secret chat
+  /// Recognizes speech in a video note or a voice note message
   const RecognizeSpeech({
     required this.chatId,
     required this.messageId,
@@ -16,7 +16,7 @@ final class RecognizeSpeech extends TdFunction<Ok> {
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
-  /// Identifier of the message
+  /// Identifier of the message. Use messageProperties.can_recognize_speech to check whether the message is suitable
   final int messageId;
 
   @override

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents the categories of chats for which a list of frequently used chats can be retrieved
 ///
-/// One of: [TopChatCategoryUsers], [TopChatCategoryBots], [TopChatCategoryGroups], [TopChatCategoryChannels], [TopChatCategoryInlineBots], [TopChatCategoryCalls], [TopChatCategoryForwardChats]; or [UndecodedTopChatCategory] for a type newer than this API.
+/// One of: [TopChatCategoryUsers], [TopChatCategoryBots], [TopChatCategoryGroups], [TopChatCategoryChannels], [TopChatCategoryInlineBots], [TopChatCategoryWebAppBots], [TopChatCategoryCalls], [TopChatCategoryForwardChats]; or [UndecodedTopChatCategory] for a type newer than this API.
 sealed class TopChatCategory extends TdObject {
   const TopChatCategory();
 
@@ -167,6 +167,32 @@ final class TopChatCategoryInlineBots extends TopChatCategory {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'topChatCategoryInlineBots';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A category containing frequently used chats with bots, which Web Apps were opened
+final class TopChatCategoryWebAppBots extends TopChatCategory {
+  /// A category containing frequently used chats with bots, which Web Apps were opened
+  const TopChatCategoryWebAppBots();
+
+  /// Parses a [TopChatCategoryWebAppBots] from TDLib JSON.
+  factory TopChatCategoryWebAppBots.fromJson(Map<String, dynamic> json) =>
+      const TopChatCategoryWebAppBots();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TopChatCategoryWebAppBots copyWith() => const TopChatCategoryWebAppBots();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'topChatCategoryWebAppBots';
 
   @override
   String getConstructor() => CONSTRUCTOR;

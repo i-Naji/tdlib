@@ -16,7 +16,7 @@ final class ReportSupergroupSpam extends TdFunction<Ok> {
   /// Supergroup identifier
   final int supergroupId;
 
-  /// Identifiers of messages to report
+  /// Identifiers of messages to report. Use messageProperties.can_be_reported to check whether the message can be reported
   final List<int> messageIds;
 
   @override

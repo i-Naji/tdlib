@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// A detailed statistics about Telegram stars earned by a bot or a chat
+/// A detailed statistics about Telegram Stars earned by a bot or a chat
 final class StarRevenueStatistics extends TdObject {
-  /// A detailed statistics about Telegram stars earned by a bot or a chat
+  /// A detailed statistics about Telegram Stars earned by a bot or a chat
   const StarRevenueStatistics({
     required this.revenueByDayGraph,
     required this.status,
@@ -17,10 +17,10 @@ final class StarRevenueStatistics extends TdObject {
   /// A graph containing amount of revenue in a given day
   final StatisticalGraph revenueByDayGraph;
 
-  /// Telegram star revenue status
+  /// Telegram Star revenue status
   final StarRevenueStatus status;
 
-  /// Current conversion rate of a Telegram star to USD
+  /// Current conversion rate of a Telegram Star to USD
   final double usdRate;
 
   /// "@extra" of the request this object answers.

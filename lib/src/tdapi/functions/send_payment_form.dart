@@ -29,7 +29,7 @@ final class SendPaymentForm extends TdFunction<PaymentResult> {
   /// Identifier of a chosen shipping option, if applicable
   final String shippingOptionId;
 
-  /// The credentials chosen by user for payment; pass null for a payment in Telegram stars
+  /// The credentials chosen by user for payment; pass null for a payment in Telegram Stars
   final InputCredentials? credentials;
 
   /// Chosen by the user amount of tip in the smallest units of the currency
