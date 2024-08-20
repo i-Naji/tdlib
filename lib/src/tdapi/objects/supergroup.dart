@@ -16,6 +16,7 @@ final class Supergroup extends TdObject {
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
+    required this.showMessageSender,
     required this.joinToSendMessages,
     required this.joinByRequest,
     required this.isSlowModeEnabled,
@@ -23,6 +24,7 @@ final class Supergroup extends TdObject {
     required this.isBroadcastGroup,
     required this.isForum,
     required this.isVerified,
+    required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.isScam,
     required this.isFake,
@@ -56,8 +58,11 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is connected to a location, i.e. the supergroup is a location-based supergroup
   final bool hasLocation;
 
-  /// True, if messages sent to the channel need to contain information about the sender. This field is only applicable to channels
+  /// True, if messages sent to the channel contains name of the sender. This field is only applicable to channels
   final bool signMessages;
+
+  /// True, if messages sent to the channel have information about the sender user. This field is only applicable to channels
+  final bool showMessageSender;
 
   /// True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups
   final bool joinToSendMessages;
@@ -79,6 +84,9 @@ final class Supergroup extends TdObject {
 
   /// True, if the supergroup or channel is verified
   final bool isVerified;
+
+  /// True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
+  final bool hasSensitiveContent;
 
   /// If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   final String restrictionReason;
@@ -114,6 +122,7 @@ final class Supergroup extends TdObject {
         hasLinkedChat: _readBool(json['has_linked_chat']),
         hasLocation: _readBool(json['has_location']),
         signMessages: _readBool(json['sign_messages']),
+        showMessageSender: _readBool(json['show_message_sender']),
         joinToSendMessages: _readBool(json['join_to_send_messages']),
         joinByRequest: _readBool(json['join_by_request']),
         isSlowModeEnabled: _readBool(json['is_slow_mode_enabled']),
@@ -121,6 +130,7 @@ final class Supergroup extends TdObject {
         isBroadcastGroup: _readBool(json['is_broadcast_group']),
         isForum: _readBool(json['is_forum']),
         isVerified: _readBool(json['is_verified']),
+        hasSensitiveContent: _readBool(json['has_sensitive_content']),
         restrictionReason: _readString(json['restriction_reason']),
         isScam: _readBool(json['is_scam']),
         isFake: _readBool(json['is_fake']),
@@ -142,6 +152,7 @@ final class Supergroup extends TdObject {
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,
+        'show_message_sender': showMessageSender,
         'join_to_send_messages': joinToSendMessages,
         'join_by_request': joinByRequest,
         'is_slow_mode_enabled': isSlowModeEnabled,
@@ -149,6 +160,7 @@ final class Supergroup extends TdObject {
         'is_broadcast_group': isBroadcastGroup,
         'is_forum': isForum,
         'is_verified': isVerified,
+        'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
         'is_scam': isScam,
         'is_fake': isFake,
@@ -168,6 +180,7 @@ final class Supergroup extends TdObject {
     bool? hasLinkedChat,
     bool? hasLocation,
     bool? signMessages,
+    bool? showMessageSender,
     bool? joinToSendMessages,
     bool? joinByRequest,
     bool? isSlowModeEnabled,
@@ -175,6 +188,7 @@ final class Supergroup extends TdObject {
     bool? isBroadcastGroup,
     bool? isForum,
     bool? isVerified,
+    bool? hasSensitiveContent,
     String? restrictionReason,
     bool? isScam,
     bool? isFake,
@@ -193,6 +207,7 @@ final class Supergroup extends TdObject {
         hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
         hasLocation: hasLocation ?? this.hasLocation,
         signMessages: signMessages ?? this.signMessages,
+        showMessageSender: showMessageSender ?? this.showMessageSender,
         joinToSendMessages: joinToSendMessages ?? this.joinToSendMessages,
         joinByRequest: joinByRequest ?? this.joinByRequest,
         isSlowModeEnabled: isSlowModeEnabled ?? this.isSlowModeEnabled,
@@ -200,6 +215,7 @@ final class Supergroup extends TdObject {
         isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
         isForum: isForum ?? this.isForum,
         isVerified: isVerified ?? this.isVerified,
+        hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         isScam: isScam ?? this.isScam,
         isFake: isFake ?? this.isFake,

@@ -11,6 +11,7 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
   const GetChatInviteLinkMembers({
     required this.chatId,
     required this.inviteLink,
+    required this.onlyWithExpiredSubscription,
     this.offsetMember,
     required this.limit,
   });
@@ -20,6 +21,9 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
 
   /// Invite link for which to return chat members
   final String inviteLink;
+
+  /// Pass true if the link is a subscription link and only members with expired subscription must be returned
+  final bool onlyWithExpiredSubscription;
 
   /// A chat member from which to return next chat members; pass null to get results from the beginning
   final ChatInviteLinkMember? offsetMember;
@@ -32,6 +36,7 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'invite_link': inviteLink,
+        'only_with_expired_subscription': onlyWithExpiredSubscription,
         'offset_member': offsetMember?.toJson(),
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -42,12 +47,15 @@ final class GetChatInviteLinkMembers extends TdFunction<ChatInviteLinkMembers> {
   GetChatInviteLinkMembers copyWith({
     int? chatId,
     String? inviteLink,
+    bool? onlyWithExpiredSubscription,
     ChatInviteLinkMember? Function()? offsetMember,
     int? limit,
   }) =>
       GetChatInviteLinkMembers(
         chatId: chatId ?? this.chatId,
         inviteLink: inviteLink ?? this.inviteLink,
+        onlyWithExpiredSubscription:
+            onlyWithExpiredSubscription ?? this.onlyWithExpiredSubscription,
         offsetMember: offsetMember != null ? offsetMember() : this.offsetMember,
         limit: limit ?? this.limit,
       );

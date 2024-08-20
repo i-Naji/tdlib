@@ -16,6 +16,7 @@ final class ChatInviteLinkInfo extends TdObject {
     required this.description,
     required this.memberCount,
     required this.memberUserIds,
+    this.subscriptionInfo,
     required this.createsJoinRequest,
     required this.isPublic,
     required this.isVerified,
@@ -52,6 +53,9 @@ final class ChatInviteLinkInfo extends TdObject {
   /// User identifiers of some chat members that may be known to the current user
   final List<int> memberUserIds;
 
+  /// Information about subscription plan that must be paid by the user to use the link; may be null if the link doesn't require subscription
+  final ChatInviteLinkSubscriptionInfo? subscriptionInfo;
+
   /// True, if the link only creates join request
   final bool createsJoinRequest;
 
@@ -87,6 +91,8 @@ final class ChatInviteLinkInfo extends TdObject {
         description: _readString(json['description']),
         memberCount: _readInt(json['member_count']),
         memberUserIds: _readList<int>(json['member_user_ids'], _readInt),
+        subscriptionInfo: _readOptional(
+            json['subscription_info'], ChatInviteLinkSubscriptionInfo.fromJson),
         createsJoinRequest: _readBool(json['creates_join_request']),
         isPublic: _readBool(json['is_public']),
         isVerified: _readBool(json['is_verified']),
@@ -108,6 +114,7 @@ final class ChatInviteLinkInfo extends TdObject {
         'description': description,
         'member_count': memberCount,
         'member_user_ids': memberUserIds,
+        'subscription_info': subscriptionInfo?.toJson(),
         'creates_join_request': createsJoinRequest,
         'is_public': isPublic,
         'is_verified': isVerified,
@@ -127,6 +134,7 @@ final class ChatInviteLinkInfo extends TdObject {
     String? description,
     int? memberCount,
     List<int>? memberUserIds,
+    ChatInviteLinkSubscriptionInfo? Function()? subscriptionInfo,
     bool? createsJoinRequest,
     bool? isPublic,
     bool? isVerified,
@@ -145,6 +153,9 @@ final class ChatInviteLinkInfo extends TdObject {
         description: description ?? this.description,
         memberCount: memberCount ?? this.memberCount,
         memberUserIds: memberUserIds ?? this.memberUserIds,
+        subscriptionInfo: subscriptionInfo != null
+            ? subscriptionInfo()
+            : this.subscriptionInfo,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
         isPublic: isPublic ?? this.isPublic,
         isVerified: isVerified ?? this.isVerified,

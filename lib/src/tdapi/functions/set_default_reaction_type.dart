@@ -12,7 +12,7 @@ final class SetDefaultReactionType extends TdFunction<Ok> {
     required this.reactionType,
   });
 
-  /// New type of the default reaction
+  /// New type of the default reaction. The paid reaction can't be set as default
   final ReactionType reactionType;
 
   @override

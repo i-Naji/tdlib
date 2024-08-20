@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of a payment toward Telegram
 ///
-/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
+/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars], [TelegramPaymentPurposeJoinChat]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
 sealed class TelegramPaymentPurpose extends TdObject {
   const TelegramPaymentPurpose();
 
@@ -305,6 +305,45 @@ final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeGiftedStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user joins a chat and subscribes to regular payments in Telegram Stars
+final class TelegramPaymentPurposeJoinChat extends TelegramPaymentPurpose {
+  /// The user joins a chat and subscribes to regular payments in Telegram Stars
+  const TelegramPaymentPurposeJoinChat({
+    required this.inviteLink,
+  });
+
+  /// Invite link to use
+  final String inviteLink;
+
+  /// Parses a [TelegramPaymentPurposeJoinChat] from TDLib JSON.
+  factory TelegramPaymentPurposeJoinChat.fromJson(Map<String, dynamic> json) =>
+      TelegramPaymentPurposeJoinChat(
+        inviteLink: _readString(json['invite_link']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'invite_link': inviteLink,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TelegramPaymentPurposeJoinChat copyWith({
+    String? inviteLink,
+  }) =>
+      TelegramPaymentPurposeJoinChat(
+        inviteLink: inviteLink ?? this.inviteLink,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'telegramPaymentPurposeJoinChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;

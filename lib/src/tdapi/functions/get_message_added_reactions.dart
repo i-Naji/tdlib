@@ -19,10 +19,10 @@ final class GetMessageAddedReactions extends TdFunction<AddedReactions> {
   /// Identifier of the chat to which the message belongs
   final int chatId;
 
-  /// Identifier of the message. Use messageProperties.can_get_added_reactions to check whether added reactions can be received for the message
+  /// Identifier of the message. Use message.interaction_info.reactions.can_get_added_reactions to check whether added reactions can be received for the message
   final int messageId;
 
-  /// Type of the reactions to return; pass null to return all added reactions
+  /// Type of the reactions to return; pass null to return all added reactions; reactionTypePaid isn't supported
   final ReactionType? reactionType;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results

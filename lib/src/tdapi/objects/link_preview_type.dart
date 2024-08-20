@@ -307,21 +307,28 @@ final class LinkPreviewTypeBackground extends LinkPreviewType {
   /// The link is a link to a background. Link preview title and description are available only for filled backgrounds
   const LinkPreviewTypeBackground({
     this.document,
+    this.backgroundType,
   });
 
   /// Document with the background; may be null for filled backgrounds
   final Document? document;
 
+  /// Type of the background; may be null if unknown
+  final BackgroundType? backgroundType;
+
   /// Parses a [LinkPreviewTypeBackground] from TDLib JSON.
   factory LinkPreviewTypeBackground.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeBackground(
         document: _readOptional(json['document'], Document.fromJson),
+        backgroundType:
+            _readOptional(json['background_type'], BackgroundType.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'document': document?.toJson(),
+        'background_type': backgroundType?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -329,9 +336,12 @@ final class LinkPreviewTypeBackground extends LinkPreviewType {
   @override
   LinkPreviewTypeBackground copyWith({
     Document? Function()? document,
+    BackgroundType? Function()? backgroundType,
   }) =>
       LinkPreviewTypeBackground(
         document: document != null ? document() : this.document,
+        backgroundType:
+            backgroundType != null ? backgroundType() : this.backgroundType,
       );
 
   /// TDLib type name.
@@ -876,14 +886,14 @@ final class LinkPreviewTypeShareableChatFolder extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a sticker message
+/// The link is a link to a sticker
 final class LinkPreviewTypeSticker extends LinkPreviewType {
-  /// The link is a link to a sticker message
+  /// The link is a link to a sticker
   const LinkPreviewTypeSticker({
     required this.sticker,
   });
 
-  /// The sticker
+  /// The sticker. It can be an arbitrary WEBP image and can have dimensions bigger than 512
   final Sticker sticker;
 
   /// Parses a [LinkPreviewTypeSticker] from TDLib JSON.

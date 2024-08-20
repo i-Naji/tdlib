@@ -10,6 +10,7 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
   /// Returns the list of Telegram Star transactions for the specified owner
   const GetStarTransactions({
     required this.ownerId,
+    required this.subscriptionId,
     this.direction,
     required this.offset,
     required this.limit,
@@ -17,6 +18,9 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
 
   /// Identifier of the owner of the Telegram Stars; can be the identifier of the current user, identifier of an owned bot, or identifier of a channel chat with supergroupFullInfo.can_get_star_revenue_statistics == true
   final MessageSender ownerId;
+
+  /// If non-empty, only transactions related to the Star Subscription will be returned
+  final String subscriptionId;
 
   /// Direction of the transactions to receive; pass null to get all transactions
   final StarTransactionDirection? direction;
@@ -31,6 +35,7 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'owner_id': ownerId.toJson(),
+        'subscription_id': subscriptionId,
         'direction': direction?.toJson(),
         'offset': offset,
         'limit': limit,
@@ -41,12 +46,14 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetStarTransactions copyWith({
     MessageSender? ownerId,
+    String? subscriptionId,
     StarTransactionDirection? Function()? direction,
     String? offset,
     int? limit,
   }) =>
       GetStarTransactions(
         ownerId: ownerId ?? this.ownerId,
+        subscriptionId: subscriptionId ?? this.subscriptionId,
         direction: direction != null ? direction() : this.direction,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

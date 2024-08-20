@@ -21,7 +21,7 @@ final class SetStoryReaction extends TdFunction<Ok> {
   /// The identifier of the story
   final int storyId;
 
-  /// Type of the reaction to set; pass null to remove the reaction. `reactionTypeCustomEmoji` reactions can be used only by Telegram Premium users
+  /// Type of the reaction to set; pass null to remove the reaction. Custom emoji reactions can be used only by Telegram Premium users. Paid reactions can't be set
   final ReactionType? reactionType;
 
   /// Pass true if the reaction needs to be added to recent reactions

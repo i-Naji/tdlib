@@ -3,14 +3,15 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right
+/// Toggles whether sender signature or link to the account is added to sent messages in a channel; requires can_change_info member right
 ///
 /// Returns [Ok].
 final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
-  /// Toggles whether sender signature is added to sent messages in a channel; requires can_change_info member right
+  /// Toggles whether sender signature or link to the account is added to sent messages in a channel; requires can_change_info member right
   const ToggleSupergroupSignMessages({
     required this.supergroupId,
     required this.signMessages,
+    required this.showMessageSender,
   });
 
   /// Identifier of the channel
@@ -19,11 +20,15 @@ final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
   /// New value of sign_messages
   final bool signMessages;
 
+  /// New value of show_message_sender
+  final bool showMessageSender;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'supergroup_id': supergroupId,
         'sign_messages': signMessages,
+        'show_message_sender': showMessageSender,
         if (extra != null) '@extra': extra,
       };
 
@@ -32,10 +37,12 @@ final class ToggleSupergroupSignMessages extends TdFunction<Ok> {
   ToggleSupergroupSignMessages copyWith({
     int? supergroupId,
     bool? signMessages,
+    bool? showMessageSender,
   }) =>
       ToggleSupergroupSignMessages(
         supergroupId: supergroupId ?? this.supergroupId,
         signMessages: signMessages ?? this.signMessages,
+        showMessageSender: showMessageSender ?? this.showMessageSender,
       );
 
   /// TDLib type name.

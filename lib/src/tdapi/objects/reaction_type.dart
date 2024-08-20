@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of message reaction
 ///
-/// One of: [ReactionTypeEmoji], [ReactionTypeCustomEmoji]; or [UndecodedReactionType] for a type newer than this API.
+/// One of: [ReactionTypeEmoji], [ReactionTypeCustomEmoji], [ReactionTypePaid]; or [UndecodedReactionType] for a type newer than this API.
 sealed class ReactionType extends TdObject {
   const ReactionType();
 
@@ -115,6 +115,32 @@ final class ReactionTypeCustomEmoji extends ReactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'reactionTypeCustomEmoji';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The paid reaction in a channel chat
+final class ReactionTypePaid extends ReactionType {
+  /// The paid reaction in a channel chat
+  const ReactionTypePaid();
+
+  /// Parses a [ReactionTypePaid] from TDLib JSON.
+  factory ReactionTypePaid.fromJson(Map<String, dynamic> json) =>
+      const ReactionTypePaid();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ReactionTypePaid copyWith() => const ReactionTypePaid();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'reactionTypePaid';
 
   @override
   String getConstructor() => CONSTRUCTOR;

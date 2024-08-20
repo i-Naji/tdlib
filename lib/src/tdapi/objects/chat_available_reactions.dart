@@ -44,9 +44,9 @@ final class UndecodedChatAvailableReactions extends ChatAvailableReactions {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// All reactions are available in the chat
+/// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats
 final class ChatAvailableReactionsAll extends ChatAvailableReactions {
-  /// All reactions are available in the chat
+  /// All reactions are available in the chat, excluding the paid reaction and custom reactions in channel chats
   const ChatAvailableReactionsAll({
     required this.maxReactionCount,
   });

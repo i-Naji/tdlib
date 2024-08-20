@@ -18,7 +18,6 @@ final class MessageProperties extends TdObject {
     required this.canBeSaved,
     required this.canBeSharedInStory,
     required this.canEditSchedulingState,
-    required this.canGetAddedReactions,
     required this.canGetEmbeddingCode,
     required this.canGetLink,
     required this.canGetMediaTimestampLinks,
@@ -68,9 +67,6 @@ final class MessageProperties extends TdObject {
 
   /// True, if scheduling state of the message can be edited
   final bool canEditSchedulingState;
-
-  /// True, if the list of added reactions is available using getMessageAddedReactions
-  final bool canGetAddedReactions;
 
   /// True, if code for message embedding can be received using getMessageEmbeddingCode
   final bool canGetEmbeddingCode;
@@ -136,7 +132,6 @@ final class MessageProperties extends TdObject {
         canBeSaved: _readBool(json['can_be_saved']),
         canBeSharedInStory: _readBool(json['can_be_shared_in_story']),
         canEditSchedulingState: _readBool(json['can_edit_scheduling_state']),
-        canGetAddedReactions: _readBool(json['can_get_added_reactions']),
         canGetEmbeddingCode: _readBool(json['can_get_embedding_code']),
         canGetLink: _readBool(json['can_get_link']),
         canGetMediaTimestampLinks:
@@ -169,7 +164,6 @@ final class MessageProperties extends TdObject {
         'can_be_saved': canBeSaved,
         'can_be_shared_in_story': canBeSharedInStory,
         'can_edit_scheduling_state': canEditSchedulingState,
-        'can_get_added_reactions': canGetAddedReactions,
         'can_get_embedding_code': canGetEmbeddingCode,
         'can_get_link': canGetLink,
         'can_get_media_timestamp_links': canGetMediaTimestampLinks,
@@ -199,7 +193,6 @@ final class MessageProperties extends TdObject {
     bool? canBeSaved,
     bool? canBeSharedInStory,
     bool? canEditSchedulingState,
-    bool? canGetAddedReactions,
     bool? canGetEmbeddingCode,
     bool? canGetLink,
     bool? canGetMediaTimestampLinks,
@@ -232,7 +225,6 @@ final class MessageProperties extends TdObject {
         canBeSharedInStory: canBeSharedInStory ?? this.canBeSharedInStory,
         canEditSchedulingState:
             canEditSchedulingState ?? this.canEditSchedulingState,
-        canGetAddedReactions: canGetAddedReactions ?? this.canGetAddedReactions,
         canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,
         canGetLink: canGetLink ?? this.canGetLink,
         canGetMediaTimestampLinks:

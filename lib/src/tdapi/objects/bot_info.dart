@@ -13,6 +13,7 @@ final class BotInfo extends TdObject {
     this.animation,
     this.menuButton,
     required this.commands,
+    required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
     required this.hasMediaPreviews,
@@ -39,6 +40,9 @@ final class BotInfo extends TdObject {
 
   /// List of the bot commands
   final List<BotCommand> commands;
+
+  /// The HTTP link to the privacy policy of the bot. If empty, then /privacy command must be used if supported by the bot. If the command isn't supported, then https://telegram.org/privacy-tpa must be opened
+  final String privacyPolicyUrl;
 
   /// Default administrator rights for adding the bot to basic group and supergroup chats; may be null
   final ChatAdministratorRights? defaultGroupAdministratorRights;
@@ -70,6 +74,7 @@ final class BotInfo extends TdObject {
         menuButton: _readOptional(json['menu_button'], BotMenuButton.fromJson),
         commands: _readList<BotCommand>(
             json['commands'], (e) => _readObject(e, BotCommand.fromJson)),
+        privacyPolicyUrl: _readString(json['privacy_policy_url']),
         defaultGroupAdministratorRights: _readOptional(
             json['default_group_administrator_rights'],
             ChatAdministratorRights.fromJson),
@@ -96,6 +101,7 @@ final class BotInfo extends TdObject {
         'animation': animation?.toJson(),
         'menu_button': menuButton?.toJson(),
         'commands': [for (final e in commands) e.toJson()],
+        'privacy_policy_url': privacyPolicyUrl,
         'default_group_administrator_rights':
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
@@ -116,6 +122,7 @@ final class BotInfo extends TdObject {
     Animation? Function()? animation,
     BotMenuButton? Function()? menuButton,
     List<BotCommand>? commands,
+    String? privacyPolicyUrl,
     ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
     ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
     bool? hasMediaPreviews,
@@ -131,6 +138,7 @@ final class BotInfo extends TdObject {
         animation: animation != null ? animation() : this.animation,
         menuButton: menuButton != null ? menuButton() : this.menuButton,
         commands: commands ?? this.commands,
+        privacyPolicyUrl: privacyPolicyUrl ?? this.privacyPolicyUrl,
         defaultGroupAdministratorRights: defaultGroupAdministratorRights != null
             ? defaultGroupAdministratorRights()
             : this.defaultGroupAdministratorRights,

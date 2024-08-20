@@ -20,7 +20,7 @@ final class RemoveMessageReaction extends TdFunction<Ok> {
   /// Identifier of the message
   final int messageId;
 
-  /// Type of the reaction to remove
+  /// Type of the reaction to remove. The paid reaction can't be removed
   final ReactionType reactionType;
 
   @override

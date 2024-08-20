@@ -22,7 +22,7 @@ final class AddMessageReaction extends TdFunction<Ok> {
   /// Identifier of the message
   final int messageId;
 
-  /// Type of the reaction to add
+  /// Type of the reaction to add. Use addPaidMessageReaction instead to add the paid reaction
   final ReactionType reactionType;
 
   /// Pass true if the reaction is added with a big animation

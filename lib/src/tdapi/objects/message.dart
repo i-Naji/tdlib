@@ -39,6 +39,7 @@ final class Message extends TdObject {
     required this.authorSignature,
     required this.mediaAlbumId,
     required this.effectId,
+    required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.content,
     this.replyMarkup,
@@ -142,6 +143,9 @@ final class Message extends TdObject {
   /// Unique identifier of the effect added to the message; 0 if none
   final int effectId;
 
+  /// True, if media content of the message must be hidden with 18+ spoiler
+  final bool hasSensitiveContent;
+
   /// If non-empty, contains a human-readable description of the reason why access to this message must be restricted
   final String restrictionReason;
 
@@ -200,6 +204,7 @@ final class Message extends TdObject {
         authorSignature: _readString(json['author_signature']),
         mediaAlbumId: _readInt(json['media_album_id']),
         effectId: _readInt(json['effect_id']),
+        hasSensitiveContent: _readBool(json['has_sensitive_content']),
         restrictionReason: _readString(json['restriction_reason']),
         content: _readObject(json['content'], MessageContent.fromJson),
         replyMarkup: _readOptional(json['reply_markup'], ReplyMarkup.fromJson),
@@ -242,6 +247,7 @@ final class Message extends TdObject {
         'author_signature': authorSignature,
         'media_album_id': mediaAlbumId.toString(),
         'effect_id': effectId.toString(),
+        'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
         'content': content.toJson(),
         'reply_markup': replyMarkup?.toJson(),
@@ -282,6 +288,7 @@ final class Message extends TdObject {
     String? authorSignature,
     int? mediaAlbumId,
     int? effectId,
+    bool? hasSensitiveContent,
     String? restrictionReason,
     MessageContent? content,
     ReplyMarkup? Function()? replyMarkup,
@@ -327,6 +334,7 @@ final class Message extends TdObject {
         authorSignature: authorSignature ?? this.authorSignature,
         mediaAlbumId: mediaAlbumId ?? this.mediaAlbumId,
         effectId: effectId ?? this.effectId,
+        hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         content: content ?? this.content,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,

@@ -19,6 +19,7 @@ part 'functions/add_local_message.dart';
 part 'functions/add_log_message.dart';
 part 'functions/add_message_reaction.dart';
 part 'functions/add_network_statistics.dart';
+part 'functions/add_paid_message_reaction.dart';
 part 'functions/add_proxy.dart';
 part 'functions/add_quick_reply_shortcut_inline_query_result_message.dart';
 part 'functions/add_quick_reply_shortcut_message.dart';
@@ -94,6 +95,7 @@ part 'functions/create_call.dart';
 part 'functions/create_chat_folder.dart';
 part 'functions/create_chat_folder_invite_link.dart';
 part 'functions/create_chat_invite_link.dart';
+part 'functions/create_chat_subscription_invite_link.dart';
 part 'functions/create_forum_topic.dart';
 part 'functions/create_invoice_link.dart';
 part 'functions/create_new_basic_group_chat.dart';
@@ -153,6 +155,7 @@ part 'functions/edit_business_message_text.dart';
 part 'functions/edit_chat_folder.dart';
 part 'functions/edit_chat_folder_invite_link.dart';
 part 'functions/edit_chat_invite_link.dart';
+part 'functions/edit_chat_subscription_invite_link.dart';
 part 'functions/edit_custom_language_pack_info.dart';
 part 'functions/edit_forum_topic.dart';
 part 'functions/edit_inline_message_caption.dart';
@@ -168,6 +171,7 @@ part 'functions/edit_message_scheduling_state.dart';
 part 'functions/edit_message_text.dart';
 part 'functions/edit_proxy.dart';
 part 'functions/edit_quick_reply_message.dart';
+part 'functions/edit_star_subscription.dart';
 part 'functions/edit_story.dart';
 part 'functions/edit_story_cover.dart';
 part 'functions/enable_proxy.dart';
@@ -177,7 +181,6 @@ part 'functions/end_group_call_screen_sharing.dart';
 part 'functions/finish_file_generation.dart';
 part 'functions/forward_messages.dart';
 part 'functions/get_account_ttl.dart';
-part 'functions/get_active_live_location_messages.dart';
 part 'functions/get_active_sessions.dart';
 part 'functions/get_all_passport_elements.dart';
 part 'functions/get_all_sticker_emojis.dart';
@@ -393,6 +396,7 @@ part 'functions/get_star_ad_account_url.dart';
 part 'functions/get_star_gift_payment_options.dart';
 part 'functions/get_star_payment_options.dart';
 part 'functions/get_star_revenue_statistics.dart';
+part 'functions/get_star_subscriptions.dart';
 part 'functions/get_star_transactions.dart';
 part 'functions/get_star_withdrawal_url.dart';
 part 'functions/get_statistical_graph.dart';
@@ -493,6 +497,7 @@ part 'functions/remove_installed_background.dart';
 part 'functions/remove_message_reaction.dart';
 part 'functions/remove_notification.dart';
 part 'functions/remove_notification_group.dart';
+part 'functions/remove_pending_paid_message_reactions.dart';
 part 'functions/remove_proxy.dart';
 part 'functions/remove_recent_hashtag.dart';
 part 'functions/remove_recent_sticker.dart';
@@ -535,6 +540,7 @@ part 'functions/reset_authentication_email_address.dart';
 part 'functions/reset_installed_backgrounds.dart';
 part 'functions/reset_network_statistics.dart';
 part 'functions/reset_password.dart';
+part 'functions/reuse_star_subscription.dart';
 part 'functions/revoke_chat_invite_link.dart';
 part 'functions/revoke_group_call_invite_link.dart';
 part 'functions/save_application_log_event.dart';
@@ -751,6 +757,7 @@ part 'functions/toggle_group_call_participant_is_hand_raised.dart';
 part 'functions/toggle_group_call_participant_is_muted.dart';
 part 'functions/toggle_group_call_screen_sharing_is_paused.dart';
 part 'functions/toggle_has_sponsored_messages_enabled.dart';
+part 'functions/toggle_paid_message_reaction_is_anonymous.dart';
 part 'functions/toggle_saved_messages_topic_is_pinned.dart';
 part 'functions/toggle_session_can_accept_calls.dart';
 part 'functions/toggle_session_can_accept_secret_chats.dart';
@@ -820,6 +827,7 @@ part 'objects/bot_media_preview.dart';
 part 'objects/bot_media_preview_info.dart';
 part 'objects/bot_media_previews.dart';
 part 'objects/bot_menu_button.dart';
+part 'objects/bot_transaction_purpose.dart';
 part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
 part 'objects/business_away_message_settings.dart';
@@ -854,6 +862,7 @@ part 'objects/callback_query_payload.dart';
 part 'objects/can_send_message_to_user_result.dart';
 part 'objects/can_send_story_result.dart';
 part 'objects/can_transfer_ownership_result.dart';
+part 'objects/channel_transaction_purpose.dart';
 part 'objects/chat.dart';
 part 'objects/chat_action.dart';
 part 'objects/chat_action_bar.dart';
@@ -888,6 +897,7 @@ part 'objects/chat_invite_link_counts.dart';
 part 'objects/chat_invite_link_info.dart';
 part 'objects/chat_invite_link_member.dart';
 part 'objects/chat_invite_link_members.dart';
+part 'objects/chat_invite_link_subscription_info.dart';
 part 'objects/chat_invite_links.dart';
 part 'objects/chat_join_request.dart';
 part 'objects/chat_join_requests.dart';
@@ -1124,6 +1134,7 @@ part 'objects/page_block_related_article.dart';
 part 'objects/page_block_table_cell.dart';
 part 'objects/page_block_vertical_alignment.dart';
 part 'objects/paid_media.dart';
+part 'objects/paid_reactor.dart';
 part 'objects/passport_authorization_form.dart';
 part 'objects/passport_element.dart';
 part 'objects/passport_element_error.dart';
@@ -1227,6 +1238,9 @@ part 'objects/star_payment_option.dart';
 part 'objects/star_payment_options.dart';
 part 'objects/star_revenue_statistics.dart';
 part 'objects/star_revenue_status.dart';
+part 'objects/star_subscription.dart';
+part 'objects/star_subscription_pricing.dart';
+part 'objects/star_subscriptions.dart';
 part 'objects/star_transaction.dart';
 part 'objects/star_transaction_direction.dart';
 part 'objects/star_transaction_partner.dart';
@@ -1324,14 +1338,14 @@ part 'objects/web_app_info.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.34';
+const String tdlibVersion = '1.8.35';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '1fa2a372a88c26369dcac2ce476166531df74a77';
+const String tdlibSchemaCommit = '8d08b34e22a08e58db8341839c4e18ee06c516c5';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '1fa2a372a88c26369dcac2ce476166531df74a77',
+  '8d08b34e22a08e58db8341839c4e18ee06c516c5',
 ];
 
 /// Base class of every TDLib object.
@@ -1541,6 +1555,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputChatPhotoSticker': InputChatPhotoSticker.fromJson,
   'chatPermissions': ChatPermissions.fromJson,
   'chatAdministratorRights': ChatAdministratorRights.fromJson,
+  'starSubscriptionPricing': StarSubscriptionPricing.fromJson,
+  'starSubscription': StarSubscription.fromJson,
+  'starSubscriptions': StarSubscriptions.fromJson,
   'productInfo': ProductInfo.fromJson,
   'premiumPaymentOption': PremiumPaymentOption.fromJson,
   'premiumStatePaymentOption': PremiumStatePaymentOption.fromJson,
@@ -1551,6 +1568,14 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starPaymentOptions': StarPaymentOptions.fromJson,
   'starTransactionDirectionIncoming': StarTransactionDirectionIncoming.fromJson,
   'starTransactionDirectionOutgoing': StarTransactionDirectionOutgoing.fromJson,
+  'botTransactionPurposePaidMedia': BotTransactionPurposePaidMedia.fromJson,
+  'botTransactionPurposeInvoicePayment':
+      BotTransactionPurposeInvoicePayment.fromJson,
+  'channelTransactionPurposePaidMedia':
+      ChannelTransactionPurposePaidMedia.fromJson,
+  'channelTransactionPurposeJoin': ChannelTransactionPurposeJoin.fromJson,
+  'channelTransactionPurposeReaction':
+      ChannelTransactionPurposeReaction.fromJson,
   'starTransactionPartnerTelegram': StarTransactionPartnerTelegram.fromJson,
   'starTransactionPartnerAppStore': StarTransactionPartnerAppStore.fromJson,
   'starTransactionPartnerGooglePlay': StarTransactionPartnerGooglePlay.fromJson,
@@ -1558,6 +1583,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionPartnerTelegramAds':
       StarTransactionPartnerTelegramAds.fromJson,
   'starTransactionPartnerBot': StarTransactionPartnerBot.fromJson,
+  'starTransactionPartnerBusiness': StarTransactionPartnerBusiness.fromJson,
   'starTransactionPartnerChannel': StarTransactionPartnerChannel.fromJson,
   'starTransactionPartnerUser': StarTransactionPartnerUser.fromJson,
   'starTransactionPartnerUnsupported':
@@ -1623,6 +1649,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inviteLinkChatTypeBasicGroup': InviteLinkChatTypeBasicGroup.fromJson,
   'inviteLinkChatTypeSupergroup': InviteLinkChatTypeSupergroup.fromJson,
   'inviteLinkChatTypeChannel': InviteLinkChatTypeChannel.fromJson,
+  'chatInviteLinkSubscriptionInfo': ChatInviteLinkSubscriptionInfo.fromJson,
   'chatInviteLinkInfo': ChatInviteLinkInfo.fromJson,
   'chatJoinRequest': ChatJoinRequest.fromJson,
   'chatJoinRequests': ChatJoinRequests.fromJson,
@@ -1656,6 +1683,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'forwardSource': ForwardSource.fromJson,
   'reactionTypeEmoji': ReactionTypeEmoji.fromJson,
   'reactionTypeCustomEmoji': ReactionTypeCustomEmoji.fromJson,
+  'reactionTypePaid': ReactionTypePaid.fromJson,
+  'paidReactor': PaidReactor.fromJson,
   'messageForwardInfo': MessageForwardInfo.fromJson,
   'messageImportInfo': MessageImportInfo.fromJson,
   'messageReplyInfo': MessageReplyInfo.fromJson,
@@ -2463,6 +2492,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatEventHasAggressiveAntiSpamEnabledToggled':
       ChatEventHasAggressiveAntiSpamEnabledToggled.fromJson,
   'chatEventSignMessagesToggled': ChatEventSignMessagesToggled.fromJson,
+  'chatEventShowMessageSenderToggled':
+      ChatEventShowMessageSenderToggled.fromJson,
   'chatEventInviteLinkEdited': ChatEventInviteLinkEdited.fromJson,
   'chatEventInviteLinkRevoked': ChatEventInviteLinkRevoked.fromJson,
   'chatEventInviteLinkDeleted': ChatEventInviteLinkDeleted.fromJson,
@@ -2604,6 +2635,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'telegramPaymentPurposeStars': TelegramPaymentPurposeStars.fromJson,
   'telegramPaymentPurposeGiftedStars':
       TelegramPaymentPurposeGiftedStars.fromJson,
+  'telegramPaymentPurposeJoinChat': TelegramPaymentPurposeJoinChat.fromJson,
   'deviceTokenFirebaseCloudMessaging':
       DeviceTokenFirebaseCloudMessaging.fromJson,
   'deviceTokenApplePush': DeviceTokenApplePush.fromJson,
@@ -2835,6 +2867,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeBotStart': InternalLinkTypeBotStart.fromJson,
   'internalLinkTypeBotStartInGroup': InternalLinkTypeBotStartInGroup.fromJson,
   'internalLinkTypeBusinessChat': InternalLinkTypeBusinessChat.fromJson,
+  'internalLinkTypeBuyStars': InternalLinkTypeBuyStars.fromJson,
   'internalLinkTypeChangePhoneNumber':
       InternalLinkTypeChangePhoneNumber.fromJson,
   'internalLinkTypeChatBoost': InternalLinkTypeChatBoost.fromJson,
@@ -2966,6 +2999,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SuggestedActionGiftPremiumForChristmas.fromJson,
   'suggestedActionSetBirthdate': SuggestedActionSetBirthdate.fromJson,
   'suggestedActionExtendPremium': SuggestedActionExtendPremium.fromJson,
+  'suggestedActionExtendStarSubscriptions':
+      SuggestedActionExtendStarSubscriptions.fromJson,
   'count': Count.fromJson,
   'text': Text.fromJson,
   'seconds': Seconds.fromJson,
@@ -3147,6 +3182,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateAvailableMessageEffects': UpdateAvailableMessageEffects.fromJson,
   'updateDefaultReactionType': UpdateDefaultReactionType.fromJson,
   'updateSavedMessagesTags': UpdateSavedMessagesTags.fromJson,
+  'updateActiveLiveLocationMessages': UpdateActiveLiveLocationMessages.fromJson,
   'updateOwnedStarCount': UpdateOwnedStarCount.fromJson,
   'updateChatRevenueAmount': UpdateChatRevenueAmount.fromJson,
   'updateStarRevenueStatus': UpdateStarRevenueStatus.fromJson,

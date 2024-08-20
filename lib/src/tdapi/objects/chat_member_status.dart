@@ -157,21 +157,34 @@ final class ChatMemberStatusAdministrator extends ChatMemberStatus {
 /// The user is a member of the chat, without any additional privileges or restrictions
 final class ChatMemberStatusMember extends ChatMemberStatus {
   /// The user is a member of the chat, without any additional privileges or restrictions
-  const ChatMemberStatusMember();
+  const ChatMemberStatusMember({
+    required this.memberUntilDate,
+  });
+
+  /// Point in time (Unix timestamp) when the user will be removed from the chat because of the expired subscription; 0 if never. Ignored in setChatMemberStatus
+  final int memberUntilDate;
 
   /// Parses a [ChatMemberStatusMember] from TDLib JSON.
   factory ChatMemberStatusMember.fromJson(Map<String, dynamic> json) =>
-      const ChatMemberStatusMember();
+      ChatMemberStatusMember(
+        memberUntilDate: _readInt(json['member_until_date']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'member_until_date': memberUntilDate,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatMemberStatusMember copyWith() => const ChatMemberStatusMember();
+  ChatMemberStatusMember copyWith({
+    int? memberUntilDate,
+  }) =>
+      ChatMemberStatusMember(
+        memberUntilDate: memberUntilDate ?? this.memberUntilDate,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatMemberStatusMember';

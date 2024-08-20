@@ -23,7 +23,7 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
   /// Story identifier
   final int storyId;
 
-  /// Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions
+  /// Pass the default heart reaction or a suggested reaction type to receive only interactions with the specified reaction type; pass null to receive all interactions; reactionTypePaid isn't supported
   final ReactionType? reactionType;
 
   /// Pass true to get forwards and reposts first, then reactions, then other views; pass false to get interactions sorted just by interaction date
