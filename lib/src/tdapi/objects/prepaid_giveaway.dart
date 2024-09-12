@@ -3,34 +3,39 @@
 
 part of '../tdapi.dart';
 
-/// Describes a prepaid Telegram Premium giveaway
-final class PrepaidPremiumGiveaway extends TdObject {
-  /// Describes a prepaid Telegram Premium giveaway
-  const PrepaidPremiumGiveaway({
+/// Describes a prepaid giveaway
+final class PrepaidGiveaway extends TdObject {
+  /// Describes a prepaid giveaway
+  const PrepaidGiveaway({
     required this.id,
     required this.winnerCount,
-    required this.monthCount,
+    required this.prize,
+    required this.boostCount,
     required this.paymentDate,
   });
 
   /// Unique identifier of the prepaid giveaway
   final int id;
 
-  /// Number of users which will receive Telegram Premium subscription gift codes
+  /// Number of users which will receive giveaway prize
   final int winnerCount;
 
-  /// Number of months the Telegram Premium subscription will be active after code activation
-  final int monthCount;
+  /// Prize of the giveaway
+  final GiveawayPrize prize;
+
+  /// The number of boosts received by the chat from the giveaway; for Telegram Star giveaways only
+  final int boostCount;
 
   /// Point in time (Unix timestamp) when the giveaway was paid
   final int paymentDate;
 
-  /// Parses a [PrepaidPremiumGiveaway] from TDLib JSON.
-  factory PrepaidPremiumGiveaway.fromJson(Map<String, dynamic> json) =>
-      PrepaidPremiumGiveaway(
+  /// Parses a [PrepaidGiveaway] from TDLib JSON.
+  factory PrepaidGiveaway.fromJson(Map<String, dynamic> json) =>
+      PrepaidGiveaway(
         id: _readInt(json['id']),
         winnerCount: _readInt(json['winner_count']),
-        monthCount: _readInt(json['month_count']),
+        prize: _readObject(json['prize'], GiveawayPrize.fromJson),
+        boostCount: _readInt(json['boost_count']),
         paymentDate: _readInt(json['payment_date']),
       );
 
@@ -39,27 +44,30 @@ final class PrepaidPremiumGiveaway extends TdObject {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
         'winner_count': winnerCount,
-        'month_count': monthCount,
+        'prize': prize.toJson(),
+        'boost_count': boostCount,
         'payment_date': paymentDate,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PrepaidPremiumGiveaway copyWith({
+  PrepaidGiveaway copyWith({
     int? id,
     int? winnerCount,
-    int? monthCount,
+    GiveawayPrize? prize,
+    int? boostCount,
     int? paymentDate,
   }) =>
-      PrepaidPremiumGiveaway(
+      PrepaidGiveaway(
         id: id ?? this.id,
         winnerCount: winnerCount ?? this.winnerCount,
-        monthCount: monthCount ?? this.monthCount,
+        prize: prize ?? this.prize,
+        boostCount: boostCount ?? this.boostCount,
         paymentDate: paymentDate ?? this.paymentDate,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'prepaidPremiumGiveaway';
+  static const String CONSTRUCTOR = 'prepaidGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

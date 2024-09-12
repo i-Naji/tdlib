@@ -3,13 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments
+/// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
 final class PremiumGiftCodePaymentOption extends TdObject {
-  /// Describes an option for creating Telegram Premium gift codes. Use telegramPaymentPurposePremiumGiftCodes for out-of-store payments
+  /// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
   const PremiumGiftCodePaymentOption({
     required this.currency,
     required this.amount,
-    required this.userCount,
+    required this.winnerCount,
     required this.monthCount,
     required this.storeProductId,
     required this.storeProductQuantity,
@@ -22,7 +22,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   final int amount;
 
   /// Number of users which will be able to activate the gift codes
-  final int userCount;
+  final int winnerCount;
 
   /// Number of months the Telegram Premium subscription will be active
   final int monthCount;
@@ -38,7 +38,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
       PremiumGiftCodePaymentOption(
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
-        userCount: _readInt(json['user_count']),
+        winnerCount: _readInt(json['winner_count']),
         monthCount: _readInt(json['month_count']),
         storeProductId: _readString(json['store_product_id']),
         storeProductQuantity: _readInt(json['store_product_quantity']),
@@ -49,7 +49,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
         '@type': CONSTRUCTOR,
         'currency': currency,
         'amount': amount,
-        'user_count': userCount,
+        'winner_count': winnerCount,
         'month_count': monthCount,
         'store_product_id': storeProductId,
         'store_product_quantity': storeProductQuantity,
@@ -60,7 +60,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   PremiumGiftCodePaymentOption copyWith({
     String? currency,
     int? amount,
-    int? userCount,
+    int? winnerCount,
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
@@ -68,7 +68,7 @@ final class PremiumGiftCodePaymentOption extends TdObject {
       PremiumGiftCodePaymentOption(
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
-        userCount: userCount ?? this.userCount,
+        winnerCount: winnerCount ?? this.winnerCount,
         monthCount: monthCount ?? this.monthCount,
         storeProductId: storeProductId ?? this.storeProductId,
         storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,

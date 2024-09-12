@@ -11,6 +11,7 @@ final class ChatRevenueAmount extends TdObject {
     required this.totalAmount,
     required this.balanceAmount,
     required this.availableAmount,
+    required this.withdrawalEnabled,
   });
 
   /// Cryptocurrency in which revenue is calculated
@@ -25,6 +26,9 @@ final class ChatRevenueAmount extends TdObject {
   /// Amount of the cryptocurrency available for withdrawal, in the smallest units of the cryptocurrency
   final int availableAmount;
 
+  /// True, if Telegram Stars can be withdrawn now or later
+  final bool withdrawalEnabled;
+
   /// Parses a [ChatRevenueAmount] from TDLib JSON.
   factory ChatRevenueAmount.fromJson(Map<String, dynamic> json) =>
       ChatRevenueAmount(
@@ -32,6 +36,7 @@ final class ChatRevenueAmount extends TdObject {
         totalAmount: _readInt(json['total_amount']),
         balanceAmount: _readInt(json['balance_amount']),
         availableAmount: _readInt(json['available_amount']),
+        withdrawalEnabled: _readBool(json['withdrawal_enabled']),
       );
 
   @override
@@ -41,6 +46,7 @@ final class ChatRevenueAmount extends TdObject {
         'total_amount': totalAmount.toString(),
         'balance_amount': balanceAmount.toString(),
         'available_amount': availableAmount.toString(),
+        'withdrawal_enabled': withdrawalEnabled,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -50,12 +56,14 @@ final class ChatRevenueAmount extends TdObject {
     int? totalAmount,
     int? balanceAmount,
     int? availableAmount,
+    bool? withdrawalEnabled,
   }) =>
       ChatRevenueAmount(
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
         totalAmount: totalAmount ?? this.totalAmount,
         balanceAmount: balanceAmount ?? this.balanceAmount,
         availableAmount: availableAmount ?? this.availableAmount,
+        withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
       );
 
   /// TDLib type name.

@@ -20,6 +20,7 @@ final class ChatEventLogFilters extends TdObject {
     required this.inviteLinkChanges,
     required this.videoChatChanges,
     required this.forumChanges,
+    required this.subscriptionExtensions,
   });
 
   /// True, if message edits need to be returned
@@ -61,6 +62,9 @@ final class ChatEventLogFilters extends TdObject {
   /// True, if forum-related actions need to be returned
   final bool forumChanges;
 
+  /// True, if subscription extensions need to be returned
+  final bool subscriptionExtensions;
+
   /// Parses a [ChatEventLogFilters] from TDLib JSON.
   factory ChatEventLogFilters.fromJson(Map<String, dynamic> json) =>
       ChatEventLogFilters(
@@ -77,6 +81,7 @@ final class ChatEventLogFilters extends TdObject {
         inviteLinkChanges: _readBool(json['invite_link_changes']),
         videoChatChanges: _readBool(json['video_chat_changes']),
         forumChanges: _readBool(json['forum_changes']),
+        subscriptionExtensions: _readBool(json['subscription_extensions']),
       );
 
   @override
@@ -95,6 +100,7 @@ final class ChatEventLogFilters extends TdObject {
         'invite_link_changes': inviteLinkChanges,
         'video_chat_changes': videoChatChanges,
         'forum_changes': forumChanges,
+        'subscription_extensions': subscriptionExtensions,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -113,6 +119,7 @@ final class ChatEventLogFilters extends TdObject {
     bool? inviteLinkChanges,
     bool? videoChatChanges,
     bool? forumChanges,
+    bool? subscriptionExtensions,
   }) =>
       ChatEventLogFilters(
         messageEdits: messageEdits ?? this.messageEdits,
@@ -128,6 +135,8 @@ final class ChatEventLogFilters extends TdObject {
         inviteLinkChanges: inviteLinkChanges ?? this.inviteLinkChanges,
         videoChatChanges: videoChatChanges ?? this.videoChatChanges,
         forumChanges: forumChanges ?? this.forumChanges,
+        subscriptionExtensions:
+            subscriptionExtensions ?? this.subscriptionExtensions,
       );
 
   /// TDLib type name.

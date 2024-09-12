@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class MessageProperties extends TdObject {
   /// Contains properties of a message and describes actions that can be done with the message right now
   const MessageProperties({
+    required this.canBeCopiedToSecretChat,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
     required this.canBeEdited,
@@ -34,6 +35,9 @@ final class MessageProperties extends TdObject {
     this.extra,
     this.clientId,
   });
+
+  /// True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
+  final bool canBeCopiedToSecretChat;
 
   /// True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false
   final bool canBeDeletedOnlyForSelf;
@@ -118,6 +122,8 @@ final class MessageProperties extends TdObject {
   /// Parses a [MessageProperties] from TDLib JSON.
   factory MessageProperties.fromJson(Map<String, dynamic> json) =>
       MessageProperties(
+        canBeCopiedToSecretChat:
+            _readBool(json['can_be_copied_to_secret_chat']),
         canBeDeletedOnlyForSelf:
             _readBool(json['can_be_deleted_only_for_self']),
         canBeDeletedForAllUsers:
@@ -153,6 +159,7 @@ final class MessageProperties extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
         'can_be_edited': canBeEdited,
@@ -182,6 +189,7 @@ final class MessageProperties extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageProperties copyWith({
+    bool? canBeCopiedToSecretChat,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
     bool? canBeEdited,
@@ -210,6 +218,8 @@ final class MessageProperties extends TdObject {
     int? clientId,
   }) =>
       MessageProperties(
+        canBeCopiedToSecretChat:
+            canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
         canBeDeletedForAllUsers:

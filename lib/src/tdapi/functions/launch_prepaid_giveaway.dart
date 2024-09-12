@@ -3,43 +3,57 @@
 
 part of '../tdapi.dart';
 
-/// Launches a prepaid Telegram Premium giveaway
+/// Launches a prepaid giveaway
 ///
 /// Returns [Ok].
-final class LaunchPrepaidPremiumGiveaway extends TdFunction<Ok> {
-  /// Launches a prepaid Telegram Premium giveaway
-  const LaunchPrepaidPremiumGiveaway({
+final class LaunchPrepaidGiveaway extends TdFunction<Ok> {
+  /// Launches a prepaid giveaway
+  const LaunchPrepaidGiveaway({
     required this.giveawayId,
     required this.parameters,
+    required this.winnerCount,
+    required this.starCount,
   });
 
   /// Unique identifier of the prepaid giveaway
   final int giveawayId;
 
   /// Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
+
+  /// The number of users to receive giveaway prize
+  final int winnerCount;
+
+  /// The number of Telegram Stars to be distributed through the giveaway; pass 0 for Telegram Premium giveaways
+  final int starCount;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'giveaway_id': giveawayId.toString(),
         'parameters': parameters.toJson(),
+        'winner_count': winnerCount,
+        'star_count': starCount,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  LaunchPrepaidPremiumGiveaway copyWith({
+  LaunchPrepaidGiveaway copyWith({
     int? giveawayId,
-    PremiumGiveawayParameters? parameters,
+    GiveawayParameters? parameters,
+    int? winnerCount,
+    int? starCount,
   }) =>
-      LaunchPrepaidPremiumGiveaway(
+      LaunchPrepaidGiveaway(
         giveawayId: giveawayId ?? this.giveawayId,
         parameters: parameters ?? this.parameters,
+        winnerCount: winnerCount ?? this.winnerCount,
+        starCount: starCount ?? this.starCount,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'launchPrepaidPremiumGiveaway';
+  static const String CONSTRUCTOR = 'launchPrepaidGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

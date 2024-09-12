@@ -3,27 +3,25 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about Telegram Premium giveaway
+/// Contains information about a giveaway
 ///
-/// One of: [PremiumGiveawayInfoOngoing], [PremiumGiveawayInfoCompleted]; or [UndecodedPremiumGiveawayInfo] for a type newer than this API.
-sealed class PremiumGiveawayInfo extends TdObject {
-  const PremiumGiveawayInfo();
+/// One of: [GiveawayInfoOngoing], [GiveawayInfoCompleted]; or [UndecodedGiveawayInfo] for a type newer than this API.
+sealed class GiveawayInfo extends TdObject {
+  const GiveawayInfo();
 
-  /// Parses whichever [PremiumGiveawayInfo] subtype the JSON describes.
-  factory PremiumGiveawayInfo.fromJson(Map<String, dynamic> json) {
+  /// Parses whichever [GiveawayInfo] subtype the JSON describes.
+  factory GiveawayInfo.fromJson(Map<String, dynamic> json) {
     final object = tdObjectFactories[json['@type']]?.call(json);
-    return object is PremiumGiveawayInfo
-        ? object
-        : UndecodedPremiumGiveawayInfo(json);
+    return object is GiveawayInfo ? object : UndecodedGiveawayInfo(json);
   }
 
   /// Returns a copy of this object.
-  PremiumGiveawayInfo copyWith();
+  GiveawayInfo copyWith();
 }
 
-/// A [PremiumGiveawayInfo] this API can't decode (sent by a newer TDLib).
-final class UndecodedPremiumGiveawayInfo extends PremiumGiveawayInfo {
-  const UndecodedPremiumGiveawayInfo(this.json);
+/// A [GiveawayInfo] this API can't decode (sent by a newer TDLib).
+final class UndecodedGiveawayInfo extends GiveawayInfo {
+  const UndecodedGiveawayInfo(this.json);
 
   /// The raw TDLib JSON object.
   final Map<String, dynamic> json;
@@ -38,16 +36,16 @@ final class UndecodedPremiumGiveawayInfo extends PremiumGiveawayInfo {
   Map<String, dynamic> toJson() => json;
 
   @override
-  UndecodedPremiumGiveawayInfo copyWith() => this;
+  UndecodedGiveawayInfo copyWith() => this;
 
   @override
   String getConstructor() => _readString(json['@type']);
 }
 
 /// Describes an ongoing giveaway
-final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
+final class GiveawayInfoOngoing extends GiveawayInfo {
   /// Describes an ongoing giveaway
-  const PremiumGiveawayInfoOngoing({
+  const GiveawayInfoOngoing({
     required this.creationDate,
     required this.status,
     required this.isEnded,
@@ -59,7 +57,7 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   final int creationDate;
 
   /// Status of the current user in the giveaway
-  final PremiumGiveawayParticipantStatus status;
+  final GiveawayParticipantStatus status;
 
   /// True, if the giveaway has ended and results are being prepared
   final bool isEnded;
@@ -72,12 +70,11 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   @override
   final int? clientId;
 
-  /// Parses a [PremiumGiveawayInfoOngoing] from TDLib JSON.
-  factory PremiumGiveawayInfoOngoing.fromJson(Map<String, dynamic> json) =>
-      PremiumGiveawayInfoOngoing(
+  /// Parses a [GiveawayInfoOngoing] from TDLib JSON.
+  factory GiveawayInfoOngoing.fromJson(Map<String, dynamic> json) =>
+      GiveawayInfoOngoing(
         creationDate: _readInt(json['creation_date']),
-        status: _readObject(
-            json['status'], PremiumGiveawayParticipantStatus.fromJson),
+        status: _readObject(json['status'], GiveawayParticipantStatus.fromJson),
         isEnded: _readBool(json['is_ended']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -94,14 +91,14 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayInfoOngoing copyWith({
+  GiveawayInfoOngoing copyWith({
     int? creationDate,
-    PremiumGiveawayParticipantStatus? status,
+    GiveawayParticipantStatus? status,
     bool? isEnded,
     dynamic extra,
     int? clientId,
   }) =>
-      PremiumGiveawayInfoOngoing(
+      GiveawayInfoOngoing(
         creationDate: creationDate ?? this.creationDate,
         status: status ?? this.status,
         isEnded: isEnded ?? this.isEnded,
@@ -110,22 +107,24 @@ final class PremiumGiveawayInfoOngoing extends PremiumGiveawayInfo {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiveawayInfoOngoing';
+  static const String CONSTRUCTOR = 'giveawayInfoOngoing';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// Describes a completed giveaway
-final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
+final class GiveawayInfoCompleted extends GiveawayInfo {
   /// Describes a completed giveaway
-  const PremiumGiveawayInfoCompleted({
+  const GiveawayInfoCompleted({
     required this.creationDate,
     required this.actualWinnersSelectionDate,
     required this.wasRefunded,
+    required this.isWinner,
     required this.winnerCount,
     required this.activationCount,
     required this.giftCode,
+    required this.wonStarCount,
     this.extra,
     this.clientId,
   });
@@ -139,14 +138,20 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
   /// True, if the giveaway was canceled and was fully refunded
   final bool wasRefunded;
 
+  /// True, if the cuurent user is a winner of the giveaway
+  final bool isWinner;
+
   /// Number of winners in the giveaway
   final int winnerCount;
 
-  /// Number of winners, which activated their gift codes
+  /// Number of winners, which activated their gift codes; for Telegram Premium giveaways only
   final int activationCount;
 
-  /// Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway
+  /// Telegram Premium gift code that was received by the current user; empty if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Premium giveaway
   final String giftCode;
+
+  /// The amount of Telegram Stars won by the current user; 0 if the user isn't a winner in the giveaway or the giveaway isn't a Telegram Star giveaway
+  final int wonStarCount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -156,16 +161,18 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
   @override
   final int? clientId;
 
-  /// Parses a [PremiumGiveawayInfoCompleted] from TDLib JSON.
-  factory PremiumGiveawayInfoCompleted.fromJson(Map<String, dynamic> json) =>
-      PremiumGiveawayInfoCompleted(
+  /// Parses a [GiveawayInfoCompleted] from TDLib JSON.
+  factory GiveawayInfoCompleted.fromJson(Map<String, dynamic> json) =>
+      GiveawayInfoCompleted(
         creationDate: _readInt(json['creation_date']),
         actualWinnersSelectionDate:
             _readInt(json['actual_winners_selection_date']),
         wasRefunded: _readBool(json['was_refunded']),
+        isWinner: _readBool(json['is_winner']),
         winnerCount: _readInt(json['winner_count']),
         activationCount: _readInt(json['activation_count']),
         giftCode: _readString(json['gift_code']),
+        wonStarCount: _readInt(json['won_star_count']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -176,38 +183,44 @@ final class PremiumGiveawayInfoCompleted extends PremiumGiveawayInfo {
         'creation_date': creationDate,
         'actual_winners_selection_date': actualWinnersSelectionDate,
         'was_refunded': wasRefunded,
+        'is_winner': isWinner,
         'winner_count': winnerCount,
         'activation_count': activationCount,
         'gift_code': giftCode,
+        'won_star_count': wonStarCount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayInfoCompleted copyWith({
+  GiveawayInfoCompleted copyWith({
     int? creationDate,
     int? actualWinnersSelectionDate,
     bool? wasRefunded,
+    bool? isWinner,
     int? winnerCount,
     int? activationCount,
     String? giftCode,
+    int? wonStarCount,
     dynamic extra,
     int? clientId,
   }) =>
-      PremiumGiveawayInfoCompleted(
+      GiveawayInfoCompleted(
         creationDate: creationDate ?? this.creationDate,
         actualWinnersSelectionDate:
             actualWinnersSelectionDate ?? this.actualWinnersSelectionDate,
         wasRefunded: wasRefunded ?? this.wasRefunded,
+        isWinner: isWinner ?? this.isWinner,
         winnerCount: winnerCount ?? this.winnerCount,
         activationCount: activationCount ?? this.activationCount,
         giftCode: giftCode ?? this.giftCode,
+        wonStarCount: wonStarCount ?? this.wonStarCount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiveawayInfoCompleted';
+  static const String CONSTRUCTOR = 'giveawayInfoCompleted';
 
   @override
   String getConstructor() => CONSTRUCTOR;

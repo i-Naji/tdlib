@@ -89,12 +89,13 @@ final class ChatBoostSourceGiftCode extends ChatBoostSource {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The chat created a Telegram Premium giveaway
+/// The chat created a giveaway
 final class ChatBoostSourceGiveaway extends ChatBoostSource {
-  /// The chat created a Telegram Premium giveaway
+  /// The chat created a giveaway
   const ChatBoostSourceGiveaway({
     required this.userId,
     required this.giftCode,
+    required this.starCount,
     required this.giveawayMessageId,
     required this.isUnclaimed,
   });
@@ -102,13 +103,16 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   /// Identifier of a user that won in the giveaway; 0 if none
   final int userId;
 
-  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise
+  /// The created Telegram Premium gift code if it was used by the user or can be claimed by the current user; an empty string otherwise; for Telegram Premium giveways only
   final String giftCode;
+
+  /// Number of Telegram Stars distributed among winners of the giveaway
+  final int starCount;
 
   /// Identifier of the corresponding giveaway message; can be an identifier of a deleted message
   final int giveawayMessageId;
 
-  /// True, if the winner for the corresponding Telegram Premium subscription wasn't chosen, because there were not enough participants
+  /// True, if the winner for the corresponding giveaway prize wasn't chosen, because there were not enough participants
   final bool isUnclaimed;
 
   /// Parses a [ChatBoostSourceGiveaway] from TDLib JSON.
@@ -116,6 +120,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
       ChatBoostSourceGiveaway(
         userId: _readInt(json['user_id']),
         giftCode: _readString(json['gift_code']),
+        starCount: _readInt(json['star_count']),
         giveawayMessageId: _readInt(json['giveaway_message_id']),
         isUnclaimed: _readBool(json['is_unclaimed']),
       );
@@ -125,6 +130,7 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
         '@type': CONSTRUCTOR,
         'user_id': userId,
         'gift_code': giftCode,
+        'star_count': starCount,
         'giveaway_message_id': giveawayMessageId,
         'is_unclaimed': isUnclaimed,
       };
@@ -135,12 +141,14 @@ final class ChatBoostSourceGiveaway extends ChatBoostSource {
   ChatBoostSourceGiveaway copyWith({
     int? userId,
     String? giftCode,
+    int? starCount,
     int? giveawayMessageId,
     bool? isUnclaimed,
   }) =>
       ChatBoostSourceGiveaway(
         userId: userId ?? this.userId,
         giftCode: giftCode ?? this.giftCode,
+        starCount: starCount ?? this.starCount,
         giveawayMessageId: giveawayMessageId ?? this.giveawayMessageId,
         isUnclaimed: isUnclaimed ?? this.isUnclaimed,
       );

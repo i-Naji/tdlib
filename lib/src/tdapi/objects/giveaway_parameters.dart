@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Describes parameters of a Telegram Premium giveaway
-final class PremiumGiveawayParameters extends TdObject {
-  /// Describes parameters of a Telegram Premium giveaway
-  const PremiumGiveawayParameters({
+/// Describes parameters of a giveaway
+final class GiveawayParameters extends TdObject {
+  /// Describes parameters of a giveaway
+  const GiveawayParameters({
     required this.boostedChatId,
     required this.additionalChatIds,
     required this.winnersSelectionDate,
@@ -16,7 +16,7 @@ final class PremiumGiveawayParameters extends TdObject {
     required this.prizeDescription,
   });
 
-  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Premium subscription. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the winners of the giveaway for duration of the Telegram Premium subscription, or for the specified time. If the chat is a channel, then can_post_messages right is required in the channel, otherwise, the user must be an administrator in the supergroup
   final int boostedChatId;
 
   /// Identifiers of other supergroup or channel chats that must be subscribed by the users to be eligible for the giveaway. There can be up to getOption("giveaway_additional_chat_count_max") additional chats
@@ -37,9 +37,9 @@ final class PremiumGiveawayParameters extends TdObject {
   /// Additional description of the giveaway prize; 0-128 characters
   final String prizeDescription;
 
-  /// Parses a [PremiumGiveawayParameters] from TDLib JSON.
-  factory PremiumGiveawayParameters.fromJson(Map<String, dynamic> json) =>
-      PremiumGiveawayParameters(
+  /// Parses a [GiveawayParameters] from TDLib JSON.
+  factory GiveawayParameters.fromJson(Map<String, dynamic> json) =>
+      GiveawayParameters(
         boostedChatId: _readInt(json['boosted_chat_id']),
         additionalChatIds:
             _readList<int>(json['additional_chat_ids'], _readInt),
@@ -64,7 +64,7 @@ final class PremiumGiveawayParameters extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PremiumGiveawayParameters copyWith({
+  GiveawayParameters copyWith({
     int? boostedChatId,
     List<int>? additionalChatIds,
     int? winnersSelectionDate,
@@ -73,7 +73,7 @@ final class PremiumGiveawayParameters extends TdObject {
     List<String>? countryCodes,
     String? prizeDescription,
   }) =>
-      PremiumGiveawayParameters(
+      GiveawayParameters(
         boostedChatId: boostedChatId ?? this.boostedChatId,
         additionalChatIds: additionalChatIds ?? this.additionalChatIds,
         winnersSelectionDate: winnersSelectionDate ?? this.winnersSelectionDate,
@@ -84,7 +84,7 @@ final class PremiumGiveawayParameters extends TdObject {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiveawayParameters';
+  static const String CONSTRUCTOR = 'giveawayParameters';
 
   @override
   String getConstructor() => CONSTRUCTOR;

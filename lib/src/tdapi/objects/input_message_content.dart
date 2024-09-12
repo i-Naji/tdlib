@@ -362,6 +362,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
     required this.paidMedia,
     this.caption,
     required this.showCaptionAboveMedia,
+    required this.payload,
   });
 
   /// The number of Telegram Stars that must be paid to see the media; 1-getOption("paid_media_message_star_count_max")
@@ -376,6 +377,9 @@ final class InputMessagePaidMedia extends InputMessageContent {
   /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
   final bool showCaptionAboveMedia;
 
+  /// Bot-provided data for the paid media; bots only
+  final String payload;
+
   /// Parses a [InputMessagePaidMedia] from TDLib JSON.
   factory InputMessagePaidMedia.fromJson(Map<String, dynamic> json) =>
       InputMessagePaidMedia(
@@ -384,6 +388,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
             json['paid_media'], (e) => _readObject(e, InputPaidMedia.fromJson)),
         caption: _readOptional(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
+        payload: _readString(json['payload']),
       );
 
   @override
@@ -393,6 +398,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
         'paid_media': [for (final e in paidMedia) e.toJson()],
         'caption': caption?.toJson(),
         'show_caption_above_media': showCaptionAboveMedia,
+        'payload': payload,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -403,6 +409,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
     List<InputPaidMedia>? paidMedia,
     FormattedText? Function()? caption,
     bool? showCaptionAboveMedia,
+    String? payload,
   }) =>
       InputMessagePaidMedia(
         starCount: starCount ?? this.starCount,
@@ -410,6 +417,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
         caption: caption != null ? caption() : this.caption,
         showCaptionAboveMedia:
             showCaptionAboveMedia ?? this.showCaptionAboveMedia,
+        payload: payload ?? this.payload,
       );
 
   /// TDLib type name.

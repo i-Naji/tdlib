@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes source or recipient of a transaction with Telegram Stars
 ///
-/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerBusiness], [StarTransactionPartnerChannel], [StarTransactionPartnerUser], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
+/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerBusiness], [StarTransactionPartnerChat], [StarTransactionPartnerUser], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
 sealed class StarTransactionPartner extends TdObject {
   const StarTransactionPartner();
 
@@ -290,10 +290,10 @@ final class StarTransactionPartnerBusiness extends StarTransactionPartner {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transaction with a channel chat
-final class StarTransactionPartnerChannel extends StarTransactionPartner {
-  /// The transaction is a transaction with a channel chat
-  const StarTransactionPartnerChannel({
+/// The transaction is a transaction with a supergroup or a channel chat
+final class StarTransactionPartnerChat extends StarTransactionPartner {
+  /// The transaction is a transaction with a supergroup or a channel chat
+  const StarTransactionPartnerChat({
     required this.chatId,
     required this.purpose,
   });
@@ -302,14 +302,13 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   final int chatId;
 
   /// Purpose of the transaction
-  final ChannelTransactionPurpose purpose;
+  final ChatTransactionPurpose purpose;
 
-  /// Parses a [StarTransactionPartnerChannel] from TDLib JSON.
-  factory StarTransactionPartnerChannel.fromJson(Map<String, dynamic> json) =>
-      StarTransactionPartnerChannel(
+  /// Parses a [StarTransactionPartnerChat] from TDLib JSON.
+  factory StarTransactionPartnerChat.fromJson(Map<String, dynamic> json) =>
+      StarTransactionPartnerChat(
         chatId: _readInt(json['chat_id']),
-        purpose:
-            _readObject(json['purpose'], ChannelTransactionPurpose.fromJson),
+        purpose: _readObject(json['purpose'], ChatTransactionPurpose.fromJson),
       );
 
   @override
@@ -322,17 +321,17 @@ final class StarTransactionPartnerChannel extends StarTransactionPartner {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  StarTransactionPartnerChannel copyWith({
+  StarTransactionPartnerChat copyWith({
     int? chatId,
-    ChannelTransactionPurpose? purpose,
+    ChatTransactionPurpose? purpose,
   }) =>
-      StarTransactionPartnerChannel(
+      StarTransactionPartnerChat(
         chatId: chatId ?? this.chatId,
         purpose: purpose ?? this.purpose,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'starTransactionPartnerChannel';
+  static const String CONSTRUCTOR = 'starTransactionPartnerChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;

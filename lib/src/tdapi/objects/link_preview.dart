@@ -12,6 +12,7 @@ final class LinkPreview extends TdObject {
     required this.siteName,
     required this.title,
     required this.description,
+    required this.author,
     required this.type,
     required this.hasLargeMedia,
     required this.showLargeMedia,
@@ -37,6 +38,9 @@ final class LinkPreview extends TdObject {
 
   /// Description of the content
   final FormattedText description;
+
+  /// Author of the content
+  final String author;
 
   /// Type of the link preview
   final LinkPreviewType type;
@@ -74,6 +78,7 @@ final class LinkPreview extends TdObject {
         siteName: _readString(json['site_name']),
         title: _readString(json['title']),
         description: _readObject(json['description'], FormattedText.fromJson),
+        author: _readString(json['author']),
         type: _readObject(json['type'], LinkPreviewType.fromJson),
         hasLargeMedia: _readBool(json['has_large_media']),
         showLargeMedia: _readBool(json['show_large_media']),
@@ -94,6 +99,7 @@ final class LinkPreview extends TdObject {
         'site_name': siteName,
         'title': title,
         'description': description.toJson(),
+        'author': author,
         'type': type.toJson(),
         'has_large_media': hasLargeMedia,
         'show_large_media': showLargeMedia,
@@ -111,6 +117,7 @@ final class LinkPreview extends TdObject {
     String? siteName,
     String? title,
     FormattedText? description,
+    String? author,
     LinkPreviewType? type,
     bool? hasLargeMedia,
     bool? showLargeMedia,
@@ -127,6 +134,7 @@ final class LinkPreview extends TdObject {
         siteName: siteName ?? this.siteName,
         title: title ?? this.title,
         description: description ?? this.description,
+        author: author ?? this.author,
         type: type ?? this.type,
         hasLargeMedia: hasLargeMedia ?? this.hasLargeMedia,
         showLargeMedia: showLargeMedia ?? this.showLargeMedia,

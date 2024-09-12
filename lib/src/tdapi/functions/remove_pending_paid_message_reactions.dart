@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Removes all pending paid reactions on a message. Can be called within 5 seconds after the last addPaidMessageReaction call
+/// Removes all pending paid reactions on a message
 ///
 /// Returns [Ok].
 final class RemovePendingPaidMessageReactions extends TdFunction<Ok> {
-  /// Removes all pending paid reactions on a message. Can be called within 5 seconds after the last addPaidMessageReaction call
+  /// Removes all pending paid reactions on a message
   const RemovePendingPaidMessageReactions({
     required this.chatId,
     required this.messageId,

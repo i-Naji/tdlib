@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of an in-store payment
 ///
-/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
+/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStarGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
 sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
@@ -222,7 +222,7 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   });
 
   /// Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
 
   /// ISO 4217 currency code of the payment currency
   final String currency;
@@ -235,7 +235,7 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
           Map<String, dynamic> json) =>
       StorePaymentPurposePremiumGiveaway(
         parameters:
-            _readObject(json['parameters'], PremiumGiveawayParameters.fromJson),
+            _readObject(json['parameters'], GiveawayParameters.fromJson),
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
       );
@@ -252,7 +252,7 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StorePaymentPurposePremiumGiveaway copyWith({
-    PremiumGiveawayParameters? parameters,
+    GiveawayParameters? parameters,
     String? currency,
     int? amount,
   }) =>
@@ -264,6 +264,78 @@ final class StorePaymentPurposePremiumGiveaway extends StorePaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumGiveaway';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user creating a Telegram Star giveaway
+final class StorePaymentPurposeStarGiveaway extends StorePaymentPurpose {
+  /// The user creating a Telegram Star giveaway
+  const StorePaymentPurposeStarGiveaway({
+    required this.parameters,
+    required this.currency,
+    required this.amount,
+    required this.winnerCount,
+    required this.starCount,
+  });
+
+  /// Giveaway parameters
+  final GiveawayParameters parameters;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// The number of users to receive Telegram Stars
+  final int winnerCount;
+
+  /// The number of Telegram Stars to be distributed through the giveaway
+  final int starCount;
+
+  /// Parses a [StorePaymentPurposeStarGiveaway] from TDLib JSON.
+  factory StorePaymentPurposeStarGiveaway.fromJson(Map<String, dynamic> json) =>
+      StorePaymentPurposeStarGiveaway(
+        parameters:
+            _readObject(json['parameters'], GiveawayParameters.fromJson),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        winnerCount: _readInt(json['winner_count']),
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'parameters': parameters.toJson(),
+        'currency': currency,
+        'amount': amount,
+        'winner_count': winnerCount,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StorePaymentPurposeStarGiveaway copyWith({
+    GiveawayParameters? parameters,
+    String? currency,
+    int? amount,
+    int? winnerCount,
+    int? starCount,
+  }) =>
+      StorePaymentPurposeStarGiveaway(
+        parameters: parameters ?? this.parameters,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        winnerCount: winnerCount ?? this.winnerCount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storePaymentPurposeStarGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a Telegram Premium giveaway
+/// Returns information about a giveaway
 ///
-/// Returns [PremiumGiveawayInfo].
-final class GetPremiumGiveawayInfo extends TdFunction<PremiumGiveawayInfo> {
-  /// Returns information about a Telegram Premium giveaway
-  const GetPremiumGiveawayInfo({
+/// Returns [GiveawayInfo].
+final class GetGiveawayInfo extends TdFunction<GiveawayInfo> {
+  /// Returns information about a giveaway
+  const GetGiveawayInfo({
     required this.chatId,
     required this.messageId,
   });
@@ -29,17 +29,17 @@ final class GetPremiumGiveawayInfo extends TdFunction<PremiumGiveawayInfo> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPremiumGiveawayInfo copyWith({
+  GetGiveawayInfo copyWith({
     int? chatId,
     int? messageId,
   }) =>
-      GetPremiumGiveawayInfo(
+      GetGiveawayInfo(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getPremiumGiveawayInfo';
+  static const String CONSTRUCTOR = 'getGiveawayInfo';
 
   @override
   String getConstructor() => CONSTRUCTOR;

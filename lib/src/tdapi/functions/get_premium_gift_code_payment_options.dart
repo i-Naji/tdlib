@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns available options for Telegram Premium gift code or giveaway creation
+/// Returns available options for Telegram Premium gift code or Telegram Premium giveaway creation
 ///
 /// Returns [PremiumGiftCodePaymentOptions].
 final class GetPremiumGiftCodePaymentOptions
     extends TdFunction<PremiumGiftCodePaymentOptions> {
-  /// Returns available options for Telegram Premium gift code or giveaway creation
+  /// Returns available options for Telegram Premium gift code or Telegram Premium giveaway creation
   const GetPremiumGiftCodePaymentOptions({
     required this.boostedChatId,
   });

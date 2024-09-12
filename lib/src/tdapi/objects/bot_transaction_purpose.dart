@@ -49,22 +49,28 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
   /// Paid media were bought
   const BotTransactionPurposePaidMedia({
     required this.media,
+    required this.payload,
   });
 
   /// The bought media if the trancastion wasn't refunded
   final List<PaidMedia> media;
+
+  /// Bot-provided payload; for bots only
+  final String payload;
 
   /// Parses a [BotTransactionPurposePaidMedia] from TDLib JSON.
   factory BotTransactionPurposePaidMedia.fromJson(Map<String, dynamic> json) =>
       BotTransactionPurposePaidMedia(
         media: _readList<PaidMedia>(
             json['media'], (e) => _readObject(e, PaidMedia.fromJson)),
+        payload: _readString(json['payload']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'media': [for (final e in media) e.toJson()],
+        'payload': payload,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -72,9 +78,11 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
   @override
   BotTransactionPurposePaidMedia copyWith({
     List<PaidMedia>? media,
+    String? payload,
   }) =>
       BotTransactionPurposePaidMedia(
         media: media ?? this.media,
+        payload: payload ?? this.payload,
       );
 
   /// TDLib type name.

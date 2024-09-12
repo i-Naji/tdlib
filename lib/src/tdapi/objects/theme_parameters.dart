@@ -10,6 +10,7 @@ final class ThemeParameters extends TdObject {
     required this.backgroundColor,
     required this.secondaryBackgroundColor,
     required this.headerBackgroundColor,
+    required this.bottomBarBackgroundColor,
     required this.sectionBackgroundColor,
     required this.sectionSeparatorColor,
     required this.textColor,
@@ -31,6 +32,9 @@ final class ThemeParameters extends TdObject {
 
   /// A color of the header background in the RGB24 format
   final int headerBackgroundColor;
+
+  /// A color of the bottom bar background in the RGB24 format
+  final int bottomBarBackgroundColor;
 
   /// A color of the section background in the RGB24 format
   final int sectionBackgroundColor;
@@ -71,6 +75,7 @@ final class ThemeParameters extends TdObject {
         backgroundColor: _readInt(json['background_color']),
         secondaryBackgroundColor: _readInt(json['secondary_background_color']),
         headerBackgroundColor: _readInt(json['header_background_color']),
+        bottomBarBackgroundColor: _readInt(json['bottom_bar_background_color']),
         sectionBackgroundColor: _readInt(json['section_background_color']),
         sectionSeparatorColor: _readInt(json['section_separator_color']),
         textColor: _readInt(json['text_color']),
@@ -90,6 +95,7 @@ final class ThemeParameters extends TdObject {
         'background_color': backgroundColor,
         'secondary_background_color': secondaryBackgroundColor,
         'header_background_color': headerBackgroundColor,
+        'bottom_bar_background_color': bottomBarBackgroundColor,
         'section_background_color': sectionBackgroundColor,
         'section_separator_color': sectionSeparatorColor,
         'text_color': textColor,
@@ -109,6 +115,7 @@ final class ThemeParameters extends TdObject {
     int? backgroundColor,
     int? secondaryBackgroundColor,
     int? headerBackgroundColor,
+    int? bottomBarBackgroundColor,
     int? sectionBackgroundColor,
     int? sectionSeparatorColor,
     int? textColor,
@@ -127,6 +134,8 @@ final class ThemeParameters extends TdObject {
             secondaryBackgroundColor ?? this.secondaryBackgroundColor,
         headerBackgroundColor:
             headerBackgroundColor ?? this.headerBackgroundColor,
+        bottomBarBackgroundColor:
+            bottomBarBackgroundColor ?? this.bottomBarBackgroundColor,
         sectionBackgroundColor:
             sectionBackgroundColor ?? this.sectionBackgroundColor,
         sectionSeparatorColor:

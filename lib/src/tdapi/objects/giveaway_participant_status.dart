@@ -3,28 +3,28 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about status of a user in a Telegram Premium giveaway
+/// Contains information about status of a user in a giveaway
 ///
-/// One of: [PremiumGiveawayParticipantStatusEligible], [PremiumGiveawayParticipantStatusParticipating], [PremiumGiveawayParticipantStatusAlreadyWasMember], [PremiumGiveawayParticipantStatusAdministrator], [PremiumGiveawayParticipantStatusDisallowedCountry]; or [UndecodedPremiumGiveawayParticipantStatus] for a type newer than this API.
-sealed class PremiumGiveawayParticipantStatus extends TdObject {
-  const PremiumGiveawayParticipantStatus();
+/// One of: [GiveawayParticipantStatusEligible], [GiveawayParticipantStatusParticipating], [GiveawayParticipantStatusAlreadyWasMember], [GiveawayParticipantStatusAdministrator], [GiveawayParticipantStatusDisallowedCountry]; or [UndecodedGiveawayParticipantStatus] for a type newer than this API.
+sealed class GiveawayParticipantStatus extends TdObject {
+  const GiveawayParticipantStatus();
 
-  /// Parses whichever [PremiumGiveawayParticipantStatus] subtype the JSON describes.
-  factory PremiumGiveawayParticipantStatus.fromJson(Map<String, dynamic> json) {
+  /// Parses whichever [GiveawayParticipantStatus] subtype the JSON describes.
+  factory GiveawayParticipantStatus.fromJson(Map<String, dynamic> json) {
     final object = tdObjectFactories[json['@type']]?.call(json);
-    return object is PremiumGiveawayParticipantStatus
+    return object is GiveawayParticipantStatus
         ? object
-        : UndecodedPremiumGiveawayParticipantStatus(json);
+        : UndecodedGiveawayParticipantStatus(json);
   }
 
   /// Returns a copy of this object.
-  PremiumGiveawayParticipantStatus copyWith();
+  GiveawayParticipantStatus copyWith();
 }
 
-/// A [PremiumGiveawayParticipantStatus] this API can't decode (sent by a newer TDLib).
-final class UndecodedPremiumGiveawayParticipantStatus
-    extends PremiumGiveawayParticipantStatus {
-  const UndecodedPremiumGiveawayParticipantStatus(this.json);
+/// A [GiveawayParticipantStatus] this API can't decode (sent by a newer TDLib).
+final class UndecodedGiveawayParticipantStatus
+    extends GiveawayParticipantStatus {
+  const UndecodedGiveawayParticipantStatus(this.json);
 
   /// The raw TDLib JSON object.
   final Map<String, dynamic> json;
@@ -39,22 +39,22 @@ final class UndecodedPremiumGiveawayParticipantStatus
   Map<String, dynamic> toJson() => json;
 
   @override
-  UndecodedPremiumGiveawayParticipantStatus copyWith() => this;
+  UndecodedGiveawayParticipantStatus copyWith() => this;
 
   @override
   String getConstructor() => _readString(json['@type']);
 }
 
 /// The user is eligible for the giveaway
-final class PremiumGiveawayParticipantStatusEligible
-    extends PremiumGiveawayParticipantStatus {
+final class GiveawayParticipantStatusEligible
+    extends GiveawayParticipantStatus {
   /// The user is eligible for the giveaway
-  const PremiumGiveawayParticipantStatusEligible();
+  const GiveawayParticipantStatusEligible();
 
-  /// Parses a [PremiumGiveawayParticipantStatusEligible] from TDLib JSON.
-  factory PremiumGiveawayParticipantStatusEligible.fromJson(
+  /// Parses a [GiveawayParticipantStatusEligible] from TDLib JSON.
+  factory GiveawayParticipantStatusEligible.fromJson(
           Map<String, dynamic> json) =>
-      const PremiumGiveawayParticipantStatusEligible();
+      const GiveawayParticipantStatusEligible();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -64,26 +64,26 @@ final class PremiumGiveawayParticipantStatusEligible
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayParticipantStatusEligible copyWith() =>
-      const PremiumGiveawayParticipantStatusEligible();
+  GiveawayParticipantStatusEligible copyWith() =>
+      const GiveawayParticipantStatusEligible();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiveawayParticipantStatusEligible';
+  static const String CONSTRUCTOR = 'giveawayParticipantStatusEligible';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user participates in the giveaway
-final class PremiumGiveawayParticipantStatusParticipating
-    extends PremiumGiveawayParticipantStatus {
+final class GiveawayParticipantStatusParticipating
+    extends GiveawayParticipantStatus {
   /// The user participates in the giveaway
-  const PremiumGiveawayParticipantStatusParticipating();
+  const GiveawayParticipantStatusParticipating();
 
-  /// Parses a [PremiumGiveawayParticipantStatusParticipating] from TDLib JSON.
-  factory PremiumGiveawayParticipantStatusParticipating.fromJson(
+  /// Parses a [GiveawayParticipantStatusParticipating] from TDLib JSON.
+  factory GiveawayParticipantStatusParticipating.fromJson(
           Map<String, dynamic> json) =>
-      const PremiumGiveawayParticipantStatusParticipating();
+      const GiveawayParticipantStatusParticipating();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -93,32 +93,31 @@ final class PremiumGiveawayParticipantStatusParticipating
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayParticipantStatusParticipating copyWith() =>
-      const PremiumGiveawayParticipantStatusParticipating();
+  GiveawayParticipantStatusParticipating copyWith() =>
+      const GiveawayParticipantStatusParticipating();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR =
-      'premiumGiveawayParticipantStatusParticipating';
+  static const String CONSTRUCTOR = 'giveawayParticipantStatusParticipating';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user can't participate in the giveaway, because they have already been member of the chat
-final class PremiumGiveawayParticipantStatusAlreadyWasMember
-    extends PremiumGiveawayParticipantStatus {
+final class GiveawayParticipantStatusAlreadyWasMember
+    extends GiveawayParticipantStatus {
   /// The user can't participate in the giveaway, because they have already been member of the chat
-  const PremiumGiveawayParticipantStatusAlreadyWasMember({
+  const GiveawayParticipantStatusAlreadyWasMember({
     required this.joinedChatDate,
   });
 
   /// Point in time (Unix timestamp) when the user joined the chat
   final int joinedChatDate;
 
-  /// Parses a [PremiumGiveawayParticipantStatusAlreadyWasMember] from TDLib JSON.
-  factory PremiumGiveawayParticipantStatusAlreadyWasMember.fromJson(
+  /// Parses a [GiveawayParticipantStatusAlreadyWasMember] from TDLib JSON.
+  factory GiveawayParticipantStatusAlreadyWasMember.fromJson(
           Map<String, dynamic> json) =>
-      PremiumGiveawayParticipantStatusAlreadyWasMember(
+      GiveawayParticipantStatusAlreadyWasMember(
         joinedChatDate: _readInt(json['joined_chat_date']),
       );
 
@@ -131,36 +130,35 @@ final class PremiumGiveawayParticipantStatusAlreadyWasMember
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayParticipantStatusAlreadyWasMember copyWith({
+  GiveawayParticipantStatusAlreadyWasMember copyWith({
     int? joinedChatDate,
   }) =>
-      PremiumGiveawayParticipantStatusAlreadyWasMember(
+      GiveawayParticipantStatusAlreadyWasMember(
         joinedChatDate: joinedChatDate ?? this.joinedChatDate,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR =
-      'premiumGiveawayParticipantStatusAlreadyWasMember';
+  static const String CONSTRUCTOR = 'giveawayParticipantStatusAlreadyWasMember';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway
-final class PremiumGiveawayParticipantStatusAdministrator
-    extends PremiumGiveawayParticipantStatus {
+final class GiveawayParticipantStatusAdministrator
+    extends GiveawayParticipantStatus {
   /// The user can't participate in the giveaway, because they are an administrator in one of the chats that created the giveaway
-  const PremiumGiveawayParticipantStatusAdministrator({
+  const GiveawayParticipantStatusAdministrator({
     required this.chatId,
   });
 
   /// Identifier of the chat administered by the user
   final int chatId;
 
-  /// Parses a [PremiumGiveawayParticipantStatusAdministrator] from TDLib JSON.
-  factory PremiumGiveawayParticipantStatusAdministrator.fromJson(
+  /// Parses a [GiveawayParticipantStatusAdministrator] from TDLib JSON.
+  factory GiveawayParticipantStatusAdministrator.fromJson(
           Map<String, dynamic> json) =>
-      PremiumGiveawayParticipantStatusAdministrator(
+      GiveawayParticipantStatusAdministrator(
         chatId: _readInt(json['chat_id']),
       );
 
@@ -173,36 +171,35 @@ final class PremiumGiveawayParticipantStatusAdministrator
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayParticipantStatusAdministrator copyWith({
+  GiveawayParticipantStatusAdministrator copyWith({
     int? chatId,
   }) =>
-      PremiumGiveawayParticipantStatusAdministrator(
+      GiveawayParticipantStatusAdministrator(
         chatId: chatId ?? this.chatId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR =
-      'premiumGiveawayParticipantStatusAdministrator';
+  static const String CONSTRUCTOR = 'giveawayParticipantStatusAdministrator';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user can't participate in the giveaway, because they phone number is from a disallowed country
-final class PremiumGiveawayParticipantStatusDisallowedCountry
-    extends PremiumGiveawayParticipantStatus {
+final class GiveawayParticipantStatusDisallowedCountry
+    extends GiveawayParticipantStatus {
   /// The user can't participate in the giveaway, because they phone number is from a disallowed country
-  const PremiumGiveawayParticipantStatusDisallowedCountry({
+  const GiveawayParticipantStatusDisallowedCountry({
     required this.userCountryCode,
   });
 
   /// A two-letter ISO 3166-1 alpha-2 country code of the user's country
   final String userCountryCode;
 
-  /// Parses a [PremiumGiveawayParticipantStatusDisallowedCountry] from TDLib JSON.
-  factory PremiumGiveawayParticipantStatusDisallowedCountry.fromJson(
+  /// Parses a [GiveawayParticipantStatusDisallowedCountry] from TDLib JSON.
+  factory GiveawayParticipantStatusDisallowedCountry.fromJson(
           Map<String, dynamic> json) =>
-      PremiumGiveawayParticipantStatusDisallowedCountry(
+      GiveawayParticipantStatusDisallowedCountry(
         userCountryCode: _readString(json['user_country_code']),
       );
 
@@ -215,16 +212,16 @@ final class PremiumGiveawayParticipantStatusDisallowedCountry
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumGiveawayParticipantStatusDisallowedCountry copyWith({
+  GiveawayParticipantStatusDisallowedCountry copyWith({
     String? userCountryCode,
   }) =>
-      PremiumGiveawayParticipantStatusDisallowedCountry(
+      GiveawayParticipantStatusDisallowedCountry(
         userCountryCode: userCountryCode ?? this.userCountryCode,
       );
 
   /// TDLib type name.
   static const String CONSTRUCTOR =
-      'premiumGiveawayParticipantStatusDisallowedCountry';
+      'giveawayParticipantStatusDisallowedCountry';
 
   @override
   String getConstructor() => CONSTRUCTOR;

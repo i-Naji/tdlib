@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of a payment toward Telegram
 ///
-/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars], [TelegramPaymentPurposeJoinChat]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
+/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars], [TelegramPaymentPurposeStarGiveaway], [TelegramPaymentPurposeJoinChat]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
 sealed class TelegramPaymentPurpose extends TdObject {
   const TelegramPaymentPurpose();
 
@@ -130,7 +130,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   });
 
   /// Giveaway parameters
-  final PremiumGiveawayParameters parameters;
+  final GiveawayParameters parameters;
 
   /// ISO 4217 currency code of the payment currency
   final String currency;
@@ -149,7 +149,7 @@ final class TelegramPaymentPurposePremiumGiveaway
           Map<String, dynamic> json) =>
       TelegramPaymentPurposePremiumGiveaway(
         parameters:
-            _readObject(json['parameters'], PremiumGiveawayParameters.fromJson),
+            _readObject(json['parameters'], GiveawayParameters.fromJson),
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         winnerCount: _readInt(json['winner_count']),
@@ -170,7 +170,7 @@ final class TelegramPaymentPurposePremiumGiveaway
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TelegramPaymentPurposePremiumGiveaway copyWith({
-    PremiumGiveawayParameters? parameters,
+    GiveawayParameters? parameters,
     String? currency,
     int? amount,
     int? winnerCount,
@@ -305,6 +305,79 @@ final class TelegramPaymentPurposeGiftedStars extends TelegramPaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'telegramPaymentPurposeGiftedStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user creating a Telegram Star giveaway
+final class TelegramPaymentPurposeStarGiveaway extends TelegramPaymentPurpose {
+  /// The user creating a Telegram Star giveaway
+  const TelegramPaymentPurposeStarGiveaway({
+    required this.parameters,
+    required this.currency,
+    required this.amount,
+    required this.winnerCount,
+    required this.starCount,
+  });
+
+  /// Giveaway parameters
+  final GiveawayParameters parameters;
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// The number of users to receive Telegram Stars
+  final int winnerCount;
+
+  /// The number of Telegram Stars to be distributed through the giveaway
+  final int starCount;
+
+  /// Parses a [TelegramPaymentPurposeStarGiveaway] from TDLib JSON.
+  factory TelegramPaymentPurposeStarGiveaway.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposeStarGiveaway(
+        parameters:
+            _readObject(json['parameters'], GiveawayParameters.fromJson),
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        winnerCount: _readInt(json['winner_count']),
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'parameters': parameters.toJson(),
+        'currency': currency,
+        'amount': amount,
+        'winner_count': winnerCount,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TelegramPaymentPurposeStarGiveaway copyWith({
+    GiveawayParameters? parameters,
+    String? currency,
+    int? amount,
+    int? winnerCount,
+    int? starCount,
+  }) =>
+      TelegramPaymentPurposeStarGiveaway(
+        parameters: parameters ?? this.parameters,
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        winnerCount: winnerCount ?? this.winnerCount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'telegramPaymentPurposeStarGiveaway';
 
   @override
   String getConstructor() => CONSTRUCTOR;

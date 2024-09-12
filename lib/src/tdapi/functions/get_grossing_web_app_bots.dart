@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns popular Web App bots
+/// Returns the most grossing Web App bots
 ///
 /// Returns [FoundUsers].
-final class GetPopularWebAppBots extends TdFunction<FoundUsers> {
-  /// Returns popular Web App bots
-  const GetPopularWebAppBots({
+final class GetGrossingWebAppBots extends TdFunction<FoundUsers> {
+  /// Returns the most grossing Web App bots
+  const GetGrossingWebAppBots({
     required this.offset,
     required this.limit,
   });
@@ -29,17 +29,17 @@ final class GetPopularWebAppBots extends TdFunction<FoundUsers> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetPopularWebAppBots copyWith({
+  GetGrossingWebAppBots copyWith({
     String? offset,
     int? limit,
   }) =>
-      GetPopularWebAppBots(
+      GetGrossingWebAppBots(
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getPopularWebAppBots';
+  static const String CONSTRUCTOR = 'getGrossingWebAppBots';
 
   @override
   String getConstructor() => CONSTRUCTOR;

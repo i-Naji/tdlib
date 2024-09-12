@@ -12,7 +12,7 @@ final class AccountTtl extends TdObject {
     this.clientId,
   });
 
-  /// Number of days of inactivity before the account will be flagged for deletion; 30-366 days
+  /// Number of days of inactivity before the account will be flagged for deletion; 30-730 days
   final int days;
 
   /// "@extra" of the request this object answers.
