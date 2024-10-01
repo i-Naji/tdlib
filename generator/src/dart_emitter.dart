@@ -138,7 +138,8 @@ String _dartType(TlType type) {
 }
 
 String _doc(String text, [String indent = '']) {
-  final clean = text.trim();
+  // dartdoc reads <...> as html.
+  final clean = text.trim().replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   return clean.isEmpty ? '' : '$indent/// $clean\n';
 }
 

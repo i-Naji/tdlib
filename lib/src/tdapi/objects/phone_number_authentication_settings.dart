@@ -28,7 +28,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
   /// Pass true if there is a SIM card in the current device, but it is not possible to check whether phone number matches
   final bool hasUnknownPhoneNumber;
 
-  /// For official applications only. True, if the application can use Android SMS Retriever API (requires Google Play Services >= 10.2) to automatically receive the authentication code from the SMS. See https://developers.google.com/identity/sms-retriever/ for more details
+  /// For official applications only. True, if the application can use Android SMS Retriever API (requires Google Play Services &gt;= 10.2) to automatically receive the authentication code from the SMS. See https://developers.google.com/identity/sms-retriever/ for more details
   final bool allowSmsRetrieverApi;
 
   /// For official Android and iOS applications only; pass null otherwise. Settings for Firebase Authentication

@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 @JS()
-library tdlib.web_interop;
+library;
 
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:js/js.dart';

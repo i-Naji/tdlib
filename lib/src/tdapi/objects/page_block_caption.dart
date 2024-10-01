@@ -14,7 +14,7 @@ final class PageBlockCaption extends TdObject {
   /// Content of the caption
   final RichText text;
 
-  /// Block credit (like HTML tag <cite>)
+  /// Block credit (like HTML tag &lt;cite&gt;)
   final RichText credit;
 
   /// Parses a [PageBlockCaption] from TDLib JSON.

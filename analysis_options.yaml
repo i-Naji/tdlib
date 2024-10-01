@@ -11,6 +11,5 @@ analyzer:
   # exclude:
   #  - generator/generate.dart
   errors:
-    invalid_assignment: warning
     dead_code: info
     todo: info
