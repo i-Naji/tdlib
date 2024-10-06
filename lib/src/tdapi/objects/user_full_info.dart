@@ -24,6 +24,7 @@ final class UserFullInfo extends TdObject {
     this.birthdate,
     required this.personalChatId,
     required this.premiumGiftOptions,
+    required this.giftCount,
     required this.groupInCommonCount,
     this.businessInfo,
     this.botInfo,
@@ -82,6 +83,9 @@ final class UserFullInfo extends TdObject {
   /// The list of available options for gifting Telegram Premium to the user
   final List<PremiumPaymentOption> premiumGiftOptions;
 
+  /// Number of gifts saved to profile by the user
+  final int giftCount;
+
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
@@ -125,6 +129,7 @@ final class UserFullInfo extends TdObject {
         premiumGiftOptions: _readList<PremiumPaymentOption>(
             json['premium_gift_options'],
             (e) => _readObject(e, PremiumPaymentOption.fromJson)),
+        giftCount: _readInt(json['gift_count']),
         groupInCommonCount: _readInt(json['group_in_common_count']),
         businessInfo:
             _readOptional(json['business_info'], BusinessInfo.fromJson),
@@ -156,6 +161,7 @@ final class UserFullInfo extends TdObject {
         'premium_gift_options': [
           for (final e in premiumGiftOptions) e.toJson()
         ],
+        'gift_count': giftCount,
         'group_in_common_count': groupInCommonCount,
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
@@ -181,6 +187,7 @@ final class UserFullInfo extends TdObject {
     Birthdate? Function()? birthdate,
     int? personalChatId,
     List<PremiumPaymentOption>? premiumGiftOptions,
+    int? giftCount,
     int? groupInCommonCount,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
@@ -211,6 +218,7 @@ final class UserFullInfo extends TdObject {
         birthdate: birthdate != null ? birthdate() : this.birthdate,
         personalChatId: personalChatId ?? this.personalChatId,
         premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
+        giftCount: giftCount ?? this.giftCount,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
         botInfo: botInfo != null ? botInfo() : this.botInfo,

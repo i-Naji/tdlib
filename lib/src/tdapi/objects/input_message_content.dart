@@ -374,7 +374,7 @@ final class InputMessagePaidMedia extends InputMessageContent {
   /// Message caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// True, if the caption must be shown above the video; otherwise, the caption must be shown below the video; not supported in secret chats
+  /// True, if the caption must be shown above the media; otherwise, the caption must be shown below the media; not supported in secret chats
   final bool showCaptionAboveMedia;
 
   /// Bot-provided data for the paid media; bots only
@@ -623,7 +623,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.hasSpoiler,
   });
 
-  /// Video to be sent
+  /// Video to be sent. The video is expected to be reencoded to MPEG4 format with H.264 codec by the sender
   final InputFile video;
 
   /// Video thumbnail; pass null to skip thumbnail uploading
@@ -641,7 +641,7 @@ final class InputMessageVideo extends InputMessageContent {
   /// Video height
   final int height;
 
-  /// True, if the video is supposed to be streamed
+  /// True, if the video is expected to be streamed
   final bool supportsStreaming;
 
   /// Video caption; pass null to use an empty caption; 0-getOption("message_caption_length_max") characters

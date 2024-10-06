@@ -37,7 +37,7 @@ final class Video extends TdObject {
   /// True, if stickers were added to the video. The list of corresponding sticker sets can be received using getAttachedStickerSets
   final bool hasStickers;
 
-  /// True, if the video is supposed to be streamed
+  /// True, if the video is expected to be streamed
   final bool supportsStreaming;
 
   /// Video minithumbnail; may be null

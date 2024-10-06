@@ -158,7 +158,7 @@ final class ReportChatSponsoredMessageResultOptionRequired
   final String title;
 
   /// List of available options
-  final List<ReportChatSponsoredMessageOption> options;
+  final List<ReportOption> options;
 
   /// "@extra" of the request this object answers.
   @override
@@ -173,8 +173,8 @@ final class ReportChatSponsoredMessageResultOptionRequired
           Map<String, dynamic> json) =>
       ReportChatSponsoredMessageResultOptionRequired(
         title: _readString(json['title']),
-        options: _readList<ReportChatSponsoredMessageOption>(json['options'],
-            (e) => _readObject(e, ReportChatSponsoredMessageOption.fromJson)),
+        options: _readList<ReportOption>(
+            json['options'], (e) => _readObject(e, ReportOption.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -191,7 +191,7 @@ final class ReportChatSponsoredMessageResultOptionRequired
   @override
   ReportChatSponsoredMessageResultOptionRequired copyWith({
     String? title,
-    List<ReportChatSponsoredMessageOption>? options,
+    List<ReportOption>? options,
     dynamic extra,
     int? clientId,
   }) =>

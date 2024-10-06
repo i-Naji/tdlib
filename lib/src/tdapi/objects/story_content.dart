@@ -92,7 +92,7 @@ final class StoryContentVideo extends StoryContent {
   /// The video in MPEG4 format
   final StoryVideo video;
 
-  /// Alternative version of the video in MPEG4 format, encoded by x264 codec; may be null
+  /// Alternative version of the video in MPEG4 format, encoded with H.264 codec; may be null
   final StoryVideo? alternativeVideo;
 
   /// Parses a [StoryContentVideo] from TDLib JSON.

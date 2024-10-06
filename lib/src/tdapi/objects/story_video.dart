@@ -40,7 +40,7 @@ final class StoryVideo extends TdObject {
   /// Video thumbnail in JPEG or MPEG4 format; may be null
   final Thumbnail? thumbnail;
 
-  /// Size of file prefix, which is supposed to be preloaded, in bytes
+  /// Size of file prefix, which is expected to be preloaded, in bytes
   final int preloadPrefixSize;
 
   /// Timestamp of the frame used as video thumbnail

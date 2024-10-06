@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns a list of users and location-based supergroups nearby. The list of users nearby will be updated for 60 seconds after the request by the updates updateUsersNearby. The request must be sent again every 25 seconds with adjusted location to not miss new chats
+/// Returns a list of users and location-based supergroups nearby. The method was disabled and returns an empty list of chats now
 ///
 /// Returns [ChatsNearby].
 final class SearchChatsNearby extends TdFunction<ChatsNearby> {
-  /// Returns a list of users and location-based supergroups nearby. The list of users nearby will be updated for 60 seconds after the request by the updates updateUsersNearby. The request must be sent again every 25 seconds with adjusted location to not miss new chats
+  /// Returns a list of users and location-based supergroups nearby. The method was disabled and returns an empty list of chats now
   const SearchChatsNearby({
     required this.location,
   });

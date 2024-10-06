@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously
+/// Removes potentially dangerous characters from the name of a file. Returns an empty string on failure. Can be called synchronously
 ///
 /// Returns [Text].
 final class CleanFileName extends TdFunction<Text> {
-  /// Removes potentially dangerous characters from the name of a file. The encoding of the file name is supposed to be UTF-8. Returns an empty string on failure. Can be called synchronously
+  /// Removes potentially dangerous characters from the name of a file. Returns an empty string on failure. Can be called synchronously
   const CleanFileName({
     required this.fileName,
   });

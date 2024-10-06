@@ -20,7 +20,7 @@ final class GetChatArchivedStories extends TdFunction<Stories> {
   /// Identifier of the story starting from which stories must be returned; use 0 to get results from the last story
   final int fromStoryId;
 
-  /// The maximum number of stories to be returned For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
+  /// The maximum number of stories to be returned. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   final int limit;
 
   @override

@@ -20,7 +20,7 @@ final class PaidReactor extends TdObject {
   /// Number of Telegram Stars added
   final int starCount;
 
-  /// True, if the reactor is one of the most active reactors; can be false if the reactor is the current user
+  /// True, if the reactor is one of the most active reactors; may be false if the reactor is the current user
   final bool isTop;
 
   /// True, if the paid reaction was added by the current user

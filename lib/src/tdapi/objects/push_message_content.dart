@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -758,6 +758,45 @@ final class PushMessageContentGiveaway extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentGiveaway';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a gift
+final class PushMessageContentGift extends PushMessageContent {
+  /// A message with a gift
+  const PushMessageContentGift({
+    required this.starCount,
+  });
+
+  /// Number of Telegram Stars that sender paid for the gift
+  final int starCount;
+
+  /// Parses a [PushMessageContentGift] from TDLib JSON.
+  factory PushMessageContentGift.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentGift(
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentGift copyWith({
+    int? starCount,
+  }) =>
+      PushMessageContentGift(
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

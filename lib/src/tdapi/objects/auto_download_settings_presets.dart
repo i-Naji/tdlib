@@ -14,13 +14,13 @@ final class AutoDownloadSettingsPresets extends TdObject {
     this.clientId,
   });
 
-  /// Preset with lowest settings; supposed to be used by default when roaming
+  /// Preset with lowest settings; expected to be used by default when roaming
   final AutoDownloadSettings low;
 
-  /// Preset with medium settings; supposed to be used by default when using mobile data
+  /// Preset with medium settings; expected to be used by default when using mobile data
   final AutoDownloadSettings medium;
 
-  /// Preset with highest settings; supposed to be used by default when connected on Wi-Fi
+  /// Preset with highest settings; expected to be used by default when connected on Wi-Fi
   final AutoDownloadSettings high;
 
   /// "@extra" of the request this object answers.

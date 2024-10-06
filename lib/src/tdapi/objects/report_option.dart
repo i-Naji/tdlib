@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option to report a sponsored message
-final class ReportChatSponsoredMessageOption extends TdObject {
-  /// Describes an option to report a sponsored message
-  const ReportChatSponsoredMessageOption({
+/// Describes an option to report an entity to Telegram
+final class ReportOption extends TdObject {
+  /// Describes an option to report an entity to Telegram
+  const ReportOption({
     required this.id,
     required this.text,
   });
@@ -17,10 +17,8 @@ final class ReportChatSponsoredMessageOption extends TdObject {
   /// Text of the option
   final String text;
 
-  /// Parses a [ReportChatSponsoredMessageOption] from TDLib JSON.
-  factory ReportChatSponsoredMessageOption.fromJson(
-          Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageOption(
+  /// Parses a [ReportOption] from TDLib JSON.
+  factory ReportOption.fromJson(Map<String, dynamic> json) => ReportOption(
         id: _readString(json['id']),
         text: _readString(json['text']),
       );
@@ -34,17 +32,17 @@ final class ReportChatSponsoredMessageOption extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReportChatSponsoredMessageOption copyWith({
+  ReportOption copyWith({
     String? id,
     String? text,
   }) =>
-      ReportChatSponsoredMessageOption(
+      ReportOption(
         id: id ?? this.id,
         text: text ?? this.text,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'reportChatSponsoredMessageOption';
+  static const String CONSTRUCTOR = 'reportOption';
 
   @override
   String getConstructor() => CONSTRUCTOR;

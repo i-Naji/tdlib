@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a message
+/// Returns information about a message. Returns a 404 error if the message doesn't exist
 ///
 /// Returns [Message].
 final class GetMessage extends TdFunction<Message> {
-  /// Returns information about a message
+  /// Returns information about a message. Returns a 404 error if the message doesn't exist
   const GetMessage({
     required this.chatId,
     required this.messageId,

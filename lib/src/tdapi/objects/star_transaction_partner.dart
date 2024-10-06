@@ -337,32 +337,32 @@ final class StarTransactionPartnerChat extends StarTransactionPartner {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a gift of Telegram Stars from another user
+/// The transaction is a transcation with another user
 final class StarTransactionPartnerUser extends StarTransactionPartner {
-  /// The transaction is a gift of Telegram Stars from another user
+  /// The transaction is a transcation with another user
   const StarTransactionPartnerUser({
     required this.userId,
-    this.sticker,
+    required this.purpose,
   });
 
-  /// Identifier of the user; 0 if the gift was anonymous
+  /// Identifier of the user; 0 if the user was anonymous
   final int userId;
 
-  /// A sticker to be shown in the transaction information; may be null if unknown
-  final Sticker? sticker;
+  /// Purpose of the transaction
+  final UserTransactionPurpose purpose;
 
   /// Parses a [StarTransactionPartnerUser] from TDLib JSON.
   factory StarTransactionPartnerUser.fromJson(Map<String, dynamic> json) =>
       StarTransactionPartnerUser(
         userId: _readInt(json['user_id']),
-        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+        purpose: _readObject(json['purpose'], UserTransactionPurpose.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'user_id': userId,
-        'sticker': sticker?.toJson(),
+        'purpose': purpose.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -370,11 +370,11 @@ final class StarTransactionPartnerUser extends StarTransactionPartner {
   @override
   StarTransactionPartnerUser copyWith({
     int? userId,
-    Sticker? Function()? sticker,
+    UserTransactionPurpose? purpose,
   }) =>
       StarTransactionPartnerUser(
         userId: userId ?? this.userId,
-        sticker: sticker != null ? sticker() : this.sticker,
+        purpose: purpose ?? this.purpose,
       );
 
   /// TDLib type name.

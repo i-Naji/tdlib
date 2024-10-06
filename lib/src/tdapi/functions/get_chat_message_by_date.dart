@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the last message sent in a chat no later than the specified date
+/// Returns the last message sent in a chat no later than the specified date. Returns a 404 error if such message doesn't exist
 ///
 /// Returns [Message].
 final class GetChatMessageByDate extends TdFunction<Message> {
-  /// Returns the last message sent in a chat no later than the specified date
+  /// Returns the last message sent in a chat no later than the specified date. Returns a 404 error if such message doesn't exist
   const GetChatMessageByDate({
     required this.chatId,
     required this.date,

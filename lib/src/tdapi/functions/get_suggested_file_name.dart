@@ -16,7 +16,7 @@ final class GetSuggestedFileName extends TdFunction<Text> {
   /// Identifier of the file
   final int fileId;
 
-  /// Directory in which the file is supposed to be saved
+  /// Directory in which the file is expected to be saved
   final String directory;
 
   @override

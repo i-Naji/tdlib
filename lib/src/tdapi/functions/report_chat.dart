@@ -5,34 +5,34 @@ part of '../tdapi.dart';
 
 /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
 ///
-/// Returns [Ok].
-final class ReportChat extends TdFunction<Ok> {
+/// Returns [ReportChatResult].
+final class ReportChat extends TdFunction<ReportChatResult> {
   /// Reports a chat to the Telegram moderators. A chat can be reported only from the chat action bar, or if chat.can_be_reported
   const ReportChat({
     required this.chatId,
+    required this.optionId,
     required this.messageIds,
-    required this.reason,
     required this.text,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// Identifiers of reported messages; may be empty to report the whole chat. Use messageProperties.can_be_reported to check whether the message can be reported
+  /// Option identifier chosen by the user; leave empty for the initial request
+  final String optionId;
+
+  /// Identifiers of reported messages. Use messageProperties.can_report_chat to check whether the message can be reported
   final List<int> messageIds;
 
-  /// The reason for reporting the chat
-  final ReportReason reason;
-
-  /// Additional report details; 0-1024 characters
+  /// Additional report details if asked by the server; 0-1024 characters; leave empty for the initial request
   final String text;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'option_id': optionId,
         'message_ids': messageIds,
-        'reason': reason.toJson(),
         'text': text,
         if (extra != null) '@extra': extra,
       };
@@ -41,14 +41,14 @@ final class ReportChat extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReportChat copyWith({
     int? chatId,
+    String? optionId,
     List<int>? messageIds,
-    ReportReason? reason,
     String? text,
   }) =>
       ReportChat(
         chatId: chatId ?? this.chatId,
+        optionId: optionId ?? this.optionId,
         messageIds: messageIds ?? this.messageIds,
-        reason: reason ?? this.reason,
         text: text ?? this.text,
       );
 

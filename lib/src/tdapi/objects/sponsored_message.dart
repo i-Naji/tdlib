@@ -28,7 +28,7 @@ final class SponsoredMessage extends TdObject {
   /// True, if the message can be reported to Telegram moderators through reportChatSponsoredMessage
   final bool canBeReported;
 
-  /// Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo
+  /// Content of the message. Currently, can be only of the types messageText, messageAnimation, messagePhoto, or messageVideo. Video messages can be viewed fullscreen
   final MessageContent content;
 
   /// Information about the sponsor of the message

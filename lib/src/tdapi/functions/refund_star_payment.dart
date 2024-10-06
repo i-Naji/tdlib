@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Refunds a previously done payment in Telegram Stars
+/// Refunds a previously done payment in Telegram Stars; for bots only
 ///
 /// Returns [Ok].
 final class RefundStarPayment extends TdFunction<Ok> {
-  /// Refunds a previously done payment in Telegram Stars
+  /// Refunds a previously done payment in Telegram Stars; for bots only
   const RefundStarPayment({
     required this.userId,
     required this.telegramPaymentChargeId,

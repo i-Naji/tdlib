@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -451,6 +451,7 @@ final class MessageVideo extends MessageContent {
   /// A video message
   const MessageVideo({
     required this.video,
+    required this.alternativeVideos,
     required this.caption,
     required this.showCaptionAboveMedia,
     required this.hasSpoiler,
@@ -459,6 +460,9 @@ final class MessageVideo extends MessageContent {
 
   /// The video description
   final Video video;
+
+  /// Alternative qualities of the video
+  final List<AlternativeVideo> alternativeVideos;
 
   /// Video caption
   final FormattedText caption;
@@ -475,6 +479,9 @@ final class MessageVideo extends MessageContent {
   /// Parses a [MessageVideo] from TDLib JSON.
   factory MessageVideo.fromJson(Map<String, dynamic> json) => MessageVideo(
         video: _readObject(json['video'], Video.fromJson),
+        alternativeVideos: _readList<AlternativeVideo>(
+            json['alternative_videos'],
+            (e) => _readObject(e, AlternativeVideo.fromJson)),
         caption: _readObject(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
@@ -485,6 +492,7 @@ final class MessageVideo extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
+        'alternative_videos': [for (final e in alternativeVideos) e.toJson()],
         'caption': caption.toJson(),
         'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
@@ -496,6 +504,7 @@ final class MessageVideo extends MessageContent {
   @override
   MessageVideo copyWith({
     Video? video,
+    List<AlternativeVideo>? alternativeVideos,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
@@ -503,6 +512,7 @@ final class MessageVideo extends MessageContent {
   }) =>
       MessageVideo(
         video: video ?? this.video,
+        alternativeVideos: alternativeVideos ?? this.alternativeVideos,
         caption: caption ?? this.caption,
         showCaptionAboveMedia:
             showCaptionAboveMedia ?? this.showCaptionAboveMedia,
@@ -1300,7 +1310,7 @@ final class MessageVideoChatScheduled extends MessageContent {
   /// Identifier of the video chat. The video chat can be received through the method getGroupCall
   final int groupCallId;
 
-  /// Point in time (Unix timestamp) when the group call is supposed to be started by an administrator
+  /// Point in time (Unix timestamp) when the group call is expected to be started by an administrator
   final int startDate;
 
   /// Parses a [MessageVideoChatScheduled] from TDLib JSON.
@@ -3305,9 +3315,9 @@ final class MessageGiftedStars extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A Telegram Stars were received by the cuurent user from a giveaway
+/// A Telegram Stars were received by the current user from a giveaway
 final class MessageGiveawayPrizeStars extends MessageContent {
-  /// A Telegram Stars were received by the cuurent user from a giveaway
+  /// A Telegram Stars were received by the current user from a giveaway
   const MessageGiveawayPrizeStars({
     required this.starCount,
     required this.transactionId,
@@ -3379,6 +3389,84 @@ final class MessageGiveawayPrizeStars extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGiveawayPrizeStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A gift was received or sent by the current user
+final class MessageGift extends MessageContent {
+  /// A gift was received or sent by the current user
+  const MessageGift({
+    required this.gift,
+    required this.text,
+    required this.sellStarCount,
+    required this.isPrivate,
+    required this.isSaved,
+    required this.wasConverted,
+  });
+
+  /// The gift
+  final Gift gift;
+
+  /// Message added to the gift
+  final FormattedText text;
+
+  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift
+  final int sellStarCount;
+
+  /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
+  final bool isPrivate;
+
+  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
+  final bool isSaved;
+
+  /// True, if the gift was converted to Telegram Stars; only for the receiver of the gift
+  final bool wasConverted;
+
+  /// Parses a [MessageGift] from TDLib JSON.
+  factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
+        gift: _readObject(json['gift'], Gift.fromJson),
+        text: _readObject(json['text'], FormattedText.fromJson),
+        sellStarCount: _readInt(json['sell_star_count']),
+        isPrivate: _readBool(json['is_private']),
+        isSaved: _readBool(json['is_saved']),
+        wasConverted: _readBool(json['was_converted']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift': gift.toJson(),
+        'text': text.toJson(),
+        'sell_star_count': sellStarCount,
+        'is_private': isPrivate,
+        'is_saved': isSaved,
+        'was_converted': wasConverted,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageGift copyWith({
+    Gift? gift,
+    FormattedText? text,
+    int? sellStarCount,
+    bool? isPrivate,
+    bool? isSaved,
+    bool? wasConverted,
+  }) =>
+      MessageGift(
+        gift: gift ?? this.gift,
+        text: text ?? this.text,
+        sellStarCount: sellStarCount ?? this.sellStarCount,
+        isPrivate: isPrivate ?? this.isPrivate,
+        isSaved: isSaved ?? this.isSaved,
+        wasConverted: wasConverted ?? this.wasConverted,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes the type of inline keyboard button
 ///
-/// One of: [InlineKeyboardButtonTypeUrl], [InlineKeyboardButtonTypeLoginUrl], [InlineKeyboardButtonTypeWebApp], [InlineKeyboardButtonTypeCallback], [InlineKeyboardButtonTypeCallbackWithPassword], [InlineKeyboardButtonTypeCallbackGame], [InlineKeyboardButtonTypeSwitchInline], [InlineKeyboardButtonTypeBuy], [InlineKeyboardButtonTypeUser]; or [UndecodedInlineKeyboardButtonType] for a type newer than this API.
+/// One of: [InlineKeyboardButtonTypeUrl], [InlineKeyboardButtonTypeLoginUrl], [InlineKeyboardButtonTypeWebApp], [InlineKeyboardButtonTypeCallback], [InlineKeyboardButtonTypeCallbackWithPassword], [InlineKeyboardButtonTypeCallbackGame], [InlineKeyboardButtonTypeSwitchInline], [InlineKeyboardButtonTypeBuy], [InlineKeyboardButtonTypeUser], [InlineKeyboardButtonTypeCopyText]; or [UndecodedInlineKeyboardButtonType] for a type newer than this API.
 sealed class InlineKeyboardButtonType extends TdObject {
   const InlineKeyboardButtonType();
 
@@ -398,6 +398,46 @@ final class InlineKeyboardButtonTypeUser extends InlineKeyboardButtonType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeUser';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A button that copies specified text to clipboard
+final class InlineKeyboardButtonTypeCopyText extends InlineKeyboardButtonType {
+  /// A button that copies specified text to clipboard
+  const InlineKeyboardButtonTypeCopyText({
+    required this.text,
+  });
+
+  /// The text to copy to clipboard
+  final String text;
+
+  /// Parses a [InlineKeyboardButtonTypeCopyText] from TDLib JSON.
+  factory InlineKeyboardButtonTypeCopyText.fromJson(
+          Map<String, dynamic> json) =>
+      InlineKeyboardButtonTypeCopyText(
+        text: _readString(json['text']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'text': text,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InlineKeyboardButtonTypeCopyText copyWith({
+    String? text,
+  }) =>
+      InlineKeyboardButtonTypeCopyText(
+        text: text ?? this.text,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inlineKeyboardButtonTypeCopyText';
 
   @override
   String getConstructor() => CONSTRUCTOR;

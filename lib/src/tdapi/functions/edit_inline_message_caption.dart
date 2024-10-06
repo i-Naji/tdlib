@@ -24,7 +24,7 @@ final class EditInlineMessageCaption extends TdFunction<Ok> {
   /// New message content caption; pass null to remove caption; 0-getOption("message_caption_length_max") characters
   final FormattedText? caption;
 
-  /// Pass true to show the caption above the media; otherwise, the caption will be shown below the media. Can be true only for animation, photo, and video messages
+  /// Pass true to show the caption above the media; otherwise, the caption will be shown below the media. May be true only for animation, photo, and video messages
   final bool showCaptionAboveMedia;
 
   @override

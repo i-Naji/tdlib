@@ -439,7 +439,7 @@ final class AuthenticationCodeTypeFirebaseIos extends AuthenticationCodeType {
   /// Receipt of successful application token validation to compare with receipt from push notification
   final String receipt;
 
-  /// Time after the next authentication method is supposed to be used if verification push notification isn't received, in seconds
+  /// Time after the next authentication method is expected to be used if verification push notification isn't received, in seconds
   final int pushTimeout;
 
   /// Length of the code

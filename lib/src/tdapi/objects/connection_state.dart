@@ -124,9 +124,9 @@ final class ConnectionStateConnecting extends ConnectionState {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Downloading data supposed to be received while the application was offline
+/// Downloading data expected to be received while the application was offline
 final class ConnectionStateUpdating extends ConnectionState {
-  /// Downloading data supposed to be received while the application was offline
+  /// Downloading data expected to be received while the application was offline
   const ConnectionStateUpdating();
 
   /// Parses a [ConnectionStateUpdating] from TDLib JSON.

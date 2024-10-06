@@ -5,13 +5,13 @@ part of '../tdapi.dart';
 
 /// Reports a story to the Telegram moderators
 ///
-/// Returns [Ok].
-final class ReportStory extends TdFunction<Ok> {
+/// Returns [ReportStoryResult].
+final class ReportStory extends TdFunction<ReportStoryResult> {
   /// Reports a story to the Telegram moderators
   const ReportStory({
     required this.storySenderChatId,
     required this.storyId,
-    required this.reason,
+    required this.optionId,
     required this.text,
   });
 
@@ -21,10 +21,10 @@ final class ReportStory extends TdFunction<Ok> {
   /// The identifier of the story to report
   final int storyId;
 
-  /// The reason for reporting the story
-  final ReportReason reason;
+  /// Option identifier chosen by the user; leave empty for the initial request
+  final String optionId;
 
-  /// Additional report details; 0-1024 characters
+  /// Additional report details; 0-1024 characters; leave empty for the initial request
   final String text;
 
   @override
@@ -32,7 +32,7 @@ final class ReportStory extends TdFunction<Ok> {
         '@type': CONSTRUCTOR,
         'story_sender_chat_id': storySenderChatId,
         'story_id': storyId,
-        'reason': reason.toJson(),
+        'option_id': optionId,
         'text': text,
         if (extra != null) '@extra': extra,
       };
@@ -42,13 +42,13 @@ final class ReportStory extends TdFunction<Ok> {
   ReportStory copyWith({
     int? storySenderChatId,
     int? storyId,
-    ReportReason? reason,
+    String? optionId,
     String? text,
   }) =>
       ReportStory(
         storySenderChatId: storySenderChatId ?? this.storySenderChatId,
         storyId: storyId ?? this.storyId,
-        reason: reason ?? this.reason,
+        optionId: optionId ?? this.optionId,
         text: text ?? this.text,
       );
 

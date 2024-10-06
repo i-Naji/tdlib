@@ -81,7 +81,7 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
   /// Duration of the video, in seconds
   final int duration;
 
-  /// True, if the video is supposed to be streamed
+  /// True, if the video is expected to be streamed
   final bool supportsStreaming;
 
   /// Parses a [InputPaidMediaTypeVideo] from TDLib JSON.
