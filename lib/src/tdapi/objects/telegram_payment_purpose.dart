@@ -54,6 +54,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
     required this.amount,
     required this.userIds,
     required this.monthCount,
+    required this.text,
   });
 
   /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
@@ -71,6 +72,9 @@ final class TelegramPaymentPurposePremiumGiftCodes
   /// Number of months the Telegram Premium subscription will be active for the users
   final int monthCount;
 
+  /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  final FormattedText text;
+
   /// Parses a [TelegramPaymentPurposePremiumGiftCodes] from TDLib JSON.
   factory TelegramPaymentPurposePremiumGiftCodes.fromJson(
           Map<String, dynamic> json) =>
@@ -80,6 +84,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
         amount: _readInt(json['amount']),
         userIds: _readList<int>(json['user_ids'], _readInt),
         monthCount: _readInt(json['month_count']),
+        text: _readObject(json['text'], FormattedText.fromJson),
       );
 
   @override
@@ -90,6 +95,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
         'amount': amount,
         'user_ids': userIds,
         'month_count': monthCount,
+        'text': text.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -101,6 +107,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
     int? amount,
     List<int>? userIds,
     int? monthCount,
+    FormattedText? text,
   }) =>
       TelegramPaymentPurposePremiumGiftCodes(
         boostedChatId: boostedChatId ?? this.boostedChatId,
@@ -108,6 +115,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
         amount: amount ?? this.amount,
         userIds: userIds ?? this.userIds,
         monthCount: monthCount ?? this.monthCount,
+        text: text ?? this.text,
       );
 
   /// TDLib type name.

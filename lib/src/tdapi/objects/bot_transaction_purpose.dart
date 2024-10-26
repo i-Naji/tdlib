@@ -52,7 +52,7 @@ final class BotTransactionPurposePaidMedia extends BotTransactionPurpose {
     required this.payload,
   });
 
-  /// The bought media if the trancastion wasn't refunded
+  /// The bought media if the transaction wasn't refunded
   final List<PaidMedia> media;
 
   /// Bot-provided payload; for bots only

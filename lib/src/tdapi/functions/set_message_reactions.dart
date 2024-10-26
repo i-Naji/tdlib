@@ -21,7 +21,7 @@ final class SetMessageReactions extends TdFunction<Ok> {
   /// Identifier of the message
   final int messageId;
 
-  /// Types of the reaction to set
+  /// Types of the reaction to set; pass an empty list to remove the reactions
   final List<ReactionType> reactionTypes;
 
   /// Pass true if the reactions are added with a big animation

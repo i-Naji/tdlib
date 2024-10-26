@@ -55,7 +55,7 @@ final class ChatTransactionPurposePaidMedia extends ChatTransactionPurpose {
   /// Identifier of the corresponding message with paid media; can be 0 or an identifier of a deleted message
   final int messageId;
 
-  /// The bought media if the trancastion wasn't refunded
+  /// The bought media if the transaction wasn't refunded
   final List<PaidMedia> media;
 
   /// Parses a [ChatTransactionPurposePaidMedia] from TDLib JSON.

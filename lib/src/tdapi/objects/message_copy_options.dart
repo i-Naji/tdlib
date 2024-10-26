@@ -13,7 +13,7 @@ final class MessageCopyOptions extends TdObject {
     required this.newShowCaptionAboveMedia,
   });
 
-  /// True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local
+  /// True, if content of the message needs to be copied without reference to the original sender. Always true if the message is forwarded to a secret chat or is local. Use messageProperties.can_be_saved and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable
   final bool sendCopy;
 
   /// True, if media caption of the message copy needs to be replaced. Ignored if send_copy is false

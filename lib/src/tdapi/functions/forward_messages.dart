@@ -33,7 +33,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Options to be used to send the messages; pass null to use default options
   final MessageSendOptions? options;
 
-  /// Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local
+  /// Pass true to copy content of the messages without reference to the original sender. Always true if the messages are forwarded to a secret chat or are local. Use messageProperties.can_be_saved and messageProperties.can_be_copied_to_secret_chat to check whether the message is suitable
   final bool sendCopy;
 
   /// Pass true to remove media captions of message copies. Ignored if send_copy is false

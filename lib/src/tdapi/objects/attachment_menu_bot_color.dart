@@ -11,10 +11,10 @@ final class AttachmentMenuBotColor extends TdObject {
     required this.darkColor,
   });
 
-  /// Color in the RGB24 format for light themes
+  /// Color in the RGB format for light themes
   final int lightColor;
 
-  /// Color in the RGB24 format for dark themes
+  /// Color in the RGB format for dark themes
   final int darkColor;
 
   /// Parses a [AttachmentMenuBotColor] from TDLib JSON.

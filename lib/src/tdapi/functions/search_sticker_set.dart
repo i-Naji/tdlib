@@ -10,15 +10,20 @@ final class SearchStickerSet extends TdFunction<StickerSet> {
   /// Searches for a sticker set by its name
   const SearchStickerSet({
     required this.name,
+    required this.ignoreCache,
   });
 
   /// Name of the sticker set
   final String name;
 
+  /// Pass true to ignore local cache of sticker sets and always send a network request
+  final bool ignoreCache;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'name': name,
+        'ignore_cache': ignoreCache,
         if (extra != null) '@extra': extra,
       };
 
@@ -26,9 +31,11 @@ final class SearchStickerSet extends TdFunction<StickerSet> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchStickerSet copyWith({
     String? name,
+    bool? ignoreCache,
   }) =>
       SearchStickerSet(
         name: name ?? this.name,
+        ignoreCache: ignoreCache ?? this.ignoreCache,
       );
 
   /// TDLib type name.

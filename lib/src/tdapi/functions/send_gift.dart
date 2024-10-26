@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Send a gift to another user
+/// Sends a gift to another user. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
 ///
 /// Returns [Ok].
 final class SendGift extends TdFunction<Ok> {
-  /// Send a gift to another user
+  /// Sends a gift to another user. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
   const SendGift({
     required this.giftId,
     required this.userId,

@@ -253,7 +253,7 @@ final class StarTransactionPartnerBusiness extends StarTransactionPartner {
   /// Identifier of the business account user
   final int userId;
 
-  /// The bought media if the trancastion wasn't refunded
+  /// The bought media if the transaction wasn't refunded
   final List<PaidMedia> media;
 
   /// Parses a [StarTransactionPartnerBusiness] from TDLib JSON.
@@ -337,9 +337,9 @@ final class StarTransactionPartnerChat extends StarTransactionPartner {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transcation with another user
+/// The transaction is a transaction with another user
 final class StarTransactionPartnerUser extends StarTransactionPartner {
-  /// The transaction is a transcation with another user
+  /// The transaction is a transaction with another user
   const StarTransactionPartnerUser({
     required this.userId,
     required this.purpose,

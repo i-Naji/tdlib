@@ -1086,28 +1086,28 @@ final class LinkPreviewTypeTheme extends LinkPreviewType {
   /// The link is a link to a cloud theme. TDLib has no theme support yet
   const LinkPreviewTypeTheme({
     required this.documents,
-    required this.settings,
+    this.settings,
   });
 
   /// The list of files with theme description
   final List<Document> documents;
 
-  /// Settings for the cloud theme
-  final ThemeSettings settings;
+  /// Settings for the cloud theme; may be null if unknown
+  final ThemeSettings? settings;
 
   /// Parses a [LinkPreviewTypeTheme] from TDLib JSON.
   factory LinkPreviewTypeTheme.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeTheme(
         documents: _readList<Document>(
             json['documents'], (e) => _readObject(e, Document.fromJson)),
-        settings: _readObject(json['settings'], ThemeSettings.fromJson),
+        settings: _readOptional(json['settings'], ThemeSettings.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'documents': [for (final e in documents) e.toJson()],
-        'settings': settings.toJson(),
+        'settings': settings?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1115,11 +1115,11 @@ final class LinkPreviewTypeTheme extends LinkPreviewType {
   @override
   LinkPreviewTypeTheme copyWith({
     List<Document>? documents,
-    ThemeSettings? settings,
+    ThemeSettings? Function()? settings,
   }) =>
       LinkPreviewTypeTheme(
         documents: documents ?? this.documents,
-        settings: settings ?? this.settings,
+        settings: settings != null ? settings() : this.settings,
       );
 
   /// TDLib type name.
@@ -1370,32 +1370,32 @@ final class LinkPreviewTypeVoiceNote extends LinkPreviewType {
 final class LinkPreviewTypeWebApp extends LinkPreviewType {
   /// The link is a link to a Web App
   const LinkPreviewTypeWebApp({
-    required this.photo,
+    this.photo,
   });
 
-  /// Web App photo
-  final Photo photo;
+  /// Web App photo; may be null if none
+  final Photo? photo;
 
   /// Parses a [LinkPreviewTypeWebApp] from TDLib JSON.
   factory LinkPreviewTypeWebApp.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeWebApp(
-        photo: _readObject(json['photo'], Photo.fromJson),
+        photo: _readOptional(json['photo'], Photo.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'photo': photo.toJson(),
+        'photo': photo?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LinkPreviewTypeWebApp copyWith({
-    Photo? photo,
+    Photo? Function()? photo,
   }) =>
       LinkPreviewTypeWebApp(
-        photo: photo ?? this.photo,
+        photo: photo != null ? photo() : this.photo,
       );
 
   /// TDLib type name.

@@ -24,49 +24,49 @@ final class ThemeParameters extends TdObject {
     required this.buttonTextColor,
   });
 
-  /// A color of the background in the RGB24 format
+  /// A color of the background in the RGB format
   final int backgroundColor;
 
-  /// A secondary color for the background in the RGB24 format
+  /// A secondary color for the background in the RGB format
   final int secondaryBackgroundColor;
 
-  /// A color of the header background in the RGB24 format
+  /// A color of the header background in the RGB format
   final int headerBackgroundColor;
 
-  /// A color of the bottom bar background in the RGB24 format
+  /// A color of the bottom bar background in the RGB format
   final int bottomBarBackgroundColor;
 
-  /// A color of the section background in the RGB24 format
+  /// A color of the section background in the RGB format
   final int sectionBackgroundColor;
 
-  /// A color of the section separator in the RGB24 format
+  /// A color of the section separator in the RGB format
   final int sectionSeparatorColor;
 
-  /// A color of text in the RGB24 format
+  /// A color of text in the RGB format
   final int textColor;
 
-  /// An accent color of the text in the RGB24 format
+  /// An accent color of the text in the RGB format
   final int accentTextColor;
 
-  /// A color of text on the section headers in the RGB24 format
+  /// A color of text on the section headers in the RGB format
   final int sectionHeaderTextColor;
 
-  /// A color of the subtitle text in the RGB24 format
+  /// A color of the subtitle text in the RGB format
   final int subtitleTextColor;
 
-  /// A color of the text for destructive actions in the RGB24 format
+  /// A color of the text for destructive actions in the RGB format
   final int destructiveTextColor;
 
-  /// A color of hints in the RGB24 format
+  /// A color of hints in the RGB format
   final int hintColor;
 
-  /// A color of links in the RGB24 format
+  /// A color of links in the RGB format
   final int linkColor;
 
-  /// A color of the buttons in the RGB24 format
+  /// A color of the buttons in the RGB format
   final int buttonColor;
 
-  /// A color of text on the buttons in the RGB24 format
+  /// A color of text on the buttons in the RGB format
   final int buttonTextColor;
 
   /// Parses a [ThemeParameters] from TDLib JSON.

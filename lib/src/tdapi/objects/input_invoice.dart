@@ -53,7 +53,7 @@ final class InputInvoiceMessage extends InputInvoice {
   /// Chat identifier of the message
   final int chatId;
 
-  /// Message identifier
+  /// Message identifier. Use messageProperties.can_be_paid to check whether the message can be used in the method
   final int messageId;
 
   /// Parses a [InputInvoiceMessage] from TDLib JSON.

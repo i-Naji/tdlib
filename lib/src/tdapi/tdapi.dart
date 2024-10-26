@@ -556,7 +556,6 @@ part 'functions/search_chat_members.dart';
 part 'functions/search_chat_messages.dart';
 part 'functions/search_chat_recent_location_messages.dart';
 part 'functions/search_chats.dart';
-part 'functions/search_chats_nearby.dart';
 part 'functions/search_chats_on_server.dart';
 part 'functions/search_contacts.dart';
 part 'functions/search_emojis.dart';
@@ -670,7 +669,6 @@ part 'functions/set_group_call_participant_volume_level.dart';
 part 'functions/set_group_call_title.dart';
 part 'functions/set_inactive_session_ttl.dart';
 part 'functions/set_inline_game_score.dart';
-part 'functions/set_location.dart';
 part 'functions/set_log_stream.dart';
 part 'functions/set_log_tag_verbosity_level.dart';
 part 'functions/set_log_verbosity_level.dart';
@@ -920,7 +918,6 @@ part 'objects/chat_members.dart';
 part 'objects/chat_members_filter.dart';
 part 'objects/chat_message_sender.dart';
 part 'objects/chat_message_senders.dart';
-part 'objects/chat_nearby.dart';
 part 'objects/chat_notification_settings.dart';
 part 'objects/chat_permissions.dart';
 part 'objects/chat_photo.dart';
@@ -945,7 +942,6 @@ part 'objects/chat_theme.dart';
 part 'objects/chat_transaction_purpose.dart';
 part 'objects/chat_type.dart';
 part 'objects/chats.dart';
-part 'objects/chats_nearby.dart';
 part 'objects/check_chat_username_result.dart';
 part 'objects/check_sticker_set_name_result.dart';
 part 'objects/close_birthday_user.dart';
@@ -1359,14 +1355,14 @@ part 'objects/web_app_info.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.37';
+const String tdlibVersion = '1.8.38';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '21e5ce0e977fe012e0cee4e6fcfe704b47b00774';
+const String tdlibSchemaCommit = 'd321984b75fccdb76239529e8aadcf7f80b0e35a';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '21e5ce0e977fe012e0cee4e6fcfe704b47b00774',
+  'd321984b75fccdb76239529e8aadcf7f80b0e35a',
 ];
 
 /// Base class of every TDLib object.
@@ -1824,13 +1820,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'failedToAddMember': FailedToAddMember.fromJson,
   'failedToAddMembers': FailedToAddMembers.fromJson,
   'createdBasicGroupChat': CreatedBasicGroupChat.fromJson,
-  'chatNearby': ChatNearby.fromJson,
-  'chatsNearby': ChatsNearby.fromJson,
   'publicChatTypeHasUsername': PublicChatTypeHasUsername.fromJson,
   'publicChatTypeIsLocationBased': PublicChatTypeIsLocationBased.fromJson,
   'chatActionBarReportSpam': ChatActionBarReportSpam.fromJson,
-  'chatActionBarReportUnrelatedLocation':
-      ChatActionBarReportUnrelatedLocation.fromJson,
   'chatActionBarInviteMembers': ChatActionBarInviteMembers.fromJson,
   'chatActionBarReportAddBlock': ChatActionBarReportAddBlock.fromJson,
   'chatActionBarAddContact': ChatActionBarAddContact.fromJson,
@@ -3225,7 +3217,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateLanguagePackStrings': UpdateLanguagePackStrings.fromJson,
   'updateConnectionState': UpdateConnectionState.fromJson,
   'updateTermsOfService': UpdateTermsOfService.fromJson,
-  'updateUsersNearby': UpdateUsersNearby.fromJson,
   'updateUnconfirmedSession': UpdateUnconfirmedSession.fromJson,
   'updateAttachmentMenuBots': UpdateAttachmentMenuBots.fromJson,
   'updateWebAppMessageSent': UpdateWebAppMessageSent.fromJson,

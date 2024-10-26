@@ -68,9 +68,9 @@ final class TextEntityTypeMention extends TextEntityType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A hashtag text, beginning with "#"
+/// A hashtag text, beginning with "#" and optionally containing a chat username at the end
 final class TextEntityTypeHashtag extends TextEntityType {
-  /// A hashtag text, beginning with "#"
+  /// A hashtag text, beginning with "#" and optionally containing a chat username at the end
   const TextEntityTypeHashtag();
 
   /// Parses a [TextEntityTypeHashtag] from TDLib JSON.
@@ -94,9 +94,9 @@ final class TextEntityTypeHashtag extends TextEntityType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A cashtag text, beginning with "$" and consisting of capital English letters (e.g., "$USD")
+/// A cashtag text, beginning with "$", consisting of capital English letters (e.g., "$USD"), and optionally containing a chat username at the end
 final class TextEntityTypeCashtag extends TextEntityType {
-  /// A cashtag text, beginning with "$" and consisting of capital English letters (e.g., "$USD")
+  /// A cashtag text, beginning with "$", consisting of capital English letters (e.g., "$USD"), and optionally containing a chat username at the end
   const TextEntityTypeCashtag();
 
   /// Parses a [TextEntityTypeCashtag] from TDLib JSON.

@@ -18,7 +18,7 @@ final class StarSubscriptions extends TdObject {
   /// The amount of owned Telegram Stars
   final int starCount;
 
-  /// List of subbscriptions for Telegram Stars
+  /// List of subscriptions for Telegram Stars
   final List<StarSubscription> subscriptions;
 
   /// The number of Telegram Stars required to buy to extend subscriptions expiring soon

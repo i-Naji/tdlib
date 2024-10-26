@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes actions which must be possible to do through a chat action bar
 ///
-/// One of: [ChatActionBarReportSpam], [ChatActionBarReportUnrelatedLocation], [ChatActionBarInviteMembers], [ChatActionBarReportAddBlock], [ChatActionBarAddContact], [ChatActionBarSharePhoneNumber], [ChatActionBarJoinRequest]; or [UndecodedChatActionBar] for a type newer than this API.
+/// One of: [ChatActionBarReportSpam], [ChatActionBarInviteMembers], [ChatActionBarReportAddBlock], [ChatActionBarAddContact], [ChatActionBarSharePhoneNumber], [ChatActionBarJoinRequest]; or [UndecodedChatActionBar] for a type newer than this API.
 sealed class ChatActionBar extends TdObject {
   const ChatActionBar();
 
@@ -42,9 +42,9 @@ final class UndecodedChatActionBar extends ChatActionBar {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The chat can be reported as spam using the method reportChat with the reason reportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
+/// The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
 final class ChatActionBarReportSpam extends ChatActionBar {
-  /// The chat can be reported as spam using the method reportChat with the reason reportReasonSpam. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
+  /// The chat can be reported as spam using the method reportChat with an empty option_id and message_ids. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
   const ChatActionBarReportSpam({
     required this.canUnarchive,
   });
@@ -81,34 +81,6 @@ final class ChatActionBarReportSpam extends ChatActionBar {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason reportReasonUnrelatedLocation
-final class ChatActionBarReportUnrelatedLocation extends ChatActionBar {
-  /// The chat is a location-based supergroup, which can be reported as having unrelated location using the method reportChat with the reason reportReasonUnrelatedLocation
-  const ChatActionBarReportUnrelatedLocation();
-
-  /// Parses a [ChatActionBarReportUnrelatedLocation] from TDLib JSON.
-  factory ChatActionBarReportUnrelatedLocation.fromJson(
-          Map<String, dynamic> json) =>
-      const ChatActionBarReportUnrelatedLocation();
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  ChatActionBarReportUnrelatedLocation copyWith() =>
-      const ChatActionBarReportUnrelatedLocation();
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatActionBarReportUnrelatedLocation';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
 /// The chat is a recently created group chat to which new members can be invited
 final class ChatActionBarInviteMembers extends ChatActionBar {
   /// The chat is a recently created group chat to which new members can be invited
@@ -140,27 +112,21 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
   /// The chat is a private or secret chat, which can be reported using the method reportChat, or the other user can be blocked using the method setMessageSenderBlockList, or the other user can be added to the contact list using the method addContact. If the chat is a private chat with a user with an emoji status, then a notice about emoji status usage must be shown
   const ChatActionBarReportAddBlock({
     required this.canUnarchive,
-    required this.distance,
   });
 
   /// If true, the chat was automatically archived and can be moved back to the main chat list using addChatToList simultaneously with setting chat notification settings to default using setChatNotificationSettings
   final bool canUnarchive;
 
-  /// If non-negative, the current user was found by the other user through searchChatsNearby and this is the distance between the users
-  final int distance;
-
   /// Parses a [ChatActionBarReportAddBlock] from TDLib JSON.
   factory ChatActionBarReportAddBlock.fromJson(Map<String, dynamic> json) =>
       ChatActionBarReportAddBlock(
         canUnarchive: _readBool(json['can_unarchive']),
-        distance: _readInt(json['distance']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'can_unarchive': canUnarchive,
-        'distance': distance,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -168,11 +134,9 @@ final class ChatActionBarReportAddBlock extends ChatActionBar {
   @override
   ChatActionBarReportAddBlock copyWith({
     bool? canUnarchive,
-    int? distance,
   }) =>
       ChatActionBarReportAddBlock(
         canUnarchive: canUnarchive ?? this.canUnarchive,
-        distance: distance ?? this.distance,
       );
 
   /// TDLib type name.

@@ -2725,6 +2725,7 @@ final class MessageGiftedPremium extends MessageContent {
   const MessageGiftedPremium({
     required this.gifterUserId,
     required this.receiverUserId,
+    required this.text,
     required this.currency,
     required this.amount,
     required this.cryptocurrency,
@@ -2738,6 +2739,9 @@ final class MessageGiftedPremium extends MessageContent {
 
   /// The identifier of a user that received Telegram Premium; 0 if the gift is incoming
   final int receiverUserId;
+
+  /// Message added to the gifted Telegram Premium by the sender
+  final FormattedText text;
 
   /// Currency for the paid amount
   final String currency;
@@ -2762,6 +2766,7 @@ final class MessageGiftedPremium extends MessageContent {
       MessageGiftedPremium(
         gifterUserId: _readInt(json['gifter_user_id']),
         receiverUserId: _readInt(json['receiver_user_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         cryptocurrency: _readString(json['cryptocurrency']),
@@ -2775,6 +2780,7 @@ final class MessageGiftedPremium extends MessageContent {
         '@type': CONSTRUCTOR,
         'gifter_user_id': gifterUserId,
         'receiver_user_id': receiverUserId,
+        'text': text.toJson(),
         'currency': currency,
         'amount': amount,
         'cryptocurrency': cryptocurrency,
@@ -2789,6 +2795,7 @@ final class MessageGiftedPremium extends MessageContent {
   MessageGiftedPremium copyWith({
     int? gifterUserId,
     int? receiverUserId,
+    FormattedText? text,
     String? currency,
     int? amount,
     String? cryptocurrency,
@@ -2799,6 +2806,7 @@ final class MessageGiftedPremium extends MessageContent {
       MessageGiftedPremium(
         gifterUserId: gifterUserId ?? this.gifterUserId,
         receiverUserId: receiverUserId ?? this.receiverUserId,
+        text: text ?? this.text,
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
         cryptocurrency: cryptocurrency ?? this.cryptocurrency,
@@ -2819,6 +2827,7 @@ final class MessagePremiumGiftCode extends MessageContent {
   /// A Telegram Premium gift code was created for the user
   const MessagePremiumGiftCode({
     this.creatorId,
+    required this.text,
     required this.isFromGiveaway,
     required this.isUnclaimed,
     required this.currency,
@@ -2832,6 +2841,9 @@ final class MessagePremiumGiftCode extends MessageContent {
 
   /// Identifier of a chat or a user that created the gift code; may be null if unknown
   final MessageSender? creatorId;
+
+  /// Message added to the gift
+  final FormattedText text;
 
   /// True, if the gift code was created for a giveaway
   final bool isFromGiveaway;
@@ -2864,6 +2876,7 @@ final class MessagePremiumGiftCode extends MessageContent {
   factory MessagePremiumGiftCode.fromJson(Map<String, dynamic> json) =>
       MessagePremiumGiftCode(
         creatorId: _readOptional(json['creator_id'], MessageSender.fromJson),
+        text: _readObject(json['text'], FormattedText.fromJson),
         isFromGiveaway: _readBool(json['is_from_giveaway']),
         isUnclaimed: _readBool(json['is_unclaimed']),
         currency: _readString(json['currency']),
@@ -2879,6 +2892,7 @@ final class MessagePremiumGiftCode extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'creator_id': creatorId?.toJson(),
+        'text': text.toJson(),
         'is_from_giveaway': isFromGiveaway,
         'is_unclaimed': isUnclaimed,
         'currency': currency,
@@ -2895,6 +2909,7 @@ final class MessagePremiumGiftCode extends MessageContent {
   @override
   MessagePremiumGiftCode copyWith({
     MessageSender? Function()? creatorId,
+    FormattedText? text,
     bool? isFromGiveaway,
     bool? isUnclaimed,
     String? currency,
@@ -2907,6 +2922,7 @@ final class MessagePremiumGiftCode extends MessageContent {
   }) =>
       MessagePremiumGiftCode(
         creatorId: creatorId != null ? creatorId() : this.creatorId,
+        text: text ?? this.text,
         isFromGiveaway: isFromGiveaway ?? this.isFromGiveaway,
         isUnclaimed: isUnclaimed ?? this.isUnclaimed,
         currency: currency ?? this.currency,

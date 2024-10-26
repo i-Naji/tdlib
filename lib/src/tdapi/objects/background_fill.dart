@@ -49,7 +49,7 @@ final class BackgroundFillSolid extends BackgroundFill {
     required this.color,
   });
 
-  /// A color of the background in the RGB24 format
+  /// A color of the background in the RGB format
   final int color;
 
   /// Parses a [BackgroundFillSolid] from TDLib JSON.
@@ -90,10 +90,10 @@ final class BackgroundFillGradient extends BackgroundFill {
     required this.rotationAngle,
   });
 
-  /// A top color of the background in the RGB24 format
+  /// A top color of the background in the RGB format
   final int topColor;
 
-  /// A bottom color of the background in the RGB24 format
+  /// A bottom color of the background in the RGB format
   final int bottomColor;
 
   /// Clockwise rotation angle of the gradient, in degrees; 0-359. Must always be divisible by 45
@@ -143,7 +143,7 @@ final class BackgroundFillFreeformGradient extends BackgroundFill {
     required this.colors,
   });
 
-  /// A list of 3 or 4 colors of the freeform gradient in the RGB24 format
+  /// A list of 3 or 4 colors of the freeform gradient in the RGB format
   final List<int> colors;
 
   /// Parses a [BackgroundFillFreeformGradient] from TDLib JSON.

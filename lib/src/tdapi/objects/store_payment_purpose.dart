@@ -156,6 +156,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     required this.currency,
     required this.amount,
     required this.userIds,
+    required this.text,
   });
 
   /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
@@ -170,6 +171,9 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
   /// Identifiers of the users which can activate the gift codes
   final List<int> userIds;
 
+  /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  final FormattedText text;
+
   /// Parses a [StorePaymentPurposePremiumGiftCodes] from TDLib JSON.
   factory StorePaymentPurposePremiumGiftCodes.fromJson(
           Map<String, dynamic> json) =>
@@ -178,6 +182,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         userIds: _readList<int>(json['user_ids'], _readInt),
+        text: _readObject(json['text'], FormattedText.fromJson),
       );
 
   @override
@@ -187,6 +192,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
         'currency': currency,
         'amount': amount,
         'user_ids': userIds,
+        'text': text.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -197,12 +203,14 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     String? currency,
     int? amount,
     List<int>? userIds,
+    FormattedText? text,
   }) =>
       StorePaymentPurposePremiumGiftCodes(
         boostedChatId: boostedChatId ?? this.boostedChatId,
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
         userIds: userIds ?? this.userIds,
+        text: text ?? this.text,
       );
 
   /// TDLib type name.

@@ -27,7 +27,7 @@ final class Gift extends TdObject {
   /// Number of Telegram Stars that can be claimed by the receiver instead of the gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed
   final int defaultSellStarCount;
 
-  /// Number of remaining times the gift can be purchased by all users; 0 if not limited
+  /// Number of remaining times the gift can be purchased by all users; 0 if not limited or the gift was sold out
   final int remainingCount;
 
   /// Number of total times the gift can be purchased by all users; 0 if not limited
