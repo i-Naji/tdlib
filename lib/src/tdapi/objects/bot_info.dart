@@ -16,6 +16,7 @@ final class BotInfo extends TdObject {
     required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    required this.canGetRevenueStatistics,
     required this.hasMediaPreviews,
     this.editCommandsLink,
     this.editDescriptionLink,
@@ -50,6 +51,9 @@ final class BotInfo extends TdObject {
   /// Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
 
+  /// True, if the bot's revenue statistics are available
+  final bool canGetRevenueStatistics;
+
   /// True, if the bot has media previews
   final bool hasMediaPreviews;
 
@@ -81,6 +85,7 @@ final class BotInfo extends TdObject {
         defaultChannelAdministratorRights: _readOptional(
             json['default_channel_administrator_rights'],
             ChatAdministratorRights.fromJson),
+        canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
         hasMediaPreviews: _readBool(json['has_media_previews']),
         editCommandsLink: _readOptional(
             json['edit_commands_link'], InternalLinkType.fromJson),
@@ -106,6 +111,7 @@ final class BotInfo extends TdObject {
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
             defaultChannelAdministratorRights?.toJson(),
+        'can_get_revenue_statistics': canGetRevenueStatistics,
         'has_media_previews': hasMediaPreviews,
         'edit_commands_link': editCommandsLink?.toJson(),
         'edit_description_link': editDescriptionLink?.toJson(),
@@ -125,6 +131,7 @@ final class BotInfo extends TdObject {
     String? privacyPolicyUrl,
     ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
     ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
+    bool? canGetRevenueStatistics,
     bool? hasMediaPreviews,
     InternalLinkType? Function()? editCommandsLink,
     InternalLinkType? Function()? editDescriptionLink,
@@ -146,6 +153,8 @@ final class BotInfo extends TdObject {
             defaultChannelAdministratorRights != null
                 ? defaultChannelAdministratorRights()
                 : this.defaultChannelAdministratorRights,
+        canGetRevenueStatistics:
+            canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         hasMediaPreviews: hasMediaPreviews ?? this.hasMediaPreviews,
         editCommandsLink: editCommandsLink != null
             ? editCommandsLink()

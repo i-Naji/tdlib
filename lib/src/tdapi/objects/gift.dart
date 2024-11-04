@@ -13,6 +13,8 @@ final class Gift extends TdObject {
     required this.defaultSellStarCount,
     required this.remainingCount,
     required this.totalCount,
+    required this.firstSendDate,
+    required this.lastSendDate,
   });
 
   /// Unique identifier of the gift
@@ -33,6 +35,12 @@ final class Gift extends TdObject {
   /// Number of total times the gift can be purchased by all users; 0 if not limited
   final int totalCount;
 
+  /// Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only
+  final int firstSendDate;
+
+  /// Point in time (Unix timestamp) when the gift was send for the last time; for sold out gifts only
+  final int lastSendDate;
+
   /// Parses a [Gift] from TDLib JSON.
   factory Gift.fromJson(Map<String, dynamic> json) => Gift(
         id: _readInt(json['id']),
@@ -41,6 +49,8 @@ final class Gift extends TdObject {
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
         remainingCount: _readInt(json['remaining_count']),
         totalCount: _readInt(json['total_count']),
+        firstSendDate: _readInt(json['first_send_date']),
+        lastSendDate: _readInt(json['last_send_date']),
       );
 
   @override
@@ -52,6 +62,8 @@ final class Gift extends TdObject {
         'default_sell_star_count': defaultSellStarCount,
         'remaining_count': remainingCount,
         'total_count': totalCount,
+        'first_send_date': firstSendDate,
+        'last_send_date': lastSendDate,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -63,6 +75,8 @@ final class Gift extends TdObject {
     int? defaultSellStarCount,
     int? remainingCount,
     int? totalCount,
+    int? firstSendDate,
+    int? lastSendDate,
   }) =>
       Gift(
         id: id ?? this.id,
@@ -71,6 +85,8 @@ final class Gift extends TdObject {
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
         remainingCount: remainingCount ?? this.remainingCount,
         totalCount: totalCount ?? this.totalCount,
+        firstSendDate: firstSendDate ?? this.firstSendDate,
+        lastSendDate: lastSendDate ?? this.lastSendDate,
       );
 
   /// TDLib type name.

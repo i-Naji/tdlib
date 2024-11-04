@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns sponsored messages to be shown in a chat; for channel chats only
+/// Returns sponsored messages to be shown in a chat; for channel chats and chats with bots only
 ///
 /// Returns [SponsoredMessages].
 final class GetChatSponsoredMessages extends TdFunction<SponsoredMessages> {
-  /// Returns sponsored messages to be shown in a chat; for channel chats only
+  /// Returns sponsored messages to be shown in a chat; for channel chats and chats with bots only
   const GetChatSponsoredMessages({
     required this.chatId,
   });

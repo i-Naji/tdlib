@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains information about the time when a scheduled message will be sent
 ///
-/// One of: [MessageSchedulingStateSendAtDate], [MessageSchedulingStateSendWhenOnline]; or [UndecodedMessageSchedulingState] for a type newer than this API.
+/// One of: [MessageSchedulingStateSendAtDate], [MessageSchedulingStateSendWhenOnline], [MessageSchedulingStateSendWhenVideoProcessed]; or [UndecodedMessageSchedulingState] for a type newer than this API.
 sealed class MessageSchedulingState extends TdObject {
   const MessageSchedulingState();
 
@@ -108,6 +108,48 @@ final class MessageSchedulingStateSendWhenOnline
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSchedulingStateSendWhenOnline';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The message will be sent when the video in the message is converted and optimized; can be used only by the server
+final class MessageSchedulingStateSendWhenVideoProcessed
+    extends MessageSchedulingState {
+  /// The message will be sent when the video in the message is converted and optimized; can be used only by the server
+  const MessageSchedulingStateSendWhenVideoProcessed({
+    required this.sendDate,
+  });
+
+  /// Approximate point in time (Unix timestamp) when the message is expected to be sent
+  final int sendDate;
+
+  /// Parses a [MessageSchedulingStateSendWhenVideoProcessed] from TDLib JSON.
+  factory MessageSchedulingStateSendWhenVideoProcessed.fromJson(
+          Map<String, dynamic> json) =>
+      MessageSchedulingStateSendWhenVideoProcessed(
+        sendDate: _readInt(json['send_date']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'send_date': sendDate,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSchedulingStateSendWhenVideoProcessed copyWith({
+    int? sendDate,
+  }) =>
+      MessageSchedulingStateSendWhenVideoProcessed(
+        sendDate: sendDate ?? this.sendDate,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'messageSchedulingStateSendWhenVideoProcessed';
 
   @override
   String getConstructor() => CONSTRUCTOR;

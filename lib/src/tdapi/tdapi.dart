@@ -1355,14 +1355,14 @@ part 'objects/web_app_info.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.38';
+const String tdlibVersion = '1.8.39';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'd321984b75fccdb76239529e8aadcf7f80b0e35a';
+const String tdlibSchemaCommit = '056963e48fa8d3f89556239c22d6ac843d3c8a5b';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'd321984b75fccdb76239529e8aadcf7f80b0e35a',
+  '056963e48fa8d3f89556239c22d6ac843d3c8a5b',
 ];
 
 /// Base class of every TDLib object.
@@ -1610,6 +1610,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionPartnerFragment': StarTransactionPartnerFragment.fromJson,
   'starTransactionPartnerTelegramAds':
       StarTransactionPartnerTelegramAds.fromJson,
+  'starTransactionPartnerTelegramApi':
+      StarTransactionPartnerTelegramApi.fromJson,
   'starTransactionPartnerBot': StarTransactionPartnerBot.fromJson,
   'starTransactionPartnerBusiness': StarTransactionPartnerBusiness.fromJson,
   'starTransactionPartnerChat': StarTransactionPartnerChat.fromJson,
@@ -2221,6 +2223,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSchedulingStateSendAtDate': MessageSchedulingStateSendAtDate.fromJson,
   'messageSchedulingStateSendWhenOnline':
       MessageSchedulingStateSendWhenOnline.fromJson,
+  'messageSchedulingStateSendWhenVideoProcessed':
+      MessageSchedulingStateSendWhenVideoProcessed.fromJson,
   'messageSelfDestructTypeTimer': MessageSelfDestructTypeTimer.fromJson,
   'messageSelfDestructTypeImmediately':
       MessageSelfDestructTypeImmediately.fromJson,
@@ -2654,7 +2658,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumState': PremiumState.fromJson,
   'storePaymentPurposePremiumSubscription':
       StorePaymentPurposePremiumSubscription.fromJson,
-  'storePaymentPurposeGiftedPremium': StorePaymentPurposeGiftedPremium.fromJson,
   'storePaymentPurposePremiumGiftCodes':
       StorePaymentPurposePremiumGiftCodes.fromJson,
   'storePaymentPurposePremiumGiveaway':
@@ -3118,6 +3121,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateMessageUnreadReactions': UpdateMessageUnreadReactions.fromJson,
   'updateMessageFactCheck': UpdateMessageFactCheck.fromJson,
   'updateMessageLiveLocationViewed': UpdateMessageLiveLocationViewed.fromJson,
+  'updateVideoPublished': UpdateVideoPublished.fromJson,
   'updateNewChat': UpdateNewChat.fromJson,
   'updateChatTitle': UpdateChatTitle.fromJson,
   'updateChatPhoto': UpdateChatPhoto.fromJson,

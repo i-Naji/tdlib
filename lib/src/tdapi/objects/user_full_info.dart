@@ -23,7 +23,6 @@ final class UserFullInfo extends TdObject {
     this.bio,
     this.birthdate,
     required this.personalChatId,
-    required this.premiumGiftOptions,
     required this.giftCount,
     required this.groupInCommonCount,
     this.businessInfo,
@@ -80,9 +79,6 @@ final class UserFullInfo extends TdObject {
   /// Identifier of the personal chat of the user; 0 if none
   final int personalChatId;
 
-  /// The list of available options for gifting Telegram Premium to the user
-  final List<PremiumPaymentOption> premiumGiftOptions;
-
   /// Number of gifts saved to profile by the user
   final int giftCount;
 
@@ -126,9 +122,6 @@ final class UserFullInfo extends TdObject {
         bio: _readOptional(json['bio'], FormattedText.fromJson),
         birthdate: _readOptional(json['birthdate'], Birthdate.fromJson),
         personalChatId: _readInt(json['personal_chat_id']),
-        premiumGiftOptions: _readList<PremiumPaymentOption>(
-            json['premium_gift_options'],
-            (e) => _readObject(e, PremiumPaymentOption.fromJson)),
         giftCount: _readInt(json['gift_count']),
         groupInCommonCount: _readInt(json['group_in_common_count']),
         businessInfo:
@@ -158,9 +151,6 @@ final class UserFullInfo extends TdObject {
         'bio': bio?.toJson(),
         'birthdate': birthdate?.toJson(),
         'personal_chat_id': personalChatId,
-        'premium_gift_options': [
-          for (final e in premiumGiftOptions) e.toJson()
-        ],
         'gift_count': giftCount,
         'group_in_common_count': groupInCommonCount,
         'business_info': businessInfo?.toJson(),
@@ -186,7 +176,6 @@ final class UserFullInfo extends TdObject {
     FormattedText? Function()? bio,
     Birthdate? Function()? birthdate,
     int? personalChatId,
-    List<PremiumPaymentOption>? premiumGiftOptions,
     int? giftCount,
     int? groupInCommonCount,
     BusinessInfo? Function()? businessInfo,
@@ -217,7 +206,6 @@ final class UserFullInfo extends TdObject {
         bio: bio != null ? bio() : this.bio,
         birthdate: birthdate != null ? birthdate() : this.birthdate,
         personalChatId: personalChatId ?? this.personalChatId,
-        premiumGiftOptions: premiumGiftOptions ?? this.premiumGiftOptions,
         giftCount: giftCount ?? this.giftCount,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,

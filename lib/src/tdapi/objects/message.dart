@@ -86,10 +86,10 @@ final class Message extends TdObject {
   /// True, if the message contains an unread mention for the current user
   final bool containsUnreadMention;
 
-  /// Point in time (Unix timestamp) when the message was sent
+  /// Point in time (Unix timestamp) when the message was sent; 0 for scheduled messages
   final int date;
 
-  /// Point in time (Unix timestamp) when the message was last edited
+  /// Point in time (Unix timestamp) when the message was last edited; 0 for scheduled messages
   final int editDate;
 
   /// Information about the initial message sender; may be null if none or unknown

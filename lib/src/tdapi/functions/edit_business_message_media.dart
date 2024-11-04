@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Edits the content of a message with an animation, an audio, a document, a photo or a video in a message sent on behalf of a business account; for bots only
+/// Edits the media content of a message with a text, an animation, an audio, a document, a photo or a video in a message sent on behalf of a business account; for bots only
 ///
 /// Returns [BusinessMessage].
 final class EditBusinessMessageMedia extends TdFunction<BusinessMessage> {
-  /// Edits the content of a message with an animation, an audio, a document, a photo or a video in a message sent on behalf of a business account; for bots only
+  /// Edits the media content of a message with a text, an animation, an audio, a document, a photo or a video in a message sent on behalf of a business account; for bots only
   const EditBusinessMessageMedia({
     required this.businessConnectionId,
     required this.chatId,

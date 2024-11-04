@@ -741,7 +741,7 @@ final class InputMessageVideoNote extends InputMessageContent {
     this.selfDestructType,
   });
 
-  /// Video note to be sent
+  /// Video note to be sent. The video is expected to be encoded to MPEG4 format with H.264 codec and have no data outside of the visible circle
   final InputFile videoNote;
 
   /// Video thumbnail; may be null if empty; pass null to skip thumbnail uploading

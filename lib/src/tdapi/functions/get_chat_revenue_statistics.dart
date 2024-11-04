@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
+/// Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true or bots if userFullInfo.bot_info.can_get_revenue_statistics == true
 ///
 /// Returns [ChatRevenueStatistics].
 final class GetChatRevenueStatistics extends TdFunction<ChatRevenueStatistics> {
-  /// Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true
+  /// Returns detailed revenue statistics about a chat. Currently, this method can be used only for channels if supergroupFullInfo.can_get_revenue_statistics == true or bots if userFullInfo.bot_info.can_get_revenue_statistics == true
   const GetChatRevenueStatistics({
     required this.chatId,
     required this.isDark,

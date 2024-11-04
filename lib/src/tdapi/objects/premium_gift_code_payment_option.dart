@@ -9,10 +9,12 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   const PremiumGiftCodePaymentOption({
     required this.currency,
     required this.amount,
+    required this.discountPercentage,
     required this.winnerCount,
     required this.monthCount,
     required this.storeProductId,
     required this.storeProductQuantity,
+    this.sticker,
   });
 
   /// ISO 4217 currency code for Telegram Premium gift code payment
@@ -20,6 +22,9 @@ final class PremiumGiftCodePaymentOption extends TdObject {
 
   /// The amount to pay, in the smallest units of the currency
   final int amount;
+
+  /// The discount associated with this option, as a percentage
+  final int discountPercentage;
 
   /// Number of users which will be able to activate the gift codes
   final int winnerCount;
@@ -33,15 +38,20 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   /// Number of times the store product must be paid
   final int storeProductQuantity;
 
+  /// A sticker to be shown along with the gift code; may be null if unknown
+  final Sticker? sticker;
+
   /// Parses a [PremiumGiftCodePaymentOption] from TDLib JSON.
   factory PremiumGiftCodePaymentOption.fromJson(Map<String, dynamic> json) =>
       PremiumGiftCodePaymentOption(
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
+        discountPercentage: _readInt(json['discount_percentage']),
         winnerCount: _readInt(json['winner_count']),
         monthCount: _readInt(json['month_count']),
         storeProductId: _readString(json['store_product_id']),
         storeProductQuantity: _readInt(json['store_product_quantity']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
       );
 
   @override
@@ -49,10 +59,12 @@ final class PremiumGiftCodePaymentOption extends TdObject {
         '@type': CONSTRUCTOR,
         'currency': currency,
         'amount': amount,
+        'discount_percentage': discountPercentage,
         'winner_count': winnerCount,
         'month_count': monthCount,
         'store_product_id': storeProductId,
         'store_product_quantity': storeProductQuantity,
+        'sticker': sticker?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -60,18 +72,22 @@ final class PremiumGiftCodePaymentOption extends TdObject {
   PremiumGiftCodePaymentOption copyWith({
     String? currency,
     int? amount,
+    int? discountPercentage,
     int? winnerCount,
     int? monthCount,
     String? storeProductId,
     int? storeProductQuantity,
+    Sticker? Function()? sticker,
   }) =>
       PremiumGiftCodePaymentOption(
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
+        discountPercentage: discountPercentage ?? this.discountPercentage,
         winnerCount: winnerCount ?? this.winnerCount,
         monthCount: monthCount ?? this.monthCount,
         storeProductId: storeProductId ?? this.storeProductId,
         storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
+        sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.

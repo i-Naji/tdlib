@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of an in-store payment
 ///
-/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposeGiftedPremium], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStarGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
+/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStarGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
 sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
@@ -87,62 +87,6 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storePaymentPurposePremiumSubscription';
-
-  @override
-  String getConstructor() => CONSTRUCTOR;
-}
-
-/// The user gifting Telegram Premium to another user
-final class StorePaymentPurposeGiftedPremium extends StorePaymentPurpose {
-  /// The user gifting Telegram Premium to another user
-  const StorePaymentPurposeGiftedPremium({
-    required this.userId,
-    required this.currency,
-    required this.amount,
-  });
-
-  /// Identifier of the user to which Telegram Premium is gifted
-  final int userId;
-
-  /// ISO 4217 currency code of the payment currency
-  final String currency;
-
-  /// Paid amount, in the smallest units of the currency
-  final int amount;
-
-  /// Parses a [StorePaymentPurposeGiftedPremium] from TDLib JSON.
-  factory StorePaymentPurposeGiftedPremium.fromJson(
-          Map<String, dynamic> json) =>
-      StorePaymentPurposeGiftedPremium(
-        userId: _readInt(json['user_id']),
-        currency: _readString(json['currency']),
-        amount: _readInt(json['amount']),
-      );
-
-  @override
-  Map<String, dynamic> toJson() => {
-        '@type': CONSTRUCTOR,
-        'user_id': userId,
-        'currency': currency,
-        'amount': amount,
-      };
-
-  /// Returns a copy with the given fields replaced. For a nullable
-  /// field pass a function, e.g. `field: () => null` to clear it.
-  @override
-  StorePaymentPurposeGiftedPremium copyWith({
-    int? userId,
-    String? currency,
-    int? amount,
-  }) =>
-      StorePaymentPurposeGiftedPremium(
-        userId: userId ?? this.userId,
-        currency: currency ?? this.currency,
-        amount: amount ?? this.amount,
-      );
-
-  /// TDLib type name.
-  static const String CONSTRUCTOR = 'storePaymentPurposeGiftedPremium';
 
   @override
   String getConstructor() => CONSTRUCTOR;

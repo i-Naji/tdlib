@@ -18,6 +18,7 @@ final class MessageProperties extends TdObject {
     required this.canBeRepliedInAnotherChat,
     required this.canBeSaved,
     required this.canBeSharedInStory,
+    required this.canEditMedia,
     required this.canEditSchedulingState,
     required this.canGetEmbeddingCode,
     required this.canGetLink,
@@ -45,7 +46,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be deleted for all users using the method deleteMessages with revoke == true
   final bool canBeDeletedForAllUsers;
 
-  /// True, if the message can be edited using the methods editMessageText, editMessageMedia, editMessageCaption, or editMessageReplyMarkup. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message
+  /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message
   final bool canBeEdited;
 
   /// True, if the message can be forwarded using inputMessageForwarded or forwardMessages
@@ -68,6 +69,9 @@ final class MessageProperties extends TdObject {
 
   /// True, if the message can be shared in a story using inputStoryAreaTypeMessage
   final bool canBeSharedInStory;
+
+  /// True, if the message can be edited using the method editMessageMedia
+  final bool canEditMedia;
 
   /// True, if scheduling state of the message can be edited
   final bool canEditSchedulingState;
@@ -137,6 +141,7 @@ final class MessageProperties extends TdObject {
             _readBool(json['can_be_replied_in_another_chat']),
         canBeSaved: _readBool(json['can_be_saved']),
         canBeSharedInStory: _readBool(json['can_be_shared_in_story']),
+        canEditMedia: _readBool(json['can_edit_media']),
         canEditSchedulingState: _readBool(json['can_edit_scheduling_state']),
         canGetEmbeddingCode: _readBool(json['can_get_embedding_code']),
         canGetLink: _readBool(json['can_get_link']),
@@ -170,6 +175,7 @@ final class MessageProperties extends TdObject {
         'can_be_replied_in_another_chat': canBeRepliedInAnotherChat,
         'can_be_saved': canBeSaved,
         'can_be_shared_in_story': canBeSharedInStory,
+        'can_edit_media': canEditMedia,
         'can_edit_scheduling_state': canEditSchedulingState,
         'can_get_embedding_code': canGetEmbeddingCode,
         'can_get_link': canGetLink,
@@ -200,6 +206,7 @@ final class MessageProperties extends TdObject {
     bool? canBeRepliedInAnotherChat,
     bool? canBeSaved,
     bool? canBeSharedInStory,
+    bool? canEditMedia,
     bool? canEditSchedulingState,
     bool? canGetEmbeddingCode,
     bool? canGetLink,
@@ -233,6 +240,7 @@ final class MessageProperties extends TdObject {
             canBeRepliedInAnotherChat ?? this.canBeRepliedInAnotherChat,
         canBeSaved: canBeSaved ?? this.canBeSaved,
         canBeSharedInStory: canBeSharedInStory ?? this.canBeSharedInStory,
+        canEditMedia: canEditMedia ?? this.canEditMedia,
         canEditSchedulingState:
             canEditSchedulingState ?? this.canEditSchedulingState,
         canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,

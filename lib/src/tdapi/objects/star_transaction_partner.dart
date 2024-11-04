@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes source or recipient of a transaction with Telegram Stars
 ///
-/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerBot], [StarTransactionPartnerBusiness], [StarTransactionPartnerChat], [StarTransactionPartnerUser], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
+/// One of: [StarTransactionPartnerTelegram], [StarTransactionPartnerAppStore], [StarTransactionPartnerGooglePlay], [StarTransactionPartnerFragment], [StarTransactionPartnerTelegramAds], [StarTransactionPartnerTelegramApi], [StarTransactionPartnerBot], [StarTransactionPartnerBusiness], [StarTransactionPartnerChat], [StarTransactionPartnerUser], [StarTransactionPartnerUnsupported]; or [UndecodedStarTransactionPartner] for a type newer than this API.
 sealed class StarTransactionPartner extends TdObject {
   const StarTransactionPartner();
 
@@ -133,7 +133,7 @@ final class StarTransactionPartnerFragment extends StarTransactionPartner {
     this.withdrawalState,
   });
 
-  /// State of the withdrawal; may be null for refunds from Fragment
+  /// State of the withdrawal; may be null for refunds from Fragment or for Telegram Stars bought on Fragment
   final RevenueWithdrawalState? withdrawalState;
 
   /// Parses a [StarTransactionPartnerFragment] from TDLib JSON.
@@ -190,6 +190,46 @@ final class StarTransactionPartnerTelegramAds extends StarTransactionPartner {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionPartnerTelegramAds';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a transaction with Telegram for API usage
+final class StarTransactionPartnerTelegramApi extends StarTransactionPartner {
+  /// The transaction is a transaction with Telegram for API usage
+  const StarTransactionPartnerTelegramApi({
+    required this.requestCount,
+  });
+
+  /// The number of billed requests
+  final int requestCount;
+
+  /// Parses a [StarTransactionPartnerTelegramApi] from TDLib JSON.
+  factory StarTransactionPartnerTelegramApi.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionPartnerTelegramApi(
+        requestCount: _readInt(json['request_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'request_count': requestCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionPartnerTelegramApi copyWith({
+    int? requestCount,
+  }) =>
+      StarTransactionPartnerTelegramApi(
+        requestCount: requestCount ?? this.requestCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionPartnerTelegramApi';
 
   @override
   String getConstructor() => CONSTRUCTOR;

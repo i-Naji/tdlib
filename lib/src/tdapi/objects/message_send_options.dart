@@ -10,6 +10,7 @@ final class MessageSendOptions extends TdObject {
     required this.disableNotification,
     required this.fromBackground,
     required this.protectContent,
+    required this.allowPaidBroadcast,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.effectId,
@@ -25,6 +26,9 @@ final class MessageSendOptions extends TdObject {
 
   /// Pass true if the content of the message must be protected from forwarding and saving; for bots only
   final bool protectContent;
+
+  /// Pass true to allow the message to ignore regular broadcast limits for a small fee; for bots only
+  final bool allowPaidBroadcast;
 
   /// Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   final bool updateOrderOfInstalledStickerSets;
@@ -47,6 +51,7 @@ final class MessageSendOptions extends TdObject {
         disableNotification: _readBool(json['disable_notification']),
         fromBackground: _readBool(json['from_background']),
         protectContent: _readBool(json['protect_content']),
+        allowPaidBroadcast: _readBool(json['allow_paid_broadcast']),
         updateOrderOfInstalledStickerSets:
             _readBool(json['update_order_of_installed_sticker_sets']),
         schedulingState: _readOptional(
@@ -62,6 +67,7 @@ final class MessageSendOptions extends TdObject {
         'disable_notification': disableNotification,
         'from_background': fromBackground,
         'protect_content': protectContent,
+        'allow_paid_broadcast': allowPaidBroadcast,
         'update_order_of_installed_sticker_sets':
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
@@ -76,6 +82,7 @@ final class MessageSendOptions extends TdObject {
     bool? disableNotification,
     bool? fromBackground,
     bool? protectContent,
+    bool? allowPaidBroadcast,
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? Function()? schedulingState,
     int? effectId,
@@ -86,6 +93,7 @@ final class MessageSendOptions extends TdObject {
         disableNotification: disableNotification ?? this.disableNotification,
         fromBackground: fromBackground ?? this.fromBackground,
         protectContent: protectContent ?? this.protectContent,
+        allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
         updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
             this.updateOrderOfInstalledStickerSets,
         schedulingState:
