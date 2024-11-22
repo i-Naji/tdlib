@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Reuses an active subscription and joins the subscribed chat again
+/// Reuses an active Telegram Star subscription to a channel chat and joins the chat again
 ///
 /// Returns [Ok].
 final class ReuseStarSubscription extends TdFunction<Ok> {
-  /// Reuses an active subscription and joins the subscribed chat again
+  /// Reuses an active Telegram Star subscription to a channel chat and joins the chat again
   const ReuseStarSubscription({
     required this.subscriptionId,
   });

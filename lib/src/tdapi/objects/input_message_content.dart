@@ -623,7 +623,7 @@ final class InputMessageVideo extends InputMessageContent {
     required this.hasSpoiler,
   });
 
-  /// Video to be sent. The video is expected to be reencoded to MPEG4 format with H.264 codec by the sender
+  /// Video to be sent. The video is expected to be re-encoded to MPEG4 format with H.264 codec by the sender
   final InputFile video;
 
   /// Video thumbnail; pass null to skip thumbnail uploading

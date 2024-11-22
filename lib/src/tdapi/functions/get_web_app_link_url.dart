@@ -13,9 +13,8 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
     required this.botUserId,
     required this.webAppShortName,
     required this.startParameter,
-    this.theme,
-    required this.applicationName,
     required this.allowWriteAccess,
+    required this.parameters,
   });
 
   /// Identifier of the chat in which the link was clicked; pass 0 if none
@@ -30,14 +29,11 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
   /// Start parameter from internalLinkTypeWebApp
   final String startParameter;
 
-  /// Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// Short name of the current application; 0-64 English letters, digits, and underscores
-  final String applicationName;
-
   /// Pass true if the current user allowed the bot to send them messages
   final bool allowWriteAccess;
+
+  /// Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -46,9 +42,8 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
         'bot_user_id': botUserId,
         'web_app_short_name': webAppShortName,
         'start_parameter': startParameter,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
         'allow_write_access': allowWriteAccess,
+        'parameters': parameters.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -59,18 +54,16 @@ final class GetWebAppLinkUrl extends TdFunction<HttpUrl> {
     int? botUserId,
     String? webAppShortName,
     String? startParameter,
-    ThemeParameters? Function()? theme,
-    String? applicationName,
     bool? allowWriteAccess,
+    WebAppOpenParameters? parameters,
   }) =>
       GetWebAppLinkUrl(
         chatId: chatId ?? this.chatId,
         botUserId: botUserId ?? this.botUserId,
         webAppShortName: webAppShortName ?? this.webAppShortName,
         startParameter: startParameter ?? this.startParameter,
-        theme: theme != null ? theme() : this.theme,
-        applicationName: applicationName ?? this.applicationName,
         allowWriteAccess: allowWriteAccess ?? this.allowWriteAccess,
+        parameters: parameters ?? this.parameters,
       );
 
   /// TDLib type name.

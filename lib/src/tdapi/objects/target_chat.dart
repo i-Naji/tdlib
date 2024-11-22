@@ -72,56 +72,32 @@ final class TargetChatCurrent extends TargetChat {
 final class TargetChatChosen extends TargetChat {
   /// The chat needs to be chosen by the user among chats of the specified types
   const TargetChatChosen({
-    required this.allowUserChats,
-    required this.allowBotChats,
-    required this.allowGroupChats,
-    required this.allowChannelChats,
+    required this.types,
   });
 
-  /// True, if private chats with ordinary users are allowed
-  final bool allowUserChats;
-
-  /// True, if private chats with other bots are allowed
-  final bool allowBotChats;
-
-  /// True, if basic group and supergroup chats are allowed
-  final bool allowGroupChats;
-
-  /// True, if channel chats are allowed
-  final bool allowChannelChats;
+  /// Allowed types for the chat
+  final TargetChatTypes types;
 
   /// Parses a [TargetChatChosen] from TDLib JSON.
   factory TargetChatChosen.fromJson(Map<String, dynamic> json) =>
       TargetChatChosen(
-        allowUserChats: _readBool(json['allow_user_chats']),
-        allowBotChats: _readBool(json['allow_bot_chats']),
-        allowGroupChats: _readBool(json['allow_group_chats']),
-        allowChannelChats: _readBool(json['allow_channel_chats']),
+        types: _readObject(json['types'], TargetChatTypes.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'allow_user_chats': allowUserChats,
-        'allow_bot_chats': allowBotChats,
-        'allow_group_chats': allowGroupChats,
-        'allow_channel_chats': allowChannelChats,
+        'types': types.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   TargetChatChosen copyWith({
-    bool? allowUserChats,
-    bool? allowBotChats,
-    bool? allowGroupChats,
-    bool? allowChannelChats,
+    TargetChatTypes? types,
   }) =>
       TargetChatChosen(
-        allowUserChats: allowUserChats ?? this.allowUserChats,
-        allowBotChats: allowBotChats ?? this.allowBotChats,
-        allowGroupChats: allowGroupChats ?? this.allowGroupChats,
-        allowChannelChats: allowChannelChats ?? this.allowChannelChats,
+        types: types ?? this.types,
       );
 
   /// TDLib type name.

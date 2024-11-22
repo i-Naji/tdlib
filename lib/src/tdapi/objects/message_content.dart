@@ -2442,14 +2442,15 @@ final class MessageGameScore extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A payment has been completed
+/// A payment has been sent to a bot or a business account
 final class MessagePaymentSuccessful extends MessageContent {
-  /// A payment has been completed
+  /// A payment has been sent to a bot or a business account
   const MessagePaymentSuccessful({
     required this.invoiceChatId,
     required this.invoiceMessageId,
     required this.currency,
     required this.totalAmount,
+    required this.subscriptionUntilDate,
     required this.isRecurring,
     required this.isFirstRecurring,
     required this.invoiceName,
@@ -2467,6 +2468,9 @@ final class MessagePaymentSuccessful extends MessageContent {
   /// Total price for the product, in the smallest units of the currency
   final int totalAmount;
 
+  /// Point in time (Unix timestamp) when the subscription will expire; 0 if unknown or the payment isn't recurring
+  final int subscriptionUntilDate;
+
   /// True, if this is a recurring payment
   final bool isRecurring;
 
@@ -2483,6 +2487,7 @@ final class MessagePaymentSuccessful extends MessageContent {
         invoiceMessageId: _readInt(json['invoice_message_id']),
         currency: _readString(json['currency']),
         totalAmount: _readInt(json['total_amount']),
+        subscriptionUntilDate: _readInt(json['subscription_until_date']),
         isRecurring: _readBool(json['is_recurring']),
         isFirstRecurring: _readBool(json['is_first_recurring']),
         invoiceName: _readString(json['invoice_name']),
@@ -2495,6 +2500,7 @@ final class MessagePaymentSuccessful extends MessageContent {
         'invoice_message_id': invoiceMessageId,
         'currency': currency,
         'total_amount': totalAmount,
+        'subscription_until_date': subscriptionUntilDate,
         'is_recurring': isRecurring,
         'is_first_recurring': isFirstRecurring,
         'invoice_name': invoiceName,
@@ -2508,6 +2514,7 @@ final class MessagePaymentSuccessful extends MessageContent {
     int? invoiceMessageId,
     String? currency,
     int? totalAmount,
+    int? subscriptionUntilDate,
     bool? isRecurring,
     bool? isFirstRecurring,
     String? invoiceName,
@@ -2517,6 +2524,8 @@ final class MessagePaymentSuccessful extends MessageContent {
         invoiceMessageId: invoiceMessageId ?? this.invoiceMessageId,
         currency: currency ?? this.currency,
         totalAmount: totalAmount ?? this.totalAmount,
+        subscriptionUntilDate:
+            subscriptionUntilDate ?? this.subscriptionUntilDate,
         isRecurring: isRecurring ?? this.isRecurring,
         isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
         invoiceName: invoiceName ?? this.invoiceName,
@@ -2529,12 +2538,13 @@ final class MessagePaymentSuccessful extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A payment has been completed; for bots only
+/// A payment has been received by the bot or the business account
 final class MessagePaymentSuccessfulBot extends MessageContent {
-  /// A payment has been completed; for bots only
+  /// A payment has been received by the bot or the business account
   const MessagePaymentSuccessfulBot({
     required this.currency,
     required this.totalAmount,
+    required this.subscriptionUntilDate,
     required this.isRecurring,
     required this.isFirstRecurring,
     required this.invoicePayload,
@@ -2550,6 +2560,9 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   /// Total price for the product, in the smallest units of the currency
   final int totalAmount;
 
+  /// Point in time (Unix timestamp) when the subscription will expire; 0 if unknown or the payment isn't recurring
+  final int subscriptionUntilDate;
+
   /// True, if this is a recurring payment
   final bool isRecurring;
 
@@ -2559,10 +2572,10 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   /// Invoice payload
   final String invoicePayload;
 
-  /// Identifier of the shipping option chosen by the user; may be empty if not applicable
+  /// Identifier of the shipping option chosen by the user; may be empty if not applicable; for bots only
   final String shippingOptionId;
 
-  /// Information about the order; may be null
+  /// Information about the order; may be null; for bots only
   final OrderInfo? orderInfo;
 
   /// Telegram payment identifier
@@ -2576,6 +2589,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
       MessagePaymentSuccessfulBot(
         currency: _readString(json['currency']),
         totalAmount: _readInt(json['total_amount']),
+        subscriptionUntilDate: _readInt(json['subscription_until_date']),
         isRecurring: _readBool(json['is_recurring']),
         isFirstRecurring: _readBool(json['is_first_recurring']),
         invoicePayload: _readString(json['invoice_payload']),
@@ -2592,6 +2606,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
         '@type': CONSTRUCTOR,
         'currency': currency,
         'total_amount': totalAmount,
+        'subscription_until_date': subscriptionUntilDate,
         'is_recurring': isRecurring,
         'is_first_recurring': isFirstRecurring,
         'invoice_payload': invoicePayload,
@@ -2607,6 +2622,7 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
   MessagePaymentSuccessfulBot copyWith({
     String? currency,
     int? totalAmount,
+    int? subscriptionUntilDate,
     bool? isRecurring,
     bool? isFirstRecurring,
     String? invoicePayload,
@@ -2618,6 +2634,8 @@ final class MessagePaymentSuccessfulBot extends MessageContent {
       MessagePaymentSuccessfulBot(
         currency: currency ?? this.currency,
         totalAmount: totalAmount ?? this.totalAmount,
+        subscriptionUntilDate:
+            subscriptionUntilDate ?? this.subscriptionUntilDate,
         isRecurring: isRecurring ?? this.isRecurring,
         isFirstRecurring: isFirstRecurring ?? this.isFirstRecurring,
         invoicePayload: invoicePayload ?? this.invoicePayload,
@@ -3428,7 +3446,7 @@ final class MessageGift extends MessageContent {
   /// Message added to the gift
   final FormattedText text;
 
-  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift
+  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift; 0 if the gift can't be sold by the receiver
   final int sellStarCount;
 
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them

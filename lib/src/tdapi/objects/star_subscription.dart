@@ -3,31 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Contains information about subscription to a channel chat paid in Telegram Stars
+/// Contains information about subscription to a channel chat, a bot, or a business account that was paid in Telegram Stars
 final class StarSubscription extends TdObject {
-  /// Contains information about subscription to a channel chat paid in Telegram Stars
+  /// Contains information about subscription to a channel chat, a bot, or a business account that was paid in Telegram Stars
   const StarSubscription({
     required this.id,
     required this.chatId,
     required this.expirationDate,
-    required this.canReuse,
     required this.isCanceled,
     required this.isExpiring,
-    required this.inviteLink,
     required this.pricing,
+    required this.type,
   });
 
   /// Unique identifier of the subscription
   final String id;
 
-  /// Identifier of the channel chat that is subscribed
+  /// Identifier of the chat that is subscribed
   final int chatId;
 
   /// Point in time (Unix timestamp) when the subscription will expire or expired
   final int expirationDate;
-
-  /// True, if the subscription is active and the user can use the method reuseStarSubscription to join the subscribed chat again
-  final bool canReuse;
 
   /// True, if the subscription was canceled
   final bool isCanceled;
@@ -35,11 +31,11 @@ final class StarSubscription extends TdObject {
   /// True, if the subscription expires soon and there are no enough Telegram Stars on the user's balance to extend it
   final bool isExpiring;
 
-  /// The invite link that can be used to renew the subscription if it has been expired; may be empty, if the link isn't available anymore
-  final String inviteLink;
-
   /// The subscription plan
   final StarSubscriptionPricing pricing;
+
+  /// Type of the subscription
+  final StarSubscriptionType type;
 
   /// Parses a [StarSubscription] from TDLib JSON.
   factory StarSubscription.fromJson(Map<String, dynamic> json) =>
@@ -47,11 +43,10 @@ final class StarSubscription extends TdObject {
         id: _readString(json['id']),
         chatId: _readInt(json['chat_id']),
         expirationDate: _readInt(json['expiration_date']),
-        canReuse: _readBool(json['can_reuse']),
         isCanceled: _readBool(json['is_canceled']),
         isExpiring: _readBool(json['is_expiring']),
-        inviteLink: _readString(json['invite_link']),
         pricing: _readObject(json['pricing'], StarSubscriptionPricing.fromJson),
+        type: _readObject(json['type'], StarSubscriptionType.fromJson),
       );
 
   @override
@@ -60,11 +55,10 @@ final class StarSubscription extends TdObject {
         'id': id,
         'chat_id': chatId,
         'expiration_date': expirationDate,
-        'can_reuse': canReuse,
         'is_canceled': isCanceled,
         'is_expiring': isExpiring,
-        'invite_link': inviteLink,
         'pricing': pricing.toJson(),
+        'type': type.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -73,21 +67,19 @@ final class StarSubscription extends TdObject {
     String? id,
     int? chatId,
     int? expirationDate,
-    bool? canReuse,
     bool? isCanceled,
     bool? isExpiring,
-    String? inviteLink,
     StarSubscriptionPricing? pricing,
+    StarSubscriptionType? type,
   }) =>
       StarSubscription(
         id: id ?? this.id,
         chatId: chatId ?? this.chatId,
         expirationDate: expirationDate ?? this.expirationDate,
-        canReuse: canReuse ?? this.canReuse,
         isCanceled: isCanceled ?? this.isCanceled,
         isExpiring: isExpiring ?? this.isExpiring,
-        inviteLink: inviteLink ?? this.inviteLink,
         pricing: pricing ?? this.pricing,
+        type: type ?? this.type,
       );
 
   /// TDLib type name.

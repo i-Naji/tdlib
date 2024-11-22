@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an alternative reencoded quality of a video file
+/// Describes an alternative re-encoded quality of a video file
 final class AlternativeVideo extends TdObject {
-  /// Describes an alternative reencoded quality of a video file
+  /// Describes an alternative re-encoded quality of a video file
   const AlternativeVideo({
     required this.width,
     required this.height,

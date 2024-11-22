@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of payment form
 ///
-/// One of: [PaymentFormTypeRegular], [PaymentFormTypeStars]; or [UndecodedPaymentFormType] for a type newer than this API.
+/// One of: [PaymentFormTypeRegular], [PaymentFormTypeStars], [PaymentFormTypeStarSubscription]; or [UndecodedPaymentFormType] for a type newer than this API.
 sealed class PaymentFormType extends TdObject {
   const PaymentFormType();
 
@@ -181,6 +181,45 @@ final class PaymentFormTypeStars extends PaymentFormType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'paymentFormTypeStars';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The payment form is for a payment in Telegram Stars for subscription
+final class PaymentFormTypeStarSubscription extends PaymentFormType {
+  /// The payment form is for a payment in Telegram Stars for subscription
+  const PaymentFormTypeStarSubscription({
+    required this.pricing,
+  });
+
+  /// Information about subscription plan
+  final StarSubscriptionPricing pricing;
+
+  /// Parses a [PaymentFormTypeStarSubscription] from TDLib JSON.
+  factory PaymentFormTypeStarSubscription.fromJson(Map<String, dynamic> json) =>
+      PaymentFormTypeStarSubscription(
+        pricing: _readObject(json['pricing'], StarSubscriptionPricing.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'pricing': pricing.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PaymentFormTypeStarSubscription copyWith({
+    StarSubscriptionPricing? pricing,
+  }) =>
+      PaymentFormTypeStarSubscription(
+        pricing: pricing ?? this.pricing,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'paymentFormTypeStarSubscription';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -9,6 +9,7 @@ final class Invoice extends TdObject {
   const Invoice({
     required this.currency,
     required this.priceParts,
+    required this.subscriptionPeriod,
     required this.maxTipAmount,
     required this.suggestedTipAmounts,
     required this.recurringPaymentTermsOfServiceUrl,
@@ -28,6 +29,9 @@ final class Invoice extends TdObject {
 
   /// A list of objects used to calculate the total price of the product
   final List<LabeledPricePart> priceParts;
+
+  /// The number of seconds between consecutive Telegram Star debiting for subscription invoices; 0 if the invoice doesn't create subscription
+  final int subscriptionPeriod;
 
   /// The maximum allowed amount of tip in the smallest units of the currency
   final int maxTipAmount;
@@ -70,6 +74,7 @@ final class Invoice extends TdObject {
         currency: _readString(json['currency']),
         priceParts: _readList<LabeledPricePart>(json['price_parts'],
             (e) => _readObject(e, LabeledPricePart.fromJson)),
+        subscriptionPeriod: _readInt(json['subscription_period']),
         maxTipAmount: _readInt(json['max_tip_amount']),
         suggestedTipAmounts:
             _readList<int>(json['suggested_tip_amounts'], _readInt),
@@ -93,6 +98,7 @@ final class Invoice extends TdObject {
         '@type': CONSTRUCTOR,
         'currency': currency,
         'price_parts': [for (final e in priceParts) e.toJson()],
+        'subscription_period': subscriptionPeriod,
         'max_tip_amount': maxTipAmount,
         'suggested_tip_amounts': suggestedTipAmounts,
         'recurring_payment_terms_of_service_url':
@@ -113,6 +119,7 @@ final class Invoice extends TdObject {
   Invoice copyWith({
     String? currency,
     List<LabeledPricePart>? priceParts,
+    int? subscriptionPeriod,
     int? maxTipAmount,
     List<int>? suggestedTipAmounts,
     String? recurringPaymentTermsOfServiceUrl,
@@ -129,6 +136,7 @@ final class Invoice extends TdObject {
       Invoice(
         currency: currency ?? this.currency,
         priceParts: priceParts ?? this.priceParts,
+        subscriptionPeriod: subscriptionPeriod ?? this.subscriptionPeriod,
         maxTipAmount: maxTipAmount ?? this.maxTipAmount,
         suggestedTipAmounts: suggestedTipAmounts ?? this.suggestedTipAmounts,
         recurringPaymentTermsOfServiceUrl: recurringPaymentTermsOfServiceUrl ??

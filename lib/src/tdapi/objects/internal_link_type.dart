@@ -1245,13 +1245,13 @@ final class InternalLinkTypeLanguageSettings extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and open the returned URL as a Web App
+/// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and mode and open the returned URL as a Web App
 final class InternalLinkTypeMainWebApp extends InternalLinkType {
-  /// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and open the returned URL as a Web App
+  /// The link is a link to the main Web App of a bot. Call searchPublicChat with the given bot username, check that the user is a bot and has the main Web App. If the bot can be added to attachment menu, then use getAttachmentMenuBot to receive information about the bot, then if the bot isn't added to side menu, show a disclaimer about Mini Apps being third-party applications, ask the user to accept their Terms of service and confirm adding the bot to side and attachment menu, then if the user accepts the terms and confirms adding, use toggleBotIsAddedToAttachmentMenu to add the bot. Then, use getMainWebApp with the given start parameter and mode and open the returned URL as a Web App
   const InternalLinkTypeMainWebApp({
     required this.botUsername,
     required this.startParameter,
-    required this.isCompact,
+    required this.mode,
     this.extra,
     this.clientId,
   });
@@ -1262,8 +1262,8 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
   /// Start parameter to be passed to getMainWebApp
   final String startParameter;
 
-  /// True, if the Web App must be opened in the compact mode instead of the full-size mode
-  final bool isCompact;
+  /// The mode to be passed to getMainWebApp
+  final WebAppOpenMode mode;
 
   /// "@extra" of the request this object answers.
   @override
@@ -1278,7 +1278,7 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
       InternalLinkTypeMainWebApp(
         botUsername: _readString(json['bot_username']),
         startParameter: _readString(json['start_parameter']),
-        isCompact: _readBool(json['is_compact']),
+        mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -1288,7 +1288,7 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
         '@type': CONSTRUCTOR,
         'bot_username': botUsername,
         'start_parameter': startParameter,
-        'is_compact': isCompact,
+        'mode': mode.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1297,14 +1297,14 @@ final class InternalLinkTypeMainWebApp extends InternalLinkType {
   InternalLinkTypeMainWebApp copyWith({
     String? botUsername,
     String? startParameter,
-    bool? isCompact,
+    WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeMainWebApp(
         botUsername: botUsername ?? this.botUsername,
         startParameter: startParameter ?? this.startParameter,
-        isCompact: isCompact ?? this.isCompact,
+        mode: mode ?? this.mode,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
@@ -2621,7 +2621,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     required this.botUsername,
     required this.webAppShortName,
     required this.startParameter,
-    required this.isCompact,
+    required this.mode,
     this.extra,
     this.clientId,
   });
@@ -2635,8 +2635,8 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
   /// Start parameter to be passed to getWebAppLinkUrl
   final String startParameter;
 
-  /// True, if the Web App must be opened in the compact mode instead of the full-size mode
-  final bool isCompact;
+  /// The mode in which the Web App must be opened
+  final WebAppOpenMode mode;
 
   /// "@extra" of the request this object answers.
   @override
@@ -2652,7 +2652,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: _readString(json['bot_username']),
         webAppShortName: _readString(json['web_app_short_name']),
         startParameter: _readString(json['start_parameter']),
-        isCompact: _readBool(json['is_compact']),
+        mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -2663,7 +2663,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         'bot_username': botUsername,
         'web_app_short_name': webAppShortName,
         'start_parameter': startParameter,
-        'is_compact': isCompact,
+        'mode': mode.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -2673,7 +2673,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
     String? botUsername,
     String? webAppShortName,
     String? startParameter,
-    bool? isCompact,
+    WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
   }) =>
@@ -2681,7 +2681,7 @@ final class InternalLinkTypeWebApp extends InternalLinkType {
         botUsername: botUsername ?? this.botUsername,
         webAppShortName: webAppShortName ?? this.webAppShortName,
         startParameter: startParameter ?? this.startParameter,
-        isCompact: isCompact ?? this.isCompact,
+        mode: mode ?? this.mode,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

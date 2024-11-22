@@ -14,7 +14,6 @@ final class Sticker extends TdObject {
     required this.emoji,
     required this.format,
     required this.fullType,
-    required this.outline,
     this.thumbnail,
     required this.sticker,
     this.extra,
@@ -42,9 +41,6 @@ final class Sticker extends TdObject {
   /// Sticker's full type
   final StickerFullType fullType;
 
-  /// Sticker's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
-  final List<ClosedVectorPath> outline;
-
   /// Sticker thumbnail in WEBP or JPEG format; may be null
   final Thumbnail? thumbnail;
 
@@ -68,8 +64,6 @@ final class Sticker extends TdObject {
         emoji: _readString(json['emoji']),
         format: _readObject(json['format'], StickerFormat.fromJson),
         fullType: _readObject(json['full_type'], StickerFullType.fromJson),
-        outline: _readList<ClosedVectorPath>(
-            json['outline'], (e) => _readObject(e, ClosedVectorPath.fromJson)),
         thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
         sticker: _readObject(json['sticker'], File.fromJson),
         extra: json['@extra'],
@@ -86,7 +80,6 @@ final class Sticker extends TdObject {
         'emoji': emoji,
         'format': format.toJson(),
         'full_type': fullType.toJson(),
-        'outline': [for (final e in outline) e.toJson()],
         'thumbnail': thumbnail?.toJson(),
         'sticker': sticker.toJson(),
       };
@@ -101,7 +94,6 @@ final class Sticker extends TdObject {
     String? emoji,
     StickerFormat? format,
     StickerFullType? fullType,
-    List<ClosedVectorPath>? outline,
     Thumbnail? Function()? thumbnail,
     File? sticker,
     dynamic extra,
@@ -115,7 +107,6 @@ final class Sticker extends TdObject {
         emoji: emoji ?? this.emoji,
         format: format ?? this.format,
         fullType: fullType ?? this.fullType,
-        outline: outline ?? this.outline,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
         sticker: sticker ?? this.sticker,
         extra: extra ?? this.extra,

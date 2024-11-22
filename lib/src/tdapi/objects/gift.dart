@@ -11,6 +11,7 @@ final class Gift extends TdObject {
     required this.sticker,
     required this.starCount,
     required this.defaultSellStarCount,
+    required this.isForBirthday,
     required this.remainingCount,
     required this.totalCount,
     required this.firstSendDate,
@@ -28,6 +29,9 @@ final class Gift extends TdObject {
 
   /// Number of Telegram Stars that can be claimed by the receiver instead of the gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed
   final int defaultSellStarCount;
+
+  /// True, if the gift is a birthday gift
+  final bool isForBirthday;
 
   /// Number of remaining times the gift can be purchased by all users; 0 if not limited or the gift was sold out
   final int remainingCount;
@@ -47,6 +51,7 @@ final class Gift extends TdObject {
         sticker: _readObject(json['sticker'], Sticker.fromJson),
         starCount: _readInt(json['star_count']),
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
+        isForBirthday: _readBool(json['is_for_birthday']),
         remainingCount: _readInt(json['remaining_count']),
         totalCount: _readInt(json['total_count']),
         firstSendDate: _readInt(json['first_send_date']),
@@ -60,6 +65,7 @@ final class Gift extends TdObject {
         'sticker': sticker.toJson(),
         'star_count': starCount,
         'default_sell_star_count': defaultSellStarCount,
+        'is_for_birthday': isForBirthday,
         'remaining_count': remainingCount,
         'total_count': totalCount,
         'first_send_date': firstSendDate,
@@ -73,6 +79,7 @@ final class Gift extends TdObject {
     Sticker? sticker,
     int? starCount,
     int? defaultSellStarCount,
+    bool? isForBirthday,
     int? remainingCount,
     int? totalCount,
     int? firstSendDate,
@@ -83,6 +90,7 @@ final class Gift extends TdObject {
         sticker: sticker ?? this.sticker,
         starCount: starCount ?? this.starCount,
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
+        isForBirthday: isForBirthday ?? this.isForBirthday,
         remainingCount: remainingCount ?? this.remainingCount,
         totalCount: totalCount ?? this.totalCount,
         firstSendDate: firstSendDate ?? this.firstSendDate,

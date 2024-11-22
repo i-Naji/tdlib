@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Cancels or reenables Telegram Star subscription to a channel
+/// Cancels or re-enables Telegram Star subscription
 ///
 /// Returns [Ok].
 final class EditStarSubscription extends TdFunction<Ok> {
-  /// Cancels or reenables Telegram Star subscription to a channel
+  /// Cancels or re-enables Telegram Star subscription
   const EditStarSubscription({
     required this.subscriptionId,
     required this.isCanceled,

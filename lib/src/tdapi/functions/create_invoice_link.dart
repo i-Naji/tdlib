@@ -9,8 +9,12 @@ part of '../tdapi.dart';
 final class CreateInvoiceLink extends TdFunction<HttpUrl> {
   /// Creates a link for the given invoice; for bots only
   const CreateInvoiceLink({
+    required this.businessConnectionId,
     required this.invoice,
   });
+
+  /// Unique identifier of business connection on behalf of which to send the request
+  final String businessConnectionId;
 
   /// Information about the invoice of the type inputMessageInvoice
   final InputMessageContent invoice;
@@ -18,6 +22,7 @@ final class CreateInvoiceLink extends TdFunction<HttpUrl> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'business_connection_id': businessConnectionId,
         'invoice': invoice.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -25,9 +30,11 @@ final class CreateInvoiceLink extends TdFunction<HttpUrl> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   CreateInvoiceLink copyWith({
+    String? businessConnectionId,
     InputMessageContent? invoice,
   }) =>
       CreateInvoiceLink(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         invoice: invoice ?? this.invoice,
       );
 

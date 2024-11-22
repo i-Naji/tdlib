@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Represents a closed vector path. The path begins at the end point of the last command
+/// Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner
 final class ClosedVectorPath extends TdObject {
-  /// Represents a closed vector path. The path begins at the end point of the last command
+  /// Represents a closed vector path. The path begins at the end point of the last command. The coordinate system origin is in the upper-left corner
   const ClosedVectorPath({
     required this.commands,
   });

@@ -16,7 +16,12 @@ final class BotInfo extends TdObject {
     required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    required this.webAppBackgroundLightColor,
+    required this.webAppBackgroundDarkColor,
+    required this.webAppHeaderLightColor,
+    required this.webAppHeaderDarkColor,
     required this.canGetRevenueStatistics,
+    required this.canManageEmojiStatus,
     required this.hasMediaPreviews,
     this.editCommandsLink,
     this.editDescriptionLink,
@@ -51,8 +56,23 @@ final class BotInfo extends TdObject {
   /// Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
 
-  /// True, if the bot's revenue statistics are available
+  /// Default light background color for bot Web Apps; -1 if not specified
+  final int webAppBackgroundLightColor;
+
+  /// Default dark background color for bot Web Apps; -1 if not specified
+  final int webAppBackgroundDarkColor;
+
+  /// Default light header color for bot Web Apps; -1 if not specified
+  final int webAppHeaderLightColor;
+
+  /// Default dark header color for bot Web Apps; -1 if not specified
+  final int webAppHeaderDarkColor;
+
+  /// True, if the bot's revenue statistics are available to the current user
   final bool canGetRevenueStatistics;
+
+  /// True, if the bot can manage emoji status of the current user
+  final bool canManageEmojiStatus;
 
   /// True, if the bot has media previews
   final bool hasMediaPreviews;
@@ -85,7 +105,14 @@ final class BotInfo extends TdObject {
         defaultChannelAdministratorRights: _readOptional(
             json['default_channel_administrator_rights'],
             ChatAdministratorRights.fromJson),
+        webAppBackgroundLightColor:
+            _readInt(json['web_app_background_light_color']),
+        webAppBackgroundDarkColor:
+            _readInt(json['web_app_background_dark_color']),
+        webAppHeaderLightColor: _readInt(json['web_app_header_light_color']),
+        webAppHeaderDarkColor: _readInt(json['web_app_header_dark_color']),
         canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
+        canManageEmojiStatus: _readBool(json['can_manage_emoji_status']),
         hasMediaPreviews: _readBool(json['has_media_previews']),
         editCommandsLink: _readOptional(
             json['edit_commands_link'], InternalLinkType.fromJson),
@@ -111,7 +138,12 @@ final class BotInfo extends TdObject {
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
             defaultChannelAdministratorRights?.toJson(),
+        'web_app_background_light_color': webAppBackgroundLightColor,
+        'web_app_background_dark_color': webAppBackgroundDarkColor,
+        'web_app_header_light_color': webAppHeaderLightColor,
+        'web_app_header_dark_color': webAppHeaderDarkColor,
         'can_get_revenue_statistics': canGetRevenueStatistics,
+        'can_manage_emoji_status': canManageEmojiStatus,
         'has_media_previews': hasMediaPreviews,
         'edit_commands_link': editCommandsLink?.toJson(),
         'edit_description_link': editDescriptionLink?.toJson(),
@@ -131,7 +163,12 @@ final class BotInfo extends TdObject {
     String? privacyPolicyUrl,
     ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
     ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
+    int? webAppBackgroundLightColor,
+    int? webAppBackgroundDarkColor,
+    int? webAppHeaderLightColor,
+    int? webAppHeaderDarkColor,
     bool? canGetRevenueStatistics,
+    bool? canManageEmojiStatus,
     bool? hasMediaPreviews,
     InternalLinkType? Function()? editCommandsLink,
     InternalLinkType? Function()? editDescriptionLink,
@@ -153,8 +190,17 @@ final class BotInfo extends TdObject {
             defaultChannelAdministratorRights != null
                 ? defaultChannelAdministratorRights()
                 : this.defaultChannelAdministratorRights,
+        webAppBackgroundLightColor:
+            webAppBackgroundLightColor ?? this.webAppBackgroundLightColor,
+        webAppBackgroundDarkColor:
+            webAppBackgroundDarkColor ?? this.webAppBackgroundDarkColor,
+        webAppHeaderLightColor:
+            webAppHeaderLightColor ?? this.webAppHeaderLightColor,
+        webAppHeaderDarkColor:
+            webAppHeaderDarkColor ?? this.webAppHeaderDarkColor,
         canGetRevenueStatistics:
             canGetRevenueStatistics ?? this.canGetRevenueStatistics,
+        canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,
         hasMediaPreviews: hasMediaPreviews ?? this.hasMediaPreviews,
         editCommandsLink: editCommandsLink != null
             ? editCommandsLink()

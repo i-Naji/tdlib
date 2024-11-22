@@ -12,10 +12,9 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     required this.chatId,
     required this.botUserId,
     required this.url,
-    this.theme,
-    required this.applicationName,
     required this.messageThreadId,
     this.replyTo,
+    required this.parameters,
   });
 
   /// Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
@@ -27,17 +26,14 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   final String url;
 
-  /// Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// Short name of the current application; 0-64 English letters, digits, and underscores
-  final String applicationName;
-
   /// If not 0, the message thread identifier in which the message will be sent
   final int messageThreadId;
 
   /// Information about the message or story to be replied in the message sent by the Web App; pass null if none
   final InputMessageReplyTo? replyTo;
+
+  /// Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -45,10 +41,9 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
         'chat_id': chatId,
         'bot_user_id': botUserId,
         'url': url,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
         'message_thread_id': messageThreadId,
         'reply_to': replyTo?.toJson(),
+        'parameters': parameters.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -58,19 +53,17 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     int? chatId,
     int? botUserId,
     String? url,
-    ThemeParameters? Function()? theme,
-    String? applicationName,
     int? messageThreadId,
     InputMessageReplyTo? Function()? replyTo,
+    WebAppOpenParameters? parameters,
   }) =>
       OpenWebApp(
         chatId: chatId ?? this.chatId,
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
-        theme: theme != null ? theme() : this.theme,
-        applicationName: applicationName ?? this.applicationName,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
+        parameters: parameters ?? this.parameters,
       );
 
   /// TDLib type name.

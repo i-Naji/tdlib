@@ -12,8 +12,7 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
     required this.chatId,
     required this.botUserId,
     required this.startParameter,
-    this.theme,
-    required this.applicationName,
+    required this.parameters,
   });
 
   /// Identifier of the chat in which the Web App is opened; pass 0 if none
@@ -25,11 +24,8 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
   /// Start parameter from internalLinkTypeMainWebApp
   final String startParameter;
 
-  /// Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// Short name of the current application; 0-64 English letters, digits, and underscores
-  final String applicationName;
+  /// Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -37,8 +33,7 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
         'chat_id': chatId,
         'bot_user_id': botUserId,
         'start_parameter': startParameter,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
+        'parameters': parameters.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -48,15 +43,13 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
     int? chatId,
     int? botUserId,
     String? startParameter,
-    ThemeParameters? Function()? theme,
-    String? applicationName,
+    WebAppOpenParameters? parameters,
   }) =>
       GetMainWebApp(
         chatId: chatId ?? this.chatId,
         botUserId: botUserId ?? this.botUserId,
         startParameter: startParameter ?? this.startParameter,
-        theme: theme != null ? theme() : this.theme,
-        applicationName: applicationName ?? this.applicationName,
+        parameters: parameters ?? this.parameters,
       );
 
   /// TDLib type name.

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes available user privacy settings
 ///
-/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
+/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages], [UserPrivacySettingAutosaveGifts]; or [UndecodedUserPrivacySetting] for a type newer than this API.
 sealed class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
@@ -348,6 +348,33 @@ final class UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages
   /// TDLib type name.
   static const String CONSTRUCTOR =
       'userPrivacySettingAllowPrivateVoiceAndVideoNoteMessages';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A privacy setting for managing whether received gifts are automatically shown on the user's profile page
+final class UserPrivacySettingAutosaveGifts extends UserPrivacySetting {
+  /// A privacy setting for managing whether received gifts are automatically shown on the user's profile page
+  const UserPrivacySettingAutosaveGifts();
+
+  /// Parses a [UserPrivacySettingAutosaveGifts] from TDLib JSON.
+  factory UserPrivacySettingAutosaveGifts.fromJson(Map<String, dynamic> json) =>
+      const UserPrivacySettingAutosaveGifts();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingAutosaveGifts copyWith() =>
+      const UserPrivacySettingAutosaveGifts();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingAutosaveGifts';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes purpose of a transaction with a bot
 ///
-/// One of: [BotTransactionPurposePaidMedia], [BotTransactionPurposeInvoicePayment]; or [UndecodedBotTransactionPurpose] for a type newer than this API.
+/// One of: [BotTransactionPurposePaidMedia], [BotTransactionPurposeInvoicePayment], [BotTransactionPurposeSubscription]; or [UndecodedBotTransactionPurpose] for a type newer than this API.
 sealed class BotTransactionPurpose extends TdObject {
   const BotTransactionPurpose();
 
@@ -135,6 +135,62 @@ final class BotTransactionPurposeInvoicePayment extends BotTransactionPurpose {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'botTransactionPurposeInvoicePayment';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// User bought a subscription in a bot or a business account
+final class BotTransactionPurposeSubscription extends BotTransactionPurpose {
+  /// User bought a subscription in a bot or a business account
+  const BotTransactionPurposeSubscription({
+    required this.period,
+    this.productInfo,
+    required this.invoicePayload,
+  });
+
+  /// The number of seconds between consecutive Telegram Star debiting
+  final int period;
+
+  /// Information about the bought subscription; may be null if not applicable
+  final ProductInfo? productInfo;
+
+  /// Invoice payload; for bots only
+  final String invoicePayload;
+
+  /// Parses a [BotTransactionPurposeSubscription] from TDLib JSON.
+  factory BotTransactionPurposeSubscription.fromJson(
+          Map<String, dynamic> json) =>
+      BotTransactionPurposeSubscription(
+        period: _readInt(json['period']),
+        productInfo: _readOptional(json['product_info'], ProductInfo.fromJson),
+        invoicePayload: _readString(json['invoice_payload']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'period': period,
+        'product_info': productInfo?.toJson(),
+        'invoice_payload': invoicePayload,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  BotTransactionPurposeSubscription copyWith({
+    int? period,
+    ProductInfo? Function()? productInfo,
+    String? invoicePayload,
+  }) =>
+      BotTransactionPurposeSubscription(
+        period: period ?? this.period,
+        productInfo: productInfo != null ? productInfo() : this.productInfo,
+        invoicePayload: invoicePayload ?? this.invoicePayload,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'botTransactionPurposeSubscription';
 
   @override
   String getConstructor() => CONSTRUCTOR;

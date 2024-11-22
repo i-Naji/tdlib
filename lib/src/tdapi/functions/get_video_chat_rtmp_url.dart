@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns RTMP URL for streaming to the chat; requires owner privileges
+/// Returns RTMP URL for streaming to the chat; requires can_manage_video_chats administrator right
 ///
 /// Returns [RtmpUrl].
 final class GetVideoChatRtmpUrl extends TdFunction<RtmpUrl> {
-  /// Returns RTMP URL for streaming to the chat; requires owner privileges
+  /// Returns RTMP URL for streaming to the chat; requires can_manage_video_chats administrator right
   const GetVideoChatRtmpUrl({
     required this.chatId,
   });

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a single rule for managing user privacy settings
 ///
-/// One of: [UserPrivacySettingRuleAllowAll], [UserPrivacySettingRuleAllowContacts], [UserPrivacySettingRuleAllowPremiumUsers], [UserPrivacySettingRuleAllowUsers], [UserPrivacySettingRuleAllowChatMembers], [UserPrivacySettingRuleRestrictAll], [UserPrivacySettingRuleRestrictContacts], [UserPrivacySettingRuleRestrictUsers], [UserPrivacySettingRuleRestrictChatMembers]; or [UndecodedUserPrivacySettingRule] for a type newer than this API.
+/// One of: [UserPrivacySettingRuleAllowAll], [UserPrivacySettingRuleAllowContacts], [UserPrivacySettingRuleAllowBots], [UserPrivacySettingRuleAllowPremiumUsers], [UserPrivacySettingRuleAllowUsers], [UserPrivacySettingRuleAllowChatMembers], [UserPrivacySettingRuleRestrictAll], [UserPrivacySettingRuleRestrictContacts], [UserPrivacySettingRuleRestrictBots], [UserPrivacySettingRuleRestrictUsers], [UserPrivacySettingRuleRestrictChatMembers]; or [UndecodedUserPrivacySettingRule] for a type newer than this API.
 sealed class UserPrivacySettingRule extends TdObject {
   const UserPrivacySettingRule();
 
@@ -94,6 +94,33 @@ final class UserPrivacySettingRuleAllowContacts extends UserPrivacySettingRule {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowContacts';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rule to allow all bots to do something
+final class UserPrivacySettingRuleAllowBots extends UserPrivacySettingRule {
+  /// A rule to allow all bots to do something
+  const UserPrivacySettingRuleAllowBots();
+
+  /// Parses a [UserPrivacySettingRuleAllowBots] from TDLib JSON.
+  factory UserPrivacySettingRuleAllowBots.fromJson(Map<String, dynamic> json) =>
+      const UserPrivacySettingRuleAllowBots();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingRuleAllowBots copyWith() =>
+      const UserPrivacySettingRuleAllowBots();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingRuleAllowBots';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -261,6 +288,34 @@ final class UserPrivacySettingRuleRestrictContacts
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictContacts';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A rule to restrict all bots from doing something
+final class UserPrivacySettingRuleRestrictBots extends UserPrivacySettingRule {
+  /// A rule to restrict all bots from doing something
+  const UserPrivacySettingRuleRestrictBots();
+
+  /// Parses a [UserPrivacySettingRuleRestrictBots] from TDLib JSON.
+  factory UserPrivacySettingRuleRestrictBots.fromJson(
+          Map<String, dynamic> json) =>
+      const UserPrivacySettingRuleRestrictBots();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingRuleRestrictBots copyWith() =>
+      const UserPrivacySettingRuleRestrictBots();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingRuleRestrictBots';
 
   @override
   String getConstructor() => CONSTRUCTOR;

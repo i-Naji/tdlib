@@ -11,8 +11,7 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
   const GetWebAppUrl({
     required this.botUserId,
     required this.url,
-    this.theme,
-    required this.applicationName,
+    required this.parameters,
   });
 
   /// Identifier of the target bot
@@ -21,19 +20,15 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
   /// The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, or an empty string when the bot is opened from the side menu
   final String url;
 
-  /// Preferred Web App theme; pass null to use the default theme
-  final ThemeParameters? theme;
-
-  /// Short name of the current application; 0-64 English letters, digits, and underscores
-  final String applicationName;
+  /// Parameters to use to open the Web App
+  final WebAppOpenParameters parameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'bot_user_id': botUserId,
         'url': url,
-        'theme': theme?.toJson(),
-        'application_name': applicationName,
+        'parameters': parameters.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -42,14 +37,12 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
   GetWebAppUrl copyWith({
     int? botUserId,
     String? url,
-    ThemeParameters? Function()? theme,
-    String? applicationName,
+    WebAppOpenParameters? parameters,
   }) =>
       GetWebAppUrl(
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
-        theme: theme != null ? theme() : this.theme,
-        applicationName: applicationName ?? this.applicationName,
+        parameters: parameters ?? this.parameters,
       );
 
   /// TDLib type name.

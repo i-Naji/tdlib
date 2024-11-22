@@ -11,7 +11,7 @@ final class StickerSetInfo extends TdObject {
     required this.title,
     required this.name,
     this.thumbnail,
-    required this.thumbnailOutline,
+    this.thumbnailOutline,
     required this.isOwned,
     required this.isInstalled,
     required this.isArchived,
@@ -36,8 +36,8 @@ final class StickerSetInfo extends TdObject {
   /// Sticker set thumbnail in WEBP, TGS, or WEBM format with width and height 100; may be null. The file can be downloaded only before the thumbnail is changed
   final Thumbnail? thumbnail;
 
-  /// Sticker set thumbnail's outline represented as a list of closed vector paths; may be empty. The coordinate system origin is in the upper-left corner
-  final List<ClosedVectorPath> thumbnailOutline;
+  /// Sticker set thumbnail's outline; may be null if unknown
+  final Outline? thumbnailOutline;
 
   /// True, if the sticker set is owned by the current user
   final bool isOwned;
@@ -75,8 +75,8 @@ final class StickerSetInfo extends TdObject {
         title: _readString(json['title']),
         name: _readString(json['name']),
         thumbnail: _readOptional(json['thumbnail'], Thumbnail.fromJson),
-        thumbnailOutline: _readList<ClosedVectorPath>(json['thumbnail_outline'],
-            (e) => _readObject(e, ClosedVectorPath.fromJson)),
+        thumbnailOutline:
+            _readOptional(json['thumbnail_outline'], Outline.fromJson),
         isOwned: _readBool(json['is_owned']),
         isInstalled: _readBool(json['is_installed']),
         isArchived: _readBool(json['is_archived']),
@@ -98,7 +98,7 @@ final class StickerSetInfo extends TdObject {
         'title': title,
         'name': name,
         'thumbnail': thumbnail?.toJson(),
-        'thumbnail_outline': [for (final e in thumbnailOutline) e.toJson()],
+        'thumbnail_outline': thumbnailOutline?.toJson(),
         'is_owned': isOwned,
         'is_installed': isInstalled,
         'is_archived': isArchived,
@@ -118,7 +118,7 @@ final class StickerSetInfo extends TdObject {
     String? title,
     String? name,
     Thumbnail? Function()? thumbnail,
-    List<ClosedVectorPath>? thumbnailOutline,
+    Outline? Function()? thumbnailOutline,
     bool? isOwned,
     bool? isInstalled,
     bool? isArchived,
@@ -135,7 +135,9 @@ final class StickerSetInfo extends TdObject {
         title: title ?? this.title,
         name: name ?? this.name,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
-        thumbnailOutline: thumbnailOutline ?? this.thumbnailOutline,
+        thumbnailOutline: thumbnailOutline != null
+            ? thumbnailOutline()
+            : this.thumbnailOutline,
         isOwned: isOwned ?? this.isOwned,
         isInstalled: isInstalled ?? this.isInstalled,
         isArchived: isArchived ?? this.isArchived,

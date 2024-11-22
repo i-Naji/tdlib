@@ -8,7 +8,7 @@ final class MainWebApp extends TdObject {
   /// Contains information about the main Web App of a bot
   const MainWebApp({
     required this.url,
-    required this.isCompact,
+    required this.mode,
     this.extra,
     this.clientId,
   });
@@ -16,8 +16,8 @@ final class MainWebApp extends TdObject {
   /// URL of the Web App to open
   final String url;
 
-  /// True, if the Web App must always be opened in the compact mode instead of the full-size mode
-  final bool isCompact;
+  /// The mode in which the Web App must be opened
+  final WebAppOpenMode mode;
 
   /// "@extra" of the request this object answers.
   @override
@@ -30,7 +30,7 @@ final class MainWebApp extends TdObject {
   /// Parses a [MainWebApp] from TDLib JSON.
   factory MainWebApp.fromJson(Map<String, dynamic> json) => MainWebApp(
         url: _readString(json['url']),
-        isCompact: _readBool(json['is_compact']),
+        mode: _readObject(json['mode'], WebAppOpenMode.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -39,20 +39,20 @@ final class MainWebApp extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'url': url,
-        'is_compact': isCompact,
+        'mode': mode.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MainWebApp copyWith({
     String? url,
-    bool? isCompact,
+    WebAppOpenMode? mode,
     dynamic extra,
     int? clientId,
   }) =>
       MainWebApp(
         url: url ?? this.url,
-        isCompact: isCompact ?? this.isCompact,
+        mode: mode ?? this.mode,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

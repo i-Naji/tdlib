@@ -84,9 +84,9 @@ final class UserTransactionPurposeGiftedStars extends UserTransactionPurpose {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The current user sold a gift received from another user
+/// The user sold a gift received from another user or bot
 final class UserTransactionPurposeGiftSell extends UserTransactionPurpose {
-  /// The current user sold a gift received from another user
+  /// The user sold a gift received from another user or bot
   const UserTransactionPurposeGiftSell({
     required this.gift,
   });
@@ -123,9 +123,9 @@ final class UserTransactionPurposeGiftSell extends UserTransactionPurpose {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The current user sent a gift to another user
+/// The user or the bot sent a gift to a user
 final class UserTransactionPurposeGiftSend extends UserTransactionPurpose {
-  /// The current user sent a gift to another user
+  /// The user or the bot sent a gift to a user
   const UserTransactionPurposeGiftSend({
     required this.gift,
   });
