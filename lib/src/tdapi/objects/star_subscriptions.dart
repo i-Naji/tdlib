@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 final class StarSubscriptions extends TdObject {
   /// Represents a list of Telegram Star subscriptions
   const StarSubscriptions({
-    required this.starCount,
+    required this.starAmount,
     required this.subscriptions,
     required this.requiredStarCount,
     required this.nextOffset,
@@ -16,7 +16,7 @@ final class StarSubscriptions extends TdObject {
   });
 
   /// The amount of owned Telegram Stars
-  final int starCount;
+  final StarAmount starAmount;
 
   /// List of subscriptions for Telegram Stars
   final List<StarSubscription> subscriptions;
@@ -38,7 +38,7 @@ final class StarSubscriptions extends TdObject {
   /// Parses a [StarSubscriptions] from TDLib JSON.
   factory StarSubscriptions.fromJson(Map<String, dynamic> json) =>
       StarSubscriptions(
-        starCount: _readInt(json['star_count']),
+        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
         subscriptions: _readList<StarSubscription>(json['subscriptions'],
             (e) => _readObject(e, StarSubscription.fromJson)),
         requiredStarCount: _readInt(json['required_star_count']),
@@ -50,7 +50,7 @@ final class StarSubscriptions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'star_count': starCount,
+        'star_amount': starAmount.toJson(),
         'subscriptions': [for (final e in subscriptions) e.toJson()],
         'required_star_count': requiredStarCount,
         'next_offset': nextOffset,
@@ -59,7 +59,7 @@ final class StarSubscriptions extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   StarSubscriptions copyWith({
-    int? starCount,
+    StarAmount? starAmount,
     List<StarSubscription>? subscriptions,
     int? requiredStarCount,
     String? nextOffset,
@@ -67,7 +67,7 @@ final class StarSubscriptions extends TdObject {
     int? clientId,
   }) =>
       StarSubscriptions(
-        starCount: starCount ?? this.starCount,
+        starAmount: starAmount ?? this.starAmount,
         subscriptions: subscriptions ?? this.subscriptions,
         requiredStarCount: requiredStarCount ?? this.requiredStarCount,
         nextOffset: nextOffset ?? this.nextOffset,

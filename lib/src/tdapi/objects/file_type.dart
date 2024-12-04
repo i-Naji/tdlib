@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents the type of file
 ///
-/// One of: [FileTypeNone], [FileTypeAnimation], [FileTypeAudio], [FileTypeDocument], [FileTypeNotificationSound], [FileTypePhoto], [FileTypePhotoStory], [FileTypeProfilePhoto], [FileTypeSecret], [FileTypeSecretThumbnail], [FileTypeSecure], [FileTypeSticker], [FileTypeThumbnail], [FileTypeUnknown], [FileTypeVideo], [FileTypeVideoNote], [FileTypeVideoStory], [FileTypeVoiceNote], [FileTypeWallpaper]; or [UndecodedFileType] for a type newer than this API.
+/// One of: [FileTypeNone], [FileTypeAnimation], [FileTypeAudio], [FileTypeDocument], [FileTypeNotificationSound], [FileTypePhoto], [FileTypePhotoStory], [FileTypeProfilePhoto], [FileTypeSecret], [FileTypeSecretThumbnail], [FileTypeSecure], [FileTypeSelfDestructingPhoto], [FileTypeSelfDestructingVideo], [FileTypeSelfDestructingVideoNote], [FileTypeSelfDestructingVoiceNote], [FileTypeSticker], [FileTypeThumbnail], [FileTypeUnknown], [FileTypeVideo], [FileTypeVideoNote], [FileTypeVideoStory], [FileTypeVoiceNote], [FileTypeWallpaper]; or [UndecodedFileType] for a type newer than this API.
 sealed class FileType extends TdObject {
   const FileType();
 
@@ -323,6 +323,116 @@ final class FileTypeSecure extends FileType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'fileTypeSecure';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a self-destructing photo in a private chat
+final class FileTypeSelfDestructingPhoto extends FileType {
+  /// The file is a self-destructing photo in a private chat
+  const FileTypeSelfDestructingPhoto();
+
+  /// Parses a [FileTypeSelfDestructingPhoto] from TDLib JSON.
+  factory FileTypeSelfDestructingPhoto.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSelfDestructingPhoto();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeSelfDestructingPhoto copyWith() =>
+      const FileTypeSelfDestructingPhoto();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeSelfDestructingPhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a self-destructing video in a private chat
+final class FileTypeSelfDestructingVideo extends FileType {
+  /// The file is a self-destructing video in a private chat
+  const FileTypeSelfDestructingVideo();
+
+  /// Parses a [FileTypeSelfDestructingVideo] from TDLib JSON.
+  factory FileTypeSelfDestructingVideo.fromJson(Map<String, dynamic> json) =>
+      const FileTypeSelfDestructingVideo();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeSelfDestructingVideo copyWith() =>
+      const FileTypeSelfDestructingVideo();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeSelfDestructingVideo';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a self-destructing video note in a private chat
+final class FileTypeSelfDestructingVideoNote extends FileType {
+  /// The file is a self-destructing video note in a private chat
+  const FileTypeSelfDestructingVideoNote();
+
+  /// Parses a [FileTypeSelfDestructingVideoNote] from TDLib JSON.
+  factory FileTypeSelfDestructingVideoNote.fromJson(
+          Map<String, dynamic> json) =>
+      const FileTypeSelfDestructingVideoNote();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeSelfDestructingVideoNote copyWith() =>
+      const FileTypeSelfDestructingVideoNote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeSelfDestructingVideoNote';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The file is a self-destructing voice note in a private chat
+final class FileTypeSelfDestructingVoiceNote extends FileType {
+  /// The file is a self-destructing voice note in a private chat
+  const FileTypeSelfDestructingVoiceNote();
+
+  /// Parses a [FileTypeSelfDestructingVoiceNote] from TDLib JSON.
+  factory FileTypeSelfDestructingVoiceNote.fromJson(
+          Map<String, dynamic> json) =>
+      const FileTypeSelfDestructingVoiceNote();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  FileTypeSelfDestructingVoiceNote copyWith() =>
+      const FileTypeSelfDestructingVoiceNote();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'fileTypeSelfDestructingVoiceNote';
 
   @override
   String getConstructor() => CONSTRUCTOR;

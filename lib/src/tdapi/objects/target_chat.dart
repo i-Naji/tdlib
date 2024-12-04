@@ -42,9 +42,9 @@ final class UndecodedTargetChat extends TargetChat {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The currently opened chat needs to be kept
+/// The currently opened chat and forum topic must be kept
 final class TargetChatCurrent extends TargetChat {
-  /// The currently opened chat needs to be kept
+  /// The currently opened chat and forum topic must be kept
   const TargetChatCurrent();
 
   /// Parses a [TargetChatCurrent] from TDLib JSON.

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Saves an inline message to be sent by the given user; for bots only
+/// Saves an inline message to be sent by the given user
 ///
 /// Returns [PreparedInlineMessage].
 final class GetPreparedInlineMessage extends TdFunction<PreparedInlineMessage> {
-  /// Saves an inline message to be sent by the given user; for bots only
+  /// Saves an inline message to be sent by the given user
   const GetPreparedInlineMessage({
     required this.botUserId,
     required this.preparedMessageId,

@@ -16,6 +16,7 @@ final class BotInfo extends TdObject {
     required this.privacyPolicyUrl,
     this.defaultGroupAdministratorRights,
     this.defaultChannelAdministratorRights,
+    this.affiliateProgram,
     required this.webAppBackgroundLightColor,
     required this.webAppBackgroundDarkColor,
     required this.webAppHeaderLightColor,
@@ -55,6 +56,9 @@ final class BotInfo extends TdObject {
 
   /// Default administrator rights for adding the bot to channels; may be null
   final ChatAdministratorRights? defaultChannelAdministratorRights;
+
+  /// Information about the affiliate program of the bot; may be null if none
+  final AffiliateProgramInfo? affiliateProgram;
 
   /// Default light background color for bot Web Apps; -1 if not specified
   final int webAppBackgroundLightColor;
@@ -105,6 +109,8 @@ final class BotInfo extends TdObject {
         defaultChannelAdministratorRights: _readOptional(
             json['default_channel_administrator_rights'],
             ChatAdministratorRights.fromJson),
+        affiliateProgram: _readOptional(
+            json['affiliate_program'], AffiliateProgramInfo.fromJson),
         webAppBackgroundLightColor:
             _readInt(json['web_app_background_light_color']),
         webAppBackgroundDarkColor:
@@ -138,6 +144,7 @@ final class BotInfo extends TdObject {
             defaultGroupAdministratorRights?.toJson(),
         'default_channel_administrator_rights':
             defaultChannelAdministratorRights?.toJson(),
+        'affiliate_program': affiliateProgram?.toJson(),
         'web_app_background_light_color': webAppBackgroundLightColor,
         'web_app_background_dark_color': webAppBackgroundDarkColor,
         'web_app_header_light_color': webAppHeaderLightColor,
@@ -163,6 +170,7 @@ final class BotInfo extends TdObject {
     String? privacyPolicyUrl,
     ChatAdministratorRights? Function()? defaultGroupAdministratorRights,
     ChatAdministratorRights? Function()? defaultChannelAdministratorRights,
+    AffiliateProgramInfo? Function()? affiliateProgram,
     int? webAppBackgroundLightColor,
     int? webAppBackgroundDarkColor,
     int? webAppHeaderLightColor,
@@ -190,6 +198,9 @@ final class BotInfo extends TdObject {
             defaultChannelAdministratorRights != null
                 ? defaultChannelAdministratorRights()
                 : this.defaultChannelAdministratorRights,
+        affiliateProgram: affiliateProgram != null
+            ? affiliateProgram()
+            : this.affiliateProgram,
         webAppBackgroundLightColor:
             webAppBackgroundLightColor ?? this.webAppBackgroundLightColor,
         webAppBackgroundDarkColor:

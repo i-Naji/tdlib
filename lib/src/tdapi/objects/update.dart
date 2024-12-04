@@ -7671,13 +7671,13 @@ final class UpdateActiveLiveLocationMessages extends Update {
 final class UpdateOwnedStarCount extends Update {
   /// The number of Telegram Stars owned by the current user has changed
   const UpdateOwnedStarCount({
-    required this.starCount,
+    required this.starAmount,
     this.extra,
     this.clientId,
   });
 
-  /// The new number of Telegram Stars owned
-  final int starCount;
+  /// The new amount of owned Telegram Stars
+  final StarAmount starAmount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -7690,7 +7690,7 @@ final class UpdateOwnedStarCount extends Update {
   /// Parses a [UpdateOwnedStarCount] from TDLib JSON.
   factory UpdateOwnedStarCount.fromJson(Map<String, dynamic> json) =>
       UpdateOwnedStarCount(
-        starCount: _readInt(json['star_count']),
+        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -7698,19 +7698,19 @@ final class UpdateOwnedStarCount extends Update {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'star_count': starCount,
+        'star_amount': starAmount.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpdateOwnedStarCount copyWith({
-    int? starCount,
+    StarAmount? starAmount,
     dynamic extra,
     int? clientId,
   }) =>
       UpdateOwnedStarCount(
-        starCount: starCount ?? this.starCount,
+        starAmount: starAmount ?? this.starAmount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

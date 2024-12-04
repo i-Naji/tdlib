@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 final class StarTransactions extends TdObject {
   /// Represents a list of Telegram Star transactions
   const StarTransactions({
-    required this.starCount,
+    required this.starAmount,
     required this.transactions,
     required this.nextOffset,
     this.extra,
@@ -15,7 +15,7 @@ final class StarTransactions extends TdObject {
   });
 
   /// The amount of owned Telegram Stars
-  final int starCount;
+  final StarAmount starAmount;
 
   /// List of transactions with Telegram Stars
   final List<StarTransaction> transactions;
@@ -34,7 +34,7 @@ final class StarTransactions extends TdObject {
   /// Parses a [StarTransactions] from TDLib JSON.
   factory StarTransactions.fromJson(Map<String, dynamic> json) =>
       StarTransactions(
-        starCount: _readInt(json['star_count']),
+        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
         transactions: _readList<StarTransaction>(json['transactions'],
             (e) => _readObject(e, StarTransaction.fromJson)),
         nextOffset: _readString(json['next_offset']),
@@ -45,7 +45,7 @@ final class StarTransactions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'star_count': starCount,
+        'star_amount': starAmount.toJson(),
         'transactions': [for (final e in transactions) e.toJson()],
         'next_offset': nextOffset,
       };
@@ -53,14 +53,14 @@ final class StarTransactions extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   StarTransactions copyWith({
-    int? starCount,
+    StarAmount? starAmount,
     List<StarTransaction>? transactions,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) =>
       StarTransactions(
-        starCount: starCount ?? this.starCount,
+        starAmount: starAmount ?? this.starAmount,
         transactions: transactions ?? this.transactions,
         nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,

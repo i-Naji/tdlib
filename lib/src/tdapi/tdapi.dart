@@ -91,6 +91,7 @@ part 'functions/close_web_app.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
+part 'functions/connect_chat_affiliate_program.dart';
 part 'functions/create_basic_group_chat.dart';
 part 'functions/create_business_chat_link.dart';
 part 'functions/create_call.dart';
@@ -145,6 +146,7 @@ part 'functions/disable_all_supergroup_usernames.dart';
 part 'functions/disable_proxy.dart';
 part 'functions/discard_call.dart';
 part 'functions/disconnect_all_websites.dart';
+part 'functions/disconnect_chat_affiliate_program.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/download_file.dart';
 part 'functions/edit_bot_media_preview.dart';
@@ -219,6 +221,8 @@ part 'functions/get_callback_query_message.dart';
 part 'functions/get_chat.dart';
 part 'functions/get_chat_active_stories.dart';
 part 'functions/get_chat_administrators.dart';
+part 'functions/get_chat_affiliate_program.dart';
+part 'functions/get_chat_affiliate_programs.dart';
 part 'functions/get_chat_archived_stories.dart';
 part 'functions/get_chat_available_message_senders.dart';
 part 'functions/get_chat_boost_features.dart';
@@ -355,6 +359,7 @@ part 'functions/get_messages.dart';
 part 'functions/get_network_statistics.dart';
 part 'functions/get_new_chat_privacy_settings.dart';
 part 'functions/get_option.dart';
+part 'functions/get_owned_bots.dart';
 part 'functions/get_owned_sticker_sets.dart';
 part 'functions/get_passport_authorization_form.dart';
 part 'functions/get_passport_authorization_form_available_elements.dart';
@@ -556,8 +561,10 @@ part 'functions/revoke_chat_invite_link.dart';
 part 'functions/revoke_group_call_invite_link.dart';
 part 'functions/save_application_log_event.dart';
 part 'functions/save_prepared_inline_message.dart';
+part 'functions/search_affiliate_programs.dart';
 part 'functions/search_background.dart';
 part 'functions/search_call_messages.dart';
+part 'functions/search_chat_affiliate_program.dart';
 part 'functions/search_chat_members.dart';
 part 'functions/search_chat_messages.dart';
 part 'functions/search_chat_recent_location_messages.dart';
@@ -636,6 +643,7 @@ part 'functions/set_business_opening_hours.dart';
 part 'functions/set_business_start_page.dart';
 part 'functions/set_chat_accent_color.dart';
 part 'functions/set_chat_active_stories_list.dart';
+part 'functions/set_chat_affiliate_program.dart';
 part 'functions/set_chat_available_reactions.dart';
 part 'functions/set_chat_background.dart';
 part 'functions/set_chat_client_data.dart';
@@ -806,6 +814,10 @@ part 'objects/account_ttl.dart';
 part 'objects/added_reaction.dart';
 part 'objects/added_reactions.dart';
 part 'objects/address.dart';
+part 'objects/affiliate_info.dart';
+part 'objects/affiliate_program_info.dart';
+part 'objects/affiliate_program_parameters.dart';
+part 'objects/affiliate_program_sort_order.dart';
 part 'objects/alternative_video.dart';
 part 'objects/animated_chat_photo.dart';
 part 'objects/animated_emoji.dart';
@@ -843,7 +855,6 @@ part 'objects/bot_media_preview.dart';
 part 'objects/bot_media_preview_info.dart';
 part 'objects/bot_media_previews.dart';
 part 'objects/bot_menu_button.dart';
-part 'objects/bot_transaction_purpose.dart';
 part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
 part 'objects/business_away_message_settings.dart';
@@ -885,6 +896,8 @@ part 'objects/chat_active_stories.dart';
 part 'objects/chat_administrator.dart';
 part 'objects/chat_administrator_rights.dart';
 part 'objects/chat_administrators.dart';
+part 'objects/chat_affiliate_program.dart';
+part 'objects/chat_affiliate_programs.dart';
 part 'objects/chat_available_reactions.dart';
 part 'objects/chat_background.dart';
 part 'objects/chat_boost.dart';
@@ -947,7 +960,6 @@ part 'objects/chat_statistics_inviter_info.dart';
 part 'objects/chat_statistics_message_sender_info.dart';
 part 'objects/chat_statistics_object_type.dart';
 part 'objects/chat_theme.dart';
-part 'objects/chat_transaction_purpose.dart';
 part 'objects/chat_type.dart';
 part 'objects/chats.dart';
 part 'objects/check_chat_username_result.dart';
@@ -1007,6 +1019,8 @@ part 'objects/forum_topic_icon.dart';
 part 'objects/forum_topic_info.dart';
 part 'objects/forum_topics.dart';
 part 'objects/forward_source.dart';
+part 'objects/found_affiliate_program.dart';
+part 'objects/found_affiliate_programs.dart';
 part 'objects/found_chat_boosts.dart';
 part 'objects/found_chat_messages.dart';
 part 'objects/found_file_downloads.dart';
@@ -1256,6 +1270,7 @@ part 'objects/shipping_option.dart';
 part 'objects/speech_recognition_result.dart';
 part 'objects/sponsored_message.dart';
 part 'objects/sponsored_messages.dart';
+part 'objects/star_amount.dart';
 part 'objects/star_giveaway_payment_option.dart';
 part 'objects/star_giveaway_payment_options.dart';
 part 'objects/star_giveaway_winner_option.dart';
@@ -1269,7 +1284,7 @@ part 'objects/star_subscription_type.dart';
 part 'objects/star_subscriptions.dart';
 part 'objects/star_transaction.dart';
 part 'objects/star_transaction_direction.dart';
-part 'objects/star_transaction_partner.dart';
+part 'objects/star_transaction_type.dart';
 part 'objects/star_transactions.dart';
 part 'objects/statistical_graph.dart';
 part 'objects/statistical_value.dart';
@@ -1352,7 +1367,6 @@ part 'objects/user_privacy_setting_rule.dart';
 part 'objects/user_privacy_setting_rules.dart';
 part 'objects/user_status.dart';
 part 'objects/user_support_info.dart';
-part 'objects/user_transaction_purpose.dart';
 part 'objects/user_type.dart';
 part 'objects/usernames.dart';
 part 'objects/users.dart';
@@ -1370,14 +1384,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.40';
+const String tdlibVersion = '1.8.41';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '66c4751742d2ca810033b289fc57ab4f83cfc833';
+const String tdlibSchemaCommit = '5b974c298d4ed551d3ad2c061ad7b8280d137c7e';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '66c4751742d2ca810033b289fc57ab4f83cfc833',
+  '5b974c298d4ed551d3ad2c061ad7b8280d137c7e',
 ];
 
 /// Base class of every TDLib object.
@@ -1589,11 +1603,24 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputChatPhotoSticker': InputChatPhotoSticker.fromJson,
   'chatPermissions': ChatPermissions.fromJson,
   'chatAdministratorRights': ChatAdministratorRights.fromJson,
+  'starAmount': StarAmount.fromJson,
   'starSubscriptionTypeChannel': StarSubscriptionTypeChannel.fromJson,
   'starSubscriptionTypeBot': StarSubscriptionTypeBot.fromJson,
   'starSubscriptionPricing': StarSubscriptionPricing.fromJson,
   'starSubscription': StarSubscription.fromJson,
   'starSubscriptions': StarSubscriptions.fromJson,
+  'affiliateProgramSortOrderProfitability':
+      AffiliateProgramSortOrderProfitability.fromJson,
+  'affiliateProgramSortOrderCreationDate':
+      AffiliateProgramSortOrderCreationDate.fromJson,
+  'affiliateProgramSortOrderRevenue': AffiliateProgramSortOrderRevenue.fromJson,
+  'affiliateProgramParameters': AffiliateProgramParameters.fromJson,
+  'affiliateProgramInfo': AffiliateProgramInfo.fromJson,
+  'affiliateInfo': AffiliateInfo.fromJson,
+  'foundAffiliateProgram': FoundAffiliateProgram.fromJson,
+  'foundAffiliatePrograms': FoundAffiliatePrograms.fromJson,
+  'chatAffiliateProgram': ChatAffiliateProgram.fromJson,
+  'chatAffiliatePrograms': ChatAffiliatePrograms.fromJson,
   'productInfo': ProductInfo.fromJson,
   'premiumPaymentOption': PremiumPaymentOption.fromJson,
   'premiumStatePaymentOption': PremiumStatePaymentOption.fromJson,
@@ -1611,33 +1638,52 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'userGifts': UserGifts.fromJson,
   'starTransactionDirectionIncoming': StarTransactionDirectionIncoming.fromJson,
   'starTransactionDirectionOutgoing': StarTransactionDirectionOutgoing.fromJson,
-  'botTransactionPurposePaidMedia': BotTransactionPurposePaidMedia.fromJson,
-  'botTransactionPurposeInvoicePayment':
-      BotTransactionPurposeInvoicePayment.fromJson,
-  'botTransactionPurposeSubscription':
-      BotTransactionPurposeSubscription.fromJson,
-  'chatTransactionPurposePaidMedia': ChatTransactionPurposePaidMedia.fromJson,
-  'chatTransactionPurposeJoin': ChatTransactionPurposeJoin.fromJson,
-  'chatTransactionPurposeReaction': ChatTransactionPurposeReaction.fromJson,
-  'chatTransactionPurposeGiveaway': ChatTransactionPurposeGiveaway.fromJson,
-  'userTransactionPurposeGiftedStars':
-      UserTransactionPurposeGiftedStars.fromJson,
-  'userTransactionPurposeGiftSell': UserTransactionPurposeGiftSell.fromJson,
-  'userTransactionPurposeGiftSend': UserTransactionPurposeGiftSend.fromJson,
-  'starTransactionPartnerTelegram': StarTransactionPartnerTelegram.fromJson,
-  'starTransactionPartnerAppStore': StarTransactionPartnerAppStore.fromJson,
-  'starTransactionPartnerGooglePlay': StarTransactionPartnerGooglePlay.fromJson,
-  'starTransactionPartnerFragment': StarTransactionPartnerFragment.fromJson,
-  'starTransactionPartnerTelegramAds':
-      StarTransactionPartnerTelegramAds.fromJson,
-  'starTransactionPartnerTelegramApi':
-      StarTransactionPartnerTelegramApi.fromJson,
-  'starTransactionPartnerBot': StarTransactionPartnerBot.fromJson,
-  'starTransactionPartnerBusiness': StarTransactionPartnerBusiness.fromJson,
-  'starTransactionPartnerChat': StarTransactionPartnerChat.fromJson,
-  'starTransactionPartnerUser': StarTransactionPartnerUser.fromJson,
-  'starTransactionPartnerUnsupported':
-      StarTransactionPartnerUnsupported.fromJson,
+  'starTransactionTypePremiumBotDeposit':
+      StarTransactionTypePremiumBotDeposit.fromJson,
+  'starTransactionTypeAppStoreDeposit':
+      StarTransactionTypeAppStoreDeposit.fromJson,
+  'starTransactionTypeGooglePlayDeposit':
+      StarTransactionTypeGooglePlayDeposit.fromJson,
+  'starTransactionTypeFragmentDeposit':
+      StarTransactionTypeFragmentDeposit.fromJson,
+  'starTransactionTypeUserDeposit': StarTransactionTypeUserDeposit.fromJson,
+  'starTransactionTypeGiveawayDeposit':
+      StarTransactionTypeGiveawayDeposit.fromJson,
+  'starTransactionTypeFragmentWithdrawal':
+      StarTransactionTypeFragmentWithdrawal.fromJson,
+  'starTransactionTypeTelegramAdsWithdrawal':
+      StarTransactionTypeTelegramAdsWithdrawal.fromJson,
+  'starTransactionTypeTelegramApiUsage':
+      StarTransactionTypeTelegramApiUsage.fromJson,
+  'starTransactionTypeBotPaidMediaPurchase':
+      StarTransactionTypeBotPaidMediaPurchase.fromJson,
+  'starTransactionTypeBotPaidMediaSale':
+      StarTransactionTypeBotPaidMediaSale.fromJson,
+  'starTransactionTypeChannelPaidMediaPurchase':
+      StarTransactionTypeChannelPaidMediaPurchase.fromJson,
+  'starTransactionTypeChannelPaidMediaSale':
+      StarTransactionTypeChannelPaidMediaSale.fromJson,
+  'starTransactionTypeBotInvoicePurchase':
+      StarTransactionTypeBotInvoicePurchase.fromJson,
+  'starTransactionTypeBotInvoiceSale':
+      StarTransactionTypeBotInvoiceSale.fromJson,
+  'starTransactionTypeBotSubscriptionPurchase':
+      StarTransactionTypeBotSubscriptionPurchase.fromJson,
+  'starTransactionTypeBotSubscriptionSale':
+      StarTransactionTypeBotSubscriptionSale.fromJson,
+  'starTransactionTypeChannelSubscriptionPurchase':
+      StarTransactionTypeChannelSubscriptionPurchase.fromJson,
+  'starTransactionTypeChannelSubscriptionSale':
+      StarTransactionTypeChannelSubscriptionSale.fromJson,
+  'starTransactionTypeGiftPurchase': StarTransactionTypeGiftPurchase.fromJson,
+  'starTransactionTypeGiftSale': StarTransactionTypeGiftSale.fromJson,
+  'starTransactionTypeChannelPaidReactionSend':
+      StarTransactionTypeChannelPaidReactionSend.fromJson,
+  'starTransactionTypeChannelPaidReactionReceive':
+      StarTransactionTypeChannelPaidReactionReceive.fromJson,
+  'starTransactionTypeAffiliateProgramCommission':
+      StarTransactionTypeAffiliateProgramCommission.fromJson,
+  'starTransactionTypeUnsupported': StarTransactionTypeUnsupported.fromJson,
   'starTransaction': StarTransaction.fromJson,
   'starTransactions': StarTransactions.fromJson,
   'giveawayParticipantStatusEligible':
@@ -2948,6 +2994,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeBuyStars': InternalLinkTypeBuyStars.fromJson,
   'internalLinkTypeChangePhoneNumber':
       InternalLinkTypeChangePhoneNumber.fromJson,
+  'internalLinkTypeChatAffiliateProgram':
+      InternalLinkTypeChatAffiliateProgram.fromJson,
   'internalLinkTypeChatBoost': InternalLinkTypeChatBoost.fromJson,
   'internalLinkTypeChatFolderInvite': InternalLinkTypeChatFolderInvite.fromJson,
   'internalLinkTypeChatFolderSettings':
@@ -3008,6 +3056,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'fileTypeSecret': FileTypeSecret.fromJson,
   'fileTypeSecretThumbnail': FileTypeSecretThumbnail.fromJson,
   'fileTypeSecure': FileTypeSecure.fromJson,
+  'fileTypeSelfDestructingPhoto': FileTypeSelfDestructingPhoto.fromJson,
+  'fileTypeSelfDestructingVideo': FileTypeSelfDestructingVideo.fromJson,
+  'fileTypeSelfDestructingVideoNote': FileTypeSelfDestructingVideoNote.fromJson,
+  'fileTypeSelfDestructingVoiceNote': FileTypeSelfDestructingVoiceNote.fromJson,
   'fileTypeSticker': FileTypeSticker.fromJson,
   'fileTypeThumbnail': FileTypeThumbnail.fromJson,
   'fileTypeUnknown': FileTypeUnknown.fromJson,

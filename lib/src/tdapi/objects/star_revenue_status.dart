@@ -7,21 +7,21 @@ part of '../tdapi.dart';
 final class StarRevenueStatus extends TdObject {
   /// Contains information about Telegram Stars earned by a bot or a chat
   const StarRevenueStatus({
-    required this.totalCount,
-    required this.currentCount,
-    required this.availableCount,
+    required this.totalAmount,
+    required this.currentAmount,
+    required this.availableAmount,
     required this.withdrawalEnabled,
     required this.nextWithdrawalIn,
   });
 
-  /// Total number of Telegram Stars earned
-  final int totalCount;
+  /// Total amount of Telegram Stars earned
+  final StarAmount totalAmount;
 
-  /// The number of Telegram Stars that aren't withdrawn yet
-  final int currentCount;
+  /// The amount of Telegram Stars that aren't withdrawn yet
+  final StarAmount currentAmount;
 
-  /// The number of Telegram Stars that are available for withdrawal
-  final int availableCount;
+  /// The amount of Telegram Stars that are available for withdrawal
+  final StarAmount availableAmount;
 
   /// True, if Telegram Stars can be withdrawn now or later
   final bool withdrawalEnabled;
@@ -32,9 +32,10 @@ final class StarRevenueStatus extends TdObject {
   /// Parses a [StarRevenueStatus] from TDLib JSON.
   factory StarRevenueStatus.fromJson(Map<String, dynamic> json) =>
       StarRevenueStatus(
-        totalCount: _readInt(json['total_count']),
-        currentCount: _readInt(json['current_count']),
-        availableCount: _readInt(json['available_count']),
+        totalAmount: _readObject(json['total_amount'], StarAmount.fromJson),
+        currentAmount: _readObject(json['current_amount'], StarAmount.fromJson),
+        availableAmount:
+            _readObject(json['available_amount'], StarAmount.fromJson),
         withdrawalEnabled: _readBool(json['withdrawal_enabled']),
         nextWithdrawalIn: _readInt(json['next_withdrawal_in']),
       );
@@ -42,9 +43,9 @@ final class StarRevenueStatus extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'total_count': totalCount,
-        'current_count': currentCount,
-        'available_count': availableCount,
+        'total_amount': totalAmount.toJson(),
+        'current_amount': currentAmount.toJson(),
+        'available_amount': availableAmount.toJson(),
         'withdrawal_enabled': withdrawalEnabled,
         'next_withdrawal_in': nextWithdrawalIn,
       };
@@ -52,16 +53,16 @@ final class StarRevenueStatus extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   StarRevenueStatus copyWith({
-    int? totalCount,
-    int? currentCount,
-    int? availableCount,
+    StarAmount? totalAmount,
+    StarAmount? currentAmount,
+    StarAmount? availableAmount,
     bool? withdrawalEnabled,
     int? nextWithdrawalIn,
   }) =>
       StarRevenueStatus(
-        totalCount: totalCount ?? this.totalCount,
-        currentCount: currentCount ?? this.currentCount,
-        availableCount: availableCount ?? this.availableCount,
+        totalAmount: totalAmount ?? this.totalAmount,
+        currentAmount: currentAmount ?? this.currentAmount,
+        availableAmount: availableAmount ?? this.availableAmount,
         withdrawalEnabled: withdrawalEnabled ?? this.withdrawalEnabled,
         nextWithdrawalIn: nextWithdrawalIn ?? this.nextWithdrawalIn,
       );

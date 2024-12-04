@@ -8,17 +8,17 @@ final class StarTransaction extends TdObject {
   /// Represents a transaction changing the amount of owned Telegram Stars
   const StarTransaction({
     required this.id,
-    required this.starCount,
+    required this.starAmount,
     required this.isRefund,
     required this.date,
-    required this.partner,
+    required this.type,
   });
 
   /// Unique identifier of the transaction
   final String id;
 
   /// The amount of added owned Telegram Stars; negative for outgoing transactions
-  final int starCount;
+  final StarAmount starAmount;
 
   /// True, if the transaction is a refund of a previous transaction
   final bool isRefund;
@@ -26,44 +26,44 @@ final class StarTransaction extends TdObject {
   /// Point in time (Unix timestamp) when the transaction was completed
   final int date;
 
-  /// Source of the incoming transaction, or its recipient for outgoing transactions
-  final StarTransactionPartner partner;
+  /// Type of the transaction
+  final StarTransactionType type;
 
   /// Parses a [StarTransaction] from TDLib JSON.
   factory StarTransaction.fromJson(Map<String, dynamic> json) =>
       StarTransaction(
         id: _readString(json['id']),
-        starCount: _readInt(json['star_count']),
+        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
         isRefund: _readBool(json['is_refund']),
         date: _readInt(json['date']),
-        partner: _readObject(json['partner'], StarTransactionPartner.fromJson),
+        type: _readObject(json['type'], StarTransactionType.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id,
-        'star_count': starCount,
+        'star_amount': starAmount.toJson(),
         'is_refund': isRefund,
         'date': date,
-        'partner': partner.toJson(),
+        'type': type.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   StarTransaction copyWith({
     String? id,
-    int? starCount,
+    StarAmount? starAmount,
     bool? isRefund,
     int? date,
-    StarTransactionPartner? partner,
+    StarTransactionType? type,
   }) =>
       StarTransaction(
         id: id ?? this.id,
-        starCount: starCount ?? this.starCount,
+        starAmount: starAmount ?? this.starAmount,
         isRefund: isRefund ?? this.isRefund,
         date: date ?? this.date,
-        partner: partner ?? this.partner,
+        type: type ?? this.type,
       );
 
   /// TDLib type name.
