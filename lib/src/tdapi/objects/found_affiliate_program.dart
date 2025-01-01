@@ -8,39 +8,38 @@ final class FoundAffiliateProgram extends TdObject {
   /// Describes a found affiliate program
   const FoundAffiliateProgram({
     required this.botUserId,
-    required this.parameters,
+    required this.info,
   });
 
   /// User identifier of the bot created the program
   final int botUserId;
 
   /// Information about the affiliate program
-  final AffiliateProgramInfo parameters;
+  final AffiliateProgramInfo info;
 
   /// Parses a [FoundAffiliateProgram] from TDLib JSON.
   factory FoundAffiliateProgram.fromJson(Map<String, dynamic> json) =>
       FoundAffiliateProgram(
         botUserId: _readInt(json['bot_user_id']),
-        parameters:
-            _readObject(json['parameters'], AffiliateProgramInfo.fromJson),
+        info: _readObject(json['info'], AffiliateProgramInfo.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'bot_user_id': botUserId,
-        'parameters': parameters.toJson(),
+        'info': info.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   FoundAffiliateProgram copyWith({
     int? botUserId,
-    AffiliateProgramInfo? parameters,
+    AffiliateProgramInfo? info,
   }) =>
       FoundAffiliateProgram(
         botUserId: botUserId ?? this.botUserId,
-        parameters: parameters ?? this.parameters,
+        info: info ?? this.info,
       );
 
   /// TDLib type name.

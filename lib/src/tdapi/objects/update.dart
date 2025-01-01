@@ -6895,7 +6895,7 @@ final class UpdateAccentColors extends Update {
   /// Information about supported colors; colors with identifiers 0 (red), 1 (orange), 2 (purple/violet), 3 (green), 4 (cyan), 5 (blue), 6 (pink) must always be supported and aren't included in the list. The exact colors for the accent colors with identifiers 0-6 must be taken from the app theme
   final List<AccentColor> colors;
 
-  /// The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specififed order
+  /// The list of accent color identifiers, which can be set through setAccentColor and setChatAccentColor. The colors must be shown in the specified order
   final List<int> availableAccentColorIds;
 
   /// "@extra" of the request this object answers.
@@ -6961,7 +6961,7 @@ final class UpdateProfileAccentColors extends Update {
   /// Information about supported colors
   final List<ProfileAccentColor> colors;
 
-  /// The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specififed order
+  /// The list of accent color identifiers, which can be set through setProfileAccentColor and setChatProfileAccentColor. The colors must be shown in the specified order
   final List<int> availableAccentColorIds;
 
   /// "@extra" of the request this object answers.

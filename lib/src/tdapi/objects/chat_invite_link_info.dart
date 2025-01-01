@@ -19,9 +19,7 @@ final class ChatInviteLinkInfo extends TdObject {
     this.subscriptionInfo,
     required this.createsJoinRequest,
     required this.isPublic,
-    required this.isVerified,
-    required this.isScam,
-    required this.isFake,
+    this.verificationStatus,
     this.extra,
     this.clientId,
   });
@@ -62,14 +60,8 @@ final class ChatInviteLinkInfo extends TdObject {
   /// True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup
   final bool isPublic;
 
-  /// True, if the chat is verified
-  final bool isVerified;
-
-  /// True, if many users reported this chat as a scam
-  final bool isScam;
-
-  /// True, if many users reported this chat as a fake account
-  final bool isFake;
+  /// Information about verification status of the chat; may be null if none
+  final VerificationStatus? verificationStatus;
 
   /// "@extra" of the request this object answers.
   @override
@@ -95,9 +87,8 @@ final class ChatInviteLinkInfo extends TdObject {
             json['subscription_info'], ChatInviteLinkSubscriptionInfo.fromJson),
         createsJoinRequest: _readBool(json['creates_join_request']),
         isPublic: _readBool(json['is_public']),
-        isVerified: _readBool(json['is_verified']),
-        isScam: _readBool(json['is_scam']),
-        isFake: _readBool(json['is_fake']),
+        verificationStatus: _readOptional(
+            json['verification_status'], VerificationStatus.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -117,9 +108,7 @@ final class ChatInviteLinkInfo extends TdObject {
         'subscription_info': subscriptionInfo?.toJson(),
         'creates_join_request': createsJoinRequest,
         'is_public': isPublic,
-        'is_verified': isVerified,
-        'is_scam': isScam,
-        'is_fake': isFake,
+        'verification_status': verificationStatus?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -137,9 +126,7 @@ final class ChatInviteLinkInfo extends TdObject {
     ChatInviteLinkSubscriptionInfo? Function()? subscriptionInfo,
     bool? createsJoinRequest,
     bool? isPublic,
-    bool? isVerified,
-    bool? isScam,
-    bool? isFake,
+    VerificationStatus? Function()? verificationStatus,
     dynamic extra,
     int? clientId,
   }) =>
@@ -158,9 +145,9 @@ final class ChatInviteLinkInfo extends TdObject {
             : this.subscriptionInfo,
         createsJoinRequest: createsJoinRequest ?? this.createsJoinRequest,
         isPublic: isPublic ?? this.isPublic,
-        isVerified: isVerified ?? this.isVerified,
-        isScam: isScam ?? this.isScam,
-        isFake: isFake ?? this.isFake,
+        verificationStatus: verificationStatus != null
+            ? verificationStatus()
+            : this.verificationStatus,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

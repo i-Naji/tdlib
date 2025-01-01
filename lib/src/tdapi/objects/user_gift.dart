@@ -11,10 +11,18 @@ final class UserGift extends TdObject {
     required this.text,
     required this.isPrivate,
     required this.isSaved,
+    required this.canBeUpgraded,
+    required this.canBeTransferred,
+    required this.wasRefunded,
     required this.date,
     required this.gift,
     required this.messageId,
     required this.sellStarCount,
+    required this.prepaidUpgradeStarCount,
+    required this.transferStarCount,
+    required this.exportDate,
+    this.extra,
+    this.clientId,
   });
 
   /// Identifier of the user that sent the gift; 0 if unknown
@@ -26,20 +34,46 @@ final class UserGift extends TdObject {
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them
   final bool isPrivate;
 
-  /// True, if the gift is displayed on the user's profile page; may be false only for the receiver of the gift
+  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
   final bool isSaved;
+
+  /// True, if the gift is a regular gift that can be upgraded to a unique gift; only for the receiver of the gift
+  final bool canBeUpgraded;
+
+  /// True, if the gift is an upgraded gift that can be transferred to another user; only for the receiver of the gift
+  final bool canBeTransferred;
+
+  /// True, if the gift was refunded and isn't available anymore
+  final bool wasRefunded;
 
   /// Point in time (Unix timestamp) when the gift was sent
   final int date;
 
   /// The gift
-  final Gift gift;
+  final SentGift gift;
 
-  /// Identifier of the message with the gift in the chat with the sender of the gift; can be 0 or an identifier of a deleted message; only for the gift receiver
+  /// Identifier of the message with the gift in the chat with the sender of the gift; can be 0 or an identifier of a deleted message; only for the receiver of the gift
   final int messageId;
 
-  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift; 0 if the gift can't be sold by the current user
+  /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the current user
   final int sellStarCount;
+
+  /// Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
+  final int prepaidUpgradeStarCount;
+
+  /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
+  final int transferStarCount;
+
+  /// Point in time (Unix timestamp) when the upgraded gift can be transferred to TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  final int exportDate;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
 
   /// Parses a [UserGift] from TDLib JSON.
   factory UserGift.fromJson(Map<String, dynamic> json) => UserGift(
@@ -47,10 +81,18 @@ final class UserGift extends TdObject {
         text: _readObject(json['text'], FormattedText.fromJson),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
+        canBeUpgraded: _readBool(json['can_be_upgraded']),
+        canBeTransferred: _readBool(json['can_be_transferred']),
+        wasRefunded: _readBool(json['was_refunded']),
         date: _readInt(json['date']),
-        gift: _readObject(json['gift'], Gift.fromJson),
+        gift: _readObject(json['gift'], SentGift.fromJson),
         messageId: _readInt(json['message_id']),
         sellStarCount: _readInt(json['sell_star_count']),
+        prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
+        transferStarCount: _readInt(json['transfer_star_count']),
+        exportDate: _readInt(json['export_date']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -60,10 +102,16 @@ final class UserGift extends TdObject {
         'text': text.toJson(),
         'is_private': isPrivate,
         'is_saved': isSaved,
+        'can_be_upgraded': canBeUpgraded,
+        'can_be_transferred': canBeTransferred,
+        'was_refunded': wasRefunded,
         'date': date,
         'gift': gift.toJson(),
         'message_id': messageId,
         'sell_star_count': sellStarCount,
+        'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
+        'transfer_star_count': transferStarCount,
+        'export_date': exportDate,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -73,20 +121,37 @@ final class UserGift extends TdObject {
     FormattedText? text,
     bool? isPrivate,
     bool? isSaved,
+    bool? canBeUpgraded,
+    bool? canBeTransferred,
+    bool? wasRefunded,
     int? date,
-    Gift? gift,
+    SentGift? gift,
     int? messageId,
     int? sellStarCount,
+    int? prepaidUpgradeStarCount,
+    int? transferStarCount,
+    int? exportDate,
+    dynamic extra,
+    int? clientId,
   }) =>
       UserGift(
         senderUserId: senderUserId ?? this.senderUserId,
         text: text ?? this.text,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
+        canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
+        canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+        wasRefunded: wasRefunded ?? this.wasRefunded,
         date: date ?? this.date,
         gift: gift ?? this.gift,
         messageId: messageId ?? this.messageId,
         sellStarCount: sellStarCount ?? this.sellStarCount,
+        prepaidUpgradeStarCount:
+            prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
+        transferStarCount: transferStarCount ?? this.transferStarCount,
+        exportDate: exportDate ?? this.exportDate,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.

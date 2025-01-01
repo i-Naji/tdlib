@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Describes an affiliate program that was connected to a chat
-final class ChatAffiliateProgram extends TdObject {
-  /// Describes an affiliate program that was connected to a chat
-  const ChatAffiliateProgram({
+/// Describes an affiliate program that was connected to an affiliate
+final class ConnectedAffiliateProgram extends TdObject {
+  /// Describes an affiliate program that was connected to an affiliate
+  const ConnectedAffiliateProgram({
     required this.url,
     required this.botUserId,
     required this.parameters,
@@ -47,9 +47,9 @@ final class ChatAffiliateProgram extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [ChatAffiliateProgram] from TDLib JSON.
-  factory ChatAffiliateProgram.fromJson(Map<String, dynamic> json) =>
-      ChatAffiliateProgram(
+  /// Parses a [ConnectedAffiliateProgram] from TDLib JSON.
+  factory ConnectedAffiliateProgram.fromJson(Map<String, dynamic> json) =>
+      ConnectedAffiliateProgram(
         url: _readString(json['url']),
         botUserId: _readInt(json['bot_user_id']),
         parameters: _readObject(
@@ -76,7 +76,7 @@ final class ChatAffiliateProgram extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatAffiliateProgram copyWith({
+  ConnectedAffiliateProgram copyWith({
     String? url,
     int? botUserId,
     AffiliateProgramParameters? parameters,
@@ -87,7 +87,7 @@ final class ChatAffiliateProgram extends TdObject {
     dynamic extra,
     int? clientId,
   }) =>
-      ChatAffiliateProgram(
+      ConnectedAffiliateProgram(
         url: url ?? this.url,
         botUserId: botUserId ?? this.botUserId,
         parameters: parameters ?? this.parameters,
@@ -100,7 +100,7 @@ final class ChatAffiliateProgram extends TdObject {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatAffiliateProgram';
+  static const String CONSTRUCTOR = 'connectedAffiliateProgram';
 
   @override
   String getConstructor() => CONSTRUCTOR;

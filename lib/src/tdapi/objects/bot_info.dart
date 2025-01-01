@@ -21,6 +21,7 @@ final class BotInfo extends TdObject {
     required this.webAppBackgroundDarkColor,
     required this.webAppHeaderLightColor,
     required this.webAppHeaderDarkColor,
+    this.verificationParameters,
     required this.canGetRevenueStatistics,
     required this.canManageEmojiStatus,
     required this.hasMediaPreviews,
@@ -72,6 +73,9 @@ final class BotInfo extends TdObject {
   /// Default dark header color for bot Web Apps; -1 if not specified
   final int webAppHeaderDarkColor;
 
+  /// Parameters of the verification that can be provided by the bot; may be null if none or the current user isn't the owner of the bot
+  final BotVerificationParameters? verificationParameters;
+
   /// True, if the bot's revenue statistics are available to the current user
   final bool canGetRevenueStatistics;
 
@@ -117,6 +121,8 @@ final class BotInfo extends TdObject {
             _readInt(json['web_app_background_dark_color']),
         webAppHeaderLightColor: _readInt(json['web_app_header_light_color']),
         webAppHeaderDarkColor: _readInt(json['web_app_header_dark_color']),
+        verificationParameters: _readOptional(json['verification_parameters'],
+            BotVerificationParameters.fromJson),
         canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
         canManageEmojiStatus: _readBool(json['can_manage_emoji_status']),
         hasMediaPreviews: _readBool(json['has_media_previews']),
@@ -149,6 +155,7 @@ final class BotInfo extends TdObject {
         'web_app_background_dark_color': webAppBackgroundDarkColor,
         'web_app_header_light_color': webAppHeaderLightColor,
         'web_app_header_dark_color': webAppHeaderDarkColor,
+        'verification_parameters': verificationParameters?.toJson(),
         'can_get_revenue_statistics': canGetRevenueStatistics,
         'can_manage_emoji_status': canManageEmojiStatus,
         'has_media_previews': hasMediaPreviews,
@@ -175,6 +182,7 @@ final class BotInfo extends TdObject {
     int? webAppBackgroundDarkColor,
     int? webAppHeaderLightColor,
     int? webAppHeaderDarkColor,
+    BotVerificationParameters? Function()? verificationParameters,
     bool? canGetRevenueStatistics,
     bool? canManageEmojiStatus,
     bool? hasMediaPreviews,
@@ -209,6 +217,9 @@ final class BotInfo extends TdObject {
             webAppHeaderLightColor ?? this.webAppHeaderLightColor,
         webAppHeaderDarkColor:
             webAppHeaderDarkColor ?? this.webAppHeaderDarkColor,
+        verificationParameters: verificationParameters != null
+            ? verificationParameters()
+            : this.verificationParameters,
         canGetRevenueStatistics:
             canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         canManageEmojiStatus: canManageEmojiStatus ?? this.canManageEmojiStatus,

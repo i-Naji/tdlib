@@ -7,7 +7,7 @@ part of '../tdapi.dart';
 final class ChatFolder extends TdObject {
   /// Represents a folder for user chats
   const ChatFolder({
-    required this.title,
+    required this.name,
     this.icon,
     required this.colorId,
     required this.isShareable,
@@ -26,8 +26,8 @@ final class ChatFolder extends TdObject {
     this.clientId,
   });
 
-  /// The title of the folder; 1-12 characters without line feeds
-  final String title;
+  /// The name of the folder
+  final ChatFolderName name;
 
   /// The chosen icon for the chat folder; may be null. If null, use getChatFolderDefaultIconName to get default icon name for the folder
   final ChatFolderIcon? icon;
@@ -81,7 +81,7 @@ final class ChatFolder extends TdObject {
 
   /// Parses a [ChatFolder] from TDLib JSON.
   factory ChatFolder.fromJson(Map<String, dynamic> json) => ChatFolder(
-        title: _readString(json['title']),
+        name: _readObject(json['name'], ChatFolderName.fromJson),
         icon: _readOptional(json['icon'], ChatFolderIcon.fromJson),
         colorId: _readInt(json['color_id']),
         isShareable: _readBool(json['is_shareable']),
@@ -103,7 +103,7 @@ final class ChatFolder extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'title': title,
+        'name': name.toJson(),
         'icon': icon?.toJson(),
         'color_id': colorId,
         'is_shareable': isShareable,
@@ -123,7 +123,7 @@ final class ChatFolder extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatFolder copyWith({
-    String? title,
+    ChatFolderName? name,
     ChatFolderIcon? Function()? icon,
     int? colorId,
     bool? isShareable,
@@ -142,7 +142,7 @@ final class ChatFolder extends TdObject {
     int? clientId,
   }) =>
       ChatFolder(
-        title: title ?? this.title,
+        name: name ?? this.name,
         icon: icon != null ? icon() : this.icon,
         colorId: colorId ?? this.colorId,
         isShareable: isShareable ?? this.isShareable,

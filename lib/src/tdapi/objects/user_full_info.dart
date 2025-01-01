@@ -25,6 +25,7 @@ final class UserFullInfo extends TdObject {
     required this.personalChatId,
     required this.giftCount,
     required this.groupInCommonCount,
+    this.botVerification,
     this.businessInfo,
     this.botInfo,
     this.extra,
@@ -85,6 +86,9 @@ final class UserFullInfo extends TdObject {
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
+  /// Information about verification status of the user provided by a bot; may be null if none or unknown
+  final BotVerification? botVerification;
+
   /// Information about business settings for Telegram Business accounts; may be null if none
   final BusinessInfo? businessInfo;
 
@@ -124,6 +128,8 @@ final class UserFullInfo extends TdObject {
         personalChatId: _readInt(json['personal_chat_id']),
         giftCount: _readInt(json['gift_count']),
         groupInCommonCount: _readInt(json['group_in_common_count']),
+        botVerification:
+            _readOptional(json['bot_verification'], BotVerification.fromJson),
         businessInfo:
             _readOptional(json['business_info'], BusinessInfo.fromJson),
         botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
@@ -153,6 +159,7 @@ final class UserFullInfo extends TdObject {
         'personal_chat_id': personalChatId,
         'gift_count': giftCount,
         'group_in_common_count': groupInCommonCount,
+        'bot_verification': botVerification?.toJson(),
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
       };
@@ -178,6 +185,7 @@ final class UserFullInfo extends TdObject {
     int? personalChatId,
     int? giftCount,
     int? groupInCommonCount,
+    BotVerification? Function()? botVerification,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
     dynamic extra,
@@ -208,6 +216,8 @@ final class UserFullInfo extends TdObject {
         personalChatId: personalChatId ?? this.personalChatId,
         giftCount: giftCount ?? this.giftCount,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        botVerification:
+            botVerification != null ? botVerification() : this.botVerification,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
         botInfo: botInfo != null ? botInfo() : this.botInfo,
         extra: extra ?? this.extra,

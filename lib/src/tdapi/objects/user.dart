@@ -22,12 +22,10 @@ final class User extends TdObject {
     required this.isContact,
     required this.isMutualContact,
     required this.isCloseFriend,
-    required this.isVerified,
+    this.verificationStatus,
     required this.isPremium,
     required this.isSupport,
     required this.restrictionReason,
-    required this.isScam,
-    required this.isFake,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
     required this.restrictsNewChats,
@@ -60,19 +58,19 @@ final class User extends TdObject {
   /// Profile photo of the user; may be null
   final ProfilePhoto? profilePhoto;
 
-  /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview. For Telegram Premium users only
+  /// Identifier of the accent color for name, and backgrounds of profile photo, reply header, and link preview
   final int accentColorId;
 
-  /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none. For Telegram Premium users only
+  /// Identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
   final int backgroundCustomEmojiId;
 
-  /// Identifier of the accent color for the user's profile; -1 if none. For Telegram Premium users only
+  /// Identifier of the accent color for the user's profile; -1 if none
   final int profileAccentColorId;
 
-  /// Identifier of a custom emoji to be shown on the background of the user's profile; 0 if none. For Telegram Premium users only
+  /// Identifier of a custom emoji to be shown on the background of the user's profile; 0 if none
   final int profileBackgroundCustomEmojiId;
 
-  /// Emoji status to be shown instead of the default Telegram Premium badge; may be null. For Telegram Premium users only
+  /// Emoji status to be shown instead of the default Telegram Premium badge; may be null
   final EmojiStatus? emojiStatus;
 
   /// The user is a contact of the current user
@@ -84,8 +82,8 @@ final class User extends TdObject {
   /// The user is a close friend of the current user; implies that the user is a contact
   final bool isCloseFriend;
 
-  /// True, if the user is verified
-  final bool isVerified;
+  /// Information about verification status of the user; may be null if none
+  final VerificationStatus? verificationStatus;
 
   /// True, if the user is a Telegram Premium user
   final bool isPremium;
@@ -95,12 +93,6 @@ final class User extends TdObject {
 
   /// If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
   final String restrictionReason;
-
-  /// True, if many users reported this user as a scam
-  final bool isScam;
-
-  /// True, if many users reported this user as a fake account
-  final bool isFake;
 
   /// True, if the user has non-expired stories available to the current user
   final bool hasActiveStories;
@@ -150,12 +142,11 @@ final class User extends TdObject {
         isContact: _readBool(json['is_contact']),
         isMutualContact: _readBool(json['is_mutual_contact']),
         isCloseFriend: _readBool(json['is_close_friend']),
-        isVerified: _readBool(json['is_verified']),
+        verificationStatus: _readOptional(
+            json['verification_status'], VerificationStatus.fromJson),
         isPremium: _readBool(json['is_premium']),
         isSupport: _readBool(json['is_support']),
         restrictionReason: _readString(json['restriction_reason']),
-        isScam: _readBool(json['is_scam']),
-        isFake: _readBool(json['is_fake']),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         restrictsNewChats: _readBool(json['restricts_new_chats']),
@@ -186,12 +177,10 @@ final class User extends TdObject {
         'is_contact': isContact,
         'is_mutual_contact': isMutualContact,
         'is_close_friend': isCloseFriend,
-        'is_verified': isVerified,
+        'verification_status': verificationStatus?.toJson(),
         'is_premium': isPremium,
         'is_support': isSupport,
         'restriction_reason': restrictionReason,
-        'is_scam': isScam,
-        'is_fake': isFake,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
         'restricts_new_chats': restrictsNewChats,
@@ -219,12 +208,10 @@ final class User extends TdObject {
     bool? isContact,
     bool? isMutualContact,
     bool? isCloseFriend,
-    bool? isVerified,
+    VerificationStatus? Function()? verificationStatus,
     bool? isPremium,
     bool? isSupport,
     String? restrictionReason,
-    bool? isScam,
-    bool? isFake,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
     bool? restrictsNewChats,
@@ -253,12 +240,12 @@ final class User extends TdObject {
         isContact: isContact ?? this.isContact,
         isMutualContact: isMutualContact ?? this.isMutualContact,
         isCloseFriend: isCloseFriend ?? this.isCloseFriend,
-        isVerified: isVerified ?? this.isVerified,
+        verificationStatus: verificationStatus != null
+            ? verificationStatus()
+            : this.verificationStatus,
         isPremium: isPremium ?? this.isPremium,
         isSupport: isSupport ?? this.isSupport,
         restrictionReason: restrictionReason ?? this.restrictionReason,
-        isScam: isScam ?? this.isScam,
-        isFake: isFake ?? this.isFake,
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,

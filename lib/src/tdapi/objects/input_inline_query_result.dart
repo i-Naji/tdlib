@@ -170,7 +170,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
   const InputInlineQueryResultArticle({
     required this.id,
     required this.url,
-    required this.hideUrl,
     required this.title,
     required this.description,
     required this.thumbnailUrl,
@@ -185,9 +184,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
 
   /// URL of the result, if it exists
   final String url;
-
-  /// True, if the URL must be not shown
-  final bool hideUrl;
 
   /// Title of the result
   final String title;
@@ -215,7 +211,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
       InputInlineQueryResultArticle(
         id: _readString(json['id']),
         url: _readString(json['url']),
-        hideUrl: _readBool(json['hide_url']),
         title: _readString(json['title']),
         description: _readString(json['description']),
         thumbnailUrl: _readString(json['thumbnail_url']),
@@ -231,7 +226,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
         '@type': CONSTRUCTOR,
         'id': id,
         'url': url,
-        'hide_url': hideUrl,
         'title': title,
         'description': description,
         'thumbnail_url': thumbnailUrl,
@@ -247,7 +241,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
   InputInlineQueryResultArticle copyWith({
     String? id,
     String? url,
-    bool? hideUrl,
     String? title,
     String? description,
     String? thumbnailUrl,
@@ -259,7 +252,6 @@ final class InputInlineQueryResultArticle extends InputInlineQueryResult {
       InputInlineQueryResultArticle(
         id: id ?? this.id,
         url: url ?? this.url,
-        hideUrl: hideUrl ?? this.hideUrl,
         title: title ?? this.title,
         description: description ?? this.description,
         thumbnailUrl: thumbnailUrl ?? this.thumbnailUrl,

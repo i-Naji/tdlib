@@ -10,20 +10,17 @@ final class SearchMessages extends TdFunction<FoundMessages> {
   /// Searches for messages in all chats except secret chats. Returns the results in reverse chronological order (i.e., in order of decreasing (date, chat_id, message_id)). For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit
   const SearchMessages({
     this.chatList,
-    required this.onlyInChannels,
     required this.query,
     required this.offset,
     required this.limit,
     this.filter,
+    this.chatTypeFilter,
     required this.minDate,
     required this.maxDate,
   });
 
   /// Chat list in which to search messages; pass null to search in all chats regardless of their chat list. Only Main and Archive chat lists are supported
   final ChatList? chatList;
-
-  /// Pass true to search only for messages in channels
-  final bool onlyInChannels;
 
   /// Query to search for
   final String query;
@@ -37,6 +34,9 @@ final class SearchMessages extends TdFunction<FoundMessages> {
   /// Additional filter for messages to search; pass null to search for all messages. Filters searchMessagesFilterMention, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, searchMessagesFilterFailedToSend, and searchMessagesFilterPinned are unsupported in this function
   final SearchMessagesFilter? filter;
 
+  /// Additional filter for type of the chat of the searched messages; pass null to search for messages in all chats
+  final SearchMessagesChatTypeFilter? chatTypeFilter;
+
   /// If not 0, the minimum date of the messages to return
   final int minDate;
 
@@ -47,11 +47,11 @@ final class SearchMessages extends TdFunction<FoundMessages> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_list': chatList?.toJson(),
-        'only_in_channels': onlyInChannels,
         'query': query,
         'offset': offset,
         'limit': limit,
         'filter': filter?.toJson(),
+        'chat_type_filter': chatTypeFilter?.toJson(),
         'min_date': minDate,
         'max_date': maxDate,
         if (extra != null) '@extra': extra,
@@ -61,21 +61,22 @@ final class SearchMessages extends TdFunction<FoundMessages> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchMessages copyWith({
     ChatList? Function()? chatList,
-    bool? onlyInChannels,
     String? query,
     String? offset,
     int? limit,
     SearchMessagesFilter? Function()? filter,
+    SearchMessagesChatTypeFilter? Function()? chatTypeFilter,
     int? minDate,
     int? maxDate,
   }) =>
       SearchMessages(
         chatList: chatList != null ? chatList() : this.chatList,
-        onlyInChannels: onlyInChannels ?? this.onlyInChannels,
         query: query ?? this.query,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
         filter: filter != null ? filter() : this.filter,
+        chatTypeFilter:
+            chatTypeFilter != null ? chatTypeFilter() : this.chatTypeFilter,
         minDate: minDate ?? this.minDate,
         maxDate: maxDate ?? this.maxDate,
       );

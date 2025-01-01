@@ -91,7 +91,7 @@ part 'functions/close_web_app.dart';
 part 'functions/commit_pending_paid_message_reactions.dart';
 part 'functions/confirm_qr_code_authentication.dart';
 part 'functions/confirm_session.dart';
-part 'functions/connect_chat_affiliate_program.dart';
+part 'functions/connect_affiliate_program.dart';
 part 'functions/create_basic_group_chat.dart';
 part 'functions/create_business_chat_link.dart';
 part 'functions/create_call.dart';
@@ -100,6 +100,7 @@ part 'functions/create_chat_folder_invite_link.dart';
 part 'functions/create_chat_invite_link.dart';
 part 'functions/create_chat_subscription_invite_link.dart';
 part 'functions/create_forum_topic.dart';
+part 'functions/create_group_call.dart';
 part 'functions/create_invoice_link.dart';
 part 'functions/create_new_basic_group_chat.dart';
 part 'functions/create_new_secret_chat.dart';
@@ -145,8 +146,8 @@ part 'functions/destroy.dart';
 part 'functions/disable_all_supergroup_usernames.dart';
 part 'functions/disable_proxy.dart';
 part 'functions/discard_call.dart';
+part 'functions/disconnect_affiliate_program.dart';
 part 'functions/disconnect_all_websites.dart';
-part 'functions/disconnect_chat_affiliate_program.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/download_file.dart';
 part 'functions/edit_bot_media_preview.dart';
@@ -221,8 +222,6 @@ part 'functions/get_callback_query_message.dart';
 part 'functions/get_chat.dart';
 part 'functions/get_chat_active_stories.dart';
 part 'functions/get_chat_administrators.dart';
-part 'functions/get_chat_affiliate_program.dart';
-part 'functions/get_chat_affiliate_programs.dart';
 part 'functions/get_chat_archived_stories.dart';
 part 'functions/get_chat_available_message_senders.dart';
 part 'functions/get_chat_boost_features.dart';
@@ -269,6 +268,8 @@ part 'functions/get_chats_to_send_stories.dart';
 part 'functions/get_close_friends.dart';
 part 'functions/get_collectible_item_info.dart';
 part 'functions/get_commands.dart';
+part 'functions/get_connected_affiliate_program.dart';
+part 'functions/get_connected_affiliate_programs.dart';
 part 'functions/get_connected_websites.dart';
 part 'functions/get_contacts.dart';
 part 'functions/get_countries.dart';
@@ -303,6 +304,7 @@ part 'functions/get_forum_topic_default_icons.dart';
 part 'functions/get_forum_topic_link.dart';
 part 'functions/get_forum_topics.dart';
 part 'functions/get_game_high_scores.dart';
+part 'functions/get_gift_upgrade_preview.dart';
 part 'functions/get_giveaway_info.dart';
 part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
@@ -445,6 +447,7 @@ part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_user.dart';
 part 'functions/get_user_chat_boosts.dart';
 part 'functions/get_user_full_info.dart';
+part 'functions/get_user_gift.dart';
 part 'functions/get_user_gifts.dart';
 part 'functions/get_user_link.dart';
 part 'functions/get_user_privacy_setting_rules.dart';
@@ -511,6 +514,7 @@ part 'functions/remove_favorite_sticker.dart';
 part 'functions/remove_file_from_downloads.dart';
 part 'functions/remove_installed_background.dart';
 part 'functions/remove_message_reaction.dart';
+part 'functions/remove_message_sender_bot_verification.dart';
 part 'functions/remove_notification.dart';
 part 'functions/remove_notification_group.dart';
 part 'functions/remove_pending_paid_message_reactions.dart';
@@ -691,6 +695,7 @@ part 'functions/set_menu_button.dart';
 part 'functions/set_message_fact_check.dart';
 part 'functions/set_message_reactions.dart';
 part 'functions/set_message_sender_block_list.dart';
+part 'functions/set_message_sender_bot_verification.dart';
 part 'functions/set_name.dart';
 part 'functions/set_network_type.dart';
 part 'functions/set_new_chat_privacy_settings.dart';
@@ -797,12 +802,14 @@ part 'functions/toggle_supergroup_sign_messages.dart';
 part 'functions/toggle_supergroup_username_is_active.dart';
 part 'functions/toggle_username_is_active.dart';
 part 'functions/transfer_chat_ownership.dart';
+part 'functions/transfer_gift.dart';
 part 'functions/translate_message_text.dart';
 part 'functions/translate_text.dart';
 part 'functions/unpin_all_chat_messages.dart';
 part 'functions/unpin_all_message_thread_messages.dart';
 part 'functions/unpin_chat_message.dart';
 part 'functions/upgrade_basic_group_chat_to_supergroup_chat.dart';
+part 'functions/upgrade_gift.dart';
 part 'functions/upload_sticker_file.dart';
 part 'functions/validate_order_info.dart';
 part 'functions/view_messages.dart';
@@ -818,6 +825,7 @@ part 'objects/affiliate_info.dart';
 part 'objects/affiliate_program_info.dart';
 part 'objects/affiliate_program_parameters.dart';
 part 'objects/affiliate_program_sort_order.dart';
+part 'objects/affiliate_type.dart';
 part 'objects/alternative_video.dart';
 part 'objects/animated_chat_photo.dart';
 part 'objects/animated_emoji.dart';
@@ -855,6 +863,8 @@ part 'objects/bot_media_preview.dart';
 part 'objects/bot_media_preview_info.dart';
 part 'objects/bot_media_previews.dart';
 part 'objects/bot_menu_button.dart';
+part 'objects/bot_verification.dart';
+part 'objects/bot_verification_parameters.dart';
 part 'objects/bot_write_access_allow_reason.dart';
 part 'objects/business_away_message_schedule.dart';
 part 'objects/business_away_message_settings.dart';
@@ -896,8 +906,6 @@ part 'objects/chat_active_stories.dart';
 part 'objects/chat_administrator.dart';
 part 'objects/chat_administrator_rights.dart';
 part 'objects/chat_administrators.dart';
-part 'objects/chat_affiliate_program.dart';
-part 'objects/chat_affiliate_programs.dart';
 part 'objects/chat_available_reactions.dart';
 part 'objects/chat_background.dart';
 part 'objects/chat_boost.dart';
@@ -919,6 +927,7 @@ part 'objects/chat_folder_info.dart';
 part 'objects/chat_folder_invite_link.dart';
 part 'objects/chat_folder_invite_link_info.dart';
 part 'objects/chat_folder_invite_links.dart';
+part 'objects/chat_folder_name.dart';
 part 'objects/chat_invite_link.dart';
 part 'objects/chat_invite_link_count.dart';
 part 'objects/chat_invite_link_counts.dart';
@@ -968,6 +977,8 @@ part 'objects/close_birthday_user.dart';
 part 'objects/closed_vector_path.dart';
 part 'objects/collectible_item_info.dart';
 part 'objects/collectible_item_type.dart';
+part 'objects/connected_affiliate_program.dart';
+part 'objects/connected_affiliate_programs.dart';
 part 'objects/connected_website.dart';
 part 'objects/connected_websites.dart';
 part 'objects/connection_state.dart';
@@ -1034,6 +1045,7 @@ part 'objects/game.dart';
 part 'objects/game_high_score.dart';
 part 'objects/game_high_scores.dart';
 part 'objects/gift.dart';
+part 'objects/gift_upgrade_preview.dart';
 part 'objects/gifts.dart';
 part 'objects/giveaway_info.dart';
 part 'objects/giveaway_parameters.dart';
@@ -1256,10 +1268,12 @@ part 'objects/saved_messages_topic.dart';
 part 'objects/saved_messages_topic_type.dart';
 part 'objects/scope_autosave_settings.dart';
 part 'objects/scope_notification_settings.dart';
+part 'objects/search_messages_chat_type_filter.dart';
 part 'objects/search_messages_filter.dart';
 part 'objects/seconds.dart';
 part 'objects/secret_chat.dart';
 part 'objects/secret_chat_state.dart';
+part 'objects/sent_gift.dart';
 part 'objects/sent_web_app_message.dart';
 part 'objects/session.dart';
 part 'objects/session_type.dart';
@@ -1357,6 +1371,12 @@ part 'objects/unconfirmed_session.dart';
 part 'objects/unread_reaction.dart';
 part 'objects/update.dart';
 part 'objects/updates.dart';
+part 'objects/upgrade_gift_result.dart';
+part 'objects/upgraded_gift.dart';
+part 'objects/upgraded_gift_backdrop.dart';
+part 'objects/upgraded_gift_model.dart';
+part 'objects/upgraded_gift_original_details.dart';
+part 'objects/upgraded_gift_symbol.dart';
 part 'objects/user.dart';
 part 'objects/user_full_info.dart';
 part 'objects/user_gift.dart';
@@ -1373,6 +1393,7 @@ part 'objects/users.dart';
 part 'objects/validated_order_info.dart';
 part 'objects/vector_path_command.dart';
 part 'objects/venue.dart';
+part 'objects/verification_status.dart';
 part 'objects/video.dart';
 part 'objects/video_chat.dart';
 part 'objects/video_note.dart';
@@ -1384,14 +1405,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.41';
+const String tdlibVersion = '1.8.42';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '5b974c298d4ed551d3ad2c061ad7b8280d137c7e';
+const String tdlibSchemaCommit = 'ef580cd3dd0e5223c2be503342dc29e128be866e';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '5b974c298d4ed551d3ad2c061ad7b8280d137c7e',
+  'ef580cd3dd0e5223c2be503342dc29e128be866e',
 ];
 
 /// Base class of every TDLib object.
@@ -1567,6 +1588,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'botCommand': BotCommand.fromJson,
   'botCommands': BotCommands.fromJson,
   'botMenuButton': BotMenuButton.fromJson,
+  'botVerificationParameters': BotVerificationParameters.fromJson,
+  'botVerification': BotVerification.fromJson,
+  'verificationStatus': VerificationStatus.fromJson,
   'chatLocation': ChatLocation.fromJson,
   'birthdate': Birthdate.fromJson,
   'closeBirthdayUser': CloseBirthdayUser.fromJson,
@@ -1609,6 +1633,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starSubscriptionPricing': StarSubscriptionPricing.fromJson,
   'starSubscription': StarSubscription.fromJson,
   'starSubscriptions': StarSubscriptions.fromJson,
+  'affiliateTypeCurrentUser': AffiliateTypeCurrentUser.fromJson,
+  'affiliateTypeBot': AffiliateTypeBot.fromJson,
+  'affiliateTypeChannel': AffiliateTypeChannel.fromJson,
   'affiliateProgramSortOrderProfitability':
       AffiliateProgramSortOrderProfitability.fromJson,
   'affiliateProgramSortOrderCreationDate':
@@ -1619,8 +1646,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'affiliateInfo': AffiliateInfo.fromJson,
   'foundAffiliateProgram': FoundAffiliateProgram.fromJson,
   'foundAffiliatePrograms': FoundAffiliatePrograms.fromJson,
-  'chatAffiliateProgram': ChatAffiliateProgram.fromJson,
-  'chatAffiliatePrograms': ChatAffiliatePrograms.fromJson,
+  'connectedAffiliateProgram': ConnectedAffiliateProgram.fromJson,
+  'connectedAffiliatePrograms': ConnectedAffiliatePrograms.fromJson,
   'productInfo': ProductInfo.fromJson,
   'premiumPaymentOption': PremiumPaymentOption.fromJson,
   'premiumStatePaymentOption': PremiumStatePaymentOption.fromJson,
@@ -1632,10 +1659,19 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starGiveawayWinnerOption': StarGiveawayWinnerOption.fromJson,
   'starGiveawayPaymentOption': StarGiveawayPaymentOption.fromJson,
   'starGiveawayPaymentOptions': StarGiveawayPaymentOptions.fromJson,
+  'upgradedGiftModel': UpgradedGiftModel.fromJson,
+  'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
+  'upgradedGiftBackdrop': UpgradedGiftBackdrop.fromJson,
+  'upgradedGiftOriginalDetails': UpgradedGiftOriginalDetails.fromJson,
   'gift': Gift.fromJson,
   'gifts': Gifts.fromJson,
+  'upgradedGift': UpgradedGift.fromJson,
+  'upgradeGiftResult': UpgradeGiftResult.fromJson,
+  'sentGiftRegular': SentGiftRegular.fromJson,
+  'sentGiftUpgraded': SentGiftUpgraded.fromJson,
   'userGift': UserGift.fromJson,
   'userGifts': UserGifts.fromJson,
+  'giftUpgradePreview': GiftUpgradePreview.fromJson,
   'starTransactionDirectionIncoming': StarTransactionDirectionIncoming.fromJson,
   'starTransactionDirectionOutgoing': StarTransactionDirectionOutgoing.fromJson,
   'starTransactionTypePremiumBotDeposit':
@@ -1676,7 +1712,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionTypeChannelSubscriptionSale':
       StarTransactionTypeChannelSubscriptionSale.fromJson,
   'starTransactionTypeGiftPurchase': StarTransactionTypeGiftPurchase.fromJson,
+  'starTransactionTypeGiftTransfer': StarTransactionTypeGiftTransfer.fromJson,
   'starTransactionTypeGiftSale': StarTransactionTypeGiftSale.fromJson,
+  'starTransactionTypeGiftUpgrade': StarTransactionTypeGiftUpgrade.fromJson,
   'starTransactionTypeChannelPaidReactionSend':
       StarTransactionTypeChannelPaidReactionSend.fromJson,
   'starTransactionTypeChannelPaidReactionReceive':
@@ -1861,6 +1899,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatTypeSupergroup': ChatTypeSupergroup.fromJson,
   'chatTypeSecret': ChatTypeSecret.fromJson,
   'chatFolderIcon': ChatFolderIcon.fromJson,
+  'chatFolderName': ChatFolderName.fromJson,
   'chatFolder': ChatFolder.fromJson,
   'chatFolderInfo': ChatFolderInfo.fromJson,
   'chatFolderInviteLink': ChatFolderInviteLink.fromJson,
@@ -2254,6 +2293,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGiftedStars': MessageGiftedStars.fromJson,
   'messageGiveawayPrizeStars': MessageGiveawayPrizeStars.fromJson,
   'messageGift': MessageGift.fromJson,
+  'messageUpgradedGift': MessageUpgradedGift.fromJson,
+  'messageRefundedUpgradedGift': MessageRefundedUpgradedGift.fromJson,
   'messageContactRegistered': MessageContactRegistered.fromJson,
   'messageUsersShared': MessageUsersShared.fromJson,
   'messageChatShared': MessageChatShared.fromJson,
@@ -2342,6 +2383,12 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SearchMessagesFilterUnreadReaction.fromJson,
   'searchMessagesFilterFailedToSend': SearchMessagesFilterFailedToSend.fromJson,
   'searchMessagesFilterPinned': SearchMessagesFilterPinned.fromJson,
+  'searchMessagesChatTypeFilterPrivate':
+      SearchMessagesChatTypeFilterPrivate.fromJson,
+  'searchMessagesChatTypeFilterGroup':
+      SearchMessagesChatTypeFilterGroup.fromJson,
+  'searchMessagesChatTypeFilterChannel':
+      SearchMessagesChatTypeFilterChannel.fromJson,
   'chatActionTyping': ChatActionTyping.fromJson,
   'chatActionRecordingVideo': ChatActionRecordingVideo.fromJson,
   'chatActionUploadingVideo': ChatActionUploadingVideo.fromJson,
@@ -2449,6 +2496,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'callDiscardReasonDeclined': CallDiscardReasonDeclined.fromJson,
   'callDiscardReasonDisconnected': CallDiscardReasonDisconnected.fromJson,
   'callDiscardReasonHungUp': CallDiscardReasonHungUp.fromJson,
+  'callDiscardReasonAllowGroupCall': CallDiscardReasonAllowGroupCall.fromJson,
   'callProtocol': CallProtocol.fromJson,
   'callServerTypeTelegramReflector': CallServerTypeTelegramReflector.fromJson,
   'callServerTypeWebrtc': CallServerTypeWebrtc.fromJson,
@@ -2836,6 +2884,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PushMessageContentPremiumGiftCode.fromJson,
   'pushMessageContentGiveaway': PushMessageContentGiveaway.fromJson,
   'pushMessageContentGift': PushMessageContentGift.fromJson,
+  'pushMessageContentUpgradedGift': PushMessageContentUpgradedGift.fromJson,
   'pushMessageContentScreenshotTaken':
       PushMessageContentScreenshotTaken.fromJson,
   'pushMessageContentSticker': PushMessageContentSticker.fromJson,
@@ -3128,6 +3177,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'suggestedActionGiftPremiumForChristmas':
       SuggestedActionGiftPremiumForChristmas.fromJson,
   'suggestedActionSetBirthdate': SuggestedActionSetBirthdate.fromJson,
+  'suggestedActionSetProfilePhoto': SuggestedActionSetProfilePhoto.fromJson,
   'suggestedActionExtendPremium': SuggestedActionExtendPremium.fromJson,
   'suggestedActionExtendStarSubscriptions':
       SuggestedActionExtendStarSubscriptions.fromJson,

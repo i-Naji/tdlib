@@ -3,20 +3,20 @@
 
 part of '../tdapi.dart';
 
-/// Searches affiliate programs that can be applied to the given chat
+/// Searches affiliate programs that can be connected to the given affiliate
 ///
 /// Returns [FoundAffiliatePrograms].
 final class SearchAffiliatePrograms extends TdFunction<FoundAffiliatePrograms> {
-  /// Searches affiliate programs that can be applied to the given chat
+  /// Searches affiliate programs that can be connected to the given affiliate
   const SearchAffiliatePrograms({
-    required this.chatId,
+    required this.affiliate,
     required this.sortOrder,
     required this.offset,
     required this.limit,
   });
 
-  /// Identifier of the chat for which affiliate programs are searched for. Can be an identifier of the Saved Messages chat, of a chat with an owned bot, or of a channel chat with can_post_messages administrator right
-  final int chatId;
+  /// The affiliate for which affiliate programs are searched for
+  final AffiliateType affiliate;
 
   /// Sort order for the results
   final AffiliateProgramSortOrder sortOrder;
@@ -30,7 +30,7 @@ final class SearchAffiliatePrograms extends TdFunction<FoundAffiliatePrograms> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'chat_id': chatId,
+        'affiliate': affiliate.toJson(),
         'sort_order': sortOrder.toJson(),
         'offset': offset,
         'limit': limit,
@@ -40,13 +40,13 @@ final class SearchAffiliatePrograms extends TdFunction<FoundAffiliatePrograms> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchAffiliatePrograms copyWith({
-    int? chatId,
+    AffiliateType? affiliate,
     AffiliateProgramSortOrder? sortOrder,
     String? offset,
     int? limit,
   }) =>
       SearchAffiliatePrograms(
-        chatId: chatId ?? this.chatId,
+        affiliate: affiliate ?? this.affiliate,
         sortOrder: sortOrder ?? this.sortOrder,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

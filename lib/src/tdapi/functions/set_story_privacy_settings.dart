@@ -16,7 +16,7 @@ final class SetStoryPrivacySettings extends TdFunction<Ok> {
   /// Identifier of the story
   final int storyId;
 
-  /// The new privacy settigs for the story
+  /// The new privacy settings for the story
   final StoryPrivacySettings privacySettings;
 
   @override

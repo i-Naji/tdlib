@@ -12,6 +12,7 @@ final class CreateCall extends TdFunction<CallId> {
     required this.userId,
     required this.protocol,
     required this.isVideo,
+    required this.groupCallId,
   });
 
   /// Identifier of the user to be called
@@ -23,12 +24,16 @@ final class CreateCall extends TdFunction<CallId> {
   /// Pass true to create a video call
   final bool isVideo;
 
+  /// Identifier of the group call to which the user will be added after exchanging private key via the call; pass 0 if none; currently, ignored
+  final int groupCallId;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'user_id': userId,
         'protocol': protocol.toJson(),
         'is_video': isVideo,
+        'group_call_id': groupCallId,
         if (extra != null) '@extra': extra,
       };
 
@@ -38,11 +43,13 @@ final class CreateCall extends TdFunction<CallId> {
     int? userId,
     CallProtocol? protocol,
     bool? isVideo,
+    int? groupCallId,
   }) =>
       CreateCall(
         userId: userId ?? this.userId,
         protocol: protocol ?? this.protocol,
         isVideo: isVideo ?? this.isVideo,
+        groupCallId: groupCallId ?? this.groupCallId,
       );
 
   /// TDLib type name.

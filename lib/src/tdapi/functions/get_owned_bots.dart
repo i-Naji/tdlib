@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns the list of owned by the current user bots
+/// Returns the list of bots owned by the current user
 ///
 /// Returns [Users].
 final class GetOwnedBots extends TdFunction<Users> {
-  /// Returns the list of owned by the current user bots
+  /// Returns the list of bots owned by the current user
   const GetOwnedBots();
 
   @override

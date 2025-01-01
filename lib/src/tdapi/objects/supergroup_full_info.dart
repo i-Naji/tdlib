@@ -38,6 +38,7 @@ final class SupergroupFullInfo extends TdObject {
     this.location,
     this.inviteLink,
     required this.botCommands,
+    this.botVerification,
     required this.upgradedFromBasicGroupId,
     required this.upgradedFromMaxMessageId,
     this.extra,
@@ -137,6 +138,9 @@ final class SupergroupFullInfo extends TdObject {
   /// List of commands of bots in the group
   final List<BotCommands> botCommands;
 
+  /// Information about verification status of the supergroup or the channel provided by a bot; may be null if none or unknown
+  final BotVerification? botVerification;
+
   /// Identifier of the basic group from which supergroup was upgraded; 0 if none
   final int upgradedFromBasicGroupId;
 
@@ -190,6 +194,8 @@ final class SupergroupFullInfo extends TdObject {
         inviteLink: _readOptional(json['invite_link'], ChatInviteLink.fromJson),
         botCommands: _readList<BotCommands>(
             json['bot_commands'], (e) => _readObject(e, BotCommands.fromJson)),
+        botVerification:
+            _readOptional(json['bot_verification'], BotVerification.fromJson),
         upgradedFromBasicGroupId:
             _readInt(json['upgraded_from_basic_group_id']),
         upgradedFromMaxMessageId:
@@ -232,6 +238,7 @@ final class SupergroupFullInfo extends TdObject {
         'location': location?.toJson(),
         'invite_link': inviteLink?.toJson(),
         'bot_commands': [for (final e in botCommands) e.toJson()],
+        'bot_verification': botVerification?.toJson(),
         'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
         'upgraded_from_max_message_id': upgradedFromMaxMessageId,
       };
@@ -270,6 +277,7 @@ final class SupergroupFullInfo extends TdObject {
     ChatLocation? Function()? location,
     ChatInviteLink? Function()? inviteLink,
     List<BotCommands>? botCommands,
+    BotVerification? Function()? botVerification,
     int? upgradedFromBasicGroupId,
     int? upgradedFromMaxMessageId,
     dynamic extra,
@@ -316,6 +324,8 @@ final class SupergroupFullInfo extends TdObject {
         location: location != null ? location() : this.location,
         inviteLink: inviteLink != null ? inviteLink() : this.inviteLink,
         botCommands: botCommands ?? this.botCommands,
+        botVerification:
+            botVerification != null ? botVerification() : this.botVerification,
         upgradedFromBasicGroupId:
             upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
         upgradedFromMaxMessageId:

@@ -8,7 +8,7 @@ final class ChatFolderInfo extends TdObject {
   /// Contains basic information about a chat folder
   const ChatFolderInfo({
     required this.id,
-    required this.title,
+    required this.name,
     required this.icon,
     required this.colorId,
     required this.isShareable,
@@ -20,8 +20,8 @@ final class ChatFolderInfo extends TdObject {
   /// Unique chat folder identifier
   final int id;
 
-  /// The title of the folder; 1-12 characters without line feeds
-  final String title;
+  /// The name of the folder
+  final ChatFolderName name;
 
   /// The chosen or default icon for the chat folder
   final ChatFolderIcon icon;
@@ -46,7 +46,7 @@ final class ChatFolderInfo extends TdObject {
   /// Parses a [ChatFolderInfo] from TDLib JSON.
   factory ChatFolderInfo.fromJson(Map<String, dynamic> json) => ChatFolderInfo(
         id: _readInt(json['id']),
-        title: _readString(json['title']),
+        name: _readObject(json['name'], ChatFolderName.fromJson),
         icon: _readObject(json['icon'], ChatFolderIcon.fromJson),
         colorId: _readInt(json['color_id']),
         isShareable: _readBool(json['is_shareable']),
@@ -59,7 +59,7 @@ final class ChatFolderInfo extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id,
-        'title': title,
+        'name': name.toJson(),
         'icon': icon.toJson(),
         'color_id': colorId,
         'is_shareable': isShareable,
@@ -70,7 +70,7 @@ final class ChatFolderInfo extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatFolderInfo copyWith({
     int? id,
-    String? title,
+    ChatFolderName? name,
     ChatFolderIcon? icon,
     int? colorId,
     bool? isShareable,
@@ -80,7 +80,7 @@ final class ChatFolderInfo extends TdObject {
   }) =>
       ChatFolderInfo(
         id: id ?? this.id,
-        title: title ?? this.title,
+        name: name ?? this.name,
         icon: icon ?? this.icon,
         colorId: colorId ?? this.colorId,
         isShareable: isShareable ?? this.isShareable,

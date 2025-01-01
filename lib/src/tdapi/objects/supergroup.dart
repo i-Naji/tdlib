@@ -23,11 +23,9 @@ final class Supergroup extends TdObject {
     required this.isChannel,
     required this.isBroadcastGroup,
     required this.isForum,
-    required this.isVerified,
+    this.verificationStatus,
     required this.hasSensitiveContent,
     required this.restrictionReason,
-    required this.isScam,
-    required this.isFake,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
     this.extra,
@@ -82,20 +80,14 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is a forum with topics
   final bool isForum;
 
-  /// True, if the supergroup or channel is verified
-  final bool isVerified;
+  /// Information about verification status of the supergroup or channel; may be null if none
+  final VerificationStatus? verificationStatus;
 
   /// True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
   final bool hasSensitiveContent;
 
   /// If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   final String restrictionReason;
-
-  /// True, if many users reported this supergroup or channel as a scam
-  final bool isScam;
-
-  /// True, if many users reported this supergroup or channel as a fake account
-  final bool isFake;
 
   /// True, if the supergroup or channel has non-expired stories available to the current user
   final bool hasActiveStories;
@@ -129,11 +121,10 @@ final class Supergroup extends TdObject {
         isChannel: _readBool(json['is_channel']),
         isBroadcastGroup: _readBool(json['is_broadcast_group']),
         isForum: _readBool(json['is_forum']),
-        isVerified: _readBool(json['is_verified']),
+        verificationStatus: _readOptional(
+            json['verification_status'], VerificationStatus.fromJson),
         hasSensitiveContent: _readBool(json['has_sensitive_content']),
         restrictionReason: _readString(json['restriction_reason']),
-        isScam: _readBool(json['is_scam']),
-        isFake: _readBool(json['is_fake']),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         extra: json['@extra'],
@@ -159,11 +150,9 @@ final class Supergroup extends TdObject {
         'is_channel': isChannel,
         'is_broadcast_group': isBroadcastGroup,
         'is_forum': isForum,
-        'is_verified': isVerified,
+        'verification_status': verificationStatus?.toJson(),
         'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
-        'is_scam': isScam,
-        'is_fake': isFake,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
       };
@@ -187,11 +176,9 @@ final class Supergroup extends TdObject {
     bool? isChannel,
     bool? isBroadcastGroup,
     bool? isForum,
-    bool? isVerified,
+    VerificationStatus? Function()? verificationStatus,
     bool? hasSensitiveContent,
     String? restrictionReason,
-    bool? isScam,
-    bool? isFake,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
     dynamic extra,
@@ -214,11 +201,11 @@ final class Supergroup extends TdObject {
         isChannel: isChannel ?? this.isChannel,
         isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
         isForum: isForum ?? this.isForum,
-        isVerified: isVerified ?? this.isVerified,
+        verificationStatus: verificationStatus != null
+            ? verificationStatus()
+            : this.verificationStatus,
         hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
-        isScam: isScam ?? this.isScam,
-        isFake: isFake ?? this.isFake,
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,

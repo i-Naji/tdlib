@@ -13,6 +13,7 @@ final class SendGift extends TdFunction<Ok> {
     required this.userId,
     required this.text,
     required this.isPrivate,
+    required this.payForUpgrade,
   });
 
   /// Identifier of the gift to send
@@ -27,6 +28,9 @@ final class SendGift extends TdFunction<Ok> {
   /// Pass true to show the current user as sender and gift text only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
 
+  /// Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free
+  final bool payForUpgrade;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -34,6 +38,7 @@ final class SendGift extends TdFunction<Ok> {
         'user_id': userId,
         'text': text.toJson(),
         'is_private': isPrivate,
+        'pay_for_upgrade': payForUpgrade,
         if (extra != null) '@extra': extra,
       };
 
@@ -44,12 +49,14 @@ final class SendGift extends TdFunction<Ok> {
     int? userId,
     FormattedText? text,
     bool? isPrivate,
+    bool? payForUpgrade,
   }) =>
       SendGift(
         giftId: giftId ?? this.giftId,
         userId: userId ?? this.userId,
         text: text ?? this.text,
         isPrivate: isPrivate ?? this.isPrivate,
+        payForUpgrade: payForUpgrade ?? this.payForUpgrade,
       );
 
   /// TDLib type name.

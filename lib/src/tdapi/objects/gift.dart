@@ -11,6 +11,7 @@ final class Gift extends TdObject {
     required this.sticker,
     required this.starCount,
     required this.defaultSellStarCount,
+    required this.upgradeStarCount,
     required this.isForBirthday,
     required this.remainingCount,
     required this.totalCount,
@@ -27,8 +28,11 @@ final class Gift extends TdObject {
   /// Number of Telegram Stars that must be paid for the gift
   final int starCount;
 
-  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed
+  /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift by default. If the gift was paid with just bought Telegram Stars, then full value can be claimed
   final int defaultSellStarCount;
+
+  /// Number of Telegram Stars that must be paid to upgrade the gift; 0 if upgrade isn't possible
+  final int upgradeStarCount;
 
   /// True, if the gift is a birthday gift
   final bool isForBirthday;
@@ -51,6 +55,7 @@ final class Gift extends TdObject {
         sticker: _readObject(json['sticker'], Sticker.fromJson),
         starCount: _readInt(json['star_count']),
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
+        upgradeStarCount: _readInt(json['upgrade_star_count']),
         isForBirthday: _readBool(json['is_for_birthday']),
         remainingCount: _readInt(json['remaining_count']),
         totalCount: _readInt(json['total_count']),
@@ -65,6 +70,7 @@ final class Gift extends TdObject {
         'sticker': sticker.toJson(),
         'star_count': starCount,
         'default_sell_star_count': defaultSellStarCount,
+        'upgrade_star_count': upgradeStarCount,
         'is_for_birthday': isForBirthday,
         'remaining_count': remainingCount,
         'total_count': totalCount,
@@ -79,6 +85,7 @@ final class Gift extends TdObject {
     Sticker? sticker,
     int? starCount,
     int? defaultSellStarCount,
+    int? upgradeStarCount,
     bool? isForBirthday,
     int? remainingCount,
     int? totalCount,
@@ -90,6 +97,7 @@ final class Gift extends TdObject {
         sticker: sticker ?? this.sticker,
         starCount: starCount ?? this.starCount,
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
+        upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
         isForBirthday: isForBirthday ?? this.isForBirthday,
         remainingCount: remainingCount ?? this.remainingCount,
         totalCount: totalCount ?? this.totalCount,

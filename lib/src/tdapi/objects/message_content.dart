@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -3428,16 +3428,21 @@ final class MessageGiveawayPrizeStars extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A gift was received or sent by the current user
+/// A regular gift was received or sent by the current user
 final class MessageGift extends MessageContent {
-  /// A gift was received or sent by the current user
+  /// A regular gift was received or sent by the current user
   const MessageGift({
     required this.gift,
     required this.text,
     required this.sellStarCount,
+    required this.prepaidUpgradeStarCount,
     required this.isPrivate,
     required this.isSaved,
+    required this.canBeUpgraded,
     required this.wasConverted,
+    required this.wasUpgraded,
+    required this.wasRefunded,
+    required this.upgradeMessageId,
   });
 
   /// The gift
@@ -3446,8 +3451,11 @@ final class MessageGift extends MessageContent {
   /// Message added to the gift
   final FormattedText text;
 
-  /// Number of Telegram Stars that can be claimed by the receiver instead of the gift; 0 if the gift can't be sold by the receiver
+  /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the receiver
   final int sellStarCount;
+
+  /// Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
+  final int prepaidUpgradeStarCount;
 
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
@@ -3455,17 +3463,34 @@ final class MessageGift extends MessageContent {
   /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
   final bool isSaved;
 
+  /// True, if the gift can be upgraded to a unique gift; only for the receiver of the gift
+  final bool canBeUpgraded;
+
   /// True, if the gift was converted to Telegram Stars; only for the receiver of the gift
   final bool wasConverted;
+
+  /// True, if the gift was upgraded to a unique gift
+  final bool wasUpgraded;
+
+  /// True, if the gift was refunded and isn't available anymore
+  final bool wasRefunded;
+
+  /// Identifier of the service message messageUpgradedGift or messageRefundedUpgradedGift with upgraded version of the gift; can be 0 if none or an identifier of a deleted message. Use getUserGift to get information about the gift
+  final int upgradeMessageId;
 
   /// Parses a [MessageGift] from TDLib JSON.
   factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
         gift: _readObject(json['gift'], Gift.fromJson),
         text: _readObject(json['text'], FormattedText.fromJson),
         sellStarCount: _readInt(json['sell_star_count']),
+        prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
+        canBeUpgraded: _readBool(json['can_be_upgraded']),
         wasConverted: _readBool(json['was_converted']),
+        wasUpgraded: _readBool(json['was_upgraded']),
+        wasRefunded: _readBool(json['was_refunded']),
+        upgradeMessageId: _readInt(json['upgrade_message_id']),
       );
 
   @override
@@ -3474,9 +3499,14 @@ final class MessageGift extends MessageContent {
         'gift': gift.toJson(),
         'text': text.toJson(),
         'sell_star_count': sellStarCount,
+        'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'is_private': isPrivate,
         'is_saved': isSaved,
+        'can_be_upgraded': canBeUpgraded,
         'was_converted': wasConverted,
+        'was_upgraded': wasUpgraded,
+        'was_refunded': wasRefunded,
+        'upgrade_message_id': upgradeMessageId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3486,21 +3516,166 @@ final class MessageGift extends MessageContent {
     Gift? gift,
     FormattedText? text,
     int? sellStarCount,
+    int? prepaidUpgradeStarCount,
     bool? isPrivate,
     bool? isSaved,
+    bool? canBeUpgraded,
     bool? wasConverted,
+    bool? wasUpgraded,
+    bool? wasRefunded,
+    int? upgradeMessageId,
   }) =>
       MessageGift(
         gift: gift ?? this.gift,
         text: text ?? this.text,
         sellStarCount: sellStarCount ?? this.sellStarCount,
+        prepaidUpgradeStarCount:
+            prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
+        canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
         wasConverted: wasConverted ?? this.wasConverted,
+        wasUpgraded: wasUpgraded ?? this.wasUpgraded,
+        wasRefunded: wasRefunded ?? this.wasRefunded,
+        upgradeMessageId: upgradeMessageId ?? this.upgradeMessageId,
       );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageGift';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An upgraded gift was received or sent by the current user
+final class MessageUpgradedGift extends MessageContent {
+  /// An upgraded gift was received or sent by the current user
+  const MessageUpgradedGift({
+    required this.gift,
+    required this.isUpgrade,
+    required this.isSaved,
+    required this.canBeTransferred,
+    required this.wasTransferred,
+    required this.transferStarCount,
+    required this.exportDate,
+  });
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred gift
+  final bool isUpgrade;
+
+  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
+  final bool isSaved;
+
+  /// True, if the gift can be transferred to another user; only for the receiver of the gift
+  final bool canBeTransferred;
+
+  /// True, if the gift was transferred to another user; only for the receiver of the gift
+  final bool wasTransferred;
+
+  /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
+  final int transferStarCount;
+
+  /// Point in time (Unix timestamp) when the gift can be transferred to TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  final int exportDate;
+
+  /// Parses a [MessageUpgradedGift] from TDLib JSON.
+  factory MessageUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      MessageUpgradedGift(
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+        isUpgrade: _readBool(json['is_upgrade']),
+        isSaved: _readBool(json['is_saved']),
+        canBeTransferred: _readBool(json['can_be_transferred']),
+        wasTransferred: _readBool(json['was_transferred']),
+        transferStarCount: _readInt(json['transfer_star_count']),
+        exportDate: _readInt(json['export_date']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift': gift.toJson(),
+        'is_upgrade': isUpgrade,
+        'is_saved': isSaved,
+        'can_be_transferred': canBeTransferred,
+        'was_transferred': wasTransferred,
+        'transfer_star_count': transferStarCount,
+        'export_date': exportDate,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageUpgradedGift copyWith({
+    UpgradedGift? gift,
+    bool? isUpgrade,
+    bool? isSaved,
+    bool? canBeTransferred,
+    bool? wasTransferred,
+    int? transferStarCount,
+    int? exportDate,
+  }) =>
+      MessageUpgradedGift(
+        gift: gift ?? this.gift,
+        isUpgrade: isUpgrade ?? this.isUpgrade,
+        isSaved: isSaved ?? this.isSaved,
+        canBeTransferred: canBeTransferred ?? this.canBeTransferred,
+        wasTransferred: wasTransferred ?? this.wasTransferred,
+        transferStarCount: transferStarCount ?? this.transferStarCount,
+        exportDate: exportDate ?? this.exportDate,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageUpgradedGift';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A gift which purchase, upgrade or transfer were refunded
+final class MessageRefundedUpgradedGift extends MessageContent {
+  /// A gift which purchase, upgrade or transfer were refunded
+  const MessageRefundedUpgradedGift({
+    required this.gift,
+    required this.isUpgrade,
+  });
+
+  /// The gift
+  final Gift gift;
+
+  /// True, if the gift was obtained by upgrading of a previously received gift
+  final bool isUpgrade;
+
+  /// Parses a [MessageRefundedUpgradedGift] from TDLib JSON.
+  factory MessageRefundedUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      MessageRefundedUpgradedGift(
+        gift: _readObject(json['gift'], Gift.fromJson),
+        isUpgrade: _readBool(json['is_upgrade']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift': gift.toJson(),
+        'is_upgrade': isUpgrade,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageRefundedUpgradedGift copyWith({
+    Gift? gift,
+    bool? isUpgrade,
+  }) =>
+      MessageRefundedUpgradedGift(
+        gift: gift ?? this.gift,
+        isUpgrade: isUpgrade ?? this.isUpgrade,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageRefundedUpgradedGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

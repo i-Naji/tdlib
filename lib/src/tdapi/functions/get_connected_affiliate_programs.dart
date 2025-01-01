@@ -3,19 +3,20 @@
 
 part of '../tdapi.dart';
 
-/// Returns affiliate programs that were connected to the given chat
+/// Returns affiliate programs that were connected to the given affiliate
 ///
-/// Returns [ChatAffiliatePrograms].
-final class GetChatAffiliatePrograms extends TdFunction<ChatAffiliatePrograms> {
-  /// Returns affiliate programs that were connected to the given chat
-  const GetChatAffiliatePrograms({
-    required this.chatId,
+/// Returns [ConnectedAffiliatePrograms].
+final class GetConnectedAffiliatePrograms
+    extends TdFunction<ConnectedAffiliatePrograms> {
+  /// Returns affiliate programs that were connected to the given affiliate
+  const GetConnectedAffiliatePrograms({
+    required this.affiliate,
     required this.offset,
     required this.limit,
   });
 
-  /// Identifier of the chat for which the affiliate programs were connected. Can be an identifier of the Saved Messages chat, of a chat with an owned bot, or of a channel chat with can_post_messages administrator right
-  final int chatId;
+  /// The affiliate to which the affiliate program were connected
+  final AffiliateType affiliate;
 
   /// Offset of the first affiliate program to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -26,7 +27,7 @@ final class GetChatAffiliatePrograms extends TdFunction<ChatAffiliatePrograms> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'chat_id': chatId,
+        'affiliate': affiliate.toJson(),
         'offset': offset,
         'limit': limit,
         if (extra != null) '@extra': extra,
@@ -34,19 +35,19 @@ final class GetChatAffiliatePrograms extends TdFunction<ChatAffiliatePrograms> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetChatAffiliatePrograms copyWith({
-    int? chatId,
+  GetConnectedAffiliatePrograms copyWith({
+    AffiliateType? affiliate,
     String? offset,
     int? limit,
   }) =>
-      GetChatAffiliatePrograms(
-        chatId: chatId ?? this.chatId,
+      GetConnectedAffiliatePrograms(
+        affiliate: affiliate ?? this.affiliate,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getChatAffiliatePrograms';
+  static const String CONSTRUCTOR = 'getConnectedAffiliatePrograms';
 
   @override
   String getConstructor() => CONSTRUCTOR;

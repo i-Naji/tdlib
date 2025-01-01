@@ -3,10 +3,10 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of affiliate programs that were connected to a chat
-final class ChatAffiliatePrograms extends TdObject {
-  /// Represents a list of affiliate programs that were connected to a chat
-  const ChatAffiliatePrograms({
+/// Represents a list of affiliate programs that were connected to an affiliate
+final class ConnectedAffiliatePrograms extends TdObject {
+  /// Represents a list of affiliate programs that were connected to an affiliate
+  const ConnectedAffiliatePrograms({
     required this.totalCount,
     required this.programs,
     required this.nextOffset,
@@ -14,11 +14,11 @@ final class ChatAffiliatePrograms extends TdObject {
     this.clientId,
   });
 
-  /// The total number of affiliate programs that were connected to the chat
+  /// The total number of affiliate programs that were connected to the affiliate
   final int totalCount;
 
   /// The list of connected affiliate programs
-  final List<ChatAffiliateProgram> programs;
+  final List<ConnectedAffiliateProgram> programs;
 
   /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
@@ -31,12 +31,12 @@ final class ChatAffiliatePrograms extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [ChatAffiliatePrograms] from TDLib JSON.
-  factory ChatAffiliatePrograms.fromJson(Map<String, dynamic> json) =>
-      ChatAffiliatePrograms(
+  /// Parses a [ConnectedAffiliatePrograms] from TDLib JSON.
+  factory ConnectedAffiliatePrograms.fromJson(Map<String, dynamic> json) =>
+      ConnectedAffiliatePrograms(
         totalCount: _readInt(json['total_count']),
-        programs: _readList<ChatAffiliateProgram>(json['programs'],
-            (e) => _readObject(e, ChatAffiliateProgram.fromJson)),
+        programs: _readList<ConnectedAffiliateProgram>(json['programs'],
+            (e) => _readObject(e, ConnectedAffiliateProgram.fromJson)),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -52,14 +52,14 @@ final class ChatAffiliatePrograms extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatAffiliatePrograms copyWith({
+  ConnectedAffiliatePrograms copyWith({
     int? totalCount,
-    List<ChatAffiliateProgram>? programs,
+    List<ConnectedAffiliateProgram>? programs,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) =>
-      ChatAffiliatePrograms(
+      ConnectedAffiliatePrograms(
         totalCount: totalCount ?? this.totalCount,
         programs: programs ?? this.programs,
         nextOffset: nextOffset ?? this.nextOffset,
@@ -68,7 +68,7 @@ final class ChatAffiliatePrograms extends TdObject {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatAffiliatePrograms';
+  static const String CONSTRUCTOR = 'connectedAffiliatePrograms';
 
   @override
   String getConstructor() => CONSTRUCTOR;

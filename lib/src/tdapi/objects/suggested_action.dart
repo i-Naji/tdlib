@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -363,6 +363,33 @@ final class SuggestedActionSetBirthdate extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionSetBirthdate';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Suggests the user to set profile photo
+final class SuggestedActionSetProfilePhoto extends SuggestedAction {
+  /// Suggests the user to set profile photo
+  const SuggestedActionSetProfilePhoto();
+
+  /// Parses a [SuggestedActionSetProfilePhoto] from TDLib JSON.
+  factory SuggestedActionSetProfilePhoto.fromJson(Map<String, dynamic> json) =>
+      const SuggestedActionSetProfilePhoto();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionSetProfilePhoto copyWith() =>
+      const SuggestedActionSetProfilePhoto();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionSetProfilePhoto';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -15,7 +15,7 @@ final class AffiliateProgramInfo extends TdObject {
   /// Parameters of the affiliate program
   final AffiliateProgramParameters parameters;
 
-  /// Point in time (Unix timestamp) when the affiliate program will be closed; 0 if the affiliate program isn't scheduled to be closed. If positive, then the program can't be connected using connectChatAffiliateProgram, but active connections will work until the date
+  /// Point in time (Unix timestamp) when the affiliate program will be closed; 0 if the affiliate program isn't scheduled to be closed. If positive, then the program can't be connected using connectAffiliateProgram, but active connections will work until the date
   final int endDate;
 
   /// The amount of daily revenue per user in Telegram Stars of the bot that created the affiliate program
