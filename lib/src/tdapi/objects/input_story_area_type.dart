@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of clickable area on a story media to be added
 ///
-/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink], [InputStoryAreaTypeWeather]; or [UndecodedInputStoryAreaType] for a type newer than this API.
+/// One of: [InputStoryAreaTypeLocation], [InputStoryAreaTypeFoundVenue], [InputStoryAreaTypePreviousVenue], [InputStoryAreaTypeSuggestedReaction], [InputStoryAreaTypeMessage], [InputStoryAreaTypeLink], [InputStoryAreaTypeWeather], [InputStoryAreaTypeUpgradedGift]; or [UndecodedInputStoryAreaType] for a type newer than this API.
 sealed class InputStoryAreaType extends TdObject {
   const InputStoryAreaType();
 
@@ -377,6 +377,45 @@ final class InputStoryAreaTypeWeather extends InputStoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputStoryAreaTypeWeather';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area with an upgraded gift
+final class InputStoryAreaTypeUpgradedGift extends InputStoryAreaType {
+  /// An area with an upgraded gift
+  const InputStoryAreaTypeUpgradedGift({
+    required this.giftName,
+  });
+
+  /// Unique name of the upgraded gift
+  final String giftName;
+
+  /// Parses a [InputStoryAreaTypeUpgradedGift] from TDLib JSON.
+  factory InputStoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      InputStoryAreaTypeUpgradedGift(
+        giftName: _readString(json['gift_name']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift_name': giftName,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputStoryAreaTypeUpgradedGift copyWith({
+    String? giftName,
+  }) =>
+      InputStoryAreaTypeUpgradedGift(
+        giftName: giftName ?? this.giftName,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputStoryAreaTypeUpgradedGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

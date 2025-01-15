@@ -9,14 +9,18 @@ final class UpgradedGift extends TdObject {
   const UpgradedGift({
     required this.id,
     required this.title,
+    required this.name,
     required this.number,
     required this.totalUpgradedCount,
     required this.maxUpgradedCount,
     required this.ownerUserId,
+    required this.ownerName,
     required this.model,
     required this.symbol,
     required this.backdrop,
     this.originalDetails,
+    this.extra,
+    this.clientId,
   });
 
   /// Unique identifier of the gift
@@ -24,6 +28,9 @@ final class UpgradedGift extends TdObject {
 
   /// The title of the upgraded gift
   final String title;
+
+  /// Unique name of the upgraded gift that can be used with internalLinkTypeUpgradedGift
+  final String name;
 
   /// Unique number of the upgraded gift among gifts upgraded from the same gift
   final int number;
@@ -34,8 +41,11 @@ final class UpgradedGift extends TdObject {
   /// The maximum number of gifts that can be upgraded from the same gift
   final int maxUpgradedCount;
 
-  /// User identifier of the user that owns the upgraded gift; 0 if none
+  /// User identifier of the user that owns the upgraded gift; 0 if none or unknown
   final int ownerUserId;
+
+  /// Name of the owner for the case when owner identifier isn't known
+  final String ownerName;
 
   /// Model of the upgraded gift
   final UpgradedGiftModel model;
@@ -49,19 +59,31 @@ final class UpgradedGift extends TdObject {
   /// Information about the originally sent gift; may be null if unknown
   final UpgradedGiftOriginalDetails? originalDetails;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [UpgradedGift] from TDLib JSON.
   factory UpgradedGift.fromJson(Map<String, dynamic> json) => UpgradedGift(
         id: _readInt(json['id']),
         title: _readString(json['title']),
+        name: _readString(json['name']),
         number: _readInt(json['number']),
         totalUpgradedCount: _readInt(json['total_upgraded_count']),
         maxUpgradedCount: _readInt(json['max_upgraded_count']),
         ownerUserId: _readInt(json['owner_user_id']),
+        ownerName: _readString(json['owner_name']),
         model: _readObject(json['model'], UpgradedGiftModel.fromJson),
         symbol: _readObject(json['symbol'], UpgradedGiftSymbol.fromJson),
         backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
         originalDetails: _readOptional(
             json['original_details'], UpgradedGiftOriginalDetails.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -69,10 +91,12 @@ final class UpgradedGift extends TdObject {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
         'title': title,
+        'name': name,
         'number': number,
         'total_upgraded_count': totalUpgradedCount,
         'max_upgraded_count': maxUpgradedCount,
         'owner_user_id': ownerUserId,
+        'owner_name': ownerName,
         'model': model.toJson(),
         'symbol': symbol.toJson(),
         'backdrop': backdrop.toJson(),
@@ -84,27 +108,35 @@ final class UpgradedGift extends TdObject {
   UpgradedGift copyWith({
     int? id,
     String? title,
+    String? name,
     int? number,
     int? totalUpgradedCount,
     int? maxUpgradedCount,
     int? ownerUserId,
+    String? ownerName,
     UpgradedGiftModel? model,
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
     UpgradedGiftOriginalDetails? Function()? originalDetails,
+    dynamic extra,
+    int? clientId,
   }) =>
       UpgradedGift(
         id: id ?? this.id,
         title: title ?? this.title,
+        name: name ?? this.name,
         number: number ?? this.number,
         totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
         maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
         ownerUserId: ownerUserId ?? this.ownerUserId,
+        ownerName: ownerName ?? this.ownerName,
         model: model ?? this.model,
         symbol: symbol ?? this.symbol,
         backdrop: backdrop ?? this.backdrop,
         originalDetails:
             originalDetails != null ? originalDetails() : this.originalDetails,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.

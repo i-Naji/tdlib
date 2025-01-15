@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of clickable area on a story media
 ///
-/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage], [StoryAreaTypeLink], [StoryAreaTypeWeather]; or [UndecodedStoryAreaType] for a type newer than this API.
+/// One of: [StoryAreaTypeLocation], [StoryAreaTypeVenue], [StoryAreaTypeSuggestedReaction], [StoryAreaTypeMessage], [StoryAreaTypeLink], [StoryAreaTypeWeather], [StoryAreaTypeUpgradedGift]; or [UndecodedStoryAreaType] for a type newer than this API.
 sealed class StoryAreaType extends TdObject {
   const StoryAreaType();
 
@@ -327,6 +327,45 @@ final class StoryAreaTypeWeather extends StoryAreaType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'storyAreaTypeWeather';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An area with an upgraded gift
+final class StoryAreaTypeUpgradedGift extends StoryAreaType {
+  /// An area with an upgraded gift
+  const StoryAreaTypeUpgradedGift({
+    required this.giftName,
+  });
+
+  /// Unique name of the upgraded gift
+  final String giftName;
+
+  /// Parses a [StoryAreaTypeUpgradedGift] from TDLib JSON.
+  factory StoryAreaTypeUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      StoryAreaTypeUpgradedGift(
+        giftName: _readString(json['gift_name']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift_name': giftName,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StoryAreaTypeUpgradedGift copyWith({
+    String? giftName,
+  }) =>
+      StoryAreaTypeUpgradedGift(
+        giftName: giftName ?? this.giftName,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storyAreaTypeUpgradedGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

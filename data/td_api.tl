@@ -617,7 +617,7 @@ botVerificationParameters icon_custom_emoji_id:int64 organization_name:string de
 //@description Describes verification status provided by a bot
 //@bot_user_id Identifier of the bot that provided the verification
 //@icon_custom_emoji_id Identifier of the custom emoji that is used as the verification sign
-//@custom_description Custom description of verification reason set by the bot
+//@custom_description Custom description of verification reason set by the bot. Can contain only Mention, Hashtag, Cashtag, PhoneNumber, BankCardNumber, Url, and EmailAddress entities
 botVerification bot_user_id:int53 icon_custom_emoji_id:int64 custom_description:formattedText = BotVerification;
 
 //@description Contains information about verification status of a chat or a user
@@ -1071,15 +1071,17 @@ gifts gifts:vector<gift> = Gifts;
 //@description Describes an upgraded gift that can be gifted to another user or transferred to TON blockchain as an NFT
 //@id Unique identifier of the gift
 //@title The title of the upgraded gift
+//@name Unique name of the upgraded gift that can be used with internalLinkTypeUpgradedGift
 //@number Unique number of the upgraded gift among gifts upgraded from the same gift
 //@total_upgraded_count Total number of gifts that were upgraded from the same gift
 //@max_upgraded_count The maximum number of gifts that can be upgraded from the same gift
-//@owner_user_id User identifier of the user that owns the upgraded gift; 0 if none
+//@owner_user_id User identifier of the user that owns the upgraded gift; 0 if none or unknown
+//@owner_name Name of the owner for the case when owner identifier isn't known
 //@model Model of the upgraded gift
 //@symbol Symbol of the upgraded gift
 //@backdrop Backdrop of the upgraded gift
 //@original_details Information about the originally sent gift; may be null if unknown
-upgradedGift id:int64 title:string number:int32 total_upgraded_count:int32 max_upgraded_count:int32 owner_user_id:int53 model:upgradedGiftModel symbol:upgradedGiftSymbol backdrop:upgradedGiftBackdrop original_details:upgradedGiftOriginalDetails = UpgradedGift;
+upgradedGift id:int64 title:string name:string number:int32 total_upgraded_count:int32 max_upgraded_count:int32 owner_user_id:int53 owner_name:string model:upgradedGiftModel symbol:upgradedGiftSymbol backdrop:upgradedGiftBackdrop original_details:upgradedGiftOriginalDetails = UpgradedGift;
 
 //@description Contains result of gift upgrading
 //@gift The upgraded gift
@@ -3118,6 +3120,9 @@ linkPreviewTypeTheme documents:vector<document> settings:themeSettings = LinkPre
 //@description The link preview type is unsupported yet
 linkPreviewTypeUnsupported = LinkPreviewType;
 
+//@description The link is a link to an upgraded gift @gift The gift
+linkPreviewTypeUpgradedGift gift:upgradedGift = LinkPreviewType;
+
 //@description The link is a link to a user @photo Photo of the user; may be null if none @is_bot True, if the user is a bot
 linkPreviewTypeUser photo:chatPhoto is_bot:Bool = LinkPreviewType;
 
@@ -4650,6 +4655,10 @@ storyAreaTypeLink url:string = StoryAreaType;
 //@background_color A color of the area background in the ARGB format
 storyAreaTypeWeather temperature:double emoji:string background_color:int32 = StoryAreaType;
 
+//@description An area with an upgraded gift
+//@gift_name Unique name of the upgraded gift
+storyAreaTypeUpgradedGift gift_name:string = StoryAreaType;
+
 
 //@description Describes a clickable rectangle area on a story media @position Position of the area @type Type of the area
 storyArea position:storyAreaPosition type:StoryAreaType = StoryArea;
@@ -4691,6 +4700,9 @@ inputStoryAreaTypeLink url:string = InputStoryAreaType;
 //@background_color A color of the area background in the ARGB format
 inputStoryAreaTypeWeather temperature:double emoji:string background_color:int32 = InputStoryAreaType;
 
+//@description An area with an upgraded gift @gift_name Unique name of the upgraded gift
+inputStoryAreaTypeUpgradedGift gift_name:string = InputStoryAreaType;
+
 
 //@description Describes a clickable rectangle area on a story media to be added @position Position of the area @type Type of the area
 inputStoryArea position:storyAreaPosition type:InputStoryAreaType = InputStoryArea;
@@ -4699,8 +4711,9 @@ inputStoryArea position:storyAreaPosition type:InputStoryAreaType = InputStoryAr
 //-up to 10 inputStoryAreaTypeLocation, inputStoryAreaTypeFoundVenue, and inputStoryAreaTypePreviousVenue areas,
 //-up to getOption("story_suggested_reaction_area_count_max") inputStoryAreaTypeSuggestedReaction areas,
 //-up to 1 inputStoryAreaTypeMessage area,
-//-up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user, and
-//-up to 3 inputStoryAreaTypeWeather areas
+//-up to getOption("story_link_area_count_max") inputStoryAreaTypeLink areas if the current user is a Telegram Premium user,
+//-up to 3 inputStoryAreaTypeWeather areas, and
+//-up to 1 inputStoryAreaTypeUpgradedGift area
 inputStoryAreas areas:vector<inputStoryArea> = InputStoryAreas;
 
 
@@ -7212,6 +7225,9 @@ internalLinkTypeUnknownDeepLink link:string = InternalLinkType;
 //@description The link is a link to an unsupported proxy. An alert can be shown to the user
 internalLinkTypeUnsupportedProxy = InternalLinkType;
 
+//@description The link is a link to an upgraded gift. Call getUpgradedGift with the given name to process the link @name Name of the unique gift
+internalLinkTypeUpgradedGift name:string = InternalLinkType;
+
 //@description The link is a link to a user by its phone number. Call searchUserByPhoneNumber with the given phone number to process the link.
 //-If the user is found, then call createPrivateChat and open user's profile information screen or the chat itself. If draft text isn't empty, then put the draft text in the input field
 //@phone_number Phone number of the user
@@ -8880,6 +8896,19 @@ getChatSimilarChatCount chat_id:int53 return_local:Bool = Count;
 //@chat_id Identifier of the original chat, which similar chats were requested
 //@opened_chat_id Identifier of the opened chat
 openChatSimilarChat chat_id:int53 opened_chat_id:int53 = Ok;
+
+//@description Returns a list of bots similar to the given bot @bot_user_id User identifier of the target bot
+getBotSimilarBots bot_user_id:int53 = Users;
+
+//@description Returns approximate number of bots similar to the given bot
+//@bot_user_id User identifier of the target bot
+//@return_local Pass true to get the number of bots without sending network requests, or -1 if the number of bots is unknown locally
+getBotSimilarBotCount bot_user_id:int53 return_local:Bool = Count;
+
+//@description Informs TDLib that a bot was opened from the list of similar bots
+//@bot_user_id Identifier of the original bot, which similar bots were requested
+//@opened_bot_user_id Identifier of the opened bot
+openBotSimilarBot bot_user_id:int53 opened_bot_user_id:int53 = Ok;
 
 //@description Returns a list of frequently used chats @category Category of chats to be returned @limit The maximum number of chats to be returned; up to 30
 getTopChats category:TopChatCategory limit:int32 = Chats;
@@ -11690,6 +11719,9 @@ getUserGifts user_id:int53 offset:string limit:int32 = UserGifts;
 
 //@description Returns information about a gift received or sent by the current user @message_id Identifier of the message with the gift
 getUserGift message_id:int53 = UserGift;
+
+//@description Returns information about an upgraded gift by its name @name Unique name of the upgraded gift
+getUpgradedGift name:string = UpgradedGift;
 
 
 //@description Creates a link for the given invoice; for bots only

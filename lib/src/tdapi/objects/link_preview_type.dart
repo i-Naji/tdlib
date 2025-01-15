@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -1150,6 +1150,45 @@ final class LinkPreviewTypeUnsupported extends LinkPreviewType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeUnsupported';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to an upgraded gift
+final class LinkPreviewTypeUpgradedGift extends LinkPreviewType {
+  /// The link is a link to an upgraded gift
+  const LinkPreviewTypeUpgradedGift({
+    required this.gift,
+  });
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Parses a [LinkPreviewTypeUpgradedGift] from TDLib JSON.
+  factory LinkPreviewTypeUpgradedGift.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeUpgradedGift(
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift': gift.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeUpgradedGift copyWith({
+    UpgradedGift? gift,
+  }) =>
+      LinkPreviewTypeUpgradedGift(
+        gift: gift ?? this.gift,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeUpgradedGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

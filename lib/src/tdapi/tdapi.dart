@@ -212,6 +212,8 @@ part 'functions/get_bot_info_short_description.dart';
 part 'functions/get_bot_media_preview_info.dart';
 part 'functions/get_bot_media_previews.dart';
 part 'functions/get_bot_name.dart';
+part 'functions/get_bot_similar_bot_count.dart';
+part 'functions/get_bot_similar_bots.dart';
 part 'functions/get_business_chat_link_info.dart';
 part 'functions/get_business_chat_links.dart';
 part 'functions/get_business_connected_bot.dart';
@@ -444,6 +446,7 @@ part 'functions/get_themed_emoji_statuses.dart';
 part 'functions/get_time_zones.dart';
 part 'functions/get_top_chats.dart';
 part 'functions/get_trending_sticker_sets.dart';
+part 'functions/get_upgraded_gift.dart';
 part 'functions/get_user.dart';
 part 'functions/get_user_chat_boosts.dart';
 part 'functions/get_user_full_info.dart';
@@ -477,6 +480,7 @@ part 'functions/load_quick_reply_shortcut_messages.dart';
 part 'functions/load_quick_reply_shortcuts.dart';
 part 'functions/load_saved_messages_topics.dart';
 part 'functions/log_out.dart';
+part 'functions/open_bot_similar_bot.dart';
 part 'functions/open_chat.dart';
 part 'functions/open_chat_similar_chat.dart';
 part 'functions/open_message_content.dart';
@@ -1405,14 +1409,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.42';
+const String tdlibVersion = '1.8.43';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'ef580cd3dd0e5223c2be503342dc29e128be866e';
+const String tdlibSchemaCommit = '11406d9d6f3baa999b77fbd09f36c67749c31699';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'ef580cd3dd0e5223c2be503342dc29e128be866e',
+  '11406d9d6f3baa999b77fbd09f36c67749c31699',
 ];
 
 /// Base class of every TDLib object.
@@ -2078,6 +2082,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'linkPreviewTypeSupergroupBoost': LinkPreviewTypeSupergroupBoost.fromJson,
   'linkPreviewTypeTheme': LinkPreviewTypeTheme.fromJson,
   'linkPreviewTypeUnsupported': LinkPreviewTypeUnsupported.fromJson,
+  'linkPreviewTypeUpgradedGift': LinkPreviewTypeUpgradedGift.fromJson,
   'linkPreviewTypeUser': LinkPreviewTypeUser.fromJson,
   'linkPreviewTypeVideo': LinkPreviewTypeVideo.fromJson,
   'linkPreviewTypeVideoChat': LinkPreviewTypeVideoChat.fromJson,
@@ -2434,6 +2439,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'storyAreaTypeMessage': StoryAreaTypeMessage.fromJson,
   'storyAreaTypeLink': StoryAreaTypeLink.fromJson,
   'storyAreaTypeWeather': StoryAreaTypeWeather.fromJson,
+  'storyAreaTypeUpgradedGift': StoryAreaTypeUpgradedGift.fromJson,
   'storyArea': StoryArea.fromJson,
   'inputStoryAreaTypeLocation': InputStoryAreaTypeLocation.fromJson,
   'inputStoryAreaTypeFoundVenue': InputStoryAreaTypeFoundVenue.fromJson,
@@ -2443,6 +2449,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputStoryAreaTypeMessage': InputStoryAreaTypeMessage.fromJson,
   'inputStoryAreaTypeLink': InputStoryAreaTypeLink.fromJson,
   'inputStoryAreaTypeWeather': InputStoryAreaTypeWeather.fromJson,
+  'inputStoryAreaTypeUpgradedGift': InputStoryAreaTypeUpgradedGift.fromJson,
   'inputStoryArea': InputStoryArea.fromJson,
   'inputStoryAreas': InputStoryAreas.fromJson,
   'storyVideo': StoryVideo.fromJson,
@@ -3083,6 +3090,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeThemeSettings': InternalLinkTypeThemeSettings.fromJson,
   'internalLinkTypeUnknownDeepLink': InternalLinkTypeUnknownDeepLink.fromJson,
   'internalLinkTypeUnsupportedProxy': InternalLinkTypeUnsupportedProxy.fromJson,
+  'internalLinkTypeUpgradedGift': InternalLinkTypeUpgradedGift.fromJson,
   'internalLinkTypeUserPhoneNumber': InternalLinkTypeUserPhoneNumber.fromJson,
   'internalLinkTypeUserToken': InternalLinkTypeUserToken.fromJson,
   'internalLinkTypeVideoChat': InternalLinkTypeVideoChat.fromJson,
