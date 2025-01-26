@@ -8,6 +8,7 @@ final class UpgradeGiftResult extends TdObject {
   /// Contains result of gift upgrading
   const UpgradeGiftResult({
     required this.gift,
+    required this.receivedGiftId,
     required this.isSaved,
     required this.canBeTransferred,
     required this.transferStarCount,
@@ -19,16 +20,19 @@ final class UpgradeGiftResult extends TdObject {
   /// The upgraded gift
   final UpgradedGift gift;
 
-  /// True, if the gift is displayed on the user's profile page
+  /// Unique identifier of the received gift for the current user
+  final String receivedGiftId;
+
+  /// True, if the gift is displayed on the user's or the channel's profile page
   final bool isSaved;
 
-  /// True, if the gift can be transferred to another user
+  /// True, if the gift can be transferred to another owner
   final bool canBeTransferred;
 
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to TON blockchain as an NFT
+  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT
   final int exportDate;
 
   /// "@extra" of the request this object answers.
@@ -43,6 +47,7 @@ final class UpgradeGiftResult extends TdObject {
   factory UpgradeGiftResult.fromJson(Map<String, dynamic> json) =>
       UpgradeGiftResult(
         gift: _readObject(json['gift'], UpgradedGift.fromJson),
+        receivedGiftId: _readString(json['received_gift_id']),
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         transferStarCount: _readInt(json['transfer_star_count']),
@@ -55,6 +60,7 @@ final class UpgradeGiftResult extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
+        'received_gift_id': receivedGiftId,
         'is_saved': isSaved,
         'can_be_transferred': canBeTransferred,
         'transfer_star_count': transferStarCount,
@@ -65,6 +71,7 @@ final class UpgradeGiftResult extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradeGiftResult copyWith({
     UpgradedGift? gift,
+    String? receivedGiftId,
     bool? isSaved,
     bool? canBeTransferred,
     int? transferStarCount,
@@ -74,6 +81,7 @@ final class UpgradeGiftResult extends TdObject {
   }) =>
       UpgradeGiftResult(
         gift: gift ?? this.gift,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         isSaved: isSaved ?? this.isSaved,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         transferStarCount: transferStarCount ?? this.transferStarCount,

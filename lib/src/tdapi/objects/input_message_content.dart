@@ -612,6 +612,8 @@ final class InputMessageVideo extends InputMessageContent {
   const InputMessageVideo({
     required this.video,
     this.thumbnail,
+    this.cover,
+    required this.startTimestamp,
     required this.addedStickerFileIds,
     required this.duration,
     required this.width,
@@ -628,6 +630,12 @@ final class InputMessageVideo extends InputMessageContent {
 
   /// Video thumbnail; pass null to skip thumbnail uploading
   final InputThumbnail? thumbnail;
+
+  /// Cover of the video; pass null to skip cover uploading; not supported in secret chats and for self-destructing messages
+  final InputFile? cover;
+
+  /// Timestamp from which the video playing must start, in seconds
+  final int startTimestamp;
 
   /// File identifiers of the stickers added to the video, if applicable
   final List<int> addedStickerFileIds;
@@ -661,6 +669,8 @@ final class InputMessageVideo extends InputMessageContent {
       InputMessageVideo(
         video: _readObject(json['video'], InputFile.fromJson),
         thumbnail: _readOptional(json['thumbnail'], InputThumbnail.fromJson),
+        cover: _readOptional(json['cover'], InputFile.fromJson),
+        startTimestamp: _readInt(json['start_timestamp']),
         addedStickerFileIds:
             _readList<int>(json['added_sticker_file_ids'], _readInt),
         duration: _readInt(json['duration']),
@@ -679,6 +689,8 @@ final class InputMessageVideo extends InputMessageContent {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
         'thumbnail': thumbnail?.toJson(),
+        'cover': cover?.toJson(),
+        'start_timestamp': startTimestamp,
         'added_sticker_file_ids': addedStickerFileIds,
         'duration': duration,
         'width': width,
@@ -696,6 +708,8 @@ final class InputMessageVideo extends InputMessageContent {
   InputMessageVideo copyWith({
     InputFile? video,
     InputThumbnail? Function()? thumbnail,
+    InputFile? Function()? cover,
+    int? startTimestamp,
     List<int>? addedStickerFileIds,
     int? duration,
     int? width,
@@ -709,6 +723,8 @@ final class InputMessageVideo extends InputMessageContent {
       InputMessageVideo(
         video: video ?? this.video,
         thumbnail: thumbnail != null ? thumbnail() : this.thumbnail,
+        cover: cover != null ? cover() : this.cover,
+        startTimestamp: startTimestamp ?? this.startTimestamp,
         addedStickerFileIds: addedStickerFileIds ?? this.addedStickerFileIds,
         duration: duration ?? this.duration,
         width: width ?? this.width,
@@ -1393,6 +1409,8 @@ final class InputMessageForwarded extends InputMessageContent {
     required this.fromChatId,
     required this.messageId,
     required this.inGameShare,
+    required this.replaceVideoStartTimestamp,
+    required this.newVideoStartTimestamp,
     this.copyOptions,
   });
 
@@ -1402,8 +1420,14 @@ final class InputMessageForwarded extends InputMessageContent {
   /// Identifier of the message to forward. A message can be forwarded only if messageProperties.can_be_forwarded
   final int messageId;
 
-  /// True, if a game message is being shared from a launched game; applies only to game messages
+  /// Pass true if a game message is being shared from a launched game; applies only to game messages
   final bool inGameShare;
+
+  /// Pass true to replace video start timestamp in the forwarded message
+  final bool replaceVideoStartTimestamp;
+
+  /// The new video start timestamp; ignored if replace_video_start_timestamp == false
+  final int newVideoStartTimestamp;
 
   /// Options to be used to copy content of the message without reference to the original sender; pass null to forward the message as usual
   final MessageCopyOptions? copyOptions;
@@ -1414,6 +1438,9 @@ final class InputMessageForwarded extends InputMessageContent {
         fromChatId: _readInt(json['from_chat_id']),
         messageId: _readInt(json['message_id']),
         inGameShare: _readBool(json['in_game_share']),
+        replaceVideoStartTimestamp:
+            _readBool(json['replace_video_start_timestamp']),
+        newVideoStartTimestamp: _readInt(json['new_video_start_timestamp']),
         copyOptions:
             _readOptional(json['copy_options'], MessageCopyOptions.fromJson),
       );
@@ -1424,6 +1451,8 @@ final class InputMessageForwarded extends InputMessageContent {
         'from_chat_id': fromChatId,
         'message_id': messageId,
         'in_game_share': inGameShare,
+        'replace_video_start_timestamp': replaceVideoStartTimestamp,
+        'new_video_start_timestamp': newVideoStartTimestamp,
         'copy_options': copyOptions?.toJson(),
       };
 
@@ -1434,12 +1463,18 @@ final class InputMessageForwarded extends InputMessageContent {
     int? fromChatId,
     int? messageId,
     bool? inGameShare,
+    bool? replaceVideoStartTimestamp,
+    int? newVideoStartTimestamp,
     MessageCopyOptions? Function()? copyOptions,
   }) =>
       InputMessageForwarded(
         fromChatId: fromChatId ?? this.fromChatId,
         messageId: messageId ?? this.messageId,
         inGameShare: inGameShare ?? this.inGameShare,
+        replaceVideoStartTimestamp:
+            replaceVideoStartTimestamp ?? this.replaceVideoStartTimestamp,
+        newVideoStartTimestamp:
+            newVideoStartTimestamp ?? this.newVideoStartTimestamp,
         copyOptions: copyOptions != null ? copyOptions() : this.copyOptions,
       );
 

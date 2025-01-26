@@ -1,3 +1,6 @@
+## 1.8.44
+* Update tdlib to **1.8.44** (`28c6f2e9c`), objects +6/−2/~17, functions +5/−2/~10.
+
 ## 1.8.43
 * Update tdlib to **1.8.43** (`11406d9d6`), objects +4/−0/~1, functions +4/−0/~0.
 

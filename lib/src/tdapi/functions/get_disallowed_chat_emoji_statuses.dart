@@ -5,8 +5,9 @@ part of '../tdapi.dart';
 
 /// Returns the list of emoji statuses, which can't be used as chat emoji status, even they are from a sticker set with is_allowed_as_chat_emoji_status == true
 ///
-/// Returns [EmojiStatuses].
-final class GetDisallowedChatEmojiStatuses extends TdFunction<EmojiStatuses> {
+/// Returns [EmojiStatusCustomEmojis].
+final class GetDisallowedChatEmojiStatuses
+    extends TdFunction<EmojiStatusCustomEmojis> {
   /// Returns the list of emoji statuses, which can't be used as chat emoji status, even they are from a sticker set with is_allowed_as_chat_emoji_status == true
   const GetDisallowedChatEmojiStatuses();
 

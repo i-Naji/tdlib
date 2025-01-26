@@ -7,17 +7,17 @@ part of '../tdapi.dart';
 final class UpgradedGiftOriginalDetails extends TdObject {
   /// Describes the original details about the gift
   const UpgradedGiftOriginalDetails({
-    required this.senderUserId,
-    required this.receiverUserId,
+    this.senderId,
+    required this.receiverId,
     required this.text,
     required this.date,
   });
 
-  /// Identifier of the user that sent the gift; 0 if the gift was private
-  final int senderUserId;
+  /// Identifier of the user or the chat that sent the gift; may be null if the gift was private
+  final MessageSender? senderId;
 
-  /// Identifier of the user that received the gift
-  final int receiverUserId;
+  /// Identifier of the user or the chat that received the gift
+  final MessageSender receiverId;
 
   /// Message added to the gift
   final FormattedText text;
@@ -28,8 +28,8 @@ final class UpgradedGiftOriginalDetails extends TdObject {
   /// Parses a [UpgradedGiftOriginalDetails] from TDLib JSON.
   factory UpgradedGiftOriginalDetails.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftOriginalDetails(
-        senderUserId: _readInt(json['sender_user_id']),
-        receiverUserId: _readInt(json['receiver_user_id']),
+        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+        receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         text: _readObject(json['text'], FormattedText.fromJson),
         date: _readInt(json['date']),
       );
@@ -37,8 +37,8 @@ final class UpgradedGiftOriginalDetails extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'receiver_user_id': receiverUserId,
+        'sender_id': senderId?.toJson(),
+        'receiver_id': receiverId.toJson(),
         'text': text.toJson(),
         'date': date,
       };
@@ -46,14 +46,14 @@ final class UpgradedGiftOriginalDetails extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftOriginalDetails copyWith({
-    int? senderUserId,
-    int? receiverUserId,
+    MessageSender? Function()? senderId,
+    MessageSender? receiverId,
     FormattedText? text,
     int? date,
   }) =>
       UpgradedGiftOriginalDetails(
-        senderUserId: senderUserId ?? this.senderUserId,
-        receiverUserId: receiverUserId ?? this.receiverUserId,
+        senderId: senderId != null ? senderId() : this.senderId,
+        receiverId: receiverId ?? this.receiverId,
         text: text ?? this.text,
         date: date ?? this.date,
       );

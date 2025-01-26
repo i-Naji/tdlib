@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an upgraded gift that can be gifted to another user or transferred to TON blockchain as an NFT
+/// Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
 final class UpgradedGift extends TdObject {
-  /// Describes an upgraded gift that can be gifted to another user or transferred to TON blockchain as an NFT
+  /// Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
   const UpgradedGift({
     required this.id,
     required this.title,
@@ -13,7 +13,8 @@ final class UpgradedGift extends TdObject {
     required this.number,
     required this.totalUpgradedCount,
     required this.maxUpgradedCount,
-    required this.ownerUserId,
+    this.ownerId,
+    required this.ownerAddress,
     required this.ownerName,
     required this.model,
     required this.symbol,
@@ -41,10 +42,13 @@ final class UpgradedGift extends TdObject {
   /// The maximum number of gifts that can be upgraded from the same gift
   final int maxUpgradedCount;
 
-  /// User identifier of the user that owns the upgraded gift; 0 if none or unknown
-  final int ownerUserId;
+  /// Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown
+  final MessageSender? ownerId;
 
-  /// Name of the owner for the case when owner identifier isn't known
+  /// Address of the gift NFT owner in TON blockchain; may be empty if none
+  final String ownerAddress;
+
+  /// Name of the owner for the case when owner identifier and address aren't known
   final String ownerName;
 
   /// Model of the upgraded gift
@@ -75,7 +79,8 @@ final class UpgradedGift extends TdObject {
         number: _readInt(json['number']),
         totalUpgradedCount: _readInt(json['total_upgraded_count']),
         maxUpgradedCount: _readInt(json['max_upgraded_count']),
-        ownerUserId: _readInt(json['owner_user_id']),
+        ownerId: _readOptional(json['owner_id'], MessageSender.fromJson),
+        ownerAddress: _readString(json['owner_address']),
         ownerName: _readString(json['owner_name']),
         model: _readObject(json['model'], UpgradedGiftModel.fromJson),
         symbol: _readObject(json['symbol'], UpgradedGiftSymbol.fromJson),
@@ -95,7 +100,8 @@ final class UpgradedGift extends TdObject {
         'number': number,
         'total_upgraded_count': totalUpgradedCount,
         'max_upgraded_count': maxUpgradedCount,
-        'owner_user_id': ownerUserId,
+        'owner_id': ownerId?.toJson(),
+        'owner_address': ownerAddress,
         'owner_name': ownerName,
         'model': model.toJson(),
         'symbol': symbol.toJson(),
@@ -112,7 +118,8 @@ final class UpgradedGift extends TdObject {
     int? number,
     int? totalUpgradedCount,
     int? maxUpgradedCount,
-    int? ownerUserId,
+    MessageSender? Function()? ownerId,
+    String? ownerAddress,
     String? ownerName,
     UpgradedGiftModel? model,
     UpgradedGiftSymbol? symbol,
@@ -128,7 +135,8 @@ final class UpgradedGift extends TdObject {
         number: number ?? this.number,
         totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
         maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
-        ownerUserId: ownerUserId ?? this.ownerUserId,
+        ownerId: ownerId != null ? ownerId() : this.ownerId,
+        ownerAddress: ownerAddress ?? this.ownerAddress,
         ownerName: ownerName ?? this.ownerName,
         model: model ?? this.model,
         symbol: symbol ?? this.symbol,

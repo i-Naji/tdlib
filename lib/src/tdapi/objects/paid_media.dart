@@ -150,20 +150,32 @@ final class PaidMediaVideo extends PaidMedia {
   /// The media is a video
   const PaidMediaVideo({
     required this.video,
+    this.cover,
+    required this.startTimestamp,
   });
 
   /// The video
   final Video video;
 
+  /// Cover of the video; may be null if none
+  final Photo? cover;
+
+  /// Timestamp from which the video playing must start, in seconds
+  final int startTimestamp;
+
   /// Parses a [PaidMediaVideo] from TDLib JSON.
   factory PaidMediaVideo.fromJson(Map<String, dynamic> json) => PaidMediaVideo(
         video: _readObject(json['video'], Video.fromJson),
+        cover: _readOptional(json['cover'], Photo.fromJson),
+        startTimestamp: _readInt(json['start_timestamp']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
+        'cover': cover?.toJson(),
+        'start_timestamp': startTimestamp,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -171,9 +183,13 @@ final class PaidMediaVideo extends PaidMedia {
   @override
   PaidMediaVideo copyWith({
     Video? video,
+    Photo? Function()? cover,
+    int? startTimestamp,
   }) =>
       PaidMediaVideo(
         video: video ?? this.video,
+        cover: cover != null ? cover() : this.cover,
+        startTimestamp: startTimestamp ?? this.startTimestamp,
       );
 
   /// TDLib type name.

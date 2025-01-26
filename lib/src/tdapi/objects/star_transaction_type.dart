@@ -936,16 +936,16 @@ final class StarTransactionTypeChannelSubscriptionSale
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of a regular gift to another user; for regular users and bots only
+/// The transaction is a purchase of a regular gift; for regular users and bots only
 final class StarTransactionTypeGiftPurchase extends StarTransactionType {
-  /// The transaction is a purchase of a regular gift to another user; for regular users and bots only
+  /// The transaction is a purchase of a regular gift; for regular users and bots only
   const StarTransactionTypeGiftPurchase({
-    required this.userId,
+    required this.ownerId,
     required this.gift,
   });
 
-  /// Identifier of the user that received the gift
-  final int userId;
+  /// Identifier of the user or the channel that received the gift
+  final MessageSender ownerId;
 
   /// The gift
   final Gift gift;
@@ -953,14 +953,14 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
   /// Parses a [StarTransactionTypeGiftPurchase] from TDLib JSON.
   factory StarTransactionTypeGiftPurchase.fromJson(Map<String, dynamic> json) =>
       StarTransactionTypeGiftPurchase(
-        userId: _readInt(json['user_id']),
+        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
         gift: _readObject(json['gift'], Gift.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'user_id': userId,
+        'owner_id': ownerId.toJson(),
         'gift': gift.toJson(),
       };
 
@@ -968,11 +968,11 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StarTransactionTypeGiftPurchase copyWith({
-    int? userId,
+    MessageSender? ownerId,
     Gift? gift,
   }) =>
       StarTransactionTypeGiftPurchase(
-        userId: userId ?? this.userId,
+        ownerId: ownerId ?? this.ownerId,
         gift: gift ?? this.gift,
       );
 
@@ -983,16 +983,16 @@ final class StarTransactionTypeGiftPurchase extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a transfer of an upgraded gift to another user; for regular users only
+/// The transaction is a transfer of an upgraded gift; for regular users only
 final class StarTransactionTypeGiftTransfer extends StarTransactionType {
-  /// The transaction is a transfer of an upgraded gift to another user; for regular users only
+  /// The transaction is a transfer of an upgraded gift; for regular users only
   const StarTransactionTypeGiftTransfer({
-    required this.userId,
+    required this.ownerId,
     required this.gift,
   });
 
-  /// Identifier of the user that received the gift
-  final int userId;
+  /// Identifier of the user or the channel that received the gift
+  final MessageSender ownerId;
 
   /// The gift
   final UpgradedGift gift;
@@ -1000,14 +1000,14 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
   /// Parses a [StarTransactionTypeGiftTransfer] from TDLib JSON.
   factory StarTransactionTypeGiftTransfer.fromJson(Map<String, dynamic> json) =>
       StarTransactionTypeGiftTransfer(
-        userId: _readInt(json['user_id']),
+        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
         gift: _readObject(json['gift'], UpgradedGift.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'user_id': userId,
+        'owner_id': ownerId.toJson(),
         'gift': gift.toJson(),
       };
 
@@ -1015,11 +1015,11 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StarTransactionTypeGiftTransfer copyWith({
-    int? userId,
+    MessageSender? ownerId,
     UpgradedGift? gift,
   }) =>
       StarTransactionTypeGiftTransfer(
-        userId: userId ?? this.userId,
+        ownerId: ownerId ?? this.ownerId,
         gift: gift ?? this.gift,
       );
 
@@ -1030,9 +1030,9 @@ final class StarTransactionTypeGiftTransfer extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a sale of a gift received from another user or bot; for regular users only
+/// The transaction is a sale of a received gift; for regular users and channel chats only
 final class StarTransactionTypeGiftSale extends StarTransactionType {
-  /// The transaction is a sale of a gift received from another user or bot; for regular users only
+  /// The transaction is a sale of a received gift; for regular users and channel chats only
   const StarTransactionTypeGiftSale({
     required this.userId,
     required this.gift,

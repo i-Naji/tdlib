@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of custom emoji identifiers for emoji statuses
+/// Contains a list of emoji statuses
 final class EmojiStatuses extends TdObject {
-  /// Contains a list of custom emoji identifiers for emoji statuses
+  /// Contains a list of emoji statuses
   const EmojiStatuses({
-    required this.customEmojiIds,
+    required this.emojiStatuses,
     this.extra,
     this.clientId,
   });
 
-  /// The list of custom emoji identifiers
-  final List<int> customEmojiIds;
+  /// The list of emoji statuses identifiers
+  final List<EmojiStatus> emojiStatuses;
 
   /// "@extra" of the request this object answers.
   @override
@@ -25,7 +25,8 @@ final class EmojiStatuses extends TdObject {
 
   /// Parses a [EmojiStatuses] from TDLib JSON.
   factory EmojiStatuses.fromJson(Map<String, dynamic> json) => EmojiStatuses(
-        customEmojiIds: _readList<int>(json['custom_emoji_ids'], _readInt),
+        emojiStatuses: _readList<EmojiStatus>(json['emoji_statuses'],
+            (e) => _readObject(e, EmojiStatus.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -33,18 +34,18 @@ final class EmojiStatuses extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'custom_emoji_ids': [for (final e in customEmojiIds) e.toString()],
+        'emoji_statuses': [for (final e in emojiStatuses) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   EmojiStatuses copyWith({
-    List<int>? customEmojiIds,
+    List<EmojiStatus>? emojiStatuses,
     dynamic extra,
     int? clientId,
   }) =>
       EmojiStatuses(
-        customEmojiIds: customEmojiIds ?? this.customEmojiIds,
+        emojiStatuses: emojiStatuses ?? this.emojiStatuses,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

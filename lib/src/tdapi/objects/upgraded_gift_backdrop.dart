@@ -8,27 +8,15 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// Describes a backdrop of an upgraded gift
   const UpgradedGiftBackdrop({
     required this.name,
-    required this.centerColor,
-    required this.edgeColor,
-    required this.symbolColor,
-    required this.textColor,
+    required this.colors,
     required this.rarityPerMille,
   });
 
   /// Name of the backdrop
   final String name;
 
-  /// A color in the center of the backdrop in the RGB format
-  final int centerColor;
-
-  /// A color on the edges of the backdrop in the RGB format
-  final int edgeColor;
-
-  /// A color to be applied for the symbol in the RGB format
-  final int symbolColor;
-
-  /// A color for the text on the backdrop in the RGB format
-  final int textColor;
+  /// Colors of the backdrop
+  final UpgradedGiftBackdropColors colors;
 
   /// The number of upgraded gift that receive this backdrop for each 1000 gifts upgraded
   final int rarityPerMille;
@@ -37,10 +25,8 @@ final class UpgradedGiftBackdrop extends TdObject {
   factory UpgradedGiftBackdrop.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftBackdrop(
         name: _readString(json['name']),
-        centerColor: _readInt(json['center_color']),
-        edgeColor: _readInt(json['edge_color']),
-        symbolColor: _readInt(json['symbol_color']),
-        textColor: _readInt(json['text_color']),
+        colors:
+            _readObject(json['colors'], UpgradedGiftBackdropColors.fromJson),
         rarityPerMille: _readInt(json['rarity_per_mille']),
       );
 
@@ -48,10 +34,7 @@ final class UpgradedGiftBackdrop extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'name': name,
-        'center_color': centerColor,
-        'edge_color': edgeColor,
-        'symbol_color': symbolColor,
-        'text_color': textColor,
+        'colors': colors.toJson(),
         'rarity_per_mille': rarityPerMille,
       };
 
@@ -59,18 +42,12 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftBackdrop copyWith({
     String? name,
-    int? centerColor,
-    int? edgeColor,
-    int? symbolColor,
-    int? textColor,
+    UpgradedGiftBackdropColors? colors,
     int? rarityPerMille,
   }) =>
       UpgradedGiftBackdrop(
         name: name ?? this.name,
-        centerColor: centerColor ?? this.centerColor,
-        edgeColor: edgeColor ?? this.edgeColor,
-        symbolColor: symbolColor ?? this.symbolColor,
-        textColor: textColor ?? this.textColor,
+        colors: colors ?? this.colors,
         rarityPerMille: rarityPerMille ?? this.rarityPerMille,
       );
 

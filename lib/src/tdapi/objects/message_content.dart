@@ -452,6 +452,8 @@ final class MessageVideo extends MessageContent {
   const MessageVideo({
     required this.video,
     required this.alternativeVideos,
+    this.cover,
+    required this.startTimestamp,
     required this.caption,
     required this.showCaptionAboveMedia,
     required this.hasSpoiler,
@@ -463,6 +465,12 @@ final class MessageVideo extends MessageContent {
 
   /// Alternative qualities of the video
   final List<AlternativeVideo> alternativeVideos;
+
+  /// Cover of the video; may be null if none
+  final Photo? cover;
+
+  /// Timestamp from which the video playing must start, in seconds
+  final int startTimestamp;
 
   /// Video caption
   final FormattedText caption;
@@ -482,6 +490,8 @@ final class MessageVideo extends MessageContent {
         alternativeVideos: _readList<AlternativeVideo>(
             json['alternative_videos'],
             (e) => _readObject(e, AlternativeVideo.fromJson)),
+        cover: _readOptional(json['cover'], Photo.fromJson),
+        startTimestamp: _readInt(json['start_timestamp']),
         caption: _readObject(json['caption'], FormattedText.fromJson),
         showCaptionAboveMedia: _readBool(json['show_caption_above_media']),
         hasSpoiler: _readBool(json['has_spoiler']),
@@ -493,6 +503,8 @@ final class MessageVideo extends MessageContent {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
         'alternative_videos': [for (final e in alternativeVideos) e.toJson()],
+        'cover': cover?.toJson(),
+        'start_timestamp': startTimestamp,
         'caption': caption.toJson(),
         'show_caption_above_media': showCaptionAboveMedia,
         'has_spoiler': hasSpoiler,
@@ -505,6 +517,8 @@ final class MessageVideo extends MessageContent {
   MessageVideo copyWith({
     Video? video,
     List<AlternativeVideo>? alternativeVideos,
+    Photo? Function()? cover,
+    int? startTimestamp,
     FormattedText? caption,
     bool? showCaptionAboveMedia,
     bool? hasSpoiler,
@@ -513,6 +527,8 @@ final class MessageVideo extends MessageContent {
       MessageVideo(
         video: video ?? this.video,
         alternativeVideos: alternativeVideos ?? this.alternativeVideos,
+        cover: cover != null ? cover() : this.cover,
+        startTimestamp: startTimestamp ?? this.startTimestamp,
         caption: caption ?? this.caption,
         showCaptionAboveMedia:
             showCaptionAboveMedia ?? this.showCaptionAboveMedia,
@@ -3428,11 +3444,13 @@ final class MessageGiveawayPrizeStars extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A regular gift was received or sent by the current user
+/// A regular gift was received or sent by the current user, or the current user was notified about a channel gift
 final class MessageGift extends MessageContent {
-  /// A regular gift was received or sent by the current user
+  /// A regular gift was received or sent by the current user, or the current user was notified about a channel gift
   const MessageGift({
     required this.gift,
+    required this.senderId,
+    required this.receivedGiftId,
     required this.text,
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
@@ -3442,11 +3460,17 @@ final class MessageGift extends MessageContent {
     required this.wasConverted,
     required this.wasUpgraded,
     required this.wasRefunded,
-    required this.upgradeMessageId,
+    required this.upgradedReceivedGiftId,
   });
 
   /// The gift
   final Gift gift;
+
+  /// Sender of the gift
+  final MessageSender senderId;
+
+  /// Unique identifier of the received gift for the current user; only for the receiver of the gift
+  final String receivedGiftId;
 
   /// Message added to the gift
   final FormattedText text;
@@ -3460,7 +3484,7 @@ final class MessageGift extends MessageContent {
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
 
-  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
+  /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
   final bool isSaved;
 
   /// True, if the gift can be upgraded to a unique gift; only for the receiver of the gift
@@ -3475,12 +3499,14 @@ final class MessageGift extends MessageContent {
   /// True, if the gift was refunded and isn't available anymore
   final bool wasRefunded;
 
-  /// Identifier of the service message messageUpgradedGift or messageRefundedUpgradedGift with upgraded version of the gift; can be 0 if none or an identifier of a deleted message. Use getUserGift to get information about the gift
-  final int upgradeMessageId;
+  /// Identifier of the corresponding upgraded gift; may be empty if unknown. Use getReceivedGift to get information about the gift
+  final String upgradedReceivedGiftId;
 
   /// Parses a [MessageGift] from TDLib JSON.
   factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
         gift: _readObject(json['gift'], Gift.fromJson),
+        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        receivedGiftId: _readString(json['received_gift_id']),
         text: _readObject(json['text'], FormattedText.fromJson),
         sellStarCount: _readInt(json['sell_star_count']),
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
@@ -3490,13 +3516,15 @@ final class MessageGift extends MessageContent {
         wasConverted: _readBool(json['was_converted']),
         wasUpgraded: _readBool(json['was_upgraded']),
         wasRefunded: _readBool(json['was_refunded']),
-        upgradeMessageId: _readInt(json['upgrade_message_id']),
+        upgradedReceivedGiftId: _readString(json['upgraded_received_gift_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
+        'sender_id': senderId.toJson(),
+        'received_gift_id': receivedGiftId,
         'text': text.toJson(),
         'sell_star_count': sellStarCount,
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
@@ -3506,7 +3534,7 @@ final class MessageGift extends MessageContent {
         'was_converted': wasConverted,
         'was_upgraded': wasUpgraded,
         'was_refunded': wasRefunded,
-        'upgrade_message_id': upgradeMessageId,
+        'upgraded_received_gift_id': upgradedReceivedGiftId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3514,6 +3542,8 @@ final class MessageGift extends MessageContent {
   @override
   MessageGift copyWith({
     Gift? gift,
+    MessageSender? senderId,
+    String? receivedGiftId,
     FormattedText? text,
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
@@ -3523,10 +3553,12 @@ final class MessageGift extends MessageContent {
     bool? wasConverted,
     bool? wasUpgraded,
     bool? wasRefunded,
-    int? upgradeMessageId,
+    String? upgradedReceivedGiftId,
   }) =>
       MessageGift(
         gift: gift ?? this.gift,
+        senderId: senderId ?? this.senderId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         text: text ?? this.text,
         sellStarCount: sellStarCount ?? this.sellStarCount,
         prepaidUpgradeStarCount:
@@ -3537,7 +3569,8 @@ final class MessageGift extends MessageContent {
         wasConverted: wasConverted ?? this.wasConverted,
         wasUpgraded: wasUpgraded ?? this.wasUpgraded,
         wasRefunded: wasRefunded ?? this.wasRefunded,
-        upgradeMessageId: upgradeMessageId ?? this.upgradeMessageId,
+        upgradedReceivedGiftId:
+            upgradedReceivedGiftId ?? this.upgradedReceivedGiftId,
       );
 
   /// TDLib type name.
@@ -3547,11 +3580,13 @@ final class MessageGift extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// An upgraded gift was received or sent by the current user
+/// An upgraded gift was received or sent by the current user, or the current user was notified about a channel gift
 final class MessageUpgradedGift extends MessageContent {
-  /// An upgraded gift was received or sent by the current user
+  /// An upgraded gift was received or sent by the current user, or the current user was notified about a channel gift
   const MessageUpgradedGift({
     required this.gift,
+    this.senderId,
+    required this.receivedGiftId,
     required this.isUpgrade,
     required this.isSaved,
     required this.canBeTransferred,
@@ -3563,28 +3598,36 @@ final class MessageUpgradedGift extends MessageContent {
   /// The gift
   final UpgradedGift gift;
 
+  /// Sender of the gift; may be null for anonymous gifts
+  final MessageSender? senderId;
+
+  /// Unique identifier of the received gift for the current user; only for the receiver of the gift
+  final String receivedGiftId;
+
   /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred gift
   final bool isUpgrade;
 
-  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
+  /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
   final bool isSaved;
 
-  /// True, if the gift can be transferred to another user; only for the receiver of the gift
+  /// True, if the gift can be transferred to another owner; only for the receiver of the gift
   final bool canBeTransferred;
 
-  /// True, if the gift was transferred to another user; only for the receiver of the gift
+  /// True, if the gift was transferred to another owner; only for the receiver of the gift
   final bool wasTransferred;
 
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
   /// Parses a [MessageUpgradedGift] from TDLib JSON.
   factory MessageUpgradedGift.fromJson(Map<String, dynamic> json) =>
       MessageUpgradedGift(
         gift: _readObject(json['gift'], UpgradedGift.fromJson),
+        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+        receivedGiftId: _readString(json['received_gift_id']),
         isUpgrade: _readBool(json['is_upgrade']),
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
@@ -3597,6 +3640,8 @@ final class MessageUpgradedGift extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
+        'sender_id': senderId?.toJson(),
+        'received_gift_id': receivedGiftId,
         'is_upgrade': isUpgrade,
         'is_saved': isSaved,
         'can_be_transferred': canBeTransferred,
@@ -3610,6 +3655,8 @@ final class MessageUpgradedGift extends MessageContent {
   @override
   MessageUpgradedGift copyWith({
     UpgradedGift? gift,
+    MessageSender? Function()? senderId,
+    String? receivedGiftId,
     bool? isUpgrade,
     bool? isSaved,
     bool? canBeTransferred,
@@ -3619,6 +3666,8 @@ final class MessageUpgradedGift extends MessageContent {
   }) =>
       MessageUpgradedGift(
         gift: gift ?? this.gift,
+        senderId: senderId != null ? senderId() : this.senderId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         isUpgrade: isUpgrade ?? this.isUpgrade,
         isSaved: isSaved ?? this.isSaved,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
@@ -3639,11 +3688,15 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   /// A gift which purchase, upgrade or transfer were refunded
   const MessageRefundedUpgradedGift({
     required this.gift,
+    required this.senderId,
     required this.isUpgrade,
   });
 
   /// The gift
   final Gift gift;
+
+  /// Sender of the gift
+  final MessageSender senderId;
 
   /// True, if the gift was obtained by upgrading of a previously received gift
   final bool isUpgrade;
@@ -3652,6 +3705,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   factory MessageRefundedUpgradedGift.fromJson(Map<String, dynamic> json) =>
       MessageRefundedUpgradedGift(
         gift: _readObject(json['gift'], Gift.fromJson),
+        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
         isUpgrade: _readBool(json['is_upgrade']),
       );
 
@@ -3659,6 +3713,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
+        'sender_id': senderId.toJson(),
         'is_upgrade': isUpgrade,
       };
 
@@ -3667,10 +3722,12 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   @override
   MessageRefundedUpgradedGift copyWith({
     Gift? gift,
+    MessageSender? senderId,
     bool? isUpgrade,
   }) =>
       MessageRefundedUpgradedGift(
         gift: gift ?? this.gift,
+        senderId: senderId ?? this.senderId,
         isUpgrade: isUpgrade ?? this.isUpgrade,
       );
 

@@ -3,11 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Represents a gift received by a user
-final class UserGift extends TdObject {
-  /// Represents a gift received by a user
-  const UserGift({
-    required this.senderUserId,
+/// Represents a gift received by a user or a chat
+final class ReceivedGift extends TdObject {
+  /// Represents a gift received by a user or a chat
+  const ReceivedGift({
+    required this.receivedGiftId,
+    this.senderId,
     required this.text,
     required this.isPrivate,
     required this.isSaved,
@@ -16,7 +17,6 @@ final class UserGift extends TdObject {
     required this.wasRefunded,
     required this.date,
     required this.gift,
-    required this.messageId,
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
     required this.transferStarCount,
@@ -25,8 +25,11 @@ final class UserGift extends TdObject {
     this.clientId,
   });
 
-  /// Identifier of the user that sent the gift; 0 if unknown
-  final int senderUserId;
+  /// Unique identifier of the received gift for the current user; only for the receiver of the gift
+  final String receivedGiftId;
+
+  /// Identifier of a user or a chat that sent the gift; may be null if unknown
+  final MessageSender? senderId;
 
   /// Message added to the gift
   final FormattedText text;
@@ -34,13 +37,13 @@ final class UserGift extends TdObject {
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone are able to see them
   final bool isPrivate;
 
-  /// True, if the gift is displayed on the user's profile page; only for the receiver of the gift
+  /// True, if the gift is displayed on the chat's profile page; only for the receiver of the gift
   final bool isSaved;
 
   /// True, if the gift is a regular gift that can be upgraded to a unique gift; only for the receiver of the gift
   final bool canBeUpgraded;
 
-  /// True, if the gift is an upgraded gift that can be transferred to another user; only for the receiver of the gift
+  /// True, if the gift is an upgraded gift that can be transferred to another owner; only for the receiver of the gift
   final bool canBeTransferred;
 
   /// True, if the gift was refunded and isn't available anymore
@@ -52,9 +55,6 @@ final class UserGift extends TdObject {
   /// The gift
   final SentGift gift;
 
-  /// Identifier of the message with the gift in the chat with the sender of the gift; can be 0 or an identifier of a deleted message; only for the receiver of the gift
-  final int messageId;
-
   /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the current user
   final int sellStarCount;
 
@@ -64,7 +64,7 @@ final class UserGift extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the upgraded gift can be transferred to TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
   /// "@extra" of the request this object answers.
@@ -75,9 +75,10 @@ final class UserGift extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [UserGift] from TDLib JSON.
-  factory UserGift.fromJson(Map<String, dynamic> json) => UserGift(
-        senderUserId: _readInt(json['sender_user_id']),
+  /// Parses a [ReceivedGift] from TDLib JSON.
+  factory ReceivedGift.fromJson(Map<String, dynamic> json) => ReceivedGift(
+        receivedGiftId: _readString(json['received_gift_id']),
+        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
         text: _readObject(json['text'], FormattedText.fromJson),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
@@ -86,7 +87,6 @@ final class UserGift extends TdObject {
         wasRefunded: _readBool(json['was_refunded']),
         date: _readInt(json['date']),
         gift: _readObject(json['gift'], SentGift.fromJson),
-        messageId: _readInt(json['message_id']),
         sellStarCount: _readInt(json['sell_star_count']),
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         transferStarCount: _readInt(json['transfer_star_count']),
@@ -98,7 +98,8 @@ final class UserGift extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
+        'received_gift_id': receivedGiftId,
+        'sender_id': senderId?.toJson(),
         'text': text.toJson(),
         'is_private': isPrivate,
         'is_saved': isSaved,
@@ -107,7 +108,6 @@ final class UserGift extends TdObject {
         'was_refunded': wasRefunded,
         'date': date,
         'gift': gift.toJson(),
-        'message_id': messageId,
         'sell_star_count': sellStarCount,
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'transfer_star_count': transferStarCount,
@@ -116,8 +116,9 @@ final class UserGift extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  UserGift copyWith({
-    int? senderUserId,
+  ReceivedGift copyWith({
+    String? receivedGiftId,
+    MessageSender? Function()? senderId,
     FormattedText? text,
     bool? isPrivate,
     bool? isSaved,
@@ -126,7 +127,6 @@ final class UserGift extends TdObject {
     bool? wasRefunded,
     int? date,
     SentGift? gift,
-    int? messageId,
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
     int? transferStarCount,
@@ -134,8 +134,9 @@ final class UserGift extends TdObject {
     dynamic extra,
     int? clientId,
   }) =>
-      UserGift(
-        senderUserId: senderUserId ?? this.senderUserId,
+      ReceivedGift(
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+        senderId: senderId != null ? senderId() : this.senderId,
         text: text ?? this.text,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
@@ -144,7 +145,6 @@ final class UserGift extends TdObject {
         wasRefunded: wasRefunded ?? this.wasRefunded,
         date: date ?? this.date,
         gift: gift ?? this.gift,
-        messageId: messageId ?? this.messageId,
         sellStarCount: sellStarCount ?? this.sellStarCount,
         prepaidUpgradeStarCount:
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
@@ -155,7 +155,7 @@ final class UserGift extends TdObject {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'userGift';
+  static const String CONSTRUCTOR = 'receivedGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;

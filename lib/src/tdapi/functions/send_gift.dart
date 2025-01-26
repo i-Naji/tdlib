@@ -3,14 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Sends a gift to another user. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
+/// Sends a gift to another user or channel chat. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
 ///
 /// Returns [Ok].
 final class SendGift extends TdFunction<Ok> {
-  /// Sends a gift to another user. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
+  /// Sends a gift to another user or channel chat. May return an error with a message "STARGIFT_USAGE_LIMITED" if the gift was sold out
   const SendGift({
     required this.giftId,
-    required this.userId,
+    required this.ownerId,
     required this.text,
     required this.isPrivate,
     required this.payForUpgrade,
@@ -19,13 +19,13 @@ final class SendGift extends TdFunction<Ok> {
   /// Identifier of the gift to send
   final int giftId;
 
-  /// Identifier of the user that will receive the gift
-  final int userId;
+  /// Identifier of the user or the channel chat that will receive the gift
+  final MessageSender ownerId;
 
   /// Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
   final FormattedText text;
 
-  /// Pass true to show the current user as sender and gift text only to the gift receiver; otherwise, everyone will be able to see them
+  /// Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
 
   /// Pass true to additionally pay for the gift upgrade and allow the receiver to upgrade it for free
@@ -35,7 +35,7 @@ final class SendGift extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'gift_id': giftId.toString(),
-        'user_id': userId,
+        'owner_id': ownerId.toJson(),
         'text': text.toJson(),
         'is_private': isPrivate,
         'pay_for_upgrade': payForUpgrade,
@@ -46,14 +46,14 @@ final class SendGift extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendGift copyWith({
     int? giftId,
-    int? userId,
+    MessageSender? ownerId,
     FormattedText? text,
     bool? isPrivate,
     bool? payForUpgrade,
   }) =>
       SendGift(
         giftId: giftId ?? this.giftId,
-        userId: userId ?? this.userId,
+        ownerId: ownerId ?? this.ownerId,
         text: text ?? this.text,
         isPrivate: isPrivate ?? this.isPrivate,
         payForUpgrade: payForUpgrade ?? this.payForUpgrade,

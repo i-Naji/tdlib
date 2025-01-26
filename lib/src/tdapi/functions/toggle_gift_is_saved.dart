@@ -3,31 +3,26 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a gift is shown on the current user's profile page
+/// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the chat
 ///
 /// Returns [Ok].
 final class ToggleGiftIsSaved extends TdFunction<Ok> {
-  /// Toggles whether a gift is shown on the current user's profile page
+  /// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the chat
   const ToggleGiftIsSaved({
-    required this.senderUserId,
-    required this.messageId,
+    required this.receivedGiftId,
     required this.isSaved,
   });
 
-  /// Identifier of the user that sent the gift
-  final int senderUserId;
+  /// Identifier of the gift
+  final String receivedGiftId;
 
-  /// Identifier of the message with the gift in the chat with the user
-  final int messageId;
-
-  /// Pass true to display the gift on the user's profile page; pass false to remove it from the profile page
+  /// Pass true to display the gift on the user's or the channel's profile page; pass false to remove it from the profile page
   final bool isSaved;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'message_id': messageId,
+        'received_gift_id': receivedGiftId,
         'is_saved': isSaved,
         if (extra != null) '@extra': extra,
       };
@@ -35,13 +30,11 @@ final class ToggleGiftIsSaved extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleGiftIsSaved copyWith({
-    int? senderUserId,
-    int? messageId,
+    String? receivedGiftId,
     bool? isSaved,
   }) =>
       ToggleGiftIsSaved(
-        senderUserId: senderUserId ?? this.senderUserId,
-        messageId: messageId ?? this.messageId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         isSaved: isSaved ?? this.isSaved,
       );
 

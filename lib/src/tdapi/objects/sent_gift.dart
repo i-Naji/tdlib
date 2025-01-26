@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// Represents a gift received by a user
+/// Represents content of a gift received by a user or a channel chat
 ///
 /// One of: [SentGiftRegular], [SentGiftUpgraded]; or [UndecodedSentGift] for a type newer than this API.
 sealed class SentGift extends TdObject {

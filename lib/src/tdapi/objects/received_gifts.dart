@@ -3,12 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of gifts received by a user
-final class UserGifts extends TdObject {
-  /// Represents a list of gifts received by a user
-  const UserGifts({
+/// Represents a list of gifts received by a user or a chat
+final class ReceivedGifts extends TdObject {
+  /// Represents a list of gifts received by a user or a chat
+  const ReceivedGifts({
     required this.totalCount,
     required this.gifts,
+    required this.areNotificationsEnabled,
     required this.nextOffset,
     this.extra,
     this.clientId,
@@ -18,7 +19,10 @@ final class UserGifts extends TdObject {
   final int totalCount;
 
   /// The list of gifts
-  final List<UserGift> gifts;
+  final List<ReceivedGift> gifts;
+
+  /// True, if notifications about new gifts of the owner are enabled
+  final bool areNotificationsEnabled;
 
   /// The offset for the next request. If empty, then there are no more results
   final String nextOffset;
@@ -31,11 +35,12 @@ final class UserGifts extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [UserGifts] from TDLib JSON.
-  factory UserGifts.fromJson(Map<String, dynamic> json) => UserGifts(
+  /// Parses a [ReceivedGifts] from TDLib JSON.
+  factory ReceivedGifts.fromJson(Map<String, dynamic> json) => ReceivedGifts(
         totalCount: _readInt(json['total_count']),
-        gifts: _readList<UserGift>(
-            json['gifts'], (e) => _readObject(e, UserGift.fromJson)),
+        gifts: _readList<ReceivedGift>(
+            json['gifts'], (e) => _readObject(e, ReceivedGift.fromJson)),
+        areNotificationsEnabled: _readBool(json['are_notifications_enabled']),
         nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -46,28 +51,32 @@ final class UserGifts extends TdObject {
         '@type': CONSTRUCTOR,
         'total_count': totalCount,
         'gifts': [for (final e in gifts) e.toJson()],
+        'are_notifications_enabled': areNotificationsEnabled,
         'next_offset': nextOffset,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  UserGifts copyWith({
+  ReceivedGifts copyWith({
     int? totalCount,
-    List<UserGift>? gifts,
+    List<ReceivedGift>? gifts,
+    bool? areNotificationsEnabled,
     String? nextOffset,
     dynamic extra,
     int? clientId,
   }) =>
-      UserGifts(
+      ReceivedGifts(
         totalCount: totalCount ?? this.totalCount,
         gifts: gifts ?? this.gifts,
+        areNotificationsEnabled:
+            areNotificationsEnabled ?? this.areNotificationsEnabled,
         nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'userGifts';
+  static const String CONSTRUCTOR = 'receivedGifts';
 
   @override
   String getConstructor() => CONSTRUCTOR;

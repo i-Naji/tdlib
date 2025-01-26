@@ -80,7 +80,7 @@ final class UserFullInfo extends TdObject {
   /// Identifier of the personal chat of the user; 0 if none
   final int personalChatId;
 
-  /// Number of gifts saved to profile by the user
+  /// Number of saved to profile gifts for other users or the total number of received gifts for the current user
   final int giftCount;
 
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user

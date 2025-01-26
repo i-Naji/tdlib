@@ -3,39 +3,32 @@
 
 part of '../tdapi.dart';
 
-/// Sells a gift received by the current user for Telegram Stars
+/// Sells a gift for Telegram Stars
 ///
 /// Returns [Ok].
 final class SellGift extends TdFunction<Ok> {
-  /// Sells a gift received by the current user for Telegram Stars
+  /// Sells a gift for Telegram Stars
   const SellGift({
-    required this.senderUserId,
-    required this.messageId,
+    required this.receivedGiftId,
   });
 
-  /// Identifier of the user that sent the gift
-  final int senderUserId;
-
-  /// Identifier of the message with the gift in the chat with the user
-  final int messageId;
+  /// Identifier of the gift
+  final String receivedGiftId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'message_id': messageId,
+        'received_gift_id': receivedGiftId,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SellGift copyWith({
-    int? senderUserId,
-    int? messageId,
+    String? receivedGiftId,
   }) =>
       SellGift(
-        senderUserId: senderUserId ?? this.senderUserId,
-        messageId: messageId ?? this.messageId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
       );
 
   /// TDLib type name.

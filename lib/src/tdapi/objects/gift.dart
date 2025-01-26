@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a gift that can be sent to another user
+/// Describes a gift that can be sent to another user or channel chat
 final class Gift extends TdObject {
-  /// Describes a gift that can be sent to another user
+  /// Describes a gift that can be sent to another user or channel chat
   const Gift({
     required this.id,
     required this.sticker,
@@ -37,10 +37,10 @@ final class Gift extends TdObject {
   /// True, if the gift is a birthday gift
   final bool isForBirthday;
 
-  /// Number of remaining times the gift can be purchased by all users; 0 if not limited or the gift was sold out
+  /// Number of remaining times the gift can be purchased; 0 if not limited or the gift was sold out
   final int remainingCount;
 
-  /// Number of total times the gift can be purchased by all users; 0 if not limited
+  /// Number of total times the gift can be purchased; 0 if not limited
   final int totalCount;
 
   /// Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only

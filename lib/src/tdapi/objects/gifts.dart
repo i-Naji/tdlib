@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of gifts that can be sent to another user
+/// Contains a list of gifts that can be sent to another user or channel chat
 final class Gifts extends TdObject {
-  /// Contains a list of gifts that can be sent to another user
+  /// Contains a list of gifts that can be sent to another user or channel chat
   const Gifts({
     required this.gifts,
     this.extra,

@@ -5,8 +5,9 @@ part of '../tdapi.dart';
 
 /// Returns default emoji statuses for chats
 ///
-/// Returns [EmojiStatuses].
-final class GetDefaultChatEmojiStatuses extends TdFunction<EmojiStatuses> {
+/// Returns [EmojiStatusCustomEmojis].
+final class GetDefaultChatEmojiStatuses
+    extends TdFunction<EmojiStatusCustomEmojis> {
   /// Returns default emoji statuses for chats
   const GetDefaultChatEmojiStatuses();
 

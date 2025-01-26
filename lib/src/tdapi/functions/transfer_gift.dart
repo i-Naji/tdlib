@@ -3,36 +3,31 @@
 
 part of '../tdapi.dart';
 
-/// Sends a gift upgraded by the current user to another user
+/// Sends an upgraded gift to another user or a channel chat
 ///
 /// Returns [Ok].
 final class TransferGift extends TdFunction<Ok> {
-  /// Sends a gift upgraded by the current user to another user
+  /// Sends an upgraded gift to another user or a channel chat
   const TransferGift({
-    required this.senderUserId,
-    required this.messageId,
-    required this.receiverUserId,
+    required this.receivedGiftId,
+    required this.newOwnerId,
     required this.starCount,
   });
 
-  /// Identifier of the user that sent the gift
-  final int senderUserId;
+  /// Identifier of the gift
+  final String receivedGiftId;
 
-  /// Identifier of the message with the upgraded gift in the chat with the user
-  final int messageId;
+  /// Identifier of the user or the channel chat that will receive the gift
+  final MessageSender newOwnerId;
 
-  /// Identifier of the user that will receive the gift
-  final int receiverUserId;
-
-  /// The amount of Telegram Stars required for the transfer
+  /// The amount of Telegram Stars required to pay for the transfer
   final int starCount;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'message_id': messageId,
-        'receiver_user_id': receiverUserId,
+        'received_gift_id': receivedGiftId,
+        'new_owner_id': newOwnerId.toJson(),
         'star_count': starCount,
         if (extra != null) '@extra': extra,
       };
@@ -40,15 +35,13 @@ final class TransferGift extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   TransferGift copyWith({
-    int? senderUserId,
-    int? messageId,
-    int? receiverUserId,
+    String? receivedGiftId,
+    MessageSender? newOwnerId,
     int? starCount,
   }) =>
       TransferGift(
-        senderUserId: senderUserId ?? this.senderUserId,
-        messageId: messageId ?? this.messageId,
-        receiverUserId: receiverUserId ?? this.receiverUserId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
+        newOwnerId: newOwnerId ?? this.newOwnerId,
         starCount: starCount ?? this.starCount,
       );
 

@@ -3,46 +3,46 @@
 
 part of '../tdapi.dart';
 
-/// Upgrades a gift received by the current user. Unless the gift has prepaid_upgrade_star_count &gt; 0, the user must pay gift.upgrade_star_count Telegram Stars for the upgrade
+/// Upgrades a regular gift
 ///
 /// Returns [UpgradeGiftResult].
 final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
-  /// Upgrades a gift received by the current user. Unless the gift has prepaid_upgrade_star_count &gt; 0, the user must pay gift.upgrade_star_count Telegram Stars for the upgrade
+  /// Upgrades a regular gift
   const UpgradeGift({
-    required this.senderUserId,
-    required this.messageId,
+    required this.receivedGiftId,
     required this.keepOriginalDetails,
+    required this.starCount,
   });
 
-  /// Identifier of the user that sent the gift
-  final int senderUserId;
-
-  /// Identifier of the message with the gift in the chat with the user
-  final int messageId;
+  /// Identifier of the gift
+  final String receivedGiftId;
 
   /// Pass true to keep the original gift text, sender and receiver in the upgraded gift
   final bool keepOriginalDetails;
 
+  /// The amount of Telegram Stars required to pay for the upgrade. It the gift has prepaid_upgrade_star_count &gt; 0, then pass 0, otherwise, pass gift.upgrade_star_count
+  final int starCount;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'sender_user_id': senderUserId,
-        'message_id': messageId,
+        'received_gift_id': receivedGiftId,
         'keep_original_details': keepOriginalDetails,
+        'star_count': starCount,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradeGift copyWith({
-    int? senderUserId,
-    int? messageId,
+    String? receivedGiftId,
     bool? keepOriginalDetails,
+    int? starCount,
   }) =>
       UpgradeGift(
-        senderUserId: senderUserId ?? this.senderUserId,
-        messageId: messageId ?? this.messageId,
+        receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         keepOriginalDetails: keepOriginalDetails ?? this.keepOriginalDetails,
+        starCount: starCount ?? this.starCount,
       );
 
   /// TDLib type name.

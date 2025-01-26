@@ -74,9 +74,17 @@ final class InputPaidMediaTypePhoto extends InputPaidMediaType {
 final class InputPaidMediaTypeVideo extends InputPaidMediaType {
   /// The media is a video
   const InputPaidMediaTypeVideo({
+    this.cover,
+    required this.startTimestamp,
     required this.duration,
     required this.supportsStreaming,
   });
+
+  /// Cover of the video; pass null to skip cover uploading
+  final InputFile? cover;
+
+  /// Timestamp from which the video playing must start, in seconds
+  final int startTimestamp;
 
   /// Duration of the video, in seconds
   final int duration;
@@ -87,6 +95,8 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
   /// Parses a [InputPaidMediaTypeVideo] from TDLib JSON.
   factory InputPaidMediaTypeVideo.fromJson(Map<String, dynamic> json) =>
       InputPaidMediaTypeVideo(
+        cover: _readOptional(json['cover'], InputFile.fromJson),
+        startTimestamp: _readInt(json['start_timestamp']),
         duration: _readInt(json['duration']),
         supportsStreaming: _readBool(json['supports_streaming']),
       );
@@ -94,6 +104,8 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'cover': cover?.toJson(),
+        'start_timestamp': startTimestamp,
         'duration': duration,
         'supports_streaming': supportsStreaming,
       };
@@ -102,10 +114,14 @@ final class InputPaidMediaTypeVideo extends InputPaidMediaType {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputPaidMediaTypeVideo copyWith({
+    InputFile? Function()? cover,
+    int? startTimestamp,
     int? duration,
     bool? supportsStreaming,
   }) =>
       InputPaidMediaTypeVideo(
+        cover: cover != null ? cover() : this.cover,
+        startTimestamp: startTimestamp ?? this.startTimestamp,
         duration: duration ?? this.duration,
         supportsStreaming: supportsStreaming ?? this.supportsStreaming,
       );

@@ -387,6 +387,8 @@ part 'functions/get_proxies.dart';
 part 'functions/get_proxy_link.dart';
 part 'functions/get_push_receiver_id.dart';
 part 'functions/get_read_date_privacy_settings.dart';
+part 'functions/get_received_gift.dart';
+part 'functions/get_received_gifts.dart';
 part 'functions/get_recent_emoji_statuses.dart';
 part 'functions/get_recent_inline_bots.dart';
 part 'functions/get_recent_stickers.dart';
@@ -447,11 +449,11 @@ part 'functions/get_time_zones.dart';
 part 'functions/get_top_chats.dart';
 part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_upgraded_gift.dart';
+part 'functions/get_upgraded_gift_emoji_statuses.dart';
+part 'functions/get_upgraded_gift_withdrawal_url.dart';
 part 'functions/get_user.dart';
 part 'functions/get_user_chat_boosts.dart';
 part 'functions/get_user_full_info.dart';
-part 'functions/get_user_gift.dart';
-part 'functions/get_user_gifts.dart';
 part 'functions/get_user_link.dart';
 part 'functions/get_user_privacy_setting_rules.dart';
 part 'functions/get_user_profile_photos.dart';
@@ -771,6 +773,7 @@ part 'functions/toggle_bot_username_is_active.dart';
 part 'functions/toggle_business_connected_bot_chat_is_paused.dart';
 part 'functions/toggle_chat_default_disable_notification.dart';
 part 'functions/toggle_chat_folder_tags.dart';
+part 'functions/toggle_chat_gift_notifications.dart';
 part 'functions/toggle_chat_has_protected_content.dart';
 part 'functions/toggle_chat_is_marked_as_unread.dart';
 part 'functions/toggle_chat_is_pinned.dart';
@@ -1014,6 +1017,8 @@ part 'objects/emoji_keyword.dart';
 part 'objects/emoji_keywords.dart';
 part 'objects/emoji_reaction.dart';
 part 'objects/emoji_status.dart';
+part 'objects/emoji_status_custom_emojis.dart';
+part 'objects/emoji_status_type.dart';
 part 'objects/emoji_statuses.dart';
 part 'objects/emojis.dart';
 part 'objects/encrypted_credentials.dart';
@@ -1250,6 +1255,8 @@ part 'objects/reaction_notification_source.dart';
 part 'objects/reaction_type.dart';
 part 'objects/reaction_unavailability_reason.dart';
 part 'objects/read_date_privacy_settings.dart';
+part 'objects/received_gift.dart';
+part 'objects/received_gifts.dart';
 part 'objects/recommended_chat_folder.dart';
 part 'objects/recommended_chat_folders.dart';
 part 'objects/recovery_email_address.dart';
@@ -1378,13 +1385,12 @@ part 'objects/updates.dart';
 part 'objects/upgrade_gift_result.dart';
 part 'objects/upgraded_gift.dart';
 part 'objects/upgraded_gift_backdrop.dart';
+part 'objects/upgraded_gift_backdrop_colors.dart';
 part 'objects/upgraded_gift_model.dart';
 part 'objects/upgraded_gift_original_details.dart';
 part 'objects/upgraded_gift_symbol.dart';
 part 'objects/user.dart';
 part 'objects/user_full_info.dart';
-part 'objects/user_gift.dart';
-part 'objects/user_gifts.dart';
 part 'objects/user_link.dart';
 part 'objects/user_privacy_setting.dart';
 part 'objects/user_privacy_setting_rule.dart';
@@ -1409,14 +1415,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.43';
+const String tdlibVersion = '1.8.44';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '11406d9d6f3baa999b77fbd09f36c67749c31699';
+const String tdlibSchemaCommit = '28c6f2e9c045372d50217919bf5768b7fbbe0294';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '11406d9d6f3baa999b77fbd09f36c67749c31699',
+  '28c6f2e9c045372d50217919bf5768b7fbbe0294',
 ];
 
 /// Base class of every TDLib object.
@@ -1665,6 +1671,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starGiveawayPaymentOptions': StarGiveawayPaymentOptions.fromJson,
   'upgradedGiftModel': UpgradedGiftModel.fromJson,
   'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
+  'upgradedGiftBackdropColors': UpgradedGiftBackdropColors.fromJson,
   'upgradedGiftBackdrop': UpgradedGiftBackdrop.fromJson,
   'upgradedGiftOriginalDetails': UpgradedGiftOriginalDetails.fromJson,
   'gift': Gift.fromJson,
@@ -1673,8 +1680,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradeGiftResult': UpgradeGiftResult.fromJson,
   'sentGiftRegular': SentGiftRegular.fromJson,
   'sentGiftUpgraded': SentGiftUpgraded.fromJson,
-  'userGift': UserGift.fromJson,
-  'userGifts': UserGifts.fromJson,
+  'receivedGift': ReceivedGift.fromJson,
+  'receivedGifts': ReceivedGifts.fromJson,
   'giftUpgradePreview': GiftUpgradePreview.fromJson,
   'starTransactionDirectionIncoming': StarTransactionDirectionIncoming.fromJson,
   'starTransactionDirectionOutgoing': StarTransactionDirectionOutgoing.fromJson,
@@ -1745,8 +1752,11 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'accentColor': AccentColor.fromJson,
   'profileAccentColors': ProfileAccentColors.fromJson,
   'profileAccentColor': ProfileAccentColor.fromJson,
+  'emojiStatusTypeCustomEmoji': EmojiStatusTypeCustomEmoji.fromJson,
+  'emojiStatusTypeUpgradedGift': EmojiStatusTypeUpgradedGift.fromJson,
   'emojiStatus': EmojiStatus.fromJson,
   'emojiStatuses': EmojiStatuses.fromJson,
+  'emojiStatusCustomEmojis': EmojiStatusCustomEmojis.fromJson,
   'usernames': Usernames.fromJson,
   'user': User.fromJson,
   'botInfo': BotInfo.fromJson,

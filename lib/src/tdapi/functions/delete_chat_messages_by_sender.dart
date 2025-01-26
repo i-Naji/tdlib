@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator privileges
+/// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator right
 ///
 /// Returns [Ok].
 final class DeleteChatMessagesBySender extends TdFunction<Ok> {
-  /// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator privileges
+  /// Deletes all messages sent by the specified message sender in a chat. Supported only for supergroups; requires can_delete_messages administrator right
   const DeleteChatMessagesBySender({
     required this.chatId,
     required this.senderId,

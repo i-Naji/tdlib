@@ -25,12 +25,14 @@ final class SupergroupFullInfo extends TdObject {
     required this.canGetStatistics,
     required this.canGetRevenueStatistics,
     required this.canGetStarRevenueStatistics,
+    required this.canSendGift,
     required this.canToggleAggressiveAntiSpam,
     required this.isAllHistoryAvailable,
     required this.canHaveSponsoredMessages,
     required this.hasAggressiveAntiSpamEnabled,
     required this.hasPaidMediaAllowed,
     required this.hasPinnedStories,
+    required this.giftCount,
     required this.myBoostCount,
     required this.unrestrictBoostCount,
     required this.stickerSetId,
@@ -99,6 +101,9 @@ final class SupergroupFullInfo extends TdObject {
   /// True, if the supergroup or channel Telegram Star revenue statistics are available
   final bool canGetStarRevenueStatistics;
 
+  /// True, if the user can send a gift to the supergroup or channel using sendGift or transferGift
+  final bool canSendGift;
+
   /// True, if aggressive anti-spam checks can be enabled or disabled in the supergroup
   final bool canToggleAggressiveAntiSpam;
 
@@ -116,6 +121,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// True, if the supergroup or channel has pinned stories
   final bool hasPinnedStories;
+
+  /// Number of saved to profile gifts for channels without can_post_messages administrator right, otherwise, the total number of received gifts
+  final int giftCount;
 
   /// Number of times the current user boosted the supergroup or channel
   final int myBoostCount;
@@ -177,6 +185,7 @@ final class SupergroupFullInfo extends TdObject {
         canGetRevenueStatistics: _readBool(json['can_get_revenue_statistics']),
         canGetStarRevenueStatistics:
             _readBool(json['can_get_star_revenue_statistics']),
+        canSendGift: _readBool(json['can_send_gift']),
         canToggleAggressiveAntiSpam:
             _readBool(json['can_toggle_aggressive_anti_spam']),
         isAllHistoryAvailable: _readBool(json['is_all_history_available']),
@@ -186,6 +195,7 @@ final class SupergroupFullInfo extends TdObject {
             _readBool(json['has_aggressive_anti_spam_enabled']),
         hasPaidMediaAllowed: _readBool(json['has_paid_media_allowed']),
         hasPinnedStories: _readBool(json['has_pinned_stories']),
+        giftCount: _readInt(json['gift_count']),
         myBoostCount: _readInt(json['my_boost_count']),
         unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
         stickerSetId: _readInt(json['sticker_set_id']),
@@ -225,12 +235,14 @@ final class SupergroupFullInfo extends TdObject {
         'can_get_statistics': canGetStatistics,
         'can_get_revenue_statistics': canGetRevenueStatistics,
         'can_get_star_revenue_statistics': canGetStarRevenueStatistics,
+        'can_send_gift': canSendGift,
         'can_toggle_aggressive_anti_spam': canToggleAggressiveAntiSpam,
         'is_all_history_available': isAllHistoryAvailable,
         'can_have_sponsored_messages': canHaveSponsoredMessages,
         'has_aggressive_anti_spam_enabled': hasAggressiveAntiSpamEnabled,
         'has_paid_media_allowed': hasPaidMediaAllowed,
         'has_pinned_stories': hasPinnedStories,
+        'gift_count': giftCount,
         'my_boost_count': myBoostCount,
         'unrestrict_boost_count': unrestrictBoostCount,
         'sticker_set_id': stickerSetId.toString(),
@@ -264,12 +276,14 @@ final class SupergroupFullInfo extends TdObject {
     bool? canGetStatistics,
     bool? canGetRevenueStatistics,
     bool? canGetStarRevenueStatistics,
+    bool? canSendGift,
     bool? canToggleAggressiveAntiSpam,
     bool? isAllHistoryAvailable,
     bool? canHaveSponsoredMessages,
     bool? hasAggressiveAntiSpamEnabled,
     bool? hasPaidMediaAllowed,
     bool? hasPinnedStories,
+    int? giftCount,
     int? myBoostCount,
     int? unrestrictBoostCount,
     int? stickerSetId,
@@ -306,6 +320,7 @@ final class SupergroupFullInfo extends TdObject {
             canGetRevenueStatistics ?? this.canGetRevenueStatistics,
         canGetStarRevenueStatistics:
             canGetStarRevenueStatistics ?? this.canGetStarRevenueStatistics,
+        canSendGift: canSendGift ?? this.canSendGift,
         canToggleAggressiveAntiSpam:
             canToggleAggressiveAntiSpam ?? this.canToggleAggressiveAntiSpam,
         isAllHistoryAvailable:
@@ -316,6 +331,7 @@ final class SupergroupFullInfo extends TdObject {
             hasAggressiveAntiSpamEnabled ?? this.hasAggressiveAntiSpamEnabled,
         hasPaidMediaAllowed: hasPaidMediaAllowed ?? this.hasPaidMediaAllowed,
         hasPinnedStories: hasPinnedStories ?? this.hasPinnedStories,
+        giftCount: giftCount ?? this.giftCount,
         myBoostCount: myBoostCount ?? this.myBoostCount,
         unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
         stickerSetId: stickerSetId ?? this.stickerSetId,
