@@ -20,7 +20,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// Identifier of the chat in which the Web App is opened. The Web App can't be opened in secret chats
   final int chatId;
 
-  /// Identifier of the bot, providing the Web App
+  /// Identifier of the bot, providing the Web App. If the bot is restricted for the current user, then show an error instead of calling the method
   final int botUserId;
 
   /// The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise

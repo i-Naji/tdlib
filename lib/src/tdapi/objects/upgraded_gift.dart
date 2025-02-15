@@ -16,6 +16,7 @@ final class UpgradedGift extends TdObject {
     this.ownerId,
     required this.ownerAddress,
     required this.ownerName,
+    required this.giftAddress,
     required this.model,
     required this.symbol,
     required this.backdrop,
@@ -51,6 +52,9 @@ final class UpgradedGift extends TdObject {
   /// Name of the owner for the case when owner identifier and address aren't known
   final String ownerName;
 
+  /// Address of the gift NFT in TON blockchain; may be empty if none
+  final String giftAddress;
+
   /// Model of the upgraded gift
   final UpgradedGiftModel model;
 
@@ -82,6 +86,7 @@ final class UpgradedGift extends TdObject {
         ownerId: _readOptional(json['owner_id'], MessageSender.fromJson),
         ownerAddress: _readString(json['owner_address']),
         ownerName: _readString(json['owner_name']),
+        giftAddress: _readString(json['gift_address']),
         model: _readObject(json['model'], UpgradedGiftModel.fromJson),
         symbol: _readObject(json['symbol'], UpgradedGiftSymbol.fromJson),
         backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
@@ -103,6 +108,7 @@ final class UpgradedGift extends TdObject {
         'owner_id': ownerId?.toJson(),
         'owner_address': ownerAddress,
         'owner_name': ownerName,
+        'gift_address': giftAddress,
         'model': model.toJson(),
         'symbol': symbol.toJson(),
         'backdrop': backdrop.toJson(),
@@ -121,6 +127,7 @@ final class UpgradedGift extends TdObject {
     MessageSender? Function()? ownerId,
     String? ownerAddress,
     String? ownerName,
+    String? giftAddress,
     UpgradedGiftModel? model,
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
@@ -138,6 +145,7 @@ final class UpgradedGift extends TdObject {
         ownerId: ownerId != null ? ownerId() : this.ownerId,
         ownerAddress: ownerAddress ?? this.ownerAddress,
         ownerName: ownerName ?? this.ownerName,
+        giftAddress: giftAddress ?? this.giftAddress,
         model: model ?? this.model,
         symbol: symbol ?? this.symbol,
         backdrop: backdrop ?? this.backdrop,

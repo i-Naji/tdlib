@@ -18,7 +18,7 @@ final class GetMainWebApp extends TdFunction<MainWebApp> {
   /// Identifier of the chat in which the Web App is opened; pass 0 if none
   final int chatId;
 
-  /// Identifier of the target bot
+  /// Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method
   final int botUserId;
 
   /// Start parameter from internalLinkTypeMainWebApp

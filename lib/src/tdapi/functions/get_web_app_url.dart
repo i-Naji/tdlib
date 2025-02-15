@@ -14,7 +14,7 @@ final class GetWebAppUrl extends TdFunction<HttpUrl> {
     required this.parameters,
   });
 
-  /// Identifier of the target bot
+  /// Identifier of the target bot. If the bot is restricted for the current user, then show an error instead of calling the method
   final int botUserId;
 
   /// The URL from a keyboardButtonTypeWebApp button, inlineQueryResultsButtonTypeWebApp button, or an empty string when the bot is opened from the side menu

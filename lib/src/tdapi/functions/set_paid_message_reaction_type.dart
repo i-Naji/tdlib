@@ -3,15 +3,15 @@
 
 part of '../tdapi.dart';
 
-/// Changes whether the paid message reaction of the user to a message is anonymous. The message must have paid reaction added by the user
+/// Changes type of paid message reaction of the current user on a message. The message must have paid reaction added by the current user
 ///
 /// Returns [Ok].
-final class TogglePaidMessageReactionIsAnonymous extends TdFunction<Ok> {
-  /// Changes whether the paid message reaction of the user to a message is anonymous. The message must have paid reaction added by the user
-  const TogglePaidMessageReactionIsAnonymous({
+final class SetPaidMessageReactionType extends TdFunction<Ok> {
+  /// Changes type of paid message reaction of the current user on a message. The message must have paid reaction added by the current user
+  const SetPaidMessageReactionType({
     required this.chatId,
     required this.messageId,
-    required this.isAnonymous,
+    required this.type,
   });
 
   /// Identifier of the chat to which the message belongs
@@ -20,33 +20,33 @@ final class TogglePaidMessageReactionIsAnonymous extends TdFunction<Ok> {
   /// Identifier of the message
   final int messageId;
 
-  /// Pass true to make paid reaction of the user on the message anonymous; pass false to make the user's profile visible among top reactors
-  final bool isAnonymous;
+  /// New type of the paid reaction
+  final PaidReactionType type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'message_id': messageId,
-        'is_anonymous': isAnonymous,
+        'type': type.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  TogglePaidMessageReactionIsAnonymous copyWith({
+  SetPaidMessageReactionType copyWith({
     int? chatId,
     int? messageId,
-    bool? isAnonymous,
+    PaidReactionType? type,
   }) =>
-      TogglePaidMessageReactionIsAnonymous(
+      SetPaidMessageReactionType(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
+        type: type ?? this.type,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'togglePaidMessageReactionIsAnonymous';
+  static const String CONSTRUCTOR = 'setPaidMessageReactionType';
 
   @override
   String getConstructor() => CONSTRUCTOR;

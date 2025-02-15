@@ -226,6 +226,7 @@ part 'functions/get_chat_active_stories.dart';
 part 'functions/get_chat_administrators.dart';
 part 'functions/get_chat_archived_stories.dart';
 part 'functions/get_chat_available_message_senders.dart';
+part 'functions/get_chat_available_paid_message_reaction_senders.dart';
 part 'functions/get_chat_boost_features.dart';
 part 'functions/get_chat_boost_level_features.dart';
 part 'functions/get_chat_boost_link.dart';
@@ -706,6 +707,7 @@ part 'functions/set_name.dart';
 part 'functions/set_network_type.dart';
 part 'functions/set_new_chat_privacy_settings.dart';
 part 'functions/set_option.dart';
+part 'functions/set_paid_message_reaction_type.dart';
 part 'functions/set_passport_element.dart';
 part 'functions/set_passport_element_errors.dart';
 part 'functions/set_password.dart';
@@ -792,7 +794,6 @@ part 'functions/toggle_group_call_participant_is_hand_raised.dart';
 part 'functions/toggle_group_call_participant_is_muted.dart';
 part 'functions/toggle_group_call_screen_sharing_is_paused.dart';
 part 'functions/toggle_has_sponsored_messages_enabled.dart';
-part 'functions/toggle_paid_message_reaction_is_anonymous.dart';
 part 'functions/toggle_saved_messages_topic_is_pinned.dart';
 part 'functions/toggle_session_can_accept_calls.dart';
 part 'functions/toggle_session_can_accept_secret_chats.dart';
@@ -1190,6 +1191,7 @@ part 'objects/page_block_related_article.dart';
 part 'objects/page_block_table_cell.dart';
 part 'objects/page_block_vertical_alignment.dart';
 part 'objects/paid_media.dart';
+part 'objects/paid_reaction_type.dart';
 part 'objects/paid_reactor.dart';
 part 'objects/passport_authorization_form.dart';
 part 'objects/passport_element.dart';
@@ -1415,14 +1417,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.44';
+const String tdlibVersion = '1.8.45';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '28c6f2e9c045372d50217919bf5768b7fbbe0294';
+const String tdlibSchemaCommit = '8e29c4d7d21db3ab2c7a88c384626e95ef789f61';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '28c6f2e9c045372d50217919bf5768b7fbbe0294',
+  '8e29c4d7d21db3ab2c7a88c384626e95ef789f61',
 ];
 
 /// Base class of every TDLib object.
@@ -1834,6 +1836,9 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'reactionTypeEmoji': ReactionTypeEmoji.fromJson,
   'reactionTypeCustomEmoji': ReactionTypeCustomEmoji.fromJson,
   'reactionTypePaid': ReactionTypePaid.fromJson,
+  'paidReactionTypeRegular': PaidReactionTypeRegular.fromJson,
+  'paidReactionTypeAnonymous': PaidReactionTypeAnonymous.fromJson,
+  'paidReactionTypeChat': PaidReactionTypeChat.fromJson,
   'paidReactor': PaidReactor.fromJson,
   'messageForwardInfo': MessageForwardInfo.fromJson,
   'messageImportInfo': MessageImportInfo.fromJson,
@@ -3344,6 +3349,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateFileRemovedFromDownloads': UpdateFileRemovedFromDownloads.fromJson,
   'updateApplicationVerificationRequired':
       UpdateApplicationVerificationRequired.fromJson,
+  'updateApplicationRecaptchaVerificationRequired':
+      UpdateApplicationRecaptchaVerificationRequired.fromJson,
   'updateCall': UpdateCall.fromJson,
   'updateGroupCall': UpdateGroupCall.fromJson,
   'updateGroupCallParticipant': UpdateGroupCallParticipant.fromJson,
@@ -3379,6 +3386,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateActiveEmojiReactions': UpdateActiveEmojiReactions.fromJson,
   'updateAvailableMessageEffects': UpdateAvailableMessageEffects.fromJson,
   'updateDefaultReactionType': UpdateDefaultReactionType.fromJson,
+  'updateDefaultPaidReactionType': UpdateDefaultPaidReactionType.fromJson,
   'updateSavedMessagesTags': UpdateSavedMessagesTags.fromJson,
   'updateActiveLiveLocationMessages': UpdateActiveLiveLocationMessages.fromJson,
   'updateOwnedStarCount': UpdateOwnedStarCount.fromJson,

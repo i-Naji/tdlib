@@ -26,19 +26,19 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   /// Pass true to exclude gifts that aren't saved to the chat's profile page. Always true for gifts received by other users and channel chats without can_post_messages administrator right
   final bool excludeUnsaved;
 
-  /// Pass true to exclude gifts that are saved to the chat's profile page; for channel chats with can_post_messages administrator right only
+  /// Pass true to exclude gifts that are saved to the chat's profile page. Always false for gifts received by other users and channel chats without can_post_messages administrator right
   final bool excludeSaved;
 
-  /// Pass true to exclude gifts that can be purchased unlimited number of times; for channel chats with can_post_messages administrator right only
+  /// Pass true to exclude gifts that can be purchased unlimited number of times
   final bool excludeUnlimited;
 
-  /// Pass true to exclude gifts that can be purchased limited number of times; for channel chats with can_post_messages administrator right only
+  /// Pass true to exclude gifts that can be purchased limited number of times
   final bool excludeLimited;
 
-  /// Pass true to exclude upgraded gifts; for channel chats with can_post_messages administrator right only
+  /// Pass true to exclude upgraded gifts
   final bool excludeUpgraded;
 
-  /// Pass true to sort results by gift price instead of send date; for channel chats with can_post_messages administrator right only
+  /// Pass true to sort results by gift price instead of send date
   final bool sortByPrice;
 
   /// Offset of the first entry to return as received from the previous request; use empty string to get the first chunk of results

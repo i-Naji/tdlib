@@ -3,20 +3,20 @@
 
 part of '../tdapi.dart';
 
-/// Application verification has been completed. Can be called before authorization
+/// Application or reCAPTCHA verification has been completed. Can be called before authorization
 ///
 /// Returns [Ok].
 final class SetApplicationVerificationToken extends TdFunction<Ok> {
-  /// Application verification has been completed. Can be called before authorization
+  /// Application or reCAPTCHA verification has been completed. Can be called before authorization
   const SetApplicationVerificationToken({
     required this.verificationId,
     required this.token,
   });
 
-  /// Unique identifier for the verification process as received from updateApplicationVerificationRequired
+  /// Unique identifier for the verification process as received from updateApplicationVerificationRequired or updateApplicationRecaptchaVerificationRequired
   final int verificationId;
 
-  /// Play Integrity API token for the Android application, or secret from push notification for the iOS application; pass an empty string to abort verification and receive error VERIFICATION_FAILED for the request
+  /// Play Integrity API token for the Android application, or secret from push notification for the iOS application for application verification, or reCAPTCHA token for reCAPTCHA verifications; pass an empty string to abort verification and receive error VERIFICATION_FAILED for the request
   final String token;
 
   @override

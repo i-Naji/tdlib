@@ -12,8 +12,7 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
     required this.chatId,
     required this.messageId,
     required this.starCount,
-    required this.useDefaultIsAnonymous,
-    required this.isAnonymous,
+    this.type,
   });
 
   /// Identifier of the chat to which the message belongs
@@ -25,11 +24,8 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
   /// Number of Telegram Stars to be used for the reaction. The total number of pending paid reactions must not exceed getOption("paid_reaction_star_count_max")
   final int starCount;
 
-  /// Pass true if the user didn't choose anonymity explicitly, for example, the reaction is set from the message bubble
-  final bool useDefaultIsAnonymous;
-
-  /// Pass true to make paid reaction of the user on the message anonymous; pass false to make the user's profile visible among top reactors. Ignored if use_default_is_anonymous == true
-  final bool isAnonymous;
+  /// Type of the paid reaction; pass null if the user didn't choose reaction type explicitly, for example, the reaction is set from the message bubble
+  final PaidReactionType? type;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -37,8 +33,7 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
         'chat_id': chatId,
         'message_id': messageId,
         'star_count': starCount,
-        'use_default_is_anonymous': useDefaultIsAnonymous,
-        'is_anonymous': isAnonymous,
+        'type': type?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -48,16 +43,13 @@ final class AddPendingPaidMessageReaction extends TdFunction<Ok> {
     int? chatId,
     int? messageId,
     int? starCount,
-    bool? useDefaultIsAnonymous,
-    bool? isAnonymous,
+    PaidReactionType? Function()? type,
   }) =>
       AddPendingPaidMessageReaction(
         chatId: chatId ?? this.chatId,
         messageId: messageId ?? this.messageId,
         starCount: starCount ?? this.starCount,
-        useDefaultIsAnonymous:
-            useDefaultIsAnonymous ?? this.useDefaultIsAnonymous,
-        isAnonymous: isAnonymous ?? this.isAnonymous,
+        type: type != null ? type() : this.type,
       );
 
   /// TDLib type name.

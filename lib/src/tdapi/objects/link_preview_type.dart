@@ -1246,21 +1246,33 @@ final class LinkPreviewTypeVideo extends LinkPreviewType {
   /// The link is a link to a video
   const LinkPreviewTypeVideo({
     required this.video,
+    this.cover,
+    required this.startTimestamp,
   });
 
   /// The video description
   final Video video;
 
+  /// Cover of the video; may be null if none
+  final Photo? cover;
+
+  /// Timestamp from which the video playing must start, in seconds
+  final int startTimestamp;
+
   /// Parses a [LinkPreviewTypeVideo] from TDLib JSON.
   factory LinkPreviewTypeVideo.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeVideo(
         video: _readObject(json['video'], Video.fromJson),
+        cover: _readOptional(json['cover'], Photo.fromJson),
+        startTimestamp: _readInt(json['start_timestamp']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
+        'cover': cover?.toJson(),
+        'start_timestamp': startTimestamp,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1268,9 +1280,13 @@ final class LinkPreviewTypeVideo extends LinkPreviewType {
   @override
   LinkPreviewTypeVideo copyWith({
     Video? video,
+    Photo? Function()? cover,
+    int? startTimestamp,
   }) =>
       LinkPreviewTypeVideo(
         video: video ?? this.video,
+        cover: cover != null ? cover() : this.cover,
+        startTimestamp: startTimestamp ?? this.startTimestamp,
       );
 
   /// TDLib type name.
