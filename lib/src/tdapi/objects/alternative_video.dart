@@ -7,12 +7,16 @@ part of '../tdapi.dart';
 final class AlternativeVideo extends TdObject {
   /// Describes an alternative re-encoded quality of a video file
   const AlternativeVideo({
+    required this.id,
     required this.width,
     required this.height,
     required this.codec,
     required this.hlsFile,
     required this.video,
   });
+
+  /// Unique identifier of the alternative video, which is used in the HLS file
+  final int id;
 
   /// Video width
   final int width;
@@ -32,6 +36,7 @@ final class AlternativeVideo extends TdObject {
   /// Parses a [AlternativeVideo] from TDLib JSON.
   factory AlternativeVideo.fromJson(Map<String, dynamic> json) =>
       AlternativeVideo(
+        id: _readInt(json['id']),
         width: _readInt(json['width']),
         height: _readInt(json['height']),
         codec: _readString(json['codec']),
@@ -42,6 +47,7 @@ final class AlternativeVideo extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'id': id.toString(),
         'width': width,
         'height': height,
         'codec': codec,
@@ -52,6 +58,7 @@ final class AlternativeVideo extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AlternativeVideo copyWith({
+    int? id,
     int? width,
     int? height,
     String? codec,
@@ -59,6 +66,7 @@ final class AlternativeVideo extends TdObject {
     File? video,
   }) =>
       AlternativeVideo(
+        id: id ?? this.id,
         width: width ?? this.width,
         height: height ?? this.height,
         codec: codec ?? this.codec,

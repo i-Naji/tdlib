@@ -29,6 +29,7 @@ final class User extends TdObject {
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
     required this.restrictsNewChats,
+    required this.paidMessageStarCount,
     required this.haveAccess,
     required this.type,
     required this.languageCode,
@@ -103,6 +104,9 @@ final class User extends TdObject {
   /// True, if the user may restrict new chats with non-contacts. Use canSendMessageToUser to check whether the current user can message the user or try to create a chat with them
   final bool restrictsNewChats;
 
+  /// Number of Telegram Stars that must be paid by general user for each sent message to the user. If positive and userFullInfo is unknown, use canSendMessageToUser to check whether the current user must pay
+  final int paidMessageStarCount;
+
   /// If false, the user is inaccessible, and the only information known about the user is inside this class. Identifier of the user can't be passed to any method
   final bool haveAccess;
 
@@ -150,6 +154,7 @@ final class User extends TdObject {
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         restrictsNewChats: _readBool(json['restricts_new_chats']),
+        paidMessageStarCount: _readInt(json['paid_message_star_count']),
         haveAccess: _readBool(json['have_access']),
         type: _readObject(json['type'], UserType.fromJson),
         languageCode: _readString(json['language_code']),
@@ -184,6 +189,7 @@ final class User extends TdObject {
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
         'restricts_new_chats': restrictsNewChats,
+        'paid_message_star_count': paidMessageStarCount,
         'have_access': haveAccess,
         'type': type.toJson(),
         'language_code': languageCode,
@@ -215,6 +221,7 @@ final class User extends TdObject {
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
     bool? restrictsNewChats,
+    int? paidMessageStarCount,
     bool? haveAccess,
     UserType? type,
     String? languageCode,
@@ -250,6 +257,7 @@ final class User extends TdObject {
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,
         restrictsNewChats: restrictsNewChats ?? this.restrictsNewChats,
+        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
         haveAccess: haveAccess ?? this.haveAccess,
         type: type ?? this.type,
         languageCode: languageCode ?? this.languageCode,

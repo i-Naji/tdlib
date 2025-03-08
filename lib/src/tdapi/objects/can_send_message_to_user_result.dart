@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes result of canSendMessageToUser
 ///
-/// One of: [CanSendMessageToUserResultOk], [CanSendMessageToUserResultUserIsDeleted], [CanSendMessageToUserResultUserRestrictsNewChats]; or [UndecodedCanSendMessageToUserResult] for a type newer than this API.
+/// One of: [CanSendMessageToUserResultOk], [CanSendMessageToUserResultUserHasPaidMessages], [CanSendMessageToUserResultUserIsDeleted], [CanSendMessageToUserResultUserRestrictsNewChats]; or [UndecodedCanSendMessageToUserResult] for a type newer than this API.
 sealed class CanSendMessageToUserResult extends TdObject {
   const CanSendMessageToUserResult();
 
@@ -87,6 +87,66 @@ final class CanSendMessageToUserResultOk extends CanSendMessageToUserResult {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'canSendMessageToUserResultOk';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user can be messaged, but the messages are paid
+final class CanSendMessageToUserResultUserHasPaidMessages
+    extends CanSendMessageToUserResult {
+  /// The user can be messaged, but the messages are paid
+  const CanSendMessageToUserResultUserHasPaidMessages({
+    required this.outgoingPaidMessageStarCount,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Number of Telegram Stars that must be paid by the current user for each sent message to the user
+  final int outgoingPaidMessageStarCount;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [CanSendMessageToUserResultUserHasPaidMessages] from TDLib JSON.
+  factory CanSendMessageToUserResultUserHasPaidMessages.fromJson(
+          Map<String, dynamic> json) =>
+      CanSendMessageToUserResultUserHasPaidMessages(
+        outgoingPaidMessageStarCount:
+            _readInt(json['outgoing_paid_message_star_count']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  CanSendMessageToUserResultUserHasPaidMessages copyWith({
+    int? outgoingPaidMessageStarCount,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      CanSendMessageToUserResultUserHasPaidMessages(
+        outgoingPaidMessageStarCount:
+            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'canSendMessageToUserResultUserHasPaidMessages';
 
   @override
   String getConstructor() => CONSTRUCTOR;

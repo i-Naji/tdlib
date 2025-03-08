@@ -16,6 +16,7 @@ final class JoinGroupCall extends TdFunction<Text> {
     required this.isMuted,
     required this.isMyVideoEnabled,
     required this.inviteHash,
+    required this.keyFingerprint,
   });
 
   /// Group call identifier
@@ -39,6 +40,9 @@ final class JoinGroupCall extends TdFunction<Text> {
   /// If non-empty, invite hash to be used to join the group call without being muted by administrators
   final String inviteHash;
 
+  /// Fingerprint of the encryption key for E2E group calls not bound to a chat; pass 0 for voice chats
+  final int keyFingerprint;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
@@ -49,6 +53,7 @@ final class JoinGroupCall extends TdFunction<Text> {
         'is_muted': isMuted,
         'is_my_video_enabled': isMyVideoEnabled,
         'invite_hash': inviteHash,
+        'key_fingerprint': keyFingerprint.toString(),
         if (extra != null) '@extra': extra,
       };
 
@@ -62,6 +67,7 @@ final class JoinGroupCall extends TdFunction<Text> {
     bool? isMuted,
     bool? isMyVideoEnabled,
     String? inviteHash,
+    int? keyFingerprint,
   }) =>
       JoinGroupCall(
         groupCallId: groupCallId ?? this.groupCallId,
@@ -72,6 +78,7 @@ final class JoinGroupCall extends TdFunction<Text> {
         isMuted: isMuted ?? this.isMuted,
         isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
         inviteHash: inviteHash ?? this.inviteHash,
+        keyFingerprint: keyFingerprint ?? this.keyFingerprint,
       );
 
   /// TDLib type name.

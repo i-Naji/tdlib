@@ -24,7 +24,7 @@ final class CreateCall extends TdFunction<CallId> {
   /// Pass true to create a video call
   final bool isVideo;
 
-  /// Identifier of the group call to which the user will be added after exchanging private key via the call; pass 0 if none; currently, ignored
+  /// Identifier of the group call to which the user will be added after exchanging private key via the call; pass 0 if none
   final int groupCallId;
 
   @override

@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of options for creating Telegram Star giveaway
+/// Contains a list of options for creating of Telegram Star giveaway
 final class StarGiveawayPaymentOptions extends TdObject {
-  /// Contains a list of options for creating Telegram Star giveaway
+  /// Contains a list of options for creating of Telegram Star giveaway
   const StarGiveawayPaymentOptions({
     required this.options,
     this.extra,

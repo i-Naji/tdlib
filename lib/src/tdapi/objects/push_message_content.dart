@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentProximityAlertTriggered], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -928,8 +928,12 @@ final class PushMessageContentSticker extends PushMessageContent {
 final class PushMessageContentStory extends PushMessageContent {
   /// A message with a story
   const PushMessageContentStory({
+    required this.isMention,
     required this.isPinned,
   });
+
+  /// True, if the user was mentioned in the story
+  final bool isMention;
 
   /// True, if the message is a pinned message with the specified content
   final bool isPinned;
@@ -937,12 +941,14 @@ final class PushMessageContentStory extends PushMessageContent {
   /// Parses a [PushMessageContentStory] from TDLib JSON.
   factory PushMessageContentStory.fromJson(Map<String, dynamic> json) =>
       PushMessageContentStory(
+        isMention: _readBool(json['is_mention']),
         isPinned: _readBool(json['is_pinned']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'is_mention': isMention,
         'is_pinned': isPinned,
       };
 
@@ -950,9 +956,11 @@ final class PushMessageContentStory extends PushMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentStory copyWith({
+    bool? isMention,
     bool? isPinned,
   }) =>
       PushMessageContentStory(
+        isMention: isMention ?? this.isMention,
         isPinned: isPinned ?? this.isPinned,
       );
 
@@ -1190,6 +1198,104 @@ final class PushMessageContentBasicGroupChatCreate extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentBasicGroupChatCreate';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A video chat or live stream was started
+final class PushMessageContentVideoChatStarted extends PushMessageContent {
+  /// A video chat or live stream was started
+  const PushMessageContentVideoChatStarted();
+
+  /// Parses a [PushMessageContentVideoChatStarted] from TDLib JSON.
+  factory PushMessageContentVideoChatStarted.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentVideoChatStarted();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentVideoChatStarted copyWith() =>
+      const PushMessageContentVideoChatStarted();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentVideoChatStarted';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A video chat or live stream has ended
+final class PushMessageContentVideoChatEnded extends PushMessageContent {
+  /// A video chat or live stream has ended
+  const PushMessageContentVideoChatEnded();
+
+  /// Parses a [PushMessageContentVideoChatEnded] from TDLib JSON.
+  factory PushMessageContentVideoChatEnded.fromJson(
+          Map<String, dynamic> json) =>
+      const PushMessageContentVideoChatEnded();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentVideoChatEnded copyWith() =>
+      const PushMessageContentVideoChatEnded();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentVideoChatEnded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// An invitation of participants to a video chat or live stream
+final class PushMessageContentInviteVideoChatParticipants
+    extends PushMessageContent {
+  /// An invitation of participants to a video chat or live stream
+  const PushMessageContentInviteVideoChatParticipants({
+    required this.isCurrentUser,
+  });
+
+  /// True, if the current user was invited to the video chat or the live stream
+  final bool isCurrentUser;
+
+  /// Parses a [PushMessageContentInviteVideoChatParticipants] from TDLib JSON.
+  factory PushMessageContentInviteVideoChatParticipants.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentInviteVideoChatParticipants(
+        isCurrentUser: _readBool(json['is_current_user']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'is_current_user': isCurrentUser,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentInviteVideoChatParticipants copyWith({
+    bool? isCurrentUser,
+  }) =>
+      PushMessageContentInviteVideoChatParticipants(
+        isCurrentUser: isCurrentUser ?? this.isCurrentUser,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'pushMessageContentInviteVideoChatParticipants';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -1573,6 +1679,47 @@ final class PushMessageContentSuggestProfilePhoto extends PushMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentSuggestProfilePhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A user in the chat came within proximity alert range from the current user
+final class PushMessageContentProximityAlertTriggered
+    extends PushMessageContent {
+  /// A user in the chat came within proximity alert range from the current user
+  const PushMessageContentProximityAlertTriggered({
+    required this.distance,
+  });
+
+  /// The distance to the user
+  final int distance;
+
+  /// Parses a [PushMessageContentProximityAlertTriggered] from TDLib JSON.
+  factory PushMessageContentProximityAlertTriggered.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentProximityAlertTriggered(
+        distance: _readInt(json['distance']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'distance': distance,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentProximityAlertTriggered copyWith({
+    int? distance,
+  }) =>
+      PushMessageContentProximityAlertTriggered(
+        distance: distance ?? this.distance,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentProximityAlertTriggered';
 
   @override
   String getConstructor() => CONSTRUCTOR;

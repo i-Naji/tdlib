@@ -22,7 +22,7 @@ final class SendGift extends TdFunction<Ok> {
   /// Identifier of the user or the channel chat that will receive the gift
   final MessageSender ownerId;
 
-  /// Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  /// Text to show along with the gift; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed. Must be empty if the receiver enabled paid messages
   final FormattedText text;
 
   /// Pass true to show gift text and sender only to the gift receiver; otherwise, everyone will be able to see them

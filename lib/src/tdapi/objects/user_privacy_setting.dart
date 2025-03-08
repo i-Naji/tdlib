@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes available user privacy settings
 ///
-/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages], [UserPrivacySettingAutosaveGifts]; or [UndecodedUserPrivacySetting] for a type newer than this API.
+/// One of: [UserPrivacySettingShowStatus], [UserPrivacySettingShowProfilePhoto], [UserPrivacySettingShowLinkInForwardedMessages], [UserPrivacySettingShowPhoneNumber], [UserPrivacySettingShowBio], [UserPrivacySettingShowBirthdate], [UserPrivacySettingAllowChatInvites], [UserPrivacySettingAllowCalls], [UserPrivacySettingAllowPeerToPeerCalls], [UserPrivacySettingAllowFindingByPhoneNumber], [UserPrivacySettingAllowPrivateVoiceAndVideoNoteMessages], [UserPrivacySettingAutosaveGifts], [UserPrivacySettingAllowUnpaidMessages]; or [UndecodedUserPrivacySetting] for a type newer than this API.
 sealed class UserPrivacySetting extends TdObject {
   const UserPrivacySetting();
 
@@ -375,6 +375,34 @@ final class UserPrivacySettingAutosaveGifts extends UserPrivacySetting {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'userPrivacySettingAutosaveGifts';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A privacy setting for managing whether the user can receive messages without additional payment
+final class UserPrivacySettingAllowUnpaidMessages extends UserPrivacySetting {
+  /// A privacy setting for managing whether the user can receive messages without additional payment
+  const UserPrivacySettingAllowUnpaidMessages();
+
+  /// Parses a [UserPrivacySettingAllowUnpaidMessages] from TDLib JSON.
+  factory UserPrivacySettingAllowUnpaidMessages.fromJson(
+          Map<String, dynamic> json) =>
+      const UserPrivacySettingAllowUnpaidMessages();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UserPrivacySettingAllowUnpaidMessages copyWith() =>
+      const UserPrivacySettingAllowUnpaidMessages();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'userPrivacySettingAllowUnpaidMessages';
 
   @override
   String getConstructor() => CONSTRUCTOR;

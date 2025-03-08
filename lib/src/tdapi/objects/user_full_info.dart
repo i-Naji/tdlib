@@ -25,6 +25,8 @@ final class UserFullInfo extends TdObject {
     required this.personalChatId,
     required this.giftCount,
     required this.groupInCommonCount,
+    required this.incomingPaidMessageStarCount,
+    required this.outgoingPaidMessageStarCount,
     this.botVerification,
     this.businessInfo,
     this.botInfo,
@@ -86,6 +88,12 @@ final class UserFullInfo extends TdObject {
   /// Number of group chats where both the other user and the current user are a member; 0 for the current user
   final int groupInCommonCount;
 
+  /// Number of Telegram Stars that must be paid by the user for each sent message to the current user
+  final int incomingPaidMessageStarCount;
+
+  /// Number of Telegram Stars that must be paid by the current user for each sent message to the user
+  final int outgoingPaidMessageStarCount;
+
   /// Information about verification status of the user provided by a bot; may be null if none or unknown
   final BotVerification? botVerification;
 
@@ -128,6 +136,10 @@ final class UserFullInfo extends TdObject {
         personalChatId: _readInt(json['personal_chat_id']),
         giftCount: _readInt(json['gift_count']),
         groupInCommonCount: _readInt(json['group_in_common_count']),
+        incomingPaidMessageStarCount:
+            _readInt(json['incoming_paid_message_star_count']),
+        outgoingPaidMessageStarCount:
+            _readInt(json['outgoing_paid_message_star_count']),
         botVerification:
             _readOptional(json['bot_verification'], BotVerification.fromJson),
         businessInfo:
@@ -159,6 +171,8 @@ final class UserFullInfo extends TdObject {
         'personal_chat_id': personalChatId,
         'gift_count': giftCount,
         'group_in_common_count': groupInCommonCount,
+        'incoming_paid_message_star_count': incomingPaidMessageStarCount,
+        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
         'bot_verification': botVerification?.toJson(),
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
@@ -185,6 +199,8 @@ final class UserFullInfo extends TdObject {
     int? personalChatId,
     int? giftCount,
     int? groupInCommonCount,
+    int? incomingPaidMessageStarCount,
+    int? outgoingPaidMessageStarCount,
     BotVerification? Function()? botVerification,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
@@ -216,6 +232,10 @@ final class UserFullInfo extends TdObject {
         personalChatId: personalChatId ?? this.personalChatId,
         giftCount: giftCount ?? this.giftCount,
         groupInCommonCount: groupInCommonCount ?? this.groupInCommonCount,
+        incomingPaidMessageStarCount:
+            incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
+        outgoingPaidMessageStarCount:
+            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
         botVerification:
             botVerification != null ? botVerification() : this.botVerification,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Suggests a profile photo to another regular user with common messages
+/// Suggests a profile photo to another regular user with common messages and allowing non-paid messages
 ///
 /// Returns [Ok].
 final class SuggestUserProfilePhoto extends TdFunction<Ok> {
-  /// Suggests a profile photo to another regular user with common messages
+  /// Suggests a profile photo to another regular user with common messages and allowing non-paid messages
   const SuggestUserProfilePhoto({
     required this.userId,
     required this.photo,

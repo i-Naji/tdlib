@@ -12,6 +12,7 @@ final class ReceivedGift extends TdObject {
     required this.text,
     required this.isPrivate,
     required this.isSaved,
+    required this.isPinned,
     required this.canBeUpgraded,
     required this.canBeTransferred,
     required this.wasRefunded,
@@ -39,6 +40,9 @@ final class ReceivedGift extends TdObject {
 
   /// True, if the gift is displayed on the chat's profile page; only for the receiver of the gift
   final bool isSaved;
+
+  /// True, if the gift is pinned to the top of the chat's profile page
+  final bool isPinned;
 
   /// True, if the gift is a regular gift that can be upgraded to a unique gift; only for the receiver of the gift
   final bool canBeUpgraded;
@@ -82,6 +86,7 @@ final class ReceivedGift extends TdObject {
         text: _readObject(json['text'], FormattedText.fromJson),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
+        isPinned: _readBool(json['is_pinned']),
         canBeUpgraded: _readBool(json['can_be_upgraded']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasRefunded: _readBool(json['was_refunded']),
@@ -103,6 +108,7 @@ final class ReceivedGift extends TdObject {
         'text': text.toJson(),
         'is_private': isPrivate,
         'is_saved': isSaved,
+        'is_pinned': isPinned,
         'can_be_upgraded': canBeUpgraded,
         'can_be_transferred': canBeTransferred,
         'was_refunded': wasRefunded,
@@ -122,6 +128,7 @@ final class ReceivedGift extends TdObject {
     FormattedText? text,
     bool? isPrivate,
     bool? isSaved,
+    bool? isPinned,
     bool? canBeUpgraded,
     bool? canBeTransferred,
     bool? wasRefunded,
@@ -140,6 +147,7 @@ final class ReceivedGift extends TdObject {
         text: text ?? this.text,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
+        isPinned: isPinned ?? this.isPinned,
         canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         wasRefunded: wasRefunded ?? this.wasRefunded,

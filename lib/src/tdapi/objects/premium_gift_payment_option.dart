@@ -3,54 +3,49 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
-final class PremiumGiftCodePaymentOption extends TdObject {
-  /// Describes an option for creating Telegram Premium gift codes or Telegram Premium giveaway. Use telegramPaymentPurposePremiumGiftCodes or telegramPaymentPurposePremiumGiveaway for out-of-store payments
-  const PremiumGiftCodePaymentOption({
+/// Describes an option for gifting Telegram Premium to a user. Use telegramPaymentPurposePremiumGift for out-of-store payments or payments in Telegram Stars
+final class PremiumGiftPaymentOption extends TdObject {
+  /// Describes an option for gifting Telegram Premium to a user. Use telegramPaymentPurposePremiumGift for out-of-store payments or payments in Telegram Stars
+  const PremiumGiftPaymentOption({
     required this.currency,
     required this.amount,
+    required this.starCount,
     required this.discountPercentage,
-    required this.winnerCount,
     required this.monthCount,
     required this.storeProductId,
-    required this.storeProductQuantity,
     this.sticker,
   });
 
-  /// ISO 4217 currency code for Telegram Premium gift code payment
+  /// ISO 4217 currency code for the payment
   final String currency;
 
   /// The amount to pay, in the smallest units of the currency
   final int amount;
 
+  /// The alternative amount of Telegram Stars to pay; 0 if payment in Telegram Stars is not possible
+  final int starCount;
+
   /// The discount associated with this option, as a percentage
   final int discountPercentage;
-
-  /// Number of users which will be able to activate the gift codes
-  final int winnerCount;
 
   /// Number of months the Telegram Premium subscription will be active
   final int monthCount;
 
-  /// Identifier of the store product associated with the option; may be empty if none
+  /// Identifier of the store product associated with the option
   final String storeProductId;
 
-  /// Number of times the store product must be paid
-  final int storeProductQuantity;
-
-  /// A sticker to be shown along with the gift code; may be null if unknown
+  /// A sticker to be shown along with the option; may be null if unknown
   final Sticker? sticker;
 
-  /// Parses a [PremiumGiftCodePaymentOption] from TDLib JSON.
-  factory PremiumGiftCodePaymentOption.fromJson(Map<String, dynamic> json) =>
-      PremiumGiftCodePaymentOption(
+  /// Parses a [PremiumGiftPaymentOption] from TDLib JSON.
+  factory PremiumGiftPaymentOption.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftPaymentOption(
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
+        starCount: _readInt(json['star_count']),
         discountPercentage: _readInt(json['discount_percentage']),
-        winnerCount: _readInt(json['winner_count']),
         monthCount: _readInt(json['month_count']),
         storeProductId: _readString(json['store_product_id']),
-        storeProductQuantity: _readInt(json['store_product_quantity']),
         sticker: _readOptional(json['sticker'], Sticker.fromJson),
       );
 
@@ -59,39 +54,36 @@ final class PremiumGiftCodePaymentOption extends TdObject {
         '@type': CONSTRUCTOR,
         'currency': currency,
         'amount': amount,
+        'star_count': starCount,
         'discount_percentage': discountPercentage,
-        'winner_count': winnerCount,
         'month_count': monthCount,
         'store_product_id': storeProductId,
-        'store_product_quantity': storeProductQuantity,
         'sticker': sticker?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PremiumGiftCodePaymentOption copyWith({
+  PremiumGiftPaymentOption copyWith({
     String? currency,
     int? amount,
+    int? starCount,
     int? discountPercentage,
-    int? winnerCount,
     int? monthCount,
     String? storeProductId,
-    int? storeProductQuantity,
     Sticker? Function()? sticker,
   }) =>
-      PremiumGiftCodePaymentOption(
+      PremiumGiftPaymentOption(
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
+        starCount: starCount ?? this.starCount,
         discountPercentage: discountPercentage ?? this.discountPercentage,
-        winnerCount: winnerCount ?? this.winnerCount,
         monthCount: monthCount ?? this.monthCount,
         storeProductId: storeProductId ?? this.storeProductId,
-        storeProductQuantity: storeProductQuantity ?? this.storeProductQuantity,
         sticker: sticker != null ? sticker() : this.sticker,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiftCodePaymentOption';
+  static const String CONSTRUCTOR = 'premiumGiftPaymentOption';
 
   @override
   String getConstructor() => CONSTRUCTOR;

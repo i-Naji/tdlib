@@ -26,6 +26,7 @@ final class Supergroup extends TdObject {
     this.verificationStatus,
     required this.hasSensitiveContent,
     required this.restrictionReason,
+    required this.paidMessageStarCount,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
     this.extra,
@@ -89,6 +90,9 @@ final class Supergroup extends TdObject {
   /// If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
   final String restrictionReason;
 
+  /// Number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
+  final int paidMessageStarCount;
+
   /// True, if the supergroup or channel has non-expired stories available to the current user
   final bool hasActiveStories;
 
@@ -125,6 +129,7 @@ final class Supergroup extends TdObject {
             json['verification_status'], VerificationStatus.fromJson),
         hasSensitiveContent: _readBool(json['has_sensitive_content']),
         restrictionReason: _readString(json['restriction_reason']),
+        paidMessageStarCount: _readInt(json['paid_message_star_count']),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         extra: json['@extra'],
@@ -153,6 +158,7 @@ final class Supergroup extends TdObject {
         'verification_status': verificationStatus?.toJson(),
         'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
+        'paid_message_star_count': paidMessageStarCount,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
       };
@@ -179,6 +185,7 @@ final class Supergroup extends TdObject {
     VerificationStatus? Function()? verificationStatus,
     bool? hasSensitiveContent,
     String? restrictionReason,
+    int? paidMessageStarCount,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
     dynamic extra,
@@ -206,6 +213,7 @@ final class Supergroup extends TdObject {
             : this.verificationStatus,
         hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
+        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,

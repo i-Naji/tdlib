@@ -92,6 +92,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
     required this.needAnotherSender,
     required this.needAnotherReplyQuote,
     required this.needDropReply,
+    required this.requiredPaidMessageStarCount,
     required this.retryAfter,
   });
 
@@ -110,6 +111,9 @@ final class MessageSendingStateFailed extends MessageSendingState {
   /// True, if the message can be re-sent only if the message to be replied is removed. This will be done automatically by resendMessages
   final bool needDropReply;
 
+  /// The number of Telegram Stars that must be paid to send the message; 0 if the current amount is correct
+  final int requiredPaidMessageStarCount;
+
   /// Time left before the message can be re-sent, in seconds. No update is sent when this field changes
   final double retryAfter;
 
@@ -121,6 +125,8 @@ final class MessageSendingStateFailed extends MessageSendingState {
         needAnotherSender: _readBool(json['need_another_sender']),
         needAnotherReplyQuote: _readBool(json['need_another_reply_quote']),
         needDropReply: _readBool(json['need_drop_reply']),
+        requiredPaidMessageStarCount:
+            _readInt(json['required_paid_message_star_count']),
         retryAfter: _readDouble(json['retry_after']),
       );
 
@@ -132,6 +138,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
         'need_another_sender': needAnotherSender,
         'need_another_reply_quote': needAnotherReplyQuote,
         'need_drop_reply': needDropReply,
+        'required_paid_message_star_count': requiredPaidMessageStarCount,
         'retry_after': retryAfter,
       };
 
@@ -144,6 +151,7 @@ final class MessageSendingStateFailed extends MessageSendingState {
     bool? needAnotherSender,
     bool? needAnotherReplyQuote,
     bool? needDropReply,
+    int? requiredPaidMessageStarCount,
     double? retryAfter,
   }) =>
       MessageSendingStateFailed(
@@ -153,6 +161,8 @@ final class MessageSendingStateFailed extends MessageSendingState {
         needAnotherReplyQuote:
             needAnotherReplyQuote ?? this.needAnotherReplyQuote,
         needDropReply: needDropReply ?? this.needDropReply,
+        requiredPaidMessageStarCount:
+            requiredPaidMessageStarCount ?? this.requiredPaidMessageStarCount,
         retryAfter: retryAfter ?? this.retryAfter,
       );
 

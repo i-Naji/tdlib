@@ -16,6 +16,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.linkedChatId,
     required this.slowModeDelay,
     required this.slowModeDelayExpiresIn,
+    required this.canEnablePaidMessages,
     required this.canEnablePaidReaction,
     required this.canGetMembers,
     required this.hasHiddenMembers,
@@ -73,6 +74,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero
   final double slowModeDelayExpiresIn;
+
+  /// True, if paid messages can be enabled in the supergroup chat; for supergroup only
+  final bool canEnablePaidMessages;
 
   /// True, if paid reaction can be enabled in the channel chat; for channels only
   final bool canEnablePaidReaction;
@@ -175,6 +179,7 @@ final class SupergroupFullInfo extends TdObject {
         linkedChatId: _readInt(json['linked_chat_id']),
         slowModeDelay: _readInt(json['slow_mode_delay']),
         slowModeDelayExpiresIn: _readDouble(json['slow_mode_delay_expires_in']),
+        canEnablePaidMessages: _readBool(json['can_enable_paid_messages']),
         canEnablePaidReaction: _readBool(json['can_enable_paid_reaction']),
         canGetMembers: _readBool(json['can_get_members']),
         hasHiddenMembers: _readBool(json['has_hidden_members']),
@@ -226,6 +231,7 @@ final class SupergroupFullInfo extends TdObject {
         'linked_chat_id': linkedChatId,
         'slow_mode_delay': slowModeDelay,
         'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
+        'can_enable_paid_messages': canEnablePaidMessages,
         'can_enable_paid_reaction': canEnablePaidReaction,
         'can_get_members': canGetMembers,
         'has_hidden_members': hasHiddenMembers,
@@ -267,6 +273,7 @@ final class SupergroupFullInfo extends TdObject {
     int? linkedChatId,
     int? slowModeDelay,
     double? slowModeDelayExpiresIn,
+    bool? canEnablePaidMessages,
     bool? canEnablePaidReaction,
     bool? canGetMembers,
     bool? hasHiddenMembers,
@@ -308,6 +315,8 @@ final class SupergroupFullInfo extends TdObject {
         slowModeDelay: slowModeDelay ?? this.slowModeDelay,
         slowModeDelayExpiresIn:
             slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,
+        canEnablePaidMessages:
+            canEnablePaidMessages ?? this.canEnablePaidMessages,
         canEnablePaidReaction:
             canEnablePaidReaction ?? this.canEnablePaidReaction,
         canGetMembers: canGetMembers ?? this.canGetMembers,

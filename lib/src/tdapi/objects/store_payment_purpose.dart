@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of an in-store payment
 ///
-/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStarGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
+/// One of: [StorePaymentPurposePremiumSubscription], [StorePaymentPurposePremiumGift], [StorePaymentPurposePremiumGiftCodes], [StorePaymentPurposePremiumGiveaway], [StorePaymentPurposeStarGiveaway], [StorePaymentPurposeStars], [StorePaymentPurposeGiftedStars]; or [UndecodedStorePaymentPurpose] for a type newer than this API.
 sealed class StorePaymentPurpose extends TdObject {
   const StorePaymentPurpose();
 
@@ -92,9 +92,72 @@ final class StorePaymentPurposePremiumSubscription extends StorePaymentPurpose {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The user creating Telegram Premium gift codes for other users
+/// The user gifting Telegram Premium to another user
+final class StorePaymentPurposePremiumGift extends StorePaymentPurpose {
+  /// The user gifting Telegram Premium to another user
+  const StorePaymentPurposePremiumGift({
+    required this.currency,
+    required this.amount,
+    required this.userId,
+    required this.text,
+  });
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Identifiers of the user which will receive Telegram Premium
+  final int userId;
+
+  /// Text to show along with the gift codes; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  final FormattedText text;
+
+  /// Parses a [StorePaymentPurposePremiumGift] from TDLib JSON.
+  factory StorePaymentPurposePremiumGift.fromJson(Map<String, dynamic> json) =>
+      StorePaymentPurposePremiumGift(
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        userId: _readInt(json['user_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'currency': currency,
+        'amount': amount,
+        'user_id': userId,
+        'text': text.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StorePaymentPurposePremiumGift copyWith({
+    String? currency,
+    int? amount,
+    int? userId,
+    FormattedText? text,
+  }) =>
+      StorePaymentPurposePremiumGift(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        userId: userId ?? this.userId,
+        text: text ?? this.text,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'storePaymentPurposePremiumGift';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user boosting a chat by creating Telegram Premium gift codes for other users
 final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
-  /// The user creating Telegram Premium gift codes for other users
+  /// The user boosting a chat by creating Telegram Premium gift codes for other users
   const StorePaymentPurposePremiumGiftCodes({
     required this.boostedChatId,
     required this.currency,
@@ -103,7 +166,7 @@ final class StorePaymentPurposePremiumGiftCodes extends StorePaymentPurpose {
     required this.text,
   });
 
-  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user
   final int boostedChatId;
 
   /// ISO 4217 currency code of the payment currency

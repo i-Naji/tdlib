@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes an option for creating Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
+/// Describes an option for creating of Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
 final class StarGiveawayPaymentOption extends TdObject {
-  /// Describes an option for creating Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
+  /// Describes an option for creating of Telegram Star giveaway. Use telegramPaymentPurposeStarGiveaway for out-of-store payments
   const StarGiveawayPaymentOption({
     required this.currency,
     required this.amount,

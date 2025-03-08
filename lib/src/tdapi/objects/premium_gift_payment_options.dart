@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Contains a list of options for creating Telegram Premium gift codes or Telegram Premium giveaway
-final class PremiumGiftCodePaymentOptions extends TdObject {
-  /// Contains a list of options for creating Telegram Premium gift codes or Telegram Premium giveaway
-  const PremiumGiftCodePaymentOptions({
+/// Contains a list of options for gifting Telegram Premium to a user
+final class PremiumGiftPaymentOptions extends TdObject {
+  /// Contains a list of options for gifting Telegram Premium to a user
+  const PremiumGiftPaymentOptions({
     required this.options,
     this.extra,
     this.clientId,
   });
 
-  /// The list of options
-  final List<PremiumGiftCodePaymentOption> options;
+  /// The list of options sorted by Telegram Premium subscription duration
+  final List<PremiumGiftPaymentOption> options;
 
   /// "@extra" of the request this object answers.
   @override
@@ -23,11 +23,11 @@ final class PremiumGiftCodePaymentOptions extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [PremiumGiftCodePaymentOptions] from TDLib JSON.
-  factory PremiumGiftCodePaymentOptions.fromJson(Map<String, dynamic> json) =>
-      PremiumGiftCodePaymentOptions(
-        options: _readList<PremiumGiftCodePaymentOption>(json['options'],
-            (e) => _readObject(e, PremiumGiftCodePaymentOption.fromJson)),
+  /// Parses a [PremiumGiftPaymentOptions] from TDLib JSON.
+  factory PremiumGiftPaymentOptions.fromJson(Map<String, dynamic> json) =>
+      PremiumGiftPaymentOptions(
+        options: _readList<PremiumGiftPaymentOption>(json['options'],
+            (e) => _readObject(e, PremiumGiftPaymentOption.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -40,19 +40,19 @@ final class PremiumGiftCodePaymentOptions extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  PremiumGiftCodePaymentOptions copyWith({
-    List<PremiumGiftCodePaymentOption>? options,
+  PremiumGiftPaymentOptions copyWith({
+    List<PremiumGiftPaymentOption>? options,
     dynamic extra,
     int? clientId,
   }) =>
-      PremiumGiftCodePaymentOptions(
+      PremiumGiftPaymentOptions(
         options: options ?? this.options,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumGiftCodePaymentOptions';
+  static const String CONSTRUCTOR = 'premiumGiftPaymentOptions';
 
   @override
   String getConstructor() => CONSTRUCTOR;

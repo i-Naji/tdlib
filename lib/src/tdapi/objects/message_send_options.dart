@@ -11,6 +11,7 @@ final class MessageSendOptions extends TdObject {
     required this.fromBackground,
     required this.protectContent,
     required this.allowPaidBroadcast,
+    required this.paidMessageStarCount,
     required this.updateOrderOfInstalledStickerSets,
     this.schedulingState,
     required this.effectId,
@@ -30,10 +31,13 @@ final class MessageSendOptions extends TdObject {
   /// Pass true to allow the message to ignore regular broadcast limits for a small fee; for bots only
   final bool allowPaidBroadcast;
 
+  /// The number of Telegram Stars the user agreed to pay to send the messages
+  final int paidMessageStarCount;
+
   /// Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   final bool updateOrderOfInstalledStickerSets;
 
-  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled
+  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, to a chat with paid messages, live location messages and self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
   /// Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats
@@ -52,6 +56,7 @@ final class MessageSendOptions extends TdObject {
         fromBackground: _readBool(json['from_background']),
         protectContent: _readBool(json['protect_content']),
         allowPaidBroadcast: _readBool(json['allow_paid_broadcast']),
+        paidMessageStarCount: _readInt(json['paid_message_star_count']),
         updateOrderOfInstalledStickerSets:
             _readBool(json['update_order_of_installed_sticker_sets']),
         schedulingState: _readOptional(
@@ -68,6 +73,7 @@ final class MessageSendOptions extends TdObject {
         'from_background': fromBackground,
         'protect_content': protectContent,
         'allow_paid_broadcast': allowPaidBroadcast,
+        'paid_message_star_count': paidMessageStarCount,
         'update_order_of_installed_sticker_sets':
             updateOrderOfInstalledStickerSets,
         'scheduling_state': schedulingState?.toJson(),
@@ -83,6 +89,7 @@ final class MessageSendOptions extends TdObject {
     bool? fromBackground,
     bool? protectContent,
     bool? allowPaidBroadcast,
+    int? paidMessageStarCount,
     bool? updateOrderOfInstalledStickerSets,
     MessageSchedulingState? Function()? schedulingState,
     int? effectId,
@@ -94,6 +101,7 @@ final class MessageSendOptions extends TdObject {
         fromBackground: fromBackground ?? this.fromBackground,
         protectContent: protectContent ?? this.protectContent,
         allowPaidBroadcast: allowPaidBroadcast ?? this.allowPaidBroadcast,
+        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
         updateOrderOfInstalledStickerSets: updateOrderOfInstalledStickerSets ??
             this.updateOrderOfInstalledStickerSets,
         schedulingState:

@@ -8,6 +8,7 @@ final class GroupCall extends TdObject {
   /// Describes a group call
   const GroupCall({
     required this.id,
+    required this.fromCallId,
     required this.title,
     required this.scheduledStartDate,
     required this.enabledStartNotification,
@@ -34,6 +35,9 @@ final class GroupCall extends TdObject {
 
   /// Group call identifier
   final int id;
+
+  /// Identifier of one-to-one call from which the group call was created; 0 if unknown
+  final int fromCallId;
 
   /// Group call title
   final String title;
@@ -106,6 +110,7 @@ final class GroupCall extends TdObject {
   /// Parses a [GroupCall] from TDLib JSON.
   factory GroupCall.fromJson(Map<String, dynamic> json) => GroupCall(
         id: _readInt(json['id']),
+        fromCallId: _readInt(json['from_call_id']),
         title: _readString(json['title']),
         scheduledStartDate: _readInt(json['scheduled_start_date']),
         enabledStartNotification: _readBool(json['enabled_start_notification']),
@@ -137,6 +142,7 @@ final class GroupCall extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id,
+        'from_call_id': fromCallId,
         'title': title,
         'scheduled_start_date': scheduledStartDate,
         'enabled_start_notification': enabledStartNotification,
@@ -163,6 +169,7 @@ final class GroupCall extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCall copyWith({
     int? id,
+    int? fromCallId,
     String? title,
     int? scheduledStartDate,
     bool? enabledStartNotification,
@@ -188,6 +195,7 @@ final class GroupCall extends TdObject {
   }) =>
       GroupCall(
         id: id ?? this.id,
+        fromCallId: fromCallId ?? this.fromCallId,
         title: title ?? this.title,
         scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
         enabledStartNotification:

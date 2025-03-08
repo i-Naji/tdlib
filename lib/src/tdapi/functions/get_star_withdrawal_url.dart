@@ -14,7 +14,7 @@ final class GetStarWithdrawalUrl extends TdFunction<HttpUrl> {
     required this.password,
   });
 
-  /// Identifier of the owner of the Telegram Stars; can be identifier of an owned bot, or identifier of an owned channel chat
+  /// Identifier of the owner of the Telegram Stars; can be identifier of the current user, an owned bot, or an owned supergroup or channel chat
   final MessageSender ownerId;
 
   /// The number of Telegram Stars to withdraw. Must be at least getOption("star_withdrawal_count_min")

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a purpose of a payment toward Telegram
 ///
-/// One of: [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars], [TelegramPaymentPurposeStarGiveaway], [TelegramPaymentPurposeJoinChat]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
+/// One of: [TelegramPaymentPurposePremiumGift], [TelegramPaymentPurposePremiumGiftCodes], [TelegramPaymentPurposePremiumGiveaway], [TelegramPaymentPurposeStars], [TelegramPaymentPurposeGiftedStars], [TelegramPaymentPurposeStarGiveaway], [TelegramPaymentPurposeJoinChat]; or [UndecodedTelegramPaymentPurpose] for a type newer than this API.
 sealed class TelegramPaymentPurpose extends TdObject {
   const TelegramPaymentPurpose();
 
@@ -44,10 +44,82 @@ final class UndecodedTelegramPaymentPurpose extends TelegramPaymentPurpose {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The user creating Telegram Premium gift codes for other users
+/// The user gifting Telegram Premium to another user
+final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
+  /// The user gifting Telegram Premium to another user
+  const TelegramPaymentPurposePremiumGift({
+    required this.currency,
+    required this.amount,
+    required this.userId,
+    required this.monthCount,
+    required this.text,
+  });
+
+  /// ISO 4217 currency code of the payment currency
+  final String currency;
+
+  /// Paid amount, in the smallest units of the currency
+  final int amount;
+
+  /// Identifier of the user which will receive Telegram Premium
+  final int userId;
+
+  /// Number of months the Telegram Premium subscription will be active for the user
+  final int monthCount;
+
+  /// Text to show to the user receiving Telegram Premium; 0-getOption("gift_text_length_max") characters. Only Bold, Italic, Underline, Strikethrough, Spoiler, and CustomEmoji entities are allowed
+  final FormattedText text;
+
+  /// Parses a [TelegramPaymentPurposePremiumGift] from TDLib JSON.
+  factory TelegramPaymentPurposePremiumGift.fromJson(
+          Map<String, dynamic> json) =>
+      TelegramPaymentPurposePremiumGift(
+        currency: _readString(json['currency']),
+        amount: _readInt(json['amount']),
+        userId: _readInt(json['user_id']),
+        monthCount: _readInt(json['month_count']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'currency': currency,
+        'amount': amount,
+        'user_id': userId,
+        'month_count': monthCount,
+        'text': text.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TelegramPaymentPurposePremiumGift copyWith({
+    String? currency,
+    int? amount,
+    int? userId,
+    int? monthCount,
+    FormattedText? text,
+  }) =>
+      TelegramPaymentPurposePremiumGift(
+        currency: currency ?? this.currency,
+        amount: amount ?? this.amount,
+        userId: userId ?? this.userId,
+        monthCount: monthCount ?? this.monthCount,
+        text: text ?? this.text,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'telegramPaymentPurposePremiumGift';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user boosting a chat by creating Telegram Premium gift codes for other users
 final class TelegramPaymentPurposePremiumGiftCodes
     extends TelegramPaymentPurpose {
-  /// The user creating Telegram Premium gift codes for other users
+  /// The user boosting a chat by creating Telegram Premium gift codes for other users
   const TelegramPaymentPurposePremiumGiftCodes({
     required this.boostedChatId,
     required this.currency,
@@ -57,7 +129,7 @@ final class TelegramPaymentPurposePremiumGiftCodes
     required this.text,
   });
 
-  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user; 0 if none
+  /// Identifier of the supergroup or channel chat, which will be automatically boosted by the users for duration of the Premium subscription and which is administered by the user
   final int boostedChatId;
 
   /// ISO 4217 currency code of the payment currency

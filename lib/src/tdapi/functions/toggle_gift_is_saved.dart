@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the chat
+/// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the channel chat
 ///
 /// Returns [Ok].
 final class ToggleGiftIsSaved extends TdFunction<Ok> {
-  /// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the chat
+  /// Toggles whether a gift is shown on the current user's or the channel's profile page; requires can_post_messages administrator right in the channel chat
   const ToggleGiftIsSaved({
     required this.receivedGiftId,
     required this.isSaved,

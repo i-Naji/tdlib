@@ -3,17 +3,21 @@
 
 part of '../tdapi.dart';
 
-/// Contains privacy settings for new chats with non-contacts
+/// Contains privacy settings for chats with non-contacts
 final class NewChatPrivacySettings extends TdObject {
-  /// Contains privacy settings for new chats with non-contacts
+  /// Contains privacy settings for chats with non-contacts
   const NewChatPrivacySettings({
     required this.allowNewChatsFromUnknownUsers,
+    required this.incomingPaidMessageStarCount,
     this.extra,
     this.clientId,
   });
 
   /// True, if non-contacts users are able to write first to the current user. Telegram Premium subscribers are able to write first regardless of this setting
   final bool allowNewChatsFromUnknownUsers;
+
+  /// Number of Telegram Stars that must be paid for every incoming private message by non-contacts; 0-getOption("paid_message_star_count_max"). If positive, then allow_new_chats_from_unknown_users must be true. The current user will receive getOption("paid_message_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for message sending
+  final int incomingPaidMessageStarCount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -28,6 +32,8 @@ final class NewChatPrivacySettings extends TdObject {
       NewChatPrivacySettings(
         allowNewChatsFromUnknownUsers:
             _readBool(json['allow_new_chats_from_unknown_users']),
+        incomingPaidMessageStarCount:
+            _readInt(json['incoming_paid_message_star_count']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -36,18 +42,22 @@ final class NewChatPrivacySettings extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'allow_new_chats_from_unknown_users': allowNewChatsFromUnknownUsers,
+        'incoming_paid_message_star_count': incomingPaidMessageStarCount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   NewChatPrivacySettings copyWith({
     bool? allowNewChatsFromUnknownUsers,
+    int? incomingPaidMessageStarCount,
     dynamic extra,
     int? clientId,
   }) =>
       NewChatPrivacySettings(
         allowNewChatsFromUnknownUsers:
             allowNewChatsFromUnknownUsers ?? this.allowNewChatsFromUnknownUsers,
+        incomingPaidMessageStarCount:
+            incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
