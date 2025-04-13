@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether an in-store purchase is possible. Must be called before any in-store purchase
+/// Checks whether an in-store purchase is possible. Must be called before any in-store purchase. For official applications only
 ///
 /// Returns [Ok].
 final class CanPurchaseFromStore extends TdFunction<Ok> {
-  /// Checks whether an in-store purchase is possible. Must be called before any in-store purchase
+  /// Checks whether an in-store purchase is possible. Must be called before any in-store purchase. For official applications only
   const CanPurchaseFromStore({
     required this.purpose,
   });

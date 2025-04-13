@@ -3,28 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Describes result of sponsored message report
+/// Describes result of sponsored message or chat report
 ///
-/// One of: [ReportChatSponsoredMessageResultOk], [ReportChatSponsoredMessageResultFailed], [ReportChatSponsoredMessageResultOptionRequired], [ReportChatSponsoredMessageResultAdsHidden], [ReportChatSponsoredMessageResultPremiumRequired]; or [UndecodedReportChatSponsoredMessageResult] for a type newer than this API.
-sealed class ReportChatSponsoredMessageResult extends TdObject {
-  const ReportChatSponsoredMessageResult();
+/// One of: [ReportSponsoredResultOk], [ReportSponsoredResultFailed], [ReportSponsoredResultOptionRequired], [ReportSponsoredResultAdsHidden], [ReportSponsoredResultPremiumRequired]; or [UndecodedReportSponsoredResult] for a type newer than this API.
+sealed class ReportSponsoredResult extends TdObject {
+  const ReportSponsoredResult();
 
-  /// Parses whichever [ReportChatSponsoredMessageResult] subtype the JSON describes.
-  factory ReportChatSponsoredMessageResult.fromJson(Map<String, dynamic> json) {
+  /// Parses whichever [ReportSponsoredResult] subtype the JSON describes.
+  factory ReportSponsoredResult.fromJson(Map<String, dynamic> json) {
     final object = tdObjectFactories[json['@type']]?.call(json);
-    return object is ReportChatSponsoredMessageResult
+    return object is ReportSponsoredResult
         ? object
-        : UndecodedReportChatSponsoredMessageResult(json);
+        : UndecodedReportSponsoredResult(json);
   }
 
   /// Returns a copy of this object.
-  ReportChatSponsoredMessageResult copyWith();
+  ReportSponsoredResult copyWith();
 }
 
-/// A [ReportChatSponsoredMessageResult] this API can't decode (sent by a newer TDLib).
-final class UndecodedReportChatSponsoredMessageResult
-    extends ReportChatSponsoredMessageResult {
-  const UndecodedReportChatSponsoredMessageResult(this.json);
+/// A [ReportSponsoredResult] this API can't decode (sent by a newer TDLib).
+final class UndecodedReportSponsoredResult extends ReportSponsoredResult {
+  const UndecodedReportSponsoredResult(this.json);
 
   /// The raw TDLib JSON object.
   final Map<String, dynamic> json;
@@ -39,17 +38,16 @@ final class UndecodedReportChatSponsoredMessageResult
   Map<String, dynamic> toJson() => json;
 
   @override
-  UndecodedReportChatSponsoredMessageResult copyWith() => this;
+  UndecodedReportSponsoredResult copyWith() => this;
 
   @override
   String getConstructor() => _readString(json['@type']);
 }
 
 /// The message was reported successfully
-final class ReportChatSponsoredMessageResultOk
-    extends ReportChatSponsoredMessageResult {
+final class ReportSponsoredResultOk extends ReportSponsoredResult {
   /// The message was reported successfully
-  const ReportChatSponsoredMessageResultOk({
+  const ReportSponsoredResultOk({
     this.extra,
     this.clientId,
   });
@@ -62,10 +60,9 @@ final class ReportChatSponsoredMessageResultOk
   @override
   final int? clientId;
 
-  /// Parses a [ReportChatSponsoredMessageResultOk] from TDLib JSON.
-  factory ReportChatSponsoredMessageResultOk.fromJson(
-          Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageResultOk(
+  /// Parses a [ReportSponsoredResultOk] from TDLib JSON.
+  factory ReportSponsoredResultOk.fromJson(Map<String, dynamic> json) =>
+      ReportSponsoredResultOk(
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -78,27 +75,26 @@ final class ReportChatSponsoredMessageResultOk
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatSponsoredMessageResultOk copyWith({
+  ReportSponsoredResultOk copyWith({
     dynamic extra,
     int? clientId,
   }) =>
-      ReportChatSponsoredMessageResultOk(
+      ReportSponsoredResultOk(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'reportChatSponsoredMessageResultOk';
+  static const String CONSTRUCTOR = 'reportSponsoredResultOk';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The sponsored message is too old or not found
-final class ReportChatSponsoredMessageResultFailed
-    extends ReportChatSponsoredMessageResult {
+final class ReportSponsoredResultFailed extends ReportSponsoredResult {
   /// The sponsored message is too old or not found
-  const ReportChatSponsoredMessageResultFailed({
+  const ReportSponsoredResultFailed({
     this.extra,
     this.clientId,
   });
@@ -111,10 +107,9 @@ final class ReportChatSponsoredMessageResultFailed
   @override
   final int? clientId;
 
-  /// Parses a [ReportChatSponsoredMessageResultFailed] from TDLib JSON.
-  factory ReportChatSponsoredMessageResultFailed.fromJson(
-          Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageResultFailed(
+  /// Parses a [ReportSponsoredResultFailed] from TDLib JSON.
+  factory ReportSponsoredResultFailed.fromJson(Map<String, dynamic> json) =>
+      ReportSponsoredResultFailed(
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -127,27 +122,26 @@ final class ReportChatSponsoredMessageResultFailed
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatSponsoredMessageResultFailed copyWith({
+  ReportSponsoredResultFailed copyWith({
     dynamic extra,
     int? clientId,
   }) =>
-      ReportChatSponsoredMessageResultFailed(
+      ReportSponsoredResultFailed(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'reportChatSponsoredMessageResultFailed';
+  static const String CONSTRUCTOR = 'reportSponsoredResultFailed';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user must choose an option to report the message and repeat request with the chosen option
-final class ReportChatSponsoredMessageResultOptionRequired
-    extends ReportChatSponsoredMessageResult {
+final class ReportSponsoredResultOptionRequired extends ReportSponsoredResult {
   /// The user must choose an option to report the message and repeat request with the chosen option
-  const ReportChatSponsoredMessageResultOptionRequired({
+  const ReportSponsoredResultOptionRequired({
     required this.title,
     required this.options,
     this.extra,
@@ -168,10 +162,10 @@ final class ReportChatSponsoredMessageResultOptionRequired
   @override
   final int? clientId;
 
-  /// Parses a [ReportChatSponsoredMessageResultOptionRequired] from TDLib JSON.
-  factory ReportChatSponsoredMessageResultOptionRequired.fromJson(
+  /// Parses a [ReportSponsoredResultOptionRequired] from TDLib JSON.
+  factory ReportSponsoredResultOptionRequired.fromJson(
           Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageResultOptionRequired(
+      ReportSponsoredResultOptionRequired(
         title: _readString(json['title']),
         options: _readList<ReportOption>(
             json['options'], (e) => _readObject(e, ReportOption.fromJson)),
@@ -189,13 +183,13 @@ final class ReportChatSponsoredMessageResultOptionRequired
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatSponsoredMessageResultOptionRequired copyWith({
+  ReportSponsoredResultOptionRequired copyWith({
     String? title,
     List<ReportOption>? options,
     dynamic extra,
     int? clientId,
   }) =>
-      ReportChatSponsoredMessageResultOptionRequired(
+      ReportSponsoredResultOptionRequired(
         title: title ?? this.title,
         options: options ?? this.options,
         extra: extra ?? this.extra,
@@ -203,18 +197,16 @@ final class ReportChatSponsoredMessageResultOptionRequired
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR =
-      'reportChatSponsoredMessageResultOptionRequired';
+  static const String CONSTRUCTOR = 'reportSponsoredResultOptionRequired';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// Sponsored messages were hidden for the user in all chats
-final class ReportChatSponsoredMessageResultAdsHidden
-    extends ReportChatSponsoredMessageResult {
+final class ReportSponsoredResultAdsHidden extends ReportSponsoredResult {
   /// Sponsored messages were hidden for the user in all chats
-  const ReportChatSponsoredMessageResultAdsHidden({
+  const ReportSponsoredResultAdsHidden({
     this.extra,
     this.clientId,
   });
@@ -227,10 +219,9 @@ final class ReportChatSponsoredMessageResultAdsHidden
   @override
   final int? clientId;
 
-  /// Parses a [ReportChatSponsoredMessageResultAdsHidden] from TDLib JSON.
-  factory ReportChatSponsoredMessageResultAdsHidden.fromJson(
-          Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageResultAdsHidden(
+  /// Parses a [ReportSponsoredResultAdsHidden] from TDLib JSON.
+  factory ReportSponsoredResultAdsHidden.fromJson(Map<String, dynamic> json) =>
+      ReportSponsoredResultAdsHidden(
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -243,27 +234,26 @@ final class ReportChatSponsoredMessageResultAdsHidden
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatSponsoredMessageResultAdsHidden copyWith({
+  ReportSponsoredResultAdsHidden copyWith({
     dynamic extra,
     int? clientId,
   }) =>
-      ReportChatSponsoredMessageResultAdsHidden(
+      ReportSponsoredResultAdsHidden(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'reportChatSponsoredMessageResultAdsHidden';
+  static const String CONSTRUCTOR = 'reportSponsoredResultAdsHidden';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
 /// The user asked to hide sponsored messages, but Telegram Premium is required for this
-final class ReportChatSponsoredMessageResultPremiumRequired
-    extends ReportChatSponsoredMessageResult {
+final class ReportSponsoredResultPremiumRequired extends ReportSponsoredResult {
   /// The user asked to hide sponsored messages, but Telegram Premium is required for this
-  const ReportChatSponsoredMessageResultPremiumRequired({
+  const ReportSponsoredResultPremiumRequired({
     this.extra,
     this.clientId,
   });
@@ -276,10 +266,10 @@ final class ReportChatSponsoredMessageResultPremiumRequired
   @override
   final int? clientId;
 
-  /// Parses a [ReportChatSponsoredMessageResultPremiumRequired] from TDLib JSON.
-  factory ReportChatSponsoredMessageResultPremiumRequired.fromJson(
+  /// Parses a [ReportSponsoredResultPremiumRequired] from TDLib JSON.
+  factory ReportSponsoredResultPremiumRequired.fromJson(
           Map<String, dynamic> json) =>
-      ReportChatSponsoredMessageResultPremiumRequired(
+      ReportSponsoredResultPremiumRequired(
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -292,18 +282,17 @@ final class ReportChatSponsoredMessageResultPremiumRequired
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ReportChatSponsoredMessageResultPremiumRequired copyWith({
+  ReportSponsoredResultPremiumRequired copyWith({
     dynamic extra,
     int? clientId,
   }) =>
-      ReportChatSponsoredMessageResultPremiumRequired(
+      ReportSponsoredResultPremiumRequired(
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR =
-      'reportChatSponsoredMessageResultPremiumRequired';
+  static const String CONSTRUCTOR = 'reportSponsoredResultPremiumRequired';
 
   @override
   String getConstructor() => CONSTRUCTOR;

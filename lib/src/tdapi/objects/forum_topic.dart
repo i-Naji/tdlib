@@ -9,6 +9,7 @@ final class ForumTopic extends TdObject {
   const ForumTopic({
     required this.info,
     this.lastMessage,
+    required this.order,
     required this.isPinned,
     required this.unreadCount,
     required this.lastReadInboxMessageId,
@@ -26,6 +27,9 @@ final class ForumTopic extends TdObject {
 
   /// Last message in the topic; may be null if unknown
   final Message? lastMessage;
+
+  /// A parameter used to determine order of the topic in the topic list. Topics must be sorted by the order in descending order
+  final int order;
 
   /// True, if the topic is pinned in the topic list
   final bool isPinned;
@@ -63,6 +67,7 @@ final class ForumTopic extends TdObject {
   factory ForumTopic.fromJson(Map<String, dynamic> json) => ForumTopic(
         info: _readObject(json['info'], ForumTopicInfo.fromJson),
         lastMessage: _readOptional(json['last_message'], Message.fromJson),
+        order: _readInt(json['order']),
         isPinned: _readBool(json['is_pinned']),
         unreadCount: _readInt(json['unread_count']),
         lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
@@ -82,6 +87,7 @@ final class ForumTopic extends TdObject {
         '@type': CONSTRUCTOR,
         'info': info.toJson(),
         'last_message': lastMessage?.toJson(),
+        'order': order.toString(),
         'is_pinned': isPinned,
         'unread_count': unreadCount,
         'last_read_inbox_message_id': lastReadInboxMessageId,
@@ -97,6 +103,7 @@ final class ForumTopic extends TdObject {
   ForumTopic copyWith({
     ForumTopicInfo? info,
     Message? Function()? lastMessage,
+    int? order,
     bool? isPinned,
     int? unreadCount,
     int? lastReadInboxMessageId,
@@ -111,6 +118,7 @@ final class ForumTopic extends TdObject {
       ForumTopic(
         info: info ?? this.info,
         lastMessage: lastMessage != null ? lastMessage() : this.lastMessage,
+        order: order ?? this.order,
         isPinned: isPinned ?? this.isPinned,
         unreadCount: unreadCount ?? this.unreadCount,
         lastReadInboxMessageId:

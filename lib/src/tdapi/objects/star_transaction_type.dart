@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -1387,9 +1387,9 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a purchase of Telegram Premium subscription; for regular users only
+/// The transaction is a purchase of Telegram Premium subscription; for regular users and bots only
 final class StarTransactionTypePremiumPurchase extends StarTransactionType {
-  /// The transaction is a purchase of Telegram Premium subscription; for regular users only
+  /// The transaction is a purchase of Telegram Premium subscription; for regular users and bots only
   const StarTransactionTypePremiumPurchase({
     required this.userId,
     required this.monthCount,
@@ -1438,6 +1438,90 @@ final class StarTransactionTypePremiumPurchase extends StarTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePremiumPurchase';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a transfer of Telegram Stars to a business bot; for regular users only
+final class StarTransactionTypeBusinessBotTransferSend
+    extends StarTransactionType {
+  /// The transaction is a transfer of Telegram Stars to a business bot; for regular users only
+  const StarTransactionTypeBusinessBotTransferSend({
+    required this.userId,
+  });
+
+  /// Identifier of the bot that received Telegram Stars
+  final int userId;
+
+  /// Parses a [StarTransactionTypeBusinessBotTransferSend] from TDLib JSON.
+  factory StarTransactionTypeBusinessBotTransferSend.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeBusinessBotTransferSend(
+        userId: _readInt(json['user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeBusinessBotTransferSend copyWith({
+    int? userId,
+  }) =>
+      StarTransactionTypeBusinessBotTransferSend(
+        userId: userId ?? this.userId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypeBusinessBotTransferSend';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a transfer of Telegram Stars from a business account; for bots only
+final class StarTransactionTypeBusinessBotTransferReceive
+    extends StarTransactionType {
+  /// The transaction is a transfer of Telegram Stars from a business account; for bots only
+  const StarTransactionTypeBusinessBotTransferReceive({
+    required this.userId,
+  });
+
+  /// Identifier of the user that sent Telegram Stars
+  final int userId;
+
+  /// Parses a [StarTransactionTypeBusinessBotTransferReceive] from TDLib JSON.
+  factory StarTransactionTypeBusinessBotTransferReceive.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeBusinessBotTransferReceive(
+        userId: _readInt(json['user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeBusinessBotTransferReceive copyWith({
+    int? userId,
+  }) =>
+      StarTransactionTypeBusinessBotTransferReceive(
+        userId: userId ?? this.userId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypeBusinessBotTransferReceive';
 
   @override
   String getConstructor() => CONSTRUCTOR;

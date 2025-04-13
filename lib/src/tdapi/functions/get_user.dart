@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a user by their identifier. This is an offline request if the current user is not a bot
+/// Returns information about a user by their identifier. This is an offline method if the current user is not a bot
 ///
 /// Returns [User].
 final class GetUser extends TdFunction<User> {
-  /// Returns information about a user by their identifier. This is an offline request if the current user is not a bot
+  /// Returns information about a user by their identifier. This is an offline method if the current user is not a bot
   const GetUser({
     required this.userId,
   });

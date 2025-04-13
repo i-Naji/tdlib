@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns a default placeholder for Web Apps of a bot; this is an offline request. Returns a 404 error if the placeholder isn't known
+/// Returns a default placeholder for Web Apps of a bot. This is an offline method. Returns a 404 error if the placeholder isn't known
 ///
 /// Returns [Outline].
 final class GetWebAppPlaceholder extends TdFunction<Outline> {
-  /// Returns a default placeholder for Web Apps of a bot; this is an offline request. Returns a 404 error if the placeholder isn't known
+  /// Returns a default placeholder for Web Apps of a bot. This is an offline method. Returns a 404 error if the placeholder isn't known
   const GetWebAppPlaceholder({
     required this.botUserId,
   });

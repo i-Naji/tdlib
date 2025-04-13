@@ -27,6 +27,7 @@ final class UserFullInfo extends TdObject {
     required this.groupInCommonCount,
     required this.incomingPaidMessageStarCount,
     required this.outgoingPaidMessageStarCount,
+    required this.giftSettings,
     this.botVerification,
     this.businessInfo,
     this.botInfo,
@@ -94,6 +95,9 @@ final class UserFullInfo extends TdObject {
   /// Number of Telegram Stars that must be paid by the current user for each sent message to the user
   final int outgoingPaidMessageStarCount;
 
+  /// Settings for gift receiving for the user
+  final GiftSettings giftSettings;
+
   /// Information about verification status of the user provided by a bot; may be null if none or unknown
   final BotVerification? botVerification;
 
@@ -140,6 +144,7 @@ final class UserFullInfo extends TdObject {
             _readInt(json['incoming_paid_message_star_count']),
         outgoingPaidMessageStarCount:
             _readInt(json['outgoing_paid_message_star_count']),
+        giftSettings: _readObject(json['gift_settings'], GiftSettings.fromJson),
         botVerification:
             _readOptional(json['bot_verification'], BotVerification.fromJson),
         businessInfo:
@@ -173,6 +178,7 @@ final class UserFullInfo extends TdObject {
         'group_in_common_count': groupInCommonCount,
         'incoming_paid_message_star_count': incomingPaidMessageStarCount,
         'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
+        'gift_settings': giftSettings.toJson(),
         'bot_verification': botVerification?.toJson(),
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
@@ -201,6 +207,7 @@ final class UserFullInfo extends TdObject {
     int? groupInCommonCount,
     int? incomingPaidMessageStarCount,
     int? outgoingPaidMessageStarCount,
+    GiftSettings? giftSettings,
     BotVerification? Function()? botVerification,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
@@ -236,6 +243,7 @@ final class UserFullInfo extends TdObject {
             incomingPaidMessageStarCount ?? this.incomingPaidMessageStarCount,
         outgoingPaidMessageStarCount:
             outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
+        giftSettings: giftSettings ?? this.giftSettings,
         botVerification:
             botVerification != null ? botVerification() : this.botVerification,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,

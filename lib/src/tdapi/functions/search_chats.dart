@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Searches for the specified query in the title and username of already known chats; this is an offline request. Returns chats in the order seen in the main chat list
+/// Searches for the specified query in the title and username of already known chats. This is an offline method. Returns chats in the order seen in the main chat list
 ///
 /// Returns [Chats].
 final class SearchChats extends TdFunction<Chats> {
-  /// Searches for the specified query in the title and username of already known chats; this is an offline request. Returns chats in the order seen in the main chat list
+  /// Searches for the specified query in the title and username of already known chats. This is an offline method. Returns chats in the order seen in the main chat list
   const SearchChats({
     required this.query,
     required this.limit,

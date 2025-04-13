@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a supergroup or a channel by its identifier. This is an offline request if the current user is not a bot
+/// Returns information about a supergroup or a channel by its identifier. This is an offline method if the current user is not a bot
 ///
 /// Returns [Supergroup].
 final class GetSupergroup extends TdFunction<Supergroup> {
-  /// Returns information about a supergroup or a channel by its identifier. This is an offline request if the current user is not a bot
+  /// Returns information about a supergroup or a channel by its identifier. This is an offline method if the current user is not a bot
   const GetSupergroup({
     required this.supergroupId,
   });

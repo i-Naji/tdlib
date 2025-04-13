@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns outline of a sticker; this is an offline request. Returns a 404 error if the outline isn't known
+/// Returns outline of a sticker. This is an offline method. Returns a 404 error if the outline isn't known
 ///
 /// Returns [Outline].
 final class GetStickerOutline extends TdFunction<Outline> {
-  /// Returns outline of a sticker; this is an offline request. Returns a 404 error if the outline isn't known
+  /// Returns outline of a sticker. This is an offline method. Returns a 404 error if the outline isn't known
   const GetStickerOutline({
     required this.stickerFileId,
     required this.forAnimatedEmoji,

@@ -9,7 +9,7 @@ final class BusinessConnectedBot extends TdObject {
   const BusinessConnectedBot({
     required this.botUserId,
     required this.recipients,
-    required this.canReply,
+    required this.rights,
     this.extra,
     this.clientId,
   });
@@ -20,8 +20,8 @@ final class BusinessConnectedBot extends TdObject {
   /// Private chats that will be accessible to the bot
   final BusinessRecipients recipients;
 
-  /// True, if the bot can send messages to the private chats; false otherwise
-  final bool canReply;
+  /// Rights of the bot
+  final BusinessBotRights rights;
 
   /// "@extra" of the request this object answers.
   @override
@@ -37,7 +37,7 @@ final class BusinessConnectedBot extends TdObject {
         botUserId: _readInt(json['bot_user_id']),
         recipients:
             _readObject(json['recipients'], BusinessRecipients.fromJson),
-        canReply: _readBool(json['can_reply']),
+        rights: _readObject(json['rights'], BusinessBotRights.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -47,7 +47,7 @@ final class BusinessConnectedBot extends TdObject {
         '@type': CONSTRUCTOR,
         'bot_user_id': botUserId,
         'recipients': recipients.toJson(),
-        'can_reply': canReply,
+        'rights': rights.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -55,14 +55,14 @@ final class BusinessConnectedBot extends TdObject {
   BusinessConnectedBot copyWith({
     int? botUserId,
     BusinessRecipients? recipients,
-    bool? canReply,
+    BusinessBotRights? rights,
     dynamic extra,
     int? clientId,
   }) =>
       BusinessConnectedBot(
         botUserId: botUserId ?? this.botUserId,
         recipients: recipients ?? this.recipients,
-        canReply: canReply ?? this.canReply,
+        rights: rights ?? this.rights,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

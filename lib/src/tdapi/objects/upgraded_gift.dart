@@ -46,13 +46,13 @@ final class UpgradedGift extends TdObject {
   /// Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown
   final MessageSender? ownerId;
 
-  /// Address of the gift NFT owner in TON blockchain; may be empty if none
+  /// Address of the gift NFT owner in TON blockchain; may be empty if none. Append the address to getOption("ton_blockchain_explorer_url") to get a link with information about the address
   final String ownerAddress;
 
   /// Name of the owner for the case when owner identifier and address aren't known
   final String ownerName;
 
-  /// Address of the gift NFT in TON blockchain; may be empty if none
+  /// Address of the gift NFT in TON blockchain; may be empty if none. Append the address to getOption("ton_blockchain_explorer_url") to get a link with information about the address
   final String giftAddress;
 
   /// Model of the upgraded gift

@@ -18,7 +18,7 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// Colors of the backdrop
   final UpgradedGiftBackdropColors colors;
 
-  /// The number of upgraded gift that receive this backdrop for each 1000 gifts upgraded
+  /// The number of upgraded gifts that receive this backdrop for each 1000 gifts upgraded
   final int rarityPerMille;
 
   /// Parses a [UpgradedGiftBackdrop] from TDLib JSON.

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns an instant view version of a web page if available. This is an offline request if only_local is true. Returns a 404 error if the web page has no instant view page
+/// Returns an instant view version of a web page if available. This is an offline method if only_local is true. Returns a 404 error if the web page has no instant view page
 ///
 /// Returns [WebPageInstantView].
 final class GetWebPageInstantView extends TdFunction<WebPageInstantView> {
-  /// Returns an instant view version of a web page if available. This is an offline request if only_local is true. Returns a 404 error if the web page has no instant view page
+  /// Returns an instant view version of a web page if available. This is an offline method if only_local is true. Returns a 404 error if the web page has no instant view page
   const GetWebPageInstantView({
     required this.url,
     required this.onlyLocal,

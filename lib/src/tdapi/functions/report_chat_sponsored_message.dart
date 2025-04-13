@@ -5,9 +5,9 @@ part of '../tdapi.dart';
 
 /// Reports a sponsored message to Telegram moderators
 ///
-/// Returns [ReportChatSponsoredMessageResult].
+/// Returns [ReportSponsoredResult].
 final class ReportChatSponsoredMessage
-    extends TdFunction<ReportChatSponsoredMessageResult> {
+    extends TdFunction<ReportSponsoredResult> {
   /// Reports a sponsored message to Telegram moderators
   const ReportChatSponsoredMessage({
     required this.chatId,

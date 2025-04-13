@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns recently opened chats; this is an offline request. Returns chats in the order of last opening
+/// Returns recently opened chats. This is an offline method. Returns chats in the order of last opening
 ///
 /// Returns [Chats].
 final class GetRecentlyOpenedChats extends TdFunction<Chats> {
-  /// Returns recently opened chats; this is an offline request. Returns chats in the order of last opening
+  /// Returns recently opened chats. This is an offline method. Returns chats in the order of last opening
   const GetRecentlyOpenedChats({
     required this.limit,
   });

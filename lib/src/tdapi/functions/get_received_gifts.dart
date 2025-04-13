@@ -9,6 +9,7 @@ part of '../tdapi.dart';
 final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   /// Returns gifts received by the given user or chat
   const GetReceivedGifts({
+    required this.businessConnectionId,
     required this.ownerId,
     required this.excludeUnsaved,
     required this.excludeSaved,
@@ -19,6 +20,9 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     required this.offset,
     required this.limit,
   });
+
+  /// Unique identifier of business connection on behalf of which to send the request; for bots only
+  final String businessConnectionId;
 
   /// Identifier of the gift receiver
   final MessageSender ownerId;
@@ -50,6 +54,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'business_connection_id': businessConnectionId,
         'owner_id': ownerId.toJson(),
         'exclude_unsaved': excludeUnsaved,
         'exclude_saved': excludeSaved,
@@ -65,6 +70,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetReceivedGifts copyWith({
+    String? businessConnectionId,
     MessageSender? ownerId,
     bool? excludeUnsaved,
     bool? excludeSaved,
@@ -76,6 +82,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     int? limit,
   }) =>
       GetReceivedGifts(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         ownerId: ownerId ?? this.ownerId,
         excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
         excludeSaved: excludeSaved ?? this.excludeSaved,

@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a chat by its identifier; this is an offline request if the current user is not a bot
+/// Returns information about a chat by its identifier. This is an offline method if the current user is not a bot
 ///
 /// Returns [Chat].
 final class GetChat extends TdFunction<Chat> {
-  /// Returns information about a chat by its identifier; this is an offline request if the current user is not a bot
+  /// Returns information about a chat by its identifier. This is an offline method if the current user is not a bot
   const GetChat({
     required this.chatId,
   });

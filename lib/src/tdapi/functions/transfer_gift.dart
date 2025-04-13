@@ -9,10 +9,14 @@ part of '../tdapi.dart';
 final class TransferGift extends TdFunction<Ok> {
   /// Sends an upgraded gift to another user or a channel chat
   const TransferGift({
+    required this.businessConnectionId,
     required this.receivedGiftId,
     required this.newOwnerId,
     required this.starCount,
   });
+
+  /// Unique identifier of business connection on behalf of which to send the request; for bots only
+  final String businessConnectionId;
 
   /// Identifier of the gift
   final String receivedGiftId;
@@ -26,6 +30,7 @@ final class TransferGift extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'business_connection_id': businessConnectionId,
         'received_gift_id': receivedGiftId,
         'new_owner_id': newOwnerId.toJson(),
         'star_count': starCount,
@@ -35,11 +40,13 @@ final class TransferGift extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   TransferGift copyWith({
+    String? businessConnectionId,
     String? receivedGiftId,
     MessageSender? newOwnerId,
     int? starCount,
   }) =>
       TransferGift(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         newOwnerId: newOwnerId ?? this.newOwnerId,
         starCount: starCount ?? this.starCount,

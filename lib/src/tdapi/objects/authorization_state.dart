@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents the current authorization state of the TDLib client
 ///
-/// One of: [AuthorizationStateWaitTdlibParameters], [AuthorizationStateWaitPhoneNumber], [AuthorizationStateWaitEmailAddress], [AuthorizationStateWaitEmailCode], [AuthorizationStateWaitCode], [AuthorizationStateWaitOtherDeviceConfirmation], [AuthorizationStateWaitRegistration], [AuthorizationStateWaitPassword], [AuthorizationStateReady], [AuthorizationStateLoggingOut], [AuthorizationStateClosing], [AuthorizationStateClosed]; or [UndecodedAuthorizationState] for a type newer than this API.
+/// One of: [AuthorizationStateWaitTdlibParameters], [AuthorizationStateWaitPhoneNumber], [AuthorizationStateWaitPremiumPurchase], [AuthorizationStateWaitEmailAddress], [AuthorizationStateWaitEmailCode], [AuthorizationStateWaitCode], [AuthorizationStateWaitOtherDeviceConfirmation], [AuthorizationStateWaitRegistration], [AuthorizationStateWaitPassword], [AuthorizationStateReady], [AuthorizationStateLoggingOut], [AuthorizationStateClosing], [AuthorizationStateClosed]; or [UndecodedAuthorizationState] for a type newer than this API.
 sealed class AuthorizationState extends TdObject {
   const AuthorizationState();
 
@@ -135,6 +135,62 @@ final class AuthorizationStateWaitPhoneNumber extends AuthorizationState {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'authorizationStateWaitPhoneNumber';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction
+final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
+  /// The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction
+  const AuthorizationStateWaitPremiumPurchase({
+    required this.storeProductId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the store product that must be bought
+  final String storeProductId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [AuthorizationStateWaitPremiumPurchase] from TDLib JSON.
+  factory AuthorizationStateWaitPremiumPurchase.fromJson(
+          Map<String, dynamic> json) =>
+      AuthorizationStateWaitPremiumPurchase(
+        storeProductId: _readString(json['store_product_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'store_product_id': storeProductId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  AuthorizationStateWaitPremiumPurchase copyWith({
+    String? storeProductId,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      AuthorizationStateWaitPremiumPurchase(
+        storeProductId: storeProductId ?? this.storeProductId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'authorizationStateWaitPremiumPurchase';
 
   @override
   String getConstructor() => CONSTRUCTOR;

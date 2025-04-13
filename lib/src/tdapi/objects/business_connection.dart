@@ -11,7 +11,7 @@ final class BusinessConnection extends TdObject {
     required this.userId,
     required this.userChatId,
     required this.date,
-    required this.canReply,
+    this.rights,
     required this.isEnabled,
     this.extra,
     this.clientId,
@@ -29,8 +29,8 @@ final class BusinessConnection extends TdObject {
   /// Point in time (Unix timestamp) when the connection was established
   final int date;
 
-  /// True, if the bot can send messages to the connected user; false otherwise
-  final bool canReply;
+  /// Rights of the bot; may be null if the connection was disabled
+  final BusinessBotRights? rights;
 
   /// True, if the connection is enabled; false otherwise
   final bool isEnabled;
@@ -50,7 +50,7 @@ final class BusinessConnection extends TdObject {
         userId: _readInt(json['user_id']),
         userChatId: _readInt(json['user_chat_id']),
         date: _readInt(json['date']),
-        canReply: _readBool(json['can_reply']),
+        rights: _readOptional(json['rights'], BusinessBotRights.fromJson),
         isEnabled: _readBool(json['is_enabled']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -63,7 +63,7 @@ final class BusinessConnection extends TdObject {
         'user_id': userId,
         'user_chat_id': userChatId,
         'date': date,
-        'can_reply': canReply,
+        'rights': rights?.toJson(),
         'is_enabled': isEnabled,
       };
 
@@ -74,7 +74,7 @@ final class BusinessConnection extends TdObject {
     int? userId,
     int? userChatId,
     int? date,
-    bool? canReply,
+    BusinessBotRights? Function()? rights,
     bool? isEnabled,
     dynamic extra,
     int? clientId,
@@ -84,7 +84,7 @@ final class BusinessConnection extends TdObject {
         userId: userId ?? this.userId,
         userChatId: userChatId ?? this.userChatId,
         date: date ?? this.date,
-        canReply: canReply ?? this.canReply,
+        rights: rights != null ? rights() : this.rights,
         isEnabled: isEnabled ?? this.isEnabled,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

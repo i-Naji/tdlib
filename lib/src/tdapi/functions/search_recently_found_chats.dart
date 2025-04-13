@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Searches for the specified query in the title and username of up to 50 recently found chats; this is an offline request
+/// Searches for the specified query in the title and username of up to 50 recently found chats. This is an offline method
 ///
 /// Returns [Chats].
 final class SearchRecentlyFoundChats extends TdFunction<Chats> {
-  /// Searches for the specified query in the title and username of up to 50 recently found chats; this is an offline request
+  /// Searches for the specified query in the title and username of up to 50 recently found chats. This is an offline method
   const SearchRecentlyFoundChats({
     required this.query,
     required this.limit,

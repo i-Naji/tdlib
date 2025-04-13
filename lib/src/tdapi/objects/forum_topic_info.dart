@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class ForumTopicInfo extends TdObject {
   /// Contains basic information about a forum topic
   const ForumTopicInfo({
+    required this.chatId,
     required this.messageThreadId,
     required this.name,
     required this.icon,
@@ -19,6 +20,9 @@ final class ForumTopicInfo extends TdObject {
     this.extra,
     this.clientId,
   });
+
+  /// Identifier of the forum chat to which the topic belongs
+  final int chatId;
 
   /// Message thread identifier of the topic
   final int messageThreadId;
@@ -57,6 +61,7 @@ final class ForumTopicInfo extends TdObject {
 
   /// Parses a [ForumTopicInfo] from TDLib JSON.
   factory ForumTopicInfo.fromJson(Map<String, dynamic> json) => ForumTopicInfo(
+        chatId: _readInt(json['chat_id']),
         messageThreadId: _readInt(json['message_thread_id']),
         name: _readString(json['name']),
         icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
@@ -73,6 +78,7 @@ final class ForumTopicInfo extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'chat_id': chatId,
         'message_thread_id': messageThreadId,
         'name': name,
         'icon': icon.toJson(),
@@ -87,6 +93,7 @@ final class ForumTopicInfo extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ForumTopicInfo copyWith({
+    int? chatId,
     int? messageThreadId,
     String? name,
     ForumTopicIcon? icon,
@@ -100,6 +107,7 @@ final class ForumTopicInfo extends TdObject {
     int? clientId,
   }) =>
       ForumTopicInfo(
+        chatId: chatId ?? this.chatId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         name: name ?? this.name,
         icon: icon ?? this.icon,

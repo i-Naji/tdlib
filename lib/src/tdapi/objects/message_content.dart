@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -3733,6 +3733,92 @@ final class MessageRefundedUpgradedGift extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageRefundedUpgradedGift';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Paid messages were refunded
+final class MessagePaidMessagesRefunded extends MessageContent {
+  /// Paid messages were refunded
+  const MessagePaidMessagesRefunded({
+    required this.messageCount,
+    required this.starCount,
+  });
+
+  /// The number of refunded messages
+  final int messageCount;
+
+  /// The number of refunded Telegram Stars
+  final int starCount;
+
+  /// Parses a [MessagePaidMessagesRefunded] from TDLib JSON.
+  factory MessagePaidMessagesRefunded.fromJson(Map<String, dynamic> json) =>
+      MessagePaidMessagesRefunded(
+        messageCount: _readInt(json['message_count']),
+        starCount: _readInt(json['star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'message_count': messageCount,
+        'star_count': starCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePaidMessagesRefunded copyWith({
+    int? messageCount,
+    int? starCount,
+  }) =>
+      MessagePaidMessagesRefunded(
+        messageCount: messageCount ?? this.messageCount,
+        starCount: starCount ?? this.starCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePaidMessagesRefunded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A price for paid messages was changed in the supergroup chat
+final class MessagePaidMessagePriceChanged extends MessageContent {
+  /// A price for paid messages was changed in the supergroup chat
+  const MessagePaidMessagePriceChanged({
+    required this.paidMessageStarCount,
+  });
+
+  /// The new number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
+  final int paidMessageStarCount;
+
+  /// Parses a [MessagePaidMessagePriceChanged] from TDLib JSON.
+  factory MessagePaidMessagePriceChanged.fromJson(Map<String, dynamic> json) =>
+      MessagePaidMessagePriceChanged(
+        paidMessageStarCount: _readInt(json['paid_message_star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'paid_message_star_count': paidMessageStarCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessagePaidMessagePriceChanged copyWith({
+    int? paidMessageStarCount,
+  }) =>
+      MessagePaidMessagePriceChanged(
+        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messagePaidMessagePriceChanged';
 
   @override
   String getConstructor() => CONSTRUCTOR;

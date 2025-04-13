@@ -9,6 +9,8 @@ final class StarAmount extends TdObject {
   const StarAmount({
     required this.starCount,
     required this.nanostarCount,
+    this.extra,
+    this.clientId,
   });
 
   /// The integer amount of Telegram Stars rounded to 0
@@ -17,10 +19,20 @@ final class StarAmount extends TdObject {
   /// The number of 1/1000000000 shares of Telegram Stars; from -999999999 to 999999999
   final int nanostarCount;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [StarAmount] from TDLib JSON.
   factory StarAmount.fromJson(Map<String, dynamic> json) => StarAmount(
         starCount: _readInt(json['star_count']),
         nanostarCount: _readInt(json['nanostar_count']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -35,10 +47,14 @@ final class StarAmount extends TdObject {
   StarAmount copyWith({
     int? starCount,
     int? nanostarCount,
+    dynamic extra,
+    int? clientId,
   }) =>
       StarAmount(
         starCount: starCount ?? this.starCount,
         nanostarCount: nanostarCount ?? this.nanostarCount,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.

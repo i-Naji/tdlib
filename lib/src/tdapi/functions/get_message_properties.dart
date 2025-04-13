@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns properties of a message; this is an offline request
+/// Returns properties of a message. This is an offline method
 ///
 /// Returns [MessageProperties].
 final class GetMessageProperties extends TdFunction<MessageProperties> {
-  /// Returns properties of a message; this is an offline request
+  /// Returns properties of a message. This is an offline method
   const GetMessageProperties({
     required this.chatId,
     required this.messageId,

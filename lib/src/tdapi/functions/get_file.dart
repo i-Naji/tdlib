@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about a file; this is an offline request
+/// Returns information about a file. This is an offline method
 ///
 /// Returns [File].
 final class GetFile extends TdFunction<File> {
-  /// Returns information about a file; this is an offline request
+  /// Returns information about a file. This is an offline method
   const GetFile({
     required this.fileId,
   });

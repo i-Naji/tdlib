@@ -3,18 +3,18 @@
 
 part of '../tdapi.dart';
 
-/// Informs server about a purchase through App Store. For official applications only
+/// Informs server about an in-store purchase. For official applications only
 ///
 /// Returns [Ok].
-final class AssignAppStoreTransaction extends TdFunction<Ok> {
-  /// Informs server about a purchase through App Store. For official applications only
-  const AssignAppStoreTransaction({
-    required this.receipt,
+final class AssignStoreTransaction extends TdFunction<Ok> {
+  /// Informs server about an in-store purchase. For official applications only
+  const AssignStoreTransaction({
+    required this.transaction,
     required this.purpose,
   });
 
-  /// App Store receipt
-  final String receipt;
+  /// Information about the transaction
+  final StoreTransaction transaction;
 
   /// Transaction purpose
   final StorePaymentPurpose purpose;
@@ -22,24 +22,24 @@ final class AssignAppStoreTransaction extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'receipt': receipt,
+        'transaction': transaction.toJson(),
         'purpose': purpose.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  AssignAppStoreTransaction copyWith({
-    String? receipt,
+  AssignStoreTransaction copyWith({
+    StoreTransaction? transaction,
     StorePaymentPurpose? purpose,
   }) =>
-      AssignAppStoreTransaction(
-        receipt: receipt ?? this.receipt,
+      AssignStoreTransaction(
+        transaction: transaction ?? this.transaction,
         purpose: purpose ?? this.purpose,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'assignAppStoreTransaction';
+  static const String CONSTRUCTOR = 'assignStoreTransaction';
 
   @override
   String getConstructor() => CONSTRUCTOR;

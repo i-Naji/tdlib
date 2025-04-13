@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization
+/// Returns information about the current localization target. This is an offline method if only_local is true. Can be called before authorization
 ///
 /// Returns [LocalizationTargetInfo].
 final class GetLocalizationTargetInfo
     extends TdFunction<LocalizationTargetInfo> {
-  /// Returns information about the current localization target. This is an offline request if only_local is true. Can be called before authorization
+  /// Returns information about the current localization target. This is an offline method if only_local is true. Can be called before authorization
   const GetLocalizationTargetInfo({
     required this.onlyLocal,
   });

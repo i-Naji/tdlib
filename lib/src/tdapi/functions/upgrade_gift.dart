@@ -9,10 +9,14 @@ part of '../tdapi.dart';
 final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
   /// Upgrades a regular gift
   const UpgradeGift({
+    required this.businessConnectionId,
     required this.receivedGiftId,
     required this.keepOriginalDetails,
     required this.starCount,
   });
+
+  /// Unique identifier of business connection on behalf of which to send the request; for bots only
+  final String businessConnectionId;
 
   /// Identifier of the gift
   final String receivedGiftId;
@@ -26,6 +30,7 @@ final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'business_connection_id': businessConnectionId,
         'received_gift_id': receivedGiftId,
         'keep_original_details': keepOriginalDetails,
         'star_count': starCount,
@@ -35,11 +40,13 @@ final class UpgradeGift extends TdFunction<UpgradeGiftResult> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradeGift copyWith({
+    String? businessConnectionId,
     String? receivedGiftId,
     bool? keepOriginalDetails,
     int? starCount,
   }) =>
       UpgradeGift(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         keepOriginalDetails: keepOriginalDetails ?? this.keepOriginalDetails,
         starCount: starCount ?? this.starCount,

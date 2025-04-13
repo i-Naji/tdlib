@@ -55,7 +55,7 @@ final class TelegramPaymentPurposePremiumGift extends TelegramPaymentPurpose {
     required this.text,
   });
 
-  /// ISO 4217 currency code of the payment currency
+  /// ISO 4217 currency code of the payment currency, or "XTR" for payments in Telegram Stars
   final String currency;
 
   /// Paid amount, in the smallest units of the currency

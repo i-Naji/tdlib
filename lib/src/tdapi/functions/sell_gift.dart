@@ -9,8 +9,12 @@ part of '../tdapi.dart';
 final class SellGift extends TdFunction<Ok> {
   /// Sells a gift for Telegram Stars
   const SellGift({
+    required this.businessConnectionId,
     required this.receivedGiftId,
   });
+
+  /// Unique identifier of business connection on behalf of which to send the request; for bots only
+  final String businessConnectionId;
 
   /// Identifier of the gift
   final String receivedGiftId;
@@ -18,6 +22,7 @@ final class SellGift extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'business_connection_id': businessConnectionId,
         'received_gift_id': receivedGiftId,
         if (extra != null) '@extra': extra,
       };
@@ -25,9 +30,11 @@ final class SellGift extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SellGift copyWith({
+    String? businessConnectionId,
     String? receivedGiftId,
   }) =>
       SellGift(
+        businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
       );
 

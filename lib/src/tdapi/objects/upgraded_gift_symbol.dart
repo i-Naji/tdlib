@@ -15,10 +15,10 @@ final class UpgradedGiftSymbol extends TdObject {
   /// Name of the symbol
   final String name;
 
-  /// The sticker representing the upgraded gift
+  /// The sticker representing the symbol
   final Sticker sticker;
 
-  /// The number of upgraded gift that receive this symbol for each 1000 gifts upgraded
+  /// The number of upgraded gifts that receive this symbol for each 1000 gifts upgraded
   final int rarityPerMille;
 
   /// Parses a [UpgradedGiftSymbol] from TDLib JSON.
