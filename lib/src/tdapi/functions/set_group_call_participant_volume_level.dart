@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level
+/// Changes volume level of a participant of an active group call. If the current user can manage the group call or is the owner of the group call, then the participant's volume level will be changed for all users with the default volume level
 ///
 /// Returns [Ok].
 final class SetGroupCallParticipantVolumeLevel extends TdFunction<Ok> {
-  /// Changes volume level of a participant of an active group call. If the current user can manage the group call, then the participant's volume level will be changed for all users with the default volume level
+  /// Changes volume level of a participant of an active group call. If the current user can manage the group call or is the owner of the group call, then the participant's volume level will be changed for all users with the default volume level
   const SetGroupCallParticipantVolumeLevel({
     required this.groupCallId,
     required this.participantId,

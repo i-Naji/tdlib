@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes the reason why a call was discarded
 ///
-/// One of: [CallDiscardReasonEmpty], [CallDiscardReasonMissed], [CallDiscardReasonDeclined], [CallDiscardReasonDisconnected], [CallDiscardReasonHungUp], [CallDiscardReasonAllowGroupCall]; or [UndecodedCallDiscardReason] for a type newer than this API.
+/// One of: [CallDiscardReasonEmpty], [CallDiscardReasonMissed], [CallDiscardReasonDeclined], [CallDiscardReasonDisconnected], [CallDiscardReasonHungUp], [CallDiscardReasonUpgradeToGroupCall]; or [UndecodedCallDiscardReason] for a type newer than this API.
 sealed class CallDiscardReason extends TdObject {
   const CallDiscardReason();
 
@@ -175,41 +175,41 @@ final class CallDiscardReasonHungUp extends CallDiscardReason {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The call was ended because it has been used successfully to transfer private encryption key for the associated group call
-final class CallDiscardReasonAllowGroupCall extends CallDiscardReason {
-  /// The call was ended because it has been used successfully to transfer private encryption key for the associated group call
-  const CallDiscardReasonAllowGroupCall({
-    required this.encryptedGroupCallKey,
+/// The call was ended because it has been upgraded to a group call
+final class CallDiscardReasonUpgradeToGroupCall extends CallDiscardReason {
+  /// The call was ended because it has been upgraded to a group call
+  const CallDiscardReasonUpgradeToGroupCall({
+    required this.inviteLink,
   });
 
-  /// Encrypted using the call private key encryption key for the associated group call
-  final String encryptedGroupCallKey;
+  /// Invite link for the group call
+  final String inviteLink;
 
-  /// Parses a [CallDiscardReasonAllowGroupCall] from TDLib JSON.
-  factory CallDiscardReasonAllowGroupCall.fromJson(Map<String, dynamic> json) =>
-      CallDiscardReasonAllowGroupCall(
-        encryptedGroupCallKey: _readString(json['encrypted_group_call_key']),
+  /// Parses a [CallDiscardReasonUpgradeToGroupCall] from TDLib JSON.
+  factory CallDiscardReasonUpgradeToGroupCall.fromJson(
+          Map<String, dynamic> json) =>
+      CallDiscardReasonUpgradeToGroupCall(
+        inviteLink: _readString(json['invite_link']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'encrypted_group_call_key': encryptedGroupCallKey,
+        'invite_link': inviteLink,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  CallDiscardReasonAllowGroupCall copyWith({
-    String? encryptedGroupCallKey,
+  CallDiscardReasonUpgradeToGroupCall copyWith({
+    String? inviteLink,
   }) =>
-      CallDiscardReasonAllowGroupCall(
-        encryptedGroupCallKey:
-            encryptedGroupCallKey ?? this.encryptedGroupCallKey,
+      CallDiscardReasonUpgradeToGroupCall(
+        inviteLink: inviteLink ?? this.inviteLink,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'callDiscardReasonAllowGroupCall';
+  static const String CONSTRUCTOR = 'callDiscardReasonUpgradeToGroupCall';
 
   @override
   String getConstructor() => CONSTRUCTOR;

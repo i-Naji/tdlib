@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a video file sent in a story
+/// Describes a video file posted as a story
 final class StoryVideo extends TdObject {
-  /// Describes a video file sent in a story
+  /// Describes a video file posted as a story
   const StoryVideo({
     required this.duration,
     required this.width,

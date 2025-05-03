@@ -3,32 +3,33 @@
 
 part of '../tdapi.dart';
 
-/// Creates a group call from a one-to-one call
+/// Creates a new group call that isn't bound to a chat
 ///
-/// Returns [Ok].
-final class CreateGroupCall extends TdFunction<Ok> {
-  /// Creates a group call from a one-to-one call
+/// Returns [GroupCallInfo].
+final class CreateGroupCall extends TdFunction<GroupCallInfo> {
+  /// Creates a new group call that isn't bound to a chat
   const CreateGroupCall({
-    required this.callId,
+    this.joinParameters,
   });
 
-  /// Call identifier
-  final int callId;
+  /// Parameters to join the call; pass null to only create call link without joining the call
+  final GroupCallJoinParameters? joinParameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'call_id': callId,
+        'join_parameters': joinParameters?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   CreateGroupCall copyWith({
-    int? callId,
+    GroupCallJoinParameters? Function()? joinParameters,
   }) =>
       CreateGroupCall(
-        callId: callId ?? this.callId,
+        joinParameters:
+            joinParameters != null ? joinParameters() : this.joinParameters,
       );
 
   /// TDLib type name.

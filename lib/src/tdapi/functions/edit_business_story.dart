@@ -3,13 +3,13 @@
 
 part of '../tdapi.dart';
 
-/// Changes a story sent by the bot on behalf of a business account; for bots only
+/// Changes a story posted by the bot on behalf of a business account; for bots only
 ///
 /// Returns [Story].
 final class EditBusinessStory extends TdFunction<Story> {
-  /// Changes a story sent by the bot on behalf of a business account; for bots only
+  /// Changes a story posted by the bot on behalf of a business account; for bots only
   const EditBusinessStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.content,
     required this.areas,
@@ -18,7 +18,7 @@ final class EditBusinessStory extends TdFunction<Story> {
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Identifier of the story to edit
   final int storyId;
@@ -38,7 +38,7 @@ final class EditBusinessStory extends TdFunction<Story> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'content': content.toJson(),
         'areas': areas.toJson(),
@@ -50,7 +50,7 @@ final class EditBusinessStory extends TdFunction<Story> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   EditBusinessStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     InputStoryContent? content,
     InputStoryAreas? areas,
@@ -58,7 +58,7 @@ final class EditBusinessStory extends TdFunction<Story> {
     StoryPrivacySettings? privacySettings,
   }) =>
       EditBusinessStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         content: content ?? this.content,
         areas: areas ?? this.areas,

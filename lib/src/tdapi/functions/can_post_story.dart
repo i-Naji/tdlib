@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
+/// Checks whether the current user can post a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
 ///
-/// Returns [CanSendStoryResult].
-final class CanSendStory extends TdFunction<CanSendStoryResult> {
-  /// Checks whether the current user can send a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
-  const CanSendStory({
+/// Returns [CanPostStoryResult].
+final class CanPostStory extends TdFunction<CanPostStoryResult> {
+  /// Checks whether the current user can post a story on behalf of a chat; requires can_post_stories right for supergroup and channel chats
+  const CanPostStory({
     required this.chatId,
   });
 
@@ -24,15 +24,15 @@ final class CanSendStory extends TdFunction<CanSendStoryResult> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  CanSendStory copyWith({
+  CanPostStory copyWith({
     int? chatId,
   }) =>
-      CanSendStory(
+      CanPostStory(
         chatId: chatId ?? this.chatId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'canSendStory';
+  static const String CONSTRUCTOR = 'canPostStory';
 
   @override
   String getConstructor() => CONSTRUCTOR;

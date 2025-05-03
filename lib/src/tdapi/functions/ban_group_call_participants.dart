@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats
+/// Bans users from a group call not bound to a chat; requires groupCall.is_owned. Only the owner of the group call can invite the banned users back
 ///
 /// Returns [Ok].
-final class InviteGroupCallParticipants extends TdFunction<Ok> {
-  /// Invites users to an active group call. Sends a service message of type messageInviteVideoChatParticipants for video chats
-  const InviteGroupCallParticipants({
+final class BanGroupCallParticipants extends TdFunction<Ok> {
+  /// Bans users from a group call not bound to a chat; requires groupCall.is_owned. Only the owner of the group call can invite the banned users back
+  const BanGroupCallParticipants({
     required this.groupCallId,
     required this.userIds,
   });
@@ -16,30 +16,30 @@ final class InviteGroupCallParticipants extends TdFunction<Ok> {
   /// Group call identifier
   final int groupCallId;
 
-  /// User identifiers. At most 10 users can be invited simultaneously
+  /// Identifiers of group call participants to ban; identifiers of unknown users from the update updateGroupCallParticipants can be also passed to the method
   final List<int> userIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'group_call_id': groupCallId,
-        'user_ids': userIds,
+        'user_ids': [for (final e in userIds) e.toString()],
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  InviteGroupCallParticipants copyWith({
+  BanGroupCallParticipants copyWith({
     int? groupCallId,
     List<int>? userIds,
   }) =>
-      InviteGroupCallParticipants(
+      BanGroupCallParticipants(
         groupCallId: groupCallId ?? this.groupCallId,
         userIds: userIds ?? this.userIds,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'inviteGroupCallParticipants';
+  static const String CONSTRUCTOR = 'banGroupCallParticipants';
 
   @override
   String getConstructor() => CONSTRUCTOR;

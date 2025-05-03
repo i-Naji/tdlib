@@ -3,41 +3,41 @@
 
 part of '../tdapi.dart';
 
-/// Contains identifier of a story along with identifier of its sender
+/// Contains identifier of a story along with identifier of the chat that posted it
 final class StoryFullId extends TdObject {
-  /// Contains identifier of a story along with identifier of its sender
+  /// Contains identifier of a story along with identifier of the chat that posted it
   const StoryFullId({
-    required this.senderChatId,
+    required this.posterChatId,
     required this.storyId,
   });
 
   /// Identifier of the chat that posted the story
-  final int senderChatId;
+  final int posterChatId;
 
-  /// Unique story identifier among stories of the given sender
+  /// Unique story identifier among stories of the chat
   final int storyId;
 
   /// Parses a [StoryFullId] from TDLib JSON.
   factory StoryFullId.fromJson(Map<String, dynamic> json) => StoryFullId(
-        senderChatId: _readInt(json['sender_chat_id']),
+        posterChatId: _readInt(json['poster_chat_id']),
         storyId: _readInt(json['story_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sender_chat_id': senderChatId,
+        'poster_chat_id': posterChatId,
         'story_id': storyId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   StoryFullId copyWith({
-    int? senderChatId,
+    int? posterChatId,
     int? storyId,
   }) =>
       StoryFullId(
-        senderChatId: senderChatId ?? this.senderChatId,
+        posterChatId: posterChatId ?? this.posterChatId,
         storyId: storyId ?? this.storyId,
       );
 

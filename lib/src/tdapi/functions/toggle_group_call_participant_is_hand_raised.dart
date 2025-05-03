@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a group call participant hand is rased
+/// Toggles whether a group call participant hand is rased; for video chats only
 ///
 /// Returns [Ok].
 final class ToggleGroupCallParticipantIsHandRaised extends TdFunction<Ok> {
-  /// Toggles whether a group call participant hand is rased
+  /// Toggles whether a group call participant hand is rased; for video chats only
   const ToggleGroupCallParticipantIsHandRaised({
     required this.groupCallId,
     required this.participantId,
@@ -20,7 +20,7 @@ final class ToggleGroupCallParticipantIsHandRaised extends TdFunction<Ok> {
   /// Participant identifier
   final MessageSender participantId;
 
-  /// Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed group call flag to lower other's hand
+  /// Pass true if the user's hand needs to be raised. Only self hand can be raised. Requires groupCall.can_be_managed right to lower other's hand
   final bool isHandRaised;
 
   @override

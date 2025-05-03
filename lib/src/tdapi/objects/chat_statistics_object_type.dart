@@ -83,9 +83,9 @@ final class ChatStatisticsObjectTypeMessage extends ChatStatisticsObjectType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes a story sent by the chat
+/// Describes a story posted on behalf of the chat
 final class ChatStatisticsObjectTypeStory extends ChatStatisticsObjectType {
-  /// Describes a story sent by the chat
+  /// Describes a story posted on behalf of the chat
   const ChatStatisticsObjectTypeStory({
     required this.storyId,
   });

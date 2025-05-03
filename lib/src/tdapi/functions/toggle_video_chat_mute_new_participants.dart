@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether new participants of a group call can be unmuted only by administrators of the group call. Requires groupCall.can_toggle_mute_new_participants group call flag
+/// Toggles whether new participants of a video chat can be unmuted only by administrators of the video chat. Requires groupCall.can_toggle_mute_new_participants right
 ///
 /// Returns [Ok].
-final class ToggleGroupCallMuteNewParticipants extends TdFunction<Ok> {
-  /// Toggles whether new participants of a group call can be unmuted only by administrators of the group call. Requires groupCall.can_toggle_mute_new_participants group call flag
-  const ToggleGroupCallMuteNewParticipants({
+final class ToggleVideoChatMuteNewParticipants extends TdFunction<Ok> {
+  /// Toggles whether new participants of a video chat can be unmuted only by administrators of the video chat. Requires groupCall.can_toggle_mute_new_participants right
+  const ToggleVideoChatMuteNewParticipants({
     required this.groupCallId,
     required this.muteNewParticipants,
   });
@@ -29,17 +29,17 @@ final class ToggleGroupCallMuteNewParticipants extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleGroupCallMuteNewParticipants copyWith({
+  ToggleVideoChatMuteNewParticipants copyWith({
     int? groupCallId,
     bool? muteNewParticipants,
   }) =>
-      ToggleGroupCallMuteNewParticipants(
+      ToggleVideoChatMuteNewParticipants(
         groupCallId: groupCallId ?? this.groupCallId,
         muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'toggleGroupCallMuteNewParticipants';
+  static const String CONSTRUCTOR = 'toggleVideoChatMuteNewParticipants';
 
   @override
   String getConstructor() => CONSTRUCTOR;

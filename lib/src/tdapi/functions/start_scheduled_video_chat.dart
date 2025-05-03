@@ -3,16 +3,16 @@
 
 part of '../tdapi.dart';
 
-/// Returns information about available group call streams
+/// Starts a scheduled video chat
 ///
-/// Returns [GroupCallStreams].
-final class GetGroupCallStreams extends TdFunction<GroupCallStreams> {
-  /// Returns information about available group call streams
-  const GetGroupCallStreams({
+/// Returns [Ok].
+final class StartScheduledVideoChat extends TdFunction<Ok> {
+  /// Starts a scheduled video chat
+  const StartScheduledVideoChat({
     required this.groupCallId,
   });
 
-  /// Group call identifier
+  /// Group call identifier of the video chat
   final int groupCallId;
 
   @override
@@ -24,15 +24,15 @@ final class GetGroupCallStreams extends TdFunction<GroupCallStreams> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGroupCallStreams copyWith({
+  StartScheduledVideoChat copyWith({
     int? groupCallId,
   }) =>
-      GetGroupCallStreams(
+      StartScheduledVideoChat(
         groupCallId: groupCallId ?? this.groupCallId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getGroupCallStreams';
+  static const String CONSTRUCTOR = 'startScheduledVideoChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;

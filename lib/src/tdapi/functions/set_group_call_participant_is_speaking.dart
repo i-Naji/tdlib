@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Informs TDLib that speaking state of a participant of an active group has changed
+/// Informs TDLib that speaking state of a participant of an active group call has changed
 ///
 /// Returns [Ok].
 final class SetGroupCallParticipantIsSpeaking extends TdFunction<Ok> {
-  /// Informs TDLib that speaking state of a participant of an active group has changed
+  /// Informs TDLib that speaking state of a participant of an active group call has changed
   const SetGroupCallParticipantIsSpeaking({
     required this.groupCallId,
     required this.audioSource,

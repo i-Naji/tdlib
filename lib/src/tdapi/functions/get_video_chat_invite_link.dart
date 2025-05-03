@@ -6,9 +6,9 @@ part of '../tdapi.dart';
 /// Returns invite link to a video chat in a public chat
 ///
 /// Returns [HttpUrl].
-final class GetGroupCallInviteLink extends TdFunction<HttpUrl> {
+final class GetVideoChatInviteLink extends TdFunction<HttpUrl> {
   /// Returns invite link to a video chat in a public chat
-  const GetGroupCallInviteLink({
+  const GetVideoChatInviteLink({
     required this.groupCallId,
     required this.canSelfUnmute,
   });
@@ -16,7 +16,7 @@ final class GetGroupCallInviteLink extends TdFunction<HttpUrl> {
   /// Group call identifier
   final int groupCallId;
 
-  /// Pass true if the invite link needs to contain an invite hash, passing which to joinGroupCall would allow the invited user to unmute themselves. Requires groupCall.can_be_managed group call flag
+  /// Pass true if the invite link needs to contain an invite hash, passing which to joinVideoChat would allow the invited user to unmute themselves. Requires groupCall.can_be_managed right
   final bool canSelfUnmute;
 
   @override
@@ -29,17 +29,17 @@ final class GetGroupCallInviteLink extends TdFunction<HttpUrl> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GetGroupCallInviteLink copyWith({
+  GetVideoChatInviteLink copyWith({
     int? groupCallId,
     bool? canSelfUnmute,
   }) =>
-      GetGroupCallInviteLink(
+      GetVideoChatInviteLink(
         groupCallId: groupCallId ?? this.groupCallId,
         canSelfUnmute: canSelfUnmute ?? this.canSelfUnmute,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'getGroupCallInviteLink';
+  static const String CONSTRUCTOR = 'getVideoChatInviteLink';
 
   @override
   String getConstructor() => CONSTRUCTOR;

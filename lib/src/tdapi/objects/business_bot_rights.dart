@@ -62,7 +62,7 @@ final class BusinessBotRights extends TdObject {
   /// True, if the bot can transfer Telegram Stars received by the business account to account of the bot, or use them to upgrade and transfer gifts
   final bool canTransferStars;
 
-  /// True, if the bot can send, edit and delete stories
+  /// True, if the bot can post, edit and delete stories
   final bool canManageStories;
 
   /// Parses a [BusinessBotRights] from TDLib JSON.

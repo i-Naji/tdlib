@@ -9,14 +9,14 @@ part of '../tdapi.dart';
 final class ReportStory extends TdFunction<ReportStoryResult> {
   /// Reports a story to the Telegram moderators
   const ReportStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.optionId,
     required this.text,
   });
 
-  /// The identifier of the sender of the story to report
-  final int storySenderChatId;
+  /// The identifier of the poster of the story to report
+  final int storyPosterChatId;
 
   /// The identifier of the story to report
   final int storyId;
@@ -30,7 +30,7 @@ final class ReportStory extends TdFunction<ReportStoryResult> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'option_id': optionId,
         'text': text,
@@ -40,13 +40,13 @@ final class ReportStory extends TdFunction<ReportStoryResult> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ReportStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     String? optionId,
     String? text,
   }) =>
       ReportStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         optionId: optionId ?? this.optionId,
         text: text ?? this.text,

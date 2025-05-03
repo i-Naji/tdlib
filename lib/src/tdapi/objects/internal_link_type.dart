@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeBuyStars], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeBuyStars], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -1083,6 +1083,61 @@ final class InternalLinkTypeGame extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeGame';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a group call that isn't bound to a chat. Call joinGroupCall with the given invite_link
+final class InternalLinkTypeGroupCall extends InternalLinkType {
+  /// The link is a link to a group call that isn't bound to a chat. Call joinGroupCall with the given invite_link
+  const InternalLinkTypeGroupCall({
+    required this.inviteLink,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Internal representation of the invite link
+  final String inviteLink;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeGroupCall] from TDLib JSON.
+  factory InternalLinkTypeGroupCall.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeGroupCall(
+        inviteLink: _readString(json['invite_link']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'invite_link': inviteLink,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeGroupCall copyWith({
+    String? inviteLink,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeGroupCall(
+        inviteLink: inviteLink ?? this.inviteLink,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeGroupCall';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2213,18 +2268,18 @@ final class InternalLinkTypeStickerSet extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
+/// The link is a link to a story. Call searchPublicChat with the given poster username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
 final class InternalLinkTypeStory extends InternalLinkType {
-  /// The link is a link to a story. Call searchPublicChat with the given sender username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
+  /// The link is a link to a story. Call searchPublicChat with the given poster username, then call getStory with the received chat identifier and the given story identifier, then show the story if received
   const InternalLinkTypeStory({
-    required this.storySenderUsername,
+    required this.storyPosterUsername,
     required this.storyId,
     this.extra,
     this.clientId,
   });
 
-  /// Username of the sender of the story
-  final String storySenderUsername;
+  /// Username of the poster of the story
+  final String storyPosterUsername;
 
   /// Story identifier
   final int storyId;
@@ -2240,7 +2295,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
   /// Parses a [InternalLinkTypeStory] from TDLib JSON.
   factory InternalLinkTypeStory.fromJson(Map<String, dynamic> json) =>
       InternalLinkTypeStory(
-        storySenderUsername: _readString(json['story_sender_username']),
+        storyPosterUsername: _readString(json['story_poster_username']),
         storyId: _readInt(json['story_id']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -2249,7 +2304,7 @@ final class InternalLinkTypeStory extends InternalLinkType {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_username': storySenderUsername,
+        'story_poster_username': storyPosterUsername,
         'story_id': storyId,
       };
 
@@ -2257,13 +2312,13 @@ final class InternalLinkTypeStory extends InternalLinkType {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InternalLinkTypeStory copyWith({
-    String? storySenderUsername,
+    String? storyPosterUsername,
     int? storyId,
     dynamic extra,
     int? clientId,
   }) =>
       InternalLinkTypeStory(
-        storySenderUsername: storySenderUsername ?? this.storySenderUsername,
+        storyPosterUsername: storyPosterUsername ?? this.storyPosterUsername,
         storyId: storyId ?? this.storyId,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
@@ -2662,9 +2717,9 @@ final class InternalLinkTypeUserToken extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinGroupCall with the given invite hash to process the link
+/// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinVideoChat with the given invite hash to process the link
 final class InternalLinkTypeVideoChat extends InternalLinkType {
-  /// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinGroupCall with the given invite hash to process the link
+  /// The link is a link to a video chat. Call searchPublicChat with the given chat username, and then joinVideoChat with the given invite hash to process the link
   const InternalLinkTypeVideoChat({
     required this.chatUsername,
     required this.inviteHash,

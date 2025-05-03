@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Sends a new story to a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
+/// Posts a new story on behalf of a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
 ///
 /// Returns [Story].
-final class SendStory extends TdFunction<Story> {
-  /// Sends a new story to a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
-  const SendStory({
+final class PostStory extends TdFunction<Story> {
+  /// Posts a new story on behalf of a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
+  const PostStory({
     required this.chatId,
     required this.content,
     this.areas,
@@ -32,7 +32,7 @@ final class SendStory extends TdFunction<Story> {
   /// Story caption; pass null to use an empty caption; 0-getOption("story_caption_length_max") characters; can have entities only if getOption("can_use_text_entities_in_story_caption")
   final FormattedText? caption;
 
-  /// The privacy settings for the story; ignored for stories sent to supergroup and channel chats
+  /// The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats
   final StoryPrivacySettings privacySettings;
 
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
@@ -64,7 +64,7 @@ final class SendStory extends TdFunction<Story> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SendStory copyWith({
+  PostStory copyWith({
     int? chatId,
     InputStoryContent? content,
     InputStoryAreas? Function()? areas,
@@ -75,7 +75,7 @@ final class SendStory extends TdFunction<Story> {
     bool? isPostedToChatPage,
     bool? protectContent,
   }) =>
-      SendStory(
+      PostStory(
         chatId: chatId ?? this.chatId,
         content: content ?? this.content,
         areas: areas != null ? areas() : this.areas,
@@ -89,7 +89,7 @@ final class SendStory extends TdFunction<Story> {
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'sendStory';
+  static const String CONSTRUCTOR = 'postStory';
 
   @override
   String getConstructor() => CONSTRUCTOR;

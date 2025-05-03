@@ -1355,16 +1355,16 @@ final class InputMessagePoll extends InputMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded
+/// A message with a forwarded story. Stories can't be forwarded to secret chats. A story can be forwarded only if story.can_be_forwarded
 final class InputMessageStory extends InputMessageContent {
-  /// A message with a forwarded story. Stories can't be sent to secret chats. A story can be forwarded only if story.can_be_forwarded
+  /// A message with a forwarded story. Stories can't be forwarded to secret chats. A story can be forwarded only if story.can_be_forwarded
   const InputMessageStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Story identifier
   final int storyId;
@@ -1372,14 +1372,14 @@ final class InputMessageStory extends InputMessageContent {
   /// Parses a [InputMessageStory] from TDLib JSON.
   factory InputMessageStory.fromJson(Map<String, dynamic> json) =>
       InputMessageStory(
-        storySenderChatId: _readInt(json['story_sender_chat_id']),
+        storyPosterChatId: _readInt(json['story_poster_chat_id']),
         storyId: _readInt(json['story_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
       };
 
@@ -1387,11 +1387,11 @@ final class InputMessageStory extends InputMessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
   }) =>
       InputMessageStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
       );
 

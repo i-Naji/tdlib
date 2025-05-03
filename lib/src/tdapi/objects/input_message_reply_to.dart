@@ -151,12 +151,12 @@ final class InputMessageReplyToExternalMessage extends InputMessageReplyTo {
 final class InputMessageReplyToStory extends InputMessageReplyTo {
   /// Describes a story to be replied
   const InputMessageReplyToStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
   });
 
-  /// The identifier of the sender of the story. Currently, stories can be replied only in the sender's chat and channel stories can't be replied
-  final int storySenderChatId;
+  /// The identifier of the poster of the story. Currently, stories can be replied only in the chat that posted the story; channel stories can't be replied
+  final int storyPosterChatId;
 
   /// The identifier of the story
   final int storyId;
@@ -164,14 +164,14 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
   /// Parses a [InputMessageReplyToStory] from TDLib JSON.
   factory InputMessageReplyToStory.fromJson(Map<String, dynamic> json) =>
       InputMessageReplyToStory(
-        storySenderChatId: _readInt(json['story_sender_chat_id']),
+        storyPosterChatId: _readInt(json['story_poster_chat_id']),
         storyId: _readInt(json['story_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
       };
 
@@ -179,11 +179,11 @@ final class InputMessageReplyToStory extends InputMessageReplyTo {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   InputMessageReplyToStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
   }) =>
       InputMessageReplyToStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
       );
 

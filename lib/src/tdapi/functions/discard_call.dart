@@ -11,6 +11,7 @@ final class DiscardCall extends TdFunction<Ok> {
   const DiscardCall({
     required this.callId,
     required this.isDisconnected,
+    required this.inviteLink,
     required this.duration,
     required this.isVideo,
     required this.connectionId,
@@ -21,6 +22,9 @@ final class DiscardCall extends TdFunction<Ok> {
 
   /// Pass true if the user was disconnected
   final bool isDisconnected;
+
+  /// If the call was upgraded to a group call, pass invite link to the group call
+  final String inviteLink;
 
   /// The call duration, in seconds
   final int duration;
@@ -36,6 +40,7 @@ final class DiscardCall extends TdFunction<Ok> {
         '@type': CONSTRUCTOR,
         'call_id': callId,
         'is_disconnected': isDisconnected,
+        'invite_link': inviteLink,
         'duration': duration,
         'is_video': isVideo,
         'connection_id': connectionId.toString(),
@@ -47,6 +52,7 @@ final class DiscardCall extends TdFunction<Ok> {
   DiscardCall copyWith({
     int? callId,
     bool? isDisconnected,
+    String? inviteLink,
     int? duration,
     bool? isVideo,
     int? connectionId,
@@ -54,6 +60,7 @@ final class DiscardCall extends TdFunction<Ok> {
       DiscardCall(
         callId: callId ?? this.callId,
         isDisconnected: isDisconnected ?? this.isDisconnected,
+        inviteLink: inviteLink ?? this.inviteLink,
         duration: duration ?? this.duration,
         isVideo: isVideo ?? this.isVideo,
         connectionId: connectionId ?? this.connectionId,

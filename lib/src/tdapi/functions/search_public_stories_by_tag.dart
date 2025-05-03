@@ -9,14 +9,14 @@ part of '../tdapi.dart';
 final class SearchPublicStoriesByTag extends TdFunction<FoundStories> {
   /// Searches for public stories containing the given hashtag or cashtag. For optimal performance, the number of returned stories is chosen by TDLib and can be smaller than the specified limit
   const SearchPublicStoriesByTag({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.tag,
     required this.offset,
     required this.limit,
   });
 
   /// Identifier of the chat that posted the stories to search for; pass 0 to search stories in all chats
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Hashtag or cashtag to search for
   final String tag;
@@ -30,7 +30,7 @@ final class SearchPublicStoriesByTag extends TdFunction<FoundStories> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'tag': tag,
         'offset': offset,
         'limit': limit,
@@ -40,13 +40,13 @@ final class SearchPublicStoriesByTag extends TdFunction<FoundStories> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchPublicStoriesByTag copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     String? tag,
     String? offset,
     int? limit,
   }) =>
       SearchPublicStoriesByTag(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         tag: tag ?? this.tag,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

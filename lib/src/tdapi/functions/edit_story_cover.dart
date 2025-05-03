@@ -9,13 +9,13 @@ part of '../tdapi.dart';
 final class EditStoryCover extends TdFunction<Ok> {
   /// Changes cover of a video story. Can be called only if story.can_be_edited == true and the story isn't being edited now
   const EditStoryCover({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.coverFrameTimestamp,
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Identifier of the story to edit
   final int storyId;
@@ -26,7 +26,7 @@ final class EditStoryCover extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'cover_frame_timestamp': coverFrameTimestamp,
         if (extra != null) '@extra': extra,
@@ -35,12 +35,12 @@ final class EditStoryCover extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   EditStoryCover copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     double? coverFrameTimestamp,
   }) =>
       EditStoryCover(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         coverFrameTimestamp: coverFrameTimestamp ?? this.coverFrameTimestamp,
       );

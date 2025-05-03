@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Ends a group call. Requires groupCall.can_be_managed
+/// Ends a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise
 ///
 /// Returns [Ok].
 final class EndGroupCall extends TdFunction<Ok> {
-  /// Ends a group call. Requires groupCall.can_be_managed
+  /// Ends a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise
   const EndGroupCall({
     required this.groupCallId,
   });

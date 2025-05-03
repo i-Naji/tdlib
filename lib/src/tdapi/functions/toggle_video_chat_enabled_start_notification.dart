@@ -3,12 +3,12 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether the current user will receive a notification when the group call starts; scheduled group calls only
+/// Toggles whether the current user will receive a notification when the video chat starts; for scheduled video chats only
 ///
 /// Returns [Ok].
-final class ToggleGroupCallEnabledStartNotification extends TdFunction<Ok> {
-  /// Toggles whether the current user will receive a notification when the group call starts; scheduled group calls only
-  const ToggleGroupCallEnabledStartNotification({
+final class ToggleVideoChatEnabledStartNotification extends TdFunction<Ok> {
+  /// Toggles whether the current user will receive a notification when the video chat starts; for scheduled video chats only
+  const ToggleVideoChatEnabledStartNotification({
     required this.groupCallId,
     required this.enabledStartNotification,
   });
@@ -29,18 +29,18 @@ final class ToggleGroupCallEnabledStartNotification extends TdFunction<Ok> {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ToggleGroupCallEnabledStartNotification copyWith({
+  ToggleVideoChatEnabledStartNotification copyWith({
     int? groupCallId,
     bool? enabledStartNotification,
   }) =>
-      ToggleGroupCallEnabledStartNotification(
+      ToggleVideoChatEnabledStartNotification(
         groupCallId: groupCallId ?? this.groupCallId,
         enabledStartNotification:
             enabledStartNotification ?? this.enabledStartNotification,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'toggleGroupCallEnabledStartNotification';
+  static const String CONSTRUCTOR = 'toggleVideoChatEnabledStartNotification';
 
   @override
   String getConstructor() => CONSTRUCTOR;

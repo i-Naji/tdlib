@@ -42,9 +42,9 @@ final class UndecodedStoryOrigin extends StoryOrigin {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// The original story was a public story with known sender
+/// The original story was a public story that was posted by a known chat
 final class StoryOriginPublicStory extends StoryOrigin {
-  /// The original story was a public story with known sender
+  /// The original story was a public story that was posted by a known chat
   const StoryOriginPublicStory({
     required this.chatId,
     required this.storyId,
@@ -89,36 +89,36 @@ final class StoryOriginPublicStory extends StoryOrigin {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The original story was sent by an unknown user
+/// The original story was posted by an unknown user
 final class StoryOriginHiddenUser extends StoryOrigin {
-  /// The original story was sent by an unknown user
+  /// The original story was posted by an unknown user
   const StoryOriginHiddenUser({
-    required this.senderName,
+    required this.posterName,
   });
 
-  /// Name of the story sender
-  final String senderName;
+  /// Name of the user or the chat that posted the story
+  final String posterName;
 
   /// Parses a [StoryOriginHiddenUser] from TDLib JSON.
   factory StoryOriginHiddenUser.fromJson(Map<String, dynamic> json) =>
       StoryOriginHiddenUser(
-        senderName: _readString(json['sender_name']),
+        posterName: _readString(json['poster_name']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'sender_name': senderName,
+        'poster_name': posterName,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   StoryOriginHiddenUser copyWith({
-    String? senderName,
+    String? posterName,
   }) =>
       StoryOriginHiddenUser(
-        senderName: senderName ?? this.senderName,
+        posterName: posterName ?? this.posterName,
       );
 
   /// TDLib type name.

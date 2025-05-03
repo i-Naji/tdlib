@@ -8,14 +8,16 @@ final class GroupCall extends TdObject {
   /// Describes a group call
   const GroupCall({
     required this.id,
-    required this.fromCallId,
     required this.title,
+    required this.inviteLink,
     required this.scheduledStartDate,
     required this.enabledStartNotification,
     required this.isActive,
+    required this.isVideoChat,
     required this.isRtmpStream,
     required this.isJoined,
     required this.needRejoin,
+    required this.isOwned,
     required this.canBeManaged,
     required this.participantCount,
     required this.hasHiddenListeners,
@@ -36,22 +38,25 @@ final class GroupCall extends TdObject {
   /// Group call identifier
   final int id;
 
-  /// Identifier of one-to-one call from which the group call was created; 0 if unknown
-  final int fromCallId;
-
-  /// Group call title
+  /// Group call title; for video chats only
   final String title;
 
-  /// Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 if it is already active or was ended
+  /// Invite link for the group call; for group calls that aren't bound to a chat. For video chats call getVideoChatInviteLink to get the link
+  final String inviteLink;
+
+  /// Point in time (Unix timestamp) when the group call is expected to be started by an administrator; 0 if it is already active or was ended; for video chats only
   final int scheduledStartDate;
 
-  /// True, if the group call is scheduled and the current user will receive a notification when the group call starts
+  /// True, if the group call is scheduled and the current user will receive a notification when the group call starts; for video chats only
   final bool enabledStartNotification;
 
   /// True, if the call is active
   final bool isActive;
 
-  /// True, if the chat is an RTMP stream instead of an ordinary video chat
+  /// True, if the call is bound to a chat
+  final bool isVideoChat;
+
+  /// True, if the call is an RTMP stream instead of an ordinary video chat; for video chats only
   final bool isRtmpStream;
 
   /// True, if the call is joined
@@ -60,13 +65,16 @@ final class GroupCall extends TdObject {
   /// True, if user was kicked from the call because of network loss and the call needs to be rejoined
   final bool needRejoin;
 
-  /// True, if the current user can manage the group call
+  /// True, if the user is the owner of the call and can end the call, change volume level of other users, or ban users there; for group calls that aren't bound to a chat
+  final bool isOwned;
+
+  /// True, if the current user can manage the group call; for video chats only
   final bool canBeManaged;
 
   /// Number of participants in the group call
   final int participantCount;
 
-  /// True, if group call participants, which are muted, aren't returned in participant list
+  /// True, if group call participants, which are muted, aren't returned in participant list; for video chats only
   final bool hasHiddenListeners;
 
   /// True, if all group call participants are loaded
@@ -84,10 +92,10 @@ final class GroupCall extends TdObject {
   /// True, if the current user can broadcast video or share screen
   final bool canEnableVideo;
 
-  /// True, if only group call administrators can unmute new participants
+  /// True, if only group call administrators can unmute new participants; for video chats only
   final bool muteNewParticipants;
 
-  /// True, if the current user can enable or disable mute_new_participants setting
+  /// True, if the current user can enable or disable mute_new_participants setting; for video chats only
   final bool canToggleMuteNewParticipants;
 
   /// Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
@@ -110,14 +118,16 @@ final class GroupCall extends TdObject {
   /// Parses a [GroupCall] from TDLib JSON.
   factory GroupCall.fromJson(Map<String, dynamic> json) => GroupCall(
         id: _readInt(json['id']),
-        fromCallId: _readInt(json['from_call_id']),
         title: _readString(json['title']),
+        inviteLink: _readString(json['invite_link']),
         scheduledStartDate: _readInt(json['scheduled_start_date']),
         enabledStartNotification: _readBool(json['enabled_start_notification']),
         isActive: _readBool(json['is_active']),
+        isVideoChat: _readBool(json['is_video_chat']),
         isRtmpStream: _readBool(json['is_rtmp_stream']),
         isJoined: _readBool(json['is_joined']),
         needRejoin: _readBool(json['need_rejoin']),
+        isOwned: _readBool(json['is_owned']),
         canBeManaged: _readBool(json['can_be_managed']),
         participantCount: _readInt(json['participant_count']),
         hasHiddenListeners: _readBool(json['has_hidden_listeners']),
@@ -142,14 +152,16 @@ final class GroupCall extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id,
-        'from_call_id': fromCallId,
         'title': title,
+        'invite_link': inviteLink,
         'scheduled_start_date': scheduledStartDate,
         'enabled_start_notification': enabledStartNotification,
         'is_active': isActive,
+        'is_video_chat': isVideoChat,
         'is_rtmp_stream': isRtmpStream,
         'is_joined': isJoined,
         'need_rejoin': needRejoin,
+        'is_owned': isOwned,
         'can_be_managed': canBeManaged,
         'participant_count': participantCount,
         'has_hidden_listeners': hasHiddenListeners,
@@ -169,14 +181,16 @@ final class GroupCall extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GroupCall copyWith({
     int? id,
-    int? fromCallId,
     String? title,
+    String? inviteLink,
     int? scheduledStartDate,
     bool? enabledStartNotification,
     bool? isActive,
+    bool? isVideoChat,
     bool? isRtmpStream,
     bool? isJoined,
     bool? needRejoin,
+    bool? isOwned,
     bool? canBeManaged,
     int? participantCount,
     bool? hasHiddenListeners,
@@ -195,15 +209,17 @@ final class GroupCall extends TdObject {
   }) =>
       GroupCall(
         id: id ?? this.id,
-        fromCallId: fromCallId ?? this.fromCallId,
         title: title ?? this.title,
+        inviteLink: inviteLink ?? this.inviteLink,
         scheduledStartDate: scheduledStartDate ?? this.scheduledStartDate,
         enabledStartNotification:
             enabledStartNotification ?? this.enabledStartNotification,
         isActive: isActive ?? this.isActive,
+        isVideoChat: isVideoChat ?? this.isVideoChat,
         isRtmpStream: isRtmpStream ?? this.isRtmpStream,
         isJoined: isJoined ?? this.isJoined,
         needRejoin: needRejoin ?? this.needRejoin,
+        isOwned: isOwned ?? this.isOwned,
         canBeManaged: canBeManaged ?? this.canBeManaged,
         participantCount: participantCount ?? this.participantCount,
         hasHiddenListeners: hasHiddenListeners ?? this.hasHiddenListeners,

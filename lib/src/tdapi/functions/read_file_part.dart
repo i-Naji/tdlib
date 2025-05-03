@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 
 /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file
 ///
-/// Returns [FilePart].
-final class ReadFilePart extends TdFunction<FilePart> {
+/// Returns [Data].
+final class ReadFilePart extends TdFunction<Data> {
   /// Reads a part of a file from the TDLib file cache and returns read bytes. This method is intended to be used only if the application has no direct access to TDLib's file system, because it is usually slower than a direct read from the file
   const ReadFilePart({
     required this.fileId,

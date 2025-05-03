@@ -9,7 +9,7 @@ part of '../tdapi.dart';
 final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
   /// Returns interactions with a story posted in a chat. Can be used only if story is posted on behalf of a chat and the user is an administrator in the chat
   const GetChatStoryInteractions({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     this.reactionType,
     required this.preferForwards,
@@ -17,8 +17,8 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
     required this.limit,
   });
 
-  /// The identifier of the sender of the story
-  final int storySenderChatId;
+  /// The identifier of the poster of the story
+  final int storyPosterChatId;
 
   /// Story identifier
   final int storyId;
@@ -38,7 +38,7 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'reaction_type': reactionType?.toJson(),
         'prefer_forwards': preferForwards,
@@ -50,7 +50,7 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatStoryInteractions copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     ReactionType? Function()? reactionType,
     bool? preferForwards,
@@ -58,7 +58,7 @@ final class GetChatStoryInteractions extends TdFunction<StoryInteractions> {
     int? limit,
   }) =>
       GetChatStoryInteractions(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         reactionType: reactionType != null ? reactionType() : this.reactionType,
         preferForwards: preferForwards ?? this.preferForwards,

@@ -12,7 +12,6 @@ final class Call extends TdObject {
     required this.isOutgoing,
     required this.isVideo,
     required this.state,
-    required this.groupCallId,
   });
 
   /// Call identifier, not persistent
@@ -30,9 +29,6 @@ final class Call extends TdObject {
   /// Call state
   final CallState state;
 
-  /// Identifier of the group call associated with the call; 0 if the group call isn't created yet. The group call can be received through the method getGroupCall
-  final int groupCallId;
-
   /// Parses a [Call] from TDLib JSON.
   factory Call.fromJson(Map<String, dynamic> json) => Call(
         id: _readInt(json['id']),
@@ -40,7 +36,6 @@ final class Call extends TdObject {
         isOutgoing: _readBool(json['is_outgoing']),
         isVideo: _readBool(json['is_video']),
         state: _readObject(json['state'], CallState.fromJson),
-        groupCallId: _readInt(json['group_call_id']),
       );
 
   @override
@@ -51,7 +46,6 @@ final class Call extends TdObject {
         'is_outgoing': isOutgoing,
         'is_video': isVideo,
         'state': state.toJson(),
-        'group_call_id': groupCallId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -62,7 +56,6 @@ final class Call extends TdObject {
     bool? isOutgoing,
     bool? isVideo,
     CallState? state,
-    int? groupCallId,
   }) =>
       Call(
         id: id ?? this.id,
@@ -70,7 +63,6 @@ final class Call extends TdObject {
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isVideo: isVideo ?? this.isVideo,
         state: state ?? this.state,
-        groupCallId: groupCallId ?? this.groupCallId,
       );
 
   /// TDLib type name.

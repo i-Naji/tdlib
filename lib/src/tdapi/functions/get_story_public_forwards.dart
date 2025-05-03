@@ -9,14 +9,14 @@ part of '../tdapi.dart';
 final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
   /// Returns forwards of a story as a message to public chats and reposts by public channels. Can be used only if the story is posted on behalf of the current user or story.can_get_statistics == true. For optimal performance, the number of returned messages and stories is chosen by TDLib
   const GetStoryPublicForwards({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.offset,
     required this.limit,
   });
 
-  /// The identifier of the sender of the story
-  final int storySenderChatId;
+  /// The identifier of the poster of the story
+  final int storyPosterChatId;
 
   /// The identifier of the story
   final int storyId;
@@ -30,7 +30,7 @@ final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'offset': offset,
         'limit': limit,
@@ -40,13 +40,13 @@ final class GetStoryPublicForwards extends TdFunction<PublicForwards> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetStoryPublicForwards copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     String? offset,
     int? limit,
   }) =>
       GetStoryPublicForwards(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

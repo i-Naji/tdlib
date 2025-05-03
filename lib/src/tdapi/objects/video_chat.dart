@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a video chat
+/// Describes a video chat, i.e. a group call bound to a chat
 final class VideoChat extends TdObject {
-  /// Describes a video chat
+  /// Describes a video chat, i.e. a group call bound to a chat
   const VideoChat({
     required this.groupCallId,
     required this.hasParticipants,

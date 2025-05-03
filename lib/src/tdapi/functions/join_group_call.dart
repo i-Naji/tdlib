@@ -3,82 +3,39 @@
 
 part of '../tdapi.dart';
 
-/// Joins an active group call. Returns join response payload for tgcalls
+/// Joins a group call that is not bound to a chat
 ///
-/// Returns [Text].
-final class JoinGroupCall extends TdFunction<Text> {
-  /// Joins an active group call. Returns join response payload for tgcalls
+/// Returns [GroupCallInfo].
+final class JoinGroupCall extends TdFunction<GroupCallInfo> {
+  /// Joins a group call that is not bound to a chat
   const JoinGroupCall({
-    required this.groupCallId,
-    this.participantId,
-    required this.audioSourceId,
-    required this.payload,
-    required this.isMuted,
-    required this.isMyVideoEnabled,
-    required this.inviteHash,
-    required this.keyFingerprint,
+    required this.inputGroupCall,
+    required this.joinParameters,
   });
 
-  /// Group call identifier
-  final int groupCallId;
+  /// The group call to join
+  final InputGroupCall inputGroupCall;
 
-  /// Identifier of a group call participant, which will be used to join the call; pass null to join as self; video chats only
-  final MessageSender? participantId;
-
-  /// Caller audio channel synchronization source identifier; received from tgcalls
-  final int audioSourceId;
-
-  /// Group call join payload; received from tgcalls
-  final String payload;
-
-  /// Pass true to join the call with muted microphone
-  final bool isMuted;
-
-  /// Pass true if the user's video is enabled
-  final bool isMyVideoEnabled;
-
-  /// If non-empty, invite hash to be used to join the group call without being muted by administrators
-  final String inviteHash;
-
-  /// Fingerprint of the encryption key for E2E group calls not bound to a chat; pass 0 for voice chats
-  final int keyFingerprint;
+  /// Parameters to join the call
+  final GroupCallJoinParameters joinParameters;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'group_call_id': groupCallId,
-        'participant_id': participantId?.toJson(),
-        'audio_source_id': audioSourceId,
-        'payload': payload,
-        'is_muted': isMuted,
-        'is_my_video_enabled': isMyVideoEnabled,
-        'invite_hash': inviteHash,
-        'key_fingerprint': keyFingerprint.toString(),
+        'input_group_call': inputGroupCall.toJson(),
+        'join_parameters': joinParameters.toJson(),
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   JoinGroupCall copyWith({
-    int? groupCallId,
-    MessageSender? Function()? participantId,
-    int? audioSourceId,
-    String? payload,
-    bool? isMuted,
-    bool? isMyVideoEnabled,
-    String? inviteHash,
-    int? keyFingerprint,
+    InputGroupCall? inputGroupCall,
+    GroupCallJoinParameters? joinParameters,
   }) =>
       JoinGroupCall(
-        groupCallId: groupCallId ?? this.groupCallId,
-        participantId:
-            participantId != null ? participantId() : this.participantId,
-        audioSourceId: audioSourceId ?? this.audioSourceId,
-        payload: payload ?? this.payload,
-        isMuted: isMuted ?? this.isMuted,
-        isMyVideoEnabled: isMyVideoEnabled ?? this.isMyVideoEnabled,
-        inviteHash: inviteHash ?? this.inviteHash,
-        keyFingerprint: keyFingerprint ?? this.keyFingerprint,
+        inputGroupCall: inputGroupCall ?? this.inputGroupCall,
+        joinParameters: joinParameters ?? this.joinParameters,
       );
 
   /// TDLib type name.

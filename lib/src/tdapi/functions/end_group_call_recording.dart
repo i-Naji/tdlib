@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Ends recording of an active group call. Requires groupCall.can_be_managed group call flag
+/// Ends recording of an active group call; for video chats only. Requires groupCall.can_be_managed right
 ///
 /// Returns [Ok].
 final class EndGroupCallRecording extends TdFunction<Ok> {
-  /// Ends recording of an active group call. Requires groupCall.can_be_managed group call flag
+  /// Ends recording of an active group call; for video chats only. Requires groupCall.can_be_managed right
   const EndGroupCallRecording({
     required this.groupCallId,
   });

@@ -9,13 +9,13 @@ part of '../tdapi.dart';
 final class GetStory extends TdFunction<Story> {
   /// Returns a story
   const GetStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.onlyLocal,
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Story identifier
   final int storyId;
@@ -26,7 +26,7 @@ final class GetStory extends TdFunction<Story> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'only_local': onlyLocal,
         if (extra != null) '@extra': extra,
@@ -35,12 +35,12 @@ final class GetStory extends TdFunction<Story> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     bool? onlyLocal,
   }) =>
       GetStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         onlyLocal: onlyLocal ?? this.onlyLocal,
       );

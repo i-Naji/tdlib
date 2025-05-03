@@ -34,7 +34,7 @@ final class PhoneNumberAuthenticationSettings extends TdObject {
   /// For official Android and iOS applications only; pass null otherwise. Settings for Firebase Authentication
   final FirebaseAuthenticationSettings? firebaseAuthenticationSettings;
 
-  /// List of up to 20 authentication tokens, recently received in updateOption("authentication_token") in previously logged out sessions
+  /// List of up to 20 authentication tokens, recently received in updateOption("authentication_token") in previously logged out sessions; for setAuthenticationPhoneNumber only
   final List<String> authenticationTokens;
 
   /// Parses a [PhoneNumberAuthenticationSettings] from TDLib JSON.

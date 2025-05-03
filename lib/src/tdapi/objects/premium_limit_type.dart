@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of limit, increased for Premium users
 ///
-/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklySentStoryCount], [PremiumLimitTypeMonthlySentStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
+/// One of: [PremiumLimitTypeSupergroupCount], [PremiumLimitTypePinnedChatCount], [PremiumLimitTypeCreatedPublicChatCount], [PremiumLimitTypeSavedAnimationCount], [PremiumLimitTypeFavoriteStickerCount], [PremiumLimitTypeChatFolderCount], [PremiumLimitTypeChatFolderChosenChatCount], [PremiumLimitTypePinnedArchivedChatCount], [PremiumLimitTypePinnedSavedMessagesTopicCount], [PremiumLimitTypeCaptionLength], [PremiumLimitTypeBioLength], [PremiumLimitTypeChatFolderInviteLinkCount], [PremiumLimitTypeShareableChatFolderCount], [PremiumLimitTypeActiveStoryCount], [PremiumLimitTypeWeeklyPostedStoryCount], [PremiumLimitTypeMonthlyPostedStoryCount], [PremiumLimitTypeStoryCaptionLength], [PremiumLimitTypeStorySuggestedReactionAreaCount], [PremiumLimitTypeSimilarChatCount]; or [UndecodedPremiumLimitType] for a type newer than this API.
 sealed class PremiumLimitType extends TdObject {
   const PremiumLimitType();
 
@@ -432,15 +432,15 @@ final class PremiumLimitTypeActiveStoryCount extends PremiumLimitType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The maximum number of stories sent per week
-final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
-  /// The maximum number of stories sent per week
-  const PremiumLimitTypeWeeklySentStoryCount();
+/// The maximum number of stories posted per week
+final class PremiumLimitTypeWeeklyPostedStoryCount extends PremiumLimitType {
+  /// The maximum number of stories posted per week
+  const PremiumLimitTypeWeeklyPostedStoryCount();
 
-  /// Parses a [PremiumLimitTypeWeeklySentStoryCount] from TDLib JSON.
-  factory PremiumLimitTypeWeeklySentStoryCount.fromJson(
+  /// Parses a [PremiumLimitTypeWeeklyPostedStoryCount] from TDLib JSON.
+  factory PremiumLimitTypeWeeklyPostedStoryCount.fromJson(
           Map<String, dynamic> json) =>
-      const PremiumLimitTypeWeeklySentStoryCount();
+      const PremiumLimitTypeWeeklyPostedStoryCount();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -450,25 +450,25 @@ final class PremiumLimitTypeWeeklySentStoryCount extends PremiumLimitType {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumLimitTypeWeeklySentStoryCount copyWith() =>
-      const PremiumLimitTypeWeeklySentStoryCount();
+  PremiumLimitTypeWeeklyPostedStoryCount copyWith() =>
+      const PremiumLimitTypeWeeklyPostedStoryCount();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumLimitTypeWeeklySentStoryCount';
+  static const String CONSTRUCTOR = 'premiumLimitTypeWeeklyPostedStoryCount';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The maximum number of stories sent per month
-final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
-  /// The maximum number of stories sent per month
-  const PremiumLimitTypeMonthlySentStoryCount();
+/// The maximum number of stories posted per month
+final class PremiumLimitTypeMonthlyPostedStoryCount extends PremiumLimitType {
+  /// The maximum number of stories posted per month
+  const PremiumLimitTypeMonthlyPostedStoryCount();
 
-  /// Parses a [PremiumLimitTypeMonthlySentStoryCount] from TDLib JSON.
-  factory PremiumLimitTypeMonthlySentStoryCount.fromJson(
+  /// Parses a [PremiumLimitTypeMonthlyPostedStoryCount] from TDLib JSON.
+  factory PremiumLimitTypeMonthlyPostedStoryCount.fromJson(
           Map<String, dynamic> json) =>
-      const PremiumLimitTypeMonthlySentStoryCount();
+      const PremiumLimitTypeMonthlyPostedStoryCount();
 
   @override
   Map<String, dynamic> toJson() => {
@@ -478,19 +478,19 @@ final class PremiumLimitTypeMonthlySentStoryCount extends PremiumLimitType {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PremiumLimitTypeMonthlySentStoryCount copyWith() =>
-      const PremiumLimitTypeMonthlySentStoryCount();
+  PremiumLimitTypeMonthlyPostedStoryCount copyWith() =>
+      const PremiumLimitTypeMonthlyPostedStoryCount();
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'premiumLimitTypeMonthlySentStoryCount';
+  static const String CONSTRUCTOR = 'premiumLimitTypeMonthlyPostedStoryCount';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The maximum length of captions of sent stories
+/// The maximum length of captions of posted stories
 final class PremiumLimitTypeStoryCaptionLength extends PremiumLimitType {
-  /// The maximum length of captions of sent stories
+  /// The maximum length of captions of posted stories
   const PremiumLimitTypeStoryCaptionLength();
 
   /// Parses a [PremiumLimitTypeStoryCaptionLength] from TDLib JSON.

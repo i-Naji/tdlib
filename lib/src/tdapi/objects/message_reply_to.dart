@@ -125,12 +125,12 @@ final class MessageReplyToMessage extends MessageReplyTo {
 final class MessageReplyToStory extends MessageReplyTo {
   /// Describes a story replied by a given message
   const MessageReplyToStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
   });
 
-  /// The identifier of the sender of the story
-  final int storySenderChatId;
+  /// The identifier of the poster of the story
+  final int storyPosterChatId;
 
   /// The identifier of the story
   final int storyId;
@@ -138,14 +138,14 @@ final class MessageReplyToStory extends MessageReplyTo {
   /// Parses a [MessageReplyToStory] from TDLib JSON.
   factory MessageReplyToStory.fromJson(Map<String, dynamic> json) =>
       MessageReplyToStory(
-        storySenderChatId: _readInt(json['story_sender_chat_id']),
+        storyPosterChatId: _readInt(json['story_poster_chat_id']),
         storyId: _readInt(json['story_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
       };
 
@@ -153,11 +153,11 @@ final class MessageReplyToStory extends MessageReplyTo {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageReplyToStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
   }) =>
       MessageReplyToStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
       );
 

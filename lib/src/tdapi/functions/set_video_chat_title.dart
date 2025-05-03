@@ -3,36 +3,43 @@
 
 part of '../tdapi.dart';
 
-/// Starts a scheduled group call
+/// Sets title of a video chat; requires groupCall.can_be_managed right
 ///
 /// Returns [Ok].
-final class StartScheduledGroupCall extends TdFunction<Ok> {
-  /// Starts a scheduled group call
-  const StartScheduledGroupCall({
+final class SetVideoChatTitle extends TdFunction<Ok> {
+  /// Sets title of a video chat; requires groupCall.can_be_managed right
+  const SetVideoChatTitle({
     required this.groupCallId,
+    required this.title,
   });
 
   /// Group call identifier
   final int groupCallId;
 
+  /// New group call title; 1-64 characters
+  final String title;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'group_call_id': groupCallId,
+        'title': title,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  StartScheduledGroupCall copyWith({
+  SetVideoChatTitle copyWith({
     int? groupCallId,
+    String? title,
   }) =>
-      StartScheduledGroupCall(
+      SetVideoChatTitle(
         groupCallId: groupCallId ?? this.groupCallId,
+        title: title ?? this.title,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'startScheduledGroupCall';
+  static const String CONSTRUCTOR = 'setVideoChatTitle';
 
   @override
   String getConstructor() => CONSTRUCTOR;

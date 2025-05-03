@@ -12,7 +12,7 @@ final class StoryInfo extends TdObject {
     required this.isForCloseFriends,
   });
 
-  /// Unique story identifier among stories of the given sender
+  /// Unique story identifier among stories of the chat
   final int storyId;
 
   /// Point in time (Unix timestamp) when the story was published

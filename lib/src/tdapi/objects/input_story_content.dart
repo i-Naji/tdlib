@@ -3,7 +3,7 @@
 
 part of '../tdapi.dart';
 
-/// The content of a story to send
+/// The content of a story to post
 ///
 /// One of: [InputStoryContentPhoto], [InputStoryContentVideo]; or [UndecodedInputStoryContent] for a type newer than this API.
 sealed class InputStoryContent extends TdObject {

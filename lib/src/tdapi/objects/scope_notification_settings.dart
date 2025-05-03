@@ -13,7 +13,7 @@ final class ScopeNotificationSettings extends TdObject {
     required this.useDefaultMuteStories,
     required this.muteStories,
     required this.storySoundId,
-    required this.showStorySender,
+    required this.showStoryPoster,
     required this.disablePinnedMessageNotifications,
     required this.disableMentionNotifications,
     this.extra,
@@ -38,8 +38,8 @@ final class ScopeNotificationSettings extends TdObject {
   /// Identifier of the notification sound to be played for stories; 0 if sound is disabled
   final int storySoundId;
 
-  /// True, if the sender of stories must be displayed in notifications
-  final bool showStorySender;
+  /// True, if the chat that posted a story must be displayed in notifications
+  final bool showStoryPoster;
 
   /// True, if notifications for incoming pinned messages will be created as for an ordinary unread message
   final bool disablePinnedMessageNotifications;
@@ -64,7 +64,7 @@ final class ScopeNotificationSettings extends TdObject {
         useDefaultMuteStories: _readBool(json['use_default_mute_stories']),
         muteStories: _readBool(json['mute_stories']),
         storySoundId: _readInt(json['story_sound_id']),
-        showStorySender: _readBool(json['show_story_sender']),
+        showStoryPoster: _readBool(json['show_story_poster']),
         disablePinnedMessageNotifications:
             _readBool(json['disable_pinned_message_notifications']),
         disableMentionNotifications:
@@ -82,7 +82,7 @@ final class ScopeNotificationSettings extends TdObject {
         'use_default_mute_stories': useDefaultMuteStories,
         'mute_stories': muteStories,
         'story_sound_id': storySoundId.toString(),
-        'show_story_sender': showStorySender,
+        'show_story_poster': showStoryPoster,
         'disable_pinned_message_notifications':
             disablePinnedMessageNotifications,
         'disable_mention_notifications': disableMentionNotifications,
@@ -97,7 +97,7 @@ final class ScopeNotificationSettings extends TdObject {
     bool? useDefaultMuteStories,
     bool? muteStories,
     int? storySoundId,
-    bool? showStorySender,
+    bool? showStoryPoster,
     bool? disablePinnedMessageNotifications,
     bool? disableMentionNotifications,
     dynamic extra,
@@ -111,7 +111,7 @@ final class ScopeNotificationSettings extends TdObject {
             useDefaultMuteStories ?? this.useDefaultMuteStories,
         muteStories: muteStories ?? this.muteStories,
         storySoundId: storySoundId ?? this.storySoundId,
-        showStorySender: showStorySender ?? this.showStorySender,
+        showStoryPoster: showStoryPoster ?? this.showStoryPoster,
         disablePinnedMessageNotifications: disablePinnedMessageNotifications ??
             this.disablePinnedMessageNotifications,
         disableMentionNotifications:

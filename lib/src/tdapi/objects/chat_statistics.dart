@@ -277,13 +277,13 @@ final class ChatStatisticsChannel extends ChatStatistics {
   /// Mean number of times reactions were added to the recently sent messages
   final StatisticalValue meanMessageReactionCount;
 
-  /// Mean number of times the recently sent stories were viewed
+  /// Mean number of times the recently posted stories were viewed
   final StatisticalValue meanStoryViewCount;
 
-  /// Mean number of times the recently sent stories were shared
+  /// Mean number of times the recently posted stories were shared
   final StatisticalValue meanStoryShareCount;
 
-  /// Mean number of times reactions were added to the recently sent stories
+  /// Mean number of times reactions were added to the recently posted stories
   final StatisticalValue meanStoryReactionCount;
 
   /// A percentage of users with enabled notifications for the chat; 0-100
@@ -325,7 +325,7 @@ final class ChatStatisticsChannel extends ChatStatistics {
   /// A graph containing number of views of associated with the chat instant views
   final StatisticalGraph instantViewInteractionGraph;
 
-  /// Detailed statistics about number of views and shares of recently sent messages and stories
+  /// Detailed statistics about number of views and shares of recently sent messages and posted stories
   final List<ChatStatisticsInteractionInfo> recentInteractions;
 
   /// "@extra" of the request this object answers.

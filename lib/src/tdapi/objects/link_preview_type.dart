@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -770,6 +770,32 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The link is a link to a group call that isn't bound to a chat
+final class LinkPreviewTypeGroupCall extends LinkPreviewType {
+  /// The link is a link to a group call that isn't bound to a chat
+  const LinkPreviewTypeGroupCall();
+
+  /// Parses a [LinkPreviewTypeGroupCall] from TDLib JSON.
+  factory LinkPreviewTypeGroupCall.fromJson(Map<String, dynamic> json) =>
+      const LinkPreviewTypeGroupCall();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeGroupCall copyWith() => const LinkPreviewTypeGroupCall();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeGroupCall';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The link is a link to an invoice
 final class LinkPreviewTypeInvoice extends LinkPreviewType {
   /// The link is a link to an invoice
@@ -999,12 +1025,12 @@ final class LinkPreviewTypeStickerSet extends LinkPreviewType {
 final class LinkPreviewTypeStory extends LinkPreviewType {
   /// The link is a link to a story. Link preview description is unavailable
   const LinkPreviewTypeStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
   });
 
   /// The identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Story identifier
   final int storyId;
@@ -1012,14 +1038,14 @@ final class LinkPreviewTypeStory extends LinkPreviewType {
   /// Parses a [LinkPreviewTypeStory] from TDLib JSON.
   factory LinkPreviewTypeStory.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeStory(
-        storySenderChatId: _readInt(json['story_sender_chat_id']),
+        storyPosterChatId: _readInt(json['story_poster_chat_id']),
         storyId: _readInt(json['story_id']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
       };
 
@@ -1027,11 +1053,11 @@ final class LinkPreviewTypeStory extends LinkPreviewType {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   LinkPreviewTypeStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
   }) =>
       LinkPreviewTypeStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
       );
 

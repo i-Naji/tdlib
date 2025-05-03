@@ -125,6 +125,7 @@ final class CallStateReady extends CallState {
     required this.encryptionKey,
     required this.emojis,
     required this.allowP2p,
+    required this.isGroupCallSupported,
     required this.customParameters,
   });
 
@@ -146,6 +147,9 @@ final class CallStateReady extends CallState {
   /// True, if peer-to-peer connection is allowed by users privacy settings
   final bool allowP2p;
 
+  /// True, if the other party supports upgrading of the call to a group call
+  final bool isGroupCallSupported;
+
   /// Custom JSON-encoded call parameters to be passed to tgcalls
   final String customParameters;
 
@@ -158,6 +162,7 @@ final class CallStateReady extends CallState {
         encryptionKey: _readString(json['encryption_key']),
         emojis: _readList<String>(json['emojis'], _readString),
         allowP2p: _readBool(json['allow_p2p']),
+        isGroupCallSupported: _readBool(json['is_group_call_supported']),
         customParameters: _readString(json['custom_parameters']),
       );
 
@@ -170,6 +175,7 @@ final class CallStateReady extends CallState {
         'encryption_key': encryptionKey,
         'emojis': emojis,
         'allow_p2p': allowP2p,
+        'is_group_call_supported': isGroupCallSupported,
         'custom_parameters': customParameters,
       };
 
@@ -183,6 +189,7 @@ final class CallStateReady extends CallState {
     String? encryptionKey,
     List<String>? emojis,
     bool? allowP2p,
+    bool? isGroupCallSupported,
     String? customParameters,
   }) =>
       CallStateReady(
@@ -192,6 +199,7 @@ final class CallStateReady extends CallState {
         encryptionKey: encryptionKey ?? this.encryptionKey,
         emojis: emojis ?? this.emojis,
         allowP2p: allowP2p ?? this.allowP2p,
+        isGroupCallSupported: isGroupCallSupported ?? this.isGroupCallSupported,
         customParameters: customParameters ?? this.customParameters,
       );
 

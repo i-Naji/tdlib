@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1105,13 +1105,13 @@ final class MessagePoll extends MessageContent {
 final class MessageStory extends MessageContent {
   /// A message with a forwarded story
   const MessageStory({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.viaMention,
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Story identifier
   final int storyId;
@@ -1121,7 +1121,7 @@ final class MessageStory extends MessageContent {
 
   /// Parses a [MessageStory] from TDLib JSON.
   factory MessageStory.fromJson(Map<String, dynamic> json) => MessageStory(
-        storySenderChatId: _readInt(json['story_sender_chat_id']),
+        storyPosterChatId: _readInt(json['story_poster_chat_id']),
         storyId: _readInt(json['story_id']),
         viaMention: _readBool(json['via_mention']),
       );
@@ -1129,7 +1129,7 @@ final class MessageStory extends MessageContent {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'via_mention': viaMention,
       };
@@ -1138,12 +1138,12 @@ final class MessageStory extends MessageContent {
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageStory copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     bool? viaMention,
   }) =>
       MessageStory(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         viaMention: viaMention ?? this.viaMention,
       );
@@ -1310,6 +1310,81 @@ final class MessageCall extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageCall';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+final class MessageGroupCall extends MessageContent {
+  /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+  const MessageGroupCall({
+    required this.isActive,
+    required this.wasMissed,
+    required this.isVideo,
+    required this.duration,
+    required this.otherParticipantIds,
+  });
+
+  /// True, if the call is active, i.e. the called user joined the call
+  final bool isActive;
+
+  /// True, if the called user missed or declined the call
+  final bool wasMissed;
+
+  /// True, if the call is a video call
+  final bool isVideo;
+
+  /// Call duration, in seconds; for left calls only
+  final int duration;
+
+  /// Identifiers of some other call participants
+  final List<MessageSender> otherParticipantIds;
+
+  /// Parses a [MessageGroupCall] from TDLib JSON.
+  factory MessageGroupCall.fromJson(Map<String, dynamic> json) =>
+      MessageGroupCall(
+        isActive: _readBool(json['is_active']),
+        wasMissed: _readBool(json['was_missed']),
+        isVideo: _readBool(json['is_video']),
+        duration: _readInt(json['duration']),
+        otherParticipantIds: _readList<MessageSender>(
+            json['other_participant_ids'],
+            (e) => _readObject(e, MessageSender.fromJson)),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'is_active': isActive,
+        'was_missed': wasMissed,
+        'is_video': isVideo,
+        'duration': duration,
+        'other_participant_ids': [
+          for (final e in otherParticipantIds) e.toJson()
+        ],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageGroupCall copyWith({
+    bool? isActive,
+    bool? wasMissed,
+    bool? isVideo,
+    int? duration,
+    List<MessageSender>? otherParticipantIds,
+  }) =>
+      MessageGroupCall(
+        isActive: isActive ?? this.isActive,
+        wasMissed: wasMissed ?? this.wasMissed,
+        isVideo: isVideo ?? this.isVideo,
+        duration: duration ?? this.duration,
+        otherParticipantIds: otherParticipantIds ?? this.otherParticipantIds,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageGroupCall';
 
   @override
   String getConstructor() => CONSTRUCTOR;

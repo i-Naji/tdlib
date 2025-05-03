@@ -9,13 +9,13 @@ part of '../tdapi.dart';
 final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
   /// Toggles whether a story is accessible after expiration. Can be called only if story.can_toggle_is_posted_to_chat_page == true
   const ToggleStoryIsPostedToChatPage({
-    required this.storySenderChatId,
+    required this.storyPosterChatId,
     required this.storyId,
     required this.isPostedToChatPage,
   });
 
   /// Identifier of the chat that posted the story
-  final int storySenderChatId;
+  final int storyPosterChatId;
 
   /// Identifier of the story
   final int storyId;
@@ -26,7 +26,7 @@ final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
-        'story_sender_chat_id': storySenderChatId,
+        'story_poster_chat_id': storyPosterChatId,
         'story_id': storyId,
         'is_posted_to_chat_page': isPostedToChatPage,
         if (extra != null) '@extra': extra,
@@ -35,12 +35,12 @@ final class ToggleStoryIsPostedToChatPage extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleStoryIsPostedToChatPage copyWith({
-    int? storySenderChatId,
+    int? storyPosterChatId,
     int? storyId,
     bool? isPostedToChatPage,
   }) =>
       ToggleStoryIsPostedToChatPage(
-        storySenderChatId: storySenderChatId ?? this.storySenderChatId,
+        storyPosterChatId: storyPosterChatId ?? this.storyPosterChatId,
         storyId: storyId ?? this.storyId,
         isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
       );

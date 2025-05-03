@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Represents a list of group call streams
-final class GroupCallStreams extends TdObject {
-  /// Represents a list of group call streams
-  const GroupCallStreams({
-    required this.streams,
+/// Contains some binary data
+final class Data extends TdObject {
+  /// Contains some binary data
+  const Data({
+    required this.data,
     this.extra,
     this.clientId,
   });
 
-  /// A list of group call streams
-  final List<GroupCallStream> streams;
+  /// Data
+  final String data;
 
   /// "@extra" of the request this object answers.
   @override
@@ -23,11 +23,9 @@ final class GroupCallStreams extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [GroupCallStreams] from TDLib JSON.
-  factory GroupCallStreams.fromJson(Map<String, dynamic> json) =>
-      GroupCallStreams(
-        streams: _readList<GroupCallStream>(
-            json['streams'], (e) => _readObject(e, GroupCallStream.fromJson)),
+  /// Parses a [Data] from TDLib JSON.
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        data: _readString(json['data']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -35,24 +33,24 @@ final class GroupCallStreams extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'streams': [for (final e in streams) e.toJson()],
+        'data': data,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  GroupCallStreams copyWith({
-    List<GroupCallStream>? streams,
+  Data copyWith({
+    String? data,
     dynamic extra,
     int? clientId,
   }) =>
-      GroupCallStreams(
-        streams: streams ?? this.streams,
+      Data(
+        data: data ?? this.data,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'groupCallStreams';
+  static const String CONSTRUCTOR = 'data';
 
   @override
   String getConstructor() => CONSTRUCTOR;

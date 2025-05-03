@@ -22,7 +22,7 @@ final class ChatActiveStories extends TdObject {
   /// Identifier of the story list in which the stories are shown; may be null if the stories aren't shown in a story list
   final StoryList? list;
 
-  /// A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_sender_chat_id) in descending order
+  /// A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_poster_chat_id) in descending order
   final int order;
 
   /// Identifier of the last read active story

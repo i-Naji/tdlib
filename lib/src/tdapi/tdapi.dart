@@ -40,12 +40,13 @@ part 'functions/answer_web_app_query.dart';
 part 'functions/apply_premium_gift_code.dart';
 part 'functions/assign_store_transaction.dart';
 part 'functions/ban_chat_member.dart';
+part 'functions/ban_group_call_participants.dart';
 part 'functions/block_message_sender_from_replies.dart';
 part 'functions/boost_chat.dart';
 part 'functions/can_bot_send_messages.dart';
+part 'functions/can_post_story.dart';
 part 'functions/can_purchase_from_store.dart';
 part 'functions/can_send_message_to_user.dart';
-part 'functions/can_send_story.dart';
 part 'functions/can_transfer_ownership.dart';
 part 'functions/cancel_download_file.dart';
 part 'functions/cancel_password_reset.dart';
@@ -112,6 +113,8 @@ part 'functions/create_secret_chat.dart';
 part 'functions/create_supergroup_chat.dart';
 part 'functions/create_temporary_password.dart';
 part 'functions/create_video_chat.dart';
+part 'functions/decline_group_call_invitation.dart';
+part 'functions/decrypt_group_call_data.dart';
 part 'functions/delete_account.dart';
 part 'functions/delete_all_call_messages.dart';
 part 'functions/delete_all_revoked_chat_invite_links.dart';
@@ -185,6 +188,7 @@ part 'functions/edit_story.dart';
 part 'functions/edit_story_cover.dart';
 part 'functions/edit_user_star_subscription.dart';
 part 'functions/enable_proxy.dart';
+part 'functions/encrypt_group_call_data.dart';
 part 'functions/end_group_call.dart';
 part 'functions/end_group_call_recording.dart';
 part 'functions/end_group_call_screen_sharing.dart';
@@ -272,7 +276,7 @@ part 'functions/get_chat_statistics.dart';
 part 'functions/get_chat_story_interactions.dart';
 part 'functions/get_chats.dart';
 part 'functions/get_chats_for_chat_folder_invite_link.dart';
-part 'functions/get_chats_to_send_stories.dart';
+part 'functions/get_chats_to_post_stories.dart';
 part 'functions/get_close_friends.dart';
 part 'functions/get_collectible_item_info.dart';
 part 'functions/get_commands.dart';
@@ -317,9 +321,7 @@ part 'functions/get_giveaway_info.dart';
 part 'functions/get_greeting_stickers.dart';
 part 'functions/get_grossing_web_app_bots.dart';
 part 'functions/get_group_call.dart';
-part 'functions/get_group_call_invite_link.dart';
-part 'functions/get_group_call_stream_segment.dart';
-part 'functions/get_group_call_streams.dart';
+part 'functions/get_group_call_participants.dart';
 part 'functions/get_groups_in_common.dart';
 part 'functions/get_imported_contact_count.dart';
 part 'functions/get_inactive_supergroup_chats.dart';
@@ -468,7 +470,10 @@ part 'functions/get_user_privacy_setting_rules.dart';
 part 'functions/get_user_profile_photos.dart';
 part 'functions/get_user_support_info.dart';
 part 'functions/get_video_chat_available_participants.dart';
+part 'functions/get_video_chat_invite_link.dart';
 part 'functions/get_video_chat_rtmp_url.dart';
+part 'functions/get_video_chat_stream_segment.dart';
+part 'functions/get_video_chat_streams.dart';
 part 'functions/get_web_app_link_url.dart';
 part 'functions/get_web_app_placeholder.dart';
 part 'functions/get_web_app_url.dart';
@@ -478,10 +483,12 @@ part 'functions/hide_contact_close_birthdays.dart';
 part 'functions/hide_suggested_action.dart';
 part 'functions/import_contacts.dart';
 part 'functions/import_messages.dart';
-part 'functions/invite_group_call_participants.dart';
+part 'functions/invite_group_call_participant.dart';
+part 'functions/invite_video_chat_participants.dart';
 part 'functions/join_chat.dart';
 part 'functions/join_chat_by_invite_link.dart';
 part 'functions/join_group_call.dart';
+part 'functions/join_video_chat.dart';
 part 'functions/launch_prepaid_giveaway.dart';
 part 'functions/leave_chat.dart';
 part 'functions/leave_group_call.dart';
@@ -504,6 +511,7 @@ part 'functions/parse_markdown.dart';
 part 'functions/parse_text_entities.dart';
 part 'functions/pin_chat_message.dart';
 part 'functions/ping_proxy.dart';
+part 'functions/post_story.dart';
 part 'functions/preliminary_upload_file.dart';
 part 'functions/process_chat_folder_new_chats.dart';
 part 'functions/process_chat_join_request.dart';
@@ -638,7 +646,6 @@ part 'functions/send_payment_form.dart';
 part 'functions/send_phone_number_code.dart';
 part 'functions/send_phone_number_firebase_sms.dart';
 part 'functions/send_quick_reply_shortcut_messages.dart';
-part 'functions/send_story.dart';
 part 'functions/send_web_app_custom_request.dart';
 part 'functions/send_web_app_data.dart';
 part 'functions/set_accent_color.dart';
@@ -711,7 +718,6 @@ part 'functions/set_game_score.dart';
 part 'functions/set_gift_settings.dart';
 part 'functions/set_group_call_participant_is_speaking.dart';
 part 'functions/set_group_call_participant_volume_level.dart';
-part 'functions/set_group_call_title.dart';
 part 'functions/set_inactive_session_ttl.dart';
 part 'functions/set_inline_game_score.dart';
 part 'functions/set_log_stream.dart';
@@ -764,12 +770,13 @@ part 'functions/set_user_privacy_setting_rules.dart';
 part 'functions/set_user_support_info.dart';
 part 'functions/set_username.dart';
 part 'functions/set_video_chat_default_participant.dart';
+part 'functions/set_video_chat_title.dart';
 part 'functions/share_chat_with_bot.dart';
 part 'functions/share_phone_number.dart';
 part 'functions/share_users_with_bot.dart';
 part 'functions/start_group_call_recording.dart';
 part 'functions/start_group_call_screen_sharing.dart';
-part 'functions/start_scheduled_group_call.dart';
+part 'functions/start_scheduled_video_chat.dart';
 part 'functions/stop_business_poll.dart';
 part 'functions/stop_poll.dart';
 part 'functions/suggest_user_profile_photo.dart';
@@ -807,10 +814,8 @@ part 'functions/toggle_forum_topic_is_closed.dart';
 part 'functions/toggle_forum_topic_is_pinned.dart';
 part 'functions/toggle_general_forum_topic_is_hidden.dart';
 part 'functions/toggle_gift_is_saved.dart';
-part 'functions/toggle_group_call_enabled_start_notification.dart';
 part 'functions/toggle_group_call_is_my_video_enabled.dart';
 part 'functions/toggle_group_call_is_my_video_paused.dart';
-part 'functions/toggle_group_call_mute_new_participants.dart';
 part 'functions/toggle_group_call_participant_is_hand_raised.dart';
 part 'functions/toggle_group_call_participant_is_muted.dart';
 part 'functions/toggle_group_call_screen_sharing_is_paused.dart';
@@ -830,6 +835,8 @@ part 'functions/toggle_supergroup_join_to_send_messages.dart';
 part 'functions/toggle_supergroup_sign_messages.dart';
 part 'functions/toggle_supergroup_username_is_active.dart';
 part 'functions/toggle_username_is_active.dart';
+part 'functions/toggle_video_chat_enabled_start_notification.dart';
+part 'functions/toggle_video_chat_mute_new_participants.dart';
 part 'functions/transfer_business_account_stars.dart';
 part 'functions/transfer_chat_ownership.dart';
 part 'functions/transfer_gift.dart';
@@ -930,8 +937,8 @@ part 'objects/call_server_type.dart';
 part 'objects/call_state.dart';
 part 'objects/callback_query_answer.dart';
 part 'objects/callback_query_payload.dart';
+part 'objects/can_post_story_result.dart';
 part 'objects/can_send_message_to_user_result.dart';
-part 'objects/can_send_story_result.dart';
 part 'objects/can_transfer_ownership_result.dart';
 part 'objects/chat.dart';
 part 'objects/chat_action.dart';
@@ -1023,6 +1030,7 @@ part 'objects/country_info.dart';
 part 'objects/created_basic_group_chat.dart';
 part 'objects/current_weather.dart';
 part 'objects/custom_request_result.dart';
+part 'objects/data.dart';
 part 'objects/database_statistics.dart';
 part 'objects/date.dart';
 part 'objects/date_range.dart';
@@ -1056,7 +1064,6 @@ part 'objects/failed_to_add_members.dart';
 part 'objects/file.dart';
 part 'objects/file_download.dart';
 part 'objects/file_downloaded_prefix_size.dart';
-part 'objects/file_part.dart';
 part 'objects/file_type.dart';
 part 'objects/firebase_authentication_settings.dart';
 part 'objects/firebase_device_verification_parameters.dart';
@@ -1089,12 +1096,14 @@ part 'objects/giveaway_parameters.dart';
 part 'objects/giveaway_participant_status.dart';
 part 'objects/giveaway_prize.dart';
 part 'objects/group_call.dart';
+part 'objects/group_call_data_channel.dart';
 part 'objects/group_call_id.dart';
+part 'objects/group_call_info.dart';
+part 'objects/group_call_join_parameters.dart';
 part 'objects/group_call_participant.dart';
 part 'objects/group_call_participant_video_info.dart';
+part 'objects/group_call_participants.dart';
 part 'objects/group_call_recent_speaker.dart';
-part 'objects/group_call_stream.dart';
-part 'objects/group_call_streams.dart';
 part 'objects/group_call_video_quality.dart';
 part 'objects/group_call_video_source_group.dart';
 part 'objects/hashtags.dart';
@@ -1113,6 +1122,7 @@ part 'objects/input_business_start_page.dart';
 part 'objects/input_chat_photo.dart';
 part 'objects/input_credentials.dart';
 part 'objects/input_file.dart';
+part 'objects/input_group_call.dart';
 part 'objects/input_identity_document.dart';
 part 'objects/input_inline_query_result.dart';
 part 'objects/input_invoice.dart';
@@ -1132,6 +1142,7 @@ part 'objects/input_story_content.dart';
 part 'objects/input_text_quote.dart';
 part 'objects/input_thumbnail.dart';
 part 'objects/internal_link_type.dart';
+part 'objects/invite_group_call_participant_result.dart';
 part 'objects/invite_link_chat_type.dart';
 part 'objects/invoice.dart';
 part 'objects/json_object_member.dart';
@@ -1441,6 +1452,8 @@ part 'objects/venue.dart';
 part 'objects/verification_status.dart';
 part 'objects/video.dart';
 part 'objects/video_chat.dart';
+part 'objects/video_chat_stream.dart';
+part 'objects/video_chat_streams.dart';
 part 'objects/video_note.dart';
 part 'objects/voice_note.dart';
 part 'objects/web_app.dart';
@@ -1450,14 +1463,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.47';
+const String tdlibVersion = '1.8.48';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'a03a90470d6fca9a5a3db747ba3f3e4a465b5fe7';
+const String tdlibSchemaCommit = 'b8b08b02dbbc0c05e7129e2f306c636c5b8ec04f';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'a03a90470d6fca9a5a3db747ba3f3e4a465b5fe7',
+  'b8b08b02dbbc0c05e7129e2f306c636c5b8ec04f',
 ];
 
 /// Base class of every TDLib object.
@@ -2135,6 +2148,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       LinkPreviewTypeEmbeddedVideoPlayer.fromJson,
   'linkPreviewTypeExternalAudio': LinkPreviewTypeExternalAudio.fromJson,
   'linkPreviewTypeExternalVideo': LinkPreviewTypeExternalVideo.fromJson,
+  'linkPreviewTypeGroupCall': LinkPreviewTypeGroupCall.fromJson,
   'linkPreviewTypeInvoice': LinkPreviewTypeInvoice.fromJson,
   'linkPreviewTypeMessage': LinkPreviewTypeMessage.fromJson,
   'linkPreviewTypePhoto': LinkPreviewTypePhoto.fromJson,
@@ -2321,6 +2335,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageStory': MessageStory.fromJson,
   'messageInvoice': MessageInvoice.fromJson,
   'messageCall': MessageCall.fromJson,
+  'messageGroupCall': MessageGroupCall.fromJson,
   'messageVideoChatScheduled': MessageVideoChatScheduled.fromJson,
   'messageVideoChatStarted': MessageVideoChatStarted.fromJson,
   'messageVideoChatEnded': MessageVideoChatEnded.fromJson,
@@ -2570,7 +2585,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'callDiscardReasonDeclined': CallDiscardReasonDeclined.fromJson,
   'callDiscardReasonDisconnected': CallDiscardReasonDisconnected.fromJson,
   'callDiscardReasonHungUp': CallDiscardReasonHungUp.fromJson,
-  'callDiscardReasonAllowGroupCall': CallDiscardReasonAllowGroupCall.fromJson,
+  'callDiscardReasonUpgradeToGroupCall':
+      CallDiscardReasonUpgradeToGroupCall.fromJson,
   'callProtocol': CallProtocol.fromJson,
   'callServerTypeTelegramReflector': CallServerTypeTelegramReflector.fromJson,
   'callServerTypeWebrtc': CallServerTypeWebrtc.fromJson,
@@ -2583,17 +2599,33 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'callStateHangingUp': CallStateHangingUp.fromJson,
   'callStateDiscarded': CallStateDiscarded.fromJson,
   'callStateError': CallStateError.fromJson,
+  'groupCallJoinParameters': GroupCallJoinParameters.fromJson,
   'groupCallVideoQualityThumbnail': GroupCallVideoQualityThumbnail.fromJson,
   'groupCallVideoQualityMedium': GroupCallVideoQualityMedium.fromJson,
   'groupCallVideoQualityFull': GroupCallVideoQualityFull.fromJson,
-  'groupCallStream': GroupCallStream.fromJson,
-  'groupCallStreams': GroupCallStreams.fromJson,
+  'videoChatStream': VideoChatStream.fromJson,
+  'videoChatStreams': VideoChatStreams.fromJson,
   'rtmpUrl': RtmpUrl.fromJson,
   'groupCallRecentSpeaker': GroupCallRecentSpeaker.fromJson,
   'groupCall': GroupCall.fromJson,
   'groupCallVideoSourceGroup': GroupCallVideoSourceGroup.fromJson,
   'groupCallParticipantVideoInfo': GroupCallParticipantVideoInfo.fromJson,
   'groupCallParticipant': GroupCallParticipant.fromJson,
+  'groupCallParticipants': GroupCallParticipants.fromJson,
+  'groupCallInfo': GroupCallInfo.fromJson,
+  'inviteGroupCallParticipantResultUserPrivacyRestricted':
+      InviteGroupCallParticipantResultUserPrivacyRestricted.fromJson,
+  'inviteGroupCallParticipantResultUserAlreadyParticipant':
+      InviteGroupCallParticipantResultUserAlreadyParticipant.fromJson,
+  'inviteGroupCallParticipantResultUserWasBanned':
+      InviteGroupCallParticipantResultUserWasBanned.fromJson,
+  'inviteGroupCallParticipantResultSuccess':
+      InviteGroupCallParticipantResultSuccess.fromJson,
+  'groupCallDataChannelMain': GroupCallDataChannelMain.fromJson,
+  'groupCallDataChannelScreenSharing':
+      GroupCallDataChannelScreenSharing.fromJson,
+  'inputGroupCallLink': InputGroupCallLink.fromJson,
+  'inputGroupCallMessage': InputGroupCallMessage.fromJson,
   'callProblemEcho': CallProblemEcho.fromJson,
   'callProblemNoise': CallProblemNoise.fromJson,
   'callProblemInterruptions': CallProblemInterruptions.fromJson,
@@ -2783,10 +2815,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumLimitTypeShareableChatFolderCount':
       PremiumLimitTypeShareableChatFolderCount.fromJson,
   'premiumLimitTypeActiveStoryCount': PremiumLimitTypeActiveStoryCount.fromJson,
-  'premiumLimitTypeWeeklySentStoryCount':
-      PremiumLimitTypeWeeklySentStoryCount.fromJson,
-  'premiumLimitTypeMonthlySentStoryCount':
-      PremiumLimitTypeMonthlySentStoryCount.fromJson,
+  'premiumLimitTypeWeeklyPostedStoryCount':
+      PremiumLimitTypeWeeklyPostedStoryCount.fromJson,
+  'premiumLimitTypeMonthlyPostedStoryCount':
+      PremiumLimitTypeMonthlyPostedStoryCount.fromJson,
   'premiumLimitTypeStoryCaptionLength':
       PremiumLimitTypeStoryCaptionLength.fromJson,
   'premiumLimitTypeStorySuggestedReactionAreaCount':
@@ -2907,15 +2939,15 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'timeZone': TimeZone.fromJson,
   'timeZones': TimeZones.fromJson,
   'hashtags': Hashtags.fromJson,
-  'canSendStoryResultOk': CanSendStoryResultOk.fromJson,
-  'canSendStoryResultPremiumNeeded': CanSendStoryResultPremiumNeeded.fromJson,
-  'canSendStoryResultBoostNeeded': CanSendStoryResultBoostNeeded.fromJson,
-  'canSendStoryResultActiveStoryLimitExceeded':
-      CanSendStoryResultActiveStoryLimitExceeded.fromJson,
-  'canSendStoryResultWeeklyLimitExceeded':
-      CanSendStoryResultWeeklyLimitExceeded.fromJson,
-  'canSendStoryResultMonthlyLimitExceeded':
-      CanSendStoryResultMonthlyLimitExceeded.fromJson,
+  'canPostStoryResultOk': CanPostStoryResultOk.fromJson,
+  'canPostStoryResultPremiumNeeded': CanPostStoryResultPremiumNeeded.fromJson,
+  'canPostStoryResultBoostNeeded': CanPostStoryResultBoostNeeded.fromJson,
+  'canPostStoryResultActiveStoryLimitExceeded':
+      CanPostStoryResultActiveStoryLimitExceeded.fromJson,
+  'canPostStoryResultWeeklyLimitExceeded':
+      CanPostStoryResultWeeklyLimitExceeded.fromJson,
+  'canPostStoryResultMonthlyLimitExceeded':
+      CanPostStoryResultMonthlyLimitExceeded.fromJson,
   'canTransferOwnershipResultOk': CanTransferOwnershipResultOk.fromJson,
   'canTransferOwnershipResultPasswordNeeded':
       CanTransferOwnershipResultPasswordNeeded.fromJson,
@@ -3145,6 +3177,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'internalLinkTypeEditProfileSettings':
       InternalLinkTypeEditProfileSettings.fromJson,
   'internalLinkTypeGame': InternalLinkTypeGame.fromJson,
+  'internalLinkTypeGroupCall': InternalLinkTypeGroupCall.fromJson,
   'internalLinkTypeInstantView': InternalLinkTypeInstantView.fromJson,
   'internalLinkTypeInvoice': InternalLinkTypeInvoice.fromJson,
   'internalLinkTypeLanguagePack': InternalLinkTypeLanguagePack.fromJson,
@@ -3184,7 +3217,6 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'chatBoostLinkInfo': ChatBoostLinkInfo.fromJson,
   'blockListMain': BlockListMain.fromJson,
   'blockListStories': BlockListStories.fromJson,
-  'filePart': FilePart.fromJson,
   'fileTypeNone': FileTypeNone.fromJson,
   'fileTypeAnimation': FileTypeAnimation.fromJson,
   'fileTypeAudio': FileTypeAudio.fromJson,
@@ -3274,6 +3306,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       SuggestedActionExtendStarSubscriptions.fromJson,
   'count': Count.fromJson,
   'text': Text.fromJson,
+  'data': Data.fromJson,
   'seconds': Seconds.fromJson,
   'fileDownloadedPrefixSize': FileDownloadedPrefixSize.fromJson,
   'starCount': StarCount.fromJson,
@@ -3424,14 +3457,16 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateCall': UpdateCall.fromJson,
   'updateGroupCall': UpdateGroupCall.fromJson,
   'updateGroupCallParticipant': UpdateGroupCallParticipant.fromJson,
+  'updateGroupCallParticipants': UpdateGroupCallParticipants.fromJson,
+  'updateGroupCallVerificationState': UpdateGroupCallVerificationState.fromJson,
   'updateNewCallSignalingData': UpdateNewCallSignalingData.fromJson,
   'updateUserPrivacySettingRules': UpdateUserPrivacySettingRules.fromJson,
   'updateUnreadMessageCount': UpdateUnreadMessageCount.fromJson,
   'updateUnreadChatCount': UpdateUnreadChatCount.fromJson,
   'updateStory': UpdateStory.fromJson,
   'updateStoryDeleted': UpdateStoryDeleted.fromJson,
-  'updateStorySendSucceeded': UpdateStorySendSucceeded.fromJson,
-  'updateStorySendFailed': UpdateStorySendFailed.fromJson,
+  'updateStoryPostSucceeded': UpdateStoryPostSucceeded.fromJson,
+  'updateStoryPostFailed': UpdateStoryPostFailed.fromJson,
   'updateChatActiveStories': UpdateChatActiveStories.fromJson,
   'updateStoryListChatCount': UpdateStoryListChatCount.fromJson,
   'updateStoryStealthMode': UpdateStoryStealthMode.fromJson,

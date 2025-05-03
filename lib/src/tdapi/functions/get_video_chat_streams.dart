@@ -3,43 +3,36 @@
 
 part of '../tdapi.dart';
 
-/// Sets group call title. Requires groupCall.can_be_managed group call flag
+/// Returns information about available video chat streams
 ///
-/// Returns [Ok].
-final class SetGroupCallTitle extends TdFunction<Ok> {
-  /// Sets group call title. Requires groupCall.can_be_managed group call flag
-  const SetGroupCallTitle({
+/// Returns [VideoChatStreams].
+final class GetVideoChatStreams extends TdFunction<VideoChatStreams> {
+  /// Returns information about available video chat streams
+  const GetVideoChatStreams({
     required this.groupCallId,
-    required this.title,
   });
 
   /// Group call identifier
   final int groupCallId;
 
-  /// New group call title; 1-64 characters
-  final String title;
-
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'group_call_id': groupCallId,
-        'title': title,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  SetGroupCallTitle copyWith({
+  GetVideoChatStreams copyWith({
     int? groupCallId,
-    String? title,
   }) =>
-      SetGroupCallTitle(
+      GetVideoChatStreams(
         groupCallId: groupCallId ?? this.groupCallId,
-        title: title ?? this.title,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'setGroupCallTitle';
+  static const String CONSTRUCTOR = 'getVideoChatStreams';
 
   @override
   String getConstructor() => CONSTRUCTOR;

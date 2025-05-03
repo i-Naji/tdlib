@@ -3,17 +3,17 @@
 
 part of '../tdapi.dart';
 
-/// Contains a part of a file
-final class FilePart extends TdObject {
-  /// Contains a part of a file
-  const FilePart({
-    required this.data,
+/// Represents a list of video chat streams
+final class VideoChatStreams extends TdObject {
+  /// Represents a list of video chat streams
+  const VideoChatStreams({
+    required this.streams,
     this.extra,
     this.clientId,
   });
 
-  /// File bytes
-  final String data;
+  /// A list of video chat streams
+  final List<VideoChatStream> streams;
 
   /// "@extra" of the request this object answers.
   @override
@@ -23,9 +23,11 @@ final class FilePart extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [FilePart] from TDLib JSON.
-  factory FilePart.fromJson(Map<String, dynamic> json) => FilePart(
-        data: _readString(json['data']),
+  /// Parses a [VideoChatStreams] from TDLib JSON.
+  factory VideoChatStreams.fromJson(Map<String, dynamic> json) =>
+      VideoChatStreams(
+        streams: _readList<VideoChatStream>(
+            json['streams'], (e) => _readObject(e, VideoChatStream.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -33,24 +35,24 @@ final class FilePart extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'data': data,
+        'streams': [for (final e in streams) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  FilePart copyWith({
-    String? data,
+  VideoChatStreams copyWith({
+    List<VideoChatStream>? streams,
     dynamic extra,
     int? clientId,
   }) =>
-      FilePart(
-        data: data ?? this.data,
+      VideoChatStreams(
+        streams: streams ?? this.streams,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'filePart';
+  static const String CONSTRUCTOR = 'videoChatStreams';
 
   @override
   String getConstructor() => CONSTRUCTOR;

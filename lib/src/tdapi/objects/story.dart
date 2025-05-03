@@ -8,10 +8,10 @@ final class Story extends TdObject {
   /// Represents a story
   const Story({
     required this.id,
-    required this.senderChatId,
-    this.senderId,
+    required this.posterChatId,
+    this.posterId,
     required this.date,
-    required this.isBeingSent,
+    required this.isBeingPosted,
     required this.isBeingEdited,
     required this.isEdited,
     required this.isPostedToChatPage,
@@ -35,20 +35,20 @@ final class Story extends TdObject {
     this.clientId,
   });
 
-  /// Unique story identifier among stories of the given sender
+  /// Unique story identifier among stories posted by the given chat
   final int id;
 
   /// Identifier of the chat that posted the story
-  final int senderChatId;
+  final int posterChatId;
 
-  /// Identifier of the sender of the story; may be null if the story is posted on behalf of the sender_chat_id
-  final MessageSender? senderId;
+  /// Identifier of the user or chat that posted the story; may be null if the story is posted on behalf of the poster_chat_id
+  final MessageSender? posterId;
 
   /// Point in time (Unix timestamp) when the story was published
   final int date;
 
-  /// True, if the story is being sent by the current user
-  final bool isBeingSent;
+  /// True, if the story is being posted by the current user
+  final bool isBeingPosted;
 
   /// True, if the story is being edited by the current user
   final bool isBeingEdited;
@@ -56,7 +56,7 @@ final class Story extends TdObject {
   /// True, if the story was edited
   final bool isEdited;
 
-  /// True, if the story is saved in the sender's profile and will be available there after expiration
+  /// True, if the story is saved in the profile of the chat that posted it and will be available there after expiration
   final bool isPostedToChatPage;
 
   /// True, if the story is visible only for the current user
@@ -71,7 +71,7 @@ final class Story extends TdObject {
   /// True, if the story can be forwarded as a message. Otherwise, screenshots and saving of the story content must be also forbidden
   final bool canBeForwarded;
 
-  /// True, if the story can be replied in the chat with the story sender
+  /// True, if the story can be replied in the chat with the user that posted the story
   final bool canBeReplied;
 
   /// True, if the story's is_posted_to_chat_page value can be changed
@@ -118,10 +118,10 @@ final class Story extends TdObject {
   /// Parses a [Story] from TDLib JSON.
   factory Story.fromJson(Map<String, dynamic> json) => Story(
         id: _readInt(json['id']),
-        senderChatId: _readInt(json['sender_chat_id']),
-        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+        posterChatId: _readInt(json['poster_chat_id']),
+        posterId: _readOptional(json['poster_id'], MessageSender.fromJson),
         date: _readInt(json['date']),
-        isBeingSent: _readBool(json['is_being_sent']),
+        isBeingPosted: _readBool(json['is_being_posted']),
         isBeingEdited: _readBool(json['is_being_edited']),
         isEdited: _readBool(json['is_edited']),
         isPostedToChatPage: _readBool(json['is_posted_to_chat_page']),
@@ -155,10 +155,10 @@ final class Story extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id,
-        'sender_chat_id': senderChatId,
-        'sender_id': senderId?.toJson(),
+        'poster_chat_id': posterChatId,
+        'poster_id': posterId?.toJson(),
         'date': date,
-        'is_being_sent': isBeingSent,
+        'is_being_posted': isBeingPosted,
         'is_being_edited': isBeingEdited,
         'is_edited': isEdited,
         'is_posted_to_chat_page': isPostedToChatPage,
@@ -184,10 +184,10 @@ final class Story extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   Story copyWith({
     int? id,
-    int? senderChatId,
-    MessageSender? Function()? senderId,
+    int? posterChatId,
+    MessageSender? Function()? posterId,
     int? date,
-    bool? isBeingSent,
+    bool? isBeingPosted,
     bool? isBeingEdited,
     bool? isEdited,
     bool? isPostedToChatPage,
@@ -212,10 +212,10 @@ final class Story extends TdObject {
   }) =>
       Story(
         id: id ?? this.id,
-        senderChatId: senderChatId ?? this.senderChatId,
-        senderId: senderId != null ? senderId() : this.senderId,
+        posterChatId: posterChatId ?? this.posterChatId,
+        posterId: posterId != null ? posterId() : this.posterId,
         date: date ?? this.date,
-        isBeingSent: isBeingSent ?? this.isBeingSent,
+        isBeingPosted: isBeingPosted ?? this.isBeingPosted,
         isBeingEdited: isBeingEdited ?? this.isBeingEdited,
         isEdited: isEdited ?? this.isEdited,
         isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,

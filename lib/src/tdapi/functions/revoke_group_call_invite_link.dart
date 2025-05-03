@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag
+/// Revokes invite link for a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise
 ///
 /// Returns [Ok].
 final class RevokeGroupCallInviteLink extends TdFunction<Ok> {
-  /// Revokes invite link for a group call. Requires groupCall.can_be_managed group call flag
+  /// Revokes invite link for a group call. Requires groupCall.can_be_managed right for video chats or groupCall.is_owned otherwise
   const RevokeGroupCallInviteLink({
     required this.groupCallId,
   });

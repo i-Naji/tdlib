@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Deletes a story sent by the bot on behalf of a business account; for bots only
+/// Deletes a story posted by the bot on behalf of a business account; for bots only
 ///
 /// Returns [Ok].
 final class DeleteBusinessStory extends TdFunction<Ok> {
-  /// Deletes a story sent by the bot on behalf of a business account; for bots only
+  /// Deletes a story posted by the bot on behalf of a business account; for bots only
   const DeleteBusinessStory({
     required this.businessConnectionId,
     required this.storyId,

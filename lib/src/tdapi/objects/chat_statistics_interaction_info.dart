@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Contains statistics about interactions with a message sent in the chat or a story sent by the chat
+/// Contains statistics about interactions with a message sent in the chat or a story posted on behalf of the chat
 final class ChatStatisticsInteractionInfo extends TdObject {
-  /// Contains statistics about interactions with a message sent in the chat or a story sent by the chat
+  /// Contains statistics about interactions with a message sent in the chat or a story posted on behalf of the chat
   const ChatStatisticsInteractionInfo({
     required this.objectType,
     required this.viewCount,
