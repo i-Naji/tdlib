@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Represents a chat event
 ///
-/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventMemberSubscriptionExtended], [ChatEventAvailableReactionsChanged], [ChatEventBackgroundChanged], [ChatEventDescriptionChanged], [ChatEventEmojiStatusChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventCustomEmojiStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventAccentColorChanged], [ChatEventProfileAccentColorChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventShowMessageSenderToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
+/// One of: [ChatEventMessageEdited], [ChatEventMessageDeleted], [ChatEventMessagePinned], [ChatEventMessageUnpinned], [ChatEventPollStopped], [ChatEventMemberJoined], [ChatEventMemberJoinedByInviteLink], [ChatEventMemberJoinedByRequest], [ChatEventMemberInvited], [ChatEventMemberLeft], [ChatEventMemberPromoted], [ChatEventMemberRestricted], [ChatEventMemberSubscriptionExtended], [ChatEventAvailableReactionsChanged], [ChatEventBackgroundChanged], [ChatEventDescriptionChanged], [ChatEventEmojiStatusChanged], [ChatEventLinkedChatChanged], [ChatEventLocationChanged], [ChatEventMessageAutoDeleteTimeChanged], [ChatEventPermissionsChanged], [ChatEventPhotoChanged], [ChatEventSlowModeDelayChanged], [ChatEventStickerSetChanged], [ChatEventCustomEmojiStickerSetChanged], [ChatEventTitleChanged], [ChatEventUsernameChanged], [ChatEventActiveUsernamesChanged], [ChatEventAccentColorChanged], [ChatEventProfileAccentColorChanged], [ChatEventHasProtectedContentToggled], [ChatEventInvitesToggled], [ChatEventIsAllHistoryAvailableToggled], [ChatEventHasAggressiveAntiSpamEnabledToggled], [ChatEventSignMessagesToggled], [ChatEventShowMessageSenderToggled], [ChatEventAutomaticTranslationToggled], [ChatEventInviteLinkEdited], [ChatEventInviteLinkRevoked], [ChatEventInviteLinkDeleted], [ChatEventVideoChatCreated], [ChatEventVideoChatEnded], [ChatEventVideoChatMuteNewParticipantsToggled], [ChatEventVideoChatParticipantIsMutedToggled], [ChatEventVideoChatParticipantVolumeLevelChanged], [ChatEventIsForumToggled], [ChatEventForumTopicCreated], [ChatEventForumTopicEdited], [ChatEventForumTopicToggleIsClosed], [ChatEventForumTopicToggleIsHidden], [ChatEventForumTopicDeleted], [ChatEventForumTopicPinned]; or [UndecodedChatEventAction] for a type newer than this API.
 sealed class ChatEventAction extends TdObject {
   const ChatEventAction();
 
@@ -1719,6 +1719,47 @@ final class ChatEventShowMessageSenderToggled extends ChatEventAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'chatEventShowMessageSenderToggled';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The has_automatic_translation setting of a channel was toggled
+final class ChatEventAutomaticTranslationToggled extends ChatEventAction {
+  /// The has_automatic_translation setting of a channel was toggled
+  const ChatEventAutomaticTranslationToggled({
+    required this.hasAutomaticTranslation,
+  });
+
+  /// New value of has_automatic_translation
+  final bool hasAutomaticTranslation;
+
+  /// Parses a [ChatEventAutomaticTranslationToggled] from TDLib JSON.
+  factory ChatEventAutomaticTranslationToggled.fromJson(
+          Map<String, dynamic> json) =>
+      ChatEventAutomaticTranslationToggled(
+        hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'has_automatic_translation': hasAutomaticTranslation,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatEventAutomaticTranslationToggled copyWith({
+    bool? hasAutomaticTranslation,
+  }) =>
+      ChatEventAutomaticTranslationToggled(
+        hasAutomaticTranslation:
+            hasAutomaticTranslation ?? this.hasAutomaticTranslation,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatEventAutomaticTranslationToggled';
 
   @override
   String getConstructor() => CONSTRUCTOR;

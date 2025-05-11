@@ -48,9 +48,13 @@ final class UndecodedCanPostStoryResult extends CanPostStoryResult {
 final class CanPostStoryResultOk extends CanPostStoryResult {
   /// A story can be sent
   const CanPostStoryResultOk({
+    required this.storyCount,
     this.extra,
     this.clientId,
   });
+
+  /// Number of stories that can be posted by the user
+  final int storyCount;
 
   /// "@extra" of the request this object answers.
   @override
@@ -63,6 +67,7 @@ final class CanPostStoryResultOk extends CanPostStoryResult {
   /// Parses a [CanPostStoryResultOk] from TDLib JSON.
   factory CanPostStoryResultOk.fromJson(Map<String, dynamic> json) =>
       CanPostStoryResultOk(
+        storyCount: _readInt(json['story_count']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -70,16 +75,19 @@ final class CanPostStoryResultOk extends CanPostStoryResult {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'story_count': storyCount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   CanPostStoryResultOk copyWith({
+    int? storyCount,
     dynamic extra,
     int? clientId,
   }) =>
       CanPostStoryResultOk(
+        storyCount: storyCount ?? this.storyCount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

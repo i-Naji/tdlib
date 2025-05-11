@@ -7,10 +7,14 @@ part of '../tdapi.dart';
 final class UpgradedGiftBackdrop extends TdObject {
   /// Describes a backdrop of an upgraded gift
   const UpgradedGiftBackdrop({
+    required this.id,
     required this.name,
     required this.colors,
     required this.rarityPerMille,
   });
+
+  /// Unique identifier of the backdrop
+  final int id;
 
   /// Name of the backdrop
   final String name;
@@ -24,6 +28,7 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// Parses a [UpgradedGiftBackdrop] from TDLib JSON.
   factory UpgradedGiftBackdrop.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftBackdrop(
+        id: _readInt(json['id']),
         name: _readString(json['name']),
         colors:
             _readObject(json['colors'], UpgradedGiftBackdropColors.fromJson),
@@ -33,6 +38,7 @@ final class UpgradedGiftBackdrop extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'id': id,
         'name': name,
         'colors': colors.toJson(),
         'rarity_per_mille': rarityPerMille,
@@ -41,11 +47,13 @@ final class UpgradedGiftBackdrop extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGiftBackdrop copyWith({
+    int? id,
     String? name,
     UpgradedGiftBackdropColors? colors,
     int? rarityPerMille,
   }) =>
       UpgradedGiftBackdrop(
+        id: id ?? this.id,
         name: name ?? this.name,
         colors: colors ?? this.colors,
         rarityPerMille: rarityPerMille ?? this.rarityPerMille,

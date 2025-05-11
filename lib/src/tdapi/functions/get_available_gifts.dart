@@ -5,8 +5,8 @@ part of '../tdapi.dart';
 
 /// Returns gifts that can be sent to other users and channel chats
 ///
-/// Returns [Gifts].
-final class GetAvailableGifts extends TdFunction<Gifts> {
+/// Returns [AvailableGifts].
+final class GetAvailableGifts extends TdFunction<AvailableGifts> {
   /// Returns gifts that can be sent to other users and channel chats
   const GetAvailableGifts();
 

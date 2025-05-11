@@ -21,6 +21,7 @@ final class UpgradedGift extends TdObject {
     required this.symbol,
     required this.backdrop,
     this.originalDetails,
+    required this.resaleStarCount,
     this.extra,
     this.clientId,
   });
@@ -31,7 +32,7 @@ final class UpgradedGift extends TdObject {
   /// The title of the upgraded gift
   final String title;
 
-  /// Unique name of the upgraded gift that can be used with internalLinkTypeUpgradedGift
+  /// Unique name of the upgraded gift that can be used with internalLinkTypeUpgradedGift or sendResoldGift
   final String name;
 
   /// Unique number of the upgraded gift among gifts upgraded from the same gift
@@ -67,6 +68,9 @@ final class UpgradedGift extends TdObject {
   /// Information about the originally sent gift; may be null if unknown
   final UpgradedGiftOriginalDetails? originalDetails;
 
+  /// Number of Telegram Stars that must be paid to buy the gift and send it to someone else; 0 if resale isn't possible
+  final int resaleStarCount;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -92,6 +96,7 @@ final class UpgradedGift extends TdObject {
         backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
         originalDetails: _readOptional(
             json['original_details'], UpgradedGiftOriginalDetails.fromJson),
+        resaleStarCount: _readInt(json['resale_star_count']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -113,6 +118,7 @@ final class UpgradedGift extends TdObject {
         'symbol': symbol.toJson(),
         'backdrop': backdrop.toJson(),
         'original_details': originalDetails?.toJson(),
+        'resale_star_count': resaleStarCount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -132,6 +138,7 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
     UpgradedGiftOriginalDetails? Function()? originalDetails,
+    int? resaleStarCount,
     dynamic extra,
     int? clientId,
   }) =>
@@ -151,6 +158,7 @@ final class UpgradedGift extends TdObject {
         backdrop: backdrop ?? this.backdrop,
         originalDetails:
             originalDetails != null ? originalDetails() : this.originalDetails,
+        resaleStarCount: resaleStarCount ?? this.resaleStarCount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

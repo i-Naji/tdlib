@@ -12,6 +12,8 @@ final class UpgradeGiftResult extends TdObject {
     required this.isSaved,
     required this.canBeTransferred,
     required this.transferStarCount,
+    required this.nextTransferDate,
+    required this.nextResaleDate,
     required this.exportDate,
     this.extra,
     this.clientId,
@@ -32,6 +34,12 @@ final class UpgradeGiftResult extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift
   final int transferStarCount;
 
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible
+  final int nextTransferDate;
+
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  final int nextResaleDate;
+
   /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT
   final int exportDate;
 
@@ -51,6 +59,8 @@ final class UpgradeGiftResult extends TdObject {
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         transferStarCount: _readInt(json['transfer_star_count']),
+        nextTransferDate: _readInt(json['next_transfer_date']),
+        nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -64,6 +74,8 @@ final class UpgradeGiftResult extends TdObject {
         'is_saved': isSaved,
         'can_be_transferred': canBeTransferred,
         'transfer_star_count': transferStarCount,
+        'next_transfer_date': nextTransferDate,
+        'next_resale_date': nextResaleDate,
         'export_date': exportDate,
       };
 
@@ -75,6 +87,8 @@ final class UpgradeGiftResult extends TdObject {
     bool? isSaved,
     bool? canBeTransferred,
     int? transferStarCount,
+    int? nextTransferDate,
+    int? nextResaleDate,
     int? exportDate,
     dynamic extra,
     int? clientId,
@@ -85,6 +99,8 @@ final class UpgradeGiftResult extends TdObject {
         isSaved: isSaved ?? this.isSaved,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         transferStarCount: transferStarCount ?? this.transferStarCount,
+        nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+        nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

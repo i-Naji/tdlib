@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an action suggested to the current user
 ///
-/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions]; or [UndecodedSuggestedAction] for a type newer than this API.
+/// One of: [SuggestedActionEnableArchiveAndMuteNewChats], [SuggestedActionCheckPassword], [SuggestedActionCheckPhoneNumber], [SuggestedActionViewChecksHint], [SuggestedActionConvertToBroadcastGroup], [SuggestedActionSetPassword], [SuggestedActionUpgradePremium], [SuggestedActionRestorePremium], [SuggestedActionSubscribeToAnnualPremium], [SuggestedActionGiftPremiumForChristmas], [SuggestedActionSetBirthdate], [SuggestedActionSetProfilePhoto], [SuggestedActionExtendPremium], [SuggestedActionExtendStarSubscriptions], [SuggestedActionCustom]; or [UndecodedSuggestedAction] for a type newer than this API.
 sealed class SuggestedAction extends TdObject {
   const SuggestedAction();
 
@@ -459,6 +459,69 @@ final class SuggestedActionExtendStarSubscriptions extends SuggestedAction {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'suggestedActionExtendStarSubscriptions';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A custom suggestion to be shown at the top of the chat list
+final class SuggestedActionCustom extends SuggestedAction {
+  /// A custom suggestion to be shown at the top of the chat list
+  const SuggestedActionCustom({
+    required this.name,
+    required this.title,
+    required this.description,
+    required this.url,
+  });
+
+  /// Unique name of the suggestion
+  final String name;
+
+  /// Title of the suggestion
+  final FormattedText title;
+
+  /// Description of the suggestion
+  final FormattedText description;
+
+  /// The link to open when the suggestion is clicked
+  final String url;
+
+  /// Parses a [SuggestedActionCustom] from TDLib JSON.
+  factory SuggestedActionCustom.fromJson(Map<String, dynamic> json) =>
+      SuggestedActionCustom(
+        name: _readString(json['name']),
+        title: _readObject(json['title'], FormattedText.fromJson),
+        description: _readObject(json['description'], FormattedText.fromJson),
+        url: _readString(json['url']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'name': name,
+        'title': title.toJson(),
+        'description': description.toJson(),
+        'url': url,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  SuggestedActionCustom copyWith({
+    String? name,
+    FormattedText? title,
+    FormattedText? description,
+    String? url,
+  }) =>
+      SuggestedActionCustom(
+        name: name ?? this.name,
+        title: title ?? this.title,
+        description: description ?? this.description,
+        url: url ?? this.url,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'suggestedActionCustom';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -21,6 +21,8 @@ final class ReceivedGift extends TdObject {
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
     required this.transferStarCount,
+    required this.nextTransferDate,
+    required this.nextResaleDate,
     required this.exportDate,
     this.extra,
     this.clientId,
@@ -68,6 +70,12 @@ final class ReceivedGift extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
+  final int nextTransferDate;
+
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  final int nextResaleDate;
+
   /// Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
@@ -95,6 +103,8 @@ final class ReceivedGift extends TdObject {
         sellStarCount: _readInt(json['sell_star_count']),
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         transferStarCount: _readInt(json['transfer_star_count']),
+        nextTransferDate: _readInt(json['next_transfer_date']),
+        nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
@@ -117,6 +127,8 @@ final class ReceivedGift extends TdObject {
         'sell_star_count': sellStarCount,
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'transfer_star_count': transferStarCount,
+        'next_transfer_date': nextTransferDate,
+        'next_resale_date': nextResaleDate,
         'export_date': exportDate,
       };
 
@@ -137,6 +149,8 @@ final class ReceivedGift extends TdObject {
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
     int? transferStarCount,
+    int? nextTransferDate,
+    int? nextResaleDate,
     int? exportDate,
     dynamic extra,
     int? clientId,
@@ -157,6 +171,8 @@ final class ReceivedGift extends TdObject {
         prepaidUpgradeStarCount:
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
         transferStarCount: transferStarCount ?? this.transferStarCount,
+        nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+        nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,

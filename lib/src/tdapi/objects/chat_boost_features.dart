@@ -14,6 +14,7 @@ final class ChatBoostFeatures extends TdObject {
     required this.minChatThemeBackgroundBoostLevel,
     required this.minCustomBackgroundBoostLevel,
     required this.minCustomEmojiStickerSetBoostLevel,
+    required this.minAutomaticTranslationBoostLevel,
     required this.minSpeechRecognitionBoostLevel,
     required this.minSponsoredMessageDisableBoostLevel,
     this.extra,
@@ -40,6 +41,9 @@ final class ChatBoostFeatures extends TdObject {
 
   /// The minimum boost level required to set custom emoji sticker set for the chat; for supergroup chats only
   final int minCustomEmojiStickerSetBoostLevel;
+
+  /// The minimum boost level allowing to enable automatic translation of messages for non-Premium users; for channel chats only
+  final int minAutomaticTranslationBoostLevel;
 
   /// The minimum boost level allowing to recognize speech in video note and voice note messages for non-Premium users; for supergroup chats only
   final int minSpeechRecognitionBoostLevel;
@@ -72,6 +76,8 @@ final class ChatBoostFeatures extends TdObject {
             _readInt(json['min_custom_background_boost_level']),
         minCustomEmojiStickerSetBoostLevel:
             _readInt(json['min_custom_emoji_sticker_set_boost_level']),
+        minAutomaticTranslationBoostLevel:
+            _readInt(json['min_automatic_translation_boost_level']),
         minSpeechRecognitionBoostLevel:
             _readInt(json['min_speech_recognition_boost_level']),
         minSponsoredMessageDisableBoostLevel:
@@ -94,6 +100,8 @@ final class ChatBoostFeatures extends TdObject {
         'min_custom_background_boost_level': minCustomBackgroundBoostLevel,
         'min_custom_emoji_sticker_set_boost_level':
             minCustomEmojiStickerSetBoostLevel,
+        'min_automatic_translation_boost_level':
+            minAutomaticTranslationBoostLevel,
         'min_speech_recognition_boost_level': minSpeechRecognitionBoostLevel,
         'min_sponsored_message_disable_boost_level':
             minSponsoredMessageDisableBoostLevel,
@@ -109,6 +117,7 @@ final class ChatBoostFeatures extends TdObject {
     int? minChatThemeBackgroundBoostLevel,
     int? minCustomBackgroundBoostLevel,
     int? minCustomEmojiStickerSetBoostLevel,
+    int? minAutomaticTranslationBoostLevel,
     int? minSpeechRecognitionBoostLevel,
     int? minSponsoredMessageDisableBoostLevel,
     dynamic extra,
@@ -131,6 +140,8 @@ final class ChatBoostFeatures extends TdObject {
         minCustomEmojiStickerSetBoostLevel:
             minCustomEmojiStickerSetBoostLevel ??
                 this.minCustomEmojiStickerSetBoostLevel,
+        minAutomaticTranslationBoostLevel: minAutomaticTranslationBoostLevel ??
+            this.minAutomaticTranslationBoostLevel,
         minSpeechRecognitionBoostLevel: minSpeechRecognitionBoostLevel ??
             this.minSpeechRecognitionBoostLevel,
         minSponsoredMessageDisableBoostLevel:

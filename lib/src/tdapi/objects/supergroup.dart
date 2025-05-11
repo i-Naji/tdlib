@@ -13,6 +13,7 @@ final class Supergroup extends TdObject {
     required this.status,
     required this.memberCount,
     required this.boostLevel,
+    required this.hasAutomaticTranslation,
     required this.hasLinkedChat,
     required this.hasLocation,
     required this.signMessages,
@@ -50,6 +51,9 @@ final class Supergroup extends TdObject {
 
   /// Approximate boost level for the chat
   final int boostLevel;
+
+  /// True, if automatic translation of messages is enabled in the channel
+  final bool hasAutomaticTranslation;
 
   /// True, if the channel has a discussion group, or the supergroup is the designated discussion group for a channel
   final bool hasLinkedChat;
@@ -115,6 +119,7 @@ final class Supergroup extends TdObject {
         status: _readObject(json['status'], ChatMemberStatus.fromJson),
         memberCount: _readInt(json['member_count']),
         boostLevel: _readInt(json['boost_level']),
+        hasAutomaticTranslation: _readBool(json['has_automatic_translation']),
         hasLinkedChat: _readBool(json['has_linked_chat']),
         hasLocation: _readBool(json['has_location']),
         signMessages: _readBool(json['sign_messages']),
@@ -145,6 +150,7 @@ final class Supergroup extends TdObject {
         'status': status.toJson(),
         'member_count': memberCount,
         'boost_level': boostLevel,
+        'has_automatic_translation': hasAutomaticTranslation,
         'has_linked_chat': hasLinkedChat,
         'has_location': hasLocation,
         'sign_messages': signMessages,
@@ -172,6 +178,7 @@ final class Supergroup extends TdObject {
     ChatMemberStatus? status,
     int? memberCount,
     int? boostLevel,
+    bool? hasAutomaticTranslation,
     bool? hasLinkedChat,
     bool? hasLocation,
     bool? signMessages,
@@ -198,6 +205,8 @@ final class Supergroup extends TdObject {
         status: status ?? this.status,
         memberCount: memberCount ?? this.memberCount,
         boostLevel: boostLevel ?? this.boostLevel,
+        hasAutomaticTranslation:
+            hasAutomaticTranslation ?? this.hasAutomaticTranslation,
         hasLinkedChat: hasLinkedChat ?? this.hasLinkedChat,
         hasLocation: hasLocation ?? this.hasLocation,
         signMessages: signMessages ?? this.signMessages,

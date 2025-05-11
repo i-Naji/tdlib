@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -1119,6 +1119,111 @@ final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiftUpgrade';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+final class StarTransactionTypeUpgradedGiftPurchase
+    extends StarTransactionType {
+  /// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+  const StarTransactionTypeUpgradedGiftPurchase({
+    required this.userId,
+    required this.gift,
+  });
+
+  /// Identifier of the user that sold the gift
+  final int userId;
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Parses a [StarTransactionTypeUpgradedGiftPurchase] from TDLib JSON.
+  factory StarTransactionTypeUpgradedGiftPurchase.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeUpgradedGiftPurchase(
+        userId: _readInt(json['user_id']),
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'gift': gift.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeUpgradedGiftPurchase copyWith({
+    int? userId,
+    UpgradedGift? gift,
+  }) =>
+      StarTransactionTypeUpgradedGiftPurchase(
+        userId: userId ?? this.userId,
+        gift: gift ?? this.gift,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionTypeUpgradedGiftPurchase';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a sale of an upgraded gift; for regular users only
+final class StarTransactionTypeUpgradedGiftSale extends StarTransactionType {
+  /// The transaction is a sale of an upgraded gift; for regular users only
+  const StarTransactionTypeUpgradedGiftSale({
+    required this.userId,
+    required this.gift,
+    required this.affiliate,
+  });
+
+  /// Identifier of the user that bought the gift
+  final int userId;
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Information about commission received by Telegram from the transaction
+  final AffiliateInfo affiliate;
+
+  /// Parses a [StarTransactionTypeUpgradedGiftSale] from TDLib JSON.
+  factory StarTransactionTypeUpgradedGiftSale.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeUpgradedGiftSale(
+        userId: _readInt(json['user_id']),
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+        affiliate: _readObject(json['affiliate'], AffiliateInfo.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'gift': gift.toJson(),
+        'affiliate': affiliate.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeUpgradedGiftSale copyWith({
+    int? userId,
+    UpgradedGift? gift,
+    AffiliateInfo? affiliate,
+  }) =>
+      StarTransactionTypeUpgradedGiftSale(
+        userId: userId ?? this.userId,
+        gift: gift ?? this.gift,
+        affiliate: affiliate ?? this.affiliate,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionTypeUpgradedGiftSale';
 
   @override
   String getConstructor() => CONSTRUCTOR;

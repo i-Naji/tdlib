@@ -3666,7 +3666,10 @@ final class MessageUpgradedGift extends MessageContent {
     required this.isSaved,
     required this.canBeTransferred,
     required this.wasTransferred,
+    required this.lastResaleStarCount,
     required this.transferStarCount,
+    required this.nextTransferDate,
+    required this.nextResaleDate,
     required this.exportDate,
   });
 
@@ -3679,7 +3682,7 @@ final class MessageUpgradedGift extends MessageContent {
   /// Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
 
-  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred gift
+  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
   final bool isUpgrade;
 
   /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
@@ -3691,8 +3694,17 @@ final class MessageUpgradedGift extends MessageContent {
   /// True, if the gift was transferred to another owner; only for the receiver of the gift
   final bool wasTransferred;
 
+  /// Number of Telegram Stars that were paid by the sender for the gift; 0 if the gift was upgraded or transferred
+  final int lastResaleStarCount;
+
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
+
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
+  final int nextTransferDate;
+
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  final int nextResaleDate;
 
   /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
@@ -3707,7 +3719,10 @@ final class MessageUpgradedGift extends MessageContent {
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasTransferred: _readBool(json['was_transferred']),
+        lastResaleStarCount: _readInt(json['last_resale_star_count']),
         transferStarCount: _readInt(json['transfer_star_count']),
+        nextTransferDate: _readInt(json['next_transfer_date']),
+        nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
       );
 
@@ -3721,7 +3736,10 @@ final class MessageUpgradedGift extends MessageContent {
         'is_saved': isSaved,
         'can_be_transferred': canBeTransferred,
         'was_transferred': wasTransferred,
+        'last_resale_star_count': lastResaleStarCount,
         'transfer_star_count': transferStarCount,
+        'next_transfer_date': nextTransferDate,
+        'next_resale_date': nextResaleDate,
         'export_date': exportDate,
       };
 
@@ -3736,7 +3754,10 @@ final class MessageUpgradedGift extends MessageContent {
     bool? isSaved,
     bool? canBeTransferred,
     bool? wasTransferred,
+    int? lastResaleStarCount,
     int? transferStarCount,
+    int? nextTransferDate,
+    int? nextResaleDate,
     int? exportDate,
   }) =>
       MessageUpgradedGift(
@@ -3747,7 +3768,10 @@ final class MessageUpgradedGift extends MessageContent {
         isSaved: isSaved ?? this.isSaved,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         wasTransferred: wasTransferred ?? this.wasTransferred,
+        lastResaleStarCount: lastResaleStarCount ?? this.lastResaleStarCount,
         transferStarCount: transferStarCount ?? this.transferStarCount,
+        nextTransferDate: nextTransferDate ?? this.nextTransferDate,
+        nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,
       );
 
@@ -3773,7 +3797,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   /// Sender of the gift
   final MessageSender senderId;
 
-  /// True, if the gift was obtained by upgrading of a previously received gift
+  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
   final bool isUpgrade;
 
   /// Parses a [MessageRefundedUpgradedGift] from TDLib JSON.

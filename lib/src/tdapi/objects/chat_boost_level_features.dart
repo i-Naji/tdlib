@@ -19,6 +19,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     required this.chatThemeBackgroundCount,
     required this.canSetCustomBackground,
     required this.canSetCustomEmojiStickerSet,
+    required this.canEnableAutomaticTranslation,
     required this.canRecognizeSpeech,
     required this.canDisableSponsoredMessages,
     this.extra,
@@ -61,6 +62,9 @@ final class ChatBoostLevelFeatures extends TdObject {
   /// True, if custom emoji sticker set can be set for the chat
   final bool canSetCustomEmojiStickerSet;
 
+  /// True, if automatic translation of messages can be enabled in the chat
+  final bool canEnableAutomaticTranslation;
+
   /// True, if speech recognition can be used for video note and voice note messages by all users
   final bool canRecognizeSpeech;
 
@@ -93,6 +97,8 @@ final class ChatBoostLevelFeatures extends TdObject {
         canSetCustomBackground: _readBool(json['can_set_custom_background']),
         canSetCustomEmojiStickerSet:
             _readBool(json['can_set_custom_emoji_sticker_set']),
+        canEnableAutomaticTranslation:
+            _readBool(json['can_enable_automatic_translation']),
         canRecognizeSpeech: _readBool(json['can_recognize_speech']),
         canDisableSponsoredMessages:
             _readBool(json['can_disable_sponsored_messages']),
@@ -116,6 +122,7 @@ final class ChatBoostLevelFeatures extends TdObject {
         'chat_theme_background_count': chatThemeBackgroundCount,
         'can_set_custom_background': canSetCustomBackground,
         'can_set_custom_emoji_sticker_set': canSetCustomEmojiStickerSet,
+        'can_enable_automatic_translation': canEnableAutomaticTranslation,
         'can_recognize_speech': canRecognizeSpeech,
         'can_disable_sponsored_messages': canDisableSponsoredMessages,
       };
@@ -135,6 +142,7 @@ final class ChatBoostLevelFeatures extends TdObject {
     int? chatThemeBackgroundCount,
     bool? canSetCustomBackground,
     bool? canSetCustomEmojiStickerSet,
+    bool? canEnableAutomaticTranslation,
     bool? canRecognizeSpeech,
     bool? canDisableSponsoredMessages,
     dynamic extra,
@@ -161,6 +169,8 @@ final class ChatBoostLevelFeatures extends TdObject {
             canSetCustomBackground ?? this.canSetCustomBackground,
         canSetCustomEmojiStickerSet:
             canSetCustomEmojiStickerSet ?? this.canSetCustomEmojiStickerSet,
+        canEnableAutomaticTranslation:
+            canEnableAutomaticTranslation ?? this.canEnableAutomaticTranslation,
         canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
         canDisableSponsoredMessages:
             canDisableSponsoredMessages ?? this.canDisableSponsoredMessages,

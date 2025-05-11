@@ -4,16 +4,16 @@
 part of '../tdapi.dart';
 
 /// Contains a list of gifts that can be sent to another user or channel chat
-final class Gifts extends TdObject {
+final class AvailableGifts extends TdObject {
   /// Contains a list of gifts that can be sent to another user or channel chat
-  const Gifts({
+  const AvailableGifts({
     required this.gifts,
     this.extra,
     this.clientId,
   });
 
   /// The list of gifts
-  final List<Gift> gifts;
+  final List<AvailableGift> gifts;
 
   /// "@extra" of the request this object answers.
   @override
@@ -23,10 +23,10 @@ final class Gifts extends TdObject {
   @override
   final int? clientId;
 
-  /// Parses a [Gifts] from TDLib JSON.
-  factory Gifts.fromJson(Map<String, dynamic> json) => Gifts(
-        gifts: _readList<Gift>(
-            json['gifts'], (e) => _readObject(e, Gift.fromJson)),
+  /// Parses a [AvailableGifts] from TDLib JSON.
+  factory AvailableGifts.fromJson(Map<String, dynamic> json) => AvailableGifts(
+        gifts: _readList<AvailableGift>(
+            json['gifts'], (e) => _readObject(e, AvailableGift.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -39,19 +39,19 @@ final class Gifts extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  Gifts copyWith({
-    List<Gift>? gifts,
+  AvailableGifts copyWith({
+    List<AvailableGift>? gifts,
     dynamic extra,
     int? clientId,
   }) =>
-      Gifts(
+      AvailableGifts(
         gifts: gifts ?? this.gifts,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'gifts';
+  static const String CONSTRUCTOR = 'availableGifts';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -809,7 +809,7 @@ final class PushMessageContentUpgradedGift extends PushMessageContent {
     required this.isUpgrade,
   });
 
-  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred gift
+  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
   final bool isUpgrade;
 
   /// Parses a [PushMessageContentUpgradedGift] from TDLib JSON.
