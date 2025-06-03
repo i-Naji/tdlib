@@ -17,7 +17,7 @@ abstract class Promise<T> {
 @JS("tdlib.default")
 class TdWebPlatform {
   external factory TdWebPlatform();
-  external Promise<void> init([tdlib_mode]);
+  external Promise<void> init([String? tdlib_mode]);
   // external Promise<void> initialize([String? libPath]);
   external int td_create();
   external void td_send(int clientId, String query);

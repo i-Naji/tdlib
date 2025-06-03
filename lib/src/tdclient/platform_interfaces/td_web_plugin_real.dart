@@ -9,7 +9,7 @@ class TdWebPlugin extends TdPlugin {
   static late final TdWebPlatform _platform;
 
   // This class is set to be the default [TdPlugin].web instance.
-  static void registerWith([registrar]) {
+  static void registerWith([Object? registrar]) {
     TdPlugin.initialize = initialize;
   }
 
