@@ -3,42 +3,37 @@
 
 part of '../tdapi.dart';
 
-/// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat. Cannot be used in secret chats
+/// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat and topic. Cannot be used in secret chats
 ///
 /// Returns [Count].
 final class GetChatMessagePosition extends TdFunction<Count> {
-  /// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat. Cannot be used in secret chats
+  /// Returns approximate 1-based position of a message among messages, which can be found by the specified filter in the chat and topic. Cannot be used in secret chats
   const GetChatMessagePosition({
     required this.chatId,
-    required this.messageId,
+    this.topicId,
     required this.filter,
-    required this.messageThreadId,
-    required this.savedMessagesTopicId,
+    required this.messageId,
   });
 
   /// Identifier of the chat in which to find message position
   final int chatId;
 
-  /// Message identifier
-  final int messageId;
+  /// Pass topic identifier to get position among messages only in specific topic; pass null to get position among all chat messages
+  final MessageTopic? topicId;
 
   /// Filter for message content; searchMessagesFilterEmpty, searchMessagesFilterUnreadMention, searchMessagesFilterUnreadReaction, and searchMessagesFilterFailedToSend are unsupported in this function
   final SearchMessagesFilter filter;
 
-  /// If not 0, only messages in the specified thread will be considered; supergroups only
-  final int messageThreadId;
-
-  /// If not 0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all relevant messages, or for chats other than Saved Messages
-  final int savedMessagesTopicId;
+  /// Message identifier
+  final int messageId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_id': messageId,
+        'topic_id': topicId?.toJson(),
         'filter': filter.toJson(),
-        'message_thread_id': messageThreadId,
-        'saved_messages_topic_id': savedMessagesTopicId,
+        'message_id': messageId,
         if (extra != null) '@extra': extra,
       };
 
@@ -46,17 +41,15 @@ final class GetChatMessagePosition extends TdFunction<Count> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatMessagePosition copyWith({
     int? chatId,
-    int? messageId,
+    MessageTopic? Function()? topicId,
     SearchMessagesFilter? filter,
-    int? messageThreadId,
-    int? savedMessagesTopicId,
+    int? messageId,
   }) =>
       GetChatMessagePosition(
         chatId: chatId ?? this.chatId,
-        messageId: messageId ?? this.messageId,
+        topicId: topicId != null ? topicId() : this.topicId,
         filter: filter ?? this.filter,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        messageId: messageId ?? this.messageId,
       );
 
   /// TDLib type name.

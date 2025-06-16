@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes source of a message
 ///
-/// One of: [MessageSourceChatHistory], [MessageSourceMessageThreadHistory], [MessageSourceForumTopicHistory], [MessageSourceHistoryPreview], [MessageSourceChatList], [MessageSourceSearch], [MessageSourceChatEventLog], [MessageSourceNotification], [MessageSourceScreenshot], [MessageSourceOther]; or [UndecodedMessageSource] for a type newer than this API.
+/// One of: [MessageSourceChatHistory], [MessageSourceMessageThreadHistory], [MessageSourceForumTopicHistory], [MessageSourceDirectMessagesChatTopicHistory], [MessageSourceHistoryPreview], [MessageSourceChatList], [MessageSourceSearch], [MessageSourceChatEventLog], [MessageSourceNotification], [MessageSourceScreenshot], [MessageSourceOther]; or [UndecodedMessageSource] for a type newer than this API.
 sealed class MessageSource extends TdObject {
   const MessageSource();
 
@@ -68,9 +68,9 @@ final class MessageSourceChatHistory extends MessageSource {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The message is from a message thread history
+/// The message is from history of a message thread
 final class MessageSourceMessageThreadHistory extends MessageSource {
-  /// The message is from a message thread history
+  /// The message is from history of a message thread
   const MessageSourceMessageThreadHistory();
 
   /// Parses a [MessageSourceMessageThreadHistory] from TDLib JSON.
@@ -96,9 +96,9 @@ final class MessageSourceMessageThreadHistory extends MessageSource {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The message is from a forum topic history
+/// The message is from history of a forum topic
 final class MessageSourceForumTopicHistory extends MessageSource {
-  /// The message is from a forum topic history
+  /// The message is from history of a forum topic
   const MessageSourceForumTopicHistory();
 
   /// Parses a [MessageSourceForumTopicHistory] from TDLib JSON.
@@ -118,6 +118,35 @@ final class MessageSourceForumTopicHistory extends MessageSource {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSourceForumTopicHistory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The message is from history of a topic in a channel direct messages chat administered by the current user
+final class MessageSourceDirectMessagesChatTopicHistory extends MessageSource {
+  /// The message is from history of a topic in a channel direct messages chat administered by the current user
+  const MessageSourceDirectMessagesChatTopicHistory();
+
+  /// Parses a [MessageSourceDirectMessagesChatTopicHistory] from TDLib JSON.
+  factory MessageSourceDirectMessagesChatTopicHistory.fromJson(
+          Map<String, dynamic> json) =>
+      const MessageSourceDirectMessagesChatTopicHistory();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSourceDirectMessagesChatTopicHistory copyWith() =>
+      const MessageSourceDirectMessagesChatTopicHistory();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'messageSourceDirectMessagesChatTopicHistory';
 
   @override
   String getConstructor() => CONSTRUCTOR;

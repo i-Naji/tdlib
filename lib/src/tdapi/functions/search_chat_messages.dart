@@ -3,25 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and message_thread_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
+/// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and topic_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
 ///
 /// Returns [FoundChatMessages].
 final class SearchChatMessages extends TdFunction<FoundChatMessages> {
-  /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and message_thread_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
+  /// Searches for messages with given words in the chat. Returns the results in reverse chronological order, i.e. in order of decreasing message_id. Cannot be used in secret chats with a non-empty query (searchSecretMessages must be used instead), or without an enabled message database. For optimal performance, the number of returned messages is chosen by TDLib and can be smaller than the specified limit. A combination of query, sender_id, filter and topic_id search criteria is expected to be supported, only if it is required for Telegram official application implementation
   const SearchChatMessages({
     required this.chatId,
+    this.topicId,
     required this.query,
     this.senderId,
     required this.fromMessageId,
     required this.offset,
     required this.limit,
     this.filter,
-    required this.messageThreadId,
-    required this.savedMessagesTopicId,
   });
 
   /// Identifier of the chat in which to search messages
   final int chatId;
+
+  /// Pass topic identifier to search messages only in specific topic; pass null to search for messages in all topics
+  final MessageTopic? topicId;
 
   /// Query to search for
   final String query;
@@ -41,24 +43,17 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
   /// Additional filter for messages to search; pass null to search for all messages
   final SearchMessagesFilter? filter;
 
-  /// If not 0, only messages in the specified thread will be returned; supergroups only
-  final int messageThreadId;
-
-  /// If not 0, only messages in the specified Saved Messages topic will be returned; pass 0 to return all messages, or for chats other than Saved Messages
-  final int savedMessagesTopicId;
-
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'topic_id': topicId?.toJson(),
         'query': query,
         'sender_id': senderId?.toJson(),
         'from_message_id': fromMessageId,
         'offset': offset,
         'limit': limit,
         'filter': filter?.toJson(),
-        'message_thread_id': messageThreadId,
-        'saved_messages_topic_id': savedMessagesTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -66,25 +61,23 @@ final class SearchChatMessages extends TdFunction<FoundChatMessages> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SearchChatMessages copyWith({
     int? chatId,
+    MessageTopic? Function()? topicId,
     String? query,
     MessageSender? Function()? senderId,
     int? fromMessageId,
     int? offset,
     int? limit,
     SearchMessagesFilter? Function()? filter,
-    int? messageThreadId,
-    int? savedMessagesTopicId,
   }) =>
       SearchChatMessages(
         chatId: chatId ?? this.chatId,
+        topicId: topicId != null ? topicId() : this.topicId,
         query: query ?? this.query,
         senderId: senderId != null ? senderId() : this.senderId,
         fromMessageId: fromMessageId ?? this.fromMessageId,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,
         filter: filter != null ? filter() : this.filter,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );
 
   /// TDLib type name.

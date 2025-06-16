@@ -10,13 +10,16 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// Returns information about the next messages of the specified type in the chat split by days. Returns the results in reverse chronological order. Can return partial result for the last returned day. Behavior of this method depends on the value of the option "utc_time_offset"
   const GetChatMessageCalendar({
     required this.chatId,
+    this.topicId,
     required this.filter,
     required this.fromMessageId,
-    required this.savedMessagesTopicId,
   });
 
   /// Identifier of the chat in which to return information about messages
   final int chatId;
+
+  /// Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics aren't supported
+  final MessageTopic? topicId;
 
   /// Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function
   final SearchMessagesFilter filter;
@@ -24,16 +27,13 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// The message identifier from which to return information about messages; use 0 to get results from the last message
   final int fromMessageId;
 
-  /// If not0, only messages in the specified Saved Messages topic will be considered; pass 0 to consider all messages, or for chats other than Saved Messages
-  final int savedMessagesTopicId;
-
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'topic_id': topicId?.toJson(),
         'filter': filter.toJson(),
         'from_message_id': fromMessageId,
-        'saved_messages_topic_id': savedMessagesTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -41,15 +41,15 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatMessageCalendar copyWith({
     int? chatId,
+    MessageTopic? Function()? topicId,
     SearchMessagesFilter? filter,
     int? fromMessageId,
-    int? savedMessagesTopicId,
   }) =>
       GetChatMessageCalendar(
         chatId: chatId ?? this.chatId,
+        topicId: topicId != null ? topicId() : this.topicId,
         filter: filter ?? this.filter,
         fromMessageId: fromMessageId ?? this.fromMessageId,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
       );
 
   /// TDLib type name.

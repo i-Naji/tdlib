@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class MessageSendOptions extends TdObject {
   /// Options to be used when a message is sent
   const MessageSendOptions({
+    required this.directMessagesChatTopicId,
     required this.disableNotification,
     required this.fromBackground,
     required this.protectContent,
@@ -18,6 +19,9 @@ final class MessageSendOptions extends TdObject {
     required this.sendingId,
     required this.onlyPreview,
   });
+
+  /// Unique identifier of the topic in a channel direct messages chat administered by the current user; pass 0 if the chat isn't a channel direct messages chat administered by the current user
+  final int directMessagesChatTopicId;
 
   /// Pass true to disable notification for the message
   final bool disableNotification;
@@ -37,7 +41,7 @@ final class MessageSendOptions extends TdObject {
   /// Pass true if the user explicitly chosen a sticker or a custom emoji from an installed sticker set; applicable only to sendMessage and sendMessageAlbum
   final bool updateOrderOfInstalledStickerSets;
 
-  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, to a chat with paid messages, live location messages and self-destructing messages can't be scheduled
+  /// Message scheduling state; pass null to send message immediately. Messages sent to a secret chat, to a chat with paid messages, to a channel direct messages chat, live location messages and self-destructing messages can't be scheduled
   final MessageSchedulingState? schedulingState;
 
   /// Identifier of the effect to apply to the message; pass 0 if none; applicable only to sendMessage and sendMessageAlbum in private chats
@@ -52,6 +56,8 @@ final class MessageSendOptions extends TdObject {
   /// Parses a [MessageSendOptions] from TDLib JSON.
   factory MessageSendOptions.fromJson(Map<String, dynamic> json) =>
       MessageSendOptions(
+        directMessagesChatTopicId:
+            _readInt(json['direct_messages_chat_topic_id']),
         disableNotification: _readBool(json['disable_notification']),
         fromBackground: _readBool(json['from_background']),
         protectContent: _readBool(json['protect_content']),
@@ -69,6 +75,7 @@ final class MessageSendOptions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'direct_messages_chat_topic_id': directMessagesChatTopicId,
         'disable_notification': disableNotification,
         'from_background': fromBackground,
         'protect_content': protectContent,
@@ -85,6 +92,7 @@ final class MessageSendOptions extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageSendOptions copyWith({
+    int? directMessagesChatTopicId,
     bool? disableNotification,
     bool? fromBackground,
     bool? protectContent,
@@ -97,6 +105,8 @@ final class MessageSendOptions extends TdObject {
     bool? onlyPreview,
   }) =>
       MessageSendOptions(
+        directMessagesChatTopicId:
+            directMessagesChatTopicId ?? this.directMessagesChatTopicId,
         disableNotification: disableNotification ?? this.disableNotification,
         fromBackground: fromBackground ?? this.fromBackground,
         protectContent: protectContent ?? this.protectContent,

@@ -47,15 +47,27 @@ final class MessageSenderUser extends MessageSender {
   /// The message was sent by a known user
   const MessageSenderUser({
     required this.userId,
+    this.extra,
+    this.clientId,
   });
 
   /// Identifier of the user that sent the message
   final int userId;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [MessageSenderUser] from TDLib JSON.
   factory MessageSenderUser.fromJson(Map<String, dynamic> json) =>
       MessageSenderUser(
         userId: _readInt(json['user_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -69,9 +81,13 @@ final class MessageSenderUser extends MessageSender {
   @override
   MessageSenderUser copyWith({
     int? userId,
+    dynamic extra,
+    int? clientId,
   }) =>
       MessageSenderUser(
         userId: userId ?? this.userId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.
@@ -86,15 +102,27 @@ final class MessageSenderChat extends MessageSender {
   /// The message was sent on behalf of a chat
   const MessageSenderChat({
     required this.chatId,
+    this.extra,
+    this.clientId,
   });
 
   /// Identifier of the chat that sent the message
   final int chatId;
 
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
   /// Parses a [MessageSenderChat] from TDLib JSON.
   factory MessageSenderChat.fromJson(Map<String, dynamic> json) =>
       MessageSenderChat(
         chatId: _readInt(json['chat_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
       );
 
   @override
@@ -108,9 +136,13 @@ final class MessageSenderChat extends MessageSender {
   @override
   MessageSenderChat copyWith({
     int? chatId,
+    dynamic extra,
+    int? clientId,
   }) =>
       MessageSenderChat(
         chatId: chatId ?? this.chatId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
       );
 
   /// TDLib type name.

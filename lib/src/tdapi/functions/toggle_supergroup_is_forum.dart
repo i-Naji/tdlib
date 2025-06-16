@@ -11,6 +11,7 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
   const ToggleSupergroupIsForum({
     required this.supergroupId,
     required this.isForum,
+    required this.hasForumTabs,
   });
 
   /// Identifier of the supergroup
@@ -19,11 +20,15 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
   /// New value of is_forum
   final bool isForum;
 
+  /// New value of has_forum_tabs; ignored if is_forum is false
+  final bool hasForumTabs;
+
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'supergroup_id': supergroupId,
         'is_forum': isForum,
+        'has_forum_tabs': hasForumTabs,
         if (extra != null) '@extra': extra,
       };
 
@@ -32,10 +37,12 @@ final class ToggleSupergroupIsForum extends TdFunction<Ok> {
   ToggleSupergroupIsForum copyWith({
     int? supergroupId,
     bool? isForum,
+    bool? hasForumTabs,
   }) =>
       ToggleSupergroupIsForum(
         supergroupId: supergroupId ?? this.supergroupId,
         isForum: isForum ?? this.isForum,
+        hasForumTabs: hasForumTabs ?? this.hasForumTabs,
       );
 
   /// TDLib type name.

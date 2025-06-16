@@ -8,6 +8,7 @@ final class ForumTopicInfo extends TdObject {
   /// Contains basic information about a forum topic
   const ForumTopicInfo({
     required this.chatId,
+    required this.forumTopicId,
     required this.messageThreadId,
     required this.name,
     required this.icon,
@@ -23,6 +24,9 @@ final class ForumTopicInfo extends TdObject {
 
   /// Identifier of the forum chat to which the topic belongs
   final int chatId;
+
+  /// Forum topic identifier of the topic
+  final int forumTopicId;
 
   /// Message thread identifier of the topic
   final int messageThreadId;
@@ -62,6 +66,7 @@ final class ForumTopicInfo extends TdObject {
   /// Parses a [ForumTopicInfo] from TDLib JSON.
   factory ForumTopicInfo.fromJson(Map<String, dynamic> json) => ForumTopicInfo(
         chatId: _readInt(json['chat_id']),
+        forumTopicId: _readInt(json['forum_topic_id']),
         messageThreadId: _readInt(json['message_thread_id']),
         name: _readString(json['name']),
         icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
@@ -79,6 +84,7 @@ final class ForumTopicInfo extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'forum_topic_id': forumTopicId,
         'message_thread_id': messageThreadId,
         'name': name,
         'icon': icon.toJson(),
@@ -94,6 +100,7 @@ final class ForumTopicInfo extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ForumTopicInfo copyWith({
     int? chatId,
+    int? forumTopicId,
     int? messageThreadId,
     String? name,
     ForumTopicIcon? icon,
@@ -108,6 +115,7 @@ final class ForumTopicInfo extends TdObject {
   }) =>
       ForumTopicInfo(
         chatId: chatId ?? this.chatId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         name: name ?? this.name,
         icon: icon ?? this.icon,

@@ -1427,9 +1427,9 @@ final class StarTransactionTypePaidMessageSend extends StarTransactionType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The transaction is a receiving of a paid message; for regular users and supergroup chats only
+/// The transaction is a receiving of a paid message; for regular users, supergroup and channel chats only
 final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
-  /// The transaction is a receiving of a paid message; for regular users and supergroup chats only
+  /// The transaction is a receiving of a paid message; for regular users, supergroup and channel chats only
   const StarTransactionTypePaidMessageReceive({
     required this.senderId,
     required this.messageCount,

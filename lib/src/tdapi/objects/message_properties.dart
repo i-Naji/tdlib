@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class MessageProperties extends TdObject {
   /// Contains properties of a message and describes actions that can be done with the message right now
   const MessageProperties({
+    required this.canBeCopied,
     required this.canBeCopiedToSecretChat,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
@@ -20,6 +21,7 @@ final class MessageProperties extends TdObject {
     required this.canBeSharedInStory,
     required this.canEditMedia,
     required this.canEditSchedulingState,
+    required this.canGetAuthor,
     required this.canGetEmbeddingCode,
     required this.canGetLink,
     required this.canGetMediaTimestampLinks,
@@ -37,6 +39,9 @@ final class MessageProperties extends TdObject {
     this.clientId,
   });
 
+  /// True, if content of the message can be copied using inputMessageForwarded or forwardMessages with copy options
+  final bool canBeCopied;
+
   /// True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
   final bool canBeCopiedToSecretChat;
 
@@ -49,7 +54,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message
   final bool canBeEdited;
 
-  /// True, if the message can be forwarded using inputMessageForwarded or forwardMessages
+  /// True, if the message can be forwarded using inputMessageForwarded or forwardMessages without copy options
   final bool canBeForwarded;
 
   /// True, if the message can be paid using inputInvoiceMessage
@@ -64,7 +69,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be replied in another chat or forum topic using inputMessageReplyToExternalMessage
   final bool canBeRepliedInAnotherChat;
 
-  /// True, if content of the message can be saved locally or copied using inputMessageForwarded or forwardMessages with copy options
+  /// True, if content of the message can be saved locally
   final bool canBeSaved;
 
   /// True, if the message can be shared in a story using inputStoryAreaTypeMessage
@@ -75,6 +80,9 @@ final class MessageProperties extends TdObject {
 
   /// True, if scheduling state of the message can be edited
   final bool canEditSchedulingState;
+
+  /// True, if author of the message sent on behalf of a chat can be received through getMessageAuthor
+  final bool canGetAuthor;
 
   /// True, if code for message embedding can be received using getMessageEmbeddingCode
   final bool canGetEmbeddingCode;
@@ -126,6 +134,7 @@ final class MessageProperties extends TdObject {
   /// Parses a [MessageProperties] from TDLib JSON.
   factory MessageProperties.fromJson(Map<String, dynamic> json) =>
       MessageProperties(
+        canBeCopied: _readBool(json['can_be_copied']),
         canBeCopiedToSecretChat:
             _readBool(json['can_be_copied_to_secret_chat']),
         canBeDeletedOnlyForSelf:
@@ -143,6 +152,7 @@ final class MessageProperties extends TdObject {
         canBeSharedInStory: _readBool(json['can_be_shared_in_story']),
         canEditMedia: _readBool(json['can_edit_media']),
         canEditSchedulingState: _readBool(json['can_edit_scheduling_state']),
+        canGetAuthor: _readBool(json['can_get_author']),
         canGetEmbeddingCode: _readBool(json['can_get_embedding_code']),
         canGetLink: _readBool(json['can_get_link']),
         canGetMediaTimestampLinks:
@@ -164,6 +174,7 @@ final class MessageProperties extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'can_be_copied': canBeCopied,
         'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
@@ -177,6 +188,7 @@ final class MessageProperties extends TdObject {
         'can_be_shared_in_story': canBeSharedInStory,
         'can_edit_media': canEditMedia,
         'can_edit_scheduling_state': canEditSchedulingState,
+        'can_get_author': canGetAuthor,
         'can_get_embedding_code': canGetEmbeddingCode,
         'can_get_link': canGetLink,
         'can_get_media_timestamp_links': canGetMediaTimestampLinks,
@@ -195,6 +207,7 @@ final class MessageProperties extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageProperties copyWith({
+    bool? canBeCopied,
     bool? canBeCopiedToSecretChat,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
@@ -208,6 +221,7 @@ final class MessageProperties extends TdObject {
     bool? canBeSharedInStory,
     bool? canEditMedia,
     bool? canEditSchedulingState,
+    bool? canGetAuthor,
     bool? canGetEmbeddingCode,
     bool? canGetLink,
     bool? canGetMediaTimestampLinks,
@@ -225,6 +239,7 @@ final class MessageProperties extends TdObject {
     int? clientId,
   }) =>
       MessageProperties(
+        canBeCopied: canBeCopied ?? this.canBeCopied,
         canBeCopiedToSecretChat:
             canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
         canBeDeletedOnlyForSelf:
@@ -243,6 +258,7 @@ final class MessageProperties extends TdObject {
         canEditMedia: canEditMedia ?? this.canEditMedia,
         canEditSchedulingState:
             canEditSchedulingState ?? this.canEditSchedulingState,
+        canGetAuthor: canGetAuthor ?? this.canGetAuthor,
         canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,
         canGetLink: canGetLink ?? this.canGetLink,
         canGetMediaTimestampLinks:

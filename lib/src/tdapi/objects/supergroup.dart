@@ -24,7 +24,11 @@ final class Supergroup extends TdObject {
     required this.isChannel,
     required this.isBroadcastGroup,
     required this.isForum,
+    required this.isDirectMessagesGroup,
+    required this.isAdministeredDirectMessagesGroup,
     this.verificationStatus,
+    required this.hasDirectMessagesGroup,
+    required this.hasForumTabs,
     required this.hasSensitiveContent,
     required this.restrictionReason,
     required this.paidMessageStarCount,
@@ -85,8 +89,20 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is a forum with topics
   final bool isForum;
 
+  /// True, if the supergroup is a direct message group for a channel chat
+  final bool isDirectMessagesGroup;
+
+  /// True, if the supergroup is a direct messages group for a channel chat that is administered by the current user
+  final bool isAdministeredDirectMessagesGroup;
+
   /// Information about verification status of the supergroup or channel; may be null if none
   final VerificationStatus? verificationStatus;
+
+  /// True, if the channel has direct messages group
+  final bool hasDirectMessagesGroup;
+
+  /// True, if the supergroup is a forum, which topics are shown in the same way as in channel direct messages groups
+  final bool hasForumTabs;
 
   /// True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
   final bool hasSensitiveContent;
@@ -130,8 +146,13 @@ final class Supergroup extends TdObject {
         isChannel: _readBool(json['is_channel']),
         isBroadcastGroup: _readBool(json['is_broadcast_group']),
         isForum: _readBool(json['is_forum']),
+        isDirectMessagesGroup: _readBool(json['is_direct_messages_group']),
+        isAdministeredDirectMessagesGroup:
+            _readBool(json['is_administered_direct_messages_group']),
         verificationStatus: _readOptional(
             json['verification_status'], VerificationStatus.fromJson),
+        hasDirectMessagesGroup: _readBool(json['has_direct_messages_group']),
+        hasForumTabs: _readBool(json['has_forum_tabs']),
         hasSensitiveContent: _readBool(json['has_sensitive_content']),
         restrictionReason: _readString(json['restriction_reason']),
         paidMessageStarCount: _readInt(json['paid_message_star_count']),
@@ -161,7 +182,12 @@ final class Supergroup extends TdObject {
         'is_channel': isChannel,
         'is_broadcast_group': isBroadcastGroup,
         'is_forum': isForum,
+        'is_direct_messages_group': isDirectMessagesGroup,
+        'is_administered_direct_messages_group':
+            isAdministeredDirectMessagesGroup,
         'verification_status': verificationStatus?.toJson(),
+        'has_direct_messages_group': hasDirectMessagesGroup,
+        'has_forum_tabs': hasForumTabs,
         'has_sensitive_content': hasSensitiveContent,
         'restriction_reason': restrictionReason,
         'paid_message_star_count': paidMessageStarCount,
@@ -189,7 +215,11 @@ final class Supergroup extends TdObject {
     bool? isChannel,
     bool? isBroadcastGroup,
     bool? isForum,
+    bool? isDirectMessagesGroup,
+    bool? isAdministeredDirectMessagesGroup,
     VerificationStatus? Function()? verificationStatus,
+    bool? hasDirectMessagesGroup,
+    bool? hasForumTabs,
     bool? hasSensitiveContent,
     String? restrictionReason,
     int? paidMessageStarCount,
@@ -217,9 +247,16 @@ final class Supergroup extends TdObject {
         isChannel: isChannel ?? this.isChannel,
         isBroadcastGroup: isBroadcastGroup ?? this.isBroadcastGroup,
         isForum: isForum ?? this.isForum,
+        isDirectMessagesGroup:
+            isDirectMessagesGroup ?? this.isDirectMessagesGroup,
+        isAdministeredDirectMessagesGroup: isAdministeredDirectMessagesGroup ??
+            this.isAdministeredDirectMessagesGroup,
         verificationStatus: verificationStatus != null
             ? verificationStatus()
             : this.verificationStatus,
+        hasDirectMessagesGroup:
+            hasDirectMessagesGroup ?? this.hasDirectMessagesGroup,
+        hasForumTabs: hasForumTabs ?? this.hasForumTabs,
         hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
         restrictionReason: restrictionReason ?? this.restrictionReason,
         paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -1315,9 +1315,9 @@ final class MessageCall extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+/// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
 final class MessageGroupCall extends MessageContent {
-  /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
+  /// A message with information about a group call not bound to a chat. If the message is incoming, the call isn't active, isn't missed, and has no duration, and getOption("can_accept_calls") is true, then incoming call screen must be shown to the user. Use getGroupCallParticipants to show current group call participants on the screen. Use joinGroupCall to accept the call or declineGroupCallInvitation to decline it. If the call become active or missed, then the call screen must be hidden
   const MessageGroupCall({
     required this.isActive,
     required this.wasMissed,
@@ -3525,6 +3525,7 @@ final class MessageGift extends MessageContent {
   const MessageGift({
     required this.gift,
     required this.senderId,
+    required this.receiverId,
     required this.receivedGiftId,
     required this.text,
     required this.sellStarCount,
@@ -3543,6 +3544,9 @@ final class MessageGift extends MessageContent {
 
   /// Sender of the gift
   final MessageSender senderId;
+
+  /// Receiver of the gift
+  final MessageSender receiverId;
 
   /// Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
@@ -3581,6 +3585,7 @@ final class MessageGift extends MessageContent {
   factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
         gift: _readObject(json['gift'], Gift.fromJson),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         receivedGiftId: _readString(json['received_gift_id']),
         text: _readObject(json['text'], FormattedText.fromJson),
         sellStarCount: _readInt(json['sell_star_count']),
@@ -3599,6 +3604,7 @@ final class MessageGift extends MessageContent {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
         'sender_id': senderId.toJson(),
+        'receiver_id': receiverId.toJson(),
         'received_gift_id': receivedGiftId,
         'text': text.toJson(),
         'sell_star_count': sellStarCount,
@@ -3618,6 +3624,7 @@ final class MessageGift extends MessageContent {
   MessageGift copyWith({
     Gift? gift,
     MessageSender? senderId,
+    MessageSender? receiverId,
     String? receivedGiftId,
     FormattedText? text,
     int? sellStarCount,
@@ -3633,6 +3640,7 @@ final class MessageGift extends MessageContent {
       MessageGift(
         gift: gift ?? this.gift,
         senderId: senderId ?? this.senderId,
+        receiverId: receiverId ?? this.receiverId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         text: text ?? this.text,
         sellStarCount: sellStarCount ?? this.sellStarCount,
@@ -3661,6 +3669,7 @@ final class MessageUpgradedGift extends MessageContent {
   const MessageUpgradedGift({
     required this.gift,
     this.senderId,
+    required this.receiverId,
     required this.receivedGiftId,
     required this.isUpgrade,
     required this.isSaved,
@@ -3678,6 +3687,9 @@ final class MessageUpgradedGift extends MessageContent {
 
   /// Sender of the gift; may be null for anonymous gifts
   final MessageSender? senderId;
+
+  /// Receiver of the gift
+  final MessageSender receiverId;
 
   /// Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
@@ -3714,6 +3726,7 @@ final class MessageUpgradedGift extends MessageContent {
       MessageUpgradedGift(
         gift: _readObject(json['gift'], UpgradedGift.fromJson),
         senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
+        receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         receivedGiftId: _readString(json['received_gift_id']),
         isUpgrade: _readBool(json['is_upgrade']),
         isSaved: _readBool(json['is_saved']),
@@ -3731,6 +3744,7 @@ final class MessageUpgradedGift extends MessageContent {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
         'sender_id': senderId?.toJson(),
+        'receiver_id': receiverId.toJson(),
         'received_gift_id': receivedGiftId,
         'is_upgrade': isUpgrade,
         'is_saved': isSaved,
@@ -3749,6 +3763,7 @@ final class MessageUpgradedGift extends MessageContent {
   MessageUpgradedGift copyWith({
     UpgradedGift? gift,
     MessageSender? Function()? senderId,
+    MessageSender? receiverId,
     String? receivedGiftId,
     bool? isUpgrade,
     bool? isSaved,
@@ -3763,6 +3778,7 @@ final class MessageUpgradedGift extends MessageContent {
       MessageUpgradedGift(
         gift: gift ?? this.gift,
         senderId: senderId != null ? senderId() : this.senderId,
+        receiverId: receiverId ?? this.receiverId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         isUpgrade: isUpgrade ?? this.isUpgrade,
         isSaved: isSaved ?? this.isSaved,
@@ -3788,6 +3804,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   const MessageRefundedUpgradedGift({
     required this.gift,
     required this.senderId,
+    required this.receiverId,
     required this.isUpgrade,
   });
 
@@ -3797,6 +3814,9 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   /// Sender of the gift
   final MessageSender senderId;
 
+  /// Receiver of the gift
+  final MessageSender receiverId;
+
   /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
   final bool isUpgrade;
 
@@ -3805,6 +3825,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
       MessageRefundedUpgradedGift(
         gift: _readObject(json['gift'], Gift.fromJson),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         isUpgrade: _readBool(json['is_upgrade']),
       );
 
@@ -3813,6 +3834,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
         'sender_id': senderId.toJson(),
+        'receiver_id': receiverId.toJson(),
         'is_upgrade': isUpgrade,
       };
 
@@ -3822,11 +3844,13 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   MessageRefundedUpgradedGift copyWith({
     Gift? gift,
     MessageSender? senderId,
+    MessageSender? receiverId,
     bool? isUpgrade,
   }) =>
       MessageRefundedUpgradedGift(
         gift: gift ?? this.gift,
         senderId: senderId ?? this.senderId,
+        receiverId: receiverId ?? this.receiverId,
         isUpgrade: isUpgrade ?? this.isUpgrade,
       );
 
@@ -3918,6 +3942,54 @@ final class MessagePaidMessagePriceChanged extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messagePaidMessagePriceChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A price for direct messages was changed in the channel chat
+final class MessageDirectMessagePriceChanged extends MessageContent {
+  /// A price for direct messages was changed in the channel chat
+  const MessageDirectMessagePriceChanged({
+    required this.isEnabled,
+    required this.paidMessageStarCount,
+  });
+
+  /// True, if direct messages group was enabled for the channel; false otherwise
+  final bool isEnabled;
+
+  /// The new number of Telegram Stars that must be paid by non-administrator users of the channel chat for each message sent to the direct messages group; 0 if the direct messages group was disabled or the messages are free
+  final int paidMessageStarCount;
+
+  /// Parses a [MessageDirectMessagePriceChanged] from TDLib JSON.
+  factory MessageDirectMessagePriceChanged.fromJson(
+          Map<String, dynamic> json) =>
+      MessageDirectMessagePriceChanged(
+        isEnabled: _readBool(json['is_enabled']),
+        paidMessageStarCount: _readInt(json['paid_message_star_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'is_enabled': isEnabled,
+        'paid_message_star_count': paidMessageStarCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageDirectMessagePriceChanged copyWith({
+    bool? isEnabled,
+    int? paidMessageStarCount,
+  }) =>
+      MessageDirectMessagePriceChanged(
+        isEnabled: isEnabled ?? this.isEnabled,
+        paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageDirectMessagePriceChanged';
 
   @override
   String getConstructor() => CONSTRUCTOR;

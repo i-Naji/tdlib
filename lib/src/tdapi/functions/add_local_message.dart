@@ -16,7 +16,7 @@ final class AddLocalMessage extends TdFunction<Message> {
     required this.inputMessageContent,
   });
 
-  /// Target chat
+  /// Target chat; channel direct messages chats aren't supported
   final int chatId;
 
   /// Identifier of the sender of the message

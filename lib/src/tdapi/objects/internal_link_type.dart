@@ -1088,9 +1088,9 @@ final class InternalLinkTypeGame extends InternalLinkType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The link is a link to a group call that isn't bound to a chat. Call joinGroupCall with the given invite_link
+/// The link is a link to a group call that isn't bound to a chat. Use getGroupCallParticipants to get the list of group call participants and show them on the join group call screen. Call joinGroupCall with the given invite_link to join the call
 final class InternalLinkTypeGroupCall extends InternalLinkType {
-  /// The link is a link to a group call that isn't bound to a chat. Call joinGroupCall with the given invite_link
+  /// The link is a link to a group call that isn't bound to a chat. Use getGroupCallParticipants to get the list of group call participants and show them on the join group call screen. Call joinGroupCall with the given invite_link to join the call
   const InternalLinkTypeGroupCall({
     required this.inviteLink,
     this.extra,

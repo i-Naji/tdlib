@@ -14,6 +14,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.restrictedCount,
     required this.bannedCount,
     required this.linkedChatId,
+    required this.directMessagesChatId,
     required this.slowModeDelay,
     required this.slowModeDelayExpiresIn,
     required this.canEnablePaidMessages,
@@ -68,6 +69,9 @@ final class SupergroupFullInfo extends TdObject {
 
   /// Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown
   final int linkedChatId;
+
+  /// Chat identifier of a direct messages group for the channel, or a channel, for which the supergroup is the designated direct messages group; 0 if none
+  final int directMessagesChatId;
 
   /// Delay between consecutive sent messages for non-administrator supergroup members, in seconds
   final int slowModeDelay;
@@ -177,6 +181,7 @@ final class SupergroupFullInfo extends TdObject {
         restrictedCount: _readInt(json['restricted_count']),
         bannedCount: _readInt(json['banned_count']),
         linkedChatId: _readInt(json['linked_chat_id']),
+        directMessagesChatId: _readInt(json['direct_messages_chat_id']),
         slowModeDelay: _readInt(json['slow_mode_delay']),
         slowModeDelayExpiresIn: _readDouble(json['slow_mode_delay_expires_in']),
         canEnablePaidMessages: _readBool(json['can_enable_paid_messages']),
@@ -229,6 +234,7 @@ final class SupergroupFullInfo extends TdObject {
         'restricted_count': restrictedCount,
         'banned_count': bannedCount,
         'linked_chat_id': linkedChatId,
+        'direct_messages_chat_id': directMessagesChatId,
         'slow_mode_delay': slowModeDelay,
         'slow_mode_delay_expires_in': slowModeDelayExpiresIn,
         'can_enable_paid_messages': canEnablePaidMessages,
@@ -271,6 +277,7 @@ final class SupergroupFullInfo extends TdObject {
     int? restrictedCount,
     int? bannedCount,
     int? linkedChatId,
+    int? directMessagesChatId,
     int? slowModeDelay,
     double? slowModeDelayExpiresIn,
     bool? canEnablePaidMessages,
@@ -312,6 +319,7 @@ final class SupergroupFullInfo extends TdObject {
         restrictedCount: restrictedCount ?? this.restrictedCount,
         bannedCount: bannedCount ?? this.bannedCount,
         linkedChatId: linkedChatId ?? this.linkedChatId,
+        directMessagesChatId: directMessagesChatId ?? this.directMessagesChatId,
         slowModeDelay: slowModeDelay ?? this.slowModeDelay,
         slowModeDelayExpiresIn:
             slowModeDelayExpiresIn ?? this.slowModeDelayExpiresIn,

@@ -18,7 +18,6 @@ final class Message extends TdObject {
     required this.canBeSaved,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
-    required this.isTopicMessage,
     required this.containsUnreadMention,
     required this.date,
     required this.editDate,
@@ -29,7 +28,7 @@ final class Message extends TdObject {
     this.factCheck,
     this.replyTo,
     required this.messageThreadId,
-    required this.savedMessagesTopicId,
+    this.topicId,
     this.selfDestructType,
     required this.selfDestructIn,
     required this.autoDeleteIn,
@@ -72,7 +71,7 @@ final class Message extends TdObject {
   /// True, if the message was sent because of a scheduled action by the message sender, for example, as away, or greeting service message
   final bool isFromOffline;
 
-  /// True, if content of the message can be saved locally or copied using inputMessageForwarded or forwardMessages with copy options
+  /// True, if content of the message can be saved locally
   final bool canBeSaved;
 
   /// True, if media timestamp entities refers to a media in this message as opposed to a media in the replied message
@@ -80,9 +79,6 @@ final class Message extends TdObject {
 
   /// True, if the message is a channel post. All messages to channels are channel posts, all other messages are not channel posts
   final bool isChannelPost;
-
-  /// True, if the message is a forum topic message
-  final bool isTopicMessage;
 
   /// True, if the message contains an unread mention for the current user
   final bool containsUnreadMention;
@@ -114,8 +110,8 @@ final class Message extends TdObject {
   /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
   final int messageThreadId;
 
-  /// Identifier of the Saved Messages topic for the message; 0 for messages not from Saved Messages
-  final int savedMessagesTopicId;
+  /// Identifier of the topic within the chat to which the message belongs; may be null if none
+  final MessageTopic? topicId;
 
   /// The message's self-destruct type; may be null if none
   final MessageSelfDestructType? selfDestructType;
@@ -182,7 +178,6 @@ final class Message extends TdObject {
         canBeSaved: _readBool(json['can_be_saved']),
         hasTimestampedMedia: _readBool(json['has_timestamped_media']),
         isChannelPost: _readBool(json['is_channel_post']),
-        isTopicMessage: _readBool(json['is_topic_message']),
         containsUnreadMention: _readBool(json['contains_unread_mention']),
         date: _readInt(json['date']),
         editDate: _readInt(json['edit_date']),
@@ -197,7 +192,7 @@ final class Message extends TdObject {
         factCheck: _readOptional(json['fact_check'], FactCheck.fromJson),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
-        savedMessagesTopicId: _readInt(json['saved_messages_topic_id']),
+        topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
         selfDestructIn: _readDouble(json['self_destruct_in']),
@@ -231,7 +226,6 @@ final class Message extends TdObject {
         'can_be_saved': canBeSaved,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
-        'is_topic_message': isTopicMessage,
         'contains_unread_mention': containsUnreadMention,
         'date': date,
         'edit_date': editDate,
@@ -242,7 +236,7 @@ final class Message extends TdObject {
         'fact_check': factCheck?.toJson(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
-        'saved_messages_topic_id': savedMessagesTopicId,
+        'topic_id': topicId?.toJson(),
         'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
         'auto_delete_in': autoDeleteIn,
@@ -273,7 +267,6 @@ final class Message extends TdObject {
     bool? canBeSaved,
     bool? hasTimestampedMedia,
     bool? isChannelPost,
-    bool? isTopicMessage,
     bool? containsUnreadMention,
     int? date,
     int? editDate,
@@ -284,7 +277,7 @@ final class Message extends TdObject {
     FactCheck? Function()? factCheck,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
-    int? savedMessagesTopicId,
+    MessageTopic? Function()? topicId,
     MessageSelfDestructType? Function()? selfDestructType,
     double? selfDestructIn,
     double? autoDeleteIn,
@@ -315,7 +308,6 @@ final class Message extends TdObject {
         canBeSaved: canBeSaved ?? this.canBeSaved,
         hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
         isChannelPost: isChannelPost ?? this.isChannelPost,
-        isTopicMessage: isTopicMessage ?? this.isTopicMessage,
         containsUnreadMention:
             containsUnreadMention ?? this.containsUnreadMention,
         date: date ?? this.date,
@@ -328,7 +320,7 @@ final class Message extends TdObject {
         factCheck: factCheck != null ? factCheck() : this.factCheck,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
+        topicId: topicId != null ? topicId() : this.topicId,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
             : this.selfDestructType,

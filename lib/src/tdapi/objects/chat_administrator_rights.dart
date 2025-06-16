@@ -24,13 +24,13 @@ final class ChatAdministratorRights extends TdObject {
     required this.isAnonymous,
   });
 
-  /// True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages and ignore slow mode. Implied by any other privilege; applicable to supergroups and channels only
+  /// True, if the administrator can access the chat event log, get boost list, see hidden supergroup and channel members, report supergroup spam messages, ignore slow mode, and send messages to the chat without paying Telegram Stars. Implied by any other privilege; applicable to supergroups and channels only
   final bool canManageChat;
 
   /// True, if the administrator can change the chat title, photo, and other settings
   final bool canChangeInfo;
 
-  /// True, if the administrator can create channel posts or view channel statistics; applicable to channels only
+  /// True, if the administrator can create channel posts, answer to channel direct messages, or view channel statistics; applicable to channels only
   final bool canPostMessages;
 
   /// True, if the administrator can edit messages of other users and pin messages; applicable to channels only

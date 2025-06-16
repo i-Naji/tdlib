@@ -3,26 +3,26 @@
 
 part of '../tdapi.dart';
 
-/// Returns approximate number of messages of the specified type in the chat
+/// Returns approximate number of messages of the specified type in the chat or its topic
 ///
 /// Returns [Count].
 final class GetChatMessageCount extends TdFunction<Count> {
-  /// Returns approximate number of messages of the specified type in the chat
+  /// Returns approximate number of messages of the specified type in the chat or its topic
   const GetChatMessageCount({
     required this.chatId,
+    this.topicId,
     required this.filter,
-    required this.savedMessagesTopicId,
     required this.returnLocal,
   });
 
   /// Identifier of the chat in which to count messages
   final int chatId;
 
+  /// Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics
+  final MessageTopic? topicId;
+
   /// Filter for message content; searchMessagesFilterEmpty is unsupported in this function
   final SearchMessagesFilter filter;
-
-  /// If not 0, only messages in the specified Saved Messages topic will be counted; pass 0 to count all messages, or for chats other than Saved Messages
-  final int savedMessagesTopicId;
 
   /// Pass true to get the number of messages without sending network requests, or -1 if the number of messages is unknown locally
   final bool returnLocal;
@@ -31,8 +31,8 @@ final class GetChatMessageCount extends TdFunction<Count> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
+        'topic_id': topicId?.toJson(),
         'filter': filter.toJson(),
-        'saved_messages_topic_id': savedMessagesTopicId,
         'return_local': returnLocal,
         if (extra != null) '@extra': extra,
       };
@@ -41,14 +41,14 @@ final class GetChatMessageCount extends TdFunction<Count> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatMessageCount copyWith({
     int? chatId,
+    MessageTopic? Function()? topicId,
     SearchMessagesFilter? filter,
-    int? savedMessagesTopicId,
     bool? returnLocal,
   }) =>
       GetChatMessageCount(
         chatId: chatId ?? this.chatId,
+        topicId: topicId != null ? topicId() : this.topicId,
         filter: filter ?? this.filter,
-        savedMessagesTopicId: savedMessagesTopicId ?? this.savedMessagesTopicId,
         returnLocal: returnLocal ?? this.returnLocal,
       );
 
