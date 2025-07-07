@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains content of a push message notification
 ///
-/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentProximityAlertTriggered], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
+/// One of: [PushMessageContentHidden], [PushMessageContentAnimation], [PushMessageContentAudio], [PushMessageContentContact], [PushMessageContentContactRegistered], [PushMessageContentDocument], [PushMessageContentGame], [PushMessageContentGameScore], [PushMessageContentInvoice], [PushMessageContentLocation], [PushMessageContentPaidMedia], [PushMessageContentPhoto], [PushMessageContentPoll], [PushMessageContentPremiumGiftCode], [PushMessageContentGiveaway], [PushMessageContentGift], [PushMessageContentUpgradedGift], [PushMessageContentScreenshotTaken], [PushMessageContentSticker], [PushMessageContentStory], [PushMessageContentText], [PushMessageContentChecklist], [PushMessageContentVideo], [PushMessageContentVideoNote], [PushMessageContentVoiceNote], [PushMessageContentBasicGroupChatCreate], [PushMessageContentVideoChatStarted], [PushMessageContentVideoChatEnded], [PushMessageContentInviteVideoChatParticipants], [PushMessageContentChatAddMembers], [PushMessageContentChatChangePhoto], [PushMessageContentChatChangeTitle], [PushMessageContentChatSetBackground], [PushMessageContentChatSetTheme], [PushMessageContentChatDeleteMember], [PushMessageContentChatJoinByLink], [PushMessageContentChatJoinByRequest], [PushMessageContentRecurringPayment], [PushMessageContentSuggestProfilePhoto], [PushMessageContentProximityAlertTriggered], [PushMessageContentChecklistTasksAdded], [PushMessageContentChecklistTasksDone], [PushMessageContentMessageForwards], [PushMessageContentMediaAlbum]; or [UndecodedPushMessageContent] for a type newer than this API.
 sealed class PushMessageContent extends TdObject {
   const PushMessageContent();
 
@@ -1018,6 +1018,53 @@ final class PushMessageContentText extends PushMessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// A message with a checklist
+final class PushMessageContentChecklist extends PushMessageContent {
+  /// A message with a checklist
+  const PushMessageContentChecklist({
+    required this.title,
+    required this.isPinned,
+  });
+
+  /// Checklist title
+  final String title;
+
+  /// True, if the message is a pinned message with the specified content
+  final bool isPinned;
+
+  /// Parses a [PushMessageContentChecklist] from TDLib JSON.
+  factory PushMessageContentChecklist.fromJson(Map<String, dynamic> json) =>
+      PushMessageContentChecklist(
+        title: _readString(json['title']),
+        isPinned: _readBool(json['is_pinned']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'title': title,
+        'is_pinned': isPinned,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentChecklist copyWith({
+    String? title,
+    bool? isPinned,
+  }) =>
+      PushMessageContentChecklist(
+        title: title ?? this.title,
+        isPinned: isPinned ?? this.isPinned,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentChecklist';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A video message
 final class PushMessageContentVideo extends PushMessageContent {
   /// A video message
@@ -1720,6 +1767,86 @@ final class PushMessageContentProximityAlertTriggered
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentProximityAlertTriggered';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Some tasks were added to a checklist
+final class PushMessageContentChecklistTasksAdded extends PushMessageContent {
+  /// Some tasks were added to a checklist
+  const PushMessageContentChecklistTasksAdded({
+    required this.taskCount,
+  });
+
+  /// Number of added tasks
+  final int taskCount;
+
+  /// Parses a [PushMessageContentChecklistTasksAdded] from TDLib JSON.
+  factory PushMessageContentChecklistTasksAdded.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChecklistTasksAdded(
+        taskCount: _readInt(json['task_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'task_count': taskCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentChecklistTasksAdded copyWith({
+    int? taskCount,
+  }) =>
+      PushMessageContentChecklistTasksAdded(
+        taskCount: taskCount ?? this.taskCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentChecklistTasksAdded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Some tasks from a checklist were marked as done or not done
+final class PushMessageContentChecklistTasksDone extends PushMessageContent {
+  /// Some tasks from a checklist were marked as done or not done
+  const PushMessageContentChecklistTasksDone({
+    required this.taskCount,
+  });
+
+  /// Number of changed tasks
+  final int taskCount;
+
+  /// Parses a [PushMessageContentChecklistTasksDone] from TDLib JSON.
+  factory PushMessageContentChecklistTasksDone.fromJson(
+          Map<String, dynamic> json) =>
+      PushMessageContentChecklistTasksDone(
+        taskCount: _readInt(json['task_count']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'task_count': taskCount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  PushMessageContentChecklistTasksDone copyWith({
+    int? taskCount,
+  }) =>
+      PushMessageContentChecklistTasksDone(
+        taskCount: taskCount ?? this.taskCount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'pushMessageContentChecklistTasksDone';
 
   @override
   String getConstructor() => CONSTRUCTOR;

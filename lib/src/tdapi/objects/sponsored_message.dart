@@ -32,7 +32,7 @@ final class SponsoredMessage extends TdObject {
   final MessageContent content;
 
   /// Information about the sponsor of the message
-  final MessageSponsor sponsor;
+  final AdvertisementSponsor sponsor;
 
   /// Title of the sponsored message
   final String title;
@@ -56,7 +56,7 @@ final class SponsoredMessage extends TdObject {
         isRecommended: _readBool(json['is_recommended']),
         canBeReported: _readBool(json['can_be_reported']),
         content: _readObject(json['content'], MessageContent.fromJson),
-        sponsor: _readObject(json['sponsor'], MessageSponsor.fromJson),
+        sponsor: _readObject(json['sponsor'], AdvertisementSponsor.fromJson),
         title: _readString(json['title']),
         buttonText: _readString(json['button_text']),
         accentColorId: _readInt(json['accent_color_id']),
@@ -86,7 +86,7 @@ final class SponsoredMessage extends TdObject {
     bool? isRecommended,
     bool? canBeReported,
     MessageContent? content,
-    MessageSponsor? sponsor,
+    AdvertisementSponsor? sponsor,
     String? title,
     String? buttonText,
     int? accentColorId,

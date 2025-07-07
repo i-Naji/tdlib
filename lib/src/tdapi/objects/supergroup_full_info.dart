@@ -37,6 +37,7 @@ final class SupergroupFullInfo extends TdObject {
     required this.giftCount,
     required this.myBoostCount,
     required this.unrestrictBoostCount,
+    required this.outgoingPaidMessageStarCount,
     required this.stickerSetId,
     required this.customEmojiStickerSetId,
     this.location,
@@ -139,6 +140,9 @@ final class SupergroupFullInfo extends TdObject {
   /// Number of times the supergroup must be boosted by a user to ignore slow mode and chat permission restrictions; 0 if unspecified
   final int unrestrictBoostCount;
 
+  /// Number of Telegram Stars that must be paid by the current user for each sent message to the supergroup
+  final int outgoingPaidMessageStarCount;
+
   /// Identifier of the supergroup sticker set that must be shown before user sticker sets; 0 if none
   final int stickerSetId;
 
@@ -208,6 +212,8 @@ final class SupergroupFullInfo extends TdObject {
         giftCount: _readInt(json['gift_count']),
         myBoostCount: _readInt(json['my_boost_count']),
         unrestrictBoostCount: _readInt(json['unrestrict_boost_count']),
+        outgoingPaidMessageStarCount:
+            _readInt(json['outgoing_paid_message_star_count']),
         stickerSetId: _readInt(json['sticker_set_id']),
         customEmojiStickerSetId: _readInt(json['custom_emoji_sticker_set_id']),
         location: _readOptional(json['location'], ChatLocation.fromJson),
@@ -257,6 +263,7 @@ final class SupergroupFullInfo extends TdObject {
         'gift_count': giftCount,
         'my_boost_count': myBoostCount,
         'unrestrict_boost_count': unrestrictBoostCount,
+        'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
         'sticker_set_id': stickerSetId.toString(),
         'custom_emoji_sticker_set_id': customEmojiStickerSetId.toString(),
         'location': location?.toJson(),
@@ -300,6 +307,7 @@ final class SupergroupFullInfo extends TdObject {
     int? giftCount,
     int? myBoostCount,
     int? unrestrictBoostCount,
+    int? outgoingPaidMessageStarCount,
     int? stickerSetId,
     int? customEmojiStickerSetId,
     ChatLocation? Function()? location,
@@ -351,6 +359,8 @@ final class SupergroupFullInfo extends TdObject {
         giftCount: giftCount ?? this.giftCount,
         myBoostCount: myBoostCount ?? this.myBoostCount,
         unrestrictBoostCount: unrestrictBoostCount ?? this.unrestrictBoostCount,
+        outgoingPaidMessageStarCount:
+            outgoingPaidMessageStarCount ?? this.outgoingPaidMessageStarCount,
         stickerSetId: stickerSetId ?? this.stickerSetId,
         customEmojiStickerSetId:
             customEmojiStickerSetId ?? this.customEmojiStickerSetId,

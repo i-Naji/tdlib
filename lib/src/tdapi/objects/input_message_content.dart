@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// The content of a message to send
 ///
-/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStory], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
+/// One of: [InputMessageText], [InputMessageAnimation], [InputMessageAudio], [InputMessageDocument], [InputMessagePaidMedia], [InputMessagePhoto], [InputMessageSticker], [InputMessageVideo], [InputMessageVideoNote], [InputMessageVoiceNote], [InputMessageLocation], [InputMessageVenue], [InputMessageContact], [InputMessageDice], [InputMessageGame], [InputMessageInvoice], [InputMessagePoll], [InputMessageStory], [InputMessageChecklist], [InputMessageForwarded]; or [UndecodedInputMessageContent] for a type newer than this API.
 sealed class InputMessageContent extends TdObject {
   const InputMessageContent();
 
@@ -1397,6 +1397,45 @@ final class InputMessageStory extends InputMessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'inputMessageStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a checklist. Checklists can't be sent to secret chats, channel chats and channel direct messages chats; for Telegram Premium users only
+final class InputMessageChecklist extends InputMessageContent {
+  /// A message with a checklist. Checklists can't be sent to secret chats, channel chats and channel direct messages chats; for Telegram Premium users only
+  const InputMessageChecklist({
+    required this.checklist,
+  });
+
+  /// The checklist to send
+  final InputChecklist checklist;
+
+  /// Parses a [InputMessageChecklist] from TDLib JSON.
+  factory InputMessageChecklist.fromJson(Map<String, dynamic> json) =>
+      InputMessageChecklist(
+        checklist: _readObject(json['checklist'], InputChecklist.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'checklist': checklist.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InputMessageChecklist copyWith({
+    InputChecklist? checklist,
+  }) =>
+      InputMessageChecklist(
+        checklist: checklist ?? this.checklist,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'inputMessageChecklist';
 
   @override
   String getConstructor() => CONSTRUCTOR;

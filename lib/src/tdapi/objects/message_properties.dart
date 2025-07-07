@@ -7,6 +7,7 @@ part of '../tdapi.dart';
 final class MessageProperties extends TdObject {
   /// Contains properties of a message and describes actions that can be done with the message right now
   const MessageProperties({
+    required this.canAddTasks,
     required this.canBeCopied,
     required this.canBeCopiedToSecretChat,
     required this.canBeDeletedOnlyForSelf,
@@ -28,7 +29,9 @@ final class MessageProperties extends TdObject {
     required this.canGetMessageThread,
     required this.canGetReadDate,
     required this.canGetStatistics,
+    required this.canGetVideoAdvertisements,
     required this.canGetViewers,
+    required this.canMarkTasksAsDone,
     required this.canRecognizeSpeech,
     required this.canReportChat,
     required this.canReportReactions,
@@ -38,6 +41,9 @@ final class MessageProperties extends TdObject {
     this.extra,
     this.clientId,
   });
+
+  /// True, if tasks can be added to the message's checklist using addChecklistTasks if the current user has Telegram Premium subscription
+  final bool canAddTasks;
 
   /// True, if content of the message can be copied using inputMessageForwarded or forwardMessages with copy options
   final bool canBeCopied;
@@ -51,7 +57,7 @@ final class MessageProperties extends TdObject {
   /// True, if the message can be deleted for all users using the method deleteMessages with revoke == true
   final bool canBeDeletedForAllUsers;
 
-  /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location and poll messages this fields shows whether editMessageLiveLocation or stopPoll can be used with this message
+  /// True, if the message can be edited using the methods editMessageText, editMessageCaption, or editMessageReplyMarkup. For live location, poll, and checklist messages this fields shows whether editMessageLiveLocation, stopPoll, or editMessageChecklist respectively can be used with this message
   final bool canBeEdited;
 
   /// True, if the message can be forwarded using inputMessageForwarded or forwardMessages without copy options
@@ -102,8 +108,14 @@ final class MessageProperties extends TdObject {
   /// True, if message statistics are available through getMessageStatistics and message forwards can be received using getMessagePublicForwards
   final bool canGetStatistics;
 
+  /// True, if advertisements for video of the message can be received though getVideoMessageAdvertisements
+  final bool canGetVideoAdvertisements;
+
   /// True, if chat members already viewed the message can be received through getMessageViewers
   final bool canGetViewers;
+
+  /// True, if tasks can be marked as done or not done in the message's checklist using markChecklistTasksAsDone if the current user has Telegram Premium subscription
+  final bool canMarkTasksAsDone;
 
   /// True, if speech can be recognized for the message through recognizeSpeech
   final bool canRecognizeSpeech;
@@ -134,6 +146,7 @@ final class MessageProperties extends TdObject {
   /// Parses a [MessageProperties] from TDLib JSON.
   factory MessageProperties.fromJson(Map<String, dynamic> json) =>
       MessageProperties(
+        canAddTasks: _readBool(json['can_add_tasks']),
         canBeCopied: _readBool(json['can_be_copied']),
         canBeCopiedToSecretChat:
             _readBool(json['can_be_copied_to_secret_chat']),
@@ -160,7 +173,10 @@ final class MessageProperties extends TdObject {
         canGetMessageThread: _readBool(json['can_get_message_thread']),
         canGetReadDate: _readBool(json['can_get_read_date']),
         canGetStatistics: _readBool(json['can_get_statistics']),
+        canGetVideoAdvertisements:
+            _readBool(json['can_get_video_advertisements']),
         canGetViewers: _readBool(json['can_get_viewers']),
+        canMarkTasksAsDone: _readBool(json['can_mark_tasks_as_done']),
         canRecognizeSpeech: _readBool(json['can_recognize_speech']),
         canReportChat: _readBool(json['can_report_chat']),
         canReportReactions: _readBool(json['can_report_reactions']),
@@ -174,6 +190,7 @@ final class MessageProperties extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'can_add_tasks': canAddTasks,
         'can_be_copied': canBeCopied,
         'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
@@ -195,7 +212,9 @@ final class MessageProperties extends TdObject {
         'can_get_message_thread': canGetMessageThread,
         'can_get_read_date': canGetReadDate,
         'can_get_statistics': canGetStatistics,
+        'can_get_video_advertisements': canGetVideoAdvertisements,
         'can_get_viewers': canGetViewers,
+        'can_mark_tasks_as_done': canMarkTasksAsDone,
         'can_recognize_speech': canRecognizeSpeech,
         'can_report_chat': canReportChat,
         'can_report_reactions': canReportReactions,
@@ -207,6 +226,7 @@ final class MessageProperties extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageProperties copyWith({
+    bool? canAddTasks,
     bool? canBeCopied,
     bool? canBeCopiedToSecretChat,
     bool? canBeDeletedOnlyForSelf,
@@ -228,7 +248,9 @@ final class MessageProperties extends TdObject {
     bool? canGetMessageThread,
     bool? canGetReadDate,
     bool? canGetStatistics,
+    bool? canGetVideoAdvertisements,
     bool? canGetViewers,
+    bool? canMarkTasksAsDone,
     bool? canRecognizeSpeech,
     bool? canReportChat,
     bool? canReportReactions,
@@ -239,6 +261,7 @@ final class MessageProperties extends TdObject {
     int? clientId,
   }) =>
       MessageProperties(
+        canAddTasks: canAddTasks ?? this.canAddTasks,
         canBeCopied: canBeCopied ?? this.canBeCopied,
         canBeCopiedToSecretChat:
             canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
@@ -266,7 +289,10 @@ final class MessageProperties extends TdObject {
         canGetMessageThread: canGetMessageThread ?? this.canGetMessageThread,
         canGetReadDate: canGetReadDate ?? this.canGetReadDate,
         canGetStatistics: canGetStatistics ?? this.canGetStatistics,
+        canGetVideoAdvertisements:
+            canGetVideoAdvertisements ?? this.canGetVideoAdvertisements,
         canGetViewers: canGetViewers ?? this.canGetViewers,
+        canMarkTasksAsDone: canMarkTasksAsDone ?? this.canMarkTasksAsDone,
         canRecognizeSpeech: canRecognizeSpeech ?? this.canRecognizeSpeech,
         canReportChat: canReportChat ?? this.canReportChat,
         canReportReactions: canReportReactions ?? this.canReportReactions,

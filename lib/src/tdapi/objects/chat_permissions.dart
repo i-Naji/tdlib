@@ -44,7 +44,7 @@ final class ChatPermissions extends TdObject {
   /// True, if the user can send voice notes
   final bool canSendVoiceNotes;
 
-  /// True, if the user can send polls
+  /// True, if the user can send polls and checklists
   final bool canSendPolls;
 
   /// True, if the user can send animations, games, stickers, and dice and use inline bots

@@ -11,6 +11,7 @@ part 'functions/add_chat_folder_by_invite_link.dart';
 part 'functions/add_chat_member.dart';
 part 'functions/add_chat_members.dart';
 part 'functions/add_chat_to_list.dart';
+part 'functions/add_checklist_tasks.dart';
 part 'functions/add_contact.dart';
 part 'functions/add_custom_server_language_pack.dart';
 part 'functions/add_favorite_sticker.dart';
@@ -85,6 +86,7 @@ part 'functions/clear_searched_for_tags.dart';
 part 'functions/click_animated_emoji_message.dart';
 part 'functions/click_chat_sponsored_message.dart';
 part 'functions/click_premium_subscription_button.dart';
+part 'functions/click_video_message_advertisement.dart';
 part 'functions/close.dart';
 part 'functions/close_chat.dart';
 part 'functions/close_secret_chat.dart';
@@ -161,6 +163,7 @@ part 'functions/download_file.dart';
 part 'functions/edit_bot_media_preview.dart';
 part 'functions/edit_business_chat_link.dart';
 part 'functions/edit_business_message_caption.dart';
+part 'functions/edit_business_message_checklist.dart';
 part 'functions/edit_business_message_live_location.dart';
 part 'functions/edit_business_message_media.dart';
 part 'functions/edit_business_message_reply_markup.dart';
@@ -178,6 +181,7 @@ part 'functions/edit_inline_message_media.dart';
 part 'functions/edit_inline_message_reply_markup.dart';
 part 'functions/edit_inline_message_text.dart';
 part 'functions/edit_message_caption.dart';
+part 'functions/edit_message_checklist.dart';
 part 'functions/edit_message_live_location.dart';
 part 'functions/edit_message_media.dart';
 part 'functions/edit_message_reply_markup.dart';
@@ -305,6 +309,7 @@ part 'functions/get_default_profile_photo_custom_emoji_stickers.dart';
 part 'functions/get_direct_messages_chat_topic.dart';
 part 'functions/get_direct_messages_chat_topic_history.dart';
 part 'functions/get_direct_messages_chat_topic_message_by_date.dart';
+part 'functions/get_direct_messages_chat_topic_revenue.dart';
 part 'functions/get_disallowed_chat_emoji_statuses.dart';
 part 'functions/get_emoji_categories.dart';
 part 'functions/get_emoji_reaction.dart';
@@ -480,6 +485,7 @@ part 'functions/get_video_chat_invite_link.dart';
 part 'functions/get_video_chat_rtmp_url.dart';
 part 'functions/get_video_chat_stream_segment.dart';
 part 'functions/get_video_chat_streams.dart';
+part 'functions/get_video_message_advertisements.dart';
 part 'functions/get_web_app_link_url.dart';
 part 'functions/get_web_app_placeholder.dart';
 part 'functions/get_web_app_url.dart';
@@ -506,6 +512,7 @@ part 'functions/load_quick_reply_shortcut_messages.dart';
 part 'functions/load_quick_reply_shortcuts.dart';
 part 'functions/load_saved_messages_topics.dart';
 part 'functions/log_out.dart';
+part 'functions/mark_checklist_tasks_as_done.dart';
 part 'functions/open_bot_similar_bot.dart';
 part 'functions/open_chat.dart';
 part 'functions/open_chat_similar_chat.dart';
@@ -581,6 +588,7 @@ part 'functions/report_sponsored_chat.dart';
 part 'functions/report_story.dart';
 part 'functions/report_supergroup_anti_spam_false_positive.dart';
 part 'functions/report_supergroup_spam.dart';
+part 'functions/report_video_message_advertisement.dart';
 part 'functions/request_authentication_password_recovery.dart';
 part 'functions/request_password_recovery.dart';
 part 'functions/request_qr_code_authentication.dart';
@@ -823,6 +831,7 @@ part 'functions/toggle_chat_is_marked_as_unread.dart';
 part 'functions/toggle_chat_is_pinned.dart';
 part 'functions/toggle_chat_is_translatable.dart';
 part 'functions/toggle_chat_view_as_topics.dart';
+part 'functions/toggle_direct_messages_chat_topic_can_send_unpaid_messages.dart';
 part 'functions/toggle_download_is_paused.dart';
 part 'functions/toggle_forum_topic_is_closed.dart';
 part 'functions/toggle_forum_topic_is_pinned.dart';
@@ -869,6 +878,7 @@ part 'functions/view_messages.dart';
 part 'functions/view_premium_feature.dart';
 part 'functions/view_sponsored_chat.dart';
 part 'functions/view_trending_sticker_sets.dart';
+part 'functions/view_video_message_advertisement.dart';
 part 'functions/write_generated_file_part.dart';
 part 'objects/accent_color.dart';
 part 'objects/accepted_gift_types.dart';
@@ -877,6 +887,7 @@ part 'objects/account_ttl.dart';
 part 'objects/added_reaction.dart';
 part 'objects/added_reactions.dart';
 part 'objects/address.dart';
+part 'objects/advertisement_sponsor.dart';
 part 'objects/affiliate_info.dart';
 part 'objects/affiliate_program_info.dart';
 part 'objects/affiliate_program_parameters.dart';
@@ -1032,6 +1043,8 @@ part 'objects/chat_type.dart';
 part 'objects/chats.dart';
 part 'objects/check_chat_username_result.dart';
 part 'objects/check_sticker_set_name_result.dart';
+part 'objects/checklist.dart';
+part 'objects/checklist_task.dart';
 part 'objects/close_birthday_user.dart';
 part 'objects/closed_vector_path.dart';
 part 'objects/collectible_item_info.dart';
@@ -1141,6 +1154,8 @@ part 'objects/input_background.dart';
 part 'objects/input_business_chat_link.dart';
 part 'objects/input_business_start_page.dart';
 part 'objects/input_chat_photo.dart';
+part 'objects/input_checklist.dart';
+part 'objects/input_checklist_task.dart';
 part 'objects/input_credentials.dart';
 part 'objects/input_file.dart';
 part 'objects/input_group_call.dart';
@@ -1220,7 +1235,6 @@ part 'objects/message_sender.dart';
 part 'objects/message_senders.dart';
 part 'objects/message_sending_state.dart';
 part 'objects/message_source.dart';
-part 'objects/message_sponsor.dart';
 part 'objects/message_statistics.dart';
 part 'objects/message_thread_info.dart';
 part 'objects/message_topic.dart';
@@ -1480,7 +1494,10 @@ part 'objects/video.dart';
 part 'objects/video_chat.dart';
 part 'objects/video_chat_stream.dart';
 part 'objects/video_chat_streams.dart';
+part 'objects/video_message_advertisement.dart';
+part 'objects/video_message_advertisements.dart';
 part 'objects/video_note.dart';
+part 'objects/video_storyboard.dart';
 part 'objects/voice_note.dart';
 part 'objects/web_app.dart';
 part 'objects/web_app_info.dart';
@@ -1489,14 +1506,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.50';
+const String tdlibVersion = '1.8.51';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'e78c346a6b5bf8a2cee97987000e11c8ce9968f3';
+const String tdlibSchemaCommit = 'bb474a201baa798784d696d2d9d762a9d2807f96';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'e78c346a6b5bf8a2cee97987000e11c8ce9968f3',
+  'bb474a201baa798784d696d2d9d762a9d2807f96',
 ];
 
 /// Base class of every TDLib object.
@@ -1646,6 +1663,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pollOption': PollOption.fromJson,
   'pollTypeRegular': PollTypeRegular.fromJson,
   'pollTypeQuiz': PollTypeQuiz.fromJson,
+  'checklistTask': ChecklistTask.fromJson,
+  'inputChecklistTask': InputChecklistTask.fromJson,
+  'checklist': Checklist.fromJson,
+  'inputChecklist': InputChecklist.fromJson,
   'animation': Animation.fromJson,
   'audio': Audio.fromJson,
   'document': Document.fromJson,
@@ -1662,6 +1683,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'webApp': WebApp.fromJson,
   'poll': Poll.fromJson,
   'alternativeVideo': AlternativeVideo.fromJson,
+  'videoStoryboard': VideoStoryboard.fromJson,
   'background': Background.fromJson,
   'backgrounds': Backgrounds.fromJson,
   'chatBackground': ChatBackground.fromJson,
@@ -1993,11 +2015,13 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageSourceNotification': MessageSourceNotification.fromJson,
   'messageSourceScreenshot': MessageSourceScreenshot.fromJson,
   'messageSourceOther': MessageSourceOther.fromJson,
-  'messageSponsor': MessageSponsor.fromJson,
+  'advertisementSponsor': AdvertisementSponsor.fromJson,
   'sponsoredMessage': SponsoredMessage.fromJson,
   'sponsoredMessages': SponsoredMessages.fromJson,
   'sponsoredChat': SponsoredChat.fromJson,
   'sponsoredChats': SponsoredChats.fromJson,
+  'videoMessageAdvertisement': VideoMessageAdvertisement.fromJson,
+  'videoMessageAdvertisements': VideoMessageAdvertisements.fromJson,
   'reportOption': ReportOption.fromJson,
   'reportSponsoredResultOk': ReportSponsoredResultOk.fromJson,
   'reportSponsoredResultFailed': ReportSponsoredResultFailed.fromJson,
@@ -2382,6 +2406,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageGame': MessageGame.fromJson,
   'messagePoll': MessagePoll.fromJson,
   'messageStory': MessageStory.fromJson,
+  'messageChecklist': MessageChecklist.fromJson,
   'messageInvoice': MessageInvoice.fromJson,
   'messageCall': MessageCall.fromJson,
   'messageGroupCall': MessageGroupCall.fromJson,
@@ -2432,6 +2457,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messagePaidMessagesRefunded': MessagePaidMessagesRefunded.fromJson,
   'messagePaidMessagePriceChanged': MessagePaidMessagePriceChanged.fromJson,
   'messageDirectMessagePriceChanged': MessageDirectMessagePriceChanged.fromJson,
+  'messageChecklistTasksDone': MessageChecklistTasksDone.fromJson,
+  'messageChecklistTasksAdded': MessageChecklistTasksAdded.fromJson,
   'messageContactRegistered': MessageContactRegistered.fromJson,
   'messageUsersShared': MessageUsersShared.fromJson,
   'messageChatShared': MessageChatShared.fromJson,
@@ -2497,6 +2524,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'inputMessageInvoice': InputMessageInvoice.fromJson,
   'inputMessagePoll': InputMessagePoll.fromJson,
   'inputMessageStory': InputMessageStory.fromJson,
+  'inputMessageChecklist': InputMessageChecklist.fromJson,
   'inputMessageForwarded': InputMessageForwarded.fromJson,
   'messageProperties': MessageProperties.fromJson,
   'searchMessagesFilterEmpty': SearchMessagesFilterEmpty.fromJson,
@@ -2905,6 +2933,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'premiumFeatureLastSeenTimes': PremiumFeatureLastSeenTimes.fromJson,
   'premiumFeatureBusiness': PremiumFeatureBusiness.fromJson,
   'premiumFeatureMessageEffects': PremiumFeatureMessageEffects.fromJson,
+  'premiumFeatureChecklists': PremiumFeatureChecklists.fromJson,
   'businessFeatureLocation': BusinessFeatureLocation.fromJson,
   'businessFeatureOpeningHours': BusinessFeatureOpeningHours.fromJson,
   'businessFeatureQuickReplies': BusinessFeatureQuickReplies.fromJson,
@@ -3053,6 +3082,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'pushMessageContentSticker': PushMessageContentSticker.fromJson,
   'pushMessageContentStory': PushMessageContentStory.fromJson,
   'pushMessageContentText': PushMessageContentText.fromJson,
+  'pushMessageContentChecklist': PushMessageContentChecklist.fromJson,
   'pushMessageContentVideo': PushMessageContentVideo.fromJson,
   'pushMessageContentVideoNote': PushMessageContentVideoNote.fromJson,
   'pushMessageContentVoiceNote': PushMessageContentVoiceNote.fromJson,
@@ -3082,6 +3112,10 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PushMessageContentSuggestProfilePhoto.fromJson,
   'pushMessageContentProximityAlertTriggered':
       PushMessageContentProximityAlertTriggered.fromJson,
+  'pushMessageContentChecklistTasksAdded':
+      PushMessageContentChecklistTasksAdded.fromJson,
+  'pushMessageContentChecklistTasksDone':
+      PushMessageContentChecklistTasksDone.fromJson,
   'pushMessageContentMessageForwards':
       PushMessageContentMessageForwards.fromJson,
   'pushMessageContentMediaAlbum': PushMessageContentMediaAlbum.fromJson,

@@ -11,6 +11,7 @@ final class DirectMessagesChatTopic extends TdObject {
     required this.id,
     required this.senderId,
     required this.order,
+    required this.canSendUnpaidMessages,
     required this.isMarkedAsUnread,
     required this.unreadCount,
     required this.lastReadInboxMessageId,
@@ -33,6 +34,9 @@ final class DirectMessagesChatTopic extends TdObject {
 
   /// A parameter used to determine order of the topic in the topic list. Topics must be sorted by the order in descending order
   final int order;
+
+  /// True, if the other party can send unpaid messages even if the chat has paid messages enabled
+  final bool canSendUnpaidMessages;
 
   /// True, if the forum topic is marked as unread
   final bool isMarkedAsUnread;
@@ -70,6 +74,7 @@ final class DirectMessagesChatTopic extends TdObject {
         id: _readInt(json['id']),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
         order: _readInt(json['order']),
+        canSendUnpaidMessages: _readBool(json['can_send_unpaid_messages']),
         isMarkedAsUnread: _readBool(json['is_marked_as_unread']),
         unreadCount: _readInt(json['unread_count']),
         lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
@@ -89,6 +94,7 @@ final class DirectMessagesChatTopic extends TdObject {
         'id': id,
         'sender_id': senderId.toJson(),
         'order': order.toString(),
+        'can_send_unpaid_messages': canSendUnpaidMessages,
         'is_marked_as_unread': isMarkedAsUnread,
         'unread_count': unreadCount,
         'last_read_inbox_message_id': lastReadInboxMessageId,
@@ -105,6 +111,7 @@ final class DirectMessagesChatTopic extends TdObject {
     int? id,
     MessageSender? senderId,
     int? order,
+    bool? canSendUnpaidMessages,
     bool? isMarkedAsUnread,
     int? unreadCount,
     int? lastReadInboxMessageId,
@@ -120,6 +127,8 @@ final class DirectMessagesChatTopic extends TdObject {
         id: id ?? this.id,
         senderId: senderId ?? this.senderId,
         order: order ?? this.order,
+        canSendUnpaidMessages:
+            canSendUnpaidMessages ?? this.canSendUnpaidMessages,
         isMarkedAsUnread: isMarkedAsUnread ?? this.isMarkedAsUnread,
         unreadCount: unreadCount ?? this.unreadCount,
         lastReadInboxMessageId:

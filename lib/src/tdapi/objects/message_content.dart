@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -452,6 +452,7 @@ final class MessageVideo extends MessageContent {
   const MessageVideo({
     required this.video,
     required this.alternativeVideos,
+    required this.storyboards,
     this.cover,
     required this.startTimestamp,
     required this.caption,
@@ -465,6 +466,9 @@ final class MessageVideo extends MessageContent {
 
   /// Alternative qualities of the video
   final List<AlternativeVideo> alternativeVideos;
+
+  /// Available storyboards for the video
+  final List<VideoStoryboard> storyboards;
 
   /// Cover of the video; may be null if none
   final Photo? cover;
@@ -490,6 +494,8 @@ final class MessageVideo extends MessageContent {
         alternativeVideos: _readList<AlternativeVideo>(
             json['alternative_videos'],
             (e) => _readObject(e, AlternativeVideo.fromJson)),
+        storyboards: _readList<VideoStoryboard>(json['storyboards'],
+            (e) => _readObject(e, VideoStoryboard.fromJson)),
         cover: _readOptional(json['cover'], Photo.fromJson),
         startTimestamp: _readInt(json['start_timestamp']),
         caption: _readObject(json['caption'], FormattedText.fromJson),
@@ -503,6 +509,7 @@ final class MessageVideo extends MessageContent {
         '@type': CONSTRUCTOR,
         'video': video.toJson(),
         'alternative_videos': [for (final e in alternativeVideos) e.toJson()],
+        'storyboards': [for (final e in storyboards) e.toJson()],
         'cover': cover?.toJson(),
         'start_timestamp': startTimestamp,
         'caption': caption.toJson(),
@@ -517,6 +524,7 @@ final class MessageVideo extends MessageContent {
   MessageVideo copyWith({
     Video? video,
     List<AlternativeVideo>? alternativeVideos,
+    List<VideoStoryboard>? storyboards,
     Photo? Function()? cover,
     int? startTimestamp,
     FormattedText? caption,
@@ -527,6 +535,7 @@ final class MessageVideo extends MessageContent {
       MessageVideo(
         video: video ?? this.video,
         alternativeVideos: alternativeVideos ?? this.alternativeVideos,
+        storyboards: storyboards ?? this.storyboards,
         cover: cover != null ? cover() : this.cover,
         startTimestamp: startTimestamp ?? this.startTimestamp,
         caption: caption ?? this.caption,
@@ -1150,6 +1159,45 @@ final class MessageStory extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A message with a checklist
+final class MessageChecklist extends MessageContent {
+  /// A message with a checklist
+  const MessageChecklist({
+    required this.list,
+  });
+
+  /// The checklist description
+  final Checklist list;
+
+  /// Parses a [MessageChecklist] from TDLib JSON.
+  factory MessageChecklist.fromJson(Map<String, dynamic> json) =>
+      MessageChecklist(
+        list: _readObject(json['list'], Checklist.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'list': list.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChecklist copyWith({
+    Checklist? list,
+  }) =>
+      MessageChecklist(
+        list: list ?? this.list,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChecklist';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -3990,6 +4038,112 @@ final class MessageDirectMessagePriceChanged extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageDirectMessagePriceChanged';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Some tasks from a checklist were marked as done or not done
+final class MessageChecklistTasksDone extends MessageContent {
+  /// Some tasks from a checklist were marked as done or not done
+  const MessageChecklistTasksDone({
+    required this.checklistMessageId,
+    required this.markedAsDoneTaskIds,
+    required this.markedAsNotDoneTaskIds,
+  });
+
+  /// Identifier of the message with the checklist; can be 0 if the message was deleted
+  final int checklistMessageId;
+
+  /// Identifiers of tasks that were marked as done
+  final List<int> markedAsDoneTaskIds;
+
+  /// Identifiers of tasks that were marked as not done
+  final List<int> markedAsNotDoneTaskIds;
+
+  /// Parses a [MessageChecklistTasksDone] from TDLib JSON.
+  factory MessageChecklistTasksDone.fromJson(Map<String, dynamic> json) =>
+      MessageChecklistTasksDone(
+        checklistMessageId: _readInt(json['checklist_message_id']),
+        markedAsDoneTaskIds:
+            _readList<int>(json['marked_as_done_task_ids'], _readInt),
+        markedAsNotDoneTaskIds:
+            _readList<int>(json['marked_as_not_done_task_ids'], _readInt),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'checklist_message_id': checklistMessageId,
+        'marked_as_done_task_ids': markedAsDoneTaskIds,
+        'marked_as_not_done_task_ids': markedAsNotDoneTaskIds,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChecklistTasksDone copyWith({
+    int? checklistMessageId,
+    List<int>? markedAsDoneTaskIds,
+    List<int>? markedAsNotDoneTaskIds,
+  }) =>
+      MessageChecklistTasksDone(
+        checklistMessageId: checklistMessageId ?? this.checklistMessageId,
+        markedAsDoneTaskIds: markedAsDoneTaskIds ?? this.markedAsDoneTaskIds,
+        markedAsNotDoneTaskIds:
+            markedAsNotDoneTaskIds ?? this.markedAsNotDoneTaskIds,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChecklistTasksDone';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Some tasks were added to a checklist
+final class MessageChecklistTasksAdded extends MessageContent {
+  /// Some tasks were added to a checklist
+  const MessageChecklistTasksAdded({
+    required this.checklistMessageId,
+    required this.tasks,
+  });
+
+  /// Identifier of the message with the checklist; can be 0 if the message was deleted
+  final int checklistMessageId;
+
+  /// List of tasks added to the checklist
+  final List<ChecklistTask> tasks;
+
+  /// Parses a [MessageChecklistTasksAdded] from TDLib JSON.
+  factory MessageChecklistTasksAdded.fromJson(Map<String, dynamic> json) =>
+      MessageChecklistTasksAdded(
+        checklistMessageId: _readInt(json['checklist_message_id']),
+        tasks: _readList<ChecklistTask>(
+            json['tasks'], (e) => _readObject(e, ChecklistTask.fromJson)),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'checklist_message_id': checklistMessageId,
+        'tasks': [for (final e in tasks) e.toJson()],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageChecklistTasksAdded copyWith({
+    int? checklistMessageId,
+    List<ChecklistTask>? tasks,
+  }) =>
+      MessageChecklistTasksAdded(
+        checklistMessageId: checklistMessageId ?? this.checklistMessageId,
+        tasks: tasks ?? this.tasks,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageChecklistTasksAdded';
 
   @override
   String getConstructor() => CONSTRUCTOR;

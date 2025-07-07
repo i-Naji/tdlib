@@ -3,26 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Information about the sponsor of a message
-final class MessageSponsor extends TdObject {
-  /// Information about the sponsor of a message
-  const MessageSponsor({
+/// Information about the sponsor of an advertisement
+final class AdvertisementSponsor extends TdObject {
+  /// Information about the sponsor of an advertisement
+  const AdvertisementSponsor({
     required this.url,
     this.photo,
     required this.info,
   });
 
-  /// URL of the sponsor to be opened when the message is clicked
+  /// URL of the sponsor to be opened when the advertisement is clicked
   final String url;
 
   /// Photo of the sponsor; may be null if must not be shown
   final Photo? photo;
 
-  /// Additional optional information about the sponsor to be shown along with the message
+  /// Additional optional information about the sponsor to be shown along with the advertisement
   final String info;
 
-  /// Parses a [MessageSponsor] from TDLib JSON.
-  factory MessageSponsor.fromJson(Map<String, dynamic> json) => MessageSponsor(
+  /// Parses a [AdvertisementSponsor] from TDLib JSON.
+  factory AdvertisementSponsor.fromJson(Map<String, dynamic> json) =>
+      AdvertisementSponsor(
         url: _readString(json['url']),
         photo: _readOptional(json['photo'], Photo.fromJson),
         info: _readString(json['info']),
@@ -38,19 +39,19 @@ final class MessageSponsor extends TdObject {
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  MessageSponsor copyWith({
+  AdvertisementSponsor copyWith({
     String? url,
     Photo? Function()? photo,
     String? info,
   }) =>
-      MessageSponsor(
+      AdvertisementSponsor(
         url: url ?? this.url,
         photo: photo != null ? photo() : this.photo,
         info: info ?? this.info,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'messageSponsor';
+  static const String CONSTRUCTOR = 'advertisementSponsor';
 
   @override
   String getConstructor() => CONSTRUCTOR;
