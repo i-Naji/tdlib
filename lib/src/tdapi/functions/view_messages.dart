@@ -24,7 +24,7 @@ final class ViewMessages extends TdFunction<Ok> {
   /// Source of the message view; pass null to guess the source based on chat open state
   final MessageSource? source;
 
-  /// Pass true to mark as read the specified messages even the chat is closed
+  /// Pass true to mark as read the specified messages even if the chat is closed
   final bool forceRead;
 
   @override

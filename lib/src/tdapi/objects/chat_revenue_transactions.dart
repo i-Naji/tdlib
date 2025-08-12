@@ -7,17 +7,21 @@ part of '../tdapi.dart';
 final class ChatRevenueTransactions extends TdObject {
   /// Contains a list of chat revenue transactions
   const ChatRevenueTransactions({
-    required this.totalCount,
+    required this.tonAmount,
     required this.transactions,
+    required this.nextOffset,
     this.extra,
     this.clientId,
   });
 
-  /// Total number of transactions
-  final int totalCount;
+  /// The amount of owned Toncoins; in the smallest units of the cryptocurrency
+  final int tonAmount;
 
   /// List of transactions
   final List<ChatRevenueTransaction> transactions;
+
+  /// The offset for the next request. If empty, then there are no more results
+  final String nextOffset;
 
   /// "@extra" of the request this object answers.
   @override
@@ -30,9 +34,10 @@ final class ChatRevenueTransactions extends TdObject {
   /// Parses a [ChatRevenueTransactions] from TDLib JSON.
   factory ChatRevenueTransactions.fromJson(Map<String, dynamic> json) =>
       ChatRevenueTransactions(
-        totalCount: _readInt(json['total_count']),
+        tonAmount: _readInt(json['ton_amount']),
         transactions: _readList<ChatRevenueTransaction>(json['transactions'],
             (e) => _readObject(e, ChatRevenueTransaction.fromJson)),
+        nextOffset: _readString(json['next_offset']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -40,21 +45,24 @@ final class ChatRevenueTransactions extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'total_count': totalCount,
+        'ton_amount': tonAmount,
         'transactions': [for (final e in transactions) e.toJson()],
+        'next_offset': nextOffset,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ChatRevenueTransactions copyWith({
-    int? totalCount,
+    int? tonAmount,
     List<ChatRevenueTransaction>? transactions,
+    String? nextOffset,
     dynamic extra,
     int? clientId,
   }) =>
       ChatRevenueTransactions(
-        totalCount: totalCount ?? this.totalCount,
+        tonAmount: tonAmount ?? this.tonAmount,
         transactions: transactions ?? this.transactions,
+        nextOffset: nextOffset ?? this.nextOffset,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

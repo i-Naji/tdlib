@@ -8,6 +8,7 @@ final class UpgradedGift extends TdObject {
   /// Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
   const UpgradedGift({
     required this.id,
+    required this.publisherChatId,
     required this.title,
     required this.name,
     required this.number,
@@ -28,6 +29,9 @@ final class UpgradedGift extends TdObject {
 
   /// Unique identifier of the gift
   final int id;
+
+  /// Identifier of the chat that published the gift; 0 if none
+  final int publisherChatId;
 
   /// The title of the upgraded gift
   final String title;
@@ -82,6 +86,7 @@ final class UpgradedGift extends TdObject {
   /// Parses a [UpgradedGift] from TDLib JSON.
   factory UpgradedGift.fromJson(Map<String, dynamic> json) => UpgradedGift(
         id: _readInt(json['id']),
+        publisherChatId: _readInt(json['publisher_chat_id']),
         title: _readString(json['title']),
         name: _readString(json['name']),
         number: _readInt(json['number']),
@@ -105,6 +110,7 @@ final class UpgradedGift extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
+        'publisher_chat_id': publisherChatId,
         'title': title,
         'name': name,
         'number': number,
@@ -125,6 +131,7 @@ final class UpgradedGift extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGift copyWith({
     int? id,
+    int? publisherChatId,
     String? title,
     String? name,
     int? number,
@@ -144,6 +151,7 @@ final class UpgradedGift extends TdObject {
   }) =>
       UpgradedGift(
         id: id ?? this.id,
+        publisherChatId: publisherChatId ?? this.publisherChatId,
         title: title ?? this.title,
         name: name ?? this.name,
         number: number ?? this.number,

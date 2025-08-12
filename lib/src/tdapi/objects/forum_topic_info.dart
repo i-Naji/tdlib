@@ -49,7 +49,7 @@ final class ForumTopicInfo extends TdObject {
   /// True, if the topic was created by the current user
   final bool isOutgoing;
 
-  /// True, if the topic is closed
+  /// True, if the topic is closed. If the topic is closed, then the user must have can_manage_topics administrator right in the supergroup or must be the creator of the topic to send messages there
   final bool isClosed;
 
   /// True, if the topic is hidden above the topic list and closed; for General topic only

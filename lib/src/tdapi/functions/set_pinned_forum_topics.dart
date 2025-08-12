@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the order of pinned forum topics; requires can_manage_topics right in the supergroup
+/// Changes the order of pinned forum topics; requires can_manage_topics administrator right in the supergroup
 ///
 /// Returns [Ok].
 final class SetPinnedForumTopics extends TdFunction<Ok> {
-  /// Changes the order of pinned forum topics; requires can_manage_topics right in the supergroup
+  /// Changes the order of pinned forum topics; requires can_manage_topics administrator right in the supergroup
   const SetPinnedForumTopics({
     required this.chatId,
     required this.messageThreadIds,

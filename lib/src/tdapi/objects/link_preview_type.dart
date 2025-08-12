@@ -1328,6 +1328,7 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
   const LinkPreviewTypeVideoChat({
     this.photo,
     required this.isLiveStream,
+    required this.joinsAsSpeaker,
   });
 
   /// Photo of the chat with the video chat; may be null if none
@@ -1336,11 +1337,15 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
   /// True, if the video chat is expected to be a live stream in a channel or a broadcast group
   final bool isLiveStream;
 
+  /// True, if the user can use the link to join the video chat without being muted by administrators
+  final bool joinsAsSpeaker;
+
   /// Parses a [LinkPreviewTypeVideoChat] from TDLib JSON.
   factory LinkPreviewTypeVideoChat.fromJson(Map<String, dynamic> json) =>
       LinkPreviewTypeVideoChat(
         photo: _readOptional(json['photo'], ChatPhoto.fromJson),
         isLiveStream: _readBool(json['is_live_stream']),
+        joinsAsSpeaker: _readBool(json['joins_as_speaker']),
       );
 
   @override
@@ -1348,6 +1353,7 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
         '@type': CONSTRUCTOR,
         'photo': photo?.toJson(),
         'is_live_stream': isLiveStream,
+        'joins_as_speaker': joinsAsSpeaker,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -1356,10 +1362,12 @@ final class LinkPreviewTypeVideoChat extends LinkPreviewType {
   LinkPreviewTypeVideoChat copyWith({
     ChatPhoto? Function()? photo,
     bool? isLiveStream,
+    bool? joinsAsSpeaker,
   }) =>
       LinkPreviewTypeVideoChat(
         photo: photo != null ? photo() : this.photo,
         isLiveStream: isLiveStream ?? this.isLiveStream,
+        joinsAsSpeaker: joinsAsSpeaker ?? this.joinsAsSpeaker,
       );
 
   /// TDLib type name.

@@ -8,6 +8,7 @@ final class Gift extends TdObject {
   /// Describes a gift that can be sent to another user or channel chat
   const Gift({
     required this.id,
+    required this.publisherChatId,
     required this.sticker,
     required this.starCount,
     required this.defaultSellStarCount,
@@ -21,6 +22,9 @@ final class Gift extends TdObject {
 
   /// Unique identifier of the gift
   final int id;
+
+  /// Identifier of the chat that published the gift; 0 if none
+  final int publisherChatId;
 
   /// The sticker representing the gift
   final Sticker sticker;
@@ -52,6 +56,7 @@ final class Gift extends TdObject {
   /// Parses a [Gift] from TDLib JSON.
   factory Gift.fromJson(Map<String, dynamic> json) => Gift(
         id: _readInt(json['id']),
+        publisherChatId: _readInt(json['publisher_chat_id']),
         sticker: _readObject(json['sticker'], Sticker.fromJson),
         starCount: _readInt(json['star_count']),
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
@@ -67,6 +72,7 @@ final class Gift extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
+        'publisher_chat_id': publisherChatId,
         'sticker': sticker.toJson(),
         'star_count': starCount,
         'default_sell_star_count': defaultSellStarCount,
@@ -82,6 +88,7 @@ final class Gift extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   Gift copyWith({
     int? id,
+    int? publisherChatId,
     Sticker? sticker,
     int? starCount,
     int? defaultSellStarCount,
@@ -94,6 +101,7 @@ final class Gift extends TdObject {
   }) =>
       Gift(
         id: id ?? this.id,
+        publisherChatId: publisherChatId ?? this.publisherChatId,
         sticker: sticker ?? this.sticker,
         starCount: starCount ?? this.starCount,
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,

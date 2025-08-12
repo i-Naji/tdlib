@@ -18,6 +18,8 @@ final class Message extends TdObject {
     required this.canBeSaved,
     required this.hasTimestampedMedia,
     required this.isChannelPost,
+    required this.isPaidStarSuggestedPost,
+    required this.isPaidTonSuggestedPost,
     required this.containsUnreadMention,
     required this.date,
     required this.editDate,
@@ -26,6 +28,7 @@ final class Message extends TdObject {
     this.interactionInfo,
     required this.unreadReactions,
     this.factCheck,
+    this.suggestedPostInfo,
     this.replyTo,
     required this.messageThreadId,
     this.topicId,
@@ -80,6 +83,12 @@ final class Message extends TdObject {
   /// True, if the message is a channel post. All messages to channels are channel posts, all other messages are not channel posts
   final bool isChannelPost;
 
+  /// True, if the message is a suggested channel post which was paid in Telegram Stars; a warning must be shown if the message is deleted in less than getOption("suggested_post_lifetime_min") seconds after sending
+  final bool isPaidStarSuggestedPost;
+
+  /// True, if the message is a suggested channel post which was paid in Toncoins; a warning must be shown if the message is deleted in less than getOption("suggested_post_lifetime_min") seconds after sending
+  final bool isPaidTonSuggestedPost;
+
   /// True, if the message contains an unread mention for the current user
   final bool containsUnreadMention;
 
@@ -103,6 +112,9 @@ final class Message extends TdObject {
 
   /// Information about fact-check added to the message; may be null if none
   final FactCheck? factCheck;
+
+  /// Information about the suggested post; may be null if the message isn't a suggested post
+  final SuggestedPostInfo? suggestedPostInfo;
 
   /// Information about the message or the story this message is replying to; may be null if none
   final MessageReplyTo? replyTo;
@@ -178,6 +190,8 @@ final class Message extends TdObject {
         canBeSaved: _readBool(json['can_be_saved']),
         hasTimestampedMedia: _readBool(json['has_timestamped_media']),
         isChannelPost: _readBool(json['is_channel_post']),
+        isPaidStarSuggestedPost: _readBool(json['is_paid_star_suggested_post']),
+        isPaidTonSuggestedPost: _readBool(json['is_paid_ton_suggested_post']),
         containsUnreadMention: _readBool(json['contains_unread_mention']),
         date: _readInt(json['date']),
         editDate: _readInt(json['edit_date']),
@@ -190,6 +204,8 @@ final class Message extends TdObject {
         unreadReactions: _readList<UnreadReaction>(json['unread_reactions'],
             (e) => _readObject(e, UnreadReaction.fromJson)),
         factCheck: _readOptional(json['fact_check'], FactCheck.fromJson),
+        suggestedPostInfo: _readOptional(
+            json['suggested_post_info'], SuggestedPostInfo.fromJson),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
         messageThreadId: _readInt(json['message_thread_id']),
         topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
@@ -226,6 +242,8 @@ final class Message extends TdObject {
         'can_be_saved': canBeSaved,
         'has_timestamped_media': hasTimestampedMedia,
         'is_channel_post': isChannelPost,
+        'is_paid_star_suggested_post': isPaidStarSuggestedPost,
+        'is_paid_ton_suggested_post': isPaidTonSuggestedPost,
         'contains_unread_mention': containsUnreadMention,
         'date': date,
         'edit_date': editDate,
@@ -234,6 +252,7 @@ final class Message extends TdObject {
         'interaction_info': interactionInfo?.toJson(),
         'unread_reactions': [for (final e in unreadReactions) e.toJson()],
         'fact_check': factCheck?.toJson(),
+        'suggested_post_info': suggestedPostInfo?.toJson(),
         'reply_to': replyTo?.toJson(),
         'message_thread_id': messageThreadId,
         'topic_id': topicId?.toJson(),
@@ -267,6 +286,8 @@ final class Message extends TdObject {
     bool? canBeSaved,
     bool? hasTimestampedMedia,
     bool? isChannelPost,
+    bool? isPaidStarSuggestedPost,
+    bool? isPaidTonSuggestedPost,
     bool? containsUnreadMention,
     int? date,
     int? editDate,
@@ -275,6 +296,7 @@ final class Message extends TdObject {
     MessageInteractionInfo? Function()? interactionInfo,
     List<UnreadReaction>? unreadReactions,
     FactCheck? Function()? factCheck,
+    SuggestedPostInfo? Function()? suggestedPostInfo,
     MessageReplyTo? Function()? replyTo,
     int? messageThreadId,
     MessageTopic? Function()? topicId,
@@ -308,6 +330,10 @@ final class Message extends TdObject {
         canBeSaved: canBeSaved ?? this.canBeSaved,
         hasTimestampedMedia: hasTimestampedMedia ?? this.hasTimestampedMedia,
         isChannelPost: isChannelPost ?? this.isChannelPost,
+        isPaidStarSuggestedPost:
+            isPaidStarSuggestedPost ?? this.isPaidStarSuggestedPost,
+        isPaidTonSuggestedPost:
+            isPaidTonSuggestedPost ?? this.isPaidTonSuggestedPost,
         containsUnreadMention:
             containsUnreadMention ?? this.containsUnreadMention,
         date: date ?? this.date,
@@ -318,6 +344,9 @@ final class Message extends TdObject {
             interactionInfo != null ? interactionInfo() : this.interactionInfo,
         unreadReactions: unreadReactions ?? this.unreadReactions,
         factCheck: factCheck != null ? factCheck() : this.factCheck,
+        suggestedPostInfo: suggestedPostInfo != null
+            ? suggestedPostInfo()
+            : this.suggestedPostInfo,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         messageThreadId: messageThreadId ?? this.messageThreadId,
         topicId: topicId != null ? topicId() : this.topicId,

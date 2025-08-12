@@ -23,7 +23,7 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
   final String subscriptionId;
 
   /// Direction of the transactions to receive; pass null to get all transactions
-  final StarTransactionDirection? direction;
+  final TransactionDirection? direction;
 
   /// Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results
   final String offset;
@@ -47,7 +47,7 @@ final class GetStarTransactions extends TdFunction<StarTransactions> {
   GetStarTransactions copyWith({
     MessageSender? ownerId,
     String? subscriptionId,
-    StarTransactionDirection? Function()? direction,
+    TransactionDirection? Function()? direction,
     String? offset,
     int? limit,
   }) =>

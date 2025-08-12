@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -1487,6 +1487,90 @@ final class StarTransactionTypePaidMessageReceive extends StarTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypePaidMessageReceive';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a payment for a suggested post; for regular users only
+final class StarTransactionTypeSuggestedPostPaymentSend
+    extends StarTransactionType {
+  /// The transaction is a payment for a suggested post; for regular users only
+  const StarTransactionTypeSuggestedPostPaymentSend({
+    required this.chatId,
+  });
+
+  /// Identifier of the channel chat that posted the post
+  final int chatId;
+
+  /// Parses a [StarTransactionTypeSuggestedPostPaymentSend] from TDLib JSON.
+  factory StarTransactionTypeSuggestedPostPaymentSend.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeSuggestedPostPaymentSend(
+        chatId: _readInt(json['chat_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeSuggestedPostPaymentSend copyWith({
+    int? chatId,
+  }) =>
+      StarTransactionTypeSuggestedPostPaymentSend(
+        chatId: chatId ?? this.chatId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypeSuggestedPostPaymentSend';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a receiving of a payment for a suggested post by the channel chat; for channel chats only
+final class StarTransactionTypeSuggestedPostPaymentReceive
+    extends StarTransactionType {
+  /// The transaction is a receiving of a payment for a suggested post by the channel chat; for channel chats only
+  const StarTransactionTypeSuggestedPostPaymentReceive({
+    required this.userId,
+  });
+
+  /// Identifier of the user that paid for the suggested post
+  final int userId;
+
+  /// Parses a [StarTransactionTypeSuggestedPostPaymentReceive] from TDLib JSON.
+  factory StarTransactionTypeSuggestedPostPaymentReceive.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeSuggestedPostPaymentReceive(
+        userId: _readInt(json['user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeSuggestedPostPaymentReceive copyWith({
+    int? userId,
+  }) =>
+      StarTransactionTypeSuggestedPostPaymentReceive(
+        userId: userId ?? this.userId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'starTransactionTypeSuggestedPostPaymentReceive';
 
   @override
   String getConstructor() => CONSTRUCTOR;

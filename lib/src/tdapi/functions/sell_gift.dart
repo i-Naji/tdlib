@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Sells a gift for Telegram Stars
+/// Sells a gift for Telegram Stars; requires owner privileges for gifts owned by a chat
 ///
 /// Returns [Ok].
 final class SellGift extends TdFunction<Ok> {
-  /// Sells a gift for Telegram Stars
+  /// Sells a gift for Telegram Stars; requires owner privileges for gifts owned by a chat
   const SellGift({
     required this.businessConnectionId,
     required this.receivedGiftId,

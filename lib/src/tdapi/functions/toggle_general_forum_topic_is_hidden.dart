@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics right in the supergroup
+/// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup
 ///
 /// Returns [Ok].
 final class ToggleGeneralForumTopicIsHidden extends TdFunction<Ok> {
-  /// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics right in the supergroup
+  /// Toggles whether a General topic is hidden in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup
   const ToggleGeneralForumTopicIsHidden({
     required this.chatId,
     required this.isHidden,

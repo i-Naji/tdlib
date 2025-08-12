@@ -23,10 +23,10 @@ final class VideoMessageAdvertisement extends TdObject {
   /// Text of the advertisement
   final String text;
 
-  /// The minimum amount of time the advertisement must be dispalyed before it can be hidden by the user, in seconds
+  /// The minimum amount of time the advertisement must be displayed before it can be hidden by the user, in seconds
   final int minDisplayDuration;
 
-  /// The maximum amount of time the advertisement must be dispalyed before it must be automatically hidden, in seconds
+  /// The maximum amount of time the advertisement must be displayed before it must be automatically hidden, in seconds
   final int maxDisplayDuration;
 
   /// True, if the advertisement can be reported to Telegram moderators through reportVideoMessageAdvertisement

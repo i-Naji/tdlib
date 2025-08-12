@@ -85,7 +85,7 @@ final class Chat extends TdObject {
   /// Positions of the chat in chat lists
   final List<ChatPosition> positions;
 
-  /// Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even it doesn't belong to the chat list and have no position in a chat list even it belongs to the chat list
+  /// Chat lists to which the chat belongs. A chat can have a non-zero position in a chat list even if it doesn't belong to the chat list and have no position in a chat list even if it belongs to the chat list
   final List<ChatList> chatLists;
 
   /// Identifier of a user or chat that is selected to send messages in the chat; may be null if the user can't change message sender

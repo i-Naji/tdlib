@@ -20,7 +20,7 @@ final class SetBusinessAccountProfilePhoto extends TdFunction<Ok> {
   /// Profile photo to set; pass null to remove the photo
   final InputChatPhoto? photo;
 
-  /// Pass true to set the public photo, which will be visible even the main photo is hidden by privacy settings
+  /// Pass true to set the public photo, which will be visible even if the main photo is hidden by privacy settings
   final bool isPublic;
 
   @override

@@ -11,6 +11,7 @@ final class DraftMessage extends TdObject {
     required this.date,
     required this.inputMessageText,
     required this.effectId,
+    this.suggestedPostInfo,
   });
 
   /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
@@ -25,6 +26,9 @@ final class DraftMessage extends TdObject {
   /// Identifier of the effect to apply to the message when it is sent; 0 if none
   final int effectId;
 
+  /// Information about the suggested post; may be null if none
+  final InputSuggestedPostInfo? suggestedPostInfo;
+
   /// Parses a [DraftMessage] from TDLib JSON.
   factory DraftMessage.fromJson(Map<String, dynamic> json) => DraftMessage(
         replyTo: _readOptional(json['reply_to'], InputMessageReplyTo.fromJson),
@@ -32,6 +36,8 @@ final class DraftMessage extends TdObject {
         inputMessageText: _readObject(
             json['input_message_text'], InputMessageContent.fromJson),
         effectId: _readInt(json['effect_id']),
+        suggestedPostInfo: _readOptional(
+            json['suggested_post_info'], InputSuggestedPostInfo.fromJson),
       );
 
   @override
@@ -41,6 +47,7 @@ final class DraftMessage extends TdObject {
         'date': date,
         'input_message_text': inputMessageText.toJson(),
         'effect_id': effectId.toString(),
+        'suggested_post_info': suggestedPostInfo?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -50,12 +57,16 @@ final class DraftMessage extends TdObject {
     int? date,
     InputMessageContent? inputMessageText,
     int? effectId,
+    InputSuggestedPostInfo? Function()? suggestedPostInfo,
   }) =>
       DraftMessage(
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         date: date ?? this.date,
         inputMessageText: inputMessageText ?? this.inputMessageText,
         effectId: effectId ?? this.effectId,
+        suggestedPostInfo: suggestedPostInfo != null
+            ? suggestedPostInfo()
+            : this.suggestedPostInfo,
       );
 
   /// TDLib type name.

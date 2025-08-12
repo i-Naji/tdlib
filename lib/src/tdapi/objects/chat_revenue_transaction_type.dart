@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction for revenue earned from sponsored messages in a chat
 ///
-/// One of: [ChatRevenueTransactionTypeEarnings], [ChatRevenueTransactionTypeWithdrawal], [ChatRevenueTransactionTypeRefund]; or [UndecodedChatRevenueTransactionType] for a type newer than this API.
+/// One of: [ChatRevenueTransactionTypeUnsupported], [ChatRevenueTransactionTypeSponsoredMessageEarnings], [ChatRevenueTransactionTypeSuggestedPostEarnings], [ChatRevenueTransactionTypeFragmentWithdrawal], [ChatRevenueTransactionTypeFragmentRefund]; or [UndecodedChatRevenueTransactionType] for a type newer than this API.
 sealed class ChatRevenueTransactionType extends TdObject {
   const ChatRevenueTransactionType();
 
@@ -45,11 +45,40 @@ final class UndecodedChatRevenueTransactionType
   String getConstructor() => _readString(json['@type']);
 }
 
+/// Describes an unsupported transaction
+final class ChatRevenueTransactionTypeUnsupported
+    extends ChatRevenueTransactionType {
+  /// Describes an unsupported transaction
+  const ChatRevenueTransactionTypeUnsupported();
+
+  /// Parses a [ChatRevenueTransactionTypeUnsupported] from TDLib JSON.
+  factory ChatRevenueTransactionTypeUnsupported.fromJson(
+          Map<String, dynamic> json) =>
+      const ChatRevenueTransactionTypeUnsupported();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatRevenueTransactionTypeUnsupported copyWith() =>
+      const ChatRevenueTransactionTypeUnsupported();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatRevenueTransactionTypeUnsupported';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// Describes earnings from sponsored messages in a chat in some time frame
-final class ChatRevenueTransactionTypeEarnings
+final class ChatRevenueTransactionTypeSponsoredMessageEarnings
     extends ChatRevenueTransactionType {
   /// Describes earnings from sponsored messages in a chat in some time frame
-  const ChatRevenueTransactionTypeEarnings({
+  const ChatRevenueTransactionTypeSponsoredMessageEarnings({
     required this.startDate,
     required this.endDate,
   });
@@ -60,10 +89,10 @@ final class ChatRevenueTransactionTypeEarnings
   /// Point in time (Unix timestamp) when the earnings ended
   final int endDate;
 
-  /// Parses a [ChatRevenueTransactionTypeEarnings] from TDLib JSON.
-  factory ChatRevenueTransactionTypeEarnings.fromJson(
+  /// Parses a [ChatRevenueTransactionTypeSponsoredMessageEarnings] from TDLib JSON.
+  factory ChatRevenueTransactionTypeSponsoredMessageEarnings.fromJson(
           Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeEarnings(
+      ChatRevenueTransactionTypeSponsoredMessageEarnings(
         startDate: _readInt(json['start_date']),
         endDate: _readInt(json['end_date']),
       );
@@ -78,47 +107,85 @@ final class ChatRevenueTransactionTypeEarnings
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatRevenueTransactionTypeEarnings copyWith({
+  ChatRevenueTransactionTypeSponsoredMessageEarnings copyWith({
     int? startDate,
     int? endDate,
   }) =>
-      ChatRevenueTransactionTypeEarnings(
+      ChatRevenueTransactionTypeSponsoredMessageEarnings(
         startDate: startDate ?? this.startDate,
         endDate: endDate ?? this.endDate,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatRevenueTransactionTypeEarnings';
+  static const String CONSTRUCTOR =
+      'chatRevenueTransactionTypeSponsoredMessageEarnings';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes a withdrawal of earnings
-final class ChatRevenueTransactionTypeWithdrawal
+/// Describes earnings from a published suggested post
+final class ChatRevenueTransactionTypeSuggestedPostEarnings
     extends ChatRevenueTransactionType {
-  /// Describes a withdrawal of earnings
-  const ChatRevenueTransactionTypeWithdrawal({
+  /// Describes earnings from a published suggested post
+  const ChatRevenueTransactionTypeSuggestedPostEarnings({
+    required this.userId,
+  });
+
+  /// Identifier of the user that paid for the suggested post
+  final int userId;
+
+  /// Parses a [ChatRevenueTransactionTypeSuggestedPostEarnings] from TDLib JSON.
+  factory ChatRevenueTransactionTypeSuggestedPostEarnings.fromJson(
+          Map<String, dynamic> json) =>
+      ChatRevenueTransactionTypeSuggestedPostEarnings(
+        userId: _readInt(json['user_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatRevenueTransactionTypeSuggestedPostEarnings copyWith({
+    int? userId,
+  }) =>
+      ChatRevenueTransactionTypeSuggestedPostEarnings(
+        userId: userId ?? this.userId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR =
+      'chatRevenueTransactionTypeSuggestedPostEarnings';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Describes a withdrawal of earnings through Fragment
+final class ChatRevenueTransactionTypeFragmentWithdrawal
+    extends ChatRevenueTransactionType {
+  /// Describes a withdrawal of earnings through Fragment
+  const ChatRevenueTransactionTypeFragmentWithdrawal({
     required this.withdrawalDate,
-    required this.provider,
     required this.state,
   });
 
   /// Point in time (Unix timestamp) when the earnings withdrawal started
   final int withdrawalDate;
 
-  /// Name of the payment provider
-  final String provider;
-
   /// State of the withdrawal
   final RevenueWithdrawalState state;
 
-  /// Parses a [ChatRevenueTransactionTypeWithdrawal] from TDLib JSON.
-  factory ChatRevenueTransactionTypeWithdrawal.fromJson(
+  /// Parses a [ChatRevenueTransactionTypeFragmentWithdrawal] from TDLib JSON.
+  factory ChatRevenueTransactionTypeFragmentWithdrawal.fromJson(
           Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeWithdrawal(
+      ChatRevenueTransactionTypeFragmentWithdrawal(
         withdrawalDate: _readInt(json['withdrawal_date']),
-        provider: _readString(json['provider']),
         state: _readObject(json['state'], RevenueWithdrawalState.fromJson),
       );
 
@@ -126,75 +193,65 @@ final class ChatRevenueTransactionTypeWithdrawal
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'withdrawal_date': withdrawalDate,
-        'provider': provider,
         'state': state.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatRevenueTransactionTypeWithdrawal copyWith({
+  ChatRevenueTransactionTypeFragmentWithdrawal copyWith({
     int? withdrawalDate,
-    String? provider,
     RevenueWithdrawalState? state,
   }) =>
-      ChatRevenueTransactionTypeWithdrawal(
+      ChatRevenueTransactionTypeFragmentWithdrawal(
         withdrawalDate: withdrawalDate ?? this.withdrawalDate,
-        provider: provider ?? this.provider,
         state: state ?? this.state,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatRevenueTransactionTypeWithdrawal';
+  static const String CONSTRUCTOR =
+      'chatRevenueTransactionTypeFragmentWithdrawal';
 
   @override
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// Describes a refund for failed withdrawal of earnings
-final class ChatRevenueTransactionTypeRefund
+/// Describes a refund for failed withdrawal of earnings through Fragment
+final class ChatRevenueTransactionTypeFragmentRefund
     extends ChatRevenueTransactionType {
-  /// Describes a refund for failed withdrawal of earnings
-  const ChatRevenueTransactionTypeRefund({
+  /// Describes a refund for failed withdrawal of earnings through Fragment
+  const ChatRevenueTransactionTypeFragmentRefund({
     required this.refundDate,
-    required this.provider,
   });
 
   /// Point in time (Unix timestamp) when the transaction was refunded
   final int refundDate;
 
-  /// Name of the payment provider
-  final String provider;
-
-  /// Parses a [ChatRevenueTransactionTypeRefund] from TDLib JSON.
-  factory ChatRevenueTransactionTypeRefund.fromJson(
+  /// Parses a [ChatRevenueTransactionTypeFragmentRefund] from TDLib JSON.
+  factory ChatRevenueTransactionTypeFragmentRefund.fromJson(
           Map<String, dynamic> json) =>
-      ChatRevenueTransactionTypeRefund(
+      ChatRevenueTransactionTypeFragmentRefund(
         refundDate: _readInt(json['refund_date']),
-        provider: _readString(json['provider']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'refund_date': refundDate,
-        'provider': provider,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  ChatRevenueTransactionTypeRefund copyWith({
+  ChatRevenueTransactionTypeFragmentRefund copyWith({
     int? refundDate,
-    String? provider,
   }) =>
-      ChatRevenueTransactionTypeRefund(
+      ChatRevenueTransactionTypeFragmentRefund(
         refundDate: refundDate ?? this.refundDate,
-        provider: provider ?? this.provider,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatRevenueTransactionTypeRefund';
+  static const String CONSTRUCTOR = 'chatRevenueTransactionTypeFragmentRefund';
 
   @override
   String getConstructor() => CONSTRUCTOR;

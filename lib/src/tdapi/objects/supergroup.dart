@@ -71,7 +71,7 @@ final class Supergroup extends TdObject {
   /// True, if messages sent to the channel have information about the sender user. This field is only applicable to channels
   final bool showMessageSender;
 
-  /// True, if users need to join the supergroup before they can send messages. Always true for channels and non-discussion supergroups
+  /// True, if users need to join the supergroup before they can send messages. May be false only for discussion supergroups and channel direct messages groups
   final bool joinToSendMessages;
 
   /// True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat

@@ -18,10 +18,10 @@ final class GetChatRevenueTransactions
   /// Chat identifier
   final int chatId;
 
-  /// Number of transactions to skip
-  final int offset;
+  /// Offset of the first transaction to return as received from the previous request; use empty string to get the first chunk of results
+  final String offset;
 
-  /// The maximum number of transactions to be returned; up to 200
+  /// The maximum number of transactions to be returned; up to 100
   final int limit;
 
   @override
@@ -37,7 +37,7 @@ final class GetChatRevenueTransactions
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetChatRevenueTransactions copyWith({
     int? chatId,
-    int? offset,
+    String? offset,
     int? limit,
   }) =>
       GetChatRevenueTransactions(

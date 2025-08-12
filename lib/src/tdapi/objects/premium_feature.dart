@@ -607,9 +607,9 @@ final class PremiumFeatureMessagePrivacy extends PremiumFeature {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user
+/// The ability to view last seen and read times of other users even if they can't view last seen or read time for the current user
 final class PremiumFeatureLastSeenTimes extends PremiumFeature {
-  /// The ability to view last seen and read times of other users even they can't view last seen or read time for the current user
+  /// The ability to view last seen and read times of other users even if they can't view last seen or read time for the current user
   const PremiumFeatureLastSeenTimes();
 
   /// Parses a [PremiumFeatureLastSeenTimes] from TDLib JSON.

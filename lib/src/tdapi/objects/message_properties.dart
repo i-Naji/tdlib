@@ -7,9 +7,12 @@ part of '../tdapi.dart';
 final class MessageProperties extends TdObject {
   /// Contains properties of a message and describes actions that can be done with the message right now
   const MessageProperties({
+    required this.canAddOffer,
     required this.canAddTasks,
+    required this.canBeApproved,
     required this.canBeCopied,
     required this.canBeCopiedToSecretChat,
+    required this.canBeDeclined,
     required this.canBeDeletedOnlyForSelf,
     required this.canBeDeletedForAllUsers,
     required this.canBeEdited,
@@ -22,6 +25,7 @@ final class MessageProperties extends TdObject {
     required this.canBeSharedInStory,
     required this.canEditMedia,
     required this.canEditSchedulingState,
+    required this.canEditSuggestedPostInfo,
     required this.canGetAuthor,
     required this.canGetEmbeddingCode,
     required this.canGetLink,
@@ -42,14 +46,23 @@ final class MessageProperties extends TdObject {
     this.clientId,
   });
 
+  /// True, if an offer can be added to the message using addOffer
+  final bool canAddOffer;
+
   /// True, if tasks can be added to the message's checklist using addChecklistTasks if the current user has Telegram Premium subscription
   final bool canAddTasks;
+
+  /// True, if the message is a suggested post that can be approved by the user using approveSuggestedPost
+  final bool canBeApproved;
 
   /// True, if content of the message can be copied using inputMessageForwarded or forwardMessages with copy options
   final bool canBeCopied;
 
   /// True, if content of the message can be copied to a secret chat using inputMessageForwarded or forwardMessages with copy options
   final bool canBeCopiedToSecretChat;
+
+  /// True, if the message is a suggested post that can be declined by the user using declineSuggestedPost
+  final bool canBeDeclined;
 
   /// True, if the message can be deleted only for the current user while other users will continue to see it using the method deleteMessages with revoke == false
   final bool canBeDeletedOnlyForSelf;
@@ -86,6 +99,9 @@ final class MessageProperties extends TdObject {
 
   /// True, if scheduling state of the message can be edited
   final bool canEditSchedulingState;
+
+  /// True, if another price or post send time can be suggested using addOffer
+  final bool canEditSuggestedPostInfo;
 
   /// True, if author of the message sent on behalf of a chat can be received through getMessageAuthor
   final bool canGetAuthor;
@@ -146,10 +162,13 @@ final class MessageProperties extends TdObject {
   /// Parses a [MessageProperties] from TDLib JSON.
   factory MessageProperties.fromJson(Map<String, dynamic> json) =>
       MessageProperties(
+        canAddOffer: _readBool(json['can_add_offer']),
         canAddTasks: _readBool(json['can_add_tasks']),
+        canBeApproved: _readBool(json['can_be_approved']),
         canBeCopied: _readBool(json['can_be_copied']),
         canBeCopiedToSecretChat:
             _readBool(json['can_be_copied_to_secret_chat']),
+        canBeDeclined: _readBool(json['can_be_declined']),
         canBeDeletedOnlyForSelf:
             _readBool(json['can_be_deleted_only_for_self']),
         canBeDeletedForAllUsers:
@@ -165,6 +184,8 @@ final class MessageProperties extends TdObject {
         canBeSharedInStory: _readBool(json['can_be_shared_in_story']),
         canEditMedia: _readBool(json['can_edit_media']),
         canEditSchedulingState: _readBool(json['can_edit_scheduling_state']),
+        canEditSuggestedPostInfo:
+            _readBool(json['can_edit_suggested_post_info']),
         canGetAuthor: _readBool(json['can_get_author']),
         canGetEmbeddingCode: _readBool(json['can_get_embedding_code']),
         canGetLink: _readBool(json['can_get_link']),
@@ -190,9 +211,12 @@ final class MessageProperties extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'can_add_offer': canAddOffer,
         'can_add_tasks': canAddTasks,
+        'can_be_approved': canBeApproved,
         'can_be_copied': canBeCopied,
         'can_be_copied_to_secret_chat': canBeCopiedToSecretChat,
+        'can_be_declined': canBeDeclined,
         'can_be_deleted_only_for_self': canBeDeletedOnlyForSelf,
         'can_be_deleted_for_all_users': canBeDeletedForAllUsers,
         'can_be_edited': canBeEdited,
@@ -205,6 +229,7 @@ final class MessageProperties extends TdObject {
         'can_be_shared_in_story': canBeSharedInStory,
         'can_edit_media': canEditMedia,
         'can_edit_scheduling_state': canEditSchedulingState,
+        'can_edit_suggested_post_info': canEditSuggestedPostInfo,
         'can_get_author': canGetAuthor,
         'can_get_embedding_code': canGetEmbeddingCode,
         'can_get_link': canGetLink,
@@ -226,9 +251,12 @@ final class MessageProperties extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageProperties copyWith({
+    bool? canAddOffer,
     bool? canAddTasks,
+    bool? canBeApproved,
     bool? canBeCopied,
     bool? canBeCopiedToSecretChat,
+    bool? canBeDeclined,
     bool? canBeDeletedOnlyForSelf,
     bool? canBeDeletedForAllUsers,
     bool? canBeEdited,
@@ -241,6 +269,7 @@ final class MessageProperties extends TdObject {
     bool? canBeSharedInStory,
     bool? canEditMedia,
     bool? canEditSchedulingState,
+    bool? canEditSuggestedPostInfo,
     bool? canGetAuthor,
     bool? canGetEmbeddingCode,
     bool? canGetLink,
@@ -261,10 +290,13 @@ final class MessageProperties extends TdObject {
     int? clientId,
   }) =>
       MessageProperties(
+        canAddOffer: canAddOffer ?? this.canAddOffer,
         canAddTasks: canAddTasks ?? this.canAddTasks,
+        canBeApproved: canBeApproved ?? this.canBeApproved,
         canBeCopied: canBeCopied ?? this.canBeCopied,
         canBeCopiedToSecretChat:
             canBeCopiedToSecretChat ?? this.canBeCopiedToSecretChat,
+        canBeDeclined: canBeDeclined ?? this.canBeDeclined,
         canBeDeletedOnlyForSelf:
             canBeDeletedOnlyForSelf ?? this.canBeDeletedOnlyForSelf,
         canBeDeletedForAllUsers:
@@ -281,6 +313,8 @@ final class MessageProperties extends TdObject {
         canEditMedia: canEditMedia ?? this.canEditMedia,
         canEditSchedulingState:
             canEditSchedulingState ?? this.canEditSchedulingState,
+        canEditSuggestedPostInfo:
+            canEditSuggestedPostInfo ?? this.canEditSuggestedPostInfo,
         canGetAuthor: canGetAuthor ?? this.canGetAuthor,
         canGetEmbeddingCode: canGetEmbeddingCode ?? this.canGetEmbeddingCode,
         canGetLink: canGetLink ?? this.canGetLink,

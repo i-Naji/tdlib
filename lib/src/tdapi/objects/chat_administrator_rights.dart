@@ -21,6 +21,7 @@ final class ChatAdministratorRights extends TdObject {
     required this.canPostStories,
     required this.canEditStories,
     required this.canDeleteStories,
+    required this.canManageDirectMessages,
     required this.isAnonymous,
   });
 
@@ -30,7 +31,7 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can change the chat title, photo, and other settings
   final bool canChangeInfo;
 
-  /// True, if the administrator can create channel posts, answer to channel direct messages, or view channel statistics; applicable to channels only
+  /// True, if the administrator can create channel posts, approve suggested channel posts, or view channel statistics; applicable to channels only
   final bool canPostMessages;
 
   /// True, if the administrator can edit messages of other users and pin messages; applicable to channels only
@@ -66,6 +67,9 @@ final class ChatAdministratorRights extends TdObject {
   /// True, if the administrator can delete stories posted by other users; applicable to supergroups and channels only
   final bool canDeleteStories;
 
+  /// True, if the administrator can answer to channel direct messages; applicable to channels only
+  final bool canManageDirectMessages;
+
   /// True, if the administrator isn't shown in the chat member list and sends messages anonymously; applicable to supergroups only
   final bool isAnonymous;
 
@@ -86,6 +90,7 @@ final class ChatAdministratorRights extends TdObject {
         canPostStories: _readBool(json['can_post_stories']),
         canEditStories: _readBool(json['can_edit_stories']),
         canDeleteStories: _readBool(json['can_delete_stories']),
+        canManageDirectMessages: _readBool(json['can_manage_direct_messages']),
         isAnonymous: _readBool(json['is_anonymous']),
       );
 
@@ -106,6 +111,7 @@ final class ChatAdministratorRights extends TdObject {
         'can_post_stories': canPostStories,
         'can_edit_stories': canEditStories,
         'can_delete_stories': canDeleteStories,
+        'can_manage_direct_messages': canManageDirectMessages,
         'is_anonymous': isAnonymous,
       };
 
@@ -126,6 +132,7 @@ final class ChatAdministratorRights extends TdObject {
     bool? canPostStories,
     bool? canEditStories,
     bool? canDeleteStories,
+    bool? canManageDirectMessages,
     bool? isAnonymous,
   }) =>
       ChatAdministratorRights(
@@ -143,6 +150,8 @@ final class ChatAdministratorRights extends TdObject {
         canPostStories: canPostStories ?? this.canPostStories,
         canEditStories: canEditStories ?? this.canEditStories,
         canDeleteStories: canDeleteStories ?? this.canDeleteStories,
+        canManageDirectMessages:
+            canManageDirectMessages ?? this.canManageDirectMessages,
         isAnonymous: isAnonymous ?? this.isAnonymous,
       );
 

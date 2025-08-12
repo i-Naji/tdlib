@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Returns upgraded gifts that can be bought from other owners
+/// Returns upgraded gifts that can be bought from other owners using sendResoldGift
 ///
 /// Returns [GiftsForResale].
 final class SearchGiftsForResale extends TdFunction<GiftsForResale> {
-  /// Returns upgraded gifts that can be bought from other owners
+  /// Returns upgraded gifts that can be bought from other owners using sendResoldGift
   const SearchGiftsForResale({
     required this.giftId,
     required this.order,

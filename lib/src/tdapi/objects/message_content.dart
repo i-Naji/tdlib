@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -3488,6 +3488,77 @@ final class MessageGiftedStars extends MessageContent {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// Toncoins were gifted to a user
+final class MessageGiftedTon extends MessageContent {
+  /// Toncoins were gifted to a user
+  const MessageGiftedTon({
+    required this.gifterUserId,
+    required this.receiverUserId,
+    required this.tonAmount,
+    required this.transactionId,
+    this.sticker,
+  });
+
+  /// The identifier of a user that gifted Toncoins; 0 if the gift was anonymous or is outgoing
+  final int gifterUserId;
+
+  /// The identifier of a user that received Toncoins; 0 if the gift is incoming
+  final int receiverUserId;
+
+  /// The received amount of Toncoins, in the smallest units of the cryptocurrency
+  final int tonAmount;
+
+  /// Identifier of the transaction for Toncoin credit; for receiver only
+  final String transactionId;
+
+  /// A sticker to be shown in the message; may be null if unknown
+  final Sticker? sticker;
+
+  /// Parses a [MessageGiftedTon] from TDLib JSON.
+  factory MessageGiftedTon.fromJson(Map<String, dynamic> json) =>
+      MessageGiftedTon(
+        gifterUserId: _readInt(json['gifter_user_id']),
+        receiverUserId: _readInt(json['receiver_user_id']),
+        tonAmount: _readInt(json['ton_amount']),
+        transactionId: _readString(json['transaction_id']),
+        sticker: _readOptional(json['sticker'], Sticker.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gifter_user_id': gifterUserId,
+        'receiver_user_id': receiverUserId,
+        'ton_amount': tonAmount,
+        'transaction_id': transactionId,
+        'sticker': sticker?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageGiftedTon copyWith({
+    int? gifterUserId,
+    int? receiverUserId,
+    int? tonAmount,
+    String? transactionId,
+    Sticker? Function()? sticker,
+  }) =>
+      MessageGiftedTon(
+        gifterUserId: gifterUserId ?? this.gifterUserId,
+        receiverUserId: receiverUserId ?? this.receiverUserId,
+        tonAmount: tonAmount ?? this.tonAmount,
+        transactionId: transactionId ?? this.transactionId,
+        sticker: sticker != null ? sticker() : this.sticker,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageGiftedTon';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// A Telegram Stars were received by the current user from a giveaway
 final class MessageGiveawayPrizeStars extends MessageContent {
   /// A Telegram Stars were received by the current user from a giveaway
@@ -3718,12 +3789,11 @@ final class MessageUpgradedGift extends MessageContent {
     required this.gift,
     this.senderId,
     required this.receiverId,
+    required this.origin,
     required this.receivedGiftId,
-    required this.isUpgrade,
     required this.isSaved,
     required this.canBeTransferred,
     required this.wasTransferred,
-    required this.lastResaleStarCount,
     required this.transferStarCount,
     required this.nextTransferDate,
     required this.nextResaleDate,
@@ -3739,11 +3809,11 @@ final class MessageUpgradedGift extends MessageContent {
   /// Receiver of the gift
   final MessageSender receiverId;
 
+  /// Origin of the upgraded gift
+  final UpgradedGiftOrigin origin;
+
   /// Unique identifier of the received gift for the current user; only for the receiver of the gift
   final String receivedGiftId;
-
-  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
-  final bool isUpgrade;
 
   /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
   final bool isSaved;
@@ -3751,11 +3821,8 @@ final class MessageUpgradedGift extends MessageContent {
   /// True, if the gift can be transferred to another owner; only for the receiver of the gift
   final bool canBeTransferred;
 
-  /// True, if the gift was transferred to another owner; only for the receiver of the gift
+  /// True, if the gift has already been transferred to another owner; only for the receiver of the gift
   final bool wasTransferred;
-
-  /// Number of Telegram Stars that were paid by the sender for the gift; 0 if the gift was upgraded or transferred
-  final int lastResaleStarCount;
 
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
@@ -3775,12 +3842,11 @@ final class MessageUpgradedGift extends MessageContent {
         gift: _readObject(json['gift'], UpgradedGift.fromJson),
         senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
         receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
+        origin: _readObject(json['origin'], UpgradedGiftOrigin.fromJson),
         receivedGiftId: _readString(json['received_gift_id']),
-        isUpgrade: _readBool(json['is_upgrade']),
         isSaved: _readBool(json['is_saved']),
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasTransferred: _readBool(json['was_transferred']),
-        lastResaleStarCount: _readInt(json['last_resale_star_count']),
         transferStarCount: _readInt(json['transfer_star_count']),
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
@@ -3793,12 +3859,11 @@ final class MessageUpgradedGift extends MessageContent {
         'gift': gift.toJson(),
         'sender_id': senderId?.toJson(),
         'receiver_id': receiverId.toJson(),
+        'origin': origin.toJson(),
         'received_gift_id': receivedGiftId,
-        'is_upgrade': isUpgrade,
         'is_saved': isSaved,
         'can_be_transferred': canBeTransferred,
         'was_transferred': wasTransferred,
-        'last_resale_star_count': lastResaleStarCount,
         'transfer_star_count': transferStarCount,
         'next_transfer_date': nextTransferDate,
         'next_resale_date': nextResaleDate,
@@ -3812,12 +3877,11 @@ final class MessageUpgradedGift extends MessageContent {
     UpgradedGift? gift,
     MessageSender? Function()? senderId,
     MessageSender? receiverId,
+    UpgradedGiftOrigin? origin,
     String? receivedGiftId,
-    bool? isUpgrade,
     bool? isSaved,
     bool? canBeTransferred,
     bool? wasTransferred,
-    int? lastResaleStarCount,
     int? transferStarCount,
     int? nextTransferDate,
     int? nextResaleDate,
@@ -3827,12 +3891,11 @@ final class MessageUpgradedGift extends MessageContent {
         gift: gift ?? this.gift,
         senderId: senderId != null ? senderId() : this.senderId,
         receiverId: receiverId ?? this.receiverId,
+        origin: origin ?? this.origin,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        isUpgrade: isUpgrade ?? this.isUpgrade,
         isSaved: isSaved ?? this.isSaved,
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         wasTransferred: wasTransferred ?? this.wasTransferred,
-        lastResaleStarCount: lastResaleStarCount ?? this.lastResaleStarCount,
         transferStarCount: transferStarCount ?? this.transferStarCount,
         nextTransferDate: nextTransferDate ?? this.nextTransferDate,
         nextResaleDate: nextResaleDate ?? this.nextResaleDate,
@@ -4144,6 +4207,263 @@ final class MessageChecklistTasksAdded extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageChecklistTasksAdded';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// Approval of suggested post has failed, because the user which proposed the post had no enough funds
+final class MessageSuggestedPostApprovalFailed extends MessageContent {
+  /// Approval of suggested post has failed, because the user which proposed the post had no enough funds
+  const MessageSuggestedPostApprovalFailed({
+    required this.suggestedPostMessageId,
+    required this.price,
+  });
+
+  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  final int suggestedPostMessageId;
+
+  /// Price of the suggested post
+  final SuggestedPostPrice price;
+
+  /// Parses a [MessageSuggestedPostApprovalFailed] from TDLib JSON.
+  factory MessageSuggestedPostApprovalFailed.fromJson(
+          Map<String, dynamic> json) =>
+      MessageSuggestedPostApprovalFailed(
+        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+        price: _readObject(json['price'], SuggestedPostPrice.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'suggested_post_message_id': suggestedPostMessageId,
+        'price': price.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestedPostApprovalFailed copyWith({
+    int? suggestedPostMessageId,
+    SuggestedPostPrice? price,
+  }) =>
+      MessageSuggestedPostApprovalFailed(
+        suggestedPostMessageId:
+            suggestedPostMessageId ?? this.suggestedPostMessageId,
+        price: price ?? this.price,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestedPostApprovalFailed';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A suggested post was approved
+final class MessageSuggestedPostApproved extends MessageContent {
+  /// A suggested post was approved
+  const MessageSuggestedPostApproved({
+    required this.suggestedPostMessageId,
+    this.price,
+    required this.sendDate,
+  });
+
+  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  final int suggestedPostMessageId;
+
+  /// Price of the suggested post; may be null if the post is non-paid
+  final SuggestedPostPrice? price;
+
+  /// Point in time (Unix timestamp) when the post is expected to be published
+  final int sendDate;
+
+  /// Parses a [MessageSuggestedPostApproved] from TDLib JSON.
+  factory MessageSuggestedPostApproved.fromJson(Map<String, dynamic> json) =>
+      MessageSuggestedPostApproved(
+        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+        price: _readOptional(json['price'], SuggestedPostPrice.fromJson),
+        sendDate: _readInt(json['send_date']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'suggested_post_message_id': suggestedPostMessageId,
+        'price': price?.toJson(),
+        'send_date': sendDate,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestedPostApproved copyWith({
+    int? suggestedPostMessageId,
+    SuggestedPostPrice? Function()? price,
+    int? sendDate,
+  }) =>
+      MessageSuggestedPostApproved(
+        suggestedPostMessageId:
+            suggestedPostMessageId ?? this.suggestedPostMessageId,
+        price: price != null ? price() : this.price,
+        sendDate: sendDate ?? this.sendDate,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestedPostApproved';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A suggested post was declined
+final class MessageSuggestedPostDeclined extends MessageContent {
+  /// A suggested post was declined
+  const MessageSuggestedPostDeclined({
+    required this.suggestedPostMessageId,
+    required this.comment,
+  });
+
+  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  final int suggestedPostMessageId;
+
+  /// Comment added by administrator of the channel when the post was declined
+  final String comment;
+
+  /// Parses a [MessageSuggestedPostDeclined] from TDLib JSON.
+  factory MessageSuggestedPostDeclined.fromJson(Map<String, dynamic> json) =>
+      MessageSuggestedPostDeclined(
+        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+        comment: _readString(json['comment']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'suggested_post_message_id': suggestedPostMessageId,
+        'comment': comment,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestedPostDeclined copyWith({
+    int? suggestedPostMessageId,
+    String? comment,
+  }) =>
+      MessageSuggestedPostDeclined(
+        suggestedPostMessageId:
+            suggestedPostMessageId ?? this.suggestedPostMessageId,
+        comment: comment ?? this.comment,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestedPostDeclined';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A suggested post was published for getOption("suggested_post_lifetime_min") seconds and payment for the post was received
+final class MessageSuggestedPostPaid extends MessageContent {
+  /// A suggested post was published for getOption("suggested_post_lifetime_min") seconds and payment for the post was received
+  const MessageSuggestedPostPaid({
+    required this.suggestedPostMessageId,
+    required this.starAmount,
+    required this.tonAmount,
+  });
+
+  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  final int suggestedPostMessageId;
+
+  /// The amount of received Telegram Stars
+  final StarAmount starAmount;
+
+  /// The amount of received Toncoins; in the smallest units of the cryptocurrency
+  final int tonAmount;
+
+  /// Parses a [MessageSuggestedPostPaid] from TDLib JSON.
+  factory MessageSuggestedPostPaid.fromJson(Map<String, dynamic> json) =>
+      MessageSuggestedPostPaid(
+        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+        starAmount: _readObject(json['star_amount'], StarAmount.fromJson),
+        tonAmount: _readInt(json['ton_amount']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'suggested_post_message_id': suggestedPostMessageId,
+        'star_amount': starAmount.toJson(),
+        'ton_amount': tonAmount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestedPostPaid copyWith({
+    int? suggestedPostMessageId,
+    StarAmount? starAmount,
+    int? tonAmount,
+  }) =>
+      MessageSuggestedPostPaid(
+        suggestedPostMessageId:
+            suggestedPostMessageId ?? this.suggestedPostMessageId,
+        starAmount: starAmount ?? this.starAmount,
+        tonAmount: tonAmount ?? this.tonAmount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestedPostPaid';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A suggested post was refunded
+final class MessageSuggestedPostRefunded extends MessageContent {
+  /// A suggested post was refunded
+  const MessageSuggestedPostRefunded({
+    required this.suggestedPostMessageId,
+    required this.reason,
+  });
+
+  /// Identifier of the message with the suggested post; can be 0 if the message was deleted
+  final int suggestedPostMessageId;
+
+  /// Reason of the refund
+  final SuggestedPostRefundReason reason;
+
+  /// Parses a [MessageSuggestedPostRefunded] from TDLib JSON.
+  factory MessageSuggestedPostRefunded.fromJson(Map<String, dynamic> json) =>
+      MessageSuggestedPostRefunded(
+        suggestedPostMessageId: _readInt(json['suggested_post_message_id']),
+        reason: _readObject(json['reason'], SuggestedPostRefundReason.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'suggested_post_message_id': suggestedPostMessageId,
+        'reason': reason.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestedPostRefunded copyWith({
+    int? suggestedPostMessageId,
+    SuggestedPostRefundReason? reason,
+  }) =>
+      MessageSuggestedPostRefunded(
+        suggestedPostMessageId:
+            suggestedPostMessageId ?? this.suggestedPostMessageId,
+        reason: reason ?? this.reason,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestedPostRefunded';
 
   @override
   String getConstructor() => CONSTRUCTOR;

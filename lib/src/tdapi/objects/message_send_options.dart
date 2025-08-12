@@ -8,6 +8,7 @@ final class MessageSendOptions extends TdObject {
   /// Options to be used when a message is sent
   const MessageSendOptions({
     required this.directMessagesChatTopicId,
+    this.suggestedPostInfo,
     required this.disableNotification,
     required this.fromBackground,
     required this.protectContent,
@@ -22,6 +23,9 @@ final class MessageSendOptions extends TdObject {
 
   /// Unique identifier of the topic in a channel direct messages chat administered by the current user; pass 0 if the chat isn't a channel direct messages chat administered by the current user
   final int directMessagesChatTopicId;
+
+  /// Information about the suggested post; pass null if none. For messages to channel direct messages chat only. Applicable only to sendMessage and addOffer
+  final InputSuggestedPostInfo? suggestedPostInfo;
 
   /// Pass true to disable notification for the message
   final bool disableNotification;
@@ -58,6 +62,8 @@ final class MessageSendOptions extends TdObject {
       MessageSendOptions(
         directMessagesChatTopicId:
             _readInt(json['direct_messages_chat_topic_id']),
+        suggestedPostInfo: _readOptional(
+            json['suggested_post_info'], InputSuggestedPostInfo.fromJson),
         disableNotification: _readBool(json['disable_notification']),
         fromBackground: _readBool(json['from_background']),
         protectContent: _readBool(json['protect_content']),
@@ -76,6 +82,7 @@ final class MessageSendOptions extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'direct_messages_chat_topic_id': directMessagesChatTopicId,
+        'suggested_post_info': suggestedPostInfo?.toJson(),
         'disable_notification': disableNotification,
         'from_background': fromBackground,
         'protect_content': protectContent,
@@ -93,6 +100,7 @@ final class MessageSendOptions extends TdObject {
   /// field pass a function, e.g. `field: () => null` to clear it.
   MessageSendOptions copyWith({
     int? directMessagesChatTopicId,
+    InputSuggestedPostInfo? Function()? suggestedPostInfo,
     bool? disableNotification,
     bool? fromBackground,
     bool? protectContent,
@@ -107,6 +115,9 @@ final class MessageSendOptions extends TdObject {
       MessageSendOptions(
         directMessagesChatTopicId:
             directMessagesChatTopicId ?? this.directMessagesChatTopicId,
+        suggestedPostInfo: suggestedPostInfo != null
+            ? suggestedPostInfo()
+            : this.suggestedPostInfo,
         disableNotification: disableNotification ?? this.disableNotification,
         fromBackground: fromBackground ?? this.fromBackground,
         protectContent: protectContent ?? this.protectContent,
