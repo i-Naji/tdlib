@@ -51,7 +51,7 @@ final class SuggestedPostPriceStar extends SuggestedPostPrice {
     required this.starCount,
   });
 
-  /// The amount of Telegram Stars agreed to pay for the post; getOption("suggested_post_star_count_min")-getOption("suggested_post_star_count_max")
+  /// The amount of Telegram Stars expected to be paid for the post; getOption("suggested_post_star_count_min")-getOption("suggested_post_star_count_max")
   final int starCount;
 
   /// Parses a [SuggestedPostPriceStar] from TDLib JSON.
@@ -90,7 +90,7 @@ final class SuggestedPostPriceTon extends SuggestedPostPrice {
     required this.toncoinCentCount,
   });
 
-  /// The amount of 1/100 of Toncoin agreed to pay for the post; getOption("suggested_post_toncoin_cent_count_min")-getOption("suggested_post_toncoin_cent_count_max")
+  /// The amount of 1/100 of Toncoin expected to be paid for the post; getOption("suggested_post_toncoin_cent_count_min")-getOption("suggested_post_toncoin_cent_count_max")
   final int toncoinCentCount;
 
   /// Parses a [SuggestedPostPriceTon] from TDLib JSON.

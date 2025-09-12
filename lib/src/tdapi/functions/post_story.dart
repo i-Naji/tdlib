@@ -3,17 +3,18 @@
 
 part of '../tdapi.dart';
 
-/// Posts a new story on behalf of a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
+/// Posts a new story on behalf of a chat; requires can_post_stories administrator right for supergroup and channel chats. Returns a temporary story
 ///
 /// Returns [Story].
 final class PostStory extends TdFunction<Story> {
-  /// Posts a new story on behalf of a chat; requires can_post_stories right for supergroup and channel chats. Returns a temporary story
+  /// Posts a new story on behalf of a chat; requires can_post_stories administrator right for supergroup and channel chats. Returns a temporary story
   const PostStory({
     required this.chatId,
     required this.content,
     this.areas,
     this.caption,
     required this.privacySettings,
+    required this.albumIds,
     required this.activePeriod,
     this.fromStoryFullId,
     required this.isPostedToChatPage,
@@ -35,6 +36,9 @@ final class PostStory extends TdFunction<Story> {
   /// The privacy settings for the story; ignored for stories posted on behalf of supergroup and channel chats
   final StoryPrivacySettings privacySettings;
 
+  /// Identifiers of story albums to which the story will be added upon posting. An album can have up to getOption("story_album_story_count_max")
+  final List<int> albumIds;
+
   /// Period after which the story is moved to archive, in seconds; must be one of 6 * 3600, 12 * 3600, 86400, or 2 * 86400 for Telegram Premium users, and 86400 otherwise
   final int activePeriod;
 
@@ -55,6 +59,7 @@ final class PostStory extends TdFunction<Story> {
         'areas': areas?.toJson(),
         'caption': caption?.toJson(),
         'privacy_settings': privacySettings.toJson(),
+        'album_ids': albumIds,
         'active_period': activePeriod,
         'from_story_full_id': fromStoryFullId?.toJson(),
         'is_posted_to_chat_page': isPostedToChatPage,
@@ -70,6 +75,7 @@ final class PostStory extends TdFunction<Story> {
     InputStoryAreas? Function()? areas,
     FormattedText? Function()? caption,
     StoryPrivacySettings? privacySettings,
+    List<int>? albumIds,
     int? activePeriod,
     StoryFullId? Function()? fromStoryFullId,
     bool? isPostedToChatPage,
@@ -81,6 +87,7 @@ final class PostStory extends TdFunction<Story> {
         areas: areas != null ? areas() : this.areas,
         caption: caption != null ? caption() : this.caption,
         privacySettings: privacySettings ?? this.privacySettings,
+        albumIds: albumIds ?? this.albumIds,
         activePeriod: activePeriod ?? this.activePeriod,
         fromStoryFullId:
             fromStoryFullId != null ? fromStoryFullId() : this.fromStoryFullId,

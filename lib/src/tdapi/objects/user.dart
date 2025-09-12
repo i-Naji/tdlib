@@ -25,7 +25,7 @@ final class User extends TdObject {
     this.verificationStatus,
     required this.isPremium,
     required this.isSupport,
-    required this.restrictionReason,
+    this.restrictionInfo,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
     required this.restrictsNewChats,
@@ -92,8 +92,8 @@ final class User extends TdObject {
   /// True, if the user is Telegram support account
   final bool isSupport;
 
-  /// If non-empty, it contains a human-readable description of the reason why access to this user must be restricted
-  final String restrictionReason;
+  /// Information about restrictions that must be applied to the corresponding private chat; may be null if none
+  final RestrictionInfo? restrictionInfo;
 
   /// True, if the user has non-expired stories available to the current user
   final bool hasActiveStories;
@@ -150,7 +150,8 @@ final class User extends TdObject {
             json['verification_status'], VerificationStatus.fromJson),
         isPremium: _readBool(json['is_premium']),
         isSupport: _readBool(json['is_support']),
-        restrictionReason: _readString(json['restriction_reason']),
+        restrictionInfo:
+            _readOptional(json['restriction_info'], RestrictionInfo.fromJson),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
         restrictsNewChats: _readBool(json['restricts_new_chats']),
@@ -185,7 +186,7 @@ final class User extends TdObject {
         'verification_status': verificationStatus?.toJson(),
         'is_premium': isPremium,
         'is_support': isSupport,
-        'restriction_reason': restrictionReason,
+        'restriction_info': restrictionInfo?.toJson(),
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
         'restricts_new_chats': restrictsNewChats,
@@ -217,7 +218,7 @@ final class User extends TdObject {
     VerificationStatus? Function()? verificationStatus,
     bool? isPremium,
     bool? isSupport,
-    String? restrictionReason,
+    RestrictionInfo? Function()? restrictionInfo,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
     bool? restrictsNewChats,
@@ -252,7 +253,8 @@ final class User extends TdObject {
             : this.verificationStatus,
         isPremium: isPremium ?? this.isPremium,
         isSupport: isSupport ?? this.isSupport,
-        restrictionReason: restrictionReason ?? this.restrictionReason,
+        restrictionInfo:
+            restrictionInfo != null ? restrictionInfo() : this.restrictionInfo,
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:
             hasUnreadActiveStories ?? this.hasUnreadActiveStories,

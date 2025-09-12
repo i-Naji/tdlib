@@ -14,6 +14,7 @@ final class UpgradedGift extends TdObject {
     required this.number,
     required this.totalUpgradedCount,
     required this.maxUpgradedCount,
+    required this.isPremium,
     this.ownerId,
     required this.ownerAddress,
     required this.ownerName,
@@ -22,7 +23,7 @@ final class UpgradedGift extends TdObject {
     required this.symbol,
     required this.backdrop,
     this.originalDetails,
-    required this.resaleStarCount,
+    this.resaleParameters,
     this.extra,
     this.clientId,
   });
@@ -48,6 +49,9 @@ final class UpgradedGift extends TdObject {
   /// The maximum number of gifts that can be upgraded from the same gift
   final int maxUpgradedCount;
 
+  /// True, if the original gift could have been bought only by Telegram Premium subscribers
+  final bool isPremium;
+
   /// Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown
   final MessageSender? ownerId;
 
@@ -72,8 +76,8 @@ final class UpgradedGift extends TdObject {
   /// Information about the originally sent gift; may be null if unknown
   final UpgradedGiftOriginalDetails? originalDetails;
 
-  /// Number of Telegram Stars that must be paid to buy the gift and send it to someone else; 0 if resale isn't possible
-  final int resaleStarCount;
+  /// Resale parameters of the gift; may be null if resale isn't possible
+  final GiftResaleParameters? resaleParameters;
 
   /// "@extra" of the request this object answers.
   @override
@@ -92,6 +96,7 @@ final class UpgradedGift extends TdObject {
         number: _readInt(json['number']),
         totalUpgradedCount: _readInt(json['total_upgraded_count']),
         maxUpgradedCount: _readInt(json['max_upgraded_count']),
+        isPremium: _readBool(json['is_premium']),
         ownerId: _readOptional(json['owner_id'], MessageSender.fromJson),
         ownerAddress: _readString(json['owner_address']),
         ownerName: _readString(json['owner_name']),
@@ -101,7 +106,8 @@ final class UpgradedGift extends TdObject {
         backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
         originalDetails: _readOptional(
             json['original_details'], UpgradedGiftOriginalDetails.fromJson),
-        resaleStarCount: _readInt(json['resale_star_count']),
+        resaleParameters: _readOptional(
+            json['resale_parameters'], GiftResaleParameters.fromJson),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -116,6 +122,7 @@ final class UpgradedGift extends TdObject {
         'number': number,
         'total_upgraded_count': totalUpgradedCount,
         'max_upgraded_count': maxUpgradedCount,
+        'is_premium': isPremium,
         'owner_id': ownerId?.toJson(),
         'owner_address': ownerAddress,
         'owner_name': ownerName,
@@ -124,7 +131,7 @@ final class UpgradedGift extends TdObject {
         'symbol': symbol.toJson(),
         'backdrop': backdrop.toJson(),
         'original_details': originalDetails?.toJson(),
-        'resale_star_count': resaleStarCount,
+        'resale_parameters': resaleParameters?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -137,6 +144,7 @@ final class UpgradedGift extends TdObject {
     int? number,
     int? totalUpgradedCount,
     int? maxUpgradedCount,
+    bool? isPremium,
     MessageSender? Function()? ownerId,
     String? ownerAddress,
     String? ownerName,
@@ -145,7 +153,7 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
     UpgradedGiftOriginalDetails? Function()? originalDetails,
-    int? resaleStarCount,
+    GiftResaleParameters? Function()? resaleParameters,
     dynamic extra,
     int? clientId,
   }) =>
@@ -157,6 +165,7 @@ final class UpgradedGift extends TdObject {
         number: number ?? this.number,
         totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
         maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
+        isPremium: isPremium ?? this.isPremium,
         ownerId: ownerId != null ? ownerId() : this.ownerId,
         ownerAddress: ownerAddress ?? this.ownerAddress,
         ownerName: ownerName ?? this.ownerName,
@@ -166,7 +175,9 @@ final class UpgradedGift extends TdObject {
         backdrop: backdrop ?? this.backdrop,
         originalDetails:
             originalDetails != null ? originalDetails() : this.originalDetails,
-        resaleStarCount: resaleStarCount ?? this.resaleStarCount,
+        resaleParameters: resaleParameters != null
+            ? resaleParameters()
+            : this.resaleParameters,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

@@ -10,6 +10,7 @@ final class ChatActiveStories extends TdObject {
     required this.chatId,
     this.list,
     required this.order,
+    required this.canBeArchived,
     required this.maxReadStoryId,
     required this.stories,
     this.extra,
@@ -24,6 +25,9 @@ final class ChatActiveStories extends TdObject {
 
   /// A parameter used to determine order of the stories in the story list; 0 if the stories doesn't need to be shown in the story list. Stories must be sorted by the pair (order, story_poster_chat_id) in descending order
   final int order;
+
+  /// True, if the stories are shown in the main story list and can be archived; otherwise, the stories can be hidden from the main story list only by calling removeTopChat with topChatCategoryUsers and the chat_id. Stories of the current user can't be archived nor hidden using removeTopChat
+  final bool canBeArchived;
 
   /// Identifier of the last read active story
   final int maxReadStoryId;
@@ -45,6 +49,7 @@ final class ChatActiveStories extends TdObject {
         chatId: _readInt(json['chat_id']),
         list: _readOptional(json['list'], StoryList.fromJson),
         order: _readInt(json['order']),
+        canBeArchived: _readBool(json['can_be_archived']),
         maxReadStoryId: _readInt(json['max_read_story_id']),
         stories: _readList<StoryInfo>(
             json['stories'], (e) => _readObject(e, StoryInfo.fromJson)),
@@ -58,6 +63,7 @@ final class ChatActiveStories extends TdObject {
         'chat_id': chatId,
         'list': list?.toJson(),
         'order': order,
+        'can_be_archived': canBeArchived,
         'max_read_story_id': maxReadStoryId,
         'stories': [for (final e in stories) e.toJson()],
       };
@@ -68,6 +74,7 @@ final class ChatActiveStories extends TdObject {
     int? chatId,
     StoryList? Function()? list,
     int? order,
+    bool? canBeArchived,
     int? maxReadStoryId,
     List<StoryInfo>? stories,
     dynamic extra,
@@ -77,6 +84,7 @@ final class ChatActiveStories extends TdObject {
         chatId: chatId ?? this.chatId,
         list: list != null ? list() : this.list,
         order: order ?? this.order,
+        canBeArchived: canBeArchived ?? this.canBeArchived,
         maxReadStoryId: maxReadStoryId ?? this.maxReadStoryId,
         stories: stories ?? this.stories,
         extra: extra ?? this.extra,

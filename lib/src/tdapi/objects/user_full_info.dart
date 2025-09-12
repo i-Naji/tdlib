@@ -29,6 +29,9 @@ final class UserFullInfo extends TdObject {
     required this.outgoingPaidMessageStarCount,
     required this.giftSettings,
     this.botVerification,
+    this.rating,
+    this.pendingRating,
+    required this.pendingRatingDate,
     this.businessInfo,
     this.botInfo,
     this.extra,
@@ -101,6 +104,15 @@ final class UserFullInfo extends TdObject {
   /// Information about verification status of the user provided by a bot; may be null if none or unknown
   final BotVerification? botVerification;
 
+  /// The current rating of the user; may be null if none
+  final UserRating? rating;
+
+  /// The rating of the user after the next change; may be null if the user isn't the current user or there are no pending rating changes
+  final UserRating? pendingRating;
+
+  /// Unix timestamp when rating of the user will change to pending_rating; 0 if the user isn't the current user or there are no pending rating changes
+  final int pendingRatingDate;
+
   /// Information about business settings for Telegram Business accounts; may be null if none
   final BusinessInfo? businessInfo;
 
@@ -147,6 +159,10 @@ final class UserFullInfo extends TdObject {
         giftSettings: _readObject(json['gift_settings'], GiftSettings.fromJson),
         botVerification:
             _readOptional(json['bot_verification'], BotVerification.fromJson),
+        rating: _readOptional(json['rating'], UserRating.fromJson),
+        pendingRating:
+            _readOptional(json['pending_rating'], UserRating.fromJson),
+        pendingRatingDate: _readInt(json['pending_rating_date']),
         businessInfo:
             _readOptional(json['business_info'], BusinessInfo.fromJson),
         botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
@@ -180,6 +196,9 @@ final class UserFullInfo extends TdObject {
         'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
         'gift_settings': giftSettings.toJson(),
         'bot_verification': botVerification?.toJson(),
+        'rating': rating?.toJson(),
+        'pending_rating': pendingRating?.toJson(),
+        'pending_rating_date': pendingRatingDate,
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
       };
@@ -209,6 +228,9 @@ final class UserFullInfo extends TdObject {
     int? outgoingPaidMessageStarCount,
     GiftSettings? giftSettings,
     BotVerification? Function()? botVerification,
+    UserRating? Function()? rating,
+    UserRating? Function()? pendingRating,
+    int? pendingRatingDate,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
     dynamic extra,
@@ -246,6 +268,10 @@ final class UserFullInfo extends TdObject {
         giftSettings: giftSettings ?? this.giftSettings,
         botVerification:
             botVerification != null ? botVerification() : this.botVerification,
+        rating: rating != null ? rating() : this.rating,
+        pendingRating:
+            pendingRating != null ? pendingRating() : this.pendingRating,
+        pendingRatingDate: pendingRatingDate ?? this.pendingRatingDate,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
         botInfo: botInfo != null ? botInfo() : this.botInfo,
         extra: extra ?? this.extra,

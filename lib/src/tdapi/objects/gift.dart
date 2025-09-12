@@ -14,8 +14,9 @@ final class Gift extends TdObject {
     required this.defaultSellStarCount,
     required this.upgradeStarCount,
     required this.isForBirthday,
-    required this.remainingCount,
-    required this.totalCount,
+    required this.isPremium,
+    this.userLimits,
+    this.overallLimits,
     required this.firstSendDate,
     required this.lastSendDate,
   });
@@ -41,11 +42,14 @@ final class Gift extends TdObject {
   /// True, if the gift is a birthday gift
   final bool isForBirthday;
 
-  /// Number of remaining times the gift can be purchased; 0 if not limited or the gift was sold out
-  final int remainingCount;
+  /// True, if the gift can be bought only by Telegram Premium subscribers
+  final bool isPremium;
 
-  /// Number of total times the gift can be purchased; 0 if not limited
-  final int totalCount;
+  /// Number of times the gift can be purchased by the current user; may be null if not limited
+  final GiftPurchaseLimits? userLimits;
+
+  /// Number of times the gift can be purchased all users; may be null if not limited
+  final GiftPurchaseLimits? overallLimits;
 
   /// Point in time (Unix timestamp) when the gift was send for the first time; for sold out gifts only
   final int firstSendDate;
@@ -62,8 +66,11 @@ final class Gift extends TdObject {
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
         upgradeStarCount: _readInt(json['upgrade_star_count']),
         isForBirthday: _readBool(json['is_for_birthday']),
-        remainingCount: _readInt(json['remaining_count']),
-        totalCount: _readInt(json['total_count']),
+        isPremium: _readBool(json['is_premium']),
+        userLimits:
+            _readOptional(json['user_limits'], GiftPurchaseLimits.fromJson),
+        overallLimits:
+            _readOptional(json['overall_limits'], GiftPurchaseLimits.fromJson),
         firstSendDate: _readInt(json['first_send_date']),
         lastSendDate: _readInt(json['last_send_date']),
       );
@@ -78,8 +85,9 @@ final class Gift extends TdObject {
         'default_sell_star_count': defaultSellStarCount,
         'upgrade_star_count': upgradeStarCount,
         'is_for_birthday': isForBirthday,
-        'remaining_count': remainingCount,
-        'total_count': totalCount,
+        'is_premium': isPremium,
+        'user_limits': userLimits?.toJson(),
+        'overall_limits': overallLimits?.toJson(),
         'first_send_date': firstSendDate,
         'last_send_date': lastSendDate,
       };
@@ -94,8 +102,9 @@ final class Gift extends TdObject {
     int? defaultSellStarCount,
     int? upgradeStarCount,
     bool? isForBirthday,
-    int? remainingCount,
-    int? totalCount,
+    bool? isPremium,
+    GiftPurchaseLimits? Function()? userLimits,
+    GiftPurchaseLimits? Function()? overallLimits,
     int? firstSendDate,
     int? lastSendDate,
   }) =>
@@ -107,8 +116,10 @@ final class Gift extends TdObject {
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
         upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
         isForBirthday: isForBirthday ?? this.isForBirthday,
-        remainingCount: remainingCount ?? this.remainingCount,
-        totalCount: totalCount ?? this.totalCount,
+        isPremium: isPremium ?? this.isPremium,
+        userLimits: userLimits != null ? userLimits() : this.userLimits,
+        overallLimits:
+            overallLimits != null ? overallLimits() : this.overallLimits,
         firstSendDate: firstSendDate ?? this.firstSendDate,
         lastSendDate: lastSendDate ?? this.lastSendDate,
       );

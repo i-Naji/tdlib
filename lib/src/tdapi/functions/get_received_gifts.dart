@@ -11,6 +11,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   const GetReceivedGifts({
     required this.businessConnectionId,
     required this.ownerId,
+    required this.collectionId,
     required this.excludeUnsaved,
     required this.excludeSaved,
     required this.excludeUnlimited,
@@ -26,6 +27,9 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
 
   /// Identifier of the gift receiver
   final MessageSender ownerId;
+
+  /// Pass collection identifier to get gifts only from the specified collection; pass 0 to get gifts regardless of collections
+  final int collectionId;
 
   /// Pass true to exclude gifts that aren't saved to the chat's profile page. Always true for gifts received by other users and channel chats without can_post_messages administrator right
   final bool excludeUnsaved;
@@ -56,6 +60,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
         '@type': CONSTRUCTOR,
         'business_connection_id': businessConnectionId,
         'owner_id': ownerId.toJson(),
+        'collection_id': collectionId,
         'exclude_unsaved': excludeUnsaved,
         'exclude_saved': excludeSaved,
         'exclude_unlimited': excludeUnlimited,
@@ -72,6 +77,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   GetReceivedGifts copyWith({
     String? businessConnectionId,
     MessageSender? ownerId,
+    int? collectionId,
     bool? excludeUnsaved,
     bool? excludeSaved,
     bool? excludeUnlimited,
@@ -84,6 +90,7 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
       GetReceivedGifts(
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         ownerId: ownerId ?? this.ownerId,
+        collectionId: collectionId ?? this.collectionId,
         excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
         excludeSaved: excludeSaved ?? this.excludeSaved,
         excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,

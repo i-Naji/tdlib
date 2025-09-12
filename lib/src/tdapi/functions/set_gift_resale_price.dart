@@ -10,20 +10,20 @@ final class SetGiftResalePrice extends TdFunction<Ok> {
   /// Changes resale price of a unique gift owned by the current user
   const SetGiftResalePrice({
     required this.receivedGiftId,
-    required this.resaleStarCount,
+    this.price,
   });
 
   /// Identifier of the unique gift
   final String receivedGiftId;
 
-  /// The new price for the unique gift; 0 or getOption("gift_resale_star_count_min")-getOption("gift_resale_star_count_max"). Pass 0 to disallow gift resale. The current user will receive getOption("gift_resale_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift
-  final int resaleStarCount;
+  /// The new price for the unique gift; pass null to disallow gift resale. The current user will receive getOption("gift_resale_star_earnings_per_mille") Telegram Stars for each 1000 Telegram Stars paid for the gift if the gift price is in Telegram Stars or getOption("gift_resale_ton_earnings_per_mille") Toncoins for each 1000 Toncoins paid for the gift if the gift price is in Toncoins
+  final GiftResalePrice? price;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'received_gift_id': receivedGiftId,
-        'resale_star_count': resaleStarCount,
+        'price': price?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -31,11 +31,11 @@ final class SetGiftResalePrice extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetGiftResalePrice copyWith({
     String? receivedGiftId,
-    int? resaleStarCount,
+    GiftResalePrice? Function()? price,
   }) =>
       SetGiftResalePrice(
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
-        resaleStarCount: resaleStarCount ?? this.resaleStarCount,
+        price: price != null ? price() : this.price,
       );
 
   /// TDLib type name.

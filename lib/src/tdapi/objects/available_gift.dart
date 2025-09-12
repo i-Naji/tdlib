@@ -19,7 +19,7 @@ final class AvailableGift extends TdObject {
   /// Number of gifts that are available for resale
   final int resaleCount;
 
-  /// The minimum price for the gifts available for resale; 0 if there are no such gifts
+  /// The minimum price for the gifts available for resale in Telegram Star equivalent; 0 if there are no such gifts
   final int minResaleStarCount;
 
   /// The title of the upgraded gift; empty if the gift isn't available for resale

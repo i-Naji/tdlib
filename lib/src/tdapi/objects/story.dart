@@ -16,6 +16,7 @@ final class Story extends TdObject {
     required this.isEdited,
     required this.isPostedToChatPage,
     required this.isVisibleOnlyForSelf,
+    required this.canBeAddedToAlbum,
     required this.canBeDeleted,
     required this.canBeEdited,
     required this.canBeForwarded,
@@ -31,6 +32,7 @@ final class Story extends TdObject {
     required this.content,
     required this.areas,
     required this.caption,
+    required this.albumIds,
     this.extra,
     this.clientId,
   });
@@ -61,6 +63,9 @@ final class Story extends TdObject {
 
   /// True, if the story is visible only for the current user
   final bool isVisibleOnlyForSelf;
+
+  /// True, if the story can be added to an album
+  final bool canBeAddedToAlbum;
 
   /// True, if the story can be deleted
   final bool canBeDeleted;
@@ -107,6 +112,9 @@ final class Story extends TdObject {
   /// Caption of the story
   final FormattedText caption;
 
+  /// Identifiers of story albums to which the story is added; only for manageable stories
+  final List<int> albumIds;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -126,6 +134,7 @@ final class Story extends TdObject {
         isEdited: _readBool(json['is_edited']),
         isPostedToChatPage: _readBool(json['is_posted_to_chat_page']),
         isVisibleOnlyForSelf: _readBool(json['is_visible_only_for_self']),
+        canBeAddedToAlbum: _readBool(json['can_be_added_to_album']),
         canBeDeleted: _readBool(json['can_be_deleted']),
         canBeEdited: _readBool(json['can_be_edited']),
         canBeForwarded: _readBool(json['can_be_forwarded']),
@@ -147,6 +156,7 @@ final class Story extends TdObject {
         areas: _readList<StoryArea>(
             json['areas'], (e) => _readObject(e, StoryArea.fromJson)),
         caption: _readObject(json['caption'], FormattedText.fromJson),
+        albumIds: _readList<int>(json['album_ids'], _readInt),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -163,6 +173,7 @@ final class Story extends TdObject {
         'is_edited': isEdited,
         'is_posted_to_chat_page': isPostedToChatPage,
         'is_visible_only_for_self': isVisibleOnlyForSelf,
+        'can_be_added_to_album': canBeAddedToAlbum,
         'can_be_deleted': canBeDeleted,
         'can_be_edited': canBeEdited,
         'can_be_forwarded': canBeForwarded,
@@ -178,6 +189,7 @@ final class Story extends TdObject {
         'content': content.toJson(),
         'areas': [for (final e in areas) e.toJson()],
         'caption': caption.toJson(),
+        'album_ids': albumIds,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -192,6 +204,7 @@ final class Story extends TdObject {
     bool? isEdited,
     bool? isPostedToChatPage,
     bool? isVisibleOnlyForSelf,
+    bool? canBeAddedToAlbum,
     bool? canBeDeleted,
     bool? canBeEdited,
     bool? canBeForwarded,
@@ -207,6 +220,7 @@ final class Story extends TdObject {
     StoryContent? content,
     List<StoryArea>? areas,
     FormattedText? caption,
+    List<int>? albumIds,
     dynamic extra,
     int? clientId,
   }) =>
@@ -220,6 +234,7 @@ final class Story extends TdObject {
         isEdited: isEdited ?? this.isEdited,
         isPostedToChatPage: isPostedToChatPage ?? this.isPostedToChatPage,
         isVisibleOnlyForSelf: isVisibleOnlyForSelf ?? this.isVisibleOnlyForSelf,
+        canBeAddedToAlbum: canBeAddedToAlbum ?? this.canBeAddedToAlbum,
         canBeDeleted: canBeDeleted ?? this.canBeDeleted,
         canBeEdited: canBeEdited ?? this.canBeEdited,
         canBeForwarded: canBeForwarded ?? this.canBeForwarded,
@@ -239,6 +254,7 @@ final class Story extends TdObject {
         content: content ?? this.content,
         areas: areas ?? this.areas,
         caption: caption ?? this.caption,
+        albumIds: albumIds ?? this.albumIds,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

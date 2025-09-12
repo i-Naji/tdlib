@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Changes the list of pinned stories on a chat page; requires can_edit_stories right in the chat
+/// Changes the list of pinned stories on a chat page; requires can_edit_stories administrator right in the chat
 ///
 /// Returns [Ok].
 final class SetChatPinnedStories extends TdFunction<Ok> {
-  /// Changes the list of pinned stories on a chat page; requires can_edit_stories right in the chat
+  /// Changes the list of pinned stories on a chat page; requires can_edit_stories administrator right in the chat
   const SetChatPinnedStories({
     required this.chatId,
     required this.storyIds,

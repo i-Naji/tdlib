@@ -18,6 +18,7 @@ final class ReceivedGift extends TdObject {
     required this.wasRefunded,
     required this.date,
     required this.gift,
+    required this.collectionIds,
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
     required this.transferStarCount,
@@ -61,6 +62,9 @@ final class ReceivedGift extends TdObject {
   /// The gift
   final SentGift gift;
 
+  /// Identifiers of collections to which the gift is added; only for the receiver of the gift
+  final List<int> collectionIds;
+
   /// Number of Telegram Stars that can be claimed by the receiver instead of the regular gift; 0 if the gift can't be sold by the current user
   final int sellStarCount;
 
@@ -100,6 +104,7 @@ final class ReceivedGift extends TdObject {
         wasRefunded: _readBool(json['was_refunded']),
         date: _readInt(json['date']),
         gift: _readObject(json['gift'], SentGift.fromJson),
+        collectionIds: _readList<int>(json['collection_ids'], _readInt),
         sellStarCount: _readInt(json['sell_star_count']),
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         transferStarCount: _readInt(json['transfer_star_count']),
@@ -124,6 +129,7 @@ final class ReceivedGift extends TdObject {
         'was_refunded': wasRefunded,
         'date': date,
         'gift': gift.toJson(),
+        'collection_ids': collectionIds,
         'sell_star_count': sellStarCount,
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'transfer_star_count': transferStarCount,
@@ -146,6 +152,7 @@ final class ReceivedGift extends TdObject {
     bool? wasRefunded,
     int? date,
     SentGift? gift,
+    List<int>? collectionIds,
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
     int? transferStarCount,
@@ -167,6 +174,7 @@ final class ReceivedGift extends TdObject {
         wasRefunded: wasRefunded ?? this.wasRefunded,
         date: date ?? this.date,
         gift: gift ?? this.gift,
+        collectionIds: collectionIds ?? this.collectionIds,
         sellStarCount: sellStarCount ?? this.sellStarCount,
         prepaidUpgradeStarCount:
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,

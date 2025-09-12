@@ -113,32 +113,32 @@ final class UpgradedGiftOriginTransfer extends UpgradedGiftOrigin {
 final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
   /// The gift was bought from another user
   const UpgradedGiftOriginResale({
-    required this.starCount,
+    required this.price,
   });
 
-  /// Number of Telegram Stars that were paid by the sender for the gift
-  final int starCount;
+  /// Price paid by the sender for the gift
+  final GiftResalePrice price;
 
   /// Parses a [UpgradedGiftOriginResale] from TDLib JSON.
   factory UpgradedGiftOriginResale.fromJson(Map<String, dynamic> json) =>
       UpgradedGiftOriginResale(
-        starCount: _readInt(json['star_count']),
+        price: _readObject(json['price'], GiftResalePrice.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'star_count': starCount,
+        'price': price.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   UpgradedGiftOriginResale copyWith({
-    int? starCount,
+    GiftResalePrice? price,
   }) =>
       UpgradedGiftOriginResale(
-        starCount: starCount ?? this.starCount,
+        price: price ?? this.price,
       );
 
   /// TDLib type name.

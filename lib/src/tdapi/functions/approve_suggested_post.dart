@@ -20,7 +20,7 @@ final class ApproveSuggestedPost extends TdFunction<Ok> {
   /// Identifier of the message with the suggested post. Use messageProperties.can_be_approved to check whether the suggested post can be approved
   final int messageId;
 
-  /// Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date has already been chosen
+  /// Point in time (Unix timestamp) when the post is expected to be published; pass 0 if the date has already been chosen. If specified, then the date must be in the future, but at most getOption("suggested_post_send_delay_max") seconds in the future
   final int sendDate;
 
   @override

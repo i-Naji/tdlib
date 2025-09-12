@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Toncoins
 ///
-/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
+/// One of: [TonTransactionTypeFragmentDeposit], [TonTransactionTypeSuggestedPostPayment], [TonTransactionTypeUpgradedGiftPurchase], [TonTransactionTypeUpgradedGiftSale], [TonTransactionTypeUnsupported]; or [UndecodedTonTransactionType] for a type newer than this API.
 sealed class TonTransactionType extends TdObject {
   const TonTransactionType();
 
@@ -127,6 +127,119 @@ final class TonTransactionTypeSuggestedPostPayment extends TonTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'tonTransactionTypeSuggestedPostPayment';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+final class TonTransactionTypeUpgradedGiftPurchase extends TonTransactionType {
+  /// The transaction is a purchase of an upgraded gift for some user or channel; for regular users only
+  const TonTransactionTypeUpgradedGiftPurchase({
+    required this.userId,
+    required this.gift,
+  });
+
+  /// Identifier of the user that sold the gift
+  final int userId;
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// Parses a [TonTransactionTypeUpgradedGiftPurchase] from TDLib JSON.
+  factory TonTransactionTypeUpgradedGiftPurchase.fromJson(
+          Map<String, dynamic> json) =>
+      TonTransactionTypeUpgradedGiftPurchase(
+        userId: _readInt(json['user_id']),
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'gift': gift.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeUpgradedGiftPurchase copyWith({
+    int? userId,
+    UpgradedGift? gift,
+  }) =>
+      TonTransactionTypeUpgradedGiftPurchase(
+        userId: userId ?? this.userId,
+        gift: gift ?? this.gift,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeUpgradedGiftPurchase';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a sale of an upgraded gift; for regular users only
+final class TonTransactionTypeUpgradedGiftSale extends TonTransactionType {
+  /// The transaction is a sale of an upgraded gift; for regular users only
+  const TonTransactionTypeUpgradedGiftSale({
+    required this.userId,
+    required this.gift,
+    required this.commissionPerMille,
+    required this.commissionToncoinAmount,
+  });
+
+  /// Identifier of the user that bought the gift
+  final int userId;
+
+  /// The gift
+  final UpgradedGift gift;
+
+  /// The number of Toncoins received by the Telegram for each 1000 Toncoins received by the seller of the gift
+  final int commissionPerMille;
+
+  /// The amount of Toncoins that were received by the Telegram; in the smallest units of the currency
+  final int commissionToncoinAmount;
+
+  /// Parses a [TonTransactionTypeUpgradedGiftSale] from TDLib JSON.
+  factory TonTransactionTypeUpgradedGiftSale.fromJson(
+          Map<String, dynamic> json) =>
+      TonTransactionTypeUpgradedGiftSale(
+        userId: _readInt(json['user_id']),
+        gift: _readObject(json['gift'], UpgradedGift.fromJson),
+        commissionPerMille: _readInt(json['commission_per_mille']),
+        commissionToncoinAmount: _readInt(json['commission_toncoin_amount']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'user_id': userId,
+        'gift': gift.toJson(),
+        'commission_per_mille': commissionPerMille,
+        'commission_toncoin_amount': commissionToncoinAmount,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  TonTransactionTypeUpgradedGiftSale copyWith({
+    int? userId,
+    UpgradedGift? gift,
+    int? commissionPerMille,
+    int? commissionToncoinAmount,
+  }) =>
+      TonTransactionTypeUpgradedGiftSale(
+        userId: userId ?? this.userId,
+        gift: gift ?? this.gift,
+        commissionPerMille: commissionPerMille ?? this.commissionPerMille,
+        commissionToncoinAmount:
+            commissionToncoinAmount ?? this.commissionToncoinAmount,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'tonTransactionTypeUpgradedGiftSale';
 
   @override
   String getConstructor() => CONSTRUCTOR;

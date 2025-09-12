@@ -5,13 +5,13 @@ part of '../tdapi.dart';
 
 /// Sends an upgraded gift that is available for resale to another user or channel chat; gifts already owned by the current user must be transferred using transferGift and can't be passed to the method
 ///
-/// Returns [Ok].
-final class SendResoldGift extends TdFunction<Ok> {
+/// Returns [GiftResaleResult].
+final class SendResoldGift extends TdFunction<GiftResaleResult> {
   /// Sends an upgraded gift that is available for resale to another user or channel chat; gifts already owned by the current user must be transferred using transferGift and can't be passed to the method
   const SendResoldGift({
     required this.giftName,
     required this.ownerId,
-    required this.starCount,
+    required this.price,
   });
 
   /// Name of the upgraded gift to send
@@ -20,15 +20,15 @@ final class SendResoldGift extends TdFunction<Ok> {
   /// Identifier of the user or the channel chat that will receive the gift
   final MessageSender ownerId;
 
-  /// The amount of Telegram Stars required to pay for the gift
-  final int starCount;
+  /// The price that the user agreed to pay for the gift
+  final GiftResalePrice price;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'gift_name': giftName,
         'owner_id': ownerId.toJson(),
-        'star_count': starCount,
+        'price': price.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -37,12 +37,12 @@ final class SendResoldGift extends TdFunction<Ok> {
   SendResoldGift copyWith({
     String? giftName,
     MessageSender? ownerId,
-    int? starCount,
+    GiftResalePrice? price,
   }) =>
       SendResoldGift(
         giftName: giftName ?? this.giftName,
         ownerId: ownerId ?? this.ownerId,
-        starCount: starCount ?? this.starCount,
+        price: price ?? this.price,
       );
 
   /// TDLib type name.

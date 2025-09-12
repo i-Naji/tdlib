@@ -29,8 +29,7 @@ final class Supergroup extends TdObject {
     this.verificationStatus,
     required this.hasDirectMessagesGroup,
     required this.hasForumTabs,
-    required this.hasSensitiveContent,
-    required this.restrictionReason,
+    this.restrictionInfo,
     required this.paidMessageStarCount,
     required this.hasActiveStories,
     required this.hasUnreadActiveStories,
@@ -104,11 +103,8 @@ final class Supergroup extends TdObject {
   /// True, if the supergroup is a forum, which topics are shown in the same way as in channel direct messages groups
   final bool hasForumTabs;
 
-  /// True, if content of media messages in the supergroup or channel chat must be hidden with 18+ spoiler
-  final bool hasSensitiveContent;
-
-  /// If non-empty, contains a human-readable description of the reason why access to this supergroup or channel must be restricted
-  final String restrictionReason;
+  /// Information about the restrictions that must be applied to the corresponding supergroup or channel chat; may be null if none
+  final RestrictionInfo? restrictionInfo;
 
   /// Number of Telegram Stars that must be paid by non-administrator users of the supergroup chat for each sent message
   final int paidMessageStarCount;
@@ -153,8 +149,8 @@ final class Supergroup extends TdObject {
             json['verification_status'], VerificationStatus.fromJson),
         hasDirectMessagesGroup: _readBool(json['has_direct_messages_group']),
         hasForumTabs: _readBool(json['has_forum_tabs']),
-        hasSensitiveContent: _readBool(json['has_sensitive_content']),
-        restrictionReason: _readString(json['restriction_reason']),
+        restrictionInfo:
+            _readOptional(json['restriction_info'], RestrictionInfo.fromJson),
         paidMessageStarCount: _readInt(json['paid_message_star_count']),
         hasActiveStories: _readBool(json['has_active_stories']),
         hasUnreadActiveStories: _readBool(json['has_unread_active_stories']),
@@ -188,8 +184,7 @@ final class Supergroup extends TdObject {
         'verification_status': verificationStatus?.toJson(),
         'has_direct_messages_group': hasDirectMessagesGroup,
         'has_forum_tabs': hasForumTabs,
-        'has_sensitive_content': hasSensitiveContent,
-        'restriction_reason': restrictionReason,
+        'restriction_info': restrictionInfo?.toJson(),
         'paid_message_star_count': paidMessageStarCount,
         'has_active_stories': hasActiveStories,
         'has_unread_active_stories': hasUnreadActiveStories,
@@ -220,8 +215,7 @@ final class Supergroup extends TdObject {
     VerificationStatus? Function()? verificationStatus,
     bool? hasDirectMessagesGroup,
     bool? hasForumTabs,
-    bool? hasSensitiveContent,
-    String? restrictionReason,
+    RestrictionInfo? Function()? restrictionInfo,
     int? paidMessageStarCount,
     bool? hasActiveStories,
     bool? hasUnreadActiveStories,
@@ -257,8 +251,8 @@ final class Supergroup extends TdObject {
         hasDirectMessagesGroup:
             hasDirectMessagesGroup ?? this.hasDirectMessagesGroup,
         hasForumTabs: hasForumTabs ?? this.hasForumTabs,
-        hasSensitiveContent: hasSensitiveContent ?? this.hasSensitiveContent,
-        restrictionReason: restrictionReason ?? this.restrictionReason,
+        restrictionInfo:
+            restrictionInfo != null ? restrictionInfo() : this.restrictionInfo,
         paidMessageStarCount: paidMessageStarCount ?? this.paidMessageStarCount,
         hasActiveStories: hasActiveStories ?? this.hasActiveStories,
         hasUnreadActiveStories:

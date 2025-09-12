@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of link preview
 ///
-/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
+/// One of: [LinkPreviewTypeAlbum], [LinkPreviewTypeAnimation], [LinkPreviewTypeApp], [LinkPreviewTypeArticle], [LinkPreviewTypeAudio], [LinkPreviewTypeBackground], [LinkPreviewTypeChannelBoost], [LinkPreviewTypeChat], [LinkPreviewTypeDirectMessagesChat], [LinkPreviewTypeDocument], [LinkPreviewTypeEmbeddedAnimationPlayer], [LinkPreviewTypeEmbeddedAudioPlayer], [LinkPreviewTypeEmbeddedVideoPlayer], [LinkPreviewTypeExternalAudio], [LinkPreviewTypeExternalVideo], [LinkPreviewTypeGiftCollection], [LinkPreviewTypeGroupCall], [LinkPreviewTypeInvoice], [LinkPreviewTypeMessage], [LinkPreviewTypePhoto], [LinkPreviewTypePremiumGiftCode], [LinkPreviewTypeShareableChatFolder], [LinkPreviewTypeSticker], [LinkPreviewTypeStickerSet], [LinkPreviewTypeStory], [LinkPreviewTypeStoryAlbum], [LinkPreviewTypeSupergroupBoost], [LinkPreviewTypeTheme], [LinkPreviewTypeUnsupported], [LinkPreviewTypeUpgradedGift], [LinkPreviewTypeUser], [LinkPreviewTypeVideo], [LinkPreviewTypeVideoChat], [LinkPreviewTypeVideoNote], [LinkPreviewTypeVoiceNote], [LinkPreviewTypeWebApp]; or [UndecodedLinkPreviewType] for a type newer than this API.
 sealed class LinkPreviewType extends TdObject {
   const LinkPreviewType();
 
@@ -384,6 +384,46 @@ final class LinkPreviewTypeChat extends LinkPreviewType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeChat';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a direct messages chat of a channel
+final class LinkPreviewTypeDirectMessagesChat extends LinkPreviewType {
+  /// The link is a link to a direct messages chat of a channel
+  const LinkPreviewTypeDirectMessagesChat({
+    this.photo,
+  });
+
+  /// Photo of the channel chat; may be null
+  final ChatPhoto? photo;
+
+  /// Parses a [LinkPreviewTypeDirectMessagesChat] from TDLib JSON.
+  factory LinkPreviewTypeDirectMessagesChat.fromJson(
+          Map<String, dynamic> json) =>
+      LinkPreviewTypeDirectMessagesChat(
+        photo: _readOptional(json['photo'], ChatPhoto.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'photo': photo?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeDirectMessagesChat copyWith({
+    ChatPhoto? Function()? photo,
+  }) =>
+      LinkPreviewTypeDirectMessagesChat(
+        photo: photo != null ? photo() : this.photo,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeDirectMessagesChat';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -770,6 +810,46 @@ final class LinkPreviewTypeExternalVideo extends LinkPreviewType {
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The link is a link to a gift collection
+final class LinkPreviewTypeGiftCollection extends LinkPreviewType {
+  /// The link is a link to a gift collection
+  const LinkPreviewTypeGiftCollection({
+    required this.icons,
+  });
+
+  /// Icons for some gifts from the collection; may be empty
+  final List<Sticker> icons;
+
+  /// Parses a [LinkPreviewTypeGiftCollection] from TDLib JSON.
+  factory LinkPreviewTypeGiftCollection.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeGiftCollection(
+        icons: _readList<Sticker>(
+            json['icons'], (e) => _readObject(e, Sticker.fromJson)),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'icons': [for (final e in icons) e.toJson()],
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeGiftCollection copyWith({
+    List<Sticker>? icons,
+  }) =>
+      LinkPreviewTypeGiftCollection(
+        icons: icons ?? this.icons,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeGiftCollection';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The link is a link to a group call that isn't bound to a chat
 final class LinkPreviewTypeGroupCall extends LinkPreviewType {
   /// The link is a link to a group call that isn't bound to a chat
@@ -1063,6 +1143,53 @@ final class LinkPreviewTypeStory extends LinkPreviewType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'linkPreviewTypeStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to an album of stories
+final class LinkPreviewTypeStoryAlbum extends LinkPreviewType {
+  /// The link is a link to an album of stories
+  const LinkPreviewTypeStoryAlbum({
+    this.photoIcon,
+    this.videoIcon,
+  });
+
+  /// Icon of the album; may be null if none
+  final Photo? photoIcon;
+
+  /// Video icon of the album; may be null if none
+  final Video? videoIcon;
+
+  /// Parses a [LinkPreviewTypeStoryAlbum] from TDLib JSON.
+  factory LinkPreviewTypeStoryAlbum.fromJson(Map<String, dynamic> json) =>
+      LinkPreviewTypeStoryAlbum(
+        photoIcon: _readOptional(json['photo_icon'], Photo.fromJson),
+        videoIcon: _readOptional(json['video_icon'], Video.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'photo_icon': photoIcon?.toJson(),
+        'video_icon': videoIcon?.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  LinkPreviewTypeStoryAlbum copyWith({
+    Photo? Function()? photoIcon,
+    Video? Function()? videoIcon,
+  }) =>
+      LinkPreviewTypeStoryAlbum(
+        photoIcon: photoIcon != null ? photoIcon() : this.photoIcon,
+        videoIcon: videoIcon != null ? videoIcon() : this.videoIcon,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'linkPreviewTypeStoryAlbum';
 
   @override
   String getConstructor() => CONSTRUCTOR;

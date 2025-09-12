@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes an internal https://t.me or tg: link, which must be processed by the application in a special way
 ///
-/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeBuyStars], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyStars], [InternalLinkTypeMyToncoins], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
+/// One of: [InternalLinkTypeActiveSessions], [InternalLinkTypeAttachmentMenuBot], [InternalLinkTypeAuthenticationCode], [InternalLinkTypeBackground], [InternalLinkTypeBotAddToChannel], [InternalLinkTypeBotStart], [InternalLinkTypeBotStartInGroup], [InternalLinkTypeBusinessChat], [InternalLinkTypeBuyStars], [InternalLinkTypeChangePhoneNumber], [InternalLinkTypeChatAffiliateProgram], [InternalLinkTypeChatBoost], [InternalLinkTypeChatFolderInvite], [InternalLinkTypeChatFolderSettings], [InternalLinkTypeChatInvite], [InternalLinkTypeDefaultMessageAutoDeleteTimerSettings], [InternalLinkTypeDirectMessagesChat], [InternalLinkTypeEditProfileSettings], [InternalLinkTypeGame], [InternalLinkTypeGiftCollection], [InternalLinkTypeGroupCall], [InternalLinkTypeInstantView], [InternalLinkTypeInvoice], [InternalLinkTypeLanguagePack], [InternalLinkTypeLanguageSettings], [InternalLinkTypeMainWebApp], [InternalLinkTypeMessage], [InternalLinkTypeMessageDraft], [InternalLinkTypeMyStars], [InternalLinkTypeMyToncoins], [InternalLinkTypePassportDataRequest], [InternalLinkTypePhoneNumberConfirmation], [InternalLinkTypePremiumFeatures], [InternalLinkTypePremiumGift], [InternalLinkTypePremiumGiftCode], [InternalLinkTypePrivacyAndSecuritySettings], [InternalLinkTypeProxy], [InternalLinkTypePublicChat], [InternalLinkTypeQrCodeAuthentication], [InternalLinkTypeRestorePurchases], [InternalLinkTypeSettings], [InternalLinkTypeStickerSet], [InternalLinkTypeStory], [InternalLinkTypeStoryAlbum], [InternalLinkTypeTheme], [InternalLinkTypeThemeSettings], [InternalLinkTypeUnknownDeepLink], [InternalLinkTypeUnsupportedProxy], [InternalLinkTypeUpgradedGift], [InternalLinkTypeUserPhoneNumber], [InternalLinkTypeUserToken], [InternalLinkTypeVideoChat], [InternalLinkTypeWebApp]; or [UndecodedInternalLinkType] for a type newer than this API.
 sealed class InternalLinkType extends TdObject {
   const InternalLinkType();
 
@@ -977,6 +977,62 @@ final class InternalLinkTypeDefaultMessageAutoDeleteTimerSettings
   String getConstructor() => CONSTRUCTOR;
 }
 
+/// The link is a link to a channel direct messages chat by username of the channel. Call searchPublicChat with the given chat username to process the link. If the chat is found and is channel, open the direct messages chat of the channel
+final class InternalLinkTypeDirectMessagesChat extends InternalLinkType {
+  /// The link is a link to a channel direct messages chat by username of the channel. Call searchPublicChat with the given chat username to process the link. If the chat is found and is channel, open the direct messages chat of the channel
+  const InternalLinkTypeDirectMessagesChat({
+    required this.channelUsername,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Username of the channel
+  final String channelUsername;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeDirectMessagesChat] from TDLib JSON.
+  factory InternalLinkTypeDirectMessagesChat.fromJson(
+          Map<String, dynamic> json) =>
+      InternalLinkTypeDirectMessagesChat(
+        channelUsername: _readString(json['channel_username']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'channel_username': channelUsername,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeDirectMessagesChat copyWith({
+    String? channelUsername,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeDirectMessagesChat(
+        channelUsername: channelUsername ?? this.channelUsername,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeDirectMessagesChat';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
 /// The link is a link to the edit profile section of the application settings
 final class InternalLinkTypeEditProfileSettings extends InternalLinkType {
   /// The link is a link to the edit profile section of the application settings
@@ -1083,6 +1139,69 @@ final class InternalLinkTypeGame extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeGame';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to a gift collection. Call searchPublicChat with the given username, then call getReceivedGifts with the received gift owner identifier and the given collection identifier, then show the collection if received
+final class InternalLinkTypeGiftCollection extends InternalLinkType {
+  /// The link is a link to a gift collection. Call searchPublicChat with the given username, then call getReceivedGifts with the received gift owner identifier and the given collection identifier, then show the collection if received
+  const InternalLinkTypeGiftCollection({
+    required this.giftOwnerUsername,
+    required this.collectionId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Username of the owner of the gift collection
+  final String giftOwnerUsername;
+
+  /// Gift collection identifier
+  final int collectionId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeGiftCollection] from TDLib JSON.
+  factory InternalLinkTypeGiftCollection.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeGiftCollection(
+        giftOwnerUsername: _readString(json['gift_owner_username']),
+        collectionId: _readInt(json['collection_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift_owner_username': giftOwnerUsername,
+        'collection_id': collectionId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeGiftCollection copyWith({
+    String? giftOwnerUsername,
+    int? collectionId,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeGiftCollection(
+        giftOwnerUsername: giftOwnerUsername ?? this.giftOwnerUsername,
+        collectionId: collectionId ?? this.collectionId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeGiftCollection';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -2420,6 +2539,71 @@ final class InternalLinkTypeStory extends InternalLinkType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'internalLinkTypeStory';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The link is a link to an album of stories. Call searchPublicChat with the given username, then call getStoryAlbumStories with the received chat identifier and the given story album identifier, then show the story album if received
+final class InternalLinkTypeStoryAlbum extends InternalLinkType {
+  /// The link is a link to an album of stories. Call searchPublicChat with the given username, then call getStoryAlbumStories with the received chat identifier and the given story album identifier, then show the story album if received
+  const InternalLinkTypeStoryAlbum({
+    required this.storyAlbumOwnerUsername,
+    required this.storyAlbumId,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Username of the owner of the story album
+  final String storyAlbumOwnerUsername;
+
+  /// Story album identifier
+  final int storyAlbumId;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [InternalLinkTypeStoryAlbum] from TDLib JSON.
+  factory InternalLinkTypeStoryAlbum.fromJson(Map<String, dynamic> json) =>
+      InternalLinkTypeStoryAlbum(
+        storyAlbumOwnerUsername:
+            _readString(json['story_album_owner_username']),
+        storyAlbumId: _readInt(json['story_album_id']),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'story_album_owner_username': storyAlbumOwnerUsername,
+        'story_album_id': storyAlbumId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  InternalLinkTypeStoryAlbum copyWith({
+    String? storyAlbumOwnerUsername,
+    int? storyAlbumId,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      InternalLinkTypeStoryAlbum(
+        storyAlbumOwnerUsername:
+            storyAlbumOwnerUsername ?? this.storyAlbumOwnerUsername,
+        storyAlbumId: storyAlbumId ?? this.storyAlbumId,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'internalLinkTypeStoryAlbum';
 
   @override
   String getConstructor() => CONSTRUCTOR;
