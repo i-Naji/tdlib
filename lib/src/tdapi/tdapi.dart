@@ -48,6 +48,7 @@ part 'functions/ban_chat_member.dart';
 part 'functions/ban_group_call_participants.dart';
 part 'functions/block_message_sender_from_replies.dart';
 part 'functions/boost_chat.dart';
+part 'functions/buy_gift_upgrade.dart';
 part 'functions/can_bot_send_messages.dart';
 part 'functions/can_post_story.dart';
 part 'functions/can_purchase_from_store.dart';
@@ -486,6 +487,7 @@ part 'functions/get_top_chats.dart';
 part 'functions/get_trending_sticker_sets.dart';
 part 'functions/get_upgraded_gift.dart';
 part 'functions/get_upgraded_gift_emoji_statuses.dart';
+part 'functions/get_upgraded_gift_value_info.dart';
 part 'functions/get_upgraded_gift_withdrawal_url.dart';
 part 'functions/get_user.dart';
 part 'functions/get_user_chat_boosts.dart';
@@ -1519,6 +1521,7 @@ part 'objects/upgraded_gift_origin.dart';
 part 'objects/upgraded_gift_original_details.dart';
 part 'objects/upgraded_gift_symbol.dart';
 part 'objects/upgraded_gift_symbol_count.dart';
+part 'objects/upgraded_gift_value_info.dart';
 part 'objects/user.dart';
 part 'objects/user_full_info.dart';
 part 'objects/user_link.dart';
@@ -1551,14 +1554,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.53';
+const String tdlibVersion = '1.8.54';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = 'bdec6af5d70dd51dd8ee9c0565a8a81deb9d169b';
+const String tdlibSchemaCommit = '6dca40bdaac8b5e66c7a793727bf3f81e9711f70';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  'bdec6af5d70dd51dd8ee9c0565a8a81deb9d169b',
+  '6dca40bdaac8b5e66c7a793727bf3f81e9711f70',
 ];
 
 /// Base class of every TDLib object.
@@ -1837,6 +1840,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGiftOriginUpgrade': UpgradedGiftOriginUpgrade.fromJson,
   'upgradedGiftOriginTransfer': UpgradedGiftOriginTransfer.fromJson,
   'upgradedGiftOriginResale': UpgradedGiftOriginResale.fromJson,
+  'upgradedGiftOriginPrepaidUpgrade': UpgradedGiftOriginPrepaidUpgrade.fromJson,
   'upgradedGiftModel': UpgradedGiftModel.fromJson,
   'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
   'upgradedGiftBackdropColors': UpgradedGiftBackdropColors.fromJson,
@@ -1844,6 +1848,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGiftOriginalDetails': UpgradedGiftOriginalDetails.fromJson,
   'gift': Gift.fromJson,
   'upgradedGift': UpgradedGift.fromJson,
+  'upgradedGiftValueInfo': UpgradedGiftValueInfo.fromJson,
   'upgradeGiftResult': UpgradeGiftResult.fromJson,
   'availableGift': AvailableGift.fromJson,
   'availableGifts': AvailableGifts.fromJson,
@@ -1909,6 +1914,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'starTransactionTypeGiftTransfer': StarTransactionTypeGiftTransfer.fromJson,
   'starTransactionTypeGiftSale': StarTransactionTypeGiftSale.fromJson,
   'starTransactionTypeGiftUpgrade': StarTransactionTypeGiftUpgrade.fromJson,
+  'starTransactionTypeGiftUpgradePurchase':
+      StarTransactionTypeGiftUpgradePurchase.fromJson,
   'starTransactionTypeUpgradedGiftPurchase':
       StarTransactionTypeUpgradedGiftPurchase.fromJson,
   'starTransactionTypeUpgradedGiftSale':

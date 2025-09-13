@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes type of transaction with Telegram Stars
 ///
-/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
+/// One of: [StarTransactionTypePremiumBotDeposit], [StarTransactionTypeAppStoreDeposit], [StarTransactionTypeGooglePlayDeposit], [StarTransactionTypeFragmentDeposit], [StarTransactionTypeUserDeposit], [StarTransactionTypeGiveawayDeposit], [StarTransactionTypeFragmentWithdrawal], [StarTransactionTypeTelegramAdsWithdrawal], [StarTransactionTypeTelegramApiUsage], [StarTransactionTypeBotPaidMediaPurchase], [StarTransactionTypeBotPaidMediaSale], [StarTransactionTypeChannelPaidMediaPurchase], [StarTransactionTypeChannelPaidMediaSale], [StarTransactionTypeBotInvoicePurchase], [StarTransactionTypeBotInvoiceSale], [StarTransactionTypeBotSubscriptionPurchase], [StarTransactionTypeBotSubscriptionSale], [StarTransactionTypeChannelSubscriptionPurchase], [StarTransactionTypeChannelSubscriptionSale], [StarTransactionTypeGiftPurchase], [StarTransactionTypeGiftTransfer], [StarTransactionTypeGiftSale], [StarTransactionTypeGiftUpgrade], [StarTransactionTypeGiftUpgradePurchase], [StarTransactionTypeUpgradedGiftPurchase], [StarTransactionTypeUpgradedGiftSale], [StarTransactionTypeChannelPaidReactionSend], [StarTransactionTypeChannelPaidReactionReceive], [StarTransactionTypeAffiliateProgramCommission], [StarTransactionTypePaidMessageSend], [StarTransactionTypePaidMessageReceive], [StarTransactionTypeSuggestedPostPaymentSend], [StarTransactionTypeSuggestedPostPaymentReceive], [StarTransactionTypePremiumPurchase], [StarTransactionTypeBusinessBotTransferSend], [StarTransactionTypeBusinessBotTransferReceive], [StarTransactionTypePublicPostSearch], [StarTransactionTypeUnsupported]; or [UndecodedStarTransactionType] for a type newer than this API.
 sealed class StarTransactionType extends TdObject {
   const StarTransactionType();
 
@@ -1119,6 +1119,54 @@ final class StarTransactionTypeGiftUpgrade extends StarTransactionType {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'starTransactionTypeGiftUpgrade';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The transaction is a purchase of an upgrade of a gift owned by another user or channel; for regular users only
+final class StarTransactionTypeGiftUpgradePurchase extends StarTransactionType {
+  /// The transaction is a purchase of an upgrade of a gift owned by another user or channel; for regular users only
+  const StarTransactionTypeGiftUpgradePurchase({
+    required this.ownerId,
+    required this.gift,
+  });
+
+  /// Owner of the upgraded gift
+  final MessageSender ownerId;
+
+  /// The gift
+  final Gift gift;
+
+  /// Parses a [StarTransactionTypeGiftUpgradePurchase] from TDLib JSON.
+  factory StarTransactionTypeGiftUpgradePurchase.fromJson(
+          Map<String, dynamic> json) =>
+      StarTransactionTypeGiftUpgradePurchase(
+        ownerId: _readObject(json['owner_id'], MessageSender.fromJson),
+        gift: _readObject(json['gift'], Gift.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'owner_id': ownerId.toJson(),
+        'gift': gift.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  StarTransactionTypeGiftUpgradePurchase copyWith({
+    MessageSender? ownerId,
+    Gift? gift,
+  }) =>
+      StarTransactionTypeGiftUpgradePurchase(
+        ownerId: ownerId ?? this.ownerId,
+        gift: gift ?? this.gift,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'starTransactionTypeGiftUpgradePurchase';
 
   @override
   String getConstructor() => CONSTRUCTOR;

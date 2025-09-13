@@ -8,6 +8,7 @@ final class UpgradedGift extends TdObject {
   /// Describes an upgraded gift that can be transferred to another owner or transferred to the TON blockchain as an NFT
   const UpgradedGift({
     required this.id,
+    required this.regularGiftId,
     required this.publisherChatId,
     required this.title,
     required this.name,
@@ -24,12 +25,17 @@ final class UpgradedGift extends TdObject {
     required this.backdrop,
     this.originalDetails,
     this.resaleParameters,
+    required this.valueCurrency,
+    required this.valueAmount,
     this.extra,
     this.clientId,
   });
 
   /// Unique identifier of the gift
   final int id;
+
+  /// Unique identifier of the regular gift from which the gift was upgraded; may be 0 for short period of time for old gifts from database
+  final int regularGiftId;
 
   /// Identifier of the chat that published the gift; 0 if none
   final int publisherChatId;
@@ -79,6 +85,12 @@ final class UpgradedGift extends TdObject {
   /// Resale parameters of the gift; may be null if resale isn't possible
   final GiftResaleParameters? resaleParameters;
 
+  /// ISO 4217 currency code of the currency in which value of the gift is represented; may be empty if unavailable
+  final String valueCurrency;
+
+  /// Estimated value of the gift; in the smallest units of the currency; 0 if unavailable
+  final int valueAmount;
+
   /// "@extra" of the request this object answers.
   @override
   final dynamic extra;
@@ -90,6 +102,7 @@ final class UpgradedGift extends TdObject {
   /// Parses a [UpgradedGift] from TDLib JSON.
   factory UpgradedGift.fromJson(Map<String, dynamic> json) => UpgradedGift(
         id: _readInt(json['id']),
+        regularGiftId: _readInt(json['regular_gift_id']),
         publisherChatId: _readInt(json['publisher_chat_id']),
         title: _readString(json['title']),
         name: _readString(json['name']),
@@ -108,6 +121,8 @@ final class UpgradedGift extends TdObject {
             json['original_details'], UpgradedGiftOriginalDetails.fromJson),
         resaleParameters: _readOptional(
             json['resale_parameters'], GiftResaleParameters.fromJson),
+        valueCurrency: _readString(json['value_currency']),
+        valueAmount: _readInt(json['value_amount']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -116,6 +131,7 @@ final class UpgradedGift extends TdObject {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'id': id.toString(),
+        'regular_gift_id': regularGiftId.toString(),
         'publisher_chat_id': publisherChatId,
         'title': title,
         'name': name,
@@ -132,12 +148,15 @@ final class UpgradedGift extends TdObject {
         'backdrop': backdrop.toJson(),
         'original_details': originalDetails?.toJson(),
         'resale_parameters': resaleParameters?.toJson(),
+        'value_currency': valueCurrency,
+        'value_amount': valueAmount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   UpgradedGift copyWith({
     int? id,
+    int? regularGiftId,
     int? publisherChatId,
     String? title,
     String? name,
@@ -154,11 +173,14 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftBackdrop? backdrop,
     UpgradedGiftOriginalDetails? Function()? originalDetails,
     GiftResaleParameters? Function()? resaleParameters,
+    String? valueCurrency,
+    int? valueAmount,
     dynamic extra,
     int? clientId,
   }) =>
       UpgradedGift(
         id: id ?? this.id,
+        regularGiftId: regularGiftId ?? this.regularGiftId,
         publisherChatId: publisherChatId ?? this.publisherChatId,
         title: title ?? this.title,
         name: name ?? this.name,
@@ -178,6 +200,8 @@ final class UpgradedGift extends TdObject {
         resaleParameters: resaleParameters != null
             ? resaleParameters()
             : this.resaleParameters,
+        valueCurrency: valueCurrency ?? this.valueCurrency,
+        valueAmount: valueAmount ?? this.valueAmount,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

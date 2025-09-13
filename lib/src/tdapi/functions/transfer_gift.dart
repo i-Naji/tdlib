@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Sends an upgraded gift to another user or a channel chat
+/// Sends an upgraded gift to another user or channel chat
 ///
 /// Returns [Ok].
 final class TransferGift extends TdFunction<Ok> {
-  /// Sends an upgraded gift to another user or a channel chat
+  /// Sends an upgraded gift to another user or channel chat
   const TransferGift({
     required this.businessConnectionId,
     required this.receivedGiftId,

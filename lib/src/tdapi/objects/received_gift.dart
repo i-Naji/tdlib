@@ -25,6 +25,7 @@ final class ReceivedGift extends TdObject {
     required this.nextTransferDate,
     required this.nextResaleDate,
     required this.exportDate,
+    required this.prepaidUpgradeHash,
     this.extra,
     this.clientId,
   });
@@ -74,14 +75,17 @@ final class ReceivedGift extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
   final int nextTransferDate;
 
-  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift
   final int nextResaleDate;
 
-  /// Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the upgraded gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
+
+  /// If non-empty, then the user can pay for an upgrade of the gift using buyGiftUpgrade
+  final String prepaidUpgradeHash;
 
   /// "@extra" of the request this object answers.
   @override
@@ -111,6 +115,7 @@ final class ReceivedGift extends TdObject {
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
+        prepaidUpgradeHash: _readString(json['prepaid_upgrade_hash']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -136,6 +141,7 @@ final class ReceivedGift extends TdObject {
         'next_transfer_date': nextTransferDate,
         'next_resale_date': nextResaleDate,
         'export_date': exportDate,
+        'prepaid_upgrade_hash': prepaidUpgradeHash,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -159,6 +165,7 @@ final class ReceivedGift extends TdObject {
     int? nextTransferDate,
     int? nextResaleDate,
     int? exportDate,
+    String? prepaidUpgradeHash,
     dynamic extra,
     int? clientId,
   }) =>
@@ -182,6 +189,7 @@ final class ReceivedGift extends TdObject {
         nextTransferDate: nextTransferDate ?? this.nextTransferDate,
         nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,
+        prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

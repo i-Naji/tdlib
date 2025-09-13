@@ -3643,7 +3643,7 @@ final class MessageGift extends MessageContent {
   /// A regular gift was received or sent by the current user, or the current user was notified about a channel gift
   const MessageGift({
     required this.gift,
-    required this.senderId,
+    this.senderId,
     required this.receiverId,
     required this.receivedGiftId,
     required this.text,
@@ -3651,18 +3651,20 @@ final class MessageGift extends MessageContent {
     required this.prepaidUpgradeStarCount,
     required this.isPrivate,
     required this.isSaved,
+    required this.isPrepaidUpgrade,
     required this.canBeUpgraded,
     required this.wasConverted,
     required this.wasUpgraded,
     required this.wasRefunded,
     required this.upgradedReceivedGiftId,
+    required this.prepaidUpgradeHash,
   });
 
   /// The gift
   final Gift gift;
 
-  /// Sender of the gift
-  final MessageSender senderId;
+  /// Sender of the gift; may be null for outgoing messages about prepaid upgrade of gifts from unknown users
+  final MessageSender? senderId;
 
   /// Receiver of the gift
   final MessageSender receiverId;
@@ -3685,6 +3687,9 @@ final class MessageGift extends MessageContent {
   /// True, if the gift is displayed on the user's or the channel's profile page; only for the receiver of the gift
   final bool isSaved;
 
+  /// True, if the message is about prepaid upgrade of the gift by another user
+  final bool isPrepaidUpgrade;
+
   /// True, if the gift can be upgraded to a unique gift; only for the receiver of the gift
   final bool canBeUpgraded;
 
@@ -3700,10 +3705,13 @@ final class MessageGift extends MessageContent {
   /// Identifier of the corresponding upgraded gift; may be empty if unknown. Use getReceivedGift to get information about the gift
   final String upgradedReceivedGiftId;
 
+  /// If non-empty, then the user can pay for an upgrade of the gift using buyGiftUpgrade
+  final String prepaidUpgradeHash;
+
   /// Parses a [MessageGift] from TDLib JSON.
   factory MessageGift.fromJson(Map<String, dynamic> json) => MessageGift(
         gift: _readObject(json['gift'], Gift.fromJson),
-        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        senderId: _readOptional(json['sender_id'], MessageSender.fromJson),
         receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
         receivedGiftId: _readString(json['received_gift_id']),
         text: _readObject(json['text'], FormattedText.fromJson),
@@ -3711,18 +3719,20 @@ final class MessageGift extends MessageContent {
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
+        isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
         canBeUpgraded: _readBool(json['can_be_upgraded']),
         wasConverted: _readBool(json['was_converted']),
         wasUpgraded: _readBool(json['was_upgraded']),
         wasRefunded: _readBool(json['was_refunded']),
         upgradedReceivedGiftId: _readString(json['upgraded_received_gift_id']),
+        prepaidUpgradeHash: _readString(json['prepaid_upgrade_hash']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'gift': gift.toJson(),
-        'sender_id': senderId.toJson(),
+        'sender_id': senderId?.toJson(),
         'receiver_id': receiverId.toJson(),
         'received_gift_id': receivedGiftId,
         'text': text.toJson(),
@@ -3730,11 +3740,13 @@ final class MessageGift extends MessageContent {
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'is_private': isPrivate,
         'is_saved': isSaved,
+        'is_prepaid_upgrade': isPrepaidUpgrade,
         'can_be_upgraded': canBeUpgraded,
         'was_converted': wasConverted,
         'was_upgraded': wasUpgraded,
         'was_refunded': wasRefunded,
         'upgraded_received_gift_id': upgradedReceivedGiftId,
+        'prepaid_upgrade_hash': prepaidUpgradeHash,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3742,7 +3754,7 @@ final class MessageGift extends MessageContent {
   @override
   MessageGift copyWith({
     Gift? gift,
-    MessageSender? senderId,
+    MessageSender? Function()? senderId,
     MessageSender? receiverId,
     String? receivedGiftId,
     FormattedText? text,
@@ -3750,15 +3762,17 @@ final class MessageGift extends MessageContent {
     int? prepaidUpgradeStarCount,
     bool? isPrivate,
     bool? isSaved,
+    bool? isPrepaidUpgrade,
     bool? canBeUpgraded,
     bool? wasConverted,
     bool? wasUpgraded,
     bool? wasRefunded,
     String? upgradedReceivedGiftId,
+    String? prepaidUpgradeHash,
   }) =>
       MessageGift(
         gift: gift ?? this.gift,
-        senderId: senderId ?? this.senderId,
+        senderId: senderId != null ? senderId() : this.senderId,
         receiverId: receiverId ?? this.receiverId,
         receivedGiftId: receivedGiftId ?? this.receivedGiftId,
         text: text ?? this.text,
@@ -3767,12 +3781,14 @@ final class MessageGift extends MessageContent {
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
+        isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
         canBeUpgraded: canBeUpgraded ?? this.canBeUpgraded,
         wasConverted: wasConverted ?? this.wasConverted,
         wasUpgraded: wasUpgraded ?? this.wasUpgraded,
         wasRefunded: wasRefunded ?? this.wasRefunded,
         upgradedReceivedGiftId:
             upgradedReceivedGiftId ?? this.upgradedReceivedGiftId,
+        prepaidUpgradeHash: prepaidUpgradeHash ?? this.prepaidUpgradeHash,
       );
 
   /// TDLib type name.
@@ -3827,13 +3843,13 @@ final class MessageUpgradedGift extends MessageContent {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
   final int nextTransferDate;
 
-  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift
   final int nextResaleDate;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; 0 if NFT export isn't possible; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past; 0 if NFT export isn't possible; only for the receiver of the gift
   final int exportDate;
 
   /// Parses a [MessageUpgradedGift] from TDLib JSON.

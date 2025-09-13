@@ -15,7 +15,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     required this.excludeUnsaved,
     required this.excludeSaved,
     required this.excludeUnlimited,
-    required this.excludeLimited,
+    required this.excludeUpgradable,
+    required this.excludeNonUpgradable,
     required this.excludeUpgraded,
     required this.sortByPrice,
     required this.offset,
@@ -40,8 +41,11 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   /// Pass true to exclude gifts that can be purchased unlimited number of times
   final bool excludeUnlimited;
 
-  /// Pass true to exclude gifts that can be purchased limited number of times
-  final bool excludeLimited;
+  /// Pass true to exclude gifts that can be purchased limited number of times and can be upgraded
+  final bool excludeUpgradable;
+
+  /// Pass true to exclude gifts that can be purchased limited number of times and can't be upgraded
+  final bool excludeNonUpgradable;
 
   /// Pass true to exclude upgraded gifts
   final bool excludeUpgraded;
@@ -64,7 +68,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
         'exclude_unsaved': excludeUnsaved,
         'exclude_saved': excludeSaved,
         'exclude_unlimited': excludeUnlimited,
-        'exclude_limited': excludeLimited,
+        'exclude_upgradable': excludeUpgradable,
+        'exclude_non_upgradable': excludeNonUpgradable,
         'exclude_upgraded': excludeUpgraded,
         'sort_by_price': sortByPrice,
         'offset': offset,
@@ -81,7 +86,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     bool? excludeUnsaved,
     bool? excludeSaved,
     bool? excludeUnlimited,
-    bool? excludeLimited,
+    bool? excludeUpgradable,
+    bool? excludeNonUpgradable,
     bool? excludeUpgraded,
     bool? sortByPrice,
     String? offset,
@@ -94,7 +100,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
         excludeUnsaved: excludeUnsaved ?? this.excludeUnsaved,
         excludeSaved: excludeSaved ?? this.excludeSaved,
         excludeUnlimited: excludeUnlimited ?? this.excludeUnlimited,
-        excludeLimited: excludeLimited ?? this.excludeLimited,
+        excludeUpgradable: excludeUpgradable ?? this.excludeUpgradable,
+        excludeNonUpgradable: excludeNonUpgradable ?? this.excludeNonUpgradable,
         excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
         sortByPrice: sortByPrice ?? this.sortByPrice,
         offset: offset ?? this.offset,

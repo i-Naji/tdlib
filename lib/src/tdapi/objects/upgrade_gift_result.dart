@@ -34,13 +34,13 @@ final class UpgradeGiftResult extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift
   final int transferStarCount;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; 0 if the gift can be transferred immediately or transfer isn't possible
+  /// Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible
   final int nextTransferDate;
 
-  /// Point in time (Unix timestamp) when the gift can be resold to another user; 0 if the gift can't be resold; only for the receiver of the gift
+  /// Point in time (Unix timestamp) when the gift can be resold to another user; can be in the past; 0 if the gift can't be resold; only for the receiver of the gift
   final int nextResaleDate;
 
-  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT
+  /// Point in time (Unix timestamp) when the gift can be transferred to the TON blockchain as an NFT; can be in the past
   final int exportDate;
 
   /// "@extra" of the request this object answers.

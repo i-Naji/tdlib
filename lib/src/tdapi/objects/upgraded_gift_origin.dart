@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes origin from which the upgraded gift was obtained
 ///
-/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
+/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale], [UpgradedGiftOriginPrepaidUpgrade]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
 sealed class UpgradedGiftOrigin extends TdObject {
   const UpgradedGiftOrigin();
 
@@ -143,6 +143,34 @@ final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftOriginResale';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The sender or receiver of the message has paid for upgraid of the gift, which has been completed
+final class UpgradedGiftOriginPrepaidUpgrade extends UpgradedGiftOrigin {
+  /// The sender or receiver of the message has paid for upgraid of the gift, which has been completed
+  const UpgradedGiftOriginPrepaidUpgrade();
+
+  /// Parses a [UpgradedGiftOriginPrepaidUpgrade] from TDLib JSON.
+  factory UpgradedGiftOriginPrepaidUpgrade.fromJson(
+          Map<String, dynamic> json) =>
+      const UpgradedGiftOriginPrepaidUpgrade();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpgradedGiftOriginPrepaidUpgrade copyWith() =>
+      const UpgradedGiftOriginPrepaidUpgrade();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'upgradedGiftOriginPrepaidUpgrade';
 
   @override
   String getConstructor() => CONSTRUCTOR;
