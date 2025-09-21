@@ -10,20 +10,20 @@ final class SetChatTheme extends TdFunction<Ok> {
   /// Changes the chat theme. Supported only in private and secret chats
   const SetChatTheme({
     required this.chatId,
-    required this.themeName,
+    this.theme,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// Name of the new chat theme; pass an empty string to return the default theme
-  final String themeName;
+  /// New chat theme; pass null to return the default theme
+  final InputChatTheme? theme;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'theme_name': themeName,
+        'theme': theme?.toJson(),
         if (extra != null) '@extra': extra,
       };
 
@@ -31,11 +31,11 @@ final class SetChatTheme extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatTheme copyWith({
     int? chatId,
-    String? themeName,
+    InputChatTheme? Function()? theme,
   }) =>
       SetChatTheme(
         chatId: chatId ?? this.chatId,
-        themeName: themeName ?? this.themeName,
+        theme: theme != null ? theme() : this.theme,
       );
 
   /// TDLib type name.

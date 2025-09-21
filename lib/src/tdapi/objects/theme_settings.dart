@@ -7,12 +7,16 @@ part of '../tdapi.dart';
 final class ThemeSettings extends TdObject {
   /// Describes theme settings
   const ThemeSettings({
+    required this.baseTheme,
     required this.accentColor,
     this.background,
-    required this.outgoingMessageFill,
+    this.outgoingMessageFill,
     required this.animateOutgoingMessageFill,
     required this.outgoingMessageAccentColor,
   });
+
+  /// Base theme for this theme
+  final BuiltInTheme baseTheme;
 
   /// Theme accent color in ARGB format
   final int accentColor;
@@ -20,8 +24,8 @@ final class ThemeSettings extends TdObject {
   /// The background to be used in chats; may be null
   final Background? background;
 
-  /// The fill to be used as a background for outgoing messages
-  final BackgroundFill outgoingMessageFill;
+  /// The fill to be used as a background for outgoing messages; may be null if the fill from the base theme must be used instead
+  final BackgroundFill? outgoingMessageFill;
 
   /// If true, the freeform gradient fill needs to be animated on every sent message
   final bool animateOutgoingMessageFill;
@@ -31,10 +35,11 @@ final class ThemeSettings extends TdObject {
 
   /// Parses a [ThemeSettings] from TDLib JSON.
   factory ThemeSettings.fromJson(Map<String, dynamic> json) => ThemeSettings(
+        baseTheme: _readObject(json['base_theme'], BuiltInTheme.fromJson),
         accentColor: _readInt(json['accent_color']),
         background: _readOptional(json['background'], Background.fromJson),
-        outgoingMessageFill:
-            _readObject(json['outgoing_message_fill'], BackgroundFill.fromJson),
+        outgoingMessageFill: _readOptional(
+            json['outgoing_message_fill'], BackgroundFill.fromJson),
         animateOutgoingMessageFill:
             _readBool(json['animate_outgoing_message_fill']),
         outgoingMessageAccentColor:
@@ -44,9 +49,10 @@ final class ThemeSettings extends TdObject {
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'base_theme': baseTheme.toJson(),
         'accent_color': accentColor,
         'background': background?.toJson(),
-        'outgoing_message_fill': outgoingMessageFill.toJson(),
+        'outgoing_message_fill': outgoingMessageFill?.toJson(),
         'animate_outgoing_message_fill': animateOutgoingMessageFill,
         'outgoing_message_accent_color': outgoingMessageAccentColor,
       };
@@ -54,16 +60,20 @@ final class ThemeSettings extends TdObject {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ThemeSettings copyWith({
+    BuiltInTheme? baseTheme,
     int? accentColor,
     Background? Function()? background,
-    BackgroundFill? outgoingMessageFill,
+    BackgroundFill? Function()? outgoingMessageFill,
     bool? animateOutgoingMessageFill,
     int? outgoingMessageAccentColor,
   }) =>
       ThemeSettings(
+        baseTheme: baseTheme ?? this.baseTheme,
         accentColor: accentColor ?? this.accentColor,
         background: background != null ? background() : this.background,
-        outgoingMessageFill: outgoingMessageFill ?? this.outgoingMessageFill,
+        outgoingMessageFill: outgoingMessageFill != null
+            ? outgoingMessageFill()
+            : this.outgoingMessageFill,
         animateOutgoingMessageFill:
             animateOutgoingMessageFill ?? this.animateOutgoingMessageFill,
         outgoingMessageAccentColor:

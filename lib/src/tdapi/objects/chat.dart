@@ -40,7 +40,7 @@ final class Chat extends TdObject {
     required this.messageAutoDeleteTime,
     this.emojiStatus,
     this.background,
-    required this.themeName,
+    this.theme,
     this.actionBar,
     this.businessBotManageBar,
     required this.videoChat,
@@ -151,8 +151,8 @@ final class Chat extends TdObject {
   /// Background set for the chat; may be null if none
   final ChatBackground? background;
 
-  /// If non-empty, name of a theme, set for the chat
-  final String themeName;
+  /// Theme set for the chat; may be null if none
+  final ChatTheme? theme;
 
   /// Information about actions which must be possible to do through the chat action bar; may be null if none
   final ChatActionBar? actionBar;
@@ -227,7 +227,7 @@ final class Chat extends TdObject {
         messageAutoDeleteTime: _readInt(json['message_auto_delete_time']),
         emojiStatus: _readOptional(json['emoji_status'], EmojiStatus.fromJson),
         background: _readOptional(json['background'], ChatBackground.fromJson),
-        themeName: _readString(json['theme_name']),
+        theme: _readOptional(json['theme'], ChatTheme.fromJson),
         actionBar: _readOptional(json['action_bar'], ChatActionBar.fromJson),
         businessBotManageBar: _readOptional(
             json['business_bot_manage_bar'], BusinessBotManageBar.fromJson),
@@ -279,7 +279,7 @@ final class Chat extends TdObject {
         'message_auto_delete_time': messageAutoDeleteTime,
         'emoji_status': emojiStatus?.toJson(),
         'background': background?.toJson(),
-        'theme_name': themeName,
+        'theme': theme?.toJson(),
         'action_bar': actionBar?.toJson(),
         'business_bot_manage_bar': businessBotManageBar?.toJson(),
         'video_chat': videoChat.toJson(),
@@ -325,7 +325,7 @@ final class Chat extends TdObject {
     int? messageAutoDeleteTime,
     EmojiStatus? Function()? emojiStatus,
     ChatBackground? Function()? background,
-    String? themeName,
+    ChatTheme? Function()? theme,
     ChatActionBar? Function()? actionBar,
     BusinessBotManageBar? Function()? businessBotManageBar,
     VideoChat? videoChat,
@@ -379,7 +379,7 @@ final class Chat extends TdObject {
             messageAutoDeleteTime ?? this.messageAutoDeleteTime,
         emojiStatus: emojiStatus != null ? emojiStatus() : this.emojiStatus,
         background: background != null ? background() : this.background,
-        themeName: themeName ?? this.themeName,
+        theme: theme != null ? theme() : this.theme,
         actionBar: actionBar != null ? actionBar() : this.actionBar,
         businessBotManageBar: businessBotManageBar != null
             ? businessBotManageBar()

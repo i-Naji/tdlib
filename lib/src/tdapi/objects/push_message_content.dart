@@ -235,23 +235,35 @@ final class PushMessageContentContact extends PushMessageContent {
 /// A contact has registered with Telegram
 final class PushMessageContentContactRegistered extends PushMessageContent {
   /// A contact has registered with Telegram
-  const PushMessageContentContactRegistered();
+  const PushMessageContentContactRegistered({
+    required this.asPremiumAccount,
+  });
+
+  /// True, if the user joined Telegram as a Telegram Premium account
+  final bool asPremiumAccount;
 
   /// Parses a [PushMessageContentContactRegistered] from TDLib JSON.
   factory PushMessageContentContactRegistered.fromJson(
           Map<String, dynamic> json) =>
-      const PushMessageContentContactRegistered();
+      PushMessageContentContactRegistered(
+        asPremiumAccount: _readBool(json['as_premium_account']),
+      );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
+        'as_premium_account': asPremiumAccount,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
-  PushMessageContentContactRegistered copyWith() =>
-      const PushMessageContentContactRegistered();
+  PushMessageContentContactRegistered copyWith({
+    bool? asPremiumAccount,
+  }) =>
+      PushMessageContentContactRegistered(
+        asPremiumAccount: asPremiumAccount ?? this.asPremiumAccount,
+      );
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'pushMessageContentContactRegistered';
@@ -768,21 +780,27 @@ final class PushMessageContentGift extends PushMessageContent {
   /// A message with a gift
   const PushMessageContentGift({
     required this.starCount,
+    required this.isPrepaidUpgrade,
   });
 
   /// Number of Telegram Stars that sender paid for the gift
   final int starCount;
 
+  /// True, if the message is about prepaid upgrade of the gift by another user instead of actual receiving of a new gift
+  final bool isPrepaidUpgrade;
+
   /// Parses a [PushMessageContentGift] from TDLib JSON.
   factory PushMessageContentGift.fromJson(Map<String, dynamic> json) =>
       PushMessageContentGift(
         starCount: _readInt(json['star_count']),
+        isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'star_count': starCount,
+        'is_prepaid_upgrade': isPrepaidUpgrade,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -790,9 +808,11 @@ final class PushMessageContentGift extends PushMessageContent {
   @override
   PushMessageContentGift copyWith({
     int? starCount,
+    bool? isPrepaidUpgrade,
   }) =>
       PushMessageContentGift(
         starCount: starCount ?? this.starCount,
+        isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
       );
 
   /// TDLib type name.
@@ -807,21 +827,27 @@ final class PushMessageContentUpgradedGift extends PushMessageContent {
   /// A message with an upgraded gift
   const PushMessageContentUpgradedGift({
     required this.isUpgrade,
+    required this.isPrepaidUpgrade,
   });
 
-  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
+  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, if is_prepaid_upgrade == false, then this is a transferred or resold gift
   final bool isUpgrade;
+
+  /// True, if the message is about completion of prepaid upgrade of the gift instead of actual receiving of a new gift
+  final bool isPrepaidUpgrade;
 
   /// Parses a [PushMessageContentUpgradedGift] from TDLib JSON.
   factory PushMessageContentUpgradedGift.fromJson(Map<String, dynamic> json) =>
       PushMessageContentUpgradedGift(
         isUpgrade: _readBool(json['is_upgrade']),
+        isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'is_upgrade': isUpgrade,
+        'is_prepaid_upgrade': isPrepaidUpgrade,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -829,9 +855,11 @@ final class PushMessageContentUpgradedGift extends PushMessageContent {
   @override
   PushMessageContentUpgradedGift copyWith({
     bool? isUpgrade,
+    bool? isPrepaidUpgrade,
   }) =>
       PushMessageContentUpgradedGift(
         isUpgrade: isUpgrade ?? this.isUpgrade,
+        isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
       );
 
   /// TDLib type name.
@@ -1516,32 +1544,32 @@ final class PushMessageContentChatSetBackground extends PushMessageContent {
 final class PushMessageContentChatSetTheme extends PushMessageContent {
   /// A chat theme was edited
   const PushMessageContentChatSetTheme({
-    required this.themeName,
+    required this.name,
   });
 
-  /// If non-empty, name of a new theme, set for the chat. Otherwise, the chat theme was reset to the default one
-  final String themeName;
+  /// If non-empty, human-readable name of the new theme. Otherwise, the chat theme was reset to the default one
+  final String name;
 
   /// Parses a [PushMessageContentChatSetTheme] from TDLib JSON.
   factory PushMessageContentChatSetTheme.fromJson(Map<String, dynamic> json) =>
       PushMessageContentChatSetTheme(
-        themeName: _readString(json['theme_name']),
+        name: _readString(json['name']),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'theme_name': themeName,
+        'name': name,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   PushMessageContentChatSetTheme copyWith({
-    String? themeName,
+    String? name,
   }) =>
       PushMessageContentChatSetTheme(
-        themeName: themeName ?? this.themeName,
+        name: name ?? this.name,
       );
 
   /// TDLib type name.

@@ -363,6 +363,7 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
     required this.currency,
     required this.amount,
     required this.starCount,
+    required this.chatId,
   });
 
   /// ISO 4217 currency code of the payment currency
@@ -374,12 +375,16 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
   /// Number of bought Telegram Stars
   final int starCount;
 
+  /// Identifier of the chat that is supposed to receive the Telegram Stars; pass 0 if none
+  final int chatId;
+
   /// Parses a [StorePaymentPurposeStars] from TDLib JSON.
   factory StorePaymentPurposeStars.fromJson(Map<String, dynamic> json) =>
       StorePaymentPurposeStars(
         currency: _readString(json['currency']),
         amount: _readInt(json['amount']),
         starCount: _readInt(json['star_count']),
+        chatId: _readInt(json['chat_id']),
       );
 
   @override
@@ -388,6 +393,7 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
         'currency': currency,
         'amount': amount,
         'star_count': starCount,
+        'chat_id': chatId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -397,11 +403,13 @@ final class StorePaymentPurposeStars extends StorePaymentPurpose {
     String? currency,
     int? amount,
     int? starCount,
+    int? chatId,
   }) =>
       StorePaymentPurposeStars(
         currency: currency ?? this.currency,
         amount: amount ?? this.amount,
         starCount: starCount ?? this.starCount,
+        chatId: chatId ?? this.chatId,
       );
 
   /// TDLib type name.

@@ -29,6 +29,8 @@ final class UserFullInfo extends TdObject {
     required this.outgoingPaidMessageStarCount,
     required this.giftSettings,
     this.botVerification,
+    this.mainProfileTab,
+    this.firstProfileAudio,
     this.rating,
     this.pendingRating,
     required this.pendingRatingDate,
@@ -104,6 +106,12 @@ final class UserFullInfo extends TdObject {
   /// Information about verification status of the user provided by a bot; may be null if none or unknown
   final BotVerification? botVerification;
 
+  /// The main tab chosen by the user; may be null if not chosen manually
+  final ProfileTab? mainProfileTab;
+
+  /// The first audio file added to the user's profile; may be null if none
+  final Audio? firstProfileAudio;
+
   /// The current rating of the user; may be null if none
   final UserRating? rating;
 
@@ -159,6 +167,10 @@ final class UserFullInfo extends TdObject {
         giftSettings: _readObject(json['gift_settings'], GiftSettings.fromJson),
         botVerification:
             _readOptional(json['bot_verification'], BotVerification.fromJson),
+        mainProfileTab:
+            _readOptional(json['main_profile_tab'], ProfileTab.fromJson),
+        firstProfileAudio:
+            _readOptional(json['first_profile_audio'], Audio.fromJson),
         rating: _readOptional(json['rating'], UserRating.fromJson),
         pendingRating:
             _readOptional(json['pending_rating'], UserRating.fromJson),
@@ -196,6 +208,8 @@ final class UserFullInfo extends TdObject {
         'outgoing_paid_message_star_count': outgoingPaidMessageStarCount,
         'gift_settings': giftSettings.toJson(),
         'bot_verification': botVerification?.toJson(),
+        'main_profile_tab': mainProfileTab?.toJson(),
+        'first_profile_audio': firstProfileAudio?.toJson(),
         'rating': rating?.toJson(),
         'pending_rating': pendingRating?.toJson(),
         'pending_rating_date': pendingRatingDate,
@@ -228,6 +242,8 @@ final class UserFullInfo extends TdObject {
     int? outgoingPaidMessageStarCount,
     GiftSettings? giftSettings,
     BotVerification? Function()? botVerification,
+    ProfileTab? Function()? mainProfileTab,
+    Audio? Function()? firstProfileAudio,
     UserRating? Function()? rating,
     UserRating? Function()? pendingRating,
     int? pendingRatingDate,
@@ -268,6 +284,11 @@ final class UserFullInfo extends TdObject {
         giftSettings: giftSettings ?? this.giftSettings,
         botVerification:
             botVerification != null ? botVerification() : this.botVerification,
+        mainProfileTab:
+            mainProfileTab != null ? mainProfileTab() : this.mainProfileTab,
+        firstProfileAudio: firstProfileAudio != null
+            ? firstProfileAudio()
+            : this.firstProfileAudio,
         rating: rating != null ? rating() : this.rating,
         pendingRating:
             pendingRating != null ? pendingRating() : this.pendingRating,

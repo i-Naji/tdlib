@@ -15,6 +15,7 @@ final class Gift extends TdObject {
     required this.upgradeStarCount,
     required this.isForBirthday,
     required this.isPremium,
+    required this.nextSendDate,
     this.userLimits,
     this.overallLimits,
     required this.firstSendDate,
@@ -45,6 +46,9 @@ final class Gift extends TdObject {
   /// True, if the gift can be bought only by Telegram Premium subscribers
   final bool isPremium;
 
+  /// Point in time (Unix timestamp) when the gift can be sent next time by the current user; can be 0 or a date in the past. If the date is in the future, then call canSendGift to get the reason, why the gift can't be sent now
+  final int nextSendDate;
+
   /// Number of times the gift can be purchased by the current user; may be null if not limited
   final GiftPurchaseLimits? userLimits;
 
@@ -67,6 +71,7 @@ final class Gift extends TdObject {
         upgradeStarCount: _readInt(json['upgrade_star_count']),
         isForBirthday: _readBool(json['is_for_birthday']),
         isPremium: _readBool(json['is_premium']),
+        nextSendDate: _readInt(json['next_send_date']),
         userLimits:
             _readOptional(json['user_limits'], GiftPurchaseLimits.fromJson),
         overallLimits:
@@ -86,6 +91,7 @@ final class Gift extends TdObject {
         'upgrade_star_count': upgradeStarCount,
         'is_for_birthday': isForBirthday,
         'is_premium': isPremium,
+        'next_send_date': nextSendDate,
         'user_limits': userLimits?.toJson(),
         'overall_limits': overallLimits?.toJson(),
         'first_send_date': firstSendDate,
@@ -103,6 +109,7 @@ final class Gift extends TdObject {
     int? upgradeStarCount,
     bool? isForBirthday,
     bool? isPremium,
+    int? nextSendDate,
     GiftPurchaseLimits? Function()? userLimits,
     GiftPurchaseLimits? Function()? overallLimits,
     int? firstSendDate,
@@ -117,6 +124,7 @@ final class Gift extends TdObject {
         upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
         isForBirthday: isForBirthday ?? this.isForBirthday,
         isPremium: isPremium ?? this.isPremium,
+        nextSendDate: nextSendDate ?? this.nextSendDate,
         userLimits: userLimits != null ? userLimits() : this.userLimits,
         overallLimits:
             overallLimits != null ? overallLimits() : this.overallLimits,

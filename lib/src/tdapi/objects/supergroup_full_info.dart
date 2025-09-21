@@ -44,6 +44,7 @@ final class SupergroupFullInfo extends TdObject {
     this.inviteLink,
     required this.botCommands,
     this.botVerification,
+    this.mainProfileTab,
     required this.upgradedFromBasicGroupId,
     required this.upgradedFromMaxMessageId,
     this.extra,
@@ -161,6 +162,9 @@ final class SupergroupFullInfo extends TdObject {
   /// Information about verification status of the supergroup or the channel provided by a bot; may be null if none or unknown
   final BotVerification? botVerification;
 
+  /// The main tab chosen by the administrators of the channel; may be null if not chosen manually
+  final ProfileTab? mainProfileTab;
+
   /// Identifier of the basic group from which supergroup was upgraded; 0 if none
   final int upgradedFromBasicGroupId;
 
@@ -222,6 +226,8 @@ final class SupergroupFullInfo extends TdObject {
             json['bot_commands'], (e) => _readObject(e, BotCommands.fromJson)),
         botVerification:
             _readOptional(json['bot_verification'], BotVerification.fromJson),
+        mainProfileTab:
+            _readOptional(json['main_profile_tab'], ProfileTab.fromJson),
         upgradedFromBasicGroupId:
             _readInt(json['upgraded_from_basic_group_id']),
         upgradedFromMaxMessageId:
@@ -270,6 +276,7 @@ final class SupergroupFullInfo extends TdObject {
         'invite_link': inviteLink?.toJson(),
         'bot_commands': [for (final e in botCommands) e.toJson()],
         'bot_verification': botVerification?.toJson(),
+        'main_profile_tab': mainProfileTab?.toJson(),
         'upgraded_from_basic_group_id': upgradedFromBasicGroupId,
         'upgraded_from_max_message_id': upgradedFromMaxMessageId,
       };
@@ -314,6 +321,7 @@ final class SupergroupFullInfo extends TdObject {
     ChatInviteLink? Function()? inviteLink,
     List<BotCommands>? botCommands,
     BotVerification? Function()? botVerification,
+    ProfileTab? Function()? mainProfileTab,
     int? upgradedFromBasicGroupId,
     int? upgradedFromMaxMessageId,
     dynamic extra,
@@ -369,6 +377,8 @@ final class SupergroupFullInfo extends TdObject {
         botCommands: botCommands ?? this.botCommands,
         botVerification:
             botVerification != null ? botVerification() : this.botVerification,
+        mainProfileTab:
+            mainProfileTab != null ? mainProfileTab() : this.mainProfileTab,
         upgradedFromBasicGroupId:
             upgradedFromBasicGroupId ?? this.upgradedFromBasicGroupId,
         upgradedFromMaxMessageId:

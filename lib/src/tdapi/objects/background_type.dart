@@ -191,14 +191,14 @@ final class BackgroundTypeFill extends BackgroundType {
   String getConstructor() => CONSTRUCTOR;
 }
 
-/// A background from a chat theme; can be used only as a chat background in channels
+/// A background from a chat theme based on an emoji; can be used only as a chat background in channels
 final class BackgroundTypeChatTheme extends BackgroundType {
-  /// A background from a chat theme; can be used only as a chat background in channels
+  /// A background from a chat theme based on an emoji; can be used only as a chat background in channels
   const BackgroundTypeChatTheme({
     required this.themeName,
   });
 
-  /// Name of the chat theme
+  /// Name of the emoji chat theme
   final String themeName;
 
   /// Parses a [BackgroundTypeChatTheme] from TDLib JSON.

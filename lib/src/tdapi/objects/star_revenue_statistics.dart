@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// A detailed statistics about Telegram Stars earned by a bot or a chat
+/// A detailed statistics about Telegram Stars earned by a user or a chat
 final class StarRevenueStatistics extends TdObject {
-  /// A detailed statistics about Telegram Stars earned by a bot or a chat
+  /// A detailed statistics about Telegram Stars earned by a user or a chat
   const StarRevenueStatistics({
     required this.revenueByDayGraph,
     required this.status,

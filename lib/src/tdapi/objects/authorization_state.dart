@@ -145,12 +145,20 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   /// The user must buy Telegram Premium as an in-store purchase to log in. Call checkAuthenticationPremiumPurchase and then setAuthenticationPremiumPurchaseTransaction
   const AuthorizationStateWaitPremiumPurchase({
     required this.storeProductId,
+    required this.supportEmailAddress,
+    required this.supportEmailSubject,
     this.extra,
     this.clientId,
   });
 
   /// Identifier of the store product that must be bought
   final String storeProductId;
+
+  /// Email address to use for support if the user has issues with Telegram Premium purchase
+  final String supportEmailAddress;
+
+  /// Subject for the email sent to the support email address
+  final String supportEmailSubject;
 
   /// "@extra" of the request this object answers.
   @override
@@ -165,6 +173,8 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
           Map<String, dynamic> json) =>
       AuthorizationStateWaitPremiumPurchase(
         storeProductId: _readString(json['store_product_id']),
+        supportEmailAddress: _readString(json['support_email_address']),
+        supportEmailSubject: _readString(json['support_email_subject']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -173,6 +183,8 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'store_product_id': storeProductId,
+        'support_email_address': supportEmailAddress,
+        'support_email_subject': supportEmailSubject,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -180,11 +192,15 @@ final class AuthorizationStateWaitPremiumPurchase extends AuthorizationState {
   @override
   AuthorizationStateWaitPremiumPurchase copyWith({
     String? storeProductId,
+    String? supportEmailAddress,
+    String? supportEmailSubject,
     dynamic extra,
     int? clientId,
   }) =>
       AuthorizationStateWaitPremiumPurchase(
         storeProductId: storeProductId ?? this.storeProductId,
+        supportEmailAddress: supportEmailAddress ?? this.supportEmailAddress,
+        supportEmailSubject: supportEmailSubject ?? this.supportEmailSubject,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

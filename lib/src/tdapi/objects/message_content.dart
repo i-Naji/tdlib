@@ -2142,32 +2142,32 @@ final class MessageChatSetBackground extends MessageContent {
 final class MessageChatSetTheme extends MessageContent {
   /// A theme in the chat has been changed
   const MessageChatSetTheme({
-    required this.themeName,
+    this.theme,
   });
 
-  /// If non-empty, name of a new theme, set for the chat. Otherwise, chat theme was reset to the default one
-  final String themeName;
+  /// New theme for the chat; may be null if chat theme was reset to the default one
+  final ChatTheme? theme;
 
   /// Parses a [MessageChatSetTheme] from TDLib JSON.
   factory MessageChatSetTheme.fromJson(Map<String, dynamic> json) =>
       MessageChatSetTheme(
-        themeName: _readString(json['theme_name']),
+        theme: _readOptional(json['theme'], ChatTheme.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'theme_name': themeName,
+        'theme': theme?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   MessageChatSetTheme copyWith({
-    String? themeName,
+    ChatTheme? Function()? theme,
   }) =>
       MessageChatSetTheme(
-        themeName: themeName ?? this.themeName,
+        theme: theme != null ? theme() : this.theme,
       );
 
   /// TDLib type name.
@@ -3649,6 +3649,7 @@ final class MessageGift extends MessageContent {
     required this.text,
     required this.sellStarCount,
     required this.prepaidUpgradeStarCount,
+    required this.isUpgradeSeparate,
     required this.isPrivate,
     required this.isSaved,
     required this.isPrepaidUpgrade,
@@ -3680,6 +3681,9 @@ final class MessageGift extends MessageContent {
 
   /// Number of Telegram Stars that were paid by the sender for the ability to upgrade the gift
   final int prepaidUpgradeStarCount;
+
+  /// True, if the upgrade was bought after the gift was sent. In this case, prepaid upgrade cost must not be added to the gift cost
+  final bool isUpgradeSeparate;
 
   /// True, if the sender and gift text are shown only to the gift receiver; otherwise, everyone will be able to see them
   final bool isPrivate;
@@ -3717,6 +3721,7 @@ final class MessageGift extends MessageContent {
         text: _readObject(json['text'], FormattedText.fromJson),
         sellStarCount: _readInt(json['sell_star_count']),
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
+        isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
         isPrivate: _readBool(json['is_private']),
         isSaved: _readBool(json['is_saved']),
         isPrepaidUpgrade: _readBool(json['is_prepaid_upgrade']),
@@ -3738,6 +3743,7 @@ final class MessageGift extends MessageContent {
         'text': text.toJson(),
         'sell_star_count': sellStarCount,
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
+        'is_upgrade_separate': isUpgradeSeparate,
         'is_private': isPrivate,
         'is_saved': isSaved,
         'is_prepaid_upgrade': isPrepaidUpgrade,
@@ -3760,6 +3766,7 @@ final class MessageGift extends MessageContent {
     FormattedText? text,
     int? sellStarCount,
     int? prepaidUpgradeStarCount,
+    bool? isUpgradeSeparate,
     bool? isPrivate,
     bool? isSaved,
     bool? isPrepaidUpgrade,
@@ -3779,6 +3786,7 @@ final class MessageGift extends MessageContent {
         sellStarCount: sellStarCount ?? this.sellStarCount,
         prepaidUpgradeStarCount:
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
+        isUpgradeSeparate: isUpgradeSeparate ?? this.isUpgradeSeparate,
         isPrivate: isPrivate ?? this.isPrivate,
         isSaved: isSaved ?? this.isSaved,
         isPrepaidUpgrade: isPrepaidUpgrade ?? this.isPrepaidUpgrade,
@@ -3932,7 +3940,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
     required this.gift,
     required this.senderId,
     required this.receiverId,
-    required this.isUpgrade,
+    required this.origin,
   });
 
   /// The gift
@@ -3944,8 +3952,8 @@ final class MessageRefundedUpgradedGift extends MessageContent {
   /// Receiver of the gift
   final MessageSender receiverId;
 
-  /// True, if the gift was obtained by upgrading of a previously received gift; otherwise, this is a transferred or resold gift
-  final bool isUpgrade;
+  /// Origin of the upgraded gift
+  final UpgradedGiftOrigin origin;
 
   /// Parses a [MessageRefundedUpgradedGift] from TDLib JSON.
   factory MessageRefundedUpgradedGift.fromJson(Map<String, dynamic> json) =>
@@ -3953,7 +3961,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
         gift: _readObject(json['gift'], Gift.fromJson),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
         receiverId: _readObject(json['receiver_id'], MessageSender.fromJson),
-        isUpgrade: _readBool(json['is_upgrade']),
+        origin: _readObject(json['origin'], UpgradedGiftOrigin.fromJson),
       );
 
   @override
@@ -3962,7 +3970,7 @@ final class MessageRefundedUpgradedGift extends MessageContent {
         'gift': gift.toJson(),
         'sender_id': senderId.toJson(),
         'receiver_id': receiverId.toJson(),
-        'is_upgrade': isUpgrade,
+        'origin': origin.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -3972,13 +3980,13 @@ final class MessageRefundedUpgradedGift extends MessageContent {
     Gift? gift,
     MessageSender? senderId,
     MessageSender? receiverId,
-    bool? isUpgrade,
+    UpgradedGiftOrigin? origin,
   }) =>
       MessageRefundedUpgradedGift(
         gift: gift ?? this.gift,
         senderId: senderId ?? this.senderId,
         receiverId: receiverId ?? this.receiverId,
-        isUpgrade: isUpgrade ?? this.isUpgrade,
+        origin: origin ?? this.origin,
       );
 
   /// TDLib type name.

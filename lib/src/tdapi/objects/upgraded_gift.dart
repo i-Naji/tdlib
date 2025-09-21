@@ -16,6 +16,8 @@ final class UpgradedGift extends TdObject {
     required this.totalUpgradedCount,
     required this.maxUpgradedCount,
     required this.isPremium,
+    required this.isThemeAvailable,
+    required this.usedThemeChatId,
     this.ownerId,
     required this.ownerAddress,
     required this.ownerName,
@@ -57,6 +59,12 @@ final class UpgradedGift extends TdObject {
 
   /// True, if the original gift could have been bought only by Telegram Premium subscribers
   final bool isPremium;
+
+  /// True, if the gift can be used to set a theme in a chat
+  final bool isThemeAvailable;
+
+  /// Identifier of the chat for which the gift is used to set a theme; 0 if none or the gift isn't owned by the current user
+  final int usedThemeChatId;
 
   /// Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown
   final MessageSender? ownerId;
@@ -110,6 +118,8 @@ final class UpgradedGift extends TdObject {
         totalUpgradedCount: _readInt(json['total_upgraded_count']),
         maxUpgradedCount: _readInt(json['max_upgraded_count']),
         isPremium: _readBool(json['is_premium']),
+        isThemeAvailable: _readBool(json['is_theme_available']),
+        usedThemeChatId: _readInt(json['used_theme_chat_id']),
         ownerId: _readOptional(json['owner_id'], MessageSender.fromJson),
         ownerAddress: _readString(json['owner_address']),
         ownerName: _readString(json['owner_name']),
@@ -139,6 +149,8 @@ final class UpgradedGift extends TdObject {
         'total_upgraded_count': totalUpgradedCount,
         'max_upgraded_count': maxUpgradedCount,
         'is_premium': isPremium,
+        'is_theme_available': isThemeAvailable,
+        'used_theme_chat_id': usedThemeChatId,
         'owner_id': ownerId?.toJson(),
         'owner_address': ownerAddress,
         'owner_name': ownerName,
@@ -164,6 +176,8 @@ final class UpgradedGift extends TdObject {
     int? totalUpgradedCount,
     int? maxUpgradedCount,
     bool? isPremium,
+    bool? isThemeAvailable,
+    int? usedThemeChatId,
     MessageSender? Function()? ownerId,
     String? ownerAddress,
     String? ownerName,
@@ -188,6 +202,8 @@ final class UpgradedGift extends TdObject {
         totalUpgradedCount: totalUpgradedCount ?? this.totalUpgradedCount,
         maxUpgradedCount: maxUpgradedCount ?? this.maxUpgradedCount,
         isPremium: isPremium ?? this.isPremium,
+        isThemeAvailable: isThemeAvailable ?? this.isThemeAvailable,
+        usedThemeChatId: usedThemeChatId ?? this.usedThemeChatId,
         ownerId: ownerId != null ? ownerId() : this.ownerId,
         ownerAddress: ownerAddress ?? this.ownerAddress,
         ownerName: ownerName ?? this.ownerName,

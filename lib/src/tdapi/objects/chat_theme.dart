@@ -4,55 +4,115 @@
 part of '../tdapi.dart';
 
 /// Describes a chat theme
-final class ChatTheme extends TdObject {
-  /// Describes a chat theme
-  const ChatTheme({
+///
+/// One of: [ChatThemeEmoji], [ChatThemeGift]; or [UndecodedChatTheme] for a type newer than this API.
+sealed class ChatTheme extends TdObject {
+  const ChatTheme();
+
+  /// Parses whichever [ChatTheme] subtype the JSON describes.
+  factory ChatTheme.fromJson(Map<String, dynamic> json) {
+    final object = tdObjectFactories[json['@type']]?.call(json);
+    return object is ChatTheme ? object : UndecodedChatTheme(json);
+  }
+
+  /// Returns a copy of this object.
+  ChatTheme copyWith();
+}
+
+/// A [ChatTheme] this API can't decode (sent by a newer TDLib).
+final class UndecodedChatTheme extends ChatTheme {
+  const UndecodedChatTheme(this.json);
+
+  /// The raw TDLib JSON object.
+  final Map<String, dynamic> json;
+
+  @override
+  dynamic get extra => json['@extra'];
+
+  @override
+  int? get clientId => _readClientId(json['@client_id']);
+
+  @override
+  Map<String, dynamic> toJson() => json;
+
+  @override
+  UndecodedChatTheme copyWith() => this;
+
+  @override
+  String getConstructor() => _readString(json['@type']);
+}
+
+/// A chat theme based on an emoji
+final class ChatThemeEmoji extends ChatTheme {
+  /// A chat theme based on an emoji
+  const ChatThemeEmoji({
     required this.name,
-    required this.lightSettings,
-    required this.darkSettings,
   });
 
-  /// Theme name
+  /// Name of the theme; full theme description is received through updateEmojiChatThemes
   final String name;
 
-  /// Theme settings for a light chat theme
-  final ThemeSettings lightSettings;
-
-  /// Theme settings for a dark chat theme
-  final ThemeSettings darkSettings;
-
-  /// Parses a [ChatTheme] from TDLib JSON.
-  factory ChatTheme.fromJson(Map<String, dynamic> json) => ChatTheme(
+  /// Parses a [ChatThemeEmoji] from TDLib JSON.
+  factory ChatThemeEmoji.fromJson(Map<String, dynamic> json) => ChatThemeEmoji(
         name: _readString(json['name']),
-        lightSettings:
-            _readObject(json['light_settings'], ThemeSettings.fromJson),
-        darkSettings:
-            _readObject(json['dark_settings'], ThemeSettings.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'name': name,
-        'light_settings': lightSettings.toJson(),
-        'dark_settings': darkSettings.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ChatTheme copyWith({
+  @override
+  ChatThemeEmoji copyWith({
     String? name,
-    ThemeSettings? lightSettings,
-    ThemeSettings? darkSettings,
   }) =>
-      ChatTheme(
+      ChatThemeEmoji(
         name: name ?? this.name,
-        lightSettings: lightSettings ?? this.lightSettings,
-        darkSettings: darkSettings ?? this.darkSettings,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'chatTheme';
+  static const String CONSTRUCTOR = 'chatThemeEmoji';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A chat theme based on an upgraded gift
+final class ChatThemeGift extends ChatTheme {
+  /// A chat theme based on an upgraded gift
+  const ChatThemeGift({
+    required this.giftTheme,
+  });
+
+  /// The chat theme
+  final GiftChatTheme giftTheme;
+
+  /// Parses a [ChatThemeGift] from TDLib JSON.
+  factory ChatThemeGift.fromJson(Map<String, dynamic> json) => ChatThemeGift(
+        giftTheme: _readObject(json['gift_theme'], GiftChatTheme.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'gift_theme': giftTheme.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  ChatThemeGift copyWith({
+    GiftChatTheme? giftTheme,
+  }) =>
+      ChatThemeGift(
+        giftTheme: giftTheme ?? this.giftTheme,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'chatThemeGift';
 
   @override
   String getConstructor() => CONSTRUCTOR;
