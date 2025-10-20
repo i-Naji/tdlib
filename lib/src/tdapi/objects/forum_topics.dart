@@ -11,7 +11,7 @@ final class ForumTopics extends TdObject {
     required this.topics,
     required this.nextOffsetDate,
     required this.nextOffsetMessageId,
-    required this.nextOffsetMessageThreadId,
+    required this.nextOffsetForumTopicId,
     this.extra,
     this.clientId,
   });
@@ -28,8 +28,8 @@ final class ForumTopics extends TdObject {
   /// Offset message identifier for the next getForumTopics request
   final int nextOffsetMessageId;
 
-  /// Offset message thread identifier for the next getForumTopics request
-  final int nextOffsetMessageThreadId;
+  /// Offset forum topic identifier for the next getForumTopics request
+  final int nextOffsetForumTopicId;
 
   /// "@extra" of the request this object answers.
   @override
@@ -46,8 +46,7 @@ final class ForumTopics extends TdObject {
             json['topics'], (e) => _readObject(e, ForumTopic.fromJson)),
         nextOffsetDate: _readInt(json['next_offset_date']),
         nextOffsetMessageId: _readInt(json['next_offset_message_id']),
-        nextOffsetMessageThreadId:
-            _readInt(json['next_offset_message_thread_id']),
+        nextOffsetForumTopicId: _readInt(json['next_offset_forum_topic_id']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -59,7 +58,7 @@ final class ForumTopics extends TdObject {
         'topics': [for (final e in topics) e.toJson()],
         'next_offset_date': nextOffsetDate,
         'next_offset_message_id': nextOffsetMessageId,
-        'next_offset_message_thread_id': nextOffsetMessageThreadId,
+        'next_offset_forum_topic_id': nextOffsetForumTopicId,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -69,7 +68,7 @@ final class ForumTopics extends TdObject {
     List<ForumTopic>? topics,
     int? nextOffsetDate,
     int? nextOffsetMessageId,
-    int? nextOffsetMessageThreadId,
+    int? nextOffsetForumTopicId,
     dynamic extra,
     int? clientId,
   }) =>
@@ -78,8 +77,8 @@ final class ForumTopics extends TdObject {
         topics: topics ?? this.topics,
         nextOffsetDate: nextOffsetDate ?? this.nextOffsetDate,
         nextOffsetMessageId: nextOffsetMessageId ?? this.nextOffsetMessageId,
-        nextOffsetMessageThreadId:
-            nextOffsetMessageThreadId ?? this.nextOffsetMessageThreadId,
+        nextOffsetForumTopicId:
+            nextOffsetForumTopicId ?? this.nextOffsetForumTopicId,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

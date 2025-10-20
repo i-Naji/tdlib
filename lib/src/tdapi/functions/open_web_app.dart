@@ -12,8 +12,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     required this.chatId,
     required this.botUserId,
     required this.url,
-    required this.messageThreadId,
-    required this.directMessagesChatTopicId,
+    this.topicId,
     this.replyTo,
     required this.parameters,
   });
@@ -27,11 +26,8 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
   /// The URL from an inlineKeyboardButtonTypeWebApp button, a botMenuButton button, an internalLinkTypeAttachmentMenuBot link, or an empty string otherwise
   final String url;
 
-  /// If not 0, the message thread identifier to which the message will be sent
-  final int messageThreadId;
-
-  /// If not 0, unique identifier of the topic of channel direct messages chat to which the message will be sent
-  final int directMessagesChatTopicId;
+  /// Topic in which the message will be sent; pass null if none
+  final MessageTopic? topicId;
 
   /// Information about the message or story to be replied in the message sent by the Web App; pass null if none
   final InputMessageReplyTo? replyTo;
@@ -45,8 +41,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
         'chat_id': chatId,
         'bot_user_id': botUserId,
         'url': url,
-        'message_thread_id': messageThreadId,
-        'direct_messages_chat_topic_id': directMessagesChatTopicId,
+        'topic_id': topicId?.toJson(),
         'reply_to': replyTo?.toJson(),
         'parameters': parameters.toJson(),
         if (extra != null) '@extra': extra,
@@ -58,8 +53,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
     int? chatId,
     int? botUserId,
     String? url,
-    int? messageThreadId,
-    int? directMessagesChatTopicId,
+    MessageTopic? Function()? topicId,
     InputMessageReplyTo? Function()? replyTo,
     WebAppOpenParameters? parameters,
   }) =>
@@ -67,9 +61,7 @@ final class OpenWebApp extends TdFunction<WebAppInfo> {
         chatId: chatId ?? this.chatId,
         botUserId: botUserId ?? this.botUserId,
         url: url ?? this.url,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
-        directMessagesChatTopicId:
-            directMessagesChatTopicId ?? this.directMessagesChatTopicId,
+        topicId: topicId != null ? topicId() : this.topicId,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         parameters: parameters ?? this.parameters,
       );

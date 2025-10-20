@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains notifications about data changes
 ///
-/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedTonCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateTonRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
+/// One of: [UpdateAuthorizationState], [UpdateNewMessage], [UpdateMessageSendAcknowledged], [UpdateMessageSendSucceeded], [UpdateMessageSendFailed], [UpdateMessageContent], [UpdateMessageEdited], [UpdateMessageIsPinned], [UpdateMessageInteractionInfo], [UpdateMessageContentOpened], [UpdateMessageMentionRead], [UpdateMessageUnreadReactions], [UpdateMessageFactCheck], [UpdateMessageSuggestedPostInfo], [UpdateMessageLiveLocationViewed], [UpdateVideoPublished], [UpdateNewChat], [UpdateChatTitle], [UpdateChatPhoto], [UpdateChatAccentColors], [UpdateChatPermissions], [UpdateChatLastMessage], [UpdateChatPosition], [UpdateChatAddedToList], [UpdateChatRemovedFromList], [UpdateChatReadInbox], [UpdateChatReadOutbox], [UpdateChatActionBar], [UpdateChatBusinessBotManageBar], [UpdateChatAvailableReactions], [UpdateChatDraftMessage], [UpdateChatEmojiStatus], [UpdateChatMessageSender], [UpdateChatMessageAutoDeleteTime], [UpdateChatNotificationSettings], [UpdateChatPendingJoinRequests], [UpdateChatReplyMarkup], [UpdateChatBackground], [UpdateChatTheme], [UpdateChatUnreadMentionCount], [UpdateChatUnreadReactionCount], [UpdateChatVideoChat], [UpdateChatDefaultDisableNotification], [UpdateChatHasProtectedContent], [UpdateChatIsTranslatable], [UpdateChatIsMarkedAsUnread], [UpdateChatViewAsTopics], [UpdateChatBlockList], [UpdateChatHasScheduledMessages], [UpdateChatFolders], [UpdateChatOnlineMemberCount], [UpdateSavedMessagesTopic], [UpdateSavedMessagesTopicCount], [UpdateDirectMessagesChatTopic], [UpdateTopicMessageCount], [UpdateQuickReplyShortcut], [UpdateQuickReplyShortcutDeleted], [UpdateQuickReplyShortcuts], [UpdateQuickReplyShortcutMessages], [UpdateForumTopicInfo], [UpdateForumTopic], [UpdateScopeNotificationSettings], [UpdateReactionNotificationSettings], [UpdateNotification], [UpdateNotificationGroup], [UpdateActiveNotifications], [UpdateHavePendingNotifications], [UpdateDeleteMessages], [UpdateChatAction], [UpdatePendingTextMessage], [UpdateUserStatus], [UpdateUser], [UpdateBasicGroup], [UpdateSupergroup], [UpdateSecretChat], [UpdateUserFullInfo], [UpdateBasicGroupFullInfo], [UpdateSupergroupFullInfo], [UpdateServiceNotification], [UpdateFile], [UpdateFileGenerationStart], [UpdateFileGenerationStop], [UpdateFileDownloads], [UpdateFileAddedToDownloads], [UpdateFileDownload], [UpdateFileRemovedFromDownloads], [UpdateApplicationVerificationRequired], [UpdateApplicationRecaptchaVerificationRequired], [UpdateCall], [UpdateGroupCall], [UpdateGroupCallParticipant], [UpdateGroupCallParticipants], [UpdateGroupCallVerificationState], [UpdateGroupCallNewMessage], [UpdateNewCallSignalingData], [UpdateUserPrivacySettingRules], [UpdateUnreadMessageCount], [UpdateUnreadChatCount], [UpdateStory], [UpdateStoryDeleted], [UpdateStoryPostSucceeded], [UpdateStoryPostFailed], [UpdateChatActiveStories], [UpdateStoryListChatCount], [UpdateStoryStealthMode], [UpdateOption], [UpdateStickerSet], [UpdateInstalledStickerSets], [UpdateTrendingStickerSets], [UpdateRecentStickers], [UpdateFavoriteStickers], [UpdateSavedAnimations], [UpdateSavedNotificationSounds], [UpdateDefaultBackground], [UpdateEmojiChatThemes], [UpdateAccentColors], [UpdateProfileAccentColors], [UpdateLanguagePackStrings], [UpdateConnectionState], [UpdateFreezeState], [UpdateAgeVerificationParameters], [UpdateTermsOfService], [UpdateUnconfirmedSession], [UpdateAttachmentMenuBots], [UpdateWebAppMessageSent], [UpdateActiveEmojiReactions], [UpdateAvailableMessageEffects], [UpdateDefaultReactionType], [UpdateDefaultPaidReactionType], [UpdateSavedMessagesTags], [UpdateActiveLiveLocationMessages], [UpdateOwnedStarCount], [UpdateOwnedTonCount], [UpdateChatRevenueAmount], [UpdateStarRevenueStatus], [UpdateTonRevenueStatus], [UpdateSpeechRecognitionTrial], [UpdateDiceEmojis], [UpdateAnimatedEmojiMessageClicked], [UpdateAnimationSearchParameters], [UpdateSuggestedActions], [UpdateSpeedLimitNotification], [UpdateContactCloseBirthdays], [UpdateAutosaveSettings], [UpdateBusinessConnection], [UpdateNewBusinessMessage], [UpdateBusinessMessageEdited], [UpdateBusinessMessagesDeleted], [UpdateNewInlineQuery], [UpdateNewChosenInlineResult], [UpdateNewCallbackQuery], [UpdateNewInlineCallbackQuery], [UpdateNewBusinessCallbackQuery], [UpdateNewShippingQuery], [UpdateNewPreCheckoutQuery], [UpdateNewCustomEvent], [UpdateNewCustomQuery], [UpdatePoll], [UpdatePollAnswer], [UpdateChatMember], [UpdateNewChatJoinRequest], [UpdateChatBoost], [UpdateMessageReaction], [UpdateMessageReactions], [UpdatePaidMediaPurchased]; or [UndecodedUpdate] for a type newer than this API.
 sealed class Update extends TdObject {
   const Update();
 
@@ -1314,6 +1314,7 @@ final class UpdateChatAccentColors extends Update {
     required this.chatId,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    this.upgradedGiftColors,
     required this.profileAccentColorId,
     required this.profileBackgroundCustomEmojiId,
     this.extra,
@@ -1328,6 +1329,9 @@ final class UpdateChatAccentColors extends Update {
 
   /// The new identifier of a custom emoji to be shown on the reply header and link preview background; 0 if none
   final int backgroundCustomEmojiId;
+
+  /// Color scheme based on an upgraded gift to be used for the chat instead of accent_color_id and background_custom_emoji_id; may be null if none
+  final UpgradedGiftColors? upgradedGiftColors;
 
   /// The new chat profile accent color identifier; -1 if none
   final int profileAccentColorId;
@@ -1349,6 +1353,8 @@ final class UpdateChatAccentColors extends Update {
         chatId: _readInt(json['chat_id']),
         accentColorId: _readInt(json['accent_color_id']),
         backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        upgradedGiftColors: _readOptional(
+            json['upgraded_gift_colors'], UpgradedGiftColors.fromJson),
         profileAccentColorId: _readInt(json['profile_accent_color_id']),
         profileBackgroundCustomEmojiId:
             _readInt(json['profile_background_custom_emoji_id']),
@@ -1362,6 +1368,7 @@ final class UpdateChatAccentColors extends Update {
         'chat_id': chatId,
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'upgraded_gift_colors': upgradedGiftColors?.toJson(),
         'profile_accent_color_id': profileAccentColorId,
         'profile_background_custom_emoji_id':
             profileBackgroundCustomEmojiId.toString(),
@@ -1374,6 +1381,7 @@ final class UpdateChatAccentColors extends Update {
     int? chatId,
     int? accentColorId,
     int? backgroundCustomEmojiId,
+    UpgradedGiftColors? Function()? upgradedGiftColors,
     int? profileAccentColorId,
     int? profileBackgroundCustomEmojiId,
     dynamic extra,
@@ -1384,6 +1392,9 @@ final class UpdateChatAccentColors extends Update {
         accentColorId: accentColorId ?? this.accentColorId,
         backgroundCustomEmojiId:
             backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        upgradedGiftColors: upgradedGiftColors != null
+            ? upgradedGiftColors()
+            : this.upgradedGiftColors,
         profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
         profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
             this.profileBackgroundCustomEmojiId,
@@ -3929,7 +3940,7 @@ final class UpdateForumTopic extends Update {
   /// Information about a topic in a forum chat was changed
   const UpdateForumTopic({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
     required this.isPinned,
     required this.lastReadInboxMessageId,
     required this.lastReadOutboxMessageId,
@@ -3943,8 +3954,8 @@ final class UpdateForumTopic extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// Message thread identifier of the topic
-  final int messageThreadId;
+  /// Forum topic identifier of the topic
+  final int forumTopicId;
 
   /// True, if the topic is pinned in the topic list
   final bool isPinned;
@@ -3976,7 +3987,7 @@ final class UpdateForumTopic extends Update {
   factory UpdateForumTopic.fromJson(Map<String, dynamic> json) =>
       UpdateForumTopic(
         chatId: _readInt(json['chat_id']),
-        messageThreadId: _readInt(json['message_thread_id']),
+        forumTopicId: _readInt(json['forum_topic_id']),
         isPinned: _readBool(json['is_pinned']),
         lastReadInboxMessageId: _readInt(json['last_read_inbox_message_id']),
         lastReadOutboxMessageId: _readInt(json['last_read_outbox_message_id']),
@@ -3992,7 +4003,7 @@ final class UpdateForumTopic extends Update {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         'is_pinned': isPinned,
         'last_read_inbox_message_id': lastReadInboxMessageId,
         'last_read_outbox_message_id': lastReadOutboxMessageId,
@@ -4006,7 +4017,7 @@ final class UpdateForumTopic extends Update {
   @override
   UpdateForumTopic copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
     bool? isPinned,
     int? lastReadInboxMessageId,
     int? lastReadOutboxMessageId,
@@ -4018,7 +4029,7 @@ final class UpdateForumTopic extends Update {
   }) =>
       UpdateForumTopic(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         isPinned: isPinned ?? this.isPinned,
         lastReadInboxMessageId:
             lastReadInboxMessageId ?? this.lastReadInboxMessageId,
@@ -4544,7 +4555,7 @@ final class UpdateChatAction extends Update {
   /// A message sender activity in the chat has changed
   const UpdateChatAction({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     required this.senderId,
     required this.action,
     this.extra,
@@ -4554,8 +4565,8 @@ final class UpdateChatAction extends Update {
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the action was performed
-  final int messageThreadId;
+  /// Identifier of the specific topic in which the action was performed; may be null if none
+  final MessageTopic? topicId;
 
   /// Identifier of a message sender performing the action
   final MessageSender senderId;
@@ -4575,7 +4586,7 @@ final class UpdateChatAction extends Update {
   factory UpdateChatAction.fromJson(Map<String, dynamic> json) =>
       UpdateChatAction(
         chatId: _readInt(json['chat_id']),
-        messageThreadId: _readInt(json['message_thread_id']),
+        topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
         senderId: _readObject(json['sender_id'], MessageSender.fromJson),
         action: _readObject(json['action'], ChatAction.fromJson),
         extra: json['@extra'],
@@ -4586,7 +4597,7 @@ final class UpdateChatAction extends Update {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'sender_id': senderId.toJson(),
         'action': action.toJson(),
       };
@@ -4596,7 +4607,7 @@ final class UpdateChatAction extends Update {
   @override
   UpdateChatAction copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     MessageSender? senderId,
     ChatAction? action,
     dynamic extra,
@@ -4604,7 +4615,7 @@ final class UpdateChatAction extends Update {
   }) =>
       UpdateChatAction(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         senderId: senderId ?? this.senderId,
         action: action ?? this.action,
         extra: extra ?? this.extra,
@@ -4613,6 +4624,85 @@ final class UpdateChatAction extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateChatAction';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new pending text message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received
+final class UpdatePendingTextMessage extends Update {
+  /// A new pending text message was received in a chat with a bot. The message must be shown in the chat for at most getOption("pending_text_message_period") seconds, replace any other pending message with the same draft_id, and be deleted whenever any incoming message from the bot in the message thread is received
+  const UpdatePendingTextMessage({
+    required this.chatId,
+    required this.forumTopicId,
+    required this.draftId,
+    required this.text,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Chat identifier
+  final int chatId;
+
+  /// The forum topic identifier in which the message will be sent; 0 if none
+  final int forumTopicId;
+
+  /// Unique identifier of the message draft within the message thread
+  final int draftId;
+
+  /// Text of the pending message
+  final FormattedText text;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdatePendingTextMessage] from TDLib JSON.
+  factory UpdatePendingTextMessage.fromJson(Map<String, dynamic> json) =>
+      UpdatePendingTextMessage(
+        chatId: _readInt(json['chat_id']),
+        forumTopicId: _readInt(json['forum_topic_id']),
+        draftId: _readInt(json['draft_id']),
+        text: _readObject(json['text'], FormattedText.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'chat_id': chatId,
+        'forum_topic_id': forumTopicId,
+        'draft_id': draftId.toString(),
+        'text': text.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdatePendingTextMessage copyWith({
+    int? chatId,
+    int? forumTopicId,
+    int? draftId,
+    FormattedText? text,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdatePendingTextMessage(
+        chatId: chatId ?? this.chatId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
+        draftId: draftId ?? this.draftId,
+        text: text ?? this.text,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updatePendingTextMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -6070,6 +6160,77 @@ final class UpdateGroupCallVerificationState extends Update {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'updateGroupCallVerificationState';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A new message was received in a group call. It must be shown for at most getOption("group_call_message_show_time_max") seconds after receiving
+final class UpdateGroupCallNewMessage extends Update {
+  /// A new message was received in a group call. It must be shown for at most getOption("group_call_message_show_time_max") seconds after receiving
+  const UpdateGroupCallNewMessage({
+    required this.groupCallId,
+    required this.senderId,
+    required this.text,
+    this.extra,
+    this.clientId,
+  });
+
+  /// Identifier of the group call
+  final int groupCallId;
+
+  /// Identifier of the sender of the message
+  final MessageSender senderId;
+
+  /// Text of the message
+  final FormattedText text;
+
+  /// "@extra" of the request this object answers.
+  @override
+  final dynamic extra;
+
+  /// Identifier of the TDLib client that sent this object.
+  @override
+  final int? clientId;
+
+  /// Parses a [UpdateGroupCallNewMessage] from TDLib JSON.
+  factory UpdateGroupCallNewMessage.fromJson(Map<String, dynamic> json) =>
+      UpdateGroupCallNewMessage(
+        groupCallId: _readInt(json['group_call_id']),
+        senderId: _readObject(json['sender_id'], MessageSender.fromJson),
+        text: _readObject(json['text'], FormattedText.fromJson),
+        extra: json['@extra'],
+        clientId: _readClientId(json['@client_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'group_call_id': groupCallId,
+        'sender_id': senderId.toJson(),
+        'text': text.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpdateGroupCallNewMessage copyWith({
+    int? groupCallId,
+    MessageSender? senderId,
+    FormattedText? text,
+    dynamic extra,
+    int? clientId,
+  }) =>
+      UpdateGroupCallNewMessage(
+        groupCallId: groupCallId ?? this.groupCallId,
+        senderId: senderId ?? this.senderId,
+        text: text ?? this.text,
+        extra: extra ?? this.extra,
+        clientId: clientId ?? this.clientId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'updateGroupCallNewMessage';
 
   @override
   String getConstructor() => CONSTRUCTOR;

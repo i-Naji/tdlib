@@ -34,6 +34,7 @@ final class UserFullInfo extends TdObject {
     this.rating,
     this.pendingRating,
     required this.pendingRatingDate,
+    this.note,
     this.businessInfo,
     this.botInfo,
     this.extra,
@@ -121,6 +122,9 @@ final class UserFullInfo extends TdObject {
   /// Unix timestamp when rating of the user will change to pending_rating; 0 if the user isn't the current user or there are no pending rating changes
   final int pendingRatingDate;
 
+  /// Note added to the user's contact; may be null if none
+  final FormattedText? note;
+
   /// Information about business settings for Telegram Business accounts; may be null if none
   final BusinessInfo? businessInfo;
 
@@ -175,6 +179,7 @@ final class UserFullInfo extends TdObject {
         pendingRating:
             _readOptional(json['pending_rating'], UserRating.fromJson),
         pendingRatingDate: _readInt(json['pending_rating_date']),
+        note: _readOptional(json['note'], FormattedText.fromJson),
         businessInfo:
             _readOptional(json['business_info'], BusinessInfo.fromJson),
         botInfo: _readOptional(json['bot_info'], BotInfo.fromJson),
@@ -213,6 +218,7 @@ final class UserFullInfo extends TdObject {
         'rating': rating?.toJson(),
         'pending_rating': pendingRating?.toJson(),
         'pending_rating_date': pendingRatingDate,
+        'note': note?.toJson(),
         'business_info': businessInfo?.toJson(),
         'bot_info': botInfo?.toJson(),
       };
@@ -247,6 +253,7 @@ final class UserFullInfo extends TdObject {
     UserRating? Function()? rating,
     UserRating? Function()? pendingRating,
     int? pendingRatingDate,
+    FormattedText? Function()? note,
     BusinessInfo? Function()? businessInfo,
     BotInfo? Function()? botInfo,
     dynamic extra,
@@ -293,6 +300,7 @@ final class UserFullInfo extends TdObject {
         pendingRating:
             pendingRating != null ? pendingRating() : this.pendingRating,
         pendingRatingDate: pendingRatingDate ?? this.pendingRatingDate,
+        note: note != null ? note() : this.note,
         businessInfo: businessInfo != null ? businessInfo() : this.businessInfo,
         botInfo: botInfo != null ? botInfo() : this.botInfo,
         extra: extra ?? this.extra,

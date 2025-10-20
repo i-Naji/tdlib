@@ -3,22 +3,22 @@
 
 part of '../tdapi.dart';
 
-/// Changes the notification settings of a forum topic
+/// Changes the notification settings of a forum topic in a forum supergroup chat or a chat with a bot with topics
 ///
 /// Returns [Ok].
 final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
-  /// Changes the notification settings of a forum topic
+  /// Changes the notification settings of a forum topic in a forum supergroup chat or a chat with a bot with topics
   const SetForumTopicNotificationSettings({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
     required this.notificationSettings,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   /// New notification settings for the forum topic. If the topic is muted for more than 366 days, it is considered to be muted forever
   final ChatNotificationSettings notificationSettings;
@@ -27,7 +27,7 @@ final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         'notification_settings': notificationSettings.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +36,12 @@ final class SetForumTopicNotificationSettings extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetForumTopicNotificationSettings copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
     ChatNotificationSettings? notificationSettings,
   }) =>
       SetForumTopicNotificationSettings(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         notificationSettings: notificationSettings ?? this.notificationSettings,
       );
 

@@ -3,22 +3,22 @@
 
 part of '../tdapi.dart';
 
-/// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
+/// Changes the pinned state of a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
 ///
 /// Returns [Ok].
 final class ToggleForumTopicIsPinned extends TdFunction<Ok> {
-  /// Changes the pinned state of a forum topic; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
+  /// Changes the pinned state of a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup. There can be up to getOption("pinned_forum_topic_count_max") pinned forum topics
   const ToggleForumTopicIsPinned({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
     required this.isPinned,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   /// Pass true to pin the topic; pass false to unpin it
   final bool isPinned;
@@ -27,7 +27,7 @@ final class ToggleForumTopicIsPinned extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         'is_pinned': isPinned,
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +36,12 @@ final class ToggleForumTopicIsPinned extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleForumTopicIsPinned copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
     bool? isPinned,
   }) =>
       ToggleForumTopicIsPinned(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         isPinned: isPinned ?? this.isPinned,
       );
 

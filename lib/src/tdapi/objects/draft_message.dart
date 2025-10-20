@@ -14,7 +14,7 @@ final class DraftMessage extends TdObject {
     this.suggestedPostInfo,
   });
 
-  /// Information about the message to be replied; must be of the type inputMessageReplyToMessage; may be null if none
+  /// Information about the message to be replied; inputMessageReplyToStory is unsupported; may be null if none
   final InputMessageReplyTo? replyTo;
 
   /// Point in time (Unix timestamp) when the draft was created

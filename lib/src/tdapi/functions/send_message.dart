@@ -10,7 +10,7 @@ final class SendMessage extends TdFunction<Message> {
   /// Sends a message. Returns the sent message
   const SendMessage({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     this.replyTo,
     this.options,
     this.replyMarkup,
@@ -20,8 +20,8 @@ final class SendMessage extends TdFunction<Message> {
   /// Target chat
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the message will be sent
-  final int messageThreadId;
+  /// Topic in which the message will be sent; pass null if none
+  final MessageTopic? topicId;
 
   /// Information about the message or story to be replied; pass null if none
   final InputMessageReplyTo? replyTo;
@@ -39,7 +39,7 @@ final class SendMessage extends TdFunction<Message> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'reply_markup': replyMarkup?.toJson(),
@@ -51,7 +51,7 @@ final class SendMessage extends TdFunction<Message> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendMessage copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     ReplyMarkup? Function()? replyMarkup,
@@ -59,7 +59,7 @@ final class SendMessage extends TdFunction<Message> {
   }) =>
       SendMessage(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         options: options != null ? options() : this.options,
         replyMarkup: replyMarkup != null ? replyMarkup() : this.replyMarkup,

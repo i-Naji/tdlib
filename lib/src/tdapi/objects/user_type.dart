@@ -102,6 +102,7 @@ final class UserTypeBot extends UserType {
     required this.canJoinGroups,
     required this.canReadAllGroupMessages,
     required this.hasMainWebApp,
+    required this.hasTopics,
     required this.isInline,
     required this.inlineQueryPlaceholder,
     required this.needLocation,
@@ -121,6 +122,9 @@ final class UserTypeBot extends UserType {
 
   /// True, if the bot has the main Web App
   final bool hasMainWebApp;
+
+  /// True, if the bot has topics
+  final bool hasTopics;
 
   /// True, if the bot supports inline queries
   final bool isInline;
@@ -146,6 +150,7 @@ final class UserTypeBot extends UserType {
         canJoinGroups: _readBool(json['can_join_groups']),
         canReadAllGroupMessages: _readBool(json['can_read_all_group_messages']),
         hasMainWebApp: _readBool(json['has_main_web_app']),
+        hasTopics: _readBool(json['has_topics']),
         isInline: _readBool(json['is_inline']),
         inlineQueryPlaceholder: _readString(json['inline_query_placeholder']),
         needLocation: _readBool(json['need_location']),
@@ -162,6 +167,7 @@ final class UserTypeBot extends UserType {
         'can_join_groups': canJoinGroups,
         'can_read_all_group_messages': canReadAllGroupMessages,
         'has_main_web_app': hasMainWebApp,
+        'has_topics': hasTopics,
         'is_inline': isInline,
         'inline_query_placeholder': inlineQueryPlaceholder,
         'need_location': needLocation,
@@ -178,6 +184,7 @@ final class UserTypeBot extends UserType {
     bool? canJoinGroups,
     bool? canReadAllGroupMessages,
     bool? hasMainWebApp,
+    bool? hasTopics,
     bool? isInline,
     String? inlineQueryPlaceholder,
     bool? needLocation,
@@ -191,6 +198,7 @@ final class UserTypeBot extends UserType {
         canReadAllGroupMessages:
             canReadAllGroupMessages ?? this.canReadAllGroupMessages,
         hasMainWebApp: hasMainWebApp ?? this.hasMainWebApp,
+        hasTopics: hasTopics ?? this.hasTopics,
         isInline: isInline ?? this.isInline,
         inlineQueryPlaceholder:
             inlineQueryPlaceholder ?? this.inlineQueryPlaceholder,

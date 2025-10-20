@@ -3,27 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Returns an HTTPS link to a topic in a forum chat. This is an offline method
+/// Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method
 ///
 /// Returns [MessageLink].
 final class GetForumTopicLink extends TdFunction<MessageLink> {
-  /// Returns an HTTPS link to a topic in a forum chat. This is an offline method
+  /// Returns an HTTPS link to a topic in a forum supergroup chat. This is an offline method
   const GetForumTopicLink({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
   });
 
   /// Identifier of the chat
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -31,11 +31,11 @@ final class GetForumTopicLink extends TdFunction<MessageLink> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   GetForumTopicLink copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
   }) =>
       GetForumTopicLink(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
       );
 
   /// TDLib type name.

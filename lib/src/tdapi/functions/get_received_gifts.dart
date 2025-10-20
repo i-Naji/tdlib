@@ -18,6 +18,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     required this.excludeUpgradable,
     required this.excludeNonUpgradable,
     required this.excludeUpgraded,
+    required this.excludeWithoutColors,
+    required this.excludeHosted,
     required this.sortByPrice,
     required this.offset,
     required this.limit,
@@ -50,6 +52,12 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
   /// Pass true to exclude upgraded gifts
   final bool excludeUpgraded;
 
+  /// Pass true to exclude gifts that can't be used in setUpgradedGiftColors
+  final bool excludeWithoutColors;
+
+  /// Pass true to exclude gifts that are just hosted and are not owned by the owner
+  final bool excludeHosted;
+
   /// Pass true to sort results by gift price instead of send date
   final bool sortByPrice;
 
@@ -71,6 +79,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
         'exclude_upgradable': excludeUpgradable,
         'exclude_non_upgradable': excludeNonUpgradable,
         'exclude_upgraded': excludeUpgraded,
+        'exclude_without_colors': excludeWithoutColors,
+        'exclude_hosted': excludeHosted,
         'sort_by_price': sortByPrice,
         'offset': offset,
         'limit': limit,
@@ -89,6 +99,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
     bool? excludeUpgradable,
     bool? excludeNonUpgradable,
     bool? excludeUpgraded,
+    bool? excludeWithoutColors,
+    bool? excludeHosted,
     bool? sortByPrice,
     String? offset,
     int? limit,
@@ -103,6 +115,8 @@ final class GetReceivedGifts extends TdFunction<ReceivedGifts> {
         excludeUpgradable: excludeUpgradable ?? this.excludeUpgradable,
         excludeNonUpgradable: excludeNonUpgradable ?? this.excludeNonUpgradable,
         excludeUpgraded: excludeUpgraded ?? this.excludeUpgraded,
+        excludeWithoutColors: excludeWithoutColors ?? this.excludeWithoutColors,
+        excludeHosted: excludeHosted ?? this.excludeHosted,
         sortByPrice: sortByPrice ?? this.sortByPrice,
         offset: offset ?? this.offset,
         limit: limit ?? this.limit,

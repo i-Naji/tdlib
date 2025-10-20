@@ -9,7 +9,7 @@ final class MessageLinkInfo extends TdObject {
   const MessageLinkInfo({
     required this.isPublic,
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     this.message,
     required this.mediaTimestamp,
     required this.forAlbum,
@@ -23,8 +23,8 @@ final class MessageLinkInfo extends TdObject {
   /// If found, identifier of the chat to which the link points, 0 otherwise
   final int chatId;
 
-  /// If found, identifier of the message thread in which to open the message, or a forum topic to open if the message is missing
-  final int messageThreadId;
+  /// Identifier of the specific topic in which the message must be opened, or a topic to open if the message is missing; may be null if none
+  final MessageTopic? topicId;
 
   /// If found, the linked message; may be null
   final Message? message;
@@ -48,7 +48,7 @@ final class MessageLinkInfo extends TdObject {
       MessageLinkInfo(
         isPublic: _readBool(json['is_public']),
         chatId: _readInt(json['chat_id']),
-        messageThreadId: _readInt(json['message_thread_id']),
+        topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
         message: _readOptional(json['message'], Message.fromJson),
         mediaTimestamp: _readInt(json['media_timestamp']),
         forAlbum: _readBool(json['for_album']),
@@ -61,7 +61,7 @@ final class MessageLinkInfo extends TdObject {
         '@type': CONSTRUCTOR,
         'is_public': isPublic,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'message': message?.toJson(),
         'media_timestamp': mediaTimestamp,
         'for_album': forAlbum,
@@ -72,7 +72,7 @@ final class MessageLinkInfo extends TdObject {
   MessageLinkInfo copyWith({
     bool? isPublic,
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     Message? Function()? message,
     int? mediaTimestamp,
     bool? forAlbum,
@@ -82,7 +82,7 @@ final class MessageLinkInfo extends TdObject {
       MessageLinkInfo(
         isPublic: isPublic ?? this.isPublic,
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         message: message != null ? message() : this.message,
         mediaTimestamp: mediaTimestamp ?? this.mediaTimestamp,
         forAlbum: forAlbum ?? this.forAlbum,

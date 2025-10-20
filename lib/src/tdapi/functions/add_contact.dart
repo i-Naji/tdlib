@@ -9,12 +9,16 @@ part of '../tdapi.dart';
 final class AddContact extends TdFunction<Ok> {
   /// Adds a user to the contact list or edits an existing contact by their user identifier
   const AddContact({
+    required this.userId,
     required this.contact,
     required this.sharePhoneNumber,
   });
 
-  /// The contact to add or edit; phone number may be empty and needs to be specified only if known, vCard is ignored
-  final Contact contact;
+  /// Identifier of the user
+  final int userId;
+
+  /// The contact to add or edit; phone number may be empty and needs to be specified only if known
+  final ImportedContact contact;
 
   /// Pass true to share the current user's phone number with the new contact. A corresponding rule to userPrivacySettingShowPhoneNumber will be added if needed. Use the field userFullInfo.need_phone_number_privacy_exception to check whether the current user needs to be asked to share their phone number
   final bool sharePhoneNumber;
@@ -22,6 +26,7 @@ final class AddContact extends TdFunction<Ok> {
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
+        'user_id': userId,
         'contact': contact.toJson(),
         'share_phone_number': sharePhoneNumber,
         if (extra != null) '@extra': extra,
@@ -30,10 +35,12 @@ final class AddContact extends TdFunction<Ok> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   AddContact copyWith({
-    Contact? contact,
+    int? userId,
+    ImportedContact? contact,
     bool? sharePhoneNumber,
   }) =>
       AddContact(
+        userId: userId ?? this.userId,
         contact: contact ?? this.contact,
         sharePhoneNumber: sharePhoneNumber ?? this.sharePhoneNumber,
       );

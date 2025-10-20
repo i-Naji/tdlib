@@ -3,21 +3,21 @@
 
 part of '../tdapi.dart';
 
-/// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server
+/// Returns found forum topics in a forum supergroup chat or a chat with a bot with topics. This is a temporary method for getting information about topic list from the server
 ///
 /// Returns [ForumTopics].
 final class GetForumTopics extends TdFunction<ForumTopics> {
-  /// Returns found forum topics in a forum chat. This is a temporary method for getting information about topic list from the server
+  /// Returns found forum topics in a forum supergroup chat or a chat with a bot with topics. This is a temporary method for getting information about topic list from the server
   const GetForumTopics({
     required this.chatId,
     required this.query,
     required this.offsetDate,
     required this.offsetMessageId,
-    required this.offsetMessageThreadId,
+    required this.offsetForumTopicId,
     required this.limit,
   });
 
-  /// Identifier of the forum chat
+  /// Identifier of the chat
   final int chatId;
 
   /// Query to search for in the forum topic's name
@@ -29,8 +29,8 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
   /// The message identifier of the last message in the last found topic, or 0 for the first request
   final int offsetMessageId;
 
-  /// The message thread identifier of the last found topic, or 0 for the first request
-  final int offsetMessageThreadId;
+  /// The forum topic identifier of the last found topic, or 0 for the first request
+  final int offsetForumTopicId;
 
   /// The maximum number of forum topics to be returned; up to 100. For optimal performance, the number of returned forum topics is chosen by TDLib and can be smaller than the specified limit
   final int limit;
@@ -42,7 +42,7 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
         'query': query,
         'offset_date': offsetDate,
         'offset_message_id': offsetMessageId,
-        'offset_message_thread_id': offsetMessageThreadId,
+        'offset_forum_topic_id': offsetForumTopicId,
         'limit': limit,
         if (extra != null) '@extra': extra,
       };
@@ -54,7 +54,7 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
     String? query,
     int? offsetDate,
     int? offsetMessageId,
-    int? offsetMessageThreadId,
+    int? offsetForumTopicId,
     int? limit,
   }) =>
       GetForumTopics(
@@ -62,8 +62,7 @@ final class GetForumTopics extends TdFunction<ForumTopics> {
         query: query ?? this.query,
         offsetDate: offsetDate ?? this.offsetDate,
         offsetMessageId: offsetMessageId ?? this.offsetMessageId,
-        offsetMessageThreadId:
-            offsetMessageThreadId ?? this.offsetMessageThreadId,
+        offsetForumTopicId: offsetForumTopicId ?? this.offsetForumTopicId,
         limit: limit ?? this.limit,
       );
 

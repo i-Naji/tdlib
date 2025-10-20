@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used. An updateChatReplyMarkup update will be sent if the reply markup is changed
+/// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used or dismissed
 ///
 /// Returns [Ok].
 final class DeleteChatReplyMarkup extends TdFunction<Ok> {
-  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used. An updateChatReplyMarkup update will be sent if the reply markup is changed
+  /// Deletes the default reply markup from a chat. Must be called after a one-time keyboard or a replyMarkupForceReply reply markup has been used or dismissed
   const DeleteChatReplyMarkup({
     required this.chatId,
     required this.messageId,

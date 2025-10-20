@@ -9,7 +9,6 @@ final class ForumTopicInfo extends TdObject {
   const ForumTopicInfo({
     required this.chatId,
     required this.forumTopicId,
-    required this.messageThreadId,
     required this.name,
     required this.icon,
     required this.creationDate,
@@ -18,18 +17,16 @@ final class ForumTopicInfo extends TdObject {
     required this.isOutgoing,
     required this.isClosed,
     required this.isHidden,
+    required this.isNameImplicit,
     this.extra,
     this.clientId,
   });
 
-  /// Identifier of the forum chat to which the topic belongs
+  /// Identifier of a forum supergroup chat or a chat with a bot to which the topic belongs
   final int chatId;
 
   /// Forum topic identifier of the topic
   final int forumTopicId;
-
-  /// Message thread identifier of the topic
-  final int messageThreadId;
 
   /// Name of the topic
   final String name;
@@ -43,7 +40,7 @@ final class ForumTopicInfo extends TdObject {
   /// Identifier of the creator of the topic
   final MessageSender creatorId;
 
-  /// True, if the topic is the General topic list
+  /// True, if the topic is the General topic
   final bool isGeneral;
 
   /// True, if the topic was created by the current user
@@ -54,6 +51,9 @@ final class ForumTopicInfo extends TdObject {
 
   /// True, if the topic is hidden above the topic list and closed; for General topic only
   final bool isHidden;
+
+  /// True, if the name of the topic wasn't added explicitly
+  final bool isNameImplicit;
 
   /// "@extra" of the request this object answers.
   @override
@@ -67,7 +67,6 @@ final class ForumTopicInfo extends TdObject {
   factory ForumTopicInfo.fromJson(Map<String, dynamic> json) => ForumTopicInfo(
         chatId: _readInt(json['chat_id']),
         forumTopicId: _readInt(json['forum_topic_id']),
-        messageThreadId: _readInt(json['message_thread_id']),
         name: _readString(json['name']),
         icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
         creationDate: _readInt(json['creation_date']),
@@ -76,6 +75,7 @@ final class ForumTopicInfo extends TdObject {
         isOutgoing: _readBool(json['is_outgoing']),
         isClosed: _readBool(json['is_closed']),
         isHidden: _readBool(json['is_hidden']),
+        isNameImplicit: _readBool(json['is_name_implicit']),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -85,7 +85,6 @@ final class ForumTopicInfo extends TdObject {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'forum_topic_id': forumTopicId,
-        'message_thread_id': messageThreadId,
         'name': name,
         'icon': icon.toJson(),
         'creation_date': creationDate,
@@ -94,6 +93,7 @@ final class ForumTopicInfo extends TdObject {
         'is_outgoing': isOutgoing,
         'is_closed': isClosed,
         'is_hidden': isHidden,
+        'is_name_implicit': isNameImplicit,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -101,7 +101,6 @@ final class ForumTopicInfo extends TdObject {
   ForumTopicInfo copyWith({
     int? chatId,
     int? forumTopicId,
-    int? messageThreadId,
     String? name,
     ForumTopicIcon? icon,
     int? creationDate,
@@ -110,13 +109,13 @@ final class ForumTopicInfo extends TdObject {
     bool? isOutgoing,
     bool? isClosed,
     bool? isHidden,
+    bool? isNameImplicit,
     dynamic extra,
     int? clientId,
   }) =>
       ForumTopicInfo(
         chatId: chatId ?? this.chatId,
         forumTopicId: forumTopicId ?? this.forumTopicId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
         name: name ?? this.name,
         icon: icon ?? this.icon,
         creationDate: creationDate ?? this.creationDate,
@@ -125,6 +124,7 @@ final class ForumTopicInfo extends TdObject {
         isOutgoing: isOutgoing ?? this.isOutgoing,
         isClosed: isClosed ?? this.isClosed,
         isHidden: isHidden ?? this.isHidden,
+        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

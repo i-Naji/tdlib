@@ -3,27 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Deletes all messages in a forum topic; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages
+/// Deletes all messages from a topic in a forum supergroup chat or a chat with a bot with topics; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages
 ///
 /// Returns [Ok].
 final class DeleteForumTopic extends TdFunction<Ok> {
-  /// Deletes all messages in a forum topic; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages
+  /// Deletes all messages from a topic in a forum supergroup chat or a chat with a bot with topics; requires can_delete_messages administrator right in the supergroup unless the user is creator of the topic, the topic has no messages from other users and has at most 11 messages
   const DeleteForumTopic({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
   });
 
   /// Identifier of the chat
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         if (extra != null) '@extra': extra,
       };
 
@@ -31,11 +31,11 @@ final class DeleteForumTopic extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   DeleteForumTopic copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
   }) =>
       DeleteForumTopic(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
       );
 
   /// TDLib type name.

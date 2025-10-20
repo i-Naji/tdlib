@@ -13,6 +13,7 @@ final class Gift extends TdObject {
     required this.starCount,
     required this.defaultSellStarCount,
     required this.upgradeStarCount,
+    required this.hasColors,
     required this.isForBirthday,
     required this.isPremium,
     required this.nextSendDate,
@@ -39,6 +40,9 @@ final class Gift extends TdObject {
 
   /// Number of Telegram Stars that must be paid to upgrade the gift; 0 if upgrade isn't possible
   final int upgradeStarCount;
+
+  /// True, if the gift can be used to customize the user's name, and backgrounds of profile photo, reply header, and link preview
+  final bool hasColors;
 
   /// True, if the gift is a birthday gift
   final bool isForBirthday;
@@ -69,6 +73,7 @@ final class Gift extends TdObject {
         starCount: _readInt(json['star_count']),
         defaultSellStarCount: _readInt(json['default_sell_star_count']),
         upgradeStarCount: _readInt(json['upgrade_star_count']),
+        hasColors: _readBool(json['has_colors']),
         isForBirthday: _readBool(json['is_for_birthday']),
         isPremium: _readBool(json['is_premium']),
         nextSendDate: _readInt(json['next_send_date']),
@@ -89,6 +94,7 @@ final class Gift extends TdObject {
         'star_count': starCount,
         'default_sell_star_count': defaultSellStarCount,
         'upgrade_star_count': upgradeStarCount,
+        'has_colors': hasColors,
         'is_for_birthday': isForBirthday,
         'is_premium': isPremium,
         'next_send_date': nextSendDate,
@@ -107,6 +113,7 @@ final class Gift extends TdObject {
     int? starCount,
     int? defaultSellStarCount,
     int? upgradeStarCount,
+    bool? hasColors,
     bool? isForBirthday,
     bool? isPremium,
     int? nextSendDate,
@@ -122,6 +129,7 @@ final class Gift extends TdObject {
         starCount: starCount ?? this.starCount,
         defaultSellStarCount: defaultSellStarCount ?? this.defaultSellStarCount,
         upgradeStarCount: upgradeStarCount ?? this.upgradeStarCount,
+        hasColors: hasColors ?? this.hasColors,
         isForBirthday: isForBirthday ?? this.isForBirthday,
         isPremium: isPremium ?? this.isPremium,
         nextSendDate: nextSendDate ?? this.nextSendDate,

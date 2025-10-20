@@ -262,27 +262,27 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   /// Returns users which can be mentioned in the supergroup
   const SupergroupMembersFilterMention({
     required this.query,
-    required this.messageThreadId,
+    this.topicId,
   });
 
   /// Query to search for
   final String query;
 
-  /// If non-zero, the identifier of the current message thread
-  final int messageThreadId;
+  /// Identifier of the topic in which the users will be mentioned; pass null if none
+  final MessageTopic? topicId;
 
   /// Parses a [SupergroupMembersFilterMention] from TDLib JSON.
   factory SupergroupMembersFilterMention.fromJson(Map<String, dynamic> json) =>
       SupergroupMembersFilterMention(
         query: _readString(json['query']),
-        messageThreadId: _readInt(json['message_thread_id']),
+        topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'query': query,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -290,11 +290,11 @@ final class SupergroupMembersFilterMention extends SupergroupMembersFilter {
   @override
   SupergroupMembersFilterMention copyWith({
     String? query,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
   }) =>
       SupergroupMembersFilterMention(
         query: query ?? this.query,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
       );
 
   /// TDLib type name.

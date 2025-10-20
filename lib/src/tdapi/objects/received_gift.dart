@@ -23,6 +23,7 @@ final class ReceivedGift extends TdObject {
     required this.prepaidUpgradeStarCount,
     required this.isUpgradeSeparate,
     required this.transferStarCount,
+    required this.dropOriginalDetailsStarCount,
     required this.nextTransferDate,
     required this.nextResaleDate,
     required this.exportDate,
@@ -79,6 +80,9 @@ final class ReceivedGift extends TdObject {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
+  /// Number of Telegram Stars that must be paid to drop original details of the upgraded gift; 0 if not available; only for the receiver of the gift
+  final int dropOriginalDetailsStarCount;
+
   /// Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
   final int nextTransferDate;
 
@@ -117,6 +121,8 @@ final class ReceivedGift extends TdObject {
         prepaidUpgradeStarCount: _readInt(json['prepaid_upgrade_star_count']),
         isUpgradeSeparate: _readBool(json['is_upgrade_separate']),
         transferStarCount: _readInt(json['transfer_star_count']),
+        dropOriginalDetailsStarCount:
+            _readInt(json['drop_original_details_star_count']),
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
@@ -144,6 +150,7 @@ final class ReceivedGift extends TdObject {
         'prepaid_upgrade_star_count': prepaidUpgradeStarCount,
         'is_upgrade_separate': isUpgradeSeparate,
         'transfer_star_count': transferStarCount,
+        'drop_original_details_star_count': dropOriginalDetailsStarCount,
         'next_transfer_date': nextTransferDate,
         'next_resale_date': nextResaleDate,
         'export_date': exportDate,
@@ -169,6 +176,7 @@ final class ReceivedGift extends TdObject {
     int? prepaidUpgradeStarCount,
     bool? isUpgradeSeparate,
     int? transferStarCount,
+    int? dropOriginalDetailsStarCount,
     int? nextTransferDate,
     int? nextResaleDate,
     int? exportDate,
@@ -194,6 +202,8 @@ final class ReceivedGift extends TdObject {
             prepaidUpgradeStarCount ?? this.prepaidUpgradeStarCount,
         isUpgradeSeparate: isUpgradeSeparate ?? this.isUpgradeSeparate,
         transferStarCount: transferStarCount ?? this.transferStarCount,
+        dropOriginalDetailsStarCount:
+            dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
         nextTransferDate: nextTransferDate ?? this.nextTransferDate,
         nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,

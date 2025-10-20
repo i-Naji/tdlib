@@ -18,7 +18,7 @@ final class GetChatMessageCalendar extends TdFunction<MessageCalendar> {
   /// Identifier of the chat in which to return information about messages
   final int chatId;
 
-  /// Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics aren't supported
+  /// Pass topic identifier to get the result only in specific topic; pass null to get the result in all topics; forum topics and message threads aren't supported
   final MessageTopic? topicId;
 
   /// Filter for message content. Filters searchMessagesFilterEmpty, searchMessagesFilterMention, searchMessagesFilterUnreadMention, and searchMessagesFilterUnreadReaction are unsupported in this function

@@ -3,14 +3,15 @@
 
 part of '../tdapi.dart';
 
-/// Creates a topic in a forum supergroup chat; requires can_manage_topics administrator or can_create_topics member right in the supergroup
+/// Creates a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator or can_create_topics member right in the supergroup
 ///
 /// Returns [ForumTopicInfo].
 final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
-  /// Creates a topic in a forum supergroup chat; requires can_manage_topics administrator or can_create_topics member right in the supergroup
+  /// Creates a topic in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator or can_create_topics member right in the supergroup
   const CreateForumTopic({
     required this.chatId,
     required this.name,
+    required this.isNameImplicit,
     required this.icon,
   });
 
@@ -20,6 +21,9 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
   /// Name of the topic; 1-128 characters
   final String name;
 
+  /// Pass true if the name of the topic wasn't entered explicitly; for chats with bots only
+  final bool isNameImplicit;
+
   /// Icon of the topic. Icon color must be one of 0x6FB9F0, 0xFFD67E, 0xCB86DB, 0x8EEE98, 0xFF93B2, or 0xFB6F5F. Telegram Premium users can use any custom emoji as topic icon, other users can use only a custom emoji returned by getForumTopicDefaultIcons
   final ForumTopicIcon icon;
 
@@ -28,6 +32,7 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
         'name': name,
+        'is_name_implicit': isNameImplicit,
         'icon': icon.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -37,11 +42,13 @@ final class CreateForumTopic extends TdFunction<ForumTopicInfo> {
   CreateForumTopic copyWith({
     int? chatId,
     String? name,
+    bool? isNameImplicit,
     ForumTopicIcon? icon,
   }) =>
       CreateForumTopic(
         chatId: chatId ?? this.chatId,
         name: name ?? this.name,
+        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
         icon: icon ?? this.icon,
       );
 

@@ -172,6 +172,7 @@ part 'functions/disconnect_affiliate_program.dart';
 part 'functions/disconnect_all_websites.dart';
 part 'functions/disconnect_website.dart';
 part 'functions/download_file.dart';
+part 'functions/drop_gift_original_details.dart';
 part 'functions/edit_bot_media_preview.dart';
 part 'functions/edit_business_chat_link.dart';
 part 'functions/edit_business_message_caption.dart';
@@ -336,6 +337,7 @@ part 'functions/get_file_extension.dart';
 part 'functions/get_file_mime_type.dart';
 part 'functions/get_forum_topic.dart';
 part 'functions/get_forum_topic_default_icons.dart';
+part 'functions/get_forum_topic_history.dart';
 part 'functions/get_forum_topic_link.dart';
 part 'functions/get_forum_topics.dart';
 part 'functions/get_game_high_scores.dart';
@@ -558,8 +560,8 @@ part 'functions/rate_speech_recognition.dart';
 part 'functions/read_all_chat_mentions.dart';
 part 'functions/read_all_chat_reactions.dart';
 part 'functions/read_all_direct_messages_chat_topic_reactions.dart';
-part 'functions/read_all_message_thread_mentions.dart';
-part 'functions/read_all_message_thread_reactions.dart';
+part 'functions/read_all_forum_topic_mentions.dart';
+part 'functions/read_all_forum_topic_reactions.dart';
 part 'functions/read_business_message.dart';
 part 'functions/read_chat_list.dart';
 part 'functions/read_file_part.dart';
@@ -686,6 +688,7 @@ part 'functions/send_chat_action.dart';
 part 'functions/send_custom_request.dart';
 part 'functions/send_email_address_verification_code.dart';
 part 'functions/send_gift.dart';
+part 'functions/send_group_call_message.dart';
 part 'functions/send_inline_query_result_message.dart';
 part 'functions/send_message.dart';
 part 'functions/send_message_album.dart';
@@ -695,6 +698,7 @@ part 'functions/send_phone_number_code.dart';
 part 'functions/send_phone_number_firebase_sms.dart';
 part 'functions/send_quick_reply_shortcut_messages.dart';
 part 'functions/send_resold_gift.dart';
+part 'functions/send_text_message_draft.dart';
 part 'functions/send_web_app_custom_request.dart';
 part 'functions/send_web_app_data.dart';
 part 'functions/set_accent_color.dart';
@@ -761,7 +765,6 @@ part 'functions/set_default_channel_administrator_rights.dart';
 part 'functions/set_default_group_administrator_rights.dart';
 part 'functions/set_default_message_auto_delete_time.dart';
 part 'functions/set_default_reaction_type.dart';
-part 'functions/set_direct_messages_chat_topic_draft_message.dart';
 part 'functions/set_direct_messages_chat_topic_is_marked_as_unread.dart';
 part 'functions/set_emoji_status.dart';
 part 'functions/set_file_generation_progress.dart';
@@ -822,7 +825,9 @@ part 'functions/set_supergroup_sticker_set.dart';
 part 'functions/set_supergroup_unrestrict_boost_count.dart';
 part 'functions/set_supergroup_username.dart';
 part 'functions/set_tdlib_parameters.dart';
+part 'functions/set_upgraded_gift_colors.dart';
 part 'functions/set_user_emoji_status.dart';
+part 'functions/set_user_note.dart';
 part 'functions/set_user_personal_profile_photo.dart';
 part 'functions/set_user_privacy_setting_rules.dart';
 part 'functions/set_user_support_info.dart';
@@ -837,6 +842,7 @@ part 'functions/start_group_call_screen_sharing.dart';
 part 'functions/start_scheduled_video_chat.dart';
 part 'functions/stop_business_poll.dart';
 part 'functions/stop_poll.dart';
+part 'functions/suggest_user_birthdate.dart';
 part 'functions/suggest_user_profile_photo.dart';
 part 'functions/synchronize_language_pack.dart';
 part 'functions/terminate_all_other_sessions.dart';
@@ -873,6 +879,7 @@ part 'functions/toggle_forum_topic_is_closed.dart';
 part 'functions/toggle_forum_topic_is_pinned.dart';
 part 'functions/toggle_general_forum_topic_is_hidden.dart';
 part 'functions/toggle_gift_is_saved.dart';
+part 'functions/toggle_group_call_can_send_messages.dart';
 part 'functions/toggle_group_call_is_my_video_enabled.dart';
 part 'functions/toggle_group_call_is_my_video_paused.dart';
 part 'functions/toggle_group_call_participant_is_hand_raised.dart';
@@ -904,7 +911,7 @@ part 'functions/translate_message_text.dart';
 part 'functions/translate_text.dart';
 part 'functions/unpin_all_chat_messages.dart';
 part 'functions/unpin_all_direct_messages_chat_topic_messages.dart';
-part 'functions/unpin_all_message_thread_messages.dart';
+part 'functions/unpin_all_forum_topic_messages.dart';
 part 'functions/unpin_chat_message.dart';
 part 'functions/upgrade_basic_group_chat_to_supergroup_chat.dart';
 part 'functions/upgrade_gift.dart';
@@ -1174,6 +1181,7 @@ part 'objects/gift_resale_price.dart';
 part 'objects/gift_resale_result.dart';
 part 'objects/gift_settings.dart';
 part 'objects/gift_upgrade_preview.dart';
+part 'objects/gift_upgrade_price.dart';
 part 'objects/gifts_for_resale.dart';
 part 'objects/giveaway_info.dart';
 part 'objects/giveaway_parameters.dart';
@@ -1193,6 +1201,7 @@ part 'objects/group_call_video_source_group.dart';
 part 'objects/hashtags.dart';
 part 'objects/http_url.dart';
 part 'objects/identity_document.dart';
+part 'objects/imported_contact.dart';
 part 'objects/imported_contacts.dart';
 part 'objects/inline_keyboard_button.dart';
 part 'objects/inline_keyboard_button_type.dart';
@@ -1536,6 +1545,7 @@ part 'objects/upgraded_gift_attribute_id.dart';
 part 'objects/upgraded_gift_backdrop.dart';
 part 'objects/upgraded_gift_backdrop_colors.dart';
 part 'objects/upgraded_gift_backdrop_count.dart';
+part 'objects/upgraded_gift_colors.dart';
 part 'objects/upgraded_gift_model.dart';
 part 'objects/upgraded_gift_model_count.dart';
 part 'objects/upgraded_gift_origin.dart';
@@ -1575,14 +1585,14 @@ part 'objects/web_app_open_parameters.dart';
 part 'objects/web_page_instant_view.dart';
 
 /// TDLib version this API was generated for.
-const String tdlibVersion = '1.8.55';
+const String tdlibVersion = '1.8.56';
 
 /// TDLib commit whose td_api.tl this API was generated from.
-const String tdlibSchemaCommit = '7d257dcda5dd2c616c1146540ef51147c5bb2c69';
+const String tdlibSchemaCommit = '8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52';
 
 /// TDLib commits whose td_api.tl matches this API exactly.
 const List<String> tdlibCompatibleCommits = [
-  '7d257dcda5dd2c616c1146540ef51147c5bb2c69',
+  '8fbaf8441a79214bd00a1f19ab0bbcc91cd04e52',
 ];
 
 /// Base class of every TDLib object.
@@ -1872,18 +1882,21 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'upgradedGiftOriginUpgrade': UpgradedGiftOriginUpgrade.fromJson,
   'upgradedGiftOriginTransfer': UpgradedGiftOriginTransfer.fromJson,
   'upgradedGiftOriginResale': UpgradedGiftOriginResale.fromJson,
+  'upgradedGiftOriginBlockchain': UpgradedGiftOriginBlockchain.fromJson,
   'upgradedGiftOriginPrepaidUpgrade': UpgradedGiftOriginPrepaidUpgrade.fromJson,
   'upgradedGiftModel': UpgradedGiftModel.fromJson,
   'upgradedGiftSymbol': UpgradedGiftSymbol.fromJson,
   'upgradedGiftBackdropColors': UpgradedGiftBackdropColors.fromJson,
   'upgradedGiftBackdrop': UpgradedGiftBackdrop.fromJson,
   'upgradedGiftOriginalDetails': UpgradedGiftOriginalDetails.fromJson,
+  'upgradedGiftColors': UpgradedGiftColors.fromJson,
   'gift': Gift.fromJson,
   'upgradedGift': UpgradedGift.fromJson,
   'upgradedGiftValueInfo': UpgradedGiftValueInfo.fromJson,
   'upgradeGiftResult': UpgradeGiftResult.fromJson,
   'availableGift': AvailableGift.fromJson,
   'availableGifts': AvailableGifts.fromJson,
+  'giftUpgradePrice': GiftUpgradePrice.fromJson,
   'upgradedGiftAttributeIdModel': UpgradedGiftAttributeIdModel.fromJson,
   'upgradedGiftAttributeIdSymbol': UpgradedGiftAttributeIdSymbol.fromJson,
   'upgradedGiftAttributeIdBackdrop': UpgradedGiftAttributeIdBackdrop.fromJson,
@@ -1944,6 +1957,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       StarTransactionTypeChannelSubscriptionSale.fromJson,
   'starTransactionTypeGiftPurchase': StarTransactionTypeGiftPurchase.fromJson,
   'starTransactionTypeGiftTransfer': StarTransactionTypeGiftTransfer.fromJson,
+  'starTransactionTypeGiftOriginalDetailsDrop':
+      StarTransactionTypeGiftOriginalDetailsDrop.fromJson,
   'starTransactionTypeGiftSale': StarTransactionTypeGiftSale.fromJson,
   'starTransactionTypeGiftUpgrade': StarTransactionTypeGiftUpgrade.fromJson,
   'starTransactionTypeGiftUpgradePurchase':
@@ -2101,6 +2116,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageReactions': MessageReactions.fromJson,
   'messageInteractionInfo': MessageInteractionInfo.fromJson,
   'unreadReaction': UnreadReaction.fromJson,
+  'messageTopicThread': MessageTopicThread.fromJson,
   'messageTopicForum': MessageTopicForum.fromJson,
   'messageTopicDirectMessages': MessageTopicDirectMessages.fromJson,
   'messageTopicSavedMessages': MessageTopicSavedMessages.fromJson,
@@ -2574,6 +2590,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'messageForumTopicIsClosedToggled': MessageForumTopicIsClosedToggled.fromJson,
   'messageForumTopicIsHiddenToggled': MessageForumTopicIsHiddenToggled.fromJson,
   'messageSuggestProfilePhoto': MessageSuggestProfilePhoto.fromJson,
+  'messageSuggestBirthdate': MessageSuggestBirthdate.fromJson,
   'messageCustomServiceAction': MessageCustomServiceAction.fromJson,
   'messageGameScore': MessageGameScore.fromJson,
   'messagePaymentSuccessful': MessagePaymentSuccessful.fromJson,
@@ -2877,6 +2894,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'animations': Animations.fromJson,
   'diceStickersRegular': DiceStickersRegular.fromJson,
   'diceStickersSlotMachine': DiceStickersSlotMachine.fromJson,
+  'importedContact': ImportedContact.fromJson,
   'importedContacts': ImportedContacts.fromJson,
   'speechRecognitionResultPending': SpeechRecognitionResultPending.fromJson,
   'speechRecognitionResultText': SpeechRecognitionResultText.fromJson,
@@ -3261,6 +3279,8 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
       PushMessageContentRecurringPayment.fromJson,
   'pushMessageContentSuggestProfilePhoto':
       PushMessageContentSuggestProfilePhoto.fromJson,
+  'pushMessageContentSuggestBirthdate':
+      PushMessageContentSuggestBirthdate.fromJson,
   'pushMessageContentProximityAlertTriggered':
       PushMessageContentProximityAlertTriggered.fromJson,
   'pushMessageContentChecklistTasksAdded':
@@ -3689,6 +3709,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateHavePendingNotifications': UpdateHavePendingNotifications.fromJson,
   'updateDeleteMessages': UpdateDeleteMessages.fromJson,
   'updateChatAction': UpdateChatAction.fromJson,
+  'updatePendingTextMessage': UpdatePendingTextMessage.fromJson,
   'updateUserStatus': UpdateUserStatus.fromJson,
   'updateUser': UpdateUser.fromJson,
   'updateBasicGroup': UpdateBasicGroup.fromJson,
@@ -3714,6 +3735,7 @@ final Map<String, TdObjectFactory> tdObjectFactories = {
   'updateGroupCallParticipant': UpdateGroupCallParticipant.fromJson,
   'updateGroupCallParticipants': UpdateGroupCallParticipants.fromJson,
   'updateGroupCallVerificationState': UpdateGroupCallVerificationState.fromJson,
+  'updateGroupCallNewMessage': UpdateGroupCallNewMessage.fromJson,
   'updateNewCallSignalingData': UpdateNewCallSignalingData.fromJson,
   'updateUserPrivacySettingRules': UpdateUserPrivacySettingRules.fromJson,
   'updateUnreadMessageCount': UpdateUnreadMessageCount.fromJson,

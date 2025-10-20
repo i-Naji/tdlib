@@ -10,7 +10,7 @@ final class SendChatAction extends TdFunction<Ok> {
   /// Sends a notification about user activity in a chat
   const SendChatAction({
     required this.chatId,
-    required this.messageThreadId,
+    required this.topicId,
     required this.businessConnectionId,
     this.action,
   });
@@ -18,8 +18,8 @@ final class SendChatAction extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the action was performed
-  final int messageThreadId;
+  /// Identifier of the topic in which the action is performed
+  final MessageTopic topicId;
 
   /// Unique identifier of business connection on behalf of which to send the request; for bots only
   final String businessConnectionId;
@@ -31,7 +31,7 @@ final class SendChatAction extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId.toJson(),
         'business_connection_id': businessConnectionId,
         'action': action?.toJson(),
         if (extra != null) '@extra': extra,
@@ -41,13 +41,13 @@ final class SendChatAction extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendChatAction copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? topicId,
     String? businessConnectionId,
     ChatAction? Function()? action,
   }) =>
       SendChatAction(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId ?? this.topicId,
         businessConnectionId: businessConnectionId ?? this.businessConnectionId,
         action: action != null ? action() : this.action,
       );

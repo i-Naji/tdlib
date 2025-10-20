@@ -3,11 +3,11 @@
 
 part of '../tdapi.dart';
 
-/// Marks all reactions in a chat or a forum topic as read
+/// Marks all reactions in a chat as read
 ///
 /// Returns [Ok].
 final class ReadAllChatReactions extends TdFunction<Ok> {
-  /// Marks all reactions in a chat or a forum topic as read
+  /// Marks all reactions in a chat as read
   const ReadAllChatReactions({
     required this.chatId,
   });

@@ -3,22 +3,22 @@
 
 part of '../tdapi.dart';
 
-/// Changes the draft message in a chat
+/// Changes the draft message in a chat or a topic
 ///
 /// Returns [Ok].
 final class SetChatDraftMessage extends TdFunction<Ok> {
-  /// Changes the draft message in a chat
+  /// Changes the draft message in a chat or a topic
   const SetChatDraftMessage({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     this.draftMessage,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the draft was changed
-  final int messageThreadId;
+  /// Topic in which the draft will be changed; pass null to change the draft for the chat itself
+  final MessageTopic? topicId;
 
   /// New draft message; pass null to remove the draft. All files in draft message content must be of the type inputFileLocal. Media thumbnails and captions are ignored
   final DraftMessage? draftMessage;
@@ -27,7 +27,7 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'draft_message': draftMessage?.toJson(),
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +36,12 @@ final class SetChatDraftMessage extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetChatDraftMessage copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     DraftMessage? Function()? draftMessage,
   }) =>
       SetChatDraftMessage(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         draftMessage: draftMessage != null ? draftMessage() : this.draftMessage,
       );
 

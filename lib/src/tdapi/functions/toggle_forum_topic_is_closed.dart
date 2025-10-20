@@ -10,15 +10,15 @@ final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
   /// Toggles whether a topic is closed in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
   const ToggleForumTopicIsClosed({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
     required this.isClosed,
   });
 
   /// Identifier of the chat
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   /// Pass true to close the topic; pass false to reopen it
   final bool isClosed;
@@ -27,7 +27,7 @@ final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         'is_closed': isClosed,
         if (extra != null) '@extra': extra,
       };
@@ -36,12 +36,12 @@ final class ToggleForumTopicIsClosed extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ToggleForumTopicIsClosed copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
     bool? isClosed,
   }) =>
       ToggleForumTopicIsClosed(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         isClosed: isClosed ?? this.isClosed,
       );
 

@@ -10,7 +10,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Forwards previously sent messages. Returns the forwarded messages in the same order as the message identifiers passed in message_ids. If a message can't be forwarded, null will be returned instead of the message
   const ForwardMessages({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     required this.fromChatId,
     required this.messageIds,
     this.options,
@@ -21,8 +21,8 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// Identifier of the chat to which to forward messages
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the message will be sent; for forum threads only
-  final int messageThreadId;
+  /// Topic in which the messages will be forwarded; message threads aren't supported; pass null if none
+  final MessageTopic? topicId;
 
   /// Identifier of the chat from which to forward messages
   final int fromChatId;
@@ -43,7 +43,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'from_chat_id': fromChatId,
         'message_ids': messageIds,
         'options': options?.toJson(),
@@ -56,7 +56,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   ForwardMessages copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     int? fromChatId,
     List<int>? messageIds,
     MessageSendOptions? Function()? options,
@@ -65,7 +65,7 @@ final class ForwardMessages extends TdFunction<Messages> {
   }) =>
       ForwardMessages(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         fromChatId: fromChatId ?? this.fromChatId,
         messageIds: messageIds ?? this.messageIds,
         options: options != null ? options() : this.options,

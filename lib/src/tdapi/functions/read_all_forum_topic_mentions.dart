@@ -3,43 +3,43 @@
 
 part of '../tdapi.dart';
 
-/// Marks all reactions in a forum topic as read
+/// Marks all mentions in a topic in a forum supergroup chat as read
 ///
 /// Returns [Ok].
-final class ReadAllMessageThreadReactions extends TdFunction<Ok> {
-  /// Marks all reactions in a forum topic as read
-  const ReadAllMessageThreadReactions({
+final class ReadAllForumTopicMentions extends TdFunction<Ok> {
+  /// Marks all mentions in a topic in a forum supergroup chat as read
+  const ReadAllForumTopicMentions({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// Message thread identifier in which reactions are marked as read
-  final int messageThreadId;
+  /// Forum topic identifier in which mentions are marked as read
+  final int forumTopicId;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         if (extra != null) '@extra': extra,
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
-  ReadAllMessageThreadReactions copyWith({
+  ReadAllForumTopicMentions copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
   }) =>
-      ReadAllMessageThreadReactions(
+      ReadAllForumTopicMentions(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
       );
 
   /// TDLib type name.
-  static const String CONSTRUCTOR = 'readAllMessageThreadReactions';
+  static const String CONSTRUCTOR = 'readAllForumTopicMentions';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes origin from which the upgraded gift was obtained
 ///
-/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale], [UpgradedGiftOriginPrepaidUpgrade]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
+/// One of: [UpgradedGiftOriginUpgrade], [UpgradedGiftOriginTransfer], [UpgradedGiftOriginResale], [UpgradedGiftOriginBlockchain], [UpgradedGiftOriginPrepaidUpgrade]; or [UndecodedUpgradedGiftOrigin] for a type newer than this API.
 sealed class UpgradedGiftOrigin extends TdObject {
   const UpgradedGiftOrigin();
 
@@ -143,6 +143,33 @@ final class UpgradedGiftOriginResale extends UpgradedGiftOrigin {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'upgradedGiftOriginResale';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold or withdrawn to blockchain
+final class UpgradedGiftOriginBlockchain extends UpgradedGiftOrigin {
+  /// The gift was assigned from blockchain and isn't owned by the current user. The gift can't be transferred, resold or withdrawn to blockchain
+  const UpgradedGiftOriginBlockchain();
+
+  /// Parses a [UpgradedGiftOriginBlockchain] from TDLib JSON.
+  factory UpgradedGiftOriginBlockchain.fromJson(Map<String, dynamic> json) =>
+      const UpgradedGiftOriginBlockchain();
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  UpgradedGiftOriginBlockchain copyWith() =>
+      const UpgradedGiftOriginBlockchain();
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'upgradedGiftOriginBlockchain';
 
   @override
   String getConstructor() => CONSTRUCTOR;

@@ -127,32 +127,32 @@ final class ChatMembersFilterMembers extends ChatMembersFilter {
 final class ChatMembersFilterMention extends ChatMembersFilter {
   /// Returns users which can be mentioned in the chat
   const ChatMembersFilterMention({
-    required this.messageThreadId,
+    this.topicId,
   });
 
-  /// If non-zero, the identifier of the current message thread
-  final int messageThreadId;
+  /// Identifier of the topic in which the users will be mentioned; pass null if none
+  final MessageTopic? topicId;
 
   /// Parses a [ChatMembersFilterMention] from TDLib JSON.
   factory ChatMembersFilterMention.fromJson(Map<String, dynamic> json) =>
       ChatMembersFilterMention(
-        messageThreadId: _readInt(json['message_thread_id']),
+        topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
       );
 
   @override
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   @override
   ChatMembersFilterMention copyWith({
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
   }) =>
       ChatMembersFilterMention(
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
       );
 
   /// TDLib type name.

@@ -73,7 +73,7 @@ final class Supergroup extends TdObject {
   /// True, if users need to join the supergroup before they can send messages. May be false only for discussion supergroups and channel direct messages groups
   final bool joinToSendMessages;
 
-  /// True, if all users directly joining the supergroup need to be approved by supergroup administrators. Always false for channels and supergroups without username, location, or a linked chat
+  /// True, if all users directly joining the supergroup need to be approved by supergroup administrators. Can be true only for non-broadcast supergroups with username, location, or a linked chat
   final bool joinByRequest;
 
   /// True, if the slow mode is enabled in the supergroup

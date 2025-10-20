@@ -13,6 +13,7 @@ final class Chat extends TdObject {
     this.photo,
     required this.accentColorId,
     required this.backgroundCustomEmojiId,
+    this.upgradedGiftColors,
     required this.profileAccentColorId,
     required this.profileBackgroundCustomEmojiId,
     required this.permissions,
@@ -69,6 +70,9 @@ final class Chat extends TdObject {
 
   /// Identifier of a custom emoji to be shown on the reply header and link preview background for messages sent by the chat; 0 if none
   final int backgroundCustomEmojiId;
+
+  /// Color scheme based on an upgraded gift to be used for the chat instead of accent_color_id and background_custom_emoji_id; may be null if none
+  final UpgradedGiftColors? upgradedGiftColors;
 
   /// Identifier of the profile accent color for the chat's profile; -1 if none
   final int profileAccentColorId;
@@ -191,6 +195,8 @@ final class Chat extends TdObject {
         photo: _readOptional(json['photo'], ChatPhotoInfo.fromJson),
         accentColorId: _readInt(json['accent_color_id']),
         backgroundCustomEmojiId: _readInt(json['background_custom_emoji_id']),
+        upgradedGiftColors: _readOptional(
+            json['upgraded_gift_colors'], UpgradedGiftColors.fromJson),
         profileAccentColorId: _readInt(json['profile_accent_color_id']),
         profileBackgroundCustomEmojiId:
             _readInt(json['profile_background_custom_emoji_id']),
@@ -251,6 +257,7 @@ final class Chat extends TdObject {
         'photo': photo?.toJson(),
         'accent_color_id': accentColorId,
         'background_custom_emoji_id': backgroundCustomEmojiId.toString(),
+        'upgraded_gift_colors': upgradedGiftColors?.toJson(),
         'profile_accent_color_id': profileAccentColorId,
         'profile_background_custom_emoji_id':
             profileBackgroundCustomEmojiId.toString(),
@@ -298,6 +305,7 @@ final class Chat extends TdObject {
     ChatPhotoInfo? Function()? photo,
     int? accentColorId,
     int? backgroundCustomEmojiId,
+    UpgradedGiftColors? Function()? upgradedGiftColors,
     int? profileAccentColorId,
     int? profileBackgroundCustomEmojiId,
     ChatPermissions? permissions,
@@ -344,6 +352,9 @@ final class Chat extends TdObject {
         accentColorId: accentColorId ?? this.accentColorId,
         backgroundCustomEmojiId:
             backgroundCustomEmojiId ?? this.backgroundCustomEmojiId,
+        upgradedGiftColors: upgradedGiftColors != null
+            ? upgradedGiftColors()
+            : this.upgradedGiftColors,
         profileAccentColorId: profileAccentColorId ?? this.profileAccentColorId,
         profileBackgroundCustomEmojiId: profileBackgroundCustomEmojiId ??
             this.profileBackgroundCustomEmojiId,

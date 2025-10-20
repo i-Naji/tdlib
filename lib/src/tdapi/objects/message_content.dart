@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Contains the content of a message
 ///
-/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
+/// One of: [MessageText], [MessageAnimation], [MessageAudio], [MessageDocument], [MessagePaidMedia], [MessagePhoto], [MessageSticker], [MessageVideo], [MessageVideoNote], [MessageVoiceNote], [MessageExpiredPhoto], [MessageExpiredVideo], [MessageExpiredVideoNote], [MessageExpiredVoiceNote], [MessageLocation], [MessageVenue], [MessageContact], [MessageAnimatedEmoji], [MessageDice], [MessageGame], [MessagePoll], [MessageStory], [MessageChecklist], [MessageInvoice], [MessageCall], [MessageGroupCall], [MessageVideoChatScheduled], [MessageVideoChatStarted], [MessageVideoChatEnded], [MessageInviteVideoChatParticipants], [MessageBasicGroupChatCreate], [MessageSupergroupChatCreate], [MessageChatChangeTitle], [MessageChatChangePhoto], [MessageChatDeletePhoto], [MessageChatAddMembers], [MessageChatJoinByLink], [MessageChatJoinByRequest], [MessageChatDeleteMember], [MessageChatUpgradeTo], [MessageChatUpgradeFrom], [MessagePinMessage], [MessageScreenshotTaken], [MessageChatSetBackground], [MessageChatSetTheme], [MessageChatSetMessageAutoDeleteTime], [MessageChatBoost], [MessageForumTopicCreated], [MessageForumTopicEdited], [MessageForumTopicIsClosedToggled], [MessageForumTopicIsHiddenToggled], [MessageSuggestProfilePhoto], [MessageSuggestBirthdate], [MessageCustomServiceAction], [MessageGameScore], [MessagePaymentSuccessful], [MessagePaymentSuccessfulBot], [MessagePaymentRefunded], [MessageGiftedPremium], [MessagePremiumGiftCode], [MessageGiveawayCreated], [MessageGiveaway], [MessageGiveawayCompleted], [MessageGiveawayWinners], [MessageGiftedStars], [MessageGiftedTon], [MessageGiveawayPrizeStars], [MessageGift], [MessageUpgradedGift], [MessageRefundedUpgradedGift], [MessagePaidMessagesRefunded], [MessagePaidMessagePriceChanged], [MessageDirectMessagePriceChanged], [MessageChecklistTasksDone], [MessageChecklistTasksAdded], [MessageSuggestedPostApprovalFailed], [MessageSuggestedPostApproved], [MessageSuggestedPostDeclined], [MessageSuggestedPostPaid], [MessageSuggestedPostRefunded], [MessageContactRegistered], [MessageUsersShared], [MessageChatShared], [MessageBotWriteAccessAllowed], [MessageWebAppDataSent], [MessageWebAppDataReceived], [MessagePassportDataSent], [MessagePassportDataReceived], [MessageProximityAlertTriggered], [MessageUnsupported]; or [UndecodedMessageContent] for a type newer than this API.
 sealed class MessageContent extends TdObject {
   const MessageContent();
 
@@ -2270,11 +2270,15 @@ final class MessageForumTopicCreated extends MessageContent {
   /// A forum topic has been created
   const MessageForumTopicCreated({
     required this.name,
+    required this.isNameImplicit,
     required this.icon,
   });
 
   /// Name of the topic
   final String name;
+
+  /// True, if the name of the topic wasn't added explicitly
+  final bool isNameImplicit;
 
   /// Icon of the topic
   final ForumTopicIcon icon;
@@ -2283,6 +2287,7 @@ final class MessageForumTopicCreated extends MessageContent {
   factory MessageForumTopicCreated.fromJson(Map<String, dynamic> json) =>
       MessageForumTopicCreated(
         name: _readString(json['name']),
+        isNameImplicit: _readBool(json['is_name_implicit']),
         icon: _readObject(json['icon'], ForumTopicIcon.fromJson),
       );
 
@@ -2290,6 +2295,7 @@ final class MessageForumTopicCreated extends MessageContent {
   Map<String, dynamic> toJson() => {
         '@type': CONSTRUCTOR,
         'name': name,
+        'is_name_implicit': isNameImplicit,
         'icon': icon.toJson(),
       };
 
@@ -2298,10 +2304,12 @@ final class MessageForumTopicCreated extends MessageContent {
   @override
   MessageForumTopicCreated copyWith({
     String? name,
+    bool? isNameImplicit,
     ForumTopicIcon? icon,
   }) =>
       MessageForumTopicCreated(
         name: name ?? this.name,
+        isNameImplicit: isNameImplicit ?? this.isNameImplicit,
         icon: icon ?? this.icon,
       );
 
@@ -2482,6 +2490,45 @@ final class MessageSuggestProfilePhoto extends MessageContent {
 
   /// TDLib type name.
   static const String CONSTRUCTOR = 'messageSuggestProfilePhoto';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A birthdate was suggested to be set
+final class MessageSuggestBirthdate extends MessageContent {
+  /// A birthdate was suggested to be set
+  const MessageSuggestBirthdate({
+    required this.birthdate,
+  });
+
+  /// The suggested birthdate. Use the method setBirthdate to apply the birthdate
+  final Birthdate birthdate;
+
+  /// Parses a [MessageSuggestBirthdate] from TDLib JSON.
+  factory MessageSuggestBirthdate.fromJson(Map<String, dynamic> json) =>
+      MessageSuggestBirthdate(
+        birthdate: _readObject(json['birthdate'], Birthdate.fromJson),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'birthdate': birthdate.toJson(),
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageSuggestBirthdate copyWith({
+    Birthdate? birthdate,
+  }) =>
+      MessageSuggestBirthdate(
+        birthdate: birthdate ?? this.birthdate,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageSuggestBirthdate';
 
   @override
   String getConstructor() => CONSTRUCTOR;
@@ -3819,6 +3866,7 @@ final class MessageUpgradedGift extends MessageContent {
     required this.canBeTransferred,
     required this.wasTransferred,
     required this.transferStarCount,
+    required this.dropOriginalDetailsStarCount,
     required this.nextTransferDate,
     required this.nextResaleDate,
     required this.exportDate,
@@ -3851,6 +3899,9 @@ final class MessageUpgradedGift extends MessageContent {
   /// Number of Telegram Stars that must be paid to transfer the upgraded gift; only for the receiver of the gift
   final int transferStarCount;
 
+  /// Number of Telegram Stars that must be paid to drop original details of the upgraded gift; 0 if not available; only for the receiver of the gift
+  final int dropOriginalDetailsStarCount;
+
   /// Point in time (Unix timestamp) when the gift can be transferred to another owner; can be in the past; 0 if the gift can be transferred immediately or transfer isn't possible; only for the receiver of the gift
   final int nextTransferDate;
 
@@ -3872,6 +3923,8 @@ final class MessageUpgradedGift extends MessageContent {
         canBeTransferred: _readBool(json['can_be_transferred']),
         wasTransferred: _readBool(json['was_transferred']),
         transferStarCount: _readInt(json['transfer_star_count']),
+        dropOriginalDetailsStarCount:
+            _readInt(json['drop_original_details_star_count']),
         nextTransferDate: _readInt(json['next_transfer_date']),
         nextResaleDate: _readInt(json['next_resale_date']),
         exportDate: _readInt(json['export_date']),
@@ -3889,6 +3942,7 @@ final class MessageUpgradedGift extends MessageContent {
         'can_be_transferred': canBeTransferred,
         'was_transferred': wasTransferred,
         'transfer_star_count': transferStarCount,
+        'drop_original_details_star_count': dropOriginalDetailsStarCount,
         'next_transfer_date': nextTransferDate,
         'next_resale_date': nextResaleDate,
         'export_date': exportDate,
@@ -3907,6 +3961,7 @@ final class MessageUpgradedGift extends MessageContent {
     bool? canBeTransferred,
     bool? wasTransferred,
     int? transferStarCount,
+    int? dropOriginalDetailsStarCount,
     int? nextTransferDate,
     int? nextResaleDate,
     int? exportDate,
@@ -3921,6 +3976,8 @@ final class MessageUpgradedGift extends MessageContent {
         canBeTransferred: canBeTransferred ?? this.canBeTransferred,
         wasTransferred: wasTransferred ?? this.wasTransferred,
         transferStarCount: transferStarCount ?? this.transferStarCount,
+        dropOriginalDetailsStarCount:
+            dropOriginalDetailsStarCount ?? this.dropOriginalDetailsStarCount,
         nextTransferDate: nextTransferDate ?? this.nextTransferDate,
         nextResaleDate: nextResaleDate ?? this.nextResaleDate,
         exportDate: exportDate ?? this.exportDate,

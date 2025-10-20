@@ -18,6 +18,7 @@ final class UpgradedGift extends TdObject {
     required this.isPremium,
     required this.isThemeAvailable,
     required this.usedThemeChatId,
+    this.hostId,
     this.ownerId,
     required this.ownerAddress,
     required this.ownerName,
@@ -26,6 +27,7 @@ final class UpgradedGift extends TdObject {
     required this.symbol,
     required this.backdrop,
     this.originalDetails,
+    this.colors,
     this.resaleParameters,
     required this.valueCurrency,
     required this.valueAmount,
@@ -66,6 +68,9 @@ final class UpgradedGift extends TdObject {
   /// Identifier of the chat for which the gift is used to set a theme; 0 if none or the gift isn't owned by the current user
   final int usedThemeChatId;
 
+  /// Identifier of the user or the chat to which the upgraded gift was assigned from blockchain; may be null if none or unknown
+  final MessageSender? hostId;
+
   /// Identifier of the user or the chat that owns the upgraded gift; may be null if none or unknown
   final MessageSender? ownerId;
 
@@ -89,6 +94,9 @@ final class UpgradedGift extends TdObject {
 
   /// Information about the originally sent gift; may be null if unknown
   final UpgradedGiftOriginalDetails? originalDetails;
+
+  /// Colors that can be set for user's name, background of empty chat photo, replies to messages and link previews; may be null if none
+  final UpgradedGiftColors? colors;
 
   /// Resale parameters of the gift; may be null if resale isn't possible
   final GiftResaleParameters? resaleParameters;
@@ -120,6 +128,7 @@ final class UpgradedGift extends TdObject {
         isPremium: _readBool(json['is_premium']),
         isThemeAvailable: _readBool(json['is_theme_available']),
         usedThemeChatId: _readInt(json['used_theme_chat_id']),
+        hostId: _readOptional(json['host_id'], MessageSender.fromJson),
         ownerId: _readOptional(json['owner_id'], MessageSender.fromJson),
         ownerAddress: _readString(json['owner_address']),
         ownerName: _readString(json['owner_name']),
@@ -129,6 +138,7 @@ final class UpgradedGift extends TdObject {
         backdrop: _readObject(json['backdrop'], UpgradedGiftBackdrop.fromJson),
         originalDetails: _readOptional(
             json['original_details'], UpgradedGiftOriginalDetails.fromJson),
+        colors: _readOptional(json['colors'], UpgradedGiftColors.fromJson),
         resaleParameters: _readOptional(
             json['resale_parameters'], GiftResaleParameters.fromJson),
         valueCurrency: _readString(json['value_currency']),
@@ -151,6 +161,7 @@ final class UpgradedGift extends TdObject {
         'is_premium': isPremium,
         'is_theme_available': isThemeAvailable,
         'used_theme_chat_id': usedThemeChatId,
+        'host_id': hostId?.toJson(),
         'owner_id': ownerId?.toJson(),
         'owner_address': ownerAddress,
         'owner_name': ownerName,
@@ -159,6 +170,7 @@ final class UpgradedGift extends TdObject {
         'symbol': symbol.toJson(),
         'backdrop': backdrop.toJson(),
         'original_details': originalDetails?.toJson(),
+        'colors': colors?.toJson(),
         'resale_parameters': resaleParameters?.toJson(),
         'value_currency': valueCurrency,
         'value_amount': valueAmount,
@@ -178,6 +190,7 @@ final class UpgradedGift extends TdObject {
     bool? isPremium,
     bool? isThemeAvailable,
     int? usedThemeChatId,
+    MessageSender? Function()? hostId,
     MessageSender? Function()? ownerId,
     String? ownerAddress,
     String? ownerName,
@@ -186,6 +199,7 @@ final class UpgradedGift extends TdObject {
     UpgradedGiftSymbol? symbol,
     UpgradedGiftBackdrop? backdrop,
     UpgradedGiftOriginalDetails? Function()? originalDetails,
+    UpgradedGiftColors? Function()? colors,
     GiftResaleParameters? Function()? resaleParameters,
     String? valueCurrency,
     int? valueAmount,
@@ -204,6 +218,7 @@ final class UpgradedGift extends TdObject {
         isPremium: isPremium ?? this.isPremium,
         isThemeAvailable: isThemeAvailable ?? this.isThemeAvailable,
         usedThemeChatId: usedThemeChatId ?? this.usedThemeChatId,
+        hostId: hostId != null ? hostId() : this.hostId,
         ownerId: ownerId != null ? ownerId() : this.ownerId,
         ownerAddress: ownerAddress ?? this.ownerAddress,
         ownerName: ownerName ?? this.ownerName,
@@ -213,6 +228,7 @@ final class UpgradedGift extends TdObject {
         backdrop: backdrop ?? this.backdrop,
         originalDetails:
             originalDetails != null ? originalDetails() : this.originalDetails,
+        colors: colors != null ? colors() : this.colors,
         resaleParameters: resaleParameters != null
             ? resaleParameters()
             : this.resaleParameters,

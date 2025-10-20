@@ -10,7 +10,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   /// Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message
   const SendInlineQueryResultMessage({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     this.replyTo,
     this.options,
     required this.queryId,
@@ -21,8 +21,8 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   /// Target chat
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the message will be sent
-  final int messageThreadId;
+  /// Topic in which the message will be sent; pass null if none
+  final MessageTopic? topicId;
 
   /// Information about the message or story to be replied; pass null if none
   final InputMessageReplyTo? replyTo;
@@ -43,7 +43,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'query_id': queryId.toString(),
@@ -56,7 +56,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendInlineQueryResultMessage copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     int? queryId,
@@ -65,7 +65,7 @@ final class SendInlineQueryResultMessage extends TdFunction<Message> {
   }) =>
       SendInlineQueryResultMessage(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         options: options != null ? options() : this.options,
         queryId: queryId ?? this.queryId,

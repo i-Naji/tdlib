@@ -5,7 +5,7 @@ part of '../tdapi.dart';
 
 /// Describes a topic of messages in a chat
 ///
-/// One of: [MessageTopicForum], [MessageTopicDirectMessages], [MessageTopicSavedMessages]; or [UndecodedMessageTopic] for a type newer than this API.
+/// One of: [MessageTopicThread], [MessageTopicForum], [MessageTopicDirectMessages], [MessageTopicSavedMessages]; or [UndecodedMessageTopic] for a type newer than this API.
 sealed class MessageTopic extends TdObject {
   const MessageTopic();
 
@@ -42,14 +42,53 @@ final class UndecodedMessageTopic extends MessageTopic {
   String getConstructor() => _readString(json['@type']);
 }
 
-/// A topic in a forum supergroup chat
+/// A topic in a non-forum supergroup chat
+final class MessageTopicThread extends MessageTopic {
+  /// A topic in a non-forum supergroup chat
+  const MessageTopicThread({
+    required this.messageThreadId,
+  });
+
+  /// Unique identifier of the message thread
+  final int messageThreadId;
+
+  /// Parses a [MessageTopicThread] from TDLib JSON.
+  factory MessageTopicThread.fromJson(Map<String, dynamic> json) =>
+      MessageTopicThread(
+        messageThreadId: _readInt(json['message_thread_id']),
+      );
+
+  @override
+  Map<String, dynamic> toJson() => {
+        '@type': CONSTRUCTOR,
+        'message_thread_id': messageThreadId,
+      };
+
+  /// Returns a copy with the given fields replaced. For a nullable
+  /// field pass a function, e.g. `field: () => null` to clear it.
+  @override
+  MessageTopicThread copyWith({
+    int? messageThreadId,
+  }) =>
+      MessageTopicThread(
+        messageThreadId: messageThreadId ?? this.messageThreadId,
+      );
+
+  /// TDLib type name.
+  static const String CONSTRUCTOR = 'messageTopicThread';
+
+  @override
+  String getConstructor() => CONSTRUCTOR;
+}
+
+/// A topic in a forum supergroup chat or a chat with a bot
 final class MessageTopicForum extends MessageTopic {
-  /// A topic in a forum supergroup chat
+  /// A topic in a forum supergroup chat or a chat with a bot
   const MessageTopicForum({
     required this.forumTopicId,
   });
 
-  /// Unique identifier of the forum topic; all messages in a non-forum supergroup chats belongs to the General topic
+  /// Unique identifier of the forum topic
   final int forumTopicId;
 
   /// Parses a [MessageTopicForum] from TDLib JSON.

@@ -16,7 +16,7 @@ final class SetChatSlowModeDelay extends TdFunction<Ok> {
   /// Chat identifier
   final int chatId;
 
-  /// New slow mode delay for the chat, in seconds; must be one of 0, 10, 30, 60, 300, 900, 3600
+  /// New slow mode delay for the chat, in seconds; must be one of 0, 5, 10, 30, 60, 300, 900, 3600
   final int slowModeDelay;
 
   @override

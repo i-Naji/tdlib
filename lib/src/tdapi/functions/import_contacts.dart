@@ -12,8 +12,8 @@ final class ImportContacts extends TdFunction<ImportedContacts> {
     required this.contacts,
   });
 
-  /// The list of contacts to import or edit; contacts' vCard are ignored and are not imported
-  final List<Contact> contacts;
+  /// The list of contacts to import or edit
+  final List<ImportedContact> contacts;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
@@ -25,7 +25,7 @@ final class ImportContacts extends TdFunction<ImportedContacts> {
   /// Returns a copy with the given fields replaced. For a nullable
   /// field pass a function, e.g. `field: () => null` to clear it.
   ImportContacts copyWith({
-    List<Contact>? contacts,
+    List<ImportedContact>? contacts,
   }) =>
       ImportContacts(
         contacts: contacts ?? this.contacts,

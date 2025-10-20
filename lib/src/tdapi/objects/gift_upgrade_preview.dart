@@ -10,6 +10,8 @@ final class GiftUpgradePreview extends TdObject {
     required this.models,
     required this.symbols,
     required this.backdrops,
+    required this.prices,
+    required this.nextPrices,
     this.extra,
     this.clientId,
   });
@@ -22,6 +24,12 @@ final class GiftUpgradePreview extends TdObject {
 
   /// Examples of possible backdrops that can be chosen for the gift after upgrade
   final List<UpgradedGiftBackdrop> backdrops;
+
+  /// Examples of price for gift upgrade from the maximum price to the minimum price
+  final List<GiftUpgradePrice> prices;
+
+  /// Next changes for the price for gift upgrade with more granularity than in prices
+  final List<GiftUpgradePrice> nextPrices;
 
   /// "@extra" of the request this object answers.
   @override
@@ -40,6 +48,10 @@ final class GiftUpgradePreview extends TdObject {
             (e) => _readObject(e, UpgradedGiftSymbol.fromJson)),
         backdrops: _readList<UpgradedGiftBackdrop>(json['backdrops'],
             (e) => _readObject(e, UpgradedGiftBackdrop.fromJson)),
+        prices: _readList<GiftUpgradePrice>(
+            json['prices'], (e) => _readObject(e, GiftUpgradePrice.fromJson)),
+        nextPrices: _readList<GiftUpgradePrice>(json['next_prices'],
+            (e) => _readObject(e, GiftUpgradePrice.fromJson)),
         extra: json['@extra'],
         clientId: _readClientId(json['@client_id']),
       );
@@ -50,6 +62,8 @@ final class GiftUpgradePreview extends TdObject {
         'models': [for (final e in models) e.toJson()],
         'symbols': [for (final e in symbols) e.toJson()],
         'backdrops': [for (final e in backdrops) e.toJson()],
+        'prices': [for (final e in prices) e.toJson()],
+        'next_prices': [for (final e in nextPrices) e.toJson()],
       };
 
   /// Returns a copy with the given fields replaced. For a nullable
@@ -58,6 +72,8 @@ final class GiftUpgradePreview extends TdObject {
     List<UpgradedGiftModel>? models,
     List<UpgradedGiftSymbol>? symbols,
     List<UpgradedGiftBackdrop>? backdrops,
+    List<GiftUpgradePrice>? prices,
+    List<GiftUpgradePrice>? nextPrices,
     dynamic extra,
     int? clientId,
   }) =>
@@ -65,6 +81,8 @@ final class GiftUpgradePreview extends TdObject {
         models: models ?? this.models,
         symbols: symbols ?? this.symbols,
         backdrops: backdrops ?? this.backdrops,
+        prices: prices ?? this.prices,
+        nextPrices: nextPrices ?? this.nextPrices,
         extra: extra ?? this.extra,
         clientId: clientId ?? this.clientId,
       );

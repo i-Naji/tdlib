@@ -3,14 +3,14 @@
 
 part of '../tdapi.dart';
 
-/// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
+/// Edits title and icon of a topic in a forum supergroup chat or a chat with a bot with topics; for supergroup chats requires can_manage_topics administrator right unless the user is creator of the topic
 ///
 /// Returns [Ok].
 final class EditForumTopic extends TdFunction<Ok> {
-  /// Edits title and icon of a topic in a forum supergroup chat; requires can_manage_topics administrator right in the supergroup unless the user is creator of the topic
+  /// Edits title and icon of a topic in a forum supergroup chat or a chat with a bot with topics; for supergroup chats requires can_manage_topics administrator right unless the user is creator of the topic
   const EditForumTopic({
     required this.chatId,
-    required this.messageThreadId,
+    required this.forumTopicId,
     required this.name,
     required this.editIconCustomEmoji,
     required this.iconCustomEmojiId,
@@ -19,8 +19,8 @@ final class EditForumTopic extends TdFunction<Ok> {
   /// Identifier of the chat
   final int chatId;
 
-  /// Message thread identifier of the forum topic
-  final int messageThreadId;
+  /// Forum topic identifier
+  final int forumTopicId;
 
   /// New name of the topic; 0-128 characters. If empty, the previous topic name is kept
   final String name;
@@ -35,7 +35,7 @@ final class EditForumTopic extends TdFunction<Ok> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'forum_topic_id': forumTopicId,
         'name': name,
         'edit_icon_custom_emoji': editIconCustomEmoji,
         'icon_custom_emoji_id': iconCustomEmojiId.toString(),
@@ -46,14 +46,14 @@ final class EditForumTopic extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   EditForumTopic copyWith({
     int? chatId,
-    int? messageThreadId,
+    int? forumTopicId,
     String? name,
     bool? editIconCustomEmoji,
     int? iconCustomEmojiId,
   }) =>
       EditForumTopic(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        forumTopicId: forumTopicId ?? this.forumTopicId,
         name: name ?? this.name,
         editIconCustomEmoji: editIconCustomEmoji ?? this.editIconCustomEmoji,
         iconCustomEmojiId: iconCustomEmojiId ?? this.iconCustomEmojiId,

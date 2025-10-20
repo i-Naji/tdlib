@@ -3,27 +3,27 @@
 
 part of '../tdapi.dart';
 
-/// Changes the order of pinned forum topics; requires can_manage_topics administrator right in the supergroup
+/// Changes the order of pinned topics in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup
 ///
 /// Returns [Ok].
 final class SetPinnedForumTopics extends TdFunction<Ok> {
-  /// Changes the order of pinned forum topics; requires can_manage_topics administrator right in the supergroup
+  /// Changes the order of pinned topics in a forum supergroup chat or a chat with a bot with topics; requires can_manage_topics administrator right in the supergroup
   const SetPinnedForumTopics({
     required this.chatId,
-    required this.messageThreadIds,
+    required this.forumTopicIds,
   });
 
   /// Chat identifier
   final int chatId;
 
-  /// The new list of pinned forum topics
-  final List<int> messageThreadIds;
+  /// The new list of identifiers of the pinned forum topics
+  final List<int> forumTopicIds;
 
   @override
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_ids': messageThreadIds,
+        'forum_topic_ids': forumTopicIds,
         if (extra != null) '@extra': extra,
       };
 
@@ -31,11 +31,11 @@ final class SetPinnedForumTopics extends TdFunction<Ok> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SetPinnedForumTopics copyWith({
     int? chatId,
-    List<int>? messageThreadIds,
+    List<int>? forumTopicIds,
   }) =>
       SetPinnedForumTopics(
         chatId: chatId ?? this.chatId,
-        messageThreadIds: messageThreadIds ?? this.messageThreadIds,
+        forumTopicIds: forumTopicIds ?? this.forumTopicIds,
       );
 
   /// TDLib type name.

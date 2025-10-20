@@ -38,7 +38,7 @@ final class DirectMessagesChatTopic extends TdObject {
   /// True, if the other party can send unpaid messages even if the chat has paid messages enabled
   final bool canSendUnpaidMessages;
 
-  /// True, if the forum topic is marked as unread
+  /// True, if the topic is marked as unread
   final bool isMarkedAsUnread;
 
   /// Number of unread messages in the chat

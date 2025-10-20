@@ -18,7 +18,7 @@ final class GetChatMessageCount extends TdFunction<Count> {
   /// Identifier of the chat in which to count messages
   final int chatId;
 
-  /// Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics
+  /// Pass topic identifier to get number of messages only in specific topic; pass null to get number of messages in all topics; message threads aren't supported
   final MessageTopic? topicId;
 
   /// Filter for message content; searchMessagesFilterEmpty is unsupported in this function

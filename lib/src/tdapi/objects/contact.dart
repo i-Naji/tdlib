@@ -3,9 +3,9 @@
 
 part of '../tdapi.dart';
 
-/// Describes a user contact
+/// Describes a contact of a user
 final class Contact extends TdObject {
-  /// Describes a user contact
+  /// Describes a contact of a user
   const Contact({
     required this.phoneNumber,
     required this.firstName,
@@ -17,10 +17,10 @@ final class Contact extends TdObject {
   /// Phone number of the user
   final String phoneNumber;
 
-  /// First name of the user; 1-255 characters in length
+  /// First name of the user; 1-64 characters
   final String firstName;
 
-  /// Last name of the user
+  /// Last name of the user; 0-64 characters
   final String lastName;
 
   /// Additional data about the user in a form of vCard; 0-2048 bytes in length

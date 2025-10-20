@@ -10,7 +10,7 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   /// Sends 2-10 messages grouped together into an album. Currently, only audio, document, photo and video messages can be grouped into an album. Documents and audio files can be only grouped in an album with messages of the same type. Returns sent messages
   const SendMessageAlbum({
     required this.chatId,
-    required this.messageThreadId,
+    this.topicId,
     this.replyTo,
     this.options,
     required this.inputMessageContents,
@@ -19,8 +19,8 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   /// Target chat
   final int chatId;
 
-  /// If not 0, the message thread identifier in which the messages will be sent
-  final int messageThreadId;
+  /// Topic in which the messages will be sent; pass null if none
+  final MessageTopic? topicId;
 
   /// Information about the message or story to be replied; pass null if none
   final InputMessageReplyTo? replyTo;
@@ -35,7 +35,7 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   Map<String, dynamic> toJson([dynamic extra]) => {
         '@type': CONSTRUCTOR,
         'chat_id': chatId,
-        'message_thread_id': messageThreadId,
+        'topic_id': topicId?.toJson(),
         'reply_to': replyTo?.toJson(),
         'options': options?.toJson(),
         'input_message_contents': [
@@ -48,14 +48,14 @@ final class SendMessageAlbum extends TdFunction<Messages> {
   /// field pass a function, e.g. `field: () => null` to clear it.
   SendMessageAlbum copyWith({
     int? chatId,
-    int? messageThreadId,
+    MessageTopic? Function()? topicId,
     InputMessageReplyTo? Function()? replyTo,
     MessageSendOptions? Function()? options,
     List<InputMessageContent>? inputMessageContents,
   }) =>
       SendMessageAlbum(
         chatId: chatId ?? this.chatId,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
+        topicId: topicId != null ? topicId() : this.topicId,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
         options: options != null ? options() : this.options,
         inputMessageContents: inputMessageContents ?? this.inputMessageContents,

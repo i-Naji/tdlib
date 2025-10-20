@@ -28,6 +28,8 @@ final class GroupCall extends TdObject {
     required this.canEnableVideo,
     required this.muteNewParticipants,
     required this.canToggleMuteNewParticipants,
+    required this.canSendMessages,
+    required this.canToggleCanSendMessages,
     required this.recordDuration,
     required this.isVideoRecorded,
     required this.duration,
@@ -98,6 +100,12 @@ final class GroupCall extends TdObject {
   /// True, if the current user can enable or disable mute_new_participants setting; for video chats only
   final bool canToggleMuteNewParticipants;
 
+  /// True, if users can send messages to the group call
+  final bool canSendMessages;
+
+  /// True, if the current user can enable or disable sending messages in the group call
+  final bool canToggleCanSendMessages;
+
   /// Duration of the ongoing group call recording, in seconds; 0 if none. An updateGroupCall update is not triggered when value of this field changes, but the same recording goes on
   final int recordDuration;
 
@@ -141,6 +149,9 @@ final class GroupCall extends TdObject {
         muteNewParticipants: _readBool(json['mute_new_participants']),
         canToggleMuteNewParticipants:
             _readBool(json['can_toggle_mute_new_participants']),
+        canSendMessages: _readBool(json['can_send_messages']),
+        canToggleCanSendMessages:
+            _readBool(json['can_toggle_can_send_messages']),
         recordDuration: _readInt(json['record_duration']),
         isVideoRecorded: _readBool(json['is_video_recorded']),
         duration: _readInt(json['duration']),
@@ -172,6 +183,8 @@ final class GroupCall extends TdObject {
         'can_enable_video': canEnableVideo,
         'mute_new_participants': muteNewParticipants,
         'can_toggle_mute_new_participants': canToggleMuteNewParticipants,
+        'can_send_messages': canSendMessages,
+        'can_toggle_can_send_messages': canToggleCanSendMessages,
         'record_duration': recordDuration,
         'is_video_recorded': isVideoRecorded,
         'duration': duration,
@@ -201,6 +214,8 @@ final class GroupCall extends TdObject {
     bool? canEnableVideo,
     bool? muteNewParticipants,
     bool? canToggleMuteNewParticipants,
+    bool? canSendMessages,
+    bool? canToggleCanSendMessages,
     int? recordDuration,
     bool? isVideoRecorded,
     int? duration,
@@ -232,6 +247,9 @@ final class GroupCall extends TdObject {
         muteNewParticipants: muteNewParticipants ?? this.muteNewParticipants,
         canToggleMuteNewParticipants:
             canToggleMuteNewParticipants ?? this.canToggleMuteNewParticipants,
+        canSendMessages: canSendMessages ?? this.canSendMessages,
+        canToggleCanSendMessages:
+            canToggleCanSendMessages ?? this.canToggleCanSendMessages,
         recordDuration: recordDuration ?? this.recordDuration,
         isVideoRecorded: isVideoRecorded ?? this.isVideoRecorded,
         duration: duration ?? this.duration,

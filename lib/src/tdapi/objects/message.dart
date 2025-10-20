@@ -30,7 +30,6 @@ final class Message extends TdObject {
     this.factCheck,
     this.suggestedPostInfo,
     this.replyTo,
-    required this.messageThreadId,
     this.topicId,
     this.selfDestructType,
     required this.selfDestructIn,
@@ -118,9 +117,6 @@ final class Message extends TdObject {
   /// Information about the message or the story this message is replying to; may be null if none
   final MessageReplyTo? replyTo;
 
-  /// If non-zero, the identifier of the message thread the message belongs to; unique within the chat to which the message belongs
-  final int messageThreadId;
-
   /// Identifier of the topic within the chat to which the message belongs; may be null if none
   final MessageTopic? topicId;
 
@@ -203,7 +199,6 @@ final class Message extends TdObject {
         suggestedPostInfo: _readOptional(
             json['suggested_post_info'], SuggestedPostInfo.fromJson),
         replyTo: _readOptional(json['reply_to'], MessageReplyTo.fromJson),
-        messageThreadId: _readInt(json['message_thread_id']),
         topicId: _readOptional(json['topic_id'], MessageTopic.fromJson),
         selfDestructType: _readOptional(
             json['self_destruct_type'], MessageSelfDestructType.fromJson),
@@ -250,7 +245,6 @@ final class Message extends TdObject {
         'fact_check': factCheck?.toJson(),
         'suggested_post_info': suggestedPostInfo?.toJson(),
         'reply_to': replyTo?.toJson(),
-        'message_thread_id': messageThreadId,
         'topic_id': topicId?.toJson(),
         'self_destruct_type': selfDestructType?.toJson(),
         'self_destruct_in': selfDestructIn,
@@ -293,7 +287,6 @@ final class Message extends TdObject {
     FactCheck? Function()? factCheck,
     SuggestedPostInfo? Function()? suggestedPostInfo,
     MessageReplyTo? Function()? replyTo,
-    int? messageThreadId,
     MessageTopic? Function()? topicId,
     MessageSelfDestructType? Function()? selfDestructType,
     double? selfDestructIn,
@@ -342,7 +335,6 @@ final class Message extends TdObject {
             ? suggestedPostInfo()
             : this.suggestedPostInfo,
         replyTo: replyTo != null ? replyTo() : this.replyTo,
-        messageThreadId: messageThreadId ?? this.messageThreadId,
         topicId: topicId != null ? topicId() : this.topicId,
         selfDestructType: selfDestructType != null
             ? selfDestructType()
